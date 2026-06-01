@@ -911,4 +911,27 @@ Before any push to LinkedIn / IG / repo:
 
 ---
 
+## 26. VALIDATED VIRALITY PRINCIPLES (data-backed, 2026-06-01)
+
+> Derived from the top 10 LinkedIn posts (real per-post analytics). Full evidence + apply-checklist:
+> **`analysis/virality-principles.md`**. North-star: **viral = impressions+reach → saves → comments**.
+> Per §0, where these conflict with earlier rules, **THESE win.** Caveat: n=10, mostly one topic
+> (AI model routing for GTM); the three levers below are the robust part, reach magnitude is noisy.
+
+- **Reach is a lottery.** The same formula produced 893–11,619 impressions (13x). Ship for
+  consistency; judge a post by saves/comments, not reach.
+- **SAVES lever (metric #2):** a reference-grade asset (named map / numbered system / prompt list)
+  or a copy-paste **carousel**, plus an explicit **"Save this [name the asset]."** Done → 0.45–0.90%
+  save rate; skipped → ~0.02%. (#2 vs #4: identical matrix, the save ask alone took saves 1 → 25.)
+- **COMMENTS lever (metric #3):** **"Comment [KEYWORD] and I will send you the exact Claude
+  [workflow/system]."** Keyword lead-magnet CTAs → 23–34 comments; soft/open prompts → 3–19.
+- **HOOK template:** open the visual hook with **"I + a concrete number"** ("I sourced $127K…",
+  "I gave Claude 12,400 accounts. It picked 847."). **Supersedes §14** ("no I / no stats in hook").
+- **REACH lane:** "which AI model/agent for which founder-GTM job", dense single-image infographic
+  (9/10 top posts). Save/comment levers travel to other topics; reach is lane-bound.
+- **FORMAT:** single image = reach play; carousel of copy-paste items = save play. **Refines §22**
+  ("carousel > PNG") — true for SAVES, not demonstrated for reach.
+
+---
+
 END OF CONFIG.
