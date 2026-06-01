@@ -1,8 +1,9 @@
-# docs-02 Platform Overview - LinkedIn copy (v2)
+# docs-02 Platform Overview - LinkedIn copy (v3)
 
-Visual: docs-02-platform-overview-linkedin-v2.html  (v1 superseded after operator review: too airy, agent-centric, not save-worthy)
-Keyword: ENGINE
-Levers (CLAUDE.md section 26): reach lane (known-model routing matrix + "I + number" hook + single dense infographic), saves (dense reference map + "Save this routing map"), comments ("Comment ENGINE ...").
+Visual: docs-02-platform-overview-linkedin-v3.html  (v1/v2 superseded)
+Keyword: ROUTING
+Method: learned from the personal-session build (real model logos, WINS leaderboard, logo chips, before/after block, agents-in-italic), rebuilt at 1080x1450 with two fixes: bigger sub-hook + icons/visual motifs in the before/after cards.
+Levers (CLAUDE.md section 26): reach lane (known-model routing matrix + "I + number" hook + single dense infographic), saves (dense reference map + before/after + "Save this routing map"), comments ("Comment ROUTING ...").
 
 ---
 
@@ -33,13 +34,13 @@ The fix was never a smarter model. It was a routing layer that sends each job to
 Save this routing map before your next AI subscription.
 
 Follow for one AI system for founders every day.
-Comment ENGINE and I will send you the exact Claude workflow we used.
+Comment ROUTING and I will send you the exact Claude workflow we used.
 
 ---
 
 ## ALT TEXT
 
-Dark editorial visual on slate background. Hero on the left reads 'I ran 8 GTM jobs through one AI. It won once,' with once in book-orange, beside a book-orange focal card showing 1 of 8 labeled jobs your default AI actually wins. Below sits a terminal-style routing map titled founder_gtm slash model_router.map, a five-column table of GTM Job, Winner, Runner-up, Avoid, and Why, with eight numbered rows: lead research to Perplexity, account enrichment to Gemini, ICP scoring, cold outreach, call prep, proposal draft and objection handling to Claude, and follow-up to close to ChatGPT, each winner shown as a solid book-orange chip. A band reads 'One model wins 1 of 8. The best single pick still loses 3. Route, and win 8 of 8.' A slim strip notes Ultron is the routing layer over CORTEX, SPECTER, STRIKER, PULSE, and SENTINEL. A four-cell strip shows 1 to 8 jobs won, 13 thousand to 19 dollars, 30 minutes to 0, and 5 tools to 1. Closes with a Comment ENGINE call to action and the Ultron logo.
+Dark editorial visual on slate background. Hero on the left reads 'I ran 8 GTM jobs through one AI. It won once,' with once in book-orange. On the right, a WINS BY MODEL leaderboard with real model logos and proportional bars: Claude 5 in a full book-orange bar, ChatGPT 1, Gemini 1, Perplexity 1, captioned 'best single model wins only 5 of 8, route and win 8 of 8.' Below, a routing map titled the routing map, a table of GTM Job, Winner, Runner-up slash Avoid, and Why, with eight numbered rows and each winner shown as a logo chip: lead research to Perplexity, account enrichment to Gemini, ICP scoring, cold outreach, call prep, proposal draft and objection handling to Claude, follow-up to close to ChatGPT. A before-and-after block compares the old stack to the routing layer with icons: monthly cost 13 thousand dollars to 19, tabs per job 5 to 1, decision time 30 minutes to 0, jobs won 1 of 8 to 8 of 8. A one-line note says Ultron is the routing layer over CORTEX, SPECTER, STRIKER, PULSE, and SENTINEL. Closes with a Comment ROUTING call to action and the Ultron logo.
 
 ---
 
@@ -49,4 +50,4 @@ Eight founder GTM jobs, four AIs. Run all eight through one model and it is the 
 
 Ultron routes each job to its winner automatically, holds the context across all eight, and gates every send.
 
-Drop ENGINE below and I will send you the full routing map plus the exact Claude workflow we run: https://app.51ultron.com/docs/platform/overview
+Drop ROUTING below and I will send you the full routing map plus the exact Claude workflow we run: https://app.51ultron.com/docs/platform/overview
