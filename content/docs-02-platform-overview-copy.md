@@ -9,25 +9,25 @@ Levers (CLAUDE.md section 26): reach lane (known-model routing matrix + "I + num
 
 ## CAPTION
 
-Your default AI is the wrong tool for most of your GTM. Not because it is weak, because it is one model doing eight different jobs.
+Your default AI is the wrong tool for most of your GTM. Not because it is weak, because it is one model doing eight different jobs that each break in a different place.
 
 - - -
 
-I spent a quarter running lead research, scoring, outreach, call prep, proposals, and follow-up through the same AI. The output looked fine and closed nothing. The problem was never which model is smartest. Each of those jobs fails in a different place, and one model cannot win all of them.
+I spent a quarter running lead research, ICP scoring, cold outreach, call prep, proposals, objection handling, and follow-up through the same AI. The output looked fine and closed nothing. I kept tuning prompts, assuming the prompt was the problem. It was not. Every founder I know is doing the work of a five person GTM team alone, and a smarter model just produces more polished noise faster. The problem was never which model is smartest. It was that I was asking one model to win eight jobs it was never built to win, and a better prompt cannot fix a wrong-model choice.
 
 - - -
 
-Here is how the 8 GTM jobs actually route:
+So I ran all eight through Claude, ChatGPT, Gemini, and Perplexity and kept score. Here is what actually wins:
 
-→ Lead research goes to Perplexity. Live funding and hiring signals before you write a word.
-→ Account enrichment goes to Gemini. Long context, reads Google-native data without truncating.
-→ ICP scoring, cold outreach, call prep, proposals, and objection handling go to Claude. It holds your tone and finds the one issue that loses the deal.
-→ Follow-up to close goes to ChatGPT. It pressure-tests the close logic better than anything else.
-→ Run all 8 through one model and it is the right tool for 1 of them. The other 7 are on the wrong AI.
+→ Lead research goes to Perplexity. It pulls live funding and hiring signals before you write a single word, where the others guess.
+→ Account enrichment goes to Gemini. Long context, reads Google-native data without truncating halfway through.
+→ ICP scoring, cold outreach, call prep, proposals, and objection handling go to Claude. It holds your tone, scores fit honestly, and finds the one issue that quietly loses the deal.
+→ Follow-up to close goes to ChatGPT. It pressure-tests the close logic and surfaces the objection you were about to walk past.
+→ Run all eight through any single model and it is the right tool for one of them. The other seven ship on the wrong AI.
 
 - - -
 
-The fix was never a smarter model. It was a routing layer that sends each job to the AI that wins it, remembers the context across all eight, and keeps you at the gate before anything sends. That layer is Ultron. The models are the engine, the routing is the system.
+The fix was never a smarter model, and it was never a better prompt. It was a routing layer that sends each job to the AI that wins it, remembers the context across all eight so nothing starts from a blank page, and keeps a human at the gate before anything sends. The models are the engine. The routing layer is the system. That is what Ultron runs for you, so you stop deciding which tab to open and start shipping.
 
 - - -
 
