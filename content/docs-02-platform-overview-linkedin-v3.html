@@ -80,33 +80,37 @@ body{background:#0d0d0d;font-family:'DM Sans',Arial,sans-serif;color:var(--ivory
 .sl{color:var(--ink-30);margin:0 5px;}
 .rg-avoid{text-decoration:line-through;text-decoration-thickness:1.5px;color:var(--ink-30);font-size:12px;}
 
-/* COMPARE - before/after with icons + visual motif */
-.compare-sec{flex-grow:1;min-height:0;margin-top:16px;display:flex;flex-direction:column;}
-.compare-hdr{font-family:'DM Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-46);margin-bottom:10px;}
+/* COMPARE - dense before/after: per-row icons + bars, 6 even rows, no inter-row gaps */
+.compare-sec{flex-grow:1;min-height:0;margin-top:15px;display:flex;flex-direction:column;}
+.compare-hdr{font-family:'DM Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-46);margin-bottom:9px;}
 .compare-hdr em{color:var(--book);font-style:normal;}
-.compare-grid{flex:1;display:grid;grid-template-columns:1fr 52px 1fr;gap:0;align-items:stretch;}
-.cmp-side{border:1px solid var(--rule);border-radius:7px;background:var(--slate-med);padding:16px 18px;display:flex;flex-direction:column;}
+.compare-grid{flex:1;display:grid;grid-template-columns:1fr 46px 1fr;gap:0;align-items:stretch;}
+.cmp-side{border:1px solid var(--rule);border-radius:7px;background:var(--slate-med);padding:13px 16px;display:flex;flex-direction:column;}
 .cmp-side.after{border-color:var(--book-bd);background:rgba(204,120,92,.06);box-shadow:0 0 34px rgba(204,120,92,.12);}
 .cmp-eye{font-family:'DM Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-46);}
 .cmp-side.after .cmp-eye{color:var(--book);}
-.cmp-viz{display:flex;align-items:center;gap:6px;height:24px;margin:12px 0 4px;}
-.cmp-viz .tool{width:20px;height:16px;border-radius:3px;background:var(--ink-14);border:1px solid var(--ink-30);}
-.cmp-viz .layer{height:16px;flex:1;border-radius:4px;background:var(--book);box-shadow:0 0 14px rgba(204,120,92,.45);}
-.cmp-viz .vlab{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-46);margin-left:4px;}
+.cmp-viz{display:flex;align-items:center;gap:5px;height:15px;margin:9px 0 6px;}
+.cmp-viz .tool{width:16px;height:12px;border-radius:3px;background:var(--ink-14);border:1px solid var(--ink-30);}
+.cmp-viz .layer{height:12px;flex:1;border-radius:4px;background:var(--book);box-shadow:0 0 14px rgba(204,120,92,.45);}
+.cmp-viz .vlab{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-46);margin-left:4px;}
 .cmp-side.after .cmp-viz .vlab{color:var(--book);}
-.cmp-headline{font-weight:900;font-size:19px;color:var(--ivory-light);line-height:1.16;letter-spacing:-.02em;margin:8px 0 4px;}
-.cmp-rows{display:flex;flex-direction:column;flex:1;justify-content:space-between;margin-top:4px;}
-.cmp-row{display:flex;align-items:center;gap:11px;padding:9px 0;border-bottom:1px dashed var(--rule);}
-.cmp-row:last-child{border-bottom:none;}
-.cmp-ic{width:32px;height:32px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--ink-14);}
+.cmp-headline{font-weight:900;font-size:16px;color:var(--ivory-light);line-height:1.16;letter-spacing:-.02em;margin:2px 0 4px;}
+.cmp-rows{display:flex;flex-direction:column;flex:1;}
+.cmp-row{flex:1;display:flex;flex-direction:column;justify-content:center;gap:6px;border-top:1px dashed var(--rule);}
+.cmp-row:first-child{border-top:none;}
+.cmp-row-top{display:flex;align-items:center;gap:9px;}
+.cmp-ic{width:25px;height:25px;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--ink-14);}
 .cmp-side.after .cmp-ic{background:var(--book-lo);}
-.cmp-ic svg{width:17px;height:17px;fill:none;stroke:var(--ink-46);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.cmp-ic svg{width:14px;height:14px;fill:none;stroke:var(--ink-46);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 .cmp-side.after .cmp-ic svg{stroke:var(--book);}
-.cmp-row-l{flex:1;color:var(--ink-70);font-size:13px;font-weight:500;}
-.cmp-row-r{font-weight:900;font-size:23px;color:var(--ivory-light);letter-spacing:-.6px;line-height:1;}
+.cmp-row-l{flex:1;color:var(--ink-70);font-size:12px;font-weight:500;}
+.cmp-row-r{font-weight:900;font-size:19px;color:var(--ivory-light);letter-spacing:-.5px;line-height:1;}
 .cmp-side.after .cmp-row-r{color:var(--book);}
+.cmp-bar{height:5px;border-radius:3px;background:var(--ink-14);overflow:hidden;margin-left:34px;}
+.cmp-bar-fill{height:100%;border-radius:3px;background:var(--ink-30);}
+.cmp-side.after .cmp-bar-fill{background:var(--book);box-shadow:0 0 8px rgba(204,120,92,.4);}
 .cmp-arrow{display:flex;align-items:center;justify-content:center;}
-.cmp-arrow svg{width:30px;height:30px;stroke:var(--book);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.cmp-arrow svg{width:26px;height:26px;stroke:var(--book);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
 
 .italic-block{flex-shrink:0;margin-top:13px;padding:12px 18px;border-left:3px solid var(--book);background:rgba(204,120,92,.04);border-radius:0 5px 5px 0;}
 .ib-txt{font-weight:500;font-size:14.5px;color:var(--ivory-light);line-height:1.4;font-style:italic;}
@@ -218,10 +222,12 @@ body{background:#0d0d0d;font-family:'DM Sans',Arial,sans-serif;color:var(--ivory
       <div class="cmp-viz"><span class="tool"></span><span class="tool"></span><span class="tool"></span><span class="tool"></span><span class="tool"></span><span class="vlab">5 tools open</span></div>
       <div class="cmp-headline">5 tools open. 1 wins per job. 30 min to pick.</div>
       <div class="cmp-rows">
-        <div class="cmp-row"><div class="cmp-ic"><svg viewBox="0 0 24 24"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="cmp-row-l">Monthly stack cost</div><div class="cmp-row-r">$13K</div></div>
-        <div class="cmp-row"><div class="cmp-ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="7" height="16" rx="1"/><rect x="14" y="4" width="7" height="16" rx="1"/></svg></div><div class="cmp-row-l">Tabs open per job</div><div class="cmp-row-r">5</div></div>
-        <div class="cmp-row"><div class="cmp-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg></div><div class="cmp-row-l">Decision time per job</div><div class="cmp-row-r">30 min</div></div>
-        <div class="cmp-row"><div class="cmp-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg></div><div class="cmp-row-l">Jobs won by default AI</div><div class="cmp-row-r">1/8</div></div>
+        <div class="cmp-row"><div class="cmp-row-top"><div class="cmp-ic"><svg viewBox="0 0 24 24"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="cmp-row-l">Monthly stack cost</div><div class="cmp-row-r">$13K</div></div><div class="cmp-bar"><div class="cmp-bar-fill" style="width:100%"></div></div></div>
+        <div class="cmp-row"><div class="cmp-row-top"><div class="cmp-ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="7" height="16" rx="1"/><rect x="14" y="4" width="7" height="16" rx="1"/></svg></div><div class="cmp-row-l">Tabs open per job</div><div class="cmp-row-r">5</div></div><div class="cmp-bar"><div class="cmp-bar-fill" style="width:100%"></div></div></div>
+        <div class="cmp-row"><div class="cmp-row-top"><div class="cmp-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg></div><div class="cmp-row-l">Decision time per job</div><div class="cmp-row-r">30 min</div></div><div class="cmp-bar"><div class="cmp-bar-fill" style="width:100%"></div></div></div>
+        <div class="cmp-row"><div class="cmp-row-top"><div class="cmp-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg></div><div class="cmp-row-l">Jobs won, of 8</div><div class="cmp-row-r">1</div></div><div class="cmp-bar"><div class="cmp-bar-fill" style="width:13%"></div></div></div>
+        <div class="cmp-row"><div class="cmp-row-top"><div class="cmp-ic"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.07 0l2-2a5 5 0 1 0-7.07-7.07l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.07 0l-2 2a5 5 0 1 0 7.07 7.07l1.5-1.5"/></svg></div><div class="cmp-row-l">Context kept across jobs</div><div class="cmp-row-r">none</div></div><div class="cmp-bar"><div class="cmp-bar-fill" style="width:6%"></div></div></div>
+        <div class="cmp-row"><div class="cmp-row-top"><div class="cmp-ic"><svg viewBox="0 0 24 24"><path d="M12 3L2 20h20L12 3z"/><path d="M12 9v5"/><path d="M12 18h.01"/></svg></div><div class="cmp-row-l">Wrong-tool sends</div><div class="cmp-row-r">7</div></div><div class="cmp-bar"><div class="cmp-bar-fill" style="width:88%"></div></div></div>
       </div>
     </div>
     <div class="cmp-arrow"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
@@ -230,10 +236,12 @@ body{background:#0d0d0d;font-family:'DM Sans',Arial,sans-serif;color:var(--ivory
       <div class="cmp-viz"><span class="layer"></span><span class="vlab">1 layer</span></div>
       <div class="cmp-headline">1 layer. 8 wins. 0 minutes deciding.</div>
       <div class="cmp-rows">
-        <div class="cmp-row"><div class="cmp-ic"><svg viewBox="0 0 24 24"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="cmp-row-l">Monthly stack cost</div><div class="cmp-row-r">$19</div></div>
-        <div class="cmp-row"><div class="cmp-ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="7" height="16" rx="1"/><rect x="14" y="4" width="7" height="16" rx="1"/></svg></div><div class="cmp-row-l">Tabs open per job</div><div class="cmp-row-r">1</div></div>
-        <div class="cmp-row"><div class="cmp-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg></div><div class="cmp-row-l">Decision time per job</div><div class="cmp-row-r">0 min</div></div>
-        <div class="cmp-row"><div class="cmp-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg></div><div class="cmp-row-l">Jobs won by routed AI</div><div class="cmp-row-r">8/8</div></div>
+        <div class="cmp-row"><div class="cmp-row-top"><div class="cmp-ic"><svg viewBox="0 0 24 24"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="cmp-row-l">Monthly stack cost</div><div class="cmp-row-r">$19</div></div><div class="cmp-bar"><div class="cmp-bar-fill" style="width:6%"></div></div></div>
+        <div class="cmp-row"><div class="cmp-row-top"><div class="cmp-ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="7" height="16" rx="1"/><rect x="14" y="4" width="7" height="16" rx="1"/></svg></div><div class="cmp-row-l">Tabs open per job</div><div class="cmp-row-r">1</div></div><div class="cmp-bar"><div class="cmp-bar-fill" style="width:20%"></div></div></div>
+        <div class="cmp-row"><div class="cmp-row-top"><div class="cmp-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg></div><div class="cmp-row-l">Decision time per job</div><div class="cmp-row-r">0 min</div></div><div class="cmp-bar"><div class="cmp-bar-fill" style="width:3%"></div></div></div>
+        <div class="cmp-row"><div class="cmp-row-top"><div class="cmp-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg></div><div class="cmp-row-l">Jobs won, of 8</div><div class="cmp-row-r">8</div></div><div class="cmp-bar"><div class="cmp-bar-fill" style="width:100%"></div></div></div>
+        <div class="cmp-row"><div class="cmp-row-top"><div class="cmp-ic"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.07 0l2-2a5 5 0 1 0-7.07-7.07l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.07 0l-2 2a5 5 0 1 0 7.07 7.07l1.5-1.5"/></svg></div><div class="cmp-row-l">Context kept across jobs</div><div class="cmp-row-r">all 8</div></div><div class="cmp-bar"><div class="cmp-bar-fill" style="width:100%"></div></div></div>
+        <div class="cmp-row"><div class="cmp-row-top"><div class="cmp-ic"><svg viewBox="0 0 24 24"><path d="M12 3L2 20h20L12 3z"/><path d="M12 9v5"/><path d="M12 18h.01"/></svg></div><div class="cmp-row-l">Wrong-tool sends</div><div class="cmp-row-r">0</div></div><div class="cmp-bar"><div class="cmp-bar-fill" style="width:2%"></div></div></div>
       </div>
     </div>
   </div>
