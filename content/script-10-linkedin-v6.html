@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 10 · ICP · v6</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* BUDGET 1450  ·  Family C · Annotated ICP Breakdown
+     header   0 -  48
+     hero    56 - 280   (224)
+     bigstat 300 - 376   ( 76)
+     radar  400 -1064   (664)   3-column: side notes | radar | side notes
+     callout 1080 -1144 ( 64)
+     metric 1160 -1232  ( 72)
+     cta    1248 -1304  ( 56)
+     footer 1322 -1410  ( 88)
+  */
+  body{background:#f4ede0;margin:0;padding:0}
+  .scaler{display:flex;justify-content:center}
+  .poster{width:1080px;height:1450px;background:#FAF9F5;position:relative;overflow:hidden;box-sizing:border-box}
+  .mono{font-family:'JetBrains Mono','Courier New',monospace}
+  .fraunces{font-family:'Fraunces',Georgia,serif}
+  .caveat{font-family:'Caveat',cursive}
+  .accent{color:#C6613F}
+  .red{color:#B53333}
+  .green{color:#16a34a}
+  .micro{font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;font-family:'JetBrains Mono',monospace}
+  .pulse{display:inline-block;width:8px;height:8px;border-radius:50%;background:#C6613F;box-shadow:0 0 8px rgba(198,97,63,0.4)}
+  .annot{position:relative;padding-left:22px}
+  .annot::before{content:'';position:absolute;left:0;top:7px;width:14px;height:14px;border-radius:50%;background:#B53333;border:3px solid #FAF9F5;box-shadow:0 0 0 1.5px #B53333}
+  .annot.fix::before{background:#16a34a;box-shadow:0 0 0 1.5px #16a34a}
+  .annot-label{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.16em;color:#B53333;text-transform:uppercase;margin-bottom:4px}
+  .annot.fix .annot-label{color:#16a34a}
+  .handwrite{font-family:'Caveat',cursive;font-weight:600;color:#B53333;line-height:1}
+  .annot.fix .handwrite{color:#16a34a}
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="poster">
+
+  <!-- HEADER 0-48 -->
+  <div style="position:absolute;top:0;left:40px;right:40px;height:48px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #DEDCD1">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(0,0,0,0.5)">FOUNDER GTM · ICP SCORING · LEAD QUALIFICATION · PIPELINE MAPPING · ULTRON OS</span>
+  </div>
+
+  <!-- HERO 56-280 -->
+  <div style="position:absolute;top:64px;left:40px;width:640px">
+    <div class="micro" style="margin-bottom:14px;color:#C6613F">AI ICP SCORING · LEAD QUALIFICATION · DIAGNOSTIC</div>
+    <div class="fraunces" style="font-weight:900;font-size:74px;line-height:0.92;letter-spacing:-2px;color:#141413;margin-bottom:6px">AI scored <span class="accent" style="font-style:italic">2,400 leads.</span></div>
+    <div class="fraunces" style="font-weight:700;font-size:46px;line-height:0.95;letter-spacing:-1.2px;color:#4D4C48;margin-bottom:18px">92% were the <span class="red" style="font-weight:900">wrong ICP.</span></div>
+    <div style="font-size:14.5px;line-height:1.5;color:#4D4C48;max-width:600px">I gave Gemini my ICP filter and a list. It scored 2,400 contacts on 6 dimensions. 2,213 were instant-kill. The 187 that passed converted at <span style="color:#141413;font-weight:700">7.8% reply rate</span>. The breakdown below shows where the misses hid.</div>
+  </div>
+
+  <!-- RULE BOX right -->
+  <div style="position:absolute;top:64px;right:40px;width:340px;padding:18px 20px;border:1px solid rgba(181,51,51,0.35);border-radius:10px;background:rgba(181,51,51,0.04);box-sizing:border-box">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+      <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" stroke="#B53333" stroke-width="1.4" fill="none"/><path d="M5 5l6 6M11 5l-6 6" stroke="#B53333" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span class="mono red" style="font-size:11px;font-weight:700;letter-spacing:.18em">THE LEAK</span>
+    </div>
+    <div style="font-size:16px;font-weight:700;line-height:1.3;margin-bottom:10px;color:#141413">Your ICP is a vibe.<br>AI needs 6 axes.</div>
+    <div style="font-size:12px;line-height:1.5;color:#4D4C48;margin-bottom:14px">"B2B SaaS founders" is not an ICP.<br>That is a <span class="red" style="font-weight:600">universe of 47,000 wrong fits.</span></div>
+    <div style="padding-top:10px;border-top:1px solid rgba(181,51,51,0.18);font-size:10px;line-height:1.6;color:#73726C;font-family:'JetBrains Mono',monospace">
+      <div>STAGE · INDUSTRY · STACK</div>
+      <div>SIZE · BUDGET · TIMING</div>
+    </div>
+  </div>
+
+  <!-- BIG STAT 300-376 -->
+  <div style="position:absolute;top:300px;left:40px;right:40px;height:76px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;background:#FFFFFF;border:1px solid #DEDCD1;border-radius:10px;overflow:hidden">
+    <div style="padding:14px 24px;border-right:1px solid #DEDCD1">
+      <div class="mono" style="font-size:9px;letter-spacing:.2em;color:#73726C;font-weight:700;margin-bottom:2px">FED INTO AI · RAW LIST</div>
+      <div style="display:flex;align-items:baseline;gap:8px">
+        <span class="fraunces" style="font-size:42px;font-weight:900;line-height:1;color:#141413;letter-spacing:-1.5px">2,400</span>
+        <span style="font-size:13px;color:#73726C;font-weight:600">leads scraped</span>
+      </div>
+    </div>
+    <div style="padding:0 20px"><svg width="32" height="20" viewBox="0 0 32 20"><path d="M2 10h24M21 4l8 6-8 6" stroke="#C6613F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+    <div style="padding:14px 24px">
+      <div class="mono" style="font-size:9px;letter-spacing:.2em;color:#C6613F;font-weight:700;margin-bottom:2px">PASSED ICP · AI-FILTERED</div>
+      <div style="display:flex;align-items:baseline;gap:8px">
+        <span class="fraunces accent" style="font-size:42px;font-weight:900;line-height:1;letter-spacing:-1.5px">187</span>
+        <span style="font-size:13px;color:#73726C;font-weight:600">qualified · 7.8% reply</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- RADAR 3-COLUMN GRID 400-1064 -->
+  <div style="position:absolute;top:400px;left:40px;right:40px;height:664px;display:grid;grid-template-columns:240px 1fr 240px;gap:24px;align-items:stretch">
+
+    <!-- LEFT: red notes (the leaks) -->
+    <div style="display:flex;flex-direction:column;justify-content:space-around;padding:24px 0">
+
+      <div class="annot">
+        <div class="annot-label">Leak 01 · Stage</div>
+        <div style="font-size:13.5px;font-weight:700;line-height:1.3;margin-bottom:6px;color:#141413">Wrong stage</div>
+        <div style="font-size:11.5px;line-height:1.45;color:#4D4C48;margin-bottom:8px">Pre-seed founders. My platform needs $50K+ ARR to bite.</div>
+        <div class="handwrite" style="font-size:30px">1,127 misses</div>
+      </div>
+
+      <div class="annot">
+        <div class="annot-label">Leak 02 · Industry</div>
+        <div style="font-size:13.5px;font-weight:700;line-height:1.3;margin-bottom:6px;color:#141413">Wrong industry</div>
+        <div style="font-size:11.5px;line-height:1.45;color:#4D4C48;margin-bottom:8px">Agencies, consultancies, e-com. Not B2B SaaS sales-led GTM.</div>
+        <div class="handwrite" style="font-size:30px">734 misses</div>
+      </div>
+
+      <div class="annot">
+        <div class="annot-label">Leak 03 · Budget</div>
+        <div style="font-size:13.5px;font-weight:700;line-height:1.3;margin-bottom:6px;color:#141413">No budget signal</div>
+        <div style="font-size:11.5px;line-height:1.45;color:#4D4C48;margin-bottom:8px">No funding, no ARR data, no hiring activity. AI cannot price.</div>
+        <div class="handwrite" style="font-size:30px">352 misses</div>
+      </div>
+
+    </div>
+
+    <!-- CENTER: 6-axis radar polygon -->
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:8px">
+      <div class="mono" style="font-size:10px;font-weight:700;letter-spacing:.18em;color:#73726C;margin-bottom:12px">AI ICP SCORE · 6 AXES · NORMALIZED</div>
+
+      <svg viewBox="0 0 460 460" style="width:100%;max-width:460px">
+        <defs>
+          <radialGradient id="passFill" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#16a34a" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#16a34a" stop-opacity="0.12"/>
+          </radialGradient>
+          <radialGradient id="failFill" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#B53333" stop-opacity="0.18"/>
+            <stop offset="100%" stop-color="#B53333" stop-opacity="0.06"/>
+          </radialGradient>
+        </defs>
+
+        <!-- grid rings (4 levels) -->
+        <g stroke="#DEDCD1" stroke-width="1" fill="none">
+          <polygon points="230,50 386,140 386,320 230,410 74,320 74,140"/>
+          <polygon points="230,95 348,163 348,297 230,365 112,297 112,163"/>
+          <polygon points="230,140 309,185 309,275 230,320 151,275 151,185"/>
+          <polygon points="230,185 270,208 270,252 230,275 190,252 190,208"/>
+        </g>
+        <!-- spokes -->
+        <g stroke="#DEDCD1" stroke-width="1">
+          <line x1="230" y1="230" x2="230" y2="50"/>
+          <line x1="230" y1="230" x2="386" y2="140"/>
+          <line x1="230" y1="230" x2="386" y2="320"/>
+          <line x1="230" y1="230" x2="230" y2="410"/>
+          <line x1="230" y1="230" x2="74" y2="320"/>
+          <line x1="230" y1="230" x2="74" y2="140"/>
+        </g>
+
+        <!-- WRONG ICP polygon (red, lower scores) -->
+        <polygon points="230,140 270,185 309,275 230,320 151,275 112,185"
+          fill="url(#failFill)" stroke="#B53333" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+        <!-- IDEAL ICP polygon (green, high on all 6 axes) -->
+        <polygon points="230,72 367,150 348,297 230,387 112,297 93,150"
+          fill="url(#passFill)" stroke="#16a34a" stroke-width="2"/>
+
+        <!-- score dots -->
+        <g>
+          <circle cx="230" cy="72" r="4" fill="#16a34a"/>
+          <circle cx="367" cy="150" r="4" fill="#16a34a"/>
+          <circle cx="348" cy="297" r="4" fill="#16a34a"/>
+          <circle cx="230" cy="387" r="4" fill="#16a34a"/>
+          <circle cx="112" cy="297" r="4" fill="#16a34a"/>
+          <circle cx="93" cy="150" r="4" fill="#16a34a"/>
+        </g>
+
+        <!-- axis labels -->
+        <g font-family="Inter,sans-serif" font-size="13" font-weight="800" fill="#141413" text-anchor="middle">
+          <text x="230" y="38">STAGE</text>
+          <text x="395" y="138" text-anchor="start">INDUSTRY</text>
+          <text x="395" y="328" text-anchor="start">TIMING</text>
+          <text x="230" y="438">SIZE</text>
+          <text x="65" y="328" text-anchor="end">BUDGET</text>
+          <text x="65" y="138" text-anchor="end">STACK</text>
+        </g>
+        <!-- score labels -->
+        <g font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#73726C">
+          <text x="230" y="22" text-anchor="middle">Series A-B</text>
+          <text x="395" y="153" text-anchor="start">B2B SaaS</text>
+          <text x="395" y="343" text-anchor="start">Signal hot</text>
+          <text x="230" y="452" text-anchor="middle">10-50 ppl</text>
+          <text x="65" y="343" text-anchor="end">$50K+ ARR</text>
+          <text x="65" y="153" text-anchor="end">Modern AI</text>
+        </g>
+
+        <!-- legend center -->
+        <g transform="translate(230,222)">
+          <rect x="-72" y="-12" width="144" height="56" rx="6" fill="#FAF9F5" stroke="#DEDCD1"/>
+          <circle cx="-58" cy="-2" r="5" fill="#16a34a"/>
+          <text x="-46" y="2" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#141413">187 PASSED</text>
+          <circle cx="-58" cy="22" r="5" fill="#B53333"/>
+          <text x="-46" y="26" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#141413">2,213 KILLED</text>
+        </g>
+      </svg>
+
+      <div class="caveat" style="font-size:32px;font-weight:700;color:#C6613F;margin-top:4px">8% pass rate</div>
+    </div>
+
+    <!-- RIGHT: green notes (AI fixes) -->
+    <div style="display:flex;flex-direction:column;justify-content:space-around;padding:24px 0">
+
+      <div class="annot fix">
+        <div class="annot-label">Fix 01 · Gemini</div>
+        <div style="font-size:13.5px;font-weight:700;line-height:1.3;margin-bottom:6px;color:#141413">Scrape + score</div>
+        <div style="font-size:11.5px;line-height:1.45;color:#4D4C48;margin-bottom:8px">Pulls stage, ARR, headcount, stack from 8 sources. Scores 0-100.</div>
+        <div class="handwrite" style="font-size:30px">94% precision</div>
+      </div>
+
+      <div class="annot fix">
+        <div class="annot-label">Fix 02 · Claude</div>
+        <div style="font-size:13.5px;font-weight:700;line-height:1.3;margin-bottom:6px;color:#141413">Validate intent</div>
+        <div style="font-size:11.5px;line-height:1.45;color:#4D4C48;margin-bottom:8px">Reads board, role, signals. Confirms buying-mode vs lurking.</div>
+        <div class="handwrite" style="font-size:30px">3.2x intent</div>
+      </div>
+
+      <div class="annot fix">
+        <div class="annot-label">Fix 03 · ChatGPT</div>
+        <div style="font-size:13.5px;font-weight:700;line-height:1.3;margin-bottom:6px;color:#141413">Route high-fit</div>
+        <div style="font-size:11.5px;line-height:1.45;color:#4D4C48;margin-bottom:8px">Only ICP score &gt;75 enters STRIKER queue. The rest get killed.</div>
+        <div class="handwrite" style="font-size:30px">187 routed</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CALLOUT 1080-1144 -->
+  <div style="position:absolute;top:1080px;left:40px;right:40px;height:64px;display:flex;align-items:center;justify-content:center;gap:24px;background:rgba(198,97,63,0.06);border:1.5px solid rgba(198,97,63,0.35);border-radius:10px">
+    <span class="mono" style="font-size:11px;font-weight:700;letter-spacing:.18em;color:#73726C">VERDICT</span>
+    <span class="fraunces" style="font-size:24px;font-weight:700;color:#141413;font-style:italic">Wrong ICP cost me</span>
+    <span class="fraunces" style="font-size:34px;font-weight:900;color:#C6613F;letter-spacing:-1px">$92,400</span>
+    <span class="fraunces" style="font-size:24px;font-weight:700;color:#141413;font-style:italic">in wasted sequences.</span>
+  </div>
+
+  <!-- METRIC STRIP 1160-1232 -->
+  <div style="position:absolute;top:1160px;left:40px;right:40px;height:72px;display:grid;grid-template-columns:repeat(5,1fr);border:1px solid #DEDCD1;border-radius:8px;background:#FFFFFF">
+    <div style="padding:12px 16px;border-right:1px solid #DEDCD1">
+      <div class="mono" style="font-size:9px;letter-spacing:.18em;color:#73726C;font-weight:700">SCORED</div>
+      <div class="fraunces" style="font-size:22px;font-weight:900;margin-top:2px;color:#141413">2,400</div>
+    </div>
+    <div style="padding:12px 16px;border-right:1px solid #DEDCD1">
+      <div class="mono" style="font-size:9px;letter-spacing:.18em;color:#73726C;font-weight:700">KILLED</div>
+      <div class="fraunces" style="font-size:22px;font-weight:900;margin-top:2px;color:#B53333">2,213</div>
+    </div>
+    <div style="padding:12px 16px;border-right:1px solid #DEDCD1">
+      <div class="mono" style="font-size:9px;letter-spacing:.18em;color:#73726C;font-weight:700">PASS RATE</div>
+      <div class="fraunces accent" style="font-size:22px;font-weight:900;margin-top:2px">8%</div>
+    </div>
+    <div style="padding:12px 16px;border-right:1px solid #DEDCD1">
+      <div class="mono" style="font-size:9px;letter-spacing:.18em;color:#73726C;font-weight:700">ICP AXES</div>
+      <div class="fraunces" style="font-size:22px;font-weight:900;margin-top:2px;color:#141413">6</div>
+    </div>
+    <div style="padding:12px 16px">
+      <div class="mono" style="font-size:9px;letter-spacing:.18em;color:#73726C;font-weight:700">REPLY · ICP-FIT</div>
+      <div class="fraunces accent" style="font-size:22px;font-weight:900;margin-top:2px">7.8%</div>
+    </div>
+  </div>
+
+  <!-- CTA 1248-1304 -->
+  <div style="position:absolute;top:1248px;left:40px;right:40px;height:56px;display:flex;align-items:center;justify-content:space-between;border:1.5px solid rgba(198,97,63,0.4);border-radius:10px;padding:0 28px;background:rgba(198,97,63,0.05);flex:1">
+    <div style="font-size:14px;font-weight:700;color:#4D4C48">Want my 6-axis AI ICP scorecard?</div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="mono" style="font-size:12px;font-weight:700;color:#73726C;letter-spacing:.1em">COMMENT</div>
+      <div class="mono" style="padding:8px 20px;background:#C6613F;color:#FFFFFF;border-radius:6px;font-size:14px;font-weight:900;letter-spacing:.08em">ICP</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer" style="position:absolute;top:1322px;left:40px;right:40px;border-top: 1px dashed rgba(199,93,53,0.3); padding-top: 16px; display: flex; align-items: center; justify-content: space-between;">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; color: rgba(0,0,0,0.5); text-transform: uppercase; display: flex; align-items: center; gap: 10px;">
+      <img src="https://app.51ultron.com/favicon.ico" alt="Ultron" style="width: 24px; height: 24px; object-fit: contain;">
+      <strong style="color: #1a1a1a;">ULTRON OS</strong> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure
+    </div>
+    <div style="font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 800; color: #1a1a1a; letter-spacing: -0.5px;">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

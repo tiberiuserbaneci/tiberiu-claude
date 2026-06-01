@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 29 · POST · v4 (Editorial Dotplot)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,500;12..96,700;12..96,800&family=Inter+Tight:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Radix orangeDark — canonical tokens (from ultron-tokens.css) */
+    --od-1:#17120e; --od-2:#1e160f; --od-3:#331e0b; --od-6:#66350c;
+    --od-9:#f76b15; --od-10:#ff801f; --od-11:#ffa057; --od-12:#ffe0c2;
+    --sd-1:#111110; --sd-3:#222221; --sd-6:#3b3a37; --sd-7:#494844;
+    --sd-9:#6f6d66; --sd-11:#b5b3ad; --sd-12:#eeeeec;
+    --t-9:#e54d2e; --t-10:#dd4425;
+    --a-9:#ffc53d;
+
+    /* Semantic — deep near-black base, cream text, legible */
+    --bg:         #0b0907;   /* near-black, whisper of warmth */
+    --bg-deep:    #060504;
+    --bg-card:    #131009;   /* card surfaces */
+    --ink:        #ffe0c2;   /* od-12 cream — max contrast on dark */
+    --ink-mute:   #d4a882;   /* mid-cream, readable muted */
+    --ink-soft:   #8f7060;   /* softer labels */
+    --accent:     var(--od-10);   /* #ff801f */
+    --accent-soft: var(--od-11);  /* #ffa057 */
+    --accent-deep: var(--od-9);   /* #f76b15 */
+    --accent-cream: var(--od-12); /* #ffe0c2 */
+    --rule:       rgba(255,224,194,.10);
+    --rule-strong:rgba(255,224,194,.18);
+    --dot:        rgba(255,128,31,.055);
+    --paper:      var(--od-12);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:24px 0;background:#030201;font-family:'Inter Tight',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .scaler{display:flex;justify-content:center;align-items:flex-start}
+  .scaler>.canvas{transform-origin:top center;transform:scale(calc(min(100vw / 1130, (100vh - 48px) / 1510)))}
+
+  .canvas{
+    width:1080px;height:1450px;position:relative;overflow:hidden;
+    background: var(--bg);
+    padding:28px 40px 20px 40px;
+    display:flex;flex-direction:column;
+  }
+  /* Layered atmosphere: vignette + dot grid + grain */
+  .canvas::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:
+      radial-gradient(1100px 700px at 88% -8%, rgba(255,128,31,.10), transparent 62%),
+      radial-gradient(900px 700px at -10% 108%, rgba(247,107,21,.07), transparent 62%),
+      radial-gradient(var(--dot) 1.3px, transparent 1.4px) 0 0 / 24px 24px;
+  }
+  .canvas::after{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.16;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .92 0 0 0 0 .85 0 0 0 0 .75 0 0 0 .85 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  .canvas > *{position:relative;z-index:1}
+
+  .mono{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.18em;font-weight:700}
+  .serif{font-family:'Instrument Serif',serif}
+  .grot{font-family:'Bricolage Grotesque',sans-serif}
+
+  /* ── MASTHEAD · LinkedIn keyword indexing strip ─────────────── */
+  .mast{
+    flex-shrink:0;display:flex;align-items:center;justify-content:space-between;
+    padding-bottom:10px;border-bottom:1px solid var(--rule);margin-bottom:20px;
+  }
+  .mast-kw{
+    font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;
+    color:var(--ink-mute);letter-spacing:.20em;text-transform:uppercase;
+    white-space:nowrap;overflow:hidden;
+  }
+  .mast-kw .sep{color:var(--accent);opacity:.75;margin:0 7px}
+  .mast-r{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;color:var(--ink-soft);letter-spacing:.18em;text-transform:uppercase}
+
+  /* ── HERO · broken grid, hanging numeral ────────────────────── */
+  .hero{
+    flex-shrink:0;display:grid;grid-template-columns:300px 1fr;gap:36px;
+    align-items:flex-start;margin-bottom:10px;
+  }
+  .hero-num{
+    font-family:'Instrument Serif',serif;font-style:italic;
+    font-size:260px;line-height:.78;color:var(--accent);
+    letter-spacing:-10px;margin-left:-12px;margin-top:-14px;
+    position:relative;
+  }
+  .hero-num .x{
+    font-family:'Bricolage Grotesque',sans-serif;font-style:normal;
+    font-weight:800;font-size:140px;letter-spacing:-4px;color:var(--accent-soft);
+    vertical-align:18px;margin-left:14px;
+  }
+  .hero-num::after{
+    content:"REACH MULTIPLIER";position:absolute;left:6px;bottom:-20px;
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.32em;font-weight:700;
+    color:var(--ink-mute);
+  }
+  .hero-r{padding-top:8px}
+  .kicker{
+    font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:12px;display:flex;align-items:center;gap:10px;
+  }
+  .kicker::before{content:"";width:22px;height:1px;background:var(--accent)}
+  .head{
+    font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-variation-settings:"opsz" 96;
+    font-size:42px;line-height:.98;letter-spacing:-1.4px;color:var(--ink);margin-bottom:12px;
+  }
+  .head .ai{
+    font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--accent);
+    font-size:50px;line-height:.9;letter-spacing:-1px;
+  }
+  .dek{
+    font-family:'Instrument Serif',serif;font-style:italic;font-size:17px;line-height:1.42;
+    color:var(--ink-mute);max-width:560px;
+    border-left:2px solid var(--accent);padding-left:14px;
+  }
+
+  /* ── CHART · ranked dotplot of 14 posts ─────────────────────── */
+  .chart-wrap{flex-shrink:0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:12px 0 8px;margin-bottom:10px}
+  .chart-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px}
+  .chart-h-l{font-family:'Instrument Serif',serif;font-size:22px;line-height:1;color:var(--ink)}
+  .chart-h-l .no{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:.22em;margin-right:12px;text-transform:uppercase;vertical-align:3px;font-weight:700}
+  .chart-h-r{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.20em;color:var(--ink-soft);text-transform:uppercase}
+
+  .chart{display:grid;grid-template-columns:34px 280px 1fr 70px;column-gap:14px;row-gap:0;align-items:center;position:relative}
+  .ax-h{font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.18em;color:var(--ink-soft);text-transform:uppercase;padding-bottom:8px;border-bottom:1px dashed var(--rule)}
+  .ax-h.r{text-align:right}
+  .ax-h.l{padding-left:0}
+
+  .row{display:contents}
+  .row > div{padding:6.5px 0;border-bottom:1px dotted var(--rule);min-height:30px;display:flex;align-items:center}
+  .row.win > div{border-bottom-color:rgba(255,128,31,.20)}
+  .r-n{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--ink-soft);justify-self:start}
+  .row.win .r-n{color:var(--accent)}
+  .r-t{font-family:'Bricolage Grotesque',sans-serif;font-weight:500;font-size:12.5px;line-height:1.25;color:var(--ink-mute);letter-spacing:-.1px}
+  .row.win .r-t{color:var(--ink);font-weight:600}
+  .r-t .ai-tag{
+    display:inline-block;background:var(--accent);color:var(--bg-deep);
+    font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:800;letter-spacing:.14em;
+    padding:1px 5px;margin-right:7px;text-transform:uppercase;vertical-align:1px;
+  }
+  .r-bar{position:relative;height:14px;background:linear-gradient(to right, var(--rule) 0%, var(--rule) 100%) no-repeat center / 100% 1px}
+  .r-bar .lolli{
+    position:absolute;top:50%;left:0;transform:translateY(-50%);height:6px;
+    background:var(--sd-7);border-radius:2px;
+  }
+  .row.win .r-bar .lolli{background:linear-gradient(90deg,var(--accent-deep),var(--accent));box-shadow:0 0 12px rgba(255,128,31,.35)}
+  .r-bar .dot{
+    position:absolute;top:50%;transform:translate(50%,-50%);width:10px;height:10px;border-radius:50%;
+    background:var(--sd-7);right:auto;
+  }
+  .row.win .r-bar .dot{background:var(--accent);box-shadow:0 0 0 3px rgba(255,128,31,.18)}
+  .r-bar .threshold{
+    position:absolute;top:-20px;bottom:-20px;width:1px;background:var(--accent-soft);opacity:.45;
+  }
+  .r-v{font-family:'Instrument Serif',serif;font-style:italic;font-size:18px;line-height:1;color:var(--ink-mute);letter-spacing:-.4px;justify-content:flex-end}
+  .row.win .r-v{color:var(--accent);font-size:20px}
+  .row.win .r-v b{font-weight:400}
+
+  /* legend / threshold marker */
+  .legend{display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:8px;border-top:1px dashed var(--rule)}
+  .legend-l{display:flex;gap:18px}
+  .legend-i{display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--ink-mute);text-transform:uppercase}
+  .legend-i .sw{width:12px;height:12px;border-radius:50%;background:var(--sd-7)}
+  .legend-i.win .sw{background:var(--accent);box-shadow:0 0 0 2px rgba(255,128,31,.22)}
+  .legend-r{font-family:'Instrument Serif',serif;font-style:italic;font-size:13px;color:var(--ink-mute)}
+  .legend-r b{color:var(--accent);font-style:normal;font-family:'Bricolage Grotesque',sans-serif;font-weight:800}
+
+  /* ── INSIGHT · 3 traits row with lucide icons ────────────── */
+  .traits{
+    flex-shrink:0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:8px;
+  }
+  .trait{
+    border:1px solid var(--rule-strong);background:var(--bg-card);
+    padding:12px 14px 11px;position:relative;
+  }
+  .trait::before{
+    content:"";position:absolute;left:0;top:0;width:3px;height:100%;background:var(--accent);
+  }
+  .trait-h{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+  .trait-icon{width:18px;height:18px;color:var(--accent);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+  .trait-icon svg{width:18px;height:18px}
+  .trait-tag{font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.20em;color:var(--accent);text-transform:uppercase}
+  .trait-n{margin-left:auto;font-family:'Instrument Serif',serif;font-style:italic;font-size:18px;color:var(--accent-soft);line-height:1}
+  .trait-t{font-family:'Bricolage Grotesque',sans-serif;font-weight:500;font-size:12px;line-height:1.32;color:var(--ink);letter-spacing:-.1px}
+  .trait-t b{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--accent);font-size:14px}
+
+  /* ── PULL QUOTE ────────────────────────────────────────────── */
+  .pull{
+    flex-shrink:0;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:flex-start;
+    padding:14px 18px 14px 14px;border:1px solid var(--accent);
+    background:linear-gradient(135deg, rgba(255,128,31,.09), rgba(247,107,21,.04));
+    margin-bottom:8px;position:relative;
+  }
+  .pull::before{
+    content:"";position:absolute;left:-5px;top:-5px;width:10px;height:10px;background:var(--accent);
+  }
+  .pull-mark{
+    font-family:'Instrument Serif',serif;font-style:italic;font-size:84px;line-height:.55;color:var(--accent);
+    padding-top:6px;
+  }
+  .pull-body{padding-top:2px}
+  .pull-tag{font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.22em;color:var(--accent);text-transform:uppercase;margin-bottom:6px}
+  .pull-text{font-family:'Instrument Serif',serif;font-style:italic;font-size:21px;line-height:1.22;color:var(--ink);letter-spacing:-.3px}
+  .pull-text b{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-style:normal;color:var(--accent)}
+
+  /* ── AGENT STRIP · CORTEX → STRIKER → PULSE ────────────────── */
+  .agents{
+    flex-shrink:0;display:grid;grid-template-columns:1fr 22px 1fr 22px 1fr;gap:0;align-items:stretch;
+    border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-bottom:8px;
+  }
+  .agent{padding:11px 14px 10px;display:flex;flex-direction:column;gap:4px;position:relative}
+  .agent + .agent{}
+  .a-h{display:flex;align-items:center;gap:7px}
+  .a-icon{width:14px;height:14px;color:var(--accent);flex-shrink:0;display:flex}
+  .a-icon svg{width:14px;height:14px}
+  .a-name{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.18em;color:var(--accent);text-transform:uppercase}
+  .a-role{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:12.5px;color:var(--ink);letter-spacing:-.1px;line-height:1.2}
+  .a-meta{font-family:'Instrument Serif',serif;font-style:italic;font-size:11.5px;color:var(--ink-mute);line-height:1.3;margin-top:2px}
+  .arrow{display:flex;align-items:center;justify-content:center;color:var(--accent-soft)}
+  .arrow svg{width:18px;height:18px}
+
+  /* ── KPI STRIP ─────────────────────────────────────────────── */
+  .kpi{flex-shrink:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--rule-strong);border-bottom:1px solid var(--rule-strong);margin-bottom:8px}
+  .kpi-c{padding:9px 16px;border-right:1px solid var(--rule);display:flex;flex-direction:column;gap:3px}
+  .kpi-c:last-child{border-right:none}
+  .kpi-l{font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.18em;color:var(--ink-soft);text-transform:uppercase}
+  .kpi-v{font-family:'Instrument Serif',serif;font-style:italic;font-size:30px;line-height:1;color:var(--ink);letter-spacing:-.8px}
+  .kpi-v.ac{color:var(--accent)}
+  .kpi-sub{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-soft);text-transform:uppercase;margin-top:1px}
+
+  /* ── CTA ───────────────────────────────────────────────────── */
+  .cta{
+    flex-shrink:0;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;
+    background:var(--paper);color:var(--bg-deep);padding:14px 18px;margin-bottom:10px;
+    position:relative;
+  }
+  .cta::before{
+    content:"";position:absolute;left:-4px;top:-4px;right:-4px;bottom:-4px;
+    border:1px solid var(--accent);pointer-events:none;
+  }
+  .cta-tag{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.22em;color:var(--accent-deep);text-transform:uppercase;margin-bottom:5px}
+  .cta-d{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:21px;line-height:1.05;letter-spacing:-.5px;color:var(--bg-deep)}
+  .cta-d .ai{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--accent-deep);font-size:25px}
+  .cta-d .sm{display:block;font-family:'Inter Tight',sans-serif;font-weight:500;font-size:11px;color:rgba(23,18,14,.62);margin-top:5px;letter-spacing:0}
+  .cta-chip{background:var(--bg-deep);color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:800;letter-spacing:.18em;padding:13px 16px;white-space:nowrap;text-transform:uppercase;display:flex;align-items:center;gap:8px}
+  .cta-chip svg{width:14px;height:14px}
+
+  /* ── FOOTER ────────────────────────────────────────────────── */
+  .ftr{flex-shrink:0;margin-top:auto;padding-top:9px;border-top:1px dashed var(--rule);display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .ftr-l{display:flex;align-items:center;gap:10px}
+  .ftr-logo{width:28px;height:28px;border-radius:50%;flex-shrink:0}
+  .ftr-txt{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.06em;color:var(--ink-mute);text-transform:uppercase}
+  .ftr-sub{font-family:'Instrument Serif',serif;font-style:italic;font-size:11px;color:var(--ink-soft)}
+  .ftr-url{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:14px;letter-spacing:-.4px;color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="canvas">
+
+  <!-- MASTHEAD · LinkedIn keyword indexing strip -->
+  <div class="mast">
+    <div class="mast-kw">AI OUTBOUND<span class="sep">·</span>FOUNDER GTM<span class="sep">·</span>AI CONTENT OPS<span class="sep">·</span>LINKEDIN GROWTH<span class="sep">·</span>AI AGENTS<span class="sep">·</span>SIGNAL<span class="sep">·</span>ULTRON OS</div>
+    <div class="mast-r">FIELD STUDY · N=14</div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-num">10<span class="x">×</span></div>
+    <div class="hero-r">
+      <div class="kicker">Field study · 14 posts · 1 session · 1 author</div>
+      <div class="head">Posts that named <span class="ai">AI</span> in the hook reached 10× further than the ones that did not.</div>
+      <div class="dek">Same author. Same audience. Same publish window. The only variable that moved the LinkedIn ranker was whether two letters appeared above the fold.</div>
+    </div>
+  </div>
+
+  <!-- CHART -->
+  <div class="chart-wrap">
+    <div class="chart-head">
+      <div class="chart-h-l"><span class="no">FIG. 01</span>Fourteen hooks, sorted by reach.</div>
+      <div class="chart-h-r">Vertical line = 100K impressions threshold</div>
+    </div>
+    <div class="chart">
+      <!-- header row -->
+      <div class="ax-h l">#</div>
+      <div class="ax-h l">HOOK · FIRST LINE</div>
+      <div class="ax-h" style="position:relative">
+        <span style="position:absolute;left:0">0</span>
+        <span style="position:absolute;left:52.6%;transform:translateX(-50%);color:var(--accent)">100K</span>
+        <span style="position:absolute;right:0">200K</span>
+      </div>
+      <div class="ax-h r">REACH</div>
+
+      <!-- 4 winners (sorted desc) — max 184K, scale max = 200K -->
+      <div class="row win">
+        <div class="r-n">01</div>
+        <div class="r-t"><span class="ai-tag">AI</span>Claude killed 36 days from my sales cycle</div>
+        <div class="r-bar">
+          <div class="threshold" style="left:50%"></div>
+          <div class="lolli" style="width:92%"></div>
+          <div class="dot" style="left:92%"></div>
+        </div>
+        <div class="r-v">184K</div>
+      </div>
+
+      <div class="row win">
+        <div class="r-n">02</div>
+        <div class="r-t"><span class="ai-tag">AI</span>3 AI agents ran my outbound for 14 days</div>
+        <div class="r-bar">
+          <div class="threshold" style="left:50%"></div>
+          <div class="lolli" style="width:73.5%"></div>
+          <div class="dot" style="left:73.5%"></div>
+        </div>
+        <div class="r-v">147K</div>
+      </div>
+
+      <div class="row win">
+        <div class="r-n">03</div>
+        <div class="r-t"><span class="ai-tag">AI</span>5 levels of AI in outbound. You are at level 1</div>
+        <div class="r-bar">
+          <div class="threshold" style="left:50%"></div>
+          <div class="lolli" style="width:64%"></div>
+          <div class="dot" style="left:64%"></div>
+        </div>
+        <div class="r-v">128K</div>
+      </div>
+
+      <div class="row win">
+        <div class="r-n">04</div>
+        <div class="r-t"><span class="ai-tag">AI</span>Your AI sends 6 follow-ups. Mine sends 1</div>
+        <div class="r-bar">
+          <div class="threshold" style="left:50%"></div>
+          <div class="lolli" style="width:51.5%"></div>
+          <div class="dot" style="left:51.5%"></div>
+        </div>
+        <div class="r-v">103K</div>
+      </div>
+
+      <!-- 10 losers — all under 100K threshold -->
+      <div class="row">
+        <div class="r-n">05</div>
+        <div class="r-t">How I structure prompts for outbound</div>
+        <div class="r-bar"><div class="threshold" style="left:50%"></div><div class="lolli" style="width:19%"></div><div class="dot" style="left:19%"></div></div>
+        <div class="r-v">38K</div>
+      </div>
+      <div class="row">
+        <div class="r-n">06</div>
+        <div class="r-t">What I learned from 22 demo calls</div>
+        <div class="r-bar"><div class="threshold" style="left:50%"></div><div class="lolli" style="width:10.5%"></div><div class="dot" style="left:10.5%"></div></div>
+        <div class="r-v">21K</div>
+      </div>
+      <div class="row">
+        <div class="r-n">07</div>
+        <div class="r-t">3 prospecting frameworks I use weekly</div>
+        <div class="r-bar"><div class="threshold" style="left:50%"></div><div class="lolli" style="width:7%"></div><div class="dot" style="left:7%"></div></div>
+        <div class="r-v">14K</div>
+      </div>
+      <div class="row">
+        <div class="r-n">08</div>
+        <div class="r-t">Why cold sequences die at touch 3</div>
+        <div class="r-bar"><div class="threshold" style="left:50%"></div><div class="lolli" style="width:5.5%"></div><div class="dot" style="left:5.5%"></div></div>
+        <div class="r-v">11K</div>
+      </div>
+      <div class="row">
+        <div class="r-n">09</div>
+        <div class="r-t">The one objection that kills 60% of demos</div>
+        <div class="r-bar"><div class="threshold" style="left:50%"></div><div class="lolli" style="width:4.5%"></div><div class="dot" style="left:4.5%"></div></div>
+        <div class="r-v">9K</div>
+      </div>
+      <div class="row">
+        <div class="r-n">10</div>
+        <div class="r-t">Pipeline hygiene weekly checklist</div>
+        <div class="r-bar"><div class="threshold" style="left:50%"></div><div class="lolli" style="width:3%"></div><div class="dot" style="left:3%"></div></div>
+        <div class="r-v">6K</div>
+      </div>
+      <div class="row">
+        <div class="r-n">11</div>
+        <div class="r-t">How to handle the gatekeeper objection</div>
+        <div class="r-bar"><div class="threshold" style="left:50%"></div><div class="lolli" style="width:1.7%"></div><div class="dot" style="left:1.7%"></div></div>
+        <div class="r-v">3.4K</div>
+      </div>
+      <div class="row">
+        <div class="r-n">12</div>
+        <div class="r-t">Some tips for better outbound writing</div>
+        <div class="r-bar"><div class="threshold" style="left:50%"></div><div class="lolli" style="width:1%"></div><div class="dot" style="left:1%"></div></div>
+        <div class="r-v">2.1K</div>
+      </div>
+      <div class="row">
+        <div class="r-n">13</div>
+        <div class="r-t">Lessons from 11 months of cold email</div>
+        <div class="r-bar"><div class="threshold" style="left:50%"></div><div class="lolli" style="width:.8%"></div><div class="dot" style="left:.8%"></div></div>
+        <div class="r-v">1.6K</div>
+      </div>
+      <div class="row">
+        <div class="r-n">14</div>
+        <div class="r-t">The truth about most outbound advice</div>
+        <div class="r-bar"><div class="threshold" style="left:50%"></div><div class="lolli" style="width:.5%"></div><div class="dot" style="left:.5%"></div></div>
+        <div class="r-v">980</div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <div class="legend-l">
+        <div class="legend-i win"><span class="sw"></span>AI in hook · 4/14</div>
+        <div class="legend-i"><span class="sw"></span>No AI · 10/14</div>
+      </div>
+      <div class="legend-r">Winners total <b>562K</b> impressions · rest total <b>106K</b> · ratio <b>5.3:1</b></div>
+    </div>
+  </div>
+
+  <!-- TRAITS · what the 4 shared -->
+  <div class="traits">
+    <div class="trait">
+      <div class="trait-h">
+        <div class="trait-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <div class="trait-tag">ABOVE THE FOLD</div>
+        <div class="trait-n">A</div>
+      </div>
+      <div class="trait-t">"AI" or "Claude" inside the first <b>60 characters</b>. The LinkedIn ranker reads line 1 before deciding distribution.</div>
+    </div>
+    <div class="trait">
+      <div class="trait-h">
+        <div class="trait-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg></div>
+        <div class="trait-tag">CONCRETE NUMBER</div>
+        <div class="trait-n">B</div>
+      </div>
+      <div class="trait-t">A specific number in line 1, not the body. <b>"36 days." "14 days." "5 levels."</b> Vague claims do not stop the scroll.</div>
+    </div>
+    <div class="trait">
+      <div class="trait-h">
+        <div class="trait-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg></div>
+        <div class="trait-tag">CONTRAST FRAME</div>
+        <div class="trait-n">C</div>
+      </div>
+      <div class="trait-t">Contrarian or comparison hook, not advice. <b>"You are at level 1." "Mine sends 1."</b> Tension out-performs tips.</div>
+    </div>
+  </div>
+
+  <!-- PULL QUOTE -->
+  <div class="pull">
+    <div class="pull-mark">"</div>
+    <div class="pull-body">
+      <div class="pull-tag">THE FINDING</div>
+      <div class="pull-text">The LinkedIn ranker reads the first <b>220 characters</b> before deciding distribution. The word "AI" inside that window was the single variable that separated 100K-reach posts from the ones that never left their author's network.</div>
+    </div>
+  </div>
+
+  <!-- AGENT STRIP -->
+  <div class="agents">
+    <div class="agent">
+      <div class="a-h">
+        <div class="a-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 11 2 2 4-4"/><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
+        <div class="a-name">CORTEX</div>
+      </div>
+      <div class="a-role">Hook research</div>
+      <div class="a-meta">Mines 90 days of niche LinkedIn data. Outputs ranked formats with above-average reach.</div>
+    </div>
+    <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></div>
+    <div class="agent">
+      <div class="a-h">
+        <div class="a-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 21h8"/><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/></svg></div>
+        <div class="a-name">STRIKER</div>
+      </div>
+      <div class="a-role">Final post</div>
+      <div class="a-meta">Hard rule: "AI" in line 1. Concrete number in para 1. No hedging. <b style="color:var(--accent);font-family:'Instrument Serif',serif;font-style:italic;font-weight:400">8 min, not 3 hours.</b></div>
+    </div>
+    <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></div>
+    <div class="agent">
+      <div class="a-h">
+        <div class="a-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg></div>
+        <div class="a-name">PULSE</div>
+      </div>
+      <div class="a-role">Golden-hour monitor</div>
+      <div class="a-meta">Watches first 4h after publish. Flags stalls, queues reply sequences when posts accelerate.</div>
+    </div>
+  </div>
+
+  <!-- KPI STRIP -->
+  <div class="kpi">
+    <div class="kpi-c">
+      <div class="kpi-l">Win rate</div>
+      <div class="kpi-v ac">29%</div>
+      <div class="kpi-sub">4 of 14 over 100K</div>
+    </div>
+    <div class="kpi-c">
+      <div class="kpi-l">Total reach</div>
+      <div class="kpi-v">646K</div>
+      <div class="kpi-sub">across all 14 posts</div>
+    </div>
+    <div class="kpi-c">
+      <div class="kpi-l">Time per post</div>
+      <div class="kpi-v ac">8<span style="font-size:16px;font-style:normal;font-family:'JetBrains Mono',monospace;letter-spacing:0;vertical-align:4px;margin-left:2px">min</span></div>
+      <div class="kpi-sub">vs 3h manual</div>
+    </div>
+    <div class="kpi-c">
+      <div class="kpi-l">Paid distribution</div>
+      <div class="kpi-v ac">$0</div>
+      <div class="kpi-sub">zero ad spend</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <div>
+      <div class="cta-tag">The writing engine</div>
+      <div class="cta-d">Get the <span class="ai">Claude</span> workflow that wrote all 14 posts in one 2-minute session.
+        <span class="sm">Hook research → drafting → publish-window monitoring. Three agents, one operator.</span>
+      </div>
+    </div>
+    <div class="cta-chip">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+      COMMENT POST
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="ftr">
+    <div class="ftr-l">
+      <img src="ultron-logo.png" class="ftr-logo"
+        onerror="this.style.cssText='width:28px;height:28px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 72% 22%,rgba(255,140,80,.95) 0%,rgba(220,80,30,.3) 22%,transparent 36%),radial-gradient(circle at 22% 76%,rgba(55,170,255,.95) 0%,rgba(30,130,220,.3) 22%,transparent 38%),radial-gradient(circle at 38% 38%,rgba(30,30,50,1) 0%,#060810 55%,#000 100%)'">
+      <div class="ftr-txt"><strong>ULTRON OS</strong> · founder · gtm · agent infrastructure</div>
+    </div>
+    <div class="ftr-url">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

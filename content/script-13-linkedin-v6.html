@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 13 · AI Activity · v6</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* BUDGET 1450 · Family B · ACTIVITY v6 · cream/light
+     header     0 -  48
+     hero      56 - 290   (234)   AI in hook
+     bigstat  304 - 376   ( 72)   day totals
+     chart    392 - 920   (528)   DOMINANT 24h activity bars · who did what when
+     agents   936 -1080  (144)    6 agent micro-cards
+     insight 1096 -1180   ( 84)   callout
+     metric  1196 -1252   ( 56)
+     cta     1268 -1324   ( 56)   ACTIVITY
+     footer  1340 -1410   ( 70)
+  */
+  body{background:#f4ede0;margin:0;padding:0}
+  .scaler{display:flex;justify-content:center}
+  .poster{width:1080px;height:1450px;background:var(--ink-cream-50);position:relative;overflow:hidden;box-sizing:border-box}
+  .mono{font-family:var(--font-mono)}
+  .fraunces{font-family:var(--font-serif);font-feature-settings:'ss01' on}
+  .accent{color:var(--accent-dark)}
+  .micro{font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;font-family:var(--font-mono)}
+  .pulse{display:inline-block;width:8px;height:8px;border-radius:var(--radius-full);background:var(--accent-dark);box-shadow:0 0 8px rgba(217,119,87,0.4)}
+  .stat-cell{padding:14px 22px;display:flex;flex-direction:column;gap:3px}
+  .stat-k{font-family:var(--font-mono);font-size:9px;font-weight:700;letter-spacing:.18em;color:var(--ink-gray-500);text-transform:uppercase}
+  .stat-v{font-family:var(--font-serif);font-size:30px;font-weight:900;line-height:1;letter-spacing:-1px;color:var(--ink-black)}
+  .stat-v.hot{color:var(--accent-dark)}
+  .ag-card{background:#FFFFFF;border:1px solid var(--ink-cream-200);border-radius:var(--radius-md);padding:12px 14px;display:flex;flex-direction:column;gap:3px;box-sizing:border-box}
+  .ag-card.hot{background:linear-gradient(135deg,#FFFFFF,rgba(217,119,87,0.06));border:1.5px solid var(--accent-border)}
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="poster">
+
+  <!-- HEADER 0-48 -->
+  <div style="position:absolute;top:0;left:40px;right:40px;height:48px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--ink-cream-200)">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(0,0,0,0.5)">FOUNDER GTM · AI 24H ACTIVITY LOG · AGENT AUTONOMY · HUMAN GATE · ULTRON OS</span>
+  </div>
+
+  <!-- HERO 56-290 -->
+  <div style="position:absolute;top:64px;left:40px;right:40px">
+    <div class="micro" style="margin-bottom:14px;color:var(--accent-dark)">AI OUTBOUND · 24H ACTIVITY LOG · ONE OPERATOR</div>
+    <div class="fraunces" style="font-weight:900;font-size:72px;line-height:0.92;letter-spacing:-2px;color:var(--ink-black);margin-bottom:6px">My <span class="accent" style="font-style:italic">AI</span> ran 1,847 ops.</div>
+    <div class="fraunces" style="font-weight:700;font-size:42px;line-height:0.95;letter-spacing:-1.2px;color:var(--ink-gray-600);margin-bottom:16px">I touched <span style="color:var(--ink-black);font-weight:900">12 things.</span></div>
+    <div style="font-size:15px;line-height:1.5;color:var(--ink-gray-600);max-width:880px">24 hours of outbound, plotted by the hour. 6 AI agents working. SPECTER scans signals at 02:00. STRIKER drafts at 09:00. GATE is me for 12 minutes total. <span style="color:var(--ink-black);font-weight:600">The day runs without me.</span></div>
+  </div>
+
+  <!-- BIGSTAT 304-376 -->
+  <div style="position:absolute;top:304px;left:40px;right:40px;height:72px;background:#FFFFFF;border:1px solid var(--ink-cream-200);border-radius:var(--radius-lg);display:grid;grid-template-columns:1fr 1fr 1fr 1fr;overflow:hidden">
+    <div class="stat-cell" style="border-right:1px solid var(--ink-cream-200)">
+      <div class="stat-k">AGENT OPS · 24H</div>
+      <div class="stat-v">1,847</div>
+    </div>
+    <div class="stat-cell" style="border-right:1px solid var(--ink-cream-200)">
+      <div class="stat-k">HUMAN TOUCHES</div>
+      <div class="stat-v">12</div>
+    </div>
+    <div class="stat-cell" style="border-right:1px solid var(--ink-cream-200)">
+      <div class="stat-k">OPERATOR TIME</div>
+      <div class="stat-v hot">12 min</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-k">MESSAGES SENT</div>
+      <div class="stat-v">187</div>
+    </div>
+  </div>
+
+  <!-- CHART 392-920 · DOMINANT 24h activity bars stacked per agent -->
+  <div style="position:absolute;top:392px;left:40px;right:40px;height:528px;background:#FFFFFF;border:1px solid var(--ink-cream-200);border-radius:var(--radius-lg);padding:24px 28px;box-sizing:border-box">
+
+    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px">
+      <div>
+        <div class="mono" style="font-size:10px;font-weight:700;letter-spacing:.18em;color:var(--ink-gray-500);margin-bottom:4px">FIG.01 · OPS PER HOUR · 24H</div>
+        <div class="fraunces" style="font-size:22px;font-weight:900;letter-spacing:-0.5px;color:var(--ink-black)">When AI works. When I work.</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="display:flex;align-items:center;gap:6px"><span style="width:14px;height:10px;background:var(--accent-dark);border-radius:2px"></span><span class="mono" style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--ink-gray-700)">AI AGENT OPS</span></div>
+        <div style="display:flex;align-items:center;gap:6px"><span style="width:14px;height:10px;background:rgba(0,0,0,0.85);border-radius:2px"></span><span class="mono" style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--ink-gray-700)">HUMAN TOUCH</span></div>
+      </div>
+    </div>
+
+    <svg width="100%" height="430" viewBox="0 0 968 430" preserveAspectRatio="none" style="display:block">
+      <!-- y axis labels -->
+      <g font-family="JetBrains Mono" font-size="9" font-weight="700" fill="rgba(0,0,0,0.45)" letter-spacing="0.12em">
+        <text x="0" y="22">200</text>
+        <text x="0" y="92">150</text>
+        <text x="0" y="162">100</text>
+        <text x="0" y="232">50</text>
+        <text x="0" y="302">10</text>
+        <text x="0" y="372">0</text>
+      </g>
+      <!-- grid -->
+      <g stroke="rgba(0,0,0,0.06)" stroke-width="1">
+        <line x1="44" y1="18" x2="968" y2="18"/>
+        <line x1="44" y1="88" x2="968" y2="88"/>
+        <line x1="44" y1="158" x2="968" y2="158"/>
+        <line x1="44" y1="228" x2="968" y2="228"/>
+        <line x1="44" y1="298" x2="968" y2="298"/>
+        <line x1="44" y1="368" x2="968" y2="368" stroke="rgba(0,0,0,0.18)"/>
+      </g>
+
+      <!-- 24 hour bars · width per bar 32, gap 6, total 24*(32+6)-6=906, start at x=50 -->
+      <!-- Heights: AI ops by hour (0-23). Manual touches mostly 0 except 09:00 and 14:00 -->
+      <!-- y0=368 baseline, scale: 200 ops = 350px → 1.75 per op (for visual). Cap visually -->
+      <!-- AI ops per hour: 00:30,01:45,02:180,03:160,04:140,05:90,06:60,07:80,08:120,09:90,10:110,11:130,12:60,13:70,14:90,15:120,16:110,17:80,18:60,19:50,20:40,21:30,22:20,23:25 -->
+      <g>
+        <!-- bar generator inline -->
+        <!-- 00 -->
+        <rect x="50" y="316" width="32" height="52" fill="#C6613F" rx="2"/>
+        <!-- 01 -->
+        <rect x="88" y="289" width="32" height="79" fill="#C6613F" rx="2"/>
+        <!-- 02 SPIKE 180 -->
+        <rect x="126" y="40" width="32" height="328" fill="#C6613F" rx="2"/>
+        <!-- 03 -->
+        <rect x="164" y="68" width="32" height="300" fill="#C6613F" rx="2"/>
+        <!-- 04 -->
+        <rect x="202" y="103" width="32" height="265" fill="#C6613F" rx="2"/>
+        <!-- 05 -->
+        <rect x="240" y="195" width="32" height="173" fill="#C6613F" rx="2"/>
+        <!-- 06 -->
+        <rect x="278" y="248" width="32" height="120" fill="#C6613F" rx="2"/>
+        <!-- 07 -->
+        <rect x="316" y="213" width="32" height="155" fill="#C6613F" rx="2"/>
+        <!-- 08 -->
+        <rect x="354" y="158" width="32" height="210" fill="#C6613F" rx="2"/>
+        <!-- 09 -->
+        <rect x="392" y="194" width="32" height="174" fill="#C6613F" rx="2"/>
+        <!-- 10 -->
+        <rect x="430" y="178" width="32" height="190" fill="#C6613F" rx="2"/>
+        <!-- 11 -->
+        <rect x="468" y="138" width="32" height="230" fill="#C6613F" rx="2"/>
+        <!-- 12 -->
+        <rect x="506" y="248" width="32" height="120" fill="#C6613F" rx="2"/>
+        <!-- 13 -->
+        <rect x="544" y="232" width="32" height="136" fill="#C6613F" rx="2"/>
+        <!-- 14 -->
+        <rect x="582" y="195" width="32" height="173" fill="#C6613F" rx="2"/>
+        <!-- 15 -->
+        <rect x="620" y="158" width="32" height="210" fill="#C6613F" rx="2"/>
+        <!-- 16 -->
+        <rect x="658" y="178" width="32" height="190" fill="#C6613F" rx="2"/>
+        <!-- 17 -->
+        <rect x="696" y="213" width="32" height="155" fill="#C6613F" rx="2"/>
+        <!-- 18 -->
+        <rect x="734" y="248" width="32" height="120" fill="#C6613F" rx="2"/>
+        <!-- 19 -->
+        <rect x="772" y="265" width="32" height="103" fill="#C6613F" rx="2"/>
+        <!-- 20 -->
+        <rect x="810" y="282" width="32" height="86" fill="#C6613F" rx="2"/>
+        <!-- 21 -->
+        <rect x="848" y="299" width="32" height="69" fill="#C6613F" rx="2"/>
+        <!-- 22 -->
+        <rect x="886" y="316" width="32" height="52" fill="#C6613F" rx="2"/>
+        <!-- 23 -->
+        <rect x="924" y="307" width="32" height="61" fill="#C6613F" rx="2"/>
+      </g>
+
+      <!-- human touches: tiny black bars at 09 and 14 only -->
+      <g>
+        <rect x="392" y="346" width="32" height="22" fill="rgba(0,0,0,0.88)" rx="2"/>
+        <rect x="582" y="346" width="32" height="22" fill="rgba(0,0,0,0.88)" rx="2"/>
+      </g>
+
+      <!-- x axis labels every 3h -->
+      <g font-family="JetBrains Mono" font-size="9" font-weight="700" fill="rgba(0,0,0,0.5)" letter-spacing="0.1em" text-anchor="middle">
+        <text x="66" y="390">00</text>
+        <text x="180" y="390">03</text>
+        <text x="294" y="390">06</text>
+        <text x="408" y="390">09</text>
+        <text x="522" y="390">12</text>
+        <text x="636" y="390">15</text>
+        <text x="750" y="390">18</text>
+        <text x="864" y="390">21</text>
+        <text x="940" y="390">23</text>
+      </g>
+
+      <!-- annotations -->
+      <g>
+        <line x1="142" y1="40" x2="142" y2="14" stroke="rgba(199,93,53,0.45)" stroke-width="1" stroke-dasharray="3 4"/>
+        <rect x="56" y="408" width="170" height="20" rx="3" fill="#FFFFFF" stroke="#C6613F" stroke-width="1"/>
+        <text x="141" y="422" font-family="JetBrains Mono" font-size="9" font-weight="700" fill="#C6613F" text-anchor="middle" letter-spacing="0.1em">SPECTER · NIGHT SCAN</text>
+
+        <line x1="408" y1="346" x2="408" y2="412" stroke="rgba(0,0,0,0.55)" stroke-width="1" stroke-dasharray="3 4"/>
+        <rect x="332" y="408" width="158" height="20" rx="3" fill="rgba(0,0,0,0.88)"/>
+        <text x="411" y="422" font-family="JetBrains Mono" font-size="9" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.1em">GATE · 9 MIN · APPROVE</text>
+
+        <line x1="598" y1="346" x2="598" y2="412" stroke="rgba(0,0,0,0.55)" stroke-width="1" stroke-dasharray="3 4"/>
+        <rect x="528" y="408" width="146" height="20" rx="3" fill="rgba(0,0,0,0.88)"/>
+        <text x="601" y="422" font-family="JetBrains Mono" font-size="9" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.1em">GATE · 3 MIN · EDIT</text>
+      </g>
+    </svg>
+  </div>
+
+  <!-- AGENTS 936-1080 -->
+  <div style="position:absolute;top:936px;left:40px;right:40px;height:144px;display:grid;grid-template-columns:repeat(6,1fr);gap:10px">
+    <div class="ag-card">
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.14em;color:var(--accent-dark)">SPECTER</div>
+      <div style="font-size:11.5px;font-weight:700;color:var(--ink-black);line-height:1.25">Signal scan</div>
+      <div style="font-size:11px;color:var(--ink-gray-500);line-height:1.3">340 ops · 02:00 peak</div>
+    </div>
+    <div class="ag-card">
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.14em;color:var(--accent-dark)">CORTEX</div>
+      <div style="font-size:11.5px;font-weight:700;color:var(--ink-black);line-height:1.25">Research</div>
+      <div style="font-size:11px;color:var(--ink-gray-500);line-height:1.3">412 ops · all day</div>
+    </div>
+    <div class="ag-card">
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.14em;color:var(--accent-dark)">STRIKER</div>
+      <div style="font-size:11.5px;font-weight:700;color:var(--ink-black);line-height:1.25">1-of-1 drafts</div>
+      <div style="font-size:11px;color:var(--ink-gray-500);line-height:1.3">198 ops · 08-11 peak</div>
+    </div>
+    <div class="ag-card hot">
+      <div class="mono" style="font-size:9px;font-weight:800;letter-spacing:.14em;color:var(--accent-dark)">HUMAN_GATE</div>
+      <div style="font-size:11.5px;font-weight:800;color:var(--ink-black);line-height:1.25">Approve / edit</div>
+      <div style="font-size:11px;color:var(--ink-gray-600);line-height:1.3">12 min · me only</div>
+    </div>
+    <div class="ag-card">
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.14em;color:var(--accent-dark)">PULSE</div>
+      <div style="font-size:11.5px;font-weight:700;color:var(--ink-black);line-height:1.25">Follow-up</div>
+      <div style="font-size:11px;color:var(--ink-gray-500);line-height:1.3">516 ops · 24h timed</div>
+    </div>
+    <div class="ag-card">
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.14em;color:var(--accent-dark)">SENTINEL</div>
+      <div style="font-size:11.5px;font-weight:700;color:var(--ink-black);line-height:1.25">Audit + log</div>
+      <div style="font-size:11px;color:var(--ink-gray-500);line-height:1.3">381 ops · passive</div>
+    </div>
+  </div>
+
+  <!-- INSIGHT 1096-1180 -->
+  <div style="position:absolute;top:1096px;left:40px;right:40px;height:84px;background:#FFFFFF;border:1px solid var(--ink-cream-200);border-left:3px solid var(--accent-dark);border-radius:var(--radius-md);padding:14px 22px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center">
+    <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.18em;color:var(--accent-dark);margin-bottom:4px">WHY THIS WORKS</div>
+    <div class="fraunces" style="font-size:18px;font-weight:700;line-height:1.25;color:var(--ink-black);letter-spacing:-0.3px">AI runs 24 hours. I run 12 minutes. The chart isn't activity, it's <span class="accent">leverage made visible.</span></div>
+  </div>
+
+  <!-- METRIC 1196-1252 -->
+  <div style="position:absolute;top:1196px;left:40px;right:40px;height:56px;background:#FFFFFF;border:1px solid var(--ink-cream-200);border-radius:var(--radius-md);display:grid;grid-template-columns:1fr 1fr 1fr 1fr;align-items:center;overflow:hidden">
+    <div style="padding:0 22px;border-right:1px solid var(--ink-cream-200)"><span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--ink-gray-500)">AGENT/HUMAN · </span><span style="font-size:14px;font-weight:800;color:var(--ink-black)">154 to 1</span></div>
+    <div style="padding:0 22px;border-right:1px solid var(--ink-cream-200)"><span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--ink-gray-500)">PEAK HOUR · </span><span style="font-size:14px;font-weight:800;color:var(--ink-black)">02:00</span></div>
+    <div style="padding:0 22px;border-right:1px solid var(--ink-cream-200)"><span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--ink-gray-500)">SLOWEST · </span><span style="font-size:14px;font-weight:800;color:var(--ink-black)">22:00</span></div>
+    <div style="padding:0 22px"><span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--ink-gray-500)">SENDS · </span><span style="font-size:14px;font-weight:800;color:var(--accent-dark)">187</span></div>
+  </div>
+
+  <!-- CTA 1268-1324 -->
+  <div style="position:absolute;top:1268px;left:40px;right:40px;height:56px;display:flex;align-items:center;justify-content:space-between;border:1.5px solid var(--accent-border);border-radius:var(--radius-md);padding:0 28px;background:rgba(217,119,87,0.05);flex:1">
+    <div style="font-size:14px;font-weight:700;color:var(--ink-gray-700)">If you want to see the 24h agent log live,</div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="mono" style="font-size:12px;font-weight:700;color:var(--ink-gray-500);letter-spacing:.1em">COMMENT</div>
+      <div class="mono" style="padding:8px 20px;background:var(--accent-dark);color:#fff;border-radius:var(--radius-sm);font-size:14px;font-weight:900;letter-spacing:.08em">ACTIVITY</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer" style="position:absolute;top:1340px;left:40px;right:40px;border-top: 1px dashed rgba(199,93,53,0.3); padding-top: 16px; display: flex; align-items: center; justify-content: space-between;">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; color: rgba(0,0,0,0.5); text-transform: uppercase; display: flex; align-items: center; gap: 10px;">
+      <img src="https://app.51ultron.com/favicon.ico" alt="Ultron" style="width: 24px; height: 24px; object-fit: contain;">
+      <strong style="color: #1a1a1a;">ULTRON OS</strong> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure
+    </div>
+    <div style="font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 800; color: #1a1a1a; letter-spacing: -0.5px;">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

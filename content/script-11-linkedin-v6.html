@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 11 · 6 AI Agents · v6</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* BUDGET 1450  ·  Family A · Agent Roster v6.1
+     header      0 -  48   ( 48)
+     hero       56 - 272   (216)  full-width · no hub
+     bigstat   288 - 360   ( 72)  4-stat bar
+     row1      376 - 572   (196)  3 small cards · steps 01/02/03
+     gate      586 - 826   (240)  HUMAN_GATE · dominant full-width · step 04
+     row3      840 -1020   (180)  2 cards · steps 05/06
+     cost     1036 -1100   ( 64)  old vs new vs compression
+     timeline 1116 -1164   ( 48)  daily ops 06h-22h
+     metric   1180 -1248   ( 68)  5-stat row
+     cta      1264 -1324   ( 60)  last element before footer
+     footer   1370 -1410   ( 40)  slim
+  */
+  body{background:#18130b;margin:0;padding:0}
+  .scaler{display:flex;justify-content:center}
+  .poster{width:1080px;height:1450px;background:#18130b;position:relative;overflow:hidden;box-sizing:border-box;color:#fff}
+  .mono{font-family:'JetBrains Mono','Courier New',monospace}
+  .fraunces{font-family:'Fraunces',Georgia,serif}
+  .accent{color:#ed7f4a}
+  .micro{font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;font-family:'JetBrains Mono',monospace}
+  .pulse{display:inline-block;width:8px;height:8px;border-radius:50%;background:#ed7f4a;box-shadow:0 0 8px #ed7f4a}
+  .card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:18px 20px;box-sizing:border-box;position:relative;overflow:hidden}
+  .card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:rgba(237,127,74,0.35)}
+  .step-tag{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(255,255,255,0.32);margin-bottom:8px;display:block}
+  .agent-name{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:800;letter-spacing:.08em;color:#fff}
+  .agent-role{font-size:10.5px;color:rgba(255,255,255,0.5);font-weight:600;margin-top:2px;margin-bottom:12px}
+  .model-badge{display:inline-flex;align-items:center;gap:5px;font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;padding:4px 9px;border-radius:4px;letter-spacing:.06em;white-space:nowrap}
+  .m-gem{background:rgba(66,133,244,0.1);border:1px solid rgba(66,133,244,0.35);color:#8ab4ff}
+  .m-cla{background:rgba(217,119,87,0.12);border:1px solid rgba(217,119,87,0.4);color:#ed7f4a}
+  .m-gpt{background:rgba(16,163,127,0.1);border:1px solid rgba(16,163,127,0.4);color:#3ecf94}
+  .m-you{background:rgba(237,127,74,0.25);border:1px solid rgba(237,127,74,0.7);color:#fff;font-size:10px}
+  .stat-big{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:30px;line-height:1;letter-spacing:-1px;color:#fff;margin-bottom:2px}
+  .stat-unit{font-size:10.5px;color:rgba(255,255,255,0.45);font-weight:600;margin-bottom:10px}
+  .meta{display:flex;gap:5px;flex-wrap:wrap}
+  .chip{font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.07em;padding:3px 7px;border-radius:3px;background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.65);border:1px solid rgba(255,255,255,0.08)}
+  .watermark{position:absolute;bottom:-8px;right:10px;font-family:'JetBrains Mono',monospace;font-size:72px;font-weight:900;color:rgba(255,255,255,0.03);line-height:1;letter-spacing:-3px;user-select:none;pointer-events:none}
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="poster">
+
+  <!-- HEADER 0-48 -->
+  <div style="position:absolute;top:0;left:40px;right:40px;height:48px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(237,127,74,0.18)">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(232,223,212,.42)">FOUNDER GTM · AI AGENT ROSTER · GTM AUTOMATION · ROUTING MEMORY · ULTRON OS</span>
+  </div>
+
+  <!-- HERO 56-272 · full width -->
+  <div style="position:absolute;top:64px;left:40px;right:40px">
+    <div class="micro" style="margin-bottom:14px;color:rgba(255,255,255,0.5)">AI AGENTS · OPERATING MODEL · TIME COMPRESSION</div>
+    <div class="fraunces" style="font-weight:900;font-size:72px;line-height:0.92;letter-spacing:-2px;color:#fff;margin-bottom:6px">I run <span class="accent" style="font-style:italic">6 AI agents.</span></div>
+    <div class="fraunces" style="font-weight:700;font-size:44px;line-height:0.96;letter-spacing:-1.2px;color:rgba(255,255,255,0.78);margin-bottom:18px">Total operator time: <span class="accent" style="font-weight:900">12 min/day.</span></div>
+    <div style="font-size:14.5px;line-height:1.5;color:rgba(255,255,255,0.6);max-width:820px">Each agent owns one job. They route across Gemini, Claude, ChatGPT based on the task. I approve at the gate. <span style="color:#fff;font-weight:600">No SDR. No SaaS stack. No Mondays.</span></div>
+  </div>
+
+  <!-- BIGSTAT BAR 288-360 -->
+  <div style="position:absolute;top:288px;left:40px;right:40px;height:72px;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;align-items:stretch;background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.1);border-radius:10px;overflow:hidden">
+    <div style="padding:10px 18px;border-right:1px solid rgba(255,255,255,0.08)">
+      <div class="mono" style="font-size:9px;letter-spacing:.18em;color:rgba(255,255,255,0.4);font-weight:700">AI AGENTS</div>
+      <div class="fraunces accent" style="font-size:34px;font-weight:900;line-height:1;letter-spacing:-1.5px;margin-top:2px">6</div>
+    </div>
+    <div style="padding:10px 18px;border-right:1px solid rgba(255,255,255,0.08)">
+      <div class="mono" style="font-size:9px;letter-spacing:.18em;color:rgba(255,255,255,0.4);font-weight:700">MODELS USED</div>
+      <div class="fraunces" style="font-size:34px;font-weight:900;line-height:1;letter-spacing:-1.5px;margin-top:2px;color:#fff">3</div>
+    </div>
+    <div style="padding:10px 18px;border-right:1px solid rgba(255,255,255,0.08)">
+      <div class="mono" style="font-size:9px;letter-spacing:.18em;color:rgba(255,255,255,0.4);font-weight:700">DAILY OPS</div>
+      <div class="fraunces" style="font-size:34px;font-weight:900;line-height:1;letter-spacing:-1.5px;margin-top:2px;color:#fff">12 <span style="font-size:16px;color:rgba(255,255,255,0.45);font-weight:700">min</span></div>
+    </div>
+    <div style="padding:10px 18px">
+      <div class="mono" style="font-size:9px;letter-spacing:.18em;color:rgba(255,255,255,0.4);font-weight:700">STACK COST</div>
+      <div class="fraunces accent" style="font-size:34px;font-weight:900;line-height:1;letter-spacing:-1.5px;margin-top:2px">$19<span style="font-size:13px;color:rgba(255,255,255,0.45);font-weight:700">/mo</span></div>
+    </div>
+  </div>
+
+  <!-- ROW 1 · 3 SMALL CARDS 376-572 · steps 01/02/03 -->
+  <div style="position:absolute;top:376px;left:40px;right:40px;height:196px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
+
+    <!-- 01 SPECTER -->
+    <div class="card">
+      <div class="watermark">01</div>
+      <span class="step-tag">01</span>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px">
+        <div>
+          <div class="agent-name">SPECTER</div>
+          <div class="agent-role">Signal detection · Day-0 watch</div>
+        </div>
+        <span class="model-badge m-gem"><svg width="11" height="11" viewBox="1002 144 84 84"><path d="M1076.9 181.552C1070.43 178.765 1064.77 174.946 1059.91 170.092C1055.05 165.239 1051.23 159.573 1048.45 153.102C1047.38 150.625 1046.52 148.071 1045.86 145.456C1045.65 144.601 1044.88 144 1044 144C1043.12 144 1042.35 144.601 1042.14 145.456C1041.48 148.071 1040.62 150.615 1039.55 153.102C1036.76 159.573 1032.95 165.239 1028.09 170.092C1023.24 174.942 1017.57 178.765 1011.1 181.552C1008.62 182.616 1006.07 183.48 1003.46 184.139C1002.6 184.353 1002 185.117 1002 186C1002 186.883 1002.6 187.647 1003.46 187.861C1006.07 188.52 1008.61 189.379 1011.1 190.448C1017.57 193.235 1023.23 197.054 1028.09 201.907C1032.95 206.761 1036.77 212.427 1039.55 218.898C1040.62 221.38 1041.48 223.929 1042.14 226.544C1042.24 226.959 1042.48 227.328 1042.82 227.592C1043.16 227.855 1043.57 227.999 1044 228C1044.88 228 1045.65 227.399 1045.86 226.544C1046.52 223.929 1047.38 221.385 1048.45 218.898C1051.24 212.427 1055.05 206.766 1059.91 201.907C1064.76 197.054 1070.43 193.231 1076.9 190.448C1079.38 189.379 1081.93 188.52 1084.54 187.861C1084.96 187.757 1085.33 187.518 1085.59 187.181C1085.86 186.843 1086 186.428 1086 186C1086 185.117 1085.4 184.353 1084.54 184.139C1081.93 183.48 1079.38 182.621 1076.9 181.552Z" fill="#4285F4"/></svg>Gemini</span>
+      </div>
+      <div class="stat-big accent">47,000<span style="font-size:15px;color:rgba(255,255,255,0.45);font-weight:700;margin-left:5px">signals/day</span></div>
+      <div class="stat-unit">funding · hiring · RFP · stack changes</div>
+      <div class="meta">
+        <span class="chip">8 SOURCES</span>
+        <span class="chip">12 ALERTS/DAY</span>
+      </div>
+    </div>
+
+    <!-- 02 CORTEX -->
+    <div class="card">
+      <div class="watermark">02</div>
+      <span class="step-tag">02</span>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px">
+        <div>
+          <div class="agent-name">CORTEX</div>
+          <div class="agent-role">Prospect research · Brief synth</div>
+        </div>
+        <span class="model-badge m-cla"><svg width="11" height="11" viewBox="0 0 16 16"><g stroke="#D97757" stroke-width="1.6" stroke-linecap="round" fill="none"><path d="M8 1 L8 15 M1 8 L15 8 M3 3 L13 13 M13 3 L3 13"/></g><circle cx="8" cy="8" r="1.6" fill="#D97757"/></svg>Claude</span>
+      </div>
+      <div class="stat-big">$0.04<span style="font-size:15px;color:rgba(255,255,255,0.45);font-weight:700;margin-left:5px">/brief</span></div>
+      <div class="stat-unit">9-min brief: board, role, intent, deal-killers</div>
+      <div class="meta">
+        <span class="chip">380 BRIEFS/WK</span>
+        <span class="chip">8 SOURCES</span>
+      </div>
+    </div>
+
+    <!-- 03 STRIKER -->
+    <div class="card">
+      <div class="watermark">03</div>
+      <span class="step-tag">03</span>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px">
+        <div>
+          <div class="agent-name">STRIKER</div>
+          <div class="agent-role">1-of-1 draft · Voice-matched</div>
+        </div>
+        <span class="model-badge m-cla"><svg width="11" height="11" viewBox="0 0 16 16"><g stroke="#D97757" stroke-width="1.6" stroke-linecap="round" fill="none"><path d="M8 1 L8 15 M1 8 L15 8 M3 3 L13 13 M13 3 L3 13"/></g><circle cx="8" cy="8" r="1.6" fill="#D97757"/></svg>Claude</span>
+      </div>
+      <div class="stat-big">47 <span style="font-size:15px;color:rgba(255,255,255,0.45);font-weight:700">sec/draft</span></div>
+      <div class="stat-unit">voice match 89/100 · zero template phrasing</div>
+      <div class="meta">
+        <span class="chip">600 DRAFTS/MO</span>
+        <span class="chip">0 TEMPLATES</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CONNECTOR ARROWS 572-586  ·  visual flow indicator -->
+  <div style="position:absolute;top:572px;left:40px;right:40px;height:14px;display:flex;align-items:center;justify-content:center;gap:4px">
+    <div style="flex:1;height:1px;background:linear-gradient(to right, transparent, rgba(237,127,74,0.4), transparent)"></div>
+    <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.16em;color:rgba(237,127,74,0.6);white-space:nowrap;padding:0 12px">ROUTES TO GATE</div>
+    <div style="flex:1;height:1px;background:linear-gradient(to right, transparent, rgba(237,127,74,0.4), transparent)"></div>
+  </div>
+
+  <!-- HUMAN_GATE · DOMINANT 586-826 · step 04 -->
+  <div style="position:absolute;top:586px;left:40px;right:40px;height:240px;background:rgba(237,127,74,0.07);border:2px solid rgba(237,127,74,0.55);border-radius:12px;padding:24px 28px;box-sizing:border-box;display:flex;gap:40px;overflow:hidden">
+    <!-- Background watermark -->
+    <div style="position:absolute;bottom:-16px;right:16px;font-family:'JetBrains Mono',monospace;font-size:140px;font-weight:900;color:rgba(237,127,74,0.05);line-height:1;letter-spacing:-5px;user-select:none">04</div>
+    <!-- Accent glow bar top -->
+    <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,#ed7f4a,rgba(237,127,74,0.3),transparent)"></div>
+
+    <!-- LEFT: identity + key stat -->
+    <div style="flex:0 0 480px;display:flex;flex-direction:column;justify-content:space-between">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+          <span class="step-tag" style="margin-bottom:0">04</span>
+          <div class="agent-name accent" style="font-size:22px;letter-spacing:.1em">HUMAN_GATE</div>
+          <span class="model-badge m-you"><svg width="11" height="11" viewBox="0 0 16 16"><circle cx="8" cy="5" r="2.4" fill="#fff"/><path d="M3 14c0-3 2.4-5 5-5s5 2 5 5" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>YOU</span>
+        </div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.55);font-weight:600;margin-bottom:16px">The only human in the loop. Every message passes through you before send.</div>
+        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:6px">
+          <span class="fraunces accent" style="font-size:56px;font-weight:900;line-height:1;letter-spacing:-2.5px">90</span>
+          <span style="font-size:17px;color:rgba(255,255,255,0.5);font-weight:600">seconds<br>per verdict</span>
+        </div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);margin-bottom:0">10-12 drafts in morning batch · approve, rewrite, or kill</div>
+      </div>
+      <div class="meta" style="margin-top:14px">
+        <span class="chip" style="background:rgba(74,222,128,0.1);color:#4ade80;border-color:rgba(74,222,128,0.3)">61% APPROVE</span>
+        <span class="chip" style="background:rgba(237,127,74,0.1);color:#ed7f4a;border-color:rgba(237,127,74,0.3)">31% EDIT</span>
+        <span class="chip" style="background:rgba(227,90,74,0.1);color:#e35a4a;border-color:rgba(227,90,74,0.3)">8% KILL</span>
+        <span class="chip">~12 MIN TOTAL</span>
+      </div>
+    </div>
+
+    <!-- RIGHT: decision breakdown visual -->
+    <div style="flex:1;border-left:1px solid rgba(237,127,74,0.25);padding-left:36px;display:flex;flex-direction:column;justify-content:center;gap:18px">
+      <div class="mono" style="font-size:9px;letter-spacing:.18em;color:rgba(255,255,255,0.4);font-weight:700">DECISION BREAKDOWN · DAILY BATCH</div>
+      <!-- APPROVE -->
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px">
+          <span class="mono" style="font-size:10px;font-weight:700;color:#4ade80;letter-spacing:.1em">APPROVE</span>
+          <span class="fraunces" style="font-size:20px;font-weight:900;color:#4ade80;line-height:1">61%</span>
+        </div>
+        <div style="height:7px;background:rgba(255,255,255,0.07);border-radius:3px;overflow:hidden">
+          <div style="width:61%;height:100%;background:#4ade80;border-radius:3px;opacity:0.85"></div>
+        </div>
+      </div>
+      <!-- EDIT -->
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px">
+          <span class="mono" style="font-size:10px;font-weight:700;color:#ed7f4a;letter-spacing:.1em">EDIT</span>
+          <span class="fraunces" style="font-size:20px;font-weight:900;color:#ed7f4a;line-height:1">31%</span>
+        </div>
+        <div style="height:7px;background:rgba(255,255,255,0.07);border-radius:3px;overflow:hidden">
+          <div style="width:31%;height:100%;background:#ed7f4a;border-radius:3px;opacity:0.85"></div>
+        </div>
+      </div>
+      <!-- KILL -->
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px">
+          <span class="mono" style="font-size:10px;font-weight:700;color:#e35a4a;letter-spacing:.1em">KILL</span>
+          <span class="fraunces" style="font-size:20px;font-weight:900;color:#e35a4a;line-height:1">8%</span>
+        </div>
+        <div style="height:7px;background:rgba(255,255,255,0.07);border-radius:3px;overflow:hidden">
+          <div style="width:8%;height:100%;background:#e35a4a;border-radius:3px;opacity:0.85"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONNECTOR ARROWS 826-840 -->
+  <div style="position:absolute;top:826px;left:40px;right:40px;height:14px;display:flex;align-items:center;justify-content:center;gap:4px">
+    <div style="flex:1;height:1px;background:linear-gradient(to right, transparent, rgba(237,127,74,0.4), transparent)"></div>
+    <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.16em;color:rgba(237,127,74,0.6);white-space:nowrap;padding:0 12px">APPROVED MESSAGES ENTER PIPELINE</div>
+    <div style="flex:1;height:1px;background:linear-gradient(to right, transparent, rgba(237,127,74,0.4), transparent)"></div>
+  </div>
+
+  <!-- ROW 3 · 2 CARDS 840-1020 · steps 05/06 -->
+  <div style="position:absolute;top:840px;left:40px;right:40px;height:180px;display:grid;grid-template-columns:1fr 1fr;gap:14px">
+
+    <!-- 05 PULSE -->
+    <div class="card">
+      <div class="watermark">05</div>
+      <span class="step-tag">05</span>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px">
+        <div>
+          <div class="agent-name">PULSE</div>
+          <div class="agent-role">Follow-up · Timed re-touch</div>
+        </div>
+        <span class="model-badge m-gpt"><svg width="11" height="11" viewBox="0 0 24 24" fill="#10A37F"><path d="M22.28 9.82a5.99 5.99 0 0 0-.52-4.91 6.05 6.05 0 0 0-6.51-2.9A6.07 6.07 0 0 0 4.98 4.18a5.99 5.99 0 0 0-4 2.9 6.05 6.05 0 0 0 .74 7.1 5.98 5.98 0 0 0 .51 4.91 6.05 6.05 0 0 0 6.52 2.9A5.98 5.98 0 0 0 13.26 24a6.05 6.05 0 0 0 5.77-4.21 5.99 5.99 0 0 0 4-2.9 6.05 6.05 0 0 0-.75-7.07zM13.26 22.43a4.48 4.48 0 0 1-2.88-1.04l.14-.08 4.78-2.76a.78.78 0 0 0 .4-.68v-6.74l2.02 1.17c.02 0 .03.03.04.05v5.58a4.5 4.5 0 0 1-4.5 4.5z"/></svg>ChatGPT</span>
+      </div>
+      <div class="stat-big">7 <span style="font-size:15px;color:rgba(255,255,255,0.45);font-weight:700">touches/lead</span></div>
+      <div class="stat-unit">cadence learned from reply log · no spam fatigue</div>
+      <div class="meta">
+        <span class="chip">4,200/MO ROUTED</span>
+        <span class="chip">14x REPLY LIFT</span>
+        <span class="chip">$0.02/SEND</span>
+      </div>
+    </div>
+
+    <!-- 06 SENTINEL -->
+    <div class="card">
+      <div class="watermark">06</div>
+      <span class="step-tag">06</span>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px">
+        <div>
+          <div class="agent-name">SENTINEL</div>
+          <div class="agent-role">Audit · Domain guard · Memory</div>
+        </div>
+        <span class="model-badge m-gem"><svg width="11" height="11" viewBox="1002 144 84 84"><path d="M1076.9 181.552C1070.43 178.765 1064.77 174.946 1059.91 170.092C1055.05 165.239 1051.23 159.573 1048.45 153.102C1047.38 150.625 1046.52 148.071 1045.86 145.456C1045.65 144.601 1044.88 144 1044 144C1043.12 144 1042.35 144.601 1042.14 145.456C1041.48 148.071 1040.62 150.615 1039.55 153.102C1036.76 159.573 1032.95 165.239 1028.09 170.092C1023.24 174.942 1017.57 178.765 1011.1 181.552C1008.62 182.616 1006.07 183.48 1003.46 184.139C1002.6 184.353 1002 185.117 1002 186C1002 186.883 1002.6 187.647 1003.46 187.861C1006.07 188.52 1008.61 189.379 1011.1 190.448C1017.57 193.235 1023.23 197.054 1028.09 201.907C1032.95 206.761 1036.77 212.427 1039.55 218.898C1040.62 221.38 1041.48 223.929 1042.14 226.544C1042.24 226.959 1042.48 227.328 1042.82 227.592C1043.16 227.855 1043.57 227.999 1044 228C1044.88 228 1045.65 227.399 1045.86 226.544C1046.52 223.929 1047.38 221.385 1048.45 218.898C1051.24 212.427 1055.05 206.766 1059.91 201.907C1064.76 197.054 1070.43 193.231 1076.9 190.448C1079.38 189.379 1081.93 188.52 1084.54 187.861C1084.96 187.757 1085.33 187.518 1085.59 187.181C1085.86 186.843 1086 186.428 1086 186C1086 185.117 1085.4 184.353 1084.54 184.139C1081.93 183.48 1079.38 182.621 1076.9 181.552Z" fill="#4285F4"/></svg>Gemini</span>
+      </div>
+      <div class="stat-big">100% <span style="font-size:15px;color:rgba(255,255,255,0.45);font-weight:700">sends audited</span></div>
+      <div class="stat-unit">halts on spam threshold · saves 3 deals/mo from blast</div>
+      <div class="meta">
+        <span class="chip">DOMAIN GUARD</span>
+        <span class="chip">MEMORY LOOP</span>
+        <span class="chip">3 SAVES/MO</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- COST COMPARISON STRIP 1036-1100 -->
+  <div style="position:absolute;top:1036px;left:40px;right:40px;height:64px;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;background:rgba(237,127,74,0.05);border:1.5px solid rgba(237,127,74,0.32);border-radius:10px;overflow:hidden">
+    <div style="padding:10px 22px;border-right:1px solid rgba(255,255,255,0.08)">
+      <div class="mono" style="font-size:9px;letter-spacing:.16em;color:rgba(255,255,255,0.45);font-weight:700">OLD STACK</div>
+      <div style="display:flex;align-items:baseline;gap:6px"><span class="fraunces" style="font-size:24px;font-weight:900;color:rgba(227,90,74,0.9);letter-spacing:-1px">$4,800</span><span style="font-size:11px;color:rgba(255,255,255,0.5);font-weight:600">/mo · 6 tools · 1 SDR</span></div>
+    </div>
+    <div style="padding:10px 22px;border-right:1px solid rgba(255,255,255,0.08)">
+      <div class="mono" style="font-size:9px;letter-spacing:.16em;color:rgba(255,255,255,0.45);font-weight:700">NEW STACK</div>
+      <div style="display:flex;align-items:baseline;gap:6px"><span class="fraunces accent" style="font-size:24px;font-weight:900;letter-spacing:-1px">$19</span><span style="font-size:11px;color:rgba(255,255,255,0.5);font-weight:600">/mo · 6 agents · 0 SDR</span></div>
+    </div>
+    <div style="padding:10px 22px">
+      <div class="mono" style="font-size:9px;letter-spacing:.16em;color:rgba(255,255,255,0.45);font-weight:700">COMPRESSION</div>
+      <div style="display:flex;align-items:baseline;gap:6px"><span class="fraunces accent" style="font-size:24px;font-weight:900;letter-spacing:-1px">252x</span><span style="font-size:11px;color:rgba(255,255,255,0.5);font-weight:600">cost cut · 40h/wk saved</span></div>
+    </div>
+  </div>
+
+  <!-- DAILY OPS TIMELINE 1116-1164 -->
+  <div style="position:absolute;top:1116px;left:40px;right:40px;height:48px;display:grid;grid-template-columns:100px 1fr;gap:16px;align-items:center">
+    <div>
+      <div class="mono" style="font-size:9.5px;font-weight:700;letter-spacing:.14em;color:rgba(255,255,255,0.45)">DAILY OPS</div>
+      <div class="mono accent" style="font-size:9px;font-weight:700;letter-spacing:.12em">24H LIVE</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(8,1fr);gap:5px;height:32px">
+      <div style="background:rgba(66,133,244,0.16);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:7.5px;font-weight:700;letter-spacing:.06em;color:#8ab4ff;text-align:center;line-height:1.2">06h<br>SPECTER</div>
+      <div style="background:rgba(217,119,87,0.16);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:7.5px;font-weight:700;letter-spacing:.06em;color:#ed7f4a;text-align:center;line-height:1.2">08h<br>CORTEX</div>
+      <div style="background:rgba(217,119,87,0.16);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:7.5px;font-weight:700;letter-spacing:.06em;color:#ed7f4a;text-align:center;line-height:1.2">09h<br>STRIKER</div>
+      <div style="background:rgba(237,127,74,0.28);border:1px solid rgba(237,127,74,0.65);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:7.5px;font-weight:800;letter-spacing:.06em;color:#fff;text-align:center;line-height:1.2">10h<br>GATE</div>
+      <div style="background:rgba(16,163,127,0.16);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:7.5px;font-weight:700;letter-spacing:.06em;color:#3ecf94;text-align:center;line-height:1.2">11h<br>PULSE</div>
+      <div style="background:rgba(255,255,255,0.04);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:7.5px;font-weight:700;letter-spacing:.06em;color:rgba(255,255,255,0.4);text-align:center;line-height:1.2">14h<br>RE-PULSE</div>
+      <div style="background:rgba(66,133,244,0.16);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:7.5px;font-weight:700;letter-spacing:.06em;color:#8ab4ff;text-align:center;line-height:1.2">18h<br>SENTINEL</div>
+      <div style="background:rgba(255,255,255,0.04);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:7.5px;font-weight:700;letter-spacing:.06em;color:rgba(255,255,255,0.35);text-align:center;line-height:1.2">22h<br>COMPILE</div>
+    </div>
+  </div>
+
+  <!-- METRIC STRIP 1180-1248 -->
+  <div style="position:absolute;top:1180px;left:40px;right:40px;height:68px;display:grid;grid-template-columns:repeat(5,1fr);border:1px solid rgba(237,127,74,0.16);border-radius:8px;background:rgba(237,127,74,0.03)">
+    <div style="padding:10px 14px;border-right:1px solid rgba(255,255,255,0.06)">
+      <div class="mono" style="font-size:9px;letter-spacing:.15em;color:rgba(255,255,255,0.4);font-weight:700">SIGNALS/DAY</div>
+      <div class="fraunces" style="font-size:22px;font-weight:900;margin-top:2px"><span class="accent">47K</span></div>
+    </div>
+    <div style="padding:10px 14px;border-right:1px solid rgba(255,255,255,0.06)">
+      <div class="mono" style="font-size:9px;letter-spacing:.15em;color:rgba(255,255,255,0.4);font-weight:700">DRAFTS/MO</div>
+      <div class="fraunces" style="font-size:22px;font-weight:900;margin-top:2px">600</div>
+    </div>
+    <div style="padding:10px 14px;border-right:1px solid rgba(255,255,255,0.06)">
+      <div class="mono" style="font-size:9px;letter-spacing:.15em;color:rgba(255,255,255,0.4);font-weight:700">FOLLOW-UPS</div>
+      <div class="fraunces" style="font-size:22px;font-weight:900;margin-top:2px">4,200</div>
+    </div>
+    <div style="padding:10px 14px;border-right:1px solid rgba(255,255,255,0.06)">
+      <div class="mono" style="font-size:9px;letter-spacing:.15em;color:rgba(255,255,255,0.4);font-weight:700">AUDITED</div>
+      <div class="fraunces" style="font-size:22px;font-weight:900;margin-top:2px"><span class="accent">100%</span></div>
+    </div>
+    <div style="padding:10px 14px">
+      <div class="mono" style="font-size:9px;letter-spacing:.15em;color:rgba(255,255,255,0.4);font-weight:700">OPERATOR</div>
+      <div class="fraunces" style="font-size:22px;font-weight:900;margin-top:2px">12 min</div>
+    </div>
+  </div>
+
+  <!-- CTA 1264-1324 · always last before footer -->
+  <div style="position:absolute;top:1264px;left:40px;right:40px;height:60px;display:flex;align-items:center;justify-content:space-between;border:1.5px solid rgba(237,127,74,0.42);border-radius:10px;padding:0 28px;background:rgba(237,127,74,0.06);flex:1">
+    <div style="font-size:14px;font-weight:700;color:rgba(255,255,255,0.75)">Want the full 6-agent operating model?</div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="mono" style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,0.45);letter-spacing:.1em">COMMENT</div>
+      <div class="mono" style="padding:8px 22px;background:#ed7f4a;color:#18130b;border-radius:6px;font-size:14px;font-weight:900;letter-spacing:.08em">AGENTS</div>
+    </div>
+  </div>
+
+  <!-- FOOTER 1370-1410 · slim -->
+  <div class="footer" style="position:absolute;top:1370px;left:40px;right:40px;border-top: 1px dashed rgba(237,127,74,0.3); padding-top: 16px; display: flex; align-items: center; justify-content: space-between;">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; color: #666; text-transform: uppercase; display: flex; align-items: center; gap: 10px;">
+      <img src="https://app.51ultron.com/favicon.ico" alt="Ultron" style="width: 24px; height: 24px; object-fit: contain;">
+      <strong style="color: #fff;">ULTRON OS</strong> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure
+    </div>
+    <div style="font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 800; color: #fff; letter-spacing: -0.5px;">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

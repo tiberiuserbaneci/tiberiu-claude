@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Script 20 - EXPANSION - Cheatsheet Light</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* BUDGET 1450 */
+  @font-face { font-family: 'ui-monospace'; src: local('ui-monospace'), local('SFMono-Regular'), local('Menlo'), local('Monaco'), local('Consolas'); }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --paper: #f4ede0;
+    --ink: #14110d;
+    --ink-light: #3d342a;
+    --ink-mute: #6b5f4f;
+    --accent: #b8501f;
+    --accent-light: rgba(184,80,31,.11);
+    --red: #8e2616;
+    --yellow: rgba(184,80,31,.07);
+    --yellow-border: rgba(184,80,31,.45);
+    --green: #1f5e36;
+    --tape: rgba(184,80,31,.08);
+    --line: #b8a890;
+    --line-strong: #8a7a5f;
+    --shadow: rgba(60,40,15,.22);
+    --bg-box: #fbf6e9;
+  }
+  body {
+    background: #f4ede0;
+    margin: 0;
+    padding: 0;
+  }
+  .scaler {
+    display: flex;
+    justify-content: center;
+  }
+  .canvas {
+    width: 1080px;
+    height: 1450px;
+    background: var(--paper);
+    background-image: radial-gradient(rgba(80,60,30,.18) 1px, transparent 1px);
+    background-size: 20px 20px;
+    position: relative;
+    padding: 28px 36px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow: hidden;
+  }
+  h1 { font-family: 'Kalam', cursive; font-size: 52px; line-height: 0.95; color: var(--accent); text-transform: uppercase; text-align: center; letter-spacing: -0.02em; }
+  h1 span { color: var(--ink); display: block; font-size: 34px; margin-top: -2px; }
+  h2 { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; color: var(--accent); display: flex; align-items: center; gap: 6px; }
+  h3 { font-size: 11px; font-weight: 700; margin-bottom: 3px; color: var(--ink); }
+  p { font-size: 11px; line-height: 1.4; color: var(--ink-light); }
+  .mute { color: var(--ink-mute); }
+  .hand { font-family: 'Caveat', cursive; font-size: 20px; color: var(--ink); line-height: 1.1; }
+  .hand.accent { color: var(--accent); }
+  .bold { font-weight: 700; color: var(--ink); }
+
+  .box { background: var(--bg-box); border: 1px solid var(--line-strong); border-radius: 6px; padding: 12px; position: relative; box-shadow: 4px 4px 0 var(--shadow); }
+  .box-dashed { border: 1px dashed var(--line-strong); border-radius: 6px; padding: 12px; background: transparent; }
+
+  .grid-top { display: grid; grid-template-columns: 190px 1fr 190px; gap: 14px; align-items: center; }
+  .grid-main { display: grid; grid-template-columns: 248px 280px 1fr; gap: 14px; flex: 1; min-height: 0; }
+  .grid-bottom { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; flex-shrink: 0; }
+  .col { display: flex; flex-direction: column; gap: 12px; }
+
+  .post-it { background: #fff8e8; border: 1px solid var(--yellow-border); padding: 12px; position: relative; transform: rotate(2deg); box-shadow: 2px 4px 8px var(--shadow); }
+  .post-it.alt { transform: rotate(-1.5deg); border-color: var(--line-strong); background: #fdf6e3; }
+  .tape { position: absolute; width: 70px; height: 20px; background: var(--tape); border: 1px solid rgba(199,93,53,.18); z-index: 10; }
+  .tape.top-center { top: -10px; left: 50%; transform: translateX(-50%) rotate(-2deg); }
+  .tape.top-right { top: -8px; right: -15px; transform: rotate(45deg); width: 50px; }
+  .tape.top-left { top: -8px; left: -15px; transform: rotate(-45deg); width: 50px; }
+
+  .header-sub { text-align: center; font-size: 13px; font-weight: 600; padding: 6px 0; border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong); color: var(--ink-light); }
+  .header-sub span { color: var(--accent); }
+
+  .bar-row { margin-bottom: 9px; }
+  .bar-label { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px; }
+  .bar-label .name { font-size: 10px; font-weight: 700; color: var(--ink); text-transform: uppercase; letter-spacing: 0.04em; }
+  .bar-label .pct { font-family: 'Kalam', cursive; font-size: 15px; font-weight: 700; }
+  .bar-track { height: 10px; background: rgba(80,60,30,.06); border-radius: 2px; overflow: hidden; border: 1px solid var(--line); }
+  .bar-fill { height: 100%; border-radius: 2px; }
+  .bar-row.dominant .bar-label .name { color: var(--accent); font-size: 12px; }
+  .bar-row.dominant .bar-track { height: 14px; }
+
+  .source-row { display: flex; justify-content: space-between; font-size: 10px; margin-bottom: 5px; border-bottom: 1px dotted var(--line-strong); padding-bottom: 3px; color: var(--ink-light); }
+  .source-row.total { font-weight: 800; border-bottom: none; border-top: 1px solid var(--ink-light); padding-top: 5px; font-size: 13px; margin-top: 6px; color: var(--ink); }
+
+  .win-item { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 6px; }
+  .win-num { width: 20px; height: 20px; background: var(--accent-light); color: var(--accent); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 10px; flex-shrink: 0; border: 1px solid var(--accent); }
+  .win-content h3 { font-size: 10px; margin-bottom: 1px; color: var(--ink); }
+  .win-content p { font-size: 10px; }
+
+  .workflow-section { border: 1px solid var(--line-strong); border-radius: 6px; padding: 16px 14px 12px; position: relative; background: var(--bg-box); flex-shrink: 0; }
+  .workflow-title { position: absolute; top: -10px; left: 14px; background: var(--paper); padding: 0 8px; font-weight: 800; color: var(--accent); font-size: 10px; text-transform: uppercase; }
+  .workflow-track { display: flex; justify-content: space-between; align-items: center; margin-top: 4px; }
+  .wf-step { display: flex; flex-direction: column; align-items: center; text-align: center; width: 88px; }
+  .wf-time { font-family: 'Caveat', cursive; font-size: 14px; color: var(--ink-light); margin-bottom: 3px; }
+  .wf-box { background: rgba(80,60,30,.03); border: 1px solid var(--line-strong); border-radius: 4px; padding: 8px 3px; width: 100%; height: 68px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; }
+  .wf-box .n { position: absolute; top: -8px; background: var(--accent); color: #fff; width: 16px; height: 16px; border-radius: 4px; font-size: 10px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+  .wf-box h4 { font-size: 9px; font-weight: 700; margin-bottom: 2px; line-height: 1.1; color: var(--ink); }
+  .wf-box p { font-size: 9px; line-height: 1.2; color: var(--ink-light); }
+  .wf-arrow { font-family: 'Kalam', cursive; font-size: 18px; color: var(--ink-light); }
+  .wf-final { background: var(--yellow); border: 1px dashed var(--accent); transform: rotate(1deg); padding: 16px 10px 10px; width: 110px; text-align: center; flex-shrink: 0; }
+  .wf-final h4 { font-family: 'Kalam', cursive; font-size: 16px; line-height: 1; margin-bottom: 3px; color: var(--accent); }
+  .wf-final p { font-size: 9px; font-weight: 600; color: var(--ink); }
+
+  .mistake-item { display: flex; gap: 6px; align-items: flex-start; margin-bottom: 7px; }
+  .mistake-item .x { color: var(--red); font-weight: 900; font-size: 11px; }
+  .mistake-item .text { font-size: 10px; line-height: 1.3; color: var(--ink-light); }
+  .check-item { display: flex; gap: 6px; align-items: flex-start; margin-bottom: 6px; }
+  .check-item .c { color: var(--green); font-weight: 900; font-size: 11px; }
+  .check-item .text { font-size: 10px; line-height: 1.3; color: var(--ink-light); }
+
+  .cta-pill { background: var(--accent); color: #fff; padding: 10px 24px; border-radius: 8px; font-family: 'Kalam', cursive; font-size: 20px; font-weight: 700; letter-spacing: 0.02em; white-space: nowrap; box-shadow: 3px 3px 0 var(--shadow); }
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="canvas">
+
+  <!-- HEADER ROW -->
+  <div class="grid-top">
+    <div class="post-it alt">
+      <div class="tape top-center"></div>
+      <div class="hand">CSMs flagged<br>12 of 200 accounts<br>for expansion.<br><span class="accent">AI found 76.</span></div>
+    </div>
+
+    <div style="position:relative; text-align:center;">
+      <h1 style="font-size:40px;">CLAUDE AUDITED MY<br><span style="font-size:30px;">200 NEW CUSTOMER ACCOUNTS.</span></h1>
+      <!-- hand-drawn underline ornament -->
+      <svg viewBox="0 0 260 12" width="180" height="10" style="display:block; margin: 2px auto -2px;">
+        <path d="M4 7 Q60 1 130 6 T256 5" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <h1 style="font-size:23px; margin-top:2px; color:var(--ink); line-height:1.05;">38% HAD EXPANSION SIGNALS<br>NOBODY ACTED ON.</h1>
+    </div>
+
+    <div class="post-it">
+      <div class="tape top-left"></div>
+      <div class="tape top-right"></div>
+      <div class="hand" style="font-weight:700;">$847K of<br>pipeline was<br><span class="accent">already inside<br>the install base.</span></div>
+    </div>
+  </div>
+
+  <div class="header-sub">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(0,0,0,0.5)">FOUNDER GTM · EXPANSION REVENUE · CLAUDE AGENTS · NET REVENUE RETENTION · ULTRON OS</span>
+  </div>
+
+  <!-- MAIN 3 COLUMNS -->
+  <div class="grid-main">
+
+    <!-- COL 1: Problem + Data -->
+    <div class="col">
+      <div class="box">
+        <h2>THE PROBLEM</h2>
+        <div style="display:flex; gap:8px; margin-bottom:8px;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--ink-light)" stroke-width="1.5" style="flex-shrink:0; margin-top:2px;"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+          <div>
+            <p style="margin-bottom:3px;"><span class="bold">Expansion lives in product usage,</span> not in QBR slides. CSMs see the customer once a quarter and miss the signal that fired in week 3.</p>
+            <p>The data was there. <span class="bold">No one was reading it in real time.</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="box">
+        <h2>WHAT AI READ</h2>
+        <div class="source-row"><span>Product usage events</span><span style="color:var(--ink); font-weight:700;">412K</span></div>
+        <div class="source-row"><span>Support tickets</span><span style="color:var(--ink); font-weight:700;">1,840</span></div>
+        <div class="source-row"><span>CSM call notes</span><span style="color:var(--ink); font-weight:700;">680</span></div>
+        <div class="source-row"><span>Customer email threads</span><span style="color:var(--ink); font-weight:700;">3,210</span></div>
+        <div class="source-row total"><span>ACCOUNTS SCANNED</span><span>200</span></div>
+        <div style="margin-top:6px; font-size:9px; color:var(--green); font-weight:800; text-align:right;">PROCESSED: 6h 42min</div>
+      </div>
+
+      <div class="box-dashed">
+        <h2>THE TRUTH</h2>
+        <p>QBRs catch signals 60 days late. <span class="bold">Expansion windows are 14 to 21 days wide.</span> By the time the slide deck is built, the moment is gone.</p>
+      </div>
+
+      <div class="box" style="padding:10px;">
+        <h2 style="margin-bottom:6px;">CSM VIEW vs AI VIEW</h2>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:9px;">
+          <div style="border:1px solid var(--line-strong); padding:6px; border-radius:3px;">
+            <div style="font-size:8px; color:var(--ink-light); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:4px;">CSM SAW</div>
+            <div style="color:var(--ink); margin-bottom:2px;">Healthy &nbsp;<b>148</b></div>
+            <div style="color:var(--ink); margin-bottom:2px;">Expand &nbsp;<b>12</b></div>
+            <div style="color:var(--ink); margin-bottom:2px;">At-risk &nbsp;<b>22</b></div>
+            <div style="color:var(--ink-light);">No view &nbsp;<b>18</b></div>
+          </div>
+          <div style="border:1px solid var(--accent); padding:6px; border-radius:3px; background:var(--accent-light);">
+            <div style="font-size:8px; color:var(--accent); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:4px;">AI FOUND</div>
+            <div style="color:var(--ink); margin-bottom:2px;">Strong expand &nbsp;<b>76</b></div>
+            <div style="color:var(--ink); margin-bottom:2px;">Warm pilot &nbsp;<b>41</b></div>
+            <div style="color:var(--ink); margin-bottom:2px;">Silent churn &nbsp;<b>19</b></div>
+            <div style="color:var(--ink-light);">Steady &nbsp;<b>64</b></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#14110d; border:1px solid #14110d; padding:12px 10px; border-radius:4px; text-align:center; box-shadow:4px 4px 0 var(--shadow); position:relative;">
+        <div class="hand" style="font-size:26px; font-weight:700; color:#ffb277;">$847K open</div>
+        <p style="font-size:10px; margin-top:4px; font-weight:600; color:#e8dfc8;">in the install base.<br>Nobody had a list.</p>
+      </div>
+    </div>
+
+    <!-- COL 2: 6 expansion signals -->
+    <div class="col">
+      <div class="box" style="height:100%; position:relative;">
+        <div class="tape top-center" style="width:90px;"></div>
+        <h2>EXPANSION SIGNALS AI FOUND</h2>
+        <p style="font-size:10px; margin-bottom:12px; color:var(--ink-light);">Ranked by predictive weight across the 76 strong-expand accounts.</p>
+
+        <div class="bar-row dominant">
+          <div class="bar-label">
+            <span class="name">01. POWER USER SPIKE</span>
+            <span class="pct" style="color:var(--accent);">31%</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:100%; background:var(--accent);"></div>
+          </div>
+          <p style="font-size:9px; margin-top:3px; color:var(--ink-light);">One user crossed 4x average usage for 7+ days. Strongest single predictor.</p>
+        </div>
+
+        <div class="bar-row" style="margin-top:4px;">
+          <div class="bar-label">
+            <span class="name">02. NEW TEAM ONBOARDED</span>
+            <span class="pct" style="color:var(--ink);">22%</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:71%; background:rgba(199,93,53,0.55);"></div>
+          </div>
+          <p style="font-size:9px; margin-top:2px; color:var(--ink-light);">New seat created in a department that was not previously active.</p>
+        </div>
+
+        <div class="bar-row" style="margin-top:4px;">
+          <div class="bar-label">
+            <span class="name">03. CHAMPION PROMOTED</span>
+            <span class="pct" style="color:var(--ink);">16%</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:52%; background:rgba(199,93,53,0.42);"></div>
+          </div>
+          <p style="font-size:9px; margin-top:2px; color:var(--ink-light);">Advocate moved up. Bigger budget. Bigger remit. Pulled in over LinkedIn.</p>
+        </div>
+
+        <div class="bar-row" style="margin-top:4px;">
+          <div class="bar-label">
+            <span class="name">04. INTEGRATION REQUEST</span>
+            <span class="pct" style="color:var(--ink);">14%</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:45%; background:rgba(199,93,53,0.32);"></div>
+          </div>
+          <p style="font-size:9px; margin-top:2px; color:var(--ink-light);">Asked for a new connector or API. Means the product is moving deeper inside.</p>
+        </div>
+
+        <div class="bar-row" style="margin-top:4px;">
+          <div class="bar-label">
+            <span class="name">05. PROCUREMENT PING</span>
+            <span class="pct" style="color:var(--ink);">11%</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:36%; background:rgba(199,93,53,0.22);"></div>
+          </div>
+          <p style="font-size:9px; margin-top:2px; color:var(--ink-light);">Legal or finance touched the account out of cycle. Something is being prepared.</p>
+        </div>
+
+        <div class="bar-row" style="margin-top:4px;">
+          <div class="bar-label">
+            <span class="name">06. EARLY RENEWAL ASK</span>
+            <span class="pct" style="color:var(--ink-light);">6%</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:20%; background:rgba(199,93,53,0.15);"></div>
+          </div>
+          <p style="font-size:9px; margin-top:2px; color:var(--ink-light);">Customer asked about renewal terms 60+ days early. Almost always a buy signal.</p>
+        </div>
+
+        <div style="background:rgba(176,48,32,0.06); border:1px solid rgba(176,48,32,0.2); padding:8px; border-radius:4px; margin-top:12px;">
+          <p class="bold" style="color:var(--red); font-size:10px; text-align:center;">CSMs were tracking NPS. AI tracked behavior. Behavior won.</p>
+        </div>
+
+        <div style="margin-top:10px; padding-top:8px; border-top:1px dotted var(--line-strong);">
+          <div style="font-size:9px; color:var(--ink-light); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:5px; font-weight:700;">SIGNAL EVIDENCE</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:3px 12px; font-size:9px; line-height:1.4; color:var(--ink-light);">
+            <div style="display:flex; justify-content:space-between;"><span>4x spikes</span><span style="color:var(--accent); font-weight:700;">58</span></div>
+            <div style="display:flex; justify-content:space-between;"><span>new seats</span><span style="color:var(--accent); font-weight:700;">41</span></div>
+            <div style="display:flex; justify-content:space-between;"><span>role-ups</span><span style="color:var(--accent); font-weight:700;">29</span></div>
+            <div style="display:flex; justify-content:space-between;"><span>API tickets</span><span style="color:var(--accent); font-weight:700;">26</span></div>
+          </div>
+        </div>
+
+        <div style="margin-top:6px; padding:7px 8px 8px; background:#fff; border:1px solid var(--line-strong); border-radius:4px; position:relative;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5px;">
+            <div style="font-size:9px; color:var(--ink); text-transform:uppercase; letter-spacing:0.08em; font-weight:800;">USAGE SPIKE TIMELINE</div>
+            <div style="font-size:9px; color:var(--accent); font-weight:700;">Account 087</div>
+          </div>
+          <div style="position:relative; width:100%; height:62px;">
+            <svg viewBox="0 0 240 130" preserveAspectRatio="none" width="100%" height="62" style="display:block;">
+              <!-- gridlines -->
+              <line x1="26" y1="110" x2="238" y2="110" stroke="#3d342a" stroke-width="1"/>
+              <line x1="26" y1="70" x2="238" y2="70" stroke="#b8a890" stroke-width="0.5" stroke-dasharray="3 4"/>
+              <line x1="26" y1="30" x2="238" y2="30" stroke="#b8a890" stroke-width="0.5" stroke-dasharray="3 4"/>
+              <!-- y labels -->
+              <text x="22" y="113" font-family="ui-monospace, monospace" font-size="9" fill="#14110d" text-anchor="end" font-weight="800">1x</text>
+              <text x="22" y="73" font-family="ui-monospace, monospace" font-size="9" fill="#3d342a" text-anchor="end" font-weight="700">2x</text>
+              <text x="22" y="33" font-family="ui-monospace, monospace" font-size="9" fill="#3d342a" text-anchor="end" font-weight="700">4x</text>
+              <!-- spike line -->
+              <polyline points="26,104 40,100 54,102 68,98 82,100 96,96 110,92 124,86 138,76 152,58 166,38 180,14 194,18 208,26 222,34 238,38" fill="none" stroke="#b8501f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- peak marker -->
+              <circle cx="180" cy="14" r="4" fill="#b8501f"/>
+              <text x="180" y="9" font-family="Caveat, cursive" font-size="14" fill="#14110d" text-anchor="middle" font-weight="700">4.2x</text>
+              <!-- x ticks -->
+              <line x1="26" y1="110" x2="26" y2="115" stroke="#3d342a" stroke-width="1"/>
+              <line x1="96" y1="110" x2="96" y2="115" stroke="#3d342a" stroke-width="1"/>
+              <line x1="166" y1="110" x2="166" y2="115" stroke="#3d342a" stroke-width="1"/>
+              <line x1="238" y1="110" x2="238" y2="115" stroke="#3d342a" stroke-width="1"/>
+              <!-- x labels -->
+              <text x="26" y="125" font-family="ui-monospace, monospace" font-size="9" fill="#14110d" text-anchor="start" font-weight="800">DAY 1</text>
+              <text x="96" y="125" font-family="ui-monospace, monospace" font-size="9" fill="#3d342a" text-anchor="middle" font-weight="700">D 30</text>
+              <text x="166" y="125" font-family="ui-monospace, monospace" font-size="9" fill="#3d342a" text-anchor="middle" font-weight="700">D 60</text>
+              <text x="238" y="125" font-family="ui-monospace, monospace" font-size="9" fill="#14110d" text-anchor="end" font-weight="800">DAY 90</text>
+            </svg>
+          </div>
+          <div style="font-size:9px; color:var(--ink); margin-top:4px;">Spike began day 62. CSM noticed at QBR day 89. <span style="color:var(--accent); font-weight:800;">27 days lost.</span></div>
+          <!-- discreet hand-drawn circle ornament -->
+          <svg width="32" height="32" viewBox="0 0 38 38" style="position:absolute; top:38px; right:46px; pointer-events:none;">
+            <path d="M19 4 Q34 6 33 19 Q34 32 19 34 Q4 33 5 19 Q4 6 19 4" fill="none" stroke="var(--accent)" stroke-width="1.2" stroke-dasharray="1.5 2.5" opacity="0.55"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- COL 3: Pattern from 38 expansions -->
+    <div class="col">
+      <div class="box" style="height:100%; display:flex; flex-direction:column;">
+        <h2>WHAT 38 EXPANSIONS HAD IN COMMON</h2>
+        <p style="font-size:10px; margin-bottom:10px; color:var(--ink-light);">Of the 76 flagged accounts, 38 converted to expansion. AI cross-referenced what separated them from the rest.</p>
+
+        <div class="win-item">
+          <div class="win-num">1</div>
+          <div class="win-content">
+            <h3>Acted within 21 days of signal</h3>
+            <p>The expansion window was always short. After day 21, conversion dropped from 50% to 11%.</p>
+          </div>
+        </div>
+        <div style="text-align:center; margin:-6px 0 2px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--line-strong)" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
+
+        <div class="win-item">
+          <div class="win-num">2</div>
+          <div class="win-content">
+            <h3>CSM looped in AE same week</h3>
+            <p>Joint touch outperformed CSM-only by 2.4x. Expansion is a sales motion, not a support motion.</p>
+          </div>
+        </div>
+        <div style="text-align:center; margin:-6px 0 2px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--line-strong)" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
+
+        <div class="win-item">
+          <div class="win-num">3</div>
+          <div class="win-content">
+            <h3>Brought ROI data to the call</h3>
+            <p>Specific numbers from their own usage. Not a generic deck. "You shipped 412 reports last month."</p>
+          </div>
+        </div>
+        <div style="text-align:center; margin:-6px 0 2px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
+
+        <div class="win-item">
+          <div class="win-num" style="background:var(--accent-light); color:var(--accent); border-color:var(--accent);">4</div>
+          <div class="win-content">
+            <h3>Pitched a pilot, not a full upsell</h3>
+            <p>Asked for 10 seats with a 30-day pilot clause. Lower friction. 73% expanded to full inside 60 days.</p>
+          </div>
+        </div>
+        <div style="text-align:center; margin:-6px 0 2px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
+
+        <div class="win-item">
+          <div class="win-num" style="background:var(--accent-light); color:var(--accent); border-color:var(--accent);">5</div>
+          <div class="win-content">
+            <h3>Mapped a 2nd stakeholder first</h3>
+            <p>Found one peer of the champion before the call. Single-thread expansions stalled 3x more often.</p>
+          </div>
+        </div>
+
+        <div style="background:rgba(42,122,74,0.08); border:1px solid rgba(42,122,74,0.3); padding:8px; border-radius:4px; margin-top:8px; text-align:center;">
+          <p class="bold" style="color:var(--green); font-size:10px;">All 5 are detectable from product + comms data.<br>AI flags them on day 1. CSMs see them at QBR.</p>
+        </div>
+
+        <div style="margin-top:10px; padding-top:8px; border-top:1px dotted var(--line-strong);">
+          <div style="font-size:9px; color:var(--ink-light); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px; font-weight:700;">EXPANSION RATE BY SIGNAL COUNT</div>
+          <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:4px; text-align:center;">
+            <div style="border:1px solid var(--line-strong); padding:5px 2px; border-radius:3px;">
+              <div style="font-family:'Kalam',cursive; font-size:14px; color:var(--ink-light); font-weight:700;">6%</div>
+              <div style="font-size:8px; color:var(--ink-light); margin-top:1px;">0-1 signals</div>
+            </div>
+            <div style="border:1px solid var(--line-strong); padding:5px 2px; border-radius:3px;">
+              <div style="font-family:'Kalam',cursive; font-size:14px; color:var(--ink-light); font-weight:700;">19%</div>
+              <div style="font-size:8px; color:var(--ink-light); margin-top:1px;">2 signals</div>
+            </div>
+            <div style="border:1px solid var(--accent); padding:5px 2px; border-radius:3px; background:var(--accent-light);">
+              <div style="font-family:'Kalam',cursive; font-size:14px; color:var(--accent); font-weight:700;">50%</div>
+              <div style="font-size:8px; color:var(--ink); margin-top:1px;">3-4 signals</div>
+            </div>
+            <div style="border:1px solid var(--accent); padding:5px 2px; border-radius:3px; background:var(--accent-light);">
+              <div style="font-family:'Kalam',cursive; font-size:14px; color:var(--accent); font-weight:700;">82%</div>
+              <div style="font-size:8px; color:var(--ink); margin-top:1px;">all 5</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:10px; padding:12px 10px; background:#14110d; border:1px solid #14110d; border-radius:4px; position:relative; box-shadow:3px 3px 0 var(--shadow);">
+          <div style="font-size:9px; color:#ffb277; text-transform:uppercase; letter-spacing:0.08em; font-weight:800; margin-bottom:8px;">REVENUE LEFT ON THE TABLE</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; text-align:center;">
+            <div>
+              <div style="font-family:'Kalam',cursive; font-size:26px; color:#ffb277; font-weight:700; line-height:1;">38</div>
+              <div style="font-size:8px; color:#c7bba9; margin-top:3px;">accounts ignored</div>
+            </div>
+            <div>
+              <div style="font-family:'Kalam',cursive; font-size:26px; color:#ffb277; font-weight:700; line-height:1;">$847K</div>
+              <div style="font-size:8px; color:#c7bba9; margin-top:3px;">unrealized ARR</div>
+            </div>
+            <div>
+              <div style="font-family:'Kalam',cursive; font-size:26px; color:#ffb277; font-weight:700; line-height:1;">11x</div>
+              <div style="font-size:8px; color:#c7bba9; margin-top:3px;">CAC vs cold</div>
+            </div>
+          </div>
+          <!-- discreet hand-drawn arrow ornament -->
+          <svg width="40" height="22" viewBox="0 0 40 22" style="position:absolute; bottom:-8px; right:8px; pointer-events:none;">
+            <path d="M2 14 Q14 4 28 12 L24 8 M28 12 L26 18" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <div style="margin-top:8px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; text-align:center;">
+          <div style="border:1px solid var(--line-strong); padding:8px 4px; border-radius:3px;">
+            <div style="font-family:'Kalam',cursive; font-size:22px; color:var(--accent); font-weight:700; line-height:1;">17d</div>
+            <div style="font-size:8px; color:var(--ink-light); margin-top:3px;">avg expansion cycle</div>
+          </div>
+          <div style="border:1px solid var(--line-strong); padding:8px 4px; border-radius:3px;">
+            <div style="font-family:'Kalam',cursive; font-size:22px; color:var(--ink-light); font-weight:700; line-height:1;">62d</div>
+            <div style="font-size:8px; color:var(--ink-light); margin-top:3px;">via QBR cycle</div>
+          </div>
+          <div style="border:1px solid var(--accent); padding:8px 4px; border-radius:3px; background:var(--accent-light);">
+            <div style="font-family:'Kalam',cursive; font-size:22px; color:var(--accent); font-weight:700; line-height:1;">3.6x</div>
+            <div style="font-size:8px; color:var(--ink); margin-top:3px;">faster motion</div>
+          </div>
+        </div>
+
+        <div style="margin-top:8px; padding:8px 10px; background:rgba(80,60,30,.03); border:1px solid var(--line-strong); border-radius:4px;">
+          <div style="font-size:9px; color:var(--accent); text-transform:uppercase; letter-spacing:0.08em; font-weight:800; margin-bottom:5px; text-align:center;">WHAT CHANGED AFTER THIS AUDIT</div>
+          <div style="display:flex; flex-direction:column; gap:4px;">
+            <div style="display:flex; gap:6px; align-items:flex-start;">
+              <div style="color:var(--green); font-weight:900; font-size:11px; line-height:1.2;">+</div>
+              <div style="font-size:10px; color:var(--ink); line-height:1.25;"><strong>Daily AI expansion queue.</strong> Ranked accounts surfaced 7am.</div>
+            </div>
+            <div style="display:flex; gap:6px; align-items:flex-start;">
+              <div style="color:var(--green); font-weight:900; font-size:11px; line-height:1.2;">+</div>
+              <div style="font-size:10px; color:var(--ink); line-height:1.25;"><strong>21-day SLA.</strong> AE touch inside the window or escalate.</div>
+            </div>
+            <div style="display:flex; gap:6px; align-items:flex-start;">
+              <div style="color:var(--green); font-weight:900; font-size:11px; line-height:1.2;">+</div>
+              <div style="font-size:10px; color:var(--ink); line-height:1.25;"><strong>Pilot-first playbook.</strong> 30-day pilot beats annual upsell.</div>
+            </div>
+            <div style="display:flex; gap:6px; align-items:flex-start;">
+              <div style="color:var(--green); font-weight:900; font-size:11px; line-height:1.2;">+</div>
+              <div style="font-size:10px; color:var(--ink); line-height:1.25;"><strong>QBR retired.</strong> Weekly AI digest. 12x faster cycle.</div>
+            </div>
+          </div>
+          <div style="margin-top:6px; padding-top:6px; border-top:1px dotted var(--line-strong); text-align:center;">
+            <div class="hand accent" style="font-size:16px; font-weight:700;">NRR moved 108% to 131%</div>
+            <div style="font-size:9px; color:var(--ink); margin-top:1px;">in 2 quarters. Same base. Same team.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- WORKFLOW SECTION -->
+  <div class="workflow-section">
+    <div class="workflow-title">The 5-Step AI Expansion Audit Workflow</div>
+    <div style="font-size:10px; color:var(--ink-light); margin-bottom:6px;">Run it on your install base today. Get a ranked expansion queue tomorrow.</div>
+
+    <div class="workflow-track">
+      <div class="wf-step">
+        <div class="wf-time">Step 1</div>
+        <div class="wf-box">
+          <div class="n">1</div>
+          <h4>Pipe<br>Usage Data</h4>
+          <p>Product + CRM</p>
+        </div>
+      </div>
+      <div class="wf-arrow">&#8594;</div>
+      <div class="wf-step">
+        <div class="wf-time">Step 2</div>
+        <div class="wf-box">
+          <div class="n">2</div>
+          <h4>AI Tags<br>6 Signals</h4>
+          <p>Per account, daily</p>
+        </div>
+      </div>
+      <div class="wf-arrow">&#8594;</div>
+      <div class="wf-step">
+        <div class="wf-time">Step 3</div>
+        <div class="wf-box">
+          <div class="n">3</div>
+          <h4>Rank<br>By Weight</h4>
+          <p>Top 20 surfaced</p>
+        </div>
+      </div>
+      <div class="wf-arrow">&#8594;</div>
+      <div class="wf-step">
+        <div class="wf-time">Step 4</div>
+        <div class="wf-box">
+          <div class="n">4</div>
+          <h4>Route to<br>CSM + AE</h4>
+          <p>Joint motion</p>
+        </div>
+      </div>
+      <div class="wf-arrow">&#8594;</div>
+      <div class="wf-step">
+        <div class="wf-time">Step 5</div>
+        <div class="wf-box">
+          <div class="n">5</div>
+          <h4>Pilot<br>Offer Out</h4>
+          <p>Inside 21 days</p>
+        </div>
+      </div>
+      <div class="wf-arrow" style="margin:0 8px;">&#8594;</div>
+
+      <div class="wf-final" style="background:#14110d; border:1px dashed var(--accent);">
+        <h4 style="color:#ffb277;">STOP<br>WAITING<br>FOR QBR.</h4>
+        <p style="font-family:ui-monospace; color:#e8dfc8;">Signal, not<br>schedule.</p>
+        <div class="tape top-center" style="width:40px; top:-12px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM 3 COLUMNS -->
+  <div class="grid-bottom">
+
+    <div class="box">
+      <h2>TRACK THESE INSTEAD</h2>
+      <p style="font-size:10px; margin-bottom:8px; font-weight:600; color:var(--ink);">Replace "account health score" with real behavior signals:</p>
+      <div class="check-item"><div class="c">+</div><div class="text"><strong style="color:var(--ink);">7-day usage delta per user</strong><br>(Spikes show intent before words)</div></div>
+      <div class="check-item"><div class="c">+</div><div class="text"><strong style="color:var(--ink);">New seats by department</strong><br>(Lateral expansion is the easiest sell)</div></div>
+      <div class="check-item"><div class="c">+</div><div class="text"><strong style="color:var(--ink);">Champion title + role changes</strong><br>(Promotion = bigger budget access)</div></div>
+      <div class="check-item"><div class="c">+</div><div class="text"><strong style="color:var(--ink);">Off-cycle legal or procurement touches</strong><br>(Something is being prepared)</div></div>
+      <div style="background:var(--yellow); padding:6px; font-size:9px; margin-top:6px; font-weight:700; border:1px solid var(--yellow-border); color:var(--accent); text-align:center;">
+        38% of your install base has at least one signal today.<br>You just need to look.
+      </div>
+    </div>
+
+    <div class="box">
+      <h2 style="color:var(--red);">5 EXPANSION MISTAKES</h2>
+      <div class="mistake-item"><div class="x">x</div><div class="text"><strong style="color:var(--ink);">Treating expansion as a CSM-only motion</strong><br>(Joint with AE converts 2.4x better)</div></div>
+      <div class="mistake-item"><div class="x">x</div><div class="text"><strong style="color:var(--ink);">Waiting for QBR to read signals</strong><br>(Window closes in 21 days, not 90)</div></div>
+      <div class="mistake-item"><div class="x">x</div><div class="text"><strong style="color:var(--ink);">Pitching a full annual upsell first</strong><br>(Pilot-first converts 73% to full inside 60d)</div></div>
+      <div class="mistake-item"><div class="x">x</div><div class="text"><strong style="color:var(--ink);">Relying on NPS as the health signal</strong><br>(NPS lags usage by weeks)</div></div>
+      <div class="mistake-item"><div class="x">x</div><div class="text"><strong style="color:var(--ink);">Single-threading the champion</strong><br>(Solo expansions stall 3x more often)</div></div>
+    </div>
+
+    <div class="col" style="gap:10px;">
+      <div class="box">
+        <h2>THE FIX</h2>
+        <p style="font-size:11px; line-height:1.5;">Stop running expansion on a quarterly clock. <span class="bold">Run it on a daily signal queue.</span> AI watches every account. Humans run the play.</p>
+        <div style="background:rgba(80,60,30,.04); padding:8px; font-size:10px; margin-top:8px; border:1px solid var(--line-strong); text-align:center;">
+          $847K of expansion was already<br>inside the base. <span style="color:var(--accent); font-weight:800;">AI made it visible.</span>
+        </div>
+      </div>
+
+      <div style="text-align:center; flex:1; display:flex; flex-direction:column; justify-content:center; gap:8px;">
+        <div class="hand" style="font-size:16px; color:var(--ink-light); text-align:center;">Run this on your install<br>base this quarter.</div>
+        <div style="display:flex; justify-content:center;">
+          <div class="cta-pill">COMMENT "EXPAND"</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer" style="margin-top: auto; border-top: 1px dashed rgba(199,93,53,0.3); padding-top: 16px; display: flex; align-items: center; justify-content: space-between;">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; color: rgba(0,0,0,0.5); text-transform: uppercase; display: flex; align-items: center; gap: 10px;">
+      <img src="https://app.51ultron.com/favicon.ico" alt="Ultron" style="width: 24px; height: 24px; object-fit: contain;">
+      <strong style="color: #1a1a1a;">ULTRON OS</strong> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure
+    </div>
+    <div style="font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 800; color: #1a1a1a; letter-spacing: -0.5px;">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

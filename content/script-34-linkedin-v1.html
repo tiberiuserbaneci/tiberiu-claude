@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 34 · Discovery Question Map · v1</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  body{background:#f4ede0;margin:0;padding:24px 0}
+  .scaler{display:flex;justify-content:center;align-items:flex-start}
+  .scaler>.poster{transform-origin:top center;transform:scale(calc(min(100vw / 1130, (100vh - 48px) / 1510)))}
+  .poster{width:1080px;height:1450px;background:var(--ink-cream-50);position:relative;overflow:hidden;box-sizing:border-box}
+  .mono{font-family:'JetBrains Mono',monospace}
+  .fraunces{font-family:'Fraunces',Georgia,serif;font-feature-settings:'ss01' on}
+  .accent{color:var(--accent-dark)}
+
+  .obj-row{
+    display:grid;grid-template-columns:38px 1fr 1fr 70px;gap:14px;align-items:center;
+    padding:11px 14px;border-radius:6px;background:#FFFFFF;border:1px solid var(--ink-cream-200);
+  }
+  .obj-row.miss{background:rgba(192,57,49,0.05);border-left:3px solid #c0392b}
+  .obj-row.catch{background:rgba(22,163,74,0.05);border-left:3px solid #16a34a}
+  .badge-miss{
+    display:inline-block;padding:2px 7px;border-radius:4px;
+    background:rgba(192,57,49,0.12);color:#c0392b;
+    font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:800;letter-spacing:.10em;
+  }
+  .badge-catch{
+    display:inline-block;padding:2px 7px;border-radius:4px;
+    background:rgba(22,163,74,0.12);color:#16a34a;
+    font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:800;letter-spacing:.10em;
+  }
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="poster">
+
+  <!-- HEADER -->
+  <div style="position:absolute;top:0;left:40px;right:40px;height:44px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--ink-cream-200)">
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(0,0,0,0.4)">FOUNDER GTM · DISCOVERY OPS · OBJECTION MAP · ULTRON OS</span>
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(0,0,0,0.3)">NO. 34 · 7 OBJECTIONS · 38 CALLS</span>
+  </div>
+
+  <!-- HERO -->
+  <div style="position:absolute;top:60px;left:40px;right:40px">
+    <div class="mono accent" style="font-size:11px;font-weight:800;letter-spacing:.20em;margin-bottom:14px">38 DISCOVERY CALLS · 7 OBJECTIONS MAPPED · 1 AI INTERVIEWER</div>
+    <div class="fraunces" style="font-weight:900;font-size:74px;line-height:0.90;letter-spacing:-2.4px;color:var(--ink-black);margin-bottom:14px">Your discovery script misses <span class="accent" style="font-style:italic">4 of 7</span> objections.</div>
+    <div class="fraunces" style="font-size:26px;font-weight:700;line-height:1.08;letter-spacing:-0.5px;color:var(--ink-gray-600)">Claude writes the questions that catch all 7 before pricing comes up.</div>
+  </div>
+
+  <!-- BIGSTAT -->
+  <div style="position:absolute;top:296px;left:40px;right:40px;height:68px;background:#FFFFFF;border:1px solid var(--ink-cream-200);border-radius:var(--radius-md);display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden">
+    <div style="padding:10px 18px;display:flex;flex-direction:column;gap:2px;border-right:1px solid var(--ink-cream-200)">
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--ink-gray-500);text-transform:uppercase">CALLS REVIEWED</div>
+      <div class="fraunces" style="font-size:26px;font-weight:900;line-height:1;letter-spacing:-0.8px;color:var(--ink-black)">38</div>
+    </div>
+    <div style="padding:10px 18px;display:flex;flex-direction:column;gap:2px;border-right:1px solid var(--ink-cream-200)">
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--ink-gray-500);text-transform:uppercase">OBJ MISSED</div>
+      <div class="fraunces" style="font-size:26px;font-weight:900;line-height:1;letter-spacing:-0.8px;color:#c0392b">4 / 7</div>
+    </div>
+    <div style="padding:10px 18px;display:flex;flex-direction:column;gap:2px;border-right:1px solid var(--ink-cream-200)">
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--accent-dark);text-transform:uppercase">AI CATCHES</div>
+      <div class="fraunces accent" style="font-size:26px;font-weight:900;line-height:1;letter-spacing:-0.8px">7 / 7</div>
+    </div>
+    <div style="padding:10px 18px;display:flex;flex-direction:column;gap:2px">
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--ink-gray-500);text-transform:uppercase">WIN UPLIFT</div>
+      <div class="fraunces" style="font-size:26px;font-weight:900;line-height:1;letter-spacing:-0.8px;color:#16a34a">+42%</div>
+    </div>
+  </div>
+
+  <!-- FIG LABEL -->
+  <div style="position:absolute;top:386px;left:40px;right:40px;display:flex;align-items:center;justify-content:space-between">
+    <div>
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.18em;color:var(--ink-gray-500);margin-bottom:3px">FIG.01 · THE 7 OBJECTIONS · WHAT YOUR SCRIPT ASKS · WHAT CLAUDE ASKS</div>
+      <div class="fraunces" style="font-size:22px;font-weight:900;letter-spacing:-0.5px;color:var(--ink-black)">Your script catches budget, timing, fit. It misses the 4 that kill the deal in week 3.</div>
+    </div>
+  </div>
+
+  <!-- 7 OBJECTION ROWS -->
+  <div style="position:absolute;top:478px;left:40px;right:40px;display:flex;flex-direction:column;gap:6px">
+
+    <!-- header -->
+    <div style="display:grid;grid-template-columns:38px 1fr 1fr 70px;gap:14px;padding:0 14px;margin-bottom:2px">
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">#</div>
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">YOUR SCRIPT ASKS</div>
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">CLAUDE ASKS</div>
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500);text-align:center">STATUS</div>
+    </div>
+
+    <!-- 01 BUDGET - caught -->
+    <div class="obj-row catch">
+      <div style="display:flex;align-items:center;gap:6px"><span class="mono" style="font-size:9px;font-weight:800;color:var(--ink-black)">01</span></div>
+      <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--ink-black)">"What is your budget for this?"</div>
+      <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--ink-black)">"What did you spend on this last year?"</div>
+      <div style="text-align:center"><span class="badge-catch">CAUGHT</span></div>
+    </div>
+
+    <!-- 02 TIMING - caught -->
+    <div class="obj-row catch">
+      <div style="display:flex;align-items:center;gap:6px"><span class="mono" style="font-size:9px;font-weight:800;color:var(--ink-black)">02</span></div>
+      <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--ink-black)">"When do you want to start?"</div>
+      <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--ink-black)">"What happens in Q3 if this is not solved?"</div>
+      <div style="text-align:center"><span class="badge-catch">CAUGHT</span></div>
+    </div>
+
+    <!-- 03 FIT - caught -->
+    <div class="obj-row catch">
+      <div style="display:flex;align-items:center;gap:6px"><span class="mono" style="font-size:9px;font-weight:800;color:var(--ink-black)">03</span></div>
+      <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--ink-black)">"What is your current setup?"</div>
+      <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--ink-black)">"Walk me through last Tuesday's workflow."</div>
+      <div style="text-align:center"><span class="badge-catch">CAUGHT</span></div>
+    </div>
+
+    <!-- 04 CHAMPION - MISSED -->
+    <div class="obj-row miss">
+      <div style="display:flex;align-items:center;gap:6px"><span class="mono" style="font-size:9px;font-weight:800;color:#c0392b">04</span></div>
+      <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:rgba(0,0,0,0.4);font-style:italic">(not asked)</div>
+      <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--ink-black)">"Who has rolled out a tool like this before, here?"</div>
+      <div style="text-align:center"><span class="badge-miss">MISSED</span></div>
+    </div>
+
+    <!-- 05 INERTIA - MISSED -->
+    <div class="obj-row miss">
+      <div style="display:flex;align-items:center;gap:6px"><span class="mono" style="font-size:9px;font-weight:800;color:#c0392b">05</span></div>
+      <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:rgba(0,0,0,0.4);font-style:italic">(not asked)</div>
+      <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--ink-black)">"What stopped you from solving this last quarter?"</div>
+      <div style="text-align:center"><span class="badge-miss">MISSED</span></div>
+    </div>
+
+    <!-- 06 INTEGRATION - MISSED -->
+    <div class="obj-row miss">
+      <div style="display:flex;align-items:center;gap:6px"><span class="mono" style="font-size:9px;font-weight:800;color:#c0392b">06</span></div>
+      <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:rgba(0,0,0,0.4);font-style:italic">(not asked)</div>
+      <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--ink-black)">"What system did your last rollout break?"</div>
+      <div style="text-align:center"><span class="badge-miss">MISSED</span></div>
+    </div>
+
+    <!-- 07 RISK - MISSED -->
+    <div class="obj-row miss">
+      <div style="display:flex;align-items:center;gap:6px"><span class="mono" style="font-size:9px;font-weight:800;color:#c0392b">07</span></div>
+      <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:rgba(0,0,0,0.4);font-style:italic">(not asked)</div>
+      <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--ink-black)">"If this fails in 90 days, who takes the hit?"</div>
+      <div style="text-align:center"><span class="badge-miss">MISSED</span></div>
+    </div>
+
+  </div>
+
+  <!-- INSIGHT -->
+  <div style="position:absolute;top:990px;left:40px;right:40px;background:rgba(199,93,53,0.06);border:1px solid rgba(199,93,53,0.20);border-radius:10px;padding:16px 22px">
+    <div class="fraunces" style="font-size:24px;font-weight:900;line-height:1.05;letter-spacing:-0.6px;color:var(--ink-black);margin-bottom:6px">The 4 missed objections do not come up at <span class="accent" style="font-style:italic">disco</span>. They come up at <span class="accent" style="font-style:italic">contract</span>.</div>
+    <div style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;color:var(--ink-gray-600);line-height:1.45">Champion, inertia, integration, risk. Every deal that died in legal had at least one of these unaddressed at disco. Claude asks them in minute 8, before pricing.</div>
+  </div>
+
+  <!-- OUTCOME -->
+  <div style="position:absolute;top:1130px;left:40px;right:40px;height:56px;background:#FFFFFF;border:1px solid var(--ink-cream-200);border-radius:8px;display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden">
+    <div style="padding:0 16px;display:flex;flex-direction:column;justify-content:center;gap:2px;border-right:1px solid var(--ink-cream-200)">
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">BEFORE</div>
+      <div class="fraunces" style="font-size:22px;font-weight:900;line-height:1;letter-spacing:-0.5px;color:var(--ink-gray-600)">19% close</div>
+    </div>
+    <div style="padding:0 16px;display:flex;flex-direction:column;justify-content:center;gap:2px;border-right:1px solid var(--ink-cream-200)">
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">AFTER</div>
+      <div class="fraunces accent" style="font-size:22px;font-weight:900;line-height:1;letter-spacing:-0.5px">27% close</div>
+    </div>
+    <div style="padding:0 16px;display:flex;flex-direction:column;justify-content:center;gap:2px;border-right:1px solid var(--ink-cream-200)">
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">LEGAL STALL</div>
+      <div class="fraunces" style="font-size:22px;font-weight:900;line-height:1;letter-spacing:-0.5px;color:var(--ink-black)">-71%</div>
+    </div>
+    <div style="padding:0 16px;display:flex;flex-direction:column;justify-content:center;gap:2px">
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">AI WRITE TIME</div>
+      <div class="fraunces accent" style="font-size:22px;font-weight:900;line-height:1;letter-spacing:-0.5px">9 min</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="position:absolute;top:1208px;left:40px;right:40px;background:#FFFFFF;border:1px solid var(--accent-border);border-radius:12px;padding:18px 24px;box-sizing:border-box">
+    <div class="mono accent" style="font-size:9px;font-weight:800;letter-spacing:.20em;margin-bottom:8px">WANT THE 7-OBJECTION SCRIPT?</div>
+    <div class="fraunces" style="font-size:30px;font-weight:900;line-height:0.95;letter-spacing:-1px;color:var(--ink-black);margin-bottom:10px">Get the <span class="accent" style="font-style:italic">Claude workflow</span> that writes discovery questions that catch all 7.</div>
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <div style="background:var(--accent-dark);color:#fff;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:800;letter-spacing:.18em;padding:8px 16px;border-radius:6px">COMMENT DISCOVERY</div>
+      <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;color:var(--ink-gray-500)">and I will send you the exact Claude workflow I used.</div>
+    </div>
+  </div>
+
+  <!-- MICRO -->
+  <div style="position:absolute;top:1362px;left:40px;right:40px;height:30px;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:22px">
+      <div style="display:flex;align-items:center;gap:6px"><span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">SCRIPT MISS</span><span class="fraunces accent" style="font-size:13px;font-weight:900;letter-spacing:-0.3px">4 / 7</span></div>
+      <div style="display:flex;align-items:center;gap:6px"><span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">AI CATCH</span><span class="fraunces" style="font-size:13px;font-weight:900;color:var(--ink-black);letter-spacing:-0.3px">7 / 7</span></div>
+      <div style="display:flex;align-items:center;gap:6px"><span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">CLOSE</span><span class="fraunces accent" style="font-size:13px;font-weight:900;letter-spacing:-0.3px">+42%</span></div>
+    </div>
+    <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.12em;color:var(--ink-gray-400)">ULTRON OS · SCRIPT 34</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="position:absolute;top:1396px;left:40px;right:40px;border-top:1px dashed rgba(199,93,53,0.3);padding-top:10px;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img src="ultron-logo.png" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0"
+        onerror="this.style.cssText='width:28px;height:28px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 72% 22%,rgba(255,140,80,.95) 0%,rgba(220,80,30,.3) 22%,transparent 36%),radial-gradient(circle at 22% 76%,rgba(55,170,255,.95) 0%,rgba(30,130,220,.3) 22%,transparent 38%),radial-gradient(circle at 38% 38%,rgba(30,30,50,1) 0%,#060810 55%,#000 100%)'">
+      <div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#1a1a1a;text-transform:uppercase;letter-spacing:0.06em"><strong>ULTRON OS</strong> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure</span>
+        <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.12em;color:var(--ink-gray-500)">AI GTM OPERATOR</div>
+      </div>
+    </div>
+    <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:800;color:#1a1a1a;letter-spacing:-0.5px">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 33 · RIVAL · v3 (Dossier)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700;1,9..144,900&family=Inter+Tight:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Radix orange light */
+    --o-1:#fefcfb; --o-2:#fff7ed; --o-3:#ffefd6; --o-4:#ffdfb5; --o-5:#ffd19a;
+    --o-6:#ffc182; --o-7:#f5ae73; --o-8:#ec9455;
+    --o-9:#f76b15; --o-10:#ef5f00; --o-11:#cc4e00; --o-12:#582d1d;
+    --s-3:#f1f0ef; --s-4:#e9e8e6; --s-6:#dad9d6; --s-8:#bcbbb5;
+    --s-9:#8d8d86; --s-11:#63635e; --s-12:#21201c;
+    --bad:#c0392b;
+
+    --bg:         #f4ede0;
+    --bg-card:    #fffaf0;
+    --bg-paper:   #fbf3e1;
+    --ink:        var(--s-12);
+    --ink-mute:   var(--s-11);
+    --ink-soft:   var(--s-9);
+    --accent:     var(--o-9);
+    --accent-dk:  var(--o-11);
+    --accent-mid: var(--o-10);
+    --stamp:      var(--bad);
+    --rule:       rgba(33,32,28,.10);
+    --rule-strong:rgba(33,32,28,.18);
+    --dot:        rgba(204,78,0,.06);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:24px 0;background:#e6dcc6;font-family:'Inter Tight',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .scaler{display:flex;justify-content:center;align-items:flex-start}
+  .scaler>.canvas{transform-origin:top center;transform:scale(calc(min(100vw / 1130, (100vh - 48px) / 1510)))}
+
+  .canvas{
+    width:1080px;height:1450px;position:relative;overflow:hidden;
+    background:var(--bg);
+    padding:28px 40px 20px 40px;
+    display:flex;flex-direction:column;
+  }
+  .canvas::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:
+      radial-gradient(900px 600px at 92% 0%, rgba(247,107,21,.08), transparent 62%),
+      radial-gradient(700px 500px at -5% 100%, rgba(236,148,85,.06), transparent 62%),
+      radial-gradient(var(--dot) 1.3px, transparent 1.4px) 0 0 / 24px 24px;
+  }
+  .canvas::after{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.10;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .42 0 0 0 0 .28 0 0 0 0 .12 0 0 0 .7 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  .canvas > *{position:relative;z-index:1}
+
+  .mono{font-family:'JetBrains Mono',monospace;font-weight:700;text-transform:uppercase;letter-spacing:.18em}
+  .serif{font-family:'Fraunces',serif}
+
+  /* ── MASTHEAD ──────────────────────────────────────────────── */
+  .mast{
+    flex-shrink:0;display:flex;align-items:center;justify-content:space-between;
+    padding-bottom:9px;border-bottom:1px solid var(--rule-strong);margin-bottom:16px;
+  }
+  .mast-kw{
+    font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;
+    color:var(--ink-soft);letter-spacing:.20em;text-transform:uppercase;white-space:nowrap;
+  }
+  .mast-kw .sep{color:var(--accent);margin:0 7px;opacity:.85}
+  .mast-r{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;color:var(--ink-soft);letter-spacing:.18em;text-transform:uppercase}
+
+  /* ── HERO · 412 dominant ───────────────────────────────────── */
+  .hero{
+    flex-shrink:0;display:grid;grid-template-columns:auto 1fr;gap:32px;
+    align-items:flex-start;margin-bottom:18px;
+  }
+  .hero-num{
+    font-family:'Fraunces',serif;font-style:italic;font-weight:900;
+    font-size:240px;line-height:.82;color:var(--accent);
+    letter-spacing:-6px;margin-top:-10px;
+    position:relative;flex-shrink:0;
+    text-shadow:0 6px 0 rgba(247,107,21,.08);
+  }
+  .hero-num::after{
+    content:"PUBLIC DATA POINTS";position:absolute;left:4px;bottom:-22px;
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.30em;font-weight:700;
+    color:var(--ink-mute);white-space:nowrap;
+  }
+  .hero-r{padding-top:8px;min-width:0}
+  .kicker{
+    font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--accent-dk);margin-bottom:12px;display:flex;align-items:center;gap:10px;
+  }
+  .kicker::before{content:"";width:22px;height:1px;background:var(--accent)}
+  .head{
+    font-family:'Fraunces',serif;font-weight:900;
+    font-size:46px;line-height:.95;letter-spacing:-1.6px;color:var(--ink);margin-bottom:12px;
+  }
+  .head .ai{font-style:italic;color:var(--accent)}
+  .dek{
+    font-family:'Inter Tight',sans-serif;font-weight:600;font-size:15px;line-height:1.46;
+    color:var(--ink-mute);max-width:540px;
+    border-left:3px solid var(--accent);padding-left:14px;
+  }
+
+  /* ── DOSSIER · the one dominant composition ────────────────── */
+  .dossier{
+    flex-shrink:0;flex-grow:1;position:relative;
+    background:var(--bg-card);
+    border:1px solid var(--rule-strong);
+    margin-bottom:14px;
+    box-shadow:0 12px 28px -10px rgba(33,32,28,.10);
+    display:flex;flex-direction:column;
+  }
+  /* file folder tab */
+  .doss-tab{
+    position:absolute;top:-15px;left:24px;background:var(--ink);color:var(--o-2);
+    padding:5px 14px 5px 12px;
+    font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+    clip-path:polygon(0 0, 100% 0, calc(100% - 14px) 100%, 0 100%);
+  }
+  .doss-tab b{color:var(--accent)}
+  /* RECONSTRUCTED stamp top-right */
+  .doss-stamp{
+    position:absolute;top:18px;right:24px;
+    border:2.5px solid var(--stamp);color:var(--stamp);
+    padding:6px 12px 5px;
+    font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;
+    transform:rotate(-6deg);opacity:.85;
+  }
+  .doss-stamp::after{
+    content:attr(data-date);display:block;font-size:7.5px;letter-spacing:.18em;font-weight:700;
+    color:var(--stamp);opacity:.75;margin-top:3px;
+  }
+
+  .doss-grid{
+    flex:1;display:grid;grid-template-columns:1fr 1px 1.3fr;gap:0;
+    padding:34px 28px 22px;
+  }
+  .doss-divider{background:var(--rule-strong)}
+
+  /* LEFT PAGE · sources chart */
+  .doss-l{padding-right:22px;display:flex;flex-direction:column}
+  .doss-h{
+    font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--accent-dk);margin-bottom:6px;
+  }
+  .doss-sub{
+    font-family:'Fraunces',serif;font-weight:700;font-size:19px;line-height:1.1;letter-spacing:-.5px;color:var(--ink);margin-bottom:18px;
+  }
+  .doss-sub .em{font-style:italic;color:var(--accent)}
+  .src-list{display:flex;flex-direction:column;gap:18px;flex:1;justify-content:space-between}
+  .src-row{display:grid;grid-template-columns:64px 1fr 36px;align-items:center;gap:10px}
+  .src-icon{
+    width:30px;height:30px;border:1.5px solid var(--accent);color:var(--accent);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .src-icon svg{width:16px;height:16px}
+  .src-meta{display:flex;flex-direction:column;gap:1px}
+  .src-name{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute)}
+  .src-bar{height:6px;background:var(--s-4);position:relative;margin-top:5px}
+  .src-bar > i{position:absolute;left:0;top:0;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-mid));display:block}
+  .src-n{font-family:'Fraunces',serif;font-style:italic;font-weight:900;font-size:24px;line-height:1;letter-spacing:-.8px;color:var(--accent);text-align:right}
+
+  .src-total{
+    margin-top:14px;padding-top:10px;border-top:1px dashed var(--rule-strong);
+    display:flex;align-items:baseline;justify-content:space-between;
+    margin-bottom:18px;
+  }
+  .src-total-l{font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-mute)}
+  .src-total-v{font-family:'Fraunces',serif;font-style:italic;font-weight:900;font-size:28px;letter-spacing:-1px;color:var(--ink)}
+  .src-total-v .ac{color:var(--accent)}
+
+  /* SESSION MAP — fills left page */
+  .smap{border-top:1px solid var(--rule-strong);padding-top:14px;flex:1;display:flex;flex-direction:column}
+  .smap-h{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-dk);margin-bottom:12px}
+  .smap-list{display:flex;flex-direction:column;flex:1;justify-content:space-between}
+  .smap-row{display:grid;grid-template-columns:44px 1fr;gap:10px;padding:9px 0;border-bottom:1px dotted var(--rule);position:relative}
+  .smap-row:last-child{border-bottom:none}
+  .smap-row::before{
+    content:"";position:absolute;left:20px;top:100%;width:1px;height:100%;
+    background:repeating-linear-gradient(to bottom, var(--accent) 0px, var(--accent) 3px, transparent 3px, transparent 7px);
+    opacity:.35;pointer-events:none;
+  }
+  .smap-row:last-child::before{display:none}
+  .smap-t{font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.06em;color:var(--accent);padding-top:1px}
+  .smap-dot{width:8px;height:8px;background:var(--accent);position:absolute;left:17px;top:14px}
+  .smap-d{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:11px;line-height:1.42;color:var(--ink-mute)}
+
+  /* RIGHT PAGE · 4 play intel entries */
+  .doss-r{padding-left:24px;display:flex;flex-direction:column}
+  .doss-r-h{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px}
+  .doss-r-tag{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-dk)}
+  .doss-r-c{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
+  .play-list{display:flex;flex-direction:column;gap:0;flex:1;justify-content:space-between}
+  .play{
+    display:grid;grid-template-columns:42px 1fr 50px;gap:10px;align-items:stretch;
+    padding:10px 12px 10px 0;border-left:3px solid var(--accent);background:linear-gradient(90deg, rgba(247,107,21,.06), transparent 70%);
+  }
+  /* connector arrows between plays */
+  .play-arrow{
+    display:flex;align-items:center;gap:8px;padding:5px 0 5px 12px;
+  }
+  .play-arrow .pa-line{flex:1;height:1px;background:linear-gradient(90deg,var(--accent),transparent);opacity:.4}
+  .play-arrow .pa-icon{color:var(--accent);flex-shrink:0;display:flex;align-items:center}
+  .play-arrow .pa-icon svg{width:14px;height:14px}
+  .play-arrow .pa-lbl{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.18em;color:var(--ink-soft);text-transform:uppercase;white-space:nowrap}
+  .play-num{
+    font-family:'Fraunces',serif;font-style:italic;font-weight:900;font-size:34px;line-height:1;color:var(--accent);text-align:center;padding-top:2px;letter-spacing:-1px;
+  }
+  .play-body{display:flex;flex-direction:column;gap:2px;min-width:0}
+  .play-tag{font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.18em;color:var(--accent-dk);text-transform:uppercase}
+  .play-title{font-family:'Fraunces',serif;font-weight:700;font-size:14px;line-height:1.15;letter-spacing:-.3px;color:var(--ink)}
+  .play-q{font-family:'Fraunces',serif;font-style:italic;font-size:11.5px;line-height:1.35;color:var(--ink-mute);margin-top:3px}
+  .play-c{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:10.5px;line-height:1.32;color:var(--accent-dk);margin-top:5px;padding-top:5px;border-top:1px dotted var(--rule)}
+  .play-c::before{content:"COUNTER · ";font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.18em;color:var(--ink-soft)}
+  .play-freq{
+    font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.14em;color:var(--ink-soft);text-transform:uppercase;
+    background:var(--s-3);padding:2px 6px;align-self:flex-start;white-space:nowrap;
+  }
+
+  /* ── INSIGHT PULL ──────────────────────────────────────────── */
+  .pull{
+    flex-shrink:0;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:flex-start;
+    padding:14px 18px 14px 16px;background:var(--ink);color:var(--o-2);
+    margin-bottom:12px;position:relative;
+  }
+  .pull::before{content:"";position:absolute;left:-4px;top:-4px;right:-4px;bottom:-4px;border:1px solid var(--accent);pointer-events:none}
+  .pull-mark{font-family:'Fraunces',serif;font-style:italic;font-size:88px;line-height:.55;color:var(--accent);padding-top:5px}
+  .pull-body{padding-top:3px}
+  .pull-tag{font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.22em;color:var(--accent);text-transform:uppercase;margin-bottom:5px}
+  .pull-text{font-family:'Fraunces',serif;font-size:21px;line-height:1.22;color:var(--o-2);letter-spacing:-.3px}
+  .pull-text b{font-family:'Inter Tight',sans-serif;font-weight:800;font-style:normal;color:var(--accent)}
+
+  /* ── KPI STRIP ─────────────────────────────────────────────── */
+  .kpi{flex-shrink:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--rule-strong);border-bottom:1px solid var(--rule-strong);margin-bottom:10px}
+  .kpi-c{padding:9px 14px;border-right:1px solid var(--rule);display:flex;flex-direction:column;gap:2px}
+  .kpi-c:last-child{border-right:none}
+  .kpi-l{font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.18em;color:var(--ink-soft);text-transform:uppercase}
+  .kpi-v{font-family:'Fraunces',serif;font-style:italic;font-weight:900;font-size:28px;line-height:1;color:var(--ink);letter-spacing:-1px}
+  .kpi-v.ac{color:var(--accent)}
+  .kpi-sub{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-soft);text-transform:uppercase;margin-top:1px}
+
+  /* ── CTA ───────────────────────────────────────────────────── */
+  .cta{
+    flex-shrink:0;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;
+    background:var(--ink);color:var(--o-2);padding:13px 18px;margin-bottom:10px;position:relative;
+  }
+  .cta::before{content:"";position:absolute;left:-4px;top:-4px;right:-4px;bottom:-4px;border:1px solid var(--accent);pointer-events:none}
+  .cta-tag{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.22em;color:var(--accent);text-transform:uppercase;margin-bottom:4px}
+  .cta-d{font-family:'Fraunces',serif;font-weight:900;font-size:21px;line-height:1.04;letter-spacing:-.6px;color:var(--o-2)}
+  .cta-d .ai{font-style:italic;color:var(--accent)}
+  .cta-d .sm{display:block;font-family:'Inter Tight',sans-serif;font-weight:500;font-size:11px;color:rgba(255,247,237,.5);margin-top:4px;letter-spacing:0}
+  .cta-chip{background:var(--accent);color:var(--ink);font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:800;letter-spacing:.18em;padding:13px 16px;white-space:nowrap;text-transform:uppercase;display:flex;align-items:center;gap:8px}
+  .cta-chip svg{width:14px;height:14px}
+
+  /* ── FOOTER ────────────────────────────────────────────────── */
+  .ftr{flex-shrink:0;margin-top:auto;padding-top:9px;border-top:1px dashed var(--rule-strong);display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .ftr-l{display:flex;align-items:center;gap:10px}
+  .ftr-logo{width:28px;height:28px;border-radius:50%;flex-shrink:0}
+  .ftr-txt{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.06em;color:var(--ink-mute);text-transform:uppercase}
+  .ftr-url{font-family:'Fraunces',serif;font-weight:900;font-size:15px;letter-spacing:-.4px;color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="canvas">
+
+  <!-- MASTHEAD -->
+  <div class="mast">
+    <div class="mast-kw">AI OUTBOUND<span class="sep">·</span>COMPETITIVE INTEL<span class="sep">·</span>FOUNDER GTM<span class="sep">·</span>AI AGENTS<span class="sep">·</span>SALES PLAYBOOK<span class="sep">·</span>SIGNAL<span class="sep">·</span>ULTRON OS</div>
+    <div class="mast-r">FILE 33-A · CONFIDENTIAL</div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-num">412</div>
+    <div class="hero-r">
+      <div class="kicker">Competitive intelligence · 90 minutes · 1 rival</div>
+      <div class="head"><span class="ai">Claude</span> reverse-engineered a rival's entire sales playbook from public data.</div>
+      <div class="dek">Blog posts, case studies, G2 reviews, job listings. The motion was published in pieces across the open web. It took 90 minutes to assemble. Cost: $0.</div>
+    </div>
+  </div>
+
+  <!-- DOSSIER · dominant composition -->
+  <div class="dossier">
+    <div class="doss-tab">FILE 33-A · <b>RIVAL PLAYBOOK</b></div>
+    <div class="doss-stamp" data-date="2026 / 05 / 24">RECONSTRUCTED</div>
+
+    <div class="doss-grid">
+
+      <!-- LEFT PAGE · sources -->
+      <div class="doss-l">
+        <div class="doss-h">SOURCE BREAKDOWN</div>
+        <div class="doss-sub">412 public signals, <span class="em">parsed in one session.</span></div>
+
+        <div class="src-list">
+          <div class="src-row">
+            <div class="src-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></div>
+            <div class="src-meta">
+              <div class="src-name">LinkedIn posts</div>
+              <div class="src-bar"><i style="width:100%"></i></div>
+            </div>
+            <div class="src-n">142</div>
+          </div>
+
+          <div class="src-row">
+            <div class="src-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 9.5 8 10 4.5-.5 8-5 8-10V6z"/><path d="m9 12 2 2 4-4"/></svg></div>
+            <div class="src-meta">
+              <div class="src-name">G2 reviews</div>
+              <div class="src-bar"><i style="width:61%"></i></div>
+            </div>
+            <div class="src-n">87</div>
+          </div>
+
+          <div class="src-row">
+            <div class="src-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+            <div class="src-meta">
+              <div class="src-name">Fwd emails</div>
+              <div class="src-bar"><i style="width:45%"></i></div>
+            </div>
+            <div class="src-n">64</div>
+          </div>
+
+          <div class="src-row">
+            <div class="src-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+            <div class="src-meta">
+              <div class="src-name">Site changes</div>
+              <div class="src-bar"><i style="width:50%"></i></div>
+            </div>
+            <div class="src-n">71</div>
+          </div>
+
+          <div class="src-row">
+            <div class="src-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+            <div class="src-meta">
+              <div class="src-name">Job listings</div>
+              <div class="src-bar"><i style="width:34%"></i></div>
+            </div>
+            <div class="src-n">48</div>
+          </div>
+        </div>
+
+        <div class="src-total">
+          <div class="src-total-l">Cost / intel agency quote</div>
+          <div class="src-total-v"><span class="ac">$0</span>&nbsp;/&nbsp;$15K</div>
+        </div>
+
+        <!-- SESSION MAP -->
+        <div class="smap">
+          <div class="smap-h">90-MIN SESSION MAP</div>
+          <div class="smap-list">
+            <div class="smap-row">
+              <div class="smap-t">00:00</div>
+              <div class="smap-d"><strong style="color:var(--accent-dk)">SOURCE.</strong> Claude reads all 5 channels simultaneously via web access. No manual copy-paste.</div>
+            </div>
+            <div class="smap-row">
+              <div class="smap-t">00:22</div>
+              <div class="smap-d"><strong style="color:var(--accent-dk)">RECONSTRUCT.</strong> ICP profile, outbound tone, proof mix, objection patterns, close cadence.</div>
+            </div>
+            <div class="smap-row">
+              <div class="smap-t">01:05</div>
+              <div class="smap-d"><strong style="color:var(--accent-dk)">GAP ANALYSIS.</strong> Segments they skip. Use cases they never prove. Objections they dodge on the FAQ.</div>
+            </div>
+            <div class="smap-row">
+              <div class="smap-t">01:40</div>
+              <div class="smap-d"><strong style="color:var(--accent-dk)">COUNTER MAP.</strong> 5 specific statements that oppose their known public claims. Ready to deploy.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="doss-divider"></div>
+
+      <!-- RIGHT PAGE · 4 plays -->
+      <div class="doss-r">
+        <div class="doss-r-h">
+          <div class="doss-r-tag">PLAYBOOK · RECONSTRUCTED</div>
+          <div class="doss-r-c">4 plays · 119 uses · 30 days</div>
+        </div>
+
+        <div class="play-list">
+
+          <div class="play">
+            <div class="play-num">01</div>
+            <div class="play-body">
+              <div class="play-tag">OUTBOUND HOOK</div>
+              <div class="play-title">Funding trigger + 11-word DM</div>
+              <div class="play-q">"Saw you closed Series A. First 90 days are when teams burn budget on the wrong stack."</div>
+              <div class="play-c">Hit same prospects 24h earlier with the implementation cost they did not mention.</div>
+            </div>
+            <div class="play-freq">47×</div>
+          </div>
+
+          <div class="play-arrow">
+            <div class="pa-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m5 12 7 7 7-7"/></svg></div>
+            <div class="pa-lbl">prospect enters deal flow</div>
+            <div class="pa-line"></div>
+          </div>
+
+          <div class="play">
+            <div class="play-num">02</div>
+            <div class="play-body">
+              <div class="play-tag">PRICING TRAP</div>
+              <div class="play-title">Anchor $34K, drop to $19K</div>
+              <div class="play-q">"Most clients land at $34K. For Series A teams under 50 seats we run a $19K Founder tier."</div>
+              <div class="play-c">Lead with $19K outcome. No anchor games. 3 prospects switched in week 2.</div>
+            </div>
+            <div class="play-freq">23×</div>
+          </div>
+
+          <div class="play-arrow">
+            <div class="pa-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m5 12 7 7 7-7"/></svg></div>
+            <div class="pa-lbl">demo booked · pricing question raised</div>
+            <div class="pa-line"></div>
+          </div>
+
+          <div class="play">
+            <div class="play-num">03</div>
+            <div class="play-body">
+              <div class="play-tag">OBJECTION HANDLE</div>
+              <div class="play-title">"Build vs buy" reframe</div>
+              <div class="play-q">"We charge $19K. Your engineer at $180K plus 6 months. The math is the math."</div>
+              <div class="play-c">Skip the math. Ship a working agent in 48h with their own data. Speed beats ROI.</div>
+            </div>
+            <div class="play-freq">18×</div>
+          </div>
+
+          <div class="play-arrow">
+            <div class="pa-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m5 12 7 7 7-7"/></svg></div>
+            <div class="pa-lbl">objection cleared · quarter-end approaches</div>
+            <div class="pa-line"></div>
+          </div>
+
+          <div class="play">
+            <div class="play-num">04</div>
+            <div class="play-body">
+              <div class="play-tag">CLOSE NUDGE</div>
+              <div class="play-title">Quarter-end urgency, Monday AM</div>
+              <div class="play-q">"Founder tier is gone after this quarter. 4 seats left at $19K, then everyone at $34K."</div>
+              <div class="play-c">Weekly price ladder, not quarterly. Cadence beats scarcity.</div>
+            </div>
+            <div class="play-freq">31×</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSIGHT PULL -->
+  <div class="pull">
+    <div class="pull-mark">"</div>
+    <div class="pull-body">
+      <div class="pull-tag">THE FINDING</div>
+      <div class="pull-text">A competitor's playbook is not proprietary. It is <b>published on their blog, their job board, their G2 page.</b> The gap is the 90 minutes it takes to structure the question correctly for Claude.</div>
+    </div>
+  </div>
+
+  <!-- KPI STRIP -->
+  <div class="kpi">
+    <div class="kpi-c"><div class="kpi-l">Deals flipped</div><div class="kpi-v ac">7</div><div class="kpi-sub">competitor-switch</div></div>
+    <div class="kpi-c"><div class="kpi-l">Pipe won</div><div class="kpi-v">$184K</div><div class="kpi-sub">attributed 30 days</div></div>
+    <div class="kpi-c"><div class="kpi-l">Refresh cadence</div><div class="kpi-v ac">Weekly</div><div class="kpi-sub">8 min per run</div></div>
+    <div class="kpi-c"><div class="kpi-l">Intel cost</div><div class="kpi-v ac">$0</div><div class="kpi-sub">vs $15K agency</div></div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <div>
+      <div class="cta-tag">The rival reader</div>
+      <div class="cta-d">Get the <span class="ai">Claude</span> workflow that reconstructed this playbook in 90 minutes.
+        <span class="sm">Source collection, motion mapping, gap analysis, counter-positioning. One session.</span>
+      </div>
+    </div>
+    <div class="cta-chip">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+      COMMENT RIVAL
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="ftr">
+    <div class="ftr-l">
+      <img src="ultron-logo.png" class="ftr-logo"
+        onerror="this.style.cssText='width:28px;height:28px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 72% 22%,rgba(255,140,80,.95) 0%,rgba(220,80,30,.3) 22%,transparent 36%),radial-gradient(circle at 22% 76%,rgba(55,170,255,.95) 0%,rgba(30,130,220,.3) 22%,transparent 38%),radial-gradient(circle at 38% 38%,rgba(30,30,50,1) 0%,#060810 55%,#000 100%)'">
+      <div class="ftr-txt"><strong>ULTRON OS</strong> · founder · gtm · agent infrastructure</div>
+    </div>
+    <div class="ftr-url">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 18b · AI Competitor Intel · v6 · pure black editorial</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* BUDGET 1450 · PURE BLACK EDITORIAL · INTEL v6b
+     bg #000 · accent Claude #D97757 · Fraunces hero · aerated · NYT/Stripe Press vibe */
+  :root{
+    --bg:#000000;
+    --bg-soft:#0a0a0a;
+    --bg-cell:#0e0e0e;
+    --border:rgba(255,255,255,0.10);
+    --border-strong:rgba(255,255,255,0.18);
+    --text:#FFFFFF;
+    --text-dim:rgba(255,255,255,0.62);
+    --text-mute:rgba(255,255,255,0.38);
+    --accent:#D97757;
+    --accent-soft:rgba(217,119,87,0.10);
+    --accent-border:rgba(217,119,87,0.45);
+  }
+  body{background:#000000;margin:0;padding:0}
+  .scaler{display:flex;justify-content:center}
+  .poster{width:1080px;height:1450px;background:var(--bg);position:relative;overflow:hidden;box-sizing:border-box;color:var(--text)}
+  .mono{font-family:'JetBrains Mono',monospace}
+  .fraunces{font-family:'Fraunces',Georgia,serif;font-feature-settings:'ss01' on}
+  .accent{color:var(--accent)}
+  .micro{font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;font-family:'JetBrains Mono',monospace}
+  .pulse{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px rgba(217,119,87,0.6)}
+  .stat-cell{padding:14px 22px;display:flex;flex-direction:column;gap:3px}
+  .stat-k{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.2em;color:var(--text-mute);text-transform:uppercase}
+  .stat-v{font-family:'Fraunces',Georgia,serif;font-size:32px;font-weight:900;line-height:1;letter-spacing:-1.2px;color:var(--text)}
+  .stat-v.hot{color:var(--accent)}
+  .grid-row{display:grid;grid-template-columns:148px repeat(5,1fr) 88px;align-items:center;gap:0;height:24px}
+  .grid-row + .grid-row{margin-top:4px}
+  .cell{height:18px;margin:0 4px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.08em;border-radius:1px}
+  .q{background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.2)}
+  .s{background:rgba(217,119,87,0.18);color:var(--accent);border:1px solid rgba(217,119,87,0.3)}
+  .h{background:var(--accent);color:#000;font-weight:800;box-shadow:0 0 12px rgba(217,119,87,0.45)}
+  .name{font-family:'Fraunces',Georgia,serif;font-size:13px;font-weight:700;color:var(--text);letter-spacing:-0.2px}
+  .score{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:800;text-align:right;padding-right:4px;color:var(--text-dim);font-variant-numeric:tabular-nums}
+  .score.hi{color:var(--accent)}
+  .digest{background:var(--bg-soft);border:1px solid var(--border);padding:14px 16px;display:flex;flex-direction:column;gap:5px;box-sizing:border-box;position:relative}
+  .digest.hot{background:linear-gradient(135deg,rgba(217,119,87,0.10),var(--bg-soft));border:1px solid var(--accent-border)}
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="poster">
+
+  <!-- HEADER -->
+  <div style="position:absolute;top:0;left:40px;right:40px;height:48px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(232,223,212,.42)">FOUNDER GTM · COMPETITIVE INTEL · DAILY AI DIGEST · MARKET SIGNALS · ULTRON OS</span>
+  </div>
+
+  <!-- HERO -->
+  <div style="position:absolute;top:64px;left:40px;right:40px">
+    <div class="micro" style="margin-bottom:16px;color:var(--accent)">COMPETITIVE INTEL · AI MONITORING · 14 COMPETITORS</div>
+    <div class="fraunces" style="font-weight:900;font-size:72px;line-height:0.92;letter-spacing:-2.5px;color:var(--text);margin-bottom:8px"><span class="accent" style="font-style:italic">AI</span> reads 14 competitors daily.</div>
+    <div class="fraunces" style="font-weight:400;font-style:italic;font-size:38px;line-height:1.0;letter-spacing:-1px;color:var(--text-dim);margin-bottom:18px">I read <span class="fraunces" style="color:var(--text);font-weight:900;font-style:normal">4 lines</span> at breakfast and ship.</div>
+    <div style="font-size:15px;line-height:1.55;color:var(--text-dim);max-width:880px;font-weight:400">5 signal lanes per company: product, pricing, hires, funding, outage. <span style="color:var(--text);font-weight:600">42 sources scanned overnight. 187 deltas extracted. 4 surfaced.</span> The rest is logged for later.</div>
+  </div>
+
+  <!-- BIGSTAT -->
+  <div style="position:absolute;top:296px;left:40px;right:40px;height:72px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr 1fr 1fr;overflow:hidden">
+    <div class="stat-cell" style="border-right:1px solid var(--border)">
+      <div class="stat-k">TRACKED</div>
+      <div class="stat-v">14</div>
+    </div>
+    <div class="stat-cell" style="border-right:1px solid var(--border)">
+      <div class="stat-k">SCANNED · 24H</div>
+      <div class="stat-v">187</div>
+    </div>
+    <div class="stat-cell" style="border-right:1px solid var(--border)">
+      <div class="stat-k">SURFACED</div>
+      <div class="stat-v hot">4</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-k">READ · ME</div>
+      <div class="stat-v">3 min</div>
+    </div>
+  </div>
+
+  <!-- MATRIX -->
+  <div style="position:absolute;top:384px;left:40px;right:40px;height:536px;background:var(--bg-soft);border:1px solid var(--border);padding:24px 24px;box-sizing:border-box">
+
+    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:16px;padding:0 6px">
+      <div>
+        <div class="mono" style="font-size:10px;font-weight:700;letter-spacing:.22em;color:var(--text-mute);margin-bottom:6px">FIG.01 · COMPETITOR SIGNAL GRID · 24H</div>
+        <div class="fraunces" style="font-size:24px;font-weight:900;letter-spacing:-0.5px;color:var(--text)">14 lanes. 5 signals. AI grades them all.</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="display:flex;align-items:center;gap:6px"><span class="cell q" style="width:18px;height:10px;margin:0"></span><span class="mono" style="font-size:10px;font-weight:700;letter-spacing:.18em;color:var(--text-mute)">QUIET</span></div>
+        <div style="display:flex;align-items:center;gap:6px"><span class="cell s" style="width:18px;height:10px;margin:0"></span><span class="mono accent" style="font-size:10px;font-weight:700;letter-spacing:.18em">SIGNAL</span></div>
+        <div style="display:flex;align-items:center;gap:6px"><span class="cell h" style="width:18px;height:10px;margin:0"></span><span class="mono accent" style="font-size:10px;font-weight:800;letter-spacing:.18em">HOT</span></div>
+      </div>
+    </div>
+
+    <div class="grid-row" style="height:18px;margin-bottom:10px;border-bottom:1px solid var(--border);padding-bottom:6px">
+      <div></div>
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.2em;color:var(--text-mute);text-align:center">PRODUCT</div>
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.2em;color:var(--text-mute);text-align:center">PRICING</div>
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.2em;color:var(--text-mute);text-align:center">HIRES</div>
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.2em;color:var(--text-mute);text-align:center">FUNDING</div>
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.2em;color:var(--text-mute);text-align:center">OUTAGE</div>
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.2em;color:var(--text-mute);text-align:right">SCORE</div>
+    </div>
+
+    <div class="grid-row"><div class="name">CO · 01</div><div class="cell h">+1</div><div class="cell q">·</div><div class="cell s">+3</div><div class="cell q">·</div><div class="cell q">·</div><div class="score hi">94</div></div>
+    <div class="grid-row"><div class="name">CO · 02</div><div class="cell s">+2</div><div class="cell s">-9%</div><div class="cell q">·</div><div class="cell q">·</div><div class="cell q">·</div><div class="score">72</div></div>
+    <div class="grid-row"><div class="name">CO · 03</div><div class="cell q">·</div><div class="cell q">·</div><div class="cell s">+5</div><div class="cell h">24M</div><div class="cell q">·</div><div class="score hi">91</div></div>
+    <div class="grid-row"><div class="name">CO · 04</div><div class="cell q">·</div><div class="cell q">·</div><div class="cell q">·</div><div class="cell q">·</div><div class="cell q">·</div><div class="score">12</div></div>
+    <div class="grid-row"><div class="name">CO · 05</div><div class="cell s">v4</div><div class="cell q">·</div><div class="cell q">·</div><div class="cell q">·</div><div class="cell h">3h</div><div class="score hi">88</div></div>
+    <div class="grid-row"><div class="name">CO · 06</div><div class="cell q">·</div><div class="cell q">·</div><div class="cell q">·</div><div class="cell q">·</div><div class="cell q">·</div><div class="score">8</div></div>
+    <div class="grid-row"><div class="name">CO · 07</div><div class="cell q">·</div><div class="cell s">tier</div><div class="cell q">·</div><div class="cell q">·</div><div class="cell q">·</div><div class="score">42</div></div>
+    <div class="grid-row"><div class="name">CO · 08</div><div class="cell q">·</div><div class="cell q">·</div><div class="cell s">+2</div><div class="cell q">·</div><div class="cell q">·</div><div class="score">38</div></div>
+    <div class="grid-row"><div class="name">CO · 09</div><div class="cell q">·</div><div class="cell q">·</div><div class="cell q">·</div><div class="cell q">·</div><div class="cell q">·</div><div class="score">5</div></div>
+    <div class="grid-row"><div class="name">CO · 10</div><div class="cell s">beta</div><div class="cell q">·</div><div class="cell h">VP</div><div class="cell q">·</div><div class="cell q">·</div><div class="score hi">86</div></div>
+    <div class="grid-row"><div class="name">CO · 11</div><div class="cell q">·</div><div class="cell q">·</div><div class="cell q">·</div><div class="cell q">·</div><div class="cell q">·</div><div class="score">14</div></div>
+    <div class="grid-row"><div class="name">CO · 12</div><div class="cell q">·</div><div class="cell s">+12%</div><div class="cell q">·</div><div class="cell q">·</div><div class="cell q">·</div><div class="score">48</div></div>
+    <div class="grid-row"><div class="name">CO · 13</div><div class="cell q">·</div><div class="cell q">·</div><div class="cell s">+4</div><div class="cell q">·</div><div class="cell q">·</div><div class="score">36</div></div>
+    <div class="grid-row"><div class="name">CO · 14</div><div class="cell q">·</div><div class="cell q">·</div><div class="cell q">·</div><div class="cell q">·</div><div class="cell q">·</div><div class="score">9</div></div>
+
+  </div>
+
+  <!-- DIGEST -->
+  <div style="position:absolute;top:936px;left:40px;right:40px;height:144px;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px">
+    <div class="digest hot">
+      <div style="display:flex;align-items:baseline;justify-content:space-between"><span class="fraunces accent" style="font-size:30px;font-weight:900;line-height:1;letter-spacing:-1px">01</span><span class="mono accent" style="font-size:9px;font-weight:800;letter-spacing:.18em">CO · 01</span></div>
+      <div class="fraunces" style="font-size:14px;font-weight:800;color:var(--text);margin-top:2px;line-height:1.2">Shipped v4 AI router</div>
+      <div style="font-size:11.5px;line-height:1.4;color:var(--text-dim)">Matches our routing pitch. Counter-deck needed.</div>
+    </div>
+    <div class="digest hot">
+      <div style="display:flex;align-items:baseline;justify-content:space-between"><span class="fraunces accent" style="font-size:30px;font-weight:900;line-height:1;letter-spacing:-1px">02</span><span class="mono accent" style="font-size:9px;font-weight:800;letter-spacing:.18em">CO · 03</span></div>
+      <div class="fraunces" style="font-size:14px;font-weight:800;color:var(--text);margin-top:2px;line-height:1.2">$24M Series B closed</div>
+      <div style="font-size:11.5px;line-height:1.4;color:var(--text-dim)">Hiring 30 in 90 days. Talent grab opens.</div>
+    </div>
+    <div class="digest hot">
+      <div style="display:flex;align-items:baseline;justify-content:space-between"><span class="fraunces accent" style="font-size:30px;font-weight:900;line-height:1;letter-spacing:-1px">03</span><span class="mono accent" style="font-size:9px;font-weight:800;letter-spacing:.18em">CO · 05</span></div>
+      <div class="fraunces" style="font-size:14px;font-weight:800;color:var(--text);margin-top:2px;line-height:1.2">3-hour outage at 09:14</div>
+      <div style="font-size:11.5px;line-height:1.4;color:var(--text-dim)">Their accounts are warm. STRIKER on it.</div>
+    </div>
+    <div class="digest hot">
+      <div style="display:flex;align-items:baseline;justify-content:space-between"><span class="fraunces accent" style="font-size:30px;font-weight:900;line-height:1;letter-spacing:-1px">04</span><span class="mono accent" style="font-size:9px;font-weight:800;letter-spacing:.18em">CO · 10</span></div>
+      <div class="fraunces" style="font-size:14px;font-weight:800;color:var(--text);margin-top:2px;line-height:1.2">Hired VP Eng from us</div>
+      <div style="font-size:11.5px;line-height:1.4;color:var(--text-dim)">Knows our stack. Defensive review needed.</div>
+    </div>
+  </div>
+
+  <!-- INSIGHT -->
+  <div style="position:absolute;top:1096px;left:40px;right:40px;height:84px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 0;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center">
+    <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.22em;color:var(--accent);margin-bottom:6px">WHY THIS MATTERS</div>
+    <div class="fraunces" style="font-size:20px;font-weight:700;line-height:1.25;color:var(--text);letter-spacing:-0.5px">Most founders track 0 competitors. The rest track 3 and forget. <span class="accent" style="font-style:italic">14 in parallel only works when AI does the reading.</span></div>
+  </div>
+
+  <!-- METRIC -->
+  <div style="position:absolute;top:1196px;left:40px;right:40px;height:56px;border:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr 1fr 1fr;align-items:center;overflow:hidden">
+    <div style="padding:0 22px;border-right:1px solid var(--border)"><span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.2em;color:var(--text-mute)">SOURCES · </span><span class="fraunces" style="font-size:16px;font-weight:800;color:var(--text)">42</span></div>
+    <div style="padding:0 22px;border-right:1px solid var(--border)"><span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.2em;color:var(--text-mute)">SIGNALS · </span><span class="fraunces" style="font-size:16px;font-weight:800;color:var(--text)">187</span></div>
+    <div style="padding:0 22px;border-right:1px solid var(--border)"><span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.2em;color:var(--text-mute)">SURFACED · </span><span class="fraunces" style="font-size:16px;font-weight:800;color:var(--accent)">4</span></div>
+    <div style="padding:0 22px"><span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.2em;color:var(--text-mute)">READ · </span><span class="fraunces" style="font-size:16px;font-weight:800;color:var(--text)">3 min</span></div>
+  </div>
+
+  <!-- CTA -->
+  <div style="position:absolute;top:1268px;left:40px;right:40px;height:56px;display:flex;align-items:center;justify-content:space-between;border:1.5px solid var(--accent-border);padding:0 28px;background:var(--accent-soft);flex:1">
+    <div style="font-size:14px;font-weight:700;color:var(--text)">Want the daily 4-line digest on your competitors? Drop a comment.</div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="mono" style="font-size:12px;font-weight:700;color:var(--text-mute);letter-spacing:.14em">COMMENT</div>
+      <div class="mono" style="padding:8px 20px;background:var(--accent);color:#000;font-size:14px;font-weight:900;letter-spacing:.1em">INTEL</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer" style="position:absolute;top:1340px;left:40px;right:40px;border-top: 1px dashed rgba(237,127,74,0.3); padding-top: 16px; display: flex; align-items: center; justify-content: space-between;">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; color: #666; text-transform: uppercase; display: flex; align-items: center; gap: 10px;">
+      <img src="https://app.51ultron.com/favicon.ico" alt="Ultron" style="width: 24px; height: 24px; object-fit: contain;">
+      <strong style="color: #fff;">ULTRON OS</strong> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure
+    </div>
+    <div style="font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 800; color: #fff; letter-spacing: -0.5px;">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

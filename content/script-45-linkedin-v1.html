@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 45 · Weekend Agents · v1</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* BUDGET 1450 */
+  body{background:#070a10;margin:0;padding:24px 0}
+  .scaler{display:flex;justify-content:center;align-items:flex-start}
+  .scaler>.poster{transform-origin:top center;transform:scale(calc(min(100vw / 1130, (100vh - 48px) / 1510)))}
+  .poster{width:1080px;height:1450px;background:#18130b;display:flex;flex-direction:column;padding:28px 40px 20px;overflow:hidden;color:#e8e0d0}
+  .mono{font-family:'JetBrains Mono',monospace}
+  .fraunces{font-family:'Fraunces',Georgia,serif;font-feature-settings:'ss01' on}
+  .accent{color:#ed7f4a}
+  .pane{background:#0a0d14;border:1px solid rgba(237,127,74,0.14);border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
+  .pane-head{padding:7px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(237,127,74,0.12);background:rgba(237,127,74,0.04)}
+  .pane-name{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:800;letter-spacing:.16em;color:#ed7f4a}
+  .pane-stat{font-family:'JetBrains Mono',monospace;font-size:7px;font-weight:700;letter-spacing:.10em;color:rgba(232,224,208,0.50)}
+  .term{padding:8px 12px;flex:1;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:500;line-height:1.55;color:rgba(232,224,208,0.78)}
+  .term .tm{color:rgba(232,224,208,0.32)}
+  .term .ok{color:#4ade80}
+  .term .wr{color:#ed7f4a}
+  .term .nm{color:#e8e0d0;font-weight:700}
+  .pane-foot{padding:6px 12px;border-top:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.015);display:flex;align-items:center;justify-content:space-between}
+  .anno-chip{background:#ed7f4a;color:#18130b;border-radius:4px;padding:5px 10px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:800;letter-spacing:.12em;transform:rotate(-1.5deg);box-shadow:0 4px 12px rgba(237,127,74,0.25);white-space:nowrap}
+  .dot{width:6px;height:6px;border-radius:50%;display:inline-block}
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="poster">
+
+  <!-- HEADER -->
+  <div style="flex-shrink:0;height:44px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:12px">
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(232,224,208,0.35)">FOUNDER GTM · 6 AI AGENTS · WEEKEND BUILD · ULTRON OS</span>
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(232,224,208,0.28)">NO. 45 · 48H BUILD · 30D PROOF</span>
+  </div>
+
+  <!-- HERO -->
+  <div style="flex-shrink:0;margin-bottom:16px">
+    <div class="mono accent" style="font-size:10px;font-weight:800;letter-spacing:.22em;margin-bottom:12px">48H BUILD · 6 AGENTS · 30D OUTBOUND · $84K CLOSED</div>
+    <div class="fraunces" style="font-weight:900;font-size:60px;line-height:0.92;letter-spacing:-1.8px;color:#f4ede0;margin-bottom:12px">I built 6 <span class="accent" style="font-style:italic">AI</span><br>agents in 1 weekend.<br>They closed $84K.</div>
+    <div style="font-family:'Inter',sans-serif;font-size:18px;font-weight:600;line-height:1.18;letter-spacing:-0.2px;color:rgba(232,224,208,0.55)">Friday I had prompts. Sunday I had a team. 30 days later, 6 deals closed without me writing a single message.</div>
+  </div>
+
+  <!-- EYEBROW -->
+  <div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+    <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.18em;color:rgba(232,224,208,0.42)">EXHIBIT A · TMUX SESSION · 6 PANES · LIVE @ 14:22 UTC</div>
+    <div style="display:flex;align-items:center;gap:6px"><div class="dot" style="background:#4ade80"></div><span class="mono" style="font-size:8px;font-weight:800;letter-spacing:.14em;color:rgba(232,224,208,0.55)">ALL 6 ACTIVE</span></div>
+  </div>
+
+  <!-- ARTIFACT PANEL -->
+  <div style="flex-shrink:0;min-height:792px;position:relative;background:#10141c;border:1px solid rgba(255,255,255,0.06);border-radius:10px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.45)">
+
+    <!-- Chrome -->
+    <div style="height:38px;background:#0a0d14;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;padding:0 14px;gap:10px">
+      <div style="display:flex;gap:5px">
+        <div style="width:9px;height:9px;border-radius:50%;background:rgba(232,224,208,0.18)"></div>
+        <div style="width:9px;height:9px;border-radius:50%;background:rgba(232,224,208,0.18)"></div>
+        <div style="width:9px;height:9px;border-radius:50%;background:rgba(232,224,208,0.18)"></div>
+      </div>
+      <div style="flex:1;background:#070a10;border:1px solid rgba(255,255,255,0.06);border-radius:5px;padding:5px 10px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:600;color:rgba(232,224,208,0.55);text-align:center">tmux · ultron-outbound · 6 panes · uptime 30d 14h 22m</div>
+      <span class="mono accent" style="font-size:8px;font-weight:800;letter-spacing:.14em">$84K CLOSED</span>
+    </div>
+
+    <!-- 2×3 agent grid -->
+    <div style="padding:14px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr 1fr;gap:12px;height:calc(100% - 38px - 70px - 40px)">
+
+      <!-- SPECTER -->
+      <div class="pane">
+        <div class="pane-head">
+          <div style="display:flex;align-items:center;gap:8px"><span class="dot" style="background:#4ade80"></span><span class="pane-name">SPECTER</span><span class="pane-stat">SIGNAL SCOUT</span></div>
+          <span class="pane-stat">[1/6]</span>
+        </div>
+        <div class="term">
+          <div><span class="tm">14:18</span> scanning 12 sources <span class="ok">✓</span></div>
+          <div><span class="tm">14:19</span> found <span class="nm">23 signals</span> · scoring</div>
+          <div><span class="tm">14:21</span> top: <span class="wr">harbor crm</span> · funding+hiring</div>
+          <div><span class="tm">14:22</span> handoff → CORTEX</div>
+        </div>
+        <div class="pane-foot">
+          <span class="pane-stat">RUNS 4×/DAY</span>
+          <span class="pane-stat" style="color:#ed7f4a">2,147 SIGNALS · 30D</span>
+        </div>
+      </div>
+
+      <!-- CORTEX -->
+      <div class="pane">
+        <div class="pane-head">
+          <div style="display:flex;align-items:center;gap:8px"><span class="dot" style="background:#4ade80"></span><span class="pane-name">CORTEX</span><span class="pane-stat">RESEARCH</span></div>
+          <span class="pane-stat">[2/6]</span>
+        </div>
+        <div class="term">
+          <div><span class="tm">14:19</span> enriching <span class="nm">harbor crm</span></div>
+          <div><span class="tm">14:20</span> · role+stack+posts · 90s</div>
+          <div><span class="tm">14:21</span> dossier: <span class="wr">CRO + 14 GTM hires</span></div>
+          <div><span class="tm">14:22</span> handoff → STRIKER</div>
+        </div>
+        <div class="pane-foot">
+          <span class="pane-stat">PER SIGNAL</span>
+          <span class="pane-stat" style="color:#ed7f4a">412 DOSSIERS · 30D</span>
+        </div>
+      </div>
+
+      <!-- STRIKER -->
+      <div class="pane">
+        <div class="pane-head">
+          <div style="display:flex;align-items:center;gap:8px"><span class="dot" style="background:#4ade80"></span><span class="pane-name">STRIKER</span><span class="pane-stat">MESSAGE</span></div>
+          <span class="pane-stat">[3/6]</span>
+        </div>
+        <div class="term">
+          <div><span class="tm">14:21</span> drafting · 70 word cap</div>
+          <div><span class="tm">14:22</span> angle: <span class="wr">"14 GTM = 14 stacks"</span></div>
+          <div><span class="tm">14:22</span> ready · <span class="ok">63 words · 1 citation</span></div>
+          <div><span class="tm">14:22</span> handoff → GATE</div>
+        </div>
+        <div class="pane-foot">
+          <span class="pane-stat">PER DOSSIER</span>
+          <span class="pane-stat" style="color:#ed7f4a">94 DRAFTS · 30D</span>
+        </div>
+      </div>
+
+      <!-- HUMAN GATE -->
+      <div class="pane" style="border:1px solid rgba(237,127,74,0.40)">
+        <div class="pane-head" style="background:rgba(237,127,74,0.10)">
+          <div style="display:flex;align-items:center;gap:8px"><span class="dot" style="background:#ed7f4a"></span><span class="pane-name">HUMAN GATE</span><span class="pane-stat">APPROVE</span></div>
+          <span class="pane-stat">[4/6]</span>
+        </div>
+        <div class="term">
+          <div><span class="tm">14:22</span> queue: <span class="nm">3 awaiting</span></div>
+          <div><span class="tm">14:22</span> · harbor · mercer · forge</div>
+          <div><span class="tm">14:22</span> <span class="wr">paused · waiting human</span></div>
+          <div><span class="tm">14:23</span> tiberiu · approve 2 · edit 1</div>
+        </div>
+        <div class="pane-foot">
+          <span class="pane-stat">ME · 4 MIN/DAY</span>
+          <span class="pane-stat" style="color:#ed7f4a">94 GATED · 31 SENT</span>
+        </div>
+      </div>
+
+      <!-- PULSE -->
+      <div class="pane">
+        <div class="pane-head">
+          <div style="display:flex;align-items:center;gap:8px"><span class="dot" style="background:#4ade80"></span><span class="pane-name">PULSE</span><span class="pane-stat">FOLLOW-UP</span></div>
+          <span class="pane-stat">[5/6]</span>
+        </div>
+        <div class="term">
+          <div><span class="tm">14:20</span> watching <span class="nm">21 open threads</span></div>
+          <div><span class="tm">14:21</span> · pyre · 4d silence · trigger</div>
+          <div><span class="tm">14:22</span> ctx: their CFO veto removed</div>
+          <div><span class="tm">14:22</span> draft → GATE</div>
+        </div>
+        <div class="pane-foot">
+          <span class="pane-stat">EVENT-DRIVEN</span>
+          <span class="pane-stat" style="color:#ed7f4a">63 FOLLOW-UPS · 30D</span>
+        </div>
+      </div>
+
+      <!-- SENTINEL -->
+      <div class="pane">
+        <div class="pane-head">
+          <div style="display:flex;align-items:center;gap:8px"><span class="dot" style="background:#4ade80"></span><span class="pane-name">SENTINEL</span><span class="pane-stat">AUDIT</span></div>
+          <span class="pane-stat">[6/6]</span>
+        </div>
+        <div class="term">
+          <div><span class="tm">14:00</span> hourly audit · all 5 agents</div>
+          <div><span class="tm">14:00</span> · drift check <span class="ok">✓</span></div>
+          <div><span class="tm">14:00</span> · cost: <span class="wr">$1.84/day</span></div>
+          <div><span class="tm">14:00</span> · forecast: <span class="ok">$92K MRR</span></div>
+        </div>
+        <div class="pane-foot">
+          <span class="pane-stat">EVERY HOUR</span>
+          <span class="pane-stat" style="color:#ed7f4a">720 AUDITS · 30D</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Outcome strip -->
+    <div style="margin:0 14px;padding:12px 18px;background:rgba(237,127,74,0.08);border:1px solid rgba(237,127,74,0.22);border-radius:6px;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px">
+      <div>
+        <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(232,224,208,0.55)">BUILD TIME</div>
+        <div class="fraunces" style="font-size:20px;font-weight:900;line-height:1;color:#f4ede0;letter-spacing:-0.5px">48 h</div>
+      </div>
+      <div>
+        <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(232,224,208,0.55)">AGENTS</div>
+        <div class="fraunces" style="font-size:20px;font-weight:900;line-height:1;color:#f4ede0;letter-spacing:-0.5px">6</div>
+      </div>
+      <div>
+        <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(232,224,208,0.55)">RUNTIME COST</div>
+        <div class="fraunces" style="font-size:20px;font-weight:900;line-height:1;color:#f4ede0;letter-spacing:-0.5px">$55 / mo</div>
+      </div>
+      <div>
+        <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:#ed7f4a">CLOSED · 30D</div>
+        <div class="fraunces accent" style="font-size:20px;font-weight:900;line-height:1;letter-spacing:-0.5px">$84,000</div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div style="position:absolute;left:0;right:0;bottom:0;height:40px;background:#0a0d14;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;padding:0 16px">
+      <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(232,224,208,0.45)">6 AGENTS · 30D UPTIME · $84K CLOSED · $55/MO RUNCOST · 1527X ROI</span>
+      <span class="mono accent" style="font-size:8px;font-weight:800;letter-spacing:.14em">ULTRON OS · v3.2 · STABLE</span>
+    </div>
+
+    <!-- ANNOTATIONS -->
+    <svg style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none" viewBox="0 0 1000 792">
+      <!-- Arrow to HUMAN GATE pane -->
+      <path d="M 990,316 Q 998,310 988,290" stroke="#ed7f4a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <polygon points="983,296 988,288 994,295" fill="#ed7f4a"/>
+      <!-- Bracket on right around 6 panes -->
+      <path d="M 992,90 L 1000,90 L 1000,640 L 992,640" stroke="#ed7f4a" stroke-width="1.5" fill="none" stroke-dasharray="5 4" opacity="0.55"/>
+    </svg>
+
+    <!-- Annotation chips -->
+    <div style="position:absolute;top:264px;right:8px"><div class="anno-chip" style="transform:rotate(2deg)">THE ONLY HUMAN STEP</div></div>
+    <div style="position:absolute;top:642px;left:24px"><div class="anno-chip" style="transform:rotate(-1deg)">1527X ROI · 30 DAYS</div></div>
+  </div>
+
+  <!-- BRIDGE -->
+  <div style="flex-shrink:0;margin-bottom:14px">
+    <div class="fraunces" style="font-size:18px;font-weight:700;line-height:1.18;letter-spacing:-0.3px;color:rgba(232,224,208,0.62);font-style:italic">A weekend is not a long time. It is enough time. Most teams will spend it deciding which agency to hire.</div>
+  </div>
+
+  <!-- CTA -->
+  <div style="flex-shrink:0;margin-top:auto;background:#ed7f4a;border-radius:10px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 32px;margin-bottom:12px">
+    <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:#18130b;line-height:1.55">Follow for one AI outbound system every day.<br>Comment <strong>WEEKEND</strong> and I will send you the exact Claude workflow we used.</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:800;color:#ed7f4a;background:#18130b;border-radius:6px;padding:14px 22px;letter-spacing:.08em;white-space:nowrap;flex-shrink:0">WEEKEND</div>
+  </div>
+
+  <!-- MICRO STAT -->
+  <div style="flex-shrink:0;height:30px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.08)">
+    <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(232,224,208,0.32)">ULTRON · AI GTM OPERATOR · 51ULTRON.COM</span>
+    <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(232,224,208,0.32)">6 AGENTS · 48H BUILD · $84K · 30D</span>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img src="ultron-logo.png" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0"
+        onerror="this.style.cssText='width:28px;height:28px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 72% 22%,rgba(255,140,80,.95) 0%,rgba(220,80,30,.3) 22%,transparent 36%),radial-gradient(circle at 22% 76%,rgba(55,170,255,.95) 0%,rgba(30,130,220,.3) 22%,transparent 38%),radial-gradient(circle at 38% 38%,rgba(30,30,50,1) 0%,#060810 55%,#000 100%)'">
+      <strong style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#f4ecd6;text-transform:uppercase;letter-spacing:0.06em">ULTRON OS</strong><span style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:rgba(232,224,208,0.60);letter-spacing:0.06em;text-transform:uppercase"> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure</span>
+    </div>
+    <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:800;color:#f4ecd6;letter-spacing:-0.5px">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 31 · Forecast Accuracy · v1</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* BUDGET 1450 */
+  body{background:#060810;margin:0;padding:24px 0}
+  .scaler{display:flex;justify-content:center;align-items:flex-start}
+  .scaler>.poster{transform-origin:top center;transform:scale(calc(min(100vw / 1130, (100vh - 48px) / 1510)))}
+  .poster{width:1080px;height:1450px;background:#18130b;position:relative;overflow:hidden;box-sizing:border-box}
+  .mono{font-family:'JetBrains Mono',monospace}
+  .fraunces{font-family:'Fraunces',Georgia,serif;font-feature-settings:'ss01' on}
+  .accent{color:#ed7f4a}
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="poster">
+
+  <!-- HEADER -->
+  <div style="position:absolute;top:0;left:40px;right:40px;height:44px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.07)">
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(255,255,255,0.3)">FOUNDER GTM · AI PIPELINE OPS · FORECAST AUDIT · ULTRON OS</span>
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(255,255,255,0.22)">NO. 31 · Q3 · 6 QUARTERS</span>
+  </div>
+
+  <!-- HERO -->
+  <div style="position:absolute;top:60px;left:40px;right:40px">
+    <div class="mono accent" style="font-size:11px;font-weight:700;letter-spacing:.20em;margin-bottom:14px">6-QUARTER FORECAST AUDIT · 142 DEALS · 1 AI GRADER</div>
+    <div class="fraunces" style="font-weight:900;font-size:74px;line-height:0.90;letter-spacing:-2.4px;color:#fff;margin-bottom:14px">Your forecast is wrong by <span class="accent" style="font-style:italic">31%</span>.</div>
+    <div style="font-family:'Inter',sans-serif;font-size:22px;font-weight:700;line-height:1.15;letter-spacing:-0.4px;color:rgba(255,255,255,0.55)">It is not the reps. It is not the CRM. Claude graded 142 deals and found the leak.</div>
+  </div>
+
+  <!-- BIGSTAT -->
+  <div style="position:absolute;top:296px;left:40px;right:40px;height:64px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden">
+    <div style="padding:10px 16px;display:flex;flex-direction:column;gap:2px;border-right:1px solid rgba(255,255,255,0.07)">
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.16em;color:rgba(255,255,255,0.35)">FORECAST GAP</div>
+      <div class="fraunces accent" style="font-size:26px;font-weight:900;line-height:1;letter-spacing:-0.8px">31%</div>
+    </div>
+    <div style="padding:10px 16px;display:flex;flex-direction:column;gap:2px;border-right:1px solid rgba(255,255,255,0.07)">
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.16em;color:rgba(255,255,255,0.35)">DEALS AUDITED</div>
+      <div class="fraunces" style="font-size:26px;font-weight:900;line-height:1;letter-spacing:-0.8px;color:#fff">142</div>
+    </div>
+    <div style="padding:10px 16px;display:flex;flex-direction:column;gap:2px;border-right:1px solid rgba(255,255,255,0.07)">
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.16em;color:rgba(255,255,255,0.35)">REP OVERCALL</div>
+      <div class="fraunces" style="font-size:26px;font-weight:900;line-height:1;letter-spacing:-0.8px;color:#fff">68%</div>
+    </div>
+    <div style="padding:10px 16px;display:flex;flex-direction:column;gap:2px">
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.16em;color:rgba(255,255,255,0.35)">AI ACCURACY</div>
+      <div class="fraunces accent" style="font-size:26px;font-weight:900;line-height:1;letter-spacing:-0.8px">94%</div>
+    </div>
+  </div>
+
+  <!-- CHART CONTAINER -->
+  <div style="position:absolute;top:388px;left:40px;right:40px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:22px 26px">
+
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:18px">
+      <div>
+        <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.18em;color:rgba(255,255,255,0.4);margin-bottom:4px">FIG.01 · FORECAST VS ACTUAL · LAST 6 QUARTERS</div>
+        <div class="fraunces" style="font-size:22px;font-weight:900;letter-spacing:-0.5px;color:#fff">Reps always called the top of the cone. Reality landed at the floor.</div>
+      </div>
+      <div style="display:flex;gap:14px">
+        <div style="display:flex;align-items:center;gap:5px"><div style="width:12px;height:12px;border-radius:2px;background:rgba(255,255,255,0.25)"></div><span class="mono" style="font-size:8px;font-weight:800;letter-spacing:.10em;color:rgba(255,255,255,0.45)">FORECAST</span></div>
+        <div style="display:flex;align-items:center;gap:5px"><div style="width:12px;height:12px;border-radius:2px;background:#ed7f4a"></div><span class="mono" style="font-size:8px;font-weight:800;letter-spacing:.10em;color:#ed7f4a">ACTUAL</span></div>
+        <div style="display:flex;align-items:center;gap:5px"><div style="width:12px;height:2px;background:#16a34a"></div><span class="mono" style="font-size:8px;font-weight:800;letter-spacing:.10em;color:#16a34a">CLAUDE CALL</span></div>
+      </div>
+    </div>
+
+    <!-- SVG CHART -->
+    <svg viewBox="0 0 940 360" style="width:100%;height:auto;display:block">
+      <!-- baseline grid -->
+      <line x1="40" y1="320" x2="940" y2="320" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+      <line x1="40" y1="240" x2="940" y2="240" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="3,4"/>
+      <line x1="40" y1="160" x2="940" y2="160" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="3,4"/>
+      <line x1="40" y1="80" x2="940" y2="80" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="3,4"/>
+
+      <!-- y axis labels -->
+      <text x="32" y="324" fill="rgba(255,255,255,0.4)" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="end" letter-spacing="1">0</text>
+      <text x="32" y="244" fill="rgba(255,255,255,0.4)" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="end" letter-spacing="1">500K</text>
+      <text x="32" y="164" fill="rgba(255,255,255,0.4)" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="end" letter-spacing="1">1M</text>
+      <text x="32" y="84" fill="rgba(255,255,255,0.4)" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="end" letter-spacing="1">1.5M</text>
+
+      <!-- 6 quarter groups: x positions 100, 240, 380, 520, 660, 800 -->
+      <!-- forecast (grey) and actual (orange) pairs, each 44 wide -->
+
+      <!-- Q1 -->
+      <rect x="84" y="80" width="32" height="240" fill="rgba(255,255,255,0.18)" rx="2"/>
+      <rect x="120" y="160" width="32" height="160" fill="#ed7f4a" rx="2"/>
+      <text x="118" y="340" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono" font-size="10" font-weight="700" text-anchor="middle" letter-spacing="1">Q1</text>
+      <text x="118" y="354" fill="rgba(255,255,255,0.3)" font-family="JetBrains Mono" font-size="8" font-weight="700" text-anchor="middle">-33%</text>
+
+      <!-- Q2 -->
+      <rect x="224" y="90" width="32" height="230" fill="rgba(255,255,255,0.18)" rx="2"/>
+      <rect x="260" y="180" width="32" height="140" fill="#ed7f4a" rx="2"/>
+      <text x="258" y="340" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono" font-size="10" font-weight="700" text-anchor="middle" letter-spacing="1">Q2</text>
+      <text x="258" y="354" fill="rgba(255,255,255,0.3)" font-family="JetBrains Mono" font-size="8" font-weight="700" text-anchor="middle">-39%</text>
+
+      <!-- Q3 -->
+      <rect x="364" y="60" width="32" height="260" fill="rgba(255,255,255,0.18)" rx="2"/>
+      <rect x="400" y="150" width="32" height="170" fill="#ed7f4a" rx="2"/>
+      <text x="398" y="340" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono" font-size="10" font-weight="700" text-anchor="middle" letter-spacing="1">Q3</text>
+      <text x="398" y="354" fill="rgba(255,255,255,0.3)" font-family="JetBrains Mono" font-size="8" font-weight="700" text-anchor="middle">-35%</text>
+
+      <!-- Q4 -->
+      <rect x="504" y="50" width="32" height="270" fill="rgba(255,255,255,0.18)" rx="2"/>
+      <rect x="540" y="130" width="32" height="190" fill="#ed7f4a" rx="2"/>
+      <text x="538" y="340" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono" font-size="10" font-weight="700" text-anchor="middle" letter-spacing="1">Q4</text>
+      <text x="538" y="354" fill="rgba(255,255,255,0.3)" font-family="JetBrains Mono" font-size="8" font-weight="700" text-anchor="middle">-30%</text>
+
+      <!-- Q5 -->
+      <rect x="644" y="70" width="32" height="250" fill="rgba(255,255,255,0.18)" rx="2"/>
+      <rect x="680" y="150" width="32" height="170" fill="#ed7f4a" rx="2"/>
+      <text x="678" y="340" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono" font-size="10" font-weight="700" text-anchor="middle" letter-spacing="1">Q5</text>
+      <text x="678" y="354" fill="rgba(255,255,255,0.3)" font-family="JetBrains Mono" font-size="8" font-weight="700" text-anchor="middle">-32%</text>
+
+      <!-- Q6 -->
+      <rect x="784" y="80" width="32" height="240" fill="rgba(255,255,255,0.18)" rx="2"/>
+      <rect x="820" y="170" width="32" height="150" fill="#ed7f4a" rx="2"/>
+      <text x="818" y="340" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono" font-size="10" font-weight="700" text-anchor="middle" letter-spacing="1">Q6</text>
+      <text x="818" y="354" fill="rgba(255,255,255,0.3)" font-family="JetBrains Mono" font-size="8" font-weight="700" text-anchor="middle">-37%</text>
+
+      <!-- Claude line: passes through actuals -->
+      <polyline points="136,168 276,188 414,158 554,138 694,158 834,178" fill="none" stroke="#16a34a" stroke-width="2" stroke-dasharray="0"/>
+      <circle cx="136" cy="168" r="4" fill="#16a34a"/>
+      <circle cx="276" cy="188" r="4" fill="#16a34a"/>
+      <circle cx="414" cy="158" r="4" fill="#16a34a"/>
+      <circle cx="554" cy="138" r="4" fill="#16a34a"/>
+      <circle cx="694" cy="158" r="4" fill="#16a34a"/>
+      <circle cx="834" cy="178" r="4" fill="#16a34a"/>
+    </svg>
+
+  </div>
+
+  <!-- 3 LEAK BLOCKS -->
+  <div style="position:absolute;top:868px;left:40px;right:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 16px">
+      <div class="mono accent" style="font-size:9px;font-weight:700;letter-spacing:.16em;margin-bottom:6px">LEAK 01 · 41% OF GAP</div>
+      <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:800;color:#fff;letter-spacing:-0.3px;line-height:1.2;margin-bottom:6px">"Commit" without a signed mutual plan</div>
+      <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;color:rgba(255,255,255,0.5);line-height:1.4">Reps marked Commit on verbal yes. 58% of Commits had no shared close plan in writing.</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 16px">
+      <div class="mono accent" style="font-size:9px;font-weight:700;letter-spacing:.16em;margin-bottom:6px">LEAK 02 · 34% OF GAP</div>
+      <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:800;color:#fff;letter-spacing:-0.3px;line-height:1.2;margin-bottom:6px">Stage moved on activity, not outcome</div>
+      <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;color:rgba(255,255,255,0.5);line-height:1.4">"Demo done" pushed deals to Stage 4. But 47% had no champion confirmed before that move.</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 16px">
+      <div class="mono accent" style="font-size:9px;font-weight:700;letter-spacing:.16em;margin-bottom:6px">LEAK 03 · 25% OF GAP</div>
+      <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:800;color:#fff;letter-spacing:-0.3px;line-height:1.2;margin-bottom:6px">Close date pushed silently</div>
+      <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;color:rgba(255,255,255,0.5);line-height:1.4">73% of slipped deals had their close date pushed within last 7 days with no manager note.</div>
+    </div>
+  </div>
+
+  <!-- INSIGHT -->
+  <div style="position:absolute;top:1024px;left:40px;right:40px;background:rgba(237,127,74,0.08);border:1px solid rgba(237,127,74,0.22);border-radius:10px;padding:16px 22px">
+    <div class="fraunces" style="font-size:24px;font-weight:900;line-height:1.05;letter-spacing:-0.6px;color:#fff;margin-bottom:6px">Reps do not lie. They <span class="accent" style="font-style:italic">overcall</span>.</div>
+    <div style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;color:rgba(255,255,255,0.55);line-height:1.45">Every quarter your team picks the top of the cone because that is what gets praised. Claude grades each deal against the criteria you set. Bias removed in 12 minutes.</div>
+  </div>
+
+  <!-- OUTCOME -->
+  <div style="position:absolute;top:1162px;left:40px;right:40px;height:56px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:8px;display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden">
+    <div style="padding:0 16px;display:flex;flex-direction:column;justify-content:center;gap:2px;border-right:1px solid rgba(255,255,255,0.06)">
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(255,255,255,0.3)">REP CALL</div>
+      <div class="fraunces" style="font-size:22px;font-weight:900;line-height:1;letter-spacing:-0.5px;color:rgba(255,255,255,0.55)">63%</div>
+    </div>
+    <div style="padding:0 16px;display:flex;flex-direction:column;justify-content:center;gap:2px;border-right:1px solid rgba(255,255,255,0.06)">
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(255,255,255,0.3)">AI CALL</div>
+      <div class="fraunces accent" style="font-size:22px;font-weight:900;line-height:1;letter-spacing:-0.5px">94%</div>
+    </div>
+    <div style="padding:0 16px;display:flex;flex-direction:column;justify-content:center;gap:2px;border-right:1px solid rgba(255,255,255,0.06)">
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(255,255,255,0.3)">AUDIT TIME</div>
+      <div class="fraunces" style="font-size:22px;font-weight:900;line-height:1;letter-spacing:-0.5px;color:#fff">12 min</div>
+    </div>
+    <div style="padding:0 16px;display:flex;flex-direction:column;justify-content:center;gap:2px">
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(255,255,255,0.3)">RUNS</div>
+      <div class="fraunces accent" style="font-size:22px;font-weight:900;line-height:1;letter-spacing:-0.5px">WEEKLY</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="position:absolute;top:1232px;left:40px;right:40px;background:#0f1420;border:1px solid rgba(237,127,74,0.25);border-radius:12px;padding:18px 28px;box-sizing:border-box">
+    <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.20em;color:rgba(237,127,74,0.6);margin-bottom:8px">WANT THE FORECAST AUDIT?</div>
+    <div class="fraunces" style="font-size:30px;font-weight:900;line-height:0.95;letter-spacing:-1px;color:#fff;margin-bottom:10px">Get the <span class="accent" style="font-style:italic">Claude workflow</span> that grades your pipeline in 12 minutes.</div>
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <div style="background:#ed7f4a;color:#18130b;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:800;letter-spacing:.18em;padding:8px 16px;border-radius:6px">COMMENT FORECAST</div>
+      <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;color:rgba(255,255,255,0.45)">and I will send you the exact Claude workflow I used.</div>
+    </div>
+  </div>
+
+  <!-- MICRO -->
+  <div style="position:absolute;top:1362px;left:40px;right:40px;height:30px;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:22px">
+      <div style="display:flex;align-items:center;gap:6px"><span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(255,255,255,0.28)">REP BIAS</span><span class="fraunces accent" style="font-size:13px;font-weight:900;letter-spacing:-0.3px">+31%</span></div>
+      <div style="display:flex;align-items:center;gap:6px"><span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(255,255,255,0.28)">AI GRADE</span><span class="fraunces" style="font-size:13px;font-weight:900;color:#fff;letter-spacing:-0.3px">94%</span></div>
+      <div style="display:flex;align-items:center;gap:6px"><span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(255,255,255,0.28)">DELTA</span><span class="fraunces accent" style="font-size:13px;font-weight:900;letter-spacing:-0.3px">$840K SAVED</span></div>
+    </div>
+    <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.12em;color:rgba(255,255,255,0.2)">ULTRON OS · SCRIPT 31</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="position:absolute;top:1396px;left:40px;right:40px;border-top:1px dashed rgba(237,127,74,0.2);padding-top:10px;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img src="ultron-logo.png" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0"
+        onerror="this.style.cssText='width:28px;height:28px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 72% 22%,rgba(255,140,80,.95) 0%,rgba(220,80,30,.3) 22%,transparent 36%),radial-gradient(circle at 22% 76%,rgba(55,170,255,.95) 0%,rgba(30,130,220,.3) 22%,transparent 38%),radial-gradient(circle at 38% 38%,rgba(30,30,50,1) 0%,#060810 55%,#000 100%)'">
+      <div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:rgba(255,255,255,0.80);text-transform:uppercase;letter-spacing:0.06em"><strong>ULTRON OS</strong> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure</span>
+        <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.12em;color:rgba(255,255,255,0.3)">AI GTM OPERATOR</div>
+      </div>
+    </div>
+    <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:800;color:#f4ede0;letter-spacing:-0.5px">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 06 · FUNNEL_BREAKDOWN · Family C · v6</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Caveat:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* FAMILY C - ANNOTATED FUNNEL BREAKDOWN (dark)
+     BUDGET 1450
+     header   0 -  48
+     hero    72 - 296   (224)
+     funnel 316 - 1004  (688)  CENTERPIECE
+     stat  1024 -1124   (100)
+     cta   1148 -1208   ( 60)
+     footer 1240 -1410  (~80)
+  */
+  body{background:#18130b;margin:0;padding:0}
+  .scaler{display:flex;justify-content:center}
+  .poster{width:1080px;height:1450px;background:#18130b;position:relative;overflow:hidden;box-sizing:border-box;color:#fff}
+  .mono{font-family:'JetBrains Mono','Courier New',monospace}
+  .marker{font-family:'Caveat',cursive;font-weight:700}
+  .accent{color:#ed7f4a}
+  .micro{font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;font-family:'JetBrains Mono',monospace}
+  .pulse{display:inline-block;width:8px;height:8px;border-radius:50%;background:#ed7f4a;box-shadow:0 0 8px #ed7f4a}
+  .stage{position:relative;display:flex;align-items:center;justify-content:space-between;padding:14px 22px;border-radius:6px;margin:0 auto;box-sizing:border-box;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12)}
+  .stage-num{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.16em;color:rgba(255,255,255,0.5)}
+  .stage-name{font-size:14px;font-weight:800}
+  .stage-vol{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:900;color:#fff;letter-spacing:-0.5px}
+  .stage-conv{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(227,90,74,0.85);font-weight:700}
+  .red-note{display:inline-flex;align-items:flex-start;gap:6px;padding:8px 12px;background:rgba(192,57,43,0.08);border:1px dashed rgba(192,57,43,0.5);border-radius:4px;max-width:220px}
+  .green-note{display:inline-flex;align-items:flex-start;gap:6px;padding:8px 12px;background:rgba(22,163,74,0.08);border:1px dashed rgba(22,163,74,0.5);border-radius:4px;max-width:220px}
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="poster">
+
+  <!-- HEADER 0-48 -->
+  <div style="position:absolute;top:0;left:40px;right:40px;height:48px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(237,127,74,0.18)">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(232,223,212,.42)">FOUNDER GTM · PIPELINE LEAKAGE · FUNNEL DIAGNOSTIC · CONVERSION OPS · ULTRON OS</span>
+  </div>
+
+  <!-- HERO 72-296 -->
+  <div style="position:absolute;top:72px;left:40px;width:680px">
+    <div class="micro" style="color:rgba(255,255,255,0.5);margin-bottom:14px">BREAKDOWN · PIPELINE LEAKAGE · FOUNDER GTM</div>
+    <div style="font-weight:900;font-size:48px;line-height:1.02;letter-spacing:-1.2px;margin-bottom:6px"><span class="accent">2,400 leads.</span> 3 deals.</div>
+    <div style="font-weight:900;font-size:48px;line-height:1.02;letter-spacing:-1.2px;margin-bottom:16px">Here is where it broke.</div>
+    <div style="font-size:14px;line-height:1.5;color:rgba(255,255,255,0.65);max-width:640px">12 weeks. <span style="color:#fff;font-weight:600">0.125% conversion.</span> Every leak was a routing failure, not a volume problem. The fix was a different AI per stage, not more cold leads.<br><span class="accent" style="font-weight:600">Conversion rebuilt to 5.7%. Same list. Same offer.</span></div>
+  </div>
+
+  <!-- RULE BOX RIGHT 72-296 -->
+  <div style="position:absolute;top:72px;right:40px;width:300px;padding:18px 20px;border:1px solid rgba(192,57,43,0.4);border-radius:8px;background:rgba(192,57,43,0.05);box-sizing:border-box">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4l6 8 6-8" stroke="#e35a4a" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 12h8" stroke="#e35a4a" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span class="mono" style="font-size:11px;font-weight:700;letter-spacing:.18em;color:#e35a4a">THE BREAKDOWN</span>
+    </div>
+    <div style="font-size:16px;font-weight:700;line-height:1.3;margin-bottom:10px">Stop adding more leads.</div>
+    <div style="font-size:12px;line-height:1.5;color:rgba(255,255,255,0.7)">A leaky funnel <span style="color:#fff;font-weight:600">loses faster</span> when you pour more in. Map the leakage first. Route the right AI to the right stage. Then scale.</div>
+  </div>
+
+  <!-- FUNNEL DIAGRAM 340-1124 (lowered + stretched columns for symmetry) -->
+  <div style="position:absolute;top:340px;left:40px;right:40px;height:784px;display:grid;grid-template-columns:240px 1fr 240px;gap:24px;align-items:stretch">
+
+    <!-- LEFT COLUMN  ·  RED LEAKAGE ANNOTATIONS -->
+    <div style="display:flex;flex-direction:column;justify-content:space-around;padding:48px 0">
+      <div>
+        <div class="mono" style="font-size:9px;letter-spacing:.18em;color:#e35a4a;font-weight:700;margin-bottom:6px">LEAK 01 · ICP MISS</div>
+        <div class="red-note">
+          <svg width="10" height="10" viewBox="0 0 16 16" style="flex-shrink:0;margin-top:2px"><path d="M2 8l4 4 8-10" stroke="#e35a4a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="rotate(180 8 8)"/></svg>
+          <div style="font-size:12px;line-height:1.4;color:rgba(255,255,255,0.86)"><span class="marker" style="color:#e35a4a;font-size:15px">2,213 wrong fits.</span><br>The list was 92% noise. Buyer match score &lt; 40%.</div>
+        </div>
+      </div>
+      <div >
+        <div class="mono" style="font-size:9px;letter-spacing:.18em;color:#e35a4a;font-weight:700;margin-bottom:6px">LEAK 03 · OBJECTION</div>
+        <div class="red-note">
+          <svg width="10" height="10" viewBox="0 0 16 16" style="flex-shrink:0;margin-top:2px"><path d="M2 8l4 4 8-10" stroke="#e35a4a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="rotate(180 8 8)"/></svg>
+          <div style="font-size:12px;line-height:1.4;color:rgba(255,255,255,0.86)"><span class="marker" style="color:#e35a4a;font-size:15px">26 deal-killers shipped.</span><br>Generic pricing reply. No buyer-logic mapping.</div>
+        </div>
+      </div>
+      <div >
+        <div class="mono" style="font-size:9px;letter-spacing:.18em;color:#e35a4a;font-weight:700;margin-bottom:6px">LEAK 05 · URGENCY</div>
+        <div class="red-note">
+          <svg width="10" height="10" viewBox="0 0 16 16" style="flex-shrink:0;margin-top:2px"><path d="M2 8l4 4 8-10" stroke="#e35a4a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="rotate(180 8 8)"/></svg>
+          <div style="font-size:12px;line-height:1.4;color:rgba(255,255,255,0.86)"><span class="marker" style="color:#e35a4a;font-size:15px">9 proposals ghosted.</span><br>No follow-up sequence past day 3.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTER COLUMN  ·  FUNNEL STACK -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:20px;position:relative">
+
+      <!-- STAGE 1  ·  100% width -->
+      <div class="stage" style="width:100%">
+        <div><div class="stage-num">STAGE 01</div><div class="stage-name">Cold leads</div></div>
+        <div style="text-align:right"><div class="stage-vol">2,400</div></div>
+      </div>
+      <!-- arrow + drop -->
+      <div style="display:flex;align-items:center;gap:8px;color:rgba(227,90,74,0.7)"><svg width="12" height="14" viewBox="0 0 12 14"><path d="M6 1v10M2 8l4 4 4-4" stroke="#e35a4a" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg><span class="stage-conv">-92% · ICP MISS</span></div>
+
+      <!-- STAGE 2  ·  80% -->
+      <div class="stage" style="width:84%">
+        <div><div class="stage-num">STAGE 02</div><div class="stage-name">Replied</div></div>
+        <div style="text-align:right"><div class="stage-vol">187</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.5)"><svg width="12" height="14" viewBox="0 0 12 14"><path d="M6 1v10M2 8l4 4 4-4" stroke="rgba(255,255,255,0.4)" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg><span class="stage-conv" style="color:rgba(255,255,255,0.55)">-61% · qualified out</span></div>
+
+      <!-- STAGE 3  ·  65% -->
+      <div class="stage" style="width:68%">
+        <div><div class="stage-num">STAGE 03</div><div class="stage-name">Qualified</div></div>
+        <div style="text-align:right"><div class="stage-vol">73</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;color:rgba(227,90,74,0.7)"><svg width="12" height="14" viewBox="0 0 12 14"><path d="M6 1v10M2 8l4 4 4-4" stroke="#e35a4a" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg><span class="stage-conv">-36% · OBJECTION</span></div>
+
+      <!-- STAGE 4  ·  50% -->
+      <div class="stage" style="width:54%">
+        <div><div class="stage-num">STAGE 04</div><div class="stage-name">Demo booked</div></div>
+        <div style="text-align:right"><div class="stage-vol">47</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.5)"><svg width="12" height="14" viewBox="0 0 12 14"><path d="M6 1v10M2 8l4 4 4-4" stroke="rgba(255,255,255,0.4)" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg><span class="stage-conv" style="color:rgba(255,255,255,0.55)">-74% · no-show</span></div>
+
+      <!-- STAGE 5  ·  35% -->
+      <div class="stage" style="width:40%">
+        <div><div class="stage-num">STAGE 05</div><div class="stage-name">Proposal sent</div></div>
+        <div style="text-align:right"><div class="stage-vol">12</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;color:rgba(227,90,74,0.7)"><svg width="12" height="14" viewBox="0 0 12 14"><path d="M6 1v10M2 8l4 4 4-4" stroke="#e35a4a" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg><span class="stage-conv">-75% · URGENCY</span></div>
+
+      <!-- STAGE 6  ·  22%  ·  CLOSED -->
+      <div class="stage" style="width:26%;background:rgba(237,127,74,0.12);border-color:rgba(237,127,74,0.6)">
+        <div><div class="stage-num" style="color:#ed7f4a">STAGE 06</div><div class="stage-name" style="color:#ed7f4a">Closed</div></div>
+        <div style="text-align:right"><div class="stage-vol accent">3</div></div>
+      </div>
+
+      <!-- $ leaked annotation -->
+      <div style="margin-top:12px;display:flex;align-items:center;gap:10px;padding:10px 16px;border:1.5px solid rgba(192,57,43,0.5);border-radius:6px;background:rgba(192,57,43,0.06)">
+        <span class="mono" style="font-size:9px;letter-spacing:.18em;color:rgba(255,255,255,0.55);font-weight:700">$ LEAKED · 12 WEEKS</span>
+        <span class="marker" style="font-size:24px;color:#e35a4a;line-height:1">$147,000</span>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN  ·  GREEN AI FIX ANNOTATIONS -->
+    <div style="display:flex;flex-direction:column;justify-content:space-around;padding:48px 0">
+      <div>
+        <div class="mono" style="font-size:9px;letter-spacing:.18em;color:#4ade80;font-weight:700;margin-bottom:6px">FIX 01 · GEMINI</div>
+        <div class="green-note">
+          <svg width="10" height="10" viewBox="0 0 16 16" style="flex-shrink:0;margin-top:2px"><path d="M2 8l4 4 8-10" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div style="font-size:12px;line-height:1.4;color:rgba(255,255,255,0.86)"><span class="marker" style="color:#4ade80;font-size:15px">87% ICP precision.</span><br>Live signal score before any send. Wrong fits never enter the funnel.</div>
+        </div>
+      </div>
+      <div >
+        <div class="mono" style="font-size:9px;letter-spacing:.18em;color:#4ade80;font-weight:700;margin-bottom:6px">FIX 03 · CLAUDE</div>
+        <div class="green-note">
+          <svg width="10" height="10" viewBox="0 0 16 16" style="flex-shrink:0;margin-top:2px"><path d="M2 8l4 4 8-10" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div style="font-size:12px;line-height:1.4;color:rgba(255,255,255,0.86)"><span class="marker" style="color:#4ade80;font-size:15px">Buyer-logic mapped.</span><br>3 deal-killers pre-handled in the reply. Objection rate halved.</div>
+        </div>
+      </div>
+      <div >
+        <div class="mono" style="font-size:9px;letter-spacing:.18em;color:#4ade80;font-weight:700;margin-bottom:6px">FIX 05 · CHATGPT</div>
+        <div class="green-note">
+          <svg width="10" height="10" viewBox="0 0 16 16" style="flex-shrink:0;margin-top:2px"><path d="M2 8l4 4 8-10" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div style="font-size:12px;line-height:1.4;color:rgba(255,255,255,0.86)"><span class="marker" style="color:#4ade80;font-size:15px">7-touch routed.</span><br>Urgency tested per buyer signal. Proposals close in 9 days, not 27.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STAT BEFORE/AFTER 1144-1240 -->
+  <div style="position:absolute;top:1144px;left:40px;right:40px;height:96px;display:grid;grid-template-columns:1fr 56px 1fr;align-items:center;background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.1);border-radius:8px;overflow:hidden">
+    <div style="padding:16px 24px;border-right:1px solid rgba(255,255,255,0.08);position:relative">
+      <div class="mono" style="font-size:9px;letter-spacing:.2em;color:rgba(255,255,255,0.45);font-weight:700;margin-bottom:4px">OLD FUNNEL · 12 WEEKS</div>
+      <div style="display:flex;align-items:baseline;gap:8px">
+        <span style="font-size:48px;font-weight:900;line-height:1;color:rgba(227,90,74,0.9);letter-spacing:-2px">0.125%</span>
+        <span style="font-size:13px;color:rgba(255,255,255,0.5);font-weight:600">close rate</span>
+      </div>
+      <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(192,57,43,0.4)"></div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center">
+      <svg width="28" height="18" viewBox="0 0 28 18" fill="none"><path d="M2 9h20M17 3l8 6-8 6" stroke="#ed7f4a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div style="padding:16px 24px;border-left:1px solid rgba(255,255,255,0.08);position:relative;background:rgba(237,127,74,0.04)">
+      <div class="mono" style="font-size:9px;letter-spacing:.2em;color:rgba(255,255,255,0.45);font-weight:700;margin-bottom:4px">ROUTED FUNNEL · 3 AGENTS</div>
+      <div style="display:flex;align-items:baseline;gap:8px">
+        <span style="font-size:48px;font-weight:900;line-height:1;color:#ed7f4a;letter-spacing:-2px">5.7%</span>
+        <span style="font-size:13px;color:rgba(255,255,255,0.5);font-weight:600">close rate · 45x lift</span>
+      </div>
+      <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(237,127,74,0.5)"></div>
+    </div>
+  </div>
+
+  <!-- CTA 1264-1324 -->
+  <div style="position:absolute;top:1264px;left:40px;right:40px;height:60px;display:flex;align-items:center;justify-content:center;gap:14px;border:1.5px solid rgba(237,127,74,0.4);border-radius:6px;background:rgba(237,127,74,0.06);flex:1">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 4h12v8H7l-4 3V4z" stroke="#ed7f4a" stroke-width="1.6" fill="rgba(237,127,74,0.1)"/></svg>
+    <div style="font-size:14px;color:rgba(255,255,255,0.86)">Comment <span class="mono accent" style="font-weight:800;letter-spacing:.06em">"FUNNEL"</span> for the leakage map and the per-stage AI routing config.</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer" style="position:absolute;top:1370px;left:40px;right:40px;border-top: 1px dashed rgba(237,127,74,0.3); padding-top: 16px; display: flex; align-items: center; justify-content: space-between;">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; color: #666; text-transform: uppercase; display: flex; align-items: center; gap: 10px;">
+      <img src="https://app.51ultron.com/favicon.ico" alt="Ultron" style="width: 24px; height: 24px; object-fit: contain;">
+      <strong style="color: #fff;">ULTRON OS</strong> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure
+    </div>
+    <div style="font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 800; color: #fff; letter-spacing: -0.5px;">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

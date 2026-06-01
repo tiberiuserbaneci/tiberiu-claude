@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 51 · Blind Autonomy · v1</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* BUDGET 1450 */
+  body{background:#070a10;margin:0;padding:24px 0}
+  .scaler{display:flex;justify-content:center;align-items:flex-start}
+  .scaler>.poster{transform-origin:top center;transform:scale(calc(min(100vw / 1130, (100vh - 48px) / 1510)))}
+  .poster{width:1080px;height:1450px;background:#18130b;display:flex;flex-direction:column;padding:28px 40px 20px;overflow:hidden;color:#e8e0d0}
+  .mono{font-family:'JetBrains Mono',monospace}
+  .fraunces{font-family:'Fraunces',Georgia,serif;font-feature-settings:'ss01' on}
+  .accent{color:#ed7f4a}
+  .log-line{display:flex;align-items:flex-start;gap:10px;padding:6px 14px;border-bottom:1px solid rgba(255,255,255,0.03);font-family:'JetBrains Mono',monospace;font-size:9px;line-height:1.45}
+  .log-line .ts{color:rgba(232,224,208,0.32);width:42px;flex-shrink:0;font-weight:700}
+  .log-line .ag{color:#ed7f4a;width:62px;flex-shrink:0;font-weight:800;letter-spacing:.10em}
+  .log-line .txt{color:rgba(232,224,208,0.78);flex:1;font-weight:500}
+  .log-line .ok{color:#4ade80;font-weight:700}
+  .log-line.close{background:rgba(74,222,128,0.06);border-left:3px solid #4ade80;padding-left:11px}
+  .log-line.close .ag{color:#4ade80}
+  .anno-chip{background:#ed7f4a;color:#18130b;border-radius:4px;padding:5px 10px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:800;letter-spacing:.12em;transform:rotate(-1.5deg);box-shadow:0 4px 12px rgba(237,127,74,0.25);white-space:nowrap}
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="poster">
+
+  <div style="flex-shrink:0;height:44px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:12px">
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(232,224,208,0.35)">FOUNDER GTM · AI AUTONOMY · OFFLINE FOUNDER · ULTRON OS</span>
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(232,224,208,0.28)">NO. 51 · 10H FLIGHT · 4 CLOSED</span>
+  </div>
+
+  <div style="flex-shrink:0;margin-bottom:16px">
+    <div class="mono accent" style="font-size:10px;font-weight:800;letter-spacing:.22em;margin-bottom:12px">FL348 · LHR → SFO · 10H 14M · 4 DEALS CLOSED</div>
+    <div class="fraunces" style="font-weight:900;font-size:60px;line-height:0.92;letter-spacing:-1.8px;color:#f4ede0;margin-bottom:12px">My <span class="accent" style="font-style:italic">AI</span> worked while<br>I was on a 10-hour<br>flight. 4 deals closed.</div>
+    <div style="font-family:'Inter',sans-serif;font-size:18px;font-weight:600;line-height:1.18;letter-spacing:-0.2px;color:rgba(232,224,208,0.55)">No wifi. No approvals. The gate auto-approved drafts under threshold. Landed to 4 booked meetings and $172K in pipe.</div>
+  </div>
+
+  <div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+    <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.18em;color:rgba(232,224,208,0.42)">EXHIBIT A · FLIGHT TRACK + AGENT LOG · NOV 19 · 14:00 UTC</div>
+    <div style="display:flex;align-items:center;gap:6px"><div style="width:6px;height:6px;border-radius:50%;background:#4ade80"></div><span class="mono" style="font-size:8px;font-weight:800;letter-spacing:.14em;color:rgba(232,224,208,0.55)">4 CLOSED · OFFLINE</span></div>
+  </div>
+
+  <div style="flex-shrink:0;min-height:792px;position:relative;background:#10141c;border:1px solid rgba(255,255,255,0.06);border-radius:10px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.45)">
+
+    <div style="height:38px;background:#0a0d14;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;padding:0 14px;gap:10px">
+      <div style="display:flex;gap:5px"><div style="width:9px;height:9px;border-radius:50%;background:rgba(232,224,208,0.18)"></div><div style="width:9px;height:9px;border-radius:50%;background:rgba(232,224,208,0.18)"></div><div style="width:9px;height:9px;border-radius:50%;background:rgba(232,224,208,0.18)"></div></div>
+      <div style="flex:1;background:#070a10;border:1px solid rgba(255,255,255,0.06);border-radius:5px;padding:5px 10px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:600;color:rgba(232,224,208,0.55);text-align:center">flightaware + ultron.log · merged · 10h window</div>
+      <span class="mono accent" style="font-size:8px;font-weight:800;letter-spacing:.14em">FOUNDER OFFLINE</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1.6fr;height:calc(100% - 38px - 40px)">
+
+      <!-- LEFT: flight track -->
+      <div style="border-right:1px solid rgba(255,255,255,0.06);padding:18px 22px;display:flex;flex-direction:column;gap:18px">
+        <div>
+          <div class="mono" style="font-size:8px;font-weight:800;letter-spacing:.20em;color:#ed7f4a;margin-bottom:6px">FL348 · BRITISH AIRWAYS</div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <div>
+              <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.10em;color:rgba(232,224,208,0.45)">DEP</div>
+              <div class="fraunces" style="font-size:22px;font-weight:900;color:#f4ede0;line-height:1;letter-spacing:-0.4px">LHR</div>
+              <div class="mono" style="font-size:9px;font-weight:700;color:rgba(232,224,208,0.55)">14:00 UTC</div>
+            </div>
+            <div style="flex:1;height:1px;background:linear-gradient(to right,rgba(237,127,74,0.55),rgba(237,127,74,0.55));position:relative;margin-top:14px"></div>
+            <div style="text-align:right">
+              <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.10em;color:rgba(232,224,208,0.45)">ARR</div>
+              <div class="fraunces accent" style="font-size:22px;font-weight:900;line-height:1;letter-spacing:-0.4px">SFO</div>
+              <div class="mono" style="font-size:9px;font-weight:700;color:rgba(232,224,208,0.55)">00:14 UTC</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flight stats -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+          <div style="padding:12px 14px;background:rgba(255,255,255,0.025);border-radius:6px">
+            <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(232,224,208,0.45)">DURATION</div>
+            <div class="fraunces" style="font-size:18px;font-weight:900;color:#f4ede0;line-height:1;letter-spacing:-0.4px;margin-top:2px">10h 14m</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(255,255,255,0.025);border-radius:6px">
+            <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(232,224,208,0.45)">WIFI</div>
+            <div class="fraunces" style="font-size:18px;font-weight:900;color:#c0392b;line-height:1;letter-spacing:-0.4px;margin-top:2px">OFF</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(255,255,255,0.025);border-radius:6px">
+            <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(232,224,208,0.45)">FOUNDER STATE</div>
+            <div class="fraunces" style="font-size:18px;font-weight:900;color:#f4ede0;line-height:1;letter-spacing:-0.4px;margin-top:2px">asleep</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(237,127,74,0.10);border:1px solid rgba(237,127,74,0.30);border-radius:6px">
+            <div class="mono accent" style="font-size:8px;font-weight:800;letter-spacing:.14em">AGENTS</div>
+            <div class="fraunces accent" style="font-size:18px;font-weight:900;line-height:1;letter-spacing:-0.4px;margin-top:2px">6 LIVE</div>
+          </div>
+        </div>
+
+        <!-- Outcome card -->
+        <div style="padding:14px 16px;background:rgba(74,222,128,0.07);border:1px solid rgba(74,222,128,0.22);border-radius:6px">
+          <div class="mono" style="font-size:8px;font-weight:800;letter-spacing:.18em;color:#4ade80;margin-bottom:6px">UPON LANDING</div>
+          <div style="display:flex;align-items:baseline;gap:8px">
+            <span class="fraunces" style="font-size:30px;font-weight:900;color:#4ade80;line-height:1;letter-spacing:-0.8px">4 deals</span>
+            <span class="mono" style="font-size:9px;font-weight:700;color:rgba(232,224,208,0.55);letter-spacing:.10em">CLOSED</span>
+          </div>
+          <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;color:rgba(232,224,208,0.70);line-height:1.4;margin-top:6px">+ 7 meetings booked, 14 replies queued, 1 escalation paged via SMS.</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;padding-top:8px;border-top:1px dashed rgba(255,255,255,0.10)">
+            <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(232,224,208,0.55)">PIPE CREATED</span>
+            <span class="fraunces accent" style="font-size:18px;font-weight:900;letter-spacing:-0.4px;line-height:1">$172K</span>
+          </div>
+        </div>
+
+        <div style="margin-top:auto;padding:10px 0;border-top:1px dashed rgba(255,255,255,0.10);text-align:center">
+          <div class="mono" style="font-size:7px;font-weight:700;letter-spacing:.18em;color:rgba(232,224,208,0.32)">FOUNDER OPENED LAPTOP AT 00:31 UTC</div>
+          <div style="font-family:'Inter',sans-serif;font-size:9px;font-weight:600;color:rgba(232,224,208,0.45);font-style:italic;margin-top:3px">17 minutes after landing. Read briefing. Closed laptop.</div>
+        </div>
+      </div>
+
+      <!-- RIGHT: agent log -->
+      <div style="overflow:hidden">
+        <div style="padding:10px 14px;border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);display:flex;align-items:center;justify-content:space-between">
+          <span class="mono" style="font-size:9px;font-weight:800;letter-spacing:.18em;color:#ed7f4a">AGENT ACTIVITY · 10H</span>
+          <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.10em;color:rgba(232,224,208,0.50)">412 EVENTS · 14 SHOWN</span>
+        </div>
+
+        <div class="log-line"><span class="ts">14:08</span><span class="ag">SPECTER</span><span class="txt">scan complete · <span class="ok">31 signals</span> · scoring</span></div>
+        <div class="log-line"><span class="ts">14:14</span><span class="ag">CORTEX</span><span class="txt">enriching top 11 · 90s/each</span></div>
+        <div class="log-line"><span class="ts">14:42</span><span class="ag">STRIKER</span><span class="txt">drafted 11 messages · 70w cap</span></div>
+        <div class="log-line"><span class="ts">14:48</span><span class="ag">GATE</span><span class="txt">founder offline · <span class="ok">auto-approve threshold = 0.92</span></span></div>
+        <div class="log-line"><span class="ts">14:52</span><span class="ag">GATE</span><span class="txt">7 of 11 above threshold · sent</span></div>
+        <div class="log-line"><span class="ts">15:14</span><span class="ag">SENTINEL</span><span class="txt">harbor crm CRO opened · 22s</span></div>
+        <div class="log-line close"><span class="ts">15:36</span><span class="ag">SENTINEL</span><span class="txt"><span class="ok">harbor crm → CALL BOOKED</span> · $72K</span></div>
+        <div class="log-line"><span class="ts">17:20</span><span class="ag">PULSE</span><span class="txt">21 open threads watched · 3 triggered</span></div>
+        <div class="log-line close"><span class="ts">18:48</span><span class="ag">SENTINEL</span><span class="txt"><span class="ok">mercer gtm → CONTRACT SIGNED</span> · $108K</span></div>
+        <div class="log-line"><span class="ts">19:42</span><span class="ag">SENTINEL</span><span class="txt">forge.ai reply · "sending the SOW"</span></div>
+        <div class="log-line close"><span class="ts">20:34</span><span class="ag">SENTINEL</span><span class="txt"><span class="ok">pyre analytics → CALL BOOKED</span> · $92K</span></div>
+        <div class="log-line"><span class="ts">21:14</span><span class="ag">SENTINEL</span><span class="txt">vortex labs · objection received · paged</span></div>
+        <div class="log-line"><span class="ts">21:18</span><span class="ag">CORTEX</span><span class="txt">drafted objection response · queued for GATE</span></div>
+        <div class="log-line close" style="border-bottom:none"><span class="ts">23:08</span><span class="ag">SENTINEL</span><span class="txt"><span class="ok">atlas revops → DEMO CONFIRMED</span> · $84K</span></div>
+
+        <div style="margin:14px 14px 0;padding:12px 14px;background:rgba(237,127,74,0.08);border:1px solid rgba(237,127,74,0.20);border-radius:6px">
+          <div class="mono" style="font-size:8px;font-weight:800;letter-spacing:.18em;color:#ed7f4a;margin-bottom:4px">SMS ESCALATION · 1 ONLY</div>
+          <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;color:#f4ede0;line-height:1.4">21:14 · "Vortex pricing objection. CORTEX drafted response. Approve from phone or wait until landing." → I read it at 23:50, approved.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position:absolute;left:0;right:0;bottom:0;height:40px;background:#0a0d14;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;padding:0 16px">
+      <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(232,224,208,0.45)">10H OFFLINE · 412 EVENTS · 7 SENT · 4 CLOSED · $172K PIPE</span>
+      <span class="mono accent" style="font-size:8px;font-weight:800;letter-spacing:.14em">AUTO-GATE · THRESHOLD 0.92</span>
+    </div>
+
+    <svg style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none" viewBox="0 0 1000 792">
+      <path d="M 200,340 Q 230,360 270,376" stroke="#ed7f4a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <polygon points="264,382 272,376 264,370" fill="#ed7f4a"/>
+    </svg>
+
+    <div style="position:absolute;top:308px;left:36px"><div class="anno-chip" style="transform:rotate(-2deg)">WIFI OFF · FOUNDER ASLEEP</div></div>
+    <div style="position:absolute;top:528px;right:14px"><div class="anno-chip" style="transform:rotate(2deg)">4 CLOSES · 0 INPUT</div></div>
+  </div>
+
+  <div style="flex-shrink:0;margin-bottom:14px">
+    <div class="fraunces" style="font-size:18px;font-weight:700;line-height:1.18;letter-spacing:-0.3px;color:rgba(232,224,208,0.62);font-style:italic">A system that needs you online is a system you own. A system that earns while you sleep is a system that owns time.</div>
+  </div>
+
+  <!-- CTA -->
+  <div style="flex-shrink:0;margin-top:auto;background:#ed7f4a;border-radius:10px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 32px;margin-bottom:12px">
+    <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:#18130b;line-height:1.55">Follow for one AI outbound system every day.<br>Comment <strong>BLIND</strong> and I will send you the exact Claude workflow we used.</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:800;color:#ed7f4a;background:#18130b;border-radius:6px;padding:14px 22px;letter-spacing:.08em;white-space:nowrap;flex-shrink:0">BLIND</div>
+  </div>
+
+  <div style="flex-shrink:0;height:30px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.08)">
+    <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(232,224,208,0.32)">ULTRON · AI GTM OPERATOR · 51ULTRON.COM</span>
+    <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(232,224,208,0.32)">10H OFFLINE · 4 CLOSED · $172K</span>
+  </div>
+
+  <div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img src="ultron-logo.png" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0" onerror="this.style.cssText='width:28px;height:28px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 72% 22%,rgba(255,140,80,.95) 0%,rgba(220,80,30,.3) 22%,transparent 36%),radial-gradient(circle at 22% 76%,rgba(55,170,255,.95) 0%,rgba(30,130,220,.3) 22%,transparent 38%),radial-gradient(circle at 38% 38%,rgba(30,30,50,1) 0%,#060810 55%,#000 100%)'">
+      <strong style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#f4ecd6;text-transform:uppercase;letter-spacing:0.06em">ULTRON OS</strong><span style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:rgba(232,224,208,0.60);letter-spacing:0.06em;text-transform:uppercase"> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure</span>
+    </div>
+    <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:800;color:#f4ecd6;letter-spacing:-0.5px">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

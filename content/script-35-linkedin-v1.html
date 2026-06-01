@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 35 · Cadence Compression · v1</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* BUDGET 1450 */
+  body{background:#060810;margin:0;padding:24px 0}
+  .scaler{display:flex;justify-content:center;align-items:flex-start}
+  .scaler>.poster{transform-origin:top center;transform:scale(calc(min(100vw / 1130, (100vh - 48px) / 1510)))}
+  .poster{width:1080px;height:1450px;background:#18130b;position:relative;overflow:hidden;box-sizing:border-box}
+  .mono{font-family:'JetBrains Mono',monospace}
+  .fraunces{font-family:'Fraunces',Georgia,serif;font-feature-settings:'ss01' on}
+  .accent{color:#ed7f4a}
+
+  .touch-spray{
+    width:38px;height:38px;border-radius:50%;
+    background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:800;color:rgba(255,255,255,0.5);
+    flex-shrink:0;
+  }
+  .touch-precise{
+    width:54px;height:54px;border-radius:50%;
+    background:#ed7f4a;box-shadow:0 0 18px rgba(237,127,74,0.55);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:900;color:#18130b;
+    flex-shrink:0;
+  }
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="poster">
+
+  <!-- HEADER -->
+  <div style="position:absolute;top:0;left:40px;right:40px;height:44px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.07)">
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(255,255,255,0.3)">FOUNDER GTM · CADENCE OPS · TOUCH COMPRESSION · ULTRON OS</span>
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(255,255,255,0.22)">NO. 35 · 6 TOUCH VS 1 TOUCH</span>
+  </div>
+
+  <!-- HERO -->
+  <div style="position:absolute;top:60px;left:40px;right:40px">
+    <div class="mono accent" style="font-size:11px;font-weight:700;letter-spacing:.20em;margin-bottom:14px">200 PROSPECTS · 2 CADENCES · 30-DAY HEAD-TO-HEAD</div>
+    <div class="fraunces" style="font-weight:900;font-size:74px;line-height:0.90;letter-spacing:-2.4px;color:#fff;margin-bottom:14px">Your <span class="accent" style="font-style:italic">AI</span> sends 6 follow-ups. Mine sends 1.</div>
+    <div style="font-family:'Inter',sans-serif;font-size:22px;font-weight:700;line-height:1.15;letter-spacing:-0.4px;color:rgba(255,255,255,0.55)">My reply rate is 4.3x higher. Same list. Same offer. The math is brutal.</div>
+  </div>
+
+  <!-- BIGSTAT -->
+  <div style="position:absolute;top:296px;left:40px;right:40px;height:64px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden">
+    <div style="padding:10px 16px;display:flex;flex-direction:column;gap:2px;border-right:1px solid rgba(255,255,255,0.07)">
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.16em;color:rgba(255,255,255,0.35)">6-TOUCH REPLY</div>
+      <div class="fraunces" style="font-size:26px;font-weight:900;line-height:1;letter-spacing:-0.8px;color:rgba(255,255,255,0.55)">3.1%</div>
+    </div>
+    <div style="padding:10px 16px;display:flex;flex-direction:column;gap:2px;border-right:1px solid rgba(255,255,255,0.07)">
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.16em;color:rgba(255,255,255,0.35)">1-TOUCH REPLY</div>
+      <div class="fraunces accent" style="font-size:26px;font-weight:900;line-height:1;letter-spacing:-0.8px">13.4%</div>
+    </div>
+    <div style="padding:10px 16px;display:flex;flex-direction:column;gap:2px;border-right:1px solid rgba(255,255,255,0.07)">
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.16em;color:rgba(255,255,255,0.35)">UPLIFT</div>
+      <div class="fraunces accent" style="font-size:26px;font-weight:900;line-height:1;letter-spacing:-0.8px">4.3x</div>
+    </div>
+    <div style="padding:10px 16px;display:flex;flex-direction:column;gap:2px">
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.16em;color:rgba(255,255,255,0.35)">SPAM REPORTS</div>
+      <div class="fraunces" style="font-size:26px;font-weight:900;line-height:1;letter-spacing:-0.8px;color:#fff">-94%</div>
+    </div>
+  </div>
+
+  <!-- FIG LABEL -->
+  <div style="position:absolute;top:386px;left:40px;right:40px">
+    <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.18em;color:rgba(255,255,255,0.4);margin-bottom:3px">FIG.01 · 30 DAYS OF CADENCE · WHAT EACH SYSTEM SENT</div>
+    <div class="fraunces" style="font-size:22px;font-weight:900;letter-spacing:-0.5px;color:#fff">Spray hits more inboxes. Precision hits more replies.</div>
+  </div>
+
+  <!-- TWO CADENCE LANES -->
+  <div style="position:absolute;top:452px;left:40px;right:40px">
+
+    <!-- LANE A: 6 touch spray -->
+    <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:18px 22px;margin-bottom:16px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+        <div>
+          <div class="mono" style="font-size:9px;font-weight:800;letter-spacing:.16em;color:rgba(255,255,255,0.5);margin-bottom:2px">CADENCE A · SPRAY</div>
+          <div style="font-family:'Inter',sans-serif;font-size:15px;font-weight:800;color:#fff;letter-spacing:-0.3px">6 touches in 14 days · same angle · escalating urgency</div>
+        </div>
+        <div style="text-align:right">
+          <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(255,255,255,0.4)">REPLY RATE</div>
+          <div class="fraunces" style="font-size:26px;font-weight:900;color:rgba(255,255,255,0.6);letter-spacing:-0.6px">3.1%</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:nowrap">
+        <div class="touch-spray">D1</div>
+        <div style="flex:1;height:1px;background:rgba(255,255,255,0.12)"></div>
+        <div class="touch-spray">D3</div>
+        <div style="flex:1;height:1px;background:rgba(255,255,255,0.12)"></div>
+        <div class="touch-spray">D5</div>
+        <div style="flex:1;height:1px;background:rgba(255,255,255,0.12)"></div>
+        <div class="touch-spray">D8</div>
+        <div style="flex:1;height:1px;background:rgba(255,255,255,0.12)"></div>
+        <div class="touch-spray">D11</div>
+        <div style="flex:1;height:1px;background:rgba(255,255,255,0.12)"></div>
+        <div class="touch-spray">D14</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;margin-top:14px;padding-top:12px;border-top:1px dashed rgba(255,255,255,0.10)">
+        <span class="mono" style="font-size:8px;font-weight:800;letter-spacing:.14em;color:#c0392b;background:rgba(192,57,49,0.12);padding:3px 7px;border-radius:4px">SPAM 12%</span>
+        <span class="mono" style="font-size:8px;font-weight:800;letter-spacing:.14em;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.06);padding:3px 7px;border-radius:4px">UNSUB 7%</span>
+        <span class="mono" style="font-size:8px;font-weight:800;letter-spacing:.14em;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.06);padding:3px 7px;border-radius:4px">RUDE REPLIES 9%</span>
+      </div>
+    </div>
+
+    <!-- LANE B: 1 touch precision -->
+    <div style="background:rgba(237,127,74,0.08);border:1px solid rgba(237,127,74,0.30);border-radius:10px;padding:18px 22px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+        <div>
+          <div class="mono accent" style="font-size:9px;font-weight:800;letter-spacing:.16em;margin-bottom:2px">CADENCE B · PRECISION</div>
+          <div style="font-family:'Inter',sans-serif;font-size:15px;font-weight:800;color:#fff;letter-spacing:-0.3px">1 touch · timed to signal · written after research, sent once</div>
+        </div>
+        <div style="text-align:right">
+          <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(237,127,74,0.7)">REPLY RATE</div>
+          <div class="fraunces accent" style="font-size:26px;font-weight:900;letter-spacing:-0.6px">13.4%</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="flex:1;height:1px;background:rgba(237,127,74,0.25)"></div>
+        <div class="touch-precise">D1</div>
+        <div style="flex:1;height:1px;background:rgba(237,127,74,0.25)"></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;margin-top:14px;padding-top:12px;border-top:1px dashed rgba(237,127,74,0.20)">
+        <span class="mono" style="font-size:8px;font-weight:800;letter-spacing:.14em;color:#16a34a;background:rgba(22,163,74,0.12);padding:3px 7px;border-radius:4px">SPAM 0.7%</span>
+        <span class="mono" style="font-size:8px;font-weight:800;letter-spacing:.14em;color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.06);padding:3px 7px;border-radius:4px">UNSUB 0.3%</span>
+        <span class="mono" style="font-size:8px;font-weight:800;letter-spacing:.14em;color:rgba(237,127,74,0.85);background:rgba(237,127,74,0.10);padding:3px 7px;border-radius:4px">WARM REPLIES 11.4%</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- INSIGHT -->
+  <div style="position:absolute;top:912px;left:40px;right:40px;background:rgba(237,127,74,0.08);border:1px solid rgba(237,127,74,0.22);border-radius:10px;padding:16px 22px">
+    <div class="fraunces" style="font-size:26px;font-weight:900;line-height:1.05;letter-spacing:-0.7px;color:#fff;margin-bottom:6px">6 nudges from an AI is not <span class="accent" style="font-style:italic">persistence</span>. It is <span class="accent" style="font-style:italic">noise</span>.</div>
+    <div style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;color:rgba(255,255,255,0.55);line-height:1.45">Every extra touch teaches the prospect to ignore you faster. PULSE waits for a signal, CORTEX builds context, STRIKER writes once. HUMAN GATE sends it. That is the whole cadence.</div>
+  </div>
+
+  <!-- WHEN-TO-SEND TABLE -->
+  <div style="position:absolute;top:1036px;left:40px;right:40px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 18px">
+    <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.18em;color:rgba(255,255,255,0.4);margin-bottom:10px">FIG.02 · THE 4 SIGNALS THAT TRIGGER THE ONE TOUCH</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+      <div><div class="mono accent" style="font-size:9px;font-weight:800;letter-spacing:.14em;margin-bottom:4px">SIG 01</div><div style="font-family:'Inter',sans-serif;font-size:12px;font-weight:800;color:#fff;letter-spacing:-0.2px;line-height:1.2">Funding announced last 7 days</div></div>
+      <div><div class="mono accent" style="font-size:9px;font-weight:800;letter-spacing:.14em;margin-bottom:4px">SIG 02</div><div style="font-family:'Inter',sans-serif;font-size:12px;font-weight:800;color:#fff;letter-spacing:-0.2px;line-height:1.2">Job post for the exact pain</div></div>
+      <div><div class="mono accent" style="font-size:9px;font-weight:800;letter-spacing:.14em;margin-bottom:4px">SIG 03</div><div style="font-family:'Inter',sans-serif;font-size:12px;font-weight:800;color:#fff;letter-spacing:-0.2px;line-height:1.2">Rival churn post in last 14d</div></div>
+      <div><div class="mono accent" style="font-size:9px;font-weight:800;letter-spacing:.14em;margin-bottom:4px">SIG 04</div><div style="font-family:'Inter',sans-serif;font-size:12px;font-weight:800;color:#fff;letter-spacing:-0.2px;line-height:1.2">Public post complaining</div></div>
+    </div>
+  </div>
+
+  <!-- OUTCOME -->
+  <div style="position:absolute;top:1162px;left:40px;right:40px;height:56px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:8px;display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden">
+    <div style="padding:0 16px;display:flex;flex-direction:column;justify-content:center;gap:2px;border-right:1px solid rgba(255,255,255,0.06)">
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(255,255,255,0.3)">TOUCHES SENT</div>
+      <div class="fraunces accent" style="font-size:22px;font-weight:900;line-height:1;letter-spacing:-0.5px">200 vs 1.2K</div>
+    </div>
+    <div style="padding:0 16px;display:flex;flex-direction:column;justify-content:center;gap:2px;border-right:1px solid rgba(255,255,255,0.06)">
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(255,255,255,0.3)">REPLIES</div>
+      <div class="fraunces" style="font-size:22px;font-weight:900;line-height:1;letter-spacing:-0.5px;color:#fff">27 vs 37</div>
+    </div>
+    <div style="padding:0 16px;display:flex;flex-direction:column;justify-content:center;gap:2px;border-right:1px solid rgba(255,255,255,0.06)">
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(255,255,255,0.3)">QUALITY</div>
+      <div class="fraunces accent" style="font-size:22px;font-weight:900;line-height:1;letter-spacing:-0.5px">85% warm</div>
+    </div>
+    <div style="padding:0 16px;display:flex;flex-direction:column;justify-content:center;gap:2px">
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(255,255,255,0.3)">DOMAIN HEALTH</div>
+      <div class="fraunces accent" style="font-size:22px;font-weight:900;line-height:1;letter-spacing:-0.5px">99/100</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="position:absolute;top:1232px;left:40px;right:40px;background:#0f1420;border:1px solid rgba(237,127,74,0.25);border-radius:12px;padding:18px 28px;box-sizing:border-box">
+    <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.20em;color:rgba(237,127,74,0.6);margin-bottom:8px">WANT THE 1-TOUCH CADENCE?</div>
+    <div class="fraunces" style="font-size:30px;font-weight:900;line-height:0.95;letter-spacing:-1px;color:#fff;margin-bottom:10px">Get the <span class="accent" style="font-style:italic">Claude workflow</span> that replaces 6 follow-ups with 1.</div>
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <div style="background:#ed7f4a;color:#18130b;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:800;letter-spacing:.18em;padding:8px 16px;border-radius:6px">COMMENT CADENCE</div>
+      <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;color:rgba(255,255,255,0.45)">and I will send you the exact Claude workflow I used.</div>
+    </div>
+  </div>
+
+  <!-- MICRO -->
+  <div style="position:absolute;top:1362px;left:40px;right:40px;height:30px;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:22px">
+      <div style="display:flex;align-items:center;gap:6px"><span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(255,255,255,0.28)">REPLY UPLIFT</span><span class="fraunces accent" style="font-size:13px;font-weight:900;letter-spacing:-0.3px">4.3x</span></div>
+      <div style="display:flex;align-items:center;gap:6px"><span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(255,255,255,0.28)">SPAM CUT</span><span class="fraunces" style="font-size:13px;font-weight:900;color:#fff;letter-spacing:-0.3px">-94%</span></div>
+      <div style="display:flex;align-items:center;gap:6px"><span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(255,255,255,0.28)">DOMAIN</span><span class="fraunces accent" style="font-size:13px;font-weight:900;letter-spacing:-0.3px">99/100</span></div>
+    </div>
+    <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.12em;color:rgba(255,255,255,0.2)">ULTRON OS · SCRIPT 35</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="position:absolute;top:1396px;left:40px;right:40px;border-top:1px dashed rgba(237,127,74,0.2);padding-top:10px;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img src="ultron-logo.png" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0"
+        onerror="this.style.cssText='width:28px;height:28px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 72% 22%,rgba(255,140,80,.95) 0%,rgba(220,80,30,.3) 22%,transparent 36%),radial-gradient(circle at 22% 76%,rgba(55,170,255,.95) 0%,rgba(30,130,220,.3) 22%,transparent 38%),radial-gradient(circle at 38% 38%,rgba(30,30,50,1) 0%,#060810 55%,#000 100%)'">
+      <div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:rgba(255,255,255,0.80);text-transform:uppercase;letter-spacing:0.06em"><strong>ULTRON OS</strong> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure</span>
+        <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.12em;color:rgba(255,255,255,0.3)">AI GTM OPERATOR</div>
+      </div>
+    </div>
+    <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:800;color:rgba(255,255,255,0.80);letter-spacing:-0.5px">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

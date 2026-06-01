@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 36 · SLEEP · v3 (Night Shift Log)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,500;12..96,700;12..96,800&family=Inter+Tight:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --od-9:#f76b15; --od-10:#ff801f; --od-11:#ffa057; --od-12:#ffe0c2;
+
+    --bg:         #0b0907;
+    --bg-deep:    #060504;
+    --bg-card:    #14100a;
+    --bg-rail:    #1a140d;
+    --ink:        #ffe0c2;
+    --ink-mute:   #d4a882;
+    --ink-soft:   #8f7060;
+    --accent:     var(--od-10);
+    --accent-soft:var(--od-11);
+    --accent-deep:var(--od-9);
+    --rule:       rgba(255,224,194,.10);
+    --rule-strong:rgba(255,224,194,.18);
+    --dot:        rgba(255,128,31,.055);
+    --paper:      var(--od-12);
+    --moon:       #9bb5d8;
+    --moon-bg:    rgba(135,160,200,.10);
+    --moon-deep:  rgba(80,105,140,.18);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:24px 0;background:#030201;font-family:'Inter Tight',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .scaler{display:flex;justify-content:center;align-items:flex-start}
+  .scaler>.canvas{transform-origin:top center;transform:scale(calc(min(100vw / 1130, (100vh - 48px) / 1510)))}
+
+  .canvas{
+    width:1080px;height:1450px;position:relative;overflow:hidden;
+    background:var(--bg);
+    padding:28px 40px 20px 40px;
+    display:flex;flex-direction:column;
+  }
+  .canvas::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:
+      radial-gradient(1100px 700px at 88% -8%, rgba(255,128,31,.10), transparent 62%),
+      radial-gradient(1000px 800px at 10% 50%, rgba(135,160,200,.06), transparent 62%),
+      radial-gradient(var(--dot) 1.3px, transparent 1.4px) 0 0 / 24px 24px;
+  }
+  .canvas::after{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.14;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .92 0 0 0 0 .85 0 0 0 0 .75 0 0 0 .85 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  .canvas > *{position:relative;z-index:1}
+
+  /* ── MASTHEAD ──────────────────────────────────────────────── */
+  .mast{
+    flex-shrink:0;display:flex;align-items:center;justify-content:space-between;
+    padding-bottom:10px;border-bottom:1px solid var(--rule);margin-bottom:16px;
+  }
+  .mast-kw{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;color:var(--ink-mute);letter-spacing:.20em;text-transform:uppercase;white-space:nowrap}
+  .mast-kw .sep{color:var(--accent);margin:0 7px;opacity:.75}
+  .mast-r{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;color:var(--ink-soft);letter-spacing:.18em;text-transform:uppercase}
+
+  /* ── HERO ──────────────────────────────────────────────────── */
+  .hero{
+    flex-shrink:0;display:grid;grid-template-columns:auto 1fr;gap:32px;
+    align-items:flex-start;margin-bottom:18px;
+  }
+  .hero-num{
+    font-family:'Instrument Serif',serif;font-style:italic;
+    font-size:200px;line-height:.86;color:var(--ink-soft);
+    letter-spacing:-6px;margin-top:-10px;flex-shrink:0;
+    position:relative;white-space:nowrap;
+  }
+  .hero-num .from{color:var(--ink-soft)}
+  .hero-num .arrow{
+    font-family:'Bricolage Grotesque',sans-serif;font-style:normal;font-weight:800;
+    font-size:80px;letter-spacing:-2px;color:var(--accent);vertical-align:28px;
+    margin:0 8px;
+  }
+  .hero-num .to{color:var(--accent);text-shadow:0 0 60px rgba(255,128,31,.25)}
+  .hero-num::after{
+    content:"MEETINGS · ONE NIGHT";position:absolute;left:4px;bottom:-22px;
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.30em;font-weight:700;
+    color:var(--ink-mute);white-space:nowrap;
+  }
+  .hero-r{padding-top:8px;min-width:0}
+  .kicker{
+    font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:12px;display:flex;align-items:center;gap:10px;
+  }
+  .kicker::before{content:"";width:22px;height:1px;background:var(--accent)}
+  .head{
+    font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-variation-settings:"opsz" 96;
+    font-size:36px;line-height:1.02;letter-spacing:-1.2px;color:var(--ink);margin-bottom:12px;
+  }
+  .head .ai{
+    font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--accent);
+    font-size:44px;line-height:.9;letter-spacing:-1px;
+  }
+  .dek{
+    font-family:'Instrument Serif',serif;font-style:italic;font-size:15px;line-height:1.42;
+    color:var(--ink-mute);max-width:560px;
+    border-left:2px solid var(--accent);padding-left:14px;
+  }
+
+  /* ── SHIFT LOG · DOMINANT ELEMENT ──────────────────────────── */
+  .log{
+    flex-shrink:0;flex-grow:1;position:relative;
+    background:var(--bg-card);border:1px solid var(--rule-strong);
+    box-shadow:0 14px 40px -16px rgba(0,0,0,.7);
+    margin-bottom:12px;display:flex;flex-direction:column;
+  }
+  .log-tab{
+    position:absolute;top:-15px;left:24px;background:var(--accent);color:var(--bg-deep);
+    padding:5px 14px 5px 12px;
+    font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;
+    clip-path:polygon(0 0, 100% 0, calc(100% - 14px) 100%, 0 100%);
+  }
+  .log-stamp{
+    position:absolute;top:14px;right:22px;
+    border:2px solid var(--accent-soft);color:var(--accent-soft);
+    padding:5px 11px 4px;
+    font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+    transform:rotate(-4deg);opacity:.9;
+  }
+  .log-stamp::after{
+    content:attr(data-date);display:block;font-size:7.5px;letter-spacing:.16em;font-weight:700;color:var(--accent-soft);opacity:.7;margin-top:3px;
+  }
+  .log-head{
+    padding:18px 24px 12px;border-bottom:1px solid var(--rule);
+    display:flex;align-items:baseline;justify-content:space-between;
+  }
+  .log-h-l{font-family:'Instrument Serif',serif;font-style:italic;font-size:22px;color:var(--ink)}
+  .log-h-l .no{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:.22em;margin-right:12px;text-transform:uppercase;vertical-align:3px;font-weight:700;font-style:normal}
+  .log-h-r{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.18em;color:var(--ink-soft);text-transform:uppercase}
+
+  /* RAILS — left vertical timeline */
+  .log-body{
+    flex:1;display:grid;grid-template-columns:46px 100px 1fr;gap:0;position:relative;min-height:0;
+  }
+  .rail-band{
+    background:var(--bg-rail);border-right:1px solid var(--rule);position:relative;
+  }
+  .rail-band::before{
+    /* sleep zone band */
+    content:"";position:absolute;left:0;right:0;
+    top:18%;height:54%;
+    background:linear-gradient(180deg, transparent, var(--moon-bg) 12%, var(--moon-deep) 50%, var(--moon-bg) 88%, transparent);
+    border-top:1px dashed rgba(135,160,200,.30);
+    border-bottom:1px dashed rgba(135,160,200,.30);
+    pointer-events:none;
+  }
+  .rail-label{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-90deg);transform-origin:center;
+    font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.32em;
+    color:var(--moon);text-transform:uppercase;white-space:nowrap;
+  }
+  .rail-label .moon{margin-right:8px;font-size:13px;display:inline-block;transform:rotate(90deg)}
+  .rail-time{
+    background:var(--bg-rail);border-right:1px solid var(--rule-strong);position:relative;
+    display:flex;flex-direction:column;
+  }
+  /* vertical thread down the time rail */
+  .rail-time::after{
+    content:"";position:absolute;top:0;bottom:0;right:0;width:1px;
+    background:linear-gradient(180deg, var(--accent) 0%, var(--accent) 15%, var(--moon) 25%, var(--moon) 65%, var(--accent) 75%, var(--accent) 100%);
+    opacity:.55;
+  }
+
+  /* STAGE ROWS — 6 rows fill height */
+  .stages{display:flex;flex-direction:column;min-height:0}
+  .row{
+    display:grid;grid-template-columns:1fr;align-items:stretch;
+    border-bottom:1px solid var(--rule);position:relative;
+    flex:1;min-height:0;
+  }
+  .row:last-child{border-bottom:none}
+  /* timestamp cell sits in the rail-time column */
+  .ts{
+    position:absolute;left:-100px;width:100px;
+    top:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  }
+  .ts-time{
+    font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+    font-size:32px;line-height:1;color:var(--accent);letter-spacing:-1px;
+  }
+  .row.sleep .ts-time{color:var(--moon)}
+  .ts-dot{
+    width:12px;height:12px;border-radius:50%;background:var(--accent);
+    box-shadow:0 0 0 4px rgba(255,128,31,.25), 0 0 0 7px var(--bg-card);
+    position:absolute;right:-6px;top:50%;transform:translateY(-50%);z-index:6;
+  }
+  .row.sleep .ts-dot{background:var(--moon);box-shadow:0 0 0 4px rgba(155,181,216,.22), 0 0 0 7px var(--bg-card)}
+  /* stage content */
+  .stg{
+    padding:14px 20px 13px;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;
+  }
+  .stg-l{display:flex;flex-direction:column;gap:6px;min-width:0}
+  .stg-head{display:flex;align-items:center;gap:10px}
+  .stg-icon{
+    width:30px;height:30px;border:1.5px solid var(--accent);color:var(--accent);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .row.sleep .stg-icon{border-color:var(--moon);color:var(--moon)}
+  .stg-icon svg{width:16px;height:16px}
+  .stg-agent{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--ink);text-transform:uppercase}
+  .row.sleep .stg-agent{color:var(--moon)}
+  .stg-tag{font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.20em;color:var(--ink-soft);text-transform:uppercase;background:rgba(255,255,255,.04);padding:2px 8px}
+  .stg-action{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:14px;line-height:1.32;color:var(--ink);letter-spacing:-.2px}
+  .stg-action b{color:var(--accent);font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:16px}
+  .stg-detail{font-family:'Instrument Serif',serif;font-style:italic;font-size:12.5px;line-height:1.38;color:var(--ink-mute);margin-top:2px}
+  /* right metric block */
+  .stg-r{
+    display:flex;flex-direction:column;align-items:flex-end;gap:1px;
+    padding-left:18px;border-left:1px dotted var(--rule);min-width:92px;
+  }
+  .stg-r-l{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.16em;color:var(--ink-soft);text-transform:uppercase}
+  .stg-r-v{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:30px;line-height:1;color:var(--accent);letter-spacing:-.8px}
+  .row.sleep .stg-r-v{color:var(--moon)}
+  .stg-r-sub{font-family:'JetBrains Mono',monospace;font-size:7.5px;font-weight:700;letter-spacing:.14em;color:var(--ink-soft);text-transform:uppercase;margin-top:2px}
+
+  /* FUNNEL — bottom of log */
+  .funnel{
+    padding:13px 20px;border-top:1px solid var(--rule-strong);background:var(--bg-deep);
+    display:grid;grid-template-columns:repeat(9,auto);gap:10px;align-items:center;justify-content:space-between;
+  }
+  .fn-cell{display:flex;flex-direction:column;gap:1px;align-items:center}
+  .fn-arr{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:16px;color:var(--accent-soft);opacity:.7}
+  .fn-l{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.16em;color:var(--ink-soft);text-transform:uppercase}
+  .fn-v{font-family:'Instrument Serif',serif;font-style:italic;font-size:22px;line-height:1;color:var(--ink);letter-spacing:-.6px}
+  .fn-v.ac{color:var(--accent)}
+
+  /* ── PULL QUOTE ────────────────────────────────────────────── */
+  .pull{
+    flex-shrink:0;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:flex-start;
+    padding:13px 18px 13px 16px;border:1px solid var(--accent);
+    background:linear-gradient(135deg, rgba(255,128,31,.09), rgba(247,107,21,.04));
+    margin-bottom:10px;position:relative;
+  }
+  .pull::before{content:"";position:absolute;left:-5px;top:-5px;width:10px;height:10px;background:var(--accent)}
+  .pull-mark{font-family:'Instrument Serif',serif;font-style:italic;font-size:80px;line-height:.55;color:var(--accent);padding-top:4px}
+  .pull-body{padding-top:2px}
+  .pull-tag{font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.22em;color:var(--accent);text-transform:uppercase;margin-bottom:4px}
+  .pull-text{font-family:'Instrument Serif',serif;font-style:italic;font-size:19px;line-height:1.22;color:var(--ink);letter-spacing:-.3px}
+  .pull-text b{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-style:normal;color:var(--accent)}
+
+  /* ── CTA ───────────────────────────────────────────────────── */
+  .cta{
+    flex-shrink:0;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;
+    background:var(--paper);color:var(--bg-deep);padding:13px 18px;margin-bottom:10px;position:relative;
+  }
+  .cta::before{content:"";position:absolute;left:-4px;top:-4px;right:-4px;bottom:-4px;border:1px solid var(--accent);pointer-events:none}
+  .cta-tag{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.22em;color:var(--accent-deep);text-transform:uppercase;margin-bottom:4px}
+  .cta-d{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:20px;line-height:1.04;letter-spacing:-.5px;color:var(--bg-deep)}
+  .cta-d .ai{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--accent-deep);font-size:24px}
+  .cta-d .sm{display:block;font-family:'Inter Tight',sans-serif;font-weight:500;font-size:11px;color:rgba(23,18,14,.62);margin-top:4px;letter-spacing:0}
+  .cta-chip{background:var(--bg-deep);color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:800;letter-spacing:.18em;padding:13px 16px;white-space:nowrap;text-transform:uppercase;display:flex;align-items:center;gap:8px}
+  .cta-chip svg{width:14px;height:14px}
+
+  /* ── FOOTER ────────────────────────────────────────────────── */
+  .ftr{flex-shrink:0;margin-top:auto;padding-top:9px;border-top:1px dashed var(--rule);display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .ftr-l{display:flex;align-items:center;gap:10px}
+  .ftr-logo{width:28px;height:28px;border-radius:50%;flex-shrink:0}
+  .ftr-txt{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.06em;color:var(--ink-mute);text-transform:uppercase}
+  .ftr-url{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:14px;letter-spacing:-.4px;color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="canvas">
+
+  <!-- MASTHEAD -->
+  <div class="mast">
+    <div class="mast-kw">AI OUTBOUND<span class="sep">·</span>OVERNIGHT PIPELINE<span class="sep">·</span>FOUNDER GTM<span class="sep">·</span>AI AGENTS<span class="sep">·</span>HUMAN GATE<span class="sep">·</span>SIGNAL<span class="sep">·</span>ULTRON OS</div>
+    <div class="mast-r">SHIFT 23:00 → 10:00 · 1 NIGHT</div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-num"><span class="from">3</span><span class="arrow">→</span><span class="to">11</span></div>
+    <div class="hero-r">
+      <div class="kicker">Overnight pipeline · 23:00 to 10:00 · founder asleep</div>
+      <div class="head">3 meetings at 23:00. 11 by 07:00. Built while you slept by <span class="ai">AI agents.</span></div>
+      <div class="dek">Not a template blast. Not LinkedIn spam. A 6-stage protocol configured once three weeks ago, getting smarter every night since.</div>
+    </div>
+  </div>
+
+  <!-- DOMINANT · SHIFT LOG with vertical timeline rail -->
+  <div class="log">
+    <div class="log-tab">SHIFT LOG · OVERNIGHT BUILD</div>
+    <div class="log-stamp" data-date="2026 / 05 / 24">AUTONOMOUS</div>
+
+    <div class="log-head">
+      <div class="log-h-l"><span class="no">FIG. 01</span>The 6-stage pipeline that ran while you slept.</div>
+      <div class="log-h-r">ZERO SENDS OVERNIGHT · 11 SENT 07:14</div>
+    </div>
+
+    <div class="log-body">
+      <!-- Column 1: rotated FOUNDER ASLEEP label band -->
+      <div class="rail-band">
+        <div class="rail-label"><span class="moon">☾</span>FOUNDER ASLEEP · AGENTS RUN</div>
+      </div>
+
+      <!-- Column 2: vertical timeline thread (timestamps live inside each row via absolute positioning) -->
+      <div class="rail-time"></div>
+
+      <!-- Column 3: 6 stage rows -->
+      <div class="stages">
+
+        <div class="row">
+          <div class="stg">
+            <div class="ts">
+              <div class="ts-time">23:00</div>
+              <div class="ts-dot"></div>
+            </div>
+            <div class="stg-l">
+              <div class="stg-head">
+                <div class="stg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 11 2 2 4-4"/><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
+                <div class="stg-agent">CORTEX</div>
+                <div class="stg-tag">SIGNAL INTAKE</div>
+              </div>
+              <div class="stg-action">Pulls the evening signal batch from LinkedIn, Crunchbase, G2.</div>
+              <div class="stg-detail">Job changes, funding alerts, review spikes from the last 18 hours. Scores each against current ICP.</div>
+            </div>
+            <div class="stg-r">
+              <div class="stg-r-l">Signals scored</div>
+              <div class="stg-r-v">214</div>
+              <div class="stg-r-sub">52 over threshold</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="stg">
+            <div class="ts">
+              <div class="ts-time">23:15</div>
+              <div class="ts-dot"></div>
+            </div>
+            <div class="stg-l">
+              <div class="stg-head">
+                <div class="stg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 21h8"/><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/></svg></div>
+                <div class="stg-agent">STRIKER</div>
+                <div class="stg-tag">DRAFTING</div>
+              </div>
+              <div class="stg-action">One draft per prospect scoring above <b>74/100</b>.</div>
+              <div class="stg-detail">Each draft attached to the signal that triggered it. No batch templates. No generic openers.</div>
+            </div>
+            <div class="stg-r">
+              <div class="stg-r-l">Drafts written</div>
+              <div class="stg-r-v">52</div>
+              <div class="stg-r-sub">avg 11 sec each</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row sleep">
+          <div class="stg">
+            <div class="ts">
+              <div class="ts-time">23:30</div>
+              <div class="ts-dot"></div>
+            </div>
+            <div class="stg-l">
+              <div class="stg-head">
+                <div class="stg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></div>
+                <div class="stg-agent">SENTINEL</div>
+                <div class="stg-tag">AUDIT · KILL</div>
+              </div>
+              <div class="stg-action">Audits each draft. Kills <b>79%</b>. Tone drift, low-confidence claims, duplicate touches.</div>
+              <div class="stg-detail">11 drafts pass. 41 die. The 21% that survive are genuinely ready.</div>
+            </div>
+            <div class="stg-r">
+              <div class="stg-r-l">Killed</div>
+              <div class="stg-r-v">41</div>
+              <div class="stg-r-sub">11 passed</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row sleep">
+          <div class="stg">
+            <div class="ts">
+              <div class="ts-time">00:00</div>
+              <div class="ts-dot"></div>
+            </div>
+            <div class="stg-l">
+              <div class="stg-head">
+                <div class="stg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+                <div class="stg-agent">HUMAN GATE</div>
+                <div class="stg-tag">QUEUE LOCKED</div>
+              </div>
+              <div class="stg-action">Whatever passed SENTINEL is locked for morning review. <b>Zero sends overnight.</b></div>
+              <div class="stg-detail">Anti-impulse rule: the queue is sealed at midnight. No agent has send authority until 07:00 approval.</div>
+            </div>
+            <div class="stg-r">
+              <div class="stg-r-l">In queue</div>
+              <div class="stg-r-v">11</div>
+              <div class="stg-r-sub">awaiting human</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="stg">
+            <div class="ts">
+              <div class="ts-time">07:00</div>
+              <div class="ts-dot"></div>
+            </div>
+            <div class="stg-l">
+              <div class="stg-head">
+                <div class="stg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17a7 7 0 0 1 14 0"/><path d="M12 9V2"/><path d="m4.22 10.22 1.42 1.42"/><path d="m18.36 11.64 1.42-1.42"/><path d="M2 17h20"/><path d="m6.34 6.34 1.42 1.42"/></svg></div>
+                <div class="stg-agent">HUMAN</div>
+                <div class="stg-tag">APPROVAL PASS · 9 MIN</div>
+              </div>
+              <div class="stg-action">Founder approves <b>11 of 11</b>. Messages send at 07:14.</div>
+              <div class="stg-detail">SENTINEL did the hard work overnight. By morning, the rubber stamp is not a rubber stamp. It is a quick confidence check.</div>
+            </div>
+            <div class="stg-r">
+              <div class="stg-r-l">Sent</div>
+              <div class="stg-r-v">11</div>
+              <div class="stg-r-sub">100% approved</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="stg">
+            <div class="ts">
+              <div class="ts-time">08:30</div>
+              <div class="ts-dot"></div>
+            </div>
+            <div class="stg-l">
+              <div class="stg-head">
+                <div class="stg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg></div>
+                <div class="stg-agent">PULSE</div>
+                <div class="stg-tag">FIRST REPLIES</div>
+              </div>
+              <div class="stg-action">3 replies inbound. 2 meetings booked. 1 reschedule from last week's follow-up.</div>
+              <div class="stg-detail">By 10:00 the calendar shows 11 meetings. 8 more will book over the next 4 days from the same 11 messages.</div>
+            </div>
+            <div class="stg-r">
+              <div class="stg-r-l">Replies</div>
+              <div class="stg-r-v">3</div>
+              <div class="stg-r-sub">2 booked, 1 reschedule</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FUNNEL SUMMARY -->
+    <div class="funnel">
+      <div class="fn-cell"><span class="fn-l">Signals</span><span class="fn-v">214</span></div>
+      <div class="fn-arr">→</div>
+      <div class="fn-cell"><span class="fn-l">Drafts</span><span class="fn-v">52</span></div>
+      <div class="fn-arr">→</div>
+      <div class="fn-cell"><span class="fn-l">SENTINEL passed</span><span class="fn-v">11</span></div>
+      <div class="fn-arr">→</div>
+      <div class="fn-cell"><span class="fn-l">Approved &amp; sent</span><span class="fn-v ac">11</span></div>
+      <div class="fn-arr">→</div>
+      <div class="fn-cell"><span class="fn-l">Meetings · 4 days</span><span class="fn-v ac">8</span></div>
+    </div>
+  </div>
+
+  <!-- PULL QUOTE -->
+  <div class="pull">
+    <div class="pull-mark">"</div>
+    <div class="pull-body">
+      <div class="pull-tag">THE POINT</div>
+      <div class="pull-text">Not speed. <b>Asymmetry.</b> The 11 messages approved at 07:00 do not all book meetings. They never do. The 8 meetings that did book happened over the next 4 days. The pipeline that produced them was built while you were asleep.</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <div>
+      <div class="cta-tag">The overnight engine</div>
+      <div class="cta-d">Get the <span class="ai">Claude</span> workflow that ran this 6-stage pipeline while a founder slept.
+        <span class="sm">CORTEX → STRIKER → SENTINEL → HUMAN GATE → PULSE. Configured once, runs every night.</span>
+      </div>
+    </div>
+    <div class="cta-chip">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+      COMMENT SLEEP
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="ftr">
+    <div class="ftr-l">
+      <img src="ultron-logo.png" class="ftr-logo"
+        onerror="this.style.cssText='width:28px;height:28px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 72% 22%,rgba(255,140,80,.95) 0%,rgba(220,80,30,.3) 22%,transparent 36%),radial-gradient(circle at 22% 76%,rgba(55,170,255,.95) 0%,rgba(30,130,220,.3) 22%,transparent 38%),radial-gradient(circle at 38% 38%,rgba(30,30,50,1) 0%,#060810 55%,#000 100%)'">
+      <div class="ftr-txt"><strong>ULTRON OS</strong> · founder · gtm · agent infrastructure</div>
+    </div>
+    <div class="ftr-url">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

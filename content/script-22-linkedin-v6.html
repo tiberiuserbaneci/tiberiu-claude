@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Script 22 - QUALIFY</title>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Caveat:wght@600;700&family=Inter:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* BUDGET 1450 */
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#18130b;margin:0;padding:0}
+  .scaler{display:flex;justify-content:center}
+  .canvas{
+    width:1080px;height:1450px;
+    background:#f1e8d4;
+    background-image:
+      linear-gradient(rgba(60,40,15,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(60,40,15,.05) 1px, transparent 1px);
+    background-size:24px 24px;
+    display:flex;flex-direction:column;
+    padding:32px 40px 22px;
+    font-family:Inter,'Helvetica Neue',Arial,sans-serif;
+    color:#14110d;
+    overflow:hidden;
+  }
+
+  /* TOKENS (light):
+     accent  #b8501f
+     ink     #14110d
+     ink-2   #3d342a
+     mute    #6b5f4f
+     line    rgba(60,40,15,.14)
+     line+   rgba(60,40,15,.28)
+     tier2   #2f8a6b (teal-ish, darker for light bg)
+     dark    #14110d (callout bg, with #ffb277 type) */
+
+  .header{display:flex;align-items:center;justify-content:space-between;padding-bottom:10px;border-bottom:1px solid rgba(60,40,15,.28);flex-shrink:0}
+  .header-label{font-family:Caveat,cursive;font-size:18px;font-weight:700;color:#b8501f;letter-spacing:.06em}
+  .header-meta{font-family:ui-monospace,monospace;font-size:9px;font-weight:700;letter-spacing:.14em;color:#6b5f4f}
+
+  /* HOOK */
+  .hook{padding:16px 0 14px;flex-shrink:0}
+  .hook-main{font-family:Kalam,cursive;font-size:56px;font-weight:700;color:#14110d;line-height:0.94;letter-spacing:-0.5px}
+  .hook-main span{color:#b8501f}
+  .hook-sub{font-family:Caveat,cursive;font-size:22px;font-weight:600;color:#3d342a;margin-top:8px;line-height:1.15}
+
+  /* HERO FUNNEL */
+  .funnel{
+    display:flex;align-items:stretch;
+    margin:6px 0 12px;
+    background:#14110d;
+    border-radius:6px;
+    overflow:hidden;
+    flex-shrink:0;
+    height:128px;
+  }
+  .fun-cell{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:0 18px;position:relative}
+  .fun-cell + .fun-cell::before{content:"";position:absolute;left:0;top:18%;bottom:18%;width:1px;background:rgba(255,178,119,.18)}
+  .fun-cap{font-family:ui-monospace,monospace;font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(255,178,119,.6);margin-bottom:6px}
+  .fun-num{font-family:Kalam,cursive;font-size:60px;font-weight:700;line-height:0.9;color:#ffb277}
+  .fun-num.muted{color:rgba(232,224,208,.45)}
+  .fun-sub{font-family:Inter,sans-serif;font-size:10px;font-weight:700;color:rgba(232,224,208,.62);margin-top:4px;text-align:center;line-height:1.25}
+  .fun-arrow{display:flex;align-items:center;justify-content:center;color:rgba(255,178,119,.45);font-family:Inter,sans-serif;font-size:26px;font-weight:300;width:22px;flex-shrink:0}
+
+  /* MAIN */
+  .main{display:flex;flex-direction:column;gap:9px;flex:1;min-height:0}
+
+  .band-2{display:grid;grid-template-columns:1.15fr 1fr;gap:9px;flex:1;min-height:0}
+  .band-2b{display:grid;grid-template-columns:1fr 1fr;gap:9px;flex-shrink:0}
+
+  .tile{
+    background:rgba(255,255,255,.45);
+    border:1px solid rgba(60,40,15,.14);
+    border-radius:5px;
+    padding:13px 16px;
+    overflow:hidden;
+    display:flex;flex-direction:column;
+  }
+  .tile-dark{
+    background:#14110d;
+    border:1px solid #14110d;
+    border-radius:5px;
+    padding:13px 16px;
+    overflow:hidden;
+    display:flex;flex-direction:column;
+  }
+  .t-title{font-family:Caveat,cursive;font-size:18px;font-weight:700;color:#b8501f;letter-spacing:.04em;margin-bottom:10px;line-height:1}
+  .t-title.amber{color:#ffb277}
+  .caption{font-family:ui-monospace,monospace;font-size:9px;font-weight:700;letter-spacing:.14em;color:#6b5f4f;margin-bottom:6px}
+  .caption.amber{color:rgba(255,178,119,.55)}
+
+  /* TIER TABLE */
+  .tier-row{display:grid;grid-template-columns:1.4fr 56px 1fr 60px 56px;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid rgba(60,40,15,.12);flex:1}
+  .tier-row:last-child{border-bottom:none}
+  .tier-name{font-family:Kalam,cursive;font-size:18px;font-weight:700;line-height:1}
+  .tier-meta{font-family:ui-monospace,monospace;font-size:9px;font-weight:700;letter-spacing:.1em;color:#6b5f4f;margin-top:3px}
+  .tier-n{font-family:Kalam,cursive;font-size:24px;font-weight:700;text-align:center;line-height:1}
+  .tier-bar{height:11px;border-radius:2px;background:rgba(60,40,15,.08);overflow:hidden}
+  .tier-bar-fill{height:100%;border-radius:2px}
+  .tier-win{font-family:Kalam,cursive;font-size:24px;font-weight:700;text-align:right;line-height:1}
+  .tier-acv{font-family:ui-monospace,monospace;font-size:14px;font-weight:800;text-align:right}
+
+  /* RUBRIC */
+  .rub-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;flex:1}
+  .rub-cell{background:rgba(255,255,255,.06);border:1px solid rgba(255,178,119,.18);border-radius:4px;padding:9px 11px;display:flex;flex-direction:column}
+  .rub-name{font-family:ui-monospace,monospace;font-size:9px;font-weight:800;letter-spacing:.14em;color:#ffb277;margin-bottom:6px}
+  .rub-body{font-family:Inter,sans-serif;font-size:11px;font-weight:700;color:#e8e0d0;line-height:1.55;flex:1}
+  .rub-weight{font-family:Kalam,cursive;font-size:20px;font-weight:700;color:#ffb277;line-height:1;margin-top:6px}
+
+  /* SIGNALS */
+  .sig-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+  .sig-row:last-child{margin-bottom:0}
+  .sig-name{font-family:Inter,sans-serif;font-size:11px;font-weight:700;color:#14110d;width:170px;flex-shrink:0;line-height:1.2;letter-spacing:.02em}
+  .sig-track{flex:1;height:14px;background:rgba(60,40,15,.08);border-radius:2px;overflow:hidden}
+  .sig-fill{height:100%;border-radius:2px;background:#b8501f}
+  .sig-pct{font-family:Kalam,cursive;font-size:20px;font-weight:700;color:#b8501f;width:44px;text-align:right;flex-shrink:0;line-height:1}
+
+  /* PATTERNS */
+  .pat-row{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid rgba(60,40,15,.12)}
+  .pat-row:last-child{border-bottom:none}
+  .pat-num{font-family:Kalam,cursive;font-size:26px;color:#b8501f;flex-shrink:0;width:30px;line-height:1;font-weight:700}
+  .pat-text{font-family:Inter,sans-serif;font-size:11px;font-weight:700;color:#14110d;flex:1;line-height:1.35}
+  .pat-chip{font-family:Kalam,cursive;font-size:20px;font-weight:700;color:#2f8a6b;flex-shrink:0;line-height:1}
+
+  /* DARK CALLOUT */
+  .callout{
+    background:#14110d;border-radius:5px;
+    padding:14px 18px;
+    display:grid;grid-template-columns:auto 1px 1fr 1fr 1fr 1fr;
+    gap:18px;align-items:center;
+    flex-shrink:0;
+  }
+  .callout-hero{display:flex;flex-direction:column}
+  .callout-num{font-family:Kalam,cursive;font-size:50px;font-weight:700;color:#ffb277;line-height:0.9}
+  .callout-cap{font-family:ui-monospace,monospace;font-size:9px;font-weight:700;letter-spacing:.14em;color:rgba(255,178,119,.6);margin-top:5px}
+  .callout-div{background:rgba(255,178,119,.22);height:62px;align-self:center}
+  .callout-stat{display:flex;flex-direction:column;align-items:flex-start}
+  .callout-stat-num{font-family:Kalam,cursive;font-size:26px;font-weight:700;color:#ffb277;line-height:1}
+  .callout-stat-cap{font-family:ui-monospace,monospace;font-size:8.5px;font-weight:700;letter-spacing:.12em;color:rgba(255,178,119,.55);margin-top:3px}
+  .callout-stat-sub{font-family:Inter,sans-serif;font-size:10px;font-weight:700;color:rgba(232,224,208,.6);margin-top:2px;line-height:1.3}
+
+  /* WHAT CHANGED */
+  .changed{
+    display:grid;grid-template-columns:auto repeat(4,1fr);gap:14px;align-items:center;
+    background:rgba(255,255,255,.45);border:1px solid rgba(60,40,15,.14);
+    border-radius:5px;padding:12px 16px;flex-shrink:0;
+  }
+  .changed-title{font-family:Caveat,cursive;font-size:18px;color:#b8501f;font-weight:700;line-height:1.05;max-width:140px}
+  .changed-cell{text-align:center;border-left:1px solid rgba(60,40,15,.14);padding-left:12px}
+  .changed-cap{font-family:ui-monospace,monospace;font-size:8.5px;font-weight:700;letter-spacing:.1em;color:#6b5f4f;margin-bottom:3px}
+  .changed-before{font-family:ui-monospace,monospace;font-size:13px;font-weight:700;color:rgba(20,17,13,.42);text-decoration:line-through;text-decoration-color:rgba(20,17,13,.32)}
+  .changed-after{font-family:Kalam,cursive;font-size:26px;font-weight:700;color:#b8501f;line-height:1;margin-top:1px}
+
+  /* WORKFLOW */
+  .flow{display:flex;align-items:stretch;gap:6px;flex-shrink:0}
+  .flow-step{flex:1;background:rgba(255,255,255,.45);border:1px solid rgba(60,40,15,.14);border-radius:4px;padding:8px 10px}
+  .flow-n{font-family:ui-monospace,monospace;font-size:8.5px;font-weight:800;letter-spacing:.12em;color:#b8501f;margin-bottom:3px}
+  .flow-name{font-family:Kalam,cursive;font-size:17px;font-weight:700;color:#14110d;line-height:1}
+  .flow-sub{font-family:Inter,sans-serif;font-size:10px;font-weight:700;color:#3d342a;margin-top:4px;line-height:1.3}
+
+  /* CTA */
+  .cta{
+    background:#14110d;
+    border-radius:5px;padding:12px 18px;
+    display:flex;align-items:center;justify-content:space-between;flex-shrink:0;
+  }
+  .cta-q{font-family:Caveat,cursive;font-size:21px;font-weight:700;color:#fff}
+  .cta-sub{font-family:Inter,sans-serif;font-size:10px;font-weight:700;color:rgba(255,178,119,.65);margin-top:3px}
+  .cta-key{font-family:Kalam,cursive;font-size:28px;font-weight:700;color:#ffb277}
+
+  /* FOOTER */
+  .footer{display:flex;align-items:center;gap:16px;border-top:1px solid rgba(60,40,15,.28);padding:10px 0 0;flex-shrink:0}
+  .footer-name{font-family:ui-monospace,monospace;font-size:14px;font-weight:900;letter-spacing:.04em;color:#14110d}
+  .footer-kw{font-family:ui-monospace,monospace;font-size:9px;font-weight:700;letter-spacing:.13em;color:#6b5f4f;flex:1;text-align:center}
+  .footer-url{font-family:ui-monospace,monospace;font-size:13px;font-weight:700;color:#b8501f}
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="canvas">
+
+  <!-- HEADER -->
+  <div class="header">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(0,0,0,0.5)">FOUNDER GTM · INBOUND LEAD SCORING · CLAUDE AGENTS · ICP QUALIFY · ULTRON OS</span>
+  </div>
+
+  <!-- HOOK -->
+  <div class="hook">
+    <div class="hook-main"><span>CLAUDE VETTED</span><br>340 INBOUND LEADS IN 11 MIN.</div>
+    <div class="hook-sub">71 strong-fit. 98 nurture. 171 discarded. Manual scoring would have taken 4.2 hours of SDR judgment.</div>
+  </div>
+
+  <!-- FUNNEL HERO -->
+  <div class="funnel">
+    <div class="fun-cell">
+      <div class="fun-cap">INBOUND</div>
+      <div class="fun-num muted">340</div>
+      <div class="fun-sub">leads scored<br>in 11 minutes</div>
+    </div>
+    <div class="fun-arrow">&rsaquo;</div>
+    <div class="fun-cell">
+      <div class="fun-cap">QUALIFIED</div>
+      <div class="fun-num" style="color:#78c4a8">169</div>
+      <div class="fun-sub">Tier-1 + Tier-2<br>routed to reps</div>
+    </div>
+    <div class="fun-arrow">&rsaquo;</div>
+    <div class="fun-cell">
+      <div class="fun-cap">TIER-1 STRONG FIT</div>
+      <div class="fun-num">71</div>
+      <div class="fun-sub">scored above 80<br>senior rep within 4h</div>
+    </div>
+    <div class="fun-arrow">&rsaquo;</div>
+    <div class="fun-cell">
+      <div class="fun-cap">CLOSED WON</div>
+      <div class="fun-num" style="color:#fff">48</div>
+      <div class="fun-sub">68% T1 win rate<br>$2.0M ARR</div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- BAND A: TIER + RUBRIC (flex:1 absorbs slack) -->
+    <div class="band-2">
+
+      <div class="tile">
+        <div class="t-title">ICP TIER BREAKDOWN · 340 LEADS</div>
+        <div class="tier-row">
+          <div>
+            <div class="tier-name" style="color:#b8501f">TIER 1 · STRONG FIT</div>
+            <div class="tier-meta">SCORE 75-100 &nbsp;·&nbsp; SENIOR REP, 4H SLA</div>
+          </div>
+          <div class="tier-n" style="color:#b8501f">71</div>
+          <div class="tier-bar"><div class="tier-bar-fill" style="width:21%;background:#b8501f"></div></div>
+          <div class="tier-win" style="color:#b8501f">68%</div>
+          <div class="tier-acv" style="color:#b8501f">$42K</div>
+        </div>
+        <div class="tier-row">
+          <div>
+            <div class="tier-name" style="color:#2f8a6b">TIER 2 · NURTURE</div>
+            <div class="tier-meta">SCORE 60-75 &nbsp;·&nbsp; NURTURE SEQUENCE</div>
+          </div>
+          <div class="tier-n" style="color:#2f8a6b">98</div>
+          <div class="tier-bar"><div class="tier-bar-fill" style="width:29%;background:#2f8a6b"></div></div>
+          <div class="tier-win" style="color:#2f8a6b">22%</div>
+          <div class="tier-acv" style="color:#2f8a6b">$19K</div>
+        </div>
+        <div class="tier-row">
+          <div>
+            <div class="tier-name" style="color:#6b5f4f">TIER 3 · DISCARD</div>
+            <div class="tier-meta">SCORE 0-60 &nbsp;·&nbsp; REMOVED FROM PIPE</div>
+          </div>
+          <div class="tier-n" style="color:#6b5f4f">171</div>
+          <div class="tier-bar"><div class="tier-bar-fill" style="width:50%;background:#6b5f4f"></div></div>
+          <div class="tier-win" style="color:#6b5f4f">3%</div>
+          <div class="tier-acv" style="color:#6b5f4f">$4K</div>
+        </div>
+        <div style="padding-top:10px;border-top:1px solid rgba(60,40,15,.14)">
+          <div class="caption" style="margin-bottom:0">BEFORE ALL 340 ENTERED PIPELINE. AFTER ONLY T1+T2 ROUTED. 50% LOAD REMOVED.</div>
+        </div>
+      </div>
+
+      <div class="tile-dark">
+        <div class="t-title amber">SCORING RUBRIC · 100 PTS</div>
+        <div class="rub-grid">
+          <div class="rub-cell">
+            <div class="rub-name">FIRMOGRAPHIC</div>
+            <div class="rub-body">50-500 headcount<br>$5M-$50M ARR<br>B2B SaaS vertical</div>
+            <div class="rub-weight">30 pts</div>
+          </div>
+          <div class="rub-cell">
+            <div class="rub-name">TECHNOGRAPHIC</div>
+            <div class="rub-body">HubSpot / SFDC CRM<br>Outreach + Apollo<br>Clay or Lemlist</div>
+            <div class="rub-weight">25 pts</div>
+          </div>
+          <div class="rub-cell">
+            <div class="rub-name">BEHAVIORAL</div>
+            <div class="rub-body">Pricing page visit<br>SDR/AE job posts<br>Hiring GTM on LI</div>
+            <div class="rub-weight">25 pts</div>
+          </div>
+          <div class="rub-cell">
+            <div class="rub-name">INTENT + PAIN</div>
+            <div class="rub-body">G2 / Capterra search<br>Competitor compare<br>Pain in LI post</div>
+            <div class="rub-weight">20 pts</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BAND B: SIGNALS + PATTERNS -->
+    <div class="band-2b">
+
+      <div class="tile">
+        <div class="t-title">PREDICTIVE SIGNAL WEIGHTS</div>
+        <div class="sig-row"><div class="sig-name">TECH STACK MATCH</div><div class="sig-track"><div class="sig-fill" style="width:88%"></div></div><div class="sig-pct">88</div></div>
+        <div class="sig-row"><div class="sig-name">HEADCOUNT GROWTH</div><div class="sig-track"><div class="sig-fill" style="width:74%"></div></div><div class="sig-pct">74</div></div>
+        <div class="sig-row"><div class="sig-name">TITLE + AUTHORITY</div><div class="sig-track"><div class="sig-fill" style="width:68%"></div></div><div class="sig-pct">68</div></div>
+        <div class="sig-row"><div class="sig-name">INTENT (G2 / REVIEW)</div><div class="sig-track"><div class="sig-fill" style="width:61%"></div></div><div class="sig-pct">61</div></div>
+        <div class="sig-row"><div class="sig-name">PAIN IN JOB DESC</div><div class="sig-track"><div class="sig-fill" style="width:54%"></div></div><div class="sig-pct">54</div></div>
+        <div class="sig-row"><div class="sig-name">RECENT FUNDING</div><div class="sig-track"><div class="sig-fill" style="width:42%"></div></div><div class="sig-pct">42</div></div>
+        <div style="margin-top:auto;padding-top:8px;border-top:1px solid rgba(60,40,15,.14)">
+          <div class="caption" style="margin-bottom:0">WEIGHTS LEARNED FROM 90 DAYS OF WIN/LOSS DATA. UPDATED MONTHLY.</div>
+        </div>
+      </div>
+
+      <div class="tile">
+        <div class="t-title">5 PATTERNS IN TIER-1 WINS</div>
+        <div class="pat-row"><div class="pat-num">1</div><div class="pat-text">3+ signals fired within 72h of inbound entry</div><div class="pat-chip">94%</div></div>
+        <div class="pat-row"><div class="pat-num">2</div><div class="pat-text">Decision-maker title confirmed before first touch</div><div class="pat-chip">88%</div></div>
+        <div class="pat-row"><div class="pat-num">3</div><div class="pat-text">All 3 tech stack criteria matched on entry</div><div class="pat-chip">81%</div></div>
+        <div class="pat-row"><div class="pat-num">4</div><div class="pat-text">Pain signal in job post or LinkedIn activity</div><div class="pat-chip">72%</div></div>
+        <div class="pat-row"><div class="pat-num">5</div><div class="pat-text">Rep responded within 4h of score crossing 80</div><div class="pat-chip">68%</div></div>
+      </div>
+
+    </div>
+
+    <!-- CALLOUT -->
+    <div class="callout">
+      <div class="callout-hero">
+        <div class="callout-num">6.8h</div>
+        <div class="callout-cap">SAVED PER REP PER WEEK</div>
+      </div>
+      <div class="callout-div"></div>
+      <div class="callout-stat">
+        <div class="callout-stat-num">979h</div>
+        <div class="callout-stat-cap">SAVED PER YEAR</div>
+        <div class="callout-stat-sub">3 reps × 48 weeks</div>
+      </div>
+      <div class="callout-stat">
+        <div class="callout-stat-num">$73K</div>
+        <div class="callout-stat-cap">RECLAIMED CAPACITY</div>
+        <div class="callout-stat-sub">at $75/h blended cost</div>
+      </div>
+      <div class="callout-stat">
+        <div class="callout-stat-num">23x</div>
+        <div class="callout-stat-cap">FASTER DETECTION</div>
+        <div class="callout-stat-sub">11 min vs 4.2 hours</div>
+      </div>
+      <div class="callout-stat">
+        <div class="callout-stat-num">+62</div>
+        <div class="callout-stat-cap">REP NPS · POST</div>
+        <div class="callout-stat-sub">5/6: no going back</div>
+      </div>
+    </div>
+
+    <!-- WHAT CHANGED -->
+    <div class="changed">
+      <div class="changed-title">WHAT CHANGED IN 90 DAYS</div>
+      <div class="changed-cell">
+        <div class="changed-cap">PIPELINE WIN</div>
+        <div class="changed-before">28%</div>
+        <div class="changed-after">44%</div>
+      </div>
+      <div class="changed-cell">
+        <div class="changed-cap">AVG DEAL SIZE</div>
+        <div class="changed-before">$18K</div>
+        <div class="changed-after">$31K</div>
+      </div>
+      <div class="changed-cell">
+        <div class="changed-cap">CYCLE LENGTH</div>
+        <div class="changed-before">67d</div>
+        <div class="changed-after">41d</div>
+      </div>
+      <div class="changed-cell">
+        <div class="changed-cap">% ICP IN PIPELINE</div>
+        <div class="changed-before">51%</div>
+        <div class="changed-after">79%</div>
+      </div>
+    </div>
+
+    <!-- WORKFLOW -->
+    <div>
+      <div class="caption" style="margin-bottom:5px">QUALIFICATION WORKFLOW · 5 STEPS · FULLY AI-DRIVEN</div>
+      <div class="flow">
+        <div class="flow-step"><div class="flow-n">STEP 01</div><div class="flow-name">INGEST</div><div class="flow-sub">Lead enters CRM. Claude reads all fields, enriches via Clay.</div></div>
+        <div class="flow-step"><div class="flow-n">STEP 02</div><div class="flow-name">SCORE</div><div class="flow-sub">Rubric applied. 0-100 score + signal breakdown.</div></div>
+        <div class="flow-step"><div class="flow-n">STEP 03</div><div class="flow-name">TIER</div><div class="flow-sub">T1/T2/T3 auto-tagged. T3 removed from pipe.</div></div>
+        <div class="flow-step"><div class="flow-n">STEP 04</div><div class="flow-name">ROUTE</div><div class="flow-sub">T1 to senior rep in 2h. T2 to nurture.</div></div>
+        <div class="flow-step"><div class="flow-n">STEP 05</div><div class="flow-name">AUDIT</div><div class="flow-sub">Weekly misfire review. Rubric updates. Drift tracked.</div></div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta" style="flex:1">
+      <div>
+        <div class="cta-q">Want the full scoring rubric + Clay workflow?</div>
+        <div class="cta-sub">Misfire audit playbook included. Free, no email gate.</div>
+      </div>
+      <div class="cta-key">COMMENT "QUALIFY"</div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer" style="margin-top: auto; border-top: 1px dashed rgba(237,127,74,0.3); padding-top: 16px; display: flex; align-items: center; justify-content: space-between;">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; color: rgba(0,0,0,0.5); text-transform: uppercase; display: flex; align-items: center; gap: 10px;">
+      <img src="https://app.51ultron.com/favicon.ico" alt="Ultron" style="width: 24px; height: 24px; object-fit: contain;">
+      <strong style="color: #1a1a1a;">ULTRON OS</strong> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure
+    </div>
+    <div style="font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 800; color: #1a1a1a; letter-spacing: -0.5px;">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

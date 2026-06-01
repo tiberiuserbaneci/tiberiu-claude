@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Docs 01 · ARCHITECTURE · Request Lifecycle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/*
+  LAYOUT BUDGET (1402px available after padding 28+20)
+  mast       : 43px  (32 content + 10 pb + 1 border)
+  hero       : 142px (120 + 22 mt)
+  flow-hdr   : 38px  (24 + 14 mt)
+  flow       : flex-grow:1 → fills remainder
+  tools      : 134px (14 mt + 24 hdr + 10 mb + 86 grid)
+  shim       : 84px  (12 mt + 72)
+  stat-strip : 64px  (10 mt + 54)
+  cta        : 54px  (10 mt + 44)
+  ftr        : 56px  (10 mt + 46)
+  FIXED TOTAL: 43+142+38+134+84+64+54+56 = 615
+  FLOW GETS  : 1402 - 615 = 787px
+  flow-inner: 787 - 32(hdr) - 10(mt on inner) = 745px
+  5 steps + 4 arrows(20px) = 745 - 80 = 665 / 5 = 133px per step
+*/
+:root{
+  --bg:     #0b0907;
+  --bg-card:#0f0c08;
+  --bg-alt: #12100d;
+  --ink:    #ffe0c2;
+  --accent: #ff801f;
+  --acc-hi: #ffa057;
+  --acc-lo: rgba(255,128,31,.10);
+  --acc-bd: rgba(255,128,31,.28);
+  --acc-lo2:rgba(255,128,31,.05);
+  --ink-60: rgba(255,224,194,.60);
+  --ink-42: rgba(255,224,194,.42);
+  --ink-24: rgba(255,224,194,.24);
+  --ink-10: rgba(255,224,194,.10);
+  --ink-05: rgba(255,224,194,.05);
+  --moon:   #9bb5d8;
+  --moon-bd:rgba(155,181,216,.32);
+  --moon-lo:rgba(155,181,216,.08);
+  --ok:     #76d39a;
+  --ok-bd:  rgba(118,211,154,.32);
+  --ok-lo:  rgba(118,211,154,.08);
+  --rule:   rgba(255,224,194,.09);
+  --dot:    rgba(255,128,31,.045);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  background:#030201;
+  font-family:'Bricolage Grotesque',sans-serif;
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  padding:24px 0;
+}
+.scaler{display:flex;justify-content:center;align-items:flex-start;}
+.scaler>.canvas{transform-origin:top center;transform:scale(calc(min(100vw / 1130,(100vh - 48px) / 1510)));}
+
+.canvas{
+  width:1080px;height:1450px;
+  background:var(--bg);
+  padding:28px 40px 20px 40px;
+  display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+}
+.canvas::before{
+  content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:radial-gradient(var(--dot) 1.3px,transparent 1.4px);
+  background-size:24px 24px;
+}
+.canvas::after{
+  content:'';position:absolute;inset:0;pointer-events:none;z-index:10;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity:.12;mix-blend-mode:overlay;
+}
+.atm{
+  position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:
+    radial-gradient(ellipse 60% 40% at 100% 0%,rgba(255,128,31,.14) 0%,transparent 65%),
+    radial-gradient(ellipse 50% 35% at 0% 100%,rgba(90,130,190,.09) 0%,transparent 60%),
+    radial-gradient(ellipse 40% 60% at 5% 30%,rgba(255,128,31,.04) 0%,transparent 70%);
+}
+.mast,.hero,.flow,.tools,.shim,.stat-strip,.cta-block,.ftr{position:relative;z-index:2;}
+
+/* ─── MAST ─────────────────────────────────────────── */
+.mast{
+  flex-shrink:0;display:flex;align-items:center;justify-content:space-between;
+  padding-bottom:10px;border-bottom:1px solid var(--rule);
+}
+.mast-kw{
+  font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;
+  letter-spacing:.20em;text-transform:uppercase;
+  color:var(--ink-42);white-space:nowrap;overflow:hidden;line-height:1;
+}
+.mast-kw .sep{color:var(--accent);opacity:.75;margin:0 7px;}
+.mast-r{
+  font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--ink-60);
+  white-space:nowrap;flex-shrink:0;padding-left:18px;
+}
+.mast-r em{color:var(--accent);font-style:normal;}
+
+/* ─── HERO ──────────────────────────────────────────── */
+.hero{flex-shrink:0;margin-top:22px;display:flex;align-items:center;gap:24px;}
+.hero-left{flex-shrink:0;display:flex;flex-direction:column;align-items:center;
+  width:100px;padding:10px 0;}
+.hero-big{
+  font-family:'Instrument Serif',serif;font-style:italic;
+  font-size:88px;line-height:.84;letter-spacing:-3px;
+  color:var(--accent);
+  text-shadow:0 0 60px rgba(255,128,31,.28);
+}
+.hero-lbl{
+  font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:700;
+  letter-spacing:.20em;text-transform:uppercase;color:var(--accent);
+  margin-top:4px;
+}
+.hero-center{flex:1;min-width:0;display:flex;flex-direction:column;gap:10px;}
+.hero-eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--ink-42);
+}
+.hero-title{
+  font-family:'Instrument Serif',serif;font-style:italic;
+  font-size:34px;line-height:1.12;letter-spacing:-.5px;
+  color:var(--ink);
+}
+.hero-title em{color:var(--accent);}
+.hero-kpis{display:flex;gap:10px;flex-wrap:wrap;}
+.kpi{
+  display:flex;flex-direction:column;gap:2px;
+  padding:7px 12px;
+  border:1px solid var(--rule);border-radius:2px;
+  background:var(--bg-card);
+}
+.kpi-v{
+  font-family:'JetBrains Mono',monospace;font-size:17px;font-weight:700;
+  color:var(--accent);letter-spacing:-.5px;line-height:1;
+}
+.kpi-v.moon{color:var(--moon);}
+.kpi-l{
+  font-family:'JetBrains Mono',monospace;font-size:7.5px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink-42);
+}
+
+/* ─── FLOW SECTION ──────────────────────────────────── */
+.flow{
+  flex-grow:1;min-height:0;
+  display:flex;flex-direction:column;
+  margin-top:14px;
+}
+.flow-hdr{
+  flex-shrink:0;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 0 10px 0;border-bottom:1px solid var(--rule);margin-bottom:10px;
+}
+.flow-hdr-l{
+  font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;
+  letter-spacing:.20em;text-transform:uppercase;color:var(--ink-42);
+}
+.flow-hdr-r{
+  font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
+}
+
+.flow-inner{flex:1;display:flex;flex-direction:column;}
+
+/* Step card */
+.step{
+  flex:1;
+  display:flex;align-items:stretch;
+  border:1px solid var(--rule);border-radius:2px;
+  overflow:hidden;background:var(--bg-card);
+}
+.step.active{border-color:var(--acc-bd);}
+
+/* Number column */
+.step-num{
+  flex-shrink:0;width:60px;
+  background:rgba(255,128,31,.04);
+  border-right:1px solid var(--rule);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:4px;
+  position:relative;
+}
+.step.active .step-num{background:rgba(255,128,31,.08);}
+.step-n{
+  font-family:'JetBrains Mono',monospace;font-size:19px;font-weight:700;
+  color:var(--accent);line-height:1;
+}
+.step-n-lbl{
+  font-family:'JetBrains Mono',monospace;font-size:7px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-24);
+  writing-mode:vertical-rl;transform:rotate(180deg);letter-spacing:.12em;
+}
+
+/* Body */
+.step-body{
+  flex:1;padding:12px 16px;
+  display:flex;flex-direction:column;
+  justify-content:space-between;
+  min-width:0;
+}
+.step-top{display:flex;flex-direction:column;gap:4px;}
+.step-phase{
+  font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--ink-42);
+}
+.step-title{
+  font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:800;
+  color:var(--ink);letter-spacing:-.01em;line-height:1.15;
+  text-transform:uppercase;
+}
+.step-code{
+  font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:500;
+  color:var(--accent);background:var(--acc-lo2);border:1px solid rgba(255,128,31,.14);
+  padding:4px 10px;border-radius:2px;display:inline-block;margin-top:2px;
+  letter-spacing:.02em;
+}
+.step-desc{
+  font-family:'Bricolage Grotesque',sans-serif;font-size:11.5px;font-weight:400;
+  color:var(--ink-60);line-height:1.45;
+}
+.step-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;}
+.stag{
+  font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  padding:2px 7px;border-radius:2px;border:1px solid;
+}
+.stag.acc{color:var(--accent);border-color:var(--acc-bd);background:var(--acc-lo);}
+.stag.mute{color:var(--ink-42);border-color:rgba(255,224,194,.14);background:rgba(255,224,194,.04);}
+.stag.moon{color:var(--moon);border-color:var(--moon-bd);background:var(--moon-lo);}
+.stag.ok{color:var(--ok);border-color:var(--ok-bd);background:var(--ok-lo);}
+
+/* Right column */
+.step-right{
+  flex-shrink:0;width:128px;
+  border-left:1px solid var(--rule);
+  padding:10px 12px;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:6px;
+  background:rgba(255,224,194,.012);
+}
+.step-badge{
+  font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;
+  padding:4px 10px;border-radius:2px;border:1px solid;
+  white-space:nowrap;text-align:center;
+}
+.sbadge-acc{color:var(--accent);border-color:var(--acc-bd);background:var(--acc-lo);}
+.sbadge-moon{color:var(--moon);border-color:var(--moon-bd);background:var(--moon-lo);}
+.sbadge-ok{color:var(--ok);border-color:var(--ok-bd);background:var(--ok-lo);}
+.sbadge-mute{color:var(--ink-60);border-color:rgba(255,224,194,.16);background:rgba(255,224,194,.04);}
+.step-right-big{
+  font-family:'Instrument Serif',serif;font-style:italic;
+  font-size:38px;line-height:.9;letter-spacing:-1px;
+  color:var(--acc-hi);text-align:center;
+}
+.step-right-lbl{
+  font-family:'JetBrains Mono',monospace;font-size:7.5px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-42);text-align:center;line-height:1.3;
+}
+.step-tiers{display:flex;flex-direction:column;gap:5px;width:100%;}
+.tier-pill{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:4px 8px;border-radius:2px;border:1px solid;
+  font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+}
+.tier-pill.h{color:var(--ok);border-color:var(--ok-bd);background:var(--ok-lo);}
+.tier-pill.s{color:var(--moon);border-color:var(--moon-bd);background:var(--moon-lo);}
+.tier-pill.o{color:var(--accent);border-color:var(--acc-bd);background:var(--acc-lo);}
+.tier-dot{width:5px;height:5px;border-radius:50%;background:currentColor;}
+
+/* Connector arrow between steps */
+.flow-arrow{
+  flex-shrink:0;height:20px;
+  display:flex;align-items:center;
+  padding-left:0;
+}
+.flow-arrow-inner{
+  display:flex;align-items:center;justify-content:center;
+  width:60px; /* matches step-num width */
+  height:100%;
+}
+.flow-arrow-inner svg{
+  width:12px;height:20px;
+  stroke:var(--accent);stroke-width:1.5;
+  fill:none;stroke-linecap:round;stroke-linejoin:round;
+  opacity:.55;
+}
+.flow-arrow-line{
+  flex:1;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,128,31,.12),transparent);
+}
+
+/* ─── TOOLS SECTION ─────────────────────────────────── */
+.tools{
+  flex-shrink:0;margin-top:12px;
+}
+.sec-hdr{
+  font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;
+  letter-spacing:.20em;text-transform:uppercase;color:var(--ink-42);
+  padding-bottom:8px;border-bottom:1px solid var(--rule);margin-bottom:9px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.sec-hdr em{color:var(--accent);font-style:normal;}
+.tools-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+}
+.tc{
+  border:1px solid var(--rule);border-radius:2px;
+  background:var(--bg-card);
+  padding:11px 13px;
+  display:flex;flex-direction:column;gap:7px;
+}
+.tc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;}
+.tc-name{
+  font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-weight:800;
+  color:var(--ink);text-transform:uppercase;letter-spacing:.02em;line-height:1;
+}
+.tc-count{
+  font-family:'Instrument Serif',serif;font-style:italic;
+  font-size:32px;line-height:.9;color:var(--accent);letter-spacing:-1px;
+  flex-shrink:0;
+}
+.tc-count.moon{color:var(--moon);}
+.tc-desc{
+  font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:500;
+  letter-spacing:.08em;color:var(--ink-42);line-height:1.5;text-transform:uppercase;
+}
+
+/* ─── SHIM CALLOUT ──────────────────────────────────── */
+.shim{
+  flex-shrink:0;margin-top:10px;
+  border:1.5px solid var(--acc-bd);border-radius:2px;
+  background:rgba(255,128,31,.03);
+  padding:11px 16px;
+  display:flex;align-items:center;gap:0;
+}
+.shim-label{
+  font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--accent);
+  flex-shrink:0;margin-right:16px;
+}
+.shim-flow{
+  flex:1;display:flex;align-items:center;justify-content:space-between;gap:0;
+}
+.shim-node{
+  display:flex;flex-direction:column;align-items:center;gap:3px;
+  flex-shrink:0;
+}
+.shim-node-name{
+  font-family:'Bricolage Grotesque',sans-serif;font-size:11px;font-weight:700;
+  color:var(--ink);letter-spacing:-.01em;white-space:nowrap;line-height:1;
+}
+.shim-node-name.strike{
+  text-decoration:line-through;color:var(--ink-42);
+}
+.shim-node-name.hi{color:var(--accent);}
+.shim-node-sub{
+  font-family:'JetBrains Mono',monospace;font-size:7.5px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-42);
+  white-space:nowrap;
+}
+.shim-node-sub.acc{color:var(--ok);}
+.shim-arr{
+  flex:1;display:flex;align-items:center;justify-content:center;
+  padding:0 4px;
+}
+.shim-arr svg{width:24px;height:10px;stroke:var(--ink-24);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.shim-stat{
+  flex-shrink:0;margin-left:16px;
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+  padding:6px 14px;
+  border:1px solid var(--ok-bd);border-radius:2px;background:var(--ok-lo);
+}
+.shim-stat-v{
+  font-family:'Instrument Serif',serif;font-style:italic;
+  font-size:26px;line-height:.9;color:var(--ok);letter-spacing:-1px;
+}
+.shim-stat-l{
+  font-family:'JetBrains Mono',monospace;font-size:7px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ok);
+}
+
+/* ─── STAT STRIP ────────────────────────────────────── */
+.stat-strip{
+  flex-shrink:0;margin-top:10px;
+  display:grid;grid-template-columns:repeat(5,1fr);
+  border:1px solid var(--rule);border-radius:2px;overflow:hidden;
+}
+.sc{padding:9px 11px;display:flex;flex-direction:column;gap:3px;}
+.sc+.sc{border-left:1px solid var(--rule);}
+.sv{
+  font-family:'JetBrains Mono',monospace;
+  font-size:18px;font-weight:700;color:var(--accent);
+  letter-spacing:-.5px;line-height:1;
+}
+.sv.moon{color:var(--moon);}
+.sv.ok{color:var(--ok);}
+.sl{
+  font-family:'JetBrains Mono',monospace;
+  font-size:7.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-42);line-height:1.3;
+}
+
+/* ─── CTA ───────────────────────────────────────────── */
+.cta-block{
+  flex-shrink:0;margin-top:10px;
+  display:flex;align-items:stretch;
+  border:1px solid var(--acc-bd);border-radius:2px;overflow:hidden;
+}
+.cta-txt{
+  flex:1;padding:10px 16px;
+  display:flex;flex-direction:column;justify-content:center;gap:4px;
+  background:rgba(255,128,31,.04);
+}
+.cta-l{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:12px;font-weight:600;color:var(--ink-60);line-height:1.35;
+}
+.cta-l strong{color:var(--ink);font-weight:800;}
+.cta-chip{
+  flex-shrink:0;padding:0 20px;
+  background:var(--accent);
+  display:flex;align-items:center;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:#0b0907;
+}
+
+/* ─── FOOTER ────────────────────────────────────────── */
+.ftr{
+  flex-shrink:0;margin-top:10px;padding-top:10px;
+  border-top:1px solid var(--rule);
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.ftr-l{display:flex;align-items:center;gap:10px;min-width:0;}
+.ftr-logo{width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.ftr-txt{
+  font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink-60);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.ftr-txt strong{color:var(--ink);}
+.ftr-url{
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:800;
+  font-size:14px;letter-spacing:-.4px;color:var(--ink);flex-shrink:0;
+}
+.ftr-url em{color:var(--accent);font-style:normal;}
+</style>
+</head>
+<body>
+<div class="scaler"><div class="canvas">
+<div class="atm"></div>
+
+<!-- MAST -->
+<div class="mast">
+  <div class="mast-kw">AI OUTBOUND<span class="sep">·</span>AI AGENTS<span class="sep">·</span>AI ARCHITECTURE<span class="sep">·</span>WORKFLOWS<span class="sep">·</span>ULTRON OS<span class="sep">·</span>PIPELINE</div>
+  <div class="mast-r">DOCS 01 <em>/</em> REQUEST LIFECYCLE</div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-big">5</div>
+    <div class="hero-lbl">LAYERS</div>
+  </div>
+  <div class="hero-center">
+    <div class="hero-eyebrow">HOW EVERY AI REQUEST MOVES THROUGH ULTRON</div>
+    <div class="hero-title">One message. <em>Five decision points.</em> Three Claude tiers. The full path, open.</div>
+    <div class="hero-kpis">
+      <div class="kpi"><div class="kpi-v">56</div><div class="kpi-l">SKILLS</div></div>
+      <div class="kpi"><div class="kpi-v moon">3</div><div class="kpi-l">MODEL TIERS</div></div>
+      <div class="kpi"><div class="kpi-v">91</div><div class="kpi-l">NATIVE TOOLS</div></div>
+      <div class="kpi"><div class="kpi-v" style="color:var(--ok)">-80%</div><div class="kpi-l">SHIM COST</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- FLOW -->
+<div class="flow">
+  <div class="flow-hdr">
+    <div class="flow-hdr-l">THE REQUEST PATH · src/app/api/chat/v2/route.ts</div>
+    <div class="flow-hdr-r">POST /api/chat/v2 → RESPONSE</div>
+  </div>
+  <div class="flow-inner">
+
+    <!-- STEP 01 -->
+    <div class="step active">
+      <div class="step-num">
+        <div class="step-n">01</div>
+        <div class="step-n-lbl">AUTH</div>
+      </div>
+      <div class="step-body">
+        <div class="step-top">
+          <div class="step-phase">AUTHENTICATE + LOAD CONTEXT</div>
+          <div class="step-title">Session verified. Conversation history loaded.</div>
+          <div class="step-code">getAuth(req) · loadConversation(conversationId, userId)</div>
+        </div>
+        <div class="step-desc">Every turn starts blind. Context is fully reconstructed from Supabase Postgres before Claude sees anything. No state is carried in memory between requests.</div>
+        <div class="step-tags">
+          <span class="stag moon">SUPABASE RLS</span>
+          <span class="stag mute">POSTGRES</span>
+          <span class="stag mute">CONV HISTORY</span>
+        </div>
+      </div>
+      <div class="step-right">
+        <div class="step-badge sbadge-acc">ENTRY POINT</div>
+        <div class="step-right-lbl">Cloud Run<br/>europe-west1</div>
+      </div>
+    </div>
+
+    <!-- ARROW -->
+    <div class="flow-arrow">
+      <div class="flow-arrow-inner">
+        <svg viewBox="0 0 12 20"><line x1="6" y1="0" x2="6" y2="14"/><polyline points="2,10 6,18 10,10"/></svg>
+      </div>
+      <div class="flow-arrow-line"></div>
+    </div>
+
+    <!-- STEP 02 -->
+    <div class="step">
+      <div class="step-num">
+        <div class="step-n">02</div>
+        <div class="step-n-lbl">ROUTE</div>
+      </div>
+      <div class="step-body">
+        <div class="step-top">
+          <div class="step-phase">MODEL TIER SELECTION</div>
+          <div class="step-title">Right model for the right task. 40x cost gap enforced here.</div>
+          <div class="step-code">routeModel(message, conversation) → { model, tier }</div>
+        </div>
+        <div class="step-desc">Each skill declares its tier in the manifest. Haiku for fast retrieval and judge tasks. Sonnet for standard runs. Opus for deep research and multi-turn strategy. The gap between Haiku and Opus is 40x in cost per token.</div>
+        <div class="step-tags">
+          <span class="stag mute">SKILL MANIFEST</span>
+          <span class="stag acc">TIER-LOCKED</span>
+        </div>
+      </div>
+      <div class="step-right">
+        <div class="step-tiers">
+          <div class="tier-pill h"><span>HAIKU</span><div class="tier-dot"></div></div>
+          <div class="tier-pill s"><span>SONNET</span><div class="tier-dot"></div></div>
+          <div class="tier-pill o"><span>OPUS</span><div class="tier-dot"></div></div>
+        </div>
+        <div class="step-right-lbl" style="margin-top:4px">PER-SKILL<br/>DECLARATION</div>
+      </div>
+    </div>
+
+    <!-- ARROW -->
+    <div class="flow-arrow">
+      <div class="flow-arrow-inner">
+        <svg viewBox="0 0 12 20"><line x1="6" y1="0" x2="6" y2="14"/><polyline points="2,10 6,18 10,10"/></svg>
+      </div>
+      <div class="flow-arrow-line"></div>
+    </div>
+
+    <!-- STEP 03 -->
+    <div class="step">
+      <div class="step-num">
+        <div class="step-n">03</div>
+        <div class="step-n-lbl">TOOLS</div>
+      </div>
+      <div class="step-body">
+        <div class="step-top">
+          <div class="step-phase">BUILD TOOL CATALOG</div>
+          <div class="step-title">Three tool families assembled fresh per user, per turn.</div>
+          <div class="step-code">buildToolCatalog({ supabase, userId, conversation })</div>
+        </div>
+        <div class="step-desc">Native catalog: 91 tools across web research, CRM, email, calendar, content, code, brain. Provider modules: hitl.ts approvals + stripe.ts billing. External MCP servers: scoped per workspace, cached 10 min. Two users, different catalogs.</div>
+        <div class="step-tags">
+          <span class="stag acc">91 NATIVE</span>
+          <span class="stag moon">MCP SERVERS</span>
+          <span class="stag mute">PER-USER SCOPE</span>
+        </div>
+      </div>
+      <div class="step-right">
+        <div class="step-right-big">91</div>
+        <div class="step-right-lbl">NATIVE TOOLS<br/>+ MCP LAYER</div>
+        <div class="step-badge sbadge-mute" style="margin-top:2px">8 CATEGORIES</div>
+      </div>
+    </div>
+
+    <!-- ARROW -->
+    <div class="flow-arrow">
+      <div class="flow-arrow-inner">
+        <svg viewBox="0 0 12 20"><line x1="6" y1="0" x2="6" y2="14"/><polyline points="2,10 6,18 10,10"/></svg>
+      </div>
+      <div class="flow-arrow-line"></div>
+    </div>
+
+    <!-- STEP 04 -->
+    <div class="step">
+      <div class="step-num">
+        <div class="step-n">04</div>
+        <div class="step-n-lbl">LOOP</div>
+      </div>
+      <div class="step-body">
+        <div class="step-top">
+          <div class="step-phase">CLAUDE TOOL-CALLING LOOP</div>
+          <div class="step-title">Claude runs until done. Or until a human intervenes.</div>
+          <div class="step-code">runTurn({ message, conversation, model, tools })</div>
+        </div>
+        <div class="step-desc">The loop continues until Claude stops calling tools or maxTurns is reached. Each skill sets its own turn budget. HITL pause points write a row to Postgres and halt the loop. The user approves. The loop resumes from the exact pause point.</div>
+        <div class="step-tags">
+          <span class="stag acc">TOOL-CALLING LOOP</span>
+          <span class="stag ok">HITL PAUSE POINTS</span>
+          <span class="stag mute">MAX TURNS</span>
+        </div>
+      </div>
+      <div class="step-right">
+        <div class="step-badge sbadge-ok">HUMAN GATE</div>
+        <div class="step-right-lbl">wait_for_approval<br/>mid-loop pause</div>
+        <div class="step-badge sbadge-mute" style="margin-top:4px">RESUMES AT ROW</div>
+      </div>
+    </div>
+
+    <!-- ARROW -->
+    <div class="flow-arrow">
+      <div class="flow-arrow-inner">
+        <svg viewBox="0 0 12 20"><line x1="6" y1="0" x2="6" y2="14"/><polyline points="2,10 6,18 10,10"/></svg>
+      </div>
+      <div class="flow-arrow-line"></div>
+    </div>
+
+    <!-- STEP 05 -->
+    <div class="step">
+      <div class="step-num">
+        <div class="step-n">05</div>
+        <div class="step-n-lbl">PERSIST</div>
+      </div>
+      <div class="step-body">
+        <div class="step-top">
+          <div class="step-phase">PERSIST TURN + SIDE EFFECTS</div>
+          <div class="step-title">Final message stored. Binaries, canvas blocks, memory all written.</div>
+          <div class="step-code">persistTurn(result) → Postgres · R2 · D1 · memory queue</div>
+        </div>
+        <div class="step-desc">Assistant message written to Postgres. Binary assets pushed to R2. Canvas block specs stored for rendering. Memory writes queued for pgvector. The turn is complete. The loop resets.</div>
+        <div class="step-tags">
+          <span class="stag moon">POSTGRES</span>
+          <span class="stag mute">R2 BINARIES</span>
+          <span class="stag mute">CANVAS BLOCKS</span>
+          <span class="stag mute">PGVECTOR</span>
+        </div>
+      </div>
+      <div class="step-right">
+        <div class="step-badge sbadge-ok">COMPLETE</div>
+        <div class="step-right-lbl">4 storage<br/>surfaces written</div>
+        <div class="step-badge sbadge-moon" style="margin-top:4px">LOOP RESETS</div>
+      </div>
+    </div>
+
+  </div><!-- /flow-inner -->
+</div><!-- /flow -->
+
+<!-- TOOLS SECTION -->
+<div class="tools">
+  <div class="sec-hdr">
+    <span>THREE TOOL FAMILIES · ASSEMBLED PER TURN</span>
+    <em>DISPATCHED IN ORDER: MODULES → NATIVE → MCP</em>
+  </div>
+  <div class="tools-grid">
+    <div class="tc">
+      <div class="tc-top">
+        <div class="tc-name">Native Catalog</div>
+        <div class="tc-count">91</div>
+      </div>
+      <div class="tc-desc">web research · CRM · email · calendar · content · integrations · code execution · brain access · 8 categories total</div>
+    </div>
+    <div class="tc">
+      <div class="tc-top">
+        <div class="tc-name">Provider Modules</div>
+        <div class="tc-count moon">2</div>
+      </div>
+      <div class="tc-desc">hitl.ts · human-in-the-loop approvals<br/>stripe.ts · billing and subscription hooks</div>
+    </div>
+    <div class="tc">
+      <div class="tc-top">
+        <div class="tc-name">External MCP</div>
+        <div class="tc-count" style="color:var(--ok)">+N</div>
+      </div>
+      <div class="tc-desc">per-user workspace scoped · 10-min cache · JSON-RPC 2.0 · each user sees a different catalog</div>
+    </div>
+  </div>
+</div>
+
+<!-- SHIM CALLOUT -->
+<div class="shim">
+  <div class="shim-label">THE SHIM</div>
+  <div class="shim-flow">
+    <div class="shim-node">
+      <div class="shim-node-name">Claude Code CLI</div>
+      <div class="shim-node-sub">E2B SANDBOX</div>
+    </div>
+    <div class="shim-arr">
+      <svg viewBox="0 0 24 10"><line x1="0" y1="5" x2="18" y2="5"/><polyline points="14,1 22,5 14,9"/></svg>
+    </div>
+    <div class="shim-node">
+      <div class="shim-node-name strike">Anthropic API</div>
+      <div class="shim-node-sub">THINKS IT IS HERE</div>
+    </div>
+    <div class="shim-arr">
+      <svg viewBox="0 0 24 10"><line x1="0" y1="5" x2="18" y2="5"/><polyline points="14,1 22,5 14,9"/></svg>
+    </div>
+    <div class="shim-node">
+      <div class="shim-node-name hi">kimi-anthropic-shim</div>
+      <div class="shim-node-sub">CF WORKER</div>
+    </div>
+    <div class="shim-arr">
+      <svg viewBox="0 0 24 10"><line x1="0" y1="5" x2="18" y2="5"/><polyline points="14,1 22,5 14,9"/></svg>
+    </div>
+    <div class="shim-node">
+      <div class="shim-node-name hi">Workers AI / Kimi</div>
+      <div class="shim-node-sub acc">ACTUAL INFERENCE</div>
+    </div>
+  </div>
+  <div class="shim-stat">
+    <div class="shim-stat-v">-80%</div>
+    <div class="shim-stat-l">COST</div>
+  </div>
+</div>
+
+<!-- STAT STRIP -->
+<div class="stat-strip">
+  <div class="sc"><div class="sv">56</div><div class="sl">SKILLS</div></div>
+  <div class="sc"><div class="sv moon">3</div><div class="sl">MODEL TIERS</div></div>
+  <div class="sc"><div class="sv">91</div><div class="sl">NATIVE TOOLS</div></div>
+  <div class="sc"><div class="sv moon">3</div><div class="sl">CF WORKERS</div></div>
+  <div class="sc"><div class="sv ok">-80%</div><div class="sl">SHIM COST</div></div>
+</div>
+
+<!-- CTA -->
+<div class="cta-block">
+  <div class="cta-txt">
+    <div class="cta-l">Follow for one AI outbound system every day.</div>
+    <div class="cta-l"><strong>Comment ENGINE</strong> and I will send you the exact Claude workflow we used.</div>
+  </div>
+  <div class="cta-chip">COMMENT ENGINE</div>
+</div>
+
+<!-- FOOTER -->
+<div class="ftr">
+  <div class="ftr-l">
+    <img src="ultron-logo.png" class="ftr-logo"
+      onerror="this.style.cssText='width:28px;height:28px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 72% 22%,rgba(255,140,80,.95) 0%,rgba(220,80,30,.3) 22%,transparent 36%),radial-gradient(circle at 22% 76%,rgba(55,170,255,.95) 0%,rgba(30,130,220,.3) 22%,transparent 38%),radial-gradient(circle at 38% 38%,rgba(30,30,50,1) 0%,#060810 55%,#000 100%)'">
+    <div class="ftr-txt"><strong>ULTRON</strong> · AI GTM OPERATOR · DOCS SERIES 01</div>
+  </div>
+  <div class="ftr-url">51ultron<em>.</em>com</div>
+</div>
+
+</div></div>
+</body>
+</html>

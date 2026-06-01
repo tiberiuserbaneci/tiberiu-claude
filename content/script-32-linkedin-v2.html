@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 32 · Demo Pulse · v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* BUDGET 1450 */
+  body{background:#f4ede0;margin:0;padding:24px 0}
+  .scaler{display:flex;justify-content:center;align-items:flex-start}
+  .scaler>.poster{transform-origin:top center;transform:scale(calc(min(100vw / 1130, (100vh - 48px) / 1510)))}
+  .poster{width:1080px;height:1450px;background:var(--ink-cream-50);position:relative;overflow:hidden;box-sizing:border-box}
+  .mono{font-family:'JetBrains Mono',monospace}
+  .fraunces{font-family:'Fraunces',Georgia,serif;font-feature-settings:'ss01' on}
+  .accent{color:var(--accent-dark)}
+
+  .grid-bg{
+    background-image:
+      linear-gradient(rgba(199,93,53,0.06) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(199,93,53,0.06) 1px,transparent 1px);
+    background-size:20px 20px;
+  }
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="poster">
+
+  <!-- HEADER -->
+  <div style="position:absolute;top:0;left:40px;right:40px;height:44px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--ink-cream-200)">
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(0,0,0,0.4)">FOUNDER GTM · DEMO PULSE MONITOR · CLAUDE READS THE ROOM · ULTRON OS</span>
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(0,0,0,0.3)">NO. 32 · 22 CALLS · 88H TAPE</span>
+  </div>
+
+  <!-- HERO -->
+  <div style="position:absolute;top:60px;left:40px;right:40px">
+    <div class="mono accent" style="font-size:11px;font-weight:800;letter-spacing:.20em;margin-bottom:14px">22 LIVE DEMOS · 88 HOURS OF TAPE · 1 AI READING THE PULSE</div>
+    <div class="fraunces" style="font-weight:900;font-size:74px;line-height:0.90;letter-spacing:-2.4px;color:var(--ink-black);margin-bottom:14px">The deal <span class="accent" style="font-style:italic">flatlines</span> at minute 4.</div>
+    <div class="fraunces" style="font-size:26px;font-weight:700;line-height:1.08;letter-spacing:-0.5px;color:var(--ink-gray-600)">Claude tagged 22 demos. The buyer's energy drops at the same spot in 18 of them.</div>
+  </div>
+
+  <!-- EKG MONITOR -->
+  <div style="position:absolute;top:298px;left:40px;right:40px;height:430px;background:#0d0f14;border:1px solid #1c2030;border-radius:14px;padding:24px 28px;box-sizing:border-box;overflow:hidden">
+
+    <!-- monitor header -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:8px;height:8px;border-radius:50%;background:#c75d35;box-shadow:0 0 8px #c75d35"></div>
+        <span class="mono" style="font-size:10px;font-weight:800;letter-spacing:.18em;color:#c75d35">BUYER PULSE · LIVE TRACE</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px">
+        <div style="display:flex;align-items:baseline;gap:5px"><span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(255,255,255,0.4)">START</span><span class="fraunces" style="font-size:14px;font-weight:900;color:#16a34a">94 bpm</span></div>
+        <div style="display:flex;align-items:baseline;gap:5px"><span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(255,255,255,0.4)">MIN 4</span><span class="fraunces" style="font-size:14px;font-weight:900;color:#c0392b">14 bpm</span></div>
+        <div style="display:flex;align-items:baseline;gap:5px"><span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(255,255,255,0.4)">DROP</span><span class="fraunces accent" style="font-size:14px;font-weight:900">-85%</span></div>
+      </div>
+    </div>
+
+    <!-- EKG SVG -->
+    <svg viewBox="0 0 1000 300" style="width:100%;height:auto;display:block">
+      <!-- grid -->
+      <defs>
+        <pattern id="grid" width="40" height="30" patternUnits="userSpaceOnUse">
+          <path d="M 40 0 L 0 0 0 30" fill="none" stroke="rgba(199,93,53,0.08)" stroke-width="1"/>
+        </pattern>
+        <pattern id="gridfine" width="8" height="6" patternUnits="userSpaceOnUse">
+          <path d="M 8 0 L 0 0 0 6" fill="none" stroke="rgba(199,93,53,0.04)" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect width="1000" height="300" fill="url(#gridfine)"/>
+      <rect width="1000" height="300" fill="url(#grid)"/>
+
+      <!-- center baseline -->
+      <line x1="0" y1="180" x2="1000" y2="180" stroke="rgba(255,255,255,0.10)" stroke-width="1" stroke-dasharray="2,4"/>
+
+      <!-- KILL ZONE band -->
+      <rect x="360" y="0" width="80" height="280" fill="rgba(192,57,49,0.10)"/>
+      <text x="400" y="20" fill="#c0392b" font-family="JetBrains Mono" font-size="9" font-weight="800" letter-spacing="2" text-anchor="middle">KILL ZONE</text>
+
+      <!-- EKG path: healthy spikes then flatline -->
+      <!-- Min 0-3: tall healthy QRS spikes around y=180 -->
+      <path d="
+        M 0 180
+        L 30 180 L 35 130 L 40 230 L 45 180
+        L 80 180 L 85 120 L 90 240 L 95 180
+        L 130 180 L 135 110 L 140 250 L 145 180
+        L 180 180 L 185 115 L 190 245 L 195 180
+        L 230 180 L 235 105 L 240 255 L 245 180
+        L 280 180 L 285 110 L 290 250 L 295 180
+        L 330 180 L 335 115 L 340 245 L 345 180
+        L 370 180 L 375 150 L 380 200 L 385 180
+        L 410 180 L 415 165 L 420 192 L 425 180
+        L 450 180
+        L 1000 180" fill="none" stroke="#c75d35" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" filter="drop-shadow(0 0 4px rgba(199,93,53,0.6))"/>
+
+      <!-- minute markers along bottom -->
+      <text x="0" y="296" fill="rgba(255,255,255,0.4)" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="start" letter-spacing="1">MIN 0</text>
+      <text x="125" y="296" fill="rgba(255,255,255,0.4)" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="middle" letter-spacing="1">MIN 1</text>
+      <text x="250" y="296" fill="rgba(255,255,255,0.4)" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="middle" letter-spacing="1">MIN 2</text>
+      <text x="350" y="296" fill="rgba(255,255,255,0.4)" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="middle" letter-spacing="1">MIN 3</text>
+      <text x="450" y="296" fill="#c0392b" font-family="JetBrains Mono" font-size="9" font-weight="800" text-anchor="middle" letter-spacing="1">MIN 4 · FLATLINE</text>
+      <text x="600" y="296" fill="rgba(255,255,255,0.4)" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="middle" letter-spacing="1">MIN 6</text>
+      <text x="800" y="296" fill="rgba(255,255,255,0.4)" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="middle" letter-spacing="1">MIN 12</text>
+      <text x="1000" y="296" fill="rgba(255,255,255,0.4)" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="end" letter-spacing="1">MIN 30</text>
+
+      <!-- annotation arrows -->
+      <text x="180" y="60" fill="#16a34a" font-family="Inter" font-size="11" font-weight="800" text-anchor="middle">PAIN RESTATE + 3 SHARP Qs</text>
+      <line x1="180" y1="66" x2="180" y2="100" stroke="#16a34a" stroke-width="1" stroke-dasharray="3,3"/>
+
+      <text x="700" y="160" fill="#c0392b" font-family="Inter" font-size="11" font-weight="800" text-anchor="middle">FOUNDER STARTS PRODUCT TOUR</text>
+      <line x1="700" y1="166" x2="700" y2="180" stroke="#c0392b" stroke-width="1" stroke-dasharray="3,3"/>
+    </svg>
+  </div>
+
+  <!-- KILL CAUSE BAND (below monitor) -->
+  <div style="position:absolute;top:752px;left:40px;right:40px;background:#FFFFFF;border:1px solid var(--ink-cream-200);border-radius:10px;padding:16px 22px">
+    <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.18em;color:var(--ink-gray-500);margin-bottom:10px">WHAT KILLS THE PULSE AT MIN 4 · ACROSS 22 CALLS</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
+      <div>
+        <div class="fraunces accent" style="font-size:30px;font-weight:900;letter-spacing:-0.8px;line-height:1">82%</div>
+        <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--ink-black);margin-top:2px;line-height:1.25">"Let me walk you through the platform"</div>
+      </div>
+      <div>
+        <div class="fraunces accent" style="font-size:30px;font-weight:900;letter-spacing:-0.8px;line-height:1">68%</div>
+        <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--ink-black);margin-top:2px;line-height:1.25">Skipped the champion check</div>
+      </div>
+      <div>
+        <div class="fraunces accent" style="font-size:30px;font-weight:900;letter-spacing:-0.8px;line-height:1">55%</div>
+        <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--ink-black);margin-top:2px;line-height:1.25">Showed 6+ features in 12 min</div>
+      </div>
+      <div>
+        <div class="fraunces accent" style="font-size:30px;font-weight:900;letter-spacing:-0.8px;line-height:1">47%</div>
+        <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--ink-black);margin-top:2px;line-height:1.25">Closed with "any questions?"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WINNERS VS LOSERS SIDE BY SIDE -->
+  <div style="position:absolute;top:888px;left:40px;right:40px;display:grid;grid-template-columns:1fr 1fr;gap:14px">
+    <div style="background:rgba(22,163,74,0.08);border:1px solid rgba(22,163,74,0.30);border-radius:10px;padding:14px 18px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+        <div class="mono" style="font-size:9px;font-weight:800;letter-spacing:.16em;color:#16a34a">WINNERS · 4 OF 22</div>
+        <div class="fraunces" style="font-size:22px;font-weight:900;color:#16a34a;letter-spacing:-0.5px">68% close</div>
+      </div>
+      <div style="font-family:'Inter',sans-serif;font-size:12px;font-weight:700;color:var(--ink-black);line-height:1.4">
+        <div style="margin-bottom:4px">→ Restate pain in buyer's words by min 1</div>
+        <div style="margin-bottom:4px">→ 3 cost-of-status-quo questions before min 3</div>
+        <div style="margin-bottom:4px">→ Champion check at min 3:50</div>
+        <div>→ Show only 2 features tied to one pain</div>
+      </div>
+    </div>
+    <div style="background:rgba(192,57,49,0.06);border:1px solid rgba(192,57,49,0.30);border-radius:10px;padding:14px 18px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+        <div class="mono" style="font-size:9px;font-weight:800;letter-spacing:.16em;color:#c0392b">FLATLINED · 18 OF 22</div>
+        <div class="fraunces" style="font-size:22px;font-weight:900;color:#c0392b;letter-spacing:-0.5px">21% close</div>
+      </div>
+      <div style="font-family:'Inter',sans-serif;font-size:12px;font-weight:700;color:var(--ink-black);line-height:1.4">
+        <div style="margin-bottom:4px">→ Open with "thanks for joining"</div>
+        <div style="margin-bottom:4px">→ "Tell me about your stack"</div>
+        <div style="margin-bottom:4px">→ Demo starts before pain is verified</div>
+        <div>→ 6+ features shown, no champion confirmed</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSIGHT -->
+  <div style="position:absolute;top:1078px;left:40px;right:40px;background:rgba(199,93,53,0.06);border:1px solid rgba(199,93,53,0.20);border-radius:10px;padding:14px 22px">
+    <div class="fraunces" style="font-size:24px;font-weight:900;line-height:1.05;letter-spacing:-0.6px;color:var(--ink-black);margin-bottom:4px">You cannot hear the pulse drop in <span class="accent" style="font-style:italic">real time</span>. Claude can.</div>
+    <div style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;color:var(--ink-gray-600);line-height:1.45">Tagged 22 calls in 14 minutes. Found the same flatline point in 18 of them. The demo is not a tour. It is a 30-minute trial close that ends at minute 4.</div>
+  </div>
+
+  <!-- OUTCOME -->
+  <div style="position:absolute;top:1188px;left:40px;right:40px;height:42px;background:#FFFFFF;border:1px solid var(--ink-cream-200);border-radius:8px;display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden">
+    <div style="padding:0 14px;display:flex;align-items:center;justify-content:space-between;border-right:1px solid var(--ink-cream-200)">
+      <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">WIN GAP</span><span class="fraunces accent" style="font-size:16px;font-weight:900;letter-spacing:-0.4px">3.2x</span>
+    </div>
+    <div style="padding:0 14px;display:flex;align-items:center;justify-content:space-between;border-right:1px solid var(--ink-cream-200)">
+      <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">CUT POINT</span><span class="fraunces" style="font-size:16px;font-weight:900;color:var(--ink-black);letter-spacing:-0.4px">MIN 4</span>
+    </div>
+    <div style="padding:0 14px;display:flex;align-items:center;justify-content:space-between;border-right:1px solid var(--ink-cream-200)">
+      <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">TAGGED</span><span class="fraunces" style="font-size:16px;font-weight:900;color:var(--ink-black);letter-spacing:-0.4px">22 / 22</span>
+    </div>
+    <div style="padding:0 14px;display:flex;align-items:center;justify-content:space-between">
+      <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">AI TIME</span><span class="fraunces accent" style="font-size:16px;font-weight:900;letter-spacing:-0.4px">14 min</span>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="position:absolute;top:1244px;left:40px;right:40px;background:#FFFFFF;border:1px solid var(--accent-border);border-radius:12px;padding:16px 24px;box-sizing:border-box">
+    <div class="mono accent" style="font-size:9px;font-weight:800;letter-spacing:.20em;margin-bottom:6px">WANT THE PULSE TAGGER?</div>
+    <div class="fraunces" style="font-size:28px;font-weight:900;line-height:0.95;letter-spacing:-0.9px;color:var(--ink-black);margin-bottom:10px">Get the <span class="accent" style="font-style:italic">Claude workflow</span> that finds your demo's flatline point.</div>
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <div style="background:var(--accent-dark);color:#fff;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:800;letter-spacing:.18em;padding:8px 16px;border-radius:6px">COMMENT PITCH</div>
+      <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;color:var(--ink-gray-500)">and I will send you the exact Claude workflow I used.</div>
+    </div>
+  </div>
+
+  <!-- MICRO -->
+  <div style="position:absolute;top:1362px;left:40px;right:40px;height:30px;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:22px">
+      <div style="display:flex;align-items:center;gap:6px"><span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">PEAK BPM</span><span class="fraunces accent" style="font-size:13px;font-weight:900;letter-spacing:-0.3px">94</span></div>
+      <div style="display:flex;align-items:center;gap:6px"><span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">FLATLINE</span><span class="fraunces" style="font-size:13px;font-weight:900;color:#c0392b;letter-spacing:-0.3px">14 BPM</span></div>
+      <div style="display:flex;align-items:center;gap:6px"><span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">RECOVERY RATE</span><span class="fraunces accent" style="font-size:13px;font-weight:900;letter-spacing:-0.3px">4 / 22</span></div>
+    </div>
+    <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.12em;color:var(--ink-gray-400)">ULTRON OS · SCRIPT 32</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="position:absolute;top:1396px;left:40px;right:40px;border-top:1px dashed rgba(199,93,53,0.3);padding-top:10px;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img src="ultron-logo.png" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0"
+        onerror="this.style.cssText='width:28px;height:28px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 72% 22%,rgba(255,140,80,.95) 0%,rgba(220,80,30,.3) 22%,transparent 36%),radial-gradient(circle at 22% 76%,rgba(55,170,255,.95) 0%,rgba(30,130,220,.3) 22%,transparent 38%),radial-gradient(circle at 38% 38%,rgba(30,30,50,1) 0%,#060810 55%,#000 100%)'">
+      <div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#1a1a1a;text-transform:uppercase;letter-spacing:0.06em"><strong>ULTRON OS</strong> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure</span>
+        <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.12em;color:var(--ink-gray-500)">AI GTM OPERATOR</div>
+      </div>
+    </div>
+    <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:800;color:#1a1a1a;letter-spacing:-0.5px">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

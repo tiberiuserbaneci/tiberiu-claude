@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 15 · AI Pricing A/B · v6</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* BUDGET 1450 · Family B · PRICING v6
+     header   0-48
+     hero    56-280
+     bigstat 296-368
+     chart   384-920 (536) · 5 pricing tier columns + revenue overlay · DOMINANT
+     takes   936-1080 (144) · 4 takeaway cards
+     insight 1096-1180 (84)
+     metric  1196-1252 (56)
+     cta     1260-1356 (96)  PRICING · enlarged
+     footer  1370-1410 (40)  · low
+  */
+  body{background:#f4ede0;margin:0;padding:0}
+  .scaler{display:flex;justify-content:center}
+  .poster{width:1080px;height:1450px;background:var(--ink-cream-50);position:relative;overflow:hidden;box-sizing:border-box}
+  .mono{font-family:var(--font-mono)}
+  .fraunces{font-family:var(--font-serif);font-feature-settings:'ss01' on}
+  .accent{color:var(--accent-dark)}
+  .micro{font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;font-family:var(--font-mono)}
+  .pulse{display:inline-block;width:8px;height:8px;border-radius:var(--radius-full);background:var(--accent-dark);box-shadow:0 0 8px rgba(217,119,87,0.4)}
+  .stat-cell{padding:14px 22px;display:flex;flex-direction:column;gap:3px}
+  .stat-k{font-family:var(--font-mono);font-size:9px;font-weight:700;letter-spacing:.18em;color:var(--ink-gray-500);text-transform:uppercase}
+  .stat-v{font-family:var(--font-serif);font-size:30px;font-weight:900;line-height:1;letter-spacing:-1px;color:var(--ink-black)}
+  .stat-v.hot{color:var(--accent-dark)}
+  .tier{background:#FFFFFF;border:1px solid var(--ink-cream-200);border-radius:var(--radius-md);padding:16px 14px;box-sizing:border-box;display:flex;flex-direction:column;position:relative;overflow:hidden}
+  .tier.win{background:linear-gradient(180deg,#FFFFFF,rgba(217,119,87,0.08));border:1.5px solid var(--accent-border);box-shadow:0 8px 20px rgba(217,119,87,0.10)}
+  .take{background:#FFFFFF;border:1px solid var(--ink-cream-200);border-radius:var(--radius-md);padding:12px 14px;display:flex;flex-direction:column;gap:4px;box-sizing:border-box}
+  .take.hot{background:linear-gradient(135deg,#FFFFFF,rgba(217,119,87,0.06));border:1.5px solid var(--accent-border)}
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="poster">
+
+  <!-- HEADER -->
+  <div style="position:absolute;top:0;left:40px;right:40px;height:48px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--ink-cream-200)">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(0,0,0,0.5)">FOUNDER GTM · AI PRICING · A/B TESTING · MONETIZATION OPTIMIZATION · ULTRON OS</span>
+  </div>
+
+  <!-- HERO -->
+  <div style="position:absolute;top:72px;left:40px;right:40px">
+    <div class="fraunces" style="font-weight:900;font-size:70px;line-height:0.92;letter-spacing:-2px;color:var(--ink-black);margin-bottom:6px">I A/B tested 5 pricing pages with <span class="accent" style="font-style:italic">Claude.</span></div>
+    <div class="fraunces" style="font-weight:700;font-size:40px;line-height:0.95;letter-spacing:-1.2px;color:var(--ink-gray-600);margin-bottom:16px">The decoy made <span style="color:var(--ink-black);font-weight:900">$19 win 3x more.</span></div>
+    <div style="font-size:15px;line-height:1.5;color:var(--ink-gray-600);max-width:880px">Claude wrote 5 versions. Same traffic, same offer, rotating splits.</div>
+  </div>
+
+  <!-- BIGSTAT -->
+  <div style="position:absolute;top:296px;left:40px;right:40px;height:72px;background:#FFFFFF;border:1px solid var(--ink-cream-200);border-radius:var(--radius-lg);display:grid;grid-template-columns:1fr 1fr 1fr 1fr;overflow:hidden">
+    <div class="stat-cell" style="border-right:1px solid var(--ink-cream-200)">
+      <div class="stat-k">VARIANTS TESTED</div>
+      <div class="stat-v">5</div>
+    </div>
+    <div class="stat-cell" style="border-right:1px solid var(--ink-cream-200)">
+      <div class="stat-k">VISITS · 14D</div>
+      <div class="stat-v">8,400</div>
+    </div>
+    <div class="stat-cell" style="border-right:1px solid var(--ink-cream-200)">
+      <div class="stat-k">WINNER LIFT</div>
+      <div class="stat-v hot">3.1x</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-k">AI SETUP TIME</div>
+      <div class="stat-v">38 min</div>
+    </div>
+  </div>
+
+  <!-- CHART · 5 pricing tier columns -->
+  <div style="position:absolute;top:384px;left:40px;right:40px;height:536px;background:#FFFFFF;border:1px solid var(--ink-cream-200);border-radius:var(--radius-lg);padding:22px 24px;box-sizing:border-box">
+
+    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px">
+      <div>
+        <div class="mono" style="font-size:10px;font-weight:700;letter-spacing:.18em;color:var(--ink-gray-500);margin-bottom:4px">FIG.01 · PRICE x REVENUE · 5 VARIANTS</div>
+        <div class="fraunces" style="font-size:22px;font-weight:900;letter-spacing:-0.5px;color:var(--ink-black)">The decoy moved the money. $19 took the gross.</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="display:flex;align-items:center;gap:6px"><span style="width:14px;height:10px;background:rgba(0,0,0,0.18);border:1px solid rgba(0,0,0,0.25);border-radius:2px"></span><span class="mono" style="font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--ink-gray-700)">CONVERSION</span></div>
+        <div style="display:flex;align-items:center;gap:6px"><span style="width:14px;height:10px;background:var(--accent-dark);border-radius:2px"></span><span class="mono accent" style="font-size:10px;font-weight:700;letter-spacing:.12em">REVENUE · 14D</span></div>
+      </div>
+    </div>
+
+    <!-- 5 tier cards in a row -->
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;height:430px">
+
+      <!-- V1 · WINNER -->
+      <div class="tier win">
+        <div class="mono accent" style="font-size:9px;font-weight:800;letter-spacing:.14em">VARIANT 01 · WIN</div>
+        <div class="fraunces accent" style="font-size:32px;font-weight:900;letter-spacing:-1px;margin-top:6px">$19</div>
+        <div style="font-size:10.5px;color:var(--ink-gray-600);margin-bottom:10px">/ user / mo</div>
+        <div style="height:200px;display:flex;align-items:flex-end;gap:8px;border-bottom:1px solid var(--accent-border);padding-bottom:6px">
+          <div style="flex:1;background:rgba(0,0,0,0.28);border-radius:2px 2px 0 0;height:68%"></div>
+          <div style="flex:1;background:var(--accent-dark);border-radius:2px 2px 0 0;height:100%;box-shadow:0 -4px 12px rgba(217,119,87,0.3)"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:8px"><span class="mono" style="font-size:9px;font-weight:700;color:var(--ink-gray-600);letter-spacing:.1em">CVR</span><span style="font-size:12px;font-weight:900;color:var(--ink-black)">7.8%</span></div>
+        <div style="display:flex;justify-content:space-between;margin-top:2px"><span class="mono accent" style="font-size:9px;font-weight:800;letter-spacing:.1em">REV</span><span class="accent" style="font-size:12px;font-weight:900">$124K</span></div>
+      </div>
+
+      <!-- V2 · DECOY -->
+      <div class="tier" style="border:1.5px dashed rgba(0,0,0,0.25);background:rgba(0,0,0,0.025)">
+        <div class="mono" style="font-size:9px;font-weight:800;letter-spacing:.14em;color:var(--ink-gray-700)">VARIANT 02 · DECOY</div>
+        <div class="fraunces" style="font-size:28px;font-weight:900;letter-spacing:-1px;color:var(--ink-gray-700);margin-top:6px">$49</div>
+        <div style="font-size:10.5px;color:var(--ink-gray-500);margin-bottom:10px">/ user / mo</div>
+        <div style="height:200px;display:flex;align-items:flex-end;gap:8px;border-bottom:1px solid var(--ink-cream-200);padding-bottom:6px">
+          <div style="flex:1;background:rgba(0,0,0,0.18);border-radius:2px 2px 0 0;height:18%"></div>
+          <div style="flex:1;background:var(--accent-dark);border-radius:2px 2px 0 0;height:42%"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:8px"><span class="mono" style="font-size:9px;font-weight:700;color:var(--ink-gray-500);letter-spacing:.1em">CVR</span><span style="font-size:11px;font-weight:800;color:var(--ink-black)">2.1%</span></div>
+        <div style="display:flex;justify-content:space-between;margin-top:2px"><span class="mono" style="font-size:9px;font-weight:700;color:var(--accent-dark);letter-spacing:.1em">REV</span><span style="font-size:11px;font-weight:800;color:var(--accent-dark)">$52K</span></div>
+      </div>
+
+      <!-- V3 · too cheap (bait) -->
+      <div class="tier">
+        <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">VARIANT 03 · BAIT</div>
+        <div class="fraunces" style="font-size:28px;font-weight:900;letter-spacing:-1px;color:var(--ink-black);margin-top:6px">$9</div>
+        <div style="font-size:10.5px;color:var(--ink-gray-500);margin-bottom:10px">/ user / mo</div>
+        <div style="height:200px;display:flex;align-items:flex-end;gap:8px;border-bottom:1px solid var(--ink-cream-200);padding-bottom:6px">
+          <div style="flex:1;background:rgba(0,0,0,0.18);border-radius:2px 2px 0 0;height:100%"></div>
+          <div style="flex:1;background:var(--accent-dark);border-radius:2px 2px 0 0;height:60%"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:8px"><span class="mono" style="font-size:9px;font-weight:700;color:var(--ink-gray-500);letter-spacing:.1em">CVR</span><span style="font-size:11px;font-weight:800;color:var(--ink-black)">11.4%</span></div>
+        <div style="display:flex;justify-content:space-between;margin-top:2px"><span class="mono" style="font-size:9px;font-weight:700;color:var(--accent-dark);letter-spacing:.1em">REV</span><span style="font-size:11px;font-weight:800;color:var(--accent-dark)">$74K</span></div>
+      </div>
+
+      <!-- V4 · price anchor -->
+      <div class="tier">
+        <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">VARIANT 04 · ANCHOR</div>
+        <div class="fraunces" style="font-size:28px;font-weight:900;letter-spacing:-1px;color:var(--ink-black);margin-top:6px">$99</div>
+        <div style="font-size:10.5px;color:var(--ink-gray-500);margin-bottom:10px">/ user / mo</div>
+        <div style="height:200px;display:flex;align-items:flex-end;gap:8px;border-bottom:1px solid var(--ink-cream-200);padding-bottom:6px">
+          <div style="flex:1;background:rgba(0,0,0,0.18);border-radius:2px 2px 0 0;height:8%"></div>
+          <div style="flex:1;background:var(--accent-dark);border-radius:2px 2px 0 0;height:29%"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:8px"><span class="mono" style="font-size:9px;font-weight:700;color:var(--ink-gray-500);letter-spacing:.1em">CVR</span><span style="font-size:11px;font-weight:800;color:var(--ink-black)">0.9%</span></div>
+        <div style="display:flex;justify-content:space-between;margin-top:2px"><span class="mono" style="font-size:9px;font-weight:700;color:var(--accent-dark);letter-spacing:.1em">REV</span><span style="font-size:11px;font-weight:800;color:var(--accent-dark)">$36K</span></div>
+      </div>
+
+      <!-- V5 · Free tier -->
+      <div class="tier">
+        <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">VARIANT 05</div>
+        <div class="fraunces" style="font-size:28px;font-weight:900;letter-spacing:-1px;color:var(--ink-black);margin-top:6px">FREE</div>
+        <div style="font-size:10.5px;color:var(--ink-gray-500);margin-bottom:10px">+ usage</div>
+        <div style="height:200px;display:flex;align-items:flex-end;gap:8px;border-bottom:1px solid var(--ink-cream-200);padding-bottom:6px">
+          <div style="flex:1;background:rgba(0,0,0,0.18);border-radius:2px 2px 0 0;height:82%"></div>
+          <div style="flex:1;background:var(--accent-dark);border-radius:2px 2px 0 0;height:11%"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:8px"><span class="mono" style="font-size:9px;font-weight:700;color:var(--ink-gray-500);letter-spacing:.1em">CVR</span><span style="font-size:11px;font-weight:800;color:var(--ink-black)">9.2%</span></div>
+        <div style="display:flex;justify-content:space-between;margin-top:2px"><span class="mono" style="font-size:9px;font-weight:700;color:var(--accent-dark);letter-spacing:.1em">REV</span><span style="font-size:11px;font-weight:800;color:var(--accent-dark)">$14K</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TAKES · 4 cards -->
+  <div style="position:absolute;top:936px;left:40px;right:40px;height:144px;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px">
+    <div class="take">
+      <div style="display:flex;align-items:baseline;justify-content:space-between"><span class="fraunces" style="font-size:30px;font-weight:900;line-height:1;color:var(--ink-gray-500);letter-spacing:-1px">01</span><span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">DECOY</span></div>
+      <div style="font-size:13px;font-weight:800;color:var(--ink-black);margin-top:2px">$49 sat next to $19 and lost on purpose</div>
+      <div style="font-size:11.5px;line-height:1.4;color:var(--ink-gray-600)">2.1% CVR · its only job was to make $19 feel cheap.</div>
+    </div>
+    <div class="take">
+      <div style="display:flex;align-items:baseline;justify-content:space-between"><span class="fraunces" style="font-size:30px;font-weight:900;line-height:1;color:var(--ink-gray-500);letter-spacing:-1px">02</span><span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">BAIT</span></div>
+      <div style="font-size:13px;font-weight:800;color:var(--ink-black);margin-top:2px">$9 got the clicks, lost the gross</div>
+      <div style="font-size:11.5px;line-height:1.4;color:var(--ink-gray-600)">11.4% CVR but only $74K · cheap signals "toy".</div>
+    </div>
+    <div class="take">
+      <div style="display:flex;align-items:baseline;justify-content:space-between"><span class="fraunces" style="font-size:30px;font-weight:900;line-height:1;color:var(--ink-gray-500);letter-spacing:-1px">03</span><span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">ANCHOR</span></div>
+      <div style="font-size:13px;font-weight:800;color:var(--ink-black);margin-top:2px">$99 priced out the buyer it was anchoring</div>
+      <div style="font-size:11.5px;line-height:1.4;color:var(--ink-gray-600)">0.9% CVR · too far from the winner to pull weight.</div>
+    </div>
+    <div class="take hot">
+      <div style="display:flex;align-items:baseline;justify-content:space-between"><span class="fraunces accent" style="font-size:30px;font-weight:900;line-height:1;letter-spacing:-1px">04</span><span class="mono accent" style="font-size:9px;font-weight:800;letter-spacing:.14em">WIN</span></div>
+      <div style="font-size:13px;font-weight:900;color:var(--ink-black);margin-top:2px">$19 cleared $124K in 14 days</div>
+      <div style="font-size:11.5px;line-height:1.4;color:var(--ink-gray-600)">Same offer, same traffic. Framing did the work.</div>
+    </div>
+  </div>
+
+  <!-- INSIGHT -->
+  <div style="position:absolute;top:1096px;left:40px;right:40px;height:84px;background:#FFFFFF;border:1px solid var(--ink-cream-200);border-left:3px solid var(--accent-dark);border-radius:var(--radius-md);padding:14px 22px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center">
+    <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.18em;color:var(--accent-dark);margin-bottom:4px">WHY THIS MATTERS</div>
+    <div class="fraunces" style="font-size:18px;font-weight:700;line-height:1.25;color:var(--ink-black);letter-spacing:-0.3px">The cheapest tier signals "toy." Adding a decoy 2.5x above the winner is what moves the gross. <span class="accent">Claude tests the decoy you wouldn't dare ship.</span></div>
+  </div>
+
+  <!-- METRIC -->
+  <div style="position:absolute;top:1196px;left:40px;right:40px;height:56px;background:#FFFFFF;border:1px solid var(--ink-cream-200);border-radius:var(--radius-md);display:grid;grid-template-columns:1fr 1fr 1fr 1fr;align-items:center;overflow:hidden">
+    <div style="padding:0 22px;border-right:1px solid var(--ink-cream-200)"><span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--ink-gray-500)">WINNER · </span><span style="font-size:14px;font-weight:800;color:var(--ink-black)">$19 / mo</span></div>
+    <div style="padding:0 22px;border-right:1px solid var(--ink-cream-200)"><span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--ink-gray-500)">CVR · </span><span style="font-size:14px;font-weight:800;color:var(--ink-black)">7.8%</span></div>
+    <div style="padding:0 22px;border-right:1px solid var(--ink-cream-200)"><span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--ink-gray-500)">REV · 14D · </span><span style="font-size:14px;font-weight:800;color:var(--accent-dark)">$124K</span></div>
+    <div style="padding:0 22px"><span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--ink-gray-500)">SETUP · </span><span style="font-size:14px;font-weight:800;color:var(--ink-black)">38 min</span></div>
+  </div>
+
+  <!-- CTA -->
+  <div style="position:absolute;top:1260px;left:40px;right:40px;height:96px;display:flex;align-items:center;justify-content:space-between;border:2px solid var(--accent-border);border-radius:var(--radius-lg);padding:0 32px;background:linear-gradient(135deg,rgba(217,119,87,0.10),rgba(217,119,87,0.04));box-shadow:0 8px 24px rgba(217,119,87,0.08)">
+    <div style="display:flex;flex-direction:column;gap:6px;max-width:640px">
+      <div class="mono accent" style="font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase">Want the full workflow?</div>
+      <div class="fraunces" style="font-size:24px;font-weight:900;line-height:1.15;letter-spacing:-0.5px;color:var(--ink-black)">Comment <span class="accent">PRICING</span> and I'll send the Claude workflow that ran this test.</div>
+    </div>
+    <div class="mono" style="padding:18px 32px;background:var(--accent-dark);color:#fff;border-radius:var(--radius-md);font-size:20px;font-weight:900;letter-spacing:.10em;box-shadow:0 4px 12px rgba(217,119,87,0.30)">PRICING</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer" style="position:absolute;top:1370px;left:40px;right:40px;border-top: 1px dashed rgba(199,93,53,0.3); padding-top: 16px; display: flex; align-items: center; justify-content: space-between;">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; color: rgba(0,0,0,0.5); text-transform: uppercase; display: flex; align-items: center; gap: 10px;">
+      <img src="https://app.51ultron.com/favicon.ico" alt="Ultron" style="width: 24px; height: 24px; object-fit: contain;">
+      <strong style="color: #1a1a1a;">ULTRON OS</strong> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure
+    </div>
+    <div style="font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 800; color: #1a1a1a; letter-spacing: -0.5px;">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>
