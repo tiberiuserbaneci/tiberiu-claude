@@ -16,7 +16,7 @@ post_date,publish_time,post_url,impressions,engagements,engagement_rate_pct,form
 3/28/2026,,https://www.linkedin.com/feed/update/urn:li:activity:7443614029245280256,2618,27,1.03,,,,,,,,,,,,
 3/29/2026,,https://www.linkedin.com/feed/update/urn:li:activity:7443991626055671808,665,6,0.9,,,,,,,,,,,,
 3/31/2026,,https://www.linkedin.com/feed/update/urn:li:activity:7444687605746540545,507,6,1.18,,,,,,,,,,,,
-4/1/2026,,https://www.linkedin.com/feed/update/urn:li:activity:7445065446522863616,3223,13,0.4,,,,,,,,,,,,
+4/1/2026,,https://www.linkedin.com/feed/update/urn:li:activity:7445065446522863616,3223,13,0.4,image,not-in-repo (related: script-05/16/25/33),legacy,standalone,"C (visual 49%/51% stat); C (caption, near-duplicate)",TOOL AUDIT (Claude task routing),none ('Save this map' + 'See the routing map'),6,3,1,4,"USER LABELED THIS '#5' but data=4/1 post (NOT the 5/21 resonance winner). COUNTER-EXAMPLE: same 'Save this map'+reference-matrix framing as #4 but only 4 saves vs #4's 25 -> save-ask amplifies saves proportional to overall resonance (0.43% ER), can't manufacture them; earliest post + 5th model-routing matrix (topic fatigue?); social_eng=14, sends=0, reached=2204"
 4/2/2026,,https://www.linkedin.com/feed/update/urn:li:activity:7445428201637433344,450,,,,,,,,,,,,,,
 4/3/2026,,https://www.linkedin.com/feed/update/urn:li:activity:7445689733512372224,642,6,0.93,,,,,,,,,,,,
 4/6/2026,,https://www.linkedin.com/feed/update/urn:li:activity:7446764410553004032,762,,,,,,,,,,,,,,
