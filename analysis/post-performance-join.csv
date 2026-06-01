@@ -38,10 +38,10 @@ post_date,publish_time,post_url,impressions,engagements,engagement_rate_pct,form
 4/22/2026,,https://www.linkedin.com/feed/update/urn:li:activity:7452685535795482624,589,12,2.04,,,,,,,,,,,,
 4/23/2026,,https://www.linkedin.com/feed/update/urn:li:activity:7452928182560890880,445,8,1.8,,,,,,,,,,,,
 4/23/2026,,https://www.linkedin.com/feed/update/urn:li:activity:7453062849104527360,760,6,0.79,,,,,,,,,,,,
-4/24/2026,,https://www.linkedin.com/feed/update/urn:li:activity:7453408525072125952,6088,56,0.92,,,,,,,,,,,,
+4/24/2026,,https://www.linkedin.com/feed/update/urn:li:activity:7453408525072125952,6088,56,0.92,image,not-in-repo,legacy,standalone,D (visual); B (caption),TOOL AUDIT (model comparison),none (comment-bait),33,19,2,1,social_eng=55; sends=0; profile_viewers=11; followers_gained=4; reached=3243; CTA 'Leave your task in comments' (NO save prompt) -> only 1 save vs #1's 40; matrix/verdict format; caption does NOT start with 'I'
 4/27/2026,,https://www.linkedin.com/feed/update/urn:li:activity:7454390800521543680,3827,59,1.54,,,,,,,,,,,,
 4/28/2026,,https://www.linkedin.com/feed/update/urn:li:activity:7454847770227572736,937,11,1.17,,,,,,,,,,,,
-4/29/2026,,https://www.linkedin.com/feed/update/urn:li:activity:7455120922102992896,11617,106,0.91,,,,,,,,,,,,
+4/29/2026,,https://www.linkedin.com/feed/update/urn:li:activity:7455120922102992896,11619,106,0.91,image,"not-in-repo (drafts: script-27-v2, script-30)",legacy,standalone,A,TOOL AUDIT (model routing),BLUEPRINT,33,23,1,40,social_eng=100 (export=106); sends=3; profile_viewers=32; followers_gained=18; reached=6805; CTA says 'Save this' -> 40 saves; visual+caption hook both Operator-Confession starting with 'I'
 4/30/2026,,https://www.linkedin.com/feed/update/urn:li:activity:7455579111617441792,750,13,1.73,,,,,,,,,,,,
 5/1/2026,,https://www.linkedin.com/feed/update/urn:li:activity:7455844742317309952,673,,,,,,,,,,,,,,
 5/4/2026,,https://www.linkedin.com/feed/update/urn:li:activity:7456927325297840128,1146,29,2.53,,,,,,,,,,,,
