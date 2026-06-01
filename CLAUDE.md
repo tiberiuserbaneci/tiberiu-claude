@@ -507,40 +507,134 @@ Example: "Stop reading why your cold emails failed. Start reading why the rare o
 
 ---
 
-## 15. CAPTION RULES
+## 15. CAPTION / ALT TEXT / FIRST COMMENT
 
-### Length
-- 400–470 words (model: post KILL)
-- 2400–2800 characters
+Complete rules for the 3 text pieces that accompany every LinkedIn poster. Write them in the
+order given by the Copywriting Process (§15.4).
 
-### Structure (5 blocks)
-1. **Hook text** (2 lines, **NOT a visual duplicate**) — use a different angle than the visual hook
-2. **Context/story** — why you ran the experiment, what surprised you
-3. **Numbered body list with `→`** — 3–5 concrete patterns/findings
-4. **Bridge insight** — the underlying lesson, not a surface tactic
-5. **Fixed CTA** (exactly this form):
-   ```
-   Follow for one AI system for founders every day.
-   Comment [KEYWORD] and I will send you the exact Claude [workflow/audit prompt/system] we used.
-   ```
+### 15.1 CAPTION
 
-### Caption rules
-- Caption hook NEVER duplicates the visual hook (you'd waste the only 2 lines visible pre-scroll)
-- "every day" (NOT "every week")
-- "Claude workflow" / "Claude audit prompt" / "Claude system" — NOT generic "prompt"/"framework"
-- Visual punctuation: `→` arrows, `- - -` separators, bullets `•`
-- NO emoji
-- Tone: direct, no hedging. "It will" not "it might". "Most teams" not "some teams"
+**Length**
+- Standard: 400–470 words (model: post KILL); 2,400–2,800 characters
+- NOT under 350 words (missing the context needed for save-worthy)
+- NOT over 500 words (pushes past "see more", breaks continuity)
 
-### ALT text
-- Full structural description: layout, sections, main colors, key numbers, CTA, brand
-- Format: "Dark editorial visual on slate background. Hero shows… Below… Closes with…"
+**Structure (5 mandatory blocks)**
 
-### First comment
-- 3–5 sentences
-- Restate hook + lead-magnet promise
-- "Drop [KEYWORD] below and I will send you…"
-- The real link goes HERE, NOT in the caption body
+*Block 1 — Hook text (2 lines, NOT a visual duplicate)*
+- Acts as scroll-stop in the feed (the first 2 lines are the only ones visible before "see more")
+- Use a different angle than the poster's visual hook; do not reuse its words
+- Must contain "AI" or "Claude" explicitly in the first 2 lines (no click without visible AI)
+- Pick one of the 4 caption hook styles below — NOT the same one used for the visual hook:
+  - **A — Operator Confession:** "I told Claude to write 200 cold emails. I expected 50 to convert. Seven did."
+  - **B — Counter-intuitive reveal:** "The 7 cold emails that booked meetings had nothing to do with copy quality."
+  - **C — Number reveal not shown in the visual:** "11 minutes. That is how long Claude needed to find the pattern I spent two days hunting by hand."
+  - **D — Confession + counter-intuitive mix (strongest):** "I told Claude to write 200 cold emails. I expected 50 to convert. Seven did. What those 7 had in common had nothing to do with copy quality."
+
+*Block 2 — Context/story (3–4 sentences)*
+- Why you ran the experiment; what you thought initially vs what you found
+- Operator voice mandatory ("I ran/built/sent/tested"); establish authority, no hedging
+
+*Block 3 — Body, numbered list with `→` (3–5 items)*
+- Each starts with `→` and describes one concrete behavior/pattern/finding
+- Specific numbers in each (exact figures, NOT "many"/"most"); name the tools (Claude, SPECTER, STRIKER, etc.)
+- Sequencing: most surprising finding first
+
+*Block 4 — Bridge insight*
+- 2–3 sentences linking the findings to an underlying lesson
+- Do NOT repeat the findings — extract the principle; connect to product/system subtly (no hard sell)
+
+*Block 5 — Fixed CTA (exactly this form)*
+```
+Follow for one AI system for founders every day.
+Comment [KEYWORD] and I will send you the exact Claude [workflow/audit prompt/system] we used.
+```
+
+**Visual separators**
+- Between blocks: `- - -` (three standard-keyboard dashes, NOT em-dashes)
+- Body items: `→` arrows; sub-list bullets `•` (rare); NO emoji
+- NO bold/italic markdown (LinkedIn does not render it)
+
+**Punctuation** (see also §21): standard keyboard characters only; "every day" not "every week";
+"Claude workflow"/"Claude audit prompt"/"Claude system" not generic "prompt"/"framework";
+"It will" not "it might"; "Most teams" not "some teams".
+
+**Caption anti-patterns (do NOT)**
+- Generic hook that says nothing ("Here is what I learned about AI")
+- Caption hook duplicating the visual hook
+- List of 8+ items (max 5); fictional quotes attributed to others; mentioning unreal products
+- Promising an invented PDF/document (the CTA points only to confirmed lead magnets)
+- Hedging language; starting the hook with "I"; statistics in the hook; emoji; hashtags (anywhere)
+
+### 15.2 ALT TEXT
+
+Structural description of the poster for accessibility + the LinkedIn algorithm.
+
+**Length:** 80–150 words, one continuous paragraph (not under 60, not over 200 — LinkedIn truncates).
+
+**Structure (in order)**
+1. **Open:** theme + palette (1 sentence) — e.g. "Dark editorial visual on slate background."
+2. **Hero** (2–3 sentences): the layout (3-up stack / text-led / split-screen / funnel), key numbers with their roles, the visual hook quoted in single quotes, Claude logo present/absent
+3. **Body sections** (2–3 sentences): main sections in visual order, key numbers/patterns — only what communicates the visual jump, not everything
+4. **Footer/CTA closure** (1 sentence): "Closes with a Comment [KEYWORD] call to action and the Ultron logo."
+
+**ALT rules**
+- Use Ultron color names (book-orange, kraft, slate, ivory), NOT hex codes
+- Quote numbers exactly, not rounded; visual hook in single quotes `'...'` (not double)
+- No emotional descriptors ("striking", "powerful"); no font/CSS technical detail; no "image of…" opener
+
+**Canonical example (script-41 final):**
+> "Dark editorial visual on slate background. Hero shows a vertical stack on the left, separated by a book-orange line: the number 7 in large book-orange labeled 'Converted · Booked Meetings', the number 200 in mid-size kraft labeled 'Sent · AI Cold Emails', and 3.5 percent in white labeled 'Rate · Over 10 Days.' Headline on the right reads 'Stop reading why your cold emails failed. Start reading why the rare ones worked.' Sub-headline notes 200 emails written by Claude over 10 days, 7 turned into meetings. Claude sunburst logo bottom right. Below, a grid of 200 dots represents each send, with 7 dots highlighted in book-orange and numbered 1 to 7. Three structural pattern cards: One Specific Trigger, The Ask Is A Question Not A CTA, Fewer Than 62 Words. Closes with a Comment WINNERS call to action and the Ultron logo."
+
+### 15.3 FIRST COMMENT
+
+Where the links + hook restatement live. The author's first comment sits right under the post, so
+it's the only place external links do NOT penalize reach.
+
+**Length:** 3–5 sentences (40–80 words). Not under 30, not over 100 (passes the mobile fold).
+
+**Structure (3 pieces)**
+1. **Hook restatement + key stats** (1–2 sentences) — a different angle than the visual/caption hook; include the key number + Claude/tool mention
+2. **Concrete lead-magnet promise** (1 sentence) — what they get if they comment; specific, not "useful stuff"
+3. **Explicit CTA with the real link** (1–2 sentences) — "Drop [KEYWORD] below and I will send you…"; link as plain-text URL (LinkedIn doesn't render markdown links); points to a confirmed lead magnet, never an invented document
+
+**First comment rules**
+- Real link always — never an invented document (absolute REALNUMBERS rule)
+- DM lead-magnet posts: NO link, just the trigger word ("Drop WINNERS below")
+- Existing PDF lead magnet: direct link to `app.51ultron.com/...`; shortlink posts: `51ultron.com/stack/` (via Short.io)
+- Two blank lines between pieces for spacing; [KEYWORD] in caps; no emoji; no hashtags
+
+**Canonical example (script-41):**
+> "200 cold emails written by Claude. 10 days. 7 booked a meeting. I read every single one looking for what the 7 winners had that the 193 failures did not.
+>
+> Three patterns showed up in all 7 and in zero of the 193. None of them were 'write better copy.'
+>
+> Drop WINNERS below and I will send you the exact Claude audit prompt I used to score the 200."
+
+**Restricted DM workflow:** when a user comments but you cannot DM them (first-degree restriction),
+approved public reply: "DM failed. Let's connect and I'll send it over."
+
+### 15.4 COPYWRITING PROCESS (write in this order)
+
+1. **Visual hook first** — pick style A/B/C/D (§14), max 12 words, no statistics
+2. **Visual sub-hook** — put the numbers here (200 emails, 10 days, 7 meetings), 18–25 words, mention Claude/AI
+3. **Caption hook (different angle)** — different from the visual hook, use one of the remaining 3 styles, 2 lines max
+4. **Caption body (Blocks 2–4)** — Context → Findings (`→` list) → Bridge
+5. **Fixed CTA (Block 5)** — copy the standard form, change only [KEYWORD] and workflow/prompt/system
+6. **ALT text** — after the visual is final; structural, with the exact numbers from the visual
+7. **First comment last** — a different angle than the caption hook; add the real link or DM trigger
+8. **Pre-flight** — `grep -nE '—|–|…' *.md *.html` → 0 results; confirm the 3 hooks (visual/caption/first comment) are worded differently; [KEYWORD] consistent across all 3; first-comment link is real
+
+### 15.5 TEXT-PIECE CHECKLIST (caption + ALT + first comment)
+
+- [ ] Caption 400–470 words; 5 blocks (Hook / Context / Body `→` / Bridge / CTA)
+- [ ] Caption hook DIFFERENT from the visual hook; contains "AI"/"Claude" in the first 2 lines; does not start with "I"
+- [ ] Block 3 has 3–5 `→` items with exact numbers
+- [ ] Fixed CTA exact: "Follow for one AI system for founders every day. Comment [KEYWORD]…"
+- [ ] ALT text 80–150 words, structural, exact numbers, Ultron color names
+- [ ] First comment 40–80 words, 3 pieces, real link OR DM trigger (never an invented document), different angle than caption hook
+- [ ] [KEYWORD] consistent across caption + first comment + visual
+- [ ] `grep -nE '—|–|…' file.md` → 0 results; zero emoji, hashtags, markdown formatting
 
 ---
 
@@ -711,14 +805,27 @@ OpenRouter middleware for per-user credit provisioning. BYOK removed from docume
 ## 21. STYLE / VOCABULARY
 
 ### NEVER in copy
-- Em dash `—`
-- En dash `–`
+- Em dash `—`, en dash `–`
 - Curly/smart quotes
-- Ellipsis character `…`
+- Ellipsis character `…` (use three dots `...`)
 - Words: "autopsy", "post-mortem", "morgue" → use BREAKDOWN, DIAGNOSTIC, POSTMORTEM (one word)
 - "every week" (always "every day")
 - generic "prompt"/"framework" (always "Claude workflow"/"Claude audit prompt"/"Claude system")
-- Hedging: "might", "could", "perhaps"
+- Hedging: "might", "could", "perhaps", "maybe", "kind of"
+- "Here's" → "Here is" (no contractions that introduce curly apostrophes)
+- Emoji; hashtags in caption body
+- Markdown links `[text](url)` and bold/italic markdown (`**bold**`, `*italic*`) — LinkedIn does not render them
+- Fictional quotes attributed to real people; promises of an invented PDF/document
+
+### Permitted / recommended in copy
+- Specific numbers with context ("200 cold emails over 10 days", not "many")
+- Operator voice: "I sent", "I tested", "I killed", "I built", "I let Claude"
+- Open counter-intuitive statements ("This had nothing to do with X")
+- Self-citation of your own real results only
+- Tool names: Claude, SPECTER, STRIKER, CORTEX, PULSE, SENTINEL
+- Brand terminology: "lead magnet", "workflow", "audit prompt", "founder GTM"
+- Concrete actions: "Drop [KEYWORD]", "Comment below", "DM me"
+- ICP filter language: "If you are a founder running GTM alone…"
 
 ### Standard keyboard characters only
 ```
