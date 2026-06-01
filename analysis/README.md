@@ -36,8 +36,9 @@ performance with the content attributes of each post.
 ## What's still missing for a full picture
 1. **The fill columns above** — especially `format` and `saves` (the two biggest levers).
 2. **The full post list**, not just the top 50, to learn from posts that *failed* (avoid survivorship bias).
-3. **North-star metric** — define "viral": reach (impressions) vs resonance (ER/saves/comments) vs
-   follower growth vs DM conversions. The data shows these diverge sharply, so the principles differ.
+3. **North-star metric — DECIDED (2026-06-01):** viral = **impressions+reach → saves → comments**,
+   in that priority order. Reach is primary; saves and comments are the tiebreakers / quality signals.
+   (Follower growth and DM conversions are not part of the viral definition.)
 
 ## How to fill
 Edit the CSV directly on GitHub (or locally) and commit. Once `format` + `saves` + `hook_style`
