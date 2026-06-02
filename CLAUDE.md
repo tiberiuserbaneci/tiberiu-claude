@@ -934,4 +934,22 @@ Before any push to LinkedIn / IG / repo:
 
 ---
 
+## 27. LINKEDIN INFOGRAPHIC DESIGN PRINCIPLES
+
+> Reference framework (Marina Panova), added 2026-06-02. Full notes: `analysis/linkedin-infographic-principles.md`.
+> Reinforces §13 (scoring), §16 (layouts), §26 (SAVES lever). Apply to every LinkedIn infographic.
+
+1. **One core idea** — one problem / framework / transformation. Ask "what do they remember in 5 minutes?"
+2. **Title instantly clear** — stop the scroll, create curiosity, explain the outcome. Name the asset ("X Cheatsheet / Map / System"), not "Thoughts on X".
+3. **Structure > design** — highly scannable, section-based, balanced, skim in 10s. Numbered sections, spacing, boxes, contrast, hierarchy.
+4. **Optimize for SAVES** — not motivational. Practical, referenceable, actionable, easy to revisit. "Would someone save this to use again?"
+5. **Do not overload** — too much text kills retention. Simplify, cut words, clarity wins.
+6. **Scannability** — people scan before they read. Short paragraphs, bold headers, visual rhythm, clean structure.
+7. **Recognizable branding** — consistent colors / type / layout / tone. (LinkedIn = Dark Ultron; TikTok = the reference glass format, per operator.)
+8. **One clear CTA** — "Save this", "Repost", or "Comment [KEYWORD]". One, not five.
+
+**Pre-publish gate (6 questions):** easy to scan? · idea immediately useful? · title clear? · visually structured? · would people save it? · would someone repost it?
+
+---
+
 END OF CONFIG.
