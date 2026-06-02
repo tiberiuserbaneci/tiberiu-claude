@@ -43,6 +43,27 @@ numbered, section-based cheatsheet (about 12 labeled boxes). That is the canonic
 **referenceable-cheatsheet** format: one named asset, numbered sections, scannable in 10 seconds,
 built to be saved and revisited. It is the visual embodiment of principles 2, 3, and 4.
 
+## Visual format spec (the high-performing LinkedIn cheatsheet template)
+
+This is the actual visual template, not just the principles. Reference example built:
+`content/docs-03-chat-linkedin-v2.html`. Use it for reference/cheatsheet LinkedIn infographics.
+
+- **LIGHT background** (cream / near-white), not dark. This is the key tell of the format.
+- **Bold, heavy, dark title** across the top, 1 to 2 lines, with one phrase in a **colored highlight box** (white text on a solid accent block). DM Sans 900.
+- Short **sub-line** under the title with a bottom rule, a few words in the accent color.
+- **Dense 3-column layout** of titled boxes (masonry feel, ~8 to 10 boxes). Each box = a bold
+  **italic colored header** + a tight bullet list (short lines). A **colored top-border** per box
+  gives section-to-section variety.
+- A **checklist strip** near the bottom: a pill header + a row of ~6 check-circle items.
+- **Footer:** "Follow [name] -> [value line]" on the left + a solid **"REPOST TO HELP OTHERS"**
+  button on the right (plus the logo).
+- **On-brand adaptation for Ultron:** use the REALNUMBERS light palette (cream + book/orange/kraft
+  shades for the box accents) instead of the reference's purple/pastel. DM Sans / DM Mono.
+- **Dimensions:** 1080x1350 (4:5) for this dense cheatsheet (the reference's ratio).
+- **This is a distinct format** from the dark Dark-Ultron hook-poster (docs-02 routing) and the dark
+  TikTok glass format. Dark hook-led posters read as TikTok on LinkedIn. For a LinkedIn infographic,
+  default to this light dense cheatsheet.
+
 ## How this maps to our existing config
 - **Reinforces §26 SAVES lever:** "would someone save this to use again" = our reference-grade asset
   + explicit save ask. Practical / referenceable / actionable beats motivational.
