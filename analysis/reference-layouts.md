@@ -45,4 +45,4 @@
 
 ## Archetype usage log
 - docs-03 chat — (my default 3-col card grid — NOT from this menu — to be reworked)
-- docs-04 workforce — (my default 3-col / radar — NOT from this menu — reworking now)
+- docs-04 workforce — A5 dense dashboard, CLONED from script-37 structure, REALNUMBERS light palette, DM Sans/Mono
