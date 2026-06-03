@@ -1,62 +1,67 @@
 <!DOCTYPE html><html><head><meta charset="UTF-8">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--cream:#F4ECE0;--ink:#181410;--ink60:rgba(24,20,16,.6);--ink42:rgba(24,20,16,.42);--ink30:rgba(24,20,16,.3);--ink10:rgba(24,20,16,.1);--or:#C84623;--dark:#1a1512;}
+:root{--cream:#F4ECE0;--ink:#181410;--ink60:rgba(24,20,16,.62);--ink42:rgba(24,20,16,.44);--ink30:rgba(24,20,16,.3);--ink10:rgba(24,20,16,.1);--or:#C84623;--dark:#1a1512;}
 *{box-sizing:border-box;margin:0;padding:0;}body{background:#d9cdb8;font-family:'DM Sans',sans-serif;}
-.canvas{width:1080px;height:1450px;background:radial-gradient(rgba(200,70,35,.09) 1.4px,transparent 1.5px) 0 0/24px 24px,var(--cream);padding:28px 38px 20px;display:flex;flex-direction:column;color:var(--ink);overflow:hidden;position:relative;}
-.hd{flex-shrink:0;display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink42);padding-bottom:12px;border-bottom:1px solid var(--ink10);}
+.canvas{width:1080px;height:1450px;background:radial-gradient(rgba(200,70,35,.09) 1.4px,transparent 1.5px) 0 0/24px 24px,var(--cream);padding:26px 36px 18px;display:flex;flex-direction:column;color:var(--ink);overflow:hidden;position:relative;}
+.hd{flex-shrink:0;display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--ink42);padding-bottom:12px;border-bottom:1px solid var(--ink10);}
 .hd b{color:var(--or);font-weight:700;}
-.top{flex-shrink:0;display:flex;gap:20px;align-items:center;margin:14px 0 12px;}
-.stat-anchor{flex-shrink:0;width:158px;height:158px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(200,70,35,.07);border:1.5px solid rgba(200,70,35,.28);border-radius:14px;box-shadow:0 0 40px rgba(200,70,35,.06);}
-.sa-num{font-weight:900;font-size:90px;color:var(--or);line-height:.8;letter-spacing:-4px;}
-.sa-label{font-family:'DM Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink42);margin-top:10px;}
-.sa-sub{font-family:'DM Mono',monospace;font-size:8px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--or);margin-top:4px;}
-.hook{font-weight:900;font-size:44px;line-height:1.0;letter-spacing:-1.5px;}.hook .ac{color:var(--or);}
-.hook-sub{margin-top:10px;font-size:14px;font-weight:600;line-height:1.46;color:var(--ink60);max-width:650px;}
-.ba{flex-shrink:0;display:grid;grid-template-columns:1fr 1.3fr;gap:11px;margin-bottom:12px;}
+.top{flex-shrink:0;display:flex;gap:20px;align-items:center;margin:13px 0 11px;}
+.stat-anchor{flex-shrink:0;width:150px;height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(200,70,35,.07);border:1.5px solid rgba(200,70,35,.28);border-radius:14px;box-shadow:0 0 40px rgba(200,70,35,.06);}
+.sa-num{font-weight:900;font-size:88px;color:var(--or);line-height:.78;letter-spacing:-4px;}
+.sa-label{font-family:'DM Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ink42);margin-top:9px;}
+.sa-sub{font-family:'DM Mono',monospace;font-size:8px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--or);margin-top:4px;}
+.hook{font-weight:900;font-size:45px;line-height:1.0;letter-spacing:-1.6px;}.hook .ac{color:var(--or);}
+.hook-sub{margin-top:10px;font-size:14.5px;font-weight:600;line-height:1.45;color:var(--ink60);max-width:660px;}
+.ba{flex-shrink:0;display:grid;grid-template-columns:1fr 1.32fr;gap:11px;margin-bottom:11px;}
 .ba-side{padding:12px 18px;border-radius:9px;display:flex;align-items:center;gap:16px;}
 .ba-before{background:rgba(24,20,16,.04);border:1px solid var(--ink10);border-left:3px solid var(--ink30);}
 .ba-after{background:rgba(200,70,35,.07);border:1.5px solid rgba(200,70,35,.3);border-left:3px solid var(--or);}
 .ba-stat{font-weight:900;line-height:.85;letter-spacing:-1px;flex-shrink:0;}
-.ba-before .ba-stat{font-size:46px;color:var(--ink30);text-decoration:line-through;text-decoration-color:rgba(190,70,40,.5);text-decoration-thickness:3px;}
-.ba-after .ba-stat{font-size:50px;color:var(--or);}
-.ba-label{font-family:'DM Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:4px;}
+.ba-before .ba-stat{font-size:48px;color:var(--ink30);text-decoration:line-through;text-decoration-color:rgba(190,70,40,.5);text-decoration-thickness:3px;}
+.ba-after .ba-stat{font-size:52px;color:var(--or);}
+.ba-label{font-family:'DM Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:4px;}
 .ba-before .ba-label{color:var(--ink42);}.ba-after .ba-label{color:var(--or);}
-.ba-line{font-size:11.5px;font-weight:600;line-height:1.38;color:var(--ink60);}.ba-line b{color:var(--ink);font-weight:800;}
-.stage{flex-shrink:0;display:flex;align-items:center;gap:10px;height:22px;margin-bottom:7px;}
-.stage-n{font-family:'DM Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--or);}
-.stage-t{font-family:'DM Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);}
+.ba-line{font-size:12.5px;font-weight:600;line-height:1.4;color:var(--ink60);}.ba-line b{color:var(--ink);font-weight:800;}
+.stage{flex-shrink:0;display:flex;align-items:center;gap:10px;height:20px;margin-bottom:6px;}
+.stage-n{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--or);}
+.stage-t{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ink);}
 .stage-line{flex:1;height:1px;background:rgba(200,70,35,.22);}
-.stage-meta{font-family:'DM Mono',monospace;font-size:8px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink42);}
+.stage-meta{font-family:'DM Mono',monospace;font-size:8.5px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink42);}
 .roster{flex:1;display:flex;flex-direction:column;gap:5px;min-height:0;}
-.conn{flex:1;display:grid;grid-template-columns:20px 26px 148px 1fr 74px;align-items:center;gap:12px;padding:0 14px 0 10px;background:rgba(255,255,255,.5);border:1px solid var(--ink10);border-left:3px solid rgba(200,70,35,.4);border-radius:5px;min-height:0;overflow:hidden;}
+.conn{flex:1;display:grid;grid-template-columns:24px 30px 150px 1fr 70px 86px;align-items:center;gap:13px;padding:0 16px 0 12px;background:rgba(255,255,255,.55);border:1px solid var(--ink10);border-left:3px solid rgba(200,70,35,.42);border-radius:5px;min-height:0;overflow:hidden;}
 .conn.hi{border-left-color:var(--or);background:rgba(200,70,35,.09);}.conn.hi2{border-left-color:rgba(200,70,35,.7);background:rgba(200,70,35,.05);}
-.conn-num{font-family:'DM Mono',monospace;font-size:11px;font-weight:700;color:var(--or);}
-.ci{width:24px;height:24px;display:flex;}.ci svg{width:100%;height:100%;}
+.conn-num{font-family:'DM Mono',monospace;font-size:12px;font-weight:700;color:var(--or);}
+.ci{width:28px;height:28px;display:flex;}.ci svg{width:100%;height:100%;}
 .conn-id{min-width:0;}
-.conn-name{font-size:15px;font-weight:800;letter-spacing:-.3px;color:var(--ink);display:flex;align-items:baseline;gap:7px;}
-.conn-name .slash{font-family:'DM Mono',monospace;font-size:9px;font-weight:500;color:var(--ink42);letter-spacing:.02em;}
-.conn-role{font-family:'DM Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--or);margin-top:3px;}
+.conn-name{font-size:18px;font-weight:800;letter-spacing:-.4px;color:var(--ink);line-height:1;}
+.conn-slash{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;color:var(--ink42);margin-top:4px;}
+.conn-role{display:inline-block;font-family:'DM Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--or);background:rgba(200,70,35,.1);border:1px solid rgba(200,70,35,.25);padding:2px 7px;border-radius:3px;margin-top:6px;}
 .conn-body{min-width:0;}
-.conn-what{font-size:11.5px;font-weight:600;color:var(--ink60);line-height:1.3;}
-.conn-ex{font-family:'DM Mono',monospace;font-size:9.5px;font-weight:500;color:rgba(200,70,35,.85);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.conn-ret{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;color:var(--or);text-align:right;letter-spacing:.03em;}
+.conn-what{font-size:13px;font-weight:600;color:var(--ink60);line-height:1.36;}
+.conn-ex{font-family:'DM Mono',monospace;font-size:10.5px;font-weight:500;color:rgba(200,70,35,.88);margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.conn-ops{text-align:center;border-left:1px solid var(--ink10);border-right:1px solid var(--ink10);padding:0 4px;}
+.ops-tier{font-size:13px;font-weight:800;color:var(--ink);}
+.ops-tlab{font-family:'DM Mono',monospace;font-size:7.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink42);margin-top:3px;}
+.conn-ret{text-align:right;}
+.ret-art{font-family:'DM Mono',monospace;font-size:13px;font-weight:700;color:var(--or);letter-spacing:.02em;}
+.ret-lab{font-family:'DM Mono',monospace;font-size:7.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink42);margin-top:3px;}
 .cfg-grid{flex-shrink:0;display:grid;grid-template-columns:1fr 1fr;gap:11px;}
-.cfg{border-radius:7px;padding:13px 17px;}
+.cfg{border-radius:7px;padding:14px 18px;}
 .cfg.lite{background:#fff;border:1px solid var(--ink10);box-shadow:0 4px 16px rgba(0,0,0,.04);}
 .cfg.hot{background:var(--dark);border:1px solid #000;border-top:3px solid var(--or);box-shadow:0 12px 30px rgba(200,70,35,.15);}
-.cfg-title{font-family:'DM Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:9px;padding-bottom:7px;border-bottom:1px solid var(--ink10);}
+.cfg-title{font-family:'DM Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--ink10);}
 .cfg.lite .cfg-title{color:var(--ink);}.cfg.hot .cfg-title{color:var(--or);border-bottom-color:rgba(200,70,35,.3);}
-.cfg-row{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding-bottom:6px;margin-bottom:6px;border-bottom:1px dotted var(--ink10);}
+.cfg-row{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding-bottom:7px;margin-bottom:7px;border-bottom:1px dotted var(--ink10);}
 .cfg-row:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0;}
 .cfg.hot .cfg-row{border-bottom-color:rgba(255,255,255,.12);}
-.cfg-key{font-size:11.5px;font-weight:700;flex-shrink:0;}.cfg.lite .cfg-key{color:var(--ink);}.cfg.hot .cfg-key{color:#fff;}
-.cfg-val{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;text-align:right;}.cfg.lite .cfg-val{color:var(--ink60);}.cfg.hot .cfg-val{color:rgba(255,255,255,.6);}
-.cfg-val b{color:var(--or);font-weight:700;}.cfg.hot .cfg-val b{color:var(--or);}
-.cta{flex-shrink:0;background:var(--or);border-radius:7px;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:12px;}
-.cta-copy{font-size:13.5px;font-weight:700;color:var(--cream);line-height:1.4;}.cta-copy b{color:#fff;font-weight:900;}
-.cta-badge{font-family:'DM Mono',monospace;font-size:12px;font-weight:700;color:var(--or);background:var(--cream);padding:10px 18px;border-radius:5px;flex-shrink:0;letter-spacing:.05em;}
-.footer{flex-shrink:0;height:36px;display:flex;align-items:center;justify-content:space-between;padding-top:9px;}
+.cfg-key{font-size:12.5px;font-weight:700;flex-shrink:0;}.cfg.lite .cfg-key{color:var(--ink);}.cfg.hot .cfg-key{color:#fff;}
+.cfg-val{font-family:'DM Mono',monospace;font-size:10.5px;font-weight:500;text-align:right;}.cfg.lite .cfg-val{color:var(--ink60);}.cfg.hot .cfg-val{color:rgba(255,255,255,.62);}
+.cfg-val b{color:var(--or);font-weight:700;}
+.cta{flex-shrink:0;background:var(--or);border-radius:7px;padding:15px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:11px;}
+.cta-copy{font-size:14px;font-weight:700;color:var(--cream);line-height:1.4;}.cta-copy b{color:#fff;font-weight:900;}
+.cta-badge{font-family:'DM Mono',monospace;font-size:12.5px;font-weight:700;color:var(--or);background:var(--cream);padding:11px 19px;border-radius:5px;flex-shrink:0;letter-spacing:.05em;}
+.footer{flex-shrink:0;height:34px;display:flex;align-items:center;justify-content:space-between;padding-top:9px;}
 .fl{display:flex;align-items:center;gap:9px;}.fl img{width:25px;height:25px;border-radius:50%;}
 .ftx{font-family:'DM Mono',monospace;font-size:8.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink42);}.ftx b{color:var(--ink);font-weight:700;}
 .furl{font-weight:900;font-size:14px;letter-spacing:-.4px;color:var(--ink);}.furl em{color:var(--or);font-style:normal;}
@@ -69,43 +74,50 @@
       <div class="hook-sub">One composer. Type plain English and it routes to the specialist that owns the job, or hit slash to pick one by name. They hand work to each other and stop at your gate.</div></div>
   </div>
   <div class="ba">
-    <div class="ba-side ba-before"><div class="ba-stat">1</div><div><div class="ba-label">One generalist</div><div class="ba-line">One context window for every task. <b>You</b> are the router: re-explain, re-check, re-send each time.</div></div></div>
-    <div class="ba-side ba-after"><div class="ba-stat">7</div><div><div class="ba-label">The Ultron workforce</div><div class="ba-line">Seven specialists, each owning a domain and the right model tier. They <b>compose</b> with each other and pause at the human gate before anything ships.</div></div></div>
+    <div class="ba-side ba-before"><div class="ba-stat">1</div><div><div class="ba-label">One generalist</div><div class="ba-line">One context window for every task. <b>You</b> are the router: re-explain, re-check and re-send each time.</div></div></div>
+    <div class="ba-side ba-after"><div class="ba-stat">7</div><div><div class="ba-label">The Ultron workforce</div><div class="ba-line">Seven specialists, each owning a domain and a model tier. They <b>compose</b> with one another and pause at the human gate before anything ships.</div></div></div>
   </div>
-  <div class="stage"><span class="stage-n">Fig.01</span><span class="stage-t">The roster</span><span class="stage-line"></span><span class="stage-meta">num / agent / slash / covers / example / returns</span></div>
+  <div class="stage"><span class="stage-n">Fig.01</span><span class="stage-t">The roster</span><span class="stage-line"></span><span class="stage-meta">agent / slash / covers / example / tier / returns</span></div>
   <div class="roster"><div class="conn hi"><div class="conn-num">1</div>
       <div class="ci"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="#C84623" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m10.065 12.493l-6.18 1.318a.934.934 0 0 1-1.108-.702l-.537-2.15a1.07 1.07 0 0 1 .691-1.265l13.504-4.44m-2.875 6.493l4.332-.924M16 21l-3.105-6.21"/><path d="M16.485 5.94a2 2 0 0 1 1.455-2.425l1.09-.272a1 1 0 0 1 1.212.727l1.515 6.06a1 1 0 0 1-.727 1.213l-1.09.272a2 2 0 0 1-2.425-1.455zM6.158 8.633l1.114 4.456M8 21l3.105-6.21"/><circle cx="12" cy="13" r="2"/></g></svg></div>
-      <div class="conn-id"><div class="conn-name">Cortex<span class="slash">/cortex</span></div><div class="conn-role">Research</div></div>
-      <div class="conn-body"><div class="conn-what">Profiles people, companies and markets. Pulls firmographics, funding, news and org maps into one brief.</div><div class="conn-ex">&gt; research Acme Corp and who to call first</div></div>
-      <div class="conn-ret">&rarr; BRIEF</div></div><div class="conn hi2"><div class="conn-num">2</div>
+      <div class="conn-id"><div class="conn-name">Cortex</div><div class="conn-slash">/cortex</div><div class="conn-role">Research</div></div>
+      <div class="conn-body"><div class="conn-what">Profiles people, companies and whole markets. Pulls firmographics, funding, hiring and news into one ranked brief.</div><div class="conn-ex">&gt; research Acme Corp and who to call first</div></div>
+      <div class="conn-ops"><div class="ops-tier">Smart</div><div class="ops-tlab">tier</div></div>
+      <div class="conn-ret"><div class="ret-art">BRIEF</div><div class="ret-lab">&rarr; returns</div></div></div><div class="conn hi2"><div class="conn-num">2</div>
       <div class="ci"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="#C84623" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11zm7.318-19.539l-10.94 10.939"/></svg></div>
-      <div class="conn-id"><div class="conn-name">Specter<span class="slash">/specter</span></div><div class="conn-role">Outbound</div></div>
-      <div class="conn-body"><div class="conn-what">Cold emails, follow-ups and full sequences. Picks the angle straight from the signal in the brief.</div><div class="conn-ex">&gt; 30 cold emails for UK fintech CFOs</div></div>
-      <div class="conn-ret">&rarr; EMAIL</div></div><div class="conn "><div class="conn-num">3</div>
+      <div class="conn-id"><div class="conn-name">Specter</div><div class="conn-slash">/specter</div><div class="conn-role">Outbound</div></div>
+      <div class="conn-body"><div class="conn-what">Writes cold emails, follow-ups and full multi-step sequences, taking the angle straight from the signal Cortex surfaced.</div><div class="conn-ex">&gt; 30 cold emails for UK fintech CFOs</div></div>
+      <div class="conn-ops"><div class="ops-tier">Smart</div><div class="ops-tlab">tier</div></div>
+      <div class="conn-ret"><div class="ret-art">EMAIL</div><div class="ret-lab">&rarr; returns</div></div></div><div class="conn "><div class="conn-num">3</div>
       <div class="ci"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="#C84623" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></g></svg></div>
-      <div class="conn-id"><div class="conn-name">Striker<span class="slash">/striker</span></div><div class="conn-role">Deals</div></div>
-      <div class="conn-body"><div class="conn-what">Qualify, discovery, objection handling, proposals and close plans for each open opportunity.</div><div class="conn-ex">&gt; build a discovery script for a 12-person agency</div></div>
-      <div class="conn-ret">&rarr; DEAL</div></div><div class="conn "><div class="conn-num">4</div>
+      <div class="conn-id"><div class="conn-name">Striker</div><div class="conn-slash">/striker</div><div class="conn-role">Deals</div></div>
+      <div class="conn-body"><div class="conn-what">Runs qualification, discovery questions, objection handling, proposals and a written close plan for every open deal.</div><div class="conn-ex">&gt; build a discovery script for a 12-seat agency</div></div>
+      <div class="conn-ops"><div class="ops-tier">Deep</div><div class="ops-tlab">tier</div></div>
+      <div class="conn-ret"><div class="ret-art">DEAL</div><div class="ret-lab">&rarr; returns</div></div></div><div class="conn "><div class="conn-num">4</div>
       <div class="ci"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="#C84623" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15.707 21.293a1 1 0 0 1-1.414 0l-1.586-1.586a1 1 0 0 1 0-1.414l5.586-5.586a1 1 0 0 1 1.414 0l1.586 1.586a1 1 0 0 1 0 1.414z"/><path d="m18 13l-1.375-6.874a1 1 0 0 0-.746-.776L3.235 2.028a1 1 0 0 0-1.207 1.207L5.35 15.879a1 1 0 0 0 .776.746L13 18M2.3 2.3l7.286 7.286"/><circle cx="11" cy="11" r="2"/></g></svg></div>
-      <div class="conn-id"><div class="conn-name">Pulse<span class="slash">/pulse</span></div><div class="conn-role">Content</div></div>
-      <div class="conn-body"><div class="conn-what">Posts, launches, newsletters and thought-leadership written in your own voice and cadence.</div><div class="conn-ex">&gt; turn this case study into a launch post</div></div>
-      <div class="conn-ret">&rarr; DRAFT</div></div><div class="conn "><div class="conn-num">5</div>
+      <div class="conn-id"><div class="conn-name">Pulse</div><div class="conn-slash">/pulse</div><div class="conn-role">Content</div></div>
+      <div class="conn-body"><div class="conn-what">Drafts posts, launches, newsletters and long-form thought-leadership in your own voice, tone and posting cadence.</div><div class="conn-ex">&gt; turn this case study into a launch post</div></div>
+      <div class="conn-ops"><div class="ops-tier">Smart</div><div class="ops-tlab">tier</div></div>
+      <div class="conn-ret"><div class="ret-art">DRAFT</div><div class="ret-lab">&rarr; returns</div></div></div><div class="conn "><div class="conn-num">5</div>
       <div class="ci"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="#C84623" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19h8M4 17l6-6l-6-6"/></svg></div>
-      <div class="conn-id"><div class="conn-name">Sentinel<span class="slash">/sentinel</span></div><div class="conn-role">Code</div></div>
-      <div class="conn-body"><div class="conn-what">Reads, writes, tests and ships code across your repo, then opens the pull request.</div><div class="conn-ex">&gt; add Stripe webhooks plus the tests</div></div>
-      <div class="conn-ret">&rarr; PATCH</div></div><div class="conn "><div class="conn-num">6</div>
+      <div class="conn-id"><div class="conn-name">Sentinel</div><div class="conn-slash">/sentinel</div><div class="conn-role">Code</div></div>
+      <div class="conn-body"><div class="conn-what">Reads, writes, tests and ships code across your repository, then opens the pull request and writes the summary.</div><div class="conn-ex">&gt; add Stripe webhooks plus the tests</div></div>
+      <div class="conn-ops"><div class="ops-tier">Deep</div><div class="ops-tlab">tier</div></div>
+      <div class="conn-ret"><div class="ret-art">PATCH</div><div class="ret-lab">&rarr; returns</div></div></div><div class="conn "><div class="conn-num">6</div>
       <div class="ci"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="#C84623" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M11 6a13 13 0 0 0 8.4-2.8A1 1 0 0 1 21 4v12a1 1 0 0 1-1.6.8A13 13 0 0 0 11 14H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/><path d="M6 14a12 12 0 0 0 2.4 7.2a2 2 0 0 0 3.2-2.4A8 8 0 0 1 10 14M8 6v8"/></g></svg></div>
-      <div class="conn-id"><div class="conn-name">Amplify<span class="slash">/amplify</span></div><div class="conn-role">Publish</div></div>
-      <div class="conn-body"><div class="conn-what">Formats and schedules every asset per channel, time zone and posting window.</div><div class="conn-ex">&gt; schedule this at 10am on LinkedIn and X</div></div>
-      <div class="conn-ret">&rarr; POSTS</div></div><div class="conn "><div class="conn-num">7</div>
+      <div class="conn-id"><div class="conn-name">Amplify</div><div class="conn-slash">/amplify</div><div class="conn-role">Publish</div></div>
+      <div class="conn-body"><div class="conn-what">Formats and schedules every asset per channel, time zone and best-time window, then tracks what actually went out.</div><div class="conn-ex">&gt; schedule this at 10am on LinkedIn and X</div></div>
+      <div class="conn-ops"><div class="ops-tier">Lite</div><div class="ops-tlab">tier</div></div>
+      <div class="conn-ret"><div class="ret-art">POSTS</div><div class="ret-lab">&rarr; returns</div></div></div><div class="conn "><div class="conn-num">7</div>
       <div class="ci"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="#C84623" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 3v18m7-13l3 8a5 5 0 0 1-6 0zV7"/><path d="M3 7h1a17 17 0 0 0 8-2a17 17 0 0 0 8 2h1M5 8l3 8a5 5 0 0 1-6 0zV7m2 14h10"/></g></svg></div>
-      <div class="conn-id"><div class="conn-name">Counsel<span class="slash">/counsel</span></div><div class="conn-role">Legal</div></div>
-      <div class="conn-body"><div class="conn-what">Drafts and reviews NDAs, MSAs and term sheets, then flags one-sided or risky clauses.</div><div class="conn-ex">&gt; review this NDA and flag risky terms</div></div>
-      <div class="conn-ret">&rarr; DOC</div></div></div>
-  <div class="stage" style="margin-top:12px;"><span class="stage-n">Fig.02</span><span class="stage-t">How it runs</span><span class="stage-line"></span><span class="stage-meta">invoke / tiers / models</span></div>
+      <div class="conn-id"><div class="conn-name">Counsel</div><div class="conn-slash">/counsel</div><div class="conn-role">Legal</div></div>
+      <div class="conn-body"><div class="conn-what">Drafts and reviews NDAs, MSAs and term sheets, redlines clauses and flags anything one-sided or off-market for you.</div><div class="conn-ex">&gt; review this NDA and flag risky terms</div></div>
+      <div class="conn-ops"><div class="ops-tier">Deep</div><div class="ops-tlab">tier</div></div>
+      <div class="conn-ret"><div class="ret-art">DOC</div><div class="ret-lab">&rarr; returns</div></div></div></div>
+  <div class="stage" style="margin-top:11px;"><span class="stage-n">Fig.02</span><span class="stage-t">How it runs</span><span class="stage-line"></span><span class="stage-meta">invoke / tiers / models</span></div>
   <div class="cfg-grid">
-    <div class="cfg lite"><div class="cfg-title">Invoke &middot; six ways in</div><div class="cfg-row"><span class="cfg-key">Plain English</span><span class="cfg-val">router routes <b>for you</b></span></div><div class="cfg-row"><span class="cfg-key">Slash /name</span><span class="cfg-val">call one agent direct</span></div><div class="cfg-row"><span class="cfg-key">/skill name</span><span class="cfg-val">fills a template</span></div><div class="cfg-row"><span class="cfg-key">@ another agent</span><span class="cfg-val">pull a second in</span></div><div class="cfg-row"><span class="cfg-key">Chain</span><span class="cfg-val">they hand off + compose</span></div><div class="cfg-row"><span class="cfg-key">Human gate</span><span class="cfg-val">you approve before send</span></div></div>
-    <div class="cfg hot"><div class="cfg-title">Tiers &middot; model per turn</div><div class="cfg-row"><span class="cfg-key">Lite &middot; Haiku</span><span class="cfg-val">quick lookups, drafts</span></div><div class="cfg-row"><span class="cfg-key">Smart &middot; Sonnet</span><span class="cfg-val"><b>default</b>, most turns</span></div><div class="cfg-row"><span class="cfg-key">Deep &middot; Opus</span><span class="cfg-val">hard judgement calls</span></div><div class="cfg-row"><span class="cfg-key">Router &middot; Pulse</span><span class="cfg-val">picks tier per turn</span></div><div class="cfg-row"><span class="cfg-key">Free plan</span><span class="cfg-val">Lite only</span></div><div class="cfg-row"><span class="cfg-key">Credits</span><span class="cfg-val">OpenRouter, per-user</span></div></div>
+    <div class="cfg lite"><div class="cfg-title">Invoke &middot; six ways in</div><div class="cfg-row"><span class="cfg-key">Plain English</span><span class="cfg-val">router routes <b>for you</b></span></div><div class="cfg-row"><span class="cfg-key">Slash /name</span><span class="cfg-val">call one agent direct</span></div><div class="cfg-row"><span class="cfg-key">/skill name</span><span class="cfg-val">fills a saved template</span></div><div class="cfg-row"><span class="cfg-key">@ another agent</span><span class="cfg-val">pull a second into the thread</span></div><div class="cfg-row"><span class="cfg-key">Chain</span><span class="cfg-val">they hand off + compose</span></div><div class="cfg-row"><span class="cfg-key">Human gate</span><span class="cfg-val">you approve before it sends</span></div></div>
+    <div class="cfg hot"><div class="cfg-title">Tiers &middot; model per turn</div><div class="cfg-row"><span class="cfg-key">Lite &middot; Haiku</span><span class="cfg-val">quick lookups and drafts</span></div><div class="cfg-row"><span class="cfg-key">Smart &middot; Sonnet</span><span class="cfg-val"><b>default</b> for most turns</span></div><div class="cfg-row"><span class="cfg-key">Deep &middot; Opus</span><span class="cfg-val">hard judgement calls</span></div><div class="cfg-row"><span class="cfg-key">Router &middot; Pulse</span><span class="cfg-val">picks the tier per turn</span></div><div class="cfg-row"><span class="cfg-key">Free plan</span><span class="cfg-val">Lite tier only</span></div><div class="cfg-row"><span class="cfg-key">Credits</span><span class="cfg-val">OpenRouter, per-user PAYG</span></div></div>
   </div>
   <div class="cta">
     <div class="cta-copy">Comment <b>AGENTS</b> and I will send the full Ultron workforce map: all seven, the router and every slash command.</div>
