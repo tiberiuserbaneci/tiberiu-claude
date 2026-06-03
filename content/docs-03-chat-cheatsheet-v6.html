@@ -26,7 +26,7 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 .col{flex:1;display:flex;flex-direction:column;gap:11px;min-width:0;}
 .colh{font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink46);padding:0 2px 1px;display:flex;align-items:center;gap:7px;}
 .colh::after{content:'';flex:1;height:1px;background:var(--rule);}
-.sec{background:var(--slate2);border:1px solid var(--ink14);border-top:3px solid var(--c);border-radius:11px;padding:14px 15px;overflow:hidden;}
+.sec{background:var(--bg,var(--slate2));border:1px solid var(--ink14);border-top:3px solid var(--c);border-radius:11px;padding:14px 15px;overflow:hidden;}
 .sh{display:flex;align-items:center;gap:9px;margin-bottom:9px;}
 .sn{font-family:'DM Mono',monospace;width:22px;height:22px;border-radius:6px;background:var(--c);color:#1a0f0a;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .st{font-weight:800;font-size:15px;letter-spacing:-.3px;color:var(--c);line-height:1;text-transform:uppercase;}
@@ -73,10 +73,13 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 
 /* FOOTER */
 .ftr{flex-shrink:0;margin-top:13px;display:flex;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid var(--rule);padding-top:13px;}
-.fl{display:flex;align-items:center;gap:11px;}
-.flogo{width:32px;height:32px;border-radius:50%;object-fit:cover;}
-.ftx{font-family:'DM Mono',monospace;font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--ink70);}
-.ftx b{color:var(--ivory);font-weight:500;}.ftx .ar{color:var(--book);}
+.fl{display:flex;align-items:center;gap:11px;min-width:0;}
+.flogo{width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.ftx{font-family:'DM Mono',monospace;font-size:9.5px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--ink70);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ftx b{color:var(--ivory);font-weight:500;}
+.fr{display:flex;align-items:center;gap:16px;flex-shrink:0;}
+.furl{font-family:'DM Sans',sans-serif;font-weight:900;font-size:15px;letter-spacing:-.4px;color:var(--ivory);}
+.furl em{color:var(--book);font-style:normal;}
 .cta{display:flex;align-items:center;gap:9px;background:var(--book);color:#1a0f0a;font-weight:900;font-size:14px;letter-spacing:.05em;text-transform:uppercase;padding:11px 22px;border-radius:6px;box-shadow:0 0 30px rgba(204,120,92,.35);}
 .cta svg{width:16px;height:16px;stroke:#1a0f0a;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
 </style></head>
@@ -101,7 +104,7 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
     <div class="col">
       <div class="colh">The input</div>
 
-      <div class="sec" style="--c:var(--book)">
+      <div class="sec" style="--c:var(--book);--bg:#3A3833">
         <div class="sh"><span class="sn">1</span><span class="st">The composer</span></div>
         <div class="sub">The only input surface, bottom-centre.</div>
         <div class="li">Grows vertically as you type, never breaks</div>
@@ -138,7 +141,7 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
         <div class="note">Free is Lite only. The tier holds the whole turn.</div>
       </div>
 
-      <div class="sec" style="--c:var(--book)">
+      <div class="sec" style="--c:var(--book);--bg:#1C1C1A">
         <div class="sh"><span class="sn">4</span><span class="st">Attachments</span></div>
         <div class="lab">Drop it in, here is what it sees</div>
         <div class="row"><span>Images</span><span class="v">visual read</span></div>
@@ -155,7 +158,7 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
     <div class="col">
       <div class="colh">The workforce</div>
 
-      <div class="sec" style="--c:var(--kraft)">
+      <div class="sec" style="--c:var(--kraft);--bg:#3A3833">
         <div class="sh"><span class="sn">5</span><span class="st">Slash the workforce</span></div>
         <div class="sub">Press <span class="kbd">/</span> on an empty composer.</div>
         <div class="step"><span class="si">1</span><span class="sx">The picker opens above the input</span></div>
@@ -193,7 +196,7 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
         <div class="note">Results land in chat plus the side panel.</div>
       </div>
 
-      <div class="sec" style="--c:var(--kraft)">
+      <div class="sec" style="--c:var(--kraft);--bg:#1C1C1A">
         <div class="sh"><span class="sn">8</span><span class="st">Quick replies</span></div>
         <div class="sub">Chips with the next move, under a reply.</div>
         <div class="chips"><span class="chip">yes / no</span><span class="chip">approve plan</span><span class="chip">pick a variation</span><span class="chip">save a draft</span></div>
@@ -208,7 +211,7 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
     <div class="col">
       <div class="colh">Memory and sessions</div>
 
-      <div class="sec" style="--c:var(--book-d)">
+      <div class="sec" style="--c:var(--book-d);--bg:#3A3833">
         <div class="sh"><span class="sn">9</span><span class="st">Memory injection</span></div>
         <div class="sub">It pulls from your Brain every turn:</div>
         <div class="chips"><span class="chip">profile</span><span class="chip">key memories</span><span class="chip">saved facts</span><span class="chip">open work</span></div>
@@ -246,7 +249,7 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
         <div class="note">Conversations live in the left sidebar.</div>
       </div>
 
-      <div class="sec" style="--c:var(--book)">
+      <div class="sec" style="--c:var(--book);--bg:#1C1C1A">
         <div class="sh"><span class="sn">12</span><span class="st">Share and fork</span></div>
         <div class="sub">Hand off a session, or branch it.</div>
         <div class="li">Read-only share link from the session menu</div>
@@ -265,8 +268,11 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
   </div>
 
   <div class="ftr">
-    <div class="fl"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>FOLLOW TIBI SERBANECI</b> <span class="ar">&rarr;</span> ONE AI SYSTEM FOR FOUNDERS</div></div>
-    <div class="cta">COMMENT CHAT <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    <div class="fl"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS &middot; CHAT</div></div>
+    <div class="fr">
+      <div class="furl">51ultron<em>.</em>com</div>
+      <div class="cta">COMMENT CHAT <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    </div>
   </div>
 
 </div></div>
