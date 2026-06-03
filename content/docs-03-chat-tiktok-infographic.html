@@ -1,49 +1,47 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8">
-<title>TikTok Infographic - Ultron Chat (Dark Ultron, safe zones)</title>
+<title>TikTok Infographic - Ultron Chat (Dark Ultron, 1080x1450)</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{--slate:#191919;--slate2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);
  --book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;}
-.frame{width:1080px;height:1920px;background:var(--slate);position:relative;overflow:hidden;color:var(--ivory);}
-.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.6px,transparent 1.7px);background-size:34px 34px;}
-.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 56% 22% at 86% 5%,rgba(204,120,92,.22) 0%,transparent 60%),radial-gradient(ellipse 50% 18% at 6% 86%,rgba(212,162,127,.1) 0%,transparent 60%);}
-/* TikTok safe zone: top150 / right130 (action rail) / bottom330 (caption+nav) / left70 */
-.safe{position:absolute;top:150px;left:70px;right:130px;bottom:330px;z-index:2;display:flex;flex-direction:column;}
-.szmark{position:absolute;left:0;right:0;bottom:330px;border-top:1px dashed rgba(250,250,247,.06);z-index:1;}
+.frame{width:1080px;height:1450px;background:var(--slate);padding:42px 46px 32px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;}
+.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.4px,transparent 1.5px);background-size:30px 30px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 56% 28% at 88% -1%,rgba(204,120,92,.2) 0%,transparent 60%),radial-gradient(ellipse 50% 24% at 4% 101%,rgba(212,162,127,.1) 0%,transparent 60%);}
+.frame>*{position:relative;z-index:2;}
 
-.hero{flex-shrink:0;display:flex;align-items:flex-start;justify-content:space-between;gap:22px;padding-bottom:24px;border-bottom:1px solid var(--rule);margin-bottom:22px;}
-.eye{font-family:'DM Mono',monospace;font-size:16px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--book);margin-bottom:16px;}
+.hero{flex-shrink:0;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding-bottom:22px;border-bottom:1px solid var(--rule);margin-bottom:20px;}
+.eye{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--book);margin-bottom:14px;}
 .hook{font-weight:900;font-size:62px;line-height:.98;letter-spacing:-2px;color:var(--ivory);}
 .hook em{color:var(--book);font-style:normal;}
-.sub{margin-top:16px;font-size:21px;font-weight:500;line-height:1.4;color:var(--ink70);max-width:560px;}
+.sub{margin-top:15px;font-size:21px;font-weight:500;line-height:1.4;color:var(--ink70);max-width:640px;}
 .sub b{color:var(--ivory);font-weight:700;}
-.claude{width:120px;height:120px;flex-shrink:0;filter:drop-shadow(0 0 26px rgba(204,120,92,.45));}
+.claude{width:112px;height:112px;flex-shrink:0;filter:drop-shadow(0 0 24px rgba(204,120,92,.45));}
 .claude svg{width:100%;height:100%;}
 
-.grid{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:15px;min-height:0;}
-.card{background:var(--slate2);border:1px solid var(--ink14);border-top:4px solid var(--c);border-radius:16px;padding:20px 22px;display:flex;flex-direction:column;box-shadow:0 10px 28px rgba(0,0,0,.22);}
-.ch{display:flex;align-items:center;gap:13px;margin-bottom:12px;}
-.cn{font-family:'DM Mono',monospace;width:40px;height:40px;border-radius:11px;background:var(--c);color:#1a0f0a;font-weight:700;font-size:21px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.grid{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:15px;align-content:stretch;min-height:0;}
+.card{background:var(--slate2);border:1px solid var(--ink14);border-top:4px solid var(--c);border-radius:16px;padding:19px 22px;display:flex;flex-direction:column;box-shadow:0 10px 28px rgba(0,0,0,.22);}
+.ch{display:flex;align-items:center;gap:13px;margin-bottom:11px;}
+.cn{font-family:'DM Mono',monospace;width:39px;height:39px;border-radius:11px;background:var(--c);color:#1a0f0a;font-weight:700;font-size:21px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .ct{font-weight:800;font-size:26px;letter-spacing:-.5px;color:var(--c);text-transform:uppercase;line-height:1;}
-.cd{font-size:19px;font-weight:500;color:var(--ink70);line-height:1.36;flex:1;margin-bottom:14px;}
+.cd{font-size:19px;font-weight:500;color:var(--ink70);line-height:1.36;flex:1;margin-bottom:13px;}
 .cd b{color:var(--ivory);font-weight:700;}
 .cspec{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;font-family:'DM Mono',monospace;font-size:15px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--c);background:color-mix(in srgb,var(--c) 14%,var(--slate2));border:1px solid color-mix(in srgb,var(--c) 38%,var(--slate2));padding:7px 14px;border-radius:8px;}
 .cspec .dot{width:9px;height:9px;border-radius:50%;background:var(--c);box-shadow:0 0 10px color-mix(in srgb,var(--c) 80%,transparent);}
 
-.cta{flex-shrink:0;margin-top:22px;display:flex;align-items:stretch;border:1px solid var(--book);border-radius:13px;overflow:hidden;box-shadow:0 0 44px rgba(204,120,92,.18);}
-.cta-l{flex:1;padding:22px 26px;display:flex;flex-direction:column;justify-content:center;gap:6px;background:rgba(204,120,92,.07);}
+.cta{flex-shrink:0;margin-top:20px;display:flex;align-items:stretch;border:1px solid var(--book);border-radius:13px;overflow:hidden;box-shadow:0 0 44px rgba(204,120,92,.18);}
+.cta-l{flex:1;padding:20px 26px;display:flex;flex-direction:column;justify-content:center;gap:6px;background:rgba(204,120,92,.07);}
 .cta-k{font-family:'DM Mono',monospace;font-size:14px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink46);}
 .cta-t{font-size:24px;font-weight:700;color:var(--ivory);line-height:1.2;}
 .cta-t b{color:var(--book);font-weight:900;}
 .cta-chip{flex-shrink:0;padding:0 34px;gap:12px;background:var(--book);display:flex;align-items:center;font-size:27px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#1a0f0a;box-shadow:inset 0 0 0 1px rgba(250,255,247,.12);}
 .cta-chip svg{width:27px;height:27px;stroke:#1a0f0a;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
 
-.ftr{flex-shrink:0;margin-top:20px;display:flex;align-items:center;justify-content:space-between;gap:18px;border-top:1px solid var(--rule);padding-top:20px;}
+.ftr{flex-shrink:0;margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:18px;border-top:1px solid var(--rule);padding-top:18px;}
 .fl{display:flex;align-items:center;gap:14px;min-width:0;}
-.flogo{width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.flogo{width:42px;height:42px;border-radius:50%;object-fit:cover;flex-shrink:0;}
 .ftx{font-family:'DM Mono',monospace;font-size:15px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--ink70);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .ftx b{color:var(--ivory);font-weight:500;}
 .furl{font-family:'DM Sans',sans-serif;font-weight:900;font-size:24px;letter-spacing:-.6px;color:var(--ivory);flex-shrink:0;}
@@ -56,39 +54,37 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 <div class="frame" id="artifact">
   <div class="atm"></div>
 
-  <div class="safe">
-    <div class="hero">
-      <div class="hero-l">
-        <div class="eye">ULTRON CHAT &middot; RUNS ON CLAUDE</div>
-        <div class="hook">All of Claude.<br><em>One chat box.</em></div>
-        <div class="sub">Twelve jobs, five agents, one memory. Every move I make on <b>Claude</b> starts in the same composer.</div>
-      </div>
-      <div class="claude"><svg viewBox="0 0 1200 1200"><use href="#claude-logo"/></svg></div>
+  <div class="hero">
+    <div class="hero-l">
+      <div class="eye">ULTRON CHAT &middot; RUNS ON CLAUDE</div>
+      <div class="hook">All of Claude.<br><em>One chat box.</em></div>
+      <div class="sub">Twelve jobs, five agents, one memory. Every move I make on <b>Claude</b> starts in the same composer.</div>
     </div>
+    <div class="claude"><svg viewBox="0 0 1200 1200"><use href="#claude-logo"/></svg></div>
+  </div>
 
-    <div class="grid">
-      <div class="card" style="--c:var(--book)"><div class="ch"><span class="cn">1</span><span class="ct">The composer</span></div><div class="cd">Type, paste or drop a file. It grows to fit and never breaks.</div><div class="cspec"><span class="dot"></span>One input</div></div>
-      <div class="card" style="--c:var(--kraft)"><div class="ch"><span class="cn">2</span><span class="ct">Tier picker</span></div><div class="cd">Lite, Smart or Deep, per turn. Pay for deep only when it earns it.</div><div class="cspec"><span class="dot"></span>3 tiers</div></div>
-      <div class="card" style="--c:var(--book-d)"><div class="ch"><span class="cn">3</span><span class="ct">The workforce</span></div><div class="cd">Press slash and five Ultron agents are one keystroke away.</div><div class="cspec"><span class="dot"></span>5 agents</div></div>
-      <div class="card" style="--c:var(--book)"><div class="ch"><span class="cn">4</span><span class="ct">Memory</span></div><div class="cd">Your Brain, stitched into every turn. Profile, facts, open work.</div><div class="cspec"><span class="dot"></span>The Brain</div></div>
-      <div class="card" style="--c:var(--kraft)"><div class="ch"><span class="cn">5</span><span class="ct">Attachments</span></div><div class="cd">PDF, image, audio, spreadsheet and URL all read in as context.</div><div class="cspec"><span class="dot"></span>6 types</div></div>
-      <div class="card" style="--c:var(--book-d)"><div class="ch"><span class="cn">6</span><span class="ct">Narration</span></div><div class="cd">Watch the tools fire, step by step, until the answer is ready.</div><div class="cspec"><span class="dot"></span>Live</div></div>
-      <div class="card" style="--c:var(--book)"><div class="ch"><span class="cn">7</span><span class="ct">Sessions</span></div><div class="cd">Every chat persists, stays searchable and archives without vanishing.</div><div class="cspec"><span class="dot"></span>Searchable</div></div>
-      <div class="card" style="--c:var(--kraft)"><div class="ch"><span class="cn">8</span><span class="ct">Share and fork</span></div><div class="cd">Branch one chat into two without losing the thread.</div><div class="cspec"><span class="dot"></span>Read-only</div></div>
-    </div>
+  <div class="grid">
+    <div class="card" style="--c:var(--book)"><div class="ch"><span class="cn">1</span><span class="ct">The composer</span></div><div class="cd">Type, paste or drop a file. It grows to fit and never breaks.</div><div class="cspec"><span class="dot"></span>One input</div></div>
+    <div class="card" style="--c:var(--kraft)"><div class="ch"><span class="cn">2</span><span class="ct">Tier picker</span></div><div class="cd">Lite, Smart or Deep, per turn. Pay for deep only when it earns it.</div><div class="cspec"><span class="dot"></span>3 tiers</div></div>
+    <div class="card" style="--c:var(--book-d)"><div class="ch"><span class="cn">3</span><span class="ct">The workforce</span></div><div class="cd">Press slash and five Ultron agents are one keystroke away.</div><div class="cspec"><span class="dot"></span>5 agents</div></div>
+    <div class="card" style="--c:var(--book)"><div class="ch"><span class="cn">4</span><span class="ct">Memory</span></div><div class="cd">Your Brain, stitched into every turn. Profile, facts, open work.</div><div class="cspec"><span class="dot"></span>The Brain</div></div>
+    <div class="card" style="--c:var(--kraft)"><div class="ch"><span class="cn">5</span><span class="ct">Attachments</span></div><div class="cd">PDF, image, audio, spreadsheet and URL all read in as context.</div><div class="cspec"><span class="dot"></span>6 types</div></div>
+    <div class="card" style="--c:var(--book-d)"><div class="ch"><span class="cn">6</span><span class="ct">Narration</span></div><div class="cd">Watch the tools fire, step by step, until the answer is ready.</div><div class="cspec"><span class="dot"></span>Live</div></div>
+    <div class="card" style="--c:var(--book)"><div class="ch"><span class="cn">7</span><span class="ct">Sessions</span></div><div class="cd">Every chat persists, stays searchable and archives without vanishing.</div><div class="cspec"><span class="dot"></span>Searchable</div></div>
+    <div class="card" style="--c:var(--kraft)"><div class="ch"><span class="cn">8</span><span class="ct">Share and fork</span></div><div class="cd">Branch one chat into two without losing the thread.</div><div class="cspec"><span class="dot"></span>Read-only</div></div>
+  </div>
 
-    <div class="cta">
-      <div class="cta-l">
-        <div class="cta-k">Save this. Then</div>
-        <div class="cta-t">Comment <b>CHAT</b> for the full twelve-part cheatsheet.</div>
-      </div>
-      <div class="cta-chip">CHAT <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+  <div class="cta">
+    <div class="cta-l">
+      <div class="cta-k">Save this. Then</div>
+      <div class="cta-t">Comment <b>CHAT</b> for the full twelve-part cheatsheet.</div>
     </div>
+    <div class="cta-chip">CHAT <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+  </div>
 
-    <div class="ftr">
-      <div class="fl"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS &middot; CHAT</div></div>
-      <div class="furl">51ultron<em>.</em>com</div>
-    </div>
+  <div class="ftr">
+    <div class="fl"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS &middot; CHAT</div></div>
+    <div class="furl">51ultron<em>.</em>com</div>
   </div>
 </div>
 </body></html>
