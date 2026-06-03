@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>The Ultron Workforce Cheatsheet - Dark Ultron</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--slate:#191919;--slate2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);
+ --book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;}
+.scaler>.canvas{transform-origin:top center;transform:scale(calc(min(100vw / 1130,(100vh - 48px) / 1510)));}
+.canvas{width:1080px;height:1450px;background:var(--slate);padding:30px 36px 22px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;}
+.canvas::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.05) 1.2px,transparent 1.3px);background-size:26px 26px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 56% 30% at 88% -2%,rgba(204,120,92,.22) 0%,transparent 60%),radial-gradient(ellipse 50% 26% at 4% 102%,rgba(212,162,127,.1) 0%,transparent 60%);}
+.canvas>*{position:relative;z-index:2;}
+
+.hero{flex-shrink:0;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;padding-bottom:16px;border-bottom:1px solid var(--rule);margin-bottom:14px;}
+.eye{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--book);margin-bottom:11px;}
+.hook{font-weight:900;font-size:50px;line-height:1.0;letter-spacing:-1.6px;color:var(--ivory);}
+.hook em{color:var(--book);font-style:normal;}
+.hero-r{flex-shrink:0;text-align:right;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink46);line-height:1.6;padding-bottom:4px;}
+.hero-r b{color:var(--ivory);font-weight:500;}
+
+.grid{flex:1;display:flex;gap:10px;min-height:0;}
+.col{flex:1;display:flex;flex-direction:column;gap:11px;min-width:0;}
+.colh{font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink46);padding:0 2px 1px;display:flex;align-items:center;gap:7px;}
+.colh::after{content:'';flex:1;height:1px;background:var(--rule);}
+.sec{background:var(--bg,var(--slate2));border:1px solid var(--ink14);border-top:3px solid var(--c);border-radius:11px;padding:16px 16px;overflow:hidden;}
+.sh{display:flex;align-items:center;gap:9px;margin-bottom:11px;}
+.sn{font-family:'DM Mono',monospace;width:22px;height:22px;border-radius:6px;background:var(--c);color:#1a0f0a;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.sn.meta{background:transparent;border:1.5px solid var(--c);color:var(--c);}
+.st{font-weight:800;font-size:15px;letter-spacing:-.3px;color:var(--c);line-height:1;text-transform:uppercase;}
+.slash{margin-left:auto;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.04em;color:var(--c);background:color-mix(in srgb,var(--c) 14%,var(--slate2));border:1px solid color-mix(in srgb,var(--c) 34%,var(--slate2));padding:3px 8px;border-radius:5px;}
+.sub{font-size:14.5px;font-weight:700;color:var(--ivory);line-height:1.34;margin-bottom:10px;}
+.li{font-size:13.5px;font-weight:500;line-height:1.55;padding-left:16px;position:relative;margin-bottom:7px;color:var(--ink70);}
+.li::before{content:'';position:absolute;left:1px;top:8px;width:5px;height:5px;border-radius:50%;background:var(--c);}
+.li b{font-weight:700;color:var(--ivory);}
+.li:last-child{margin-bottom:0;}
+.get{margin-top:11px;background:var(--slate);border:1px solid var(--rule);border-left:3px solid var(--c);border-radius:7px;padding:11px 12px;font-size:12px;font-weight:500;color:var(--ink70);line-height:1.45;}
+.get .k{font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--c);margin-right:3px;}
+.get .ar{color:var(--c);font-weight:800;}
+.note{font-size:12px;font-weight:500;font-style:italic;color:var(--ink46);line-height:1.44;margin-top:11px;}
+.step{display:flex;gap:8px;align-items:flex-start;margin-bottom:9px;}
+.step .si{font-family:'DM Mono',monospace;font-size:11px;font-weight:700;color:#1a0f0a;background:var(--c);border-radius:4px;padding:2px 7px;flex-shrink:0;}
+.step .sx{font-size:13px;font-weight:500;color:var(--ink70);line-height:1.4;}
+.kbd{font-family:'DM Mono',monospace;font-weight:500;font-size:11px;background:var(--c);color:#1a0f0a;padding:1px 6px;border-radius:4px;}
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px;}
+.chip{font-family:'DM Mono',monospace;font-size:10.5px;font-weight:500;background:color-mix(in srgb,var(--c) 14%,var(--slate2));color:var(--c);border:1px solid color-mix(in srgb,var(--c) 34%,var(--slate2));padding:3px 9px;border-radius:5px;}
+.barc{display:flex;align-items:flex-end;gap:12px;height:82px;margin:10px 0 8px;border-bottom:1px solid var(--rule);padding:0 4px 1px;}
+.bc{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:6px;}
+.bc i{width:100%;border-radius:4px 4px 0 0;background:var(--c);box-shadow:0 0 14px color-mix(in srgb,var(--c) 50%,transparent);}
+.bc small{font-size:11.5px;font-weight:700;color:var(--c);}
+.cflow{display:flex;align-items:center;gap:7px;margin-top:10px;flex-wrap:wrap;}
+.cflow .nd{font-family:'DM Mono',monospace;font-size:10.5px;font-weight:500;background:color-mix(in srgb,var(--c) 13%,var(--slate2));border:1px solid color-mix(in srgb,var(--c) 32%,var(--slate2));color:var(--c);padding:4px 9px;border-radius:5px;}
+.cflow .ar{color:var(--c);font-weight:800;font-size:13px;}
+
+.ftr{flex-shrink:0;margin-top:13px;display:flex;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid var(--rule);padding-top:13px;}
+.fl{display:flex;align-items:center;gap:11px;min-width:0;}
+.flogo{width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.ftx{font-family:'DM Mono',monospace;font-size:9.5px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--ink70);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ftx b{color:var(--ivory);font-weight:500;}
+.fr{display:flex;align-items:center;gap:16px;flex-shrink:0;}
+.furl{font-family:'DM Sans',sans-serif;font-weight:900;font-size:15px;letter-spacing:-.4px;color:var(--ivory);}
+.furl em{color:var(--book);font-style:normal;}
+.cta{display:flex;align-items:center;gap:9px;background:var(--book);color:#1a0f0a;font-weight:900;font-size:14px;letter-spacing:.05em;text-transform:uppercase;padding:11px 22px;border-radius:6px;box-shadow:0 0 30px rgba(204,120,92,.35);}
+.cta svg{width:16px;height:16px;stroke:#1a0f0a;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+</style></head>
+<body>
+<div class="scaler"><div class="canvas" id="artifact">
+  <div class="atm"></div>
+
+  <div class="hero">
+    <div class="hero-l">
+      <div class="eye">THE ULTRON WORKFORCE &middot; PLATFORM / WORKFORCE</div>
+      <div class="hook">I run my company on<br><em>seven AI agents</em>.</div>
+    </div>
+    <div class="hero-r"><b>7 agents</b><br>one slash key<br><span style="color:var(--book)">save this</span></div>
+  </div>
+
+  <div class="grid">
+
+    <!-- COLUMN 1 -->
+    <div class="col">
+      <div class="colh">Go to market</div>
+
+      <div class="sec" style="--c:var(--book);--bg:#33322F">
+        <div class="sh"><span class="sn">1</span><span class="st">Cortex</span><span class="slash">/cortex</span></div>
+        <div class="sub">The researcher.</div>
+        <div class="li">Profiles people and companies, cross-checks every fact</div>
+        <div class="li">Reads long PDFs and pulls conclusions with citations</div>
+        <div class="li">Builds a competitor score card you can act on</div>
+        <div class="get"><span class="k">Ask</span> profile a company <span class="ar">&rarr;</span> size, funding, key people</div>
+        <div class="note">Never invents a source. Saves findings to Brain.</div>
+      </div>
+
+      <div class="sec" style="--c:var(--kraft)">
+        <div class="sh"><span class="sn">2</span><span class="st">Specter</span><span class="slash">/specter</span></div>
+        <div class="sub">The outbound writer.</div>
+        <div class="li">Cold emails, follow-ups and DMs in your voice</div>
+        <div class="li">Whole sequences: first touch, two nudges, a breakup</div>
+        <div class="li">Personalises a template across a list, one row each</div>
+        <div class="get"><span class="k">Ask</span> a cold email <span class="ar">&rarr;</span> subject plus a hook tied to them</div>
+        <div class="note">Writes in your saved brand voice.</div>
+      </div>
+
+      <div class="sec" style="--c:var(--book-d)">
+        <div class="sh"><span class="sn">3</span><span class="st">Striker</span><span class="slash">/striker</span></div>
+        <div class="sub">The deal driver.</div>
+        <div class="li">Qualifies, runs discovery, builds proposals, closes</div>
+        <div class="li">Preps you for calls, then updates the deal record</div>
+        <div class="li">Ranks which deals need a touch this week</div>
+        <div class="get"><span class="k">Ask</span> prep me for the call <span class="ar">&rarr;</span> recap, questions, outcome</div>
+        <div class="note">Keeps the pipeline view honest.</div>
+      </div>
+
+      <div class="sec" style="--c:var(--book);--bg:#1E1E1C">
+        <div class="sh"><span class="sn meta">?</span><span class="st">How to pick</span></div>
+        <div class="sub">The router picks for you.</div>
+        <div class="li">Plain English resolves to the right agent</div>
+        <div class="li">Slash only when you want to be explicit</div>
+        <div class="li">Most days you never think about which runs</div>
+        <div class="get"><span class="k">Type</span> anything in plain English <span class="ar">&rarr;</span> routed for you</div>
+      </div>
+    </div>
+
+    <!-- COLUMN 2 -->
+    <div class="col">
+      <div class="colh">Make and ship</div>
+
+      <div class="sec" style="--c:var(--kraft);--bg:#33322F">
+        <div class="sh"><span class="sn">4</span><span class="st">Pulse</span><span class="slash">/pulse</span></div>
+        <div class="sub">The content writer.</div>
+        <div class="li">Long-form posts, social copy, launches, newsletters</div>
+        <div class="li">Plans the angle first, drafts, then offers variations</div>
+        <div class="li">Turns one post into a six to ten part thread</div>
+        <div class="get"><span class="k">Ask</span> a 1500-word post <span class="ar">&rarr;</span> hook, sections, strong close</div>
+        <div class="note">Pulls facts and voice from Brain.</div>
+      </div>
+
+      <div class="sec" style="--c:var(--book-d)">
+        <div class="sh"><span class="sn">5</span><span class="st">Sentinel</span><span class="slash">/sentinel</span></div>
+        <div class="sub">The engineer.</div>
+        <div class="li">Reads code, writes the patch, runs tests, iterates</div>
+        <div class="li">Roots out a failing test without touching the rest</div>
+        <div class="li">Reviews a pull request, ranked by severity</div>
+        <div class="get"><span class="k">Ask</span> add a feature <span class="ar">&rarr;</span> a working patch plus the tests</div>
+        <div class="note">Runs live on the Computer tab so you watch.</div>
+      </div>
+
+      <div class="sec" style="--c:var(--book)">
+        <div class="sh"><span class="sn">6</span><span class="st">Amplify</span><span class="slash">/amplify</span></div>
+        <div class="sub">The publisher.</div>
+        <div class="li">Formats each post per channel, then schedules it</div>
+        <div class="li">Cross-posts a blog as a Reddit-shaped thread</div>
+        <div class="li">Repurposes one video into five short posts</div>
+        <div class="get"><span class="k">Ask</span> publish to LinkedIn and X <span class="ar">&rarr;</span> both, sized to fit</div>
+        <div class="note">Knows your connected accounts.</div>
+      </div>
+
+      <div class="sec" style="--c:var(--kraft);--bg:#1E1E1C">
+        <div class="sh"><span class="sn meta">/</span><span class="st">Slash in 3 steps</span></div>
+        <div class="step"><span class="si">1</span><span class="sx">Hit <span class="kbd">/</span> in the composer</span></div>
+        <div class="step"><span class="si">2</span><span class="sx">Filter by agent or by skill name</span></div>
+        <div class="step"><span class="si">3</span><span class="sx">Enter drops in the prompt template</span></div>
+        <div class="chips"><span class="chip">/cortex</span><span class="chip">/specter</span><span class="chip">/striker</span><span class="chip">/pulse</span><span class="chip">/sentinel</span><span class="chip">/amplify</span><span class="chip">/counsel</span></div>
+        <div class="note">You never have to. Plain English works too.</div>
+      </div>
+    </div>
+
+    <!-- COLUMN 3 -->
+    <div class="col">
+      <div class="colh">Run the stack</div>
+
+      <div class="sec" style="--c:var(--book);--bg:#33322F">
+        <div class="sh"><span class="sn">7</span><span class="st">Counsel</span><span class="slash">/counsel</span></div>
+        <div class="sub">The lawyer in the room.</div>
+        <div class="li">NDAs, contractor agreements, SOWs, term reviews</div>
+        <div class="li">Flags the clauses that depart from the norm</div>
+        <div class="li">Diffs version one and two in plain English</div>
+        <div class="get"><span class="k">Ask</span> draft an NDA <span class="ar">&rarr;</span> a short, signable doc to review</div>
+        <div class="note">Route bet-the-company contracts to a human.</div>
+      </div>
+
+      <div class="sec" style="--c:var(--kraft)">
+        <div class="sh"><span class="sn meta">=</span><span class="st">Tiers</span></div>
+        <div class="sub">Pick how hard it thinks.</div>
+        <div class="barc">
+          <div class="bc"><i style="height:34%"></i><small>Lite</small></div>
+          <div class="bc"><i style="height:66%"></i><small>Smart</small></div>
+          <div class="bc"><i style="height:100%"></i><small>Deep</small></div>
+        </div>
+        <div class="li">Lite for lookups, Deep for hard judgement</div>
+        <div class="li">The tier applies to whichever agent runs</div>
+        <div class="li">Free is Lite only, paid unlocks Smart and Deep</div>
+        <div class="note">Set it once, it holds the whole turn.</div>
+      </div>
+
+      <div class="sec" style="--c:var(--book-d)">
+        <div class="sh"><span class="sn meta">+</span><span class="st">Skills</span></div>
+        <div class="sub">Named units of work.</div>
+        <div class="li">Each agent owns a set, five to two dozen</div>
+        <div class="li">Invoke one directly, or let the agent choose</div>
+        <div class="li">Browse them all from the slash picker</div>
+        <div class="li">The template fills in, you add the specifics</div>
+        <div class="chips"><span class="chip">cold email</span><span class="chip">competitor scan</span><span class="chip">proposal</span><span class="chip">PR review</span></div>
+        <div class="note">Plain English resolves a skill on its own.</div>
+      </div>
+
+      <div class="sec" style="--c:var(--book);--bg:#1E1E1C">
+        <div class="sh"><span class="sn meta">~</span><span class="st">Composability</span></div>
+        <div class="sub">Agents call each other.</div>
+        <div class="li">One pulls work from another when it needs it</div>
+        <div class="li">Specter pulls a Cortex run before it writes</div>
+        <div class="li">You see the whole chain in one thread</div>
+        <div class="cflow"><span class="nd">/cortex</span><span class="ar">&rarr;</span><span class="nd">/specter</span><span class="ar">&rarr;</span><span class="nd">you</span></div>
+        <div class="note">Colleagues with different jobs, one surface.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="ftr">
+    <div class="fl"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS &middot; WORKFORCE</div></div>
+    <div class="fr">
+      <div class="furl">51ultron<em>.</em>com</div>
+      <div class="cta">COMMENT AGENTS <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    </div>
+  </div>
+
+</div></div>
+</body></html>
