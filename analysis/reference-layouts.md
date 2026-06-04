@@ -47,3 +47,4 @@
 - docs-03 chat — (my default 3-col card grid — NOT from this menu — to be reworked)
 - docs-04 workforce — A5 dense dashboard, CLONED from script-37, REALNUMBERS light, DM Sans/Mono. Max-density pass: stat-tiles band + 7-col roster (tier/pairs/returns) + flow strip. Roster = 7 agents (CLAUDE.md §1 aligned 2026-06-04).
 - docs-04 workforce TikTok infographic — A12 radial/orbit (router hub + 7 agent nodes + SVG wires), Dark Ultron glass. Replaces the card-grid version (too similar to last 10 posts). Carousel (8 slides) unchanged.
+- docs-05 Background Jobs LinkedIn — DIRECTED JOURNEY (not table): entry band > focal running-job card with live streaming console > 4-way outcome branch > artifact band, connected by labelled arrows. Fixes flat/airy/tabular: one dominant focal element, a visual path, dense annotation. Supersedes the flat panel-mock.
