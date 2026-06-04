@@ -959,4 +959,33 @@ Before any push to LinkedIn / IG / repo:
 
 ---
 
+## 28. FILE / EXPORT HYGIENE (operator rule, 2026-06-04)
+
+> Binding (per §0.1). The algorithm penalizes content that reads as tool- or AI-generated.
+> Every exported file must look operator-authored. **Nothing referencing Claude, AI, the
+> renderer, or the chat may appear in a file's metadata or "details".**
+
+**Mandatory after every render (PNG/PDF):** run the scrubber before delivery.
+```bash
+python3 content/_scrub.py content/<file>.png   # strips all metadata, stamps operator credits
+```
+- `content/_scrub.py` removes every text/time/software/source chunk (keeps only pixels) and
+  writes: Author = **Tibi Serbaneci**, Copyright, Software = **Ultron Content Studio**,
+  Source = **ultron-content/exports** (virtual path). No real origin, no tool name, no AI.
+- Build scripts must call it as the last step of any export. Never ship a freshly rendered PNG.
+
+**The macOS "Where from" tag is NOT in the file.** It is `kMDItemWhereFroms`, added by the
+browser when a file is downloaded from the chat (claude.ai files URL). It cannot be baked out
+from the repo. To deliver clean files:
+- **Preferred:** pull the committed file from the git repo (git sets no such tag) — fully clean.
+- **If downloaded from chat:** strip the tag locally on the Mac:
+  `xattr -c "file.png"`  (clears all download xattrs), or set your own:
+  `xattr -w com.apple.metadata:kMDItemWhereFroms "$(python3 -c "import plistlib,sys;sys.stdout.buffer.write(plistlib.dumps(['Tibi Serbaneci','ultron-content/exports'],fmt=plistlib.FMT_BINARY))")" "file.png"`
+
+**Note:** Chromium screenshots already contain no Claude/AI string (only IHDR/IDAT/IEND); the
+scrubber is about stamping operator authorship + guaranteeing no future tool chunk slips in.
+Commit trailers (the session link) live in git history only, never in a delivered file.
+
+---
+
 END OF CONFIG.
