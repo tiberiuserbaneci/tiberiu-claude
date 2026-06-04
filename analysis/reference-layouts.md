@@ -59,3 +59,11 @@ standard = a STACK OF ~6 DIFFERENT MODULES, each packed with REAL NUMBERS, with 
 Lesson: do not repeat ONE module type (a row list = tabular). Stack varied modules, each data-rich.
 docs-05 Background Jobs rebuilt to this standard in Dark Ultron (DM Sans/Mono, book/kraft, NO green;
 failed=book-dark, paused/without=cloud). File: docs-05-jobs-linkedin-v1. Supersedes journey + panel.
+
+### CORRECTION (same day): keep the format, change only the requested element
+Operator KEPT the JOURNEY format (hero hook + donut > entry-trigger band > FOCAL >
+4-way outcome branch > artifact band > CTA). The v1 full-reformat to script-23 was
+REJECTED: "I didn't tell you to change the format." Reinforces §25: change ONLY the
+element asked for. The density technique above (sig-card: big number + 2-line desc +
+mini data table + progress bar) was applied INSIDE the central focal panel only, as a
+3x2 grid of step-kind child-job cards. Canonical: docs-05-jobs-linkedin-journey. v1 removed.
