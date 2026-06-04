@@ -36,14 +36,21 @@ These meta-rules sit above everything else in this file:
 
 **Founder & operator:** Tibi Serbaneci (CEO Ultron, NexityNetwork). Co-founder Catalin Fetean. InnovX accelerator cohort.
 
-**Five Ultron agents:**
-- **CORTEX** — ICP scoring
-- **SPECTER** — research/enrichment
-- **STRIKER** — copywriting/messaging
-- **PULSE** — routing/model selection (Haiku vs Sonnet vs Opus)
-- **SENTINEL** — human QA / audit / recovery layer
+**Seven Ultron agents** (each callable by name with a slash command, or auto-routed):
+- **CORTEX** (`/cortex`) — research: profiles people, companies and markets into one ranked brief
+- **SPECTER** (`/specter`) — outbound: cold emails, follow-ups and multi-step sequences
+- **STRIKER** (`/striker`) — deals: qualification, discovery, objection handling, proposals, close plans
+- **PULSE** (`/pulse`) — content: posts, launches, newsletters and thought-leadership in your voice
+- **SENTINEL** (`/sentinel`) — code: reads, writes, tests and ships code, opens the PR
+- **AMPLIFY** (`/amplify`) — publishing: formats and schedules each asset per channel and time zone
+- **COUNSEL** (`/counsel`) — legal: drafts and reviews NDAs, MSAs and term sheets, flags risk
 
-Plus **HUMAN GATE**: human approval before send.
+Plus the **ROUTER** (the composer): type plain English and it routes to the agent that owns the job, picks the model tier, and lets agents hand off to and compose with each other.
+Plus **HUMAN GATE**: human approval before anything sends.
+
+**Model tiers (the router picks one per turn):** Lite = Haiku (quick lookups), Smart = Sonnet (default), Deep = Opus (hard judgement). Free plan = Lite only; paid = credits via OpenRouter.
+
+> Roster updated 2026-06-04 (operator-confirmed): supersedes the earlier five-agent list (CORTEX=ICP / SPECTER=research / PULSE=routing). PULSE is now the content agent; the ROUTER does routing and model selection.
 
 **Pricing tiers:**
 - Starter: free
@@ -158,7 +165,7 @@ content/
 
 **Campaign routing:**
 - **6 lead-magnet posts** (triggers: STACK / FOCUS / AUDIT / ICP / 100) → PDF
-- **14 direct-Ultron posts** (agents: CORTEX / SPECTER / STRIKER / PULSE / SENTINEL)
+- **14 direct-Ultron posts** (agents: CORTEX / SPECTER / STRIKER / PULSE / SENTINEL / AMPLIFY / COUNSEL)
 - **Post 17 EXCLUDED** from campaign
 
 **CTA rule:** never reference invented documents. Only real links to confirmed Ultron techniques or lead-magnet PDFs that already exist.
@@ -822,7 +829,7 @@ OpenRouter middleware for per-user credit provisioning. BYOK removed from docume
 - Operator voice: "I sent", "I tested", "I killed", "I built", "I let Claude"
 - Open counter-intuitive statements ("This had nothing to do with X")
 - Self-citation of your own real results only
-- Tool names: Claude, SPECTER, STRIKER, CORTEX, PULSE, SENTINEL
+- Tool names: Claude, CORTEX, SPECTER, STRIKER, PULSE, SENTINEL, AMPLIFY, COUNSEL
 - Brand terminology: "lead magnet", "workflow", "audit prompt", "founder GTM"
 - Concrete actions: "Drop [KEYWORD]", "Comment below", "DM me"
 - ICP filter language: "If you are a founder running GTM alone…"
