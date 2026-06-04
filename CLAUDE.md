@@ -571,7 +571,7 @@ Comment [KEYWORD] and I will send you the exact Claude [workflow/audit prompt/sy
 - Caption hook duplicating the visual hook
 - List of 8+ items (max 5); fictional quotes attributed to others; mentioning unreal products
 - Promising an invented PDF/document (the CTA points only to confirmed lead magnets)
-- Hedging language; starting the hook with "I"; statistics in the hook; emoji; hashtags (anywhere)
+- Hedging language; starting the hook with "I"; statistics in the hook; emoji; hashtags in the body (the §15.6 five-set on the last line is allowed)
 
 ### 15.2 ALT TEXT
 
@@ -641,7 +641,26 @@ approved public reply: "DM failed. Let's connect and I'll send it over."
 - [ ] ALT text 80–150 words, structural, exact numbers, Ultron color names
 - [ ] First comment 40–80 words, 3 pieces, real link OR DM trigger (never an invented document), different angle than caption hook
 - [ ] [KEYWORD] consistent across caption + first comment + visual
-- [ ] `grep -nE '—|–|…' file.md` → 0 results; zero emoji, hashtags, markdown formatting
+- [ ] `grep -nE '—|–|…' file.md` → 0 results; zero emoji and markdown; hashtags only the §15.6 five-set on the last line
+
+---
+
+### 15.6 SOCIAL CAPTION FORMAT + HASHTAGS (operator, 2026-06-04 — binding; supersedes the hashtag bans elsewhere in this file)
+
+**Paragraph format (TikTok and any social caption):** one beat per paragraph, 1–2 sentences max,
+a blank line between every paragraph (scannable, 360Brew style). Order:
+1. Hook — its own one-line paragraph
+2. The shift — "Now I…" (1–2 sentences)
+3. Setup — one line ("Anything that will not finish in seconds becomes a background job: …")
+4. The dense mechanics — the single packed paragraph (the how)
+5. Product line — "This is X on the Ultron platform…" (1 line)
+6. CTA — "Comment KEYWORD and I will send you…" (1 line)
+7. Hashtags — the last line
+
+**HASHTAGS — exactly 5, only these, no more, no fewer, no substitutes:**
+`#claude #ai #founder #startup #buildinpublic`
+Broad tags shared across TikTok, Twitter and LinkedIn. NEVER niche tags (#aiagents, #anthropic,
+#gtm, #saas, #aiworkflow, #claudeai, etc.). NEVER in the body — only the last line. Emoji still forbidden.
 
 ---
 
@@ -820,7 +839,7 @@ OpenRouter middleware for per-user credit provisioning. BYOK removed from docume
 - generic "prompt"/"framework" (always "Claude workflow"/"Claude audit prompt"/"Claude system")
 - Hedging: "might", "could", "perhaps", "maybe", "kind of"
 - "Here's" → "Here is" (no contractions that introduce curly apostrophes)
-- Emoji; hashtags in caption body
+- Emoji anywhere; hashtags in the body, niche tags, or any count other than the §15.6 five-set
 - Markdown links `[text](url)` and bold/italic markdown (`**bold**`, `*italic*`) — LinkedIn does not render them
 - Fictional quotes attributed to real people; promises of an invented PDF/document
 
