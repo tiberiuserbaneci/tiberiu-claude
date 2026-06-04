@@ -330,6 +330,18 @@ Each REALNUMBERS visual includes:
 - LinkedIn portrait: **1080 × 1450px**
 - Instagram story / IG cover: **1080 × 1920px**
 
+### Safe zones — vertical 1080×1920 (TikTok / IG story) (operator, 2026-06-04 — binding)
+TikTok and IG overlay their UI on every edge of the frame. Keep ALL content inside this safe box.
+The mast/title must sit BELOW the top inset — `top:150px` was too small and the top tabs covered the mast.
+- **top: 250px** (status bar + For You / Following tabs + search)
+- right: 130px (the like / comment / share rail)
+- bottom: 330px (caption, username, progress bar)
+- left: 70px
+```css
+.safe{position:absolute;top:250px;left:70px;right:130px;bottom:330px;display:flex;flex-direction:column;}
+```
+Every vertical carousel slide and story uses these insets. Pre-flight: verify the mast top ≥ 250px before export.
+
 ### Canvas CSS base
 ```css
 .canvas{
