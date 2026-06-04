@@ -48,3 +48,14 @@
 - docs-04 workforce — A5 dense dashboard, CLONED from script-37, REALNUMBERS light, DM Sans/Mono. Max-density pass: stat-tiles band + 7-col roster (tier/pairs/returns) + flow strip. Roster = 7 agents (CLAUDE.md §1 aligned 2026-06-04).
 - docs-04 workforce TikTok infographic — A12 radial/orbit (router hub + 7 agent nodes + SVG wires), Dark Ultron glass. Replaces the card-grid version (too similar to last 10 posts). Carousel (8 slides) unchanged.
 - docs-05 Background Jobs LinkedIn — DIRECTED JOURNEY (not table): entry band > focal running-job card with live streaming console > 4-way outcome branch > artifact band, connected by labelled arrows. Fixes flat/airy/tabular: one dominant focal element, a visual path, dense annotation. Supersedes the flat panel-mock.
+
+## DENSITY STANDARD (extracted from script-23, the operator's approved bar) 2026-06-04
+Operator rejected list/table/panel layouts as flat/airy/tabular. The real "dense + save-worthy"
+standard = a STACK OF ~6 DIFFERENT MODULES, each packed with REAL NUMBERS, with variety:
+1. mast (keywords)  2. hook (ACCENT word + number, 2nd line muted) + mono sub-line of numbers
+3. hero strip: solid book bar, 4 big stats  4. a 2x2/3up grid of cards EACH WITH A MINI DATA TABLE
+5. a color-coded tier/state TABLE  6. a horizontal numbered PROCESS FLOW (the visual path)
+7. a WITH/WITHOUT comparison  8. a 5-cell KPI strip  9. solid CTA block  10. footer.
+Lesson: do not repeat ONE module type (a row list = tabular). Stack varied modules, each data-rich.
+docs-05 Background Jobs rebuilt to this standard in Dark Ultron (DM Sans/Mono, book/kraft, NO green;
+failed=book-dark, paused/without=cloud). File: docs-05-jobs-linkedin-v1. Supersedes journey + panel.
