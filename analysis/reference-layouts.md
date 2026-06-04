@@ -67,3 +67,4 @@ REJECTED: "I didn't tell you to change the format." Reinforces §25: change ONLY
 element asked for. The density technique above (sig-card: big number + 2-line desc +
 mini data table + progress bar) was applied INSIDE the central focal panel only, as a
 3x2 grid of step-kind child-job cards. Canonical: docs-05-jobs-linkedin-journey. v1 removed.
+- docs-05 Background Jobs TikTok: infographic (1080x1450, hero donut + 6 horizontal step-cards with inline data + bars) and carousel (8 slides 1080x1920) reusing the docs-04 carousel CSS verbatim (cover > triggers > donut > mission/6 kinds > streams live > 5 states+controls > artifact lands > CTA JOBS). Dark Ultron, safe-zone respected.
