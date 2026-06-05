@@ -306,7 +306,9 @@
       "posted": false,
       "posted_date": null,
       "analytics": null,
-      "crossposts": []
+      "crossposts": [
+        "linkedin"
+      ]
     },
     {
       "id": "docs-03-chat-tiktok-infographic",
