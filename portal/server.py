@@ -19,30 +19,60 @@ HOST = os.environ.get("PORTAL_HOST", "127.0.0.1")
 BRANCH = os.environ.get("PORTAL_BRANCH", "claude/epic-davinci-eGOGS")
 AUTOPUSH = os.environ.get("PORTAL_PUSH", "1") != "0"
 AUTOCOMMIT = os.environ.get("PORTAL_COMMIT", "1") != "0"   # PORTAL_COMMIT=0 -> write manifest but no git (testing)
-_lock = threading.Lock()
+_lock = threading.Lock()        # guards manifest read/modify/write only (fast; never held during git)
+_gitlock = threading.Lock()     # serializes git; held only by the background worker
+_dirty = threading.Event()      # set when the manifest changed and needs committing
+_last_msg = ["portal: update"]
 
-def load(): return json.loads(MANIFEST.read_text())
-def save(m): MANIFEST.write_text(json.dumps(m, indent=2))
+def load():
+    try:
+        return json.loads(MANIFEST.read_text())
+    except Exception:
+        # self-heal: working file unreadable (e.g. a leftover conflict) -> fall back to the last commit
+        r = git(["show", "HEAD:content/portal/manifest.json"])
+        if r and r.returncode == 0:
+            return json.loads(r.stdout)
+        raise
+
+def save(m):
+    tmp = MANIFEST.with_name(MANIFEST.name + ".tmp")
+    tmp.write_text(json.dumps(m, indent=2))
+    os.replace(tmp, MANIFEST)   # atomic: a concurrent reader / git add never sees a half-written file
 
 def git(args):
-    try: return subprocess.run(["git"]+args, cwd=ROOT, capture_output=True, text=True, timeout=40)
+    try: return subprocess.run(["git"]+args, cwd=ROOT, capture_output=True, text=True, timeout=60)
     except Exception as e: print("git error", e); return None
 
-def autocommit(paths, msg):
+def autocommit(paths=None, msg="portal: update"):
+    """Signal the background git worker. Returns instantly - never blocks the request, never holds _lock."""
     if not AUTOCOMMIT: return
-    def _run():
-        with _lock:
-            git(["add"]+[str(p) for p in paths])
-            r = git(["commit","-m",msg])
-            if r and r.returncode==0:
-                print("committed:", msg)
-                if AUTOPUSH:
-                    for delay in (0,2,4,8):
-                        if delay: time.sleep(delay)
-                        git(["pull","--no-rebase","--no-edit","origin",BRANCH])  # absorb my new-material commits (different files)
-                        p = git(["push","-u","origin",BRANCH])
-                        if p and p.returncode==0: print("pushed"); break
-    threading.Thread(target=_run, daemon=True).start()
+    _last_msg[0] = msg
+    _dirty.set()
+
+def _git_commit_push(msg):
+    """Runs only inside the git worker (under _gitlock). Uses -X ours on pull so it never leaves a conflict."""
+    git(["add", "content/portal/manifest.json", "content/analytics"])
+    r = git(["commit", "-m", msg])
+    if not (r and r.returncode == 0):
+        return  # nothing to commit
+    print("committed:", msg)
+    if not AUTOPUSH:
+        return
+    for delay in (0, 2, 4, 8, 16):
+        if delay: time.sleep(delay)
+        git(["pull", "--no-rebase", "--no-edit", "-X", "ours", "origin", BRANCH])  # ours wins on conflict
+        p = git(["push", "origin", BRANCH])
+        if p and p.returncode == 0:
+            print("pushed"); return
+    print("push failed; will retry on the next change")
+
+def _git_worker():
+    while True:
+        _dirty.wait()
+        time.sleep(0.6)      # debounce a burst of rapid clicks into one commit
+        _dirty.clear()
+        with _gitlock:
+            _git_commit_push(_last_msg[0])
 
 class H(BaseHTTPRequestHandler):
     def log_message(self, *a): pass
@@ -58,7 +88,7 @@ class H(BaseHTTPRequestHandler):
             f = PORTAL/"index.html"
             return self._send(200, f.read_bytes(), "text/html; charset=utf-8")
         if path == "/manifest.json":
-            return self._send(200, MANIFEST.read_bytes(), "application/json")
+            return self._send(200, json.dumps(load()).encode(), "application/json")  # load() self-heals if broken
         # serve any file under the repo (images, thumbs, zips, html, analytics)
         rel = path.lstrip("/")
         fp = (ROOT/rel).resolve()
@@ -150,13 +180,16 @@ class H(BaseHTTPRequestHandler):
             autocommit([MANIFEST], f"portal: restore {mid}")
             return self._json({"ok":True})
         if path == "/api/rescan":
-            git(["pull","--no-rebase","--no-edit","origin",BRANCH])  # pull newly-added materials, then reindex
-            subprocess.run(["python3","portal/scan.py"], cwd=ROOT, timeout=600)
-            autocommit([MANIFEST], "portal: sync + rescan")
+            git(["pull","--no-rebase","--no-edit","-X","ours","origin",BRANCH])  # pull new materials (ours wins on conflict)
+            with _lock:                                                          # block writes while the index is rebuilt
+                subprocess.run(["python3","portal/scan.py"], cwd=ROOT, timeout=600)
+            autocommit(msg="portal: sync + rescan")
             return self._json({"ok":True})
         return self._json({"error":"unknown endpoint"}, 404)
 
 if __name__ == "__main__":
+    if AUTOCOMMIT:
+        threading.Thread(target=_git_worker, daemon=True).start()   # git runs here, off the request path
     where = f"http://127.0.0.1:{PORT}" if HOST in ("127.0.0.1","localhost") else f"port {PORT} (forwarded by Codespaces, Private)"
     print(f"Portal -> {where}   (auto-commit on, push={'on' if AUTOPUSH else 'off'}, branch={BRANCH})")
     ThreadingHTTPServer((HOST, PORT), H).serve_forever()
