@@ -15,6 +15,8 @@ MANIFEST = PORTAL / "manifest.json"
 ANALYTICS = CONTENT / "analytics"
 ANALYTICS.mkdir(exist_ok=True)
 PORT = int(os.environ.get("PORTAL_PORT", "8753"))
+HOST = os.environ.get("PORTAL_HOST", "127.0.0.1")
+BRANCH = os.environ.get("PORTAL_BRANCH", "claude/epic-davinci-eGOGS")
 AUTOPUSH = os.environ.get("PORTAL_PUSH", "1") != "0"
 _lock = threading.Lock()
 
@@ -35,7 +37,8 @@ def autocommit(paths, msg):
                 if AUTOPUSH:
                     for delay in (0,2,4,8):
                         if delay: time.sleep(delay)
-                        p = git(["push","-u","origin","claude/epic-davinci-eGOGS"])
+                        git(["pull","--no-rebase","--no-edit","origin",BRANCH])  # absorb my new-material commits (different files)
+                        p = git(["push","-u","origin",BRANCH])
                         if p and p.returncode==0: print("pushed"); break
     threading.Thread(target=_run, daemon=True).start()
 
@@ -93,11 +96,13 @@ class H(BaseHTTPRequestHandler):
             autocommit([MANIFEST, dest], f"portal: analytics for {mid}")
             return self._json({"ok":True, "path":"content/analytics/"+dest.name})
         if path == "/api/rescan":
+            git(["pull","--no-rebase","--no-edit","origin",BRANCH])  # pull newly-added materials, then reindex
             subprocess.run(["python3","portal/scan.py"], cwd=ROOT, timeout=600)
-            autocommit([MANIFEST], "portal: rescan")
+            autocommit([MANIFEST], "portal: sync + rescan")
             return self._json({"ok":True})
         return self._json({"error":"unknown endpoint"}, 404)
 
 if __name__ == "__main__":
-    print(f"Portal -> http://127.0.0.1:{PORT}   (auto-commit on, push={'on' if AUTOPUSH else 'off'})")
-    ThreadingHTTPServer(("127.0.0.1", PORT), H).serve_forever()
+    where = f"http://127.0.0.1:{PORT}" if HOST in ("127.0.0.1","localhost") else f"port {PORT} (forwarded by Codespaces, Private)"
+    print(f"Portal -> {where}   (auto-commit on, push={'on' if AUTOPUSH else 'off'}, branch={BRANCH})")
+    ThreadingHTTPServer((HOST, PORT), H).serve_forever()

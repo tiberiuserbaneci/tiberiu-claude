@@ -1026,7 +1026,12 @@ grid previews, per-material caption / ALT / first-comment copy boxes, single or 
 zip download (suggestive filename), mark-posted, analytics upload, cross-post (copy to the other
 channel), generation date, filters. The 72 reference materials load tagged **needs-revision**.
 
-- **Run:** `python3 portal/server.py` then open `http://127.0.0.1:8753`. It is **autonomous** —
+- **Online (secure, no public exposure — canonical):** open a **GitHub Codespace** on the work
+  branch. `.devcontainer/devcontainer.json` auto-starts the portal on a **Private** forwarded port
+  (gated by GitHub login, shareable only to named collaborators). This is how Tibi/Catalin open it.
+  The repo is private on a user account, so **GitHub Pages is deliberately not used** (it would
+  publish the site publicly); no third-party host and no browser token are involved.
+- **Run (local alt):** `python3 portal/server.py` then open `http://127.0.0.1:8753`. It is **autonomous** —
   every change (posted toggle, analytics upload, cross-post) writes `content/portal/manifest.json`
   and auto-commits and pushes. No manual commit. `PORTAL_PUSH=0` to disable push.
 - **Reindex after adding materials:** `python3 portal/scan.py` (or the Rescan button). Merges with
