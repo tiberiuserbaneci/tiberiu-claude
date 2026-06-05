@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-05T12:46:14",
+  "generated_at": "2026-06-05T12:48:16",
   "counts": {
     "total": 84,
     "generated": 19,
@@ -319,7 +319,9 @@
       "posted": false,
       "posted_date": null,
       "analytics": null,
-      "crossposts": []
+      "crossposts": [
+        "linkedin"
+      ]
     },
     {
       "id": "docs-03-chat-tiktok-infographic",
