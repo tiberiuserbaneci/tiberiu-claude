@@ -64,6 +64,41 @@
       "analytics": null,
       "crossposts": [],
       "deleted_date": "2026-06-05"
+    },
+    {
+      "id": "docs-04-workforce-linkedin",
+      "title": "Workforce",
+      "channel": "linkedin",
+      "type": "single",
+      "slides": 1,
+      "dims": "1080x1450",
+      "preview": "content/docs-04-workforce-linkedin-roster.png",
+      "download": "content/docs-04-workforce-linkedin-roster.png",
+      "files": [
+        "content/docs-04-workforce-linkedin-dashboard.png",
+        "content/docs-04-workforce-linkedin-hub.png",
+        "content/docs-04-workforce-linkedin-org.png",
+        "content/docs-04-workforce-linkedin-radar.png",
+        "content/docs-04-workforce-linkedin-roster.png"
+      ],
+      "variants": [
+        "dashboard",
+        "hub",
+        "org",
+        "radar",
+        "roster"
+      ],
+      "caption": "",
+      "alt": "",
+      "first_comment": "",
+      "generated_date": "2026-06-04",
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": [],
+      "deleted_date": "2026-06-05"
     }
   ],
   "materials": [
@@ -150,40 +185,6 @@
       "status": "ready",
       "posted": true,
       "posted_date": "2026-06-05",
-      "analytics": null,
-      "crossposts": []
-    },
-    {
-      "id": "docs-04-workforce-linkedin",
-      "title": "Workforce",
-      "channel": "linkedin",
-      "type": "single",
-      "slides": 1,
-      "dims": "1080x1450",
-      "preview": "content/docs-04-workforce-linkedin-roster.png",
-      "download": "content/docs-04-workforce-linkedin-roster.png",
-      "files": [
-        "content/docs-04-workforce-linkedin-dashboard.png",
-        "content/docs-04-workforce-linkedin-hub.png",
-        "content/docs-04-workforce-linkedin-org.png",
-        "content/docs-04-workforce-linkedin-radar.png",
-        "content/docs-04-workforce-linkedin-roster.png"
-      ],
-      "variants": [
-        "dashboard",
-        "hub",
-        "org",
-        "radar",
-        "roster"
-      ],
-      "caption": "",
-      "alt": "",
-      "first_comment": "",
-      "generated_date": "2026-06-04",
-      "source": "generated",
-      "status": "ready",
-      "posted": false,
-      "posted_date": null,
       "analytics": null,
       "crossposts": []
     },
