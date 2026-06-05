@@ -1,0 +1,120 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ultron Content Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--slate:#191919;--slate2:#222221;--card:#1e1e1d;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.3);--rule:rgba(250,250,247,.1);--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--cloud:#919180;--green:#7fae6b;}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'DM Sans',sans-serif;}
+body{background:#121211;color:var(--ivory);padding:0 0 80px;}
+header{position:sticky;top:0;z-index:20;background:rgba(18,18,17,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);padding:18px 30px;}
+.htop{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.logo{font-weight:900;font-size:22px;letter-spacing:-.5px;}.logo em{color:var(--book);font-style:normal;}
+.sub{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink46);}
+.spacer{flex:1;}
+.count{font-family:'DM Mono',monospace;font-size:12px;color:var(--ink46);}
+.btn{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;color:var(--ink70);background:var(--slate2);border:1px solid var(--rule);border-radius:8px;padding:8px 14px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:7px;}
+.btn:hover{border-color:var(--book);color:var(--ivory);}
+.tabs{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap;}
+.tab{font-weight:700;font-size:14px;color:var(--ink46);background:transparent;border:1px solid var(--rule);border-radius:24px;padding:9px 20px;cursor:pointer;}
+.tab.on{color:#1a0f0a;background:var(--book);border-color:var(--book);}
+.filters{display:flex;gap:7px;margin-top:12px;flex-wrap:wrap;}
+.fl{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink46);background:var(--slate2);border:1px solid var(--rule);border-radius:20px;padding:7px 14px;cursor:pointer;}
+.fl.on{color:var(--book);border-color:var(--book);background:rgba(204,120,92,.1);}
+main{padding:26px 30px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:22px;}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;}
+.card.posted{border-color:rgba(127,174,107,.4);}
+.card.ref{opacity:.92;}
+.pv{position:relative;background:#0e0e0d;display:flex;align-items:center;justify-content:center;min-height:150px;border-bottom:1px solid var(--rule);}
+.pv img{width:100%;display:block;max-height:340px;object-fit:cover;object-position:top;}
+.badges{position:absolute;top:10px;left:10px;display:flex;gap:6px;flex-wrap:wrap;}
+.bg{font-family:'DM Mono',monospace;font-size:9.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:5px 9px;border-radius:6px;background:rgba(0,0,0,.6);color:var(--ivory);border:1px solid var(--rule);}
+.bg.ch{color:var(--book);}.bg.car{color:var(--kraft);}.bg.rev{color:var(--book-d);background:rgba(200,70,35,.18);}
+.bg.post{position:absolute;top:10px;right:10px;left:auto;color:#0e1a0c;background:var(--green);}
+.body{padding:15px 16px;display:flex;flex-direction:column;gap:11px;}
+.tt{font-weight:800;font-size:17px;letter-spacing:-.3px;}
+.meta{font-family:'DM Mono',monospace;font-size:10.5px;color:var(--ink46);display:flex;gap:10px;flex-wrap:wrap;}
+.row{display:flex;gap:8px;flex-wrap:wrap;}
+.cbox{border:1px solid var(--rule);border-radius:10px;overflow:hidden;}
+.cbox .ch{display:flex;align-items:center;justify-content:space-between;padding:7px 11px;background:var(--slate2);}
+.cbox .ch span{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink46);}
+.cbox textarea{width:100%;border:none;background:transparent;color:var(--ink70);font-size:12.5px;line-height:1.45;padding:10px 11px;resize:vertical;min-height:54px;max-height:150px;font-family:'DM Sans',sans-serif;}
+.copy{font-family:'DM Mono',monospace;font-size:10px;color:var(--book);background:none;border:1px solid var(--book);border-radius:6px;padding:4px 10px;cursor:pointer;}
+.copy.ok{color:#0e1a0c;background:var(--green);border-color:var(--green);}
+.toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;border-top:1px solid var(--rule);padding-top:11px;margin-top:2px;}
+.toggle{font-weight:700;font-size:13px;border-radius:9px;padding:9px 16px;cursor:pointer;border:1px solid var(--rule);background:var(--slate2);color:var(--ink70);}
+.toggle.on{background:var(--green);color:#0e1a0c;border-color:var(--green);}
+.mini{font-family:'DM Mono',monospace;font-size:10.5px;color:var(--ink46);}
+.up{font-family:'DM Mono',monospace;font-size:10.5px;color:var(--book);cursor:pointer;border:1px dashed var(--book);border-radius:8px;padding:7px 11px;}
+input[type=file]{display:none;}
+.empty{color:var(--ink46);text-align:center;padding:80px;font-family:'DM Mono',monospace;}
+a.dl{color:var(--ivory);}
+</style></head><body>
+<header>
+ <div class="htop">
+  <div class="logo">ULTRON <em>Content Portal</em></div>
+  <div class="sub" id="gen">loading</div>
+  <div class="spacer"></div>
+  <span class="count" id="count"></span>
+  <button class="btn" onclick="rescan()">&#8635; Rescan</button>
+ </div>
+ <div class="tabs" id="tabs"></div>
+ <div class="filters" id="filters"></div>
+</header>
+<main><div class="grid" id="grid"></div><div class="empty" id="empty" style="display:none">No materials match.</div></main>
+<script>
+let DATA=null, channel='all', filters=new Set();
+const FILTERS=[['posted','Posted'],['unposted','Not posted'],['carousel','Carousels'],['caption','Has caption'],['needs-revision','Needs revision'],['generated','Generated']];
+function slug(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');}
+function dlname(m){const ext=m.type==='carousel'?'zip':(m.download.split('.').pop());return `${slug(m.title)}-${m.channel}-${m.generated_date}.${ext}`;}
+async function load(){DATA=await (await fetch('/manifest.json?'+Date.now())).json();render();}
+function render(){
+ document.getElementById('gen').textContent='generated '+DATA.generated_at.replace('T',' ');
+ const tabs=document.getElementById('tabs');
+ const chans=[['all','All'],['linkedin','LinkedIn'],['tiktok','TikTok'],['instagram','Instagram']];
+ tabs.innerHTML=chans.map(([k,l])=>{const n=DATA.materials.filter(m=>k==='all'||m.channel===k).length;return `<button class="tab ${channel===k?'on':''}" onclick="setCh('${k}')">${l} <span style="opacity:.6">${n}</span></button>`}).join('');
+ document.getElementById('filters').innerHTML=FILTERS.map(([k,l])=>`<button class="fl ${filters.has(k)?'on':''}" onclick="tg('${k}')">${l}</button>`).join('');
+ let list=DATA.materials.filter(m=>channel==='all'||m.channel===channel);
+ if(filters.has('posted'))list=list.filter(m=>m.posted);
+ if(filters.has('unposted'))list=list.filter(m=>!m.posted);
+ if(filters.has('carousel'))list=list.filter(m=>m.type==='carousel');
+ if(filters.has('caption'))list=list.filter(m=>m.caption);
+ if(filters.has('needs-revision'))list=list.filter(m=>m.status==='needs-revision');
+ if(filters.has('generated'))list=list.filter(m=>m.source==='generated');
+ document.getElementById('count').textContent=list.length+' materials';
+ document.getElementById('empty').style.display=list.length?'none':'block';
+ document.getElementById('grid').innerHTML=list.map(card).join('');
+}
+function setCh(c){channel=c;render();}
+function tg(f){filters.has(f)?filters.delete(f):filters.add(f);render();}
+function cbox(label,txt){if(!txt)return '';const id='t'+Math.random().toString(36).slice(2);
+ return `<div class="cbox"><div class="ch"><span>${label}</span><button class="copy" onclick="cp(this,'${id}')">copy</button></div><textarea id="${id}" readonly>${txt.replace(/</g,'&lt;')}</textarea></div>`;}
+function card(m){
+ const car=m.type==='carousel';
+ const dl=`<a class="btn dl" href="/${m.download}" download="${dlname(m)}">&#8681; ${car?('Download all '+m.slides+' slides'):'Download'}</a>`;
+ const cross=m.channel!=='instagram'?`<button class="btn" onclick="crosspost('${m.id}','${m.channel==='linkedin'?'tiktok':'linkedin'}')">&#8644; Copy to ${m.channel==='linkedin'?'TikTok':'LinkedIn'}</button>`:'';
+ const an=m.posted?`<label class="up">${m.analytics?('analytics: '+m.analytics.split('/').pop()):'&#8682; upload analytics (csv/xls)'}<input type="file" accept=".csv,.xls,.xlsx" onchange="upAnalytics('${m.id}',this)"></label>`:'';
+ const xp=(m.crossposts&&m.crossposts.length)?`<span class="mini" style="color:var(--kraft)">also on ${m.crossposts.join(', ')}</span>`:'';
+ return `<div class="card ${m.posted?'posted':''} ${m.source==='reference'?'ref':''}">
+  <div class="pv">${m.preview?`<img loading="lazy" src="/${m.preview}">`:'<div class="empty">no preview</div>'}
+   <div class="badges"><span class="bg ch">${m.channel}</span>${car?`<span class="bg car">${m.slides} slides</span>`:''}${m.status==='needs-revision'?'<span class="bg rev">needs revision</span>':''}</div>
+   ${m.posted?'<span class="bg post">posted</span>':''}</div>
+  <div class="body">
+   <div class="tt">${m.title}</div>
+   <div class="meta"><span>${m.id}</span><span>&#9679; ${m.generated_date}</span><span>&#9679; ${m.type}</span></div>
+   <div class="row">${dl}${cross}</div>
+   ${cbox('Caption',m.caption)}${cbox('ALT text',m.alt)}${cbox('First comment',m.first_comment)}
+   <div class="toolbar">
+     <button class="toggle ${m.posted?'on':''}" onclick="togglePosted('${m.id}',${!m.posted})">${m.posted?'&#10003; Posted':'Mark posted'}</button>
+     ${m.posted&&m.posted_date?`<span class="mini">on ${m.posted_date}</span>`:''}
+     ${an} ${xp}
+   </div>
+  </div></div>`;
+}
+function cp(btn,id){const t=document.getElementById(id);navigator.clipboard.writeText(t.value).then(()=>{btn.textContent='copied';btn.classList.add('ok');setTimeout(()=>{btn.textContent='copy';btn.classList.remove('ok');},1200);});}
+async function api(path,body){return (await fetch(path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})).json();}
+async function togglePosted(id,val){await api('/api/save',{id,patch:{posted:val,posted_date:val?new Date().toISOString().slice(0,10):null}});load();}
+async function crosspost(id,target){const m=DATA.materials.find(x=>x.id===id);const xp=new Set(m.crossposts||[]);xp.add(target);await api('/api/save',{id,patch:{crossposts:[...xp]}});load();}
+async function upAnalytics(id,inp){const f=inp.files[0];if(!f)return;await fetch(`/api/analytics?id=${encodeURIComponent(id)}&filename=${encodeURIComponent(f.name)}`,{method:'POST',body:f});load();}
+async function rescan(){document.getElementById('count').textContent='rescanning...';await fetch('/api/rescan',{method:'POST'});load();}
+load();
+</script></body></html>

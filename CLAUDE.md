@@ -1019,4 +1019,26 @@ Commit trailers (the session link) live in git history only, never in a delivere
 
 ---
 
+## 29. CONTENT PORTAL + ANALYTICS LOOP (operator, 2026-06-05 — binding)
+
+The portal maps every material into one dashboard: channels (LinkedIn / TikTok / Instagram),
+grid previews, per-material caption / ALT / first-comment copy boxes, single or one-click carousel
+zip download (suggestive filename), mark-posted, analytics upload, cross-post (copy to the other
+channel), generation date, filters. The 72 reference materials load tagged **needs-revision**.
+
+- **Run:** `python3 portal/server.py` then open `http://127.0.0.1:8753`. It is **autonomous** —
+  every change (posted toggle, analytics upload, cross-post) writes `content/portal/manifest.json`
+  and auto-commits and pushes. No manual commit. `PORTAL_PUSH=0` to disable push.
+- **Reindex after adding materials:** `python3 portal/scan.py` (or the Rescan button). Merges with
+  the manifest so posted/analytics state is preserved. Files: `portal/scan.py`, `portal/server.py`,
+  `content/portal/{index.html,manifest.json,thumbs/,zips/}`, `content/analytics/`.
+
+**ANALYTICS LOOP (binding):** real post analytics live in `content/analytics/` (LinkedIn CSV/XLS,
+TikTok exports), linked per material in the manifest. BEFORE building any new material, review the
+posted materials' metrics (impressions / reach / **saves** / comments / sends) and let them steer the
+hook, format and lever choices. Periodically check how shipped posts performed and fold the learning
+into `analysis/virality-principles.md`. Metrics priority stays: reach+impressions → saves → comments.
+
+---
+
 END OF CONFIG.
