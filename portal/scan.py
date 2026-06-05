@@ -84,12 +84,15 @@ def png_size(path):
         pass
     return None
 def html_canvas_size(path):
-    """Pull the canvas/slide size out of a reference poster's CSS."""
+    """Pull the canvas size out of a reference poster's CSS (the box is always 1080 wide)."""
     try:
         t = path.read_text(errors="ignore")
     except Exception:
         return None
-    for sel in (r"\.canvas", r"\.slide", r"\.frame", r"#artifact"):
+    m = re.search(r"width:\s*1080px\s*;\s*height:\s*(\d+)px", t)   # .poster / .canvas / .slide, any name
+    if m:
+        return (1080, int(m.group(1)))
+    for sel in (r"\.canvas", r"\.poster", r"\.slide", r"\.frame", r"#artifact"):
         m = re.search(sel + r"\s*\{[^}]*?width:\s*(\d+)px[^}]*?height:\s*(\d+)px", t, re.S)
         if m:
             return (int(m.group(1)), int(m.group(2)))
