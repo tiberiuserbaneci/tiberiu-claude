@@ -75,3 +75,11 @@ mini data table + progress bar) was applied INSIDE the central focal panel only,
 - FILL LESSON (operator, again): bounding-box coverage is misleading - flex:1 rows stretch to 'cover' a tall card while the text floats with big gaps. Real density = ENOUGH rows so each row is ~28-34px with readable text, not 50px+. Rule: a dense data card needs ~7 rows; if fewer fit, shrink the card (add another section) rather than stretch rows. docs-06 Brain surfaces fixed to 7 tight rows + a Search band to shrink the focal.
 - docs-06 Brain LinkedIn REDESIGN (operator: stop using key:value tables, they look bad): the 4 surface cards are now MINI PRODUCT MOCKUPS, not tables - Notes=a note editor (title+edit+text lines+pills), Memories=a memory record (session-summary tag + kind chips), Files=a real file list (named files + type badges + encrypted), Agreements=a signing track (Draft>Sent>Signed + signers). Shows what each surface looks like in-product. Reusable pattern: prefer a representative mini-mockup over a spec table.
 - docs-06 Brain TikTok: infographic (reuses the approved Brain LinkedIn mockup design, 1080x1450) + carousel (8 slides 1080x1920). Carousel uses mockup language, not tables: cover > write-paths (3 icon rows) > Notes+Memories (2 stacked product mockups, Memories hero) > Files+Agreements (2 mockups) > retrieval (3 signal cards) > search (bar + grouped results) > with/without split > CTA BRAIN. Safe-zone top 250, title congruence 0px spread, no overflow. Lesson: on tall 1920 slides, two ~410px mockups fill far better than one stretched mockup.
+
+## DIFFERENTIATION CRITERION (operator, binding): one distinct archetype per material
+Materials must NOT share a layout template. Each gets its own visual archetype:
+- docs-04 Workforce = radial orbit (hub + nodes)
+- docs-05 Background Jobs = vertical journey (entry > focal mission > 4-way branch > output)
+- docs-06 Brain = 2x2 grid of surface mockups (hero = Memories solid)
+- docs-07 Builder = chat-to-canvas SPLIT (chat left > arrow > big editable canvas right) + a horizontal 4-kind strip
+Before building a new material, pick an archetype not yet used. Reusing the prior one (e.g., Brain's 2x2) is a defect.
