@@ -1,10 +1,12 @@
 {
-  "generated_at": "2026-06-05T08:39:04",
+  "generated_at": "2026-06-05T12:46:14",
   "counts": {
     "total": 84,
     "generated": 19,
-    "reference": 65
+    "reference": 65,
+    "crosspost": 0
   },
+  "deleted": [],
   "materials": [
     {
       "id": "docs-02-routing-ig-story",
@@ -12,6 +14,7 @@
       "channel": "instagram",
       "type": "single",
       "slides": 1,
+      "dims": "2160x3840 (1080x1920 @2x)",
       "preview": "content/docs-02-routing-ig-story-v1.png",
       "download": "content/docs-02-routing-ig-story-v1.png",
       "files": [
@@ -37,6 +40,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "2160x2900 (1080x1450 @2x)",
       "preview": "content/docs-02-platform-overview-linkedin-v3.png",
       "download": "content/docs-02-platform-overview-linkedin-v3.png",
       "files": [
@@ -66,6 +70,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "2160x2900 (1080x1450 @2x)",
       "preview": "content/docs-03-chat-cheatsheet-v6.png",
       "download": "content/docs-03-chat-cheatsheet-v6.png",
       "files": [
@@ -95,6 +100,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "2160x2700",
       "preview": "content/docs-03-chat-linkedin-v3.png",
       "download": "content/docs-03-chat-linkedin-v3.png",
       "files": [
@@ -124,6 +130,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/docs-04-workforce-linkedin-roster.png",
       "download": "content/docs-04-workforce-linkedin-roster.png",
       "files": [
@@ -157,6 +164,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "2160x2900 (1080x1450 @2x)",
       "preview": "content/docs-05-jobs-linkedin-tiles.png",
       "download": "content/docs-05-jobs-linkedin-tiles.png",
       "files": [
@@ -184,6 +192,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "2160x2900 (1080x1450 @2x)",
       "preview": "content/docs-06-brain-linkedin-v1.png",
       "download": "content/docs-06-brain-linkedin-v1.png",
       "files": [
@@ -209,6 +218,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "2160x2900 (1080x1450 @2x)",
       "preview": "content/docs-07-builder-linkedin-v1.png",
       "download": "content/docs-07-builder-linkedin-v1.png",
       "files": [
@@ -234,6 +244,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "2160x2700",
       "preview": "content/ref-2026-linkedin-algorithm-cheatsheet.png",
       "download": "content/ref-2026-linkedin-algorithm-cheatsheet.png",
       "files": [
@@ -259,6 +270,7 @@
       "channel": "tiktok",
       "type": "single",
       "slides": 1,
+      "dims": "2160x2900 (1080x1450 @2x)",
       "preview": "content/docs-02-routing-tiktok-infographic.png",
       "download": "content/docs-02-routing-tiktok-infographic.png",
       "files": [
@@ -284,6 +296,7 @@
       "channel": "tiktok",
       "type": "carousel",
       "slides": 8,
+      "dims": "1080x1920",
       "preview": "content/docs-02-routing-tiktok-carousel-01.png",
       "download": "content/portal/zips/docs-02-routing-tiktok-tiktok-carousel.zip",
       "files": [
@@ -314,6 +327,7 @@
       "channel": "tiktok",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/docs-03-chat-tiktok-infographic.png",
       "download": "content/docs-03-chat-tiktok-infographic.png",
       "files": [
@@ -339,6 +353,7 @@
       "channel": "tiktok",
       "type": "carousel",
       "slides": 8,
+      "dims": "1080x1920",
       "preview": "content/docs-03-chat-tiktok-carousel-01.png",
       "download": "content/portal/zips/docs-03-chat-tiktok-tiktok-carousel.zip",
       "files": [
@@ -369,6 +384,7 @@
       "channel": "tiktok",
       "type": "single",
       "slides": 1,
+      "dims": "2160x2900 (1080x1450 @2x)",
       "preview": "content/docs-04-workforce-tiktok-infographic.png",
       "download": "content/docs-04-workforce-tiktok-infographic.png",
       "files": [
@@ -394,6 +410,7 @@
       "channel": "tiktok",
       "type": "carousel",
       "slides": 8,
+      "dims": "1080x1920",
       "preview": "content/docs-04-workforce-tiktok-carousel-01.png",
       "download": "content/portal/zips/docs-04-workforce-tiktok-tiktok-carousel.zip",
       "files": [
@@ -424,6 +441,7 @@
       "channel": "tiktok",
       "type": "single",
       "slides": 1,
+      "dims": "2160x2900 (1080x1450 @2x)",
       "preview": "content/docs-05-jobs-tiktok-infographic.png",
       "download": "content/docs-05-jobs-tiktok-infographic.png",
       "files": [
@@ -449,6 +467,7 @@
       "channel": "tiktok",
       "type": "carousel",
       "slides": 8,
+      "dims": "2160x3840 (1080x1920 @2x)",
       "preview": "content/docs-05-jobs-tiktok-carousel-01.png",
       "download": "content/portal/zips/docs-05-jobs-tiktok-tiktok-carousel.zip",
       "files": [
@@ -479,6 +498,7 @@
       "channel": "tiktok",
       "type": "single",
       "slides": 1,
+      "dims": "2160x2900 (1080x1450 @2x)",
       "preview": "content/docs-06-brain-tiktok-infographic.png",
       "download": "content/docs-06-brain-tiktok-infographic.png",
       "files": [
@@ -504,6 +524,7 @@
       "channel": "tiktok",
       "type": "carousel",
       "slides": 8,
+      "dims": "2160x3840 (1080x1920 @2x)",
       "preview": "content/docs-06-brain-tiktok-carousel-01.png",
       "download": "content/portal/zips/docs-06-brain-tiktok-tiktok-carousel.zip",
       "files": [
@@ -534,6 +555,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/logos-reference.png",
       "download": "content/logos-reference.html",
       "files": [
@@ -557,6 +579,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-01-linkedin.png",
       "download": "content/script-01-linkedin.html",
       "files": [
@@ -580,6 +603,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-02-linkedin-A.png",
       "download": "content/script-02-linkedin-A.html",
       "files": [
@@ -603,6 +627,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-02-linkedin-B.png",
       "download": "content/script-02-linkedin-B.html",
       "files": [
@@ -626,6 +651,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-03-linkedin-A.png",
       "download": "content/script-03-linkedin-A.html",
       "files": [
@@ -649,6 +675,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-03-linkedin-B.png",
       "download": "content/script-03-linkedin-B.html",
       "files": [
@@ -672,6 +699,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-04-linkedin-v6.png",
       "download": "content/script-04-linkedin-v6.html",
       "files": [
@@ -695,6 +723,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-05-linkedin-v6.png",
       "download": "content/script-05-linkedin-v6.html",
       "files": [
@@ -718,6 +747,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-06-linkedin-v6.png",
       "download": "content/script-06-linkedin-v6.html",
       "files": [
@@ -741,6 +771,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-07-linkedin-v6d.png",
       "download": "content/script-07-linkedin-v6d.html",
       "files": [
@@ -764,6 +795,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-08-linkedin-v6.png",
       "download": "content/script-08-linkedin-v6.html",
       "files": [
@@ -787,6 +819,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-09-linkedin-v6.png",
       "download": "content/script-09-linkedin-v6.html",
       "files": [
@@ -810,6 +843,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-10-linkedin-v6.png",
       "download": "content/script-10-linkedin-v6.html",
       "files": [
@@ -833,6 +867,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-11-linkedin-v6.png",
       "download": "content/script-11-linkedin-v6.html",
       "files": [
@@ -856,6 +891,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-12-linkedin-v6.png",
       "download": "content/script-12-linkedin-v6.html",
       "files": [
@@ -879,6 +915,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-13-linkedin-v6.png",
       "download": "content/script-13-linkedin-v6.html",
       "files": [
@@ -902,6 +939,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-14-linkedin-v6.png",
       "download": "content/script-14-linkedin-v6.html",
       "files": [
@@ -925,6 +963,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-15-linkedin-v6.png",
       "download": "content/script-15-linkedin-v6.html",
       "files": [
@@ -948,6 +987,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-16-linkedin-v6.png",
       "download": "content/script-16-linkedin-v6.html",
       "files": [
@@ -971,6 +1011,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-17-linkedin-v6.png",
       "download": "content/script-17-linkedin-v6.html",
       "files": [
@@ -994,6 +1035,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-18-linkedin-v6b.png",
       "download": "content/script-18-linkedin-v6b.html",
       "files": [
@@ -1017,6 +1059,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-19-linkedin-v6.png",
       "download": "content/script-19-linkedin-v6.html",
       "files": [
@@ -1040,6 +1083,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-20-linkedin-v6.png",
       "download": "content/script-20-linkedin-v6.html",
       "files": [
@@ -1063,6 +1107,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-21-linkedin-v6.png",
       "download": "content/script-21-linkedin-v6.html",
       "files": [
@@ -1086,6 +1131,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-22-linkedin-v6.png",
       "download": "content/script-22-linkedin-v6.html",
       "files": [
@@ -1109,6 +1155,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-23-linkedin-v5.png",
       "download": "content/script-23-linkedin-v5.html",
       "files": [
@@ -1132,6 +1179,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-24-linkedin-v3.png",
       "download": "content/script-24-linkedin-v3.html",
       "files": [
@@ -1155,6 +1203,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-25-linkedin-v6.png",
       "download": "content/script-25-linkedin-v6.html",
       "files": [
@@ -1178,6 +1227,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-26-linkedin-v1.png",
       "download": "content/script-26-linkedin-v1.html",
       "files": [
@@ -1201,6 +1251,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-27-linkedin-v2.png",
       "download": "content/script-27-linkedin-v2.html",
       "files": [
@@ -1224,6 +1275,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-28-linkedin-v1.png",
       "download": "content/script-28-linkedin-v1.html",
       "files": [
@@ -1247,6 +1299,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-28-linkedin-v2.png",
       "download": "content/script-28-linkedin-v2.html",
       "files": [
@@ -1270,6 +1323,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-29-linkedin-v4.png",
       "download": "content/script-29-linkedin-v4.html",
       "files": [
@@ -1293,6 +1347,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-30-linkedin-v1.png",
       "download": "content/script-30-linkedin-v1.html",
       "files": [
@@ -1316,6 +1371,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-30-linkedin-v2.png",
       "download": "content/script-30-linkedin-v2.html",
       "files": [
@@ -1339,6 +1395,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-31-linkedin-v1.png",
       "download": "content/script-31-linkedin-v1.html",
       "files": [
@@ -1362,6 +1419,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-32-linkedin-v1.png",
       "download": "content/script-32-linkedin-v1.html",
       "files": [
@@ -1385,6 +1443,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-32-linkedin-v2.png",
       "download": "content/script-32-linkedin-v2.html",
       "files": [
@@ -1408,6 +1467,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-33-linkedin-v3.png",
       "download": "content/script-33-linkedin-v3.html",
       "files": [
@@ -1431,6 +1491,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-34-linkedin-v1.png",
       "download": "content/script-34-linkedin-v1.html",
       "files": [
@@ -1454,6 +1515,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-34-linkedin-v2.png",
       "download": "content/script-34-linkedin-v2.html",
       "files": [
@@ -1477,6 +1539,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-35-linkedin-v1.png",
       "download": "content/script-35-linkedin-v1.html",
       "files": [
@@ -1500,6 +1563,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-36-linkedin-v3.png",
       "download": "content/script-36-linkedin-v3.html",
       "files": [
@@ -1523,6 +1587,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-37-linkedin-v1.png",
       "download": "content/script-37-linkedin-v1.html",
       "files": [
@@ -1546,6 +1611,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-38-linkedin-v1.png",
       "download": "content/script-38-linkedin-v1.html",
       "files": [
@@ -1569,6 +1635,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-39-linkedin-v1.png",
       "download": "content/script-39-linkedin-v1.html",
       "files": [
@@ -1592,6 +1659,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-40-linkedin-v1.png",
       "download": "content/script-40-linkedin-v1.html",
       "files": [
@@ -1615,6 +1683,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-40-linkedin-v2.png",
       "download": "content/script-40-linkedin-v2.html",
       "files": [
@@ -1638,6 +1707,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-41-linkedin-v1.png",
       "download": "content/script-41-linkedin-v1.html",
       "files": [
@@ -1661,6 +1731,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-42-linkedin-v1.png",
       "download": "content/script-42-linkedin-v1.html",
       "files": [
@@ -1684,6 +1755,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-43-linkedin-v1.png",
       "download": "content/script-43-linkedin-v1.html",
       "files": [
@@ -1707,6 +1779,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-44-linkedin-v1.png",
       "download": "content/script-44-linkedin-v1.html",
       "files": [
@@ -1730,6 +1803,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-45-linkedin-v1.png",
       "download": "content/script-45-linkedin-v1.html",
       "files": [
@@ -1753,6 +1827,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-46-linkedin-v1.png",
       "download": "content/script-46-linkedin-v1.html",
       "files": [
@@ -1776,6 +1851,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-47-linkedin-v1.png",
       "download": "content/script-47-linkedin-v1.html",
       "files": [
@@ -1799,6 +1875,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-47-linkedin-v2.png",
       "download": "content/script-47-linkedin-v2.html",
       "files": [
@@ -1822,6 +1899,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-48-linkedin-v1.png",
       "download": "content/script-48-linkedin-v1.html",
       "files": [
@@ -1845,6 +1923,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-49-linkedin-v1.png",
       "download": "content/script-49-linkedin-v1.html",
       "files": [
@@ -1868,6 +1947,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-50-linkedin-v1.png",
       "download": "content/script-50-linkedin-v1.html",
       "files": [
@@ -1891,6 +1971,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-51-linkedin-v1.png",
       "download": "content/script-51-linkedin-v1.html",
       "files": [
@@ -1914,6 +1995,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-52-linkedin-v1.png",
       "download": "content/script-52-linkedin-v1.html",
       "files": [
@@ -1937,6 +2019,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-53-linkedin-v1.png",
       "download": "content/script-53-linkedin-v1.html",
       "files": [
@@ -1960,6 +2043,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-54-linkedin-v1.png",
       "download": "content/script-54-linkedin-v1.html",
       "files": [
@@ -1983,6 +2067,7 @@
       "channel": "linkedin",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1450",
       "preview": "content/portal/thumbs/script-55-linkedin-v1.png",
       "download": "content/script-55-linkedin-v1.html",
       "files": [
@@ -2006,6 +2091,7 @@
       "channel": "tiktok",
       "type": "single",
       "slides": 1,
+      "dims": "1080x1920",
       "preview": "content/portal/thumbs/script-01-tiktok.png",
       "download": "content/script-01-tiktok.html",
       "files": [

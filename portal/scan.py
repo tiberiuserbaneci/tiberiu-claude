@@ -2,7 +2,7 @@
 """Portal scanner: builds content/portal/manifest.json from everything in content/.
 Renders thumbnails for reference HTMLs, zips carousels, parses caption files.
 Merges with the existing manifest so posted/analytics/crosspost state is preserved."""
-import json, re, pathlib, zipfile, datetime, subprocess
+import json, re, pathlib, zipfile, datetime, subprocess, struct
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
 PORTAL = CONTENT / "portal"
@@ -72,6 +72,39 @@ def git_date(path):
     except Exception:
         return datetime.date.today().isoformat()
 
+# ---- material dimensions (corner badge in the portal) ----
+KNOWN_LOGICAL = {(1080, 1450), (1080, 1920)}
+def png_size(path):
+    """Read width/height straight from the PNG IHDR header (no Pillow needed)."""
+    try:
+        b = open(path, "rb").read(26)
+        if b[:8] == b"\x89PNG\r\n\x1a\n" and b[12:16] == b"IHDR":
+            return struct.unpack(">II", b[16:24])
+    except Exception:
+        pass
+    return None
+def html_canvas_size(path):
+    """Pull the canvas/slide size out of a reference poster's CSS."""
+    try:
+        t = path.read_text(errors="ignore")
+    except Exception:
+        return None
+    for sel in (r"\.canvas", r"\.slide", r"\.frame", r"#artifact"):
+        m = re.search(sel + r"\s*\{[^}]*?width:\s*(\d+)px[^}]*?height:\s*(\d+)px", t, re.S)
+        if m:
+            return (int(m.group(1)), int(m.group(2)))
+    return None
+def fmt_dims(wh):
+    """'1080x1920' native, or '2160x2900 (1080x1450 @2x)' for a 2x export."""
+    if not wh:
+        return ""
+    w, h = wh
+    if (w, h) in KNOWN_LOGICAL:
+        return f"{w}x{h}"
+    if w % 2 == 0 and h % 2 == 0 and (w // 2, h // 2) in KNOWN_LOGICAL:
+        return f"{w}x{h} ({w // 2}x{h // 2} @2x)"
+    return f"{w}x{h}"
+
 # ---- gather generated materials (docs-*, ref-*) from PNGs ----
 mats = {}
 pngs = [p for p in CONTENT.glob("*.png") if p.name != "ultron-logo.png" and not p.name.startswith("script-")]
@@ -100,10 +133,12 @@ for mid, m in mats.items():
         # pick newest as preview, rest are alternates
         files_sorted = sorted(files, key=lambda f: (ROOT/f).stat().st_mtime, reverse=True)
         preview = files_sorted[0]; download = preview; slides=[]; nslides=1; zpath=None
+    dim_src = slides[0] if typ == "carousel" else preview
+    dims = fmt_dims(png_size(ROOT / dim_src))
     cap = find_caption(slug_prefix(mid), ch)
     materials.append({
         "id": mid, "title": title_from(mid),
-        "channel": ch, "type": typ, "slides": nslides,
+        "channel": ch, "type": typ, "slides": nslides, "dims": dims,
         "preview": preview, "download": download,
         "files": files, "variants": [pathlib.Path(f).stem.split(mid.replace('content/',''))[-1].strip('-') for f in files] if typ!="carousel" else [],
         "caption": cap.get("caption",""), "alt": cap.get("alt",""), "first_comment": cap.get("first_comment",""),
@@ -142,9 +177,10 @@ except Exception as e:
 
 for mid, thumb in refs:
     ch = channel_of(mid)
+    rwh = html_canvas_size(CONTENT / (mid + ".html")) or ((1080, 1450) if ch == "linkedin" else (1080, 1920))
     materials.append({
         "id": mid, "title": title_from(mid).replace("Script","Script "),
-        "channel": ch, "type": "single", "slides": 1,
+        "channel": ch, "type": "single", "slides": 1, "dims": fmt_dims(rwh),
         "preview": "content/portal/thumbs/"+thumb.name if thumb.exists() else None,
         "download": "content/"+mid+".html", "files": ["content/"+mid+".html"], "variants": [],
         "caption": "", "alt": "", "first_comment": "",
@@ -153,20 +189,41 @@ for mid, thumb in refs:
         "analytics": None, "crossposts": []
     })
 
-# ---- merge with existing manifest to preserve state ----
-state_keys = ("posted","posted_date","analytics","crossposts","status")
-if MANIFEST.exists():
-    old = {m["id"]: m for m in json.loads(MANIFEST.read_text()).get("materials",[])}
-    for m in materials:
-        if m["id"] in old:
-            for k in state_keys:
-                if k in old[m["id"]] and not (k=="status" and m["source"]=="reference"):
-                    m[k] = old[m["id"]][k]
+# ---- merge with existing manifest: preserve state, deletions, and cross-post clones ----
+state_keys = ("posted","posted_date","analytics","analytics_uploaded","crossposts","status")
+old_doc = json.loads(MANIFEST.read_text()) if MANIFEST.exists() else {}
+old = {m["id"]: m for m in old_doc.get("materials", [])}
+deleted = old_doc.get("deleted", [])
+deleted_ids = {d["id"] for d in deleted}
+
+# drop anything the operator removed from the portal (source files stay on disk, recoverable via Restore)
+materials = [m for m in materials if m["id"] not in deleted_ids]
+
+for m in materials:
+    o = old.get(m["id"])
+    if o:
+        for k in state_keys:
+            if k in o and not (k == "status" and m["source"] == "reference"):
+                m[k] = o[k]
+
+# re-attach cross-post clones (not file-backed): refresh their assets from the origin, keep their own channel + state
+by_id = {m["id"]: m for m in materials}
+present = set(by_id)
+for o in old.values():
+    if o.get("source") == "crosspost" and o["id"] not in present and o["id"] not in deleted_ids:
+        origin = by_id.get(o.get("origin"))
+        if origin:
+            for k in ("preview","download","files","slides","type","caption","alt","first_comment","dims"):
+                if k in origin:
+                    o[k] = origin[k]
+            materials.append(o)
 
 manifest = {"generated_at": datetime.datetime.now().isoformat(timespec="seconds"),
             "counts": {"total": len(materials),
                        "generated": sum(1 for m in materials if m["source"]=="generated"),
-                       "reference": sum(1 for m in materials if m["source"]=="reference")},
+                       "reference": sum(1 for m in materials if m["source"]=="reference"),
+                       "crosspost": sum(1 for m in materials if m["source"]=="crosspost")},
+            "deleted": deleted,
             "materials": sorted(materials, key=lambda m:(m["source"]!="generated", m["channel"], m["id"]))}
 MANIFEST.write_text(json.dumps(manifest, indent=2))
 print(f"manifest: {manifest['counts']}  -> {MANIFEST}")
