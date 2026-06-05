@@ -11,7 +11,7 @@ Most AI work dies the second you close the tab. Mine kept running in the backgro
 
 - - -
 
-I used to babysit long tasks, watching a spinner so I would not lose the run. Then I moved everything that takes more than a few seconds into a background job. Now I send one prompt, close the tab, and the platform runs the whole thing as a mission while I am in meetings. There is no app to keep open and no thread to hold. It finished on its own, dropped the output where I work, and sent me a notification.
+I used to babysit long tasks, watching a spinner so I would not lose the run. Then I moved everything that takes more than a few seconds into a background job. Now I send one prompt, close the tab, and the platform runs the whole thing as a mission while I am in meetings. There is no app to keep open and no thread to hold. It finished on its own, dropped the output where I work, and sent me a notification. It does not matter whether the job takes two minutes or two hours, the pattern is the same and my attention is never the thing holding it up.
 
 - - -
 
