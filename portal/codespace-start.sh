@@ -16,6 +16,14 @@ git checkout -- content/portal/manifest.json 2>/dev/null
 git fetch origin "$BRANCH" 2>/dev/null
 git pull --no-rebase --no-edit -X ours origin "$BRANCH" 2>/dev/null || true
 
+# 3b) guarantee a readable manifest before the server starts (so the portal can never hang on LOADING).
+#     If the working file is broken, restore the committed one; if HEAD is broken too, rebuild from disk.
+if ! python3 -c "import json; json.load(open('content/portal/manifest.json'))" 2>/dev/null; then
+  echo "manifest unreadable - restoring / rebuilding..."
+  git checkout -- content/portal/manifest.json 2>/dev/null
+  python3 -c "import json; json.load(open('content/portal/manifest.json'))" 2>/dev/null || python3 portal/scan.py
+fi
+
 # 4) start the server (bind 0.0.0.0 so Codespaces forwards it; the port stays Private)
 PORTAL_HOST=0.0.0.0 nohup python3 portal/server.py > /tmp/portal.log 2>&1 &
 sleep 1
