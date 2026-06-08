@@ -47,7 +47,7 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 .cv-bar{display:flex;align-items:center;justify-content:space-between;padding:10px 15px;border-bottom:1px solid var(--rule);background:rgba(255,255,255,.025);}
 .cv-nm{font-size:14px;font-weight:800;color:var(--ivory);letter-spacing:-.2px;}
 .cv-act{display:flex;gap:7px;}.cv-act i{width:25px;height:25px;border-radius:7px;background:rgba(250,250,247,.05);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;}.cv-act i svg{width:14px;height:14px;}
-.gaud{flex:1;display:flex;flex-direction:column;padding:15px 18px;gap:14px;min-height:0;}
+.gaud{flex:1;display:flex;flex-direction:column;padding:13px 16px;gap:11px;min-height:0;}
 .gaud-h{display:flex;align-items:center;gap:11px;flex-shrink:0;}
 .gaud-co{display:flex;align-items:center;gap:8px;font-size:16.5px;font-weight:800;color:var(--ivory);letter-spacing:-.3px;}
 .gaud-tag{font-family:'DM Mono',monospace;font-size:8px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--book);background:rgba(204,120,92,.12);border:1px solid rgba(204,120,92,.3);padding:3px 7px;border-radius:5px;}
@@ -60,22 +60,26 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 .gaud-ring .gn{position:absolute;font-size:15px;font-weight:900;color:var(--ivory);line-height:1;}
 .pipe{flex:1;display:flex;align-items:stretch;min-height:0;}
 .pstage{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-width:0;}
-.ptop{position:relative;width:100%;height:50px;display:flex;align-items:center;justify-content:center;}
+.ptop{position:relative;width:100%;height:54px;display:flex;align-items:center;justify-content:center;}
 .ptop::before,.ptop::after{content:'';position:absolute;top:50%;height:2px;background:var(--rule);width:50%;}
 .ptop::before{left:0;}.ptop::after{right:0;}
 .pstage:first-child .ptop::before{display:none;}.pstage:last-child .ptop::after{display:none;}
-.pnode{position:relative;z-index:1;width:40px;height:40px;border-radius:50%;border:2px solid var(--sc);background:var(--scbg);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 5px var(--scbg);}
-.pnode .pdot{width:12px;height:12px;border-radius:50%;background:var(--sc);box-shadow:0 0 8px var(--sc);}
+.pnode{position:relative;z-index:1;width:48px;height:48px;border-radius:50%;background:var(--scbg);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 4px var(--scbg);}
+.pnode svg{position:absolute;inset:0;width:48px;height:48px;transform:rotate(-90deg);}
+.pnode .ptrk{fill:none;stroke:rgba(250,250,247,.12);stroke-width:5;}
+.pnode .parc{fill:none;stroke:var(--sc);stroke-width:5;stroke-linecap:round;}
+.pnode .pv{position:relative;font-family:'DM Mono',monospace;font-size:13.5px;font-weight:600;color:var(--sc);line-height:1;}
 .plabel{font-size:10.5px;font-weight:700;color:var(--ivory);text-align:center;line-height:1.08;}
-.pscore{font-family:'DM Mono',monospace;font-size:12px;font-weight:600;color:var(--sc);line-height:1;}
 .gabove{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:10px;}
 .gabove .glbl{font-family:'DM Mono',monospace;font-size:9.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--book);}
 .glegend{display:flex;gap:13px;}
 .glegend span{display:flex;align-items:center;gap:5px;font-family:'DM Mono',monospace;font-size:8.5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink46);}
 .glegend i{width:8px;height:8px;border-radius:50%;}
-.gbelow{flex-shrink:0;display:flex;align-items:center;gap:12px;background:rgba(204,120,92,.06);border:1px solid var(--rule);border-radius:10px;padding:10px 13px;}
-.gbtag{font-family:'DM Mono',monospace;font-size:8.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--book);flex-shrink:0;}
-.gbv{flex:1;display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;line-height:1.16;min-width:0;}
+.gbelow{flex-shrink:0;display:flex;flex-direction:column;gap:9px;background:rgba(204,120,92,.06);border:1px solid var(--rule);border-radius:10px;padding:11px 14px;}
+.gbhdr{display:flex;align-items:center;justify-content:space-between;}
+.gbnote{font-family:'DM Mono',monospace;font-size:8px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--book-d);}
+.gbrow{display:flex;align-items:center;gap:11px;}
+.gbv{flex:1;display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;line-height:1.14;min-width:0;}
 .gbv.cur{color:var(--ink70);}
 .gbv.rec{color:var(--ivory);}
 .gbv svg{width:14px;height:14px;flex-shrink:0;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
@@ -149,14 +153,14 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 <div class="gaud-h"><div><div class="gaud-co">Acme SaaS <span class="gaud-tag">B2B SAAS</span></div><div class="gaud-sub">6 areas audited &middot; 0 strong &middot; <b>3 critical</b></div></div><div class="gaud-ring"><svg viewBox="0 0 46 46"><circle class="gt" cx="23" cy="23" r="19"/><circle class="ga" cx="23" cy="23" r="19" stroke-dasharray="49 119.4"/></svg><span class="gn">41</span></div></div>
 <div class="gabove"><span class="glbl">GTM pipeline health</span><div class="glegend"><span><i style="background:var(--book-d)"></i>Critical</span><span><i style="background:var(--kraft)"></i>Weak</span><span><i style="background:var(--book)"></i>Strong</span></div></div>
 <div class="pipe">
-<div class="pstage" style="--sc:var(--kraft);--scbg:rgba(212,162,127,.13)"><div class="ptop"><div class="pnode"><div class="pdot"></div></div></div><div class="plabel">ICP</div><div class="pscore">48</div></div>
-<div class="pstage" style="--sc:var(--book-d);--scbg:rgba(200,70,35,.16)"><div class="ptop"><div class="pnode"><div class="pdot"></div></div></div><div class="plabel">Positioning</div><div class="pscore">32</div></div>
-<div class="pstage" style="--sc:var(--book-d);--scbg:rgba(200,70,35,.16)"><div class="ptop"><div class="pnode"><div class="pdot"></div></div></div><div class="plabel">Website</div><div class="pscore">28</div></div>
-<div class="pstage" style="--sc:var(--kraft);--scbg:rgba(212,162,127,.13)"><div class="ptop"><div class="pnode"><div class="pdot"></div></div></div><div class="plabel">Content</div><div class="pscore">45</div></div>
-<div class="pstage" style="--sc:var(--book);--scbg:rgba(204,120,92,.16)"><div class="ptop"><div class="pnode"><div class="pdot"></div></div></div><div class="plabel">Sales</div><div class="pscore">52</div></div>
-<div class="pstage" style="--sc:var(--kraft);--scbg:rgba(212,162,127,.13)"><div class="ptop"><div class="pnode"><div class="pdot"></div></div></div><div class="plabel">Outbound</div><div class="pscore">35</div></div>
+<div class="pstage" style="--sc:var(--kraft);--scbg:rgba(212,162,127,.13)"><div class="ptop"><div class="pnode"><svg viewBox="0 0 48 48"><circle class="ptrk" cx="24" cy="24" r="20"/><circle class="parc" cx="24" cy="24" r="20" stroke-dasharray="60.3 125.7"/></svg><span class="pv">48</span></div></div><div class="plabel">ICP</div></div>
+<div class="pstage" style="--sc:var(--book-d);--scbg:rgba(200,70,35,.16)"><div class="ptop"><div class="pnode"><svg viewBox="0 0 48 48"><circle class="ptrk" cx="24" cy="24" r="20"/><circle class="parc" cx="24" cy="24" r="20" stroke-dasharray="40.2 125.7"/></svg><span class="pv">32</span></div></div><div class="plabel">Positioning</div></div>
+<div class="pstage" style="--sc:var(--book-d);--scbg:rgba(200,70,35,.16)"><div class="ptop"><div class="pnode"><svg viewBox="0 0 48 48"><circle class="ptrk" cx="24" cy="24" r="20"/><circle class="parc" cx="24" cy="24" r="20" stroke-dasharray="35.2 125.7"/></svg><span class="pv">28</span></div></div><div class="plabel">Website</div></div>
+<div class="pstage" style="--sc:var(--kraft);--scbg:rgba(212,162,127,.13)"><div class="ptop"><div class="pnode"><svg viewBox="0 0 48 48"><circle class="ptrk" cx="24" cy="24" r="20"/><circle class="parc" cx="24" cy="24" r="20" stroke-dasharray="56.5 125.7"/></svg><span class="pv">45</span></div></div><div class="plabel">Content</div></div>
+<div class="pstage" style="--sc:var(--book);--scbg:rgba(204,120,92,.16)"><div class="ptop"><div class="pnode"><svg viewBox="0 0 48 48"><circle class="ptrk" cx="24" cy="24" r="20"/><circle class="parc" cx="24" cy="24" r="20" stroke-dasharray="65.3 125.7"/></svg><span class="pv">52</span></div></div><div class="plabel">Sales</div></div>
+<div class="pstage" style="--sc:var(--kraft);--scbg:rgba(212,162,127,.13)"><div class="ptop"><div class="pnode"><svg viewBox="0 0 48 48"><circle class="ptrk" cx="24" cy="24" r="20"/><circle class="parc" cx="24" cy="24" r="20" stroke-dasharray="44.0 125.7"/></svg><span class="pv">35</span></div></div><div class="plabel">Outbound</div></div>
 </div>
-<div class="gbelow"><span class="gbtag">TOP FIX</span><span class="gbv cur"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>ICP lives in a doc, not enforced</span><span class="gbarrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="gbv rec"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>One ICP enforced across all GTM</span></div>
+<div class="gbelow"><div class="gbhdr"><span class="glbl">Audit findings</span><span class="gbnote">2 of 3 critical</span></div><div class="gbrow"><span class="gbv cur"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>ICP lives in a doc, not enforced</span><span class="gbarrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="gbv rec"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>One ICP enforced across all GTM</span></div><div class="gbrow"><span class="gbv cur"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>Website speaks to every segment</span><span class="gbarrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="gbv rec"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>One segment, one clear message</span></div></div>
 </div>
 <div class="cvstats"><span class="cvstat">AREAS <b>6</b></span><span class="cvstat">STRONG <b>0</b></span><span class="cvstat">CRITICAL <b>3</b></span><span class="cvstat">SCORE <b>41</b></span><span class="cvstat">SOURCE <b>chat</b></span><span class="cvstat">EXPORT <b>pdf</b></span></div>
 </div>
