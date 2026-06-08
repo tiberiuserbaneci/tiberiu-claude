@@ -6,8 +6,7 @@
     "reference": 65,
     "crosspost": 0
   },
-  "deleted": [],
-  "materials": [
+  "deleted": [
     {
       "id": "docs-02-routing-ig-story",
       "title": "Routing",
@@ -32,8 +31,11 @@
       "posted": false,
       "posted_date": null,
       "analytics": null,
-      "crossposts": []
-    },
+      "crossposts": [],
+      "deleted_date": "2026-06-08"
+    }
+  ],
+  "materials": [
     {
       "id": "docs-02-platform-overview-linkedin",
       "title": "Platform Overview",
