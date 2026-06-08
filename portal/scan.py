@@ -24,15 +24,17 @@ def channel_of(name):
 def material_id(name):
     """Group key: carousels by slide, linkedin/single by trailing variant/version."""
     if "carousel" in name:
-        return name.split("-carousel")[0] + "-tiktok-carousel"
+        # channel lives in the filename: '<x>-carousel' = LinkedIn, '<x>-tiktok-carousel' = TikTok.
+        # Keep that suffix as-is instead of forcing every carousel to read 'tiktok'.
+        return name.split("-carousel")[0] + "-carousel"
     toks = name.split("-")
     while len(toks) > 2 and is_variant(toks[-1]):
         toks.pop()
     return "-".join(toks)
 
 def slug_prefix(mid):
-    """docs-05-jobs-linkedin -> docs-05-jobs ; docs-05-jobs-tiktok-carousel -> docs-05-jobs"""
-    for ch in ("-tiktok","-linkedin","-ig","-instagram"):
+    """docs-05-jobs-linkedin -> docs-05-jobs ; docs-08-x-carousel / docs-08-x-tiktok-carousel -> docs-08-x"""
+    for ch in ("-tiktok","-linkedin","-ig","-instagram","-carousel"):
         if ch in mid: return mid.split(ch)[0]
     return mid
 
