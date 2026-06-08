@@ -138,6 +138,8 @@ async function load(){
  if(LB){curMat()?renderLB():closeLB();}
 }
 
+// newest generated_date first (top-left); id is a stable tie-breaker for same-day items
+function byNewest(a,b){return (b.generated_date||'').localeCompare(a.generated_date||'')||(a.id<b.id?-1:a.id>b.id?1:0);}
 function render(){
  document.getElementById('gen').textContent='generated '+DATA.generated_at.replace('T',' ');
  const tabs=document.getElementById('tabs');
@@ -147,7 +149,7 @@ function render(){
  document.getElementById('filters').innerHTML=FILTERS.map(([k,l])=>{const dn=DATA.deleted.length;const extra=(k==='removed'&&dn)?` <span style="opacity:.6">${dn}</span>`:'';return `<button class="fl ${k==='removed'?'rem':''} ${filters.has(k)?'on':''}" onclick="tg('${k}')">${l}${extra}</button>`}).join('');
 
  if(filters.has('removed')){
-  let list=DATA.deleted.filter(m=>channel==='all'||m.channel===channel);
+  let list=DATA.deleted.filter(m=>channel==='all'||m.channel===channel).sort(byNewest);
   document.getElementById('count').textContent=list.length+' removed';
   document.getElementById('empty').style.display=list.length?'none':'block';
   document.getElementById('grid').innerHTML=list.map(remCard).join('');
@@ -161,12 +163,19 @@ function render(){
  if(filters.has('needs-revision'))list=list.filter(m=>m.status==='needs-revision');
  if(filters.has('generated'))list=list.filter(m=>m.source==='generated');
  if(filters.has('crosspost'))list=list.filter(m=>m.source==='crosspost');
+ list.sort(byNewest);
  document.getElementById('count').textContent=list.length+' materials';
  document.getElementById('empty').style.display=list.length?'none':'block';
  document.getElementById('grid').innerHTML=list.map(card).join('');
 }
 function setCh(c){channel=c;render();}
-function tg(f){if(f==='removed'&&!filters.has('removed')){filters.clear();}else{filters.delete('removed');}filters.has(f)?filters.delete(f):filters.add(f);render();}
+// opposite pairs can never both be active (posted AND not-posted = empty); picking one drops its opposite
+const EXCL={posted:'unposted',unposted:'posted',generated:'crosspost',crosspost:'generated'};
+function tg(f){
+ if(f==='removed'&&!filters.has('removed')){filters.clear();}else{filters.delete('removed');}
+ if(filters.has(f)){filters.delete(f);}else{filters.add(f);if(EXCL[f])filters.delete(EXCL[f]);}
+ render();
+}
 
 function cbox(label,txt){if(!txt)return '';const id='t'+Math.random().toString(36).slice(2);
  return `<div class="cbox"><div class="ch"><span>${label}</span><button class="copy" onclick="cp(this,'${id}')">copy</button></div><textarea id="${id}" readonly>${esc(txt)}</textarea></div>`;}
