@@ -1,0 +1,187 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+/* BUDGET: 1390px vertical (1450 - 36 top - 24 bottom). hero ~120 + flow(flex:1: band 78 + arrow 24 + focal flex + arrow 24 + kinds 252 + arrow 24 + band 78) + cta 80 + ftr 58. focal is the one dominant flex section. */
+:root{--slate:#191919;--slate2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--cloud:#919180;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;}
+.frame{width:1080px;height:1450px;background:var(--slate);padding:36px 44px 24px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;}
+.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.4px,transparent 1.5px);background-size:30px 30px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 56% 26% at 88% -1%,rgba(204,120,92,.18) 0%,transparent 60%),radial-gradient(ellipse 50% 22% at 4% 101%,rgba(212,162,127,.09) 0%,transparent 60%);}
+.frame>*{position:relative;z-index:2;}
+.hero{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:20px;padding-bottom:13px;border-bottom:1px solid var(--rule);margin-bottom:11px;}
+.eye{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--book);margin-bottom:8px;}
+.hook{font-weight:900;font-size:47px;line-height:.96;letter-spacing:-1.5px;}.hook em{color:var(--book);font-style:normal;}
+.sub{margin-top:8px;font-size:16.5px;font-weight:500;line-height:1.34;color:var(--ink70);max-width:610px;}.sub b{color:var(--ivory);font-weight:700;}
+.donut-w{flex-shrink:0;position:relative;width:112px;height:112px;display:flex;align-items:center;justify-content:center;}
+.donut{width:112px;height:112px;transform:rotate(-90deg);filter:drop-shadow(0 0 16px rgba(204,120,92,.4));}
+.donut .trk{fill:none;stroke:var(--ink14);stroke-width:9;}.donut .arc{fill:none;stroke:var(--book);stroke-width:9;stroke-linecap:round;}
+.donut-c{position:absolute;display:flex;flex-direction:column;align-items:center;}
+.donut-n{font-weight:900;font-size:30px;color:var(--book);line-height:.8;}.donut-l{font-family:'DM Mono',monospace;font-size:8.5px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--ink46);margin-top:5px;}
+.flow{flex:1;display:flex;flex-direction:column;min-height:0;}
+.arrow{flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--book);height:24px;position:relative;}
+.arrow .lbl{position:absolute;left:calc(50% + 18px);font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink46);white-space:nowrap;}
+.arrow svg{width:20px;height:20px;stroke:var(--book);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.band{flex-shrink:0;background:rgba(38,38,37,.5);border:1px solid var(--ink14);border-radius:14px;padding:13px 20px;display:flex;align-items:center;gap:18px;}
+.band .bt{flex-shrink:0;}
+.band .bt .k{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--book);margin-bottom:4px;}
+.band .bt .h{font-size:18px;font-weight:800;letter-spacing:-.3px;color:var(--ivory);line-height:1.1;max-width:300px;}
+.chips{display:flex;gap:10px;flex:1;justify-content:flex-end;flex-wrap:wrap;}
+.chip{display:flex;align-items:center;gap:9px;background:rgba(204,120,92,.08);border:1px solid rgba(204,120,92,.28);border-radius:10px;padding:8px 13px;}
+.chip .ci{width:18px;height:18px;flex-shrink:0;}.chip .ci svg{width:100%;height:100%;}
+.chip .ct{font-size:13.5px;font-weight:700;color:var(--ivory);line-height:1.05;}.chip .cs{display:block;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;color:var(--ink46);margin-top:2px;}
+/* FOCAL = chat -> canvas split (the one dominant flex section) */
+.focal{flex:1;min-height:0;background:rgba(204,120,92,.07);border:1.5px solid var(--book);border-radius:18px;box-shadow:0 0 50px rgba(204,120,92,.14);padding:16px 20px;display:flex;flex-direction:column;overflow:hidden;}
+.focal-h{display:flex;align-items:baseline;gap:12px;flex-shrink:0;padding-bottom:11px;border-bottom:1px solid var(--rule);}
+.focal-h .h{font-size:23px;font-weight:900;letter-spacing:-.5px;color:var(--ivory);}.focal-h .h em{color:var(--book);font-style:normal;}
+.focal-h .meta{margin-left:auto;font-family:'DM Mono',monospace;font-size:11px;color:var(--ink46);}.focal-h .meta b{color:var(--kraft);font-weight:700;}
+.split2{flex:1;min-height:0;display:flex;align-items:stretch;gap:16px;padding-top:13px;}
+.chatcol{width:31%;display:flex;flex-direction:column;justify-content:center;gap:12px;flex-shrink:0;}
+.cbub{padding:12px 15px;font-size:13.5px;font-weight:600;line-height:1.32;max-width:97%;}
+.cbub.u{background:rgba(204,120,92,.16);border:1px solid rgba(204,120,92,.34);color:var(--ivory);align-self:flex-end;border-radius:14px 14px 4px 14px;}
+.cbub.a{background:var(--slate2);border:1px solid var(--rule);color:var(--ink70);align-self:flex-start;border-radius:14px 14px 14px 4px;}
+.cbub.a b{color:var(--ivory);font-weight:700;}
+.chint{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.03em;color:var(--ink46);line-height:1.4;margin-top:2px;}
+.sarrow2{flex-shrink:0;align-self:center;display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--book);}
+.sarrow2 svg{width:32px;height:32px;stroke:var(--book);stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.sarrow2 span{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink46);writing-mode:vertical-rl;}
+.cv{flex:1;min-width:0;background:rgba(0,0,0,.26);border:1px solid var(--rule);border-radius:14px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.34);}
+.cv-bar{display:flex;align-items:center;justify-content:space-between;padding:10px 15px;border-bottom:1px solid var(--rule);background:rgba(255,255,255,.025);}
+.cv-nm{font-size:14px;font-weight:800;color:var(--ivory);letter-spacing:-.2px;}
+.cv-act{display:flex;gap:7px;}.cv-act i{width:25px;height:25px;border-radius:7px;background:rgba(250,250,247,.05);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;}.cv-act i svg{width:14px;height:14px;}
+.cvtbl{flex:1;display:flex;flex-direction:column;}
+.cvr{display:grid;grid-template-columns:1.3fr .55fr .85fr .6fr .55fr;gap:8px;align-items:center;padding:0 15px;border-bottom:1px solid rgba(250,250,247,.05);}
+.cvtbl .cvr{flex:1;}
+.cvr:last-child{border-bottom:none;}
+.cvr span{font-size:13.5px;font-weight:700;color:var(--ivory);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.cvr.h{background:rgba(255,255,255,.03);}
+.cvr.h span{font-family:'DM Mono',monospace;font-size:9.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--ink46);}
+.cvr .srt,.cvr.h .srt{color:var(--book);}
+.cvr .up{color:var(--kraft);font-size:11px;font-family:'DM Mono',monospace;}.cvr .dn{color:var(--book-d);font-size:11px;font-family:'DM Mono',monospace;}.cvr .fl{color:var(--ink46);font-size:11px;font-family:'DM Mono',monospace;}
+.edit{position:relative;color:var(--book) !important;}
+.edit::after{content:'';display:inline-block;width:2px;height:14px;background:var(--book);margin-left:2px;vertical-align:-2px;box-shadow:0 0 6px var(--book);}
+.cvstats{flex-shrink:0;display:flex;gap:7px;padding:9px 13px;border-top:1px solid var(--rule);background:rgba(255,255,255,.02);flex-wrap:wrap;}
+.cvstat{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.03em;color:var(--ink46);}.cvstat b{color:var(--book);font-weight:600;}
+/* KINDS strip */
+.mod{flex-shrink:0;margin-top:13px;}
+.sec{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--book);margin-bottom:9px;display:flex;justify-content:space-between;}
+.sec .sx{color:var(--ink30);}
+.kinds{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;}
+.kcard{background:rgba(255,255,255,.03);border:1px solid var(--rule);border-top:3px solid var(--c);border-radius:12px;padding:12px 13px;display:flex;flex-direction:column;}
+.kcard.on{background:rgba(204,120,92,.1);border-color:rgba(204,120,92,.4);box-shadow:0 0 22px rgba(204,120,92,.14);}
+.fct{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;gap:6px;}
+.fk{font-family:'DM Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.05em;color:var(--ink70);background:rgba(250,250,247,.05);border:1px solid var(--rule);padding:3px 8px;border-radius:5px;}
+.kbest{font-family:'DM Mono',monospace;font-size:8.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--c);}
+.ftop{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;}
+.ftt{font-size:16px;font-weight:800;letter-spacing:-.3px;color:var(--ivory);line-height:1.05;flex:1;}
+.fnumw{text-align:right;flex-shrink:0;}
+.fnum{font-size:26px;font-weight:900;line-height:.82;letter-spacing:-.6px;color:var(--ivory);}
+.funit{font-family:'DM Mono',monospace;font-size:8.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink46);margin-top:3px;}
+.fdesc{font-size:12px;font-weight:500;color:var(--ink46);line-height:1.3;margin-top:5px;}
+.fr{flex:1;margin-top:8px;display:flex;flex-direction:column;border-top:1px dotted rgba(204,120,92,.3);padding-top:4px;}
+.fr .row{flex:1;display:flex;justify-content:space-between;align-items:center;gap:8px;border-bottom:1px solid rgba(250,250,247,.06);}
+.fr .row:last-child{border-bottom:none;}
+.fr .rk{font-family:'DM Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--ink46);white-space:nowrap;}
+.fr .rv{font-size:13.5px;font-weight:800;color:var(--ivory);text-align:right;letter-spacing:-.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.kcard.on .fr .rv{color:var(--ivory);}
+.cta{flex-shrink:0;margin-top:11px;display:flex;align-items:stretch;border:1px solid var(--book);border-radius:13px;overflow:hidden;box-shadow:0 0 40px rgba(204,120,92,.16);}
+.cta-l{flex:1;padding:15px 24px;display:flex;flex-direction:column;justify-content:center;gap:4px;background:rgba(204,120,92,.07);}
+.cta-k{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink46);}
+.cta-t{font-size:22px;font-weight:700;color:var(--ivory);line-height:1.2;}.cta-t b{color:var(--book);font-weight:900;}
+.cta-chip{flex-shrink:0;padding:0 30px;gap:11px;background:var(--book);display:flex;align-items:center;font-size:23px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#1a0f0a;}
+.cta-chip svg{width:24px;height:24px;stroke:#1a0f0a;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ftr{flex-shrink:0;margin-top:11px;display:flex;align-items:center;justify-content:space-between;gap:18px;border-top:1px solid var(--rule);padding-top:12px;}
+.fl-ftr{display:flex;align-items:center;gap:12px;min-width:0;}.flogo{width:34px;height:34px;border-radius:50%;object-fit:cover;}
+.ftx{font-family:'DM Mono',monospace;font-size:12px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--ink70);}.ftx b{color:var(--ivory);font-weight:500;}
+.furl{font-weight:900;font-size:21px;letter-spacing:-.5px;color:var(--ivory);}.furl em{color:var(--book);font-style:normal;}
+</style></head><body><div class="frame" id="artifact"><div class="atm"></div>
+
+<div class="hero"><div>
+<div class="eye">Ultron Platform &middot; Builder</div>
+<div class="hook">I stopped reading walls of text.<br><em>Claude builds the canvas.</em></div>
+<div class="sub">When an answer has structure, Claude renders it as an <b>editable canvas</b> in the Builder tab. The chat reply stays one line.</div>
+</div>
+<div class="donut-w"><svg class="donut" viewBox="0 0 100 100"><circle class="trk" cx="50" cy="50" r="42"/><circle class="arc" cx="50" cy="50" r="42" stroke-dasharray="232.2 263.9"/></svg><div class="donut-c"><div class="donut-n">88%</div><div class="donut-l">On canvas</div></div></div></div>
+
+<div class="flow">
+
+<div class="band"><div class="bt"><div class="k">It starts</div><div class="h">An answer that has structure, not prose</div></div><div class="chips">
+<div class="chip"><span class="ci"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="#CC785C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></g></svg></span><span><span class="ct">Asks to compare</span><span class="cs">4 vendors, 9 fields</span></span></div>
+<div class="chip"><span class="ci"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="#CC785C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m12 14l4-4M3.34 19a10 10 0 1 1 17.32 0"/></svg></span><span><span class="ct">Asks to rank</span><span class="cs">score vs your ICP</span></span></div>
+<div class="chip"><span class="ci"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="#CC785C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M11 5h10m-10 7h10m-10 7h10M4 4h1v5M4 9h2m.5 11H3.4c0-1 2.6-1.925 2.6-3.5a1.5 1.5 0 0 0-2.6-1.02"/></g></svg></span><span><span class="ct">Asks to plan</span><span class="cs">steps over time</span></span></div>
+</div></div>
+
+<div class="arrow"><svg viewBox="0 0 24 24"><path d="M12 4v16M6 14l6 6 6-6"/></svg><span class="lbl">Claude renders it on the right, not as a wall of text</span></div>
+
+<div class="focal"><div class="focal-h"><div class="h">Chat is the wrong shape. <em>Builder is the right one.</em></div><div class="meta">Builder &middot; <b>live canvas</b></div></div>
+<div class="split2">
+<div class="chatcol">
+<div class="cbub u">Compare these 4 vendors on price, support and fit.</div>
+<div class="cbub a">Done. It is a sortable <b>comparison table</b> in Builder.</div>
+<div class="chint">The chat reply stays one line. The structure goes to the canvas.</div>
+</div>
+<div class="sarrow2"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span>renders as</span></div>
+<div class="cv">
+<div class="cv-bar"><span class="cv-nm">Vendor comparison</span><div class="cv-act"><i><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="#CC785C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></g></svg></i><i><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="#CC785C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.59 13.51l6.83 3.98m-.01-10.98l-6.82 3.98"/></g></svg></i></div></div>
+<div class="cvtbl">
+<div class="cvr h"><span>Vendor</span><span>Price</span><span>Support</span><span>Trend</span><span class="srt">Fit</span></div>
+<div class="cvr"><span>Acme</span><span>$$</span><span>24/7</span><span class="up">up</span><span class="edit srt">92</span></div>
+<div class="cvr"><span>Beta</span><span>$</span><span>Biz hrs</span><span class="fl">flat</span><span class="srt">78</span></div>
+<div class="cvr"><span>Gamma</span><span>$$$</span><span>24/7</span><span class="up">up</span><span class="srt">88</span></div>
+<div class="cvr"><span>Delta</span><span>$$</span><span>Email</span><span class="dn">down</span><span class="srt">64</span></div>
+<div class="cvr"><span>Echo</span><span>$$</span><span>24/7</span><span class="up">up</span><span class="srt">81</span></div>
+<div class="cvr"><span>Golf</span><span>$$$</span><span>24/7</span><span class="up">up</span><span class="srt">90</span></div>
+</div>
+<div class="cvstats"><span class="cvstat">ROWS <b>6</b></span><span class="cvstat">COLS <b>5</b></span><span class="cvstat">SORT <b>on</b></span><span class="cvstat">EDIT <b>live</b></span><span class="cvstat">SOURCE <b>chat</b></span><span class="cvstat">EXPORT <b>csv</b></span></div>
+</div>
+</div></div>
+
+<div class="arrow"><svg viewBox="0 0 24 24"><path d="M12 4v16M6 14l6 6 6-6"/></svg><span class="lbl">the agent picks the kind that fits the answer</span></div>
+
+<div class="mod"><div class="sec"><span>Four kinds of canvas</span><span class="sx">the agent picks the fit</span></div>
+<div class="kinds">
+
+<div class="kcard on" style="--c:var(--book)">
+<div class="fct"><span class="fk">01 TABLE</span><span class="kbest">most common</span></div>
+<div class="ftop"><div class="ftt">Comparison table</div><div class="fnumw"><div class="fnum" style="color:var(--book)">9</div><div class="funit">COLS</div></div></div>
+<div class="fdesc">Options vs criteria, side by side.</div>
+<div class="fr"><div class="row"><span class="rk">Rows</span><span class="rv">80</span></div><div class="row"><span class="rk">Cols</span><span class="rv">9</span></div><div class="row"><span class="rk">Sort</span><span class="rv">yes</span></div><div class="row"><span class="rk">Edit</span><span class="rv">live</span></div><div class="row"><span class="rk">Filter</span><span class="rv">yes</span></div><div class="row"><span class="rk">Export</span><span class="rv">csv</span></div></div>
+</div>
+
+<div class="kcard" style="--c:var(--kraft)">
+<div class="fct"><span class="fk">02 SCORE</span><span class="kbest">ranked</span></div>
+<div class="ftop"><div class="ftt">Score card</div><div class="fnumw"><div class="fnum">100</div><div class="funit">Max</div></div></div>
+<div class="fdesc">Weighted, with a total and a rank.</div>
+<div class="fr"><div class="row"><span class="rk">Criteria</span><span class="rv">5</span></div><div class="row"><span class="rk">Weights</span><span class="rv">yes</span></div><div class="row"><span class="rk">Total</span><span class="rv">auto</span></div><div class="row"><span class="rk">Rank</span><span class="rv">by total</span></div><div class="row"><span class="rk">Ties</span><span class="rv">broken</span></div><div class="row"><span class="rk">Keep</span><span class="rv">top 10</span></div></div>
+</div>
+
+<div class="kcard" style="--c:var(--book-d)">
+<div class="fct"><span class="fk">03 SEQUENCE</span><span class="kbest">timed</span></div>
+<div class="ftop"><div class="ftt">Sequence</div><div class="fnumw"><div class="fnum">7</div><div class="funit">Steps</div></div></div>
+<div class="fdesc">Steps over time, with owners.</div>
+<div class="fr"><div class="row"><span class="rk">Steps</span><span class="rv">7</span></div><div class="row"><span class="rk">Owner</span><span class="rv">each</span></div><div class="row"><span class="rk">Due</span><span class="rv">date</span></div><div class="row"><span class="rk">Deps</span><span class="rv">yes</span></div><div class="row"><span class="rk">Status</span><span class="rv">live</span></div><div class="row"><span class="rk">View</span><span class="rv">timeline</span></div></div>
+</div>
+
+<div class="kcard" style="--c:var(--cloud)">
+<div class="fct"><span class="fk">04 BLUEPRINT</span><span class="kbest">doc</span></div>
+<div class="ftop"><div class="ftt">Blueprint</div><div class="fnumw"><div class="fnum">6</div><div class="funit">Sections</div></div></div>
+<div class="fdesc">Named prose sections you can edit.</div>
+<div class="fr"><div class="row"><span class="rk">Sections</span><span class="rv">6</span></div><div class="row"><span class="rk">Format</span><span class="rv">md</span></div><div class="row"><span class="rk">Edit</span><span class="rv">inline</span></div><div class="row"><span class="rk">Links</span><span class="rv">yes</span></div><div class="row"><span class="rk">Export</span><span class="rv">md</span></div><div class="row"><span class="rk">Uses</span><span class="rv">PRD</span></div></div>
+</div>
+
+</div></div>
+
+<div class="arrow"><svg viewBox="0 0 24 24"><path d="M12 4v16M6 14l6 6 6-6"/></svg><span class="lbl">then get it out, in one click</span></div>
+
+<div class="band"><div class="bt"><div class="k">It ends</div><div class="h">Get it out, in one click</div></div><div class="chips">
+<div class="chip"><span class="ci"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="#CC785C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></g></svg></span><span class="ct">Copy markdown</span></div>
+<div class="chip"><span class="ci"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="#CC785C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 15V3m9 12v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10l5 5l5-5"/></g></svg></span><span class="ct">Download CSV</span></div>
+<div class="chip"><span class="ci"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="#CC785C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.59 13.51l6.83 3.98m-.01-10.98l-6.82 3.98"/></g></svg></span><span class="ct">Share link</span></div>
+<div class="chip"><span class="ci"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="#CC785C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 9a2.4 2.4 0 0 0-.706-1.706l-3.588-3.588A2.4 2.4 0 0 0 15 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2z"/><path d="M15 3v5a1 1 0 0 0 1 1h5"/></g></svg></span><span class="ct">Push to note</span></div>
+</div></div>
+
+</div>
+
+<div class="cta"><div class="cta-l"><div class="cta-k">Save this. Then</div><div class="cta-t">Comment <b>BUILDER</b> for the full canvas playbook.</div></div><div class="cta-chip">BUILDER <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+
+<div class="ftr"><div class="fl-ftr"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS &middot; PLATFORM</div></div><div class="furl">51ultron<em>.</em>com</div></div>
+
+</div></body></html>
