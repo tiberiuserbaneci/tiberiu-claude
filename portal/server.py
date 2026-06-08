@@ -35,6 +35,12 @@ def load():
         raise
 
 def save(m):
+    if "materials" in m:   # keep counts in sync with the array on every write (delete/restore left total stale)
+        mats = m["materials"]
+        m["counts"] = {"total": len(mats),
+                       "generated": sum(1 for x in mats if x.get("source") == "generated"),
+                       "reference": sum(1 for x in mats if x.get("source") == "reference"),
+                       "crosspost": sum(1 for x in mats if x.get("source") == "crosspost")}
     tmp = MANIFEST.with_name(MANIFEST.name + ".tmp")
     tmp.write_text(json.dumps(m, indent=2))
     os.replace(tmp, MANIFEST)   # atomic: a concurrent reader / git add never sees a half-written file
