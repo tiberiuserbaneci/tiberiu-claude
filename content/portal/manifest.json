@@ -64,6 +64,33 @@
       "analytics": null,
       "crossposts": [],
       "deleted_date": "2026-06-08"
+    },
+    {
+      "id": "ref-2026-linkedin-algorithm",
+      "title": "Ref 2026",
+      "channel": "linkedin",
+      "type": "single",
+      "slides": 1,
+      "dims": "2160x2700",
+      "preview": "content/ref-2026-linkedin-algorithm-cheatsheet.png",
+      "download": "content/ref-2026-linkedin-algorithm-cheatsheet.png",
+      "files": [
+        "content/ref-2026-linkedin-algorithm-cheatsheet.png"
+      ],
+      "variants": [
+        "cheatsheet"
+      ],
+      "caption": "",
+      "alt": "",
+      "first_comment": "",
+      "generated_date": "2026-06-02",
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": [],
+      "deleted_date": "2026-06-08"
     }
   ],
   "materials": [
@@ -234,32 +261,6 @@
       "alt": "",
       "first_comment": "",
       "generated_date": "2026-06-05",
-      "source": "generated",
-      "status": "ready",
-      "posted": false,
-      "posted_date": null,
-      "analytics": null,
-      "crossposts": []
-    },
-    {
-      "id": "ref-2026-linkedin-algorithm",
-      "title": "Ref 2026",
-      "channel": "linkedin",
-      "type": "single",
-      "slides": 1,
-      "dims": "2160x2700",
-      "preview": "content/ref-2026-linkedin-algorithm-cheatsheet.png",
-      "download": "content/ref-2026-linkedin-algorithm-cheatsheet.png",
-      "files": [
-        "content/ref-2026-linkedin-algorithm-cheatsheet.png"
-      ],
-      "variants": [
-        "cheatsheet"
-      ],
-      "caption": "",
-      "alt": "",
-      "first_comment": "",
-      "generated_date": "2026-06-02",
       "source": "generated",
       "status": "ready",
       "posted": false,
