@@ -1019,8 +1019,8 @@
       "generated_date": "2026-06-04",
       "source": "generated",
       "status": "ready",
-      "posted": false,
-      "posted_date": null,
+      "posted": true,
+      "posted_date": "2026-06-08",
       "analytics": null,
       "crossposts": []
     },
