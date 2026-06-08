@@ -1,0 +1,70 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+:root{--slate:#191919;--slate2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--cloud:#919180;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;}
+.frame{width:1080px;height:1450px;background:var(--slate);padding:42px 46px 28px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;}
+.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.4px,transparent 1.5px);background-size:30px 30px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 56% 28% at 88% -1%,rgba(204,120,92,.2) 0%,transparent 60%),radial-gradient(ellipse 50% 24% at 4% 101%,rgba(212,162,127,.1) 0%,transparent 60%);}
+.frame>*{position:relative;z-index:2;}
+.hero{flex-shrink:0;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding-bottom:18px;border-bottom:1px solid var(--rule);}
+.eye{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--book);margin-bottom:11px;}
+.hook{font-weight:900;font-size:52px;line-height:.96;letter-spacing:-1.6px;color:var(--ivory);}.hook em{color:var(--book);font-style:normal;}
+.sub{margin-top:13px;font-size:19px;font-weight:500;line-height:1.4;color:var(--ink70);max-width:660px;}.sub b{color:var(--ivory);font-weight:700;}
+.donut-w{flex-shrink:0;position:relative;width:150px;height:150px;display:flex;align-items:center;justify-content:center;}
+.donut{width:150px;height:150px;transform:rotate(-90deg);filter:drop-shadow(0 0 18px rgba(204,120,92,.45));}
+.donut .trk{fill:none;stroke:var(--ink14);stroke-width:9;}.donut .arc{fill:none;stroke:var(--book);stroke-width:9;stroke-linecap:round;}
+.donut-c{position:absolute;display:flex;flex-direction:column;align-items:center;}
+.donut-n{font-weight:900;font-size:38px;color:var(--book);line-height:.8;}.donut-l{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink46);margin-top:6px;text-align:center;}
+.sec{font-family:'DM Mono',monospace;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--book);flex-shrink:0;margin:16px 0 12px;display:flex;justify-content:space-between;}
+.sec .sx{color:var(--ink30);}
+.funnel{flex:1;display:flex;flex-direction:column;min-height:0;justify-content:space-evenly;gap:6px;}
+.frow{display:grid;grid-template-columns:128px 1fr 172px;align-items:center;gap:18px;}
+.ftier{font-family:'DM Mono',monospace;font-size:14px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink70);}
+.frow.on .ftier{color:var(--book);}
+.fbarw{height:42px;background:rgba(250,250,247,.04);border-radius:8px;overflow:hidden;border:1px solid var(--rule);}
+.fbar{height:100%;border-radius:8px;background:var(--bc);}
+.frow.on .fbar{box-shadow:0 0 18px var(--book);}
+.fcount{font-family:'DM Mono',monospace;font-size:17px;text-align:right;color:var(--ivory);font-weight:700;}
+.fcount span{color:var(--ink46);font-weight:500;font-size:12px;margin-left:7px;}
+.frow.on .fcount{color:var(--book);}
+.fnote{flex-shrink:0;font-size:18px;font-weight:500;line-height:1.4;color:var(--ink70);margin-top:14px;}.fnote b{color:var(--book);font-weight:800;}
+.wsec{flex-shrink:0;display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin:18px 0 11px;}
+.wsec .wl{font-weight:800;font-size:21px;letter-spacing:-.5px;color:var(--ivory);}.wsec .wl em{color:var(--book);font-style:normal;}
+.wsec .wr{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--book-d);white-space:nowrap;}
+.wedge{flex-shrink:0;display:grid;grid-template-columns:repeat(3,1fr);gap:13px;}
+.wcard{background:rgba(200,70,35,.06);border:1px solid var(--rule);border-top:3px solid var(--book-d);border-radius:13px;padding:18px 18px 16px;display:flex;flex-direction:column;}
+.wdim{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink46);}
+.wnum{font-weight:900;font-size:46px;color:var(--book-d);line-height:.85;margin:7px 0 2px;}.wnum span{font-size:13px;color:var(--ink46);font-family:'DM Mono',monospace;font-weight:600;margin-left:5px;}
+.wbar{height:5px;border-radius:3px;background:var(--ink14);overflow:hidden;margin:9px 0 13px;}.wbar i{display:block;height:100%;background:var(--book-d);}
+.wship{font-size:15px;font-weight:700;color:var(--ivory);line-height:1.25;margin-top:auto;}
+.wtag{font-family:'DM Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--book);margin-top:7px;}
+.cta{flex-shrink:0;margin-top:16px;display:flex;align-items:stretch;border:1px solid var(--book);border-radius:13px;overflow:hidden;box-shadow:0 0 44px rgba(204,120,92,.18);}
+.cta-l{flex:1;padding:17px 26px;display:flex;flex-direction:column;justify-content:center;gap:5px;background:rgba(204,120,92,.07);}
+.cta-k{font-family:'DM Mono',monospace;font-size:14px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink46);}
+.cta-t{font-size:22px;font-weight:700;color:var(--ivory);line-height:1.2;}.cta-t b{color:var(--book);font-weight:900;}
+.cta-chip{flex-shrink:0;padding:0 30px;gap:12px;background:var(--book);display:flex;align-items:center;font-size:25px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#1a0f0a;}
+.cta-chip svg{width:25px;height:25px;stroke:#1a0f0a;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ftr{flex-shrink:0;margin-top:13px;display:flex;align-items:center;justify-content:space-between;gap:18px;border-top:1px solid var(--rule);padding-top:15px;}
+.fl{display:flex;align-items:center;gap:14px;min-width:0;}.flogo{width:40px;height:40px;border-radius:50%;object-fit:cover;}
+.ftx{font-family:'DM Mono',monospace;font-size:14px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--ink70);}.ftx b{color:var(--ivory);font-weight:500;}
+.furl{font-weight:900;font-size:23px;letter-spacing:-.6px;color:var(--ivory);}.furl em{color:var(--book);font-style:normal;}
+</style></head><body><div class="frame" id="artifact"><div class="atm"></div>
+<div class="hero"><div><div class="eye">Ultron &middot; The AI-Native Index</div><div class="hook">I scored 58,351 companies on AI-readiness. <em>408 passed.</em></div><div class="sub">An independent benchmark, six dimensions, 0 to 100. <b>Just 0.7% are truly AI-native.</b> The three the market is weakest on are the three Ultron ships.</div></div><div class="donut-w"><svg class="donut" viewBox="0 0 100 100"><circle class="trk" cx="50" cy="50" r="42"/><circle class="arc" cx="50" cy="50" r="42" stroke-dasharray="1.85 263.9"/></svg><div class="donut-c"><div class="donut-n">0.7%</div><div class="donut-l">AI-Native<br>408 of 58,351</div></div></div></div>
+<div class="sec"><span>AI-readiness, 58,351 companies</span><span class="sx">$1.8T revenue indexed</span></div>
+<div class="funnel">
+<div class="frow" style="--bc:var(--ink30)"><div class="ftier">Absent</div><div class="fbarw"><div class="fbar" style="width:1%"></div></div><div class="fcount">121<span>0.2%</span></div></div>
+<div class="frow" style="--bc:var(--cloud)"><div class="ftier">Aware</div><div class="fbarw"><div class="fbar" style="width:15.6%"></div></div><div class="fcount">4,586<span>7.9%</span></div></div>
+<div class="frow" style="--bc:var(--kraft)"><div class="ftier">Adopting</div><div class="fbarw"><div class="fbar" style="width:80.6%"></div></div><div class="fcount">23,765<span>40.7%</span></div></div>
+<div class="frow" style="--bc:var(--kraft)"><div class="ftier">Enabled</div><div class="fbarw"><div class="fbar" style="width:100%"></div></div><div class="fcount">29,471<span>50.5%</span></div></div>
+<div class="frow on" style="--bc:var(--book)"><div class="ftier">Native</div><div class="fbarw"><div class="fbar" style="width:1.4%"></div></div><div class="fcount">408<span>0.7%</span></div></div>
+</div>
+<div class="fnote">Half the market is stuck at <b>Aware or Adopting</b>. Reaching Native is rarer than <b>1 in 100</b>.</div>
+<div class="wsec"><div class="wl">The wedge: <em>the 3 weakest dimensions are the 3 Ultron ships</em></div><div class="wr">market average, of 100</div></div>
+<div class="wedge">
+<div class="wcard"><div class="wdim">Moat</div><div class="wnum">47<span>/100</span></div><div class="wbar"><i style="width:47%"></i></div><div class="wship">A proprietary data flywheel</div><div class="wtag">Ultron ships this</div></div>
+<div class="wcard"><div class="wdim">Ops</div><div class="wnum">52<span>/100</span></div><div class="wbar"><i style="width:52%"></i></div><div class="wship">Agent-run operations</div><div class="wtag">Ultron ships this</div></div>
+<div class="wcard"><div class="wdim">Proof</div><div class="wnum">52<span>/100</span></div><div class="wbar"><i style="width:52%"></i></div><div class="wship">An automated case-study engine</div><div class="wtag">Ultron ships this</div></div>
+</div>
+<div class="cta"><div class="cta-l"><div class="cta-k">Save this. Then</div><div class="cta-t">Comment <b>INDEX</b> to score your own company in under a minute.</div></div><div class="cta-chip">INDEX <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+<div class="ftr"><div class="fl"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS &middot; THE AI-NATIVE INDEX</div></div><div class="furl">51ultron<em>.</em>com</div></div>
+</div></body></html>
