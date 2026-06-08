@@ -191,6 +191,31 @@
       "analytics": null,
       "crossposts": [],
       "deleted_date": "2026-06-08"
+    },
+    {
+      "id": "script-32-linkedin-v1",
+      "title": "Script  32",
+      "channel": "linkedin",
+      "type": "single",
+      "slides": 1,
+      "dims": "1080x1450",
+      "preview": "content/portal/thumbs/script-32-linkedin-v1.png",
+      "download": "content/script-32-linkedin-v1.html",
+      "files": [
+        "content/script-32-linkedin-v1.html"
+      ],
+      "variants": [],
+      "caption": "",
+      "alt": "",
+      "first_comment": "",
+      "generated_date": "2026-06-01",
+      "source": "reference",
+      "status": "needs-revision",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": [],
+      "deleted_date": "2026-06-08"
     }
   ],
   "materials": [
@@ -1410,30 +1435,6 @@
       "download": "content/script-31-linkedin-v1.html",
       "files": [
         "content/script-31-linkedin-v1.html"
-      ],
-      "variants": [],
-      "caption": "",
-      "alt": "",
-      "first_comment": "",
-      "generated_date": "2026-06-01",
-      "source": "reference",
-      "status": "needs-revision",
-      "posted": false,
-      "posted_date": null,
-      "analytics": null,
-      "crossposts": []
-    },
-    {
-      "id": "script-32-linkedin-v1",
-      "title": "Script  32",
-      "channel": "linkedin",
-      "type": "single",
-      "slides": 1,
-      "dims": "1080x1450",
-      "preview": "content/portal/thumbs/script-32-linkedin-v1.png",
-      "download": "content/script-32-linkedin-v1.html",
-      "files": [
-        "content/script-32-linkedin-v1.html"
       ],
       "variants": [],
       "caption": "",
