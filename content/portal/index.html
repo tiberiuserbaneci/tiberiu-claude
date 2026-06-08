@@ -123,7 +123,20 @@ function slug(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-
 function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function cap(s){return s.charAt(0).toUpperCase()+s.slice(1);}
 function dlname(m){const ext=m.type==='carousel'?'zip':(m.download.split('.').pop());return `${slug(m.title)}-${m.channel}-${m.generated_date}.${ext}`;}
-async function load(){DATA=await (await fetch('/manifest.json?'+Date.now())).json();DATA.deleted=DATA.deleted||[];render();if(LB){curMat()?renderLB():closeLB();}}
+async function load(){
+ let data;
+ try{
+  const r=await fetch('/manifest.json?'+Date.now(),{cache:'no-store'});
+  if(!r.ok) throw 0;
+  data=await r.json();
+ }catch(e){
+  const g=document.getElementById('gen'); if(g) g.textContent='connecting to portal...';
+  return setTimeout(load,1500);   // server waking up (Codespace restart) - keep retrying so the page self-recovers
+ }
+ DATA=data; DATA.deleted=DATA.deleted||[];
+ render();
+ if(LB){curMat()?renderLB():closeLB();}
+}
 
 function render(){
  document.getElementById('gen').textContent='generated '+DATA.generated_at.replace('T',' ');

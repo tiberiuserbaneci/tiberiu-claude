@@ -9,5 +9,6 @@
       "onAutoForward": "openPreview"
     }
   },
+  "postStartCommand": "bash portal/codespace-start.sh",
   "postAttachCommand": "bash portal/codespace-start.sh"
 }
