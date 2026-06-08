@@ -1,0 +1,7 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Portal runtime artifacts
+content/portal/manifest.json.tmp
+*.log
