@@ -34,7 +34,7 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 .focal-h .h{font-size:23px;font-weight:900;letter-spacing:-.5px;color:var(--ivory);}.focal-h .h em{color:var(--book);font-style:normal;}
 .focal-h .meta{margin-left:auto;font-family:'DM Mono',monospace;font-size:11px;color:var(--ink46);}.focal-h .meta b{color:var(--kraft);font-weight:700;}
 .split2{flex:1;min-height:0;display:flex;align-items:stretch;gap:16px;padding-top:13px;}
-.chatcol{width:31%;display:flex;flex-direction:column;justify-content:center;gap:12px;flex-shrink:0;}
+.chatcol{width:27%;display:flex;flex-direction:column;justify-content:center;gap:12px;flex-shrink:0;}
 .cbub{padding:12px 15px;font-size:13.5px;font-weight:600;line-height:1.32;max-width:97%;}
 .cbub.u{background:rgba(204,120,92,.16);border:1px solid rgba(204,120,92,.34);color:var(--ivory);align-self:flex-end;border-radius:14px 14px 4px 14px;}
 .cbub.a{background:var(--slate2);border:1px solid var(--rule);color:var(--ink70);align-self:flex-start;border-radius:14px 14px 14px 4px;}
@@ -47,17 +47,27 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 .cv-bar{display:flex;align-items:center;justify-content:space-between;padding:10px 15px;border-bottom:1px solid var(--rule);background:rgba(255,255,255,.025);}
 .cv-nm{font-size:14px;font-weight:800;color:var(--ivory);letter-spacing:-.2px;}
 .cv-act{display:flex;gap:7px;}.cv-act i{width:25px;height:25px;border-radius:7px;background:rgba(250,250,247,.05);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;}.cv-act i svg{width:14px;height:14px;}
-.cvtbl{flex:1;display:flex;flex-direction:column;}
-.cvr{display:grid;grid-template-columns:1.3fr .55fr .85fr .6fr .55fr;gap:8px;align-items:center;padding:0 15px;border-bottom:1px solid rgba(250,250,247,.05);}
-.cvtbl .cvr{flex:1;}
-.cvr:last-child{border-bottom:none;}
-.cvr span{font-size:13.5px;font-weight:700;color:var(--ivory);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.cvr.h{background:rgba(255,255,255,.03);}
-.cvr.h span{font-family:'DM Mono',monospace;font-size:9.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--ink46);}
-.cvr .srt,.cvr.h .srt{color:var(--book);}
-.cvr .up{color:var(--kraft);font-size:11px;font-family:'DM Mono',monospace;}.cvr .dn{color:var(--book-d);font-size:11px;font-family:'DM Mono',monospace;}.cvr .fl{color:var(--ink46);font-size:11px;font-family:'DM Mono',monospace;}
-.edit{position:relative;color:var(--book) !important;}
-.edit::after{content:'';display:inline-block;width:2px;height:14px;background:var(--book);margin-left:2px;vertical-align:-2px;box-shadow:0 0 6px var(--book);}
+.gaud{flex:1;display:flex;flex-direction:column;padding:15px 18px;gap:14px;min-height:0;}
+.gaud-h{display:flex;align-items:center;gap:11px;flex-shrink:0;}
+.gaud-co{display:flex;align-items:center;gap:8px;font-size:16.5px;font-weight:800;color:var(--ivory);letter-spacing:-.3px;}
+.gaud-tag{font-family:'DM Mono',monospace;font-size:8px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--book);background:rgba(204,120,92,.12);border:1px solid rgba(204,120,92,.3);padding:3px 7px;border-radius:5px;}
+.gaud-sub{font-family:'DM Mono',monospace;font-size:9px;color:var(--ink46);margin-top:5px;letter-spacing:.02em;}
+.gaud-sub b{color:var(--book-d);font-weight:600;}
+.gaud-ring{margin-left:auto;position:relative;width:46px;height:46px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.gaud-ring svg{width:46px;height:46px;transform:rotate(-90deg);}
+.gaud-ring .gt{fill:none;stroke:var(--ink14);stroke-width:8;}
+.gaud-ring .ga{fill:none;stroke:var(--book);stroke-width:8;stroke-linecap:round;}
+.gaud-ring .gn{position:absolute;font-size:15px;font-weight:900;color:var(--ivory);line-height:1;}
+.pipe{flex:1;display:flex;align-items:stretch;min-height:0;}
+.pstage{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-width:0;}
+.ptop{position:relative;width:100%;height:50px;display:flex;align-items:center;justify-content:center;}
+.ptop::before,.ptop::after{content:'';position:absolute;top:50%;height:2px;background:var(--rule);width:50%;}
+.ptop::before{left:0;}.ptop::after{right:0;}
+.pstage:first-child .ptop::before{display:none;}.pstage:last-child .ptop::after{display:none;}
+.pnode{position:relative;z-index:1;width:40px;height:40px;border-radius:50%;border:2px solid var(--sc);background:var(--scbg);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 5px var(--scbg);}
+.pnode .pdot{width:12px;height:12px;border-radius:50%;background:var(--sc);box-shadow:0 0 8px var(--sc);}
+.plabel{font-size:10.5px;font-weight:700;color:var(--ivory);text-align:center;line-height:1.08;}
+.pscore{font-family:'DM Mono',monospace;font-size:12px;font-weight:600;color:var(--sc);line-height:1;}
 .cvstats{flex-shrink:0;display:flex;gap:7px;padding:9px 13px;border-top:1px solid var(--rule);background:rgba(255,255,255,.02);flex-wrap:wrap;}
 .cvstat{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.03em;color:var(--ink46);}.cvstat b{color:var(--book);font-weight:600;}
 /* KINDS strip */
@@ -110,26 +120,28 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 
 <div class="arrow"><svg viewBox="0 0 24 24"><path d="M12 4v16M6 14l6 6 6-6"/></svg><span class="lbl">Claude renders it on the right, not as a wall of text</span></div>
 
-<div class="focal"><div class="focal-h"><div class="h">Chat is the wrong shape. <em>Builder is the right one.</em></div><div class="meta">Builder &middot; <b>live canvas</b></div></div>
+<div class="focal"><div class="focal-h"><div class="h">Chat is the wrong shape. <em>Builder is the right one.</em></div><div class="meta">Builder &middot; <b>GTM audit</b></div></div>
 <div class="split2">
 <div class="chatcol">
-<div class="cbub u">Compare these 4 vendors on price, support and fit.</div>
-<div class="cbub a">Done. It is a sortable <b>comparison table</b> in Builder.</div>
-<div class="chint">The chat reply stays one line. The structure goes to the canvas.</div>
+<div class="cbub u">Audit my GTM across the pipeline.</div>
+<div class="cbub a">Done. It is a live <b>GTM audit</b> in Builder.</div>
+<div class="chint">The chat reply stays one line. The audit goes to the canvas.</div>
 </div>
 <div class="sarrow2"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span>renders as</span></div>
 <div class="cv">
-<div class="cv-bar"><span class="cv-nm">Vendor comparison</span><div class="cv-act"><i><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="#CC785C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></g></svg></i><i><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="#CC785C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.59 13.51l6.83 3.98m-.01-10.98l-6.82 3.98"/></g></svg></i></div></div>
-<div class="cvtbl">
-<div class="cvr h"><span>Vendor</span><span>Price</span><span>Support</span><span>Trend</span><span class="srt">Fit</span></div>
-<div class="cvr"><span>Acme</span><span>$$</span><span>24/7</span><span class="up">up</span><span class="edit srt">92</span></div>
-<div class="cvr"><span>Beta</span><span>$</span><span>Biz hrs</span><span class="fl">flat</span><span class="srt">78</span></div>
-<div class="cvr"><span>Gamma</span><span>$$$</span><span>24/7</span><span class="up">up</span><span class="srt">88</span></div>
-<div class="cvr"><span>Delta</span><span>$$</span><span>Email</span><span class="dn">down</span><span class="srt">64</span></div>
-<div class="cvr"><span>Echo</span><span>$$</span><span>24/7</span><span class="up">up</span><span class="srt">81</span></div>
-<div class="cvr"><span>Golf</span><span>$$$</span><span>24/7</span><span class="up">up</span><span class="srt">90</span></div>
+<div class="cv-bar"><span class="cv-nm">GTM audit</span><div class="cv-act"><i><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="#CC785C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></g></svg></i><i><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="#CC785C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.59 13.51l6.83 3.98m-.01-10.98l-6.82 3.98"/></g></svg></i></div></div>
+<div class="gaud">
+<div class="gaud-h"><div><div class="gaud-co">Acme SaaS <span class="gaud-tag">B2B SAAS</span></div><div class="gaud-sub">6 areas audited &middot; 0 strong &middot; <b>3 critical</b></div></div><div class="gaud-ring"><svg viewBox="0 0 46 46"><circle class="gt" cx="23" cy="23" r="19"/><circle class="ga" cx="23" cy="23" r="19" stroke-dasharray="49 119.4"/></svg><span class="gn">41</span></div></div>
+<div class="pipe">
+<div class="pstage" style="--sc:var(--kraft);--scbg:rgba(212,162,127,.13)"><div class="ptop"><div class="pnode"><div class="pdot"></div></div></div><div class="plabel">ICP</div><div class="pscore">48</div></div>
+<div class="pstage" style="--sc:var(--book-d);--scbg:rgba(200,70,35,.16)"><div class="ptop"><div class="pnode"><div class="pdot"></div></div></div><div class="plabel">Positioning</div><div class="pscore">32</div></div>
+<div class="pstage" style="--sc:var(--book-d);--scbg:rgba(200,70,35,.16)"><div class="ptop"><div class="pnode"><div class="pdot"></div></div></div><div class="plabel">Website</div><div class="pscore">28</div></div>
+<div class="pstage" style="--sc:var(--kraft);--scbg:rgba(212,162,127,.13)"><div class="ptop"><div class="pnode"><div class="pdot"></div></div></div><div class="plabel">Content</div><div class="pscore">45</div></div>
+<div class="pstage" style="--sc:var(--book);--scbg:rgba(204,120,92,.16)"><div class="ptop"><div class="pnode"><div class="pdot"></div></div></div><div class="plabel">Sales</div><div class="pscore">52</div></div>
+<div class="pstage" style="--sc:var(--kraft);--scbg:rgba(212,162,127,.13)"><div class="ptop"><div class="pnode"><div class="pdot"></div></div></div><div class="plabel">Outbound</div><div class="pscore">35</div></div>
 </div>
-<div class="cvstats"><span class="cvstat">ROWS <b>6</b></span><span class="cvstat">COLS <b>5</b></span><span class="cvstat">SORT <b>on</b></span><span class="cvstat">EDIT <b>live</b></span><span class="cvstat">SOURCE <b>chat</b></span><span class="cvstat">EXPORT <b>csv</b></span></div>
+</div>
+<div class="cvstats"><span class="cvstat">AREAS <b>6</b></span><span class="cvstat">STRONG <b>0</b></span><span class="cvstat">CRITICAL <b>3</b></span><span class="cvstat">SCORE <b>41</b></span><span class="cvstat">SOURCE <b>chat</b></span><span class="cvstat">EXPORT <b>pdf</b></span></div>
 </div>
 </div></div>
 
@@ -138,9 +150,9 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 <div class="mod"><div class="sec"><span>Four kinds of canvas</span><span class="sx">the agent picks the fit</span></div>
 <div class="kinds">
 
-<div class="kcard on" style="--c:var(--book)">
+<div class="kcard" style="--c:var(--book)">
 <div class="fct"><span class="fk">01 TABLE</span><span class="kbest">most common</span></div>
-<div class="ftop"><div class="ftt">Comparison table</div><div class="fnumw"><div class="fnum" style="color:var(--book)">9</div><div class="funit">COLS</div></div></div>
+<div class="ftop"><div class="ftt">Comparison table</div><div class="fnumw"><div class="fnum">9</div><div class="funit">COLS</div></div></div>
 <div class="fdesc">Options vs criteria, side by side.</div>
 <div class="stats"><div class="stile"><div class="v">80</div><div class="l">Rows</div></div><div class="stile"><div class="v">9</div><div class="l">Cols</div></div><div class="stile"><div class="v">yes</div><div class="l">Sort</div></div><div class="stile"><div class="v">live</div><div class="l">Edit</div></div><div class="stile"><div class="v">yes</div><div class="l">Filter</div></div><div class="stile"><div class="v">csv</div><div class="l">Export</div></div></div>
 </div>
@@ -152,9 +164,9 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 <div class="stats"><div class="stile"><div class="v">5</div><div class="l">Criteria</div></div><div class="stile"><div class="v">yes</div><div class="l">Weights</div></div><div class="stile"><div class="v">auto</div><div class="l">Total</div></div><div class="stile"><div class="v">by total</div><div class="l">Rank</div></div><div class="stile"><div class="v">broken</div><div class="l">Ties</div></div><div class="stile"><div class="v">top 10</div><div class="l">Keep</div></div></div>
 </div>
 
-<div class="kcard" style="--c:var(--book-d)">
+<div class="kcard on" style="--c:var(--book-d)">
 <div class="fct"><span class="fk">03 SEQUENCE</span><span class="kbest">timed</span></div>
-<div class="ftop"><div class="ftt">Sequence</div><div class="fnumw"><div class="fnum">7</div><div class="funit">Steps</div></div></div>
+<div class="ftop"><div class="ftt">Sequence</div><div class="fnumw"><div class="fnum" style="color:var(--book)">7</div><div class="funit">Steps</div></div></div>
 <div class="fdesc">Steps over time, with owners.</div>
 <div class="stats"><div class="stile"><div class="v">7</div><div class="l">Steps</div></div><div class="stile"><div class="v">each</div><div class="l">Owner</div></div><div class="stile"><div class="v">date</div><div class="l">Due</div></div><div class="stile"><div class="v">yes</div><div class="l">Deps</div></div><div class="stile"><div class="v">live</div><div class="l">Status</div></div><div class="stile"><div class="v">timeline</div><div class="l">View</div></div></div>
 </div>
