@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-06-08T04:30:33",
+  "generated_at": "2026-06-08T10:29:30",
   "counts": {
-    "total": 62,
-    "generated": 18,
+    "total": 64,
+    "generated": 20,
     "reference": 44,
     "crosspost": 0
   },
@@ -817,6 +817,63 @@
       "caption": "Most AI buries the answer in a wall of text you have to re-read. Claude hands me an editable canvas instead, sorted, scored and ready to ship.\n\n- - -\n\nI stopped copying AI output into a doc to make it usable. Now, when an answer has structure, Claude renders it on a canvas next to the chat. The reply stays one line and the structure becomes a thing I can work: a table I can sort, a score card I can re-rank, a sequence I can re-time, or a blueprint I can edit. I asked it to audit my GTM and it built the whole canvas while the chat reply stayed a single sentence.\n\n- - -\n\n\u2192 I typed audit my GTM and got a live audit canvas: six pipeline stages scored ICP 48, Positioning 32, Website 28, Content 45, Sales 52 and Outbound 35, an overall 41 out of 100, and three critical findings.\n\n\u2192 Every canvas is one of four kinds. A comparison table up to 9 columns, a weighted score card out of 100, a sequence of 7 steps with owners, or a blueprint of 6 editable sections.\n\n\u2192 The canvas is live, not a screenshot. I sort the table, change a weight and the rank moves, edit a cell, all inside the Builder tab.\n\n\u2192 Each finding is a current versus recommended pair. ICP lives in a doc, not enforced becomes one ICP enforced across all GTM, so the fix is obvious.\n\n\u2192 One click gets it out. Copy as markdown, download the CSV, share a link, or push it into a note. Nothing is trapped in the thread.\n\n- - -\n\nThe unlock was never a smarter reply. It was a reply with a shape. When the answer is structured, reading it is the slow part, and a canvas you can edit beats a paragraph you have to re-type every time.\n\n- - -\n\nFollow for one AI system for founders every day.\nComment BUILDER and I will send you the exact Claude canvas workflow we use.\n\n#claude #ai #founder #startup #buildinpublic",
       "alt": "Dark editorial visual on slate background. Headline reads 'I stopped reading walls of text. Claude builds the canvas.' beside a book-orange progress donut at 88 percent labeled On canvas. On the left a chat panel shows a one-line request and a one-line reply, and an arrow points to an editable canvas on the right titled GTM audit. The canvas holds a company header with a 41 out of 100 score ring, a six-stage pipeline health strip of score rings for ICP 48, Positioning 32, Website 28, Content 45, Sales 52 and Outbound 35 colored by severity, and an audit findings block pairing each current problem with a recommended fix. Below sit four canvas-kind cards: comparison table, score card, sequence and blueprint, each with stat tiles. Closes with a Comment BUILDER call to action and the Ultron logo.",
       "first_comment": "I typed one line, audit my GTM, and Claude built a live audit canvas: six scored pipeline stages, a 41 out of 100, and three current to recommended fixes. The chat reply stayed one sentence.\n\nDrop BUILDER below and I will send you the exact Claude canvas workflow, the four canvas kinds and the audit prompt I used.",
+      "generated_date": "2026-06-08",
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "docs-08-ai-native-index-linkedin",
+      "title": "Ai Native Index",
+      "channel": "linkedin",
+      "type": "single",
+      "slides": 1,
+      "dims": "2160x2900 (1080x1450 @2x)",
+      "preview": "content/docs-08-ai-native-index-linkedin.png",
+      "download": "content/docs-08-ai-native-index-linkedin.png",
+      "files": [
+        "content/docs-08-ai-native-index-linkedin.png"
+      ],
+      "variants": [
+        ""
+      ],
+      "caption": "Fewer than 1 in 100 companies are actually built for the AI era. An independent index scored 58,351 of them to prove it.\n\n- - -\n\nI wanted an honest answer to who is really AI-native, not who says they are. So we scored 58,351 companies from 0 to 100 across six dimensions, Moat, Ops, Proof, Discoverability, Build and Product, and indexed $1.8T of annual revenue along the way. The result was blunt. Most companies have adopted AI as a tool and stopped there. Almost none have rebuilt around it.\n\n- - -\n\n\u2192 Only 0.7%, that is 408 companies, scored truly AI-native. The other 99.3% are Absent, Aware, Adopting or Enabled.\n\n\u2192 Half the market, 49%, is stuck at Aware or Adopting. They use AI, but it does not run anything.\n\n\u2192 The three weakest dimensions across the whole set are Moat at 47, Ops at 52 and Proof at 52 out of 100.\n\n\u2192 Those three are the wedge. A proprietary data flywheel, operations run by agents, and proof generated on autopilot are exactly what most companies are missing.\n\n\u2192 The gap is not awareness. It is structure. AI-native is an architecture, not a feature you bolt on.\n\n- - -\n\nThe weakest dimensions are not a problem, they are the opportunity. The companies that close Moat, Ops and Proof first are the ones that pull away, because everyone else is still treating AI like a faster autocomplete.\n\n- - -\n\nFollow for one AI system for founders every day.\nComment INDEX and I will run the AI-Native Index on your company and send you the score across all six dimensions plus the exact gaps.\n\n#claude #ai #founder #startup #buildinpublic",
+      "alt": "Dark editorial visual on slate background. Headline reads 'I scored 58,351 companies on AI-readiness. 408 passed.' beside a nearly empty book-orange donut at 0.7 percent labeled AI-Native, 408 of 58,351. A horizontal bar chart shows the maturity funnel: Absent 121, Aware 4,586, Adopting 23,765, Enabled 29,471, and Native highlighted in book-orange at 408, a thin sliver. A line notes half the market is stuck at Aware or Adopting and that reaching Native is rarer than 1 in 100. Below, a section titled The wedge presents three book-dark cards for the market's weakest dimensions, Moat 47, Ops 52 and Proof 52 out of 100, each tagged as something Ultron ships: a proprietary data flywheel, agent-run operations, and an automated case-study engine. Closes with a Comment INDEX call to action and the Ultron logo.",
+      "first_comment": "58,351 companies scored across six dimensions of AI-readiness. Only 408, just 0.7%, came out truly AI-native. The three dimensions the whole market is weakest on, Moat, Ops and Proof, are the exact three Ultron is built to close.\n\nRun the AI-Native Index on your own site, free, in under a minute: app.51ultron.com/ai-native\n\nDrop INDEX below and I will send you your score plus the gaps to fix first.",
+      "generated_date": "2026-06-08",
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "docs-08-ai-native-index-tiktok-carousel",
+      "title": "Ai Native Index",
+      "channel": "linkedin",
+      "type": "carousel",
+      "slides": 8,
+      "dims": "2160x2700",
+      "preview": "content/docs-08-ai-native-index-carousel-01.png",
+      "download": "content/portal/zips/docs-08-ai-native-index-tiktok-carousel.zip",
+      "files": [
+        "content/docs-08-ai-native-index-carousel-01.png",
+        "content/docs-08-ai-native-index-carousel-02.png",
+        "content/docs-08-ai-native-index-carousel-03.png",
+        "content/docs-08-ai-native-index-carousel-04.png",
+        "content/docs-08-ai-native-index-carousel-05.png",
+        "content/docs-08-ai-native-index-carousel-06.png",
+        "content/docs-08-ai-native-index-carousel-07.png",
+        "content/docs-08-ai-native-index-carousel-08.png"
+      ],
+      "variants": [],
+      "caption": "Fewer than 1 in 100 companies are actually built for the AI era. An independent index scored 58,351 of them to prove it.\n\n- - -\n\nI wanted an honest answer to who is really AI-native, not who says they are. So we scored 58,351 companies from 0 to 100 across six dimensions, Moat, Ops, Proof, Discoverability, Build and Product, and indexed $1.8T of annual revenue along the way. The result was blunt. Most companies have adopted AI as a tool and stopped there. Almost none have rebuilt around it.\n\n- - -\n\n\u2192 Only 0.7%, that is 408 companies, scored truly AI-native. The other 99.3% are Absent, Aware, Adopting or Enabled.\n\n\u2192 Half the market, 49%, is stuck at Aware or Adopting. They use AI, but it does not run anything.\n\n\u2192 The three weakest dimensions across the whole set are Moat at 47, Ops at 52 and Proof at 52 out of 100.\n\n\u2192 Those three are the wedge. A proprietary data flywheel, operations run by agents, and proof generated on autopilot are exactly what most companies are missing.\n\n\u2192 The gap is not awareness. It is structure. AI-native is an architecture, not a feature you bolt on.\n\n- - -\n\nThe weakest dimensions are not a problem, they are the opportunity. The companies that close Moat, Ops and Proof first are the ones that pull away, because everyone else is still treating AI like a faster autocomplete.\n\n- - -\n\nFollow for one AI system for founders every day.\nComment INDEX and I will run the AI-Native Index on your company and send you the score across all six dimensions plus the exact gaps.\n\n#claude #ai #founder #startup #buildinpublic",
+      "alt": "Dark editorial visual on slate background. Headline reads 'I scored 58,351 companies on AI-readiness. 408 passed.' beside a nearly empty book-orange donut at 0.7 percent labeled AI-Native, 408 of 58,351. A horizontal bar chart shows the maturity funnel: Absent 121, Aware 4,586, Adopting 23,765, Enabled 29,471, and Native highlighted in book-orange at 408, a thin sliver. A line notes half the market is stuck at Aware or Adopting and that reaching Native is rarer than 1 in 100. Below, a section titled The wedge presents three book-dark cards for the market's weakest dimensions, Moat 47, Ops 52 and Proof 52 out of 100, each tagged as something Ultron ships: a proprietary data flywheel, agent-run operations, and an automated case-study engine. Closes with a Comment INDEX call to action and the Ultron logo.",
+      "first_comment": "58,351 companies scored across six dimensions of AI-readiness. Only 408, just 0.7%, came out truly AI-native. The three dimensions the whole market is weakest on, Moat, Ops and Proof, are the exact three Ultron is built to close.\n\nRun the AI-Native Index on your own site, free, in under a minute: app.51ultron.com/ai-native\n\nDrop INDEX below and I will send you your score plus the gaps to fix first.",
       "generated_date": "2026-06-08",
       "source": "generated",
       "status": "ready",
