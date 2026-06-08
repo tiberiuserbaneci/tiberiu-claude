@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-06-08T02:18:00",
+  "generated_at": "2026-06-08T03:16:51",
   "counts": {
-    "total": 84,
-    "generated": 19,
-    "reference": 65,
+    "total": 59,
+    "generated": 15,
+    "reference": 44,
     "crosspost": 0
   },
   "deleted": [
@@ -775,18 +775,20 @@
       "type": "single",
       "slides": 1,
       "dims": "2160x2900 (1080x1450 @2x)",
-      "preview": "content/docs-07-builder-linkedin-v1.png",
-      "download": "content/docs-07-builder-linkedin-v1.png",
+      "preview": "content/docs-07-builder-linkedin-journey.png",
+      "download": "content/docs-07-builder-linkedin-journey.png",
       "files": [
-        "content/docs-07-builder-linkedin-v1.png"
+        "content/docs-07-builder-linkedin-journey.png",
+        "content/docs-07-builder-linkedin-tiles.png"
       ],
       "variants": [
-        "v1"
+        "journey",
+        "tiles"
       ],
       "caption": "",
       "alt": "",
       "first_comment": "",
-      "generated_date": "2026-06-05",
+      "generated_date": "2026-06-08",
       "source": "generated",
       "status": "ready",
       "posted": false,
