@@ -4,7 +4,7 @@ Removes every ancillary/text/time/software chunk (no tool, AI, or source trace),
 keeps only the pixels, and writes neutral operator credits + a virtual path.
 Pure stdlib, no dependencies. Usage: python3 _scrub.py file1.png file2.png ...
 """
-import sys, struct, zlib
+import sys, struct, zlib, re
 SIG=b'\x89PNG\r\n\x1a\n'
 KEEP={b'IHDR',b'PLTE',b'tRNS',b'sRGB',b'IDAT',b'IEND'}   # critical render chunks only
 META=[('Author','Tibi Serbaneci'),
@@ -13,7 +13,21 @@ META=[('Author','Tibi Serbaneci'),
       ('Source','ultron-content/exports')]               # virtual path, no real origin
 def _c(typ,data): return struct.pack('>I',len(data))+typ+data+struct.pack('>I',zlib.crc32(typ+data)&0xffffffff)
 def _t(k,v): return _c(b'tEXt',k.encode('latin-1')+b'\x00'+v.encode('latin-1'))
+def scrub_pdf(path):
+    """Neutralize PDF Info Producer/Creator (drops renderer names like Skia/Chromium).
+    Replacements are the exact same byte length, so the xref table stays valid."""
+    raw=open(path,'rb').read()
+    if raw[:5]!=b'%PDF-': print("skip (not PDF):",path); return
+    def neutralize(m):
+        key,inner=m.group(1),m.group(2)
+        base=b'Ultron Studio' if key==b'Producer' else b'Ultron'
+        nv=base.ljust(len(inner))[:len(inner)]      # exact same length -> offsets unchanged
+        return m.group(0).replace(b'('+inner+b')',b'('+nv+b')',1)
+    raw=re.sub(rb'/(Producer|Creator)\s*\(([^)]*)\)',neutralize,raw)
+    open(path,'wb').write(raw)
+    print("scrubbed (pdf):",path)
 def scrub(path):
+    if path.lower().endswith('.pdf'): return scrub_pdf(path)
     raw=open(path,'rb').read()
     if raw[:8]!=SIG: print("skip (not PNG):",path); return
     out=bytearray(SIG); i=8
