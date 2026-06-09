@@ -231,11 +231,15 @@ class H(BaseHTTPRequestHandler):
             autocommit([MANIFEST], f"portal: restore {mid}")
             return self._json({"ok":True})
         if path == "/api/rescan":
-            git(["pull","--no-rebase","--no-edit","-X","ours","origin",BRANCH])  # pull new materials (ours wins on conflict)
+            r = git(["pull","--no-rebase","--no-edit","-X","ours","origin",BRANCH])  # pull new materials (ours wins on conflict)
+            pull_ok = bool(r and r.returncode == 0)
+            tail = ((r.stdout or "") + (r.stderr or "")).strip().splitlines() if r else []
+            pull_msg = tail[-1] if tail else ("git unavailable" if not r else "")
             with _lock:                                                          # block writes while the index is rebuilt
                 subprocess.run(["python3","portal/scan.py"], cwd=ROOT, timeout=600)
             autocommit(msg="portal: sync + rescan")
-            return self._json({"ok":True})
+            return self._json({"ok":True, "pull_ok":pull_ok, "pull":pull_msg,
+                               "materials":len(load().get("materials",[])), "branch":BRANCH})
         return self._json({"error":"unknown endpoint"}, 404)
 
 if __name__ == "__main__":

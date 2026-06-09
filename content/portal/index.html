@@ -306,7 +306,11 @@ async function crosspostNow(id,target){const r=await api('/api/crosspost',{id,ta
 async function deleteMat(id,fromLB){if(!confirm('Remove this material from the portal?\n\nThe source file stays in the repo - find it under the "Removed" filter and Restore it anytime.'))return;await api('/api/delete',{id});if(fromLB)closeLB();await load();toast('Removed - undo it under the Removed filter');}
 async function restoreMat(id){await api('/api/restore',{id});await load();toast('Restored');}
 async function upAnalytics(id,inp){const f=inp.files[0];if(!f)return;await fetch(`/api/analytics?id=${encodeURIComponent(id)}&filename=${encodeURIComponent(f.name)}`,{method:'POST',body:f});await load();toast('Analytics uploaded');}
-async function rescan(){document.getElementById('count').textContent='rescanning...';await fetch('/api/rescan',{method:'POST'});await load();toast('Rescanned');}
+async function rescan(){document.getElementById('count').textContent='rescanning...';
+ let j={};try{const r=await fetch('/api/rescan',{method:'POST'});j=await r.json();}catch(e){}
+ await load();
+ if(j.pull_ok===false)toast('Rescan: git pull FAILED ('+(j.pull||'see server log')+') - still on '+(j.branch||'?'));
+ else toast('Rescanned: '+(j.materials!=null?j.materials+' materials':'done')+(j.branch?' on '+j.branch:''));}
 
 document.addEventListener('keydown',e=>{if(!LB)return;if(e.key==='Escape')closeLB();else if(e.key==='ArrowLeft')slide(-1);else if(e.key==='ArrowRight')slide(1);});
 window.addEventListener('resize',()=>{const m=curMat();if(!m)return;const s=lbSlides(m)[LB.idx];if(s&&s.t==='frame')fitFrame();});
