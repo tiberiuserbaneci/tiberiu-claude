@@ -122,7 +122,8 @@ const FILTERS=[['posted','Posted'],['unposted','Not posted'],['carousel','Carous
 function slug(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');}
 function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function cap(s){return s.charAt(0).toUpperCase()+s.slice(1);}
-function dlname(m){const ext=m.type==='carousel'?'zip':(m.download.split('.').pop());return `${slug(m.title)}-${m.channel}-${m.generated_date}.${ext}`;}
+function dlname(m){const ext=m.download.split('.').pop();return `${slug(m.title)}-${m.channel}-${m.generated_date}.${ext}`;}
+function dllabel(m){if((m.download||'').endsWith('.pdf'))return `Download PDF (${m.slides} slides)`;return m.type==='carousel'?`Download all ${m.slides} slides`:'Download';}
 async function load(){
  let data;
  try{
@@ -182,7 +183,7 @@ function cbox(label,txt){if(!txt)return '';const id='t'+Math.random().toString(3
 
 function card(m){
  const car=m.type==='carousel';
- const dl=`<a class="btn dl" href="/${m.download}" download="${dlname(m)}">&#8681; ${car?('Download all '+m.slides+' slides'):'Download'}</a>`;
+ const dl=`<a class="btn dl" href="/${m.download}" download="${dlname(m)}">&#8681; ${dllabel(m)}</a>`;
  const other=m.channel==='linkedin'?'tiktok':'linkedin';
  const cross=m.channel!=='instagram'?`<button class="btn" onclick="crosspostNow('${m.id}','${other}')">&#8644; Copy to ${cap(other)}</button>`:'';
  const an=m.posted?`<label class="up">${m.analytics?('analytics: '+m.analytics.split('/').pop()):'&#8682; upload analytics (csv/xls)'}<input type="file" accept=".csv,.xls,.xlsx" onchange="upAnalytics('${m.id}',this)"></label>`:'';
@@ -274,7 +275,7 @@ function renderLB(){
   <div class="meta"><span>&#9679; ${m.generated_date}</span>${m.posted_date?`<span>&#9679; posted ${m.posted_date}</span>`:''}</div>
   ${origin}${xp}
   <div class="lb-actions">
-   <a class="btn dl" href="/${m.download}" download="${dlname(m)}">&#8681; ${m.type==='carousel'?('Download '+m.slides+' slides'):'Download'}</a>
+   <a class="btn dl" href="/${m.download}" download="${dlname(m)}">&#8681; ${dllabel(m)}</a>
    ${cross}
   </div>
   <div class="lb-actions">
