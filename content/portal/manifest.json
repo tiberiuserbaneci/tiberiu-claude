@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-08T11:45:32",
+  "generated_at": "2026-06-09T10:41:40",
   "counts": {
     "total": 65,
     "generated": 21,
@@ -776,7 +776,7 @@
       "slides": 8,
       "dims": "2160x2700",
       "preview": "content/docs-07-builder-carousel-01.png",
-      "download": "content/portal/zips/docs-07-builder-carousel.zip",
+      "download": "content/docs-07-builder-carousel.pdf",
       "files": [
         "content/docs-07-builder-carousel-01.png",
         "content/docs-07-builder-carousel-02.png",
@@ -833,7 +833,7 @@
       "slides": 8,
       "dims": "2160x2700",
       "preview": "content/docs-08-ai-native-index-carousel-01.png",
-      "download": "content/portal/zips/docs-08-ai-native-index-carousel.zip",
+      "download": "content/docs-08-ai-native-index-carousel.pdf",
       "files": [
         "content/docs-08-ai-native-index-carousel-01.png",
         "content/docs-08-ai-native-index-carousel-02.png",

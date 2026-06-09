@@ -128,12 +128,17 @@ for mid, m in mats.items():
     if typ == "carousel":
         slides = files
         preview = slides[0]
-        zpath = ZIPS / (mid + ".zip")
-        with zipfile.ZipFile(zpath, "w") as z:
-            for i, f in enumerate(slides, 1):
-                z.write(ROOT / f, arcname=f"{mid}-{i:02d}.png")
-        download = "content/portal/zips/" + zpath.name
         nslides = len(slides)
+        pdf = CONTENT / (mid + ".pdf")
+        if pdf.exists():
+            # LinkedIn carousels ship as a single PDF (the posting format) - hand that over, not a zip of PNGs
+            download = "content/" + pdf.name
+        else:
+            zpath = ZIPS / (mid + ".zip")
+            with zipfile.ZipFile(zpath, "w") as z:
+                for i, f in enumerate(slides, 1):
+                    z.write(ROOT / f, arcname=f"{mid}-{i:02d}.png")
+            download = "content/portal/zips/" + zpath.name
     else:
         # pick newest as preview, rest are alternates
         files_sorted = sorted(files, key=lambda f: (ROOT/f).stat().st_mtime, reverse=True)
