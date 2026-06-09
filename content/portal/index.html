@@ -124,19 +124,25 @@ function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replac
 function cap(s){return s.charAt(0).toUpperCase()+s.slice(1);}
 function dlname(m){const ext=m.download.split('.').pop();return `${slug(m.title)}-${m.channel}-${m.generated_date}.${ext}`;}
 function dllabel(m){if((m.download||'').endsWith('.pdf'))return `Download PDF (${m.slides} slides)`;return m.type==='carousel'?`Download all ${m.slides} slides`:'Download';}
-async function load(){
+let _gen=null;
+async function load(quiet){
  let data;
  try{
   const r=await fetch('/manifest.json?'+Date.now(),{cache:'no-store'});
   if(!r.ok) throw 0;
   data=await r.json();
  }catch(e){
+  if(quiet) return;                // background poll: ignore a transient blip, try again next tick
   const g=document.getElementById('gen'); if(g) g.textContent='connecting to portal...';
   return setTimeout(load,1500);   // server waking up (Codespace restart) - keep retrying so the page self-recovers
  }
+ if(quiet && data.generated_at===_gen) return;   // nothing changed - don't disturb the current view/scroll
+ const fresh=(_gen!==null && data.generated_at!==_gen);
+ _gen=data.generated_at;
  DATA=data; DATA.deleted=DATA.deleted||[];
  render();
  if(LB){curMat()?renderLB():closeLB();}
+ if(fresh && quiet) toast('Portal updated with the latest material');
 }
 
 // newest generated_date first (top-left); id is a stable tie-breaker for same-day items
@@ -305,4 +311,5 @@ async function rescan(){document.getElementById('count').textContent='rescanning
 document.addEventListener('keydown',e=>{if(!LB)return;if(e.key==='Escape')closeLB();else if(e.key==='ArrowLeft')slide(-1);else if(e.key==='ArrowRight')slide(1);});
 window.addEventListener('resize',()=>{const m=curMat();if(!m)return;const s=lbSlides(m)[LB.idx];if(s&&s.t==='frame')fitFrame();});
 load();
+setInterval(()=>load(true),8000);   // auto-refresh: pick up new materials (and server-side syncs) without a manual reload
 </script></body></html>

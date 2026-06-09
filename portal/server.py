@@ -19,6 +19,8 @@ HOST = os.environ.get("PORTAL_HOST", "127.0.0.1")
 BRANCH = os.environ.get("PORTAL_BRANCH", "claude/epic-davinci-eGOGS")
 AUTOPUSH = os.environ.get("PORTAL_PUSH", "1") != "0"
 AUTOCOMMIT = os.environ.get("PORTAL_COMMIT", "1") != "0"   # PORTAL_COMMIT=0 -> write manifest but no git (testing)
+SYNC = os.environ.get("PORTAL_SYNC", "1") != "0"           # background pull of materials pushed by content sessions
+SYNC_SECS = int(os.environ.get("PORTAL_SYNC_SECS", "15"))  # how often to check origin for new content
 _lock = threading.Lock()        # guards manifest read/modify/write only (fast; never held during git)
 _gitlock = threading.Lock()     # serializes git; held only by the background worker
 _dirty = threading.Event()      # set when the manifest changed and needs committing
@@ -79,6 +81,48 @@ def _git_worker():
         _dirty.clear()
         with _gitlock:
             _git_commit_push(_last_msg[0])
+
+def _sync_once():
+    """Pull commits pushed by *other* sessions (new posters, captions) so the portal shows them
+    without anyone clicking Rescan. This is the fix for 'the portal does not update'.
+
+    Safe by construction: pulls with -X ours (local portal edits always win on conflict), then
+    rebuilds the manifest from the files actually on disk - which recovers any new material that
+    -X ours dropped from the manifest text - and commits ONLY when that changed the material set,
+    so there is no timestamp commit ping-pong."""
+    if git(["fetch", "origin", BRANCH]) is None:
+        return
+    r = git(["rev-parse", f"origin/{BRANCH}"]); h = git(["rev-parse", "HEAD"])
+    if not (r and h and r.returncode == 0 and h.returncode == 0):
+        return
+    remote, local = r.stdout.strip(), h.stdout.strip()
+    if remote == local:
+        return                                                    # already current
+    anc = git(["merge-base", "--is-ancestor", remote, local])     # is origin already contained in HEAD?
+    if anc and anc.returncode == 0:
+        return                                                    # we are ahead of origin; nothing to pull
+    with _gitlock:
+        git(["pull", "--no-rebase", "--no-edit", "-X", "ours", "origin", BRANCH])
+    pulled = {x["id"] for x in load().get("materials", [])}       # what the merge left in the manifest
+    with _lock:                                                   # block API writes while the index is rebuilt
+        subprocess.run(["python3", "portal/scan.py"], cwd=ROOT, timeout=600)
+    rebuilt = {x["id"] for x in load().get("materials", [])}      # what the files on disk actually contain
+    if rebuilt != pulled:
+        autocommit(msg="portal: reconcile new content from origin")   # scan recovered materials the merge dropped
+    else:
+        git(["checkout", "--", "content/portal/manifest.json"])       # pulled manifest was already complete
+    print(f"sync: {local[:8]} -> {remote[:8]}  ({len(rebuilt)} materials on disk)")
+
+def _sync_worker():
+    first = True
+    while True:
+        if not first:
+            time.sleep(SYNC_SECS)
+        first = False
+        try:
+            _sync_once()
+        except Exception as e:
+            print("sync error", e)
 
 class H(BaseHTTPRequestHandler):
     def log_message(self, *a): pass
@@ -197,6 +241,8 @@ class H(BaseHTTPRequestHandler):
 if __name__ == "__main__":
     if AUTOCOMMIT:
         threading.Thread(target=_git_worker, daemon=True).start()   # git runs here, off the request path
+    if SYNC:
+        threading.Thread(target=_sync_worker, daemon=True).start()  # auto-pull new content from origin every SYNC_SECS
     where = f"http://127.0.0.1:{PORT}" if HOST in ("127.0.0.1","localhost") else f"port {PORT} (forwarded by Codespaces, Private)"
-    print(f"Portal -> {where}   (auto-commit on, push={'on' if AUTOPUSH else 'off'}, branch={BRANCH})")
+    print(f"Portal -> {where}   (auto-commit {'on' if AUTOCOMMIT else 'off'}, push {'on' if AUTOPUSH else 'off'}, sync {'every '+str(SYNC_SECS)+'s' if SYNC else 'off'}, branch={BRANCH})")
     ThreadingHTTPServer((HOST, PORT), H).serve_forever()
