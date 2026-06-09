@@ -1,0 +1,133 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+:root{--slate:#191919;--slate2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--cloud:#919180;--book-lo:rgba(204,120,92,.10);--book-bd:rgba(204,120,92,.32);}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;display:flex;justify-content:center;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.art{width:1080px;height:1450px;background:var(--slate);position:relative;overflow:hidden;color:var(--ivory);padding:46px 56px 38px;display:flex;flex-direction:column;}
+.art::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.05) 1.3px,transparent 1.4px);background-size:30px 30px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 56% 30% at 90% 1%,rgba(204,120,92,.17) 0%,transparent 62%),radial-gradient(ellipse 46% 26% at 4% 99%,rgba(212,162,127,.08) 0%,transparent 60%);}
+.art>*{position:relative;z-index:2;}
+.mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--rule);padding-bottom:14px;font-family:'DM Mono',monospace;font-size:14px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;}
+.mast .ml{color:var(--ink46);}.mast .ml .sep{color:var(--book);margin:0 8px;}
+.mast .mr{color:var(--ink70);}.mast .mr em{color:var(--book);font-style:normal;}
+.hero{flex-shrink:0;margin-top:24px;}
+.hook{font-weight:900;font-size:66px;line-height:.99;letter-spacing:-2.4px;color:var(--ivory);}
+.hook em{color:var(--book);font-style:normal;}
+.hsub{margin-top:18px;font-size:25px;font-weight:500;line-height:1.4;color:var(--ink70);max-width:940px;}
+.hsub b{color:var(--ivory);font-weight:700;}
+/* ---- the Computer window ---- */
+.win{flex:1;min-height:0;margin-top:26px;display:flex;flex-direction:column;border:1px solid var(--ink14);border-radius:16px;overflow:hidden;background:#1e1e1d;box-shadow:0 34px 80px rgba(0,0,0,.5);}
+.winbar{flex-shrink:0;display:flex;align-items:center;gap:14px;padding:13px 20px;border-bottom:1px solid var(--rule);background:#151514;}
+.d3{display:flex;gap:9px;}.d3 i{width:13px;height:13px;border-radius:50%;display:block;}
+.wintab{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ivory);background:var(--book-lo);border:1px solid var(--book-bd);padding:6px 15px;border-radius:7px;}
+.winurl{margin-left:auto;font-family:'DM Mono',monospace;font-size:13.5px;color:var(--ink46);letter-spacing:.06em;}
+.winfoot{flex-shrink:0;display:flex;align-items:center;padding:10px 18px;border-top:1px solid var(--rule);background:#151514;font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.05em;color:var(--ink46);}
+.wf-dot{width:8px;height:8px;border-radius:50%;background:var(--book);box-shadow:0 0 9px var(--book);margin-right:10px;}
+.wf-sep{color:var(--book);margin:0 11px;}.wf-r{margin-left:auto;color:var(--ink70);}
+.winbody{flex:1;min-height:0;display:grid;grid-template-columns:250px 1fr 286px;}
+.pane{display:flex;flex-direction:column;min-width:0;min-height:0;}
+.pane+.pane{border-left:1px solid var(--rule);}
+.panehd{flex-shrink:0;font-family:'DM Mono',monospace;font-size:13px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink46);padding:13px 17px;border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.012);}
+.panehd .n{width:8px;height:8px;border-radius:50%;background:var(--book);box-shadow:0 0 9px var(--book);}
+.panebd{flex:1;min-height:0;padding:17px 18px;overflow:hidden;}
+/* files */
+.tree{font-family:'DM Mono',monospace;font-size:16.5px;line-height:1.95;color:var(--ink70);}
+.tree .dir{color:var(--ink46);}
+.tree .row{display:flex;align-items:center;}
+.tree .ind{padding-left:20px;}
+.tree .fdot{width:9px;height:9px;border-radius:50%;margin-left:auto;background:var(--c);box-shadow:0 0 8px var(--c);}
+.tree .new{--c:var(--book);}.tree .mod{--c:var(--kraft);}
+.tree .del{color:var(--ink30);text-decoration:line-through;}
+.tleg{margin-top:14px;display:flex;flex-direction:column;gap:7px;font-family:'DM Mono',monospace;font-size:12.5px;color:var(--ink46);letter-spacing:.04em;}
+.tleg span{display:flex;align-items:center;gap:8px;}.tleg i{width:8px;height:8px;border-radius:50%;}
+/* shell */
+.sh{font-family:'DM Mono',monospace;font-size:17px;line-height:1.95;}
+.sh div{white-space:nowrap;}
+.sh .cmd{color:var(--ivory);}.sh .pr{color:var(--book);font-weight:500;}
+.sh .out{color:var(--cloud);}.sh .out b{color:var(--kraft);font-weight:500;}
+.sh .ok{color:var(--book);font-weight:500;}
+.cur{display:inline-block;width:11px;height:19px;background:var(--book);vertical-align:-3px;margin-left:2px;box-shadow:0 0 10px var(--book);}
+/* preview */
+.prev{height:100%;border-radius:11px;border:1px solid var(--rule);background:var(--slate);overflow:hidden;display:flex;flex-direction:column;box-shadow:inset 0 0 40px rgba(0,0,0,.3);}
+.prevbar{flex-shrink:0;display:flex;align-items:center;gap:7px;padding:10px 13px;border-bottom:1px solid var(--rule);background:#151514;}
+.prevbar i{width:8px;height:8px;border-radius:50%;background:var(--ink30);}
+.prevurl{margin-left:7px;font-family:'DM Mono',monospace;font-size:11.5px;color:var(--ink46);letter-spacing:.03em;}
+.prevbody{flex:1;padding:18px;display:flex;flex-direction:column;gap:13px;justify-content:center;}
+.pvh{height:13px;border-radius:5px;background:var(--book);width:62%;box-shadow:0 0 18px rgba(204,120,92,.4);}
+.pvl{height:9px;border-radius:5px;background:var(--ink14);}.pvl.s{width:88%;}.pvl.t{width:70%;}
+.pvbtn{margin-top:6px;align-self:flex-start;font-family:'DM Sans';font-weight:800;font-size:15px;color:#1a0f0a;background:var(--book);padding:9px 20px;border-radius:7px;}
+.pvtag{margin-top:auto;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--book);}
+/* behaviour chips */
+.chips{flex-shrink:0;margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:13px;}
+.chip{display:flex;align-items:center;gap:15px;background:var(--slate2);border:1px solid var(--ink14);border-radius:13px;padding:16px 20px;}
+.chip .ci{width:42px;height:42px;border-radius:10px;background:var(--book-lo);border:1px solid var(--book-bd);flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.chip .ci svg{width:22px;height:22px;stroke:var(--book);stroke-width:2.1;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.chip .ct{min-width:0;}
+.chip .ct b{display:block;font-size:21px;font-weight:800;color:var(--ivory);letter-spacing:-.3px;line-height:1.05;}
+.chip .ct span{font-size:16px;font-weight:500;color:var(--ink46);}
+/* cta */
+.cta{flex-shrink:0;margin-top:16px;display:flex;align-items:stretch;border:1px solid var(--book);border-radius:6px;overflow:hidden;}
+.cta-l{flex:1;padding:15px 22px;display:flex;flex-direction:column;justify-content:center;gap:3px;background:var(--book-lo);}
+.cta-l b{font-size:20px;font-weight:800;color:var(--ivory);}
+.cta-l span{font-size:15px;color:var(--ink70);}
+.cta-r{flex-shrink:0;padding:0 30px;display:flex;align-items:center;gap:11px;background:var(--book);font-size:19px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;color:#1a0f0a;box-shadow:0 0 34px rgba(204,120,92,.4);}
+.cta-r svg{width:20px;height:20px;stroke:#1a0f0a;stroke-width:2.7;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+/* footer */
+.ftr{flex-shrink:0;margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.fl{display:flex;align-items:center;gap:12px;min-width:0;}.flogo{width:38px;height:38px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.ftx{font-family:'DM Mono',monospace;font-size:13px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--ink70);}.ftx b{color:var(--ivory);font-weight:500;}
+.furl{font-family:'DM Sans';font-weight:900;font-size:21px;letter-spacing:-.5px;color:var(--ivory);flex-shrink:0;}.furl em{color:var(--book);font-style:normal;}
+</style></head><body>
+<div class="art"><div class="atm"></div>
+  <div class="mast"><span class="ml">LIVE EXECUTION<span class="sep">&middot;</span>AI WORKSPACE</span><span class="mr">ULTRON <em>&middot;</em> THE COMPUTER</span></div>
+  <div class="hero">
+    <div class="hook">Most AI describes the fix.<br>Claude <em>runs</em> it. Live.</div>
+    <div class="hsub">Three panes: shell, files, preview. You watch every command and <b>grab the keyboard</b> when you want.</div>
+  </div>
+  <div class="win">
+    <div class="winbar"><span class="d3"><i style="background:var(--cloud)"></i><i style="background:var(--kraft)"></i><i style="background:var(--book)"></i></span><span class="wintab">Computer</span><span class="winurl">session &middot; isolated environment</span></div>
+    <div class="winbody">
+      <div class="pane"><div class="panehd"><span class="n"></span>Files</div><div class="panebd"><div class="tree">
+        <div class="row dir">src/</div>
+        <div class="row ind new"><span>auth.ts</span><span class="fdot"></span></div>
+        <div class="row ind mod"><span>login.tsx</span><span class="fdot"></span></div>
+        <div class="row ind new"><span>api.ts</span><span class="fdot"></span></div>
+        <div class="row ind new"><span>db.ts</span><span class="fdot"></span></div>
+        <div class="row dir">tests/</div>
+        <div class="row ind new"><span>auth.test.ts</span><span class="fdot"></span></div>
+        <div class="row del">old-auth.ts</div>
+        <div class="row mod"><span>package.json</span><span class="fdot"></span></div>
+        <div class="row dir">README.md</div>
+      </div><div class="tleg"><span><i style="background:var(--book)"></i>created</span><span><i style="background:var(--kraft)"></i>modified</span><span><i style="background:var(--ink30)"></i>deleted</span></div></div></div>
+      <div class="pane"><div class="panehd"><span class="n"></span>Shell</div><div class="panebd"><div class="sh">
+        <div class="cmd"><span class="pr">&rsaquo;</span> claude fix the login bug</div>
+        <div class="out">read   src/auth.ts</div>
+        <div class="out">edit   src/auth.ts  <b>+12 -4</b></div>
+        <div class="out">edit   login.tsx   <b>+3 -1</b></div>
+        <div class="cmd"><span class="pr">&rsaquo;</span> npm test</div>
+        <div class="out">running 24 tests ...</div>
+        <div class="ok">24 passing   0 failing</div>
+        <div class="cmd"><span class="pr">&rsaquo;</span> npm run dev</div>
+        <div class="out">ready on :3000</div>
+        <div class="cmd"><span class="pr">&rsaquo;</span> git commit -m "fix auth"</div>
+        <div class="out">[main 9f2c1a] 2 files changed</div>
+        <div class="cmd"><span class="pr">&rsaquo;</span> git push</div>
+        <div class="ok">pushed to PR #214</div>
+        <div class="cmd"><span class="pr">&rsaquo;</span> <span class="cur"></span></div>
+      </div></div></div>
+      <div class="pane"><div class="panehd"><span class="n"></span>Live preview</div><div class="panebd"><div class="prev">
+        <div class="prevbar"><i></i><i></i><i></i><span class="prevurl">localhost:3000</span></div>
+        <div class="prevbody"><div class="pvh"></div><div class="pvl s"></div><div class="pvl t"></div><div class="pvbtn">Log in</div><div class="pvtag">reloads on save</div></div>
+      </div></div></div>
+    </div>
+    <div class="winfoot"><span class="wf-dot"></span>live<span class="wf-sep">&middot;</span>node 20<span class="wf-sep">&middot;</span>24 passing<span class="wf-sep">&middot;</span>:3000<span class="wf-r">2 files changed</span></div>
+  </div>
+  <div class="chips">
+    <div class="chip"><span class="ci"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></span><span class="ct"><b>Watch it live</b><span>every command streams</span></span></div>
+    <div class="chip"><span class="ci"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M7 10h.01M11 10h.01M15 10h.01M7 14h10"/></svg></span><span class="ct"><b>Take the keyboard</b><span>step in anytime</span></span></div>
+    <div class="chip"><span class="ci"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></span><span class="ct"><b>Isolated</b><span>never touches your laptop</span></span></div>
+    <div class="chip"><span class="ci"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg></span><span class="ct"><b>Persists</b><span>across the whole session</span></span></div>
+  </div>
+  <div class="cta"><div class="cta-l"><b>Want the live build walkthrough?</b><span>The exact Claude workflow we run in the Computer.</span></div><div class="cta-r">Comment COMPUTER<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+  <div class="ftr"><div class="fl"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS &middot; THE COMPUTER</div></div><div class="furl">51ultron<em>.</em>com</div></div>
+</div>
+</body></html>

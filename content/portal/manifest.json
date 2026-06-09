@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-06-09T10:41:40",
+  "generated_at": "2026-06-09T10:56:23",
   "counts": {
-    "total": 65,
-    "generated": 21,
+    "total": 68,
+    "generated": 24,
     "reference": 44,
     "crosspost": 0
   },
@@ -883,6 +883,32 @@
       "crossposts": []
     },
     {
+      "id": "docs-09-computer-linkedin",
+      "title": "Computer",
+      "channel": "linkedin",
+      "type": "single",
+      "slides": 1,
+      "dims": "2160x2900 (1080x1450 @2x)",
+      "preview": "content/docs-09-computer-linkedin.png",
+      "download": "content/docs-09-computer-linkedin.png",
+      "files": [
+        "content/docs-09-computer-linkedin.png"
+      ],
+      "variants": [
+        ""
+      ],
+      "caption": "Most AI tools hand you a diff and wish you luck. Claude opened a real shell, ran the tests, and showed me 24 passing before I touched anything.\n\nFor a year my AI workflow was copy, paste, pray. The model described a fix, I pasted it into my editor, I ran it, it broke, I went back. The describing was free. The doing was all me.\n\nThe Computer flips that. It is a real working environment the agent drives while I watch, in three panes.\n\n- - -\n\n\u2192 Shell: every command streams live. I watched Claude read the file, edit it, run npm test, and print 24 passing, 0 failing in real time.\n\n\u2192 Files: a tree marks every file created, modified or deleted, and I can open and edit any of them mid-run.\n\n\u2192 Live preview: the dev server renders in a third pane and reloads the second a file changes.\n\n\u2192 Control: I can stop it, take the keyboard, change one line, and hand it back. It continues from there.\n\n\u2192 Safety: it is isolated from my laptop and persists across the whole session, with a one-click reset to a clean machine.\n\n- - -\n\nThe shift is not that the AI got smarter. It is that it stopped narrating the work and started doing it where I can see every step.\n\nDescription is cheap. Execution you can watch is the thing that builds trust.\n\n- - -\n\nFollow for one AI system for founders every day.\nComment COMPUTER and I will send you the exact Claude build workflow we run in the Computer.",
+      "alt": "Dark editorial visual on slate background. Headline reads 'Most AI describes the fix. Claude runs it. Live.' with the word runs in book-orange. Below sits a mock application window labeled Computer, split into three panes. The left Files pane shows a source tree with book-orange dots for created files and a kraft dot for a modified one, plus a created, modified, deleted legend. The center Shell pane streams commands in mono: claude fix the login bug, edit auth.ts plus 12 minus 4, npm test, 24 passing 0 failing, git push, pushed to PR 214, with a book-orange cursor. The right Live preview pane shows a small browser rendering a login screen that reloads on save. A status bar reads live, node 20, 24 passing, 3000. Four chips below: Watch it live, Take the keyboard, Isolated, Persists. Closes with a Comment COMPUTER call to action and the Ultron logo.",
+      "first_comment": "For a year my AI gave me code and left me to run it. In the Computer, Claude ran every command itself while I watched the shell, the file tree and a live preview update in real time.\n\nI could grab the keyboard at any point and hand it back.\n\nDrop COMPUTER below and I will send you the exact Claude build workflow we run inside it: app.51ultron.com/docs",
+      "generated_date": "2026-06-09",
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
       "id": "docs-02-routing-tiktok-carousel",
       "title": "Routing",
       "channel": "tiktok",
@@ -1248,6 +1274,63 @@
       "alt": "A (short)\n\n58,351 companies scored. 0.7% are truly AI-native.\n\nThe three dimensions the market is weakest on are the three Ultron ships: a data flywheel, agent-run ops, and proof on autopilot.\n\nComment INDEX to score your own company.\n\n#claude #ai #founder #startup #buildinpublic",
       "first_comment": "",
       "generated_date": "2026-06-08",
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "docs-09-computer-tiktok-carousel",
+      "title": "Computer",
+      "channel": "tiktok",
+      "type": "carousel",
+      "slides": 8,
+      "dims": "2160x3840 (1080x1920 @2x)",
+      "preview": "content/docs-09-computer-tiktok-carousel-01.png",
+      "download": "content/portal/zips/docs-09-computer-tiktok-carousel.zip",
+      "files": [
+        "content/docs-09-computer-tiktok-carousel-01.png",
+        "content/docs-09-computer-tiktok-carousel-02.png",
+        "content/docs-09-computer-tiktok-carousel-03.png",
+        "content/docs-09-computer-tiktok-carousel-04.png",
+        "content/docs-09-computer-tiktok-carousel-05.png",
+        "content/docs-09-computer-tiktok-carousel-06.png",
+        "content/docs-09-computer-tiktok-carousel-07.png",
+        "content/docs-09-computer-tiktok-carousel-08.png"
+      ],
+      "variants": [],
+      "caption": "Most AI describes the fix. This one runs it.\n\nNow I watch Claude work in a real environment instead of pasting its code and praying.\n\nThree live panes do the whole job: a shell, the files, and a preview.\n\nThe shell streams every command as it runs, the file tree marks what got created, modified or deleted while I can edit any file myself, and the preview reloads the second something changes - and at any point I stop it, take the keyboard, change one line, and hand it back, all isolated from my laptop and saved across the whole session.\n\nThis is the Computer on the Ultron platform, where the agent stops narrating work and starts doing it where you can see it.\n\nComment COMPUTER and I will send you the exact Claude build workflow we run inside it.\n\n#claude #ai #founder #startup #buildinpublic",
+      "alt": "A (short)\n\nMost AI describes the fix. In the Computer, Claude runs it, live.\n\nShell, files and a preview - you watch every command and grab the keyboard whenever you want.\n\nComment COMPUTER for the build workflow.\n\n#claude #ai #founder #startup #buildinpublic",
+      "first_comment": "",
+      "generated_date": "2026-06-09",
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "docs-09-computer-tiktok-infographic",
+      "title": "Computer",
+      "channel": "tiktok",
+      "type": "single",
+      "slides": 1,
+      "dims": "2160x3840 (1080x1920 @2x)",
+      "preview": "content/docs-09-computer-tiktok-infographic.png",
+      "download": "content/docs-09-computer-tiktok-infographic.png",
+      "files": [
+        "content/docs-09-computer-tiktok-infographic.png"
+      ],
+      "variants": [
+        ""
+      ],
+      "caption": "Most AI describes the fix. This one runs it.\n\nNow I watch Claude work in a real environment instead of pasting its code and praying.\n\nThree live panes do the whole job: a shell, the files, and a preview.\n\nThe shell streams every command as it runs, the file tree marks what got created, modified or deleted while I can edit any file myself, and the preview reloads the second something changes - and at any point I stop it, take the keyboard, change one line, and hand it back, all isolated from my laptop and saved across the whole session.\n\nThis is the Computer on the Ultron platform, where the agent stops narrating work and starts doing it where you can see it.\n\nComment COMPUTER and I will send you the exact Claude build workflow we run inside it.\n\n#claude #ai #founder #startup #buildinpublic",
+      "alt": "A (short)\n\nMost AI describes the fix. In the Computer, Claude runs it, live.\n\nShell, files and a preview - you watch every command and grab the keyboard whenever you want.\n\nComment COMPUTER for the build workflow.\n\n#claude #ai #founder #startup #buildinpublic",
+      "first_comment": "",
+      "generated_date": "2026-06-09",
       "source": "generated",
       "status": "ready",
       "posted": false,
