@@ -11,10 +11,10 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 .hook{font-weight:900;font-size:41px;line-height:.97;letter-spacing:-1.3px;color:var(--ivory);}.hook em{color:var(--book);font-style:normal;}
 .sub{margin-top:10px;font-size:16px;font-weight:500;line-height:1.33;color:var(--ink70);max-width:600px;}.sub b{color:var(--ivory);font-weight:700;}
 .statile{flex-shrink:0;display:flex;border:1px solid var(--rule);border-radius:13px;overflow:hidden;}
-.st{padding:13px 16px 11px;text-align:center;}.st+.st{border-left:1px solid var(--rule);}
-.st .sn{font-weight:900;font-size:37px;line-height:.78;}.st.a .sn{color:var(--book);}.st.b .sn{color:var(--kraft);}.st.c .sn{color:var(--ivory);}
+.st{padding:16px 32px 14px;text-align:center;}.st+.st{border-left:1px solid var(--rule);}
+.st .sn{font-weight:900;font-size:42px;line-height:.78;}.st.a .sn{color:var(--book);}.st.b .sn{color:var(--kraft);}.st.c .sn{color:var(--ivory);}
 .st.a{background:rgba(204,120,92,.1);}.st.b{background:rgba(212,162,127,.08);}.st.c{background:rgba(250,250,247,.03);}
-.st .sl{font-family:'DM Mono',monospace;font-size:8.5px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--ink46);margin-top:7px;line-height:1.2;}
+.st .sl{font-family:'DM Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink46);margin-top:8px;line-height:1.2;}
 /* app window: chat pane + ultron menu pane */
 .app{flex:1;min-height:0;margin-top:13px;display:flex;border:1px solid var(--ink14);border-radius:20px;overflow:hidden;background:#1e1e1d;box-shadow:0 26px 66px rgba(0,0,0,.5);}
 .chatpane{flex:1.62;min-width:0;display:flex;flex-direction:column;}
@@ -78,12 +78,12 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 .naic2{width:33px;height:33px;border-radius:9px;background:rgba(250,250,247,.05);border:1px solid var(--ink14);display:flex;align-items:center;justify-content:center;color:var(--ink70);font-size:20px;flex-shrink:0;line-height:1;}
 .ag .at b{display:block;font-size:14.5px;font-weight:800;color:var(--ivory);letter-spacing:-.2px;line-height:1.1;}.ag .at span{font-size:11.5px;color:var(--ink46);}
 .ag .agt{margin-left:auto;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink30);}
-.cta{flex-shrink:0;margin-top:12px;display:flex;align-items:stretch;border:1px solid var(--book);border-radius:13px;overflow:hidden;box-shadow:0 0 44px rgba(204,120,92,.18);}
-.cta-l{flex:1;padding:13px 24px;display:flex;flex-direction:column;justify-content:center;gap:3px;background:rgba(204,120,92,.07);}
-.cta-k{font-family:'DM Mono',monospace;font-size:12.5px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink46);}
-.cta-t{font-size:20px;font-weight:700;color:var(--ivory);line-height:1.18;}.cta-t b{color:var(--book);font-weight:900;}
-.cta-chip{flex-shrink:0;padding:0 26px;gap:11px;background:var(--book);display:flex;align-items:center;font-size:22px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#1a0f0a;}
-.cta-chip svg{width:23px;height:23px;stroke:#1a0f0a;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ctawrap{flex-shrink:0;margin-top:12px;}
+.savel{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink46);margin-bottom:9px;padding-left:6px;}
+.cta{display:flex;align-items:center;gap:16px;border:1.5px solid var(--book);border-radius:20px;background:rgba(204,120,92,.08);padding:13px 13px 13px 26px;box-shadow:0 0 50px rgba(204,120,92,.18);}
+.cta .ph{flex:1;font-size:21px;font-weight:600;color:var(--ink70);line-height:1.2;}.cta .ph b{color:var(--book);font-weight:900;letter-spacing:.02em;}
+.cta .send{width:58px;height:58px;border-radius:50%;background:var(--book);flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(204,120,92,.45);}
+.cta .send svg{width:27px;height:27px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
 .ftr{flex-shrink:0;margin-top:11px;display:flex;align-items:center;justify-content:space-between;gap:18px;border-top:1px solid var(--rule);padding-top:11px;}
 .fl2{display:flex;align-items:center;gap:13px;min-width:0;}.flogo{width:34px;height:34px;border-radius:50%;object-fit:cover;}
 .ftx{font-family:'DM Mono',monospace;font-size:12.5px;font-weight:400;letter-spacing:.11em;text-transform:uppercase;color:var(--ink70);}.ftx b{color:var(--ivory);font-weight:500;}
@@ -128,6 +128,6 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 </div>
 </div>
 </div>
-<div class="cta"><div class="cta-l"><div class="cta-k">Save this. Then</div><div class="cta-t">Comment <b>TURN</b> for the full chat-loop breakdown.</div></div><div class="cta-chip">TURN <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+<div class="ctawrap"><div class="savel">Save this, then</div><div class="cta"><span class="ph">Comment <b>TURN</b> for the full chat-loop breakdown</span><span class="send"><svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div></div>
 <div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS &middot; THE CHAT LOOP</div></div><div class="furl">51ultron<em>.</em>com</div></div>
 </div></body></html>
