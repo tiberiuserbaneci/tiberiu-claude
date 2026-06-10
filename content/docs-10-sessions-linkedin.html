@@ -1,0 +1,85 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+:root{--slate:#191919;--slate2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--cloud:#919180;--book-lo:rgba(204,120,92,.10);--book-bd:rgba(204,120,92,.32);}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;display:flex;justify-content:center;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.art{width:1080px;height:1450px;background:var(--slate);position:relative;overflow:hidden;color:var(--ivory);padding:46px 56px 38px;display:flex;flex-direction:column;}
+.art::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.05) 1.3px,transparent 1.4px);background-size:30px 30px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 56% 30% at 90% 1%,rgba(204,120,92,.17) 0%,transparent 62%),radial-gradient(ellipse 46% 26% at 4% 99%,rgba(212,162,127,.08) 0%,transparent 60%);}
+.art>*{position:relative;z-index:2;}
+.mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--rule);padding-bottom:14px;font-family:'DM Mono',monospace;font-size:14px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;}
+.mast .ml{color:var(--ink46);}.mast .ml .sep{color:var(--book);margin:0 8px;}
+.mast .mr{color:var(--ink70);}.mast .mr em{color:var(--book);font-style:normal;}
+.hero{flex-shrink:0;margin-top:24px;}
+.hook{font-weight:900;font-size:62px;line-height:1;letter-spacing:-2.2px;color:var(--ivory);}
+.hook em{color:var(--book);font-style:normal;}
+.hsub{margin-top:17px;font-size:24px;font-weight:500;line-height:1.4;color:var(--ink70);max-width:950px;}
+.hsub b{color:var(--ivory);font-weight:700;}
+.cols{flex:1;min-height:0;margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.panel{display:flex;flex-direction:column;min-height:0;background:var(--slate2);border:1px solid var(--ink14);border-radius:16px;padding:22px 22px 20px;box-shadow:0 20px 50px rgba(0,0,0,.28);}
+.ph{flex-shrink:0;display:flex;align-items:center;gap:11px;padding-bottom:15px;margin-bottom:6px;border-bottom:1px solid var(--rule);}
+.ph .pi{width:34px;height:34px;border-radius:9px;background:var(--book-lo);border:1px solid var(--book-bd);flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.ph .pi svg{width:19px;height:19px;stroke:var(--book);stroke-width:2.1;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ph .pt{font-size:20px;font-weight:800;letter-spacing:-.4px;color:var(--ivory);line-height:1.05;}
+.ph .pt span{display:block;font-family:'DM Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--book);margin-bottom:3px;}
+.rows{flex:1;display:flex;flex-direction:column;justify-content:space-between;gap:11px;padding:15px 0;}
+.row{display:flex;align-items:flex-start;gap:13px;}
+.row .n{width:26px;height:26px;border-radius:50%;background:var(--book);color:#1a0f0a;font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;box-shadow:0 0 16px rgba(204,120,92,.3);}
+.row .tx{min-width:0;}
+.row .tx b{display:block;font-size:18.5px;font-weight:700;color:var(--ivory);line-height:1.18;letter-spacing:-.2px;}
+.row .tx span{font-size:14.5px;font-weight:500;color:var(--ink46);line-height:1.3;}
+.tag{display:inline-block;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--book);background:var(--book-lo);border:1px solid var(--book-bd);border-radius:20px;padding:2px 9px;margin-left:6px;vertical-align:1.5px;}
+.note{margin-top:auto;padding-top:14px;font-family:'DM Mono',monospace;font-size:12.5px;line-height:1.5;letter-spacing:.02em;color:var(--ink46);border-top:1px dashed var(--rule);}
+.note b{color:var(--kraft);font-weight:500;}
+.strip{flex-shrink:0;margin-top:16px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:13px;}
+.cell{background:var(--slate2);border:1px solid var(--ink14);border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:12px;}
+.cell .ci{width:34px;height:34px;border-radius:9px;background:var(--book-lo);border:1px solid var(--book-bd);flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.cell .ci svg{width:18px;height:18px;stroke:var(--book);stroke-width:2.1;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.cell .cx b{display:block;font-size:15.5px;font-weight:800;color:var(--ivory);line-height:1.1;letter-spacing:-.3px;}
+.cell .cx span{font-size:12.5px;font-weight:500;color:var(--ink46);}
+.cta{flex-shrink:0;margin-top:16px;display:flex;align-items:stretch;border:1px solid var(--book);border-radius:6px;overflow:hidden;}
+.cta-l{flex:1;padding:15px 22px;display:flex;flex-direction:column;justify-content:center;gap:3px;background:var(--book-lo);}
+.cta-l b{font-size:20px;font-weight:800;color:var(--ivory);}.cta-l span{font-size:15px;color:var(--ink70);}
+.cta-r{flex-shrink:0;padding:0 30px;display:flex;align-items:center;gap:11px;background:var(--book);font-size:19px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;color:#1a0f0a;box-shadow:0 0 34px rgba(204,120,92,.4);}
+.cta-r svg{width:20px;height:20px;stroke:#1a0f0a;stroke-width:2.7;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ftr{flex-shrink:0;margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.fl{display:flex;align-items:center;gap:12px;min-width:0;}.flogo{width:38px;height:38px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.ftx{font-family:'DM Mono',monospace;font-size:13px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--ink70);}.ftx b{color:var(--ivory);font-weight:500;}
+.furl{font-family:'DM Sans';font-weight:900;font-size:21px;letter-spacing:-.5px;color:var(--ivory);flex-shrink:0;}.furl em{color:var(--book);font-style:normal;}
+</style></head><body>
+<div class="art"><div class="atm"></div>
+  <div class="mast"><span class="ml">CONTEXT ENGINE<span class="sep">&middot;</span>SESSION MEMORY</span><span class="mr">ULTRON <em>&middot;</em> SESSIONS</span></div>
+  <div class="hero">
+    <div class="hook">Most AI forgets between chats.<br>Mine resumes where I <em>stopped</em>.</div>
+    <div class="hsub">Every session is saved turn by turn and <b>auto-compresses as it grows</b>. It never resets, so I never re-explain my business.</div>
+  </div>
+  <div class="cols">
+    <div class="panel">
+      <div class="ph"><span class="pi"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span><span class="pt"><span>On session start</span>Every session starts loaded</span></div>
+      <div class="rows">
+        <div class="row"><span class="n">1</span><span class="tx"><b>Static instructions</b><span>Behavior rules, tool use, quality gates</span></span></div>
+        <div class="row"><span class="n">2</span><span class="tx"><b>Your business profile</b><span>ICP, voice, competitors, platforms</span></span></div>
+        <div class="row"><span class="n">3</span><span class="tx"><b>Connected integrations</b><span>Gmail, Stripe, HubSpot and the rest</span></span></div>
+        <div class="row"><span class="n">4</span><span class="tx"><b>Relevant memories</b><span>Top 5, picked by Sonnet recall</span></span></div>
+        <div class="row"><span class="n">5</span><span class="tx"><b>Today's date</b><span>Injected fresh every time</span></span></div>
+      </div>
+      <div class="note">Static sits on top so it is <b>cached across sessions</b> - lower latency, lower cost. Dynamic context loads last.</div>
+    </div>
+    <div class="panel">
+      <div class="ph"><span class="pi"><svg viewBox="0 0 24 24"><path d="M4 7h16M7 12h10M10 17h4"/></svg></span><span class="pt"><span>As it grows</span>It never resets as it grows</span></div>
+      <div class="rows">
+        <div class="row"><span class="n">1</span><span class="tx"><b>MicroCompact<span class="tag">no API call</span></b><span>Drops stale tool output from old turns</span></span></div>
+        <div class="row"><span class="n">2</span><span class="tx"><b>Session Memory Compact<span class="tag">no API call</span></b><span>Uses your memories as the baseline</span></span></div>
+        <div class="row"><span class="n">3</span><span class="tx"><b>API Digest<span class="tag">last resort</span></b><span>Full summary on a fast model</span></span></div>
+      </div>
+      <div class="note">A <b>boundary marker</b> is set after each pass, so it never re-compresses what is already done. No manual restart, ever.</div>
+    </div>
+  </div>
+  <div class="strip">
+    <div class="cell"><span class="ci"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M4 9h16M8 5v14"/></svg></span><span class="cx"><b>JSONL, every turn</b><span>message, tools, tokens</span></span></div>
+    <div class="cell"><span class="ci"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg></span><span class="cx"><b>Resume anytime</b><span>context fully rebuilt</span></span></div>
+    <div class="cell"><span class="ci"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><span class="cx"><b>Cost tracked</b><span>per turn, in Usage</span></span></div>
+  </div>
+  <div class="cta"><div class="cta-l"><b>Want the full session architecture?</b><span>The exact Claude context system we run in Ultron.</span></div><div class="cta-r">Comment CONTEXT<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+  <div class="ftr"><div class="fl"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS &middot; SESSION MEMORY</div></div><div class="furl">51ultron<em>.</em>com</div></div>
+</div>
+</body></html>
