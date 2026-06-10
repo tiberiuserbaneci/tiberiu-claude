@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 content/_preflight.py --changed >&2 || exit 2"
+          }
+        ]
+      }
+    ]
+  }
+}

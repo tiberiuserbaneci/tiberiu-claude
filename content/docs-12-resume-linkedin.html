@@ -11,50 +11,42 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 .hook{font-weight:900;font-size:48px;line-height:.96;letter-spacing:-1.7px;color:var(--ivory);}.hook em{color:var(--book);font-style:normal;}
 .sub{margin-top:10px;font-size:16px;font-weight:500;line-height:1.33;color:var(--ink70);max-width:600px;}.sub b{color:var(--ivory);font-weight:700;}
 .statile{flex-shrink:0;display:flex;border:1px solid var(--rule);border-radius:13px;overflow:hidden;}
-.st{padding:16px 30px 14px;text-align:center;}.st+.st{border-left:1px solid var(--rule);}
+.st{padding:16px 28px 14px;text-align:center;}.st+.st{border-left:1px solid var(--rule);}
 .st .sn{font-weight:900;font-size:42px;line-height:.78;}.st.a .sn{color:var(--book);}.st.b .sn{color:var(--kraft);}.st.c .sn{color:var(--ivory);}
 .st.a{background:rgba(204,120,92,.1);}.st.b{background:rgba(212,162,127,.08);}.st.c{background:rgba(250,250,247,.03);}
 .st .sl{font-family:'DM Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink46);margin-top:8px;line-height:1.2;}
-/* main split: approval card (left) + flow (right) */
-.main{flex:1;min-height:0;margin-top:13px;display:grid;grid-template-columns:0.86fr 1fr;gap:14px;}
-.col{display:flex;flex-direction:column;min-height:0;}
-.colh{flex-shrink:0;display:flex;align-items:center;gap:10px;margin-bottom:9px;}
-.colh .sq{width:13px;height:13px;border-radius:4px;flex-shrink:0;}
-.colh .lb{font-family:'DM Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;}
-.colh.a .sq{background:var(--book);}.colh.a .lb{color:var(--book);}
-.colh.b .sq{background:var(--kraft);}.colh.b .lb{color:var(--kraft);}
-/* the approval card artifact */
-.acard{flex:1;min-height:0;display:flex;flex-direction:column;border:1px solid var(--book);border-radius:16px;overflow:hidden;background:rgba(204,120,92,.06);box-shadow:0 0 30px rgba(204,120,92,.16);}
-.acard .ah{flex-shrink:0;display:flex;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid var(--rule);background:rgba(204,120,92,.09);}
-.acard .ah .ttl{font-weight:800;font-size:20px;color:var(--ivory);letter-spacing:-.3px;line-height:1.05;}
+/* approval card - full-width artifact */
+.acard{flex-shrink:0;margin-top:13px;border:1px solid var(--book);border-radius:16px;overflow:hidden;background:rgba(204,120,92,.06);box-shadow:0 0 30px rgba(204,120,92,.16);}
+.acard .ah{display:flex;align-items:center;gap:13px;padding:14px 20px;border-bottom:1px solid var(--rule);background:rgba(204,120,92,.09);}
+.acard .ah .lbl2{font-family:'DM Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--book);}
+.acard .ah .ttl{font-weight:800;font-size:21px;color:var(--ivory);letter-spacing:-.3px;}
+.acard .ah .ttl b{color:var(--book);font-weight:800;}
 .acard .ah .risk{margin-left:auto;font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--book);border:1px solid rgba(204,120,92,.45);border-radius:20px;padding:6px 13px;white-space:nowrap;}
-.acard .summ{flex-shrink:0;padding:15px 18px 4px;font-size:16px;line-height:1.35;color:var(--ink70);}.acard .summ b{color:var(--ivory);font-weight:700;}
-.acard .ab{flex:1;min-height:0;padding:4px 18px 8px;display:flex;flex-direction:column;}
-.acard .prow{flex:1;display:flex;justify-content:space-between;align-items:center;font-size:15px;border-top:1px solid var(--rule);}
-.acard .prow:first-child{border-top:none;}
-.acard .prow span{color:var(--ink46);}.acard .prow b{color:var(--ivory);font-weight:600;font-family:'DM Mono',monospace;font-size:14.5px;}
-.acard .acts{flex-shrink:0;display:flex;gap:10px;padding:14px 18px;border-top:1px solid var(--rule);background:rgba(0,0,0,.15);}
-.acard .b{flex:1;text-align:center;font-size:15px;font-weight:800;padding:13px;border-radius:10px;}
-.acard .b.rej,.acard .b.edit{border:1px solid var(--rule);color:var(--ink70);}
-.acard .b.appr{background:var(--book);color:#1a0f0a;box-shadow:0 0 22px rgba(204,120,92,.42);}
-/* the 6-step flow */
-.flow{flex:1;min-height:0;display:flex;flex-direction:column;gap:10px;}
-.fstep{flex:1;display:flex;align-items:center;gap:16px;border:1px solid var(--rule);border-left:4px solid var(--kraft);border-radius:13px;padding:0 18px;background:rgba(212,162,127,.05);}
-.fstep .n{width:38px;height:38px;border-radius:10px;background:rgba(212,162,127,.14);border:1px solid var(--kraft-bd,rgba(212,162,127,.3));color:var(--kraft);font-weight:900;font-size:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.fstep .tx b{display:block;font-size:18.5px;font-weight:800;color:var(--ivory);letter-spacing:-.3px;line-height:1.06;}
-.fstep .tx b em{color:var(--kraft);font-style:normal;font-family:'DM Mono',monospace;font-size:15px;}
-.fstep .tx span{font-size:13.5px;color:var(--ink46);line-height:1.25;display:block;margin-top:3px;}
-/* state machine strip */
-.states{flex-shrink:0;margin-top:13px;display:flex;align-items:center;gap:14px;border:1px solid var(--rule);border-radius:14px;padding:14px 20px;background:rgba(250,250,247,.02);}
-.states .lead{display:flex;flex-direction:column;gap:4px;flex-shrink:0;}
-.states .lead .k{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink46);}
-.pchip{font-family:'DM Mono',monospace;font-size:15px;font-weight:600;color:#1a0f0a;background:var(--book);border-radius:8px;padding:8px 14px;white-space:nowrap;}
-.sarrow{color:var(--ink30);font-size:22px;flex-shrink:0;}
-.outs{flex:1;display:flex;gap:10px;}
-.ochip{flex:1;border:1px solid var(--rule);border-radius:11px;padding:10px 14px;background:var(--slate2);}
-.ochip .s{font-family:'DM Mono',monospace;font-size:14px;font-weight:600;color:var(--kraft);}
-.ochip .r{font-size:12.5px;color:var(--ink46);margin-top:4px;line-height:1.2;}
-.cta{flex-shrink:0;display:flex;align-items:center;gap:16px;border:1.5px solid var(--book);border-radius:20px;background:rgba(204,120,92,.08);padding:13px 13px 13px 26px;box-shadow:0 0 50px rgba(204,120,92,.18);}
+.acard .body2{display:flex;align-items:center;gap:16px;padding:16px 20px;}
+.pchips{flex:1;display:flex;flex-wrap:wrap;gap:10px;}
+.pchip{display:flex;flex-direction:column;gap:4px;border:1px solid var(--rule);border-radius:10px;padding:9px 14px;background:rgba(250,250,247,.03);}
+.pchip i{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink46);font-style:normal;}
+.pchip b{font-size:16px;font-weight:700;color:var(--ivory);}
+.acts{display:flex;gap:9px;flex-shrink:0;}
+.acts .b{text-align:center;font-size:14.5px;font-weight:800;padding:12px 18px;border-radius:10px;}
+.acts .b.rej,.acts .b.edit{border:1px solid var(--rule);color:var(--ink70);}
+.acts .b.appr{background:var(--book);color:#1a0f0a;box-shadow:0 0 22px rgba(204,120,92,.42);}
+/* what Claude pauses for - dense full-width list */
+.colh{flex-shrink:0;display:flex;align-items:center;gap:10px;margin:14px 0 9px;}
+.colh .sq{width:13px;height:13px;border-radius:4px;background:var(--kraft);flex-shrink:0;}
+.colh .lb{font-family:'DM Mono',monospace;font-size:12.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--kraft);}
+.colh .rt{margin-left:auto;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink30);}
+.gates{flex:1;min-height:0;display:flex;flex-direction:column;gap:9px;}
+.gate{flex:1;display:flex;align-items:center;gap:16px;border:1px solid var(--rule);border-radius:12px;padding:0 20px;background:var(--slate2);}
+.gate.high{border-left:4px solid var(--book-d);}.gate.med{border-left:4px solid var(--book);}.gate.low{border-left:4px solid var(--kraft);}
+.gate .gt{flex:1;min-width:0;}
+.gate .ac{font-weight:800;font-size:18.5px;color:var(--ivory);letter-spacing:-.3px;line-height:1.08;}
+.gate .nt{font-size:13.5px;color:var(--ink46);margin-top:4px;}
+.gate .rk{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:20px;padding:6px 13px;white-space:nowrap;flex-shrink:0;}
+.gate.high .rk{color:var(--book-d);border:1px solid rgba(200,70,35,.5);background:rgba(200,70,35,.1);}
+.gate.med .rk{color:var(--book);border:1px solid rgba(204,120,92,.45);background:rgba(204,120,92,.08);}
+.gate.low .rk{color:var(--kraft);border:1px solid var(--kraft-bd,rgba(212,162,127,.35));background:rgba(212,162,127,.08);}
+.cta{display:flex;align-items:center;gap:16px;border:1.5px solid var(--book);border-radius:20px;background:rgba(204,120,92,.08);padding:13px 13px 13px 26px;box-shadow:0 0 50px rgba(204,120,92,.18);}
 .ctawrap{flex-shrink:0;margin-top:13px;}
 .savel{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink46);margin-bottom:9px;padding-left:6px;}
 .cta .ph{flex:1;font-size:21px;font-weight:600;color:var(--ink70);line-height:1.2;}.cta .ph b{color:var(--book);font-weight:900;letter-spacing:.02em;}
@@ -65,43 +57,30 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 .ftx{font-family:'DM Mono',monospace;font-size:12.5px;font-weight:400;letter-spacing:.11em;text-transform:uppercase;color:var(--ink70);}.ftx b{color:var(--ivory);font-weight:500;}
 .furl{font-weight:900;font-size:21px;letter-spacing:-.6px;color:var(--ivory);}.furl em{color:var(--book);font-style:normal;}
 </style></head><body><div class="frame" id="artifact"><div class="atm"></div>
-<div class="hero"><div><div class="eye">Ultron &middot; Human in the Loop</div><div class="hook">Most AI acts, then apologizes. <em>Claude pauses and waits for you.</em></div><div class="sub">Human approval is a tool, not a side channel. A skill calls wait_for_approval, the turn halts, and nothing runs until you decide.</div></div>
-<div class="statile"><div class="st a"><div class="sn">4</div><div class="sl">pause<br>states</div></div><div class="st b"><div class="sn">3</div><div class="sl">risk<br>levels</div></div><div class="st c"><div class="sn">1</div><div class="sl">approval<br>tool</div></div></div></div>
-<div class="main">
-<div class="col">
-<div class="colh a"><span class="sq"></span><span class="lb">What you see: the approval card</span></div>
+<div class="hero"><div><div class="eye">Ultron &middot; Human in the Loop</div><div class="hook">Most AI acts, then apologizes. <em>Claude pauses and waits for you.</em></div><div class="sub">Before a high-stakes action runs, Claude stops and shows you a card to approve, edit or reject, then picks up exactly where it paused.</div></div>
+<div class="statile"><div class="st a"><div class="sn">0</div><div class="sl">surprise<br>actions</div></div><div class="st b"><div class="sn">3</div><div class="sl">risk<br>levels</div></div><div class="st c"><div class="sn">1</div><div class="sl">tap to<br>decide</div></div></div></div>
 <div class="acard">
-<div class="ah"><span class="ttl">Send outbound sequence</span><span class="risk">risk: medium</span></div>
-<div class="summ">SPECTER wants to send a <b>3-email sequence</b> to 240 leads. Approve, edit the payload, or reject.</div>
-<div class="ab">
-<div class="prow"><span>recipients</span><b>240 leads</b></div>
-<div class="prow"><span>sequence</span><b>3 emails / 6 days</b></div>
-<div class="prow"><span>first send</span><b>08:00 RO time</b></div>
-<div class="prow"><span>agent</span><b>SPECTER</b></div>
+<div class="ah"><span class="lbl2">Approval card</span><span class="ttl">Send outbound sequence</span><span class="risk">risk: medium</span></div>
+<div class="body2">
+<div class="pchips">
+<span class="pchip"><i>recipients</i><b>240 leads</b></span>
+<span class="pchip"><i>sequence</i><b>3 emails / 6 days</b></span>
+<span class="pchip"><i>daily cap</i><b>25 / day</b></span>
+<span class="pchip"><i>agent</i><b>SPECTER</b></span>
 </div>
 <div class="acts"><span class="b rej">Reject</span><span class="b edit">Edit</span><span class="b appr">Approve</span></div>
 </div>
 </div>
-<div class="col">
-<div class="colh b"><span class="sq"></span><span class="lb">What runs: pause to resume, in 6</span></div>
-<div class="flow">
-<div class="fstep"><div class="n">1</div><div class="tx"><b>Skill calls <em>wait_for_approval</em></b><span>passes a title, summary, payload and a risk hint</span></div></div>
-<div class="fstep"><div class="n">2</div><div class="tx"><b>Executor writes a <em>pause_points</em> row</b><span>the durable record of the in-flight approval</span></div></div>
-<div class="fstep"><div class="n">3</div><div class="tx"><b>Returns <em>__APPROVAL_REQUIRED__</em></b><span>a sentinel string, the only side channel to the loop</span></div></div>
-<div class="fstep"><div class="n">4</div><div class="tx"><b>Engine exits, state = <em>paused</em></b><span>the pause point id is stamped on the conversation</span></div></div>
-<div class="fstep"><div class="n">5</div><div class="tx"><b>You approve, edit or reject</b><span>the browser posts to /api/chat/resume</span></div></div>
-<div class="fstep"><div class="n">6</div><div class="tx"><b>Resume posts a synthetic message</b><span>the next turn reads the decision and continues</span></div></div>
-</div>
-</div>
-</div>
-<div class="states">
-<div class="lead"><span class="k">pause_points</span><span class="pchip">pending</span></div>
-<span class="sarrow">&rarr;</span>
-<div class="outs">
-<div class="ochip"><div class="s">approved</div><div class="r">engine resumes the turn</div></div>
-<div class="ochip"><div class="s">rejected</div><div class="r">resumes with a rejection</div></div>
-<div class="ochip"><div class="s">expired</div><div class="r">resumes with a timeout</div></div>
-</div>
+<div class="colh"><span class="sq"></span><span class="lb">What Claude pauses for</span><span class="rt">nothing runs until you decide</span></div>
+<div class="gates">
+<div class="gate high"><div class="gt"><div class="ac">Sign or send a contract</div><div class="nt">MSA, NDA, a proposal going out the door</div></div><span class="rk">high</span></div>
+<div class="gate high"><div class="gt"><div class="ac">Delete records or a segment</div><div class="nt">anything it cannot undo</div></div><span class="rk">high</span></div>
+<div class="gate high"><div class="gt"><div class="ac">Spend over a budget cap</div><div class="nt">ad spend, credits, a purchase</div></div><span class="rk">high</span></div>
+<div class="gate high"><div class="gt"><div class="ac">Share or export data</div><div class="nt">send records outside the workspace</div></div><span class="rk">high</span></div>
+<div class="gate med"><div class="gt"><div class="ac">Send outbound to a list</div><div class="nt">a cold sequence to many leads at once</div></div><span class="rk">medium</span></div>
+<div class="gate med"><div class="gt"><div class="ac">Publish a post live</div><div class="nt">to LinkedIn, a page or a channel</div></div><span class="rk">medium</span></div>
+<div class="gate med"><div class="gt"><div class="ac">Change integrations or billing</div><div class="nt">connect, disconnect or switch plan</div></div><span class="rk">medium</span></div>
+<div class="gate low"><div class="gt"><div class="ac">Draft, research, summarize</div><div class="nt">low-stakes work runs free, no gate</div></div><span class="rk">low</span></div>
 </div>
 <div class="ctawrap"><div class="savel">Save this, then</div><div class="cta"><span class="ph">Comment <b>RESUME</b> for the full approvals breakdown</span><span class="send"><svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div></div>
 <div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS &middot; HUMAN IN THE LOOP</div></div><div class="furl">51ultron<em>.</em>com</div></div>

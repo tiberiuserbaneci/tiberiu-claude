@@ -1050,4 +1050,37 @@ into `analysis/virality-principles.md`. Metrics priority stays: reach+impression
 
 ---
 
+## 30. AUTOMATED GUARDS (binding, added 2026-06-10 - operator demand: "instaleaza-ti guarduri ca sa nu mai poti realiza niciodata asa ceva")
+
+> The recurring rejections (airy blocks, repeated templates, off-spec exports) kept happening because
+> the rules lived only in prose. They are now ENFORCED by `content/_preflight.py`, wired as a **Stop
+> hook** in `.claude/settings.json` that BLOCKS the turn while any changed `content/docs-*` material
+> fails. Run it by hand on anything before delivery: `python3 content/_preflight.py content/<file>.html`.
+> The guard is the floor, never the ceiling - passing it is not the same as good.
+
+**Hard-fail checks (block delivery):**
+1. **Dimensions exact** - `#artifact` = 1080x1450 (LinkedIn), every `.slide` = 1080x1920 (TikTok/IG).
+2. **Charscan** - zero em/en dash, ellipsis char, curly quotes.
+3. **Fonts** - DM Sans / DM Mono only; forbidden families rejected.
+4. **Palette** - no forbidden hex (neon orange, green, saturated red, peach, purple, blue).
+5. **Safe-zone** - vertical slides: top content >= 300px.
+6. **No repetition** - body-class layout must differ from the previous material of the same channel (Jaccard <= 62%). Reusing a prior template = FAIL. (The docs-12-reused-docs-11 mistake is now blocked at the door.)
+7. **Dead band** - no single empty band > 120px (egregious airiness).
+8. **Footer** - Ultron + 51ultron.com present.
+
+**Surfaced every run (judgement, printed not auto-blocked):** empty-row % + largest dead band (a product mockup runs ~60% empty by design, so a blind gate would false-positive on approved work - PACK the dominant block if it reads airy; never `flex:1`/`space-between` to stretch sparse rows), and a `space-between`/`flex:1` code-smell count.
+
+**Process guards (operator rules - do NOT deviate):**
+- **SHOW every render** with SendUserFile - never describe a material without attaching it (operator: "nu mi l-ai aratat").
+- **Propose before executing; fix ONE element at a time.**
+- **Every material is bespoke** - vary layout/treatment/palette per material; never reuse a "locked" template (operator: "nu repeta materialele intre ele").
+- **Density first** - the dominant block is heavy and packed; airy = skip.
+- **TikTok is a visual scene/mockup, not a dry table; CTA styled to the scene.**
+- **Stay on ICP (founders, not engineers)** - no raw code or dev internals inside a material; show the product UI and the founder-facing value (operator: "nu mai pune linii de cod ... te indepartezi de ICP").
+- **Content is real** - numbers/features pulled from the docs, never invented; links only to confirmed app.51ultron.com paths, first comment only.
+- **Portal** - after adding materials, rescan + commit the manifest; last-added is first in every category; private port, open in a real browser.
+- **Captions** - LinkedIn 5-block 400-470w + ALT 80-150w + first comment 40-80w; TikTok one-beat paragraphs + exactly 5 hashtags.
+
+---
+
 END OF CONFIG.
