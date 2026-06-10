@@ -1,0 +1,226 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+:root{--slate:#191919;--slate2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--cloud:#919180;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;display:flex;flex-direction:column;align-items:center;gap:30px;padding:30px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.slide{width:1080px;height:1920px;background:var(--slate);position:relative;overflow:hidden;color:var(--ivory);}
+.slide::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.5px,transparent 1.6px);background-size:34px 34px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 60% 22% at 84% 3%,rgba(204,120,92,.2) 0%,transparent 60%),radial-gradient(ellipse 54% 18% at 8% 95%,rgba(212,162,127,.1) 0%,transparent 60%);}
+.safe{position:absolute;top:300px;left:70px;right:130px;bottom:330px;z-index:2;display:flex;flex-direction:column;}
+.mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--rule);padding-bottom:18px;font-family:'DM Mono',monospace;font-size:19px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;}
+.mast .ml{color:var(--book);}.mast .mr{color:var(--ink46);}
+.eyebrow{flex-shrink:0;font-family:'DM Mono',monospace;font-size:18px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--kraft);}
+.title{flex-shrink:0;margin-top:14px;font-weight:900;font-size:62px;line-height:1.0;letter-spacing:-2px;color:var(--ivory);}.title em{color:var(--book);font-style:normal;}
+.title.sm{font-size:52px;}
+.sub{flex-shrink:0;margin-top:18px;font-size:26px;font-weight:500;line-height:1.34;color:var(--ink70);}.sub b{color:var(--ivory);font-weight:700;}
+.ftr{flex-shrink:0;margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:18px;border-top:1px solid var(--rule);padding-top:22px;}
+.fl2{display:flex;align-items:center;gap:15px;}.flogo{width:48px;height:48px;border-radius:50%;object-fit:cover;}
+.ftx{font-family:'DM Mono',monospace;font-size:16px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--ink70);}.ftx b{color:var(--ivory);font-weight:500;}
+.furl{font-weight:900;font-size:27px;letter-spacing:-.6px;color:var(--ivory);}.furl em{color:var(--book);font-style:normal;}
+.swipe{font-family:'DM Mono',monospace;font-size:17px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--book);display:flex;align-items:center;gap:10px;}
+.swipe svg{width:22px;height:22px;stroke:var(--book);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+/* cover */
+.cover{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;}
+.cover .eyebrow{margin-bottom:0;}
+.cstat{margin-top:54px;display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.cstat .c{border:1px solid var(--rule);border-radius:18px;padding:30px 30px;background:rgba(250,250,247,.03);}
+.cstat .c b{display:block;font-weight:900;font-size:70px;line-height:.8;letter-spacing:-2px;}
+.cstat .c.a b{color:var(--book);}.cstat .c.b b{color:var(--kraft);}.cstat .c.c b{color:var(--ivory);}.cstat .c.d b{color:var(--book);}
+.cstat .c span{font-family:'DM Mono',monospace;font-size:16px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink46);margin-top:16px;display:block;}
+/* vertical numbered steps */
+.steps{flex:1;min-height:0;margin-top:30px;display:flex;flex-direction:column;gap:16px;}
+.step{flex:1;display:flex;align-items:center;gap:24px;border:1px solid var(--rule);border-left:5px solid var(--book);border-radius:18px;padding:22px 28px;background:rgba(204,120,92,.05);}
+.step .n{width:64px;height:64px;border-radius:16px;background:rgba(204,120,92,.14);border:1px solid rgba(204,120,92,.34);color:var(--book);font-weight:900;font-size:30px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.step .tx b{display:block;font-size:33px;font-weight:800;color:var(--ivory);letter-spacing:-.6px;line-height:1.04;}
+.step .tx span{font-size:21px;color:var(--ink46);margin-top:6px;display:block;line-height:1.25;}
+/* row cards */
+.rcards{flex:1;min-height:0;margin-top:30px;display:flex;flex-direction:column;gap:16px;}
+.rc{flex:1;display:flex;flex-direction:column;justify-content:center;border:1px solid var(--rule);border-radius:18px;padding:26px 30px;background:var(--slate2);}
+.rc.book{border-left:5px solid var(--book);}.rc.bookd{border-left:5px solid var(--book-d);}.rc.kraft{border-left:5px solid var(--kraft);}
+.rc .h{display:flex;align-items:center;gap:14px;}
+.rc .tag{font-family:'DM Mono',monospace;font-size:17px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--book);}
+.rc.bookd .tag{color:var(--book-d);}.rc.kraft .tag{color:var(--kraft);}
+.rc .meta{margin-left:auto;font-family:'DM Mono',monospace;font-size:16px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink46);}
+.rc .ds{font-size:23px;color:var(--ink70);margin-top:12px;line-height:1.32;}.rc .ds b{color:var(--ivory);font-weight:700;}
+.rc .ex{font-family:'DM Mono',monospace;font-size:17px;color:var(--ink46);margin-top:12px;}.rc .ex b{color:var(--kraft);font-weight:500;}
+/* tiers */
+.tcards{flex:1;min-height:0;margin-top:30px;display:flex;flex-direction:column;gap:16px;}
+.tcard{flex:1;display:flex;flex-direction:column;justify-content:center;border:1px solid var(--rule);border-left:5px solid var(--kraft);border-radius:18px;padding:24px 30px;background:rgba(212,162,127,.06);}
+.tcard.mid{border-left-color:var(--book);background:rgba(204,120,92,.06);}
+.tcard .top{display:flex;align-items:baseline;gap:16px;}
+.tcard .nm{font-weight:900;font-size:40px;letter-spacing:-.8px;color:var(--ivory);}
+.tcard .rl{font-family:'DM Mono',monospace;font-size:16px;letter-spacing:.08em;text-transform:uppercase;color:var(--kraft);}.tcard.mid .rl{color:var(--book);}
+.tcard .rows{display:flex;gap:14px;margin-top:18px;}
+.tcard .cell{flex:1;border-left:2px solid var(--rule);padding-left:14px;}
+.tcard .cell span{font-family:'DM Mono',monospace;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink46);display:block;}
+.tcard .cell b{font-size:22px;font-weight:700;color:var(--ink70);display:block;margin-top:5px;}
+/* chat (loop slide) */
+.chat{flex:1;min-height:0;margin-top:28px;display:flex;flex-direction:column;border:1px solid var(--ink14);border-radius:24px;overflow:hidden;background:#1e1e1d;box-shadow:0 30px 80px rgba(0,0,0,.5);}
+.chd{flex-shrink:0;display:flex;align-items:center;gap:14px;padding:20px 24px;border-bottom:1px solid var(--rule);background:#151514;}
+.chd .av{width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.chd .ct b{display:block;font-size:22px;font-weight:800;color:var(--ivory);letter-spacing:-.3px;line-height:1;}.chd .ct span{font-family:'DM Mono',monospace;font-size:13px;color:var(--ink46);}
+.chd .rz{margin-left:auto;display:flex;align-items:center;gap:9px;font-family:'DM Mono',monospace;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--book);background:rgba(204,120,92,.12);border:1px solid rgba(204,120,92,.34);padding:8px 14px;border-radius:30px;}
+.chd .rz i{width:8px;height:8px;border-radius:50%;background:var(--book);box-shadow:0 0 10px var(--book);}
+.cbody{flex:1;min-height:0;padding:22px 24px;display:flex;flex-direction:column;gap:13px;justify-content:space-between;}
+.msg{max-width:84%;padding:16px 20px;border-radius:18px;font-size:22px;font-weight:500;line-height:1.3;}
+.msg.u{align-self:flex-end;background:rgba(204,120,92,.14);border:1px solid rgba(204,120,92,.28);color:var(--ivory);border-bottom-right-radius:6px;}
+.msg.a{align-self:flex-start;background:var(--slate2);border:1px solid var(--rule);color:var(--ink70);border-bottom-left-radius:6px;}
+.msg.r{align-self:flex-start;max-width:88%;font-family:'DM Mono',monospace;font-size:17px;color:var(--ink46);padding:2px 16px;border-left:2px solid var(--ink14);margin-left:6px;line-height:1.35;}
+.msg.live{align-self:flex-start;background:rgba(204,120,92,.1);border:1px solid var(--book);color:var(--ivory);border-bottom-left-radius:6px;box-shadow:0 0 30px rgba(204,120,92,.26);}
+.msg.live b{color:var(--book);font-weight:800;}.msg.live .lt{font-family:'DM Mono',monospace;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--book-d);display:block;margin-bottom:6px;}
+.tcall{align-self:flex-start;max-width:88%;display:flex;flex-direction:column;gap:7px;background:#151514;border:1px solid var(--rule);border-left:4px solid var(--book);border-radius:15px;padding:14px 19px;}
+.tcall .th{display:flex;align-items:center;gap:11px;font-family:'DM Mono',monospace;font-size:16px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--book);}
+.tcall .th .tn{color:var(--ink46);}.tcall .th .nm{color:var(--ivory);}
+.tcall .tr{font-family:'DM Mono',monospace;font-size:17px;color:var(--ink46);}.tcall .tr b{color:var(--kraft);font-weight:600;}
+.cfoot{flex-shrink:0;padding:18px 24px;border-top:1px solid var(--rule);background:#151514;}
+.cfoot .fl{font-family:'DM Mono',monospace;font-size:14px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--ink46);margin-bottom:11px;display:flex;align-items:center;gap:9px;}
+.cfoot .fl em{color:var(--book);font-style:normal;}
+.cfoot .pills{display:flex;flex-wrap:wrap;gap:9px;}
+.pl{font-family:'DM Sans';font-size:16px;font-weight:700;color:rgba(250,250,247,.92);background:rgba(250,250,247,.06);border:1px solid var(--ink14);border-radius:9px;padding:7px 13px;line-height:1;display:flex;align-items:center;gap:7px;}
+.pl i{width:7px;height:7px;border-radius:50%;background:var(--kraft);}.pl.c i{background:var(--book);box-shadow:0 0 9px var(--book);}
+/* stop list + note */
+.stoplist{flex:1;min-height:0;margin-top:30px;display:flex;flex-direction:column;gap:14px;}
+.srow{flex:1;display:flex;flex-direction:column;justify-content:center;gap:9px;border:1px solid var(--rule);border-radius:16px;padding:20px 28px;background:var(--slate2);}
+.srow.go{border-color:rgba(204,120,92,.4);background:rgba(204,120,92,.08);}
+.srow .top{display:flex;align-items:center;gap:22px;}
+.srow .cond{font-family:'DM Mono',monospace;font-size:26px;font-weight:600;color:var(--ivory);width:270px;flex-shrink:0;}.srow.go .cond{color:var(--book);}
+.srow .arr{color:var(--ink30);font-size:24px;}
+.srow .state{font-size:24px;font-weight:800;color:var(--kraft);}.srow.go .state{color:var(--book);}
+.srow .desc{font-size:19px;color:var(--ink46);line-height:1.3;}
+.note{flex-shrink:0;margin-top:18px;border:1px solid rgba(204,120,92,.32);border-radius:16px;padding:22px 28px;background:rgba(204,120,92,.07);font-size:22px;line-height:1.35;color:var(--ink70);}.note b{color:var(--ivory);font-weight:700;}
+/* cta slide */
+.recap{flex:1;min-height:0;margin-top:30px;display:flex;flex-direction:column;gap:14px;}
+.rchip{flex:1;display:flex;align-items:center;gap:20px;border:1px solid var(--rule);border-radius:16px;padding:20px 28px;background:var(--slate2);font-size:27px;font-weight:700;color:var(--ivory);}
+.rchip i{font-family:'DM Mono',monospace;font-size:21px;font-weight:600;color:var(--book);width:44px;flex-shrink:0;}
+.ctawrap{flex-shrink:0;margin-top:26px;}
+.savel{font-family:'DM Mono',monospace;font-size:17px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink46);margin-bottom:14px;padding-left:8px;}
+.cta{display:flex;align-items:center;gap:18px;border:1.5px solid var(--book);border-radius:24px;background:rgba(204,120,92,.08);padding:16px 16px 16px 32px;box-shadow:0 0 50px rgba(204,120,92,.18);}
+.cta .ph{flex:1;font-size:29px;font-weight:600;color:var(--ink70);line-height:1.2;}.cta .ph b{color:var(--book);font-weight:900;}
+.cta .send{width:74px;height:74px;border-radius:50%;background:var(--book);flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 0 32px rgba(204,120,92,.45);}
+.cta .send svg{width:34px;height:34px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+</style></head><body>
+
+<!-- 01 COVER -->
+<div class="slide"><div class="atm"></div><div class="safe">
+<div class="mast"><span class="ml">The Chat Loop</span><span class="mr">01 / 08</span></div>
+<div class="cover">
+<div class="eyebrow">Anatomy of a turn</div>
+<div class="title">Most AI replies once. <em>Claude loops until the job is done.</em></div>
+<div class="sub">One turn is <b>one pass of the tool-calling loop</b>. Here is the whole path, from the user pressing send to the answer streaming back.</div>
+<div class="cstat">
+<div class="c a"><b>5</b><span>steps per request</span></div>
+<div class="c b"><b>3</b><span>model tiers</span></div>
+<div class="c c"><b>91</b><span>native tools</span></div>
+<div class="c d"><b>16</b><span>max turns per skill</span></div>
+</div>
+</div>
+<div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR</div></div><div class="swipe">Swipe <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+</div></div>
+
+<!-- 02 THE PATH -->
+<div class="slide"><div class="atm"></div><div class="safe">
+<div class="mast"><span class="ml">The Chat Loop</span><span class="mr">02 / 08</span></div>
+<div class="eyebrow" style="margin-top:30px">The request path</div>
+<div class="title sm" style="margin-top:14px">Every request runs the <em>same 5 steps</em></div>
+<div class="steps">
+<div class="step"><div class="n">1</div><div class="tx"><b>Authenticate</b><span>resolve the Supabase user from the session</span></div></div>
+<div class="step"><div class="n">2</div><div class="tx"><b>Route</b><span>pick the skill and persona, 56 ids in the registry</span></div></div>
+<div class="step"><div class="n">3</div><div class="tx"><b>Pick a tier</b><span>Haiku, Sonnet or Opus, declared per skill</span></div></div>
+<div class="step"><div class="n">4</div><div class="tx"><b>Build tools</b><span>assemble a scoped catalog, frozen for the turn</span></div></div>
+<div class="step"><div class="n">5</div><div class="tx"><b>Run the loop</b><span>call the model and tools until it stops</span></div></div>
+</div>
+<div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR</div></div><div class="swipe">Swipe <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+</div></div>
+
+<!-- 03 ROUTER -->
+<div class="slide"><div class="atm"></div><div class="safe">
+<div class="mast"><span class="ml">The Chat Loop</span><span class="mr">03 / 08</span></div>
+<div class="eyebrow" style="margin-top:30px">Step 2 &middot; routing</div>
+<div class="title sm" style="margin-top:14px">The router picks <em>who owns the turn</em></div>
+<div class="rcards">
+<div class="rc book"><div class="h"><span class="tag">Slash command</span><span class="meta">instant</span></div><div class="ds">Type a command and the router shortcuts straight to that persona.</div><div class="ex"><b>/cortex</b> &middot; <b>/specter</b> &middot; <b>/striker</b> &rarr; persona</div></div>
+<div class="rc bookd"><div class="h"><span class="tag">No command</span><span class="meta">Haiku call</span></div><div class="ds">A tiny <b>Haiku</b> classification picks the skill. Cheap and fast.</div><div class="ex">200ms p50 &middot; <b>56 skill ids</b> in the registry</div></div>
+<div class="rc kraft"><div class="h"><span class="tag">Sticky persona</span><span class="meta">session memory</span></div><div class="ds">If the chat already has a persona, the router prefers a skill <b>inside it</b> first.</div><div class="ex">conversation.persona &rarr; same lane</div></div>
+</div>
+<div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR</div></div><div class="swipe">Swipe <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+</div></div>
+
+<!-- 04 TIERS -->
+<div class="slide"><div class="atm"></div><div class="safe">
+<div class="mast"><span class="ml">The Chat Loop</span><span class="mr">04 / 08</span></div>
+<div class="eyebrow" style="margin-top:30px">Step 3 &middot; model tier</div>
+<div class="title sm" style="margin-top:14px">One of <em>3 tiers</em>, resolved per turn</div>
+<div class="tcards">
+<div class="tcard"><div class="top"><span class="nm">Haiku</span><span class="rl">cheapest</span></div><div class="rows"><div class="cell"><span>runs</span><b>routing, judging</b></div><div class="cell"><span>latency</span><b>200ms p50</b></div><div class="cell"><span>cost</span><b>lowest</b></div></div></div>
+<div class="tcard mid"><div class="top"><span class="nm">Sonnet</span><span class="rl">default</span></div><div class="rows"><div class="cell"><span>runs</span><b>skill execution</b></div><div class="cell"><span>latency</span><b>1.4s p50</b></div><div class="cell"><span>cost</span><b>mid</b></div></div></div>
+<div class="tcard"><div class="top"><span class="nm">Opus</span><span class="rl">top end</span></div><div class="rows"><div class="cell"><span>runs</span><b>heavy reasoning</b></div><div class="cell"><span>latency</span><b>3s p50</b></div><div class="cell"><span>cost</span><b>highest</b></div></div></div>
+</div>
+<div class="note">The manifest declares a <b>tier</b>, not a model. The handler resolves it to a concrete model id at request time, so swapping models is a one-line change.</div>
+<div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR</div></div><div class="swipe">Swipe <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+</div></div>
+
+<!-- 05 TOOLS -->
+<div class="slide"><div class="atm"></div><div class="safe">
+<div class="mast"><span class="ml">The Chat Loop</span><span class="mr">05 / 08</span></div>
+<div class="eyebrow" style="margin-top:30px">Step 4 &middot; tool catalog</div>
+<div class="title sm" style="margin-top:14px">Every turn gets a <em>scoped catalog</em></div>
+<div class="rcards">
+<div class="rc book"><div class="h"><span class="tag">Provider modules</span><span class="meta">first</span></div><div class="ds">Modular, sim-style tool packs are loaded ahead of everything else.</div><div class="ex">MODULES.flatMap(m =&gt; m.schemas)</div></div>
+<div class="rc bookd"><div class="h"><span class="tag">Native handlers</span><span class="meta">91 tools</span></div><div class="ds">The native catalog, <b>filtered by the skill allow-list</b>. No allow, no call.</div><div class="ex">getNativeTools().filter(allow-list)</div></div>
+<div class="rc kraft"><div class="h"><span class="tag">External MCP</span><span class="meta">cached 10 min</span></div><div class="ds">Per-user external servers, discovered and cached for the session.</div><div class="ex">getExternalServerTools(userId)</div></div>
+</div>
+<div class="note"><b>The allow-list is enforced.</b> A skill cannot call a tool outside its manifest, even if the model attempts to.</div>
+<div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR</div></div><div class="swipe">Swipe <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+</div></div>
+
+<!-- 06 THE LOOP -->
+<div class="slide"><div class="atm"></div><div class="safe">
+<div class="mast"><span class="ml">The Chat Loop</span><span class="mr">06 / 08</span></div>
+<div class="eyebrow" style="margin-top:30px">Step 5 &middot; the loop</div>
+<div class="title sm" style="margin-top:14px">One iteration = <em>one turn</em></div>
+<div class="chat">
+<div class="chd"><img class="av" src="__LOGO_URI__" alt="Ultron"><div class="ct"><b>Ultron session</b><span>#8f2a &middot; cortex</span></div><div class="rz"><i></i>Sonnet</div></div>
+<div class="cbody">
+<div class="msg u">Find my top 3 fintech rivals and compare them.</div>
+<div class="msg a">Routing to CORTEX. Sonnet tier, 6-turn budget.</div>
+<div class="tcall"><div class="th"><span class="tn">turn 1</span> &middot; tool_use &middot; <span class="nm">web_search</span></div><div class="tr">"kyc fintech competitors" &rarr; <b>12 results</b></div></div>
+<div class="msg r">&rarr; Stripe, Adyen, Checkout.com, Rapyd ...</div>
+<div class="tcall"><div class="th"><span class="tn">turn 2</span> &middot; tool_use &middot; <span class="nm">canvas.comparison_table</span></div><div class="tr">rendered <b>9 rows</b> across 3 rivals</div></div>
+<div class="msg live"><span class="lt">turn 3 &middot; stop_reason = end_turn</span>Done. Stripe, Adyen and Checkout compared across 9 rows.</div>
+</div>
+<div class="cfoot"><div class="fl"><em>&#9679;</em> One turn = one loop pass &middot; 3 model turns, 2 tool calls</div><div class="pills"><span class="pl c"><i></i>route</span><span class="pl"><i></i>tier</span><span class="pl"><i></i>tools</span><span class="pl"><i></i>exec</span><span class="pl"><i></i>persist</span></div></div>
+</div>
+<div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR</div></div><div class="swipe">Swipe <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+</div></div>
+
+<!-- 07 STOP + PERSIST -->
+<div class="slide"><div class="atm"></div><div class="safe">
+<div class="mast"><span class="ml">The Chat Loop</span><span class="mr">07 / 08</span></div>
+<div class="eyebrow" style="margin-top:30px">Stop conditions</div>
+<div class="title sm" style="margin-top:14px">4 ways a turn <em>ends</em></div>
+<div class="stoplist">
+<div class="srow go"><div class="top"><span class="cond">tool_use</span><span class="arr">&rarr;</span><span class="state">loops again</span></div><div class="desc">the only stop reason that keeps the loop running</div></div>
+<div class="srow"><div class="top"><span class="cond">end_turn</span><span class="arr">&rarr;</span><span class="state">idle</span></div><div class="desc">the model returned a final assistant message</div></div>
+<div class="srow"><div class="top"><span class="cond">max_tokens</span><span class="arr">&rarr;</span><span class="state">idle + warning</span></div><div class="desc">the turn budget was reached before the model finished</div></div>
+<div class="srow"><div class="top"><span class="cond">error</span><span class="arr">&rarr;</span><span class="state">failed</span></div><div class="desc">an unrecoverable tool or model error</div></div>
+</div>
+<div class="note">Every message, tool call and result is persisted. <b>The database is the source of truth</b>, streaming is UI only.</div>
+<div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR</div></div><div class="swipe">Swipe <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+</div></div>
+
+<!-- 08 CTA -->
+<div class="slide"><div class="atm"></div><div class="safe">
+<div class="mast"><span class="ml">The Chat Loop</span><span class="mr">08 / 08</span></div>
+<div class="eyebrow" style="margin-top:30px">One turn, start to finish</div>
+<div class="title sm" style="margin-top:14px">Route, tier, tools, <em>loop, persist</em></div>
+<div class="recap">
+<div class="rchip"><i>01</i>Authenticate the user</div>
+<div class="rchip"><i>02</i>Route to a skill and persona</div>
+<div class="rchip"><i>03</i>Pick a model tier</div>
+<div class="rchip"><i>04</i>Build a scoped tool catalog</div>
+<div class="rchip"><i>05</i>Loop until stop_reason, then persist</div>
+</div>
+<div class="ctawrap"><div class="savel">Save this, then</div><div class="cta"><span class="ph">Comment <b>TURN</b> for the full chat-loop breakdown</span><span class="send"><svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div></div>
+<div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</div></div><div class="furl">51ultron<em>.</em>com</div></div>
+</div></div>
+
+</body></html>
