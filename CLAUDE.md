@@ -332,15 +332,17 @@ Each REALNUMBERS visual includes:
 
 ### Safe zones — vertical 1080×1920 (TikTok / IG story) (operator, 2026-06-04 — binding)
 TikTok and IG overlay their UI on every edge of the frame. Keep ALL content inside this safe box.
-The mast/title must sit BELOW the top inset — `top:150px` was too small and the top tabs covered the mast.
-- **top: 250px** (status bar + For You / Following tabs + search)
+The mast/title must sit BELOW the top inset. `top:150px` was too small (top tabs covered the mast); `top:250px` still let the TikTok search/header bar cover the carousel header (operator, 2026-06-10), so the inset is now 300px.
+- **top: 300px** (status bar + For You / Following tabs + search/header bar; 250 was confirmed covering the carousel header)
 - right: 130px (the like / comment / share rail)
 - bottom: 330px (caption, username, progress bar)
 - left: 70px
 ```css
-.safe{position:absolute;top:250px;left:70px;right:130px;bottom:330px;display:flex;flex-direction:column;}
+.safe{position:absolute;top:300px;left:70px;right:130px;bottom:330px;display:flex;flex-direction:column;}
 ```
-Every vertical carousel slide and story uses these insets. Pre-flight: verify the mast top ≥ 250px before export.
+Every vertical carousel slide and story uses these insets. Pre-flight: verify the mast top ≥ 300px before export.
+
+**Canvas vs visible band (operator, 2026-06-10 — binding):** the canvas MUST stay 1080×1920. 9:16 is the TikTok/IG upload format; anything shorter gets cropped or letterboxed unpredictably. Content is NOT spread across the full 1920 - it lives only inside the safe box, a visible band of about **1080×1290** after the 300 top / 330 bottom insets. Design to that band; keep the 1920 canvas. Research basis: TikTok organic safe area is roughly 960×1386 centered, top UI band ~200px, right rail ~120px, bottom caption/CTA ~330–480px.
 
 ### Canvas CSS base
 ```css
