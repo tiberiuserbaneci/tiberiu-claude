@@ -149,7 +149,9 @@ async function load(quiet){
 }
 
 // newest generated_date first (top-left); id is a stable tie-breaker for same-day items
-function byNewest(a,b){return (b.generated_date||'').localeCompare(a.generated_date||'')||(a.id<b.id?-1:a.id>b.id?1:0);}
+// last material added = first position (top-left) in every category: newest commit time first,
+// then date, then id descending as a stable tie-breaker so the highest docs-NN wins.
+function byNewest(a,b){return (b.added||0)-(a.added||0)||(b.generated_date||'').localeCompare(a.generated_date||'')||(a.id<b.id?1:a.id>b.id?-1:0);}
 function render(){
  document.getElementById('gen').textContent='generated '+DATA.generated_at.replace('T',' ');
  const tabs=document.getElementById('tabs');

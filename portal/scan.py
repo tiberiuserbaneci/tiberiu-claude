@@ -66,13 +66,22 @@ def title_from(mid):
     s = re.sub(r"^docs-\d+-", "", s); s = re.sub(r"^ref-\d+-", "", s)
     return s.replace("-", " ").title()
 
-def git_date(path):
+def git_when(path):
+    """(date 'YYYY-MM-DD', unix_ts) of the last commit touching the path. ts drives newest-first
+    sorting so same-day materials still order by the actual moment they were added."""
     try:
-        out = subprocess.run(["git","log","-1","--format=%cs","--",str(path)], cwd=ROOT,
+        out = subprocess.run(["git","log","-1","--format=%cs|%ct","--",str(path)], cwd=ROOT,
                              capture_output=True, text=True, timeout=10).stdout.strip()
-        return out or datetime.date.today().isoformat()
+        if out and "|" in out:
+            d, t = out.split("|", 1)
+            return (d or datetime.date.today().isoformat()), int(t or 0)
     except Exception:
-        return datetime.date.today().isoformat()
+        pass
+    try:
+        ts = int(pathlib.Path(path).stat().st_mtime)
+        return datetime.date.fromtimestamp(ts).isoformat(), ts
+    except Exception:
+        return datetime.date.today().isoformat(), 0
 
 # ---- material dimensions (corner badge in the portal) ----
 KNOWN_LOGICAL = {(1080, 1450), (1080, 1920)}
@@ -146,13 +155,14 @@ for mid, m in mats.items():
     dim_src = slides[0] if typ == "carousel" else preview
     dims = fmt_dims(png_size(ROOT / dim_src))
     cap = find_caption(slug_prefix(mid), ch)
+    gd, gts = git_when(ROOT/preview)
     materials.append({
         "id": mid, "title": title_from(mid),
         "channel": ch, "type": typ, "slides": nslides, "dims": dims,
         "preview": preview, "download": download,
         "files": files, "variants": [pathlib.Path(f).stem.split(mid.replace('content/',''))[-1].strip('-') for f in files] if typ!="carousel" else [],
         "caption": cap.get("caption",""), "alt": cap.get("alt",""), "first_comment": cap.get("first_comment",""),
-        "generated_date": git_date(ROOT/preview), "source": "generated",
+        "generated_date": gd, "added": gts, "source": "generated",
         "status": "ready", "posted": False, "posted_date": None,
         "analytics": None, "crossposts": []
     })
@@ -188,13 +198,14 @@ except Exception as e:
 for mid, thumb in refs:
     ch = channel_of(mid)
     rwh = html_canvas_size(CONTENT / (mid + ".html")) or ((1080, 1450) if ch == "linkedin" else (1080, 1920))
+    gd, gts = git_when(CONTENT/(mid+".html"))
     materials.append({
         "id": mid, "title": title_from(mid).replace("Script","Script "),
         "channel": ch, "type": "single", "slides": 1, "dims": fmt_dims(rwh),
         "preview": "content/portal/thumbs/"+thumb.name if thumb.exists() else None,
         "download": "content/"+mid+".html", "files": ["content/"+mid+".html"], "variants": [],
         "caption": "", "alt": "", "first_comment": "",
-        "generated_date": git_date(CONTENT/(mid+".html")), "source": "reference",
+        "generated_date": gd, "added": gts, "source": "reference",
         "status": "needs-revision", "posted": False, "posted_date": None,
         "analytics": None, "crossposts": []
     })
