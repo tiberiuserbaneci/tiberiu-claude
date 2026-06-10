@@ -1,0 +1,99 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+:root{--slate:#191919;--slate2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--cloud:#919180;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.frame{width:1080px;height:1450px;background:var(--slate);padding:38px 44px 24px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;}
+.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.4px,transparent 1.5px);background-size:30px 30px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 54% 24% at 90% -2%,rgba(204,120,92,.22) 0%,transparent 60%),radial-gradient(ellipse 48% 26% at 2% 102%,rgba(212,162,127,.12) 0%,transparent 60%);}
+.frame>*{position:relative;z-index:2;}
+.hero{flex-shrink:0;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding-bottom:15px;border-bottom:1px solid var(--rule);}
+.eye{font-family:'DM Mono',monospace;font-size:14px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--book);margin-bottom:9px;}
+.hook{font-weight:900;font-size:46px;line-height:.96;letter-spacing:-1.5px;color:var(--ivory);}.hook em{color:var(--book);font-style:normal;}
+.sub{margin-top:11px;font-size:17.5px;font-weight:500;line-height:1.34;color:var(--ink70);max-width:600px;}.sub b{color:var(--ivory);font-weight:700;}
+.statile{flex-shrink:0;display:flex;border:1px solid var(--rule);border-radius:14px;overflow:hidden;}
+.st{padding:15px 20px 13px;text-align:center;}.st+.st{border-left:1px solid var(--rule);}
+.st .sn{font-weight:900;font-size:44px;line-height:.78;}.st.a .sn{color:var(--book);}.st.b .sn{color:var(--kraft);}.st.c .sn{color:var(--ivory);}
+.st.a{background:rgba(204,120,92,.1);}.st.b{background:rgba(212,162,127,.08);}.st.c{background:rgba(250,250,247,.03);}
+.st .sl{font-family:'DM Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--ink46);margin-top:8px;line-height:1.2;}
+.sec{flex-shrink:0;display:flex;align-items:center;gap:10px;margin:13px 0 9px;}
+.sec .sq{width:14px;height:14px;border-radius:4px;flex-shrink:0;}
+.sec .sl{font-family:'DM Mono',monospace;font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;}
+.sec .sx{margin-left:auto;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink30);}
+.sec.s1 .sq{background:var(--book);}.sec.s1 .sl{color:var(--book);}
+.sec.s2 .sq{background:var(--book-d);}.sec.s2 .sl{color:var(--book-d);}
+.sec.s3 .sq{background:var(--kraft);}.sec.s3 .sl{color:var(--kraft);}
+/* 5-step pipeline */
+.pipe{flex-shrink:0;display:grid;grid-template-columns:1fr 20px 1fr 20px 1fr 20px 1fr 20px 1fr;align-items:stretch;}
+.stp{border:1px solid var(--rule);border-top:3px solid var(--book);border-radius:11px;padding:13px 14px;background:rgba(204,120,92,.05);display:flex;flex-direction:column;}
+.stp .sn{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--book);}
+.stp .nm{font-weight:800;font-size:19px;letter-spacing:-.4px;color:var(--ivory);margin-top:5px;line-height:1;}
+.stp .ds{font-size:12.5px;font-weight:500;color:var(--ink46);margin-top:6px;line-height:1.2;}
+.par{display:flex;align-items:center;justify-content:center;}.par svg{width:18px;height:18px;stroke:var(--book);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+/* trace log */
+.trace{flex:1;min-height:0;display:flex;flex-direction:column;border:1px solid var(--ink14);border-radius:12px;overflow:hidden;background:#151514;}
+.trh{flex-shrink:0;display:flex;align-items:center;gap:12px;padding:11px 18px;border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--book-d);}
+.trh .d{margin-left:auto;color:var(--ink46);}
+.trb{flex:1;min-height:0;padding:10px 18px;display:flex;flex-direction:column;justify-content:space-between;font-family:'DM Mono',monospace;font-size:15px;}
+.trow{display:flex;align-items:center;gap:16px;white-space:nowrap;}
+.trow .t{color:var(--book);font-weight:500;width:62px;flex-shrink:0;text-align:right;}
+.trow .e{color:var(--ivory);font-weight:500;width:200px;flex-shrink:0;}
+.trow .v{color:var(--ink46);overflow:hidden;text-overflow:ellipsis;}
+.trow.hi .e{color:var(--book);}.trow.ok .v{color:var(--kraft);}
+/* tiers */
+.tiers{flex-shrink:0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.tc{border:1px solid var(--rule);border-left:4px solid var(--kraft);border-radius:12px;padding:14px 17px;background:rgba(212,162,127,.06);}
+.tc.mid{border-left-color:var(--book);background:rgba(204,120,92,.06);}
+.tc .nm{font-weight:800;font-size:21px;letter-spacing:-.4px;color:var(--ivory);line-height:1;}
+.tc .nm em{font-style:normal;font-family:'DM Mono',monospace;font-size:11px;color:var(--kraft);letter-spacing:.08em;text-transform:uppercase;display:block;margin-top:6px;}
+.tc.mid .nm em{color:var(--book);}
+.tc .row{display:flex;justify-content:space-between;margin-top:11px;font-size:13.5px;}
+.tc .row span{color:var(--ink46);}.tc .row b{color:var(--ink70);font-weight:700;}
+.cta{flex-shrink:0;margin-top:13px;display:flex;align-items:stretch;border:1px solid var(--book);border-radius:13px;overflow:hidden;box-shadow:0 0 44px rgba(204,120,92,.18);}
+.cta-l{flex:1;padding:14px 24px;display:flex;flex-direction:column;justify-content:center;gap:3px;background:rgba(204,120,92,.07);}
+.cta-k{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink46);}
+.cta-t{font-size:21px;font-weight:700;color:var(--ivory);line-height:1.18;}.cta-t b{color:var(--book);font-weight:900;}
+.cta-chip{flex-shrink:0;padding:0 28px;gap:11px;background:var(--book);display:flex;align-items:center;font-size:24px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#1a0f0a;}
+.cta-chip svg{width:24px;height:24px;stroke:#1a0f0a;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ftr{flex-shrink:0;margin-top:12px;display:flex;align-items:center;justify-content:space-between;gap:18px;border-top:1px solid var(--rule);padding-top:12px;}
+.fl{display:flex;align-items:center;gap:13px;min-width:0;}.flogo{width:36px;height:36px;border-radius:50%;object-fit:cover;}
+.ftx{font-family:'DM Mono',monospace;font-size:13px;font-weight:400;letter-spacing:.11em;text-transform:uppercase;color:var(--ink70);}.ftx b{color:var(--ivory);font-weight:500;}
+.furl{font-weight:900;font-size:21px;letter-spacing:-.6px;color:var(--ivory);}.furl em{color:var(--book);font-style:normal;}
+</style></head><body><div class="frame" id="artifact"><div class="atm"></div>
+<div class="hero"><div><div class="eye">Ultron &middot; The Chat Loop</div><div class="hook">Most AI replies once. <em>Claude loops until the job is done.</em></div><div class="sub">One turn is one pass of the tool-calling loop: route the message, pick a model tier, expose a scoped tool catalog, and run Claude until it stops.</div></div>
+<div class="statile"><div class="st a"><div class="sn">5</div><div class="sl">steps per<br>request</div></div><div class="st b"><div class="sn">3</div><div class="sl">model<br>tiers</div></div><div class="st c"><div class="sn">91</div><div class="sl">native<br>tools</div></div></div></div>
+<div class="sec s1"><span class="sq"></span><span class="sl">Every request runs the same 5 steps</span><span class="sx">top of the handler</span></div>
+<div class="pipe">
+<div class="stp"><div class="sn">01</div><div class="nm">Authenticate</div><div class="ds">resolve the Supabase user</div></div>
+<div class="par"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+<div class="stp"><div class="sn">02</div><div class="nm">Route</div><div class="ds">skill + persona, 56 ids</div></div>
+<div class="par"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+<div class="stp"><div class="sn">03</div><div class="nm">Tier</div><div class="ds">Haiku, Sonnet or Opus</div></div>
+<div class="par"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+<div class="stp"><div class="sn">04</div><div class="nm">Tools</div><div class="ds">scoped catalog, frozen</div></div>
+<div class="par"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+<div class="stp"><div class="sn">05</div><div class="nm">Loop</div><div class="ds">run until it stops</div></div>
+</div>
+<div class="sec s2"><span class="sq"></span><span class="sl">Inside one turn: the live trace</span><span class="sx">POST /api/chat/v2</span></div>
+<div class="trace">
+<div class="trh"><span>trace.log</span><span>cortex.competitive-analysis &middot; sonnet</span><span class="d">2 tool calls</span></div>
+<div class="trb">
+<div class="trow"><span class="t">+8ms</span><span class="e">auth.session</span><span class="v">supabase user resolved</span></div>
+<div class="trow"><span class="t">+30ms</span><span class="e">router.select</span><span class="v">skill = cortex.competitive-analysis</span></div>
+<div class="trow"><span class="t">+34ms</span><span class="e">models.tier</span><span class="v">tier = sonnet, maxTurns = 6</span></div>
+<div class="trow"><span class="t">+48ms</span><span class="e">tools.build</span><span class="v">14 tools exposed</span></div>
+<div class="trow"><span class="t">+62ms</span><span class="e">cascade.compress</span><span class="v">history to 4.1k tokens</span></div>
+<div class="trow hi"><span class="t">+1.4s</span><span class="e">turn 1 &lt;- model</span><span class="v">tool_use: web_search</span></div>
+<div class="trow hi"><span class="t">+4.2s</span><span class="e">turn 2 &lt;- model</span><span class="v">tool_use: canvas.comparison_table</span></div>
+<div class="trow ok"><span class="t">+6.4s</span><span class="e">turn 3 &lt;- model</span><span class="v">text, stop_reason = end_turn</span></div>
+<div class="trow"><span class="t">+6.5s</span><span class="e">persist.messages</span><span class="v">state running -&gt; idle</span></div>
+</div>
+</div>
+<div class="sec s3"><span class="sq"></span><span class="sl">3 model tiers, resolved per turn</span><span class="sx">declared in the manifest</span></div>
+<div class="tiers">
+<div class="tc"><div class="nm">Haiku<em>cheapest</em></div><div class="row"><span>runs</span><b>routing, judging</b></div><div class="row"><span>latency</span><b>200ms p50</b></div></div>
+<div class="tc mid"><div class="nm">Sonnet<em>default</em></div><div class="row"><span>runs</span><b>skill execution</b></div><div class="row"><span>latency</span><b>1.4s p50</b></div></div>
+<div class="tc"><div class="nm">Opus<em>top end</em></div><div class="row"><span>runs</span><b>heavy reasoning</b></div><div class="row"><span>latency</span><b>3s p50</b></div></div>
+</div>
+<div class="cta"><div class="cta-l"><div class="cta-k">Save this. Then</div><div class="cta-t">Comment <b>TURN</b> for the full chat-loop breakdown.</div></div><div class="cta-chip">TURN <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+<div class="ftr"><div class="fl"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS &middot; THE CHAT LOOP</div></div><div class="furl">51ultron<em>.</em>com</div></div>
+</div></body></html>
