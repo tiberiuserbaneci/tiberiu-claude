@@ -16,13 +16,15 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 .st .sl{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--ink46);line-height:1.25;}
 .sec{font-family:'DM Mono',monospace;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--book);flex-shrink:0;margin:17px 0 11px;display:flex;justify-content:space-between;}
 .sec .sx{color:var(--ink30);}
-.stack{flex:1;display:flex;flex-direction:column;min-height:0;justify-content:space-between;gap:9px;}
-.srow{display:grid;grid-template-columns:46px 1fr auto;align-items:center;gap:16px;background:rgba(250,250,247,.04);border:1px solid var(--rule);border-radius:11px;padding:11px 18px;}
-.srow.cache{border-color:var(--book);background:rgba(204,120,92,.08);box-shadow:0 0 22px rgba(204,120,92,.12);}
-.srow .n{width:34px;height:34px;border-radius:9px;background:rgba(204,120,92,.12);border:1px solid rgba(204,120,92,.32);color:var(--book);font-weight:900;font-size:17px;display:flex;align-items:center;justify-content:center;}
-.srow .l b{display:block;font-size:21px;font-weight:800;letter-spacing:-.4px;color:var(--ivory);line-height:1.05;}
-.srow .l span{font-size:14.5px;font-weight:500;color:var(--ink46);}
-.srow .t{font-family:'DM Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:5px 11px;border-radius:20px;white-space:nowrap;}
+.stack{flex:1;display:flex;flex-direction:column;min-height:0;gap:10px;}
+.srow{flex:1;min-height:0;display:grid;grid-template-columns:52px 1fr auto;align-items:center;gap:18px;background:rgba(250,250,247,.045);border:1px solid var(--rule);border-left:4px solid var(--ink14);border-radius:12px;padding:0 22px;}
+.srow.cache{border-color:var(--book);border-left-color:var(--book);background:rgba(204,120,92,.09);box-shadow:0 0 24px rgba(204,120,92,.14);}
+.srow .n{width:40px;height:40px;border-radius:10px;background:rgba(204,120,92,.12);border:1px solid rgba(204,120,92,.32);color:var(--book);font-weight:900;font-size:18px;display:flex;align-items:center;justify-content:center;}
+.srow .l b{display:block;font-size:23px;font-weight:800;letter-spacing:-.45px;color:var(--ivory);line-height:1.05;}
+.srow .l span{font-size:15px;font-weight:500;color:var(--ink46);}
+.srow .r{display:flex;flex-direction:column;align-items:flex-end;gap:8px;}
+.srow .rd{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.04em;color:var(--ink46);white-space:nowrap;}
+.srow .t{font-family:'DM Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;border-radius:20px;white-space:nowrap;}
 .t.c{color:var(--book);background:rgba(204,120,92,.12);border:1px solid rgba(204,120,92,.34);}
 .t.f{color:var(--kraft);background:rgba(212,162,127,.1);border:1px solid rgba(212,162,127,.3);}
 .fnote{flex-shrink:0;font-size:17px;font-weight:500;line-height:1.4;color:var(--ink70);margin-top:13px;}.fnote b{color:var(--book);font-weight:800;}
@@ -51,11 +53,11 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 <div class="statile"><div class="st"><div class="sn">5</div><div class="sl">context layers loaded at start</div></div><div class="st"><div class="sn">3</div><div class="sl">auto-compression tiers</div></div><div class="st"><div class="sn">0</div><div class="sl">manual restarts, ever</div></div></div></div>
 <div class="sec"><span>Context assembly at session start</span><span class="sx">loaded in this exact order</span></div>
 <div class="stack">
-<div class="srow cache"><div class="n">1</div><div class="l"><b>Static instructions</b><span>Behavior rules, tool use, quality gates</span></div><div class="t c">Cached</div></div>
-<div class="srow"><div class="n">2</div><div class="l"><b>Your business profile</b><span>ICP, voice, competitors, platforms</span></div><div class="t f">Fresh</div></div>
-<div class="srow"><div class="n">3</div><div class="l"><b>Connected integrations</b><span>Gmail, Stripe, HubSpot and the rest</span></div><div class="t f">Fresh</div></div>
-<div class="srow"><div class="n">4</div><div class="l"><b>Relevant memories</b><span>Top 5, picked by Sonnet recall</span></div><div class="t f">Fresh</div></div>
-<div class="srow"><div class="n">5</div><div class="l"><b>Today's date</b><span>Injected as a system reminder</span></div><div class="t f">Fresh</div></div>
+<div class="srow cache"><div class="n">1</div><div class="l"><b>Static instructions</b><span>Behavior rules, tool use, quality gates</span></div><div class="r"><span class="rd">shared cache</span><div class="t c">Cached</div></div></div>
+<div class="srow"><div class="n">2</div><div class="l"><b>Your business profile</b><span>ICP, voice, competitors, platforms</span></div><div class="r"><span class="rd">per business</span><div class="t f">Fresh</div></div></div>
+<div class="srow"><div class="n">3</div><div class="l"><b>Connected integrations</b><span>Gmail, Stripe, HubSpot and the rest</span></div><div class="r"><span class="rd">live list</span><div class="t f">Fresh</div></div></div>
+<div class="srow"><div class="n">4</div><div class="l"><b>Relevant memories</b><span>Picked by Sonnet recall</span></div><div class="r"><span class="rd">max 5 entries</span><div class="t f">Fresh</div></div></div>
+<div class="srow"><div class="n">5</div><div class="l"><b>Today's date</b><span>Injected as a system reminder</span></div><div class="r"><span class="rd">every turn</span><div class="t f">Fresh</div></div></div>
 </div>
 <div class="fnote">Static sits on top so it is <b>cached across every session</b> - lower latency, lower cost. Dynamic context loads fresh each time.</div>
 <div class="wsec"><div class="wl">Auto-compression: <em>2 of the 3 passes cost zero API calls</em></div><div class="wr">API calls per pass</div></div>
