@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-06-10T07:17:21",
+  "generated_at": "2026-06-10T09:47:18",
   "counts": {
-    "total": 69,
-    "generated": 25,
+    "total": 71,
+    "generated": 27,
     "reference": 44,
     "crosspost": 0
   },
@@ -923,9 +923,9 @@
       "variants": [
         ""
       ],
-      "caption": "",
-      "alt": "",
-      "first_comment": "",
+      "caption": "Two days after I closed the session, Claude reopened it exactly where I left off. No re-briefing, no re-pasting my ICP.\n\nFor a year, every AI chat started cold. I pasted my product, my ICP, my voice and my competitors before it could do anything useful. The describing cost me more than the work. Session memory ended that.\n\n- - -\n\n\u2192 At every start it loads 5 context layers in a fixed order: static instructions, my business profile, connected integrations, the top 5 relevant memories, and the date.\n\n\u2192 Only the static layer is cached across sessions, so it is faster and cheaper. The other 4 load fresh every time.\n\n\u2192 As the chat grows it auto-compresses in 3 tiers. 2 of the 3 cost zero API calls. The third is a full summary, and only as a last resort.\n\n\u2192 Every turn is saved as JSONL, so I can reopen any session and it rebuilds the full context from the transcript.\n\n\u2192 0 manual restarts. It never asks me to summarize or start over.\n\n- - -\n\nThe unlock is not a bigger model. It is that the context is assembled, cached and compressed for me on every turn.\n\nMemory is the line between a chatbot you re-explain things to and an operator that already knows your business.\n\n- - -\n\nFollow for one AI system for founders every day.\nComment CONTEXT and I will send you the exact Claude session architecture we run in Ultron.",
+      "alt": "Dark editorial visual on slate background. Headline reads 'Most AI forgets between chats. Claude resumes where I stopped' with the Claude line in book-orange. Top right, a stat tile shows 5 context layers, 3 compression tiers and 0 manual restarts. A book-orange table titled Context assembly lists five layers loaded in order: Static instructions tagged Cached, then Business profile, Integrations, Relevant memories and Today's date, each tagged Dynamic and Fresh, with payload chips like ICP, voice and tone, Google Workspace, Stripe, top 5 entries. A book-dark pipeline below shows three compression passes, MicroCompact and Memory Compact at 0 API calls and API Digest at 1, with the note 2 of 3 passes are free. Three kraft cards cover persistence: transcript saved as JSONL, each turn logged, cost tracked in Usage. Closes with a Comment CONTEXT call to action and the Ultron logo.",
+      "first_comment": "For a year I started every AI chat by re-pasting my ICP, voice and product. Now Claude loads all of it on turn one and auto-compresses the session so it never resets.\n\n5 context layers in, 3 compression tiers, 0 manual restarts.\n\nDrop CONTEXT below and I will send you the exact Claude session architecture we run inside Ultron: app.51ultron.com/docs",
       "generated_date": "2026-06-10",
       "source": "generated",
       "status": "ready",
@@ -1357,6 +1357,63 @@
       "alt": "A (short)\n\nMost AI describes the fix. In the Computer, Claude runs it, live.\n\nShell, files and a preview - you watch every command and grab the keyboard whenever you want.\n\nComment COMPUTER for the build workflow.\n\n#claude #ai #founder #startup #buildinpublic",
       "first_comment": "",
       "generated_date": "2026-06-09",
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "docs-10-sessions-tiktok-carousel",
+      "title": "Sessions",
+      "channel": "tiktok",
+      "type": "carousel",
+      "slides": 8,
+      "dims": "2160x3840 (1080x1920 @2x)",
+      "preview": "content/docs-10-sessions-tiktok-carousel-01.png",
+      "download": "content/portal/zips/docs-10-sessions-tiktok-carousel.zip",
+      "files": [
+        "content/docs-10-sessions-tiktok-carousel-01.png",
+        "content/docs-10-sessions-tiktok-carousel-02.png",
+        "content/docs-10-sessions-tiktok-carousel-03.png",
+        "content/docs-10-sessions-tiktok-carousel-04.png",
+        "content/docs-10-sessions-tiktok-carousel-05.png",
+        "content/docs-10-sessions-tiktok-carousel-06.png",
+        "content/docs-10-sessions-tiktok-carousel-07.png",
+        "content/docs-10-sessions-tiktok-carousel-08.png"
+      ],
+      "variants": [],
+      "caption": "Most AI forgets between chats. Claude resumes where I stopped.\n\nNow I close a session for two days, reopen it, and it is still mid-task.\n\nAnything I built is still there: it reloads my whole context before I type a word.\n\nEvery session loads 5 layers in order - static instructions, my business profile, my integrations, the top 5 relevant memories and the date - then it auto-compresses in 3 tiers as the chat grows, and 2 of those 3 passes cost zero API calls, so it never resets and I never re-explain my ICP, my voice or my pipeline again.\n\nThis is Session Memory on the Ultron platform, the same Claude that actually remembers your business.\n\nComment CONTEXT and I will send you the exact Claude session architecture we run.\n\n#claude #ai #founder #startup #buildinpublic",
+      "alt": "short)\n\nMost AI forgets between chats. In Ultron, Claude reopens the session exactly where you stopped, full context reloaded.\n\n5 context layers, 3 compression tiers, 0 manual restarts.\n\nComment CONTEXT for the session architecture.\n\n#claude #ai #founder #startup #buildinpublic",
+      "first_comment": "",
+      "generated_date": "2026-06-10",
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "docs-10-sessions-tiktok-infographic",
+      "title": "Sessions",
+      "channel": "tiktok",
+      "type": "single",
+      "slides": 1,
+      "dims": "2160x3840 (1080x1920 @2x)",
+      "preview": "content/docs-10-sessions-tiktok-infographic.png",
+      "download": "content/docs-10-sessions-tiktok-infographic.png",
+      "files": [
+        "content/docs-10-sessions-tiktok-infographic.png"
+      ],
+      "variants": [
+        ""
+      ],
+      "caption": "Most AI forgets between chats. Claude resumes where I stopped.\n\nNow I close a session for two days, reopen it, and it is still mid-task.\n\nAnything I built is still there: it reloads my whole context before I type a word.\n\nEvery session loads 5 layers in order - static instructions, my business profile, my integrations, the top 5 relevant memories and the date - then it auto-compresses in 3 tiers as the chat grows, and 2 of those 3 passes cost zero API calls, so it never resets and I never re-explain my ICP, my voice or my pipeline again.\n\nThis is Session Memory on the Ultron platform, the same Claude that actually remembers your business.\n\nComment CONTEXT and I will send you the exact Claude session architecture we run.\n\n#claude #ai #founder #startup #buildinpublic",
+      "alt": "short)\n\nMost AI forgets between chats. In Ultron, Claude reopens the session exactly where you stopped, full context reloaded.\n\n5 context layers, 3 compression tiers, 0 manual restarts.\n\nComment CONTEXT for the session architecture.\n\n#claude #ai #founder #startup #buildinpublic",
+      "first_comment": "",
+      "generated_date": "2026-06-10",
       "source": "generated",
       "status": "ready",
       "posted": false,
