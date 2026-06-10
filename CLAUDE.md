@@ -987,8 +987,10 @@ Before any push to LinkedIn / IG / repo:
 6. **Scannability** — people scan before they read. Short paragraphs, bold headers, visual rhythm, clean structure.
 7. **Recognizable branding** — consistent colors / type / layout / tone. (LinkedIn = Dark Ultron; TikTok = the reference glass format, per operator.)
 8. **One clear CTA** — "Save this", "Repost", or "Comment [KEYWORD]". One, not five.
+9. **DENSITY — the dominant element must be HEAVY (operator HARD rule, repeated 2026-06-10):** the central block (table / trace / chart / list) must be packed with real, weighty content - every row filled, tight, visually heavy, edge to edge. **NEVER spread sparse rows with `justify-content:space-between`** - it creates airy, skippable gaps. This is THE recurring rejection ("tabelul central e slab si aerisit, te face sa dai skip"). If a block looks airy: pull MORE real rows/columns from the docs, enlarge the content, or pack tighter - never distribute thin content across empty space. Every row carries real data (numbers, names, values, log lines). "Fiecare mm trebuie sa se zbata sa fie acolo."
+10. **Vary every material - nothing standard or linear (operator, repeated):** each material is bespoke. Within one LinkedIn infographic use DIFFERENT treatments per section (e.g. table / pipeline / cards) + a different palette accent per section (book / book-dark / kraft) + one focal element. Never three identical stacked tables. TikTok is NOT a dry table - use a visual scene/mockup (e.g. chat-session mockup), CTA styled to that scene.
 
-**Pre-publish gate (6 questions):** easy to scan? · idea immediately useful? · title clear? · visually structured? · would people save it? · would someone repost it?
+**Pre-publish gate (7 questions):** easy to scan? · idea immediately useful? · title clear? · visually structured? · **is the central block dense and heavy, with no airy gaps?** · would people save it? · would someone repost it?
 
 ---
 

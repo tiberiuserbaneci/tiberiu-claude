@@ -33,10 +33,11 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 .trace{flex:1;min-height:0;display:flex;flex-direction:column;border:1px solid var(--ink14);border-radius:12px;overflow:hidden;background:#151514;}
 .trh{flex-shrink:0;display:flex;align-items:center;gap:12px;padding:11px 18px;border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--book-d);}
 .trh .d{margin-left:auto;color:var(--ink46);}
-.trb{flex:1;min-height:0;padding:10px 18px;display:flex;flex-direction:column;justify-content:space-between;font-family:'DM Mono',monospace;font-size:15px;}
-.trow{display:flex;align-items:center;gap:16px;white-space:nowrap;}
-.trow .t{color:var(--book);font-weight:500;width:62px;flex-shrink:0;text-align:right;}
-.trow .e{color:var(--ivory);font-weight:500;width:200px;flex-shrink:0;}
+.trb{flex:1;min-height:0;display:flex;flex-direction:column;font-family:'DM Mono',monospace;font-size:14px;}
+.trow{flex:1;display:flex;align-items:center;gap:16px;white-space:nowrap;padding:0 18px;}
+.trow+.trow{border-top:1px solid rgba(250,250,247,.05);}
+.trow .t{color:var(--book);font-weight:500;width:54px;flex-shrink:0;text-align:right;}
+.trow .e{color:var(--ivory);font-weight:500;width:208px;flex-shrink:0;}
 .trow .v{color:var(--ink46);overflow:hidden;text-overflow:ellipsis;}
 .trow.hi .e{color:var(--book);}.trow.ok .v{color:var(--kraft);}
 /* tiers */
@@ -77,15 +78,23 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 <div class="trace">
 <div class="trh"><span>trace.log</span><span>cortex.competitive-analysis &middot; sonnet</span><span class="d">2 tool calls</span></div>
 <div class="trb">
+<div class="trow"><span class="t">+0ms</span><span class="e">POST /api/chat/v2</span><span class="v">accept request</span></div>
 <div class="trow"><span class="t">+8ms</span><span class="e">auth.session</span><span class="v">supabase user resolved</span></div>
+<div class="trow"><span class="t">+22ms</span><span class="e">conversation.load</span><span class="v">id=8f2a, idle -&gt; running</span></div>
 <div class="trow"><span class="t">+30ms</span><span class="e">router.select</span><span class="v">skill = cortex.competitive-analysis</span></div>
 <div class="trow"><span class="t">+34ms</span><span class="e">models.tier</span><span class="v">tier = sonnet, maxTurns = 6</span></div>
 <div class="trow"><span class="t">+48ms</span><span class="e">tools.build</span><span class="v">14 tools exposed</span></div>
-<div class="trow"><span class="t">+62ms</span><span class="e">cascade.compress</span><span class="v">history to 4.1k tokens</span></div>
+<div class="trow"><span class="t">+62ms</span><span class="e">cascade.compress</span><span class="v">history -&gt; 4.1k tokens</span></div>
+<div class="trow"><span class="t">+88ms</span><span class="e">loop.turn 1 -&gt; model</span><span class="v">prompt sent</span></div>
 <div class="trow hi"><span class="t">+1.4s</span><span class="e">turn 1 &lt;- model</span><span class="v">tool_use: web_search</span></div>
+<div class="trow"><span class="t">+1.4s</span><span class="e">tools.exec</span><span class="v">web_search "kyc fintech competitors"</span></div>
+<div class="trow"><span class="t">+3.1s</span><span class="e">loop.turn 2 -&gt; model</span><span class="v">tool result appended</span></div>
 <div class="trow hi"><span class="t">+4.2s</span><span class="e">turn 2 &lt;- model</span><span class="v">tool_use: canvas.comparison_table</span></div>
+<div class="trow"><span class="t">+4.2s</span><span class="e">tools.exec</span><span class="v">canvas.comparison_table, 9 rows</span></div>
+<div class="trow"><span class="t">+5.0s</span><span class="e">loop.turn 3 -&gt; model</span><span class="v">tool result appended</span></div>
 <div class="trow ok"><span class="t">+6.4s</span><span class="e">turn 3 &lt;- model</span><span class="v">text, stop_reason = end_turn</span></div>
-<div class="trow"><span class="t">+6.5s</span><span class="e">persist.messages</span><span class="v">state running -&gt; idle</span></div>
+<div class="trow"><span class="t">+6.5s</span><span class="e">persist.messages</span><span class="v">3 rows written</span></div>
+<div class="trow"><span class="t">+6.5s</span><span class="e">stream.close</span><span class="v">running -&gt; idle, done</span></div>
 </div>
 </div>
 <div class="sec s3"><span class="sq"></span><span class="sl">3 model tiers, resolved per turn</span><span class="sx">declared in the manifest</span></div>
