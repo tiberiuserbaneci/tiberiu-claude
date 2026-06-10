@@ -117,6 +117,9 @@ a.dl{color:var(--ivory);}
 <div id="toast"></div>
 
 <script>
+// never fail to a silent white screen: surface any script/load error in the header
+window.addEventListener('error',function(e){var g=document.getElementById('gen');if(g)g.textContent='portal script error: '+((e&&e.message)||'see console');});
+window.addEventListener('unhandledrejection',function(e){var g=document.getElementById('gen');if(g)g.textContent='portal load error: '+((e&&e.reason&&e.reason.message)||(e&&e.reason)||'fetch failed');});
 let DATA=null, channel='all', filters=new Set(), LB=null;
 const FILTERS=[['posted','Posted'],['unposted','Not posted'],['carousel','Carousels'],['caption','Has caption'],['needs-revision','Needs revision'],['generated','Generated'],['crosspost','Cross-posts'],['removed','Removed']];
 function slug(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');}

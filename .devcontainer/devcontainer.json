@@ -6,7 +6,7 @@
     "8753": {
       "label": "Ultron Content Portal",
       "visibility": "private",
-      "onAutoForward": "openPreview"
+      "onAutoForward": "openBrowser"
     }
   },
   "postStartCommand": "bash portal/codespace-start.sh",
