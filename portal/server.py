@@ -101,17 +101,12 @@ def _sync_once():
     anc = git(["merge-base", "--is-ancestor", remote, local])     # is origin already contained in HEAD?
     if anc and anc.returncode == 0:
         return                                                    # we are ahead of origin; nothing to pull
+    st = git(["status", "--porcelain"])
+    if st and st.stdout.strip():
+        return                                                    # local edits in flight; let the commit worker push first, retry next cycle
     with _gitlock:
-        git(["pull", "--no-rebase", "--no-edit", "-X", "ours", "origin", BRANCH])
-    pulled = {x["id"] for x in load().get("materials", [])}       # what the merge left in the manifest
-    with _lock:                                                   # block API writes while the index is rebuilt
-        subprocess.run(["python3", "portal/scan.py"], cwd=ROOT, timeout=600)
-    rebuilt = {x["id"] for x in load().get("materials", [])}      # what the files on disk actually contain
-    if rebuilt != pulled:
-        autocommit(msg="portal: reconcile new content from origin")   # scan recovered materials the merge dropped
-    else:
-        git(["checkout", "--", "content/portal/manifest.json"])       # pulled manifest was already complete
-    print(f"sync: {local[:8]} -> {remote[:8]}  ({len(rebuilt)} materials on disk)")
+        git(["reset", "--hard", f"origin/{BRANCH}"])              # hard-sync; origin (which has your pushed actions) is the source of truth
+    print(f"sync: {local[:8]} -> {remote[:8]} (hard reset to origin)")
 
 def _sync_worker():
     first = True
@@ -231,7 +226,8 @@ class H(BaseHTTPRequestHandler):
             autocommit([MANIFEST], f"portal: restore {mid}")
             return self._json({"ok":True})
         if path == "/api/rescan":
-            r = git(["pull","--no-rebase","--no-edit","-X","ours","origin",BRANCH])  # pull new materials (ours wins on conflict)
+            git(["fetch","origin",BRANCH])
+            r = git(["reset","--hard",f"origin/{BRANCH}"])  # hard-sync to origin: a diverged local copy can never block the update
             pull_ok = bool(r and r.returncode == 0)
             tail = ((r.stdout or "") + (r.stderr or "")).strip().splitlines() if r else []
             pull_msg = tail[-1] if tail else ("git unavailable" if not r else "")

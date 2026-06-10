@@ -17,10 +17,11 @@ git fetch origin "$BRANCH" 2>&1 | tail -1
 git checkout "$BRANCH" 2>/dev/null || git checkout -b "$BRANCH" "origin/$BRANCH" 2>/dev/null
 echo "portal: on branch $(git branch --show-current)"
 
-# 3) pull the latest. -X ours = local portal edits (posted toggles) win on conflict; brand-new
-#    files (new posters) have no local version, so they always land. Show the result, never hide it.
-echo "portal: pulling origin/$BRANCH ..."
-git pull --no-rebase --no-edit -X ours origin "$BRANCH" 2>&1 | tail -3
+# 3) hard-sync to origin so a diverged or stuck local copy can never block updates again.
+#    The autonomous server pushes your portal actions as they happen, so origin is the source of truth.
+echo "portal: syncing to origin/$BRANCH ..."
+git fetch origin "$BRANCH" 2>&1 | tail -1
+git reset --hard "origin/$BRANCH" 2>&1 | tail -1
 
 # 4) rebuild the manifest from the files actually on disk. This recovers any material the merge
 #    did not write into the manifest text; the scanner preserves posted/analytics state.
