@@ -41,12 +41,12 @@ body{background:#0d0d0d;display:flex;justify-content:center;font-family:'DM Sans
 .stat .s{flex:1;padding:18px 14px;text-align:center;}.stat .s+.s{border-left:1px solid var(--rule);}
 .stat .s b{display:block;font-weight:900;font-size:46px;line-height:.8;}.stat .s.a b{color:var(--book);}.stat .s.b b{color:var(--kraft);}.stat .s.c b{color:var(--ivory);}
 .stat .s span{font-family:'DM Mono',monospace;font-size:13.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink46);margin-top:9px;display:block;}
-.cta{flex-shrink:0;margin-top:22px;display:flex;align-items:stretch;border:1px solid var(--book);border-radius:16px;overflow:hidden;box-shadow:0 0 50px rgba(204,120,92,.2);}
-.cta-l{flex:1;padding:22px 28px;display:flex;flex-direction:column;justify-content:center;gap:5px;background:rgba(204,120,92,.08);}
-.cta-k{font-family:'DM Mono',monospace;font-size:16px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink46);}
-.cta-t{font-size:28px;font-weight:800;color:var(--ivory);line-height:1.12;}.cta-t b{color:var(--book);font-weight:900;}
-.cta-chip{flex-shrink:0;padding:0 36px;gap:14px;background:var(--book);display:flex;align-items:center;font-size:33px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#1a0f0a;}
-.cta-chip svg{width:31px;height:31px;stroke:#1a0f0a;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ctawrap{flex-shrink:0;margin-top:22px;}
+.savel{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink46);margin-bottom:11px;padding-left:8px;}
+.cta{display:flex;align-items:center;gap:18px;border:1.5px solid var(--book);border-radius:24px;background:rgba(204,120,92,.08);padding:15px 15px 15px 28px;box-shadow:0 0 50px rgba(204,120,92,.18);}
+.cta .ph{flex:1;font-size:27px;font-weight:600;color:var(--ink70);line-height:1.2;}.cta .ph b{color:var(--book);font-weight:900;letter-spacing:.02em;}
+.cta .send{width:68px;height:68px;border-radius:50%;background:var(--book);flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 0 32px rgba(204,120,92,.45);}
+.cta .send svg{width:31px;height:31px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
 .ftr{flex-shrink:0;margin-top:20px;display:flex;align-items:center;justify-content:space-between;gap:18px;border-top:1px solid var(--rule);padding-top:20px;}
 .fl2{display:flex;align-items:center;gap:16px;}.flogo{width:52px;height:52px;border-radius:50%;object-fit:cover;}
 .ftx{font-family:'DM Mono',monospace;font-size:18px;font-weight:400;letter-spacing:.11em;text-transform:uppercase;color:var(--ink70);}.ftx b{color:var(--ivory);font-weight:500;}
@@ -68,7 +68,7 @@ body{background:#0d0d0d;display:flex;justify-content:center;font-family:'DM Sans
     <div class="cfoot"><div class="fl"><em>&#9679;</em> Context reloaded in 5 layers, then auto-compressed</div><div class="pills"><span class="pl c"><i></i>Static</span><span class="pl"><i></i>Profile</span><span class="pl"><i></i>Integrations</span><span class="pl"><i></i>Memories</span><span class="pl"><i></i>Date</span></div></div>
   </div>
   <div class="stat"><div class="s a"><b>5</b><span>context layers</span></div><div class="s b"><b>3</b><span>compress tiers</span></div><div class="s c"><b>0</b><span>manual restarts</span></div></div>
-  <div class="cta"><div class="cta-l"><div class="cta-k">Save this. Then</div><div class="cta-t">Comment <b>CONTEXT</b> for the full session architecture</div></div><div class="cta-chip">CONTEXT <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+  <div class="ctawrap"><div class="savel">Save this, then</div><div class="cta"><span class="ph">Comment <b>CONTEXT</b> for the full session architecture</span><span class="send"><svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div></div>
   <div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</div></div><div class="furl">51ultron<em>.</em>com</div></div>
 </div></div>
 </body></html>
