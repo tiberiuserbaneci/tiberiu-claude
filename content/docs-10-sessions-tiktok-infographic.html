@@ -1,0 +1,67 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+:root{--slate:#191919;--slate2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--cloud:#919180;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;display:flex;justify-content:center;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.slide{width:1080px;height:1920px;background:var(--slate);position:relative;overflow:hidden;color:var(--ivory);}
+.slide::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.5px,transparent 1.6px);background-size:34px 34px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 58% 20% at 86% 4%,rgba(204,120,92,.2) 0%,transparent 60%),radial-gradient(ellipse 52% 16% at 6% 92%,rgba(212,162,127,.1) 0%,transparent 60%);}
+.safe{position:absolute;top:250px;left:70px;right:130px;bottom:330px;z-index:2;display:flex;flex-direction:column;}
+.mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--rule);padding-bottom:20px;font-family:'DM Mono',monospace;font-size:20px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;}
+.mast .ml{color:var(--book);}.mast .mr{color:var(--ink46);}
+.hook{flex-shrink:0;margin-top:28px;font-weight:900;font-size:50px;line-height:1.04;letter-spacing:-1.7px;color:var(--ivory);}.hook em{color:var(--book);font-style:normal;}
+.sub{flex-shrink:0;margin-top:22px;font-size:30px;font-weight:500;line-height:1.34;color:var(--ink70);}.sub b{color:var(--ivory);font-weight:700;}
+.statrow{flex-shrink:0;margin-top:30px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.sc{border:1px solid var(--rule);border-radius:16px;padding:22px 18px;text-align:center;}
+.sc.a{background:rgba(204,120,92,.1);border-top:4px solid var(--book);}.sc.b{background:rgba(212,162,127,.08);border-top:4px solid var(--kraft);}.sc.c{background:rgba(250,250,247,.03);border-top:4px solid var(--ink30);}
+.sc .n{font-weight:900;font-size:76px;line-height:.78;}.sc.a .n{color:var(--book);}.sc.b .n{color:var(--kraft);}.sc.c .n{color:var(--ivory);}
+.sc .l{font-family:'DM Mono',monospace;font-size:14px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--ink46);margin-top:12px;line-height:1.25;}
+.seclabel{flex-shrink:0;display:flex;align-items:center;gap:12px;margin:26px 0 14px;}
+.seclabel .sq{width:16px;height:16px;border-radius:5px;}.seclabel.s1 .sq{background:var(--book);}.seclabel.s2 .sq{background:var(--book-d);}
+.seclabel .t{font-family:'DM Mono',monospace;font-size:17px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;}.seclabel.s1 .t{color:var(--book);}.seclabel.s2 .t{color:var(--book-d);}
+.seclabel .x{margin-left:auto;font-family:'DM Mono',monospace;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink30);}
+.ctx{flex:1;min-height:0;display:flex;flex-direction:column;gap:11px;}
+.cr{flex:1;display:flex;align-items:center;gap:18px;background:rgba(250,250,247,.045);border:1px solid var(--rule);border-left:4px solid var(--ink14);border-radius:13px;padding:14px 22px;}
+.cr.hi{border-color:var(--book);border-left-color:var(--book);background:rgba(204,120,92,.09);}
+.cr .n{width:44px;height:44px;border-radius:11px;background:rgba(204,120,92,.12);border:1px solid rgba(204,120,92,.32);color:var(--book);font-weight:900;font-size:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cr .bd{flex:1;min-width:0;}
+.cr .nm{font-weight:800;font-size:27px;letter-spacing:-.5px;color:var(--ivory);line-height:1;}
+.cr .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:11px;}
+.ch{font-family:'DM Sans';font-size:16px;font-weight:600;color:rgba(250,250,247,.9);background:rgba(250,250,247,.06);border:1px solid var(--ink14);border-radius:7px;padding:5px 12px;line-height:1;}
+.ch.k{color:var(--book);background:rgba(204,120,92,.14);border-color:rgba(204,120,92,.36);font-weight:800;}
+.cr .tg{flex-shrink:0;font-family:'DM Mono',monospace;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:6px 13px;border-radius:7px;white-space:nowrap;}
+.tg-c{color:#1a0f0a;background:var(--book);}.tg-f{color:var(--ink46);border:1px solid var(--rule);background:rgba(250,250,247,.04);}
+.cstrip{flex-shrink:0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+.cc{border:1px solid var(--rule);border-top:4px solid var(--book);border-radius:14px;padding:20px 20px 18px;}
+.cc.cost{border-top-color:var(--book-d);background:rgba(200,70,35,.06);}
+.cc .cn{font-weight:900;font-size:60px;line-height:.78;color:var(--book);}.cc.cost .cn{color:var(--book-d);}
+.cc .cn span{font-size:15px;font-family:'DM Mono',monospace;color:var(--ink46);font-weight:600;margin-left:7px;letter-spacing:.02em;}
+.cc .ce{font-weight:800;font-size:23px;letter-spacing:-.4px;color:var(--ivory);margin-top:13px;line-height:1.02;}
+.cc .cd{font-size:16px;font-weight:500;color:var(--ink70);line-height:1.3;margin-top:8px;}
+.cta{flex-shrink:0;margin-top:24px;display:flex;align-items:stretch;border:1px solid var(--book);border-radius:14px;overflow:hidden;box-shadow:0 0 50px rgba(204,120,92,.2);}
+.cta-l{flex:1;padding:22px 28px;display:flex;flex-direction:column;justify-content:center;gap:5px;background:rgba(204,120,92,.08);}
+.cta-k{font-family:'DM Mono',monospace;font-size:16px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink46);}
+.cta-t{font-size:27px;font-weight:800;color:var(--ivory);line-height:1.15;}.cta-t b{color:var(--book);font-weight:900;}
+.cta-chip{flex-shrink:0;padding:0 36px;gap:14px;background:var(--book);display:flex;align-items:center;font-size:32px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#1a0f0a;}
+.cta-chip svg{width:30px;height:30px;stroke:#1a0f0a;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ftr{flex-shrink:0;margin-top:20px;display:flex;align-items:center;justify-content:space-between;gap:18px;border-top:1px solid var(--rule);padding-top:20px;}
+.fl{display:flex;align-items:center;gap:16px;}.flogo{width:52px;height:52px;border-radius:50%;object-fit:cover;}
+.ftx{font-family:'DM Mono',monospace;font-size:18px;font-weight:400;letter-spacing:.11em;text-transform:uppercase;color:var(--ink70);}.ftx b{color:var(--ivory);font-weight:500;}
+.furl{font-weight:900;font-size:30px;letter-spacing:-.7px;color:var(--ivory);}.furl em{color:var(--book);font-style:normal;}
+</style></head><body>
+<div class="slide"><div class="atm"></div><div class="safe">
+  <div class="mast"><span class="ml">Session Memory</span><span class="mr">The context engine</span></div>
+  <div class="hook">Most AI forgets between chats.<br><em>Claude resumes where I stopped.</em></div>
+  <div class="sub">Persisted turn by turn, <b>auto-compressed as it grows</b>. It never resets, so I never re-explain my business.</div>
+  <div class="statrow"><div class="sc a"><div class="n">5</div><div class="l">context layers</div></div><div class="sc b"><div class="n">3</div><div class="l">compress tiers</div></div><div class="sc c"><div class="n">0</div><div class="l">manual restarts</div></div></div>
+  <div class="seclabel s1"><span class="sq"></span><span class="t">Loaded at every session start</span><span class="x">in order</span></div>
+  <div class="ctx">
+    <div class="cr hi"><div class="n">1</div><div class="bd"><div class="nm">Static instructions</div><div class="chips"><span class="ch">behavior rules</span><span class="ch">tool-use</span><span class="ch">quality gates</span><span class="ch">model tiers</span></div></div><div class="tg tg-c">Cached</div></div>
+    <div class="cr"><div class="n">2</div><div class="bd"><div class="nm">Business profile</div><div class="chips"><span class="ch">ICP</span><span class="ch">voice &amp; tone</span><span class="ch">competitors</span><span class="ch">pricing</span><span class="ch">case studies</span></div></div><div class="tg tg-f">Fresh</div></div>
+    <div class="cr"><div class="n">3</div><div class="bd"><div class="nm">Integrations</div><div class="chips"><span class="ch">Google Workspace</span><span class="ch">Stripe</span><span class="ch">HubSpot</span><span class="ch">Apollo</span><span class="ch">Notion</span></div></div><div class="tg tg-f">Fresh</div></div>
+    <div class="cr"><div class="n">4</div><div class="bd"><div class="nm">Relevant memories</div><div class="chips"><span class="ch k">top 5</span><span class="ch">ranked by recall</span><span class="ch">facts</span><span class="ch">lessons</span></div></div><div class="tg tg-f">Fresh</div></div>
+    <div class="cr"><div class="n">5</div><div class="bd"><div class="nm">Today's date</div><div class="chips"><span class="ch">current date</span><span class="ch">system reminder</span><span class="ch">loaded last</span></div></div><div class="tg tg-f">Fresh</div></div>
+  </div>
+  <div class="cta"><div class="cta-l"><div class="cta-k">Save this. Then</div><div class="cta-t">Comment <b>CONTEXT</b> for the full session architecture</div></div><div class="cta-chip">CONTEXT <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+  <div class="ftr"><div class="fl"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</div></div><div class="furl">51ultron<em>.</em>com</div></div>
+</div></div>
+</body></html>
