@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-06-10T14:24:46",
+  "generated_at": "2026-06-10T14:28:12",
   "counts": {
-    "total": 74,
-    "generated": 30,
+    "total": 75,
+    "generated": 31,
     "reference": 44,
     "crosspost": 0
   },
@@ -964,6 +964,33 @@
       "first_comment": "One message in. Claude routed it, picked the Sonnet tier, exposed 14 tools, then ran a loop: two tool calls across three model turns before the answer streamed back. That is one turn.\n\nComment TURN and I will send you the full chat-loop breakdown, the five steps every request takes and the four ways a turn ends.\n\napp.51ultron.com/docs",
       "generated_date": "2026-06-10",
       "added": 1781098213,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "docs-12-resume-linkedin",
+      "title": "Resume",
+      "channel": "linkedin",
+      "type": "single",
+      "slides": 1,
+      "dims": "2160x2900 (1080x1450 @2x)",
+      "preview": "content/docs-12-resume-linkedin.png",
+      "download": "content/docs-12-resume-linkedin.png",
+      "files": [
+        "content/docs-12-resume-linkedin.png"
+      ],
+      "variants": [
+        ""
+      ],
+      "caption": "",
+      "alt": "",
+      "first_comment": "",
+      "generated_date": "2026-06-10",
+      "added": 1781101689,
       "source": "generated",
       "status": "ready",
       "posted": false,
