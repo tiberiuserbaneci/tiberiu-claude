@@ -1,0 +1,266 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+/* 32s master timeline, 10 scenes x 3.2s (10% windows). Safe zone: top300/right130/bottom330/left70. */
+:root{--slate:#191919;--card:#222120;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);--book:#CC785C;--bookd:#C84623;--kraft:#D4A27F;--cloud:#919180;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;display:flex;justify-content:center;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.film{width:1080px;height:1920px;background:var(--slate);position:relative;overflow:hidden;color:var(--ivory);}
+.film::before{content:'';position:absolute;inset:0;z-index:0;background-image:radial-gradient(rgba(204,120,92,.05) 1.4px,transparent 1.5px);background-size:32px 32px;}
+.atm{position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse 60% 24% at 86% 0%,rgba(204,120,92,.2) 0%,transparent 60%),radial-gradient(ellipse 50% 22% at 6% 100%,rgba(212,162,127,.1) 0%,transparent 60%);}
+/* persistent chrome (inside safe zone) */
+.chrome{position:absolute;top:300px;left:70px;right:130px;z-index:8;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--rule);padding-bottom:16px;}
+.chrome .l{font-family:'DM Mono',monospace;font-size:19px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--book);}
+.chrome .r{font-family:'DM Mono',monospace;font-size:19px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink46);}
+.pbar{position:absolute;top:362px;left:70px;right:130px;height:5px;border-radius:4px;background:var(--ink14);z-index:8;overflow:hidden;}
+.pfill{height:100%;width:0;background:linear-gradient(to right,var(--kraft),var(--book),var(--bookd));border-radius:4px;}
+.brand{position:absolute;bottom:330px;left:70px;right:130px;z-index:8;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--rule);padding-top:18px;}
+.brand .lf{display:flex;align-items:center;gap:14px;}
+.brand img{width:46px;height:46px;border-radius:50%;object-fit:cover;}
+.brand .nm{font-family:'DM Mono',monospace;font-size:17px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink70);}
+.brand .nm b{color:var(--ivory);font-weight:500;}
+.brand .url{font-weight:900;font-size:26px;letter-spacing:-.5px;color:var(--ivory);}
+.brand .url em{color:var(--book);font-style:normal;}
+/* scenes */
+.sc{position:absolute;top:408px;bottom:412px;left:70px;right:130px;z-index:5;display:flex;flex-direction:column;justify-content:center;gap:26px;opacity:0;}
+.k{font-family:'DM Mono',monospace;font-size:21px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--kraft);}
+.t{font-weight:900;font-size:84px;line-height:.97;letter-spacing:-3px;color:var(--ivory);}
+.t em{color:var(--book);font-style:normal;}
+.t.sm{font-size:66px;}
+.d{font-size:30px;font-weight:500;line-height:1.35;color:var(--ink70);}
+.d b{color:var(--ivory);font-weight:700;}
+.it{display:flex;align-items:center;gap:18px;border:1px solid var(--rule);border-radius:16px;background:var(--card);padding:18px 24px;}
+.it .n{width:52px;height:52px;border-radius:13px;background:rgba(204,120,92,.14);border:1px solid rgba(204,120,92,.36);color:var(--book);font-weight:900;font-size:25px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.it .x b{display:block;font-size:27px;font-weight:800;color:var(--ivory);letter-spacing:-.4px;line-height:1.05;}
+.it .x span{display:block;font-size:20px;color:var(--ink46);margin-top:4px;line-height:1.25;}
+.duo{display:flex;gap:16px;}
+.dc{flex:1;border-radius:16px;padding:20px 22px;}
+.dc .h{font-family:'DM Mono',monospace;font-size:15px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px;}
+.dc ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.dc li{font-size:20px;font-weight:600;line-height:1.2;padding-left:22px;position:relative;}
+.dc li::before{position:absolute;left:0;font-weight:800;}
+.dc.bad{background:var(--card);border:1px solid var(--rule);}
+.dc.bad .h{color:var(--ink46);}.dc.bad li{color:var(--ink46);}.dc.bad li::before{content:'-';color:var(--ink30);}
+.dc.good{background:rgba(204,120,92,.09);border:1.5px solid var(--book);box-shadow:0 0 40px rgba(204,120,92,.18);}
+.dc.good .h{color:var(--book);}.dc.good li{color:var(--ivory);}.dc.good li::before{content:'+';color:var(--book);}
+.mono2{font-family:'DM Mono',monospace;font-size:21px;color:var(--ink70);background:#131211;border:1px solid var(--ink14);border-left:4px solid var(--book);border-radius:12px;padding:16px 20px;line-height:1.45;}
+.mono2 b{color:var(--kraft);font-weight:600;}
+.mono2 em{color:var(--book);font-style:normal;}
+.chipline{display:flex;flex-wrap:wrap;gap:10px;}
+.cl2{font-size:21px;font-weight:700;color:var(--ivory);background:rgba(250,250,247,.05);border:1px solid var(--ink14);border-radius:10px;padding:11px 16px;}
+.cl2 i{font-family:'DM Mono',monospace;font-style:normal;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--kraft);display:block;margin-bottom:3px;}
+.gate{border:1.5px solid var(--book);border-radius:18px;background:rgba(204,120,92,.09);padding:22px 26px;box-shadow:0 0 44px rgba(204,120,92,.2);}
+.gate .gh{font-family:'DM Mono',monospace;font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--book);}
+.gate .gt{font-size:28px;font-weight:800;color:var(--ivory);margin-top:8px;letter-spacing:-.4px;}
+.gate .gb{margin-top:14px;display:flex;gap:12px;}
+.gate .gb span{flex:1;text-align:center;font-size:19px;font-weight:800;padding:12px;border-radius:11px;border:1px solid var(--rule);color:var(--ink70);}
+.gate .gb span.ok{background:var(--book);color:#1a0f0a;border:none;box-shadow:0 0 24px rgba(204,120,92,.4);}
+.cta2{display:flex;align-items:center;gap:14px;background:var(--book);color:#1a0f0a;font-size:30px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;padding:24px 42px;border-radius:16px;box-shadow:0 0 56px rgba(204,120,92,.5);align-self:center;}
+.cta2 svg{width:30px;height:30px;stroke:#1a0f0a;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.center{align-items:center;text-align:center;}
+.logo-big{width:96px;height:96px;border-radius:50%;object-fit:cover;align-self:center;box-shadow:0 0 44px rgba(204,120,92,.45);}
+/* ===== timeline: 10 windows of 10% ===== */
+@keyframes prog{from{width:0;}to{width:100%;}}
+.play .pfill{animation:prog 32s linear infinite;}
+/* scene window template: in over 0.8%, out 1% before end */
+@keyframes w1{0%,0.8%{opacity:0;transform:translateY(26px);}2.2%,8.6%{opacity:1;transform:none;}9.8%,100%{opacity:0;transform:translateY(-22px);}}
+@keyframes w2{0%,10.8%{opacity:0;transform:translateY(26px);}12.2%,18.6%{opacity:1;transform:none;}19.8%,100%{opacity:0;transform:translateY(-22px);}}
+@keyframes w3{0%,20.8%{opacity:0;transform:translateY(26px);}22.2%,28.6%{opacity:1;transform:none;}29.8%,100%{opacity:0;transform:translateY(-22px);}}
+@keyframes w4{0%,30.8%{opacity:0;transform:translateY(26px);}32.2%,38.6%{opacity:1;transform:none;}39.8%,100%{opacity:0;transform:translateY(-22px);}}
+@keyframes w5{0%,40.8%{opacity:0;transform:translateY(26px);}42.2%,48.6%{opacity:1;transform:none;}49.8%,100%{opacity:0;transform:translateY(-22px);}}
+@keyframes w6{0%,50.8%{opacity:0;transform:translateY(26px);}52.2%,58.6%{opacity:1;transform:none;}59.8%,100%{opacity:0;transform:translateY(-22px);}}
+@keyframes w7{0%,60.8%{opacity:0;transform:translateY(26px);}62.2%,68.6%{opacity:1;transform:none;}69.8%,100%{opacity:0;transform:translateY(-22px);}}
+@keyframes w8{0%,70.8%{opacity:0;transform:translateY(26px);}72.2%,78.6%{opacity:1;transform:none;}79.8%,100%{opacity:0;transform:translateY(-22px);}}
+@keyframes w9{0%,80.8%{opacity:0;transform:translateY(26px);}82.2%,88.6%{opacity:1;transform:none;}89.8%,100%{opacity:0;transform:translateY(-22px);}}
+@keyframes w10{0%,90.8%{opacity:0;transform:translateY(26px);}92.2%,99.2%{opacity:1;transform:none;}99.9%,100%{opacity:0;}}
+.play .sc.s1{animation:w1 32s linear infinite;}
+.play .sc.s2{animation:w2 32s linear infinite;}
+.play .sc.s3{animation:w3 32s linear infinite;}
+.play .sc.s4{animation:w4 32s linear infinite;}
+.play .sc.s5{animation:w5 32s linear infinite;}
+.play .sc.s6{animation:w6 32s linear infinite;}
+.play .sc.s7{animation:w7 32s linear infinite;}
+.play .sc.s8{animation:w8 32s linear infinite;}
+.play .sc.s9{animation:w9 32s linear infinite;}
+.play .sc.s10{animation:w10 32s linear infinite;}
+/* chrome step labels ride the same windows */
+.steplab{position:absolute;opacity:0;}
+.play .steplab.s1{animation:w1 32s linear infinite;}
+.play .steplab.s2{animation:w2 32s linear infinite;}
+.play .steplab.s3{animation:w3 32s linear infinite;}
+.play .steplab.s4{animation:w4 32s linear infinite;}
+.play .steplab.s5{animation:w5 32s linear infinite;}
+.play .steplab.s6{animation:w6 32s linear infinite;}
+.play .steplab.s7{animation:w7 32s linear infinite;}
+.play .steplab.s8{animation:w8 32s linear infinite;}
+.play .steplab.s9{animation:w9 32s linear infinite;}
+.play .steplab.s10{animation:w10 32s linear infinite;}
+/* child stagger: per-scene windows, +delay per item */
+@keyframes kid1{0%,1.2%{opacity:0;transform:translateY(22px);}2.4%,100%{opacity:1;transform:none;}}
+@keyframes kid2{0%,11.2%{opacity:0;transform:translateY(22px);}12.4%,100%{opacity:1;transform:none;}}
+@keyframes kid3{0%,21.2%{opacity:0;transform:translateY(22px);}22.4%,100%{opacity:1;transform:none;}}
+@keyframes kid4{0%,31.2%{opacity:0;transform:translateY(22px);}32.4%,100%{opacity:1;transform:none;}}
+@keyframes kid5{0%,41.2%{opacity:0;transform:translateY(22px);}42.4%,100%{opacity:1;transform:none;}}
+@keyframes kid6{0%,51.2%{opacity:0;transform:translateY(22px);}52.4%,100%{opacity:1;transform:none;}}
+@keyframes kid7{0%,61.2%{opacity:0;transform:translateY(22px);}62.4%,100%{opacity:1;transform:none;}}
+@keyframes kid8{0%,71.2%{opacity:0;transform:translateY(22px);}72.4%,100%{opacity:1;transform:none;}}
+@keyframes kid9{0%,81.2%{opacity:0;transform:translateY(22px);}82.4%,100%{opacity:1;transform:none;}}
+@keyframes kid10{0%,91.2%{opacity:0;transform:translateY(22px);}92.4%,100%{opacity:1;transform:none;}}
+.play .sc.s1 .st1{animation:kid1 32s linear infinite;animation-delay:0.0s;}
+.play .sc.s1 .st2{animation:kid1 32s linear infinite;animation-delay:0.3s;}
+.play .sc.s1 .st3{animation:kid1 32s linear infinite;animation-delay:0.6s;}
+.play .sc.s1 .st4{animation:kid1 32s linear infinite;animation-delay:0.8999999999999999s;}
+.play .sc.s1 .st5{animation:kid1 32s linear infinite;animation-delay:1.2s;}
+.play .sc.s1 .st6{animation:kid1 32s linear infinite;animation-delay:1.5s;}
+.play .sc.s2 .st1{animation:kid2 32s linear infinite;animation-delay:0.0s;}
+.play .sc.s2 .st2{animation:kid2 32s linear infinite;animation-delay:0.3s;}
+.play .sc.s2 .st3{animation:kid2 32s linear infinite;animation-delay:0.6s;}
+.play .sc.s2 .st4{animation:kid2 32s linear infinite;animation-delay:0.8999999999999999s;}
+.play .sc.s2 .st5{animation:kid2 32s linear infinite;animation-delay:1.2s;}
+.play .sc.s2 .st6{animation:kid2 32s linear infinite;animation-delay:1.5s;}
+.play .sc.s3 .st1{animation:kid3 32s linear infinite;animation-delay:0.0s;}
+.play .sc.s3 .st2{animation:kid3 32s linear infinite;animation-delay:0.3s;}
+.play .sc.s3 .st3{animation:kid3 32s linear infinite;animation-delay:0.6s;}
+.play .sc.s3 .st4{animation:kid3 32s linear infinite;animation-delay:0.8999999999999999s;}
+.play .sc.s3 .st5{animation:kid3 32s linear infinite;animation-delay:1.2s;}
+.play .sc.s3 .st6{animation:kid3 32s linear infinite;animation-delay:1.5s;}
+.play .sc.s4 .st1{animation:kid4 32s linear infinite;animation-delay:0.0s;}
+.play .sc.s4 .st2{animation:kid4 32s linear infinite;animation-delay:0.3s;}
+.play .sc.s4 .st3{animation:kid4 32s linear infinite;animation-delay:0.6s;}
+.play .sc.s4 .st4{animation:kid4 32s linear infinite;animation-delay:0.8999999999999999s;}
+.play .sc.s4 .st5{animation:kid4 32s linear infinite;animation-delay:1.2s;}
+.play .sc.s4 .st6{animation:kid4 32s linear infinite;animation-delay:1.5s;}
+.play .sc.s5 .st1{animation:kid5 32s linear infinite;animation-delay:0.0s;}
+.play .sc.s5 .st2{animation:kid5 32s linear infinite;animation-delay:0.3s;}
+.play .sc.s5 .st3{animation:kid5 32s linear infinite;animation-delay:0.6s;}
+.play .sc.s5 .st4{animation:kid5 32s linear infinite;animation-delay:0.8999999999999999s;}
+.play .sc.s5 .st5{animation:kid5 32s linear infinite;animation-delay:1.2s;}
+.play .sc.s5 .st6{animation:kid5 32s linear infinite;animation-delay:1.5s;}
+.play .sc.s6 .st1{animation:kid6 32s linear infinite;animation-delay:0.0s;}
+.play .sc.s6 .st2{animation:kid6 32s linear infinite;animation-delay:0.3s;}
+.play .sc.s6 .st3{animation:kid6 32s linear infinite;animation-delay:0.6s;}
+.play .sc.s6 .st4{animation:kid6 32s linear infinite;animation-delay:0.8999999999999999s;}
+.play .sc.s6 .st5{animation:kid6 32s linear infinite;animation-delay:1.2s;}
+.play .sc.s6 .st6{animation:kid6 32s linear infinite;animation-delay:1.5s;}
+.play .sc.s7 .st1{animation:kid7 32s linear infinite;animation-delay:0.0s;}
+.play .sc.s7 .st2{animation:kid7 32s linear infinite;animation-delay:0.3s;}
+.play .sc.s7 .st3{animation:kid7 32s linear infinite;animation-delay:0.6s;}
+.play .sc.s7 .st4{animation:kid7 32s linear infinite;animation-delay:0.8999999999999999s;}
+.play .sc.s7 .st5{animation:kid7 32s linear infinite;animation-delay:1.2s;}
+.play .sc.s7 .st6{animation:kid7 32s linear infinite;animation-delay:1.5s;}
+.play .sc.s8 .st1{animation:kid8 32s linear infinite;animation-delay:0.0s;}
+.play .sc.s8 .st2{animation:kid8 32s linear infinite;animation-delay:0.3s;}
+.play .sc.s8 .st3{animation:kid8 32s linear infinite;animation-delay:0.6s;}
+.play .sc.s8 .st4{animation:kid8 32s linear infinite;animation-delay:0.8999999999999999s;}
+.play .sc.s8 .st5{animation:kid8 32s linear infinite;animation-delay:1.2s;}
+.play .sc.s8 .st6{animation:kid8 32s linear infinite;animation-delay:1.5s;}
+.play .sc.s9 .st1{animation:kid9 32s linear infinite;animation-delay:0.0s;}
+.play .sc.s9 .st2{animation:kid9 32s linear infinite;animation-delay:0.3s;}
+.play .sc.s9 .st3{animation:kid9 32s linear infinite;animation-delay:0.6s;}
+.play .sc.s9 .st4{animation:kid9 32s linear infinite;animation-delay:0.8999999999999999s;}
+.play .sc.s9 .st5{animation:kid9 32s linear infinite;animation-delay:1.2s;}
+.play .sc.s9 .st6{animation:kid9 32s linear infinite;animation-delay:1.5s;}
+.play .sc.s10 .st1{animation:kid10 32s linear infinite;animation-delay:0.0s;}
+.play .sc.s10 .st2{animation:kid10 32s linear infinite;animation-delay:0.3s;}
+.play .sc.s10 .st3{animation:kid10 32s linear infinite;animation-delay:0.6s;}
+.play .sc.s10 .st4{animation:kid10 32s linear infinite;animation-delay:0.8999999999999999s;}
+.play .sc.s10 .st5{animation:kid10 32s linear infinite;animation-delay:1.2s;}
+.play .sc.s10 .st6{animation:kid10 32s linear infinite;animation-delay:1.5s;}
+</style></head><body><div class="film" id="artifact"><div class="atm"></div>
+<div class="chrome"><span class="l">Production-Ready AI Agents</span><span class="r" style="position:relative;width:340px;text-align:right;">
+<span class="steplab s1" style="right:0;">The guide</span><span class="steplab s2" style="right:0;">Demo vs Prod</span><span class="steplab s3" style="right:0;">The checklist</span><span class="steplab s4" style="right:0;">Step 1 &middot; Foundation</span><span class="steplab s5" style="right:0;">Step 2 &middot; Tools</span><span class="steplab s6" style="right:0;">Step 3 &middot; Memory</span><span class="steplab s7" style="right:0;">Step 4 &middot; Observability</span><span class="steplab s8" style="right:0;">Step 5 &middot; Safety</span><span class="steplab s9" style="right:0;">Step 6 &middot; Evals</span><span class="steplab s10" style="right:0;">Get the playbook</span>
+</span></div>
+<div class="pbar"><div class="pfill"></div></div>
+
+<div class="sc s1 center">
+<span class="k st1">Founder's guide</span>
+<div class="t st2">BUILD<br>PRODUCTION<br>READY<br><em>AI AGENTS.</em></div>
+<div class="d st3">Your agent works in a demo.<br><b>That is not enough.</b></div>
+</div>
+
+<div class="sc s2">
+<span class="k st1">The real difference</span>
+<div class="t sm st2">DEMO WORKS ONCE.<br><em>PROD WORKS ALWAYS.</em></div>
+<div class="duo st3">
+<div class="dc bad"><div class="h">Demo agent</div><ul><li>Happy path only</li><li>No error handling</li><li>No memory</li><li>Crashes on bad input</li></ul></div>
+<div class="dc good"><div class="h">Production agent</div><ul><li>Handles edge cases</li><li>Retries + fallbacks</li><li>Persistent memory</li><li>Gracefully degrades</li></ul></div>
+</div>
+</div>
+
+<div class="sc s3">
+<span class="k st1">The checklist</span>
+<div class="t sm st1">6 THINGS THAT<br>MUST <em>BE TRUE.</em></div>
+<div class="it st1"><span class="n">1</span><div class="x"><b>Handles tool failures gracefully</b><span>retry, fall back, or report. Never crash silently</span></div></div>
+<div class="it st2"><span class="n">2</span><div class="x"><b>Every run is observable</b><span>see every tool call on any past session</span></div></div>
+<div class="it st3"><span class="n">3</span><div class="x"><b>Memory persists across sessions</b><span>users never re-explain context</span></div></div>
+<div class="it st4"><span class="n">4</span><div class="x"><b>Guardrails block dangerous actions</b><span>high-risk tools need human approval</span></div></div>
+<div class="it st5"><span class="n">5</span><div class="x"><b>It stays within token limits</b><span>compresses history instead of cramming</span></div></div>
+<div class="it st6"><span class="n">6</span><div class="x"><b>You can evaluate it systematically</b><span>know better or worse before it ships</span></div></div>
+</div>
+
+<div class="sc s4">
+<span class="k st1">Step 1 &middot; The foundation</span>
+<div class="t sm st2">PICK THE RIGHT <em>MODEL.</em><br>WRITE THE RIGHT <em>PROMPT.</em></div>
+<div class="it st3"><span class="n">1</span><div class="x"><b>Match model to task</b><span>Haiku for routing, Sonnet for reasoning, Opus for the hardest calls</span></div></div>
+<div class="it st4"><span class="n">2</span><div class="x"><b>The system prompt is load-bearing</b><span>specific prompts produce predictable agents</span></div></div>
+<div class="it st5"><span class="n">3</span><div class="x"><b>A context file, read every session</b><span>conventions, rules, preferences. It stops asking</span></div></div>
+<div class="d st6"><b>Most failures are prompt failures,</b> not model failures.</div>
+</div>
+
+<div class="sc s5">
+<span class="k st1">Step 2 &middot; Tools</span>
+<div class="t st2">TOOLS FAIL.<br><em>PLAN FOR IT.</em></div>
+<div class="mono2 st3">every tool call &middot; <b>retry &times;3</b> <em>&rarr;</em> <b>timeout</b> <em>&rarr;</em> <b>fallback</b><br>"Search unavailable. Try a different approach."<br>the agent works around it, <b>never crashes</b></div>
+<div class="duo st4">
+<div class="dc good" style="box-shadow:none;"><div class="h">Keep tools focused</div><ul><li>One tool, one job</li><li>Fewer than 8 per agent</li></ul></div>
+<div class="dc bad"><div class="h">Never retry 4xx</div><ul><li>Retry 5xx + network only</li><li>4xx just burns tokens</li></ul></div>
+</div>
+</div>
+
+<div class="sc s6">
+<span class="k st1">Step 3 &middot; Memory</span>
+<div class="t sm st2">AGENTS WITHOUT MEMORY<br><em>START OVER.</em></div>
+<div class="chipline st3">
+<span class="cl2"><i>short-term</i>Working memory, compressed before it overflows</span>
+<span class="cl2"><i>semantic</i>Vector memory, the foundation of RAG</span>
+<span class="cl2"><i>long-term</i>Preferences and decisions, across sessions</span>
+<span class="cl2"><i>skill</i>Learned conventions, loaded every session</span>
+</div>
+<div class="d st4">Memory turns a one-shot tool into <b>a system users trust.</b></div>
+</div>
+
+<div class="sc s7">
+<span class="k st1">Step 4 &middot; Observability</span>
+<div class="t sm st2">IF YOU CAN'T SEE IT<br><em>YOU CAN'T FIX IT.</em></div>
+<div class="mono2 st3">tracing: <b>on</b> &middot; 2 lines of setup<br>every run <em>&rarr;</em> every tool call &middot; every token &middot; every decision</div>
+<div class="it st4"><span class="n">+</span><div class="x"><b>Track four numbers</b><span>latency per step, tokens, tool success rate, answer quality</span></div></div>
+<div class="d st5">Without traces, debugging a silent failure <b>means guessing.</b></div>
+</div>
+
+<div class="sc s8">
+<span class="k st1">Step 5 &middot; Safety</span>
+<div class="t sm st2">THE AGENT DECIDES <em>WHAT.</em><br>YOU DECIDE <em>WHAT'S SAFE.</em></div>
+<div class="gate st3">
+<div class="gh">Human gate &middot; approval needed</div>
+<div class="gt">Send 240 emails &middot; high-risk action paused</div>
+<div class="gb"><span>Reject</span><span>Edit</span><span class="ok">Approve</span></div>
+</div>
+<div class="d st4">The agent resumes with full context, <b>exactly where it stopped.</b></div>
+</div>
+
+<div class="sc s9">
+<span class="k st1">Step 6 &middot; Evals</span>
+<div class="t sm st2">TEST YOUR AGENT<br>LIKE <em>SOFTWARE.</em></div>
+<div class="it st3"><span class="n">1</span><div class="x"><b>Build a golden dataset</b><span>50-100 real inputs. Green means ship, red means fix</span></div></div>
+<div class="it st4"><span class="n">2</span><div class="x"><b>Test the failure modes</b><span>bad inputs, timeouts, ambiguous queries, long sessions</span></div></div>
+<div class="it st5"><span class="n">3</span><div class="x"><b>LLM-as-judge for quality</b><span>scales to thousands of evals per run</span></div></div>
+</div>
+
+<div class="sc s10 center">
+<span class="k st1">That's a wrap &middot; all 6 steps</span>
+<div class="t st2">COMMENT<br><em>AGENTS.</em></div>
+<div class="d st3">and I will send you the full<br>production-agents breakdown.</div>
+<div class="cta2 st4">COMMENT AGENTS<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+<img class="logo-big st5" src="__LOGO_URI__" alt="">
+</div>
+
+<div class="brand"><div class="lf"><img src="__LOGO_URI__" alt=""><span class="nm"><b>Tibi Serbaneci</b> &middot; ULTRON</span></div><span class="url">51ultron<em>.</em>com</span></div>
+</div></body></html>
