@@ -28,15 +28,18 @@ git reset --hard "origin/$BRANCH" 2>&1 | tail -1
 echo "portal: reindexing ..."
 python3 portal/scan.py 2>&1 | tail -1 || git checkout -- content/portal/manifest.json 2>/dev/null
 
-# 5) RESTART the server so the running process is always the latest server.py (an old process
-#    means the auto-sync/auto-refresh fixes never load). A restart is a ~1.5s blip; the page
+# 5) RESTART under a watchdog so the running process is always the latest server.py AND so a
+#    mid-session crash self-heals. The watchdog (re)starts server.py within ~10s if it dies; a
+#    fresh start here forces the newest code to load. A restart is a ~1.5s blip; the page
 #    auto-recovers because it retries the manifest fetch.
-pkill -f "[p]ortal/server.py" 2>/dev/null && sleep 1
-PORTAL_HOST=0.0.0.0 nohup python3 portal/server.py > "$LOG" 2>&1 &
-sleep 1.5
+pkill -f "[p]ortal/server.py" 2>/dev/null
+pkill -f "[p]ortal/keepalive.sh" 2>/dev/null
+sleep 1
+nohup bash portal/keepalive.sh > /dev/null 2>&1 &
+sleep 2.5
 if pgrep -f "[p]ortal/server.py" >/dev/null 2>&1; then
   TOTAL=$(python3 -c "import json;print(json.load(open('content/portal/manifest.json'))['counts']['total'])" 2>/dev/null)
-  echo "portal: started on port 8753 (Private) - ${TOTAL:-?} materials."
+  echo "portal: started on port 8753 (Private, watchdog on) - ${TOTAL:-?} materials."
 else
   echo "portal: FAILED to start - last log lines:"; tail -20 "$LOG" 2>/dev/null
 fi
