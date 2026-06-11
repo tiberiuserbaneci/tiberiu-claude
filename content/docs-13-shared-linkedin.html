@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
-/* BUDGET: 1394px vertical: mast 38 + hd 178 + cut(flex) ~880 + say 84 + ctab 78 + footy 54 + gaps 82 = 1394 */
+/* BUDGET: 1394px vertical: mast 38 + hd 150 + flow(flex) ~990 + ctab 76 + footy 54 + gaps 86 = 1394 */
 :root{--slate:#191919;--slate2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);--book:#CC785C;--bookd:#C84623;--kraft:#D4A27F;--cloud:#919180;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
@@ -12,56 +12,86 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 .m2 .kw .sp{color:var(--book);margin:0 7px;}
 .m2 .mr{font-family:'DM Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink70);white-space:nowrap;flex-shrink:0;padding-left:18px;}
 .m2 .mr em{color:var(--book);font-style:normal;}
-.hd{flex-shrink:0;margin-top:18px;}
-.hk{font-weight:900;font-size:51px;line-height:.98;letter-spacing:-1.9px;color:var(--ivory);}
+.hd{flex-shrink:0;margin-top:16px;}
+.hk{font-weight:900;font-size:47px;line-height:.98;letter-spacing:-1.6px;color:var(--ivory);}
 .hk em{color:var(--book);font-style:normal;}
-.sb{margin-top:12px;font-size:19px;font-weight:500;line-height:1.32;color:var(--ink70);max-width:880px;}
+.sb{margin-top:10px;font-size:20px;font-weight:500;line-height:1.3;color:var(--ink70);}
 .sb b{color:var(--ivory);font-weight:700;}
-/* the section cut */
-.cut{flex:1;min-height:0;margin-top:16px;display:flex;flex-direction:column;border:1px solid var(--ink14);border-radius:18px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.45);}
-.strat{display:flex;align-items:stretch;border-top:1px solid var(--rule);}
-.strat:first-child{border-top:none;}
-.rail{width:64px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border-right:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--ink46);}
-.rail i{width:14px;height:2px;background:var(--book);display:block;}
-.body{flex:1;min-width:0;padding:13px 22px 14px;display:flex;flex-direction:column;}
-.bh{display:flex;align-items:baseline;gap:12px;}
-.bh .nm{font-family:'DM Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;}
-.bh .ds{font-size:15px;font-weight:500;color:var(--ink46);}
-.bh .ct{margin-left:auto;font-weight:900;font-size:34px;line-height:.8;letter-spacing:-1.4px;flex-shrink:0;}
-/* surface: the thin lit layer a screenshot captures */
-.strat.s0{background:rgba(204,120,92,.12);flex:0 0 auto;}
-.strat.s0 .rail{color:var(--book);}
-.strat.s0 .bh .nm{color:var(--book);}
-.strat.s0 .bh .ct{color:var(--book);}
-.ans{margin-top:8px;display:flex;align-items:center;gap:14px;}
-.ans .q{flex:1;font-size:18.5px;font-weight:700;color:var(--ivory);line-height:1.25;border-left:3px solid var(--book);padding-left:14px;}
-.ans .tag{flex-shrink:0;font-family:'DM Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#1a0f0a;background:var(--book);border-radius:20px;padding:7px 13px;}
-/* deep strata get darker as they go down */
-.strat.s1{background:#222120;flex:1.05;}
-.strat.s2{background:#1e1d1c;flex:1;}
-.strat.s3{background:#1b1a19;flex:1;}
-.strat.s4{background:#171615;flex:1;}
-.strat.s1 .bh .nm{color:var(--kraft);}.strat.s1 .bh .ct{color:var(--kraft);}
-.strat.s2 .bh .nm{color:var(--book);}.strat.s2 .bh .ct{color:var(--book);}
-.strat.s3 .bh .nm{color:var(--ivory);}.strat.s3 .bh .ct{color:var(--ivory);}
-.strat.s4 .bh .nm{color:var(--bookd);}.strat.s4 .bh .ct{color:var(--bookd);}
-.rowz{flex:1;min-height:0;margin-top:6px;display:flex;flex-wrap:wrap;gap:8px;align-content:center;align-items:center;}
-.bm{flex-shrink:0;margin-top:6px;padding-top:9px;border-top:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink46);}
-.bm em{color:var(--kraft);font-style:normal;}
-.chip{font-size:15.5px;font-weight:600;color:var(--ink70);background:rgba(250,250,247,.05);border:1px solid var(--ink14);border-radius:9px;padding:8px 13px;line-height:1.15;display:flex;align-items:center;gap:8px;}
+/* ===== the workflow ===== */
+.flow{flex:1;min-height:0;margin-top:14px;display:flex;flex-direction:column;}
+.nodeq{flex-shrink:0;display:flex;align-items:center;gap:16px;border:1px solid var(--rule);border-radius:14px;background:var(--slate2);padding:16px 20px;}
+.nodeq .ntag{flex-shrink:0;font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--kraft);}
+.nodeq .q{flex:1;font-size:20px;font-weight:700;color:var(--ivory);line-height:1.2;}
+.nodeq .cnt{flex-shrink:0;font-family:'DM Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink46);border:1px solid var(--ink14);border-radius:20px;padding:7px 13px;}
+.conn{flex-shrink:0;height:40px;display:flex;justify-content:center;}
+.conn svg{height:40px;width:24px;overflow:visible;}
+.conn path{stroke:var(--book);stroke-width:2.4;fill:none;stroke-dasharray:5 7;stroke-linecap:round;}
+.conn .ah{fill:var(--book);}
+/* the machine */
+.mach{flex:1;min-height:0;display:flex;flex-direction:column;border:1px solid var(--ink14);border-radius:16px;overflow:hidden;background:#1d1c1b;box-shadow:0 20px 50px rgba(0,0,0,.4);}
+.mh{display:flex;align-items:center;gap:12px;padding:11px 20px;border-bottom:1px solid var(--rule);background:rgba(250,250,247,.03);}
+.mh .t1{font-family:'DM Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--book);}
+.mh .t2{font-size:14.5px;font-weight:500;color:var(--ink46);}
+.mh .lights{margin-left:auto;display:flex;gap:6px;}
+.mh .lights i{width:8px;height:8px;border-radius:50%;background:var(--ink14);}
+.mh .lights i.on{background:var(--book);box-shadow:0 0 8px var(--book);}
+.stg{flex:1;display:flex;align-items:center;gap:18px;padding:13px 22px;border-top:1px solid var(--rule);}
+.stg:nth-of-type(2){border-top:none;}
+.stg .sl{width:132px;flex-shrink:0;}
+.stg .sl .nm{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}
+.stg .sl .big{font-weight:900;font-size:40px;line-height:.85;letter-spacing:-1.2px;margin-top:4px;}
+.stg.a .sl .nm,.stg.a .sl .big{color:var(--kraft);}
+.stg.b .sl .nm,.stg.b .sl .big{color:var(--book);}
+.stg.c .sl .nm,.stg.c .sl .big{color:var(--ivory);}
+.zcol{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:11px;}
+.stg .zz{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+.zm{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink46);}
+.zm em{color:var(--kraft);font-style:normal;}
+.chip{font-size:17.5px;font-weight:600;color:var(--ink70);background:rgba(250,250,247,.05);border:1px solid var(--ink14);border-radius:8px;padding:9px 13px;line-height:1.12;display:flex;align-items:center;gap:7px;}
 .chip b{color:var(--ivory);font-weight:800;}
-.chip i{font-family:'DM Mono',monospace;font-style:normal;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--kraft);}
+.chip i{font-family:'DM Mono',monospace;font-style:normal;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--kraft);}
 .chip.more{color:var(--ink46);border-style:dashed;}
-.mono{font-family:'DM Mono',monospace;font-size:14.5px;color:var(--ink70);background:#141312;border:1px solid var(--ink14);border-left:3px solid var(--book);border-radius:9px;padding:9px 14px;line-height:1.2;}
+.mono{flex:1 1 100%;font-family:'DM Mono',monospace;font-size:16.5px;color:var(--ink70);background:#141312;border:1px solid var(--ink14);border-left:3px solid var(--book);border-radius:8px;padding:8px 12px;line-height:1.2;}
 .mono b{color:var(--kraft);font-weight:600;}
 .mono em{color:var(--book);font-style:normal;}
-/* the takeaway */
-.say{flex-shrink:0;margin-top:14px;border:1px solid rgba(204,120,92,.32);border-radius:13px;background:rgba(204,120,92,.07);padding:15px 20px;display:flex;align-items:center;gap:16px;}
-.say .big{font-size:19.5px;font-weight:800;color:var(--ivory);letter-spacing:-.2px;line-height:1.25;flex-shrink:0;}
-.say .big em{color:var(--book);font-style:normal;}
-.say .rest{font-size:15.5px;font-weight:500;color:var(--ink70);line-height:1.3;border-left:1px solid var(--rule);padding-left:16px;}
+.eng{display:flex;align-items:center;gap:10px;padding:12px 22px;border-top:1px solid var(--rule);background:rgba(0,0,0,.22);font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink46);}
+.eng b{color:var(--ivory);font-weight:600;} .eng{font-size:12.5px;}
+.eng em{color:var(--book);font-style:normal;}
+/* answer node */
+.nodea{flex-shrink:0;display:flex;align-items:center;gap:16px;border:1px solid rgba(204,120,92,.4);border-radius:14px;background:rgba(204,120,92,.08);padding:13px 20px;}
+.nodea .ntag{flex-shrink:0;font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--book);}
+.nodea .q{flex:1;font-size:19px;font-weight:700;color:var(--ivory);line-height:1.2;}
+.nodea .q b{color:var(--book);}
+.nodea .cnt{flex-shrink:0;font-family:'DM Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--book);border:1px solid rgba(204,120,92,.4);border-radius:20px;padding:7px 13px;}
+/* the split */
+.split{flex-shrink:0;height:48px;display:flex;justify-content:center;}
+.split svg{width:560px;height:48px;overflow:visible;}
+.split path{fill:none;stroke-width:2.4;stroke-linecap:round;}
+.split .pl{stroke:var(--ink30);stroke-dasharray:4 8;}
+.split .pr{stroke:var(--book);stroke-dasharray:5 7;}
+.split .ah{fill:var(--book);}
+.split .ahl{fill:var(--ink30);}
+/* outputs */
+.outs{flex-shrink:0;display:flex;gap:14px;}
+.oc{flex:1;display:flex;flex-direction:column;border-radius:15px;padding:15px 19px;}
+.oc .oh{display:flex;align-items:baseline;gap:10px;}
+.oc .oh .t{font-size:22px;font-weight:900;letter-spacing:-.4px;}
+.oc .oh .m{margin-left:auto;font-family:'DM Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}
+.oc .ox{margin-top:9px;font-size:17.5px;font-weight:500;line-height:1.34;color:var(--ink70);}
+.oc .ox b{color:var(--ivory);font-weight:700;}
+.oc .of{margin-top:auto;padding-top:9px;border-top:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;}
+.oc.dead{border:1px dashed var(--ink30);background:rgba(250,250,247,.02);}
+.oc.dead .oh .t{color:var(--ink46);}
+.oc.dead .oh .m{color:var(--ink30);}
+.oc.dead .of{color:var(--ink30);}
+.oc.live{border:1.5px solid var(--book);background:rgba(204,120,92,.09);box-shadow:0 0 44px rgba(204,120,92,.16);}
+.oc.live .oh .t{color:var(--ivory);}
+.oc.live .oh .t em{color:var(--book);font-style:normal;}
+.oc.live .oh .m{color:var(--book);}
+.oc.live .of{color:var(--kraft);}
+.oc.live .of b{color:var(--book);font-weight:600;}
 /* cta */
-.ctab{flex-shrink:0;margin-top:13px;display:flex;align-items:stretch;border:1px solid var(--book);border-radius:4px;overflow:hidden;}
+.ctab{flex-shrink:0;margin-top:14px;display:flex;align-items:stretch;border:1px solid var(--book);border-radius:4px;overflow:hidden;}
 .ctab .tx{flex:1;padding:13px 18px;display:flex;flex-direction:column;justify-content:center;gap:5px;background:rgba(204,120,92,.07);}
 .ctab .tx .l1{font-family:'DM Sans',sans-serif;font-size:14.5px;font-weight:500;color:rgba(250,250,247,.82);line-height:1.35;}
 .ctab .tx .l1 strong{color:var(--ivory);font-weight:800;}
@@ -75,89 +105,68 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 .footy .tx2 strong{color:var(--ivory);font-weight:500;}
 .footy .u2{font-family:'DM Sans',sans-serif;font-weight:900;font-size:15px;letter-spacing:-.4px;color:var(--ivory);flex-shrink:0;}
 .footy .u2 em{color:var(--book);font-style:normal;}
-/* ===== ANIMATION (only under body.play; static export untouched) =====
-   story: screenshot flash catches the surface -> the depth reveals -> send the session */
-.flash{position:absolute;inset:0;z-index:9;pointer-events:none;background:#fff;opacity:0;}
-@keyframes kin{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
-@keyframes kfla{0%{opacity:0;}28%{opacity:.85;}100%{opacity:0;}}
-@keyframes kpop{0%{opacity:0;transform:scale(.6);}70%{opacity:1;transform:scale(1.12);}100%{opacity:1;transform:scale(1);}}
-@keyframes ktick{from{background:rgba(250,250,247,.14);}to{background:var(--book);}}
-@keyframes kglow{0%,100%{box-shadow:inset 0 0 0 1px rgba(250,255,247,.12),0 0 30px rgba(204,120,92,.35);}50%{box-shadow:inset 0 0 0 1px rgba(250,255,247,.12),0 0 52px rgba(204,120,92,.75);}}
-.play .m2{animation:kin .4s ease-out .1s both;}
-.play .hd{animation:kin .5s ease-out .25s both;}
-.play .cut{animation:kin .5s ease-out .6s both;}
-.play .strat.s0 .body{animation:kin .5s ease-out .8s both;}
-.play .strat.s0 .ans .tag{animation:kpop .35s ease-out 1.15s both;}
-.play .flash{animation:kfla .45s ease-in 1.5s both;}
-.play .strat.s1 .body{animation:kin .55s ease-out 2.0s both;}
-.play .strat.s2 .body{animation:kin .55s ease-out 2.8s both;}
-.play .strat.s3 .body{animation:kin .55s ease-out 3.6s both;}
-.play .strat.s4 .body{animation:kin .55s ease-out 4.4s both;}
-.play .strat.s1 .rail i{animation:ktick .3s ease-out 2.35s both;}
-.play .strat.s2 .rail i{animation:ktick .3s ease-out 3.15s both;}
-.play .strat.s3 .rail i{animation:ktick .3s ease-out 3.95s both;}
-.play .strat.s4 .rail i{animation:ktick .3s ease-out 4.75s both;}
-.play .strat .bh .ct{animation:kpop .4s ease-out both;}
-.play .strat.s0 .bh .ct{animation-delay:1.0s;}
-.play .strat.s1 .bh .ct{animation-delay:2.35s;}
-.play .strat.s2 .bh .ct{animation-delay:3.15s;}
-.play .strat.s3 .bh .ct{animation-delay:3.95s;}
-.play .strat.s4 .bh .ct{animation-delay:4.75s;}
-.play .say{animation:kin .55s ease-out 5.3s both;}
-.play .ctab{animation:kin .5s ease-out 6.0s both;}
-.play .ctab .chipc{animation:kglow 1.1s ease-in-out 6.5s 2;}
-.play .footy{animation:kin .5s ease-out 6.0s both;}
-</style></head><body><div class="pg" id="artifact"><div class="glow"></div><div class="flash"></div>
+/* ===== WORKFLOW ANIMATION (under body.play; 6s seamless loop; nothing appears, the flow RUNS) ===== */
+@keyframes dflow{to{stroke-dashoffset:-48;}}
+@keyframes dflowslow{to{stroke-dashoffset:-24;}}
+@keyframes hotq{0%,12%,100%{border-color:var(--rule);box-shadow:none;}5%{border-color:var(--book);box-shadow:0 0 30px rgba(204,120,92,.35);}}
+@keyframes hot1{0%,10%,26%,100%{background:transparent;}17%{background:rgba(212,162,127,.09);}}
+@keyframes hot2{0%,26%,42%,100%{background:transparent;}33%{background:rgba(204,120,92,.1);}}
+@keyframes hot3{0%,42%,56%,100%{background:transparent;}49%{background:rgba(250,250,247,.06);}}
+@keyframes hote{0%,56%,64%,100%{background:rgba(0,0,0,.22);}60%{background:rgba(204,120,92,.14);}}
+@keyframes hota{0%,64%,78%,100%{box-shadow:none;}70%{box-shadow:0 0 38px rgba(204,120,92,.45);}}
+@keyframes hotl{0%,76%,100%{box-shadow:0 0 44px rgba(204,120,92,.16);}86%{box-shadow:0 0 64px rgba(204,120,92,.55);}}
+@keyframes dimd{0%,76%,90%,100%{opacity:1;}82%{opacity:.45;}}
+@keyframes blink{0%,49%,100%{opacity:1;}50%,99%{opacity:.25;}}
+.play .conn path,.play .split .pr{animation:dflow 1.2s linear infinite;}
+.play .split .pl{animation:dflowslow 2.6s linear infinite;}
+.play .nodeq{animation:hotq 6s linear infinite;}
+.play .stg.a{animation:hot1 6s linear infinite;}
+.play .stg.b{animation:hot2 6s linear infinite;}
+.play .stg.c{animation:hot3 6s linear infinite;}
+.play .eng{animation:hote 6s linear infinite;}
+.play .nodea{animation:hota 6s linear infinite;}
+.play .oc.live{animation:hotl 6s linear infinite;}
+.play .oc.dead{animation:dimd 6s linear infinite;}
+.play .mh .lights i.on{animation:blink 1s linear infinite;}
+</style></head><body><div class="pg" id="artifact"><div class="glow"></div>
 <div class="m2"><div class="kw">AI WORK<span class="sp">&middot;</span>SHARED SESSIONS<span class="sp">&middot;</span>FOUNDER GTM</div><div class="mr">DOCS 13 <em>/</em> ULTRON PLATFORM</div></div>
 <div class="hd">
-<div class="hk">Most founders screenshot the AI answer.<br><em>The proof never leaves the chat.</em></div>
-<div class="sb">One Claude session: <b>32 turns, 2 tool runs, 9 sources, 1 artifact</b>. A screenshot carries the last message and buries everything under it. This is the cut.</div>
+<div class="hk">Most founders screenshot the AI answer. <em>The proof never leaves the chat.</em></div>
+<div class="sb">One ask becomes <b>44 pieces of proof</b>. A screenshot ships <b>1</b> of them. The session link ships all 44.</div>
 </div>
-<div class="cut">
-<div class="strat s0"><div class="rail">00<i></i></div><div class="body">
-<div class="bh"><span class="nm">The answer</span><span class="ds">the only layer a screenshot shows</span><span class="ct">1</span></div>
-<div class="ans"><div class="q">"Done. Stripe, Adyen and Checkout compared across 9 rows. Table is on your canvas."</div><div class="tag">what they see</div></div>
-</div></div>
-<div class="strat s1"><div class="rail">01<i></i></div><div class="body">
-<div class="bh"><span class="nm">The thread</span><span class="ds">the decisions that shaped the answer</span><span class="ct">32</span></div>
-<div class="rowz">
-<div class="chip"><i>turn 03</i><b>scope:</b> KYC fintechs only, drop wallets</div>
-<div class="chip"><i>turn 14</i><b>kill</b> the enterprise segment</div>
-<div class="chip"><i>turn 27</i><b>re-rank</b> by pricing transparency</div>
-<div class="chip more">+ 29 more turns, in order</div>
+<div class="flow">
+<div class="nodeq"><span class="ntag">Input &middot; the ask</span><span class="q">"Find my top 3 KYC fintech rivals and compare them."</span><span class="cnt">1 message</span></div>
+<div class="conn"><svg viewBox="0 0 24 34"><path d="M12 0 L12 26"/><polygon class="ah" points="12,34 6,24 18,24"/></svg></div>
+<div class="mach">
+<div class="mh"><span class="t1">The session runs</span><span class="t2">everything below travels with the link</span><div class="lights"><i class="on"></i><i></i><i></i></div></div>
+<div class="stg a"><div class="sl"><div class="nm">Turns</div><div class="big">32</div></div><div class="zcol"><div class="zz">
+<span class="chip"><i>t03</i><b>scope:</b> KYC only, drop wallets</span>
+<span class="chip"><i>t14</i><b>kill</b> enterprise segment</span>
+<span class="chip"><i>t27</i><b>re-rank</b> by pricing</span>
+<span class="chip"><i>t31</i><b>approve</b> the final cut</span>
+<span class="chip more">+ 28 more, in order</span>
+</div><div class="zm"><em>&#9679;</em> every turn timestamped, both sides, in order</div></div></div>
+<div class="stg b"><div class="sl"><div class="nm">Tool runs</div><div class="big">2</div></div><div class="zcol"><div class="zz">
+<span class="mono">web_search &middot; "kyc fintech competitors" <em>&rarr;</em> <b>12 results, 9 kept</b></span>
+<span class="mono">canvas.comparison_table <em>&rarr;</em> <b>9 rows &times; 3 rivals, live</b></span>
+</div><div class="zm"><em>&#9679;</em> inputs and outputs kept with each turn</div></div></div>
+<div class="stg c"><div class="sl"><div class="nm">Sources</div><div class="big">9</div></div><div class="zcol"><div class="zz">
+<span class="chip">stripe.com/pricing</span>
+<span class="chip">adyen.com/docs</span>
+<span class="chip">checkout.com/kyc</span>
+<span class="chip">2 pricing teardowns</span>
+<span class="chip more">+ 4 more, still live</span>
+</div><div class="zm"><em>&#9679;</em> every claim clicks through to the original</div></div></div>
+<div class="eng"><em>&#9679;</em> engine: <b>CORTEX</b> &middot; <b>Sonnet</b> tier &middot; <b>14 tools</b> allowed &middot; every step logged</div>
 </div>
-<div class="bm"><em>&#9679;</em> in order &middot; both sides &middot; nothing trimmed</div>
-</div></div>
-<div class="strat s2"><div class="rail">02<i></i></div><div class="body">
-<div class="bh"><span class="nm">The tool runs</span><span class="ds">what the agent actually did</span><span class="ct">2</span></div>
-<div class="rowz">
-<div class="mono">web_search &middot; "kyc fintech competitors" <em>&rarr;</em> <b>12 results</b></div>
-<div class="mono">canvas.comparison_table <em>&rarr;</em> <b>9 rows &times; 3 rivals</b></div>
+<div class="conn"><svg viewBox="0 0 24 34"><path d="M12 0 L12 26"/><polygon class="ah" points="12,34 6,24 18,24"/></svg></div>
+<div class="nodea"><span class="ntag">Output</span><span class="q">The answer: <b>comparison table, 9 rows &times; 3 rivals</b>, live on canvas</span><span class="cnt">1 artifact</span></div>
+<div class="split"><svg viewBox="0 0 560 48"><path class="pl" d="M280 2 C280 26, 140 22, 140 40"/><path class="pr" d="M280 2 C280 26, 420 22, 420 40"/><polygon class="ahl" points="140,48 134,38 146,38"/><polygon class="ah" points="420,48 414,38 426,38"/></svg></div>
+<div class="outs">
+<div class="oc dead"><div class="oh"><span class="t">Screenshot it</span><span class="m">1 / 44 travels</span></div><div class="ox">One frozen frame ships. <b>43 pieces stay behind.</b> No thread, no sources, nothing to verify, nothing to continue.</div><div class="of">dead end &middot; the proof never arrives</div></div>
+<div class="oc live"><div class="oh"><span class="t">Share <em>the session</em></span><span class="m">44 / 44 travel</span></div><div class="ox"><b>The whole machine above travels.</b> They scroll the turns, click any source, then clone it and keep working from turn 32.</div><div class="of"><em>&#9679;</em> read-only &middot; <b>one click to clone</b> &middot; revoke anytime</div></div>
 </div>
-<div class="bm"><em>&#9679;</em> inputs and outputs, kept with the turn</div>
-</div></div>
-<div class="strat s3"><div class="rail">03<i></i></div><div class="body">
-<div class="bh"><span class="nm">The sources</span><span class="ds">every claim still clicks through</span><span class="ct">9</span></div>
-<div class="rowz">
-<div class="chip">stripe.com/pricing</div>
-<div class="chip">adyen.com/docs</div>
-<div class="chip">checkout.com/kyc</div>
-<div class="chip">2 pricing teardowns</div>
-<div class="chip more">+ 4 more, all live</div>
 </div>
-<div class="bm"><em>&#9679;</em> the same links, still live in the share</div>
-</div></div>
-<div class="strat s4"><div class="rail">04<i></i></div><div class="body">
-<div class="bh"><span class="nm">The engine</span><span class="ds">who ran it, on what, with what</span><span class="ct">3</span></div>
-<div class="rowz">
-<div class="chip"><b>CORTEX</b> owned the job</div>
-<div class="chip"><b>Sonnet</b> tier, resolved per turn</div>
-<div class="chip"><b>14 tools</b> allowed, every step logged</div>
-</div>
-<div class="bm"><em>&#9679;</em> every step logged in the session</div>
-</div></div>
-</div>
-<div class="say"><div class="big">Send the session, <em>not the surface.</em></div><div class="rest">They scroll the whole cut, check any source, and pick up the work where you left it. Nobody reads the link. Everybody reads the layers.</div></div>
-<div class="ctab"><div class="tx"><div class="l1"><strong>Save this cut.</strong> Comment SHARE and the full shared-sessions breakdown lands in your DMs.</div></div><div class="chipc">COMMENT SHARE<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+<div class="ctab"><div class="tx"><div class="l1"><strong>Save this workflow.</strong> Comment SHARE and the full shared-sessions breakdown lands in your DMs.</div></div><div class="chipc">COMMENT SHARE<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
 <div class="footy"><div class="lf"><img class="lg" src="__LOGO_URI__" alt="Ultron"><div class="tx2"><strong>ULTRON</strong> &middot; AI OPERATOR FOR FOUNDERS &middot; SHARED SESSIONS</div></div><div class="u2">51ultron<em>.</em>com</div></div>
 </div></body></html>
