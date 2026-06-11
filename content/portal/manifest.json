@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-06-11T04:22:54",
+  "generated_at": "2026-06-11T05:07:56",
   "counts": {
-    "total": 77,
-    "generated": 33,
+    "total": 80,
+    "generated": 36,
     "reference": 44,
     "crosspost": 0
   },
@@ -999,6 +999,33 @@
       "crossposts": []
     },
     {
+      "id": "docs-13-shared-linkedin",
+      "title": "Shared",
+      "channel": "linkedin",
+      "type": "single",
+      "slides": 1,
+      "dims": "2160x2900 (1080x1450 @2x)",
+      "preview": "content/docs-13-shared-linkedin.png",
+      "download": "content/docs-13-shared-linkedin.png",
+      "files": [
+        "content/docs-13-shared-linkedin.png"
+      ],
+      "variants": [
+        ""
+      ],
+      "caption": "",
+      "alt": "",
+      "first_comment": "",
+      "generated_date": "2026-06-11",
+      "added": 1781153638,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
       "id": "docs-02-routing-tiktok-carousel",
       "title": "Routing",
       "channel": "tiktok",
@@ -1613,6 +1640,65 @@
       "first_comment": "",
       "generated_date": "2026-06-11",
       "added": 1781150554,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "docs-13-shared-tiktok-carousel",
+      "title": "Shared",
+      "channel": "tiktok",
+      "type": "carousel",
+      "slides": 8,
+      "dims": "2160x3840 (1080x1920 @2x)",
+      "preview": "content/docs-13-shared-tiktok-carousel-01.png",
+      "download": "content/portal/zips/docs-13-shared-tiktok-carousel.zip",
+      "files": [
+        "content/docs-13-shared-tiktok-carousel-01.png",
+        "content/docs-13-shared-tiktok-carousel-02.png",
+        "content/docs-13-shared-tiktok-carousel-03.png",
+        "content/docs-13-shared-tiktok-carousel-04.png",
+        "content/docs-13-shared-tiktok-carousel-05.png",
+        "content/docs-13-shared-tiktok-carousel-06.png",
+        "content/docs-13-shared-tiktok-carousel-07.png",
+        "content/docs-13-shared-tiktok-carousel-08.png"
+      ],
+      "variants": [],
+      "caption": "",
+      "alt": "",
+      "first_comment": "",
+      "generated_date": "2026-06-11",
+      "added": 1781154457,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "docs-13-shared-tiktok-infographic",
+      "title": "Shared",
+      "channel": "tiktok",
+      "type": "single",
+      "slides": 1,
+      "dims": "2160x3840 (1080x1920 @2x)",
+      "preview": "content/docs-13-shared-tiktok-infographic.png",
+      "download": "content/docs-13-shared-tiktok-infographic.png",
+      "files": [
+        "content/docs-13-shared-tiktok-infographic.png"
+      ],
+      "variants": [
+        ""
+      ],
+      "caption": "",
+      "alt": "",
+      "first_comment": "",
+      "generated_date": "2026-06-11",
+      "added": 1781153755,
       "source": "generated",
       "status": "ready",
       "posted": false,
