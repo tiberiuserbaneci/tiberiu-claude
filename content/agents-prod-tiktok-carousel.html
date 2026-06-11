@@ -2,39 +2,40 @@
 :root{--slate:#191919;--card:#222120;--card2:#1d1c1b;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);--book:#CC785C;--bookd:#C84623;--kraft:#D4A27F;--cloud:#919180;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:#0d0d0d;display:flex;flex-direction:column;align-items:center;gap:30px;padding:30px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
-.slide{width:1080px;height:1350px;background:var(--slate);position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;padding:34px 52px 28px;}
+.slide{width:1080px;height:1920px;background:var(--slate);position:relative;overflow:hidden;color:var(--ivory);}
+.safe{position:absolute;top:300px;left:70px;right:130px;bottom:330px;display:flex;flex-direction:column;}
 .slide::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.05) 1.3px,transparent 1.4px);background-size:30px 30px;}
 .atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 56% 26% at 90% -3%,rgba(204,120,92,.18) 0%,transparent 62%),radial-gradient(ellipse 46% 24% at 4% 103%,rgba(212,162,127,.09) 0%,transparent 60%);}
 .slide>*{position:relative;z-index:2;}
 /* header / footer */
-.hd2{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;font-family:'DM Mono',monospace;font-size:15px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;}
+.hd2{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;font-family:'DM Mono',monospace;font-size:17px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;}
 .hd2 .pg2{color:var(--book);}
 .hd2 .br{color:var(--ink46);}
-.ft2{flex-shrink:0;margin-top:auto;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--rule);padding-top:16px;}
+.ft2{flex-shrink:0;margin-top:auto;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--rule);padding-top:18px;}
 .ft2 .lf{display:flex;align-items:center;gap:12px;}
 .ft2 .lg{width:34px;height:34px;border-radius:50%;object-fit:cover;}
-.ft2 .nm{font-family:'DM Mono',monospace;font-size:14px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink70);}
+.ft2 .nm{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink70);}
 .ft2 .nm b{color:var(--ivory);font-weight:500;}
-.ft2 .sw{font-family:'DM Mono',monospace;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--book);}
+.ft2 .sw{font-family:'DM Mono',monospace;font-size:15px;letter-spacing:.1em;text-transform:uppercase;color:var(--book);}
 /* shared blocks */
-.pill{align-self:flex-start;font-family:'DM Mono',monospace;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#1a0f0a;background:var(--book);padding:8px 14px;border-radius:6px;}
+.pill{align-self:flex-start;font-family:'DM Mono',monospace;font-size:14.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#1a0f0a;background:var(--book);padding:8px 14px;border-radius:6px;}
 .tt{font-weight:900;letter-spacing:-2.4px;line-height:.96;color:var(--ivory);}
 .tt em{color:var(--book);font-style:normal;}
-.sub{font-size:21px;font-weight:500;line-height:1.42;color:var(--ink70);}
+.sub{font-size:23px;font-weight:500;line-height:1.42;color:var(--ink70);}
 .sub b{color:var(--ivory);font-weight:700;}
 .sub em{color:var(--book);font-style:normal;font-weight:700;}
 /* s1 cover */
 .s1 .mid{flex:1;display:flex;flex-direction:column;justify-content:center;gap:22px;}
-.s1 .tt{font-size:104px;}
+.s1 .tt{font-size:96px;}
 .s1 .sub{max-width:760px;}
 /* s2 demo vs prod */
-.s2 .tt{font-size:84px;margin-top:18px;}
+.s2 .tt{font-size:72px;margin-top:20px;}
 .s2 .sub{margin-top:18px;}
 .vs2{flex:1;min-height:0;margin-top:24px;display:flex;gap:16px;}
 .vbox{flex:1;border-radius:16px;padding:22px 24px;display:flex;flex-direction:column;}
 .vbox .vh{font-family:'DM Mono',monospace;font-size:14px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px;}
 .vbox ul{list-style:none;flex:1;display:flex;flex-direction:column;justify-content:space-between;}
-.vbox li{font-size:19px;font-weight:600;line-height:1.25;padding-left:26px;position:relative;}
+.vbox li{font-size:21px;font-weight:600;line-height:1.25;padding-left:26px;position:relative;}
 .vbox li::before{position:absolute;left:0;font-weight:800;}
 .vbox.demo{background:var(--card);border:1px solid var(--rule);}
 .vbox.demo .vh{color:var(--ink46);}
@@ -45,25 +46,25 @@ body{background:#0d0d0d;display:flex;flex-direction:column;align-items:center;ga
 .vbox.prod li{color:var(--ivory);}
 .vbox.prod li::before{content:'+';color:var(--book);}
 /* s3 checklist */
-.s3 .tt{font-size:78px;margin-top:18px;}
+.s3 .tt{font-size:70px;margin-top:20px;}
 .s3 .sub{margin-top:14px;}
 .ck{flex:1;min-height:0;margin-top:20px;display:flex;flex-direction:column;gap:11px;}
 .ckr{flex:1;display:flex;gap:18px;align-items:center;border:1px solid var(--rule);border-radius:13px;background:var(--card);padding:14px 20px;}
 .ckr .n{width:46px;height:46px;border-radius:11px;background:rgba(204,120,92,.14);border:1px solid rgba(204,120,92,.35);color:var(--book);font-weight:900;font-size:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.ckr .tx b{display:block;font-size:21.5px;font-weight:800;color:var(--ivory);letter-spacing:-.3px;line-height:1.05;}
-.ckr .tx span{display:block;font-size:16px;color:var(--ink46);margin-top:4px;line-height:1.3;}
+.ckr .tx b{display:block;font-size:23px;font-weight:800;color:var(--ivory);letter-spacing:-.3px;line-height:1.05;}
+.ckr .tx span{display:block;font-size:17.5px;color:var(--ink46);margin-top:4px;line-height:1.3;}
 /* step slides shared */
-.stp .tt{font-size:72px;margin-top:18px;}
+.stp .tt{font-size:60px;margin-top:20px;}
 .stp .sub{margin-top:14px;}
 .bx{border:1px solid var(--rule);border-radius:14px;background:var(--card);padding:18px 22px;display:flex;gap:16px;}
 .bx .ic{width:40px;height:40px;border-radius:10px;background:rgba(204,120,92,.14);border:1px solid rgba(204,120,92,.35);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--book);font-weight:900;font-size:19px;}
-.bx .tx b{display:block;font-size:21px;font-weight:800;color:var(--ivory);letter-spacing:-.3px;line-height:1.1;}
-.bx .tx span{display:block;font-size:16.5px;color:var(--ink70);margin-top:6px;line-height:1.35;}
+.bx .tx b{display:block;font-size:23px;font-weight:800;color:var(--ivory);letter-spacing:-.3px;line-height:1.1;}
+.bx .tx span{display:block;font-size:18px;color:var(--ink70);margin-top:6px;line-height:1.35;}
 .bx .tx span b{display:inline;font-size:inherit;color:var(--ivory);font-weight:700;}
-.strip{border-left:4px solid var(--book);border-radius:0 12px 12px 0;background:rgba(204,120,92,.08);padding:14px 20px;font-size:16.5px;line-height:1.35;color:var(--ink70);}
+.strip{border-left:4px solid var(--book);border-radius:0 12px 12px 0;background:rgba(204,120,92,.08);padding:16px 22px;font-size:18px;line-height:1.35;color:var(--ink70);}
 .strip b{color:var(--ivory);font-weight:700;}
 .strip .tg{font-family:'DM Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--book);margin-right:10px;}
-.code{font-family:'DM Mono',monospace;font-size:15px;line-height:1.55;background:#131211;border:1px solid var(--ink14);border-radius:13px;padding:18px 22px;color:var(--ink70);overflow:hidden;}
+.code{font-family:'DM Mono',monospace;font-size:16px;line-height:1.55;background:#131211;border:1px solid var(--ink14);border-radius:13px;padding:18px 22px;color:var(--ink70);overflow:hidden;}
 .code .ch{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--book);margin-bottom:10px;font-weight:600;}
 .code .k{color:var(--book);}
 .code .s{color:var(--kraft);}
@@ -76,8 +77,8 @@ body{background:#0d0d0d;display:flex;flex-direction:column;align-items:center;ga
 .mg{flex:1;min-height:0;margin-top:20px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:14px;}
 .mc{border:1px solid var(--rule);border-radius:15px;background:var(--card);padding:20px 22px;display:flex;flex-direction:column;}
 .mc .tg2{font-family:'DM Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--kraft);}
-.mc b{display:block;font-size:25px;font-weight:800;color:var(--ivory);letter-spacing:-.4px;margin-top:8px;}
-.mc span{display:block;font-size:16.5px;color:var(--ink70);margin-top:9px;line-height:1.38;}
+.mc b{display:block;font-size:27px;font-weight:800;color:var(--ivory);letter-spacing:-.4px;margin-top:8px;}
+.mc span{display:block;font-size:18px;color:var(--ink70);margin-top:9px;line-height:1.38;}
 .mc span b{display:inline;font-size:inherit;color:var(--ivory);font-weight:700;}
 .mc.hot{background:rgba(204,120,92,.09);border:1.5px solid var(--book);}
 .mc.hot .tg2{color:var(--book);}
@@ -85,7 +86,7 @@ body{background:#0d0d0d;display:flex;flex-direction:column;align-items:center;ga
 .s10{text-align:center;}
 .s10 .mid{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:22px;}
 .s10 .eyebrow{font-family:'DM Mono',monospace;font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--kraft);}
-.s10 .tt{font-size:120px;}
+.s10 .tt{font-size:108px;}
 .s10 .sub{max-width:700px;}
 .s10 .chip{display:flex;align-items:center;gap:12px;background:var(--book);color:#1a0f0a;font-size:23px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;padding:20px 38px;border-radius:14px;box-shadow:0 0 50px rgba(204,120,92,.45);margin-top:10px;}
 .s10 .chip svg{width:24px;height:24px;stroke:#1a0f0a;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
@@ -95,7 +96,7 @@ body{background:#0d0d0d;display:flex;flex-direction:column;align-items:center;ga
 </style></head><body>
 
 <!-- 01 COVER -->
-<div class="slide s1"><div class="atm"></div>
+<div class="slide s1"><div class="atm"></div><div class="safe">
 <div class="hd2"><span class="pg2">01 / 10</span><span class="br">51ultron.com</span></div>
 <div class="mid">
 <span class="pill">Founder's guide</span>
@@ -103,10 +104,10 @@ body{background:#0d0d0d;display:flex;flex-direction:column;align-items:center;ga
 <div class="sub">Your agent works in a demo. That is not enough. Here is everything it needs to survive when real users hit it.</div>
 </div>
 <div class="ft2"><div class="lf"><img class="lg" src="__LOGO_URI__" alt=""><span class="nm"><b>ULTRON</b> &middot; AI AGENTS FOR FOUNDERS</span></div><span class="sw">Swipe to Start &rarr;</span></div>
-</div>
+</div></div>
 
 <!-- 02 DEMO VS PROD -->
-<div class="slide s2"><div class="atm"></div>
+<div class="slide s2"><div class="atm"></div><div class="safe">
 <div class="hd2"><span class="pg2">02 / 10</span><span class="br">51ultron.com</span></div>
 <span class="pill" style="margin-top:20px">The real difference</span>
 <div class="tt">DEMO WORKS ONCE.<br><em>PROD WORKS ALWAYS.</em></div>
@@ -120,10 +121,10 @@ body{background:#0d0d0d;display:flex;flex-direction:column;align-items:center;ga
 </ul></div>
 </div>
 <div class="ft2"><div class="lf"><img class="lg" src="__LOGO_URI__" alt=""><span class="nm"><b>ULTRON</b> &middot; AI AGENTS FOR FOUNDERS</span></div><span class="sw">Swipe &rarr;</span></div>
-</div>
+</div></div>
 
 <!-- 03 CHECKLIST -->
-<div class="slide s3"><div class="atm"></div>
+<div class="slide s3"><div class="atm"></div><div class="safe">
 <div class="hd2"><span class="pg2">03 / 10</span><span class="br">51ultron.com</span></div>
 <span class="pill" style="margin-top:20px">The checklist</span>
 <div class="tt">6 THINGS THAT<br>MUST <em>BE TRUE.</em></div>
@@ -137,10 +138,10 @@ body{background:#0d0d0d;display:flex;flex-direction:column;align-items:center;ga
 <div class="ckr"><span class="n">6</span><div class="tx"><b>You can evaluate it systematically</b><span>You have a test suite. You know if a change made the agent better or worse before it ships.</span></div></div>
 </div>
 <div class="ft2"><div class="lf"><img class="lg" src="__LOGO_URI__" alt=""><span class="nm"><b>ULTRON</b> &middot; AI AGENTS FOR FOUNDERS</span></div><span class="sw">Swipe &rarr;</span></div>
-</div>
+</div></div>
 
 <!-- 04 STEP 1 FOUNDATION -->
-<div class="slide stp"><div class="atm"></div>
+<div class="slide stp"><div class="atm"></div><div class="safe">
 <div class="hd2"><span class="pg2">04 / 10</span><span class="br">51ultron.com</span></div>
 <span class="pill" style="margin-top:20px">Step 1 &middot; The foundation</span>
 <div class="tt">PICK THE RIGHT <em>MODEL.</em><br>WRITE THE RIGHT <em>PROMPT.</em></div>
@@ -152,10 +153,10 @@ body{background:#0d0d0d;display:flex;flex-direction:column;align-items:center;ga
 <div class="strip"><span class="tg">Rule of thumb</span>Start with a small model + a great prompt. Upgrade the model only when the prompt ceiling is genuinely hit. <b>Most failures are prompt failures, not model failures.</b></div>
 </div>
 <div class="ft2"><div class="lf"><img class="lg" src="__LOGO_URI__" alt=""><span class="nm"><b>ULTRON</b> &middot; AI AGENTS FOR FOUNDERS</span></div><span class="sw">Swipe &rarr;</span></div>
-</div>
+</div></div>
 
 <!-- 05 STEP 2 TOOLS -->
-<div class="slide stp"><div class="atm"></div>
+<div class="slide stp"><div class="atm"></div><div class="safe">
 <div class="hd2"><span class="pg2">05 / 10</span><span class="br">51ultron.com</span></div>
 <span class="pill" style="margin-top:20px">Step 2 &middot; Tools</span>
 <div class="tt">TOOLS FAIL.<br><em>PLAN FOR IT.</em></div>
@@ -177,10 +178,10 @@ body{background:#0d0d0d;display:flex;flex-direction:column;align-items:center;ga
 </div>
 </div>
 <div class="ft2"><div class="lf"><img class="lg" src="__LOGO_URI__" alt=""><span class="nm"><b>ULTRON</b> &middot; AI AGENTS FOR FOUNDERS</span></div><span class="sw">Swipe &rarr;</span></div>
-</div>
+</div></div>
 
 <!-- 06 STEP 3 MEMORY -->
-<div class="slide stp"><div class="atm"></div>
+<div class="slide stp"><div class="atm"></div><div class="safe">
 <div class="hd2"><span class="pg2">06 / 10</span><span class="br">51ultron.com</span></div>
 <span class="pill" style="margin-top:20px">Step 3 &middot; Memory</span>
 <div class="tt">AGENTS WITHOUT<br>MEMORY <em>START OVER.</em></div>
@@ -192,10 +193,10 @@ body{background:#0d0d0d;display:flex;flex-direction:column;align-items:center;ga
 <div class="mc"><span class="tg2">Skill</span><b>Learned Conventions</b><span>User corrections, patterns and team rules stored in a context file, <b>loaded every session</b>.</span></div>
 </div>
 <div class="ft2"><div class="lf"><img class="lg" src="__LOGO_URI__" alt=""><span class="nm"><b>ULTRON</b> &middot; AI AGENTS FOR FOUNDERS</span></div><span class="sw">Swipe &rarr;</span></div>
-</div>
+</div></div>
 
 <!-- 07 STEP 4 OBSERVABILITY -->
-<div class="slide stp"><div class="atm"></div>
+<div class="slide stp"><div class="atm"></div><div class="safe">
 <div class="hd2"><span class="pg2">07 / 10</span><span class="br">51ultron.com</span></div>
 <span class="pill" style="margin-top:20px">Step 4 &middot; Observability</span>
 <div class="tt">IF YOU CAN'T SEE IT<br><em>YOU CAN'T FIX IT.</em></div>
@@ -216,10 +217,10 @@ logfire.<span class="f">configure</span>()<br>
 </div>
 </div>
 <div class="ft2"><div class="lf"><img class="lg" src="__LOGO_URI__" alt=""><span class="nm"><b>ULTRON</b> &middot; AI AGENTS FOR FOUNDERS</span></div><span class="sw">Swipe &rarr;</span></div>
-</div>
+</div></div>
 
 <!-- 08 STEP 5 SAFETY -->
-<div class="slide stp"><div class="atm"></div>
+<div class="slide stp"><div class="atm"></div><div class="safe">
 <div class="hd2"><span class="pg2">08 / 10</span><span class="br">51ultron.com</span></div>
 <span class="pill" style="margin-top:20px">Step 5 &middot; Safety</span>
 <div class="tt">THE AGENT DECIDES <em>WHAT.</em><br>YOU DECIDE <em>WHAT'S SAFE.</em></div>
@@ -231,10 +232,10 @@ logfire.<span class="f">configure</span>()<br>
 <div class="strip"><span class="tg">Start here</span>Default to <b>supervised</b>: the agent acts, a human approves the high-risk steps. <b>Earn full autonomy by proving reliability over time.</b></div>
 </div>
 <div class="ft2"><div class="lf"><img class="lg" src="__LOGO_URI__" alt=""><span class="nm"><b>ULTRON</b> &middot; AI AGENTS FOR FOUNDERS</span></div><span class="sw">Swipe &rarr;</span></div>
-</div>
+</div></div>
 
 <!-- 09 STEP 6 EVALS -->
-<div class="slide stp"><div class="atm"></div>
+<div class="slide stp"><div class="atm"></div><div class="safe">
 <div class="hd2"><span class="pg2">09 / 10</span><span class="br">51ultron.com</span></div>
 <span class="pill" style="margin-top:20px">Step 6 &middot; Evals</span>
 <div class="tt">TEST YOUR AGENT<br>LIKE <em>SOFTWARE.</em></div>
@@ -246,10 +247,10 @@ logfire.<span class="f">configure</span>()<br>
 <div class="strip"><span class="tg">Tools</span><b>LangSmith Evaluations &middot; Braintrust &middot; OpenEvals &middot; Ragas (for RAG)</b> &middot; pytest with LLM assertions</div>
 </div>
 <div class="ft2"><div class="lf"><img class="lg" src="__LOGO_URI__" alt=""><span class="nm"><b>ULTRON</b> &middot; AI AGENTS FOR FOUNDERS</span></div><span class="sw">Swipe &rarr;</span></div>
-</div>
+</div></div>
 
 <!-- 10 CTA -->
-<div class="slide s10"><div class="atm"></div>
+<div class="slide s10"><div class="atm"></div><div class="safe">
 <div class="hd2"><span class="pg2">10 / 10</span><span class="br">51ultron.com</span></div>
 <div class="mid">
 <div class="eyebrow">That's a wrap &middot; production-ready AI agents</div>
@@ -260,6 +261,6 @@ logfire.<span class="f">configure</span>()<br>
 <div class="url">51ultron<em>.</em>com</div>
 </div>
 <div class="ft2"><div class="lf"><img class="lg" src="__LOGO_URI__" alt=""><span class="nm"><b>ULTRON</b> &middot; AI AGENTS FOR FOUNDERS</span></div><span class="sw">Slide 10 / 10</span></div>
-</div>
+</div></div>
 
 </body></html>
