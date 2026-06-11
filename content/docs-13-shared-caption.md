@@ -17,7 +17,7 @@ The other side saw a frozen image. No sources, no context, no way to pick it up 
 
 - - -
 
-→ The link carries the whole session. Every turn in order, which agent ran on which tier, the canvas tables and drafts as live artifacts, and every cited source still clicking through. Not an image, the real thing.
+→ One ask becomes 44 pieces of proof: 32 turns in order, 2 tool runs with their inputs and outputs, 9 sources that still click through, and the artifact itself, live on canvas. A screenshot ships exactly 1 of the 44 and buries the rest.
 
 → It is read-only by default. They read every turn and open the artifacts. They cannot send a message in my session, edit it, or see my account or other chats. The link is scoped to that one session.
 

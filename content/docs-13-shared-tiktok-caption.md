@@ -4,15 +4,15 @@ Keyword: SHARE
 
 ---
 
-Stop screenshotting your AI chats. Send the whole live session as a link.
+A screenshot of your AI chat ships 1 piece of proof out of 44.
 
-Now I share Claude research the way it actually happened, not a frozen image pasted into an email.
+Now I send the session itself, one read-only link, and let them scroll the whole machine.
 
-Any session turns into one read-only link:
+Every Claude session breaks down the same way:
 
-The link carries the whole thing. Every turn in order, which agent ran on which tier, the canvas tables and drafts as live artifacts, and every cited source still clicking through. It is read-only by default, so they read every turn and open the artifacts but cannot send in my session or see my account. I keep the controls, revoke in one click, set an expiry, add a password, and the scope never widens past that one chat. They can clone it into their own Ultron and keep going, so the link I sent quietly becomes their first session.
+One ask becomes 32 turns, 2 tool runs, 9 live sources and 1 artifact, 44 pieces of proof with the answer sitting on top. A screenshot freezes the answer and buries the other 43. The link carries all 44: they scroll the turns in order, click any source, open the artifact live, then clone the session into their own Ultron and keep working from turn 32. Read-only by default, revoke anytime, scoped to that one chat.
 
-This is shared sessions on the Ultron platform, one link instead of a wall of screenshots.
+This is shared sessions on the Ultron platform, where every link you send is a front door.
 
 Comment SHARE and I will send you the full Claude shared-sessions breakdown we run inside Ultron.
 
