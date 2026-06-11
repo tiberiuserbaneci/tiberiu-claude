@@ -75,7 +75,39 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 .footy .tx2 strong{color:var(--ivory);font-weight:500;}
 .footy .u2{font-family:'DM Sans',sans-serif;font-weight:900;font-size:15px;letter-spacing:-.4px;color:var(--ivory);flex-shrink:0;}
 .footy .u2 em{color:var(--book);font-style:normal;}
-</style></head><body><div class="pg" id="artifact"><div class="glow"></div>
+/* ===== ANIMATION (only under body.play; static export untouched) =====
+   story: screenshot flash catches the surface -> the depth reveals -> send the session */
+.flash{position:absolute;inset:0;z-index:9;pointer-events:none;background:#fff;opacity:0;}
+@keyframes kin{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
+@keyframes kfla{0%{opacity:0;}28%{opacity:.85;}100%{opacity:0;}}
+@keyframes kpop{0%{opacity:0;transform:scale(.6);}70%{opacity:1;transform:scale(1.12);}100%{opacity:1;transform:scale(1);}}
+@keyframes ktick{from{background:rgba(250,250,247,.14);}to{background:var(--book);}}
+@keyframes kglow{0%,100%{box-shadow:inset 0 0 0 1px rgba(250,255,247,.12),0 0 30px rgba(204,120,92,.35);}50%{box-shadow:inset 0 0 0 1px rgba(250,255,247,.12),0 0 52px rgba(204,120,92,.75);}}
+.play .m2{animation:kin .4s ease-out .1s both;}
+.play .hd{animation:kin .5s ease-out .25s both;}
+.play .cut{animation:kin .5s ease-out .6s both;}
+.play .strat.s0 .body{animation:kin .5s ease-out .8s both;}
+.play .strat.s0 .ans .tag{animation:kpop .35s ease-out 1.15s both;}
+.play .flash{animation:kfla .45s ease-in 1.5s both;}
+.play .strat.s1 .body{animation:kin .55s ease-out 2.0s both;}
+.play .strat.s2 .body{animation:kin .55s ease-out 2.8s both;}
+.play .strat.s3 .body{animation:kin .55s ease-out 3.6s both;}
+.play .strat.s4 .body{animation:kin .55s ease-out 4.4s both;}
+.play .strat.s1 .rail i{animation:ktick .3s ease-out 2.35s both;}
+.play .strat.s2 .rail i{animation:ktick .3s ease-out 3.15s both;}
+.play .strat.s3 .rail i{animation:ktick .3s ease-out 3.95s both;}
+.play .strat.s4 .rail i{animation:ktick .3s ease-out 4.75s both;}
+.play .strat .bh .ct{animation:kpop .4s ease-out both;}
+.play .strat.s0 .bh .ct{animation-delay:1.0s;}
+.play .strat.s1 .bh .ct{animation-delay:2.35s;}
+.play .strat.s2 .bh .ct{animation-delay:3.15s;}
+.play .strat.s3 .bh .ct{animation-delay:3.95s;}
+.play .strat.s4 .bh .ct{animation-delay:4.75s;}
+.play .say{animation:kin .55s ease-out 5.3s both;}
+.play .ctab{animation:kin .5s ease-out 6.0s both;}
+.play .ctab .chipc{animation:kglow 1.1s ease-in-out 6.5s 2;}
+.play .footy{animation:kin .5s ease-out 6.0s both;}
+</style></head><body><div class="pg" id="artifact"><div class="glow"></div><div class="flash"></div>
 <div class="m2"><div class="kw">AI WORK<span class="sp">&middot;</span>SHARED SESSIONS<span class="sp">&middot;</span>FOUNDER GTM</div><div class="mr">DOCS 13 <em>/</em> ULTRON PLATFORM</div></div>
 <div class="hd">
 <div class="hk">Most founders screenshot the AI answer.<br><em>The proof never leaves the chat.</em></div>
