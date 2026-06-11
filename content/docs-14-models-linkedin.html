@@ -1,0 +1,174 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+:root{--slate:#191919;--slate2:#201f1e;--card:#232220;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);--book:#CC785C;--bookd:#C84623;--kraft:#D4A27F;--cloud:#919180;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.pg{width:1080px;height:1450px;background:var(--slate);padding:30px 34px 20px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;}
+.pg::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.05) 1.3px,transparent 1.4px);background-size:30px 30px;}
+.glow{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 50% 30% at 50% 46%,rgba(204,120,92,.14) 0%,transparent 60%);}
+.pg>*{position:relative;z-index:2;}
+/* header */
+.head{flex-shrink:0;display:flex;align-items:center;gap:18px;padding-bottom:16px;border-bottom:1px solid var(--rule);}
+.head .mk{width:58px;height:58px;border-radius:50%;object-fit:cover;flex-shrink:0;box-shadow:0 0 30px rgba(204,120,92,.4);}
+.head .ht .t{font-weight:900;font-size:42px;letter-spacing:-1.4px;line-height:1;color:var(--ivory);}
+.head .ht .t em{color:var(--book);font-style:normal;}
+.head .ht .s{margin-top:8px;font-size:18px;font-weight:500;color:var(--ink70);}
+.head .ht .s b{color:var(--ivory);font-weight:700;}
+/* board */
+.board{flex:1;min-height:0;margin-top:16px;position:relative;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;column-gap:148px;row-gap:96px;}
+/* spine */
+.spine{position:absolute;left:50%;top:6px;bottom:6px;width:12px;transform:translateX(-50%);border-radius:8px;background:linear-gradient(to bottom,var(--kraft) 0%,var(--book) 52%,var(--bookd) 100%);box-shadow:0 0 30px rgba(204,120,92,.3);z-index:1;}
+.zlab{position:absolute;left:50%;transform:translateX(-50%);font-family:'DM Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink46);background:var(--slate);padding:3px 8px;border-radius:10px;white-space:nowrap;z-index:2;}
+.zlab.z1{top:60px;}.zlab.z2{top:50%;transform:translate(-50%,-50%);}.zlab.z3{bottom:60px;}
+.hub{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:128px;height:128px;border-radius:50%;background:radial-gradient(circle at 50% 38%,#2a2624,#16140f);border:1px solid var(--book);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;z-index:3;box-shadow:0 0 0 8px rgba(25,25,25,.9),0 0 46px rgba(204,120,92,.45);}
+.hub img{width:54px;height:54px;border-radius:50%;object-fit:cover;}
+.hub span{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--book);}
+/* node bubbles on the inner card corners */
+.node{position:absolute;width:92px;height:92px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;z-index:4;background:#16140f;}
+.node .nn{font-weight:900;font-size:21px;letter-spacing:-.6px;line-height:1;}
+.node .nm2{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.04em;color:var(--ink46);}
+.node.lite{top:118px;left:calc(50% - 196px);border:2px solid var(--kraft);box-shadow:0 0 26px rgba(212,162,127,.4);}
+.node.smart{top:118px;left:calc(50% + 104px);border:2px solid var(--book);box-shadow:0 0 26px rgba(204,120,92,.45);}
+.node.deep{bottom:118px;left:calc(50% - 196px);border:2px solid var(--bookd);box-shadow:0 0 26px rgba(200,70,35,.45);}
+.node.rout{bottom:118px;left:calc(50% + 104px);border:2px solid var(--ivory);box-shadow:0 0 26px rgba(250,250,247,.25);}
+.node.lite .nn{color:var(--kraft);}.node.smart .nn{color:var(--book);}.node.deep .nn{color:var(--bookd);}.node.rout .nn{color:var(--ivory);font-size:17px;}
+/* cards */
+.card{border:1px solid var(--rule);border-radius:18px;background:var(--card);padding:18px 20px;display:flex;flex-direction:column;justify-content:space-between;min-height:0;overflow:hidden;}
+.card.lite{border-top:3px solid var(--kraft);}
+.card.smart{border-top:3px solid var(--book);}
+.card.deep{border-top:3px solid var(--bookd);}
+.card.rout{border-top:3px solid var(--ivory);}
+.ctop{display:flex;align-items:center;gap:10px;}
+.cdot{width:11px;height:11px;border-radius:50%;flex-shrink:0;}
+.lite .cdot{background:var(--kraft);}.smart .cdot{background:var(--book);}.deep .cdot{background:var(--bookd);}.rout .cdot{background:var(--ivory);}
+.cmodel{font-weight:800;font-size:17px;color:var(--ivory);letter-spacing:-.2px;}
+.ctag{font-size:14px;color:var(--ink46);font-weight:500;}
+.cbadge{margin-left:auto;font-family:'DM Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:6px;padding:5px 9px;white-space:nowrap;}
+.smart .cbadge{color:#1a0f0a;background:var(--book);}
+.lite .cbadge{color:var(--kraft);border:1px solid rgba(212,162,127,.4);}
+.deep .cbadge{color:var(--bookd);border:1px solid rgba(200,70,35,.5);}
+.rout .cbadge{color:var(--ivory);border:1px solid var(--ink30);}
+.chead{margin-top:14px;font-weight:900;font-size:24px;letter-spacing:-.5px;line-height:1.05;}
+.lite .chead{color:var(--kraft);}.smart .chead{color:var(--book);}.deep .chead{color:var(--bookd);}.rout .chead{color:var(--ivory);}
+.cdesc{margin-top:9px;font-size:15.5px;font-weight:500;line-height:1.34;color:var(--ink70);}
+.cex{margin-top:13px;border:1px solid var(--rule);border-radius:12px;background:rgba(250,250,247,.02);padding:12px 14px;}
+.cex .exl{font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink46);margin-bottom:9px;}
+.cex ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.cex li{font-size:15.5px;font-weight:600;color:var(--ivory);line-height:1.22;padding-left:18px;position:relative;}
+.cex li::before{content:'';position:absolute;left:0;top:8px;width:7px;height:7px;border-radius:50%;}
+.lite .cex li::before{background:var(--kraft);}.smart .cex li::before{background:var(--book);}.deep .cex li::before{background:var(--bookd);}.rout .cex li::before{background:var(--book);}
+.cpc{padding-top:12px;display:flex;flex-direction:column;gap:8px;}
+.pcrow{display:flex;gap:12px;align-items:baseline;font-size:14.5px;line-height:1.25;}
+.pcrow .pl{font-family:'DM Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.08em;width:42px;flex-shrink:0;padding-top:1px;}
+.pcrow.pro .pl{color:var(--book);}.pcrow.con .pl{color:var(--ink46);}
+.pcrow .pt{color:var(--ink70);font-weight:500;}.pcrow .pt b{color:var(--ivory);font-weight:700;}
+/* router card list */
+.rlist{margin-top:12px;display:flex;flex-direction:column;gap:11px;}
+.rstep{display:flex;gap:12px;align-items:flex-start;}
+.rstep .rn{font-family:'DM Mono',monospace;font-size:13px;font-weight:600;color:var(--book);flex-shrink:0;width:20px;}
+.rstep .rt{font-size:15.5px;font-weight:500;line-height:1.3;color:var(--ink70);}
+.rstep .rt b{color:var(--ivory);font-weight:700;}
+.rfoot{padding-top:12px;font-size:14.5px;font-weight:500;line-height:1.3;color:var(--ink70);border-top:1px solid var(--rule);}
+.rfoot b{color:var(--ivory);font-weight:700;}
+/* bottom map + footer */
+.map{flex-shrink:0;margin-top:14px;display:flex;align-items:center;gap:14px;border:1px solid var(--rule);border-radius:13px;background:var(--slate2);padding:13px 20px;}
+.map .ml{font-family:'DM Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink46);flex-shrink:0;border-right:1px solid var(--rule);padding-right:14px;}
+.map .pair{display:flex;align-items:center;gap:8px;font-size:15px;}
+.map .pair .tk{font-weight:800;letter-spacing:.02em;}
+.map .pair.a .tk{color:var(--kraft);}.map .pair.b .tk{color:var(--book);}.map .pair.c .tk{color:var(--bookd);}
+.map .pair .ar{color:var(--ink30);}
+.map .pair .md{font-family:'DM Mono',monospace;font-size:14px;color:var(--ink70);}
+.map .plan{margin-left:auto;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink46);text-align:right;}
+.map .plan em{color:var(--book);font-style:normal;}
+.footy{flex-shrink:0;margin-top:12px;padding-top:12px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.footy .lf{display:flex;align-items:center;gap:11px;min-width:0;}
+.footy .lg{width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.footy .tx2{font-family:'DM Mono',monospace;font-size:9.5px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--ink70);}
+.footy .tx2 strong{color:var(--ivory);font-weight:500;}
+.footy .u2{font-family:'DM Sans',sans-serif;font-weight:900;font-size:15px;letter-spacing:-.4px;color:var(--ivory);}
+.footy .u2 em{color:var(--book);font-style:normal;}
+</style></head><body><div class="pg" id="artifact"><div class="glow"></div>
+<div class="head"><img class="mk" src="__LOGO_URI__" alt="Ultron"><div class="ht"><div class="t">Which model runs <em>your turn?</em></div><div class="s">You type plain English. <b>Ultron's router picks the tier</b> - here is the map it uses.</div></div></div>
+<div class="board">
+<div class="spine"></div>
+<div class="zlab z1">Quick</div><div class="zlab z2">Everyday</div><div class="zlab z3">Hard</div>
+<div class="hub"><img src="__LOGO_URI__" alt=""><span>Router</span></div>
+<div class="node lite"><div class="nn">Lite</div><div class="nm2">Haiku</div></div>
+<div class="node smart"><div class="nn">Smart</div><div class="nm2">Sonnet</div></div>
+<div class="node deep"><div class="nn">Deep</div><div class="nm2">Opus</div></div>
+<div class="node rout"><div class="nn">Router</div><div class="nm2">auto</div></div>
+
+<div class="card lite">
+<div class="cintro">
+<div class="ctop"><span class="cdot"></span><span class="cmodel">Lite</span><span class="ctag">runs Haiku</span><span class="cbadge">free plan</span></div>
+<div class="chead">Quick lookups</div>
+<div class="cdesc">Fast and cheap. Answers in seconds and handles bulk jobs where depth does not matter.</div>
+</div>
+<div class="cex"><div class="exl">Example turns</div><ul>
+<li>Summarise this email in 3 bullets</li>
+<li>Reformat these notes into a table</li>
+<li>Classify these 50 leads by industry</li>
+<li>Draft 5 subject line options</li>
+</ul></div>
+<div class="cpc">
+<div class="pcrow pro"><span class="pl">Pros</span><span class="pt"><b>Fastest and cheapest</b> of the three</span></div>
+<div class="pcrow con"><span class="pl">Cons</span><span class="pt">Not built for depth or hard calls</span></div>
+</div>
+</div>
+
+<div class="card smart">
+<div class="cintro">
+<div class="ctop"><span class="cdot"></span><span class="cmodel">Smart</span><span class="ctag">runs Sonnet</span><span class="cbadge">default</span></div>
+<div class="chead">Everyday GTM work</div>
+<div class="cdesc">The default for a reason. Most writing, drafting and structured output, and it spends your credits slowly.</div>
+</div>
+<div class="cex"><div class="exl">Example turns</div><ul>
+<li>Write this cold email in my voice</li>
+<li>Score this account against my ICP</li>
+<li>Turn this call into a proposal</li>
+<li>Build a 3-step outbound sequence</li>
+</ul></div>
+<div class="cpc">
+<div class="pcrow pro"><span class="pl">Pros</span><span class="pt"><b>Best value</b>, handles most jobs</span></div>
+<div class="pcrow con"><span class="pl">Cons</span><span class="pt">The hardest 10% wants Deep</span></div>
+</div>
+</div>
+
+<div class="card deep">
+<div class="cintro">
+<div class="ctop"><span class="cdot"></span><span class="cmodel">Deep</span><span class="ctag">runs Opus</span><span class="cbadge">hard calls</span></div>
+<div class="chead">Judgement that matters</div>
+<div class="cdesc">Slower, but delivers the accuracy hard work needs. Strategy, multi-step analysis, legal and financial reasoning.</div>
+</div>
+<div class="cex"><div class="exl">Example turns</div><ul>
+<li>Pressure-test this GTM plan</li>
+<li>Review this contract for risk</li>
+<li>Build a financial model from these</li>
+<li>Compare 3 market-entry strategies</li>
+</ul></div>
+<div class="cpc">
+<div class="pcrow pro"><span class="pl">Pros</span><span class="pt"><b>Best accuracy</b> on high-stakes work</span></div>
+<div class="pcrow con"><span class="pl">Cons</span><span class="pt">Slower, spends credits fastest</span></div>
+</div>
+</div>
+
+<div class="card rout">
+<div class="cintro">
+<div class="ctop"><span class="cdot"></span><span class="cmodel">The Router</span><span class="ctag">picks for you</span><span class="cbadge">auto</span></div>
+<div class="chead">You do not pick. It does.</div>
+</div>
+<div class="rlist">
+<div class="rstep"><span class="rn">01</span><span class="rt">Type plain English. A tiny <b>Haiku call</b> classifies the turn in about 200ms.</span></div>
+<div class="rstep"><span class="rn">02</span><span class="rt">It routes to the right tier, and <b>upgrades to Deep only</b> when the turn earns it.</span></div>
+<div class="rstep"><span class="rn">03</span><span class="rt">Name an agent like <b>/cortex</b> or <b>/striker</b> to steer the lane yourself.</span></div>
+</div>
+<div class="rfoot">So you spend on heavy thinking <b>only when a turn actually needs it.</b></div>
+</div>
+</div>
+<div class="map"><span class="ml">The tiers</span>
+<span class="pair a"><span class="tk">Lite</span><span class="ar">&rarr;</span><span class="md">Haiku</span></span>
+<span class="pair b"><span class="tk">Smart</span><span class="ar">&rarr;</span><span class="md">Sonnet</span></span>
+<span class="pair c"><span class="tk">Deep</span><span class="ar">&rarr;</span><span class="md">Opus</span></span>
+<span class="plan">Free plan: Lite only<br>Paid: all three <em>&middot;</em> credits via OpenRouter</span>
+</div>
+<div class="footy"><div class="lf"><img class="lg" src="__LOGO_URI__" alt="Ultron"><div class="tx2"><strong>ULTRON</strong> &middot; AI OPERATOR FOR FOUNDERS &middot; MODEL ROUTER</div></div><div class="u2">51ultron<em>.</em>com</div></div>
+</div></body></html>
