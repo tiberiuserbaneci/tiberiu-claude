@@ -42,7 +42,7 @@ Comment AGENTS and I will send you the exact production-agents checklist we run 
 
 ## ALT TEXT
 
-Dark editorial carousel cover on a slate background. A large headline reads Build Production Ready AI Agents, with AI Agents in book-orange, over a beginner's guide label and a one line note that an agent working in a demo is not enough. A marker reads 01 of 10 and the footer carries the Ultron logo, Tibi Serbaneci and 51ultron.com. The ten-slide guide that follows covers demo versus production, a six-point readiness checklist, then six steps: model and prompt foundation, tool retry patterns, the four kinds of agent memory, observability and tracing, human-in-the-loop safety gates, and systematic evals, closing on a Comment AGENTS call to action.
+Dark editorial carousel cover on a slate background. A large headline reads Build Production Ready AI Agents, with AI Agents in book-orange, over a Founder's guide label and a one line note that an agent working in a demo is not enough. A marker reads 01 of 10 and the footer carries the Ultron logo with the label ULTRON, AI Agents for Founders, beside a Swipe to Start cue. The ten-slide guide that follows covers demo versus production, a six-point readiness checklist, then six steps: model and prompt foundation, tool retry patterns, the four kinds of agent memory, observability and tracing, human-in-the-loop safety gates, and systematic evals, closing on a Comment AGENTS call to action.
 
 ---
 
