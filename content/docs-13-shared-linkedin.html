@@ -1,87 +1,102 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
-:root{--slate:#191919;--slate2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--cloud:#919180;}
+/* BUDGET: 1392px vertical: mast 38 + hd 188 + anat 404 + grid6 ~430(flex) + pipe 88 + ctab 80 + footy 56 + gaps 108 = 1392 */
+:root{--slate:#191919;--slate2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);--book:#CC785C;--bookd:#C84623;--kraft:#D4A27F;--cloud:#919180;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
-.frame{width:1080px;height:1450px;background:var(--slate);padding:36px 44px 22px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;}
-.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.4px,transparent 1.5px);background-size:30px 30px;}
-.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 54% 24% at 90% -2%,rgba(204,120,92,.22) 0%,transparent 60%),radial-gradient(ellipse 48% 26% at 2% 102%,rgba(212,162,127,.12) 0%,transparent 60%);}
-.frame>*{position:relative;z-index:2;}
-.hero{flex-shrink:0;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding-bottom:13px;border-bottom:1px solid var(--rule);}
-.eye{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--book);margin-bottom:8px;}
-.hook{font-weight:900;font-size:46px;line-height:.98;letter-spacing:-1.6px;color:var(--ivory);}.hook em{color:var(--book);font-style:normal;}
-.sub{margin-top:10px;font-size:16px;font-weight:500;line-height:1.33;color:var(--ink70);max-width:610px;}.sub b{color:var(--ivory);font-weight:700;}
-.statile{flex-shrink:0;display:flex;border:1px solid var(--rule);border-radius:13px;overflow:hidden;}
-.st{padding:16px 22px 14px;text-align:center;}.st+.st{border-left:1px solid var(--rule);}
-.st .sn{font-weight:900;font-size:38px;line-height:.78;}.st.a .sn{color:var(--book);}.st.b .sn{color:var(--kraft);}.st.c .sn{color:var(--ivory);}
-.st.a{background:rgba(204,120,92,.1);}.st.b{background:rgba(212,162,127,.08);}.st.c{background:rgba(250,250,247,.03);}
-.st .sl{font-family:'DM Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink46);margin-top:8px;line-height:1.2;}
-/* browser frame: the public read-only shared view */
-.brow{flex:1;min-height:0;margin-top:13px;display:flex;flex-direction:column;border:1px solid var(--ink14);border-radius:16px;overflow:hidden;background:#1c1c1b;box-shadow:0 26px 66px rgba(0,0,0,.5);}
-.chrome{flex-shrink:0;display:flex;align-items:center;gap:14px;padding:13px 18px;background:#121211;border-bottom:1px solid var(--rule);}
-.chrome .dots{display:flex;gap:7px;}.chrome .dots i{width:11px;height:11px;border-radius:50%;background:var(--ink14);}
-.chrome .addr{flex:1;display:flex;align-items:center;gap:10px;background:#1f1f1e;border:1px solid var(--rule);border-radius:9px;padding:9px 14px;font-family:'DM Mono',monospace;font-size:14px;color:var(--ink70);}
-.chrome .addr svg{width:13px;height:13px;stroke:var(--cloud);stroke-width:2;fill:none;flex-shrink:0;}
-.chrome .addr b{color:var(--ivory);font-weight:500;}.chrome .addr .pth{color:var(--book);}
-.chrome .ro{flex-shrink:0;font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--kraft);border:1px solid var(--kraft-bd,rgba(212,162,127,.3));border-radius:20px;padding:7px 13px;}
-.sbanner{flex-shrink:0;display:flex;align-items:center;gap:14px;padding:15px 22px;background:rgba(204,120,92,.08);border-bottom:1px solid var(--rule);}
-.sbanner .av{width:40px;height:40px;border-radius:50%;object-fit:cover;flex-shrink:0;}
-.sbanner .who b{font-size:18px;font-weight:800;color:var(--ivory);letter-spacing:-.3px;display:block;line-height:1.1;}
-.sbanner .who span{font-family:'DM Mono',monospace;font-size:12px;color:var(--ink46);}
-.sbanner .vo{margin-left:auto;display:flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink70);}
-.sbanner .vo svg{width:15px;height:15px;stroke:var(--cloud);stroke-width:2;fill:none;}
-.sbody{flex:1;min-height:0;padding:22px;display:flex;flex-direction:column;gap:16px;}
-.smsg{max-width:82%;padding:14px 18px;border-radius:15px;font-size:18px;font-weight:500;line-height:1.3;}
-.smsg.u{align-self:flex-end;background:rgba(204,120,92,.14);border:1px solid rgba(204,120,92,.28);color:var(--ivory);border-bottom-right-radius:6px;}
-.smsg.a{align-self:flex-start;background:var(--slate2);border:1px solid var(--rule);color:var(--ink70);border-bottom-left-radius:6px;}
-.art{flex:1;min-height:0;display:flex;flex-direction:column;border:1px solid var(--book-bd,rgba(204,120,92,.32));border-radius:14px;overflow:hidden;background:#151514;}
-.art .ah{flex-shrink:0;display:flex;align-items:center;gap:11px;padding:13px 18px;border-bottom:1px solid var(--rule);background:rgba(204,120,92,.07);}
-.art .ah .tag{font-family:'DM Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--book);}
-.art .ah .nm{font-size:18px;font-weight:800;color:var(--ivory);letter-spacing:-.3px;}
-.art .ah .src{margin-left:auto;font-family:'DM Mono',monospace;font-size:11px;color:var(--ink46);}
-.tbl{flex:1;min-height:0;display:flex;flex-direction:column;}
-.trow{flex:1;display:flex;align-items:center;border-top:1px solid var(--rule);}
-.trow.head{border-top:none;background:rgba(250,250,247,.03);}
-.trow .c0{width:150px;flex-shrink:0;padding:0 18px;font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink46);}
-.trow .cc{flex:1;padding:0 16px;border-left:1px solid var(--rule);font-size:17px;font-weight:600;color:var(--ink70);}
-.trow.head .cc{color:var(--ivory);font-weight:800;font-size:18px;font-family:'DM Sans';letter-spacing:-.2px;}
-.trow.head .c0{color:var(--book);}
-.trow .cc b{color:var(--ivory);font-weight:700;}
-.clonebar{flex-shrink:0;display:flex;align-items:center;gap:16px;padding:15px 22px;border-top:1px solid var(--rule);background:#121211;}
-.clonebar .ct{font-size:16px;font-weight:500;color:var(--ink70);line-height:1.3;}.clonebar .ct b{color:var(--ivory);font-weight:700;}
-.clonebar .cbtn{margin-left:auto;flex-shrink:0;display:flex;align-items:center;gap:9px;background:var(--book);color:#1a0f0a;font-size:15px;font-weight:900;letter-spacing:.04em;padding:13px 20px;border-radius:10px;box-shadow:0 0 26px rgba(204,120,92,.4);}
-.clonebar .cbtn svg{width:16px;height:16px;stroke:#1a0f0a;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-.cta{display:flex;align-items:center;gap:16px;border:1.5px solid var(--book);border-radius:20px;background:rgba(204,120,92,.08);padding:13px 13px 13px 26px;box-shadow:0 0 50px rgba(204,120,92,.18);}
-.ctawrap{flex-shrink:0;margin-top:13px;}
-.savel{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink46);margin-bottom:9px;padding-left:6px;}
-.cta .ph{flex:1;font-size:21px;font-weight:600;color:var(--ink70);line-height:1.2;}.cta .ph b{color:var(--book);font-weight:900;letter-spacing:.02em;}
-.cta .send{width:58px;height:58px;border-radius:50%;background:var(--book);flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(204,120,92,.45);}
-.cta .send svg{width:27px;height:27px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-.ftr{flex-shrink:0;margin-top:11px;display:flex;align-items:center;justify-content:space-between;gap:18px;border-top:1px solid var(--rule);padding-top:11px;}
-.fl2{display:flex;align-items:center;gap:13px;min-width:0;}.flogo{width:34px;height:34px;border-radius:50%;object-fit:cover;}
-.ftx{font-family:'DM Mono',monospace;font-size:12.5px;font-weight:400;letter-spacing:.11em;text-transform:uppercase;color:var(--ink70);}.ftx b{color:var(--ivory);font-weight:500;}
-.furl{font-weight:900;font-size:21px;letter-spacing:-.6px;color:var(--ivory);}.furl em{color:var(--book);font-style:normal;}
-</style></head><body><div class="frame" id="artifact"><div class="atm"></div>
-<div class="hero"><div><div class="eye">Ultron &middot; Shared Sessions</div><div class="hook">A screenshot shows the answer. <em>A Claude link shows the work.</em></div><div class="sub">Hand someone a read-only link to the whole session. They see every turn and the artifacts the agents built, and can clone it to keep going. No login, no access to your account.</div></div>
-<div class="statile"><div class="st a"><div class="sn">0</div><div class="sl">logins<br>to view</div></div><div class="st b"><div class="sn">100%</div><div class="sl">read<br>only</div></div><div class="st c"><div class="sn">1</div><div class="sl">click<br>to clone</div></div></div></div>
-<div class="brow">
-<div class="chrome"><div class="dots"><i></i><i></i><i></i></div><div class="addr"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg><b>app.51ultron.com</b><span class="pth">/s/k7m2x</span></div><div class="ro">read-only</div></div>
-<div class="sbanner"><img class="av" src="__LOGO_URI__" alt="Ultron"><div class="who"><b>Shared by Tibi Serbaneci</b><span>session &middot; cortex.competitive-analysis</span></div><div class="vo"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>View only</div></div>
-<div class="sbody">
-<div class="smsg u">Find my top 3 KYC fintech rivals and compare them in a table.</div>
-<div class="art">
-<div class="ah"><span class="tag">Canvas</span><span class="nm">Rival comparison</span><span class="src">3 rivals &middot; 9 sources</span></div>
-<div class="tbl">
-<div class="trow head"><div class="c0">vs</div><div class="cc">Stripe</div><div class="cc">Adyen</div><div class="cc">Checkout</div></div>
-<div class="trow"><div class="c0">pricing</div><div class="cc"><b>2.9% + 30c</b></div><div class="cc">interchange+</div><div class="cc">custom</div></div>
-<div class="trow"><div class="c0">kyc focus</div><div class="cc">SMB self-serve</div><div class="cc"><b>enterprise</b></div><div class="cc">mid-market</div></div>
-<div class="trow"><div class="c0">weak spot</div><div class="cc">support</div><div class="cc">onboarding</div><div class="cc"><b>docs</b></div></div>
-<div class="trow"><div class="c0">best for</div><div class="cc">startups</div><div class="cc">global</div><div class="cc">platforms</div></div>
+.pg{width:1080px;height:1450px;background:var(--slate);padding:34px 44px 22px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;}
+.pg::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.05) 1.3px,transparent 1.4px);background-size:28px 28px;}
+.glow{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 56% 26% at 88% -3%,rgba(204,120,92,.2) 0%,transparent 62%),radial-gradient(ellipse 46% 24% at 4% 103%,rgba(212,162,127,.1) 0%,transparent 60%);}
+.pg>*{position:relative;z-index:2;}
+.m2{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid var(--rule);}
+.m2 .kw{font-family:'DM Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink46);white-space:nowrap;overflow:hidden;line-height:1;}
+.m2 .kw .sp{color:var(--book);margin:0 7px;}
+.m2 .mr{font-family:'DM Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink70);white-space:nowrap;flex-shrink:0;padding-left:18px;}
+.m2 .mr em{color:var(--book);font-style:normal;}
+.hd{flex-shrink:0;margin-top:18px;}
+.hk{font-weight:900;font-size:52px;line-height:.98;letter-spacing:-1.9px;color:var(--ivory);}
+.hk em{color:var(--book);font-style:normal;}
+.sb{margin-top:12px;font-size:19px;font-weight:500;line-height:1.32;color:var(--ink70);max-width:860px;}
+.sb b{color:var(--ivory);font-weight:700;}
+/* anatomy panel: one giant link, dissected */
+.anat{flex-shrink:0;margin-top:16px;border:1px solid var(--book);border-radius:18px;overflow:hidden;background:#1d1a18;box-shadow:0 24px 60px rgba(0,0,0,.45),0 0 56px rgba(204,120,92,.14);}
+.an-h{display:flex;align-items:center;gap:12px;padding:13px 24px;border-bottom:1px solid var(--rule);background:rgba(204,120,92,.08);}
+.an-h .tg{font-family:'DM Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--book);}
+.an-h .tt{font-size:17px;font-weight:800;color:var(--ivory);letter-spacing:-.2px;}
+.an-h .rt{margin-left:auto;font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--kraft);border:1px solid rgba(212,162,127,.35);border-radius:20px;padding:6px 12px;}
+.lk{padding:30px 24px 24px;font-family:'DM Mono',monospace;font-weight:500;font-size:63px;letter-spacing:-2.6px;white-space:nowrap;line-height:1;}
+.lk .d1{color:var(--ivory);}
+.lk .d2{color:var(--book);}
+.lk .d3{color:var(--kraft);background:rgba(212,162,127,.1);border-radius:8px;padding:0 6px;}
+.lk .cur{display:inline-block;width:4px;height:46px;background:var(--book);margin-left:8px;vertical-align:-4px;}
+.calls{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 24px 20px;}
+.cl{border:1px solid var(--rule);border-top:3px solid var(--cloud);border-radius:11px;padding:13px 16px 12px;background:rgba(250,250,247,.025);}
+.cl.c1{border-top-color:var(--ivory);}
+.cl.c2{border-top-color:var(--book);}
+.cl.c3{border-top-color:var(--kraft);}
+.cl.c4{border-top-color:var(--bookd);}
+.cl .ct{font-family:'DM Mono',monospace;font-size:13px;font-weight:600;letter-spacing:.06em;color:var(--ivory);}
+.cl.c2 .ct{color:var(--book);}.cl.c3 .ct{color:var(--kraft);}.cl.c4 .ct{color:var(--bookd);}
+.cl .cd{margin-top:7px;font-size:17.5px;font-weight:500;line-height:1.3;color:var(--ink70);}
+.cl .cd b{color:var(--ivory);font-weight:700;}
+/* 6 fact tiles */
+.grid6{flex:1;min-height:0;margin-top:16px;display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;}
+.t6{border:1px solid var(--rule);border-radius:14px;padding:16px 18px 13px;background:var(--slate2);display:flex;flex-direction:column;}
+.t6 .top{display:flex;align-items:flex-start;gap:12px;}
+.t6 .n{font-weight:900;font-size:58px;line-height:.82;letter-spacing:-2.4px;color:var(--book);flex-shrink:0;}
+.t6.k .n{color:var(--kraft);}
+.t6.w .n{color:var(--ivory);}
+.t6 .l{font-size:21px;font-weight:800;color:var(--ivory);letter-spacing:-.3px;line-height:1.04;padding-top:4px;}
+.t6 .x{margin-top:10px;font-size:18px;font-weight:500;color:var(--ink70);line-height:1.36;}
+.t6 .mt{margin-top:auto;padding-top:10px;border-top:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink46);}
+.t6 .mt em{color:var(--kraft);font-style:normal;}
+/* clone loop strip */
+.pipe{flex-shrink:0;margin-top:16px;display:flex;align-items:center;gap:10px;border:1px solid var(--rule);border-radius:13px;padding:13px 18px;background:rgba(250,250,247,.025);}
+.pipe .pl{flex-shrink:0;font-family:'DM Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--book);writing-mode:initial;padding-right:12px;border-right:1px solid var(--rule);}
+.pipe .st{flex:1;text-align:center;}
+.pipe .st b{display:block;font-size:17px;font-weight:800;color:var(--ivory);letter-spacing:-.2px;line-height:1;}
+.pipe .st span{display:block;margin-top:4px;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink46);}
+.pipe .ar{flex-shrink:0;color:var(--book);font-size:19px;font-weight:700;}
+.pipe .st.last b{color:var(--book);}
+/* cta */
+.ctab{flex-shrink:0;margin-top:14px;display:flex;align-items:stretch;border:1px solid var(--book);border-radius:4px;overflow:hidden;}
+.ctab .tx{flex:1;padding:14px 18px;display:flex;flex-direction:column;justify-content:center;gap:5px;background:rgba(204,120,92,.07);}
+.ctab .tx .l1{font-family:'DM Sans',sans-serif;font-size:14.5px;font-weight:500;color:rgba(250,250,247,.82);line-height:1.35;}
+.ctab .tx .l1 strong{color:var(--ivory);font-weight:800;}
+.ctab .chip{flex-shrink:0;padding:0 24px;gap:9px;background:var(--book);display:flex;align-items:center;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:#1a0f0a;box-shadow:inset 0 0 0 1px rgba(250,255,247,.12),0 0 30px rgba(204,120,92,.35);}
+.ctab .chip svg{width:17px;height:17px;stroke:#1a0f0a;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+/* footer */
+.footy{flex-shrink:0;margin-top:12px;padding-top:12px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.footy .lf{display:flex;align-items:center;gap:11px;min-width:0;}
+.footy .lg{width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.footy .tx2{font-family:'DM Mono',monospace;font-size:9.5px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--ink70);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.footy .tx2 strong{color:var(--ivory);font-weight:500;}
+.footy .u2{font-family:'DM Sans',sans-serif;font-weight:900;font-size:15px;letter-spacing:-.4px;color:var(--ivory);flex-shrink:0;}
+.footy .u2 em{color:var(--book);font-style:normal;}
+</style></head><body><div class="pg" id="artifact"><div class="glow"></div>
+<div class="m2"><div class="kw">SHARED SESSIONS<span class="sp">&middot;</span>READ-ONLY LINKS<span class="sp">&middot;</span>FOUNDER GTM</div><div class="mr">DOCS 13 <em>/</em> ULTRON PLATFORM</div></div>
+<div class="hd">
+<div class="hk">Your AI work dies in screenshots.<br><em>Ship the Claude session instead.</em></div>
+<div class="sb">One read-only link carries all <b>32 turns, 3 agents and every artifact</b>. Zero logins to view, one click to clone. This is everything that travels inside it.</div>
+</div>
+<div class="anat">
+<div class="an-h"><span class="tg">The link</span><span class="tt">Anatomy of a shared session</span><span class="rt">read-only</span></div>
+<div class="lk"><span class="d1">app.51ultron.com</span><span class="d2">/s/</span><span class="d3">k7m2x</span><span class="cur"></span></div>
+<div class="calls">
+<div class="cl c1"><div class="ct">app.51ultron.com</div><div class="cd">Opens the <b>live app</b>. Not a screenshot, not an export, the session as it ran.</div></div>
+<div class="cl c2"><div class="ct">/s/</div><div class="cd"><b>Scoped to one session.</b> Never your account, never your other chats.</div></div>
+<div class="cl c3"><div class="ct">k7m2x</div><div class="cd"><b>Unguessable token.</b> Revoke it once and the link dies everywhere, instantly.</div></div>
+<div class="cl c4"><div class="ct">view-only</div><div class="cd">They read and clone. They <b>cannot send, edit or touch</b> the original.</div></div>
 </div>
 </div>
-<div class="smsg a">Done. 3 rivals across 4 rows, every cell linked to its source.</div>
+<div class="grid6">
+<div class="t6"><div class="top"><span class="n">0</span><span class="l">logins<br>to view</span></div><div class="x">Anyone with the link lands straight in the work. No account wall, no signup detour first.</div><div class="mt"><em>&#9679;</em> prospects &middot; team &middot; audience</div></div>
+<div class="t6 k"><div class="top"><span class="n">32</span><span class="l">turns<br>carried</span></div><div class="x">Every message, in order, both sides of the thread, nothing trimmed out of it.</div><div class="mt"><em>&#9679;</em> user + agent &middot; full thread</div></div>
+<div class="t6 w"><div class="top"><span class="n">9</span><span class="l">sources<br>clickable</span></div><div class="x">Each citation still opens the page it came from, so they check the work themselves.</div><div class="mt"><em>&#9679;</em> every claim verifiable</div></div>
+<div class="t6 k"><div class="top"><span class="n">3</span><span class="l">agents<br>visible</span></div><div class="x">Who ran each step, on which model tier, with which tools attached to the turn.</div><div class="mt"><em>&#9679;</em> cortex &middot; specter &middot; striker</div></div>
+<div class="t6 w"><div class="top"><span class="n">1</span><span class="l">click<br>to clone</span></div><div class="x">They copy the whole thread into their own Ultron and build from turn 32.</div><div class="mt"><em>&#9679;</em> becomes their first session</div></div>
+<div class="t6"><div class="top"><span class="n">7d</span><span class="l">expiry,<br>optional</span></div><div class="x">Auto-revokes when the window closes. Add a password for sensitive work.</div><div class="mt"><em>&#9679;</em> revoke anytime &middot; instant</div></div>
 </div>
-<div class="clonebar"><div class="ct"><b>Clone this session</b> to your own Ultron and keep going</div><div class="cbtn">Clone<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
-</div>
-<div class="ctawrap"><div class="savel">Save this, then</div><div class="cta"><span class="ph">Comment <b>SHARE</b> for the full shared-sessions breakdown</span><span class="send"><svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div></div>
-<div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS &middot; SHARED SESSIONS</div></div><div class="furl">51ultron<em>.</em>com</div></div>
+<div class="pipe"><span class="pl">Clone loop</span><span class="st"><b>You share</b><span>read-only link</span></span><span class="ar">&rarr;</span><span class="st"><b>They open</b><span>zero login</span></span><span class="ar">&rarr;</span><span class="st"><b>They clone</b><span>one click</span></span><span class="ar">&rarr;</span><span class="st last"><b>They build</b><span>their first session</span></span></div>
+<div class="ctab"><div class="tx"><div class="l1"><strong>Save this anatomy.</strong> Comment SHARE and the full shared-sessions breakdown lands in your DMs.</div></div><div class="chip">COMMENT SHARE<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+<div class="footy"><div class="lf"><img class="lg" src="__LOGO_URI__" alt="Ultron"><div class="tx2"><strong>ULTRON</strong> &middot; AI OPERATOR FOR FOUNDERS &middot; SHARED SESSIONS</div></div><div class="u2">51ultron<em>.</em>com</div></div>
 </div></body></html>

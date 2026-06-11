@@ -40,7 +40,7 @@ Comment SHARE and I will send you the full Claude shared-sessions breakdown we r
 
 ## ALT TEXT
 
-Dark editorial visual on slate background. The headline reads 'A screenshot shows the answer. A Claude link shows the work.' next to a small stat tile showing 0 logins to view, 100 percent read only and 1 click to clone. Below sits a browser window with the address app.51ultron.com/s/k7m2x and a read-only tag. A banner reads shared by Tibi Serbaneci, session cortex.competitive-analysis, view only. Inside, a question asks for the top 3 KYC fintech rivals, and a book-orange canvas artifact titled Rival comparison shows a table across Stripe, Adyen and Checkout with rows for pricing, kyc focus, weak spot and best for. A bottom bar reads clone this session to your own Ultron and keep going. Closes with a Comment SHARE call to action and the Ultron logo.
+Dark editorial visual on slate background. The headline reads 'Your AI work dies in screenshots. Ship the Claude session instead.' Below, an anatomy panel dissects one shared link, app.51ultron.com/s/k7m2x, set huge in mono type with the domain in ivory, /s/ in book-orange and the k7m2x token highlighted in kraft. Four annotation cards explain each part: the domain opens the live app, /s/ scopes the link to one session, the token is unguessable and dies on revoke, and view-only means they read and clone but cannot send. A six tile grid follows: 0 logins to view, 32 turns carried, 9 sources clickable, 3 agents visible, 1 click to clone, 7 day optional expiry. A clone-loop strip runs you share, they open, they clone, they build. Closes with a Comment SHARE call to action and the Ultron logo.
 
 ---
 
