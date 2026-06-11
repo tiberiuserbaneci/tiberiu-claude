@@ -40,7 +40,7 @@ Comment SHARE and I will send you the full Claude shared-sessions breakdown we r
 
 ## ALT TEXT
 
-Dark editorial visual on slate background. The headline reads 'Your AI work dies in screenshots. Ship the Claude session instead.' Below, an anatomy panel dissects one shared link, app.51ultron.com/s/k7m2x, set huge in mono type with the domain in ivory, /s/ in book-orange and the k7m2x token highlighted in kraft. Four annotation cards explain each part: the domain opens the live app, /s/ scopes the link to one session, the token is unguessable and dies on revoke, and view-only means they read and clone but cannot send. A six tile grid follows: 0 logins to view, 32 turns carried, 9 sources clickable, 3 agents visible, 1 click to clone, 7 day optional expiry. A clone-loop strip runs you share, they open, they clone, they build. Closes with a Comment SHARE call to action and the Ultron logo.
+Dark editorial visual on slate background. The headline reads 'Most founders screenshot the AI answer. The proof never leaves the chat.' Below sits a geological section cut through one Claude session, five layers deep with a depth rail on the left. The thin lit surface layer, labeled 'the answer, the only layer a screenshot shows', holds one quoted message and a what-they-see tag. Underneath, progressively darker strata: the thread with 32 turns and three decision chips, the tool runs with two mono rows, web_search returning 12 results and a comparison table of 9 rows by 3 rivals, the sources with 9 live links as chips, and the engine, CORTEX on the Sonnet tier with 14 tools allowed. A takeaway strip reads 'Send the session, not the surface.' Closes with a Comment SHARE call to action and the Ultron logo.
 
 ---
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
-/* BUDGET: 1392px vertical: mast 38 + hd 188 + anat 404 + grid6 ~430(flex) + pipe 88 + ctab 80 + footy 56 + gaps 108 = 1392 */
+/* BUDGET: 1394px vertical: mast 38 + hd 178 + cut(flex) ~880 + say 84 + ctab 78 + footy 54 + gaps 82 = 1394 */
 :root{--slate:#191919;--slate2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);--book:#CC785C;--bookd:#C84623;--kraft:#D4A27F;--cloud:#919180;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
@@ -13,57 +13,60 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 .m2 .mr{font-family:'DM Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink70);white-space:nowrap;flex-shrink:0;padding-left:18px;}
 .m2 .mr em{color:var(--book);font-style:normal;}
 .hd{flex-shrink:0;margin-top:18px;}
-.hk{font-weight:900;font-size:52px;line-height:.98;letter-spacing:-1.9px;color:var(--ivory);}
+.hk{font-weight:900;font-size:51px;line-height:.98;letter-spacing:-1.9px;color:var(--ivory);}
 .hk em{color:var(--book);font-style:normal;}
-.sb{margin-top:12px;font-size:19px;font-weight:500;line-height:1.32;color:var(--ink70);max-width:860px;}
+.sb{margin-top:12px;font-size:19px;font-weight:500;line-height:1.32;color:var(--ink70);max-width:880px;}
 .sb b{color:var(--ivory);font-weight:700;}
-/* anatomy panel: one giant link, dissected */
-.anat{flex-shrink:0;margin-top:16px;border:1px solid var(--book);border-radius:18px;overflow:hidden;background:#1d1a18;box-shadow:0 24px 60px rgba(0,0,0,.45),0 0 56px rgba(204,120,92,.14);}
-.an-h{display:flex;align-items:center;gap:12px;padding:13px 24px;border-bottom:1px solid var(--rule);background:rgba(204,120,92,.08);}
-.an-h .tg{font-family:'DM Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--book);}
-.an-h .tt{font-size:17px;font-weight:800;color:var(--ivory);letter-spacing:-.2px;}
-.an-h .rt{margin-left:auto;font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--kraft);border:1px solid rgba(212,162,127,.35);border-radius:20px;padding:6px 12px;}
-.lk{padding:30px 24px 24px;font-family:'DM Mono',monospace;font-weight:500;font-size:63px;letter-spacing:-2.6px;white-space:nowrap;line-height:1;}
-.lk .d1{color:var(--ivory);}
-.lk .d2{color:var(--book);}
-.lk .d3{color:var(--kraft);background:rgba(212,162,127,.1);border-radius:8px;padding:0 6px;}
-.lk .cur{display:inline-block;width:4px;height:46px;background:var(--book);margin-left:8px;vertical-align:-4px;}
-.calls{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 24px 20px;}
-.cl{border:1px solid var(--rule);border-top:3px solid var(--cloud);border-radius:11px;padding:13px 16px 12px;background:rgba(250,250,247,.025);}
-.cl.c1{border-top-color:var(--ivory);}
-.cl.c2{border-top-color:var(--book);}
-.cl.c3{border-top-color:var(--kraft);}
-.cl.c4{border-top-color:var(--bookd);}
-.cl .ct{font-family:'DM Mono',monospace;font-size:13px;font-weight:600;letter-spacing:.06em;color:var(--ivory);}
-.cl.c2 .ct{color:var(--book);}.cl.c3 .ct{color:var(--kraft);}.cl.c4 .ct{color:var(--bookd);}
-.cl .cd{margin-top:7px;font-size:17.5px;font-weight:500;line-height:1.3;color:var(--ink70);}
-.cl .cd b{color:var(--ivory);font-weight:700;}
-/* 6 fact tiles */
-.grid6{flex:1;min-height:0;margin-top:16px;display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;}
-.t6{border:1px solid var(--rule);border-radius:14px;padding:16px 18px 13px;background:var(--slate2);display:flex;flex-direction:column;}
-.t6 .top{display:flex;align-items:flex-start;gap:12px;}
-.t6 .n{font-weight:900;font-size:58px;line-height:.82;letter-spacing:-2.4px;color:var(--book);flex-shrink:0;}
-.t6.k .n{color:var(--kraft);}
-.t6.w .n{color:var(--ivory);}
-.t6 .l{font-size:21px;font-weight:800;color:var(--ivory);letter-spacing:-.3px;line-height:1.04;padding-top:4px;}
-.t6 .x{margin-top:10px;font-size:18px;font-weight:500;color:var(--ink70);line-height:1.36;}
-.t6 .mt{margin-top:auto;padding-top:10px;border-top:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink46);}
-.t6 .mt em{color:var(--kraft);font-style:normal;}
-/* clone loop strip */
-.pipe{flex-shrink:0;margin-top:16px;display:flex;align-items:center;gap:10px;border:1px solid var(--rule);border-radius:13px;padding:13px 18px;background:rgba(250,250,247,.025);}
-.pipe .pl{flex-shrink:0;font-family:'DM Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--book);writing-mode:initial;padding-right:12px;border-right:1px solid var(--rule);}
-.pipe .st{flex:1;text-align:center;}
-.pipe .st b{display:block;font-size:17px;font-weight:800;color:var(--ivory);letter-spacing:-.2px;line-height:1;}
-.pipe .st span{display:block;margin-top:4px;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink46);}
-.pipe .ar{flex-shrink:0;color:var(--book);font-size:19px;font-weight:700;}
-.pipe .st.last b{color:var(--book);}
+/* the section cut */
+.cut{flex:1;min-height:0;margin-top:16px;display:flex;flex-direction:column;border:1px solid var(--ink14);border-radius:18px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.45);}
+.strat{display:flex;align-items:stretch;border-top:1px solid var(--rule);}
+.strat:first-child{border-top:none;}
+.rail{width:64px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border-right:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--ink46);}
+.rail i{width:14px;height:2px;background:var(--book);display:block;}
+.body{flex:1;min-width:0;padding:13px 22px 14px;display:flex;flex-direction:column;}
+.bh{display:flex;align-items:baseline;gap:12px;}
+.bh .nm{font-family:'DM Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;}
+.bh .ds{font-size:15px;font-weight:500;color:var(--ink46);}
+.bh .ct{margin-left:auto;font-weight:900;font-size:34px;line-height:.8;letter-spacing:-1.4px;flex-shrink:0;}
+/* surface: the thin lit layer a screenshot captures */
+.strat.s0{background:rgba(204,120,92,.12);flex:0 0 auto;}
+.strat.s0 .rail{color:var(--book);}
+.strat.s0 .bh .nm{color:var(--book);}
+.strat.s0 .bh .ct{color:var(--book);}
+.ans{margin-top:8px;display:flex;align-items:center;gap:14px;}
+.ans .q{flex:1;font-size:18.5px;font-weight:700;color:var(--ivory);line-height:1.25;border-left:3px solid var(--book);padding-left:14px;}
+.ans .tag{flex-shrink:0;font-family:'DM Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#1a0f0a;background:var(--book);border-radius:20px;padding:7px 13px;}
+/* deep strata get darker as they go down */
+.strat.s1{background:#222120;flex:1.05;}
+.strat.s2{background:#1e1d1c;flex:1;}
+.strat.s3{background:#1b1a19;flex:1;}
+.strat.s4{background:#171615;flex:1;}
+.strat.s1 .bh .nm{color:var(--kraft);}.strat.s1 .bh .ct{color:var(--kraft);}
+.strat.s2 .bh .nm{color:var(--book);}.strat.s2 .bh .ct{color:var(--book);}
+.strat.s3 .bh .nm{color:var(--ivory);}.strat.s3 .bh .ct{color:var(--ivory);}
+.strat.s4 .bh .nm{color:var(--bookd);}.strat.s4 .bh .ct{color:var(--bookd);}
+.rowz{flex:1;min-height:0;margin-top:6px;display:flex;flex-wrap:wrap;gap:8px;align-content:center;align-items:center;}
+.bm{flex-shrink:0;margin-top:6px;padding-top:9px;border-top:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink46);}
+.bm em{color:var(--kraft);font-style:normal;}
+.chip{font-size:15.5px;font-weight:600;color:var(--ink70);background:rgba(250,250,247,.05);border:1px solid var(--ink14);border-radius:9px;padding:8px 13px;line-height:1.15;display:flex;align-items:center;gap:8px;}
+.chip b{color:var(--ivory);font-weight:800;}
+.chip i{font-family:'DM Mono',monospace;font-style:normal;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--kraft);}
+.chip.more{color:var(--ink46);border-style:dashed;}
+.mono{font-family:'DM Mono',monospace;font-size:14.5px;color:var(--ink70);background:#141312;border:1px solid var(--ink14);border-left:3px solid var(--book);border-radius:9px;padding:9px 14px;line-height:1.2;}
+.mono b{color:var(--kraft);font-weight:600;}
+.mono em{color:var(--book);font-style:normal;}
+/* the takeaway */
+.say{flex-shrink:0;margin-top:14px;border:1px solid rgba(204,120,92,.32);border-radius:13px;background:rgba(204,120,92,.07);padding:15px 20px;display:flex;align-items:center;gap:16px;}
+.say .big{font-size:19.5px;font-weight:800;color:var(--ivory);letter-spacing:-.2px;line-height:1.25;flex-shrink:0;}
+.say .big em{color:var(--book);font-style:normal;}
+.say .rest{font-size:15.5px;font-weight:500;color:var(--ink70);line-height:1.3;border-left:1px solid var(--rule);padding-left:16px;}
 /* cta */
-.ctab{flex-shrink:0;margin-top:14px;display:flex;align-items:stretch;border:1px solid var(--book);border-radius:4px;overflow:hidden;}
-.ctab .tx{flex:1;padding:14px 18px;display:flex;flex-direction:column;justify-content:center;gap:5px;background:rgba(204,120,92,.07);}
+.ctab{flex-shrink:0;margin-top:13px;display:flex;align-items:stretch;border:1px solid var(--book);border-radius:4px;overflow:hidden;}
+.ctab .tx{flex:1;padding:13px 18px;display:flex;flex-direction:column;justify-content:center;gap:5px;background:rgba(204,120,92,.07);}
 .ctab .tx .l1{font-family:'DM Sans',sans-serif;font-size:14.5px;font-weight:500;color:rgba(250,250,247,.82);line-height:1.35;}
 .ctab .tx .l1 strong{color:var(--ivory);font-weight:800;}
-.ctab .chip{flex-shrink:0;padding:0 24px;gap:9px;background:var(--book);display:flex;align-items:center;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:#1a0f0a;box-shadow:inset 0 0 0 1px rgba(250,255,247,.12),0 0 30px rgba(204,120,92,.35);}
-.ctab .chip svg{width:17px;height:17px;stroke:#1a0f0a;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ctab .chipc{flex-shrink:0;padding:0 24px;gap:9px;background:var(--book);display:flex;align-items:center;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:#1a0f0a;box-shadow:inset 0 0 0 1px rgba(250,255,247,.12),0 0 30px rgba(204,120,92,.35);}
+.ctab .chipc svg{width:17px;height:17px;stroke:#1a0f0a;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
 /* footer */
 .footy{flex-shrink:0;margin-top:12px;padding-top:12px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:16px;}
 .footy .lf{display:flex;align-items:center;gap:11px;min-width:0;}
@@ -73,30 +76,56 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 .footy .u2{font-family:'DM Sans',sans-serif;font-weight:900;font-size:15px;letter-spacing:-.4px;color:var(--ivory);flex-shrink:0;}
 .footy .u2 em{color:var(--book);font-style:normal;}
 </style></head><body><div class="pg" id="artifact"><div class="glow"></div>
-<div class="m2"><div class="kw">SHARED SESSIONS<span class="sp">&middot;</span>READ-ONLY LINKS<span class="sp">&middot;</span>FOUNDER GTM</div><div class="mr">DOCS 13 <em>/</em> ULTRON PLATFORM</div></div>
+<div class="m2"><div class="kw">AI WORK<span class="sp">&middot;</span>SHARED SESSIONS<span class="sp">&middot;</span>FOUNDER GTM</div><div class="mr">DOCS 13 <em>/</em> ULTRON PLATFORM</div></div>
 <div class="hd">
-<div class="hk">Your AI work dies in screenshots.<br><em>Ship the Claude session instead.</em></div>
-<div class="sb">One read-only link carries all <b>32 turns, 3 agents and every artifact</b>. Zero logins to view, one click to clone. This is everything that travels inside it.</div>
+<div class="hk">Most founders screenshot the AI answer.<br><em>The proof never leaves the chat.</em></div>
+<div class="sb">One Claude session: <b>32 turns, 2 tool runs, 9 sources, 1 artifact</b>. A screenshot carries the last message and buries everything under it. This is the cut.</div>
 </div>
-<div class="anat">
-<div class="an-h"><span class="tg">The link</span><span class="tt">Anatomy of a shared session</span><span class="rt">read-only</span></div>
-<div class="lk"><span class="d1">app.51ultron.com</span><span class="d2">/s/</span><span class="d3">k7m2x</span><span class="cur"></span></div>
-<div class="calls">
-<div class="cl c1"><div class="ct">app.51ultron.com</div><div class="cd">Opens the <b>live app</b>. Not a screenshot, not an export, the session as it ran.</div></div>
-<div class="cl c2"><div class="ct">/s/</div><div class="cd"><b>Scoped to one session.</b> Never your account, never your other chats.</div></div>
-<div class="cl c3"><div class="ct">k7m2x</div><div class="cd"><b>Unguessable token.</b> Revoke it once and the link dies everywhere, instantly.</div></div>
-<div class="cl c4"><div class="ct">view-only</div><div class="cd">They read and clone. They <b>cannot send, edit or touch</b> the original.</div></div>
+<div class="cut">
+<div class="strat s0"><div class="rail">00<i></i></div><div class="body">
+<div class="bh"><span class="nm">The answer</span><span class="ds">the only layer a screenshot shows</span><span class="ct">1</span></div>
+<div class="ans"><div class="q">"Done. Stripe, Adyen and Checkout compared across 9 rows. Table is on your canvas."</div><div class="tag">what they see</div></div>
+</div></div>
+<div class="strat s1"><div class="rail">01<i></i></div><div class="body">
+<div class="bh"><span class="nm">The thread</span><span class="ds">the decisions that shaped the answer</span><span class="ct">32</span></div>
+<div class="rowz">
+<div class="chip"><i>turn 03</i><b>scope:</b> KYC fintechs only, drop wallets</div>
+<div class="chip"><i>turn 14</i><b>kill</b> the enterprise segment</div>
+<div class="chip"><i>turn 27</i><b>re-rank</b> by pricing transparency</div>
+<div class="chip more">+ 29 more turns, in order</div>
 </div>
+<div class="bm"><em>&#9679;</em> in order &middot; both sides &middot; nothing trimmed</div>
+</div></div>
+<div class="strat s2"><div class="rail">02<i></i></div><div class="body">
+<div class="bh"><span class="nm">The tool runs</span><span class="ds">what the agent actually did</span><span class="ct">2</span></div>
+<div class="rowz">
+<div class="mono">web_search &middot; "kyc fintech competitors" <em>&rarr;</em> <b>12 results</b></div>
+<div class="mono">canvas.comparison_table <em>&rarr;</em> <b>9 rows &times; 3 rivals</b></div>
 </div>
-<div class="grid6">
-<div class="t6"><div class="top"><span class="n">0</span><span class="l">logins<br>to view</span></div><div class="x">Anyone with the link lands straight in the work. No account wall, no signup detour first.</div><div class="mt"><em>&#9679;</em> prospects &middot; team &middot; audience</div></div>
-<div class="t6 k"><div class="top"><span class="n">32</span><span class="l">turns<br>carried</span></div><div class="x">Every message, in order, both sides of the thread, nothing trimmed out of it.</div><div class="mt"><em>&#9679;</em> user + agent &middot; full thread</div></div>
-<div class="t6 w"><div class="top"><span class="n">9</span><span class="l">sources<br>clickable</span></div><div class="x">Each citation still opens the page it came from, so they check the work themselves.</div><div class="mt"><em>&#9679;</em> every claim verifiable</div></div>
-<div class="t6 k"><div class="top"><span class="n">3</span><span class="l">agents<br>visible</span></div><div class="x">Who ran each step, on which model tier, with which tools attached to the turn.</div><div class="mt"><em>&#9679;</em> cortex &middot; specter &middot; striker</div></div>
-<div class="t6 w"><div class="top"><span class="n">1</span><span class="l">click<br>to clone</span></div><div class="x">They copy the whole thread into their own Ultron and build from turn 32.</div><div class="mt"><em>&#9679;</em> becomes their first session</div></div>
-<div class="t6"><div class="top"><span class="n">7d</span><span class="l">expiry,<br>optional</span></div><div class="x">Auto-revokes when the window closes. Add a password for sensitive work.</div><div class="mt"><em>&#9679;</em> revoke anytime &middot; instant</div></div>
+<div class="bm"><em>&#9679;</em> inputs and outputs, kept with the turn</div>
+</div></div>
+<div class="strat s3"><div class="rail">03<i></i></div><div class="body">
+<div class="bh"><span class="nm">The sources</span><span class="ds">every claim still clicks through</span><span class="ct">9</span></div>
+<div class="rowz">
+<div class="chip">stripe.com/pricing</div>
+<div class="chip">adyen.com/docs</div>
+<div class="chip">checkout.com/kyc</div>
+<div class="chip">2 pricing teardowns</div>
+<div class="chip more">+ 4 more, all live</div>
 </div>
-<div class="pipe"><span class="pl">Clone loop</span><span class="st"><b>You share</b><span>read-only link</span></span><span class="ar">&rarr;</span><span class="st"><b>They open</b><span>zero login</span></span><span class="ar">&rarr;</span><span class="st"><b>They clone</b><span>one click</span></span><span class="ar">&rarr;</span><span class="st last"><b>They build</b><span>their first session</span></span></div>
-<div class="ctab"><div class="tx"><div class="l1"><strong>Save this anatomy.</strong> Comment SHARE and the full shared-sessions breakdown lands in your DMs.</div></div><div class="chip">COMMENT SHARE<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+<div class="bm"><em>&#9679;</em> the same links, still live in the share</div>
+</div></div>
+<div class="strat s4"><div class="rail">04<i></i></div><div class="body">
+<div class="bh"><span class="nm">The engine</span><span class="ds">who ran it, on what, with what</span><span class="ct">3</span></div>
+<div class="rowz">
+<div class="chip"><b>CORTEX</b> owned the job</div>
+<div class="chip"><b>Sonnet</b> tier, resolved per turn</div>
+<div class="chip"><b>14 tools</b> allowed, every step logged</div>
+</div>
+<div class="bm"><em>&#9679;</em> every step logged in the session</div>
+</div></div>
+</div>
+<div class="say"><div class="big">Send the session, <em>not the surface.</em></div><div class="rest">They scroll the whole cut, check any source, and pick up the work where you left it. Nobody reads the link. Everybody reads the layers.</div></div>
+<div class="ctab"><div class="tx"><div class="l1"><strong>Save this cut.</strong> Comment SHARE and the full shared-sessions breakdown lands in your DMs.</div></div><div class="chipc">COMMENT SHARE<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
 <div class="footy"><div class="lf"><img class="lg" src="__LOGO_URI__" alt="Ultron"><div class="tx2"><strong>ULTRON</strong> &middot; AI OPERATOR FOR FOUNDERS &middot; SHARED SESSIONS</div></div><div class="u2">51ultron<em>.</em>com</div></div>
 </div></body></html>
