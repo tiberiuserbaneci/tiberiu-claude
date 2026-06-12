@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-06-11T13:29:33",
+  "generated_at": "2026-06-12T02:41:57",
   "counts": {
-    "total": 80,
-    "generated": 36,
+    "total": 91,
+    "generated": 47,
     "reference": 44,
     "crosspost": 0
   },
@@ -1013,11 +1013,315 @@
       "variants": [
         ""
       ],
-      "caption": "32 turns of Claude research, 3 agents and one comparison table. I handed all of it to a prospect with a single read-only link, not a screenshot.\n\nFor two years I shared my AI work the worst way possible. A screenshot pasted into an email.\n\n- - -\n\nThe other side saw a frozen image. No sources, no context, no way to pick it up and keep going. Then I stopped screenshotting and started sending the session itself. One link, read-only, the whole thing. A prospect sees the research I ran on their market. A teammate gets the draft and the agents behind it. My audience watches the actual work, not a tidy summary of it.\n\n- - -\n\n\u2192 The link carries the whole session. Every turn in order, which agent ran on which tier, the canvas tables and drafts as live artifacts, and every cited source still clicking through. Not an image, the real thing.\n\n\u2192 It is read-only by default. They read every turn and open the artifacts. They cannot send a message in my session, edit it, or see my account or other chats. The link is scoped to that one session.\n\n\u2192 I keep the controls. Revoke in one click and the link dies instantly. Set an expiry, add a password for sensitive sessions, and the scope never widens past that chat.\n\n\u2192 Fork branches a session into two without losing the thread. I keep the proven thread untouched and explore a riskier angle in a copy, then switch between them.\n\n\u2192 Anyone can clone a shared session into their own Ultron and keep going, if I leave cloning on. The link they opened to view quietly becomes their first working session, with my whole thread as the starting point.\n\n- - -\n\nA screenshot is where your AI work goes to die. A shared session is an asset. It travels, it proves the work, and every link you send is a front door someone can walk through and build from. For a founder selling trust, that is everything: the prospect does not take your word for the research, they open it and check every source themselves. That is the difference between showing people a result and handing them the machine that made it.\n\n- - -\n\nFollow for one AI system for founders every day.\nComment SHARE and I will send you the full Claude shared-sessions breakdown we run inside Ultron.",
-      "alt": "Dark editorial visual on slate background, built as a vertical workflow diagram. The headline reads 'Most founders screenshot the AI answer. The proof never leaves the chat.', noting one ask becomes 44 pieces of proof and a screenshot ships 1. The flow starts at an input node asking for the top 3 KYC fintech rivals, runs through a session machine with three stages, 32 turns as decision chips, 2 tool runs with web_search returning 12 results, and 9 source links, over an engine strip naming CORTEX, the Sonnet tier and 14 tools. An arrow reaches the output, a comparison table of 9 rows by 3 rivals, then splits two ways: a dim dashed Screenshot It card where 43 pieces stay behind, and a glowing book-orange Share The Session card where all 44 travel. Closes with a Comment SHARE call to action and the Ultron logo.",
+      "caption": "32 turns of Claude research, 3 agents and one comparison table. I handed all of it to a prospect with a single read-only link, not a screenshot.\n\nFor two years I shared my AI work the worst way possible. A screenshot pasted into an email.\n\n- - -\n\nThe other side saw a frozen image. No sources, no context, no way to pick it up and keep going. Then I stopped screenshotting and started sending the session itself. One link, read-only, the whole thing. A prospect sees the research I ran on their market. A teammate gets the draft and the agents behind it. My audience watches the actual work, not a tidy summary of it.\n\n- - -\n\n\u2192 One ask becomes 44 pieces of proof: 32 turns in order, 2 tool runs with their inputs and outputs, 9 sources that still click through, and the artifact itself, live on canvas. A screenshot ships exactly 1 of the 44 and buries the rest.\n\n\u2192 It is read-only by default. They read every turn and open the artifacts. They cannot send a message in my session, edit it, or see my account or other chats. The link is scoped to that one session.\n\n\u2192 I keep the controls. Revoke in one click and the link dies instantly. Set an expiry, add a password for sensitive sessions, and the scope never widens past that chat.\n\n\u2192 Fork branches a session into two without losing the thread. I keep the proven thread untouched and explore a riskier angle in a copy, then switch between them.\n\n\u2192 Anyone can clone a shared session into their own Ultron and keep going, if I leave cloning on. The link they opened to view quietly becomes their first working session, with my whole thread as the starting point.\n\n- - -\n\nA screenshot is where your AI work goes to die. A shared session is an asset. It travels, it proves the work, and every link you send is a front door someone can walk through and build from. For a founder selling trust, that is everything: the prospect does not take your word for the research, they open it and check every source themselves. That is the difference between showing people a result and handing them the machine that made it.\n\n- - -\n\nFollow for one AI system for founders every day.\nComment SHARE and I will send you the full Claude shared-sessions breakdown we run inside Ultron.",
+      "alt": "Dark editorial diagram on slate background, built around a central gradient spine running kraft to book-orange to deep orange, with the Ultron logo in a hub at its center. The headline reads 'Most founders screenshot the AI answer. The proof never leaves the chat.', noting one ask becomes 44 pieces of proof and a screenshot ships 1. An input pill quotes the ask about top 3 KYC fintech rivals. Four ringed circles flank the spine with the counts, 32 turns, 2 tool runs, 9 sources and 1 artifact, each arrowed to its card: decision chips, mono tool-run rows, live source links, and the 9-row comparison table. The spine forks under a ship-it pill into a dim Screenshot It card, 1 of 44 travels, and a glowing Share The Session card, 44 of 44. Closes with a Comment SHARE call to action and the Ultron logo.",
       "first_comment": "A screenshot of an AI chat is a dead end. A shared Ultron session is live: every turn, every source, the canvas tables, all read-only, and cloneable in one click. I revoke it whenever I want.\n\nComment SHARE and I will send you the full shared-sessions breakdown, including fork and the clone loop.\n\napp.51ultron.com/docs",
       "generated_date": "2026-06-11",
-      "added": 1781181691,
+      "added": 1781185455,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "agents-prod-tiktok-carousel",
+      "title": "Agents Prod",
+      "channel": "tiktok",
+      "type": "carousel",
+      "slides": 10,
+      "dims": "2160x3840 (1080x1920 @2x)",
+      "preview": "content/agents-prod-tiktok-carousel-01.png",
+      "download": "content/portal/zips/agents-prod-tiktok-carousel.zip",
+      "files": [
+        "content/agents-prod-tiktok-carousel-01.png",
+        "content/agents-prod-tiktok-carousel-02.png",
+        "content/agents-prod-tiktok-carousel-03.png",
+        "content/agents-prod-tiktok-carousel-04.png",
+        "content/agents-prod-tiktok-carousel-05.png",
+        "content/agents-prod-tiktok-carousel-06.png",
+        "content/agents-prod-tiktok-carousel-07.png",
+        "content/agents-prod-tiktok-carousel-08.png",
+        "content/agents-prod-tiktok-carousel-09.png",
+        "content/agents-prod-tiktok-carousel-10.png"
+      ],
+      "variants": [],
+      "caption": "",
+      "alt": "",
+      "first_comment": "",
+      "generated_date": "2026-06-11",
+      "added": 1781188957,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "agents-prod-tiktok-editorial45-01",
+      "title": "Agents Prod",
+      "channel": "tiktok",
+      "type": "single",
+      "slides": 1,
+      "dims": "2160x2700",
+      "preview": "content/agents-prod-tiktok-editorial45-01.png",
+      "download": "content/agents-prod-tiktok-editorial45-01.png",
+      "files": [
+        "content/agents-prod-tiktok-editorial45-01.png"
+      ],
+      "variants": [
+        ""
+      ],
+      "caption": "",
+      "alt": "",
+      "first_comment": "",
+      "generated_date": "2026-06-12",
+      "added": 1781232095,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "agents-prod-tiktok-editorial45-02",
+      "title": "Agents Prod",
+      "channel": "tiktok",
+      "type": "single",
+      "slides": 1,
+      "dims": "2160x2700",
+      "preview": "content/agents-prod-tiktok-editorial45-02.png",
+      "download": "content/agents-prod-tiktok-editorial45-02.png",
+      "files": [
+        "content/agents-prod-tiktok-editorial45-02.png"
+      ],
+      "variants": [
+        ""
+      ],
+      "caption": "",
+      "alt": "",
+      "first_comment": "",
+      "generated_date": "2026-06-12",
+      "added": 1781232095,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "agents-prod-tiktok-editorial45-03",
+      "title": "Agents Prod",
+      "channel": "tiktok",
+      "type": "single",
+      "slides": 1,
+      "dims": "2160x2700",
+      "preview": "content/agents-prod-tiktok-editorial45-03.png",
+      "download": "content/agents-prod-tiktok-editorial45-03.png",
+      "files": [
+        "content/agents-prod-tiktok-editorial45-03.png"
+      ],
+      "variants": [
+        ""
+      ],
+      "caption": "",
+      "alt": "",
+      "first_comment": "",
+      "generated_date": "2026-06-12",
+      "added": 1781232095,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "agents-prod-tiktok-editorial45-04",
+      "title": "Agents Prod",
+      "channel": "tiktok",
+      "type": "single",
+      "slides": 1,
+      "dims": "2160x2700",
+      "preview": "content/agents-prod-tiktok-editorial45-04.png",
+      "download": "content/agents-prod-tiktok-editorial45-04.png",
+      "files": [
+        "content/agents-prod-tiktok-editorial45-04.png"
+      ],
+      "variants": [
+        ""
+      ],
+      "caption": "",
+      "alt": "",
+      "first_comment": "",
+      "generated_date": "2026-06-12",
+      "added": 1781232095,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "agents-prod-tiktok-editorial45-05",
+      "title": "Agents Prod",
+      "channel": "tiktok",
+      "type": "single",
+      "slides": 1,
+      "dims": "2160x2700",
+      "preview": "content/agents-prod-tiktok-editorial45-05.png",
+      "download": "content/agents-prod-tiktok-editorial45-05.png",
+      "files": [
+        "content/agents-prod-tiktok-editorial45-05.png"
+      ],
+      "variants": [
+        ""
+      ],
+      "caption": "",
+      "alt": "",
+      "first_comment": "",
+      "generated_date": "2026-06-12",
+      "added": 1781232095,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "agents-prod-tiktok-editorial45-06",
+      "title": "Agents Prod",
+      "channel": "tiktok",
+      "type": "single",
+      "slides": 1,
+      "dims": "2160x2700",
+      "preview": "content/agents-prod-tiktok-editorial45-06.png",
+      "download": "content/agents-prod-tiktok-editorial45-06.png",
+      "files": [
+        "content/agents-prod-tiktok-editorial45-06.png"
+      ],
+      "variants": [
+        ""
+      ],
+      "caption": "",
+      "alt": "",
+      "first_comment": "",
+      "generated_date": "2026-06-12",
+      "added": 1781232095,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "agents-prod-tiktok-editorial45-07",
+      "title": "Agents Prod",
+      "channel": "tiktok",
+      "type": "single",
+      "slides": 1,
+      "dims": "2160x2700",
+      "preview": "content/agents-prod-tiktok-editorial45-07.png",
+      "download": "content/agents-prod-tiktok-editorial45-07.png",
+      "files": [
+        "content/agents-prod-tiktok-editorial45-07.png"
+      ],
+      "variants": [
+        ""
+      ],
+      "caption": "",
+      "alt": "",
+      "first_comment": "",
+      "generated_date": "2026-06-12",
+      "added": 1781232095,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "agents-prod-tiktok-editorial45-08",
+      "title": "Agents Prod",
+      "channel": "tiktok",
+      "type": "single",
+      "slides": 1,
+      "dims": "2160x2700",
+      "preview": "content/agents-prod-tiktok-editorial45-08.png",
+      "download": "content/agents-prod-tiktok-editorial45-08.png",
+      "files": [
+        "content/agents-prod-tiktok-editorial45-08.png"
+      ],
+      "variants": [
+        ""
+      ],
+      "caption": "",
+      "alt": "",
+      "first_comment": "",
+      "generated_date": "2026-06-12",
+      "added": 1781232095,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "agents-prod-tiktok-editorial45-09",
+      "title": "Agents Prod",
+      "channel": "tiktok",
+      "type": "single",
+      "slides": 1,
+      "dims": "2160x2700",
+      "preview": "content/agents-prod-tiktok-editorial45-09.png",
+      "download": "content/agents-prod-tiktok-editorial45-09.png",
+      "files": [
+        "content/agents-prod-tiktok-editorial45-09.png"
+      ],
+      "variants": [
+        ""
+      ],
+      "caption": "",
+      "alt": "",
+      "first_comment": "",
+      "generated_date": "2026-06-12",
+      "added": 1781232095,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "agents-prod-tiktok-editorial45-10",
+      "title": "Agents Prod",
+      "channel": "tiktok",
+      "type": "single",
+      "slides": 1,
+      "dims": "2160x2700",
+      "preview": "content/agents-prod-tiktok-editorial45-10.png",
+      "download": "content/agents-prod-tiktok-editorial45-10.png",
+      "files": [
+        "content/agents-prod-tiktok-editorial45-10.png"
+      ],
+      "variants": [
+        ""
+      ],
+      "caption": "",
+      "alt": "",
+      "first_comment": "",
+      "generated_date": "2026-06-12",
+      "added": 1781232095,
       "source": "generated",
       "status": "ready",
       "posted": false,
