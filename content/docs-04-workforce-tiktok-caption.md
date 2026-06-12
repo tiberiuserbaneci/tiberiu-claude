@@ -35,3 +35,13 @@ One chat box. Seven Claude agents. One router, one human gate.
 Comment AGENTS for the map.
 
 #claude #ai #aitools #aiagents #founder #startup #anthropic
+
+---
+
+## FIRST COMMENT
+
+One founder running GTM alone now has 7 specialist agents behind one slash, plus a router that picks the agent and the model tier per job. Cortex researches, specter writes outbound, striker runs deals, pulse writes content.
+
+The full workforce map shows what each agent owns end to end.
+
+Drop AGENTS below and I will send it over. The docs live at app.51ultron.com/docs

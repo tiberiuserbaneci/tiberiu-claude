@@ -43,22 +43,39 @@ def parse_caption(md_path):
     t = md_path.read_text()
     def section(*names):
         for n in names:
-            m = re.search(r"##\s*"+re.escape(n)+r"\b(.*?)(?=\n##\s|\n---|\Z)", t, re.S|re.I)
-            if m: return m.group(1).strip().lstrip("(").strip()
+            # consume the rest of the header line, then grab to the next ## / --- / EOF
+            m = re.search(r"^##\s*"+n+r"[^\n]*\n+(.*?)(?=\n##\s|\n-{3,}|\Z)", t, re.S|re.M|re.I)
+            if m: return m.group(1).strip()
         return ""
-    cap = section("CAPTION","PRIMARY")
-    return {"caption": cap, "alt": section("ALT TEXT","ALT"), "first_comment": section("FIRST COMMENT")}
+    cap = section("CAPTION", "PRIMARY")
+    if not cap:
+        # header-less social format: frontmatter, then '---', then the caption body (+ hashtags)
+        blocks = re.split(r"\n-{3,}\n", t)
+        if len(blocks) >= 2:
+            cap = blocks[1].strip()
+    return {"caption": cap, "alt": section("ALT TEXT", "ALT"), "first_comment": section("FIRST COMMENT")}
 
 def find_caption(prefix, channel):
-    cands = []
-    if channel == "tiktok":
-        cands = [f"{prefix}-tiktok-caption.md"]
-    else:
-        cands = [f"{prefix}-caption.md", f"{prefix}-copy.md", f"{prefix}-linkedin-caption.md"]
-    for c in cands:
-        p = CONTENT / c
-        if p.exists(): return parse_caption(p)
-    return {}
+    """Merge caption/alt/first-comment for a material across its caption files, preferring the
+    channel file for the caption and falling back to the sibling LinkedIn kit (and progressively
+    shorter prefixes, so variant builds like '-editorial45' inherit the base copy)."""
+    out = {"caption": "", "alt": "", "first_comment": ""}
+    pfx = prefix
+    while pfx and pfx.count("-") >= 1:
+        if channel == "tiktok":
+            order = [f"{pfx}-tiktok-caption.md", f"{pfx}-caption.md", f"{pfx}-copy.md", f"{pfx}-linkedin-caption.md"]
+        else:
+            order = [f"{pfx}-caption.md", f"{pfx}-copy.md", f"{pfx}-linkedin-caption.md", f"{pfx}-tiktok-caption.md"]
+        for c in order:
+            p = CONTENT / c
+            if not p.exists(): continue
+            d = parse_caption(p)
+            for k in out:
+                if not out[k] and d.get(k): out[k] = d[k]
+        if out["caption"]:   # found the material's copy at this prefix level; don't over-borrow
+            break
+        pfx = pfx.rsplit("-", 1)[0]
+    return out
 
 def title_from(mid):
     # docs-05-jobs-linkedin -> "Background Jobs"; pretty-ish from slug

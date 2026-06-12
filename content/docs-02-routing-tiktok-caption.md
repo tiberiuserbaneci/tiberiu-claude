@@ -35,3 +35,13 @@ Your default AI wins 1 of 8 GTM jobs. Route the rest.
 Comment ROUTING for the map.
 
 #ai #aitools #founder #gtm #claude #startup #salestips
+
+---
+
+## FIRST COMMENT
+
+I gave 8 founder GTM jobs to one AI. It won exactly one of them. The fix was not a smarter model, it was routing each job to the model that actually wins it.
+
+The full map names the winning model for all 8 jobs, from lead research to close.
+
+Drop ROUTING below and I will send it over. The docs live at app.51ultron.com/docs
