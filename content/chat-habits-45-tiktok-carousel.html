@@ -16,7 +16,7 @@
   --ink-62:rgba(17,17,17,.62);
   --wt:#FAFAF7;
   --wt-62:rgba(250,250,247,.62);
-  --cor:#D26446;          /* coral - editorial orange */
+  --cor:#E86A45;          /* coral - brighter editorial orange (operator 2026-06-12) */
   --cor-deep:#C84623;
   --cream:#F5ECE3;
   --tagdk:#2B1D15;
@@ -51,9 +51,9 @@ body{background:#070606;display:flex;flex-direction:column;align-items:center;ga
 .dk .bd b{color:var(--wt);}
 
 /* ---------- glassy coral element (dark slides) ---------- */
-.glass{background:linear-gradient(160deg,rgba(210,100,70,.34) 0%,rgba(140,58,34,.22) 55%,rgba(95,40,24,.30) 100%);
-  border:2px solid rgba(236,152,116,.42);
-  box-shadow:inset 0 2px 0 rgba(255,205,175,.32), inset 0 -18px 40px rgba(70,25,12,.35), 0 34px 90px rgba(190,80,45,.22);}
+.glass{background:linear-gradient(160deg,rgba(232,106,69,.40) 0%,rgba(150,62,36,.24) 55%,rgba(100,42,25,.30) 100%);
+  border:2px solid rgba(244,164,128,.48);
+  box-shadow:inset 0 2px 0 rgba(255,212,184,.38), inset 0 -18px 40px rgba(70,25,12,.35), 0 34px 90px rgba(210,90,52,.26);}
 
 /* ====================================================== */
 /* S1 COVER (dark)                                         */
@@ -119,16 +119,31 @@ body{background:#070606;display:flex;flex-direction:column;align-items:center;ga
   display:flex;align-items:center;justify-content:center;}
 .slash-input svg{width:26px;height:26px;stroke:var(--wt);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
 
-/* S4: light - three ascending tier dots */
-.tiers{position:absolute;left:96px;right:96px;bottom:90px;display:flex;align-items:flex-end;gap:64px;}
-.tier{display:flex;flex-direction:column;align-items:center;gap:20px;}
-.tier .c{border-radius:50%;background:#D9D5CC;}
-.tier:nth-child(1) .c{width:120px;height:120px;}
-.tier:nth-child(2) .c{width:190px;height:190px;background:#C9C4B9;}
-.tier:nth-child(3) .c{width:280px;height:280px;background:var(--cor);
-  box-shadow:0 30px 80px rgba(210,100,70,.35), inset 0 6px 0 rgba(255,210,185,.45);}
-.tier .lb{font-family:'DM Mono',monospace;font-size:21px;letter-spacing:.14em;color:var(--ink-62);}
-.tier:nth-child(3) .lb{color:var(--cor-deep);font-weight:500;}
+/* S4: light - model tier picker (segmented control + legend, real composer control) */
+.picker{position:absolute;left:96px;right:96px;bottom:104px;background:#FAF9F7;
+  border:2px solid rgba(17,17,17,.14);border-radius:24px;padding:32px 34px;
+  box-shadow:0 28px 74px rgba(17,17,17,.13);}
+.picker .ph{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;}
+.picker .ph .t{font-size:25px;font-weight:700;color:var(--ink);letter-spacing:-.4px;}
+.picker .ph .t span{color:var(--ink-62);font-weight:400;}
+.picker .ph .now{font-family:'DM Mono',monospace;font-size:15px;letter-spacing:.12em;font-weight:500;
+  color:var(--cor-deep);background:rgba(232,106,69,.13);border-radius:9px;padding:9px 15px;}
+.seg{display:flex;gap:10px;background:rgba(17,17,17,.05);border-radius:15px;padding:9px;}
+.seg .s{flex:1;text-align:center;padding:18px 0;border-radius:11px;font-size:26px;font-weight:700;
+  letter-spacing:-.3px;color:var(--ink-62);}
+.seg .s.on{background:linear-gradient(165deg,var(--cor) 0%,var(--cor-deep) 100%);color:#FAF9F7;
+  box-shadow:0 14px 32px rgba(232,106,69,.38), inset 0 2px 0 rgba(255,216,192,.55);}
+.legend{display:flex;margin-top:26px;}
+.legend .col{flex:1;display:flex;flex-direction:column;gap:9px;padding:0 8px;
+  border-left:2px solid rgba(17,17,17,.08);}
+.legend .col:first-child{border-left:none;}
+.legend .m{font-family:'DM Mono',monospace;font-size:19px;color:var(--ink);font-weight:500;}
+.legend .u{font-size:18px;color:var(--ink-62);line-height:1.3;}
+.legend .dots{display:flex;gap:7px;margin-top:6px;}
+.legend .dots i{width:14px;height:14px;border-radius:50%;background:rgba(17,17,17,.14);}
+.legend .dots i.f{background:rgba(17,17,17,.58);}
+.legend .col.on .m{color:var(--cor-deep);}
+.legend .col.on .dots i.f{background:var(--cor);}
 
 /* S5: dark - memory layer stack */
 .mem{position:absolute;left:50%;transform:translateX(-50%);bottom:26px;width:640px;
@@ -141,21 +156,39 @@ body{background:#070606;display:flex;flex-direction:column;align-items:center;ga
 .mem .ly.hot{color:#F7D9CB;}
 .mem .ly.hot b{color:#F0A582;}
 
-/* S6: light - folder + file chips */
-.folder{position:absolute;left:50%;transform:translateX(-50%);bottom:-150px;width:740px;height:480px;}
-.folder .back{position:absolute;inset:0;border-radius:26px;
-  background:linear-gradient(170deg,#D26446 0%,#B0492C 80%);
-  box-shadow:0 -20px 90px rgba(190,80,45,.30), inset 0 3px 0 rgba(255,205,175,.45);}
-.folder .back::before{content:'';position:absolute;top:-44px;left:0;width:300px;height:70px;border-radius:22px 26px 0 0;
-  background:#D26446;transform:skewX(28deg);transform-origin:bottom left;}
-.folder .files{position:absolute;left:40px;right:40px;top:-92px;display:flex;gap:14px;justify-content:center;}
-.folder .fl{background:#FAF9F7;border:1.5px solid rgba(17,17,17,.14);border-radius:13px;padding:16px 18px;
-  font-family:'DM Mono',monospace;font-size:17px;color:rgba(17,17,17,.70);
-  box-shadow:0 16px 36px rgba(17,17,17,.14);}
-.folder .pill{position:absolute;left:50%;top:120px;transform:translateX(-50%);
-  background:rgba(20,12,8,.45);border:1.5px solid rgba(255,205,175,.40);border-radius:40px;
-  padding:22px 40px;display:flex;align-items:center;gap:16px;color:#FFF1E8;font-size:27px;font-weight:600;}
-.folder .pill svg{width:28px;height:28px;stroke:#FFF1E8;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+/* S6: light - Project panel caches your files (the real sidebar behaviour) */
+.project{position:absolute;left:96px;right:96px;bottom:96px;background:#FAF9F7;
+  border:2px solid rgba(17,17,17,.14);border-radius:24px;padding:30px 32px;
+  box-shadow:0 28px 74px rgba(17,17,17,.13);}
+.project .ph{display:flex;align-items:center;gap:15px;padding-bottom:22px;
+  border-bottom:1.5px solid rgba(17,17,17,.10);margin-bottom:6px;}
+.project .ph .fi{width:44px;height:44px;border-radius:11px;flex-shrink:0;
+  background:linear-gradient(165deg,var(--cor),var(--cor-deep));display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 24px rgba(232,106,69,.30);}
+.project .ph .fi svg{width:24px;height:24px;stroke:#FAF9F7;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.project .ph .t{font-size:25px;font-weight:700;color:var(--ink);letter-spacing:-.4px;}
+.project .ph .t span{color:var(--ink-62);font-weight:400;}
+.project .ph .badge{margin-left:auto;display:flex;align-items:center;gap:9px;
+  background:rgba(232,106,69,.13);border-radius:9px;padding:10px 16px;
+  font-family:'DM Mono',monospace;font-size:15px;letter-spacing:.12em;color:var(--cor-deep);font-weight:500;}
+.project .ph .badge svg{width:16px;height:16px;stroke:var(--cor-deep);stroke-width:2.8;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.project .fr{display:flex;align-items:center;gap:16px;padding:15px 4px;}
+.project .fr+.fr{border-top:1px solid rgba(17,17,17,.07);}
+.project .fr .ic{width:38px;height:38px;border-radius:9px;flex-shrink:0;background:rgba(17,17,17,.05);
+  display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:13px;
+  font-weight:500;color:var(--ink-62);letter-spacing:.04em;}
+.project .fr .nm{font-family:'DM Mono',monospace;font-size:20px;color:var(--ink);font-weight:500;}
+.project .fr .sz{margin-left:auto;font-family:'DM Mono',monospace;font-size:16px;color:rgba(17,17,17,.40);}
+.project .fr .ck{width:27px;height:27px;border-radius:50%;flex-shrink:0;background:var(--cor);
+  display:flex;align-items:center;justify-content:center;}
+.project .fr .ck svg{width:15px;height:15px;stroke:#FAF9F7;stroke-width:3.2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.project .pfoot{margin-top:8px;padding-top:20px;border-top:1.5px solid rgba(17,17,17,.10);
+  display:flex;align-items:center;gap:12px;font-size:19px;color:var(--ink-62);}
+.project .pfoot b{color:var(--ink);font-weight:700;}
+.project .pfoot .up{margin-left:auto;display:flex;align-items:center;gap:10px;
+  background:linear-gradient(165deg,var(--cor),var(--cor-deep));color:#FAF9F7;border-radius:12px;
+  padding:13px 22px;font-size:18px;font-weight:700;box-shadow:0 12px 28px rgba(232,106,69,.32);}
+.project .pfoot .up svg{width:18px;height:18px;stroke:#FAF9F7;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
 
 /* S7: dark - job card with donut */
 .job{position:absolute;left:50%;transform:translateX(-50%);bottom:30px;width:700px;border-radius:26px;padding:34px 38px;}
@@ -201,9 +234,9 @@ body{background:#070606;display:flex;flex-direction:column;align-items:center;ga
 /* S10 CTA (light)                                         */
 /* ====================================================== */
 .cta-big{margin-top:60px;align-self:flex-start;display:flex;align-items:center;gap:18px;
-  background:linear-gradient(165deg,#D26446 0%,#C84623 90%);color:#FAF9F7;border-radius:22px;
+  background:linear-gradient(165deg,#E86A45 0%,#C84623 90%);color:#FAF9F7;border-radius:22px;
   padding:34px 48px;font-size:40px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;
-  box-shadow:0 26px 70px rgba(200,70,35,.30), inset 0 2px 0 rgba(255,210,185,.5);}
+  box-shadow:0 26px 70px rgba(232,106,69,.34), inset 0 2px 0 rgba(255,214,190,.55);}
 .cta-big svg{width:34px;height:34px;stroke:#FAF9F7;stroke-width:2.8;fill:none;stroke-linecap:round;stroke-linejoin:round;}
 .brandline{position:absolute;left:96px;right:96px;bottom:56px;display:flex;align-items:center;justify-content:space-between;
   border-top:2px solid rgba(17,17,17,.85);padding-top:24px;}
@@ -296,10 +329,14 @@ body{background:#070606;display:flex;flex-direction:column;align-items:center;ga
     <p>Lite for quick lookups. Smart for the real work. Deep when the judgement is hard.</p>
     <p>The picker sits on every turn, so you <b>spend on deep thinking only when the turn earns it</b>.</p>
   </div>
-  <div class="tiers">
-    <div class="tier"><div class="c"></div><div class="lb">LITE</div></div>
-    <div class="tier"><div class="c"></div><div class="lb">SMART</div></div>
-    <div class="tier"><div class="c"></div><div class="lb">DEEP</div></div>
+  <div class="picker">
+    <div class="ph"><div class="t">Model tier <span>&middot; this turn</span></div><div class="now">DEEP SELECTED</div></div>
+    <div class="seg"><div class="s">Lite</div><div class="s">Smart</div><div class="s on">Deep</div></div>
+    <div class="legend">
+      <div class="col"><div class="m">Haiku</div><div class="u">quick lookups</div><div class="dots"><i class="f"></i><i></i><i></i></div></div>
+      <div class="col"><div class="m">Sonnet</div><div class="u">the real work</div><div class="dots"><i class="f"></i><i class="f"></i><i></i></div></div>
+      <div class="col on"><div class="m">Opus</div><div class="u">hard judgement</div><div class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></div></div>
+    </div>
   </div>
 </div>
 
@@ -328,12 +365,16 @@ body{background:#070606;display:flex;flex-direction:column;align-items:center;ga
     <p>PDFs, images, audio, spreadsheets and URLs turn into <b>working context</b>, not a wall of text the model skims and forgets.</p>
     <p>Stop pasting the same brief into every new chat.</p>
   </div>
-  <div class="folder">
-    <div class="back"></div>
-    <div class="files">
-      <div class="fl">pitch.pdf</div><div class="fl">icp.xlsx</div><div class="fl">call.mp3</div><div class="fl">site url</div>
+  <div class="project">
+    <div class="ph">
+      <div class="fi"><svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+      <div class="t">Project <span>&middot; GTM</span></div>
+      <div class="badge"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>CACHED</div>
     </div>
-    <div class="pill"><svg viewBox="0 0 24 24"><path d="M12 17V5M6 11l6-6 6 6"/></svg>Upload once</div>
+    <div class="fr"><div class="ic">PDF</div><div class="nm">pitch-deck.pdf</div><div class="sz">2.4 MB</div><div class="ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div></div>
+    <div class="fr"><div class="ic">XLS</div><div class="nm">icp-list.xlsx</div><div class="sz">880 KB</div><div class="ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div></div>
+    <div class="fr"><div class="ic">MP3</div><div class="nm">sales-call.mp3</div><div class="sz">14 MB</div><div class="ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div></div>
+    <div class="pfoot"><b>Read by every new chat.</b> You upload once.<div class="up"><svg viewBox="0 0 24 24"><path d="M12 17V5M6 11l6-6 6 6"/></svg>Upload</div></div>
   </div>
 </div>
 
