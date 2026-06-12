@@ -84,7 +84,7 @@ def git_when(path):
         return datetime.date.today().isoformat(), 0
 
 # ---- material dimensions (corner badge in the portal) ----
-KNOWN_LOGICAL = {(1080, 1450), (1080, 1920)}
+KNOWN_LOGICAL = {(1080, 1450), (1080, 1920), (1080, 1350)}
 def png_size(path):
     """Read width/height straight from the PNG IHDR header (no Pillow needed)."""
     try:
