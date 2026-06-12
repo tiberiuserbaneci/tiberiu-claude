@@ -85,7 +85,9 @@ This repo is **not** the old personal `ultron-content` repo. The original config
 - **Work branch:** `claude/epic-davinci-eGOGS` — develop here
 - **`main`:** holds the reference content (the 72 uploaded materials live in `content/`)
 - **Push:** `git push -u origin <branch-name>` (retry with backoff on network errors only)
-- **To main:** only with the operator's explicit permission; otherwise open a PR from the work branch
+- **To main:** the operator authorized publishing to `main` (2026-06-12) — `main` is the branch
+  **GitHub Pages serves** (the always-on secure portal + the materials its downloads point to).
+  Develop on the work branch, then fast-forward / merge to `main` to publish. Still no PR unless asked.
 - **PRs:** do not open a PR unless explicitly asked
 
 There is no token to provision. Do not add remotes for, or attempt to reach, any other repo —
@@ -1034,11 +1036,21 @@ grid previews, per-material caption / ALT / first-comment copy boxes, single or 
 zip download (suggestive filename), mark-posted, analytics upload, cross-post (copy to the other
 channel), generation date, filters. The 72 reference materials load tagged **needs-revision**.
 
-- **Online (secure, no public exposure — canonical):** open a **GitHub Codespace** on the work
-  branch. `.devcontainer/devcontainer.json` auto-starts the portal on a **Private** forwarded port
-  (gated by GitHub login, shareable only to named collaborators). This is how Tibi/Catalin open it.
-  The repo is private on a user account, so **GitHub Pages is deliberately not used** (it would
-  publish the site publicly); no third-party host and no browser token are involved.
+- **Online, always-on (canonical — operator 2026-06-12):** the portal also ships as a single
+  **password-gated encrypted file** at `docs/index.html`, served by **GitHub Pages from `main`**
+  (always-on stable URL, opens on phone, no Codespace to wake). The content (manifest + thumbnails +
+  caption kits) is **AES-256-GCM encrypted in the browser** (PBKDF2-SHA256, 250k iters); nothing is
+  readable on the host without the **user + password**, so the always-public Pages URL is safe.
+  Full-res downloads link back to the private repo (a second GitHub-login gate). This **supersedes**
+  the earlier "GitHub Pages deliberately not used" rule — the client-side encryption removes the
+  public-exposure objection (per §0.1, this is now the rule). **Rebuild after adding/editing materials:**
+  `python3 portal/build_secure.py /tmp/inner.html` then
+  `PUSER=<user> PPASS=<pass> node portal/encrypt_gate.js /tmp/inner.html docs/index.html`, commit to `main`.
+  The same encrypted file works on any static host (Cloudflare Pages / Netlify) if Pages needs Pro.
+- **Admin / write-back (Codespace, private):** the **GitHub Codespace** on the work branch still runs
+  `portal/server.py` on a **Private** forwarded port for the write actions (mark-posted, analytics
+  upload, cross-post) that auto-commit. The encrypted Pages file is a read-only snapshot — rebuild it
+  to refresh what the always-on portal shows.
 - **Run (local alt):** `python3 portal/server.py` then open `http://127.0.0.1:8753`. It is **autonomous** —
   every change (posted toggle, analytics upload, cross-post) writes `content/portal/manifest.json`
   and auto-commits and pushes. No manual commit. `PORTAL_PUSH=0` to disable push.
