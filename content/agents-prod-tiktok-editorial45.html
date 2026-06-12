@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>agents-prod - TikTok carousel - editorial 4:5</title>
+<style>
+@import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
+/* BUDGET per slide: 1350px vertical - header 96 + content zone ~1156 + footer 98 = 1350.
+   Format: editorial cream 4:5 (top-performer reference clone) - REALNUMBERS palette. */
+:root{
+  --cream:#EFEBE0;          /* canvas */
+  --cream-card:#FAF9F7;     /* light cards */
+  --ink:#111111;            /* text primary */
+  --ink-78:rgba(17,17,17,.78);
+  --ink-60:rgba(17,17,17,.60);
+  --ink-bd:rgba(17,17,17,.85);
+  --orange:#C84623;         /* accent - Ultron orange */
+  --orange-deep:#BE4628;    /* accent deep */
+  --orange-ed:#D26446;      /* editorial orange - code keywords */
+  --kraft:#D4A27F;          /* code strings */
+  --dark:#171310;           /* dark blocks / code */
+  --paper:rgba(250,249,247,.88);
+  --paper-60:rgba(250,249,247,.60);
+  --paper-38:rgba(250,249,247,.38);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0c0b0a;display:flex;flex-direction:column;align-items:center;gap:28px;padding:28px 0;}
+.slide{
+  width:1080px;height:1350px;flex-shrink:0;
+  background:var(--cream);
+  padding:0 52px;
+  display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+}
+/* faint grid texture, in-palette */
+.slide::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:radial-gradient(rgba(17,17,17,.045) 1px,transparent 1.1px);
+  background-size:30px 30px;}
+.slide>*{position:relative;z-index:1;}
+
+/* ---------- header / footer ---------- */
+.hd{flex-shrink:0;height:96px;display:flex;align-items:center;justify-content:space-between;}
+.hd-pg{font-family:'DM Mono',monospace;font-size:20px;font-weight:500;letter-spacing:.14em;color:var(--orange);}
+.hd-site{font-family:'DM Mono',monospace;font-size:20px;font-weight:400;letter-spacing:.10em;color:var(--ink);}
+.ft{flex-shrink:0;height:98px;margin-top:auto;border-top:2px solid var(--ink);
+  display:flex;align-items:center;justify-content:space-between;gap:18px;}
+.ft-l{display:flex;align-items:center;gap:12px;min-width:0;}
+.ft-logo{width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.ft-brand{font-family:'DM Mono',monospace;font-size:18px;font-weight:500;letter-spacing:.10em;color:var(--ink);white-space:nowrap;}
+.ft-brand span{color:var(--ink-60);font-weight:400;}
+.ft-r{font-family:'DM Mono',monospace;font-size:18px;font-weight:400;letter-spacing:.08em;color:var(--ink-60);white-space:nowrap;}
+
+/* ---------- shared content atoms ---------- */
+.chip{align-self:flex-start;background:var(--ink);color:#FAF9F7;
+  font-family:'DM Mono',monospace;font-size:17px;font-weight:500;letter-spacing:.16em;
+  text-transform:uppercase;padding:10px 18px;margin-bottom:30px;}
+.chip b{color:var(--kraft);font-weight:500;}
+.eyebrow{font-family:'DM Mono',monospace;font-size:19px;font-weight:500;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--orange);margin-bottom:26px;}
+.h{font-family:'DM Sans',sans-serif;font-weight:800;text-transform:uppercase;
+  color:var(--ink);letter-spacing:-2.5px;line-height:1.02;}
+.h .o{color:var(--orange);}
+.intro{font-family:'DM Mono',monospace;font-size:21px;line-height:1.55;color:var(--ink-78);}
+.intro b{color:var(--ink);font-weight:500;}
+
+/* numbered / icon rows */
+.rownum{width:38px;height:38px;flex-shrink:0;background:var(--orange);color:#FAF9F7;
+  font-family:'DM Sans',sans-serif;font-weight:800;font-size:20px;
+  display:flex;align-items:center;justify-content:center;border-radius:6px;}
+.row-t{font-family:'DM Sans',sans-serif;font-weight:700;font-size:25px;color:var(--ink);letter-spacing:-.4px;}
+.row-d{font-family:'DM Mono',monospace;font-size:18.5px;line-height:1.48;color:var(--ink-78);margin-top:6px;}
+.row-d b{color:var(--ink);font-weight:500;}
+
+/* cards */
+.card{background:var(--cream-card);border:2px solid var(--ink-bd);border-radius:10px;padding:24px 26px;}
+.card-lab{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--orange);margin-bottom:10px;}
+.card-t{font-family:'DM Sans',sans-serif;font-weight:700;font-size:26px;color:var(--ink);letter-spacing:-.4px;}
+.card-d{font-family:'DM Mono',monospace;font-size:18px;line-height:1.48;color:var(--ink-78);margin-top:8px;}
+.card-d b{color:var(--ink);font-weight:500;}
+.card.dk{background:var(--dark);border-color:var(--dark);}
+.card.dk .card-t{color:var(--paper);}
+.card.dk .card-d{color:var(--paper-60);}
+.card.dk .card-d b{color:var(--kraft);font-weight:500;}
+
+/* black callout bar */
+.bar{background:var(--ink);border-radius:10px;padding:20px 24px;
+  font-family:'DM Mono',monospace;font-size:18.5px;line-height:1.5;color:var(--paper);}
+.bar .lab{color:var(--orange-ed);font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+  font-size:15px;margin-right:14px;}
+.bar em{color:var(--kraft);font-style:normal;}
+
+/* dark code block */
+.code{background:var(--dark);border-radius:12px;padding:26px 30px;
+  font-family:'DM Mono',monospace;font-size:18px;line-height:1.62;color:var(--paper);}
+.code .lab{display:block;font-size:15px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--orange-ed);margin-bottom:14px;}
+.code .c{color:var(--paper-38);}     /* comment */
+.code .k{color:var(--orange-ed);}    /* keyword */
+.code .s{color:var(--kraft);}        /* string */
+.code .f{color:#FAF9F7;font-weight:500;} /* emphasis */
+
+/* ============ S1 COVER ============ */
+.s1 .h{font-size:124px;letter-spacing:-4px;line-height:1.01;}
+.s1 .intro{margin-top:38px;max-width:880px;font-size:22px;}
+/* ============ S2 ============ */
+.s2 .h{font-size:92px;}
+.s2 .intro{margin-top:26px;font-size:22px;}
+.cmp{display:flex;gap:24px;margin-top:34px;}
+.cmp .card{flex:1;padding:34px 32px;}
+.cmp .card-lab{font-size:17px;margin-bottom:6px;}
+.cmp ul{list-style:none;margin-top:20px;display:flex;flex-direction:column;gap:19px;}
+.cmp li{font-family:'DM Mono',monospace;font-size:21px;line-height:1.42;color:var(--ink-78);
+  display:flex;gap:13px;}
+.cmp li::before{content:'+';color:var(--orange);font-weight:500;}
+.cmp .dk li{color:var(--paper-60);}
+.cmp .dk li::before{color:var(--kraft);}
+/* ============ S3 checklist ============ */
+.s3 .h{font-size:74px;}
+.s3 .intro{margin-top:14px;font-size:19.5px;}
+.chk{margin-top:18px;display:flex;flex-direction:column;}
+.chk .it{display:flex;gap:20px;padding:15.5px 2px;border-top:1.5px solid rgba(17,17,17,.22);}
+.chk .it:first-child{border-top:none;}
+.s3 .row-t{font-size:22.5px;}
+.s3 .row-d{font-size:17.5px;margin-top:4px;line-height:1.44;}
+/* ============ steps shared ============ */
+.stp .h{font-size:82px;}
+.stp .intro{margin-top:24px;}
+.stack{margin-top:26px;display:flex;flex-direction:column;gap:18px;}
+.stack .it{display:flex;gap:18px;background:var(--cream-card);
+  border:2px solid var(--ink-bd);border-radius:10px;padding:22px 24px;}
+.stack .bar{margin-top:18px;padding:22px 24px;}
+/* ============ S6 memory grid ============ */
+.grid4{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+.grid4 .card{padding:34px 32px;}
+.grid4 .card-lab{font-size:16px;margin-bottom:12px;}
+.grid4 .card-t{font-size:29px;}
+.grid4 .card-d{font-size:20.5px;line-height:1.56;margin-top:12px;}
+/* ============ code slides ============ */
+.codewrap{margin-top:28px;}
+.code{font-size:20px;line-height:1.72;padding:34px 36px;}
+.duo{display:flex;gap:20px;margin-top:22px;}
+.duo .card{flex:1;padding:26px 28px;}
+.duo .card .hd2{display:flex;align-items:center;gap:12px;}
+.duo .mk{width:30px;height:30px;flex-shrink:0;border-radius:6px;background:var(--orange);
+  color:#FAF9F7;font-family:'DM Sans',sans-serif;font-weight:800;font-size:18px;
+  display:flex;align-items:center;justify-content:center;}
+.duo .card-t{font-size:24px;}
+.duo .card-d{font-size:19px;margin-top:9px;}
+/* ============ S10 CTA ============ */
+.s10 .h{font-size:128px;letter-spacing:-4px;}
+.s10 .intro{margin-top:34px;max-width:880px;font-size:22px;}
+.recap{margin-top:40px;display:flex;flex-direction:column;gap:0;}
+.recap .it{display:flex;align-items:center;gap:16px;padding:16px 2px;
+  border-top:1.5px solid rgba(17,17,17,.22);
+  font-family:'DM Mono',monospace;font-size:20px;color:var(--ink-78);}
+.recap .it b{color:var(--ink);font-weight:500;}
+.recap .n{color:var(--orange);font-weight:500;width:36px;flex-shrink:0;}
+.cta-chip{margin-top:44px;align-self:flex-start;display:flex;align-items:center;gap:14px;
+  background:var(--orange);color:#FAF9F7;border-radius:8px;padding:24px 38px;
+  font-family:'DM Sans',sans-serif;font-weight:900;font-size:31px;letter-spacing:.05em;
+  text-transform:uppercase;box-shadow:0 14px 34px rgba(200,70,35,.30);}
+.cta-chip svg{width:26px;height:26px;stroke:#FAF9F7;stroke-width:2.8;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+</style>
+</head>
+<body>
+
+<!-- ============ SLIDE 1 / COVER ============ -->
+<div class="slide s1">
+  <div class="hd"><div class="hd-pg">01 / 10</div><div class="hd-site">51ultron.com</div></div>
+  <div style="height:170px;flex-shrink:0;"></div>
+  <div class="eyebrow">Founder's Guide</div>
+  <div class="h">Build<br>Production<br>Ready<br><span class="o">AI Agents.</span></div>
+  <div class="intro">Your agent works in a demo. That is not enough. Here is everything it needs to survive when real users hit it.</div>
+  <div class="ft">
+    <div class="ft-l"><img class="ft-logo" src="__LOGO_URI__" alt=""><div class="ft-brand">ULTRON <span>&middot; AI AGENTS FOR FOUNDERS</span></div></div>
+    <div class="ft-r">Swipe to Start &rarr;</div>
+  </div>
+</div>
+
+<!-- ============ SLIDE 2 / DEMO VS PROD ============ -->
+<div class="slide s2">
+  <div class="hd"><div class="hd-pg">02 / 10</div><div class="hd-site">51ultron.com</div></div>
+  <div class="chip">&middot; The Real Difference</div>
+  <div class="h">Demo Works<br><span class="o">Once.<br>Prod Works<br>Always.</span></div>
+  <div class="intro">A demo agent impresses in a controlled setting. A production agent survives <b>real users, bad inputs, API outages and unexpected tool failures</b>, without breaking.</div>
+  <div class="cmp">
+    <div class="card">
+      <div class="card-lab" style="color:var(--ink-60);">Demo Agent</div>
+      <ul>
+        <li>Happy path only</li>
+        <li>No error handling</li>
+        <li>No logging or tracing</li>
+        <li>No memory across sessions</li>
+        <li>No guardrails</li>
+        <li>Crashes on bad input</li>
+      </ul>
+    </div>
+    <div class="card dk">
+      <div class="card-lab">Production Agent</div>
+      <ul>
+        <li>Handles edge cases</li>
+        <li>Retries + fallbacks</li>
+        <li>Full trace on every run</li>
+        <li>Persistent memory</li>
+        <li>Guardrails on every action</li>
+        <li>Gracefully degrades</li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft">
+    <div class="ft-l"><img class="ft-logo" src="__LOGO_URI__" alt=""><div class="ft-brand">ULTRON <span>&middot; AI AGENTS FOR FOUNDERS</span></div></div>
+    <div class="ft-r">Swipe to Know More &rarr;</div>
+  </div>
+</div>
+
+<!-- ============ SLIDE 3 / CHECKLIST ============ -->
+<div class="slide s3">
+  <div class="hd"><div class="hd-pg">03 / 10</div><div class="hd-site">51ultron.com</div></div>
+  <div class="chip">&middot; The Checklist</div>
+  <div class="h">6 Things<br>That Must<br><span class="o">Be True.</span></div>
+  <div class="intro">Before you call an agent "production-ready", it needs to pass all six. Not five. Six.</div>
+  <div class="chk">
+    <div class="it"><div class="rownum">1</div><div><div class="row-t">It handles tool failures gracefully</div><div class="row-d">APIs go down. Networks time out. Your agent must retry, fall back, or report, never crash silently.</div></div></div>
+    <div class="it"><div class="rownum">2</div><div><div class="row-t">Every run is observable</div><div class="row-d">You can see exactly what the agent did, which tools fired, and what the model returned, on any past session.</div></div></div>
+    <div class="it"><div class="rownum">3</div><div><div class="row-t">Memory persists across sessions</div><div class="row-d">The agent remembers what it did last time. Users do not re-explain context on every new conversation.</div></div></div>
+    <div class="it"><div class="rownum">4</div><div><div class="row-t">Guardrails block dangerous actions</div><div class="row-d">High-risk tools, delete, send, charge, need human approval before they fire. Not optional.</div></div></div>
+    <div class="it"><div class="rownum">5</div><div><div class="row-t">It stays within token limits</div><div class="row-d">Long sessions eat context. The agent compresses history intelligently instead of cramming the window.</div></div></div>
+    <div class="it"><div class="rownum">6</div><div><div class="row-t">You can evaluate it systematically</div><div class="row-d">You have a test suite. You know if a change made the agent better or worse before it ships.</div></div></div>
+  </div>
+  <div class="ft">
+    <div class="ft-l"><img class="ft-logo" src="__LOGO_URI__" alt=""><div class="ft-brand">ULTRON <span>&middot; AI AGENTS FOR FOUNDERS</span></div></div>
+    <div class="ft-r">Swipe to Know More &rarr;</div>
+  </div>
+</div>
+
+<!-- ============ SLIDE 4 / STEP 1 FOUNDATION ============ -->
+<div class="slide stp">
+  <div class="hd"><div class="hd-pg">04 / 10</div><div class="hd-site">51ultron.com</div></div>
+  <div class="chip">&middot; Step 1 &middot; The Foundation</div>
+  <div class="h" style="font-size:72px;">Pick the Right<br><span class="o">Model.</span><br>Write the<br>Right Prompt.</div>
+  <div class="intro">The model and the system prompt are the brain of your agent. Get these wrong and <b>no amount of tooling will save you</b>.</div>
+  <div class="stack">
+    <div class="it"><div class="rownum">1</div><div><div class="row-t">Do not default to the biggest model</div><div class="row-d">Match model to task. <b>Claude Haiku</b> is fast and cheap for simple routing. <b>Sonnet</b> for nuanced reasoning. <b>Opus</b> for the hardest tasks. Stay model-agnostic.</div></div></div>
+    <div class="it"><div class="rownum">2</div><div><div class="row-t">The system prompt is load-bearing</div><div class="row-d">Define the agent's role, constraints, tone and tool rules in a clear system prompt. Vague prompts produce vague agents. <b>Specific prompts produce predictable agents.</b></div></div></div>
+    <div class="it"><div class="rownum">3</div><div><div class="row-t">Use a context file read every session</div><div class="row-d">Project context, conventions, team preferences, business rules, loaded on every run. The agent stops asking what it already knows.</div></div></div>
+    <div class="bar"><span class="lab">Rule of Thumb</span>Start with a small model + a great prompt. Upgrade the model only when the prompt ceiling is genuinely hit. <em>Most failures are prompt failures, not model failures.</em></div>
+  </div>
+  <div class="ft">
+    <div class="ft-l"><img class="ft-logo" src="__LOGO_URI__" alt=""><div class="ft-brand">ULTRON <span>&middot; AI AGENTS FOR FOUNDERS</span></div></div>
+    <div class="ft-r">Swipe to Know More &rarr;</div>
+  </div>
+</div>
+
+<!-- ============ SLIDE 5 / STEP 2 TOOLS ============ -->
+<div class="slide stp">
+  <div class="hd"><div class="hd-pg">05 / 10</div><div class="hd-site">51ultron.com</div></div>
+  <div class="chip">&middot; Step 2 &middot; Tools</div>
+  <div class="h">Tools Fail.<br><span class="o">Plan For It.</span></div>
+  <div class="intro">Every tool call in production will eventually fail. Wrap every single one with <b>retry logic, a timeout and a fallback</b> before your agent ships.</div>
+  <div class="codewrap">
+    <div class="code"><span class="lab">Wrap every tool call &middot; retry pattern</span><span class="k">from</span> tenacity <span class="k">import</span> retry, stop_after_attempt, wait_exponential<br><br><span class="c"># every call gets retries, a timeout and a fallback</span><br><span class="k">@retry</span>(stop=stop_after_attempt(<span class="s">3</span>), wait=wait_exponential(multiplier=<span class="s">1</span>, max=<span class="s">10</span>))<br><span class="k">def</span> <span class="f">search_web</span>(query: <span class="k">str</span>) -&gt; <span class="k">str</span>:<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">try</span>: <span class="k">return</span> tavily.search(query)<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">except</span> Exception <span class="k">as</span> e:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">return</span> <span class="s">"Search unavailable. Try a different approach."</span><br><span class="c"># the agent sees the error as text and works around it, never crashes</span></div>
+    <div class="duo">
+      <div class="card"><div class="hd2"><div class="mk">+</div><div class="card-t">Keep tools focused</div></div><div class="card-d">One tool, one job. <b>Fewer than 8 tools per agent.</b> Vague tools mean the wrong tool gets chosen. Clear descriptions, reliable routing.</div></div>
+      <div class="card"><div class="hd2"><div class="mk">!</div><div class="card-t">Never retry on 4xx errors</div></div><div class="card-d">Retry on 5xx and network failures only. Retrying a 400 Bad Request just <b>burns tokens faster</b>.</div></div>
+    </div>
+  </div>
+  <div class="ft">
+    <div class="ft-l"><img class="ft-logo" src="__LOGO_URI__" alt=""><div class="ft-brand">ULTRON <span>&middot; AI AGENTS FOR FOUNDERS</span></div></div>
+    <div class="ft-r">Swipe to Know More &rarr;</div>
+  </div>
+</div>
+
+<!-- ============ SLIDE 6 / STEP 3 MEMORY ============ -->
+<div class="slide stp">
+  <div class="hd"><div class="hd-pg">06 / 10</div><div class="hd-site">51ultron.com</div></div>
+  <div class="chip">&middot; Step 3 &middot; Memory</div>
+  <div class="h" style="font-size:86px;">Agents Without<br><span class="o">Memory<br>Start Over.</span></div>
+  <div class="intro">An agent that forgets every session is not useful in production. Memory is what turns a one-shot tool into <b>a system users trust</b>.</div>
+  <div class="grid4">
+    <div class="card"><div class="card-lab">Short-Term</div><div class="card-t">Working Memory</div><div class="card-d">The active conversation window. <b>Compress it before it overflows</b>, checkpoint the thread, never lose the live context.</div></div>
+    <div class="card"><div class="card-lab">Semantic</div><div class="card-t">Vector Memory</div><div class="card-d">Documents and knowledge searched by meaning, the foundation of RAG. <b>Pinecone, pgvector, Weaviate.</b></div></div>
+    <div class="card dk"><div class="card-lab">Long-Term</div><div class="card-t">Persistent Memory</div><div class="card-d">Survives across sessions. Preferences, project rules, past decisions. <b>Mem0, LangGraph Store, Zep.</b></div></div>
+    <div class="card"><div class="card-lab">Skill</div><div class="card-t">Learned Conventions</div><div class="card-d">User corrections, patterns and team rules stored in a context file, <b>loaded every session</b>.</div></div>
+  </div>
+  <div class="ft">
+    <div class="ft-l"><img class="ft-logo" src="__LOGO_URI__" alt=""><div class="ft-brand">ULTRON <span>&middot; AI AGENTS FOR FOUNDERS</span></div></div>
+    <div class="ft-r">Swipe to Know More &rarr;</div>
+  </div>
+</div>
+
+<!-- ============ SLIDE 7 / STEP 4 OBSERVABILITY ============ -->
+<div class="slide stp">
+  <div class="hd"><div class="hd-pg">07 / 10</div><div class="hd-site">51ultron.com</div></div>
+  <div class="chip">&middot; Step 4 &middot; Observability</div>
+  <div class="h" style="font-size:80px;">If You Can't See It<br><span class="o">You Can't Fix It.</span></div>
+  <div class="intro">Every agent decision in production must be traceable. Without logs and traces, debugging a silent failure <b>means guessing</b>.</div>
+  <div class="codewrap">
+    <div class="code"><span class="lab">Enable tracing &middot; 2 lines</span><span class="k">import</span> os<br>os.environ[<span class="s">"TRACING_V2"</span>] = <span class="s">"true"</span><br>os.environ[<span class="s">"TRACING_API_KEY"</span>] = <span class="s">"your key"</span><br><span class="c"># every agent run is now auto-traced: every tool call, every token, every decision</span><br><br><span class="k">import</span> logfire<br>logfire.<span class="f">configure</span>()<br><span class="c"># one logfire line for structured logs on top</span></div>
+    <div class="duo">
+      <div class="card"><div class="hd2"><div class="mk">+</div><div class="card-t">What to track</div></div><div class="card-d">Latency per step, tokens used, tool success rate, answer quality. <b>The four numbers that explain every failure.</b></div></div>
+      <div class="card"><div class="hd2"><div class="mk">+</div><div class="card-t">Tools that do it</div></div><div class="card-d"><b>LangSmith, Logfire, Arize.</b> All integrate in 2 lines. Full trace trees, structured search over every run.</div></div>
+    </div>
+  </div>
+  <div class="ft">
+    <div class="ft-l"><img class="ft-logo" src="__LOGO_URI__" alt=""><div class="ft-brand">ULTRON <span>&middot; AI AGENTS FOR FOUNDERS</span></div></div>
+    <div class="ft-r">Swipe to Know More &rarr;</div>
+  </div>
+</div>
+
+<!-- ============ SLIDE 8 / STEP 5 SAFETY ============ -->
+<div class="slide stp">
+  <div class="hd"><div class="hd-pg">08 / 10</div><div class="hd-site">51ultron.com</div></div>
+  <div class="chip">&middot; Step 5 &middot; Safety</div>
+  <div class="h" style="font-size:76px;">The Agent Decides<br><span class="o">What.</span><br>You Decide<br><span class="o">What's Safe.</span></div>
+  <div class="intro">The model picks the action. Your guardrails decide if it is allowed. These are <b>architecturally separate</b>, and they must be.</div>
+  <div class="stack">
+    <div class="it"><div class="rownum">1</div><div><div class="row-t">Input guardrails</div><div class="row-d">Validate user requests before the agent acts. Block harmful, out-of-scope or malformed inputs <b>at the front door</b>.</div></div></div>
+    <div class="it"><div class="rownum">2</div><div><div class="row-t">Human-in-the-loop &middot; pause before the action</div><div class="row-d">High-risk tools (send email, delete file, charge card) <b>pause the agent and wait for human approval</b>. It resumes with full context, exactly where it stopped.</div></div></div>
+    <div class="it"><div class="rownum">3</div><div><div class="row-t">Output guardrails</div><div class="row-d">Final check before the result reaches the user. Catch hallucinations, policy violations or incomplete answers, <b>before they ship</b>.</div></div></div>
+    <div class="bar"><span class="lab">Start Here</span>Default to supervised: the agent acts, a human approves the high-risk steps. <em>Earn full autonomy by proving reliability over time.</em></div>
+  </div>
+  <div class="ft">
+    <div class="ft-l"><img class="ft-logo" src="__LOGO_URI__" alt=""><div class="ft-brand">ULTRON <span>&middot; AI AGENTS FOR FOUNDERS</span></div></div>
+    <div class="ft-r">Swipe to Know More &rarr;</div>
+  </div>
+</div>
+
+<!-- ============ SLIDE 9 / STEP 6 EVALS ============ -->
+<div class="slide stp">
+  <div class="hd"><div class="hd-pg">09 / 10</div><div class="hd-site">51ultron.com</div></div>
+  <div class="chip">&middot; Step 6 &middot; Evals</div>
+  <div class="h" style="font-size:86px;">Test Your<br>Agent Like<br><span class="o">Software.</span></div>
+  <div class="intro">You would not ship code without tests. Do not ship agents without evals. Evals tell you if a change made the agent better or worse, <b>before your users find out</b>.</div>
+  <div class="stack">
+    <div class="it"><div class="rownum">1</div><div><div class="row-t">Build a golden dataset</div><div class="row-d">50-100 real inputs with expected outputs. <b>Every change to the agent runs against this.</b> Green means ship. Red means fix.</div></div></div>
+    <div class="it"><div class="rownum">2</div><div><div class="row-t">Test failure modes specifically</div><div class="row-d">Bad inputs, API timeouts, ambiguous queries, very long sessions. <b>If it can happen in production, test it before production.</b></div></div></div>
+    <div class="it"><div class="rownum">3</div><div><div class="row-t">Use LLM-as-judge for quality</div><div class="row-d">For open-ended answers, a second model scores accuracy, completeness and relevance. <b>Scales to thousands of evals per run.</b></div></div></div>
+    <div class="bar"><span class="lab">Tools</span>LangSmith Evaluations &middot; Braintrust &middot; OpenEvals &middot; Ragas (for RAG) &middot; <em>pytest with LLM assertions</em></div>
+  </div>
+  <div class="ft">
+    <div class="ft-l"><img class="ft-logo" src="__LOGO_URI__" alt=""><div class="ft-brand">ULTRON <span>&middot; AI AGENTS FOR FOUNDERS</span></div></div>
+    <div class="ft-r">Swipe to Know More &rarr;</div>
+  </div>
+</div>
+
+<!-- ============ SLIDE 10 / CTA ============ -->
+<div class="slide s10">
+  <div class="hd"><div class="hd-pg">10 / 10</div><div class="hd-site">51ultron.com</div></div>
+  <div style="height:100px;flex-shrink:0;"></div>
+  <div class="eyebrow">That's a Wrap &middot; Production-Ready AI Agents</div>
+  <div class="h">Comment<br><span class="o">Agents.</span></div>
+  <div class="intro">Comment <b>AGENTS</b> and I will send you the full production-agents breakdown, all six steps in one piece.</div>
+  <div class="recap">
+    <div class="it"><span class="n">01</span><b>Foundation</b>&nbsp;&middot;&nbsp;right model, load-bearing prompt</div>
+    <div class="it"><span class="n">02</span><b>Tools</b>&nbsp;&middot;&nbsp;retry, timeout, fallback on every call</div>
+    <div class="it"><span class="n">03</span><b>Memory</b>&nbsp;&middot;&nbsp;working, vector, persistent, skills</div>
+    <div class="it"><span class="n">04</span><b>Observability</b>&nbsp;&middot;&nbsp;trace every run, every decision</div>
+    <div class="it"><span class="n">05</span><b>Safety</b>&nbsp;&middot;&nbsp;human approval on high-risk actions</div>
+    <div class="it"><span class="n">06</span><b>Evals</b>&nbsp;&middot;&nbsp;test like software, ship on green</div>
+  </div>
+  <div class="cta-chip">Comment Agents<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+  <div class="ft">
+    <div class="ft-l"><img class="ft-logo" src="__LOGO_URI__" alt=""><div class="ft-brand">ULTRON <span>&middot; AI AGENTS FOR FOUNDERS</span></div></div>
+    <div class="ft-r">51ultron.com</div>
+  </div>
+</div>
+
+</body>
+</html>
