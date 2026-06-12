@@ -2,7 +2,7 @@
 
 For: gtm-weekend-45-carousel.pdf (7-page PDF carousel, editorial 4:5)
 Keyword: WEEKEND  |  Lead magnet: DM delivery (no link in body, keyword comment only)
-Visual hook (on cover): "How to master GTM in one weekend."
+Visual hook (on cover): "How to build your GTM engine in one weekend."
 Transform of the GROWAI "master Claude in one weekend" reference into a founder GTM build on the 5 Ultron agents.
 
 ---
@@ -45,7 +45,7 @@ Comment WEEKEND and I will send you the exact Claude GTM build we used.
 
 ## ALT TEXT
 
-Dark editorial carousel on a slate background with book-orange accents. The cover reads 'How to master GTM in one weekend' over a five-step table of contents, CORTEX, SPECTER, STRIKER, PULSE and AMPLIFY, ROUTER, and three chips, 5 steps, 5 AI agents, 0 sales hires. Step one shows a CORTEX ranked brief of founder-led companies, 2 to 50 people, US and UK, scored from 96 to 81. Step two is a SPECTER outbound sequence, four touches across 12 days, held by a human approval gate. Step three is a STRIKER deal flow from qualify to close with three objections and replies. Step four fans one PULSE post into LinkedIn, TikTok and X with AMPLIFY send times per time zone. Step five is the ROUTER loop choosing agents and model tiers. Closes with a Comment WEEKEND call to action and the Ultron logo.
+Dark editorial carousel on a slate background with book-orange accents. The cover reads 'How to build your GTM engine in one weekend' over a five-step table of contents, CORTEX, SPECTER, STRIKER, PULSE and AMPLIFY, ROUTER, and three chips, 5 steps, 5 AI agents, 0 sales hires. Step one shows a CORTEX ranked brief of founder-led companies, 2 to 50 people, US and UK, scored from 96 to 81. Step two is a SPECTER outbound sequence, four touches across 12 days, held by a human approval gate. Step three is a STRIKER deal flow from qualify to close with three objections and replies. Step four fans one PULSE post into LinkedIn, TikTok and X with AMPLIFY send times per time zone. Step five is the ROUTER loop choosing agents and model tiers. Closes with a Comment WEEKEND call to action and the Ultron logo.
 
 ---
 
