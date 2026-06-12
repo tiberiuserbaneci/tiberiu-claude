@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>chat-habits - TikTok carousel - tips 4:5</title>
+<style>
+@import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
+/* BUDGET per slide: 1350px - tag zone ~250 + headline ~210 + body ~430 + hero visual ~460 (bleeds bottom).
+   Format: tips 4:5 (operator reference 2026-06-12) - alternating dark/light, sentence-case heads,
+   one big scene per slide. DM Sans only. Palette: #0E0D0C / #F4F2ED / #D26446 / #C84623 / #111. */
+:root{
+  --dk:#0E0D0C;
+  --dk-2:#1A1816;
+  --lt:#F4F2ED;
+  --ink:#111111;
+  --ink-62:rgba(17,17,17,.62);
+  --wt:#FAFAF7;
+  --wt-62:rgba(250,250,247,.62);
+  --cor:#D26446;          /* coral - editorial orange */
+  --cor-deep:#C84623;
+  --cream:#F5ECE3;
+  --tagdk:#2B1D15;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#070606;display:flex;flex-direction:column;align-items:center;gap:28px;padding:28px 0;
+  font-family:'DM Sans',sans-serif;}
+.slide{width:1080px;height:1350px;flex-shrink:0;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;padding:0 96px;}
+.slide.dk{background:radial-gradient(120% 70% at 50% -8%,var(--dk-2) 0%,var(--dk) 58%);color:var(--wt);}
+.slide.lt{background:var(--lt);color:var(--ink);}
+
+/* ---------- TIP tag with pins ---------- */
+.tag{position:relative;align-self:flex-start;margin-top:188px;
+  font-size:25px;font-weight:600;letter-spacing:.10em;padding:16px 34px;}
+.lt .tag{background:var(--cream);color:var(--ink);}
+.dk .tag{background:var(--tagdk);color:var(--wt);}
+.tag::before{content:'';position:absolute;left:-3px;top:-26px;width:3px;height:26px;background:var(--cor);}
+.tag::after{content:'';position:absolute;right:-3px;bottom:-26px;width:3px;height:26px;background:var(--cor);}
+.tag .pin1,.tag .pin2{position:absolute;width:12px;height:12px;border-radius:50%;background:var(--cor);}
+.tag .pin1{left:-8px;top:-32px;}
+.tag .pin2{right:-8px;bottom:-32px;}
+
+/* ---------- headline / body ---------- */
+.hl{margin-top:54px;font-size:88px;font-weight:500;letter-spacing:-2.8px;line-height:1.08;}
+.bd{margin-top:46px;display:flex;flex-direction:column;gap:30px;max-width:850px;}
+.bd p{font-size:33px;font-weight:400;line-height:1.46;}
+.lt .bd p{color:var(--ink-62);}
+.dk .bd p{color:var(--wt-62);}
+.bd b{font-weight:700;}
+.lt .bd b{color:var(--ink);}
+.dk .bd b{color:var(--wt);}
+
+/* ---------- glassy coral element (dark slides) ---------- */
+.glass{background:linear-gradient(160deg,rgba(210,100,70,.34) 0%,rgba(140,58,34,.22) 55%,rgba(95,40,24,.30) 100%);
+  border:2px solid rgba(236,152,116,.42);
+  box-shadow:inset 0 2px 0 rgba(255,205,175,.32), inset 0 -18px 40px rgba(70,25,12,.35), 0 34px 90px rgba(190,80,45,.22);}
+
+/* ====================================================== */
+/* S1 COVER (dark)                                         */
+/* ====================================================== */
+.cover{padding:0 84px;}
+.cv-wrap{margin-top:200px;display:flex;align-items:flex-start;gap:30px;}
+.cv-8{font-size:400px;font-weight:600;line-height:.82;color:var(--cor);letter-spacing:-12px;
+  text-shadow:0 24px 80px rgba(210,100,70,.25);}
+.cv-tx{padding-top:36px;}
+.cv-l1{font-size:78px;font-weight:500;letter-spacing:-2px;color:var(--wt);line-height:1.0;}
+.cv-l2{font-size:126px;font-weight:700;letter-spacing:-4px;line-height:1.0;margin-top:6px;color:var(--wt);}
+.cv-l2 span{color:var(--cor);}
+.cv-l3{font-size:78px;font-weight:500;letter-spacing:-2px;color:var(--wt);line-height:1.04;margin-top:8px;}
+.cv-l4{font-size:118px;font-weight:600;letter-spacing:-3px;line-height:1.0;margin-top:6px;
+  background:linear-gradient(180deg,#ECEAE6 8%,#8B8884 90%);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.cv-scene{position:absolute;left:84px;right:84px;top:760px;bottom:0;}
+.cv-bars{position:absolute;left:0;top:0;display:flex;flex-direction:column;gap:17px;}
+.cv-bar{width:392px;height:37px;border-radius:9px;background:#242220;}
+.cv-bar:nth-child(2n){background:#1F1D1B;}
+.cv-note{position:absolute;left:540px;top:300px;font-size:31px;font-style:italic;letter-spacing:.02em;
+  color:rgba(250,250,247,.88);transform:rotate(-2deg);}
+.cv-obars{position:absolute;left:478px;right:0;bottom:-18px;display:flex;flex-direction:column;gap:16px;}
+.cv-obar{height:42px;border-radius:9px;background:var(--cor);box-shadow:0 14px 44px rgba(210,100,70,.30);}
+
+/* ====================================================== */
+/* product mockups                                          */
+/* ====================================================== */
+/* S2: light - composer browser frame, bleeds bottom-right */
+.mk-frame{position:absolute;right:-120px;bottom:-14px;width:660px;border-radius:18px 18px 0 0;
+  background:#FAF9F7;border:2px solid rgba(17,17,17,.16);border-bottom:none;
+  box-shadow:0 -18px 70px rgba(17,17,17,.13);}
+.mk-top{display:flex;align-items:center;gap:10px;padding:16px 20px;border-bottom:1.5px solid rgba(17,17,17,.10);}
+.mk-dot{width:13px;height:13px;border-radius:50%;background:rgba(17,17,17,.16);}
+.mk-url{flex:1;margin-left:8px;background:rgba(17,17,17,.06);border-radius:8px;padding:8px 14px;
+  font-family:'DM Mono',monospace;font-size:16px;color:rgba(17,17,17,.62);}
+.mk-body{padding:24px 26px 30px;}
+.mk-hi{font-size:30px;font-weight:600;color:var(--ink);letter-spacing:-.5px;}
+.mk-hi em{color:var(--cor);font-style:normal;}
+.mk-input{margin-top:18px;border:2px solid rgba(17,17,17,.18);border-radius:14px;padding:16px 18px;
+  font-size:19px;color:rgba(17,17,17,.55);}
+.mk-row{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;}
+.mk-chip{border:1.5px solid rgba(17,17,17,.16);border-radius:9px;padding:9px 14px;font-size:16px;
+  color:rgba(17,17,17,.62);background:rgba(17,17,17,.025);}
+.mk-tier{display:flex;gap:8px;margin-top:14px;align-items:center;font-family:'DM Mono',monospace;
+  font-size:15px;color:rgba(17,17,17,.55);}
+.mk-tpill{border-radius:7px;padding:7px 12px;border:1.5px solid rgba(17,17,17,.14);}
+.mk-tpill.on{background:var(--cor);color:#FAF9F7;border-color:var(--cor);font-weight:500;}
+
+/* S3: dark - glassy slash input */
+.slash-wrap{position:absolute;left:96px;right:96px;bottom:54px;}
+.slash-menu{width:430px;margin-left:50px;margin-bottom:-12px;position:relative;z-index:2;
+  background:rgba(20,17,15,.92);border:1.5px solid rgba(236,152,116,.30);border-radius:18px;padding:10px;}
+.slash-menu .mi{display:flex;align-items:center;gap:14px;padding:13px 16px;border-radius:11px;
+  font-family:'DM Mono',monospace;font-size:19px;color:var(--wt-62);}
+.slash-menu .mi b{color:var(--wt);font-weight:500;}
+.slash-menu .mi span{margin-left:auto;font-size:15px;color:rgba(250,250,247,.34);}
+.slash-menu .mi.on{background:rgba(210,100,70,.22);}
+.slash-menu .mi.on b{color:#F0A582;}
+.slash-input{position:relative;border-radius:34px;padding:34px 38px;display:flex;align-items:center;gap:16px;}
+.slash-input .tx{font-size:30px;color:var(--wt);font-weight:500;}
+.slash-input .cur{width:3px;height:38px;background:#F0A582;}
+.slash-input .send{margin-left:auto;width:54px;height:54px;border-radius:50%;background:rgba(250,250,247,.14);
+  display:flex;align-items:center;justify-content:center;}
+.slash-input svg{width:26px;height:26px;stroke:var(--wt);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+
+/* S4: light - three ascending tier dots */
+.tiers{position:absolute;left:96px;right:96px;bottom:90px;display:flex;align-items:flex-end;gap:64px;}
+.tier{display:flex;flex-direction:column;align-items:center;gap:20px;}
+.tier .c{border-radius:50%;background:#D9D5CC;}
+.tier:nth-child(1) .c{width:120px;height:120px;}
+.tier:nth-child(2) .c{width:190px;height:190px;background:#C9C4B9;}
+.tier:nth-child(3) .c{width:280px;height:280px;background:var(--cor);
+  box-shadow:0 30px 80px rgba(210,100,70,.35), inset 0 6px 0 rgba(255,210,185,.45);}
+.tier .lb{font-family:'DM Mono',monospace;font-size:21px;letter-spacing:.14em;color:var(--ink-62);}
+.tier:nth-child(3) .lb{color:var(--cor-deep);font-weight:500;}
+
+/* S5: dark - memory layer stack */
+.mem{position:absolute;left:50%;transform:translateX(-50%);bottom:26px;width:640px;
+  display:flex;flex-direction:column;gap:16px;}
+.mem .ly{border-radius:16px;padding:22px 26px;display:flex;align-items:center;gap:16px;
+  font-family:'DM Mono',monospace;font-size:20px;color:var(--wt-62);
+  background:rgba(250,250,247,.05);border:1.5px solid rgba(250,250,247,.12);}
+.mem .ly b{color:var(--wt);font-weight:500;}
+.mem .ly .n{margin-left:auto;font-size:16px;color:rgba(250,250,247,.34);}
+.mem .ly.hot{color:#F7D9CB;}
+.mem .ly.hot b{color:#F0A582;}
+
+/* S6: light - folder + file chips */
+.folder{position:absolute;left:50%;transform:translateX(-50%);bottom:-150px;width:740px;height:480px;}
+.folder .back{position:absolute;inset:0;border-radius:26px;
+  background:linear-gradient(170deg,#D26446 0%,#B0492C 80%);
+  box-shadow:0 -20px 90px rgba(190,80,45,.30), inset 0 3px 0 rgba(255,205,175,.45);}
+.folder .back::before{content:'';position:absolute;top:-44px;left:0;width:300px;height:70px;border-radius:22px 26px 0 0;
+  background:#D26446;transform:skewX(28deg);transform-origin:bottom left;}
+.folder .files{position:absolute;left:40px;right:40px;top:-92px;display:flex;gap:14px;justify-content:center;}
+.folder .fl{background:#FAF9F7;border:1.5px solid rgba(17,17,17,.14);border-radius:13px;padding:16px 18px;
+  font-family:'DM Mono',monospace;font-size:17px;color:rgba(17,17,17,.70);
+  box-shadow:0 16px 36px rgba(17,17,17,.14);}
+.folder .pill{position:absolute;left:50%;top:120px;transform:translateX(-50%);
+  background:rgba(20,12,8,.45);border:1.5px solid rgba(255,205,175,.40);border-radius:40px;
+  padding:22px 40px;display:flex;align-items:center;gap:16px;color:#FFF1E8;font-size:27px;font-weight:600;}
+.folder .pill svg{width:28px;height:28px;stroke:#FFF1E8;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+
+/* S7: dark - job card with donut */
+.job{position:absolute;left:50%;transform:translateX(-50%);bottom:30px;width:700px;border-radius:26px;padding:34px 38px;}
+.job .top{display:flex;align-items:center;gap:24px;}
+.job .donut{width:110px;height:110px;border-radius:50%;flex-shrink:0;
+  background:conic-gradient(#F0A582 0 71%,rgba(250,250,247,.16) 71% 100%);
+  display:flex;align-items:center;justify-content:center;}
+.job .donut i{width:74px;height:74px;border-radius:50%;background:#241712;font-style:normal;
+  display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;color:#F7D9CB;}
+.job .jt{font-size:28px;font-weight:600;color:var(--wt);}
+.job .js{font-family:'DM Mono',monospace;font-size:18px;color:rgba(255,220,200,.65);margin-top:8px;}
+.job .steps{margin-top:26px;display:flex;flex-direction:column;gap:13px;}
+.job .st{display:flex;align-items:center;gap:14px;font-family:'DM Mono',monospace;font-size:19px;color:rgba(255,235,225,.78);}
+.job .st .ic{width:24px;height:24px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  background:rgba(240,165,130,.25);color:#FFD9C4;font-size:14px;font-weight:700;}
+.job .st.run .ic{background:#F0A582;color:#3A1A0E;}
+.job .st.wait{color:rgba(255,235,225,.40);}
+
+/* S8: light - fork diagram */
+.fork{position:absolute;left:96px;right:96px;bottom:60px;height:430px;}
+.fork svg{position:absolute;inset:0;width:100%;height:100%;}
+.fork .card{position:absolute;border-radius:15px;padding:18px 22px;background:#FAF9F7;
+  border:2px solid rgba(17,17,17,.16);font-family:'DM Mono',monospace;font-size:18px;color:rgba(17,17,17,.72);
+  box-shadow:0 14px 36px rgba(17,17,17,.10);}
+.fork .card b{color:var(--ink);font-weight:500;display:block;font-family:'DM Sans',sans-serif;font-size:21px;margin-bottom:4px;}
+.fork .card.hot{border-color:var(--cor);background:#FBEEE7;}
+.fork .card.hot b{color:var(--cor-deep);}
+
+/* S9: dark - share link pill + proof count */
+.share{position:absolute;left:50%;transform:translateX(-50%);bottom:80px;width:760px;}
+.share .pill{border-radius:38px;padding:30px 36px;display:flex;align-items:center;gap:20px;}
+.share .url{font-family:'DM Mono',monospace;font-size:26px;color:#FFF1E8;}
+.share .url b{color:#F0A582;font-weight:500;}
+.share .ro{margin-left:auto;background:rgba(250,250,247,.14);border-radius:11px;padding:10px 16px;
+  font-family:'DM Mono',monospace;font-size:16px;letter-spacing:.08em;color:var(--wt);}
+.share .proof{margin-top:26px;display:flex;gap:9px;flex-wrap:wrap;}
+.share .p{width:34px;height:34px;border-radius:8px;background:rgba(250,250,247,.10);}
+.share .p.on{background:var(--cor);box-shadow:0 8px 22px rgba(210,100,70,.35);}
+.share .cap{margin-top:18px;font-family:'DM Mono',monospace;font-size:18px;color:rgba(250,250,247,.45);}
+.share .cap b{color:#F0A582;font-weight:500;}
+
+/* ====================================================== */
+/* S10 CTA (light)                                         */
+/* ====================================================== */
+.cta-big{margin-top:60px;align-self:flex-start;display:flex;align-items:center;gap:18px;
+  background:linear-gradient(165deg,#D26446 0%,#C84623 90%);color:#FAF9F7;border-radius:22px;
+  padding:34px 48px;font-size:40px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;
+  box-shadow:0 26px 70px rgba(200,70,35,.30), inset 0 2px 0 rgba(255,210,185,.5);}
+.cta-big svg{width:34px;height:34px;stroke:#FAF9F7;stroke-width:2.8;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.brandline{position:absolute;left:96px;right:96px;bottom:56px;display:flex;align-items:center;justify-content:space-between;
+  border-top:2px solid rgba(17,17,17,.85);padding-top:24px;}
+.brandline .l{display:flex;align-items:center;gap:12px;font-family:'DM Mono',monospace;font-size:19px;
+  letter-spacing:.10em;color:var(--ink);}
+.brandline .l img{width:30px;height:30px;border-radius:50%;object-fit:cover;}
+.brandline .l span{color:rgba(17,17,17,.55);}
+.brandline .r{font-size:24px;font-weight:800;letter-spacing:-.4px;color:var(--ink);}
+.brandline .r em{color:var(--cor-deep);font-style:normal;}
+</style>
+</head>
+<body>
+
+<!-- ============ S1 COVER (dark) ============ -->
+<div class="slide dk cover">
+  <div class="cv-wrap">
+    <div class="cv-8">8</div>
+    <div class="cv-tx">
+      <div class="cv-l1">Habits moved</div>
+      <div class="cv-l2">my <span>GTM</span></div>
+      <div class="cv-l3">into one</div>
+      <div class="cv-l4">AI chat box</div>
+    </div>
+  </div>
+  <div class="cv-scene">
+    <div class="cv-bars">
+      <div class="cv-bar"></div><div class="cv-bar"></div><div class="cv-bar"></div>
+      <div class="cv-bar"></div><div class="cv-bar"></div><div class="cv-bar"></div>
+      <div class="cv-bar"></div><div class="cv-bar"></div><div class="cv-bar"></div>
+      <div class="cv-bar"></div><div class="cv-bar"></div><div class="cv-bar"></div>
+    </div>
+    <div class="cv-note">here's how...</div>
+    <svg style="position:absolute;left:600px;top:350px;width:200px;height:190px;" viewBox="0 0 200 190">
+      <path d="M150 10 C 190 60, 160 120, 110 160" stroke="#C97352" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <path d="M88 138 L110 162 L134 148" stroke="#C97352" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="cv-obars"><div class="cv-obar"></div><div class="cv-obar"></div></div>
+  </div>
+</div>
+
+<!-- ============ S2 TIP 01 (light) ============ -->
+<div class="slide lt">
+  <div class="tag"><i class="pin1"></i><i class="pin2"></i>TIP 01</div>
+  <div class="hl">One chat box.<br>Not twelve tabs.</div>
+  <div class="bd">
+    <p>A tab for research. A tab for the CRM. A doc of prompts you keep rewriting. A notes file you paste from every morning.</p>
+    <p>Every GTM job now opens in the same box, the same way, <b>with the same memory underneath it</b>.</p>
+    <p>It either already knows, or it asks once and keeps it.</p>
+  </div>
+  <div class="mk-frame">
+    <div class="mk-top"><div class="mk-dot"></div><div class="mk-dot"></div><div class="mk-dot"></div>
+      <div class="mk-url">app.51ultron.com</div></div>
+    <div class="mk-body">
+      <div class="mk-hi">&#10022; Good morning, <em>founder</em>.</div>
+      <div class="mk-input">Ask anything. One box runs the whole GTM.</div>
+      <div class="mk-row"><div class="mk-chip">Profile the buyer</div><div class="mk-chip">Draft the follow-up</div><div class="mk-chip">Score the list</div></div>
+      <div class="mk-tier"><div class="mk-tpill">LITE</div><div class="mk-tpill on">SMART</div><div class="mk-tpill">DEEP</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ S3 TIP 02 (dark) ============ -->
+<div class="slide dk">
+  <div class="tag"><i class="pin1"></i><i class="pin2"></i>TIP 02</div>
+  <div class="hl">Slash the agent<br>that owns the job.</div>
+  <div class="bd">
+    <p>/cortex researches the account. /specter writes the outbound. /striker runs the deal. /pulse writes the post.</p>
+    <p>Or skip the slash, type plain English, and <b>the router picks the agent and the model tier</b> for you.</p>
+  </div>
+  <div class="slash-wrap">
+    <div class="slash-menu">
+      <div class="mi on"><b>/specter</b> outbound<span>agent</span></div>
+      <div class="mi"><b>/cortex</b> research<span>agent</span></div>
+      <div class="mi"><b>/striker</b> deals<span>agent</span></div>
+      <div class="mi"><b>/pulse</b> content<span>agent</span></div>
+    </div>
+    <div class="slash-input glass">
+      <div class="tx">/specter follow-up for the demo call</div>
+      <div class="cur"></div>
+      <div class="send"><svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ S4 TIP 03 (light) ============ -->
+<div class="slide lt">
+  <div class="tag"><i class="pin1"></i><i class="pin2"></i>TIP 03</div>
+  <div class="hl">Pick the tier<br>the turn deserves.</div>
+  <div class="bd">
+    <p>Lite for quick lookups. Smart for the real work. Deep when the judgement is hard.</p>
+    <p>The picker sits on every turn, so you <b>spend on deep thinking only when the turn earns it</b>.</p>
+  </div>
+  <div class="tiers">
+    <div class="tier"><div class="c"></div><div class="lb">LITE</div></div>
+    <div class="tier"><div class="c"></div><div class="lb">SMART</div></div>
+    <div class="tier"><div class="c"></div><div class="lb">DEEP</div></div>
+  </div>
+</div>
+
+<!-- ============ S5 TIP 04 (dark) ============ -->
+<div class="slide dk">
+  <div class="tag"><i class="pin1"></i><i class="pin2"></i>TIP 04</div>
+  <div class="hl">Stop re-explaining<br>your business.</div>
+  <div class="bd">
+    <p>Every session loads your context in layers <b>before you type a word</b>: instructions, business profile, integrations, the top relevant memories, the date.</p>
+    <p>Your ICP, your voice and your pipeline are already in the room.</p>
+  </div>
+  <div class="mem">
+    <div class="ly"><b>01</b> static instructions<span class="n">loaded</span></div>
+    <div class="ly"><b>02</b> business profile<span class="n">loaded</span></div>
+    <div class="ly"><b>03</b> integrations<span class="n">loaded</span></div>
+    <div class="ly hot glass"><b>04</b> top 5 relevant memories<span class="n">injected</span></div>
+    <div class="ly"><b>05</b> today's date + open work<span class="n">loaded</span></div>
+  </div>
+</div>
+
+<!-- ============ S6 TIP 05 (light) ============ -->
+<div class="slide lt">
+  <div class="tag"><i class="pin1"></i><i class="pin2"></i>TIP 05</div>
+  <div class="hl">Upload it once.<br>It becomes context.</div>
+  <div class="bd">
+    <p>PDFs, images, audio, spreadsheets and URLs turn into <b>working context</b>, not a wall of text the model skims and forgets.</p>
+    <p>Stop pasting the same brief into every new chat.</p>
+  </div>
+  <div class="folder">
+    <div class="back"></div>
+    <div class="files">
+      <div class="fl">pitch.pdf</div><div class="fl">icp.xlsx</div><div class="fl">call.mp3</div><div class="fl">site url</div>
+    </div>
+    <div class="pill"><svg viewBox="0 0 24 24"><path d="M12 17V5M6 11l6-6 6 6"/></svg>Upload once</div>
+  </div>
+</div>
+
+<!-- ============ S7 TIP 06 (dark) ============ -->
+<div class="slide dk">
+  <div class="tag"><i class="pin1"></i><i class="pin2"></i>TIP 06</div>
+  <div class="hl">Slow work runs<br>in the background.</div>
+  <div class="bd">
+    <p>Anything that will not finish in seconds becomes a background job: <b>scrape 200 sites, enrich a list, transcribe a call</b>.</p>
+    <p>You keep chatting while it runs. Nothing sends until you approve it.</p>
+  </div>
+  <div class="job glass">
+    <div class="top">
+      <div class="donut"><i>71%</i></div>
+      <div><div class="jt">Enrich 200 accounts</div><div class="js">background job &middot; running &middot; you can close this tab</div></div>
+    </div>
+    <div class="steps">
+      <div class="st"><div class="ic">&#10003;</div>scrape company sites</div>
+      <div class="st run"><div class="ic">&#9654;</div>score against your ICP</div>
+      <div class="st wait"><div class="ic">&#8943;</div>waiting: your approval before send</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ S8 TIP 07 (light) ============ -->
+<div class="slide lt">
+  <div class="tag"><i class="pin1"></i><i class="pin2"></i>TIP 07</div>
+  <div class="hl">Fork the thread.<br>Don't restart it.</div>
+  <div class="bd">
+    <p>Sessions persist and stay searchable. Close one for two days, reopen it, <b>it is still mid-task</b>.</p>
+    <p>Need a second direction? Branch the session into two without losing the thread.</p>
+  </div>
+  <div class="fork">
+    <svg viewBox="0 0 888 430">
+      <path d="M170 95 C 320 95, 330 95, 430 95" stroke="rgba(17,17,17,.30)" stroke-width="5" fill="none"/>
+      <path d="M430 95 C 560 95, 560 40, 660 40" stroke="rgba(17,17,17,.30)" stroke-width="5" fill="none"/>
+      <path d="M430 95 C 560 95, 560 230, 650 230" stroke="#D26446" stroke-width="6" fill="none"/>
+      <circle cx="430" cy="95" r="11" fill="#111"/>
+    </svg>
+    <div class="card" style="left:0;top:46px;"><b>pricing session</b>day 1 &middot; 32 turns</div>
+    <div class="card" style="right:0;top:0;"><b>keep: pricing</b>resumes mid-task</div>
+    <div class="card hot" style="right:14px;top:186px;"><b>fork: enterprise</b>same context, new thread</div>
+  </div>
+</div>
+
+<!-- ============ S9 TIP 08 (dark) ============ -->
+<div class="slide dk">
+  <div class="tag"><i class="pin1"></i><i class="pin2"></i>TIP 08</div>
+  <div class="hl">Send the session,<br>not a screenshot.</div>
+  <div class="bd">
+    <p>A screenshot ships <b>1 piece of proof out of 44</b>. The read-only link carries every turn, source and artifact.</p>
+    <p>Your cofounder scrolls the whole machine, then forks it into their own and keeps working.</p>
+  </div>
+  <div class="share">
+    <div class="pill glass">
+      <div class="url">51ultron.com<b>/s/pricing-run</b></div>
+      <div class="ro">READ-ONLY</div>
+    </div>
+    <div class="proof">
+      <div class="p on"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div>
+      <div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div>
+    </div>
+    <div class="cap">a screenshot sends <b>1 of these 44</b>. the link sends all of them.</div>
+  </div>
+</div>
+
+<!-- ============ S10 CTA (light) ============ -->
+<div class="slide lt">
+  <div class="tag"><i class="pin1"></i><i class="pin2"></i>THE FULL MAP</div>
+  <div class="hl">Want the whole<br>cheatsheet?</div>
+  <div class="bd">
+    <p>One chat box, twelve jobs: agents, tiers, memory, attachments, jobs, sessions, sharing. The map I run my GTM on.</p>
+    <p>Comment <b>CHAT</b> and I will send you the full Ultron Chat cheatsheet.</p>
+    <p><b>Follow</b> for one AI system for founders every day.</p>
+  </div>
+  <div class="cta-big">Comment Chat<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+  <div class="brandline">
+    <div class="l"><img src="__LOGO_URI__" alt="">ULTRON <span>&middot; AI AGENTS FOR FOUNDERS</span></div>
+    <div class="r">51ultron<em>.</em>com</div>
+  </div>
+</div>
+
+</body>
+</html>

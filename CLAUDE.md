@@ -329,6 +329,10 @@ Each REALNUMBERS visual includes:
 ### Dimensions (STRICT)
 - LinkedIn portrait: **1080 × 1450px**
 - Instagram story / IG cover: **1080 × 1920px**
+- TikTok photo-carousel, editorial 4:5 format: **1080 × 1350px** (operator, 2026-06-12 — the
+  top-performer reference format; filenames carry `-45-` or `editorial45` so the guard targets
+  1350; photo mode has no 300px safe-zone inset, keep ~90px side padding; bottom-bleed visuals
+  are part of the format, dims are checked on the canvas box)
 
 ### Safe zones — vertical 1080×1920 (TikTok / IG story) (operator, 2026-06-04 — binding)
 TikTok and IG overlay their UI on every edge of the frame. Keep ALL content inside this safe box.

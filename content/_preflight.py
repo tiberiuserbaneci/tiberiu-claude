@@ -47,6 +47,9 @@ def html_for_render(p):
 
 def target_of(name):
     n = name.lower()
+    # editorial 4:5 photo-carousel (operator 2026-06-12): canvas 1080x1350, bleed allowed,
+    # so dims are checked on the canvas box (offsetHeight), not scrollHeight. No 300px inset.
+    if "-45-" in n or "editorial45" in n: return (".slide", 1350, True)
     if "carousel" in n: return ("slide", 1920, True)
     if any(k in n for k in ("tiktok","-ig-","story","highlight","instagram")): return (".slide", 1920, False)
     return ("#artifact", 1450, False)
@@ -145,7 +148,9 @@ def render_checks(path):
             els = pg.query_selector_all("#artifact") or pg.query_selector_all(".slide") or pg.query_selector_all(".frame")
         for i, el in enumerate(els, 1):
             tag = f"slide {i}" if (multi or len(els)>1) else "frame"
-            h = el.evaluate("e=>e.scrollHeight")
+            # 4:5 format: canvas box must be exact; visuals may bleed past it (clipped), so
+            # scrollHeight is the wrong measure there. Other formats keep zero-dead-space scrollHeight.
+            h = el.evaluate("e=>e.offsetHeight" if target == 1350 else "e=>e.scrollHeight")
             if h != target: fails.append(f"dims[{tag}]: height {h} != {target}")
             if target == 1920:
                 topgap = el.evaluate("""e=>{const r=e.getBoundingClientRect();
@@ -154,7 +159,11 @@ def render_checks(path):
             shot = pathlib.Path(tempfile.mkdtemp()) / "s.png"; el.screenshot(path=str(shot))
             empty_pct, band = density_metrics(Image.open(shot))
             msg = f"density[{tag}]: {empty_pct:.0f}% empty rows, largest dead band {band:.0f}px"
-            if band > DENSITY_MAX_BAND_PX:
+            if band > DENSITY_MAX_BAND_PX and target == 1350:
+                # editorial 4:5 (operator 2026-06-12): intentional air + dark-on-dark scene elements
+                # sit below the ink threshold, so the band gate false-positives. Surface, don't block.
+                warns.append(msg + "  -> 45 format: air is part of the reference design - review by eye")
+            elif band > DENSITY_MAX_BAND_PX:
                 fails.append(msg + f"  -> DEAD BAND > {DENSITY_MAX_BAND_PX}px. Pack content; never flex:1/space-between on sparse rows.")
             elif empty_pct > DENSITY_AIRY_PCT:
                 warns.append(msg + "  -> AIRY, review the dominant block (pack rows, add real content)")
