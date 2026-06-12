@@ -190,6 +190,30 @@ body{background:#070606;display:flex;flex-direction:column;align-items:center;ga
   letter-spacing:.03em;color:rgba(255,220,200,.72);background:rgba(250,250,247,.05);
   border:1.5px solid rgba(250,250,247,.12);border-radius:13px;padding:17px 22px;}
 .qrow .qd{width:10px;height:10px;border-radius:50%;background:var(--cor);flex-shrink:0;}
+.qrow b{color:#FFD9C4;font-weight:600;}
+/* --- S5 publish cards: packed real rows (density, replaces skeleton air) --- */
+.chan{display:flex;flex-direction:column;}
+.ch-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;}
+.spec{font-family:'DM Mono',monospace;font-size:14px;letter-spacing:.05em;color:var(--wt-40);flex-shrink:0;}
+.chan.mid .spec{color:rgba(255,220,200,.62);}
+.lev{align-self:flex-start;margin-top:14px;font-family:'DM Mono',monospace;font-size:15px;font-weight:500;
+  letter-spacing:.10em;padding:8px 14px;border-radius:9px;}
+.lev.save{background:linear-gradient(165deg,var(--cor),var(--cor-deep));color:#2A130B;}
+.lev.reach{background:transparent;border:1.5px solid var(--cor-lt);color:var(--cor-lt);}
+.lev.repost{background:transparent;border:1.5px solid rgba(244,164,128,.55);color:rgba(244,164,128,.95);}
+.crow{margin-top:15px;display:flex;align-items:center;gap:10px;font-size:18px;color:var(--wt-62);line-height:1.3;}
+.crow .ck{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.10em;color:var(--wt-40);
+  border:1px solid var(--wt-12);border-radius:6px;padding:4px 8px;flex-shrink:0;}
+.chan .ct{margin-top:auto;}
+/* dispatch queue - log treatment, different from the cards above */
+.dispatch{margin-top:18px;background:rgba(250,250,247,.05);border:1.5px solid rgba(250,250,247,.12);
+  border-radius:16px;padding:20px 24px;}
+.dispatch .dl{font-family:'DM Mono',monospace;font-size:15px;letter-spacing:.12em;color:var(--cor-lt);margin-bottom:15px;}
+.drow{display:grid;grid-template-columns:128px 116px 1fr;align-items:center;gap:16px;padding:11px 0;}
+.drow+.drow{border-top:1px solid rgba(250,250,247,.09);}
+.drow .t{font-family:'DM Mono',monospace;font-size:19px;color:#fff;font-weight:500;}
+.drow .c{font-family:'DM Mono',monospace;font-size:17px;letter-spacing:.06em;color:var(--cor-lt);}
+.drow .w{font-size:18px;color:var(--wt-62);line-height:1.3;}
 
 /* ====================================================== */
 /* S6 STEP 5 ROUTER + HUMAN GATE (light) - the loop         */
@@ -413,28 +437,37 @@ body{background:#070606;display:flex;flex-direction:column;align-items:center;ga
       <div class="sx"><div class="l">PULSE &middot; DRAFTED IN YOUR VOICE</div><div class="h">"How I run GTM solo with five agents"</div></div>
       <div class="tag2">1 idea<br>3 channels</div>
     </div>
-    <div class="fanr">AMPLIFY FORMATS + SCHEDULES <svg viewBox="0 0 22 14"><path d="M1 7h16M13 2l5 5-5 5"/></svg></div>
+    <div class="fanr">AMPLIFY REFORMATS + SCHEDULES <svg viewBox="0 0 22 14"><path d="M1 7h16M13 2l5 5-5 5"/></svg></div>
     <div class="chans">
       <div class="chan">
-        <div class="cn">LinkedIn</div>
-        <div class="sk"><i></i><i></i><i style="width:55%"></i></div>
-        <div class="cf">carousel, 9 slides, save-led CTA</div>
+        <div class="ch-h"><span class="cn">LinkedIn</span><span class="spec">1080&times;1350</span></div>
+        <div class="cf">Carousel &middot; 9 slides</div>
+        <span class="lev save">SAVE PLAY</span>
+        <div class="crow"><span class="ck">CTA</span>Comment WEEKEND</div>
         <div class="ct"><span class="dot"></span>10:00 CET</div>
       </div>
       <div class="chan mid">
-        <div class="cn">TikTok</div>
-        <div class="sk"><i></i><i></i><i style="width:55%"></i></div>
-        <div class="cf">9:16 talking cut, hook in 2s</div>
+        <div class="ch-h"><span class="cn">TikTok</span><span class="spec">9:16</span></div>
+        <div class="cf">Talking cut &middot; hook in 2s</div>
+        <span class="lev reach">REACH PLAY</span>
+        <div class="crow"><span class="ck">CTA</span>Comment WEEKEND</div>
         <div class="ct"><span class="dot"></span>18:00 EST</div>
       </div>
       <div class="chan">
-        <div class="cn">X</div>
-        <div class="sk"><i></i><i></i><i style="width:55%"></i></div>
-        <div class="cf">thread, one line per beat</div>
+        <div class="ch-h"><span class="cn">X</span><span class="spec">thread</span></div>
+        <div class="cf">One line per beat</div>
+        <span class="lev repost">REPOST PLAY</span>
+        <div class="crow"><span class="ck">CTA</span>Reply to pin</div>
         <div class="ct"><span class="dot"></span>14:00 PST</div>
       </div>
     </div>
-    <div class="qrow"><span class="qd"></span>AMPLIFY queues all three and posts each at peak local time</div>
+    <div class="dispatch">
+      <div class="dl">DISPATCH QUEUE &middot; ONE APPROVAL, THREE TIME ZONES</div>
+      <div class="drow"><span class="t">10:00 CET</span><span class="c">LINKEDIN</span><span class="w">carousel into the EU and UK morning feed</span></div>
+      <div class="drow"><span class="t">14:00 PST</span><span class="c">X</span><span class="w">thread into the US west coast afternoon</span></div>
+      <div class="drow"><span class="t">18:00 EST</span><span class="c">TIKTOK</span><span class="w">9:16 cut into the US east coast evening</span></div>
+    </div>
+    <div class="qrow"><span class="qd"></span>One <b>HUMAN GATE</b> approval, then all three send. A week of GTM shipped in one sitting.</div>
   </div>
 </div>
 
