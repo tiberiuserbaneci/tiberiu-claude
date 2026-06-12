@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>skills - TikTok/LinkedIn carousel - tips 4:5</title>
+<style>
+@import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
+/* BUDGET per slide: 1080x1350 fixed box, scenes bleed bottom (clipped).
+   Format: tips 4:5 (operator reference 2026-06-12) - alternating dark/light, sentence-case heads,
+   ONE bespoke scene per slide. DM Sans / DM Mono only. Source content: AI Skills (reskin to Ultron).
+   Palette: #0E0D0C / #F4F2ED / #E86A45 / #C84623 / #111. Scenes are NEW (no chat-habits reuse). */
+:root{
+  --dk:#0E0D0C;
+  --dk-2:#1A1816;
+  --lt:#F4F2ED;
+  --ink:#111111;
+  --ink-62:rgba(17,17,17,.62);
+  --ink-40:rgba(17,17,17,.40);
+  --wt:#FAFAF7;
+  --wt-62:rgba(250,250,247,.62);
+  --wt-34:rgba(250,250,247,.34);
+  --cor:#E86A45;
+  --cor-deep:#C84623;
+  --cor-lt:#F0A582;
+  --cream:#F5ECE3;
+  --tagdk:#2B1D15;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#070606;display:flex;flex-direction:column;align-items:center;gap:28px;padding:28px 0;
+  font-family:'DM Sans',sans-serif;}
+.slide{width:1080px;height:1350px;flex-shrink:0;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;padding:0 96px;}
+.slide.dk{background:radial-gradient(120% 70% at 50% -8%,var(--dk-2) 0%,var(--dk) 58%);color:var(--wt);}
+.slide.lt{background:var(--lt);color:var(--ink);}
+
+/* ---------- TIP tag with pins ---------- */
+.tag{position:relative;align-self:flex-start;margin-top:188px;
+  font-size:25px;font-weight:600;letter-spacing:.10em;padding:16px 34px;}
+.lt .tag{background:var(--cream);color:var(--ink);}
+.dk .tag{background:var(--tagdk);color:var(--wt);}
+.tag::before{content:'';position:absolute;left:-3px;top:-26px;width:3px;height:26px;background:var(--cor);}
+.tag::after{content:'';position:absolute;right:-3px;bottom:-26px;width:3px;height:26px;background:var(--cor);}
+.tag .pin1,.tag .pin2{position:absolute;width:12px;height:12px;border-radius:50%;background:var(--cor);}
+.tag .pin1{left:-8px;top:-32px;}
+.tag .pin2{right:-8px;bottom:-32px;}
+
+/* ---------- headline / body ---------- */
+.hl{margin-top:52px;font-size:84px;font-weight:500;letter-spacing:-2.6px;line-height:1.07;}
+.hl em{font-style:normal;color:var(--cor);}
+.bd{margin-top:40px;display:flex;flex-direction:column;gap:26px;max-width:870px;}
+.bd p{font-size:32px;font-weight:400;line-height:1.45;}
+.lt .bd p{color:var(--ink-62);}
+.dk .bd p{color:var(--wt-62);}
+.bd b{font-weight:700;}
+.lt .bd b{color:var(--ink);}
+.dk .bd b{color:var(--wt);}
+.mono{font-family:'DM Mono',monospace;}
+
+/* glassy coral element (dark slides) */
+.glass{background:linear-gradient(160deg,rgba(232,106,69,.40) 0%,rgba(150,62,36,.24) 55%,rgba(100,42,25,.30) 100%);
+  border:2px solid rgba(244,164,128,.48);
+  box-shadow:inset 0 2px 0 rgba(255,212,184,.38), inset 0 -18px 40px rgba(70,25,12,.35), 0 34px 90px rgba(210,90,52,.26);}
+
+/* ====================================================== */
+/* S1 COVER (dark) - text hook + fanned skill drawer       */
+/* ====================================================== */
+.cover{padding:0 90px;}
+.cv-eyebrow{margin-top:172px;font-family:'DM Mono',monospace;font-size:23px;font-weight:500;
+  letter-spacing:.22em;color:var(--cor-lt);}
+.cv-hook{margin-top:30px;}
+.cv-l1{font-size:70px;font-weight:500;letter-spacing:-2px;line-height:1.02;color:var(--wt);}
+.cv-l2{font-size:108px;font-weight:800;letter-spacing:-4px;line-height:.98;color:var(--cor);margin-top:4px;
+  text-shadow:0 22px 70px rgba(210,100,70,.3);}
+.cv-l3{font-size:70px;font-weight:500;letter-spacing:-2px;line-height:1.02;color:var(--wt);margin-top:4px;}
+.cv-sub{margin-top:32px;font-size:31px;line-height:1.42;color:var(--wt-62);max-width:760px;}
+.cv-sub b{color:var(--wt);font-weight:600;}
+.cv-fan{position:absolute;left:90px;right:90px;bottom:0;height:560px;}
+.fcard{position:absolute;left:50%;transform:translateX(-50%);width:780px;border-radius:20px 20px 0 0;
+  padding:22px 34px;border:2px solid;border-bottom:none;display:flex;align-items:center;gap:16px;
+  font-family:'DM Mono',monospace;font-size:25px;letter-spacing:.14em;font-weight:500;}
+.fcard .sw{width:14px;height:14px;border-radius:4px;flex-shrink:0;}
+.fcard .n{margin-left:auto;font-size:18px;letter-spacing:.06em;opacity:.55;}
+.f1{bottom:432px;background:#201E1C;border-color:rgba(250,250,247,.10);color:var(--wt-62);}
+.f2{bottom:344px;background:#242220;border-color:rgba(250,250,247,.11);color:var(--wt-62);}
+.f3{bottom:256px;background:#282520;border-color:rgba(250,250,247,.12);color:rgba(250,250,247,.74);}
+.f4{bottom:168px;background:#2C2924;border-color:rgba(250,250,247,.13);color:var(--wt);}
+.f1 .sw{background:#6E6A63;}.f2 .sw{background:#7C7770;}.f3 .sw{background:#8A847B;}.f4 .sw{background:#9A938A;}
+.f5{bottom:0;height:154px;background:linear-gradient(165deg,#E86A45,#C84623);border-color:rgba(255,206,180,.5);
+  color:#2A130B;flex-direction:column;align-items:flex-start;gap:14px;justify-content:flex-start;padding-top:24px;
+  box-shadow:0 -22px 80px rgba(210,90,52,.42);}
+.f5 .top{display:flex;align-items:center;gap:16px;width:100%;font-size:25px;font-weight:500;}
+.f5 .top .n{color:rgba(42,19,11,.6);}
+.f5 .peek{display:flex;align-items:center;gap:14px;width:100%;background:rgba(255,240,232,.9);
+  border-radius:11px;padding:14px 18px;color:#5A1F0E;font-size:21px;letter-spacing:.04em;}
+.f5 .peek .dot{width:11px;height:11px;border-radius:50%;background:var(--cor-deep);flex-shrink:0;}
+.f5 .peek b{margin-left:auto;font-weight:500;color:#8A3318;}
+
+/* ====================================================== */
+/* S2 ANATOMY (light) - skill spec, 2-col numbered grid    */
+/* ====================================================== */
+.an{position:absolute;left:96px;right:96px;bottom:60px;background:#FAF9F7;border:2px solid rgba(17,17,17,.12);
+  border-radius:26px;padding:30px 34px 34px;box-shadow:0 30px 80px rgba(17,17,17,.13);}
+.an-h{display:flex;align-items:center;justify-content:space-between;padding-bottom:22px;
+  border-bottom:1.5px solid rgba(17,17,17,.10);margin-bottom:24px;}
+.an-h .t{font-size:26px;font-weight:700;color:var(--ink);letter-spacing:-.4px;}
+.an-h .t span{color:var(--ink-62);font-weight:400;}
+.an-h .pill{font-family:'DM Mono',monospace;font-size:15px;letter-spacing:.12em;color:var(--cor-deep);
+  background:rgba(232,106,69,.13);border-radius:9px;padding:9px 15px;font-weight:500;}
+.an-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px 26px;}
+.an-i{display:flex;align-items:flex-start;gap:15px;}
+.an-i .nb{width:44px;height:44px;border-radius:11px;flex-shrink:0;background:rgba(17,17,17,.05);
+  display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;
+  font-size:17px;font-weight:500;color:var(--cor-deep);}
+.an-i .nm{font-size:23px;font-weight:700;color:var(--ink);line-height:1.1;}
+.an-i .vl{font-family:'DM Mono',monospace;font-size:16px;color:var(--ink-62);line-height:1.32;margin-top:5px;}
+
+/* ====================================================== */
+/* S3 GOOD EXAMPLE (dark) - cold-email run + 6-point gate  */
+/* ====================================================== */
+.run{position:absolute;left:96px;right:96px;bottom:40px;border-radius:26px;padding:30px 34px 34px;}
+.run-h{display:flex;align-items:center;gap:16px;padding-bottom:20px;border-bottom:1.5px solid rgba(250,250,247,.14);}
+.run-h .nm{font-size:27px;font-weight:700;color:#FFE7DC;}
+.run-h .nm span{color:var(--cor-lt);}
+.run-h .cfg{margin-left:auto;font-family:'DM Mono',monospace;font-size:15px;letter-spacing:.05em;
+  color:rgba(255,220,200,.62);text-align:right;line-height:1.5;}
+.run-pipe{display:flex;align-items:center;gap:12px;margin:22px 0 24px;}
+.run-pipe .nd{flex:1;text-align:center;font-family:'DM Mono',monospace;font-size:16px;letter-spacing:.04em;
+  color:rgba(255,235,225,.8);background:rgba(250,250,247,.06);border:1.5px solid rgba(250,250,247,.13);
+  border-radius:11px;padding:13px 6px;}
+.run-pipe .nd.gate{color:#2A130B;background:linear-gradient(165deg,var(--cor),var(--cor-deep));border-color:var(--cor);font-weight:600;}
+.run-pipe .ar{color:var(--cor-lt);font-size:20px;flex-shrink:0;}
+.gate-lbl{font-family:'DM Mono',monospace;font-size:15px;letter-spacing:.14em;color:rgba(255,220,200,.55);margin-bottom:14px;}
+.gate-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px 22px;}
+.gck{display:flex;align-items:center;gap:13px;font-size:19px;color:rgba(255,238,230,.86);}
+.gck .ck{width:28px;height:28px;border-radius:50%;flex-shrink:0;background:var(--cor);
+  display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(210,100,70,.4);}
+.gck .ck svg{width:15px;height:15px;stroke:#2A130B;stroke-width:3.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.gck b{font-weight:700;color:#fff;}
+.run-ft{margin-top:24px;padding-top:20px;border-top:1.5px solid rgba(250,250,247,.14);
+  font-size:20px;color:rgba(255,235,225,.7);}
+.run-ft b{color:var(--cor-lt);font-weight:600;}
+
+/* ====================================================== */
+/* S4 BAD EXAMPLE (light) - the vibe prompt, rejected      */
+/* ====================================================== */
+.vibe{position:absolute;left:96px;right:96px;bottom:96px;background:#FAF9F7;border:2px solid rgba(17,17,17,.12);
+  border-radius:24px;padding:32px 34px;box-shadow:0 28px 74px rgba(17,17,17,.12);}
+.vibe-h{display:flex;align-items:center;gap:14px;margin-bottom:22px;}
+.vibe-h .stamp{font-family:'DM Mono',monospace;font-size:15px;letter-spacing:.16em;font-weight:500;
+  color:var(--cor-deep);border:2px solid var(--cor-deep);border-radius:8px;padding:8px 14px;transform:rotate(-3deg);}
+.vibe-h .t{font-size:23px;font-weight:700;color:var(--ink);letter-spacing:-.3px;}
+.vline{display:flex;align-items:center;gap:16px;padding:15px 0;}
+.vline+.vline{border-top:1px solid rgba(17,17,17,.08);}
+.vline .x{width:32px;height:32px;border-radius:50%;flex-shrink:0;background:rgba(200,70,35,.12);
+  display:flex;align-items:center;justify-content:center;}
+.vline .x svg{width:16px;height:16px;stroke:var(--cor-deep);stroke-width:3;fill:none;stroke-linecap:round;}
+.vline .q{font-size:26px;font-weight:600;color:rgba(17,17,17,.5);text-decoration:line-through;text-decoration-color:rgba(200,70,35,.45);}
+.vibe-why{margin-top:6px;padding-top:22px;border-top:1.5px solid rgba(17,17,17,.10);
+  font-size:21px;color:var(--ink-62);line-height:1.4;}
+.vibe-why b{color:var(--ink);font-weight:700;}
+.vibe-chips{display:flex;gap:11px;margin-top:18px;}
+.vibe-chips .c{flex:1;display:flex;align-items:center;justify-content:center;gap:9px;
+  background:rgba(17,17,17,.04);border:1.5px solid rgba(17,17,17,.10);border-radius:11px;padding:13px 6px;
+  font-family:'DM Mono',monospace;font-size:16px;letter-spacing:.04em;color:var(--ink-62);}
+.vibe-chips .c svg{width:15px;height:15px;stroke:var(--ink-40);stroke-width:2.4;fill:none;}
+
+/* ====================================================== */
+/* S5 ACROSS THE STACK (dark) - 5 category cards + stat    */
+/* ====================================================== */
+.cat{position:absolute;left:96px;right:96px;bottom:50px;display:grid;
+  grid-template-columns:1fr 1fr;gap:18px;}
+.ccard{border-radius:18px;padding:22px 24px;background:rgba(250,250,247,.045);
+  border:1.5px solid rgba(250,250,247,.12);}
+.ccard .ch{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;}
+.ccard .ch .nm{font-size:24px;font-weight:800;letter-spacing:.02em;color:var(--wt);}
+.ccard .ch .ct{font-family:'DM Mono',monospace;font-size:15px;color:var(--wt-34);margin-left:auto;}
+.ccard .sk{display:flex;flex-wrap:wrap;gap:8px;}
+.ccard .sk span{font-family:'DM Mono',monospace;font-size:15px;color:rgba(250,250,247,.7);
+  background:rgba(250,250,247,.06);border-radius:7px;padding:7px 11px;letter-spacing:.02em;}
+.ccard.hot{background:linear-gradient(160deg,rgba(232,106,69,.22),rgba(150,62,36,.16));border-color:rgba(244,164,128,.42);}
+.ccard.hot .ch .nm{color:var(--cor-lt);}
+.ccard.hot .sk span{background:rgba(232,106,69,.18);color:#FFE0D2;}
+.cstat{border-radius:18px;padding:22px 24px;background:linear-gradient(165deg,var(--cor),var(--cor-deep));
+  color:#2A130B;display:flex;flex-direction:column;justify-content:center;box-shadow:0 18px 50px rgba(210,90,52,.3);}
+.cstat .big{font-size:58px;font-weight:800;letter-spacing:-2px;line-height:.9;}
+.cstat .lb{font-family:'DM Mono',monospace;font-size:16px;letter-spacing:.08em;margin-top:8px;color:rgba(42,19,11,.78);}
+
+/* ====================================================== */
+/* S6 SKILL + GATE (light) - two-column split              */
+/* ====================================================== */
+.pair{position:absolute;left:96px;right:96px;bottom:90px;display:flex;align-items:stretch;gap:0;}
+.pcol{flex:1;border-radius:22px;padding:30px 30px 32px;}
+.pcol .ph{display:flex;align-items:center;gap:14px;margin-bottom:8px;}
+.pcol .ico{width:52px;height:52px;border-radius:13px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.pcol .ico svg{width:28px;height:28px;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.pcol .nm{font-size:40px;font-weight:800;letter-spacing:-.5px;}
+.pcol .role{font-size:19px;font-weight:600;margin:6px 0 20px;}
+.pcol .pt{display:flex;align-items:flex-start;gap:13px;padding:13px 0;font-size:20px;line-height:1.34;}
+.pcol .pt+.pt{border-top:1px solid;}
+.pcol .pt .d{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:9px;}
+.pskill{background:#FAF9F7;border:2px solid rgba(17,17,17,.14);box-shadow:0 22px 60px rgba(17,17,17,.1);}
+.pskill .ico{background:rgba(17,17,17,.06);}.pskill .ico svg{stroke:var(--ink);}
+.pskill .nm{color:var(--ink);}.pskill .role{color:var(--ink-62);}
+.pskill .pt{color:var(--ink-62);}.pskill .pt+.pt{border-color:rgba(17,17,17,.08);}
+.pskill .pt b{color:var(--ink);font-weight:700;}.pskill .pt .d{background:rgba(17,17,17,.3);}
+.pgate{background:linear-gradient(165deg,#FBEEE7,#F7E1D6);border:2px solid var(--cor);
+  box-shadow:0 22px 60px rgba(210,90,52,.18);margin-left:-14px;}
+.pgate .ico{background:linear-gradient(165deg,var(--cor),var(--cor-deep));}.pgate .ico svg{stroke:#FAF9F7;}
+.pgate .nm{color:var(--cor-deep);}.pgate .role{color:#A6402189;}
+.pgate .pt{color:#6B2C18;}.pgate .pt+.pt{border-color:rgba(200,70,35,.18);}
+.pgate .pt b{color:var(--cor-deep);font-weight:700;}.pgate .pt .d{background:var(--cor);}
+.pjoin{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;
+  width:64px;height:64px;border-radius:50%;background:#FAF9F7;border:2px solid var(--cor);
+  display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(17,17,17,.14);}
+.pjoin svg{width:30px;height:30px;stroke:var(--cor-deep);stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+
+/* ====================================================== */
+/* S7 COMPOUND (dark) - memory/lessons timeline            */
+/* ====================================================== */
+.mem{position:absolute;left:96px;right:96px;bottom:54px;}
+.mem-h{display:flex;align-items:center;gap:14px;font-family:'DM Mono',monospace;font-size:17px;
+  letter-spacing:.1em;color:rgba(255,220,200,.6);margin-bottom:26px;}
+.mem-h b{color:var(--cor-lt);font-weight:500;}
+.mem-h .run{position:static;padding:0;background:none;border:none;box-shadow:none;margin-left:auto;
+  color:var(--wt-34);width:auto;display:inline;}
+.tl{position:relative;padding-left:46px;}
+.tl::before{content:'';position:absolute;left:13px;top:8px;bottom:34px;width:2px;background:rgba(250,250,247,.16);}
+.tnode{position:relative;padding-bottom:26px;}
+.tnode:last-child{padding-bottom:0;}
+.tnode .dot{position:absolute;left:-39px;top:4px;width:28px;height:28px;border-radius:50%;
+  background:#241712;border:2px solid rgba(250,250,247,.22);display:flex;align-items:center;justify-content:center;}
+.tnode .dot i{width:9px;height:9px;border-radius:50%;background:rgba(250,250,247,.3);font-style:normal;}
+.tnode.win .dot{border-color:var(--cor);box-shadow:0 0 0 6px rgba(232,106,69,.16);}
+.tnode.win .dot i{background:var(--cor);}
+.tnode .rn{font-family:'DM Mono',monospace;font-size:16px;letter-spacing:.06em;color:var(--cor-lt);}
+.tnode .ev{font-size:23px;font-weight:600;color:var(--wt);margin-top:4px;line-height:1.22;}
+.tnode .ls{font-size:18px;color:var(--wt-62);margin-top:5px;line-height:1.3;}
+.tnode .ls b{color:#FFD9C4;font-weight:600;}
+
+/* ====================================================== */
+/* S8 CTA (light)                                          */
+/* ====================================================== */
+.cta-big{margin-top:54px;align-self:flex-start;display:flex;align-items:center;gap:18px;
+  background:linear-gradient(165deg,#E86A45 0%,#C84623 90%);color:#FAF9F7;border-radius:22px;
+  padding:34px 48px;font-size:40px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;
+  box-shadow:0 26px 70px rgba(232,106,69,.34), inset 0 2px 0 rgba(255,214,190,.55);}
+.cta-big svg{width:34px;height:34px;stroke:#FAF9F7;stroke-width:2.8;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.brandline{position:absolute;left:96px;right:96px;bottom:56px;display:flex;align-items:center;justify-content:space-between;
+  border-top:2px solid rgba(17,17,17,.85);padding-top:24px;}
+.brandline .l{display:flex;align-items:center;gap:12px;font-family:'DM Mono',monospace;font-size:19px;
+  letter-spacing:.10em;color:var(--ink);}
+.brandline .l img{width:30px;height:30px;border-radius:50%;object-fit:cover;}
+.brandline .l span{color:rgba(17,17,17,.55);}
+.brandline .r{font-size:24px;font-weight:800;letter-spacing:-.4px;color:var(--ink);}
+.brandline .r em{color:var(--cor-deep);font-style:normal;}
+</style>
+</head>
+<body>
+
+<!-- ============ S1 COVER (dark) ============ -->
+<div class="slide dk cover">
+  <div class="cv-eyebrow">AI SKILLS FOR FOUNDERS</div>
+  <div class="cv-hook">
+    <div class="cv-l1">Stop re-explaining</div>
+    <div class="cv-l2">your playbook</div>
+    <div class="cv-l3">to the AI.</div>
+  </div>
+  <div class="cv-sub">A skill is the GTM work you keep repeating, packaged once. Your agents <b>load it on demand</b> and run it the same way every time.</div>
+  <div class="cv-fan">
+    <div class="fcard f1"><i class="sw"></i>RESEARCH<span class="n">4 skills</span></div>
+    <div class="fcard f2"><i class="sw"></i>LEAD-GEN<span class="n">4 skills</span></div>
+    <div class="fcard f3"><i class="sw"></i>CONTENT<span class="n">2 skills</span></div>
+    <div class="fcard f4"><i class="sw"></i>OPS<span class="n">2 skills</span></div>
+    <div class="fcard f5">
+      <div class="top">SALES<span class="n">4 skills</span></div>
+      <div class="peek"><i class="dot"></i>cold-email<b>ready</b></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ S2 TIP 01 (light) - anatomy ============ -->
+<div class="slide lt">
+  <div class="tag"><i class="pin1"></i><i class="pin2"></i>WHAT IS A SKILL</div>
+  <div class="hl">A skill is not<br>a paragraph of hope.</div>
+  <div class="bd">
+    <p>It ships with everything it needs to run the same way every time. Eight parts, locked before it ever sees your work.</p>
+  </div>
+  <div class="an">
+    <div class="an-h"><div class="t">Inside one skill <span>&middot; the spec</span></div><div class="pill">REUSABLE</div></div>
+    <div class="an-grid">
+      <div class="an-i"><div class="nb">01</div><div><div class="nm">Model tier</div><div class="vl">Smart, Sonnet by default</div></div></div>
+      <div class="an-i"><div class="nb">02</div><div><div class="nm">Tool allow-list</div><div class="vl">these tools, nothing else</div></div></div>
+      <div class="an-i"><div class="nb">03</div><div><div class="nm">Token budget</div><div class="vl">max 8 turns, then it stops</div></div></div>
+      <div class="an-i"><div class="nb">04</div><div><div class="nm">Instructions</div><div class="vl">the operating procedure</div></div></div>
+      <div class="an-i"><div class="nb">05</div><div><div class="nm">Context</div><div class="vl">profile + memory + lessons</div></div></div>
+      <div class="an-i"><div class="nb">06</div><div><div class="nm">Quality gate</div><div class="vl">checks before it returns</div></div></div>
+      <div class="an-i"><div class="nb">07</div><div><div class="nm">Output format</div><div class="vl">one fixed shape, every run</div></div></div>
+      <div class="an-i"><div class="nb">08</div><div><div class="nm">Run mode</div><div class="vl">inline or forked agent</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ S3 TIP 02 (dark) - good example ============ -->
+<div class="slide dk">
+  <div class="tag"><i class="pin1"></i><i class="pin2"></i>A GOOD SKILL</div>
+  <div class="hl">Cold email,<br>with <em>no babysitting</em>.</div>
+  <div class="bd">
+    <p>It researches the lead, drafts one email, then holds it against six checks. Fails one, it rewrites itself. Passes all six, it returns.</p>
+  </div>
+  <div class="run glass">
+    <div class="run-h">
+      <div class="nm">/specter <span>&middot; cold-email</span></div>
+      <div class="cfg">Smart &middot; max 8 turns<br>forked &middot; 5 tools</div>
+    </div>
+    <div class="run-pipe">
+      <div class="nd">research</div><div class="ar">&rsaquo;</div>
+      <div class="nd">draft</div><div class="ar">&rsaquo;</div>
+      <div class="nd gate">6-point gate</div><div class="ar">&rsaquo;</div>
+      <div class="nd">return</div>
+    </div>
+    <div class="gate-lbl">THE 6-POINT QUALITY GATE</div>
+    <div class="gate-grid">
+      <div class="gck"><div class="ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>one <b>specific</b> mention</div>
+      <div class="gck"><div class="ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>subject under <b>6 words</b></div>
+      <div class="gck"><div class="ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>body under <b>150 words</b></div>
+      <div class="gck"><div class="ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div><b>exactly one</b> CTA</div>
+      <div class="gck"><div class="ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>reads like a <b>human</b></div>
+      <div class="gck"><div class="ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div><b>zero</b> banned words</div>
+    </div>
+    <div class="run-ft">No hand-holding. <b>It will not return an email that fails the bar.</b></div>
+  </div>
+</div>
+
+<!-- ============ S4 TIP 03 (light) - bad example ============ -->
+<div class="slide lt">
+  <div class="tag"><i class="pin1"></i><i class="pin2"></i>A BAD SKILL</div>
+  <div class="hl">This is not a skill.<br>It is a <em>vibe</em>.</div>
+  <div class="bd">
+    <p>Re-typed into a fresh chat every morning, it lands differently every time. You cannot repeat the good days.</p>
+  </div>
+  <div class="vibe">
+    <div class="vibe-h"><div class="stamp">VIBE, NOT A SKILL</div><div class="t">"make my GTM better"</div></div>
+    <div class="vline"><div class="x"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></div><div class="q">Write good emails.</div></div>
+    <div class="vline"><div class="x"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></div><div class="q">Find better leads.</div></div>
+    <div class="vline"><div class="x"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></div><div class="q">Close more deals.</div></div>
+    <div class="vibe-why">No tier. No tools. No steps. No gate. <b>The agent guesses, and you babysit every output.</b></div>
+    <div class="vibe-chips">
+      <div class="c"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/></svg>model</div>
+      <div class="c"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/></svg>tools</div>
+      <div class="c"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/></svg>steps</div>
+      <div class="c"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/></svg>gate</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ S5 TIP 04 (dark) - across the stack ============ -->
+<div class="slide dk">
+  <div class="tag"><i class="pin1"></i><i class="pin2"></i>ONE LIBRARY</div>
+  <div class="hl">Every GTM job,<br>its own skill.</div>
+  <div class="bd">
+    <p>You describe the job in plain English. Ultron routes to the skill that owns it, across five lanes.</p>
+  </div>
+  <div class="cat">
+    <div class="ccard"><div class="ch"><div class="nm">RESEARCH</div><div class="ct">4</div></div>
+      <div class="sk"><span>competitive analysis</span><span>company deep-dive</span><span>pricing research</span><span>meeting prep</span></div></div>
+    <div class="ccard"><div class="ch"><div class="nm">LEAD-GEN</div><div class="ct">4</div></div>
+      <div class="sk"><span>decision makers</span><span>ICP deep-match</span><span>lead scoring</span><span>trigger events</span></div></div>
+    <div class="ccard hot"><div class="ch"><div class="nm">SALES</div><div class="ct">4</div></div>
+      <div class="sk"><span>cold email</span><span>follow-up</span><span>objection handler</span><span>pre/post call</span></div></div>
+    <div class="ccard"><div class="ch"><div class="nm">CONTENT</div><div class="ct">2</div></div>
+      <div class="sk"><span>LinkedIn post</span><span>social content</span></div></div>
+    <div class="ccard"><div class="ch"><div class="nm">OPS</div><div class="ct">2</div></div>
+      <div class="sk"><span>morning briefing</span><span>pipeline review</span></div></div>
+    <div class="cstat"><div class="big">35+</div><div class="lb">skills, one chat box</div></div>
+  </div>
+</div>
+
+<!-- ============ S6 TIP 05 (light) - skill + gate ============ -->
+<div class="slide lt">
+  <div class="tag"><i class="pin1"></i><i class="pin2"></i>SKILL + GATE</div>
+  <div class="hl">The skill drafts.<br>The gate <em>ships</em>.</div>
+  <div class="bd">
+    <p>A skill decides how the work gets done. The gate decides what is allowed to leave. You want both.</p>
+  </div>
+  <div class="pair">
+    <div class="pcol pskill">
+      <div class="ph"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.6-1.5z"/></svg></div><div class="nm">SKILL</div></div>
+      <div class="role">how the work gets done</div>
+      <div class="pt"><i class="d"></i>picks the model and the tools</div>
+      <div class="pt"><i class="d"></i>runs the operating procedure</div>
+      <div class="pt"><i class="d"></i>drafts the work, end to end</div>
+    </div>
+    <div class="pcol pgate">
+      <div class="ph"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div><div class="nm">GATE</div></div>
+      <div class="role">what is allowed to ship</div>
+      <div class="pt"><i class="d"></i>the quality gate auto-checks</div>
+      <div class="pt"><i class="d"></i>the human gate holds the send</div>
+      <div class="pt"><i class="d"></i>nothing ships until you approve</div>
+    </div>
+    <div class="pjoin"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+  </div>
+</div>
+
+<!-- ============ S7 TIP 06 (dark) - compound from memory ============ -->
+<div class="slide dk">
+  <div class="tag"><i class="pin1"></i><i class="pin2"></i>IT COMPOUNDS</div>
+  <div class="hl">Every run makes<br>the next one sharper.</div>
+  <div class="bd">
+    <p>A skill saves what worked, what failed and the correction. The next run loads the lesson before it starts.</p>
+  </div>
+  <div class="mem">
+    <div class="mem-h">MEMORY &middot; <b>cold-email</b><span class="run">50 runs logged</span></div>
+    <div class="tl">
+      <div class="tnode win"><div class="dot"><i></i></div>
+        <div class="rn">run 50 &middot; today</div>
+        <div class="ev">"Series B angle" booked the call</div>
+        <div class="ls">saved as a <b>win</b>, the next draft opens with it</div></div>
+      <div class="tnode"><div class="dot"><i></i></div>
+        <div class="rn">run 33 &middot; Jun 06</div>
+        <div class="ev">subject ran to 8 words</div>
+        <div class="ls">tightened to 4, lesson stored</div></div>
+      <div class="tnode"><div class="dot"><i></i></div>
+        <div class="rn">run 19 &middot; May 29</div>
+        <div class="ev">gate caught "leverage"</div>
+        <div class="ls">auto-revised, banned word logged</div></div>
+      <div class="tnode"><div class="dot"><i></i></div>
+        <div class="rn">run 04 &middot; May 21</div>
+        <div class="ev">first baseline draft</div>
+        <div class="ls">where the skill started</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ S8 CTA (light) ============ -->
+<div class="slide lt">
+  <div class="tag"><i class="pin1"></i><i class="pin2"></i>THE FULL LIBRARY</div>
+  <div class="hl">Want the whole<br>skill map?</div>
+  <div class="bd">
+    <p>35+ skills across research, lead-gen, sales, content and ops. The library I run my GTM on, with the model tiers and quality gates already wired in.</p>
+    <p>Comment <b>PLAYBOOK</b> and I will send you the full Ultron skill map.</p>
+    <p><b>Follow</b> for one AI system for founders every day.</p>
+  </div>
+  <div class="cta-big">Comment Playbook<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+  <div class="brandline">
+    <div class="l"><img src="__LOGO_URI__" alt="">ULTRON <span>&middot; AI AGENTS FOR FOUNDERS</span></div>
+    <div class="r">51ultron<em>.</em>com</div>
+  </div>
+</div>
+
+</body>
+</html>
