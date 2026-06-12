@@ -12,6 +12,17 @@ for d in (PORTAL, THUMBS, ZIPS, CONTENT / "analytics"):
     d.mkdir(parents=True, exist_ok=True)
 MANIFEST = PORTAL / "manifest.json"
 
+def write_zip(zpath, mid, slides):
+    """Deterministic carousel zip: stored (no compression) with fixed entry timestamps, so
+    regenerating from unchanged slides yields byte-identical output. That keeps the working tree
+    clean across rescans and across machines - the churny zips were what stalled the portal's
+    auto-sync and left download artifacts missing ('File wasn't available on site')."""
+    with zipfile.ZipFile(zpath, "w", zipfile.ZIP_STORED) as z:
+        for i, f in enumerate(sorted(slides), 1):
+            zi = zipfile.ZipInfo(f"{mid}-{i:02d}.png", date_time=(1980, 1, 1, 0, 0, 0))
+            zi.external_attr = 0o644 << 16
+            z.writestr(zi, (ROOT / f).read_bytes())
+
 VARIANTS = {"journey","tiles","panel","dashboard","hub","org","radar","roster","cheatsheet","overview"}
 def is_variant(tok): return tok in VARIANTS or re.fullmatch(r"v\d+", tok) is not None
 
@@ -161,9 +172,7 @@ for mid, m in mats.items():
             download = "content/" + pdf.name
         else:
             zpath = ZIPS / (mid + ".zip")
-            with zipfile.ZipFile(zpath, "w") as z:
-                for i, f in enumerate(slides, 1):
-                    z.write(ROOT / f, arcname=f"{mid}-{i:02d}.png")
+            write_zip(zpath, mid, slides)
             download = "content/portal/zips/" + zpath.name
     else:
         # pick newest as preview, rest are alternates
