@@ -1,5 +1,15 @@
 {
   "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash portal/ensure-portal.sh"
+          }
+        ]
+      }
+    ],
     "Stop": [
       {
         "hooks": [
