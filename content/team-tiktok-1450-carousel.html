@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>the missing team - TikTok 1080x1450 with safe zones - 8-habits design language</title>
+<style>
+@import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
+/* DESIGN LOCK - hook #1 "The missing team" in the 8-habits reference language (analysis/refs/8-habits).
+   TikTok, canvas 1080x1450 (operator 2026-06-15), content inside SAFE ZONES (TikTok UI overlays the
+   bottom caption/username + right action rail). Bottom 300 / right 130 / top 110 / left 64 reserved.
+   8-habits DNA: alternating near-black/cream, pinned TIP tag, sentence-case headline, muted body with
+   bold accents, ONE focal scene (data-viz / Claude mockup) anchored at the safe-bottom (no bleed past it).
+   DM Sans / DM Mono. Palette #0E0D0C / #F4F2ED / #E86A45 / #C84623. Toggle .guide off for final export. */
+:root{
+  --dk:#0E0D0C; --dk-2:#17150F; --lt:#F4F2ED;
+  --ink:#15120E; --ink-70:rgba(21,18,14,.70); --ink-46:rgba(21,18,14,.46); --ink-14:rgba(21,18,14,.12);
+  --wt:#FAFAF7; --wt-70:rgba(250,250,247,.70); --wt-46:rgba(250,250,247,.46); --wt-12:rgba(250,250,247,.12);
+  --cor:#E86A45; --cor-deep:#C84623; --cor-lt:#F2A07E; --cream:#F1E8DE; --tagdk:#2B1D15;
+  /* TikTok safe zones on 1450 (operator-confirmable) */
+  --st:110px; --sr:130px; --sb:300px; --sl:64px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#070606;display:flex;flex-direction:column;align-items:center;gap:30px;padding:30px 0;font-family:'DM Sans',sans-serif;}
+.slide{width:1080px;height:1450px;flex-shrink:0;position:relative;overflow:hidden;}
+.slide.dk{background:radial-gradient(125% 75% at 50% 0%,var(--dk-2) 0%,var(--dk) 60%);color:var(--wt);}
+.slide.lt{background:var(--lt);color:var(--ink);}
+/* the safe box - all content lives here; the reserved margins are TikTok UI space */
+.safe{position:absolute;top:var(--st);left:var(--sl);right:var(--sr);bottom:var(--sb);
+  display:flex;flex-direction:column;}
+/* safe-zone guide (PROOF ONLY - delete .guide markup or set display:none for final) */
+.guide{position:absolute;top:var(--st);left:var(--sl);right:var(--sr);bottom:var(--sb);
+  border:2px dashed rgba(232,106,69,.55);border-radius:6px;pointer-events:none;z-index:9;}
+.guide span{position:absolute;top:-2px;left:50%;transform:translate(-50%,-100%);
+  font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.14em;color:rgba(232,106,69,.7);white-space:nowrap;}
+.gb{position:absolute;left:0;right:0;bottom:-2px;transform:translateY(100%);text-align:center;
+  font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.1em;}
+.dk .gb{color:var(--wt-46);}.lt .gb{color:var(--ink-46);}
+
+/* ---------- pinned tag (8-habits) ---------- */
+.tag{position:relative;align-self:flex-start;font-size:24px;font-weight:600;letter-spacing:.08em;padding:14px 28px;}
+.lt .tag{background:var(--cream);color:var(--ink);}
+.dk .tag{background:var(--tagdk);color:var(--wt);}
+.tag em{font-style:normal;color:var(--cor);}
+.tag::before{content:'';position:absolute;left:-3px;top:-24px;width:3px;height:24px;background:var(--cor);}
+.tag::after{content:'';position:absolute;right:-3px;bottom:-24px;width:3px;height:24px;background:var(--cor);}
+.tag i{position:absolute;width:11px;height:11px;border-radius:50%;background:var(--cor);}
+.tag i.p1{left:-7px;top:-30px;}.tag i.p2{right:-7px;bottom:-30px;}
+
+/* ====================================================== */
+/* S1 COVER (dark) - mixed-weight hook + team-bench focal  */
+/* ====================================================== */
+.cv-hook{margin-top:18px;}
+.cv-l1{font-size:46px;font-weight:500;letter-spacing:-1px;color:var(--wt-70);}
+.cv-big{display:flex;align-items:baseline;gap:18px;margin-top:2px;}
+.cv-num{font-size:188px;font-weight:800;letter-spacing:-8px;line-height:.8;color:var(--cor);text-shadow:0 20px 80px rgba(210,90,52,.4);}
+.cv-w{font-size:84px;font-weight:800;letter-spacing:-2px;color:var(--wt);}
+.cv-l3{font-size:58px;font-weight:500;letter-spacing:-1.6px;line-height:1.05;color:var(--wt);margin-top:14px;}
+.cv-l3 em{font-style:normal;color:var(--cor);font-weight:700;}
+.bench-lbl{display:flex;align-items:center;gap:12px;margin-top:auto;margin-bottom:18px;
+  font-family:'DM Mono',monospace;font-size:15px;letter-spacing:.16em;color:var(--cor-lt);}
+.bench-lbl .ln{flex:1;height:1px;background:var(--wt-12);}
+.bench{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.seat{background:linear-gradient(165deg,rgba(232,106,69,.2),rgba(150,62,36,.13));
+  border:1.5px solid rgba(242,160,126,.4);border-radius:16px;padding:22px 22px;display:flex;flex-direction:column;gap:8px;min-height:138px;
+  box-shadow:0 16px 44px rgba(210,90,52,.16);}
+.seat .rl{font-size:24px;font-weight:800;letter-spacing:-.3px;color:#FFE3D6;}
+.seat .rd{font-size:15px;color:rgba(255,224,210,.62);line-height:1.25;}
+.seat .cc{margin-top:auto;display:flex;align-items:center;gap:7px;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--cor-lt);}
+.seat .cc::before{content:'';width:9px;height:9px;border-radius:50%;background:var(--cor);box-shadow:0 0 12px var(--cor);}
+.cv-brand{position:absolute;left:var(--sl);bottom:calc(var(--sb) - 56px);display:flex;align-items:center;gap:10px;
+  font-family:'DM Mono',monospace;font-size:14px;letter-spacing:.1em;color:var(--wt-46);}
+.cv-brand img{width:24px;height:24px;border-radius:50%;}
+.cv-brand b{color:var(--wt);font-weight:500;}
+
+/* ====================================================== */
+/* S2 ROLE 01 (light) - tag + headline + body + mockup     */
+/* ====================================================== */
+.hl{margin-top:30px;font-size:66px;font-weight:600;letter-spacing:-2px;line-height:1.05;color:var(--ink);}
+.bd{margin-top:26px;display:flex;flex-direction:column;gap:20px;max-width:760px;}
+.bd p{font-size:25px;font-weight:400;line-height:1.42;color:var(--ink-70);}
+.bd b{font-weight:700;color:var(--ink);}
+.mock{margin-top:auto;background:#FFFFFF;border:1.5px solid var(--ink-14);border-radius:20px;overflow:hidden;
+  box-shadow:0 30px 70px rgba(21,18,14,.14);}
+.mock-bar{display:flex;align-items:center;gap:10px;padding:16px 22px;border-bottom:1px solid var(--ink-14);background:#FBFAF8;}
+.mock-bar .av{width:30px;height:30px;border-radius:8px;background:linear-gradient(165deg,var(--cor),var(--cor-deep));}
+.mock-bar .t{font-weight:700;font-size:18px;color:var(--ink);}
+.mock-bar .t span{color:var(--ink-46);font-weight:500;font-family:'DM Mono',monospace;font-size:14px;}
+.mock-bar .pill{margin-left:auto;font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.08em;color:var(--cor-deep);
+  background:rgba(232,106,69,.12);border:1px solid rgba(232,106,69,.26);border-radius:7px;padding:6px 11px;}
+.mrow{display:grid;grid-template-columns:46px 1fr 96px 50px;gap:16px;align-items:center;padding:15px 22px;}
+.mrow+.mrow{border-top:1px solid var(--ink-14);}
+.mrow .rk{font-family:'DM Mono',monospace;font-size:17px;font-weight:500;color:var(--cor-deep);}
+.mrow .sg{font-size:21px;font-weight:700;color:var(--ink);}
+.mrow .sg b{display:block;font-size:15px;font-weight:400;color:var(--ink-46);margin-top:2px;}
+.mrow .ft{display:flex;align-items:center;gap:8px;}
+.mrow .bar{flex:1;height:8px;border-radius:4px;background:rgba(21,18,14,.1);overflow:hidden;}
+.mrow .bar i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,var(--cor),var(--cor-deep));}
+.mrow .pc{font-family:'DM Mono',monospace;font-size:17px;font-weight:500;color:var(--ink);}
+.mrow.top{background:rgba(232,106,69,.06);}
+</style>
+</head>
+<body>
+
+<!-- ============ S1 COVER (dark) ============ -->
+<div class="slide dk">
+  <div class="safe">
+    <div class="cv-hook">
+      <div class="cv-l1">I run my company with</div>
+      <div class="cv-big"><span class="cv-num">0</span><span class="cv-w">hires.</span></div>
+      <div class="cv-l3">Claude is the <em>whole team</em>.</div>
+    </div>
+    <div class="bench-lbl">EVERY SEAT, ONE CLAUDE<span class="ln"></span></div>
+    <div class="bench">
+      <div class="seat"><div class="rl">Research</div><div class="rd">profiles the market, ranks the list</div><div class="cc">CLAUDE</div></div>
+      <div class="seat"><div class="rl">Outbound</div><div class="rd">writes the sequence, per lead</div><div class="cc">CLAUDE</div></div>
+      <div class="seat"><div class="rl">Deals</div><div class="rd">qualify to close, one flow</div><div class="cc">CLAUDE</div></div>
+      <div class="seat"><div class="rl">Content</div><div class="rd">your voice, every channel</div><div class="cc">CLAUDE</div></div>
+      <div class="seat"><div class="rl">Ops</div><div class="rd">briefs, reports, follow-through</div><div class="cc">CLAUDE</div></div>
+      <div class="seat"><div class="rl">Build</div><div class="rd">internal tools, no engineer</div><div class="cc">CLAUDE</div></div>
+    </div>
+  </div>
+  <div class="cv-brand"><img src="__LOGO_URI__" alt="">ULTRON <b>&middot; 51ultron.com</b></div>
+  <div class="guide"><span>SAFE ZONE &middot; 1080&times;1450 TikTok</span><div class="gb">RESERVED FOR TIKTOK UI (caption / username / action rail)</div></div>
+</div>
+
+<!-- ============ S2 ROLE 01 (light) ============ -->
+<div class="slide lt">
+  <div class="safe">
+    <div class="tag"><i class="p1"></i><i class="p2"></i>THE ROSTER <em>&middot;</em> 01</div>
+    <div class="hl">Your researcher,<br>already briefed.</div>
+    <div class="bd">
+      <p>Point Claude at a market and it hands back a <b>ranked brief</b>, not a blank page. Who to chase, why now, sorted by fit.</p>
+      <p>You start at <b>step two</b>, with the right 50, not a list of 5,000.</p>
+    </div>
+    <div class="mock">
+      <div class="mock-bar"><div class="av"></div><div class="t">CORTEX <span>&middot; ranked brief</span></div><div class="pill">FOUNDER-LED, 2-50, US/UK</div></div>
+      <div class="mrow top"><div class="rk">01</div><div class="sg">Seed-Series A SaaS, US<b>just raised, hiring AEs</b></div><div class="ft"><div class="bar"><i style="width:96%"></i></div></div><div class="pc">96</div></div>
+      <div class="mrow"><div class="rk">02</div><div class="sg">Boutique IT services, UK<b>scaling outbound, no SDRs</b></div><div class="ft"><div class="bar"><i style="width:92%"></i></div></div><div class="pc">92</div></div>
+      <div class="mrow"><div class="rk">03</div><div class="sg">Founder-led software, US<b>new VP Sales, budget set</b></div><div class="ft"><div class="bar"><i style="width:89%"></i></div></div><div class="pc">89</div></div>
+    </div>
+  </div>
+  <div class="guide"><span>SAFE ZONE &middot; 1080&times;1450 TikTok</span><div class="gb">RESERVED FOR TIKTOK UI (caption / username / action rail)</div></div>
+</div>
+
+</body>
+</html>
