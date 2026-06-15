@@ -72,7 +72,7 @@ def find_caption(prefix, channel):
     shorter prefixes, so variant builds like '-editorial45' inherit the base copy)."""
     out = {"caption": "", "alt": "", "first_comment": ""}
     pfx = prefix
-    while pfx and pfx.count("-") >= 1:
+    while pfx:
         if channel == "tiktok":
             order = [f"{pfx}-tiktok-caption.md", f"{pfx}-caption.md", f"{pfx}-copy.md", f"{pfx}-linkedin-caption.md"]
         else:
@@ -84,6 +84,8 @@ def find_caption(prefix, channel):
             for k in out:
                 if not out[k] and d.get(k): out[k] = d[k]
         if out["caption"]:   # found the material's copy at this prefix level; don't over-borrow
+            break
+        if "-" not in pfx:   # single-word prefix (e.g. 'team'): nothing shorter to fall back to
             break
         pfx = pfx.rsplit("-", 1)[0]
     return out
@@ -167,10 +169,12 @@ for mid, m in mats.items():
         preview = slides[0]
         nslides = len(slides)
         pdf = CONTENT / (mid + ".pdf")
-        if pdf.exists():
-            # LinkedIn carousels ship as a single PDF (the posting format) - hand that over, not a zip of PNGs
+        if ch == "linkedin" and pdf.exists():
+            # LinkedIn carousels post as a single PDF - hand that over
             download = "content/" + pdf.name
         else:
+            # TikTok/IG carousels post as PNG images - hand over the PNG zip (operator 2026-06-15);
+            # any PDF stays on disk as an alternate, it just is not the default download.
             zpath = ZIPS / (mid + ".zip")
             write_zip(zpath, mid, slides)
             download = "content/portal/zips/" + zpath.name

@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-06-15T11:25:01",
+  "generated_at": "2026-06-15T11:33:45",
   "counts": {
-    "total": 92,
-    "generated": 48,
+    "total": 93,
+    "generated": 49,
     "reference": 44,
     "crosspost": 0
   },
@@ -2065,7 +2065,7 @@
       "slides": 8,
       "dims": "2160x2900 (1080x1450 @2x)",
       "preview": "content/team-tiktok-1450-carousel-01.png",
-      "download": "content/team-tiktok-1450-carousel.pdf",
+      "download": "content/portal/zips/team-tiktok-1450-carousel.zip",
       "files": [
         "content/team-tiktok-1450-carousel-01.png",
         "content/team-tiktok-1450-carousel-02.png",
@@ -2077,11 +2077,38 @@
         "content/team-tiktok-1450-carousel-08.png"
       ],
       "variants": [],
-      "caption": "",
-      "alt": "",
-      "first_comment": "",
+      "caption": "I run my company with zero hires.\n\nNot because I cannot afford a team. Because Claude is the team, and I am the one operator who runs it.\n\nSix seats, one chat box. Each one a role I used to think I had to hire for:\n\nA researcher that hands me a ranked brief instead of a blank page. An SDR that writes the whole 4-touch sequence before my coffee. A closer with the answer to every objection drafted before the call. A writer that ships one idea to LinkedIn, TikTok and X in my voice. An ops lead with the morning brief written before I open the laptop. And an engineer that builds the internal tool the same day, with no engineer. I approve every move, and nothing leaves the building without me.\n\nThis is Ultron, the AI operator for founders: one box, the agents inside it, you on the gate.\n\nComment TEAM and I will send you the exact 6-role setup.\n\n#claude #ai #founder #startup #buildinpublic",
+      "alt": "Dark editorial TikTok carousel, alternating near-black and cream slides with matte coral accents. The cover reads 'I run my company with 0 hires, Claude is the whole team' over six role bars, researcher, SDR, closer, writer, ops and builder, collapsing into one glowing coral Claude bar. Six role slides follow, each a sentence-case headline and one product mockup: a Claude composer returning a ranked brief, a four-touch SPECTER sequence, a STRIKER objection handler, a PULSE and AMPLIFY three-channel scheduler, an automated 07:00 morning brief, and an artifact pricing calculator built in chat. Closes with a six-role roster and a Comment TEAM call to action and the Ultron logo.",
+      "first_comment": "Zero hires, six roles, one operator. I run research, outbound, deals, content, ops and internal tools through one Claude box, and I approve every move before it ships.\n\nComment TEAM and I will send you the exact 6-role setup I run my company on.",
       "generated_date": "2026-06-15",
-      "added": 1781522604,
+      "added": 1781522702,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "team-tiktok-1450-infographic",
+      "title": "Team",
+      "channel": "tiktok",
+      "type": "single",
+      "slides": 1,
+      "dims": "2160x2900 (1080x1450 @2x)",
+      "preview": "content/team-tiktok-1450-infographic.png",
+      "download": "content/team-tiktok-1450-infographic.png",
+      "files": [
+        "content/team-tiktok-1450-infographic.png"
+      ],
+      "variants": [
+        ""
+      ],
+      "caption": "I run my company with zero hires.\n\nNot because I cannot afford a team. Because Claude is the team, and I am the one operator who runs it.\n\nSix seats, one chat box. Each one a role I used to think I had to hire for:\n\nA researcher that hands me a ranked brief instead of a blank page. An SDR that writes the whole 4-touch sequence before my coffee. A closer with the answer to every objection drafted before the call. A writer that ships one idea to LinkedIn, TikTok and X in my voice. An ops lead with the morning brief written before I open the laptop. And an engineer that builds the internal tool the same day, with no engineer. I approve every move, and nothing leaves the building without me.\n\nThis is Ultron, the AI operator for founders: one box, the agents inside it, you on the gate.\n\nComment TEAM and I will send you the exact 6-role setup.\n\n#claude #ai #founder #startup #buildinpublic",
+      "alt": "Dark editorial TikTok carousel, alternating near-black and cream slides with matte coral accents. The cover reads 'I run my company with 0 hires, Claude is the whole team' over six role bars, researcher, SDR, closer, writer, ops and builder, collapsing into one glowing coral Claude bar. Six role slides follow, each a sentence-case headline and one product mockup: a Claude composer returning a ranked brief, a four-touch SPECTER sequence, a STRIKER objection handler, a PULSE and AMPLIFY three-channel scheduler, an automated 07:00 morning brief, and an artifact pricing calculator built in chat. Closes with a six-role roster and a Comment TEAM call to action and the Ultron logo.",
+      "first_comment": "Zero hires, six roles, one operator. I run research, outbound, deals, content, ops and internal tools through one Claude box, and I approve every move before it ships.\n\nComment TEAM and I will send you the exact 6-role setup I run my company on.",
+      "generated_date": "2026-06-15",
+      "added": 1781523128,
       "source": "generated",
       "status": "ready",
       "posted": false,
