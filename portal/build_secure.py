@@ -8,14 +8,14 @@ nothing is readable on the host without the user + password.
 
 Usage: python3 portal/build_secure.py /tmp/inner.html
 """
-import json, sys, base64, io, pathlib
+import json, sys, base64, io, pathlib, os
 from PIL import Image
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
 MANIFEST = CONTENT / "portal" / "manifest.json"
 REPO = "NexityNetwork/tiberiu-claude"
-DL_BRANCH = "main"          # download links resolve on main (login-gated by the private repo)
+DL_BRANCH = os.environ.get("PORTAL_DL_BRANCH", "main")   # download branch (env-overridable; the work branch holds every material)
 THUMB_W = 300
 
 def thumb_data_uri(preview):
