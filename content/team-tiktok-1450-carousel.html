@@ -2,95 +2,159 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>the missing team - TikTok 1080x1450 - 8-habits quality</title>
+<title>the missing team - TikTok 1080x1450 carousel - 8-habits quality</title>
 <style>
 @import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
-/* DESIGN LOCK v3 - match the 8-habits reference QUALITY (analysis/refs/8-habits). Matte near-black bg +
-   matte type, but the FOCAL is a richly-rendered element with soft AMBIENT coral glow (the reference's
-   composer/toggle/bars) - not flat, not cheap. Cover = giant mixed-weight hook + bar-viz + hand-drawn
-   arrow. Refined pinned tag. lucide icons inline. TikTok 1080x1450 + safe zones (bottom 300/right 130/
-   top 110/left 64 reserved). DM Sans / DM Mono. .guide proof-only. */
+/* HOOK #1 "the missing team" - full carousel, 8-habits reference quality (operator-approved v3).
+   TikTok 1080x1450 + safe zones (bottom 300/right 130/top 110/left 64 reserved). Matte near-black /
+   cream alternating, matte type, ONE richly-rendered focal per slide: soft AMBIENT coral glow on
+   dark, clean matte cards on light. Focal sits RIGHT UNDER the body and is sized to fill the band
+   (no title->content gap, no stretched sparse rows). lucide icons. NO em/en dash. DM Sans / DM Mono. */
 :root{
-  --dk:#0D0B0A; --dk-bar:#1B1714;
+  --dk:#0D0B0A; --lt:#F1EAE2; --card-lt:#FBF8F4;
   --wt:#F7F4EF; --wt-66:rgba(247,244,239,.66); --wt-42:rgba(247,244,239,.42); --wt-10:rgba(247,244,239,.10);
-  --cor:#E3683E; --cor-deep:#B14625; --cor-lt:#F0A07C; --silver:#9A958E;
+  --ink:#161210; --ink-66:rgba(22,18,16,.66); --ink-42:rgba(22,18,16,.44); --ink-12:rgba(22,18,16,.12);
+  --cor:#E3683E; --cor-deep:#B14625; --cor-lt:#F0A07C;
   --st:110px; --sr:130px; --sb:300px; --sl:64px;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:#070606;display:flex;flex-direction:column;align-items:center;gap:30px;padding:30px 0;font-family:'DM Sans',sans-serif;}
 .slide{width:1080px;height:1450px;flex-shrink:0;position:relative;overflow:hidden;background:var(--dk);color:var(--wt);}
+.slide.lt{background:var(--lt);color:var(--ink);}
 .safe{position:absolute;top:var(--st);left:var(--sl);right:var(--sr);bottom:var(--sb);display:flex;flex-direction:column;}
-.guide{position:absolute;top:var(--st);left:var(--sl);right:var(--sr);bottom:var(--sb);border:2px dashed rgba(227,104,62,.45);pointer-events:none;z-index:9;}
-.guide span{position:absolute;top:-2px;left:50%;transform:translate(-50%,-100%);font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.14em;color:rgba(227,104,62,.65);white-space:nowrap;}
-.guide .gb{position:absolute;left:0;right:0;bottom:-2px;transform:translateY(100%);text-align:center;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.1em;color:var(--wt-42);}
 
-/* refined pinned tag (outlined box + coral pin lines/dots) */
 .tag{position:relative;align-self:flex-start;font-family:'DM Mono',monospace;font-size:17px;font-weight:500;letter-spacing:.2em;
-  color:var(--wt);padding:13px 24px;border:1.5px solid rgba(227,104,62,.55);background:rgba(227,104,62,.05);}
+  padding:13px 24px;border:1.5px solid rgba(227,104,62,.55);color:var(--wt);background:rgba(227,104,62,.05);}
+.slide.lt .tag{color:var(--ink);background:rgba(227,104,62,.07);border-color:rgba(227,104,62,.5);}
 .tag::before{content:'';position:absolute;left:-1px;top:-26px;width:1.5px;height:24px;background:var(--cor);}
 .tag::after{content:'';position:absolute;right:-1px;bottom:-26px;width:1.5px;height:24px;background:var(--cor);}
 .tag i.d1,.tag i.d2{position:absolute;width:9px;height:9px;border-radius:50%;background:var(--cor);}
 .tag i.d1{left:-5px;top:-32px;}.tag i.d2{right:-5px;bottom:-32px;}
 
-/* ============ S1 COVER - mixed hook + bar-viz + hand-drawn arrow ============ */
+.hl{margin-top:28px;font-size:60px;font-weight:600;letter-spacing:-1.8px;line-height:1.03;color:var(--wt);}
+.slide.lt .hl{color:var(--ink);}
+.hl em{font-style:normal;color:var(--cor);font-weight:700;}
+.bd{margin-top:20px;display:flex;flex-direction:column;gap:12px;max-width:780px;}
+.bd p{font-size:23px;font-weight:400;line-height:1.38;color:var(--wt-66);}
+.slide.lt .bd p{color:var(--ink-66);}
+.bd b{font-weight:600;color:var(--wt);}.slide.lt .bd b{color:var(--ink);}
+/* focal: right under the body, fills the remaining band */
+.focal{margin-top:30px;flex:1;display:flex;flex-direction:column;}
+
+/* dark glow shell */
+.glowwrap{position:relative;flex:1;display:flex;flex-direction:column;}
+.glowwrap .halo{position:absolute;left:-40px;right:-40px;top:-24px;bottom:-46px;background:radial-gradient(56% 60% at 50% 50%,rgba(227,104,62,.24),transparent 72%);z-index:0;}
+.panel{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;border-radius:24px;background:linear-gradient(180deg,rgba(42,27,20,.5),rgba(20,14,11,.55));
+  border:1.5px solid rgba(227,104,62,.4);box-shadow:0 0 60px rgba(227,104,62,.2),inset 0 1.5px 0 rgba(255,210,182,.12),inset 0 -18px 40px rgba(0,0,0,.28);overflow:hidden;}
+.panel-h{flex:0 0 auto;display:flex;align-items:center;gap:11px;padding:18px 24px;border-bottom:1px solid rgba(247,244,239,.1);font-family:'DM Mono',monospace;font-size:16px;letter-spacing:.08em;color:var(--cor-lt);}
+.panel-h svg{width:19px;height:19px;color:var(--cor);}.panel-h .pill{margin-left:auto;font-size:13px;letter-spacing:.05em;color:var(--wt-42);}
+
+/* light card */
+.card{flex:1;display:flex;flex-direction:column;border-radius:24px;background:var(--card-lt);border:1px solid var(--ink-12);box-shadow:0 24px 60px rgba(22,16,12,.11);overflow:hidden;}
+.card-h{flex:0 0 auto;display:flex;align-items:center;gap:11px;padding:18px 24px;border-bottom:1px solid var(--ink-12);font-family:'DM Mono',monospace;font-size:16px;letter-spacing:.08em;color:var(--cor-deep);}
+.card-h svg{width:19px;height:19px;color:var(--cor-deep);}.card-h .pill{margin-left:auto;font-size:13px;letter-spacing:.05em;color:var(--ink-42);}
+
+/* ============ S1 COVER ============ */
 .cv-l1{font-size:42px;font-weight:500;letter-spacing:-.6px;color:var(--wt-66);}
 .cv-big{display:flex;align-items:baseline;gap:14px;margin-top:-6px;}
 .cv-num{font-size:188px;font-weight:800;letter-spacing:-9px;line-height:.8;color:var(--cor);}
 .cv-w{font-size:84px;font-weight:800;letter-spacing:-2px;color:var(--wt);}
 .cv-l3{font-size:50px;font-weight:500;letter-spacing:-1.4px;line-height:1.05;color:var(--wt);margin-top:8px;}
 .cv-l3 em{font-style:normal;color:var(--cor);font-weight:700;}
-.viz{position:relative;margin-top:40px;flex:1;display:flex;gap:30px;align-items:stretch;}
+.viz{position:relative;margin-top:36px;flex:1;display:flex;gap:26px;}
 .bars{flex:1;display:flex;flex-direction:column;justify-content:center;gap:11px;}
-.bar6{position:relative;height:50px;border-radius:9px;background:linear-gradient(180deg,#221C18,#15110E);
-  border:1px solid rgba(247,244,239,.07);display:flex;align-items:center;padding:0 20px;
-  font-family:'DM Mono',monospace;font-size:15px;letter-spacing:.12em;color:var(--wt-42);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.04);}
-.bar6 .x{margin-left:auto;color:rgba(247,244,239,.22);}
-.claudebar{position:relative;height:74px;border-radius:11px;
-  background:linear-gradient(180deg,#EE7148,#C2502A);display:flex;align-items:center;padding:0 24px;gap:13px;
-  box-shadow:0 0 60px rgba(227,104,62,.4),inset 0 1.5px 0 rgba(255,214,190,.5),inset 0 -16px 30px rgba(120,40,18,.4);}
+.bar6{flex:1;border-radius:9px;background:linear-gradient(180deg,#221C18,#15110E);border:1px solid rgba(247,244,239,.07);
+  display:flex;align-items:center;padding:0 20px;font-family:'DM Mono',monospace;font-size:15px;letter-spacing:.12em;color:var(--wt-42);box-shadow:inset 0 1px 0 rgba(255,255,255,.04);}
+.bar6 .x{margin-left:auto;color:rgba(247,244,239,.2);}
+.claudebar{flex:1.5;border-radius:11px;background:linear-gradient(180deg,#EE7148,#C2502A);display:flex;align-items:center;padding:0 24px;gap:13px;
+  box-shadow:0 0 60px rgba(227,104,62,.4),inset 0 1.5px 0 rgba(255,214,190,.5),inset 0 -16px 30px rgba(120,40,18,.4);margin-top:4px;}
 .claudebar .nm{font-size:27px;font-weight:800;letter-spacing:-.3px;color:#2A130B;}
 .claudebar .sub{margin-left:auto;font-family:'DM Mono',monospace;font-size:14px;letter-spacing:.1em;color:rgba(42,19,11,.66);}
 .claudebar .spk{width:26px;height:26px;color:#2A130B;}
-.swap{width:188px;flex-shrink:0;position:relative;}
-.swap svg.arr{position:absolute;left:6px;top:30px;width:150px;height:300px;overflow:visible;}
-.swap .note{position:absolute;left:18px;top:6px;font-size:23px;font-style:italic;color:var(--wt-66);font-weight:400;}
+.swap{width:166px;flex-shrink:0;position:relative;}
+.swap .note{position:absolute;left:14px;top:24px;font-size:22px;font-style:italic;color:var(--wt-66);line-height:1.2;}
+.swap svg.arr{position:absolute;left:6px;top:120px;width:140px;height:250px;overflow:visible;}
 .cv-brand{position:absolute;left:var(--sl);bottom:calc(var(--sb) - 52px);display:flex;align-items:center;gap:10px;font-family:'DM Mono',monospace;font-size:14px;letter-spacing:.1em;color:var(--wt-42);}
 .cv-brand img{width:23px;height:23px;border-radius:50%;}.cv-brand b{color:var(--wt);font-weight:500;}
 
-/* ============ S2 ROLE 01 - headline + body + glowing composer ============ */
-.hl{margin-top:30px;font-size:64px;font-weight:600;letter-spacing:-1.9px;line-height:1.03;color:var(--wt);}
-.bd{margin-top:24px;display:flex;flex-direction:column;gap:15px;max-width:760px;}
-.bd p{font-size:24px;font-weight:400;line-height:1.4;color:var(--wt-66);}
-.bd b{font-weight:600;color:var(--wt);}
-.composer{position:relative;margin-top:38px;}
-.composer .halo{position:absolute;left:-40px;right:-40px;top:-30px;bottom:-60px;
-  background:radial-gradient(58% 64% at 50% 55%,rgba(227,104,62,.30),transparent 72%);z-index:0;}
-.cbar{position:relative;z-index:1;display:flex;align-items:center;gap:18px;border-radius:30px;padding:28px 28px;
-  background:linear-gradient(180deg,rgba(48,30,22,.92),rgba(22,16,13,.94));
-  border:1.5px solid rgba(227,104,62,.55);
-  box-shadow:0 0 70px rgba(227,104,62,.32),inset 0 1.5px 0 rgba(255,210,182,.16),inset 0 -22px 44px rgba(0,0,0,.34);}
-.cbar .ph{flex:1;font-size:25px;color:rgba(247,244,239,.5);line-height:1.3;}
-.cbar .ic{width:30px;height:30px;flex-shrink:0;color:rgba(247,244,239,.66);}
-.cbar .ic.send{color:var(--cor-lt);}
-.cprompt{position:relative;z-index:1;margin-top:18px;display:flex;align-items:center;gap:10px;
-  font-family:'DM Mono',monospace;font-size:16px;letter-spacing:.04em;color:var(--cor-lt);}
+/* ROLE 01 composer */
+.cbar{flex:0 0 auto;position:relative;z-index:1;display:flex;align-items:center;gap:18px;border-radius:30px;padding:26px 28px;
+  background:linear-gradient(180deg,rgba(48,30,22,.92),rgba(22,16,13,.94));border:1.5px solid rgba(227,104,62,.55);
+  box-shadow:0 0 60px rgba(227,104,62,.28),inset 0 1.5px 0 rgba(255,210,182,.16),inset 0 -22px 44px rgba(0,0,0,.34);}
+.cbar .ph{flex:1;font-size:24px;color:rgba(247,244,239,.5);line-height:1.3;}
+.cbar .ic{width:29px;height:29px;flex-shrink:0;color:var(--wt-66);}.cbar .ic.send{color:var(--cor-lt);}
+.cprompt{flex:0 0 auto;position:relative;z-index:1;margin-top:15px;display:flex;align-items:center;gap:10px;font-family:'DM Mono',monospace;font-size:15px;letter-spacing:.04em;color:var(--cor-lt);}
 .cprompt .dot{width:8px;height:8px;border-radius:50%;background:var(--cor);}
-.cres{position:relative;z-index:1;margin-top:22px;background:rgba(247,244,239,.035);border:1px solid var(--wt-10);border-radius:18px;overflow:hidden;}
-.cres-h{display:flex;align-items:center;gap:10px;padding:16px 22px;border-bottom:1px solid var(--wt-10);font-family:'DM Mono',monospace;font-size:15px;letter-spacing:.08em;color:var(--cor-lt);}
-.cres-h svg{width:18px;height:18px;color:var(--cor);}
-.cres-h .pill{margin-left:auto;font-size:13px;letter-spacing:.06em;color:var(--wt-42);}
-.cres-row{display:grid;grid-template-columns:42px 1fr 52px;gap:14px;align-items:center;padding:16px 22px;}
-.cres-row+.cres-row{border-top:1px solid var(--wt-10);}
-.cres-row .rk{font-family:'DM Mono',monospace;font-size:15px;color:var(--cor);}
-.cres-row .sg{font-size:20px;font-weight:600;color:var(--wt);}
-.cres-row .sg b{display:block;font-size:14px;font-weight:400;color:var(--wt-42);margin-top:1px;}
-.cres-row .sc{font-family:'DM Mono',monospace;font-size:18px;color:var(--wt);text-align:right;}
+.cres{flex:1;position:relative;z-index:1;margin-top:18px;display:flex;flex-direction:column;background:rgba(247,244,239,.035);border:1px solid var(--wt-10);border-radius:18px;overflow:hidden;}
+.cres .rr{flex:1;display:grid;grid-template-columns:42px 1fr 52px;gap:14px;align-items:center;padding:0 22px;}
+.cres .rr+.rr{border-top:1px solid var(--wt-10);}
+.cres .rk{font-family:'DM Mono',monospace;font-size:15px;color:var(--cor);}
+.cres .sg{font-size:20px;font-weight:600;color:var(--wt);}.cres .sg b{display:block;font-size:14px;font-weight:400;color:var(--wt-42);margin-top:1px;}
+.cres .sc{font-family:'DM Mono',monospace;font-size:18px;color:var(--wt);text-align:right;}
+
+/* ROLE 02 sequence (light) */
+.seqrow{flex:1;display:grid;grid-template-columns:104px 1fr;gap:18px;align-items:center;padding:0 24px;}
+.seqrow+.seqrow{border-top:1px solid var(--ink-12);}
+.seqrow .day{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;letter-spacing:.06em;color:#2A130B;background:var(--cor);border-radius:8px;padding:11px 0;text-align:center;}
+.seqrow .tx{font-size:22px;font-weight:700;color:var(--ink);}.seqrow .tx b{display:block;font-size:16px;font-weight:400;color:var(--ink-42);margin-top:2px;}
+
+/* ROLE 03 objections (dark) */
+.objrow{flex:1;display:grid;grid-template-columns:1fr 30px 1.2fr;gap:16px;align-items:center;padding:0 24px;}
+.objrow+.objrow{border-top:1px solid rgba(247,244,239,.1);}
+.objrow .q{font-size:21px;font-weight:700;font-style:italic;color:#fff;}
+.objrow .ar{color:var(--cor);font-size:20px;text-align:center;}
+.objrow .a{font-size:18px;color:var(--wt-66);line-height:1.3;}.objrow .a b{color:var(--cor-lt);font-weight:600;font-style:normal;}
+
+/* ROLE 04 channels (light) */
+.postline{flex:0 0 auto;padding:20px 24px;border-bottom:1px solid var(--ink-12);font-size:20px;color:var(--ink);font-weight:600;line-height:1.3;}
+.postline span{color:var(--ink-42);font-weight:400;}
+.chans{flex:1;display:grid;grid-template-columns:1fr 1fr 1fr;}
+.chans .ch{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:11px;padding:18px;}
+.chans .ch+.ch{border-left:1px solid var(--ink-12);}
+.chans .av{width:50px;height:50px;border-radius:13px;background:rgba(207,94,55,.1);border:1px solid rgba(207,94,55,.26);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;color:var(--cor-deep);}
+.chans .cn{font-size:22px;font-weight:800;color:var(--ink);letter-spacing:-.3px;}
+.chans .cf{font-size:14px;color:var(--ink-42);text-align:center;}
+.chans .ct{font-family:'DM Mono',monospace;font-size:15px;color:var(--cor-deep);}
+.chans .st{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.06em;color:var(--cor-deep);background:rgba(207,94,55,.1);border-radius:7px;padding:6px 12px;}
+
+/* ROLE 05 ops (dark) */
+.brow{flex:1;display:flex;align-items:center;gap:15px;padding:0 24px;}
+.brow+.brow{border-top:1px solid rgba(247,244,239,.1);}
+.brow .bk{width:34px;height:34px;border-radius:9px;background:rgba(227,104,62,.14);border:1px solid rgba(227,104,62,.3);flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.brow .bk i{width:9px;height:9px;border-radius:50%;background:var(--cor);box-shadow:0 0 10px rgba(227,104,62,.8);}
+.brow .bt{font-size:21px;font-weight:700;color:var(--wt);}.brow .bt span{display:block;font-size:16px;font-weight:400;color:var(--wt-42);margin-top:2px;}
+
+/* ROLE 06 artifact (light) */
+.artbody{flex:1;padding:22px 24px;display:flex;gap:18px;}
+.artin{flex:1;display:flex;flex-direction:column;gap:11px;}
+.artin .f{flex:1;display:flex;align-items:center;justify-content:space-between;background:rgba(22,18,16,.04);border:1px solid var(--ink-12);border-radius:11px;padding:0 18px;font-size:18px;color:var(--ink-66);}
+.artin .f b{color:var(--ink);font-weight:700;}
+.artout{width:228px;flex-shrink:0;border-radius:14px;background:var(--cor);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#2A130B;}
+.artout .ol{font-family:'DM Mono',monospace;font-size:14px;letter-spacing:.1em;}
+.artout .ov{font-size:58px;font-weight:800;letter-spacing:-2px;margin-top:2px;}
+.artout .od{font-size:14px;color:rgba(42,19,11,.66);margin-top:4px;}
+
+/* S8 CTA */
+.close-hl{margin-top:28px;font-size:58px;font-weight:600;letter-spacing:-1.8px;line-height:1.04;color:var(--wt);}
+.close-hl em{font-style:normal;color:var(--cor);font-weight:700;}
+.close-sub{margin-top:20px;font-size:23px;line-height:1.38;color:var(--wt-66);max-width:780px;}
+.close-sub b{color:var(--wt);font-weight:600;}
+.recap{margin-top:30px;flex:1;display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.recap .rc{display:flex;align-items:center;gap:13px;border:1px solid var(--wt-10);border-radius:13px;padding:0 18px;background:rgba(247,244,239,.03);}
+.recap .rc .n{font-family:'DM Mono',monospace;font-size:14px;color:var(--cor);}
+.recap .rc .r{font-size:20px;font-weight:700;color:var(--wt);}
+.recap .rc .rd{margin-left:auto;font-family:'DM Mono',monospace;font-size:13px;color:var(--wt-42);}
+.cta-chip{flex:0 0 auto;margin-top:16px;display:flex;align-items:center;gap:16px;background:linear-gradient(180deg,#EE7148,#C2502A);border-radius:18px;padding:24px 30px;
+  box-shadow:0 0 60px rgba(227,104,62,.34),inset 0 1.5px 0 rgba(255,214,190,.5);}
+.cta-chip .t{font-size:32px;font-weight:800;letter-spacing:.01em;color:#2A130B;}.cta-chip .t em{font-style:normal;color:#fff;}
+.cta-chip svg{width:30px;height:30px;color:#2A130B;margin-left:auto;}
+.cta-brand{position:absolute;left:var(--sl);bottom:calc(var(--sb) - 52px);display:flex;align-items:center;gap:10px;font-family:'DM Mono',monospace;font-size:14px;letter-spacing:.1em;color:var(--wt-42);}
+.cta-brand img{width:23px;height:23px;border-radius:50%;}.cta-brand b{color:var(--wt);font-weight:500;}
 </style>
 </head>
 <body>
 
-<!-- ============ S1 COVER ============ -->
+<!-- S1 COVER -->
 <div class="slide">
   <div class="safe">
     <div class="cv-l1">I run my company with</div>
@@ -108,44 +172,142 @@ body{background:#070606;display:flex;flex-direction:column;align-items:center;ga
       </div>
       <div class="swap">
         <div class="note">one seat,<br>not six</div>
-        <svg class="arr" viewBox="0 0 150 300" fill="none" stroke="#C2502A" stroke-width="2.4" stroke-linecap="round">
-          <path d="M40 70 C 95 110, 95 200, 60 250" stroke-dasharray="0"/>
-          <path d="M46 232 L60 252 L74 236"/>
-        </svg>
+        <svg class="arr" viewBox="0 0 140 250" fill="none" stroke="#C2502A" stroke-width="2.4" stroke-linecap="round"><path d="M40 10 C 95 60, 95 150, 55 200"/><path d="M41 182 L55 202 L69 186"/></svg>
       </div>
     </div>
   </div>
   <div class="cv-brand"><img src="__LOGO_URI__" alt="">ULTRON <b>&middot; 51ultron.com</b></div>
-  <div class="guide"><span>SAFE ZONE &middot; 1080&times;1450 TikTok</span><div class="gb">RESERVED FOR TIKTOK UI</div></div>
 </div>
 
-<!-- ============ S2 ROLE 01 - glowing composer ============ -->
+<!-- S2 ROLE 01 RESEARCH (dark) -->
 <div class="slide">
   <div class="safe">
     <div class="tag"><i class="d1"></i><i class="d2"></i>ROLE 01</div>
     <div class="hl">Your researcher,<br>already briefed.</div>
-    <div class="bd">
-      <p>You do not start at a blank page. You describe the market in one line and Claude hands back a <b>ranked brief</b>: who to chase, why now, sorted by fit.</p>
-      <p>The right 50, not a list of 5,000. <b>You start at step two.</b></p>
-    </div>
-    <div class="composer">
-      <div class="halo"></div>
+    <div class="bd"><p>Describe the market in one line. Claude hands back a <b>ranked brief</b>: who to chase, why now, sorted by fit.</p><p>The right 50, not a list of 5,000. <b>You start at step two.</b></p></div>
+    <div class="focal"><div class="glowwrap"><div class="halo"></div>
       <div class="cbar">
-        <span class="ic plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>
         <span class="ph">Find 50 founder-led companies, 2-50 staff, US/UK, ranked by fit</span>
-        <span class="ic mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19v3"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><rect x="9" y="2" width="6" height="13" rx="3"/></svg></span>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19v3"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><rect x="9" y="2" width="6" height="13" rx="3"/></svg></span>
         <span class="ic send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.714 3.048a.498.498 0 0 0-.683.627l2.843 7.627a2 2 0 0 1 0 1.396l-2.842 7.627a.498.498 0 0 0 .682.627l18-8.5a.5.5 0 0 0 0-.904z"/><path d="M6 12h16"/></svg></span>
       </div>
       <div class="cprompt"><span class="dot"></span>CORTEX returns a ranked brief in one turn</div>
       <div class="cres">
-        <div class="cres-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/></svg>CORTEX brief<span class="pill">FOUNDER-LED &middot; 2-50 &middot; US/UK</span></div>
-        <div class="cres-row"><span class="rk">01</span><span class="sg">Seed-Series A SaaS, US<b>just raised, hiring AEs</b></span><span class="sc">96</span></div>
-        <div class="cres-row"><span class="rk">02</span><span class="sg">Boutique IT services, UK<b>scaling outbound, no SDRs</b></span><span class="sc">92</span></div>
-        <div class="cres-row"><span class="rk">03</span><span class="sg">Founder-led software, US<b>new VP Sales, budget set</b></span><span class="sc">89</span></div>
+        <div class="rr"><span class="rk">01</span><span class="sg">Seed-Series A SaaS, US<b>just raised, hiring AEs</b></span><span class="sc">96</span></div>
+        <div class="rr"><span class="rk">02</span><span class="sg">Boutique IT services, UK<b>scaling outbound, no SDRs</b></span><span class="sc">92</span></div>
+        <div class="rr"><span class="rk">03</span><span class="sg">Founder-led software, US<b>new VP Sales, budget set</b></span><span class="sc">89</span></div>
       </div>
-    </div>
+    </div></div>
   </div>
-  <div class="guide"><span>SAFE ZONE &middot; 1080&times;1450 TikTok</span><div class="gb">RESERVED FOR TIKTOK UI</div></div>
+</div>
+
+<!-- S3 ROLE 02 OUTBOUND (light) -->
+<div class="slide lt">
+  <div class="safe">
+    <div class="tag"><i class="d1"></i><i class="d2"></i>ROLE 02</div>
+    <div class="hl">Your SDR writes<br>the whole sequence.</div>
+    <div class="bd"><p>One brief in, a <b>4-touch sequence</b> out: cold email, follow-up, value drop, break-up. Drafted before your coffee, held by a human gate until you approve.</p></div>
+    <div class="focal"><div class="card">
+      <div class="card-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.714 3.048a.498.498 0 0 0-.683.627l2.843 7.627a2 2 0 0 1 0 1.396l-2.842 7.627a.498.498 0 0 0 .682.627l18-8.5a.5.5 0 0 0 0-.904z"/><path d="M6 12h16"/></svg>SPECTER / sequence<span class="pill">4 TOUCHES &middot; 12 DAYS</span></div>
+      <div class="seqrow"><div class="day">DAY 0</div><div class="tx">Cold email<b>one trigger, one ask, under 60 words</b></div></div>
+      <div class="seqrow"><div class="day">DAY 3</div><div class="tx">Follow-up<b>adds one proof point, no guilt-trip</b></div></div>
+      <div class="seqrow"><div class="day">DAY 7</div><div class="tx">Value drop<b>the one resource that fits their trigger</b></div></div>
+      <div class="seqrow"><div class="day">DAY 12</div><div class="tx">Break-up<b>closes the loop, leaves the door open</b></div></div>
+    </div></div>
+  </div>
+</div>
+
+<!-- S4 ROLE 03 DEALS (dark) -->
+<div class="slide">
+  <div class="safe">
+    <div class="tag"><i class="d1"></i><i class="d2"></i>ROLE 03</div>
+    <div class="hl">Your closer never<br>freezes on the <em>objection</em>.</div>
+    <div class="bd"><p>Qualify to close, one flow. The answer to every objection is <b>drafted before the call</b>, tied to the pipeline it replaces.</p></div>
+    <div class="focal"><div class="glowwrap"><div class="halo"></div>
+      <div class="panel">
+        <div class="panel-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>STRIKER / objection handling<span class="pill">LIVE</span></div>
+        <div class="objrow"><div class="q">"Too expensive."</div><div class="ar">&rarr;</div><div class="a">ties price to the <b>pipeline it replaces</b>, not features</div></div>
+        <div class="objrow"><div class="q">"We use a tool."</div><div class="ar">&rarr;</div><div class="a">maps the <b>gap they feel</b>, skips the feature war</div></div>
+        <div class="objrow"><div class="q">"No time."</div><div class="ar">&rarr;</div><div class="a">shows the <b>one-weekend path</b>, books the next step</div></div>
+      </div>
+    </div></div>
+  </div>
+</div>
+
+<!-- S5 ROLE 04 CONTENT (light) -->
+<div class="slide lt">
+  <div class="safe">
+    <div class="tag"><i class="d1"></i><i class="d2"></i>ROLE 04</div>
+    <div class="hl">Your writer ships<br>every channel.</div>
+    <div class="bd"><p>One post in your voice, reshaped per channel and scheduled for its own time zone. <b>Write once, ship everywhere.</b></p></div>
+    <div class="focal"><div class="card">
+      <div class="card-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/></svg>PULSE + AMPLIFY<span class="pill">1 IDEA &middot; 3 CHANNELS</span></div>
+      <div class="postline">"How I run GTM solo with five agents" <span>&middot; drafted in your voice, then reshaped per channel</span></div>
+      <div class="chans">
+        <div class="ch"><div class="av">in</div><div class="cn">LinkedIn</div><div class="cf">carousel, 9 slides</div><div class="ct">10:00 CET</div><div class="st">QUEUED</div></div>
+        <div class="ch"><div class="av">t</div><div class="cn">TikTok</div><div class="cf">9:16 talking cut</div><div class="ct">18:00 EST</div><div class="st">QUEUED</div></div>
+        <div class="ch"><div class="av">X</div><div class="cn">X</div><div class="cf">thread, one line/beat</div><div class="ct">14:00 PST</div><div class="st">QUEUED</div></div>
+      </div>
+    </div></div>
+  </div>
+</div>
+
+<!-- S6 ROLE 05 OPS (dark) -->
+<div class="slide">
+  <div class="safe">
+    <div class="tag"><i class="d1"></i><i class="d2"></i>ROLE 05</div>
+    <div class="hl">Your ops runs<br>the morning brief.</div>
+    <div class="bd"><p>Before you open the laptop, the brief is <b>already written</b>: what moved, what needs you, what to ignore.</p></div>
+    <div class="focal"><div class="glowwrap"><div class="halo"></div>
+      <div class="panel">
+        <div class="panel-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>MORNING BRIEF<span class="pill">07:00 &middot; AUTO</span></div>
+        <div class="brow"><span class="bk"><i></i></span><div class="bt">3 replies landed overnight<span>2 of them want a call this week</span></div></div>
+        <div class="brow"><span class="bk"><i></i></span><div class="bt">Pipeline moved<span>4 deals stalled, 1 ready to close</span></div></div>
+        <div class="brow"><span class="bk"><i></i></span><div class="bt">Your move today<span>approve the SPECTER batch, then the 3pm demo</span></div></div>
+        <div class="brow"><span class="bk"><i></i></span><div class="bt">Parked for you<span>6 low-fit leads auto-archived</span></div></div>
+      </div>
+    </div></div>
+  </div>
+</div>
+
+<!-- S7 ROLE 06 BUILD (light) -->
+<div class="slide lt">
+  <div class="safe">
+    <div class="tag"><i class="d1"></i><i class="d2"></i>ROLE 06</div>
+    <div class="hl">Your engineer ships<br>the tool. <em>No engineer.</em></div>
+    <div class="bd"><p>Describe the tool, get a working one back in the chat: a pricing calculator, a tracker, a dashboard. <b>You ship it the same day.</b></p></div>
+    <div class="focal"><div class="card">
+      <div class="card-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>ARTIFACT / pricing calculator<span class="pill">BUILT IN CHAT</span></div>
+      <div class="artbody">
+        <div class="artin">
+          <div class="f">Seats<b>24</b></div>
+          <div class="f">Plan<b>Max &middot; $19</b></div>
+          <div class="f">AI credits<b>$140</b></div>
+          <div class="f">Annual discount<b>2 months</b></div>
+        </div>
+        <div class="artout"><div class="ol">MONTHLY</div><div class="ov">$596</div><div class="od">live, editable</div></div>
+      </div>
+    </div></div>
+  </div>
+</div>
+
+<!-- S8 CTA (dark) -->
+<div class="slide">
+  <div class="safe">
+    <div class="close-hl">You don't hire the team.<br>You <em>configure</em> it.</div>
+    <div class="close-sub">Six roles, zero headcount, one operator that runs them while <b>you approve every move</b>. A company of one that ships like ten.</div>
+    <div class="recap">
+      <div class="rc"><span class="n">01</span><span class="r">Researcher</span><span class="rd">CORTEX</span></div>
+      <div class="rc"><span class="n">02</span><span class="r">SDR</span><span class="rd">SPECTER</span></div>
+      <div class="rc"><span class="n">03</span><span class="r">Closer</span><span class="rd">STRIKER</span></div>
+      <div class="rc"><span class="n">04</span><span class="r">Writer</span><span class="rd">PULSE</span></div>
+      <div class="rc"><span class="n">05</span><span class="r">Ops</span><span class="rd">AMPLIFY</span></div>
+      <div class="rc"><span class="n">06</span><span class="r">Builder</span><span class="rd">SENTINEL</span></div>
+    </div>
+    <div class="cta-chip"><span class="t">Comment <em>TEAM</em></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></div>
+  </div>
+  <div class="cta-brand"><img src="__LOGO_URI__" alt="">ULTRON <b>&middot; AI OPERATOR FOR FOUNDERS &middot; 51ultron.com</b></div>
 </div>
 
 </body>

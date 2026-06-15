@@ -47,6 +47,9 @@ def html_for_render(p):
 
 def target_of(name):
     n = name.lower()
+    # TikTok 1080x1450 with safe zones (operator 2026-06-15): tall photo format, content inside a
+    # safe box, dims checked on the .slide box.
+    if "1450" in n: return (".slide", 1450, True)
     # editorial 4:5 photo-carousel (operator 2026-06-12): canvas 1080x1350, bleed allowed,
     # so dims are checked on the canvas box (offsetHeight), not scrollHeight. No 300px inset.
     if "-45-" in n or "editorial45" in n: return (".slide", 1350, True)
@@ -169,10 +172,11 @@ def render_checks(path):
             shot = pathlib.Path(tempfile.mkdtemp()) / "s.png"; el.screenshot(path=str(shot))
             empty_pct, band = density_metrics(Image.open(shot))
             msg = f"density[{tag}]: {empty_pct:.0f}% empty rows, largest dead band {band:.0f}px"
-            if band > DENSITY_MAX_BAND_PX and target == 1350:
-                # editorial 4:5 (operator 2026-06-12): intentional air + dark-on-dark scene elements
-                # sit below the ink threshold, so the band gate false-positives. Surface, don't block.
-                warns.append(msg + "  -> 45 format: air is part of the reference design - review by eye")
+            if band > DENSITY_MAX_BAND_PX and target in (1350, 1450):
+                # editorial photo formats (4:5 1350, TikTok 1450 safe-zone): intentional air +
+                # reserved UI margins sit below the ink threshold, so the band gate false-positives.
+                # Surface for eye-review, do not hard-block.
+                warns.append(msg + "  -> editorial format: air is part of the design - review by eye")
             elif band > DENSITY_MAX_BAND_PX:
                 fails.append(msg + f"  -> DEAD BAND > {DENSITY_MAX_BAND_PX}px. Pack content; never flex:1/space-between on sparse rows.")
             elif empty_pct > DENSITY_AIRY_PCT:
