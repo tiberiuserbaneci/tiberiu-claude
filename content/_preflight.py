@@ -108,17 +108,27 @@ def static_checks(path):
 
 # ---------- rendered checks (browser + pixels) ----------
 def density_metrics(img):
-    """Empty-row pct and largest empty band (logical px) using real ink (bright pixels),
-    so a flat card fill with no text still reads as empty."""
+    """Empty-row pct and largest empty band (logical px), measured RELATIVE to each slide's own
+    background tone, so it works on LIGHT (cream) slides too - not only the dark canvas. A row is
+    empty when almost none of its pixels differ from the background. (The old version counted any
+    bright pixel as ink, so a cream background read as 100% inked and voids on light slides were
+    invisible - that is how S2/S4/S6 airy middles slipped through.)"""
     g = img.convert("L"); W, H = g.size
     px = g.load()
     step = max(1, W // 360)                  # sample columns for speed
+    edge = []                                # background tone = median of the top + bottom margins
+    for x in range(0, W, step):
+        edge.append(px[x, 2]); edge.append(px[x, H - 3])
+    edge.sort(); bg = edge[len(edge) // 2]
+    dark = bg < 128
     rows_empty = []
     for y in range(H):
         ink = 0; n = 0
         for x in range(0, W, step):
             n += 1
-            if px[x, y] > 100: ink += 1       # ink = bright pixel (text / accent), not dark fill
+            v = px[x, y]
+            if (v > bg + 55) if dark else (v < bg - 28):   # content = clearly off the background
+                ink += 1
         rows_empty.append((ink / n) < 0.012)
     # restrict to the content band (drop leading/trailing empty margin)
     top = next((i for i,e in enumerate(rows_empty) if not e), 0)

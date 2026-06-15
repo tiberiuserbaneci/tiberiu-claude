@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-06-15T08:36:45",
+  "generated_at": "2026-06-15T08:53:10",
   "counts": {
-    "total": 90,
-    "generated": 46,
+    "total": 91,
+    "generated": 47,
     "reference": 44,
     "crosspost": 0
   },
@@ -711,7 +711,7 @@
       "alt": "Dark editorial visual on slate background. Hero on the left reads 'I ran 8 GTM jobs through one AI. It won once,' with once in book-orange. On the right, a WINS BY MODEL leaderboard with real model logos and proportional bars: Claude 5 in a full book-orange bar, ChatGPT 1, Gemini 1, Perplexity 1, captioned 'best single model wins only 5 of 8, route and win 8 of 8.' Below, a routing map titled the routing map, a table of GTM Job, Winner, Runner-up slash Avoid, and Why, with eight numbered rows and each winner shown as a logo chip: lead research to Perplexity, account enrichment to Gemini, ICP scoring, cold outreach, call prep, proposal draft and objection handling to Claude, follow-up to close to ChatGPT. A before-and-after block compares the old stack to the routing layer, each metric with an icon and a mini bar: monthly cost 13 thousand dollars to 19, tabs per job 5 to 1, decision time 30 minutes to 0, jobs won 1 of 8 to 8 of 8, context kept across jobs none to all 8, and wrong-tool sends 7 to 0. A one-line note says Ultron is the routing layer over CORTEX, SPECTER, STRIKER, PULSE, and SENTINEL. Closes with a Comment ROUTING call to action and the Ultron logo.",
       "first_comment": "Eight founder GTM jobs, four AIs. Run all eight through one model and it is the right tool for exactly one of them. Perplexity wins research, Gemini wins enrichment, Claude wins the judgment and the writing, ChatGPT wins the close.\n\nUltron routes each job to its winner automatically, holds the context across all eight, and gates every send.\n\nDrop ROUTING below and I will send you the full routing map plus the exact Claude workflow we run: https://app.51ultron.com/docs/platform/overview",
       "generated_date": "2026-06-02",
-      "added": 1780371054,
+      "added": 1780371057,
       "source": "generated",
       "status": "ready",
       "posted": true,
@@ -1109,9 +1109,9 @@
         "content/projects-45-carousel-07.png"
       ],
       "variants": [],
-      "caption": "",
-      "alt": "",
-      "first_comment": "",
+      "caption": "I stopped opening a fresh Claude chat for every task.\n\nNow every workstream lives in a Claude Project that remembers what came before, so the work compounds instead of resetting to zero each morning.\n\nA Project is a workspace, not a blank box: instructions, files and memory in one place, scoped so one client never bleeds into another.\n\nFive steps to stand one up. Create the project. Add the instructions, the goal, your terminology, the rules it must follow. Add the context, the docs and folders it works from. Run the work so it builds project memory and gets sharper next time. Then stack Skills on top for the repeatable tasks. The split that finally made it click: a Skill is a recipe for a repeatable task, a Project is a workspace for ongoing work, and you reach for a Project the moment the job needs memory of what came before.\n\nThis is how I run GTM on Ultron, the AI operator for founders: one Project per campaign, the agents working inside it, every send still held for my approval.\n\nComment PROJECTS and I will send you the exact founder setup.\n\n#claude #ai #founder #startup #buildinpublic",
+      "alt": "Dark editorial carousel on a slate background with book-orange accents. The cover reads 'How to set up Claude Projects like an operator' over four benefit cards, Memory, Workspace, Execution and Scoped context. The next slide explains why a Project beats a chat, then a five-step setup, create the project, add instructions, add context, run the work, and stack it with Skills. A light slide shows a founder Project mockup titled Q3 Outbound with instructions, project memory and a context row of folders, /reference, /analysis and /deliverables. Another contrasts a Skill, a recipe for a repeatable task, with a Project, a workspace for ongoing work. The last slides give a Chat versus Project versus Skill decision and close with a Comment PROJECTS call to action and the Ultron logo.",
+      "first_comment": "A chat forgets the second you close it. A Project keeps your instructions, files and memory in one place, so the work compounds instead of starting over every morning.\n\nFive steps to set one up, plus the one rule for when to use a Project, a Skill, or just a chat.\n\nComment PROJECTS and I will send you the exact founder setup I run GTM on.",
       "generated_date": "2026-06-15",
       "added": 1781511392,
       "source": "generated",
@@ -1986,11 +1986,38 @@
         "content/projects-45-tiktok-carousel-07.png"
       ],
       "variants": [],
-      "caption": "",
-      "alt": "",
-      "first_comment": "",
+      "caption": "I stopped opening a fresh Claude chat for every task.\n\nNow every workstream lives in a Claude Project that remembers what came before, so the work compounds instead of resetting to zero each morning.\n\nA Project is a workspace, not a blank box: instructions, files and memory in one place, scoped so one client never bleeds into another.\n\nFive steps to stand one up. Create the project. Add the instructions, the goal, your terminology, the rules it must follow. Add the context, the docs and folders it works from. Run the work so it builds project memory and gets sharper next time. Then stack Skills on top for the repeatable tasks. The split that finally made it click: a Skill is a recipe for a repeatable task, a Project is a workspace for ongoing work, and you reach for a Project the moment the job needs memory of what came before.\n\nThis is how I run GTM on Ultron, the AI operator for founders: one Project per campaign, the agents working inside it, every send still held for my approval.\n\nComment PROJECTS and I will send you the exact founder setup.\n\n#claude #ai #founder #startup #buildinpublic",
+      "alt": "Dark editorial carousel on a slate background with book-orange accents. The cover reads 'How to set up Claude Projects like an operator' over four benefit cards, Memory, Workspace, Execution and Scoped context. The next slide explains why a Project beats a chat, then a five-step setup, create the project, add instructions, add context, run the work, and stack it with Skills. A light slide shows a founder Project mockup titled Q3 Outbound with instructions, project memory and a context row of folders, /reference, /analysis and /deliverables. Another contrasts a Skill, a recipe for a repeatable task, with a Project, a workspace for ongoing work. The last slides give a Chat versus Project versus Skill decision and close with a Comment PROJECTS call to action and the Ultron logo.",
+      "first_comment": "A chat forgets the second you close it. A Project keeps your instructions, files and memory in one place, so the work compounds instead of starting over every morning.\n\nFive steps to set one up, plus the one rule for when to use a Project, a Skill, or just a chat.\n\nComment PROJECTS and I will send you the exact founder setup I run GTM on.",
       "generated_date": "2026-06-15",
       "added": 1781511392,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "projects-45-tiktok-infographic",
+      "title": "Projects 45",
+      "channel": "tiktok",
+      "type": "single",
+      "slides": 1,
+      "dims": "2160x2700 (1080x1350 @2x)",
+      "preview": "content/projects-45-tiktok-infographic.png",
+      "download": "content/projects-45-tiktok-infographic.png",
+      "files": [
+        "content/projects-45-tiktok-infographic.png"
+      ],
+      "variants": [
+        ""
+      ],
+      "caption": "I stopped opening a fresh Claude chat for every task.\n\nNow every workstream lives in a Claude Project that remembers what came before, so the work compounds instead of resetting to zero each morning.\n\nA Project is a workspace, not a blank box: instructions, files and memory in one place, scoped so one client never bleeds into another.\n\nFive steps to stand one up. Create the project. Add the instructions, the goal, your terminology, the rules it must follow. Add the context, the docs and folders it works from. Run the work so it builds project memory and gets sharper next time. Then stack Skills on top for the repeatable tasks. The split that finally made it click: a Skill is a recipe for a repeatable task, a Project is a workspace for ongoing work, and you reach for a Project the moment the job needs memory of what came before.\n\nThis is how I run GTM on Ultron, the AI operator for founders: one Project per campaign, the agents working inside it, every send still held for my approval.\n\nComment PROJECTS and I will send you the exact founder setup.\n\n#claude #ai #founder #startup #buildinpublic",
+      "alt": "Dark editorial carousel on a slate background with book-orange accents. The cover reads 'How to set up Claude Projects like an operator' over four benefit cards, Memory, Workspace, Execution and Scoped context. The next slide explains why a Project beats a chat, then a five-step setup, create the project, add instructions, add context, run the work, and stack it with Skills. A light slide shows a founder Project mockup titled Q3 Outbound with instructions, project memory and a context row of folders, /reference, /analysis and /deliverables. Another contrasts a Skill, a recipe for a repeatable task, with a Project, a workspace for ongoing work. The last slides give a Chat versus Project versus Skill decision and close with a Comment PROJECTS call to action and the Ultron logo.",
+      "first_comment": "A chat forgets the second you close it. A Project keeps your instructions, files and memory in one place, so the work compounds instead of starting over every morning.\n\nFive steps to set one up, plus the one rule for when to use a Project, a Skill, or just a chat.\n\nComment PROJECTS and I will send you the exact founder setup I run GTM on.",
+      "generated_date": "2026-06-15",
+      "added": 1781513523,
       "source": "generated",
       "status": "ready",
       "posted": false,
