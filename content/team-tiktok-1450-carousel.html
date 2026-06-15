@@ -2,117 +2,147 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>the missing team - TikTok 1080x1450 safe zones - MATTE editorial</title>
+<title>the missing team - TikTok 1080x1450 - 8-habits quality</title>
 <style>
 @import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
-/* DESIGN LOCK v2 - hook #1 "missing team", 8-habits language, MATTE (operator: no gloss, premium matte,
-   content tight under the title, stronger). TikTok 1080x1450 + safe zones (bottom 300 / right 130 /
-   top 110 / left 64 reserved for TikTok UI). NO gradients / glows / drop-shadows / text-shadows.
-   Flat fills, hairline rules, flat matte coral. DM Sans / DM Mono. .guide is proof-only. */
+/* DESIGN LOCK v3 - match the 8-habits reference QUALITY (analysis/refs/8-habits). Matte near-black bg +
+   matte type, but the FOCAL is a richly-rendered element with soft AMBIENT coral glow (the reference's
+   composer/toggle/bars) - not flat, not cheap. Cover = giant mixed-weight hook + bar-viz + hand-drawn
+   arrow. Refined pinned tag. lucide icons inline. TikTok 1080x1450 + safe zones (bottom 300/right 130/
+   top 110/left 64 reserved). DM Sans / DM Mono. .guide proof-only. */
 :root{
-  --dk:#100E0C; --lt:#F1EAE2;
-  --wt:#F7F4EF; --wt-70:rgba(247,244,239,.68); --wt-44:rgba(247,244,239,.44); --wt-12:rgba(247,244,239,.13);
-  --ink:#161210; --ink-70:rgba(22,18,16,.70); --ink-44:rgba(22,18,16,.46); --ink-12:rgba(22,18,16,.12);
-  --cor:#CF5E37; --cor-deep:#A8431F; --cor-soft:#C98A6B; --tag:#211712;
+  --dk:#0D0B0A; --dk-bar:#1B1714;
+  --wt:#F7F4EF; --wt-66:rgba(247,244,239,.66); --wt-42:rgba(247,244,239,.42); --wt-10:rgba(247,244,239,.10);
+  --cor:#E3683E; --cor-deep:#B14625; --cor-lt:#F0A07C; --silver:#9A958E;
   --st:110px; --sr:130px; --sb:300px; --sl:64px;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:#070606;display:flex;flex-direction:column;align-items:center;gap:30px;padding:30px 0;font-family:'DM Sans',sans-serif;}
-.slide{width:1080px;height:1450px;flex-shrink:0;position:relative;overflow:hidden;}
-.slide.dk{background:var(--dk);color:var(--wt);}
-.slide.lt{background:var(--lt);color:var(--ink);}
+.slide{width:1080px;height:1450px;flex-shrink:0;position:relative;overflow:hidden;background:var(--dk);color:var(--wt);}
 .safe{position:absolute;top:var(--st);left:var(--sl);right:var(--sr);bottom:var(--sb);display:flex;flex-direction:column;}
-.guide{position:absolute;top:var(--st);left:var(--sl);right:var(--sr);bottom:var(--sb);border:2px dashed rgba(207,94,55,.5);pointer-events:none;z-index:9;}
-.guide span{position:absolute;top:-2px;left:50%;transform:translate(-50%,-100%);font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.14em;color:rgba(207,94,55,.7);white-space:nowrap;}
-.guide .gb{position:absolute;left:0;right:0;bottom:-2px;transform:translateY(100%);text-align:center;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.1em;}
-.dk .guide .gb{color:var(--wt-44);}.lt .guide .gb{color:var(--ink-44);}
+.guide{position:absolute;top:var(--st);left:var(--sl);right:var(--sr);bottom:var(--sb);border:2px dashed rgba(227,104,62,.45);pointer-events:none;z-index:9;}
+.guide span{position:absolute;top:-2px;left:50%;transform:translate(-50%,-100%);font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.14em;color:rgba(227,104,62,.65);white-space:nowrap;}
+.guide .gb{position:absolute;left:0;right:0;bottom:-2px;transform:translateY(100%);text-align:center;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.1em;color:var(--wt-42);}
 
-/* pinned tag - flat */
-.tag{position:relative;align-self:flex-start;font-family:'DM Mono',monospace;font-size:17px;font-weight:500;letter-spacing:.18em;padding:13px 22px;}
-.lt .tag{background:#E6DCD0;color:var(--ink);}
-.dk .tag{background:var(--tag);color:var(--wt);}
-.tag em{font-style:normal;color:var(--cor);}
-.tag::before{content:'';position:absolute;left:0;top:-22px;width:2px;height:22px;background:var(--cor);}
+/* refined pinned tag (outlined box + coral pin lines/dots) */
+.tag{position:relative;align-self:flex-start;font-family:'DM Mono',monospace;font-size:17px;font-weight:500;letter-spacing:.2em;
+  color:var(--wt);padding:13px 24px;border:1.5px solid rgba(227,104,62,.55);background:rgba(227,104,62,.05);}
+.tag::before{content:'';position:absolute;left:-1px;top:-26px;width:1.5px;height:24px;background:var(--cor);}
+.tag::after{content:'';position:absolute;right:-1px;bottom:-26px;width:1.5px;height:24px;background:var(--cor);}
+.tag i.d1,.tag i.d2{position:absolute;width:9px;height:9px;border-radius:50%;background:var(--cor);}
+.tag i.d1{left:-5px;top:-32px;}.tag i.d2{right:-5px;bottom:-32px;}
 
-/* ============ S1 COVER (dark) - hook + matte vertical roster ============ */
-.cv-l1{font-size:43px;font-weight:500;letter-spacing:-.8px;color:var(--wt-70);}
-.cv-big{display:flex;align-items:baseline;gap:16px;margin-top:-4px;}
-.cv-num{font-size:176px;font-weight:800;letter-spacing:-8px;line-height:.82;color:var(--cor);}
-.cv-w{font-size:80px;font-weight:800;letter-spacing:-2px;color:var(--wt);}
-.cv-l3{font-size:52px;font-weight:500;letter-spacing:-1.4px;line-height:1.04;color:var(--wt);margin-top:10px;}
+/* ============ S1 COVER - mixed hook + bar-viz + hand-drawn arrow ============ */
+.cv-l1{font-size:42px;font-weight:500;letter-spacing:-.6px;color:var(--wt-66);}
+.cv-big{display:flex;align-items:baseline;gap:14px;margin-top:-6px;}
+.cv-num{font-size:188px;font-weight:800;letter-spacing:-9px;line-height:.8;color:var(--cor);}
+.cv-w{font-size:84px;font-weight:800;letter-spacing:-2px;color:var(--wt);}
+.cv-l3{font-size:50px;font-weight:500;letter-spacing:-1.4px;line-height:1.05;color:var(--wt);margin-top:8px;}
 .cv-l3 em{font-style:normal;color:var(--cor);font-weight:700;}
-.roster{margin-top:40px;display:flex;flex-direction:column;flex:1;}
-.rlbl{font-family:'DM Mono',monospace;font-size:14px;letter-spacing:.2em;color:var(--cor-soft);padding-bottom:6px;}
-.rrow{display:grid;grid-template-columns:62px 1fr auto;gap:22px;align-items:center;
-  flex:1;border-top:1px solid var(--wt-12);}
-.rrow .rn{font-family:'DM Mono',monospace;font-size:21px;font-weight:500;color:var(--cor);}
-.rname{font-size:30px;font-weight:700;letter-spacing:-.4px;color:var(--wt);}
-.rname b{display:block;font-size:17px;font-weight:400;color:var(--wt-44);letter-spacing:0;margin-top:2px;}
-.rtag{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.14em;color:var(--cor-soft);}
-.cv-brand{position:absolute;left:var(--sl);bottom:calc(var(--sb) - 54px);display:flex;align-items:center;gap:10px;font-family:'DM Mono',monospace;font-size:14px;letter-spacing:.1em;color:var(--wt-44);}
-.cv-brand img{width:24px;height:24px;border-radius:50%;}
-.cv-brand b{color:var(--wt);font-weight:500;}
+.viz{position:relative;margin-top:40px;flex:1;display:flex;gap:30px;align-items:stretch;}
+.bars{flex:1;display:flex;flex-direction:column;justify-content:center;gap:11px;}
+.bar6{position:relative;height:50px;border-radius:9px;background:linear-gradient(180deg,#221C18,#15110E);
+  border:1px solid rgba(247,244,239,.07);display:flex;align-items:center;padding:0 20px;
+  font-family:'DM Mono',monospace;font-size:15px;letter-spacing:.12em;color:var(--wt-42);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04);}
+.bar6 .x{margin-left:auto;color:rgba(247,244,239,.22);}
+.claudebar{position:relative;height:74px;border-radius:11px;
+  background:linear-gradient(180deg,#EE7148,#C2502A);display:flex;align-items:center;padding:0 24px;gap:13px;
+  box-shadow:0 0 60px rgba(227,104,62,.4),inset 0 1.5px 0 rgba(255,214,190,.5),inset 0 -16px 30px rgba(120,40,18,.4);}
+.claudebar .nm{font-size:27px;font-weight:800;letter-spacing:-.3px;color:#2A130B;}
+.claudebar .sub{margin-left:auto;font-family:'DM Mono',monospace;font-size:14px;letter-spacing:.1em;color:rgba(42,19,11,.66);}
+.claudebar .spk{width:26px;height:26px;color:#2A130B;}
+.swap{width:188px;flex-shrink:0;position:relative;}
+.swap svg.arr{position:absolute;left:6px;top:30px;width:150px;height:300px;overflow:visible;}
+.swap .note{position:absolute;left:18px;top:6px;font-size:23px;font-style:italic;color:var(--wt-66);font-weight:400;}
+.cv-brand{position:absolute;left:var(--sl);bottom:calc(var(--sb) - 52px);display:flex;align-items:center;gap:10px;font-family:'DM Mono',monospace;font-size:14px;letter-spacing:.1em;color:var(--wt-42);}
+.cv-brand img{width:23px;height:23px;border-radius:50%;}.cv-brand b{color:var(--wt);font-weight:500;}
 
-/* ============ S2 ROLE 01 (light) - tag + headline + body + matte mockup ============ */
-.hl{margin-top:26px;font-size:62px;font-weight:600;letter-spacing:-1.8px;line-height:1.04;color:var(--ink);}
-.bd{margin-top:22px;display:flex;flex-direction:column;gap:16px;max-width:740px;}
-.bd p{font-size:24px;font-weight:400;line-height:1.4;color:var(--ink-70);}
-.bd b{font-weight:700;color:var(--ink);}
-.mock{margin-top:30px;flex:1;display:flex;flex-direction:column;background:#FBF8F4;border:1px solid var(--ink-12);}
-.mock-bar{display:flex;align-items:center;gap:12px;padding:18px 24px;border-bottom:1px solid var(--ink-12);}
-.mock-bar .av{width:26px;height:26px;border-radius:6px;background:var(--cor);}
-.mock-bar .t{font-weight:700;font-size:19px;color:var(--ink);}
-.mock-bar .t span{color:var(--ink-44);font-weight:500;font-family:'DM Mono',monospace;font-size:14px;}
-.mock-bar .pill{margin-left:auto;font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.06em;color:var(--cor-deep);border:1px solid rgba(207,94,55,.35);padding:6px 11px;}
-.mrow{display:grid;grid-template-columns:48px 1fr 110px 50px;gap:18px;align-items:center;padding:0 24px;flex:1;}
-.mrow+.mrow{border-top:1px solid var(--ink-12);}
-.mrow .rk{font-family:'DM Mono',monospace;font-size:17px;font-weight:500;color:var(--cor);}
-.mrow .sg{font-size:21px;font-weight:700;color:var(--ink);}
-.mrow .sg b{display:block;font-size:14px;font-weight:400;color:var(--ink-44);margin-top:2px;}
-.mrow .bar{height:6px;background:rgba(22,18,16,.1);overflow:hidden;}
-.mrow .bar i{display:block;height:100%;background:var(--cor);}
-.mrow .pc{font-family:'DM Mono',monospace;font-size:18px;font-weight:500;color:var(--ink);text-align:right;}
-.mrow.top{background:rgba(207,94,55,.07);}
+/* ============ S2 ROLE 01 - headline + body + glowing composer ============ */
+.hl{margin-top:30px;font-size:64px;font-weight:600;letter-spacing:-1.9px;line-height:1.03;color:var(--wt);}
+.bd{margin-top:24px;display:flex;flex-direction:column;gap:15px;max-width:760px;}
+.bd p{font-size:24px;font-weight:400;line-height:1.4;color:var(--wt-66);}
+.bd b{font-weight:600;color:var(--wt);}
+.composer{position:relative;margin-top:38px;}
+.composer .halo{position:absolute;left:-40px;right:-40px;top:-30px;bottom:-60px;
+  background:radial-gradient(58% 64% at 50% 55%,rgba(227,104,62,.30),transparent 72%);z-index:0;}
+.cbar{position:relative;z-index:1;display:flex;align-items:center;gap:18px;border-radius:30px;padding:28px 28px;
+  background:linear-gradient(180deg,rgba(48,30,22,.92),rgba(22,16,13,.94));
+  border:1.5px solid rgba(227,104,62,.55);
+  box-shadow:0 0 70px rgba(227,104,62,.32),inset 0 1.5px 0 rgba(255,210,182,.16),inset 0 -22px 44px rgba(0,0,0,.34);}
+.cbar .ph{flex:1;font-size:25px;color:rgba(247,244,239,.5);line-height:1.3;}
+.cbar .ic{width:30px;height:30px;flex-shrink:0;color:rgba(247,244,239,.66);}
+.cbar .ic.send{color:var(--cor-lt);}
+.cprompt{position:relative;z-index:1;margin-top:18px;display:flex;align-items:center;gap:10px;
+  font-family:'DM Mono',monospace;font-size:16px;letter-spacing:.04em;color:var(--cor-lt);}
+.cprompt .dot{width:8px;height:8px;border-radius:50%;background:var(--cor);}
+.cres{position:relative;z-index:1;margin-top:22px;background:rgba(247,244,239,.035);border:1px solid var(--wt-10);border-radius:18px;overflow:hidden;}
+.cres-h{display:flex;align-items:center;gap:10px;padding:16px 22px;border-bottom:1px solid var(--wt-10);font-family:'DM Mono',monospace;font-size:15px;letter-spacing:.08em;color:var(--cor-lt);}
+.cres-h svg{width:18px;height:18px;color:var(--cor);}
+.cres-h .pill{margin-left:auto;font-size:13px;letter-spacing:.06em;color:var(--wt-42);}
+.cres-row{display:grid;grid-template-columns:42px 1fr 52px;gap:14px;align-items:center;padding:16px 22px;}
+.cres-row+.cres-row{border-top:1px solid var(--wt-10);}
+.cres-row .rk{font-family:'DM Mono',monospace;font-size:15px;color:var(--cor);}
+.cres-row .sg{font-size:20px;font-weight:600;color:var(--wt);}
+.cres-row .sg b{display:block;font-size:14px;font-weight:400;color:var(--wt-42);margin-top:1px;}
+.cres-row .sc{font-family:'DM Mono',monospace;font-size:18px;color:var(--wt);text-align:right;}
 </style>
 </head>
 <body>
 
-<!-- ============ S1 COVER (dark) ============ -->
-<div class="slide dk">
+<!-- ============ S1 COVER ============ -->
+<div class="slide">
   <div class="safe">
     <div class="cv-l1">I run my company with</div>
     <div class="cv-big"><span class="cv-num">0</span><span class="cv-w">hires.</span></div>
     <div class="cv-l3">Claude is the <em>whole team</em>.</div>
-    <div class="roster">
-      <div class="rlbl">EVERY SEAT, ONE CLAUDE</div>
-      <div class="rrow"><span class="rn">01</span><span class="rname">Research<b>profiles the market, ranks the list</b></span><span class="rtag">CLAUDE</span></div>
-      <div class="rrow"><span class="rn">02</span><span class="rname">Outbound<b>writes the sequence, per lead</b></span><span class="rtag">CLAUDE</span></div>
-      <div class="rrow"><span class="rn">03</span><span class="rname">Deals<b>qualify to close, one flow</b></span><span class="rtag">CLAUDE</span></div>
-      <div class="rrow"><span class="rn">04</span><span class="rname">Content<b>your voice, every channel</b></span><span class="rtag">CLAUDE</span></div>
-      <div class="rrow"><span class="rn">05</span><span class="rname">Ops<b>briefs, reports, follow-through</b></span><span class="rtag">CLAUDE</span></div>
-      <div class="rrow"><span class="rn">06</span><span class="rname">Build<b>internal tools, no engineer</b></span><span class="rtag">CLAUDE</span></div>
+    <div class="viz">
+      <div class="bars">
+        <div class="bar6">RESEARCHER<span class="x">$</span></div>
+        <div class="bar6">SDR<span class="x">$</span></div>
+        <div class="bar6">CLOSER<span class="x">$</span></div>
+        <div class="bar6">WRITER<span class="x">$</span></div>
+        <div class="bar6">OPS<span class="x">$</span></div>
+        <div class="bar6">BUILDER<span class="x">$</span></div>
+        <div class="claudebar"><svg class="spk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/></svg><span class="nm">Claude</span><span class="sub">EVERY SEAT</span></div>
+      </div>
+      <div class="swap">
+        <div class="note">one seat,<br>not six</div>
+        <svg class="arr" viewBox="0 0 150 300" fill="none" stroke="#C2502A" stroke-width="2.4" stroke-linecap="round">
+          <path d="M40 70 C 95 110, 95 200, 60 250" stroke-dasharray="0"/>
+          <path d="M46 232 L60 252 L74 236"/>
+        </svg>
+      </div>
     </div>
   </div>
   <div class="cv-brand"><img src="__LOGO_URI__" alt="">ULTRON <b>&middot; 51ultron.com</b></div>
   <div class="guide"><span>SAFE ZONE &middot; 1080&times;1450 TikTok</span><div class="gb">RESERVED FOR TIKTOK UI</div></div>
 </div>
 
-<!-- ============ S2 ROLE 01 (light) ============ -->
-<div class="slide lt">
+<!-- ============ S2 ROLE 01 - glowing composer ============ -->
+<div class="slide">
   <div class="safe">
-    <div class="tag">THE ROSTER <em>/</em> 01</div>
+    <div class="tag"><i class="d1"></i><i class="d2"></i>ROLE 01</div>
     <div class="hl">Your researcher,<br>already briefed.</div>
     <div class="bd">
-      <p>Point Claude at a market and it hands back a <b>ranked brief</b>, not a blank page. Who to chase, why now, sorted by fit.</p>
-      <p>You start at <b>step two</b>, with the right 50, not a list of 5,000.</p>
+      <p>You do not start at a blank page. You describe the market in one line and Claude hands back a <b>ranked brief</b>: who to chase, why now, sorted by fit.</p>
+      <p>The right 50, not a list of 5,000. <b>You start at step two.</b></p>
     </div>
-    <div class="mock">
-      <div class="mock-bar"><div class="av"></div><div class="t">CORTEX <span>/ ranked brief</span></div><div class="pill">FOUNDER-LED, 2-50, US/UK</div></div>
-      <div class="mrow top"><div class="rk">01</div><div class="sg">Seed-Series A SaaS, US<b>just raised, hiring AEs</b></div><div class="bar"><i style="width:96%"></i></div><div class="pc">96</div></div>
-      <div class="mrow"><div class="rk">02</div><div class="sg">Boutique IT services, UK<b>scaling outbound, no SDRs</b></div><div class="bar"><i style="width:92%"></i></div><div class="pc">92</div></div>
-      <div class="mrow"><div class="rk">03</div><div class="sg">Founder-led software, US<b>new VP Sales, budget set</b></div><div class="bar"><i style="width:89%"></i></div><div class="pc">89</div></div>
-      <div class="mrow"><div class="rk">04</div><div class="sg">Consulting firm, UK<b>expanding into the US</b></div><div class="bar"><i style="width:85%"></i></div><div class="pc">85</div></div>
-      <div class="mrow"><div class="rk">05</div><div class="sg">Dev agency, 14 people, US<b>posting about pipeline gaps</b></div><div class="bar"><i style="width:81%"></i></div><div class="pc">81</div></div>
+    <div class="composer">
+      <div class="halo"></div>
+      <div class="cbar">
+        <span class="ic plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>
+        <span class="ph">Find 50 founder-led companies, 2-50 staff, US/UK, ranked by fit</span>
+        <span class="ic mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19v3"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><rect x="9" y="2" width="6" height="13" rx="3"/></svg></span>
+        <span class="ic send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.714 3.048a.498.498 0 0 0-.683.627l2.843 7.627a2 2 0 0 1 0 1.396l-2.842 7.627a.498.498 0 0 0 .682.627l18-8.5a.5.5 0 0 0 0-.904z"/><path d="M6 12h16"/></svg></span>
+      </div>
+      <div class="cprompt"><span class="dot"></span>CORTEX returns a ranked brief in one turn</div>
+      <div class="cres">
+        <div class="cres-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/></svg>CORTEX brief<span class="pill">FOUNDER-LED &middot; 2-50 &middot; US/UK</span></div>
+        <div class="cres-row"><span class="rk">01</span><span class="sg">Seed-Series A SaaS, US<b>just raised, hiring AEs</b></span><span class="sc">96</span></div>
+        <div class="cres-row"><span class="rk">02</span><span class="sg">Boutique IT services, UK<b>scaling outbound, no SDRs</b></span><span class="sc">92</span></div>
+        <div class="cres-row"><span class="rk">03</span><span class="sg">Founder-led software, US<b>new VP Sales, budget set</b></span><span class="sc">89</span></div>
+      </div>
     </div>
   </div>
   <div class="guide"><span>SAFE ZONE &middot; 1080&times;1450 TikTok</span><div class="gb">RESERVED FOR TIKTOK UI</div></div>
