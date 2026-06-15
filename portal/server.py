@@ -5,7 +5,7 @@ auto-commits, so the operator never has to commit by hand.
 
 Run:  python3 portal/server.py    then open http://127.0.0.1:8753
 """
-import json, os, re, pathlib, threading, subprocess, datetime, urllib.parse, mimetypes, time, zipfile
+import json, os, re, pathlib, threading, subprocess, datetime, urllib.parse, mimetypes, time, zipfile, base64
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -47,6 +47,8 @@ AUTOPUSH = os.environ.get("PORTAL_PUSH", "1") != "0"
 AUTOCOMMIT = os.environ.get("PORTAL_COMMIT", "1") != "0"   # PORTAL_COMMIT=0 -> write manifest but no git (testing)
 SYNC = os.environ.get("PORTAL_SYNC", "1") != "0"           # background pull of materials pushed by content sessions
 SYNC_SECS = int(os.environ.get("PORTAL_SYNC_SECS", "15"))  # how often to check origin for new content
+P_USER = os.environ.get("PORTAL_USER", "ultron")
+P_PASS = os.environ.get("PORTAL_PASS", "")   # set -> HTTP Basic Auth on every request, so the port is safe to make Public
 _lock = threading.Lock()        # guards manifest read/modify/write only (fast; never held during git)
 _gitlock = threading.Lock()     # serializes git; held only by the background worker
 _dirty = threading.Event()      # set when the manifest changed and needs committing
@@ -155,8 +157,23 @@ class H(BaseHTTPRequestHandler):
         self.send_header("Content-Length", str(len(body))); self.end_headers()
         if body: self.wfile.write(body)
     def _json(self, obj, code=200): self._send(code, json.dumps(obj).encode(), "application/json")
+    def _auth_ok(self):
+        if not P_PASS: return True            # no password configured -> open (local / Private-port use)
+        h = self.headers.get("Authorization", "")
+        if h.startswith("Basic "):
+            try:
+                u, _, p = base64.b64decode(h[6:]).decode("utf-8", "replace").partition(":")
+                return u == P_USER and p == P_PASS
+            except Exception:
+                return False
+        return False
+    def _need_auth(self):
+        self.send_response(401)
+        self.send_header("WWW-Authenticate", 'Basic realm="Ultron Portal"')
+        self.send_header("Content-Length", "0"); self.end_headers()
 
     def do_GET(self):
+        if not self._auth_ok(): return self._need_auth()
         path = urllib.parse.urlparse(self.path).path
         if path in ("/","/index.html"):
             f = PORTAL/"index.html"
@@ -177,6 +194,7 @@ class H(BaseHTTPRequestHandler):
         return self._send(404, b'{"error":"not found"}')
 
     def do_POST(self):
+        if not self._auth_ok(): return self._need_auth()
         path = urllib.parse.urlparse(self.path).path
         qs = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
         n = int(self.headers.get("Content-Length", 0))

@@ -36,8 +36,18 @@ nohup bash portal/keepalive.sh > /dev/null 2>&1 &
 sleep 2.5
 if pgrep -f "[p]ortal/server.py" >/dev/null 2>&1; then
   TOTAL=$(python3 -c "import json;print(json.load(open('content/portal/manifest.json'))['counts']['total'])" 2>/dev/null)
-  echo "portal: UP on 8753 (Private, watchdog on) - ${TOTAL:-?} materials. Newest content syncs in the background."
+  # Make the forwarded port reachable from ANY browser (desktop + phone). A Private port returns a
+  # 404 unless the browser carries the Codespaces auth - that is the daily "page can't be found".
+  # Public removes that. It is safe because server.py requires a login when PORTAL_PASS is set
+  # (add a PORTAL_PASS Codespaces secret to turn the password on). Best-effort; needs gh codespace scope.
+  if [ -n "$CODESPACE_NAME" ]; then
+    if gh codespace ports visibility 8753:public -c "$CODESPACE_NAME" >/dev/null 2>&1; then VIS="PUBLIC"; else VIS="set-failed"; fi
+    URL="https://$CODESPACE_NAME-8753.app.github.dev"
+  fi
+  GATE=$([ -n "$PORTAL_PASS" ] && echo "password ON" || echo "no password yet")
+  echo "portal: UP - ${TOTAL:-?} materials - port ${VIS:-?} - ${GATE}"
+  [ -n "$URL" ] && echo "portal URL (open anywhere): $URL"
+  [ "$VIS" = "set-failed" ] && echo "  could not auto-set public; run once: gh codespace ports visibility 8753:public -c \$CODESPACE_NAME"
 else
   echo "portal: FAILED to bind 8753 - last log lines:"; tail -20 "$LOG" 2>/dev/null
 fi
-echo "Open the PORTS tab -> 'Ultron Content Portal' (8753). Private: only your GitHub login can open it."
