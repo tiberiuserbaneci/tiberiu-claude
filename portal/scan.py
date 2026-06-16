@@ -29,6 +29,7 @@ def is_variant(tok): return tok in VARIANTS or re.fullmatch(r"v\d+", tok) is not
 def channel_of(name):
     if "linkedin" in name: return "linkedin"
     if "tiktok" in name: return "tiktok"
+    if "editorial45" in name or "-45-" in name: return "tiktok"   # 1080x1350 editorial 4:5 = TikTok photo format
     if re.search(r"(-ig-|story|highlight|instagram)", name): return "instagram"
     return "linkedin"
 

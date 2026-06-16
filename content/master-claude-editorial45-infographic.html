@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>master claude in 2 minutes - single-image infographic - TikTok editorial 4:5 1080x1350</title>
+<style>
+@import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
+/* 1:1 recreation of the operator's own "MASTER CLAUDE IN 2 MINUTES" reference (built in Gemini),
+   rebuilt in the Ultron REALNUMBERS system. ONLY footer changed vs the source (Ultron footer).
+   Brand-safe substitution: the source colour-codes good vs bad with pink/green. REALNUMBERS bans
+   green, so good=vivid coral card, bad=cold grey card (alive vs dead) - same read, on palette.
+   Cream / coral, DM Sans / DM Mono, big Claude sunburst, numbered badges, per-input icons.
+   TikTok editorial 4:5, 1080x1350, full canvas (no 300px UI inset in photo mode). */
+:root{
+  --cream:#F4EBE1; --card:#FCF8F3; --bad:#E7E1D7; --good:#FBE6DB;
+  --ink:#171210; --ink-2:#4A4036; --mut:#94897A; --bad-tx:#857B6B;
+  --cor:#C84623; --cor-deep:#B5401F; --cor-soft:#D26446; --dark:#241710;
+  --cor-10:rgba(200,70,35,.10); --cor-22:rgba(200,70,35,.22); --rule:rgba(23,18,16,.11);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0c0a09;display:flex;justify-content:center;padding:30px 0;font-family:'DM Sans',sans-serif;}
+.slide{width:1080px;height:1350px;position:relative;overflow:hidden;background:var(--cream);color:var(--ink);
+  padding:44px 46px 36px;display:flex;flex-direction:column;}
+.slide::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(rgba(200,70,35,.05) 1.1px,transparent 1.2px);background-size:30px 30px;}
+.slide::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 52% 26% at 84% -2%,rgba(200,70,35,.10),transparent 60%);}
+
+/* ---- header ---- */
+.hd{position:relative;z-index:2;flex-shrink:0;}
+.hd-top{display:flex;align-items:center;gap:22px;}
+.spk{width:120px;height:120px;flex-shrink:0;}
+.ttl{font-size:67px;font-weight:900;letter-spacing:-2.6px;line-height:.9;color:var(--ink);text-transform:uppercase;}
+.ttl em{font-style:normal;color:var(--cor);}
+.sub{margin-top:14px;font-size:22px;font-weight:500;color:var(--ink-2);line-height:1.34;}
+.sub b{color:var(--ink);font-weight:700;}
+.sub i{font-style:italic;color:var(--cor-deep);font-weight:700;}
+
+/* ---- grid ---- */
+.grid{position:relative;z-index:2;flex:1;display:grid;grid-template-columns:repeat(3,1fr);
+  grid-template-rows:1.36fr 0.98fr;gap:14px;margin-top:20px;min-height:0;}
+.box{background:var(--card);border:1.5px solid var(--rule);border-radius:17px;padding:17px 17px 15px;
+  display:flex;flex-direction:column;box-shadow:0 10px 24px rgba(80,40,20,.06);overflow:hidden;}
+.box.hero{border:2.5px solid var(--cor);box-shadow:0 12px 30px rgba(200,70,35,.16);background:#FCF1EB;}
+.bh{display:flex;align-items:center;gap:10px;margin-bottom:13px;flex-shrink:0;}
+.bn{width:35px;height:35px;border-radius:50%;background:var(--dark);color:#F6EEE4;font-weight:800;font-size:18px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.bi{width:38px;height:38px;border-radius:10px;background:var(--cor-10);border:1px solid var(--cor-22);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.bi svg{width:22px;height:22px;stroke:var(--cor);stroke-width:2.1;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.bt{font-size:18px;font-weight:800;letter-spacing:-.3px;line-height:1.02;color:var(--ink);text-transform:uppercase;}
+
+/* good / bad sub-cards */
+.sc{border-radius:11px;padding:11px 13px;flex:1;display:flex;flex-direction:column;justify-content:center;}
+.sc + .sc{margin-top:9px;}
+.sc-bad{background:var(--bad);border:1px solid rgba(23,18,16,.08);}
+.sc-good{background:var(--good);border:1px solid var(--cor-22);border-left:5px solid var(--cor);}
+.scl{display:flex;align-items:center;gap:7px;font-family:'DM Mono',monospace;font-size:11.5px;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;margin-bottom:9px;}
+.scl svg{width:15px;height:15px;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.sc-bad .scl{color:var(--mut);}.sc-bad .scl svg{stroke:var(--mut);}
+.sc-good .scl{color:var(--cor-deep);}.sc-good .scl svg{stroke:var(--cor);}
+.it{display:flex;align-items:flex-start;gap:8px;font-size:16.5px;line-height:1.22;font-weight:600;margin-bottom:6px;}
+.it:last-child{margin-bottom:0;}
+.it-bad{color:var(--bad-tx);font-weight:500;}
+.it-bad .mk{color:var(--mut);font-weight:700;flex-shrink:0;width:13px;text-align:center;}
+.it-good{color:#28190F;}
+.it-good svg{width:16px;height:16px;stroke:var(--cor);stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:1px;}
+
+/* box 2: 4 inputs with icons */
+.inl{flex:1;display:flex;flex-direction:column;justify-content:space-between;gap:8px;}
+.irow{display:flex;align-items:center;gap:11px;}
+.ici{width:34px;height:34px;border-radius:9px;background:var(--cor-10);border:1px solid var(--cor-22);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ici svg{width:19px;height:19px;stroke:var(--cor);stroke-width:2.1;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.itxt{min-width:0;}
+.itxt .ik{font-size:17px;font-weight:800;color:var(--ink);letter-spacing:-.2px;}
+.itxt .ik .n{color:var(--cor);font-weight:800;margin-right:5px;}
+.itxt .iv{font-size:14.5px;font-weight:500;color:var(--ink-2);line-height:1.15;}
+.itxt .iv .ar{color:var(--cor);font-weight:700;margin-right:4px;}
+
+/* box 4-6: plain items */
+.pl{flex:1;display:flex;flex-direction:column;justify-content:center;gap:11px;}
+.pli{display:flex;align-items:flex-start;gap:9px;font-size:17px;line-height:1.22;font-weight:600;color:#28190F;}
+.pli .dot{width:7px;height:7px;border-radius:50%;background:var(--cor);flex-shrink:0;margin-top:7px;}
+
+/* box footer line */
+.bf{margin-top:11px;padding-top:10px;border-top:1px dashed var(--rule);display:flex;align-items:center;gap:8px;flex-shrink:0;}
+.bf .ar{color:var(--cor);font-weight:800;font-size:18px;line-height:1;}
+.bf .bft{font-size:15px;font-weight:800;color:var(--cor-deep);letter-spacing:-.2px;}
+.note{margin-top:11px;padding-top:10px;border-top:1px dashed var(--rule);font-size:15px;font-weight:600;color:var(--ink-2);flex-shrink:0;}
+.note b{color:var(--cor-deep);font-weight:800;}
+
+/* ---- Ultron footer (the ONLY change vs the source) ---- */
+.ftr{position:relative;z-index:2;margin-top:16px;padding-top:15px;border-top:1.5px solid var(--rule);
+  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-shrink:0;}
+.ftr-l{display:flex;align-items:center;gap:11px;min-width:0;}
+.ftr-l img{width:34px;height:34px;border-radius:50%;flex-shrink:0;}
+.ftr-tx{font-family:'DM Mono',monospace;font-size:13px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-2);white-space:nowrap;}
+.ftr-tx b{color:var(--ink);font-weight:500;}
+.ftr-url{font-size:23px;font-weight:900;letter-spacing:-.5px;color:var(--ink);flex-shrink:0;}
+.ftr-url em{font-style:normal;color:var(--cor);}
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <div class="hd">
+    <div class="hd-top">
+      <svg class="spk" viewBox="0 0 1200 1200"><path fill="#C84623" d="M 233.96 800.21 L 468.64 668.54 L 472.59 657.10 L 468.64 650.74 L 457.21 650.74 L 417.99 648.32 L 283.89 644.70 L 167.60 639.87 L 54.93 633.83 L 26.58 627.79 L 0 592.75 L 2.74 575.28 L 26.58 559.25 L 60.72 562.23 L 136.19 567.38 L 249.42 575.19 L 331.57 580.03 L 453.26 592.67 L 472.59 592.67 L 475.33 584.86 L 468.72 580.03 L 463.57 575.19 L 346.39 495.79 L 219.54 411.87 L 153.10 363.54 L 117.18 339.06 L 99.06 316.11 L 91.25 266.01 L 123.87 230.09 L 167.68 233.07 L 178.87 236.05 L 223.25 270.20 L 318.04 343.57 L 441.83 434.74 L 459.95 449.80 L 467.19 444.64 L 468.08 441.02 L 459.95 427.41 L 392.62 305.72 L 320.78 181.93 L 288.81 130.63 L 280.35 99.87 C 277.37 87.22 275.19 76.59 275.19 63.62 L 312.32 13.21 L 332.86 6.60 L 382.39 13.21 L 403.25 31.33 L 434.01 101.72 L 483.87 212.54 L 561.18 363.22 L 583.81 407.92 L 595.89 449.32 L 600.40 461.96 L 608.21 461.96 L 608.21 454.71 L 614.58 369.83 L 626.34 265.61 L 637.77 131.52 L 641.72 93.75 L 660.40 48.48 L 697.53 24.00 L 726.52 37.85 L 750.36 72 L 747.06 94.07 L 732.89 186.20 L 705.10 330.52 L 686.98 427.17 L 697.53 427.17 L 709.61 415.09 L 758.50 350.17 L 840.64 247.49 L 876.89 206.74 L 919.17 161.72 L 946.31 140.30 L 997.61 140.30 L 1035.38 196.43 L 1018.47 254.42 L 965.64 321.42 L 921.83 378.20 L 859.01 462.77 L 819.79 530.42 L 823.41 535.81 L 832.75 534.93 L 974.66 504.72 L 1051.33 490.87 L 1142.82 475.17 L 1184.21 494.50 L 1188.72 514.15 L 1172.46 554.34 L 1074.60 578.50 L 959.84 601.45 L 788.94 641.88 L 786.85 643.41 L 789.26 646.39 L 866.26 653.64 L 899.19 655.41 L 979.81 655.41 L 1129.93 666.60 L 1169.15 692.54 L 1192.67 724.27 L 1188.72 748.43 L 1128.32 779.19 L 1046.82 759.87 L 856.59 714.60 L 791.36 698.34 L 782.34 698.34 L 782.34 703.73 L 836.70 756.89 L 936.32 846.85 L 1061.07 962.82 L 1067.44 991.49 L 1051.41 1014.12 L 1034.50 1011.70 L 924.89 929.23 L 882.60 892.11 L 786.85 811.49 L 780.48 811.49 L 780.48 819.95 L 802.55 852.24 L 919.09 1027.41 L 925.13 1081.13 L 916.67 1098.60 L 886.47 1109.15 L 853.29 1103.11 L 785.07 1007.36 L 714.68 899.52 L 657.91 802.87 L 650.98 806.82 L 617.48 1167.70 L 601.77 1186.15 L 565.53 1200 L 535.33 1177.05 L 519.30 1139.92 L 535.33 1066.55 L 554.66 970.79 L 570.36 894.68 L 584.54 800.13 L 592.99 768.72 L 592.43 766.63 L 585.50 767.52 L 514.23 865.37 L 405.83 1011.87 L 320.05 1103.68 L 299.52 1111.81 L 263.92 1093.37 L 267.22 1060.43 L 287.11 1031.11 L 405.83 880.11 L 477.42 786.52 L 523.65 732.48 L 523.33 724.67 L 520.59 724.67 L 205.29 929.40 L 149.15 936.64 L 124.99 914.01 L 127.97 876.89 L 139.41 864.81 L 234.20 799.57 Z"/></svg>
+      <div class="ttl">MASTER <em>CLAUDE</em><br>IN 2 MINUTES</div>
+    </div>
+    <div class="sub">Use it like a <b>thinking partner</b>, not a search bar. Most people use it like <i>Google</i>. That is the problem.</div>
+  </div>
+
+  <div class="grid">
+
+    <!-- BOX 1 -->
+    <div class="box">
+      <div class="bh"><span class="bn">1</span><span class="bi"><svg viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="bt">Stop asking<br>for answers</span></div>
+      <div class="sc sc-bad">
+        <div class="scl"><svg viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Most people</div>
+        <div class="it it-bad"><span class="mk">x</span>Write me a post</div>
+        <div class="it it-bad"><span class="mk">x</span>Summarize this</div>
+        <div class="it it-bad"><span class="mk">x</span>Give me ideas</div>
+      </div>
+      <div class="sc sc-good">
+        <div class="scl"><svg viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>Better</div>
+        <div class="it it-good"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Break this into parts</div>
+        <div class="it it-good"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Challenge my assumptions</div>
+        <div class="it it-good"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>3 approaches with tradeoffs</div>
+      </div>
+      <div class="bf"><span class="ar">&rarr;</span><span class="bft">Better thinking = better outputs</span></div>
+    </div>
+
+    <!-- BOX 2 -->
+    <div class="box">
+      <div class="bh"><span class="bn">2</span><span class="bi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="22" x2="18" y1="12" y2="12"/><line x1="6" x2="2" y1="12" y2="12"/><line x1="12" x2="12" y1="6" y2="2"/><line x1="12" x2="12" y1="22" y2="18"/></svg></span><span class="bt">Fix these<br>4 inputs</span></div>
+      <div class="inl">
+        <div class="irow"><span class="ici"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="22" x2="18" y1="12" y2="12"/><line x1="6" x2="2" y1="12" y2="12"/><line x1="12" x2="12" y1="6" y2="2"/><line x1="12" x2="12" y1="22" y2="18"/></svg></span><span class="itxt"><div class="ik"><span class="n">1</span>Task</div><div class="iv"><span class="ar">&rarr;</span>what you want</div></span></div>
+        <div class="irow"><span class="ici"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg></span><span class="itxt"><div class="ik"><span class="n">2</span>Context</div><div class="iv"><span class="ar">&rarr;</span>what it should know</div></span></div>
+        <div class="irow"><span class="ici"><svg viewBox="0 0 24 24"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></svg></span><span class="itxt"><div class="ik"><span class="n">3</span>Standard</div><div class="iv"><span class="ar">&rarr;</span>what good looks like</div></span></div>
+        <div class="irow"><span class="ici"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span><span class="itxt"><div class="ik"><span class="n">4</span>Outcome</div><div class="iv"><span class="ar">&rarr;</span>what success means</div></span></div>
+      </div>
+      <div class="note">Most people skip <b>2-4</b>. That is the problem.</div>
+    </div>
+
+    <!-- BOX 3 (hero) -->
+    <div class="box hero">
+      <div class="bh"><span class="bn">3</span><span class="bi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span><span class="bt">Same task.<br>Different result</span></div>
+      <div class="sc sc-bad" style="flex:0 0 auto;">
+        <div class="scl">Weak</div>
+        <div class="it it-bad"><span class="mk">x</span>"Write a post about AI"</div>
+      </div>
+      <div class="sc sc-good">
+        <div class="scl"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Strong</div>
+        <div class="it it-good"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Write a short post for founders</div>
+        <div class="it it-good"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Explain why most AI content fails</div>
+        <div class="it it-good"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Keep it punchy and minimal</div>
+        <div class="it it-good"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>End with a reflection, not advice</div>
+      </div>
+      <div class="bf"><span class="ar">&rarr;</span><span class="bft">Specific in = usable out</span></div>
+    </div>
+
+    <!-- BOX 4 -->
+    <div class="box">
+      <div class="bh"><span class="bn">4</span><span class="bi"><svg viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></span><span class="bt">Think better</span></div>
+      <div class="pl">
+        <div class="pli"><span class="dot"></span>Break this problem into parts</div>
+        <div class="pli"><span class="dot"></span>Challenge my assumptions</div>
+        <div class="pli"><span class="dot"></span>Give me 3 approaches</div>
+      </div>
+      <div class="bf"><span class="ar">&rarr;</span><span class="bft">For decisions</span></div>
+    </div>
+
+    <!-- BOX 5 -->
+    <div class="box">
+      <div class="bh"><span class="bn">5</span><span class="bi"><svg viewBox="0 0 24 24"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"/></svg></span><span class="bt">Explain clearly</span></div>
+      <div class="pl">
+        <div class="pli"><span class="dot"></span>Explain this like I am new</div>
+        <div class="pli"><span class="dot"></span>Use one simple example</div>
+        <div class="pli"><span class="dot"></span>No jargon</div>
+      </div>
+      <div class="bf"><span class="ar">&rarr;</span><span class="bft">For learning</span></div>
+    </div>
+
+    <!-- BOX 6 -->
+    <div class="box">
+      <div class="bh"><span class="bn">6</span><span class="bi"><svg viewBox="0 0 24 24"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09"/><path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05"/></svg></span><span class="bt">Execute faster</span></div>
+      <div class="pl">
+        <div class="pli"><span class="dot"></span>Create a step-by-step plan</div>
+        <div class="pli"><span class="dot"></span>Based on this context</div>
+        <div class="pli"><span class="dot"></span>I can use today</div>
+      </div>
+      <div class="bf"><span class="ar">&rarr;</span><span class="bft">For action</span></div>
+    </div>
+
+  </div>
+
+  <div class="ftr">
+    <div class="ftr-l"><img src="__LOGO_URI__" alt=""><span class="ftr-tx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span></div>
+    <div class="ftr-url">51ultron<em>.</em>com</div>
+  </div>
+
+</div>
+</body>
+</html>
