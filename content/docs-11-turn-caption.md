@@ -40,7 +40,7 @@ Comment TURN and I will send you the exact Claude chat-loop breakdown we run ins
 
 ## ALT TEXT
 
-Dark editorial visual on slate background. The headline reads 'Most AI replies once. Claude loops until the job is done.' next to a wide stat tile showing 5 steps per request, 3 model tiers and 91 native tools. Below sits a two pane Ultron app window. On the left, a chat session labeled cortex with a Sonnet badge shows one turn running: a user asks for the top 3 fintech rivals, then two book-orange tool-call cards, turn 1 web_search and turn 2 canvas.comparison_table, then a final message marked stop_reason end_turn. A footer strip reads one turn equals one loop pass. On the right, the Ultron menu shows Today Wednesday, a Recommended /Striker card, a week calendar with the 10th highlighted, Workspace, and an Agents list with CORTEX, SPECTER and STRIKER. Closes with a Comment TURN call to action and the Ultron logo.
+Dark editorial visual on slate background. The headline reads 'Most AI replies once. Claude loops until the job is done.' next to a wide stat tile showing 5 steps per request, 3 model tiers and 91 native tools. Below sits a two pane Ultron app window. On the left, a chat session labeled cortex with a Sonnet badge shows one turn running: a user asks for the top 3 fintech rivals, then two book-orange tool-call cards, turn 1 web_search and turn 2 canvas.comparison_table, then a final message marked stop_reason end_turn. A footer strip reads one turn equals one loop pass. On the right, the Ultron menu shows Today Tuesday, a Recommended /Striker card, a week calendar with the 16th highlighted, Workspace, and an Agents list with CORTEX, SPECTER and STRIKER. Closes with a Comment TURN call to action and the Ultron logo.
 
 ---
 
