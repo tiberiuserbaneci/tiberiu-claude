@@ -20,6 +20,9 @@ git rebase --abort 2>/dev/null
 #    (first creation); every later wake is an instant local checkout. A Codespace left on main
 #    would otherwise serve main with none of the new posters.
 git checkout "$BRANCH" 2>/dev/null || { echo "portal: fetching $BRANCH ..."; git fetch origin "$BRANCH" 2>&1 | tail -1; git checkout -b "$BRANCH" "origin/$BRANCH" 2>/dev/null; }
+# pull the latest work-branch code (clean tree only) so a manual re-run always launches the newest
+# server.py; if the tree has diverged/local edits this no-ops and the server's sync worker handles it.
+git pull --ff-only origin "$BRANCH" 2>/dev/null && echo "portal: pulled latest code" || true
 echo "portal: on branch $(git branch --show-current)"
 
 # 3) START THE SERVER NOW under the watchdog, before any network work. It serves the committed

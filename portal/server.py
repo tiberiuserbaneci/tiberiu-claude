@@ -5,7 +5,7 @@ auto-commits, so the operator never has to commit by hand.
 
 Run:  python3 portal/server.py    then open http://127.0.0.1:8753
 """
-import json, os, re, pathlib, threading, subprocess, datetime, urllib.parse, mimetypes, time, zipfile, base64
+import json, os, re, pathlib, threading, subprocess, datetime, urllib.parse, mimetypes, time, zipfile, base64, sys, hashlib, http.cookies
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -49,6 +49,28 @@ SYNC = os.environ.get("PORTAL_SYNC", "1") != "0"           # background pull of 
 SYNC_SECS = int(os.environ.get("PORTAL_SYNC_SECS", "15"))  # how often to check origin for new content
 P_USER = os.environ.get("PORTAL_USER", "ultron")
 P_PASS = os.environ.get("PORTAL_PASS", "")   # set -> HTTP Basic Auth on every request, so the port is safe to make Public
+def _auth_token():
+    # cookie value the form login sets; recomputable, so no server-side session store is needed.
+    return hashlib.sha256(("uap1:" + P_USER + ":" + P_PASS).encode()).hexdigest()
+
+# Form login (cookie) instead of HTTP Basic Auth: the Codespaces port proxy commandeers the
+# Authorization header / WWW-Authenticate challenge, so Basic Auth returns a bare 401 with no
+# prompt even on a Public port. A cookie set by a normal form POST sails through the proxy.
+LOGIN_HTML = """<!doctype html><html><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1"><title>Ultron Portal</title>
+<style>*{box-sizing:border-box}body{margin:0;height:100vh;display:grid;place-items:center;
+background:#191919;color:#FAFAF7;font-family:system-ui,-apple-system,sans-serif}
+form{width:320px;padding:34px;border:1px solid rgba(250,250,247,.12);border-radius:16px;background:#262625}
+h1{font-size:19px;margin:0 0 4px;letter-spacing:-.3px}p{margin:0 0 22px;color:#919180;font-size:13px}
+input{width:100%;padding:13px 15px;border:1px solid rgba(250,250,247,.18);border-radius:10px;
+background:#191919;color:#FAFAF7;font-size:15px;outline:none}input:focus{border-color:#CC785C}
+button{width:100%;margin-top:12px;padding:13px;border:0;border-radius:10px;background:#CC785C;
+color:#1a0f0a;font-weight:800;font-size:15px;cursor:pointer}.e{color:#C84623;font-size:12.5px;
+margin-top:11px;min-height:15px}</style></head><body>
+<form method=post action=/login><h1>Ultron Content Portal</h1><p>Enter the portal password.</p>
+<input type=password name=p autofocus placeholder="Password"><button>Open portal</button>
+<div class=e>{ERR}</div></form></body></html>"""
+
 _lock = threading.Lock()        # guards manifest read/modify/write only (fast; never held during git)
 _gitlock = threading.Lock()     # serializes git; held only by the background worker
 _dirty = threading.Event()      # set when the manifest changed and needs committing
@@ -137,6 +159,12 @@ def _sync_once():
     with _gitlock:
         git(["reset", "--hard", f"origin/{BRANCH}"])              # hard-sync; origin (which has your pushed actions) is the source of truth
     print(f"sync: {local[:8]} -> {remote[:8]} (hard reset to origin)")
+    # if this hard-sync changed the portal's OWN code, re-exec so the running process picks it up
+    # (a reset updates the files on disk but not the live process) -> future fixes deploy hands-free.
+    diff = git(["diff", "--name-only", local, remote])
+    if diff and diff.returncode == 0 and any(x.startswith("portal/") and x.endswith(".py") for x in diff.stdout.split()):
+        print("sync: portal code changed -> re-exec to load it")
+        os.execv(sys.executable, [sys.executable, str(pathlib.Path(__file__).resolve())])
 
 def _sync_worker():
     first = True
@@ -159,6 +187,14 @@ class H(BaseHTTPRequestHandler):
     def _json(self, obj, code=200): self._send(code, json.dumps(obj).encode(), "application/json")
     def _auth_ok(self):
         if not P_PASS: return True            # no password configured -> open (local / Private-port use)
+        # 1) cookie from the form login (survives the Codespaces proxy)
+        try:
+            ck = http.cookies.SimpleCookie(self.headers.get("Cookie", ""))
+            if "up_auth" in ck and ck["up_auth"].value == _auth_token():
+                return True
+        except Exception:
+            pass
+        # 2) HTTP Basic fallback (curl / API clients)
         h = self.headers.get("Authorization", "")
         if h.startswith("Basic "):
             try:
@@ -171,10 +207,22 @@ class H(BaseHTTPRequestHandler):
         self.send_response(401)
         self.send_header("WWW-Authenticate", 'Basic realm="Ultron Portal"')
         self.send_header("Content-Length", "0"); self.end_headers()
+    def _login_page(self, err=""):
+        return self._send(200, LOGIN_HTML.replace("{ERR}", err).encode(), "text/html; charset=utf-8")
+    def _do_login(self):
+        n = int(self.headers.get("Content-Length", 0)); body = self.rfile.read(n) if n else b""
+        pw = urllib.parse.parse_qs(body.decode("utf-8", "replace")).get("p", [""])[0]
+        if P_PASS and pw == P_PASS:
+            self.send_response(302); self.send_header("Location", "/")
+            c = http.cookies.SimpleCookie(); c["up_auth"] = _auth_token()
+            m = c["up_auth"]; m["path"] = "/"; m["max-age"] = "2592000"; m["httponly"] = True; m["samesite"] = "Lax"; m["secure"] = True
+            self.send_header("Set-Cookie", m.OutputString())
+            self.send_header("Content-Length", "0"); self.end_headers(); return
+        return self._login_page("Wrong password." if pw else "")
 
     def do_GET(self):
-        if not self._auth_ok(): return self._need_auth()
         path = urllib.parse.urlparse(self.path).path
+        if not self._auth_ok(): return self._login_page()   # form login, not a bare 401
         if path in ("/","/index.html"):
             f = PORTAL/"index.html"
             return self._send(200, f.read_bytes(), "text/html; charset=utf-8")
@@ -194,8 +242,9 @@ class H(BaseHTTPRequestHandler):
         return self._send(404, b'{"error":"not found"}')
 
     def do_POST(self):
-        if not self._auth_ok(): return self._need_auth()
         path = urllib.parse.urlparse(self.path).path
+        if path == "/login": return self._do_login()
+        if not self._auth_ok(): return self._need_auth()
         qs = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
         n = int(self.headers.get("Content-Length", 0))
         body = self.rfile.read(n) if n else b""
