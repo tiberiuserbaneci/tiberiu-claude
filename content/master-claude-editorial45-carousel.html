@@ -2,231 +2,259 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>master claude in 2 minutes - carousel - TikTok editorial 4:5 1080x1350</title>
+<title>master claude in 2 minutes - carousel - TikTok editorial 4:5 1080x1350 (Dark Ultron)</title>
 <style>
 @import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
-/* Carousel version of the operator's own "MASTER CLAUDE IN 2 MINUTES" reference (built in Gemini),
-   rebuilt in the Ultron REALNUMBERS system. Same content as the single-image infographic, sliced to
-   6 editorial 4:5 slides. ONLY footer change vs the source. Green->coral for the affirmative cards
-   (REALNUMBERS has no green). TikTok editorial 4:5, 1080x1350, full canvas. DM Sans / DM Mono. */
-:root{
-  --cream:#F5ECE3; --cream-2:#EFE6DB; --card:#FBF7F1; --weak:#ECE3D5;
-  --ink:#161210; --ink-2:#4B4239; --mut:#9C8E7C;
-  --cor:#C84623; --cor-deep:#BE4628; --cor-soft:#D26446; --cor-lt:#E08763;
-  --pink-bg:#FBE7E5; --pink-bd:#F0CFCA; --pink-tx:#8A5048;
-  --grn:#4E9D54; --grn-deep:#3C8344; --grn-bg:#E9F3E4; --grn-bd:#C9DFBF;
-  --cor-10:rgba(200,70,35,.10); --cor-18:rgba(200,70,35,.18); --rule:rgba(22,18,16,.10);
-}
+/* MASTER CLAUDE IN 2 MINUTES - carousel, rebuilt on the Dark Ultron system (dark/premium/dense/tech,
+   icon nodes). Same real content as the source: cover -> Fix 01 direction -> Fix 02 the 4 inputs ->
+   Fix 03 weak vs strong -> 3 modes -> CTA. No green / no saturated red (book + kraft + muted only).
+   TikTok editorial 4:5, 1080x1350. DM Sans / DM Mono. */
+:root{--slate:#191919;--slate2:#262625;--card:#222221;--ivory:#FAFAF7;
+--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);
+--rule:rgba(250,250,247,.10);--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--cloud:#919180;
+--book-lo:rgba(204,120,92,.10);--book-bd:rgba(204,120,92,.34);--kraft-bd:rgba(212,162,127,.30);}
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:#0c0a09;display:flex;flex-direction:column;align-items:center;gap:34px;padding:30px 0;font-family:'DM Sans',sans-serif;}
-.slide{width:1080px;height:1350px;position:relative;overflow:hidden;background:var(--cream);color:var(--ink);
-  padding:74px 74px 64px;display:flex;flex-direction:column;}
-.slide::before{content:'';position:absolute;inset:0;pointer-events:none;
-  background-image:radial-gradient(rgba(200,70,35,.05) 1.1px,transparent 1.2px);background-size:32px 32px;}
-.slide::after{content:'';position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse 58% 32% at 86% 0%,rgba(200,70,35,.08),transparent 60%);}
-.spk{width:64px;height:64px;flex-shrink:0;}
+body{background:#0c0a09;display:flex;flex-direction:column;align-items:center;gap:34px;padding:30px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.slide{width:1080px;height:1350px;position:relative;overflow:hidden;background:var(--slate);color:var(--ivory);
+  padding:60px 76px 54px;display:flex;flex-direction:column;}
+.slide::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:radial-gradient(rgba(204,120,92,.06) 1.3px,transparent 1.4px);background-size:32px 32px;}
+.slide::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 56% 26% at 86% 0%,rgba(204,120,92,.17),transparent 60%),radial-gradient(ellipse 50% 22% at 6% 100%,rgba(212,162,127,.09),transparent 60%);}
+.slide>*{position:relative;z-index:2;}
+.spk{width:62px;height:62px;flex-shrink:0;filter:drop-shadow(0 0 18px rgba(204,120,92,.4));}
 
-/* shared header */
-.kick{position:relative;z-index:2;display:flex;align-items:center;gap:14px;flex-shrink:0;}
-.kick .tag{font-family:'DM Mono',monospace;font-size:16px;font-weight:500;letter-spacing:.22em;color:var(--cor-deep);
-  border:1px solid var(--cor-18);background:var(--cor-10);padding:8px 14px;border-radius:8px;}
-.kick .pg{margin-left:auto;font-family:'DM Mono',monospace;font-size:15px;letter-spacing:.18em;color:var(--mut);}
-.bicon{width:64px;height:64px;border-radius:16px;background:var(--cor-10);border:1px solid var(--cor-18);
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.bicon svg{width:34px;height:34px;stroke:var(--cor);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-.h2{position:relative;z-index:2;font-size:62px;font-weight:800;letter-spacing:-2.2px;line-height:.98;color:var(--ink);margin-top:26px;flex-shrink:0;}
-.h2 em{font-style:normal;color:var(--cor);}
-.lede{position:relative;z-index:2;font-size:24px;font-weight:500;color:var(--ink-2);line-height:1.34;margin-top:14px;flex-shrink:0;}
-.lede b{color:var(--ink);font-weight:700;}
+/* mast */
+.kick{display:flex;align-items:center;gap:15px;flex-shrink:0;}
+.node{width:62px;height:62px;border-radius:16px;background:var(--book-lo);border:1px solid var(--book-bd);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 22px rgba(204,120,92,.16) inset;}
+.node svg{width:33px;height:33px;stroke:var(--book);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.kick .tag{font-family:'DM Mono',monospace;font-size:16px;font-weight:500;letter-spacing:.2em;color:var(--book);
+  border:1px solid var(--book-bd);background:var(--book-lo);padding:9px 15px;border-radius:8px;}
+.kick .pg{margin-left:auto;font-family:'DM Mono',monospace;font-size:15px;letter-spacing:.18em;color:var(--ink46);}
+.h2{font-size:64px;font-weight:900;letter-spacing:-2.4px;line-height:.96;color:var(--ivory);margin-top:26px;flex-shrink:0;}
+.h2 em{font-style:normal;color:var(--book);}
+.lede{font-size:24px;font-weight:500;color:var(--ink70);line-height:1.32;margin-top:14px;flex-shrink:0;}
+.lede b{color:var(--ivory);font-weight:700;}
 
-/* sub-cards */
-.body{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;gap:16px;margin-top:26px;min-height:0;}
-.sc{border-radius:18px;padding:30px 32px;flex:1;display:flex;flex-direction:column;justify-content:center;}
+/* weak vs strong cards */
+.body{flex:1;display:flex;flex-direction:column;gap:16px;margin-top:24px;min-height:0;}
+.sc{border-radius:18px;padding:26px 30px;flex:1;display:flex;flex-direction:column;min-height:0;}
 .sc.solo{flex:0 0 auto;}
-.sc-weak{background:var(--pink-bg);border:1px solid var(--pink-bd);}
-.sc-pos{background:var(--grn-bg);border:1px solid var(--grn-bd);border-left:6px solid var(--grn);}
-.sl{display:flex;align-items:center;gap:10px;font-family:'DM Mono',monospace;font-size:16px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;margin-bottom:16px;}
-.sl svg{width:22px;height:22px;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-.sc-weak .sl{color:var(--pink-tx);}.sc-weak .sl svg{stroke:var(--pink-tx);}
-.sc-pos .sl{color:var(--grn-deep);}.sc-pos .sl svg{stroke:var(--grn);}
-.it{display:flex;align-items:center;gap:14px;font-size:30px;line-height:1.16;font-weight:600;margin-bottom:14px;}
-.it:last-child{margin-bottom:0;}
-.it-weak{color:#7A5249;}
-.it-weak .mk{color:#C08579;font-weight:700;flex-shrink:0;width:24px;text-align:center;font-size:26px;}
-.it-pos{color:#2C3F2A;font-weight:700;}
-.it-pos svg{width:30px;height:30px;stroke:var(--grn);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+.sc-weak{background:var(--slate2);border:1px solid var(--rule);border-left:5px solid var(--cloud);}
+.sc-good{background:rgba(204,120,92,.08);border:1px solid var(--book-bd);border-left:5px solid var(--book);}
+.sl{display:flex;align-items:center;gap:11px;font-family:'DM Mono',monospace;font-size:15.5px;font-weight:600;
+  letter-spacing:.18em;text-transform:uppercase;flex-shrink:0;}
+.sl svg{width:21px;height:21px;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.sc-weak .sl{color:var(--cloud);}.sc-weak .sl svg{stroke:var(--cloud);}
+.sc-good .sl{color:var(--book);}.sc-good .sl svg{stroke:var(--book);}
+.items{flex:1;display:flex;flex-direction:column;justify-content:space-evenly;min-height:0;margin-top:6px;}
+.it{display:flex;align-items:center;gap:14px;font-size:29px;line-height:1.12;font-weight:600;}
+.it-weak{color:var(--ink46);}
+.it-weak .mk{color:var(--cloud);font-weight:700;flex-shrink:0;width:24px;text-align:center;font-size:25px;}
+.it-good{color:var(--ivory);font-weight:700;}
+.it-good svg{width:29px;height:29px;stroke:var(--book);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+.tail{margin-top:22px;display:flex;align-items:center;gap:12px;flex-shrink:0;}
+.tail .ar{color:var(--book);font-weight:800;font-size:28px;line-height:1;}
+.tail .tt{font-size:26px;font-weight:800;color:var(--kraft);letter-spacing:-.4px;}
 
-/* numbered (4 inputs) */
-.nl{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;gap:15px;margin-top:24px;min-height:0;}
-.nrow{display:flex;align-items:center;gap:20px;background:var(--card);border:1px solid var(--rule);border-left:6px solid var(--cor);
-  border-radius:14px;padding:22px 28px;flex:1;}
-.nnum{font-family:'DM Mono',monospace;font-size:34px;font-weight:500;color:var(--cor);flex-shrink:0;width:40px;}
-.nk{font-size:32px;font-weight:800;color:var(--ink);letter-spacing:-.6px;}
-.narr{color:var(--cor);font-weight:800;font-size:28px;margin:0 4px;}
-.nv{font-size:27px;font-weight:500;color:var(--ink-2);}
+/* numbered flow (4 inputs) on a spine */
+.nl{flex:1;display:flex;flex-direction:column;gap:14px;margin-top:22px;min-height:0;}
+.nrow{position:relative;display:flex;align-items:center;gap:22px;background:var(--slate2);border:1px solid var(--rule);
+  border-radius:16px;padding:0 30px;flex:1;}
+.nrow::before{content:'';position:absolute;left:54px;top:0;bottom:0;width:2px;background:linear-gradient(var(--book),var(--kraft));opacity:.32;z-index:0;}
+.nrow:not(:last-child)::after{content:'';position:absolute;left:54px;bottom:-14px;height:14px;width:2px;background:var(--kraft);opacity:.32;}
+.nnum{position:relative;z-index:1;width:60px;height:60px;border-radius:50%;background:var(--slate);border:2px solid var(--book);
+  display:flex;align-items:center;justify-content:center;font-weight:900;font-size:27px;color:var(--book);flex-shrink:0;
+  box-shadow:0 0 0 5px var(--slate2),0 0 18px rgba(204,120,92,.3);}
+.nk{font-size:33px;font-weight:800;color:var(--ivory);letter-spacing:-.6px;flex-shrink:0;width:185px;}
+.narr{color:var(--book);font-weight:800;font-size:26px;}
+.nv{font-size:27px;font-weight:500;color:var(--ink70);}
 
-/* plain list (modes slide cards) */
-.modes{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;gap:16px;margin-top:24px;min-height:0;}
-.mode{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:24px 28px;display:flex;gap:22px;align-items:center;flex:1;}
-.mode .bicon{width:58px;height:58px;}
-.mode .bicon svg{width:30px;height:30px;}
+/* modes */
+.modes{flex:1;display:flex;flex-direction:column;gap:16px;margin-top:22px;min-height:0;}
+.mode{background:var(--slate2);border:1px solid var(--rule);border-left:5px solid var(--book);border-radius:16px;
+  padding:22px 28px;display:flex;gap:22px;align-items:center;flex:1;min-height:0;}
+.mode.k{border-left-color:var(--kraft);}.mode.d{border-left-color:var(--book-d);}
+.mode .node{width:60px;height:60px;}
+.mode.k .node{background:rgba(212,162,127,.1);border-color:var(--kraft-bd);}.mode.k .node svg{stroke:var(--kraft);}
+.mode.d .node{border-color:var(--book-d);}.mode.d .node svg{stroke:var(--book-d);}
 .mode .mc{flex:1;min-width:0;}
-.mode .mt{display:flex;align-items:baseline;gap:14px;margin-bottom:12px;}
-.mode .mt b{font-size:30px;font-weight:800;color:var(--ink);letter-spacing:-.6px;}
-.mode .mt span{font-family:'DM Mono',monospace;font-size:15px;letter-spacing:.12em;color:var(--cor-deep);text-transform:uppercase;}
-.mode .ml{display:flex;flex-wrap:wrap;gap:9px 12px;}
-.chip{font-size:21px;font-weight:600;color:#241710;background:var(--cream-2);border:1px solid var(--rule);border-radius:999px;padding:7px 16px;}
-
-/* tail line */
-.tail{position:relative;z-index:2;margin-top:24px;display:flex;align-items:center;gap:11px;flex-shrink:0;}
-.tail .ar{color:var(--cor);font-weight:800;font-size:30px;line-height:1;}
-.tail .tt{font-size:26px;font-weight:800;color:var(--cor-deep);letter-spacing:-.4px;}
+.mode .mt{display:flex;align-items:baseline;gap:14px;margin-bottom:5px;}
+.mode .mt b{font-size:31px;font-weight:800;color:var(--ivory);letter-spacing:-.6px;}
+.mode .mt span{font-family:'DM Mono',monospace;font-size:14.5px;letter-spacing:.12em;color:var(--book);text-transform:uppercase;}
+.mode.k .mt span{color:var(--kraft);}.mode.d .mt span{color:var(--book-d);}
+.mode .md{font-size:18.5px;color:var(--ink46);margin-bottom:13px;line-height:1.25;}
+.mode .ml{display:flex;flex-wrap:wrap;gap:9px 11px;}
+.chip{font-size:21px;font-weight:600;color:var(--ink70);background:var(--slate);border:1px solid var(--ink14);border-radius:999px;padding:8px 17px;}
 
 /* cover */
-.cv-body{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0;}
-.cv-eyb{font-family:'DM Mono',monospace;font-size:18px;font-weight:500;letter-spacing:.26em;color:var(--cor-deep);}
-.cv-ttl{font-size:118px;font-weight:800;letter-spacing:-5px;line-height:.9;color:var(--ink);margin-top:18px;}
-.cv-ttl em{font-style:normal;color:var(--cor);}
-.cv-sub{font-size:30px;font-weight:500;color:var(--ink-2);line-height:1.32;margin-top:30px;max-width:880px;}
-.cv-sub b{color:var(--ink);font-weight:700;}
-.cv-sub i{font-style:italic;color:var(--cor-deep);font-weight:600;}
-.cv-meta{margin-top:34px;display:inline-flex;align-items:center;gap:12px;font-family:'DM Mono',monospace;font-size:17px;letter-spacing:.14em;color:var(--mut);}
-.cv-meta .pip{width:10px;height:10px;border-radius:50%;background:var(--cor);}
-.swipe{position:relative;z-index:2;margin-top:auto;display:flex;align-items:center;gap:12px;font-family:'DM Mono',monospace;font-size:16px;letter-spacing:.18em;text-transform:uppercase;color:var(--cor-deep);}
-.swipe svg{width:24px;height:24px;stroke:var(--cor);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.cv-body{flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0;}
+.cv-eyb{font-family:'DM Mono',monospace;font-size:18px;font-weight:500;letter-spacing:.26em;color:var(--kraft);}
+.cv-ttl{font-size:106px;font-weight:900;letter-spacing:-4.5px;line-height:.9;color:var(--ivory);margin-top:18px;}
+.cv-ttl em{font-style:normal;color:var(--book);}
+.cv-sub{font-size:29px;font-weight:500;color:var(--ink70);line-height:1.3;margin-top:28px;max-width:870px;}
+.cv-sub b{color:var(--ivory);font-weight:700;}.cv-sub i{font-style:normal;color:var(--book);font-weight:700;}
+.chapters{margin-top:38px;display:flex;align-items:center;justify-content:space-between;position:relative;}
+.chapters::before{content:'';position:absolute;left:38px;right:38px;top:38px;height:2px;
+  background:linear-gradient(90deg,var(--book),var(--kraft),var(--book-d));opacity:.4;}
+.chapters .cn{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:13px;}
+.chapters .cnode{width:76px;height:76px;border-radius:50%;background:var(--slate);border:2px solid var(--book);
+  display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 7px var(--slate),0 0 20px rgba(204,120,92,.3);}
+.chapters .cn:nth-child(2) .cnode{border-color:var(--kraft);}.chapters .cn:nth-child(4) .cnode{border-color:var(--book-d);}
+.chapters .cnode svg{width:36px;height:36px;stroke:var(--book);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.chapters .cn:nth-child(2) .cnode svg{stroke:var(--kraft);}.chapters .cn:nth-child(4) .cnode svg{stroke:var(--book-d);}
+.chapters .cl{font-family:'DM Mono',monospace;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink46);}
+.swipe{margin-top:auto;display:flex;align-items:center;gap:12px;font-family:'DM Mono',monospace;font-size:16px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--book);}
+.swipe svg{width:24px;height:24px;stroke:var(--book);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
 
-/* CTA close */
-.cta-body{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:flex-start;min-height:0;margin-top:18px;}
-.cta-h{font-size:64px;font-weight:800;letter-spacing:-2.2px;line-height:1;color:var(--ink);}
-.cta-h em{font-style:normal;color:var(--cor);}
-.cta-p{font-size:26px;font-weight:500;color:var(--ink-2);line-height:1.36;margin-top:20px;max-width:860px;}
-.recap{margin-top:30px;display:flex;flex-direction:column;gap:16px;}
-.recap .rr{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid var(--rule);border-left:5px solid var(--cor);
-  border-radius:14px;padding:20px 24px;font-size:25px;font-weight:700;color:#241710;line-height:1.18;}
-.recap .rr b{color:var(--cor-deep);font-weight:800;}
-.recap .rr .rn{font-family:'DM Mono',monospace;font-size:22px;font-weight:500;color:var(--cor);flex-shrink:0;}
-.cta-chip{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:14px;background:var(--cor);
-  border-radius:12px;padding:20px 30px;box-shadow:0 14px 34px rgba(200,70,35,.32);}
-.cta-chip .t{font-size:28px;font-weight:900;letter-spacing:.02em;text-transform:uppercase;color:#FFF6F1;}
-.cta-chip .t em{font-style:normal;color:#3A1206;background:#FFE6D8;padding:2px 10px;border-radius:6px;margin-left:4px;}
-.cta-chip svg{width:30px;height:30px;stroke:#FFF6F1;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+/* CTA */
+.cta-body{flex:1;display:flex;flex-direction:column;min-height:0;margin-top:20px;}
+.cta-h{font-size:66px;font-weight:900;letter-spacing:-2.4px;line-height:.98;color:var(--ivory);flex-shrink:0;}
+.cta-h em{font-style:normal;color:var(--book);}
+.cta-p{font-size:26px;font-weight:500;color:var(--ink70);line-height:1.34;margin-top:18px;max-width:850px;flex-shrink:0;}
+.cta-p b{color:var(--ivory);font-weight:700;}
+.recap{flex:1;display:flex;flex-direction:column;gap:14px;margin-top:24px;min-height:0;}
+.rr{flex:1;display:flex;align-items:center;gap:18px;background:var(--slate2);border:1px solid var(--rule);border-left:5px solid var(--book);
+  border-radius:14px;padding:0 26px;font-size:25px;font-weight:700;color:var(--ivory);line-height:1.16;}
+.rr.k{border-left-color:var(--kraft);}.rr.d{border-left-color:var(--book-d);}
+.rr b{color:var(--book);font-weight:800;}.rr.k b{color:var(--kraft);}
+.rr .rn{font-family:'DM Mono',monospace;font-size:21px;font-weight:500;color:var(--book);flex-shrink:0;}
+.rr.k .rn{color:var(--kraft);}.rr.d .rn{color:var(--book-d);}
+.cta-chip{margin-top:22px;align-self:flex-start;display:inline-flex;align-items:center;gap:14px;background:var(--book);
+  border-radius:12px;padding:19px 30px;box-shadow:0 0 44px rgba(204,120,92,.4);flex-shrink:0;}
+.cta-chip .t{font-size:27px;font-weight:900;letter-spacing:.03em;text-transform:uppercase;color:#1a0f0a;}
+.cta-chip .t em{font-style:normal;background:#1a0f0a;color:var(--book);padding:3px 11px;border-radius:6px;margin-left:5px;}
+.cta-chip svg{width:29px;height:29px;stroke:#1a0f0a;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.cta-note{font-size:21px;color:var(--ink46);margin-top:16px;flex-shrink:0;}
 
-/* footer (the only change vs the source) */
-.ftr{position:relative;z-index:2;margin-top:24px;padding-top:20px;border-top:1px solid var(--rule);
-  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-shrink:0;}
+/* footer */
+.ftr{margin-top:22px;padding-top:18px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-shrink:0;}
 .ftr-l{display:flex;align-items:center;gap:13px;min-width:0;}
-.ftr-l img{width:40px;height:40px;border-radius:50%;flex-shrink:0;}
-.ftr-tx{font-family:'DM Mono',monospace;font-size:15px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-2);white-space:nowrap;}
-.ftr-tx b{color:var(--ink);font-weight:500;}
-.ftr-url{font-size:26px;font-weight:900;letter-spacing:-.5px;color:var(--ink);flex-shrink:0;}
-.ftr-url em{font-style:normal;color:var(--cor);}
+.ftr-l img{width:40px;height:40px;border-radius:50%;flex-shrink:0;object-fit:cover;}
+.ftr-tx{font-family:'DM Mono',monospace;font-size:14.5px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--ink70);white-space:nowrap;}
+.ftr-tx b{color:var(--ivory);font-weight:500;}
+.ftr-url{font-size:25px;font-weight:900;letter-spacing:-.5px;color:var(--ivory);flex-shrink:0;}
+.ftr-url em{font-style:normal;color:var(--book);}
 </style>
 </head>
 <body>
 
 <!-- S1 COVER -->
 <div class="slide">
-  <div class="kick"><svg class="spk" viewBox="0 0 1200 1200"><path fill="#C84623" d="M 233.96 800.21 L 468.64 668.54 L 472.59 657.10 L 468.64 650.74 L 457.21 650.74 L 417.99 648.32 L 283.89 644.70 L 167.60 639.87 L 54.93 633.83 L 26.58 627.79 L 0 592.75 L 2.74 575.28 L 26.58 559.25 L 60.72 562.23 L 136.19 567.38 L 249.42 575.19 L 331.57 580.03 L 453.26 592.67 L 472.59 592.67 L 475.33 584.86 L 468.72 580.03 L 463.57 575.19 L 346.39 495.79 L 219.54 411.87 L 153.10 363.54 L 117.18 339.06 L 99.06 316.11 L 91.25 266.01 L 123.87 230.09 L 167.68 233.07 L 178.87 236.05 L 223.25 270.20 L 318.04 343.57 L 441.83 434.74 L 459.95 449.80 L 467.19 444.64 L 468.08 441.02 L 459.95 427.41 L 392.62 305.72 L 320.78 181.93 L 288.81 130.63 L 280.35 99.87 C 277.37 87.22 275.19 76.59 275.19 63.62 L 312.32 13.21 L 332.86 6.60 L 382.39 13.21 L 403.25 31.33 L 434.01 101.72 L 483.87 212.54 L 561.18 363.22 L 583.81 407.92 L 595.89 449.32 L 600.40 461.96 L 608.21 461.96 L 608.21 454.71 L 614.58 369.83 L 626.34 265.61 L 637.77 131.52 L 641.72 93.75 L 660.40 48.48 L 697.53 24.00 L 726.52 37.85 L 750.36 72 L 747.06 94.07 L 732.89 186.20 L 705.10 330.52 L 686.98 427.17 L 697.53 427.17 L 709.61 415.09 L 758.50 350.17 L 840.64 247.49 L 876.89 206.74 L 919.17 161.72 L 946.31 140.30 L 997.61 140.30 L 1035.38 196.43 L 1018.47 254.42 L 965.64 321.42 L 921.83 378.20 L 859.01 462.77 L 819.79 530.42 L 823.41 535.81 L 832.75 534.93 L 974.66 504.72 L 1051.33 490.87 L 1142.82 475.17 L 1184.21 494.50 L 1188.72 514.15 L 1172.46 554.34 L 1074.60 578.50 L 959.84 601.45 L 788.94 641.88 L 786.85 643.41 L 789.26 646.39 L 866.26 653.64 L 899.19 655.41 L 979.81 655.41 L 1129.93 666.60 L 1169.15 692.54 L 1192.67 724.27 L 1188.72 748.43 L 1128.32 779.19 L 1046.82 759.87 L 856.59 714.60 L 791.36 698.34 L 782.34 698.34 L 782.34 703.73 L 836.70 756.89 L 936.32 846.85 L 1061.07 962.82 L 1067.44 991.49 L 1051.41 1014.12 L 1034.50 1011.70 L 924.89 929.23 L 882.60 892.11 L 786.85 811.49 L 780.48 811.49 L 780.48 819.95 L 802.55 852.24 L 919.09 1027.41 L 925.13 1081.13 L 916.67 1098.60 L 886.47 1109.15 L 853.29 1103.11 L 785.07 1007.36 L 714.68 899.52 L 657.91 802.87 L 650.98 806.82 L 617.48 1167.70 L 601.77 1186.15 L 565.53 1200 L 535.33 1177.05 L 519.30 1139.92 L 535.33 1066.55 L 554.66 970.79 L 570.36 894.68 L 584.54 800.13 L 592.99 768.72 L 592.43 766.63 L 585.50 767.52 L 514.23 865.37 L 405.83 1011.87 L 320.05 1103.68 L 299.52 1111.81 L 263.92 1093.37 L 267.22 1060.43 L 287.11 1031.11 L 405.83 880.11 L 477.42 786.52 L 523.65 732.48 L 523.33 724.67 L 520.59 724.67 L 205.29 929.40 L 149.15 936.64 L 124.99 914.01 L 127.97 876.89 L 139.41 864.81 L 234.20 799.57 Z"/></svg><span class="pg" style="margin-left:auto;">01 / 06</span></div>
+  <div class="kick"><svg class="spk" viewBox="0 0 1200 1200"><path fill="#CC785C" d="M 233.96 800.21 L 468.64 668.54 L 472.59 657.10 L 468.64 650.74 L 457.21 650.74 L 417.99 648.32 L 283.89 644.70 L 167.60 639.87 L 54.93 633.83 L 26.58 627.79 L 0 592.75 L 2.74 575.28 L 26.58 559.25 L 60.72 562.23 L 136.19 567.38 L 249.42 575.19 L 331.57 580.03 L 453.26 592.67 L 472.59 592.67 L 475.33 584.86 L 468.72 580.03 L 463.57 575.19 L 346.39 495.79 L 219.54 411.87 L 153.10 363.54 L 117.18 339.06 L 99.06 316.11 L 91.25 266.01 L 123.87 230.09 L 167.68 233.07 L 178.87 236.05 L 223.25 270.20 L 318.04 343.57 L 441.83 434.74 L 459.95 449.80 L 467.19 444.64 L 468.08 441.02 L 459.95 427.41 L 392.62 305.72 L 320.78 181.93 L 288.81 130.63 L 280.35 99.87 C 277.37 87.22 275.19 76.59 275.19 63.62 L 312.32 13.21 L 332.86 6.60 L 382.39 13.21 L 403.25 31.33 L 434.01 101.72 L 483.87 212.54 L 561.18 363.22 L 583.81 407.92 L 595.89 449.32 L 600.40 461.96 L 608.21 461.96 L 608.21 454.71 L 614.58 369.83 L 626.34 265.61 L 637.77 131.52 L 641.72 93.75 L 660.40 48.48 L 697.53 24.00 L 726.52 37.85 L 750.36 72 L 747.06 94.07 L 732.89 186.20 L 705.10 330.52 L 686.98 427.17 L 697.53 427.17 L 709.61 415.09 L 758.50 350.17 L 840.64 247.49 L 876.89 206.74 L 919.17 161.72 L 946.31 140.30 L 997.61 140.30 L 1035.38 196.43 L 1018.47 254.42 L 965.64 321.42 L 921.83 378.20 L 859.01 462.77 L 819.79 530.42 L 823.41 535.81 L 832.75 534.93 L 974.66 504.72 L 1051.33 490.87 L 1142.82 475.17 L 1184.21 494.50 L 1188.72 514.15 L 1172.46 554.34 L 1074.60 578.50 L 959.84 601.45 L 788.94 641.88 L 786.85 643.41 L 789.26 646.39 L 866.26 653.64 L 899.19 655.41 L 979.81 655.41 L 1129.93 666.60 L 1169.15 692.54 L 1192.67 724.27 L 1188.72 748.43 L 1128.32 779.19 L 1046.82 759.87 L 856.59 714.60 L 791.36 698.34 L 782.34 698.34 L 782.34 703.73 L 836.70 756.89 L 936.32 846.85 L 1061.07 962.82 L 1067.44 991.49 L 1051.41 1014.12 L 1034.50 1011.70 L 924.89 929.23 L 882.60 892.11 L 786.85 811.49 L 780.48 811.49 L 780.48 819.95 L 802.55 852.24 L 919.09 1027.41 L 925.13 1081.13 L 916.67 1098.60 L 886.47 1109.15 L 853.29 1103.11 L 785.07 1007.36 L 714.68 899.52 L 657.91 802.87 L 650.98 806.82 L 617.48 1167.70 L 601.77 1186.15 L 565.53 1200 L 535.33 1177.05 L 519.30 1139.92 L 535.33 1066.55 L 554.66 970.79 L 570.36 894.68 L 584.54 800.13 L 592.99 768.72 L 592.43 766.63 L 585.50 767.52 L 514.23 865.37 L 405.83 1011.87 L 320.05 1103.68 L 299.52 1111.81 L 263.92 1093.37 L 267.22 1060.43 L 287.11 1031.11 L 405.83 880.11 L 477.42 786.52 L 523.65 732.48 L 523.33 724.67 L 520.59 724.67 L 205.29 929.40 L 149.15 936.64 L 124.99 914.01 L 127.97 876.89 L 139.41 864.81 L 234.20 799.57 Z"/></svg><span class="pg" style="margin-left:auto;">01 / 06</span></div>
   <div class="cv-body">
     <span class="cv-eyb">2-MINUTE OPERATOR GUIDE</span>
     <div class="cv-ttl">MASTER<br><em>CLAUDE</em> IN<br>2 MINUTES</div>
     <div class="cv-sub">Use it like a <b>thinking partner</b>, not a search bar. Most people use it like <i>Google</i>. That is the problem.</div>
-    <div class="cv-meta"><span class="pip"></span>4 fixes &middot; 1 input formula &middot; 3 modes</div>
+    <div class="chapters">
+      <div class="cn"><span class="cnode"><svg viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="cl">Direction</span></div>
+      <div class="cn"><span class="cnode"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span><span class="cl">4 inputs</span></div>
+      <div class="cn"><span class="cnode"><svg viewBox="0 0 24 24"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></svg></span><span class="cl">Weak vs strong</span></div>
+      <div class="cn"><span class="cnode"><svg viewBox="0 0 24 24"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m6.08 9.5-3.49 1.59a1 1 0 0 0 0 1.81l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9a1 1 0 0 0 0-1.83l-3.5-1.59"/></svg></span><span class="cl">3 modes</span></div>
+    </div>
   </div>
   <div class="swipe">SWIPE FOR THE 2-MINUTE FIX<svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
 </div>
 
-<!-- S2 BOX 1 -->
+<!-- S2 FIX 01 -->
 <div class="slide">
-  <div class="kick"><span class="bicon"><svg viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="tag">FIX 01</span><span class="pg">02 / 06</span></div>
+  <div class="kick"><span class="node"><svg viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="tag">FIX 01</span><span class="pg">02 / 06</span></div>
   <div class="h2">Stop asking<br>for <em>answers</em></div>
   <div class="body">
     <div class="sc sc-weak">
       <div class="sl"><svg viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Most people</div>
-      <div class="it it-weak"><span class="mk">x</span>Write me a post</div>
-      <div class="it it-weak"><span class="mk">x</span>Summarize this</div>
-      <div class="it it-weak"><span class="mk">x</span>Give me ideas</div>
+      <div class="items">
+        <div class="it it-weak"><span class="mk">&times;</span>Write me a post</div>
+        <div class="it it-weak"><span class="mk">&times;</span>Summarize this</div>
+        <div class="it it-weak"><span class="mk">&times;</span>Give me ideas</div>
+      </div>
     </div>
-    <div class="sc sc-pos">
-      <div class="sl"><svg viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>Better</div>
-      <div class="it it-pos"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Break this into parts</div>
-      <div class="it it-pos"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Challenge my assumptions</div>
-      <div class="it it-pos"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>3 approaches with tradeoffs</div>
+    <div class="sc sc-good">
+      <div class="sl"><svg viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>Operators</div>
+      <div class="items">
+        <div class="it it-good"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Break this into parts</div>
+        <div class="it it-good"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Challenge my assumptions</div>
+        <div class="it it-good"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>3 approaches with tradeoffs</div>
+      </div>
     </div>
   </div>
   <div class="tail"><span class="ar">&rarr;</span><span class="tt">Better thinking = better outputs</span></div>
 </div>
 
-<!-- S3 BOX 2 -->
+<!-- S3 FIX 02 -->
 <div class="slide">
-  <div class="kick"><span class="bicon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="22" x2="18" y1="12" y2="12"/><line x1="6" x2="2" y1="12" y2="12"/><line x1="12" x2="12" y1="6" y2="2"/><line x1="12" x2="12" y1="22" y2="18"/></svg></span><span class="tag">FIX 02</span><span class="pg">03 / 06</span></div>
+  <div class="kick"><span class="node"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="22" x2="18" y1="12" y2="12"/><line x1="6" x2="2" y1="12" y2="12"/><line x1="12" x2="12" y1="6" y2="2"/><line x1="12" x2="12" y1="22" y2="18"/></svg></span><span class="tag">FIX 02</span><span class="pg">03 / 06</span></div>
   <div class="h2">Fix these <em>4 inputs</em></div>
-  <div class="lede">Most people skip <b>2 to 4</b>. That is the problem.</div>
+  <div class="lede">Most people give 1. <b>Give all 4</b> and the output changes completely.</div>
   <div class="nl">
-    <div class="nrow"><span class="nnum">1</span><span class="nk">Task</span><span class="narr">&rarr;</span><span class="nv">what you want</span></div>
-    <div class="nrow"><span class="nnum">2</span><span class="nk">Context</span><span class="narr">&rarr;</span><span class="nv">what it should know</span></div>
+    <div class="nrow"><span class="nnum">1</span><span class="nk">Task</span><span class="narr">&rarr;</span><span class="nv">what you want done</span></div>
+    <div class="nrow"><span class="nnum">2</span><span class="nk">Context</span><span class="narr">&rarr;</span><span class="nv">what it should know first</span></div>
     <div class="nrow"><span class="nnum">3</span><span class="nk">Standard</span><span class="narr">&rarr;</span><span class="nv">what good looks like</span></div>
     <div class="nrow"><span class="nnum">4</span><span class="nk">Outcome</span><span class="narr">&rarr;</span><span class="nv">what success means</span></div>
   </div>
 </div>
 
-<!-- S4 BOX 3 -->
+<!-- S4 FIX 03 -->
 <div class="slide">
-  <div class="kick"><span class="bicon"><svg viewBox="0 0 24 24"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></svg></span><span class="tag">FIX 03</span><span class="pg">04 / 06</span></div>
+  <div class="kick"><span class="node"><svg viewBox="0 0 24 24"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></svg></span><span class="tag">FIX 03</span><span class="pg">04 / 06</span></div>
   <div class="h2">Same task.<br><em>Different</em> result</div>
   <div class="body">
     <div class="sc sc-weak solo">
-      <div class="sl">Weak prompt</div>
-      <div class="it it-weak"><span class="mk">x</span>"Write a post about AI"</div>
+      <div class="sl"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>Weak prompt</div>
+      <div class="items" style="margin-top:14px;"><div class="it it-weak"><span class="mk">&times;</span>"Write a post about AI"</div></div>
     </div>
-    <div class="sc sc-pos">
+    <div class="sc sc-good">
       <div class="sl"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Strong prompt</div>
-      <div class="it it-pos"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Write a short post for founders</div>
-      <div class="it it-pos"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Explain why most AI content fails</div>
-      <div class="it it-pos"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Keep it punchy and minimal</div>
-      <div class="it it-pos"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>End with a reflection, not advice</div>
+      <div class="items">
+        <div class="it it-good"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Short post for founders</div>
+        <div class="it it-good"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Why most AI content fails</div>
+        <div class="it it-good"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Punchy and minimal</div>
+        <div class="it it-good"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>End on a reflection, not advice</div>
+      </div>
     </div>
   </div>
   <div class="tail"><span class="ar">&rarr;</span><span class="tt">Specific in = usable out</span></div>
 </div>
 
-<!-- S5 BOXES 4-5-6 -->
+<!-- S5 3 MODES -->
 <div class="slide">
-  <div class="kick"><span class="tag">3 MODES TO STEAL</span><span class="pg">05 / 06</span></div>
+  <div class="kick"><span class="node"><svg viewBox="0 0 24 24"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m6.08 9.5-3.49 1.59a1 1 0 0 0 0 1.81l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9a1 1 0 0 0 0-1.83l-3.5-1.59"/><path d="m6.08 14.5-3.49 1.59a1 1 0 0 0 0 1.81l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9a1 1 0 0 0 0-1.83l-3.5-1.59"/></svg></span><span class="tag">3 MODES TO STEAL</span><span class="pg">05 / 06</span></div>
   <div class="h2">Three ways to <em>open</em></div>
   <div class="modes">
     <div class="mode">
-      <span class="bicon"><svg viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></span>
-      <div class="mc"><div class="mt"><b>Think better</b><span>for decisions</span></div><div class="ml"><span class="chip">Break this into parts</span><span class="chip">Challenge my assumptions</span><span class="chip">Give me 3 approaches</span></div></div>
+      <span class="node"><svg viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></span>
+      <div class="mc"><div class="mt"><b>Think better</b><span>for decisions</span></div><div class="md">When the call is yours to make.</div><div class="ml"><span class="chip">Break this into parts</span><span class="chip">Challenge my assumptions</span><span class="chip">Give me 3 approaches</span></div></div>
     </div>
-    <div class="mode">
-      <span class="bicon"><svg viewBox="0 0 24 24"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"/></svg></span>
-      <div class="mc"><div class="mt"><b>Explain clearly</b><span>for learning</span></div><div class="ml"><span class="chip">Explain this like I am new</span><span class="chip">Use one simple example</span><span class="chip">No jargon</span></div></div>
+    <div class="mode k">
+      <span class="node"><svg viewBox="0 0 24 24"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"/></svg></span>
+      <div class="mc"><div class="mt"><b>Explain clearly</b><span>for learning</span></div><div class="md">When you need to actually get it.</div><div class="ml"><span class="chip">Explain this like I am new</span><span class="chip">Use one simple example</span><span class="chip">No jargon</span></div></div>
     </div>
-    <div class="mode">
-      <span class="bicon"><svg viewBox="0 0 24 24"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09"/><path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05"/></svg></span>
-      <div class="mc"><div class="mt"><b>Execute faster</b><span>for action</span></div><div class="ml"><span class="chip">Create a step-by-step plan</span><span class="chip">Based on this context</span><span class="chip">I can use today</span></div></div>
+    <div class="mode d">
+      <span class="node"><svg viewBox="0 0 24 24"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09"/><path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05"/></svg></span>
+      <div class="mc"><div class="mt"><b>Execute faster</b><span>for action</span></div><div class="md">When you know what, not how.</div><div class="ml"><span class="chip">Step-by-step plan</span><span class="chip">Based on this context</span><span class="chip">I can use today</span></div></div>
     </div>
   </div>
+  <div class="tail"><span class="ar">&rarr;</span><span class="tt">Pick one, paste it, go</span></div>
 </div>
 
 <!-- S6 CTA -->
 <div class="slide">
-  <div class="kick"><svg class="spk" viewBox="0 0 1200 1200"><path fill="#C84623" d="M 233.96 800.21 L 468.64 668.54 L 472.59 657.10 L 468.64 650.74 L 457.21 650.74 L 417.99 648.32 L 283.89 644.70 L 167.60 639.87 L 54.93 633.83 L 26.58 627.79 L 0 592.75 L 2.74 575.28 L 26.58 559.25 L 60.72 562.23 L 136.19 567.38 L 249.42 575.19 L 331.57 580.03 L 453.26 592.67 L 472.59 592.67 L 475.33 584.86 L 468.72 580.03 L 463.57 575.19 L 346.39 495.79 L 219.54 411.87 L 153.10 363.54 L 117.18 339.06 L 99.06 316.11 L 91.25 266.01 L 123.87 230.09 L 167.68 233.07 L 178.87 236.05 L 223.25 270.20 L 318.04 343.57 L 441.83 434.74 L 459.95 449.80 L 467.19 444.64 L 468.08 441.02 L 459.95 427.41 L 392.62 305.72 L 320.78 181.93 L 288.81 130.63 L 280.35 99.87 C 277.37 87.22 275.19 76.59 275.19 63.62 L 312.32 13.21 L 332.86 6.60 L 382.39 13.21 L 403.25 31.33 L 434.01 101.72 L 483.87 212.54 L 561.18 363.22 L 583.81 407.92 L 595.89 449.32 L 600.40 461.96 L 608.21 461.96 L 608.21 454.71 L 614.58 369.83 L 626.34 265.61 L 637.77 131.52 L 641.72 93.75 L 660.40 48.48 L 697.53 24.00 L 726.52 37.85 L 750.36 72 L 747.06 94.07 L 732.89 186.20 L 705.10 330.52 L 686.98 427.17 L 697.53 427.17 L 709.61 415.09 L 758.50 350.17 L 840.64 247.49 L 876.89 206.74 L 919.17 161.72 L 946.31 140.30 L 997.61 140.30 L 1035.38 196.43 L 1018.47 254.42 L 965.64 321.42 L 921.83 378.20 L 859.01 462.77 L 819.79 530.42 L 823.41 535.81 L 832.75 534.93 L 974.66 504.72 L 1051.33 490.87 L 1142.82 475.17 L 1184.21 494.50 L 1188.72 514.15 L 1172.46 554.34 L 1074.60 578.50 L 959.84 601.45 L 788.94 641.88 L 786.85 643.41 L 789.26 646.39 L 866.26 653.64 L 899.19 655.41 L 979.81 655.41 L 1129.93 666.60 L 1169.15 692.54 L 1192.67 724.27 L 1188.72 748.43 L 1128.32 779.19 L 1046.82 759.87 L 856.59 714.60 L 791.36 698.34 L 782.34 698.34 L 782.34 703.73 L 836.70 756.89 L 936.32 846.85 L 1061.07 962.82 L 1067.44 991.49 L 1051.41 1014.12 L 1034.50 1011.70 L 924.89 929.23 L 882.60 892.11 L 786.85 811.49 L 780.48 811.49 L 780.48 819.95 L 802.55 852.24 L 919.09 1027.41 L 925.13 1081.13 L 916.67 1098.60 L 886.47 1109.15 L 853.29 1103.11 L 785.07 1007.36 L 714.68 899.52 L 657.91 802.87 L 650.98 806.82 L 617.48 1167.70 L 601.77 1186.15 L 565.53 1200 L 535.33 1177.05 L 519.30 1139.92 L 535.33 1066.55 L 554.66 970.79 L 570.36 894.68 L 584.54 800.13 L 592.99 768.72 L 592.43 766.63 L 585.50 767.52 L 514.23 865.37 L 405.83 1011.87 L 320.05 1103.68 L 299.52 1111.81 L 263.92 1093.37 L 267.22 1060.43 L 287.11 1031.11 L 405.83 880.11 L 477.42 786.52 L 523.65 732.48 L 523.33 724.67 L 520.59 724.67 L 205.29 929.40 L 149.15 936.64 L 124.99 914.01 L 127.97 876.89 L 139.41 864.81 L 234.20 799.57 Z"/></svg><span class="pg" style="margin-left:auto;">06 / 06</span></div>
+  <div class="kick"><svg class="spk" viewBox="0 0 1200 1200"><path fill="#CC785C" d="M 233.96 800.21 L 468.64 668.54 L 472.59 657.10 L 468.64 650.74 L 457.21 650.74 L 417.99 648.32 L 283.89 644.70 L 167.60 639.87 L 54.93 633.83 L 26.58 627.79 L 0 592.75 L 2.74 575.28 L 26.58 559.25 L 60.72 562.23 L 136.19 567.38 L 249.42 575.19 L 331.57 580.03 L 453.26 592.67 L 472.59 592.67 L 475.33 584.86 L 468.72 580.03 L 463.57 575.19 L 346.39 495.79 L 219.54 411.87 L 153.10 363.54 L 117.18 339.06 L 99.06 316.11 L 91.25 266.01 L 123.87 230.09 L 167.68 233.07 L 178.87 236.05 L 223.25 270.20 L 318.04 343.57 L 441.83 434.74 L 459.95 449.80 L 467.19 444.64 L 468.08 441.02 L 459.95 427.41 L 392.62 305.72 L 320.78 181.93 L 288.81 130.63 L 280.35 99.87 C 277.37 87.22 275.19 76.59 275.19 63.62 L 312.32 13.21 L 332.86 6.60 L 382.39 13.21 L 403.25 31.33 L 434.01 101.72 L 483.87 212.54 L 561.18 363.22 L 583.81 407.92 L 595.89 449.32 L 600.40 461.96 L 608.21 461.96 L 608.21 454.71 L 614.58 369.83 L 626.34 265.61 L 637.77 131.52 L 641.72 93.75 L 660.40 48.48 L 697.53 24.00 L 726.52 37.85 L 750.36 72 L 747.06 94.07 L 732.89 186.20 L 705.10 330.52 L 686.98 427.17 L 697.53 427.17 L 709.61 415.09 L 758.50 350.17 L 840.64 247.49 L 876.89 206.74 L 919.17 161.72 L 946.31 140.30 L 997.61 140.30 L 1035.38 196.43 L 1018.47 254.42 L 965.64 321.42 L 921.83 378.20 L 859.01 462.77 L 819.79 530.42 L 823.41 535.81 L 832.75 534.93 L 974.66 504.72 L 1051.33 490.87 L 1142.82 475.17 L 1184.21 494.50 L 1188.72 514.15 L 1172.46 554.34 L 1074.60 578.50 L 959.84 601.45 L 788.94 641.88 L 786.85 643.41 L 789.26 646.39 L 866.26 653.64 L 899.19 655.41 L 979.81 655.41 L 1129.93 666.60 L 1169.15 692.54 L 1192.67 724.27 L 1188.72 748.43 L 1128.32 779.19 L 1046.82 759.87 L 856.59 714.60 L 791.36 698.34 L 782.34 698.34 L 782.34 703.73 L 836.70 756.89 L 936.32 846.85 L 1061.07 962.82 L 1067.44 991.49 L 1051.41 1014.12 L 1034.50 1011.70 L 924.89 929.23 L 882.60 892.11 L 786.85 811.49 L 780.48 811.49 L 780.48 819.95 L 802.55 852.24 L 919.09 1027.41 L 925.13 1081.13 L 916.67 1098.60 L 886.47 1109.15 L 853.29 1103.11 L 785.07 1007.36 L 714.68 899.52 L 657.91 802.87 L 650.98 806.82 L 617.48 1167.70 L 601.77 1186.15 L 565.53 1200 L 535.33 1177.05 L 519.30 1139.92 L 535.33 1066.55 L 554.66 970.79 L 570.36 894.68 L 584.54 800.13 L 592.99 768.72 L 592.43 766.63 L 585.50 767.52 L 514.23 865.37 L 405.83 1011.87 L 320.05 1103.68 L 299.52 1111.81 L 263.92 1093.37 L 267.22 1060.43 L 287.11 1031.11 L 405.83 880.11 L 477.42 786.52 L 523.65 732.48 L 523.33 724.67 L 520.59 724.67 L 205.29 929.40 L 149.15 936.64 L 124.99 914.01 L 127.97 876.89 L 139.41 864.81 L 234.20 799.57 Z"/></svg><span class="pg" style="margin-left:auto;">06 / 06</span></div>
   <div class="cta-body">
     <div class="cta-h">Stop searching.<br>Start <em>thinking</em>.</div>
-    <div class="cta-p">Four inputs turn Claude from a search bar into the operator on your team.</div>
+    <div class="cta-p">Four inputs turn Claude from a search bar into <b>the operator on your team</b>.</div>
     <div class="recap">
       <div class="rr"><span class="rn">01</span>Give <b>direction</b>, not a request for answers</div>
-      <div class="rr"><span class="rn">02</span>Set <b>task, context, standard, outcome</b></div>
-      <div class="rr"><span class="rn">03</span>Pick a mode: <b>think, explain, execute</b></div>
+      <div class="rr k"><span class="rn">02</span>Set <b>task, context, standard, outcome</b></div>
+      <div class="rr d"><span class="rn">03</span>Pick a mode: <b>think, explain, execute</b></div>
     </div>
     <div class="cta-chip"><span class="t">Comment <em>CLAUDE</em></span><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
-    <div class="cta-p" style="font-size:22px;margin-top:22px;">and I will send you the exact 4-input prompt formula.</div>
+    <div class="cta-note">and I will send you the exact 4-input prompt formula.</div>
   </div>
   <div class="ftr">
-    <div class="ftr-l"><img src="__LOGO_URI__" alt=""><span class="ftr-tx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span></div>
+    <div class="ftr-l"><img src="__LOGO_URI__" alt="Ultron"><span class="ftr-tx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span></div>
     <div class="ftr-url">51ultron<em>.</em>com</div>
   </div>
 </div>
