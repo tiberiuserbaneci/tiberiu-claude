@@ -47,7 +47,11 @@ if pgrep -f "[p]ortal/server.py" >/dev/null 2>&1; then
   GATE=$([ -n "$PORTAL_PASS" ] && echo "password ON" || echo "no password yet")
   echo "portal: UP - ${TOTAL:-?} materials - port ${VIS:-?} - ${GATE}"
   [ -n "$URL" ] && echo "portal URL (open anywhere): $URL"
-  [ "$VIS" = "set-failed" ] && echo "  could not auto-set public; run once: gh codespace ports visibility 8753:public -c \$CODESPACE_NAME"
+  if [ "$VIS" = "set-failed" ]; then
+    echo "  auto-set-public needs a gh 'codespace' scope the default Codespace token lacks."
+    echo "  FIX ONCE (persists across wakes): PORTS tab -> right-click 8753 -> Port Visibility -> Public, then reload the URL."
+    echo "  (CLI alt: gh auth refresh -h github.com -s codespace   then re-run this script)"
+  fi
 else
   echo "portal: FAILED to bind 8753 - last log lines:"; tail -20 "$LOG" 2>/dev/null
 fi
