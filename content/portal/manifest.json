@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-06-16T02:21:39",
+  "generated_at": "2026-06-16T03:01:58",
   "counts": {
-    "total": 95,
-    "generated": 51,
+    "total": 96,
+    "generated": 52,
     "reference": 44,
     "crosspost": 0
   },
@@ -677,7 +677,7 @@
       "alt": "Dark editorial visual on slate background. Hero on the left reads 'I ran 8 GTM jobs through one AI. It won once,' with once in book-orange. On the right, a WINS BY MODEL leaderboard with real model logos and proportional bars: Claude 5 in a full book-orange bar, ChatGPT 1, Gemini 1, Perplexity 1, captioned 'best single model wins only 5 of 8, route and win 8 of 8.' Below, a routing map titled the routing map, a table of GTM Job, Winner, Runner-up slash Avoid, and Why, with eight numbered rows and each winner shown as a logo chip: lead research to Perplexity, account enrichment to Gemini, ICP scoring, cold outreach, call prep, proposal draft and objection handling to Claude, follow-up to close to ChatGPT. A before-and-after block compares the old stack to the routing layer, each metric with an icon and a mini bar: monthly cost 13 thousand dollars to 19, tabs per job 5 to 1, decision time 30 minutes to 0, jobs won 1 of 8 to 8 of 8, context kept across jobs none to all 8, and wrong-tool sends 7 to 0. A one-line note says Ultron is the routing layer over CORTEX, SPECTER, STRIKER, PULSE, and SENTINEL. Closes with a Comment ROUTING call to action and the Ultron logo.",
       "first_comment": "Eight founder GTM jobs, four AIs. Run all eight through one model and it is the right tool for exactly one of them. Perplexity wins research, Gemini wins enrichment, Claude wins the judgment and the writing, ChatGPT wins the close.\n\nUltron routes each job to its winner automatically, holds the context across all eight, and gates every send.\n\nDrop ROUTING below and I will send you the full routing map plus the exact Claude workflow we run: https://app.51ultron.com/docs/platform/overview",
       "generated_date": "2026-06-02",
-      "added": 1780371054,
+      "added": 1780371057,
       "source": "generated",
       "status": "ready",
       "posted": true,
@@ -1953,7 +1953,7 @@
       "alt": "Editorial 4:5 infographic on a cream background with coral accents and a Claude sunburst mark. The title reads 'Master Claude in 2 minutes' with the line use it like a thinking partner, not a search bar. Six boxes follow. Stop asking for answers contrasts a faded most-people list, write me a post, summarize this, give me ideas, with a coral better list, break this into parts, challenge my assumptions, three approaches with tradeoffs. Fix these four inputs lists task, context, standard and outcome. Same task different result shows a weak prompt against four strong refinements. Three modes close it out, think better for decisions, explain clearly for learning, execute faster for action. Footer carries the Ultron logo and 51ultron.com.",
       "first_comment": "Most people type one line into Claude and wonder why the answer is generic. The whole fix is four inputs, task, context, standard, outcome, plus the mode you open with.\n\nComment CLAUDE and I will send you the exact 4-input prompt formula I run every day.",
       "generated_date": "2026-06-16",
-      "added": 1781575927,
+      "added": 1781576500,
       "source": "generated",
       "status": "ready",
       "posted": false,
@@ -2047,6 +2047,33 @@
       "status": "ready",
       "posted": true,
       "posted_date": "2026-06-15",
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "realnumbers-stack-editorial45-infographic",
+      "title": "Realnumbers Stack Editorial45 Infographic",
+      "channel": "tiktok",
+      "type": "single",
+      "slides": 1,
+      "dims": "2160x2700 (1080x1350 @2x)",
+      "preview": "content/realnumbers-stack-editorial45-infographic.png",
+      "download": "content/realnumbers-stack-editorial45-infographic.png",
+      "files": [
+        "content/realnumbers-stack-editorial45-infographic.png"
+      ],
+      "variants": [
+        ""
+      ],
+      "caption": "I cancelled $7,200 a month in GTM software.\n\nNow the whole stack runs inside one box, and I am the one operator who runs it.\n\nSeven jobs I used to pay seven separate tools for, seven logins, seven bills.\n\nResearch stopped being an enrichment subscription and became CORTEX handing me a ranked brief instead of a blank page. Outbound stopped being a sequencer and became SPECTER writing the follow-ups before my coffee. Deals stopped being a CRM and deal desk and became STRIKER with the answer to every objection. Content stopped being a ghostwriter retainer and became PULSE in my own voice. Publishing became AMPLIFY formatting and scheduling per channel. Internal tools stopped being a no-code bill plus a dev contractor and became SENTINEL shipping the thing the same day. Contracts stopped being billable review hours and became COUNSEL drafting the NDA. The router picks the model tier for each job, so I am not paying Opus prices for a Haiku task.\n\nThis is Ultron, the AI operator for founders: one box, seven agents, you on the gate.\n\nComment STACK and I will send you the stack map.\n\n#claude #ai #founder #startup #buildinpublic",
+      "alt": "Dark editorial infographic on a slate background with book-orange accents. The hook reads 'I cancelled $7,200 a month in GTM tools' over a line noting seven subscriptions collapsing into one box. The dominant block is a seven-row ledger: each row pairs a GTM job and its concrete output with the tool it replaces, struck through, and the Ultron agent plus model tier that absorbs it. Research to CORTEX on Deep, Outbound to SPECTER on Smart, Deals to STRIKER on Smart, Content to PULSE on Smart, Publishing to AMPLIFY on Lite, Internal tools to SENTINEL on Deep, Contracts to COUNSEL on Deep. A cost strip collapses 7,200 dollars a month into 19 dollars a month on Ultron Max. Closes with a Save this stack map note, a Comment STACK call to action and the Ultron logo.",
+      "first_comment": "Seven tools, seven logins, seven bills, gone. One box, seven agents, and the router picking the right model tier per job so I stop overpaying for the easy ones.\n\nDrop STACK below and I will send you the stack map, every GTM job matched to the agent that runs it.",
+      "generated_date": "2026-06-16",
+      "added": 1781578842,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
       "analytics": null,
       "crossposts": []
     },
