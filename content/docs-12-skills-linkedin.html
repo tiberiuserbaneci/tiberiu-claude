@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>docs-12 skills catalog - LinkedIn 1080x1450</title>
+<style>
+@import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
+/* docs-12 - The Skill Catalog. Founder-facing (no code / no registry internals): 71 specialist
+   skills, 7 agents, one chat box. Dominant block = the 7 agents (badge + slash + role + example
+   skills), varied accent per row. Dark Ultron, DM Sans / DM Mono. LinkedIn 1080x1450. */
+:root{--slate:#191919;--slate2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);
+--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);
+--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--cloud:#919180;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.frame{width:1080px;height:1450px;background:var(--slate);padding:34px 44px 22px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;}
+.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.4px,transparent 1.5px);background-size:30px 30px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 54% 22% at 90% -2%,rgba(204,120,92,.2) 0%,transparent 60%),radial-gradient(ellipse 48% 24% at 2% 102%,rgba(212,162,127,.1) 0%,transparent 60%);}
+.frame>*{position:relative;z-index:2;}
+/* mast */
+.mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;}
+.mast .ml{color:var(--ink46);}.mast .ml em{color:var(--book);font-style:normal;}
+.mast .mr{color:var(--ink70);}.mast .mr em{color:var(--book);font-style:normal;}
+/* hero */
+.hero{flex-shrink:0;margin-top:16px;}
+.eye{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--kraft);}
+.hook{margin-top:9px;font-weight:900;font-size:50px;line-height:.98;letter-spacing:-1.8px;color:var(--ivory);}.hook em{color:var(--book);font-style:normal;}
+.sub{margin-top:12px;font-size:18px;font-weight:500;line-height:1.34;color:var(--ink70);max-width:880px;}.sub b{color:var(--ivory);font-weight:700;}.sub code{font-family:'DM Mono',monospace;color:var(--kraft);font-size:16px;}
+/* stat strip */
+.stats{flex-shrink:0;margin-top:16px;display:flex;border:1px solid var(--rule);border-radius:13px;overflow:hidden;}
+.stat{flex:1;padding:13px 18px;text-align:center;}.stat+.stat{border-left:1px solid var(--rule);}
+.stat b{display:block;font-weight:900;font-size:34px;line-height:.85;letter-spacing:-1px;}
+.stat.a b{color:var(--book);}.stat.b b{color:var(--kraft);}.stat.c b{color:var(--ivory);}.stat.d b{color:var(--book);}
+.stat span{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink46);margin-top:8px;display:block;}
+/* agents block (dominant) */
+.agents{flex:1;min-height:0;margin-top:16px;display:flex;flex-direction:column;gap:9px;}
+.ag{flex:1;display:flex;align-items:center;gap:18px;border:1px solid var(--rule);border-left:5px solid var(--book);border-radius:14px;padding:0 22px;background:var(--slate2);}
+.ag.k{border-left-color:var(--kraft);}.ag.d{border-left-color:var(--book-d);}
+.ag .badge{display:flex;flex-direction:column;align-items:flex-start;gap:5px;width:150px;flex-shrink:0;}
+.ag .bd{width:50px;height:50px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:21px;letter-spacing:-.5px;color:var(--slate);background:var(--book);}
+.ag.k .bd{background:var(--kraft);}.ag.d .bd{background:var(--book-d);color:var(--ivory);}
+.ag .slash{font-family:'DM Mono',monospace;font-size:14px;font-weight:500;letter-spacing:.02em;color:var(--book);}
+.ag.k .slash{color:var(--kraft);}.ag.d .slash{color:var(--book-d);}
+.ag .mid{flex:1;min-width:0;}
+.ag .nm{font-size:25px;font-weight:800;letter-spacing:-.4px;color:var(--ivory);line-height:1;}
+.ag .nm i{font-family:'DM Mono',monospace;font-size:13px;font-style:normal;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink46);margin-left:11px;}
+.ag .role{font-size:16px;font-weight:500;color:var(--ink70);margin-top:6px;line-height:1.2;}
+.ag .ex{width:308px;flex-shrink:0;display:flex;flex-direction:column;gap:5px;}
+.ag .ex span{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.02em;color:var(--ink46);line-height:1.2;display:flex;gap:8px;}
+.ag .ex span::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--book);flex-shrink:0;margin-top:6px;}
+.ag.k .ex span::before{background:var(--kraft);}.ag.d .ex span::before{background:var(--book-d);}
+.ag .ex b{color:var(--ink70);font-weight:600;}
+/* routing line */
+.route{flex-shrink:0;margin-top:14px;display:flex;align-items:center;gap:13px;border:1px solid var(--book-bd,rgba(204,120,92,.3));border-radius:12px;padding:14px 20px;background:rgba(204,120,92,.06);}
+.route .step{display:flex;align-items:center;gap:9px;font-size:16px;font-weight:600;color:var(--ink70);}
+.route .step b{color:var(--ivory);font-weight:800;}.route .step code{font-family:'DM Mono',monospace;color:var(--book);font-size:15px;}
+.route .arr{color:var(--book);font-weight:800;}
+/* cta */
+.cta{flex-shrink:0;margin-top:13px;display:flex;align-items:stretch;border:1px solid var(--book);border-radius:8px;overflow:hidden;}
+.cta .t{flex:1;padding:14px 20px;display:flex;flex-direction:column;justify-content:center;gap:3px;background:rgba(204,120,92,.07);}
+.cta .t .s{font-size:15px;font-weight:500;color:var(--ink70);}.cta .t .s b{color:var(--ivory);font-weight:800;}
+.cta .t .save{font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--kraft);}
+.cta .chip{flex-shrink:0;padding:0 26px;display:flex;align-items:center;gap:10px;background:var(--book);font-size:19px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#1a0f0a;box-shadow:inset 0 0 0 1px rgba(250,255,247,.12),0 0 30px rgba(204,120,92,.35);}
+.cta .chip svg{width:19px;height:19px;stroke:#1a0f0a;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+/* footer */
+.ftr{flex-shrink:0;margin-top:13px;padding-top:12px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.fl2{display:flex;align-items:center;gap:11px;min-width:0;}.flogo{width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.ftx{font-family:'DM Mono',monospace;font-size:11.5px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--ink70);white-space:nowrap;}.ftx b{color:var(--ivory);font-weight:500;}
+.furl{font-weight:900;font-size:21px;letter-spacing:-.5px;color:var(--ivory);}.furl em{color:var(--book);font-style:normal;}
+</style>
+</head>
+<body>
+<div class="frame"><div class="atm"></div>
+
+  <div class="mast"><span class="ml">AI AGENTS <em>&middot;</em> FOUNDER GTM <em>&middot;</em> ONE CHAT BOX</span><span class="mr">ULTRON <em>&middot;</em> <em>71</em> SKILLS</span></div>
+
+  <div class="hero">
+    <div class="eye">The skill catalog</div>
+    <div class="hook">Most AI is one model in a box. Ultron is <em>7 agents and 71 skills</em>.</div>
+    <div class="sub">Call an agent by name with a slash command, or just describe the job. The router picks one of 71 skills, runs it in a tool loop, and stops when the work is done. <b>You approve every move.</b></div>
+  </div>
+
+  <div class="stats">
+    <div class="stat a"><b>71</b><span>specialist skills</span></div>
+    <div class="stat b"><b>8</b><span>categories</span></div>
+    <div class="stat c"><b>7</b><span>agents</span></div>
+    <div class="stat d"><b>3</b><span>model tiers</span></div>
+  </div>
+
+  <div class="agents">
+    <div class="ag"><div class="badge"><div class="bd">CX</div><div class="slash">/cortex</div></div><div class="mid"><div class="nm">CORTEX<i>Intelligence</i></div><div class="role">Research, signals, competitor and market analysis.</div></div><div class="ex"><span><b>Competitive Analysis</b></span><span><b>Company Deep Dive</b></span><span><b>Funding &amp; news signals</b></span></div></div>
+    <div class="ag k"><div class="badge"><div class="bd">SP</div><div class="slash">/specter</div></div><div class="mid"><div class="nm">SPECTER<i>Acquisition</i></div><div class="role">Find and enrich buyers, write the outbound.</div></div><div class="ex"><span><b>Decision-Maker Prospector</b></span><span><b>Cold email + follow-ups</b></span><span><b>Lead Scoring</b></span></div></div>
+    <div class="ag d"><div class="badge"><div class="bd">ST</div><div class="slash">/striker</div></div><div class="mid"><div class="nm">STRIKER<i>Growth</i></div><div class="role">Sales prep, objections, post-call work.</div></div><div class="ex"><span><b>Objection Handler</b></span><span><b>Pre-Call Research</b></span><span><b>Post-Meeting Follow-Up</b></span></div></div>
+    <div class="ag"><div class="badge"><div class="bd">PU</div><div class="slash">/pulse</div></div><div class="mid"><div class="nm">PULSE<i>Marketing</i></div><div class="role">Content strategy, hooks, brand voice.</div></div><div class="ex"><span><b>LinkedIn Post</b></span><span><b>Content Hooks</b></span><span><b>Content Repurpose</b></span></div></div>
+    <div class="ag k"><div class="badge"><div class="bd">SE</div><div class="slash">/sentinel</div></div><div class="mid"><div class="nm">SENTINEL<i>Engineering</i></div><div class="role">Scaffold, clone, deploy, debug, audit.</div></div><div class="ex"><span><b>Spin up a Web App</b></span><span><b>Clone a Website</b></span><span><b>Website Audit</b></span></div></div>
+    <div class="ag d"><div class="badge"><div class="bd">AM</div><div class="slash">/amplify</div></div><div class="mid"><div class="nm">AMPLIFY<i>Paid Media</i></div><div class="role">Ad campaigns, audiences, creative, measurement.</div></div><div class="ex"><span><b>Campaign Setup</b></span><span><b>Audiences</b></span><span><b>Ad Copy</b></span></div></div>
+    <div class="ag"><div class="badge"><div class="bd">CO</div><div class="slash">/counsel</div></div><div class="mid"><div class="nm">COUNSEL<i>Legal</i></div><div class="role">Contracts, NDAs, MSAs, clause review.</div></div><div class="ex"><span><b>Contract Draft</b></span><span><b>Contract Review</b></span><span><b>Clause Library</b></span></div></div>
+  </div>
+
+  <div class="route">
+    <div class="step"><code>/cortex</code> or just ask</div><span class="arr">&rarr;</span>
+    <div class="step">router picks <b>1 of 71</b></div><span class="arr">&rarr;</span>
+    <div class="step">runs the <b>tool loop</b></div><span class="arr">&rarr;</span>
+    <div class="step">stops when <b>done</b></div>
+  </div>
+
+  <div class="cta">
+    <div class="t"><div class="s">The full catalog: every agent, every skill, the model tier and tools each one runs on.</div><div class="save">Save this map</div></div>
+    <div class="chip">Comment SKILLS<svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+  </div>
+
+  <div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span></div><div class="furl">51ultron<em>.</em>com</div></div>
+
+</div>
+</body>
+</html>
