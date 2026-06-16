@@ -3,7 +3,7 @@
 For: master-claude-editorial45-infographic + master-claude-editorial45-carousel (TikTok editorial 4:5, 1080x1350)
 Keyword: CLAUDE  |  Lead magnet: DM delivery (the 4-input prompt formula)
 Visual hook: "Master Claude in 2 minutes. Use it like a thinking partner, not a search bar."
-Note: 1:1 recreation of the operator's own reference, rebuilt in the Ultron system. Footer changed to Ultron. Green affirmative cards substituted with coral (REALNUMBERS has no green).
+Note: shared kit. Carousel = Dark Ultron (this ALT describes it). Infographic = cream 1:1 reference (its ALT is pinned in master-claude-editorial45-infographic-caption.md). Caption body + first comment are design-agnostic and serve both.
 
 ## CAPTION
 
@@ -23,7 +23,7 @@ Comment CLAUDE and I will send you the exact 4-input prompt formula.
 
 ## ALT TEXT
 
-Editorial 4:5 infographic on a cream background with coral accents and a Claude sunburst mark. The title reads 'Master Claude in 2 minutes' with the line use it like a thinking partner, not a search bar. Six boxes follow. Stop asking for answers contrasts a faded most-people list, write me a post, summarize this, give me ideas, with a coral better list, break this into parts, challenge my assumptions, three approaches with tradeoffs. Fix these four inputs lists task, context, standard and outcome. Same task different result shows a weak prompt against four strong refinements. Three modes close it out, think better for decisions, explain clearly for learning, execute faster for action. Footer carries the Ultron logo and 51ultron.com.
+Dark editorial carousel on a slate background with book-orange and kraft accents and a Claude sunburst mark, six slides. The cover reads 'Master Claude in 2 minutes, use it like a thinking partner, not a search bar' over a flow line of four icon nodes. Fix 01 contrasts a muted most-people list, write me a post, summarize this, give me ideas, with a book-orange operators list, break this into parts, challenge my assumptions, three approaches with tradeoffs. Fix 02 lists the four inputs, task, context, standard and outcome, on a numbered spine. Fix 03 sets a weak prompt against four strong refinements. A three-modes slide covers think better for decisions, explain clearly for learning, and execute faster for action. Closes on a Comment CLAUDE call to action and the Ultron logo.
 
 ## FIRST COMMENT
 
