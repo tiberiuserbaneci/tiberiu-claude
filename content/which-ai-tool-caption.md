@@ -1,6 +1,6 @@
 # Which AI tool should I use is not the point - LinkedIn caption kit
 For: which-ai-tool-linkedin-carousel (8-slide carousel, 51ultron.com) | CTA: engagement (comment + tag)
-Note: 51ultron.com brand, not Ultron. Engagement CTA matches the carousel (no lead-magnet keyword).
+Note: Ultron brand (51ultron.com). Engagement CTA matches the carousel (no lead-magnet keyword).
 
 ## CAPTION
 
