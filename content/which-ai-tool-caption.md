@@ -1,6 +1,6 @@
 # Which AI tool should I use is not the point - LinkedIn caption kit
-For: which-ai-tool-linkedin-carousel (8-slide carousel, tasit.com) | CTA: engagement (comment + tag)
-Note: tasit.com brand, not Ultron. Engagement CTA matches the carousel (no lead-magnet keyword).
+For: which-ai-tool-linkedin-carousel (8-slide carousel, 51ultron.com) | CTA: engagement (comment + tag)
+Note: 51ultron.com brand, not Ultron. Engagement CTA matches the carousel (no lead-magnet keyword).
 
 ## CAPTION
 
@@ -38,10 +38,10 @@ What is the first process in your company you would put into an AI pipeline? Dro
 
 ## ALT TEXT
 
-Eight-slide LinkedIn carousel on a cream background with coral accents and a dark grid. The cover reads Which AI tool should I use is not the point. Six numbered slides follow, each a dark card on cream: the market already chose for us, one agent directs and many execute, the users reveal the buyer, tools are commoditizing but pipelines are not, build the pipeline not the prompt, and AI pipelines eat tool buyers. The final slide reads Wire one process into AI this week and asks what process you would wire first, with Comment below and Tag a founder prompts. Footer carries tasit.com.
+Eight-slide LinkedIn carousel on a cream background with coral accents and a dark grid. The cover reads Which AI tool should I use is not the point. Six numbered slides follow, each a dark card on cream: the market already chose for us, one agent directs and many execute, the users reveal the buyer, tools are commoditizing but pipelines are not, build the pipeline not the prompt, and AI pipelines eat tool buyers. The final slide reads Wire one process into AI this week and asks what process you would wire first, with Comment below and Tag a founder prompts. Footer carries 51ultron.com.
 
 ## FIRST COMMENT
 
 The point of the whole deck: the tool is a commodity, the wired process is the moat. Pick any decent AI tool, then put one real workflow behind it and let it compound.
 
-What process would you wire first? Drop it below. Full breakdown at tasit.com
+What process would you wire first? Drop it below. Full breakdown at 51ultron.com
