@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>You're using Claude wrong - carousel - TikTok editorial 4:5 1080x1350 (Dark Ultron)</title>
+<style>
+@import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
+/* VIRAL #1 carousel - "You're using Claude wrong". Dark Ultron, premium, dense. Graphic elements:
+   two Claude chat-UI mockups (problem + transformation), a structured 4-part-brief card, icon
+   nodes, numbered rails. No green / no saturated red. 6 slides, 1080x1350 editorial 4:5. */
+:root{--slate:#191919;--slate2:#262625;--win:#1e1e1d;--win2:#151514;--ivory:#FAFAF7;
+--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);
+--rule:rgba(250,250,247,.10);--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--cloud:#919180;
+--book-lo:rgba(204,120,92,.10);--book-bd:rgba(204,120,92,.34);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0c0a09;display:flex;flex-direction:column;align-items:center;gap:34px;padding:30px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.slide{width:1080px;height:1350px;position:relative;overflow:hidden;background:var(--slate);color:var(--ivory);
+  padding:58px 64px 50px;display:flex;flex-direction:column;}
+.slide::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:radial-gradient(rgba(204,120,92,.06) 1.4px,transparent 1.5px);background-size:34px 34px;}
+.slide::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 56% 24% at 86% 0%,rgba(204,120,92,.18),transparent 60%),radial-gradient(ellipse 50% 20% at 6% 100%,rgba(212,162,127,.09),transparent 60%);}
+.slide>*{position:relative;z-index:2;}
+.spk{width:54px;height:54px;flex-shrink:0;filter:drop-shadow(0 0 16px rgba(204,120,92,.4));}
+/* mast */
+.kick{display:flex;align-items:center;gap:14px;flex-shrink:0;}
+.kick .tag{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;letter-spacing:.2em;color:var(--book);
+  border:1px solid var(--book-bd);background:var(--book-lo);padding:8px 14px;border-radius:8px;}
+.kick .pg{margin-left:auto;font-family:'DM Mono',monospace;font-size:15px;letter-spacing:.18em;color:var(--ink46);}
+.h2{font-size:60px;font-weight:900;letter-spacing:-2.4px;line-height:.96;color:var(--ivory);margin-top:22px;flex-shrink:0;}
+.h2 em{font-style:normal;color:var(--book);}
+.lede{font-size:23px;font-weight:500;color:var(--ink70);line-height:1.3;margin-top:13px;flex-shrink:0;}
+.lede b{color:var(--ivory);font-weight:700;}
+/* chat mockup */
+.chat{margin-top:22px;border:1px solid var(--ink14);border-radius:22px;overflow:hidden;background:var(--win);
+  box-shadow:0 30px 70px rgba(0,0,0,.5);display:flex;flex-direction:column;min-height:0;}
+.chat.grow{flex:1;}
+.chd{flex-shrink:0;display:flex;align-items:center;gap:13px;padding:18px 22px;border-bottom:1px solid var(--rule);background:var(--win2);}
+.chd .cm{width:34px;height:34px;flex-shrink:0;}
+.chd b{font-size:20px;font-weight:800;color:var(--ivory);letter-spacing:-.3px;}
+.chd .pill{margin-left:auto;display:flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:13px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--book);background:var(--book-lo);border:1px solid var(--book-bd);padding:7px 13px;border-radius:30px;}
+.chd .pill i{width:7px;height:7px;border-radius:50%;background:var(--book);box-shadow:0 0 9px var(--book);}
+.cbody{flex:1;min-height:0;padding:24px;display:flex;flex-direction:column;gap:16px;justify-content:flex-start;}
+.msg{max-width:86%;padding:16px 20px;border-radius:18px;font-size:22px;font-weight:500;line-height:1.32;}
+.msg .who{font-family:'DM Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:7px;}
+.msg.u{align-self:flex-end;background:rgba(204,120,92,.16);border:1px solid rgba(204,120,92,.3);color:var(--ivory);border-bottom-right-radius:6px;}
+.msg.u .who{color:var(--kraft);}
+.msg.a{align-self:flex-start;background:var(--slate2);border:1px solid var(--rule);color:var(--ink70);border-bottom-left-radius:6px;}
+.msg.a .who{color:var(--ink46);}
+.msg.a.weak{color:var(--ink46);}
+.msg.a.strong{background:rgba(204,120,92,.1);border:1px solid var(--book);color:var(--ivory);box-shadow:0 0 30px rgba(204,120,92,.22);}
+.msg.a.strong .who{color:var(--book);}.msg.a.strong b{color:var(--book);font-weight:800;}
+.mtag{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:14px;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;padding:6px 13px;border-radius:30px;margin-top:-4px;}
+.mtag.bad{color:var(--cloud);background:rgba(145,145,128,.12);border:1px solid rgba(145,145,128,.3);}
+.mtag.good{color:var(--book);background:var(--book-lo);border:1px solid var(--book-bd);align-self:flex-end;}
+.mtag svg{width:15px;height:15px;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.mtag.bad svg{stroke:var(--cloud);}.mtag.good svg{stroke:var(--book);}
+/* mistakes / fixes lists */
+.list{flex:1;display:flex;flex-direction:column;gap:13px;margin-top:22px;min-height:0;}
+.lrow{position:relative;flex:1;display:flex;align-items:center;gap:20px;border:1px solid var(--rule);border-radius:15px;padding:0 26px;background:var(--slate2);}
+.lrow .ic{width:56px;height:56px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.lrow .ic svg{width:28px;height:28px;stroke-width:2.3;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.lrow .tc{flex:1;min-width:0;}
+.lrow .t{font-size:28px;font-weight:800;line-height:1.06;letter-spacing:-.4px;}
+.lrow .s{font-size:18.5px;font-weight:500;line-height:1.16;margin-top:5px;}
+.lrow.bad{border-left:5px solid var(--cloud);}
+.lrow.bad .ic{background:rgba(145,145,128,.12);border:1px solid rgba(145,145,128,.3);}.lrow.bad .ic svg{stroke:var(--cloud);}
+.lrow.bad .t{color:var(--ink70);}.lrow.bad .s{color:var(--cloud);}
+.lrow.good{border-left:5px solid var(--book);background:rgba(204,120,92,.07);}
+.lrow.good .ic{background:var(--book-lo);border:1px solid var(--book-bd);}.lrow.good .ic svg{stroke:var(--book);}
+.lrow.good .t{color:var(--ivory);}.lrow.good .t b{color:var(--book);font-weight:800;}.lrow.good .s{color:var(--ink70);}
+.lrow .n{font-family:'DM Mono',monospace;font-size:22px;color:var(--ink30);flex-shrink:0;}
+/* 4-part brief card */
+.brief{flex:1;margin-top:22px;border:1px solid var(--book-bd);border-radius:20px;overflow:hidden;background:var(--win);
+  box-shadow:0 24px 60px rgba(0,0,0,.45);display:flex;flex-direction:column;min-height:0;}
+.brief .bhd{flex-shrink:0;display:flex;align-items:center;gap:12px;padding:18px 24px;background:var(--win2);border-bottom:1px solid var(--rule);
+  font-family:'DM Mono',monospace;font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--book);}
+.brief .bhd svg{width:20px;height:20px;stroke:var(--book);stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.brief .bgrid{flex:1;display:flex;flex-direction:column;min-height:0;}
+.bpart{flex:1;display:flex;align-items:center;gap:20px;padding:0 26px;border-bottom:1px solid var(--rule);}
+.bpart:last-child{border-bottom:0;}
+.bpart .k{font-family:'DM Mono',monospace;font-size:16px;font-weight:500;color:var(--book);width:150px;flex-shrink:0;letter-spacing:.04em;text-transform:uppercase;}
+.bpart .v{font-size:25px;font-weight:600;color:var(--ivory);}
+.bpart .v span{color:var(--ink46);font-weight:500;}
+/* tail */
+.tail{margin-top:20px;display:flex;align-items:center;gap:12px;flex-shrink:0;}
+.tail .ar{color:var(--book);font-weight:800;font-size:27px;line-height:1;}
+.tail .tt{font-size:25px;font-weight:800;color:var(--kraft);letter-spacing:-.4px;}
+/* cover */
+.cv-eyb{font-family:'DM Mono',monospace;font-size:17px;font-weight:500;letter-spacing:.24em;color:var(--kraft);flex-shrink:0;margin-top:20px;}
+.cv-h{font-size:84px;font-weight:900;letter-spacing:-3.2px;line-height:.92;color:var(--ivory);margin-top:14px;flex-shrink:0;}
+.cv-h em{font-style:normal;color:var(--book);}
+.ftr{margin-top:auto;padding-top:20px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-shrink:0;}
+.ftr-l{display:flex;align-items:center;gap:13px;min-width:0;}.ftr-l img{width:42px;height:42px;border-radius:50%;flex-shrink:0;object-fit:cover;}
+.ftr-tx{font-family:'DM Mono',monospace;font-size:14px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--ink70);white-space:nowrap;}.ftr-tx b{color:var(--ivory);font-weight:500;}
+.ftr-url{font-size:24px;font-weight:900;letter-spacing:-.5px;color:var(--ivory);flex-shrink:0;}.ftr-url em{font-style:normal;color:var(--book);}
+.swipe{margin-top:auto;display:flex;align-items:center;gap:11px;font-family:'DM Mono',monospace;font-size:16px;letter-spacing:.16em;text-transform:uppercase;color:var(--book);flex-shrink:0;padding-top:18px;}
+.swipe svg{width:23px;height:23px;stroke:var(--book);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+/* cta */
+.recap{flex:1;display:flex;flex-direction:column;gap:13px;margin-top:22px;min-height:0;}
+.rr{flex:1;display:flex;align-items:center;gap:18px;background:var(--slate2);border:1px solid var(--rule);border-left:5px solid var(--book);
+  border-radius:14px;padding:0 26px;font-size:25px;font-weight:700;color:var(--ivory);}
+.rr.k{border-left-color:var(--kraft);}.rr.d{border-left-color:var(--book-d);}
+.rr .rn{font-family:'DM Mono',monospace;font-size:21px;color:var(--book);flex-shrink:0;}.rr.k .rn{color:var(--kraft);}.rr.d .rn{color:var(--book-d);}
+.rr b{color:var(--book);font-weight:800;}
+.cta-chip{margin-top:22px;align-self:flex-start;display:inline-flex;align-items:center;gap:14px;background:var(--book);border-radius:12px;
+  padding:19px 30px;box-shadow:0 0 44px rgba(204,120,92,.4);flex-shrink:0;}
+.cta-chip .t{font-size:26px;font-weight:900;letter-spacing:.03em;text-transform:uppercase;color:#1a0f0a;}
+.cta-chip .t em{font-style:normal;background:#1a0f0a;color:var(--book);padding:3px 11px;border-radius:6px;margin-left:5px;}
+.cta-chip svg{width:28px;height:28px;stroke:#1a0f0a;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.cta-note{font-size:20px;color:var(--ink46);margin-top:15px;flex-shrink:0;}
+</style>
+</head>
+<body>
+
+<!-- S1 COVER + problem mockup -->
+<div class="slide">
+  <div class="kick"><svg class="spk" viewBox="0 0 1200 1200"><path fill="#CC785C" d="M 233.96 800.21 L 468.64 668.54 L 472.59 657.10 L 468.64 650.74 L 457.21 650.74 L 417.99 648.32 L 283.89 644.70 L 167.60 639.87 L 54.93 633.83 L 26.58 627.79 L 0 592.75 L 2.74 575.28 L 26.58 559.25 L 60.72 562.23 L 136.19 567.38 L 249.42 575.19 L 331.57 580.03 L 453.26 592.67 L 472.59 592.67 L 475.33 584.86 L 468.72 580.03 L 463.57 575.19 L 346.39 495.79 L 219.54 411.87 L 153.10 363.54 L 117.18 339.06 L 99.06 316.11 L 91.25 266.01 L 123.87 230.09 L 167.68 233.07 L 178.87 236.05 L 223.25 270.20 L 318.04 343.57 L 441.83 434.74 L 459.95 449.80 L 467.19 444.64 L 468.08 441.02 L 459.95 427.41 L 392.62 305.72 L 320.78 181.93 L 288.81 130.63 L 280.35 99.87 C 277.37 87.22 275.19 76.59 275.19 63.62 L 312.32 13.21 L 332.86 6.60 L 382.39 13.21 L 403.25 31.33 L 434.01 101.72 L 483.87 212.54 L 561.18 363.22 L 583.81 407.92 L 595.89 449.32 L 600.40 461.96 L 608.21 461.96 L 608.21 454.71 L 614.58 369.83 L 626.34 265.61 L 637.77 131.52 L 641.72 93.75 L 660.40 48.48 L 697.53 24.00 L 726.52 37.85 L 750.36 72 L 747.06 94.07 L 732.89 186.20 L 705.10 330.52 L 686.98 427.17 L 697.53 427.17 L 709.61 415.09 L 758.50 350.17 L 840.64 247.49 L 876.89 206.74 L 919.17 161.72 L 946.31 140.30 L 997.61 140.30 L 1035.38 196.43 L 1018.47 254.42 L 965.64 321.42 L 921.83 378.20 L 859.01 462.77 L 819.79 530.42 L 823.41 535.81 L 832.75 534.93 L 974.66 504.72 L 1051.33 490.87 L 1142.82 475.17 L 1184.21 494.50 L 1188.72 514.15 L 1172.46 554.34 L 1074.60 578.50 L 959.84 601.45 L 788.94 641.88 L 786.85 643.41 L 789.26 646.39 L 866.26 653.64 L 899.19 655.41 L 979.81 655.41 L 1129.93 666.60 L 1169.15 692.54 L 1192.67 724.27 L 1188.72 748.43 L 1128.32 779.19 L 1046.82 759.87 L 856.59 714.60 L 791.36 698.34 L 782.34 698.34 L 782.34 703.73 L 836.70 756.89 L 936.32 846.85 L 1061.07 962.82 L 1067.44 991.49 L 1051.41 1014.12 L 1034.50 1011.70 L 924.89 929.23 L 882.60 892.11 L 786.85 811.49 L 780.48 811.49 L 780.48 819.95 L 802.55 852.24 L 919.09 1027.41 L 925.13 1081.13 L 916.67 1098.60 L 886.47 1109.15 L 853.29 1103.11 L 785.07 1007.36 L 714.68 899.52 L 657.91 802.87 L 650.98 806.82 L 617.48 1167.70 L 601.77 1186.15 L 565.53 1200 L 535.33 1177.05 L 519.30 1139.92 L 535.33 1066.55 L 554.66 970.79 L 570.36 894.68 L 584.54 800.13 L 592.99 768.72 L 592.43 766.63 L 585.50 767.52 L 514.23 865.37 L 405.83 1011.87 L 320.05 1103.68 L 299.52 1111.81 L 263.92 1093.37 L 267.22 1060.43 L 287.11 1031.11 L 405.83 880.11 L 477.42 786.52 L 523.65 732.48 L 523.33 724.67 L 520.59 724.67 L 205.29 929.40 L 149.15 936.64 L 124.99 914.01 L 127.97 876.89 L 139.41 864.81 L 234.20 799.57 Z"/></svg><span class="pg">01 / 06</span></div>
+  <div class="cv-eyb">5 mistakes, 5 fixes</div>
+  <div class="cv-h">You are using<br>Claude <em>wrong</em></div>
+  <div class="chat grow">
+    <div class="chd"><svg class="cm" viewBox="0 0 1200 1200"><path fill="#CC785C" d="M 233.96 800.21 L 468.64 668.54 L 468.64 650.74 L 417.99 648.32 L 167.60 639.87 L 26.58 627.79 L 0 592.75 L 26.58 559.25 L 136.19 567.38 L 331.57 580.03 L 472.59 592.67 L 475.33 584.86 L 463.57 575.19 L 219.54 411.87 L 117.18 339.06 L 91.25 266.01 L 123.87 230.09 L 178.87 236.05 L 318.04 343.57 L 459.95 449.80 L 468.08 441.02 L 392.62 305.72 L 288.81 130.63 L 275.19 63.62 L 312.32 13.21 L 382.39 13.21 L 403.25 31.33 L 483.87 212.54 L 583.81 407.92 L 600.40 461.96 L 608.21 454.71 L 626.34 265.61 L 641.72 93.75 L 697.53 24.00 L 750.36 72 L 732.89 186.20 L 686.98 427.17 L 709.61 415.09 L 840.64 247.49 L 946.31 140.30 L 1035.38 196.43 L 965.64 321.42 L 819.79 530.42 L 832.75 534.93 L 1051.33 490.87 L 1184.21 494.50 L 1172.46 554.34 L 959.84 601.45 L 786.85 643.41 L 789.26 646.39 L 979.81 655.41 L 1169.15 692.54 L 1188.72 748.43 L 1046.82 759.87 L 791.36 698.34 L 782.34 703.73 L 936.32 846.85 L 1067.44 991.49 L 1034.50 1011.70 L 882.60 892.11 L 780.48 819.95 L 919.09 1027.41 L 916.67 1098.60 L 853.29 1103.11 L 714.68 899.52 L 650.98 806.82 L 601.77 1186.15 L 535.33 1177.05 L 535.33 1066.55 L 570.36 894.68 L 592.99 768.72 L 585.50 767.52 L 405.83 1011.87 L 299.52 1111.81 L 267.22 1060.43 L 405.83 880.11 L 523.65 732.48 L 520.59 724.67 L 205.29 929.40 L 124.99 914.01 L 139.41 864.81 Z"/></svg><b>Claude</b><span class="pill"><i></i>most people</span></div>
+    <div class="cbody">
+      <div class="msg u"><span class="who">You</span>write me a post about AI</div>
+      <div class="msg a weak"><span class="who">Claude</span>Sure! Here are some thoughts on AI. AI is transforming how we work and live, and businesses everywhere are racing to adopt it...</div>
+      <div class="msg u"><span class="who">You</span>make it better</div>
+      <div class="msg a weak"><span class="who">Claude</span>Of course. Here is a more engaging version about how AI is reshaping the way we all work...</div>
+      <div class="mtag bad"><svg viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>generic, every single time</div>
+    </div>
+  </div>
+  <div class="swipe">Swipe for the 5 fixes<svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+</div>
+
+<!-- S2 the 5 tells -->
+<div class="slide">
+  <div class="kick"><span class="tag">THE 5 TELLS</span><span class="pg">02 / 06</span></div>
+  <div class="h2">You do at least <em>three</em></div>
+  <div class="list">
+    <div class="lrow bad"><span class="ic"><svg viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></span><div class="tc"><div class="t">One-line prompts</div><div class="s">generic, forgettable output</div></div><span class="n">01</span></div>
+    <div class="lrow bad"><span class="ic"><svg viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></span><div class="tc"><div class="t">Asking for answers</div><div class="s">you get a yes-man, not a thinker</div></div><span class="n">02</span></div>
+    <div class="lrow bad"><span class="ic"><svg viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></span><div class="tc"><div class="t">Starting from scratch every chat</div><div class="s">it forgets everything you told it</div></div><span class="n">03</span></div>
+    <div class="lrow bad"><span class="ic"><svg viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></span><div class="tc"><div class="t">Shipping the first draft</div><div class="s">you post Claude's rough cut</div></div><span class="n">04</span></div>
+    <div class="lrow bad"><span class="ic"><svg viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></span><div class="tc"><div class="t">One model for everything</div><div class="s">slow and pricey, or too shallow</div></div><span class="n">05</span></div>
+  </div>
+  <div class="tail"><span class="ar">&rarr;</span><span class="tt">Each one has a 5-second fix</span></div>
+</div>
+
+<!-- S3 the 5 fixes -->
+<div class="slide">
+  <div class="kick"><span class="tag">THE 5 FIXES</span><span class="pg">03 / 06</span></div>
+  <div class="h2">Do <em>this</em> instead</div>
+  <div class="list">
+    <div class="lrow good"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span><div class="tc"><div class="t">A <b>4-part brief</b>, not a one-liner</div><div class="s">task, context, standard, outcome</div></div><span class="n">01</span></div>
+    <div class="lrow good"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span><div class="tc"><div class="t">Make it <b>challenge</b> your thinking</div><div class="s">it pokes holes before you ship</div></div><span class="n">02</span></div>
+    <div class="lrow good"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span><div class="tc"><div class="t">Give it <b>context once</b>, then build</div><div class="s">every reply gets sharper</div></div><span class="n">03</span></div>
+    <div class="lrow good"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span><div class="tc"><div class="t">Make it <b>critique and redo</b></div><div class="s">draft 3 beats draft 1</div></div><span class="n">04</span></div>
+    <div class="lrow good"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span><div class="tc"><div class="t"><b>Fast</b> to draft, <b>deep</b> to decide</div><div class="s">right model for the right job</div></div><span class="n">05</span></div>
+  </div>
+  <div class="tail"><span class="ar">&rarr;</span><span class="tt">Fix 1 fixes most of them</span></div>
+</div>
+
+<!-- S4 the 4-part brief card -->
+<div class="slide">
+  <div class="kick"><span class="tag">THE ONE FIX</span><span class="pg">04 / 06</span></div>
+  <div class="h2">The <em>4-part brief</em></div>
+  <div class="lede">Stop writing prompts. Write a brief. <b>Four lines, every time.</b></div>
+  <div class="brief">
+    <div class="bhd"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>your-brief.md</div>
+    <div class="bgrid">
+      <div class="bpart"><span class="k">1 &middot; Task</span><span class="v">what you want done</span></div>
+      <div class="bpart"><span class="k">2 &middot; Context</span><span class="v">what it should know <span>first</span></span></div>
+      <div class="bpart"><span class="k">3 &middot; Standard</span><span class="v">what good <span>looks like</span></span></div>
+      <div class="bpart"><span class="k">4 &middot; Outcome</span><span class="v">what success <span>means</span></span></div>
+    </div>
+  </div>
+  <div class="tail"><span class="ar">&rarr;</span><span class="tt">Most people give 1 of 4</span></div>
+</div>
+
+<!-- S5 transformation mockup -->
+<div class="slide">
+  <div class="kick"><span class="tag">SAME TASK, DIFFERENT RESULT</span><span class="pg">05 / 06</span></div>
+  <div class="h2">Now watch it <em>land</em></div>
+  <div class="chat grow">
+    <div class="chd"><svg class="cm" viewBox="0 0 1200 1200"><path fill="#CC785C" d="M 233.96 800.21 L 468.64 668.54 L 468.64 650.74 L 417.99 648.32 L 167.60 639.87 L 26.58 627.79 L 0 592.75 L 26.58 559.25 L 136.19 567.38 L 331.57 580.03 L 472.59 592.67 L 475.33 584.86 L 463.57 575.19 L 219.54 411.87 L 117.18 339.06 L 91.25 266.01 L 123.87 230.09 L 178.87 236.05 L 318.04 343.57 L 459.95 449.80 L 468.08 441.02 L 392.62 305.72 L 288.81 130.63 L 275.19 63.62 L 312.32 13.21 L 382.39 13.21 L 403.25 31.33 L 483.87 212.54 L 583.81 407.92 L 600.40 461.96 L 608.21 454.71 L 626.34 265.61 L 641.72 93.75 L 697.53 24.00 L 750.36 72 L 732.89 186.20 L 686.98 427.17 L 709.61 415.09 L 840.64 247.49 L 946.31 140.30 L 1035.38 196.43 L 965.64 321.42 L 819.79 530.42 L 832.75 534.93 L 1051.33 490.87 L 1184.21 494.50 L 1172.46 554.34 L 959.84 601.45 L 786.85 643.41 L 789.26 646.39 L 979.81 655.41 L 1169.15 692.54 L 1188.72 748.43 L 1046.82 759.87 L 791.36 698.34 L 782.34 703.73 L 936.32 846.85 L 1067.44 991.49 L 1034.50 1011.70 L 882.60 892.11 L 780.48 819.95 L 919.09 1027.41 L 916.67 1098.60 L 853.29 1103.11 L 714.68 899.52 L 650.98 806.82 L 601.77 1186.15 L 535.33 1177.05 L 535.33 1066.55 L 570.36 894.68 L 592.99 768.72 L 585.50 767.52 L 405.83 1011.87 L 299.52 1111.81 L 267.22 1060.43 L 405.83 880.11 L 523.65 732.48 L 520.59 724.67 L 205.29 929.40 L 124.99 914.01 L 139.41 864.81 Z"/></svg><b>Claude</b><span class="pill"><i></i>with a brief</span></div>
+    <div class="cbody">
+      <div class="msg u"><span class="who">You &middot; the brief</span>Task: short post for founders on why most AI content fails. Context: I run GTM solo. Standard: punchy, no jargon. Outcome: end on a reflection, not advice.</div>
+      <div class="msg a strong"><span class="who">Claude</span>Most AI content fails because it answers a question nobody asked. The fix is not a better model, it is a better <b>brief</b>: tell it who it is for, what good looks like, and where to stop.</div>
+      <div class="mtag good"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>usable, in your voice</div>
+    </div>
+  </div>
+  <div class="swipe">One more thing<svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+</div>
+
+<!-- S6 CTA -->
+<div class="slide">
+  <div class="kick"><span class="tag">STEAL THE BRIEF</span><span class="pg">06 / 06</span></div>
+  <div class="h2">Stop prompting.<br>Start <em>briefing</em>.</div>
+  <div class="recap">
+    <div class="rr"><span class="rn">01</span>Give a <b>4-part brief</b>, not a one-liner</div>
+    <div class="rr k"><span class="rn">02</span>Make Claude <b>challenge and redo</b></div>
+    <div class="rr d"><span class="rn">03</span><b>Fast</b> to draft, <b>deep</b> to decide</div>
+  </div>
+  <div class="cta-chip"><span class="t">Comment <em>FIXES</em></span><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+  <div class="cta-note">and I will send you the 4-part brief as a copy-paste template.</div>
+  <div class="ftr">
+    <div class="ftr-l"><img src="__LOGO_URI__" alt="Ultron"><span class="ftr-tx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span></div>
+    <div class="ftr-url">51ultron<em>.</em>com</div>
+  </div>
+</div>
+
+</body>
+</html>
