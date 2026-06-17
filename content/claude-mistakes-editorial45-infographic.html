@@ -2,119 +2,128 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>You're using Claude wrong - infographic - TikTok editorial 4:5 1080x1350 (light)</title>
+<title>You're using Claude wrong - infographic - TikTok editorial 4:5 1080x1350 (light, v2)</title>
 <style>
 @import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
-/* VIRAL #1 - "You're using Claude wrong" (5 mistakes -> 5 fixes). LIGHT / REALNUMBERS system
-   (cream + coral, white cards) to match the master-claude infographic. BESPOKE split-row layout
-   (mistake | arrow | fix) - distinct from the master-claude masonry. Coral = fix, muted = mistake
-   (no green). TikTok editorial 4:5, 1080x1350. DM Sans / DM Mono. The carousel ships in Dark Ultron. */
-:root{--cream:#FAF5ED;--cream-2:#F3EADD;--card:#FFFFFF;--ink:#2A1D13;--ink-2:#574A3D;--mut:#8C8071;
+/* VIRAL #1 v2 - "You're using Claude wrong". LIGHT / REALNUMBERS, rebuilt to the master-claude
+   richness bar: color-coded two-column comparison (MOST PEOPLE vs OPERATORS) in white cards with
+   per-item icons + payoffs, plus a featured 4-part-brief band. Premium depth, dense, varied.
+   Pure Claude. TikTok editorial 4:5, 1080x1350. DM Sans / DM Mono. Carousel ships dark. */
+:root{--cream:#FAF5ED;--cream-2:#F3EADD;--card:#FFFFFF;--ink:#241A12;--ink-2:#574A3D;--mut:#94897A;
 --org:#C84623;--org-deep:#A93914;--org-soft:#D2541F;
---rule:rgba(42,29,19,.11);--rule-2:rgba(42,29,19,.18);
---coral-bg:#FBEDE6;--coral-bd:#F0CDBC;--mist-bg:#F4EEE4;}
+--rule:rgba(36,26,18,.10);--rule-2:rgba(36,26,18,.16);
+--miss-bg:#F4EEE4;--miss-bd:#E4D8C6;--miss-tx:#8C8071;
+--coral-bg:#FBEDE6;--coral-bd:#F0CDBC;--snip:#FCF6F0;}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:#0c0a09;display:flex;justify-content:center;padding:30px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
 .slide{width:1080px;height:1350px;position:relative;overflow:hidden;background:var(--cream);color:var(--ink);
-  padding:58px 70px 52px;display:flex;flex-direction:column;}
+  padding:54px 60px 46px;display:flex;flex-direction:column;}
 .slide::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
-  background-image:radial-gradient(rgba(200,70,35,.05) 1.1px,transparent 1.2px);background-size:32px 32px;}
+  background-image:radial-gradient(rgba(200,70,35,.05) 1.1px,transparent 1.2px);background-size:30px 30px;}
 .slide::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
-  background:radial-gradient(ellipse 56% 26% at 88% 0%,rgba(200,70,35,.08),transparent 60%);}
+  background:radial-gradient(ellipse 58% 24% at 88% -2%,rgba(200,70,35,.09),transparent 60%),radial-gradient(ellipse 50% 20% at 4% 101%,rgba(200,70,35,.05),transparent 60%);}
 .slide>*{position:relative;z-index:2;}
-.spk{width:60px;height:60px;flex-shrink:0;}
-/* mast */
-.kick{display:flex;align-items:center;gap:15px;flex-shrink:0;}
-.kick .tag{font-family:'DM Mono',monospace;font-size:16px;font-weight:500;letter-spacing:.2em;color:var(--org-deep);
-  border:1px solid var(--coral-bd);background:var(--coral-bg);padding:9px 15px;border-radius:8px;}
-.kick .meta{margin-left:auto;font-family:'DM Mono',monospace;font-size:14px;letter-spacing:.16em;color:var(--mut);text-transform:uppercase;}
-/* hero */
-.h1{font-size:88px;font-weight:900;letter-spacing:-3.5px;line-height:.92;color:var(--ink);margin-top:22px;flex-shrink:0;}
+.spk{width:54px;height:54px;flex-shrink:0;}
+/* header */
+.kick{display:flex;align-items:center;gap:14px;flex-shrink:0;}
+.kick .tag{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;letter-spacing:.2em;color:var(--org-deep);
+  border:1px solid var(--coral-bd);background:var(--coral-bg);padding:8px 14px;border-radius:8px;}
+.kick .meta{margin-left:auto;font-family:'DM Mono',monospace;font-size:14px;letter-spacing:.14em;color:var(--mut);text-transform:uppercase;}
+.h1{font-size:74px;font-weight:900;letter-spacing:-3px;line-height:.9;color:var(--ink);margin-top:16px;flex-shrink:0;}
 .h1 em{font-style:normal;color:var(--org);}
-.sub{font-size:24px;font-weight:500;color:var(--ink-2);line-height:1.32;margin-top:16px;flex-shrink:0;max-width:900px;}
+.sub{font-size:22px;font-weight:500;color:var(--ink-2);line-height:1.3;margin-top:12px;flex-shrink:0;}
 .sub b{color:var(--ink);font-weight:700;}
-/* split rows: mistake | arrow | fix */
-.rows{flex:1;display:flex;flex-direction:column;gap:13px;margin-top:24px;min-height:0;}
-.mrow{flex:1;display:flex;align-items:stretch;border:1px solid var(--rule-2);border-radius:16px;overflow:hidden;
-  background:var(--card);box-shadow:0 8px 20px rgba(80,40,20,.05);min-height:0;}
-.num{flex-shrink:0;width:74px;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;
-  font-weight:500;font-size:30px;color:var(--org);background:var(--coral-bg);border-right:1px solid var(--coral-bd);}
-.side{flex:1;display:flex;flex-direction:column;justify-content:center;padding:16px 22px;min-width:0;}
-.side .lab{display:flex;align-items:center;gap:9px;font-family:'DM Mono',monospace;font-size:13px;font-weight:600;
-  letter-spacing:.16em;text-transform:uppercase;margin-bottom:7px;}
-.side .lab svg{width:18px;height:18px;stroke-width:2.3;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-.side .tx{font-size:25px;font-weight:700;line-height:1.12;}
-.bad{background:var(--mist-bg);}
-.bad .lab{color:var(--mut);}.bad .lab svg{stroke:var(--mut);}
-.bad .tx{color:#9A8C79;}
-.fix{flex:1.12;background:var(--coral-bg);border-left:1px solid var(--coral-bd);}
-.fix .lab{color:var(--org-deep);}.fix .lab svg{stroke:var(--org);}
-.fix .tx{color:var(--ink);}
-.fix .tx b{color:var(--org-deep);font-weight:800;}
-.arrow{flex-shrink:0;width:52px;display:flex;align-items:center;justify-content:center;background:var(--coral-bg);}
-.arrow svg{width:26px;height:26px;stroke:var(--org);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-/* cta */
-.cta{margin-top:22px;display:flex;align-items:center;gap:18px;flex-shrink:0;}
-.cta-chip{display:inline-flex;align-items:center;gap:13px;background:var(--org);border-radius:12px;padding:18px 28px;
-  box-shadow:0 14px 34px rgba(200,70,35,.32);}
-.cta-chip .t{font-size:25px;font-weight:900;letter-spacing:.03em;text-transform:uppercase;color:#FFF6F1;}
+/* two-column comparison */
+.cols{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px;min-height:0;}
+.vbox{border-radius:18px;display:flex;flex-direction:column;overflow:hidden;min-height:0;box-shadow:0 10px 24px rgba(80,40,20,.06);}
+.vbox.miss{background:var(--card);border:1px solid var(--rule-2);}
+.vbox.win{background:var(--card);border:1.5px solid var(--org);box-shadow:0 12px 30px rgba(200,70,35,.13);}
+.vh{flex-shrink:0;display:flex;align-items:center;gap:11px;padding:16px 18px;border-bottom:1px solid var(--rule);}
+.vbox.win .vh{background:var(--coral-bg);border-bottom-color:var(--coral-bd);}
+.vh .vn{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.vh .vn svg{width:21px;height:21px;stroke-width:2.3;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.miss .vh .vn{background:var(--miss-bg);border:1px solid var(--miss-bd);}.miss .vh .vn svg{stroke:var(--miss-tx);}
+.win .vh .vn{background:#fff;border:1px solid var(--coral-bd);}.win .vh .vn svg{stroke:var(--org);}
+.vh .vt{font-size:21px;font-weight:900;letter-spacing:-.3px;text-transform:uppercase;}
+.miss .vh .vt{color:var(--miss-tx);}.win .vh .vt{color:var(--org-deep);}
+.vlist{flex:1;display:flex;flex-direction:column;min-height:0;}
+.vit{flex:1;display:flex;align-items:center;gap:12px;padding:0 18px;border-bottom:1px solid var(--rule);}
+.vit:last-child{border-bottom:0;}
+.vit .d{width:26px;height:26px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.vit .d svg{width:15px;height:15px;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.miss .vit .d{background:var(--miss-bg);}.miss .vit .d svg{stroke:var(--miss-tx);}
+.win .vit .d{background:var(--coral-bg);}.win .vit .d svg{stroke:var(--org);}
+.vit .vc{min-width:0;}
+.vit .vc b{display:block;font-size:20.5px;font-weight:800;line-height:1.05;letter-spacing:-.3px;}
+.vit .vc span{display:block;font-size:15px;font-weight:500;line-height:1.12;margin-top:3px;}
+.miss .vit .vc b{color:#6E6354;}.miss .vit .vc span{color:var(--mut);}
+.win .vit .vc b{color:var(--ink);}.win .vit .vc span{color:var(--org-deep);}
+/* featured 4-part brief band */
+.feat{flex-shrink:0;margin-top:14px;display:flex;align-items:center;gap:18px;border:1.5px solid var(--org);border-radius:16px;
+  background:var(--coral-bg);padding:18px 22px;box-shadow:0 12px 30px rgba(200,70,35,.12);}
+.feat .fl{flex-shrink:0;}
+.feat .fk{font-family:'DM Mono',monospace;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--org-deep);}
+.feat .ft{font-size:25px;font-weight:900;letter-spacing:-.5px;color:var(--ink);margin-top:3px;}
+.feat .ft em{font-style:normal;color:var(--org);}
+.feat .chips{flex:1;display:flex;gap:9px;}
+.feat .chip{flex:1;background:#fff;border:1px solid var(--coral-bd);border-radius:10px;padding:11px 10px;text-align:center;}
+.feat .chip b{display:block;font-size:17px;font-weight:800;color:var(--ink);letter-spacing:-.2px;}
+.feat .chip span{display:block;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--org-deep);margin-top:4px;}
+/* cta + footer */
+.cta{margin-top:14px;display:flex;align-items:center;gap:18px;flex-shrink:0;}
+.cta-chip{display:inline-flex;align-items:center;gap:13px;background:var(--org);border-radius:12px;padding:16px 26px;box-shadow:0 14px 34px rgba(200,70,35,.32);}
+.cta-chip .t{font-size:23px;font-weight:900;letter-spacing:.03em;text-transform:uppercase;color:#FFF6F1;}
 .cta-chip .t em{font-style:normal;background:#FFE6D8;color:#3A1206;padding:3px 11px;border-radius:6px;margin-left:5px;}
-.cta-chip svg{width:27px;height:27px;stroke:#FFF6F1;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-.cta .note{font-size:20px;color:var(--ink-2);font-weight:500;line-height:1.25;}
-.cta .note b{color:var(--ink);font-weight:700;}
-/* footer */
-.ftr{margin-top:20px;padding-top:17px;border-top:1.5px solid var(--rule-2);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-shrink:0;}
-.ftr-l{display:flex;align-items:center;gap:12px;min-width:0;}
-.ftr-l img{width:38px;height:38px;border-radius:50%;flex-shrink:0;object-fit:cover;}
-.ftr-tx{font-family:'DM Mono',monospace;font-size:14px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-2);white-space:nowrap;}
-.ftr-tx b{color:var(--ink);font-weight:500;}
-.ftr-url{font-size:24px;font-weight:900;letter-spacing:-.5px;color:var(--ink);flex-shrink:0;}
-.ftr-url em{font-style:normal;color:var(--org);}
+.cta-chip svg{width:25px;height:25px;stroke:#FFF6F1;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.cta .note{font-size:19px;color:var(--ink-2);font-weight:500;line-height:1.22;}.cta .note b{color:var(--ink);font-weight:700;}
+.ftr{margin-top:14px;padding-top:14px;border-top:1.5px solid var(--rule-2);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-shrink:0;}
+.ftr-l{display:flex;align-items:center;gap:12px;min-width:0;}.ftr-l img{width:36px;height:36px;border-radius:50%;flex-shrink:0;object-fit:cover;}
+.ftr-tx{font-family:'DM Mono',monospace;font-size:13.5px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-2);white-space:nowrap;}.ftr-tx b{color:var(--ink);font-weight:500;}
+.ftr-url{font-size:23px;font-weight:900;letter-spacing:-.5px;color:var(--ink);flex-shrink:0;}.ftr-url em{font-style:normal;color:var(--org);}
 </style>
 </head>
 <body>
 <div class="slide">
   <div class="kick">
     <svg class="spk" viewBox="0 0 1200 1200"><path fill="#C84623" d="M 233.96 800.21 L 468.64 668.54 L 472.59 657.10 L 468.64 650.74 L 457.21 650.74 L 417.99 648.32 L 283.89 644.70 L 167.60 639.87 L 54.93 633.83 L 26.58 627.79 L 0 592.75 L 2.74 575.28 L 26.58 559.25 L 60.72 562.23 L 136.19 567.38 L 249.42 575.19 L 331.57 580.03 L 453.26 592.67 L 472.59 592.67 L 475.33 584.86 L 468.72 580.03 L 463.57 575.19 L 346.39 495.79 L 219.54 411.87 L 153.10 363.54 L 117.18 339.06 L 99.06 316.11 L 91.25 266.01 L 123.87 230.09 L 167.68 233.07 L 178.87 236.05 L 223.25 270.20 L 318.04 343.57 L 441.83 434.74 L 459.95 449.80 L 467.19 444.64 L 468.08 441.02 L 459.95 427.41 L 392.62 305.72 L 320.78 181.93 L 288.81 130.63 L 280.35 99.87 C 277.37 87.22 275.19 76.59 275.19 63.62 L 312.32 13.21 L 332.86 6.60 L 382.39 13.21 L 403.25 31.33 L 434.01 101.72 L 483.87 212.54 L 561.18 363.22 L 583.81 407.92 L 595.89 449.32 L 600.40 461.96 L 608.21 461.96 L 608.21 454.71 L 614.58 369.83 L 626.34 265.61 L 637.77 131.52 L 641.72 93.75 L 660.40 48.48 L 697.53 24.00 L 726.52 37.85 L 750.36 72 L 747.06 94.07 L 732.89 186.20 L 705.10 330.52 L 686.98 427.17 L 697.53 427.17 L 709.61 415.09 L 758.50 350.17 L 840.64 247.49 L 876.89 206.74 L 919.17 161.72 L 946.31 140.30 L 997.61 140.30 L 1035.38 196.43 L 1018.47 254.42 L 965.64 321.42 L 921.83 378.20 L 859.01 462.77 L 819.79 530.42 L 823.41 535.81 L 832.75 534.93 L 974.66 504.72 L 1051.33 490.87 L 1142.82 475.17 L 1184.21 494.50 L 1188.72 514.15 L 1172.46 554.34 L 1074.60 578.50 L 959.84 601.45 L 788.94 641.88 L 786.85 643.41 L 789.26 646.39 L 866.26 653.64 L 899.19 655.41 L 979.81 655.41 L 1129.93 666.60 L 1169.15 692.54 L 1192.67 724.27 L 1188.72 748.43 L 1128.32 779.19 L 1046.82 759.87 L 856.59 714.60 L 791.36 698.34 L 782.34 698.34 L 782.34 703.73 L 836.70 756.89 L 936.32 846.85 L 1061.07 962.82 L 1067.44 991.49 L 1051.41 1014.12 L 1034.50 1011.70 L 924.89 929.23 L 882.60 892.11 L 786.85 811.49 L 780.48 811.49 L 780.48 819.95 L 802.55 852.24 L 919.09 1027.41 L 925.13 1081.13 L 916.67 1098.60 L 886.47 1109.15 L 853.29 1103.11 L 785.07 1007.36 L 714.68 899.52 L 657.91 802.87 L 650.98 806.82 L 617.48 1167.70 L 601.77 1186.15 L 565.53 1200 L 535.33 1177.05 L 519.30 1139.92 L 535.33 1066.55 L 554.66 970.79 L 570.36 894.68 L 584.54 800.13 L 592.99 768.72 L 592.43 766.63 L 585.50 767.52 L 514.23 865.37 L 405.83 1011.87 L 320.05 1103.68 L 299.52 1111.81 L 263.92 1093.37 L 267.22 1060.43 L 287.11 1031.11 L 405.83 880.11 L 477.42 786.52 L 523.65 732.48 L 523.33 724.67 L 520.59 724.67 L 205.29 929.40 L 149.15 936.64 L 124.99 914.01 L 127.97 876.89 L 139.41 864.81 L 234.20 799.57 Z"/></svg>
-    <span class="tag">5 MISTAKES &middot; 5 FIXES</span><span class="meta">2 min read</span>
+    <span class="tag">WHERE IT GOES WRONG</span><span class="meta">5 fixes inside</span>
   </div>
   <div class="h1">You are using<br>Claude <em>wrong</em></div>
-  <div class="sub">Five tells, and the five-second fix for each. <b>Most people are doing at least three.</b></div>
-  <div class="rows">
-    <div class="mrow">
-      <div class="num">1</div>
-      <div class="side bad"><div class="lab"><svg viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>Mistake</div><div class="tx">One-line prompts</div></div>
-      <div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
-      <div class="side fix"><div class="lab"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Fix</div><div class="tx">A <b>4-part brief</b>: task, context, standard, outcome</div></div>
+  <div class="sub">The same five tells show up in every weak chat. <b>Here is the operator fix for each.</b></div>
+  <div class="cols">
+    <div class="vbox miss">
+      <div class="vh"><span class="vn"><svg viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="vt">Most people</span></div>
+      <div class="vlist">
+        <div class="vit"><span class="d"><svg viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></span><span class="vc"><b>One-line prompts</b><span>generic, forgettable</span></span></div>
+        <div class="vit"><span class="d"><svg viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></span><span class="vc"><b>Ask for answers</b><span>a yes-man, not a thinker</span></span></div>
+        <div class="vit"><span class="d"><svg viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></span><span class="vc"><b>Start from scratch</b><span>it forgets your context</span></span></div>
+        <div class="vit"><span class="d"><svg viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></span><span class="vc"><b>Ship the first draft</b><span>you post the rough cut</span></span></div>
+        <div class="vit"><span class="d"><svg viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></span><span class="vc"><b>One model for all</b><span>slow, pricey, or shallow</span></span></div>
+      </div>
     </div>
-    <div class="mrow">
-      <div class="num">2</div>
-      <div class="side bad"><div class="lab"><svg viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>Mistake</div><div class="tx">Asking for answers</div></div>
-      <div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
-      <div class="side fix"><div class="lab"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Fix</div><div class="tx">Make it <b>challenge your thinking</b></div></div>
+    <div class="vbox win">
+      <div class="vh"><span class="vn"><svg viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></span><span class="vt">Operators</span></div>
+      <div class="vlist">
+        <div class="vit"><span class="d"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span><span class="vc"><b>A 4-part brief</b><span>task, context, standard, outcome</span></span></div>
+        <div class="vit"><span class="d"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span><span class="vc"><b>Make it challenge you</b><span>holes found before you ship</span></span></div>
+        <div class="vit"><span class="d"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span><span class="vc"><b>Context once, then build</b><span>every reply gets sharper</span></span></div>
+        <div class="vit"><span class="d"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span><span class="vc"><b>Critique, then redo</b><span>draft 3 beats draft 1</span></span></div>
+        <div class="vit"><span class="d"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span><span class="vc"><b>Fast to draft, deep to decide</b><span>right model, right job</span></span></div>
+      </div>
     </div>
-    <div class="mrow">
-      <div class="num">3</div>
-      <div class="side bad"><div class="lab"><svg viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>Mistake</div><div class="tx">Starting from scratch every chat</div></div>
-      <div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
-      <div class="side fix"><div class="lab"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Fix</div><div class="tx">Give it <b>your context once</b>, then build</div></div>
-    </div>
-    <div class="mrow">
-      <div class="num">4</div>
-      <div class="side bad"><div class="lab"><svg viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>Mistake</div><div class="tx">Shipping the first draft</div></div>
-      <div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
-      <div class="side fix"><div class="lab"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Fix</div><div class="tx">Make it <b>critique and redo</b> its own work</div></div>
-    </div>
-    <div class="mrow">
-      <div class="num">5</div>
-      <div class="side bad"><div class="lab"><svg viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>Mistake</div><div class="tx">One model for everything</div></div>
-      <div class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
-      <div class="side fix"><div class="lab"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Fix</div><div class="tx"><b>Fast</b> to draft, <b>deep</b> to decide</div></div>
+  </div>
+  <div class="feat">
+    <div class="fl"><div class="fk">The one fix</div><div class="ft">The <em>4-part brief</em></div></div>
+    <div class="chips">
+      <div class="chip"><b>Task</b><span>what</span></div>
+      <div class="chip"><b>Context</b><span>knows</span></div>
+      <div class="chip"><b>Standard</b><span>good</span></div>
+      <div class="chip"><b>Outcome</b><span>success</span></div>
     </div>
   </div>
   <div class="cta">
     <div class="cta-chip"><span class="t">Comment <em>FIXES</em></span><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
-    <div class="note">and I will send you the <b>4-part brief</b> that kills all 5.</div>
+    <div class="note">and I will send you the <b>4-part brief</b> template.</div>
   </div>
   <div class="ftr">
     <div class="ftr-l"><img src="__LOGO_URI__" alt="Ultron"><span class="ftr-tx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span></div>
