@@ -7,6 +7,8 @@ Your AI tool sends your prompt to a model and prays. That is the entire architec
 
 Ultron runs every task through one engine, the same six steps every single time.
 
+Most AI demos look like magic for thirty seconds, then fall apart the moment you actually depend on them. The model is the easy part. The hard part is everything around it.
+
 I did not want clever, I wanted reliable. A founder cannot run a company on a system that behaves differently every run, forgets what it knew yesterday, or quietly calls a tool it should not. So every skill, from research to outbound to shipping code, goes through one execution path with the same guarantees.
 
 Here is what happens the moment you hit send:
@@ -29,7 +31,7 @@ Here is what happens the moment you hit send:
 
 The lesson took me a while. Reliability does not come from a smarter model. It comes from the engine around the model: the limits, the context, the allow-list, the loop, the log. Swap the model tomorrow and the guarantees still hold.
 
-That is the difference between a demo and something you run your company on.
+A demo impresses you once. An engine you can trust runs in the background every day while you go do something else. That is the whole difference.
 
 - - -
 
