@@ -6,6 +6,8 @@ Visual hook (cover): "I run my company with 0 hires. Claude is the whole team."
 
 ## CAPTION
 
+Comment TEAM and I will send you the exact 6-role setup.
+
 I run my company with zero hires.
 
 Not because I cannot afford a team. Because Claude is the team, and I am the one operator who runs it.
@@ -15,8 +17,6 @@ Six seats, one chat box. Each one a role I used to think I had to hire for:
 A researcher that hands me a ranked brief instead of a blank page. An SDR that writes the whole 4-touch sequence before my coffee. A closer with the answer to every objection drafted before the call. A writer that ships one idea to LinkedIn, TikTok and X in my voice. An ops lead with the morning brief written before I open the laptop. And an engineer that builds the internal tool the same day, with no engineer. I approve every move, and nothing leaves the building without me.
 
 This is Ultron, the AI operator for founders: one box, the agents inside it, you on the gate.
-
-Comment TEAM and I will send you the exact 6-role setup.
 
 #claude #ai #founder #startup #buildinpublic
 

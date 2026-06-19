@@ -5,6 +5,8 @@ Keyword: HUMAN  |  Lead magnet: the ebook "They Will Never Know AI Wrote It" (in
 
 ## CAPTION
 
+Comment HUMAN and I will send you the ebook: They Will Never Know AI Wrote It.
+
 Most people use Claude Code to autocomplete. I run it like a full engineering team.
 
 Six add-ons turned one terminal into a room full of specialists.
@@ -18,8 +20,6 @@ A front-end pass kills the generic AI look most tools ship by default.
 And a final edit makes the output read 100% human, not 100% robot.
 
 This is how I ship features solo at the speed of a team.
-
-Comment HUMAN and I will send you the ebook: They Will Never Know AI Wrote It.
 
 #claude #ai #founder #startup #buildinpublic
 

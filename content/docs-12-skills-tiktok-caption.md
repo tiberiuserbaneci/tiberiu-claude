@@ -6,6 +6,8 @@ Visual hook: "7 agents. 71 skills. One box."
 
 ## CAPTION
 
+Comment SKILLS and I will send you the full 71-skill catalog.
+
 Most AI is one model in a chat box. That was never going to run your company.
 
 Now I run mine through 7 named agents and 71 skills, all in one box.
@@ -15,8 +17,6 @@ I do not pick the tool anymore. I describe the job.
 Type /cortex and you get intelligence: competitive analysis, company deep dives, funding signals. /specter finds and enriches your buyers and writes the outbound. /striker preps the call and handles objections. /pulse writes the content in your voice. /sentinel builds and ships. /amplify runs the ads. /counsel handles contracts. No slash command needed either, just describe the job and the router picks one of 71 skills, runs it in a tool loop, and stops when it is done. Three model tiers, fast where it can be, deep where it has to be. I approve every move.
 
 This is Ultron, the AI operator for founders: one box, seven specialists, you on the gate.
-
-Comment SKILLS and I will send you the full 71-skill catalog.
 
 #claude #ai #founder #startup #buildinpublic
 

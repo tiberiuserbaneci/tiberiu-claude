@@ -3,6 +3,8 @@ For: claude-mistakes-editorial45-infographic (+ carousel) | Keyword: FIXES
 
 ## CAPTION
 
+Comment FIXES and I will send you the 4-part brief that kills all five.
+
 Most people use Claude like a search bar. That is exactly why the output feels generic.
 
 Here are the 5 mistakes, and the five-second fix for each.
@@ -16,8 +18,6 @@ Stop starting from scratch every chat. Give it your context once, then build on 
 Stop shipping the first draft. Make it critique and redo its own work.
 
 And stop using one model for everything. Fast to draft, deep to decide.
-
-Comment FIXES and I will send you the 4-part brief that kills all five.
 
 #claude #ai #founder #startup #buildinpublic
 

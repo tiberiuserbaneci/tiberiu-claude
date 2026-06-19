@@ -7,6 +7,8 @@ Note: shared kit. Carousel = Dark Ultron (this ALT describes it). Infographic = 
 
 ## CAPTION
 
+Comment CLAUDE and I will send you the exact 4-input prompt formula.
+
 Most people use Claude like Google. That is the whole problem.
 
 Now I treat it like a thinking partner, and the output lands on a different level.
@@ -16,8 +18,6 @@ The fix takes two minutes and lives in four inputs most people skip.
 Stop asking for answers and start giving direction: not write me a post, but break this into parts, challenge my assumptions, give me three approaches with tradeoffs. Then fix the four inputs every weak prompt is missing, the task you want, the context it should know, the standard for what good looks like, and the outcome that defines success. Same task, different result. Write a post about AI gets you noise. Write a short post for founders, explain why most AI content fails, keep it punchy, end with a reflection gets you something you can ship. Then pick the mode for the job: think better for decisions, explain clearly for learning, execute faster for action.
 
 This is how I run Claude as the operator on my team, on the Ultron platform built for founders.
-
-Comment CLAUDE and I will send you the exact 4-input prompt formula.
 
 #claude #ai #founder #startup #buildinpublic
 

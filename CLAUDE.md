@@ -668,13 +668,18 @@ approved public reply: "DM failed. Let's connect and I'll send it over."
 ### 15.6 SOCIAL CAPTION FORMAT + HASHTAGS (operator, 2026-06-04 — binding; supersedes the hashtag bans elsewhere in this file)
 
 **Paragraph format (TikTok and any social caption):** one beat per paragraph, 1–2 sentences max,
-a blank line between every paragraph (scannable, 360Brew style). Order:
-1. Hook — its own one-line paragraph
-2. The shift — "Now I…" (1–2 sentences)
-3. Setup — one line ("Anything that will not finish in seconds becomes a background job: …")
-4. The dense mechanics — the single packed paragraph (the how)
-5. Product line — "This is X on the Ultron platform…" (1 line)
-6. CTA — "Comment KEYWORD and I will send you…" (1 line)
+a blank line between every paragraph (scannable, 360Brew style).
+
+**CTA-FIRST (operator, 2026-06-19 — binding, per §0.1; supersedes the earlier CTA-last order below):**
+**Every TikTok caption OPENS with the CTA on line 1**, in the exact form
+`Comment KEYWORD and I will send you [the specific asset].` Then the body, then hashtags last.
+Order:
+1. CTA — "Comment KEYWORD and I will send you…" — **the first line, always**
+2. Hook — the reframe, its own paragraph ("Most people X." / "You X. Operators Y.")
+3. The shift — "Now I…" (1–2 sentences)
+4. Setup — one line
+5. Body — the dense mechanics paragraph OR itemized beats ("Label: one-line description", one per paragraph)
+6. Closing punch — a short imperative ("Stop running Claude on default.") OR the product line ("This is X on the Ultron platform…")
 7. Hashtags — the last line
 
 **HASHTAGS — exactly 5, only these, no more, no fewer, no substitutes:**

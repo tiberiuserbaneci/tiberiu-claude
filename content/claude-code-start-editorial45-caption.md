@@ -3,6 +3,8 @@ For: claude-code-start-editorial45-infographic (+ carousel) | Keyword: CODE
 
 ## CAPTION
 
+Comment CODE and I will send you a starter CLAUDE.md and the setup.
+
 Claude Code turns your terminal into a coding agent. Most people never get past install.
 
 Here are the only 5 moves you need.
@@ -18,8 +20,6 @@ Let it run. It edits files, runs tests and fixes its own errors while you approv
 Type /resume to pick up any past session with full context.
 
 That is the whole loop, and it ships features while you sleep.
-
-Comment CODE and I will send you a starter CLAUDE.md and the setup.
 
 #claude #ai #founder #startup #buildinpublic
 

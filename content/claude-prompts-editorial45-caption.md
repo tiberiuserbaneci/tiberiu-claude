@@ -3,6 +3,8 @@ For: claude-prompts-editorial45-infographic (+ carousel) | Keyword: PROMPTS
 
 ## CAPTION
 
+Comment PROMPTS and I will send you all 10 as a copy-paste list.
+
 I reuse the same 10 Claude prompts every week. They do most of the heavy lifting.
 
 Save these.
@@ -16,8 +18,6 @@ Turn this into a step-by-step plan. Now argue the opposite.
 Give me the one thing that matters. Ask me 5 questions before you answer. Explain it simply, then like an expert.
 
 Ten lines that turn Claude from a search bar into a thinking partner.
-
-Comment PROMPTS and I will send you all 10 as a copy-paste list.
 
 #claude #ai #founder #startup #buildinpublic
 

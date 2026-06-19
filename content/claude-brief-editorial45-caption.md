@@ -3,6 +3,8 @@ For: claude-brief-editorial45-infographic + -carousel | Keyword: BRIEF
 
 ## CAPTION
 
+Comment BRIEF and I will send you my 4-part brief template.
+
 You write Claude prompts. Operators write it a brief.
 
 Now I never send a one-line ask. I send four lines, every time.
@@ -12,8 +14,6 @@ A brief is just task, context, standard and outcome:
 Task is the one job, scoped, no "and also". Context is who I am and who it is for. Standard is the length, the tone, the format and the hard rules. Outcome is what good actually looks like, the finish line. Same model, same minute, but the draft comes back usable instead of generic, because I stopped making Claude guess the four things it was missing.
 
 This is how operators run Claude on the Ultron platform: brief it once, reuse it forever.
-
-Comment BRIEF and I will send you my 4-part brief template.
 
 #claude #ai #founder #startup #buildinpublic
 

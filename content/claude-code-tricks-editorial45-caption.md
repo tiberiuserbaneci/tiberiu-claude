@@ -3,6 +3,8 @@ For: claude-code-tricks-editorial45-infographic (+ carousel) | Keyword: TRICKS
 
 ## CAPTION
 
+Comment TRICKS and I will send you all 7 with the exact commands.
+
 Anyone can write code with Claude Code. Power users do seven other things.
 
 Subagents: spin up parallel agents to take on a big refactor at once.
@@ -18,8 +20,6 @@ Attach exact files with the @ mention, so it stops guessing what to read.
 Say ultrathink to force deeper reasoning on the hard problems.
 
 Paste a screenshot. It reads UI bugs, designs and errors straight from the image.
-
-Comment TRICKS and I will send you all 7 with the exact commands.
 
 #claude #ai #founder #startup #buildinpublic
 

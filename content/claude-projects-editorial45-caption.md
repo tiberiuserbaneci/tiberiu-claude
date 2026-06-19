@@ -3,6 +3,8 @@ For: claude-projects-editorial45-infographic + -carousel | Keyword: PROJECTS
 
 ## CAPTION
 
+Comment PROJECTS and I will send you my Project setup template.
+
 You explain your business to Claude in every new chat. You should never type it twice.
 
 A Project is a workspace that remembers everything.
@@ -12,8 +14,6 @@ You set it once: custom instructions for who you are and how you work, plus know
 So you stop briefing and start working. Type "write a cold email" and it already knows the audience, the offer and the tone, because it is all in the Project. Same for posts, pricing pages, competitor teardowns. No more pasting the same paragraph into a fresh chat every morning.
 
 This is how you run Claude like an operator, not a goldfish.
-
-Comment PROJECTS and I will send you my Project setup template.
 
 #claude #ai #founder #startup #buildinpublic
 

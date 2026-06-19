@@ -3,6 +3,8 @@ For: claude-artifacts-editorial45-infographic + -carousel | Keyword: ARTIFACTS
 
 ## CAPTION
 
+Comment ARTIFACTS and I will send you the prompt I use to spin one up.
+
 You ask Claude for something, then copy the answer into a doc, a builder, a spreadsheet. Stop doing that.
 
 Artifacts build it right next to the chat.
@@ -12,8 +14,6 @@ Ask for a doc and it writes it in a panel you can edit. Ask for a calculator, a 
 You change it by just asking, and it updates in place. No more copy, paste, reformat, fix. The output and the workspace are the same window.
 
 This is Claude as a builder, not a text box.
-
-Comment ARTIFACTS and I will send you the prompt I use to spin one up.
 
 #claude #ai #founder #startup #buildinpublic
 

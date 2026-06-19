@@ -3,6 +3,8 @@ For: claude-modes-editorial45-infographic (+ carousel) | Keyword: MODES
 
 ## CAPTION
 
+Comment MODES and I will send you exactly when to use each one.
+
 Everyone types in the box and leaves. Claude has four modes doing the real heavy lifting.
 
 Projects: a persistent workspace that holds your context and files across every chat.
@@ -14,8 +16,6 @@ Extended thinking: it reasons longer and shows its work on the genuinely hard pr
 Styles: lock it to your voice and format so every reply sounds like you, not a robot.
 
 Stop running Claude on default.
-
-Comment MODES and I will send you exactly when to use each one.
 
 #claude #ai #founder #startup #buildinpublic
 
