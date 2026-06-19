@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-06-19T09:22:26",
+  "generated_at": "2026-06-19T10:18:20",
   "counts": {
-    "total": 109,
-    "generated": 65,
+    "total": 110,
+    "generated": 66,
     "reference": 44,
     "crosspost": 0
   },
@@ -1044,7 +1044,7 @@
       "alt": "Dark editorial infographic on a slate background with book-orange accents. The headline reads most AI throws your prompt at a model and hopes, Ultron runs every task through one engine. A stat strip shows 6 steps, 2 running in parallel, 3 model tiers and 100 percent of steps logged. The dominant block is a six-stage numbered pipeline, each stage a card with a large number, a title, a plain line and a mono tag: take a slot, max 2 parallel; pick the model, 3 tiers; load your context, profile plus memory; scope the tools, allow-list; run the loop, parallel tools; save and log, auto-memory. Closes with a Comment ENGINE call to action and the Ultron logo.",
       "first_comment": "Same six steps for every skill: slot, model, context, tools, loop, log. The model can change tomorrow, the guarantees do not.\n\nComment ENGINE and I will send you the full lifecycle. It also lives here: app.51ultron.com/docs/architecture",
       "generated_date": "2026-06-19",
-      "added": 1781860865,
+      "added": 1781864004,
       "source": "generated",
       "status": "ready",
       "posted": false,
@@ -1407,6 +1407,33 @@
       "first_comment": "The default chat box is the weakest way to use Claude. Projects for context, Artifacts to build, extended thinking for hard calls, Styles to kill the robot tone.\n\nComment MODES and I will send you when to use each one. More at 51ultron.com",
       "generated_date": "2026-06-17",
       "added": 1781688399,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "claude-projects-editorial45-infographic",
+      "title": "Claude Projects Editorial45 Infographic",
+      "channel": "tiktok",
+      "type": "single",
+      "slides": 1,
+      "dims": "2160x2700 (1080x1350 @2x)",
+      "preview": "content/claude-projects-editorial45-infographic.png",
+      "download": "content/claude-projects-editorial45-infographic.png",
+      "files": [
+        "content/claude-projects-editorial45-infographic.png"
+      ],
+      "variants": [
+        ""
+      ],
+      "caption": "",
+      "alt": "",
+      "first_comment": "",
+      "generated_date": "2026-06-19",
+      "added": 1781864209,
       "source": "generated",
       "status": "ready",
       "posted": false,
