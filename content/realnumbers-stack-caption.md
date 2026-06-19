@@ -8,6 +8,8 @@ Levers: SAVES ("Save this stack map") + COMMENTS ("Comment STACK")
 
 ## CAPTION
 
+Comment STACK and I will send you the stack map.
+
 I cancelled $7,200 a month in GTM software.
 
 Now the whole stack runs inside one box, and I am the one operator who runs it.
@@ -17,8 +19,6 @@ Seven jobs I used to pay seven separate tools for, seven logins, seven bills.
 Research stopped being an enrichment subscription and became CORTEX handing me a ranked brief instead of a blank page. Outbound stopped being a sequencer and became SPECTER writing the follow-ups before my coffee. Deals stopped being a CRM and deal desk and became STRIKER with the answer to every objection. Content stopped being a ghostwriter retainer and became PULSE in my own voice. Publishing became AMPLIFY formatting and scheduling per channel. Internal tools stopped being a no-code bill plus a dev contractor and became SENTINEL shipping the thing the same day. Contracts stopped being billable review hours and became COUNSEL drafting the NDA. The router picks the model tier for each job, so I am not paying Opus prices for a Haiku task.
 
 This is Ultron, the AI operator for founders: one box, seven agents, you on the gate.
-
-Comment STACK and I will send you the stack map.
 
 #claude #ai #founder #startup #buildinpublic
 
