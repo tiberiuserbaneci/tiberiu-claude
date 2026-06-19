@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>docs-13 execution lifecycle - LinkedIn 1080x1450</title>
+<style>
+@import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
+/* docs-13 - The execution lifecycle. Founder-facing (no engine code): every task runs the same
+   6-step engine. Dominant = a numbered pipeline (distinct from docs-12's agent roster). Dark Ultron. */
+:root{--slate:#191919;--slate2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);
+--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);
+--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--cloud:#919180;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.frame{width:1080px;height:1450px;background:var(--slate);padding:34px 44px 22px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;}
+.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.4px,transparent 1.5px);background-size:30px 30px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 54% 22% at 90% -2%,rgba(204,120,92,.2) 0%,transparent 60%),radial-gradient(ellipse 48% 24% at 2% 102%,rgba(212,162,127,.1) 0%,transparent 60%);}
+.frame>*{position:relative;z-index:2;}
+.mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;}
+.mast .ml{color:var(--ink46);}.mast .ml em{color:var(--book);font-style:normal;}
+.mast .mr{color:var(--ink70);}.mast .mr em{color:var(--book);font-style:normal;}
+.hero{flex-shrink:0;margin-top:16px;}
+.eye{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--kraft);}
+.hook{margin-top:9px;font-weight:900;font-size:49px;line-height:.99;letter-spacing:-1.8px;color:var(--ivory);}.hook em{color:var(--book);font-style:normal;}
+.sub{margin-top:12px;font-size:18px;font-weight:500;line-height:1.34;color:var(--ink70);max-width:900px;}.sub b{color:var(--ivory);font-weight:700;}
+.stats{flex-shrink:0;margin-top:15px;display:flex;border:1px solid var(--rule);border-radius:13px;overflow:hidden;}
+.stat{flex:1;padding:12px 16px;text-align:center;}.stat+.stat{border-left:1px solid var(--rule);}
+.stat b{display:block;font-weight:900;font-size:30px;line-height:.85;letter-spacing:-1px;}
+.stat.a b{color:var(--book);}.stat.b b{color:var(--kraft);}.stat.c b{color:var(--ivory);}.stat.d b{color:var(--book);}
+.stat span{font-family:'DM Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink46);margin-top:7px;display:block;}
+/* pipeline (dominant) */
+.pipe{flex:1;min-height:0;margin-top:15px;display:flex;flex-direction:column;gap:9px;}
+.stage{position:relative;flex:1;display:flex;align-items:center;gap:20px;border:1px solid var(--rule);border-radius:14px;background:var(--slate2);padding:0 22px 0 0;overflow:hidden;min-height:0;}
+.stage .snum{align-self:stretch;width:78px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:32px;letter-spacing:-1px;color:var(--slate);background:var(--book);}
+.stage.k .snum{background:var(--kraft);}.stage.d .snum{background:var(--book-d);color:var(--ivory);}
+.stage .smid{flex:1;min-width:0;}
+.stage .st{font-size:25px;font-weight:800;color:var(--ivory);letter-spacing:-.4px;line-height:1.02;}
+.stage .sv{font-size:16.5px;font-weight:500;color:var(--ink70);margin-top:5px;line-height:1.2;}
+.stage .sv b{color:var(--ivory);font-weight:700;}
+.stage .schip{flex-shrink:0;font-family:'DM Mono',monospace;font-size:13px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--book);background:rgba(204,120,92,.1);border:1px solid rgba(204,120,92,.32);border-radius:30px;padding:8px 14px;white-space:nowrap;}
+.stage.k .schip{color:var(--kraft);background:rgba(212,162,127,.1);border-color:rgba(212,162,127,.3);}
+.stage.d .schip{color:var(--book-d);border-color:var(--book-d);}
+/* cta */
+.cta{flex-shrink:0;margin-top:13px;display:flex;align-items:stretch;border:1px solid var(--book);border-radius:8px;overflow:hidden;}
+.cta .t{flex:1;padding:14px 20px;display:flex;flex-direction:column;justify-content:center;gap:3px;background:rgba(204,120,92,.07);}
+.cta .t .s{font-size:15px;font-weight:500;color:var(--ink70);}.cta .t .s b{color:var(--ivory);font-weight:800;}
+.cta .t .save{font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--kraft);}
+.cta .chip{flex-shrink:0;padding:0 26px;display:flex;align-items:center;gap:10px;background:var(--book);font-size:19px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#1a0f0a;box-shadow:inset 0 0 0 1px rgba(250,255,247,.12),0 0 30px rgba(204,120,92,.35);}
+.cta .chip svg{width:19px;height:19px;stroke:#1a0f0a;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ftr{flex-shrink:0;margin-top:13px;padding-top:12px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.fl2{display:flex;align-items:center;gap:11px;min-width:0;}.flogo{width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.ftx{font-family:'DM Mono',monospace;font-size:11.5px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--ink70);white-space:nowrap;}.ftx b{color:var(--ivory);font-weight:500;}
+.furl{font-weight:900;font-size:21px;letter-spacing:-.5px;color:var(--ivory);}.furl em{color:var(--book);font-style:normal;}
+</style>
+</head>
+<body>
+<div class="frame"><div class="atm"></div>
+  <div class="mast"><span class="ml">AI AGENTS <em>&middot;</em> ONE ENGINE <em>&middot;</em> EVERY TASK</span><span class="mr">ULTRON <em>&middot;</em> <em>6</em>-STEP LIFECYCLE</span></div>
+  <div class="hero">
+    <div class="eye">The execution lifecycle</div>
+    <div class="hook">Most AI throws your prompt at a model and hopes. Ultron runs every task through <em>one engine</em>.</div>
+    <div class="sub">Take a slot, pick the model, load your context, scope the tools, loop until done, then remember it. The same six steps every time, so every task is reliable and every move is logged. <b>You approve before anything ships.</b></div>
+  </div>
+  <div class="stats">
+    <div class="stat a"><b>6</b><span>steps, one engine</span></div>
+    <div class="stat b"><b>2</b><span>run in parallel</span></div>
+    <div class="stat c"><b>3</b><span>model tiers</span></div>
+    <div class="stat d"><b>100%</b><span>steps logged</span></div>
+  </div>
+  <div class="pipe">
+    <div class="stage"><div class="snum">1</div><div class="smid"><div class="st">Take a slot</div><div class="sv">Runs at most a couple of tasks at once, so it never trips the rate limits.</div></div><div class="schip">max 2 parallel</div></div>
+    <div class="stage k"><div class="snum">2</div><div class="smid"><div class="st">Pick the model</div><div class="sv">Fast, standard or deep, matched to how hard the job is.</div></div><div class="schip">3 tiers</div></div>
+    <div class="stage d"><div class="snum">3</div><div class="smid"><div class="st">Load your context</div><div class="sv">Your profile and memories, pulled in <b>before</b> it acts, not after.</div></div><div class="schip">profile + memory</div></div>
+    <div class="stage"><div class="snum">4</div><div class="smid"><div class="st">Scope the tools</div><div class="sv">Only the tools the skill allows and the ones you actually connected.</div></div><div class="schip">allow-list</div></div>
+    <div class="stage k"><div class="snum">5</div><div class="smid"><div class="st">Run the loop</div><div class="sv">Calls tools in parallel, you approve, repeats until the job is done.</div></div><div class="schip">parallel tools</div></div>
+    <div class="stage d"><div class="snum">6</div><div class="smid"><div class="st">Save and log</div><div class="sv">Writes a memory and logs every step, so the next task starts smarter.</div></div><div class="schip">auto-memory</div></div>
+  </div>
+  <div class="cta">
+    <div class="t"><div class="s">The full lifecycle: concurrency, retries, the tool loop, and what gets remembered.</div><div class="save">Save this engine map</div></div>
+    <div class="chip">Comment ENGINE<svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+  </div>
+  <div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span></div><div class="furl">51ultron<em>.</em>com</div></div>
+</div>
+</body>
+</html>

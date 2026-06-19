@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-06-19T09:19:04",
+  "generated_at": "2026-06-19T09:22:26",
   "counts": {
-    "total": 108,
-    "generated": 64,
+    "total": 109,
+    "generated": 65,
     "reference": 44,
     "crosspost": 0
   },
@@ -1026,6 +1026,33 @@
       "crossposts": []
     },
     {
+      "id": "docs-13-lifecycle-linkedin",
+      "title": "Lifecycle",
+      "channel": "linkedin",
+      "type": "single",
+      "slides": 1,
+      "dims": "2160x2900 (1080x1450 @2x)",
+      "preview": "content/docs-13-lifecycle-linkedin.png",
+      "download": "content/docs-13-lifecycle-linkedin.png",
+      "files": [
+        "content/docs-13-lifecycle-linkedin.png"
+      ],
+      "variants": [
+        ""
+      ],
+      "caption": "Your AI tool sends your prompt to a model and prays. That is the entire architecture.\n\nUltron runs every task through one engine, the same six steps every single time.\n\nI did not want clever, I wanted reliable. A founder cannot run a company on a system that behaves differently every run, forgets what it knew yesterday, or quietly calls a tool it should not. So every skill, from research to outbound to shipping code, goes through one execution path with the same guarantees.\n\nHere is what happens the moment you hit send:\n\n- - -\n\n\u2192 It takes a slot. At most a couple of tasks run at once, so it never trips the model rate limits under load.\n\n\u2192 It picks the model tier. Fast, standard or deep, matched to how hard the job is, so you are not paying top-tier prices for a lookup.\n\n\u2192 It loads your context first. Your profile and past memories are pulled in before it acts, not bolted on after.\n\n\u2192 It scopes the tools. Only the tools the skill is allowed and the ones you actually connected. Nothing else is even on the table.\n\n\u2192 It runs the loop. It calls tools in parallel, you approve, and it repeats until the job is genuinely done, then it stops.\n\n\u2192 It saves and logs. Every run writes a memory and logs every step, so the next task starts smarter and you can see exactly what it did.\n\n- - -\n\nThe lesson took me a while. Reliability does not come from a smarter model. It comes from the engine around the model: the limits, the context, the allow-list, the loop, the log. Swap the model tomorrow and the guarantees still hold.\n\nThat is the difference between a demo and something you run your company on.\n\n- - -\n\nFollow for one AI system for founders every day.\n\nComment ENGINE and I will send you the full execution lifecycle we built.",
+      "alt": "Dark editorial infographic on a slate background with book-orange accents. The headline reads most AI throws your prompt at a model and hopes, Ultron runs every task through one engine. A stat strip shows 6 steps, 2 running in parallel, 3 model tiers and 100 percent of steps logged. The dominant block is a six-stage numbered pipeline, each stage a card with a large number, a title, a plain line and a mono tag: take a slot, max 2 parallel; pick the model, 3 tiers; load your context, profile plus memory; scope the tools, allow-list; run the loop, parallel tools; save and log, auto-memory. Closes with a Comment ENGINE call to action and the Ultron logo.",
+      "first_comment": "Same six steps for every skill: slot, model, context, tools, loop, log. The model can change tomorrow, the guarantees do not.\n\nComment ENGINE and I will send you the full lifecycle. It also lives here: app.51ultron.com/docs/architecture",
+      "generated_date": "2026-06-19",
+      "added": 1781860865,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
       "id": "docs-13-shared-linkedin",
       "title": "Shared",
       "channel": "linkedin",
@@ -1241,7 +1268,7 @@
       "alt": "Light editorial infographic on a cream background with coral accents and a Claude sunburst mark. The title reads Claude Code in 2 minutes. Five numbered rows each pair a dark terminal command chip with a plain explanation: claude to start it in any project, /init to give it memory through a CLAUDE.md, shift tab for plan mode so it plans before code, let it run so it edits and tests and fixes its own errors, and /resume to pick up a past session with full context. Closes on a Comment CODE call to action with the Ultron logo and 51ultron.com.",
       "first_comment": "The trick is not typing more, it is /init and plan mode. Give it memory and let it plan, and it stops guessing.\n\nComment CODE and I will send you a starter CLAUDE.md plus the setup steps. More at 51ultron.com",
       "generated_date": "2026-06-19",
-      "added": 1781860616,
+      "added": 1781860745,
       "source": "generated",
       "status": "ready",
       "posted": false,
