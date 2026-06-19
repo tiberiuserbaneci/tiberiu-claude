@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-06-19T12:02:31",
+  "generated_at": "2026-06-19T12:14:39",
   "counts": {
-    "total": 113,
-    "generated": 69,
+    "total": 115,
+    "generated": 71,
     "reference": 44,
     "crosspost": 0
   },
@@ -1268,7 +1268,7 @@
       "alt": "Light editorial infographic on a cream background with coral accents and a Claude sunburst. The hook reads still copy-pasting Claude's work. The centre shows an Artifact mockup, a working ROI calculator Claude built, with rows for monthly leads, close rate and deal size and a highlighted result of 48,000 dollars a month, plus Preview and Code tabs and a Recalculate button. Below, three cards: docs and posts, apps and tools, charts and diagrams. Closes on a Comment ARTIFACTS call to action and the Ultron logo.",
       "first_comment": "The shift: the answer and the workspace become the same window. You stop exporting Claude's output into another tool and just edit it live, by asking.\n\nComment ARTIFACTS and I will send you the prompt I use to spin one up. More at 51ultron.com",
       "generated_date": "2026-06-19",
-      "added": 1781870541,
+      "added": 1781870551,
       "source": "generated",
       "status": "ready",
       "posted": false,
@@ -1296,6 +1296,62 @@
       "first_comment": "The shift: the answer and the workspace become the same window. You stop exporting Claude's output into another tool and just edit it live, by asking.\n\nComment ARTIFACTS and I will send you the prompt I use to spin one up. More at 51ultron.com",
       "generated_date": "2026-06-19",
       "added": 1781870220,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "claude-brief-editorial45-carousel",
+      "title": "Claude Brief Editorial45",
+      "channel": "tiktok",
+      "type": "carousel",
+      "slides": 5,
+      "dims": "2160x2700 (1080x1350 @2x)",
+      "preview": "content/claude-brief-editorial45-carousel-01.png",
+      "download": "content/portal/zips/claude-brief-editorial45-carousel.zip",
+      "files": [
+        "content/claude-brief-editorial45-carousel-01.png",
+        "content/claude-brief-editorial45-carousel-02.png",
+        "content/claude-brief-editorial45-carousel-03.png",
+        "content/claude-brief-editorial45-carousel-04.png",
+        "content/claude-brief-editorial45-carousel-05.png"
+      ],
+      "variants": [],
+      "caption": "You write Claude prompts. Operators write it a brief.\n\nNow I never send a one-line ask. I send four lines, every time.\n\nA brief is just task, context, standard and outcome:\n\nTask is the one job, scoped, no \"and also\". Context is who I am and who it is for. Standard is the length, the tone, the format and the hard rules. Outcome is what good actually looks like, the finish line. Same model, same minute, but the draft comes back usable instead of generic, because I stopped making Claude guess the four things it was missing.\n\nThis is how operators run Claude on the Ultron platform: brief it once, reuse it forever.\n\nComment BRIEF and I will send you my 4-part brief template.\n\n#claude #ai #founder #startup #buildinpublic",
+      "alt": "Light editorial infographic on a cream background with coral accents and a Claude sunburst. The hook reads you write Claude prompts. Below it, a dark composer mockup shows a weak line, write me a cold email, struck through and labeled the prompt, then the word becomes, then four labeled rows: task, a cold email to a SaaS founder; context, an AI GTM tool for 2 to 50 person teams; standard, under 80 words, one ask, my voice; outcome, a reply that books a call, not a sale. Three cards below read first-try usable, on your standard and knows when to stop. Closes on a Comment BRIEF call to action and the Ultron logo.",
+      "first_comment": "The whole trick: a prompt makes Claude guess, a brief tells it. Task, context, standard, outcome. Four lines and the first draft is usable instead of generic.\n\nComment BRIEF and I will send you my exact 4-part brief template. More at 51ultron.com",
+      "generated_date": "2026-06-19",
+      "added": 1781871200,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "claude-brief-editorial45-infographic",
+      "title": "Claude Brief Editorial45 Infographic",
+      "channel": "tiktok",
+      "type": "single",
+      "slides": 1,
+      "dims": "2160x2700 (1080x1350 @2x)",
+      "preview": "content/claude-brief-editorial45-infographic.png",
+      "download": "content/claude-brief-editorial45-infographic.png",
+      "files": [
+        "content/claude-brief-editorial45-infographic.png"
+      ],
+      "variants": [
+        ""
+      ],
+      "caption": "You write Claude prompts. Operators write it a brief.\n\nNow I never send a one-line ask. I send four lines, every time.\n\nA brief is just task, context, standard and outcome:\n\nTask is the one job, scoped, no \"and also\". Context is who I am and who it is for. Standard is the length, the tone, the format and the hard rules. Outcome is what good actually looks like, the finish line. Same model, same minute, but the draft comes back usable instead of generic, because I stopped making Claude guess the four things it was missing.\n\nThis is how operators run Claude on the Ultron platform: brief it once, reuse it forever.\n\nComment BRIEF and I will send you my 4-part brief template.\n\n#claude #ai #founder #startup #buildinpublic",
+      "alt": "Light editorial infographic on a cream background with coral accents and a Claude sunburst. The hook reads you write Claude prompts. Below it, a dark composer mockup shows a weak line, write me a cold email, struck through and labeled the prompt, then the word becomes, then four labeled rows: task, a cold email to a SaaS founder; context, an AI GTM tool for 2 to 50 person teams; standard, under 80 words, one ask, my voice; outcome, a reply that books a call, not a sale. Three cards below read first-try usable, on your standard and knows when to stop. Closes on a Comment BRIEF call to action and the Ultron logo.",
+      "first_comment": "The whole trick: a prompt makes Claude guess, a brief tells it. Task, context, standard, outcome. Four lines and the first draft is usable instead of generic.\n\nComment BRIEF and I will send you my exact 4-part brief template. More at 51ultron.com",
+      "generated_date": "2026-06-19",
+      "added": 1781870846,
       "source": "generated",
       "status": "ready",
       "posted": false,
