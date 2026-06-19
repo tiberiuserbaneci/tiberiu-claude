@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-06-19T10:18:20",
+  "generated_at": "2026-06-19T10:37:42",
   "counts": {
-    "total": 110,
-    "generated": 66,
+    "total": 111,
+    "generated": 67,
     "reference": 44,
     "crosspost": 0
   },
@@ -1040,11 +1040,11 @@
       "variants": [
         ""
       ],
-      "caption": "Your AI tool sends your prompt to a model and prays. That is the entire architecture.\n\nUltron runs every task through one engine, the same six steps every single time.\n\nI did not want clever, I wanted reliable. A founder cannot run a company on a system that behaves differently every run, forgets what it knew yesterday, or quietly calls a tool it should not. So every skill, from research to outbound to shipping code, goes through one execution path with the same guarantees.\n\nHere is what happens the moment you hit send:\n\n- - -\n\n\u2192 It takes a slot. At most a couple of tasks run at once, so it never trips the model rate limits under load.\n\n\u2192 It picks the model tier. Fast, standard or deep, matched to how hard the job is, so you are not paying top-tier prices for a lookup.\n\n\u2192 It loads your context first. Your profile and past memories are pulled in before it acts, not bolted on after.\n\n\u2192 It scopes the tools. Only the tools the skill is allowed and the ones you actually connected. Nothing else is even on the table.\n\n\u2192 It runs the loop. It calls tools in parallel, you approve, and it repeats until the job is genuinely done, then it stops.\n\n\u2192 It saves and logs. Every run writes a memory and logs every step, so the next task starts smarter and you can see exactly what it did.\n\n- - -\n\nThe lesson took me a while. Reliability does not come from a smarter model. It comes from the engine around the model: the limits, the context, the allow-list, the loop, the log. Swap the model tomorrow and the guarantees still hold.\n\nThat is the difference between a demo and something you run your company on.\n\n- - -\n\nFollow for one AI system for founders every day.\n\nComment ENGINE and I will send you the full execution lifecycle we built.",
+      "caption": "Your AI tool sends your prompt to a model and prays. That is the entire architecture.\n\nUltron runs every task through one engine, the same six steps every single time.\n\nMost AI demos look like magic for thirty seconds, then fall apart the moment you actually depend on them. The model is the easy part. The hard part is everything around it.\n\nI did not want clever, I wanted reliable. A founder cannot run a company on a system that behaves differently every run, forgets what it knew yesterday, or quietly calls a tool it should not. So every skill, from research to outbound to shipping code, goes through one execution path with the same guarantees.\n\nHere is what happens the moment you hit send:\n\n- - -\n\n\u2192 It takes a slot. At most a couple of tasks run at once, so it never trips the model rate limits under load.\n\n\u2192 It picks the model tier. Fast, standard or deep, matched to how hard the job is, so you are not paying top-tier prices for a lookup.\n\n\u2192 It loads your context first. Your profile and past memories are pulled in before it acts, not bolted on after.\n\n\u2192 It scopes the tools. Only the tools the skill is allowed and the ones you actually connected. Nothing else is even on the table.\n\n\u2192 It runs the loop. It calls tools in parallel, you approve, and it repeats until the job is genuinely done, then it stops.\n\n\u2192 It saves and logs. Every run writes a memory and logs every step, so the next task starts smarter and you can see exactly what it did.\n\n- - -\n\nThe lesson took me a while. Reliability does not come from a smarter model. It comes from the engine around the model: the limits, the context, the allow-list, the loop, the log. Swap the model tomorrow and the guarantees still hold.\n\nA demo impresses you once. An engine you can trust runs in the background every day while you go do something else. That is the whole difference.\n\n- - -\n\nFollow for one AI system for founders every day.\n\nComment ENGINE and I will send you the full execution lifecycle we built.",
       "alt": "Dark editorial infographic on a slate background with book-orange accents. The headline reads most AI throws your prompt at a model and hopes, Ultron runs every task through one engine. A stat strip shows 6 steps, 2 running in parallel, 3 model tiers and 100 percent of steps logged. The dominant block is a six-stage numbered pipeline, each stage a card with a large number, a title, a plain line and a mono tag: take a slot, max 2 parallel; pick the model, 3 tiers; load your context, profile plus memory; scope the tools, allow-list; run the loop, parallel tools; save and log, auto-memory. Closes with a Comment ENGINE call to action and the Ultron logo.",
       "first_comment": "Same six steps for every skill: slot, model, context, tools, loop, log. The model can change tomorrow, the guarantees do not.\n\nComment ENGINE and I will send you the full lifecycle. It also lives here: app.51ultron.com/docs/architecture",
       "generated_date": "2026-06-19",
-      "added": 1781864004,
+      "added": 1781864437,
       "source": "generated",
       "status": "ready",
       "posted": false,
@@ -1415,6 +1415,35 @@
       "crossposts": []
     },
     {
+      "id": "claude-projects-editorial45-carousel",
+      "title": "Claude Projects Editorial45",
+      "channel": "tiktok",
+      "type": "carousel",
+      "slides": 5,
+      "dims": "2160x2700 (1080x1350 @2x)",
+      "preview": "content/claude-projects-editorial45-carousel-01.png",
+      "download": "content/portal/zips/claude-projects-editorial45-carousel.zip",
+      "files": [
+        "content/claude-projects-editorial45-carousel-01.png",
+        "content/claude-projects-editorial45-carousel-02.png",
+        "content/claude-projects-editorial45-carousel-03.png",
+        "content/claude-projects-editorial45-carousel-04.png",
+        "content/claude-projects-editorial45-carousel-05.png"
+      ],
+      "variants": [],
+      "caption": "You explain your business to Claude in every new chat. You should never type it twice.\n\nA Project is a workspace that remembers everything.\n\nYou set it once: custom instructions for who you are and how you work, plus knowledge files like your brand voice, your ICP and your pricing. From then on, every chat in that Project already has the context.\n\nSo you stop briefing and start working. Type \"write a cold email\" and it already knows the audience, the offer and the tone, because it is all in the Project. Same for posts, pricing pages, competitor teardowns. No more pasting the same paragraph into a fresh chat every morning.\n\nThis is how you run Claude like an operator, not a goldfish.\n\nComment PROJECTS and I will send you my Project setup template.\n\n#claude #ai #founder #startup #buildinpublic",
+      "alt": "Dark editorial carousel on a slate background with book-orange accents. The cover reads re-explaining your business to Claude, you should never type it twice, over a Claude Project mockup titled GTM Co-pilot showing custom instructions, knowledge files and recent chats. The next slides show the full Project panel, three things to put in it (your rules, your docs, your context), and a before-and-after: a plain chat where Claude asks for context versus the same ask inside the Project where it already knows. Closes on a Comment PROJECTS call to action and the Ultron logo.",
+      "first_comment": "A Project is just custom instructions plus your key files, saved once. After that every chat starts with your full context, so you never paste your ICP or brand voice again.\n\nComment PROJECTS and I will send you my exact Project setup template. More at 51ultron.com",
+      "generated_date": "2026-06-19",
+      "added": 1781865451,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
       "id": "claude-projects-editorial45-infographic",
       "title": "Claude Projects Editorial45 Infographic",
       "channel": "tiktok",
@@ -1429,11 +1458,11 @@
       "variants": [
         ""
       ],
-      "caption": "",
-      "alt": "",
-      "first_comment": "",
+      "caption": "You explain your business to Claude in every new chat. You should never type it twice.\n\nA Project is a workspace that remembers everything.\n\nYou set it once: custom instructions for who you are and how you work, plus knowledge files like your brand voice, your ICP and your pricing. From then on, every chat in that Project already has the context.\n\nSo you stop briefing and start working. Type \"write a cold email\" and it already knows the audience, the offer and the tone, because it is all in the Project. Same for posts, pricing pages, competitor teardowns. No more pasting the same paragraph into a fresh chat every morning.\n\nThis is how you run Claude like an operator, not a goldfish.\n\nComment PROJECTS and I will send you my Project setup template.\n\n#claude #ai #founder #startup #buildinpublic",
+      "alt": "Dark editorial carousel on a slate background with book-orange accents. The cover reads re-explaining your business to Claude, you should never type it twice, over a Claude Project mockup titled GTM Co-pilot showing custom instructions, knowledge files and recent chats. The next slides show the full Project panel, three things to put in it (your rules, your docs, your context), and a before-and-after: a plain chat where Claude asks for context versus the same ask inside the Project where it already knows. Closes on a Comment PROJECTS call to action and the Ultron logo.",
+      "first_comment": "A Project is just custom instructions plus your key files, saved once. After that every chat starts with your full context, so you never paste your ICP or brand voice again.\n\nComment PROJECTS and I will send you my exact Project setup template. More at 51ultron.com",
       "generated_date": "2026-06-19",
-      "added": 1781864209,
+      "added": 1781864300,
       "source": "generated",
       "status": "ready",
       "posted": false,
