@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-06-19T11:57:00",
+  "generated_at": "2026-06-19T12:02:31",
   "counts": {
-    "total": 112,
-    "generated": 68,
+    "total": 113,
+    "generated": 69,
     "reference": 44,
     "crosspost": 0
   },
@@ -1248,6 +1248,35 @@
       "crossposts": []
     },
     {
+      "id": "claude-artifacts-editorial45-carousel",
+      "title": "Claude Artifacts Editorial45",
+      "channel": "tiktok",
+      "type": "carousel",
+      "slides": 5,
+      "dims": "2160x2700 (1080x1350 @2x)",
+      "preview": "content/claude-artifacts-editorial45-carousel-01.png",
+      "download": "content/portal/zips/claude-artifacts-editorial45-carousel.zip",
+      "files": [
+        "content/claude-artifacts-editorial45-carousel-01.png",
+        "content/claude-artifacts-editorial45-carousel-02.png",
+        "content/claude-artifacts-editorial45-carousel-03.png",
+        "content/claude-artifacts-editorial45-carousel-04.png",
+        "content/claude-artifacts-editorial45-carousel-05.png"
+      ],
+      "variants": [],
+      "caption": "You ask Claude for something, then copy the answer into a doc, a builder, a spreadsheet. Stop doing that.\n\nArtifacts build it right next to the chat.\n\nAsk for a doc and it writes it in a panel you can edit. Ask for a calculator, a landing page or a chart and Claude builds the working thing, live, while you watch.\n\nYou change it by just asking, and it updates in place. No more copy, paste, reformat, fix. The output and the workspace are the same window.\n\nThis is Claude as a builder, not a text box.\n\nComment ARTIFACTS and I will send you the prompt I use to spin one up.\n\n#claude #ai #founder #startup #buildinpublic",
+      "alt": "Light editorial infographic on a cream background with coral accents and a Claude sunburst. The hook reads still copy-pasting Claude's work. The centre shows an Artifact mockup, a working ROI calculator Claude built, with rows for monthly leads, close rate and deal size and a highlighted result of 48,000 dollars a month, plus Preview and Code tabs and a Recalculate button. Below, three cards: docs and posts, apps and tools, charts and diagrams. Closes on a Comment ARTIFACTS call to action and the Ultron logo.",
+      "first_comment": "The shift: the answer and the workspace become the same window. You stop exporting Claude's output into another tool and just edit it live, by asking.\n\nComment ARTIFACTS and I will send you the prompt I use to spin one up. More at 51ultron.com",
+      "generated_date": "2026-06-19",
+      "added": 1781870541,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
       "id": "claude-artifacts-editorial45-infographic",
       "title": "Claude Artifacts Editorial45 Infographic",
       "channel": "tiktok",
@@ -1266,7 +1295,7 @@
       "alt": "Light editorial infographic on a cream background with coral accents and a Claude sunburst. The hook reads still copy-pasting Claude's work. The centre shows an Artifact mockup, a working ROI calculator Claude built, with rows for monthly leads, close rate and deal size and a highlighted result of 48,000 dollars a month, plus Preview and Code tabs and a Recalculate button. Below, three cards: docs and posts, apps and tools, charts and diagrams. Closes on a Comment ARTIFACTS call to action and the Ultron logo.",
       "first_comment": "The shift: the answer and the workspace become the same window. You stop exporting Claude's output into another tool and just edit it live, by asking.\n\nComment ARTIFACTS and I will send you the prompt I use to spin one up. More at 51ultron.com",
       "generated_date": "2026-06-19",
-      "added": 1781870100,
+      "added": 1781870220,
       "source": "generated",
       "status": "ready",
       "posted": false,

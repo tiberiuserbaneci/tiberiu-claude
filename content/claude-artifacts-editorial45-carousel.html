@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Claude Artifacts - carousel - TikTok editorial 4:5 1080x1350 (Dark Ultron)</title>
+<style>
+@import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
+/* VIRAL batch-2 #2 carousel - Claude Artifacts. Reframe hook. Dark Ultron. Premium graphic = a dark
+   Artifact mockup (live ROI calculator) + an old-way vs Artifact comparison. chat-bar CTA. 5 slides. */
+:root{--slate:#191919;--slate2:#262625;--win:#1e1e1d;--win2:#151514;--ivory:#FAFAF7;
+--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);
+--rule:rgba(250,250,247,.10);--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--cloud:#919180;
+--book-lo:rgba(204,120,92,.10);--book-bd:rgba(204,120,92,.34);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0c0a09;display:flex;flex-direction:column;align-items:center;gap:34px;padding:30px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.slide{width:1080px;height:1350px;position:relative;overflow:hidden;background:var(--slate);color:var(--ivory);padding:58px 64px 50px;display:flex;flex-direction:column;}
+.slide::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.4px,transparent 1.5px);background-size:34px 34px;}
+.slide::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 56% 24% at 86% 0%,rgba(204,120,92,.18),transparent 60%),radial-gradient(ellipse 50% 20% at 6% 100%,rgba(212,162,127,.09),transparent 60%);}
+.slide>*{position:relative;z-index:2;}
+.spk{width:54px;height:54px;flex-shrink:0;filter:drop-shadow(0 0 16px rgba(204,120,92,.4));}
+.kick{display:flex;align-items:center;gap:14px;flex-shrink:0;}
+.kick .tag{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;letter-spacing:.2em;color:var(--book);border:1px solid var(--book-bd);background:var(--book-lo);padding:8px 14px;border-radius:8px;}
+.kick .pg{margin-left:auto;font-family:'DM Mono',monospace;font-size:15px;letter-spacing:.18em;color:var(--ink46);}
+.h2{font-size:56px;font-weight:900;letter-spacing:-2.3px;line-height:.97;color:var(--ivory);margin-top:22px;flex-shrink:0;}
+.h2 em{font-style:normal;color:var(--book);}
+.lede{font-size:23px;font-weight:500;color:var(--ink70);line-height:1.3;margin-top:13px;flex-shrink:0;}.lede b{color:var(--ivory);font-weight:700;}
+/* artifact mockup */
+.art{margin-top:22px;border-radius:18px;overflow:hidden;background:var(--win);box-shadow:0 30px 70px rgba(0,0,0,.5);display:flex;flex-direction:column;flex:1;min-height:0;border:1px solid var(--ink14);}
+.art-hd{flex-shrink:0;display:flex;align-items:center;gap:12px;padding:16px 22px;background:var(--win2);border-bottom:1px solid var(--rule);}
+.art-hd .cm{width:28px;height:28px;}.art-hd b{font-size:20px;font-weight:800;color:var(--ivory);}
+.art-hd .tabs{margin-left:auto;display:flex;gap:8px;}
+.art-hd .tab{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:7px 13px;border-radius:8px;color:var(--ink46);}
+.art-hd .tab.on{color:#1a0f0a;background:var(--book);font-weight:600;}
+.art-bd{flex:1;min-height:0;padding:24px 26px;display:flex;flex-direction:column;justify-content:center;gap:14px;}
+.art-bd .at{font-family:'DM Mono',monospace;font-size:17px;color:var(--ink46);}.art-bd .at b{color:var(--book);}
+.calc{display:flex;flex-direction:column;gap:12px;}
+.crow{display:flex;align-items:center;justify-content:space-between;background:var(--slate2);border:1px solid var(--rule);border-radius:11px;padding:16px 20px;}
+.crow .ck{font-size:21px;font-weight:500;color:var(--ink70);}
+.crow .cv{font-family:'DM Mono',monospace;font-size:22px;font-weight:500;color:var(--ivory);}
+.cres{display:flex;align-items:center;justify-content:space-between;background:rgba(204,120,92,.12);border:1px solid var(--book-bd);border-radius:12px;padding:20px 22px;}
+.cres .rl{font-family:'DM Mono',monospace;font-size:16px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--book);}
+.cres .rv{font-size:46px;font-weight:900;letter-spacing:-1.5px;color:var(--ivory);}
+.cbtn{align-self:flex-start;font-family:'DM Mono',monospace;font-size:16px;font-weight:600;color:#1a0f0a;background:var(--book);border-radius:9px;padding:12px 20px;}
+/* build cards */
+.builds{flex:1;display:flex;flex-direction:column;gap:14px;margin-top:22px;min-height:0;}
+.bcard{flex:1;display:flex;align-items:center;gap:22px;border:1px solid var(--rule);border-left:5px solid var(--book);border-radius:16px;background:var(--slate2);padding:0 28px;min-height:0;}
+.bcard.k{border-left-color:var(--kraft);}.bcard.d{border-left-color:var(--book-d);}
+.bcard .ic{width:62px;height:62px;border-radius:16px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--book-lo);border:1px solid var(--book-bd);}
+.bcard.k .ic{background:rgba(212,162,127,.1);border-color:rgba(212,162,127,.3);}.bcard.d .ic{border-color:var(--book-d);}
+.bcard .ic svg{width:30px;height:30px;stroke:var(--book);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.bcard.k .ic svg{stroke:var(--kraft);}.bcard.d .ic svg{stroke:var(--book-d);}
+.bcard .vt{flex:1;min-width:0;}
+.bcard .vn{font-size:27px;font-weight:800;color:var(--ivory);letter-spacing:-.4px;}
+.bcard .vd{font-size:18px;font-weight:500;color:var(--ink70);margin-top:5px;line-height:1.2;}
+.bcard .vex{flex-shrink:0;font-family:'DM Mono',monospace;font-size:15px;color:var(--ink46);}
+/* old-way list vs artifact punchline */
+.olist{flex:1;display:flex;flex-direction:column;gap:11px;margin-top:22px;min-height:0;}
+.orow{flex:1;display:flex;align-items:center;gap:20px;border:1px solid var(--rule);border-radius:14px;background:var(--slate2);padding:0 26px;min-height:0;}
+.orow .on{width:48px;height:48px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:rgba(145,145,128,.12);border:1px solid rgba(145,145,128,.3);font-family:'DM Mono',monospace;font-weight:500;font-size:20px;color:var(--cloud);}
+.orow .on svg{width:24px;height:24px;stroke:var(--book);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.orow .ot{flex:1;font-size:26px;font-weight:700;color:var(--ink46);letter-spacing:-.3px;}
+.orow.good{border-left:5px solid var(--book);background:rgba(204,120,92,.1);}
+.orow.good .on{background:var(--book-lo);border-color:var(--book-bd);}
+.orow.good .ot{color:var(--ivory);}.orow.good .ot b{color:var(--book);font-weight:800;}
+/* cover */
+.cv-eyb{font-family:'DM Mono',monospace;font-size:17px;font-weight:500;letter-spacing:.24em;color:var(--kraft);flex-shrink:0;margin-top:20px;}
+.cv-h{font-size:74px;font-weight:900;letter-spacing:-3px;line-height:.92;color:var(--ivory);margin-top:14px;flex-shrink:0;}
+.cv-h em{font-style:normal;color:var(--book);}
+.cv-sub{font-size:25px;font-weight:500;color:var(--ink70);line-height:1.3;margin-top:16px;flex-shrink:0;}.cv-sub b{color:var(--ivory);font-weight:700;}
+.swipe{margin-top:auto;display:flex;align-items:center;gap:11px;font-family:'DM Mono',monospace;font-size:16px;letter-spacing:.16em;text-transform:uppercase;color:var(--book);flex-shrink:0;padding-top:18px;}
+.swipe svg{width:23px;height:23px;stroke:var(--book);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ctawrap{flex-shrink:0;margin-top:auto;padding-top:20px;}
+.savel{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--kraft);margin-bottom:12px;padding-left:4px;}
+.cta{display:flex;align-items:center;gap:16px;border:1.5px solid var(--book);border-radius:20px;background:rgba(204,120,92,.08);padding:15px 15px 15px 28px;box-shadow:0 0 44px rgba(204,120,92,.2);}
+.cta .ph{flex:1;font-size:26px;font-weight:600;color:var(--ink70);line-height:1.2;}.cta .ph b{color:var(--book);font-weight:900;}
+.cta .send{width:66px;height:66px;border-radius:50%;background:var(--book);flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(204,120,92,.45);}
+.cta .send svg{width:30px;height:30px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ftr{margin-top:auto;padding-top:20px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-shrink:0;}
+.ftr-l{display:flex;align-items:center;gap:13px;min-width:0;}.ftr-l img{width:42px;height:42px;border-radius:50%;flex-shrink:0;object-fit:cover;}
+.ftr-tx{font-family:'DM Mono',monospace;font-size:14px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--ink70);white-space:nowrap;}.ftr-tx b{color:var(--ivory);font-weight:500;}
+.ftr-url{font-size:24px;font-weight:900;letter-spacing:-.5px;color:var(--ivory);flex-shrink:0;}.ftr-url em{font-style:normal;color:var(--book);}
+</style>
+</head>
+<body>
+
+<!-- S1 COVER -->
+<div class="slide">
+  <div class="kick"><svg class="spk" viewBox="0 0 1200 1200"><path fill="#CC785C" d="M 233.96 800.21 L 468.64 668.54 L 472.59 657.10 L 468.64 650.74 L 457.21 650.74 L 417.99 648.32 L 283.89 644.70 L 167.60 639.87 L 54.93 633.83 L 26.58 627.79 L 0 592.75 L 2.74 575.28 L 26.58 559.25 L 60.72 562.23 L 136.19 567.38 L 249.42 575.19 L 331.57 580.03 L 453.26 592.67 L 472.59 592.67 L 475.33 584.86 L 468.72 580.03 L 463.57 575.19 L 346.39 495.79 L 219.54 411.87 L 153.10 363.54 L 117.18 339.06 L 99.06 316.11 L 91.25 266.01 L 123.87 230.09 L 167.68 233.07 L 178.87 236.05 L 223.25 270.20 L 318.04 343.57 L 441.83 434.74 L 459.95 449.80 L 467.19 444.64 L 468.08 441.02 L 459.95 427.41 L 392.62 305.72 L 320.78 181.93 L 288.81 130.63 L 280.35 99.87 C 277.37 87.22 275.19 76.59 275.19 63.62 L 312.32 13.21 L 332.86 6.60 L 382.39 13.21 L 403.25 31.33 L 434.01 101.72 L 483.87 212.54 L 561.18 363.22 L 583.81 407.92 L 595.89 449.32 L 600.40 461.96 L 608.21 461.96 L 608.21 454.71 L 614.58 369.83 L 626.34 265.61 L 637.77 131.52 L 641.72 93.75 L 660.40 48.48 L 697.53 24.00 L 726.52 37.85 L 750.36 72 L 747.06 94.07 L 732.89 186.20 L 705.10 330.52 L 686.98 427.17 L 697.53 427.17 L 709.61 415.09 L 758.50 350.17 L 840.64 247.49 L 876.89 206.74 L 919.17 161.72 L 946.31 140.30 L 997.61 140.30 L 1035.38 196.43 L 1018.47 254.42 L 965.64 321.42 L 921.83 378.20 L 859.01 462.77 L 819.79 530.42 L 823.41 535.81 L 832.75 534.93 L 974.66 504.72 L 1051.33 490.87 L 1142.82 475.17 L 1184.21 494.50 L 1188.72 514.15 L 1172.46 554.34 L 1074.60 578.50 L 959.84 601.45 L 788.94 641.88 L 786.85 643.41 L 789.26 646.39 L 866.26 653.64 L 899.19 655.41 L 979.81 655.41 L 1129.93 666.60 L 1169.15 692.54 L 1192.67 724.27 L 1188.72 748.43 L 1128.32 779.19 L 1046.82 759.87 L 856.59 714.60 L 791.36 698.34 L 782.34 698.34 L 782.34 703.73 L 836.70 756.89 L 936.32 846.85 L 1061.07 962.82 L 1067.44 991.49 L 1051.41 1014.12 L 1034.50 1011.70 L 924.89 929.23 L 882.60 892.11 L 786.85 811.49 L 780.48 811.49 L 780.48 819.95 L 802.55 852.24 L 919.09 1027.41 L 925.13 1081.13 L 916.67 1098.60 L 886.47 1109.15 L 853.29 1103.11 L 785.07 1007.36 L 714.68 899.52 L 657.91 802.87 L 650.98 806.82 L 617.48 1167.70 L 601.77 1186.15 L 565.53 1200 L 535.33 1177.05 L 519.30 1139.92 L 535.33 1066.55 L 554.66 970.79 L 570.36 894.68 L 584.54 800.13 L 592.99 768.72 L 592.43 766.63 L 585.50 767.52 L 514.23 865.37 L 405.83 1011.87 L 320.05 1103.68 L 299.52 1111.81 L 263.92 1093.37 L 267.22 1060.43 L 287.11 1031.11 L 405.83 880.11 L 477.42 786.52 L 523.65 732.48 L 523.33 724.67 L 520.59 724.67 L 205.29 929.40 L 149.15 936.64 L 124.99 914.01 L 127.97 876.89 L 139.41 864.81 L 234.20 799.57 Z"/></svg><span class="pg">01 / 05</span></div>
+  <div class="cv-eyb">stop copy-pasting</div>
+  <div class="cv-h">Still copy-pasting<br>Claude's <em>work</em>?</div>
+  <div class="cv-sub">You paste its output into a doc, a builder, a sheet. <b>It can just build the thing.</b></div>
+  <div class="art">
+    <div class="art-hd"><svg class="cm" viewBox="0 0 1200 1200"><path fill="#CC785C" d="M 233.96 800.21 L 468.64 668.54 L 468.64 650.74 L 417.99 648.32 L 167.60 639.87 L 26.58 627.79 L 0 592.75 L 26.58 559.25 L 136.19 567.38 L 331.57 580.03 L 472.59 592.67 L 475.33 584.86 L 463.57 575.19 L 219.54 411.87 L 117.18 339.06 L 91.25 266.01 L 123.87 230.09 L 178.87 236.05 L 318.04 343.57 L 459.95 449.80 L 468.08 441.02 L 392.62 305.72 L 288.81 130.63 L 275.19 63.62 L 312.32 13.21 L 382.39 13.21 L 403.25 31.33 L 483.87 212.54 L 583.81 407.92 L 600.40 461.96 L 608.21 454.71 L 626.34 265.61 L 641.72 93.75 L 697.53 24.00 L 750.36 72 L 732.89 186.20 L 686.98 427.17 L 709.61 415.09 L 840.64 247.49 L 946.31 140.30 L 1035.38 196.43 L 965.64 321.42 L 819.79 530.42 L 832.75 534.93 L 1051.33 490.87 L 1184.21 494.50 L 1172.46 554.34 L 959.84 601.45 L 786.85 643.41 L 789.26 646.39 L 979.81 655.41 L 1169.15 692.54 L 1188.72 748.43 L 1046.82 759.87 L 791.36 698.34 L 782.34 703.73 L 936.32 846.85 L 1067.44 991.49 L 1034.50 1011.70 L 882.60 892.11 L 780.48 819.95 L 919.09 1027.41 L 916.67 1098.60 L 853.29 1103.11 L 714.68 899.52 L 650.98 806.82 L 601.77 1186.15 L 535.33 1177.05 L 535.33 1066.55 L 570.36 894.68 L 592.99 768.72 L 585.50 767.52 L 405.83 1011.87 L 299.52 1111.81 L 267.22 1060.43 L 405.83 880.11 L 523.65 732.48 L 520.59 724.67 L 205.29 929.40 L 124.99 914.01 L 139.41 864.81 Z"/></svg><b>ROI calculator</b><span class="tabs"><span class="tab on">Preview</span><span class="tab">Code</span></span></div>
+    <div class="art-bd">
+      <div class="at">built from: <b>"make me an ROI calculator"</b></div>
+      <div class="calc">
+        <div class="crow"><span class="ck">Monthly leads</span><span class="cv">200</span></div>
+        <div class="crow"><span class="ck">Close rate</span><span class="cv">12%</span></div>
+        <div class="cres"><span class="rl">Revenue / mo</span><span class="rv">$48,000</span></div>
+        <span class="cbtn">Recalculate</span>
+      </div>
+    </div>
+  </div>
+  <div class="swipe">What you can build<svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+</div>
+
+<!-- S2 the artifact full -->
+<div class="slide">
+  <div class="kick"><span class="tag">ONE LINE, A LIVE TOOL</span><span class="pg">02 / 05</span></div>
+  <div class="h2">It builds it <em>beside the chat</em></div>
+  <div class="art">
+    <div class="art-hd"><svg class="cm" viewBox="0 0 1200 1200"><path fill="#CC785C" d="M 233.96 800.21 L 468.64 668.54 L 468.64 650.74 L 417.99 648.32 L 167.60 639.87 L 26.58 627.79 L 0 592.75 L 26.58 559.25 L 136.19 567.38 L 331.57 580.03 L 472.59 592.67 L 475.33 584.86 L 463.57 575.19 L 219.54 411.87 L 117.18 339.06 L 91.25 266.01 L 123.87 230.09 L 178.87 236.05 L 318.04 343.57 L 459.95 449.80 L 468.08 441.02 L 392.62 305.72 L 288.81 130.63 L 275.19 63.62 L 312.32 13.21 L 382.39 13.21 L 403.25 31.33 L 483.87 212.54 L 583.81 407.92 L 600.40 461.96 L 608.21 454.71 L 626.34 265.61 L 641.72 93.75 L 697.53 24.00 L 750.36 72 L 732.89 186.20 L 686.98 427.17 L 709.61 415.09 L 840.64 247.49 L 946.31 140.30 L 1035.38 196.43 L 965.64 321.42 L 819.79 530.42 L 832.75 534.93 L 1051.33 490.87 L 1184.21 494.50 L 1172.46 554.34 L 959.84 601.45 L 786.85 643.41 L 789.26 646.39 L 979.81 655.41 L 1169.15 692.54 L 1188.72 748.43 L 1046.82 759.87 L 791.36 698.34 L 782.34 703.73 L 936.32 846.85 L 1067.44 991.49 L 1034.50 1011.70 L 882.60 892.11 L 780.48 819.95 L 919.09 1027.41 L 916.67 1098.60 L 853.29 1103.11 L 714.68 899.52 L 650.98 806.82 L 601.77 1186.15 L 535.33 1177.05 L 535.33 1066.55 L 570.36 894.68 L 592.99 768.72 L 585.50 767.52 L 405.83 1011.87 L 299.52 1111.81 L 267.22 1060.43 L 405.83 880.11 L 523.65 732.48 L 520.59 724.67 L 205.29 929.40 L 124.99 914.01 L 139.41 864.81 Z"/></svg><b>ROI calculator</b><span class="tabs"><span class="tab on">Preview</span><span class="tab">Code</span></span></div>
+    <div class="art-bd">
+      <div class="at">built from: <b>"make me an ROI calculator for my sales"</b></div>
+      <div class="calc">
+        <div class="crow"><span class="ck">Monthly leads</span><span class="cv">200</span></div>
+        <div class="crow"><span class="ck">Close rate</span><span class="cv">12%</span></div>
+        <div class="crow"><span class="ck">Avg deal size</span><span class="cv">$2,000</span></div>
+        <div class="cres"><span class="rl">Revenue / mo</span><span class="rv">$48,000</span></div>
+        <span class="cbtn">Recalculate</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S3 what you can build -->
+<div class="slide">
+  <div class="kick"><span class="tag">WHAT YOU CAN BUILD</span><span class="pg">03 / 05</span></div>
+  <div class="h2">Not just text. <em>Things.</em></div>
+  <div class="builds">
+    <div class="bcard"><span class="ic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span><div class="vt"><div class="vn">Docs & posts</div><div class="vd">drafts you edit live, in your voice</div></div><span class="vex">document</span></div>
+    <div class="bcard k"><span class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></span><div class="vt"><div class="vn">Apps & tools</div><div class="vd">calculators, quizzes, mini sites</div></div><span class="vex">interactive</span></div>
+    <div class="bcard d"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span><div class="vt"><div class="vn">Charts & diagrams</div><div class="vd">data, funnels, flows, timelines</div></div><span class="vex">visual</span></div>
+  </div>
+  <div class="swipe">The difference<svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+</div>
+
+<!-- S4 compare -->
+<div class="slide">
+  <div class="kick"><span class="tag">THE WORKFLOW</span><span class="pg">04 / 05</span></div>
+  <div class="h2">Five steps, or <em>zero</em></div>
+  <div class="olist">
+    <div class="orow"><span class="on">1</span><span class="ot">Ask Claude for it</span></div>
+    <div class="orow"><span class="on">2</span><span class="ot">Copy the output</span></div>
+    <div class="orow"><span class="on">3</span><span class="ot">Open a doc or a builder</span></div>
+    <div class="orow"><span class="on">4</span><span class="ot">Paste it in, reformat</span></div>
+    <div class="orow"><span class="on">5</span><span class="ot">Fix what broke</span></div>
+    <div class="orow good"><span class="on"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span><span class="ot">Artifacts: <b>it is already built.</b> Skip all 5.</span></div>
+  </div>
+</div>
+
+<!-- S5 CTA -->
+<div class="slide">
+  <div class="kick"><span class="tag">BUILD ONE TODAY</span><span class="pg">05 / 05</span></div>
+  <div class="h2">Stop describing.<br>Start <em>building</em>.</div>
+  <div class="builds">
+    <div class="bcard"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M5 10l7-7 7 7"/></svg></span><div class="vt"><div class="vn">Ask for the thing</div><div class="vd">"build me a..." not "tell me about..."</div></div></div>
+    <div class="bcard k"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span><div class="vt"><div class="vn">Refine by asking</div><div class="vd">"make it shorter", "add a column"</div></div></div>
+    <div class="bcard d"><span class="ic"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg></span><div class="vt"><div class="vn">Ship it</div><div class="vd">copy, publish or download</div></div></div>
+  </div>
+  <div class="ctawrap">
+    <div class="savel">Save this, then</div>
+    <div class="cta"><span class="ph">Comment <b>ARTIFACTS</b> for my build-it prompt</span><span class="send"><svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div>
+  </div>
+  <div class="ftr">
+    <div class="ftr-l"><img src="__LOGO_URI__" alt="Ultron"><span class="ftr-tx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span></div>
+    <div class="ftr-url">51ultron<em>.</em>com</div>
+  </div>
+</div>
+
+</body>
+</html>
