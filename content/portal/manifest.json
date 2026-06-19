@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-06-19T10:37:42",
+  "generated_at": "2026-06-19T11:57:00",
   "counts": {
-    "total": 111,
-    "generated": 67,
+    "total": 112,
+    "generated": 68,
     "reference": 44,
     "crosspost": 0
   },
@@ -1248,6 +1248,33 @@
       "crossposts": []
     },
     {
+      "id": "claude-artifacts-editorial45-infographic",
+      "title": "Claude Artifacts Editorial45 Infographic",
+      "channel": "tiktok",
+      "type": "single",
+      "slides": 1,
+      "dims": "2160x2700 (1080x1350 @2x)",
+      "preview": "content/claude-artifacts-editorial45-infographic.png",
+      "download": "content/claude-artifacts-editorial45-infographic.png",
+      "files": [
+        "content/claude-artifacts-editorial45-infographic.png"
+      ],
+      "variants": [
+        ""
+      ],
+      "caption": "You ask Claude for something, then copy the answer into a doc, a builder, a spreadsheet. Stop doing that.\n\nArtifacts build it right next to the chat.\n\nAsk for a doc and it writes it in a panel you can edit. Ask for a calculator, a landing page or a chart and Claude builds the working thing, live, while you watch.\n\nYou change it by just asking, and it updates in place. No more copy, paste, reformat, fix. The output and the workspace are the same window.\n\nThis is Claude as a builder, not a text box.\n\nComment ARTIFACTS and I will send you the prompt I use to spin one up.\n\n#claude #ai #founder #startup #buildinpublic",
+      "alt": "Light editorial infographic on a cream background with coral accents and a Claude sunburst. The hook reads still copy-pasting Claude's work. The centre shows an Artifact mockup, a working ROI calculator Claude built, with rows for monthly leads, close rate and deal size and a highlighted result of 48,000 dollars a month, plus Preview and Code tabs and a Recalculate button. Below, three cards: docs and posts, apps and tools, charts and diagrams. Closes on a Comment ARTIFACTS call to action and the Ultron logo.",
+      "first_comment": "The shift: the answer and the workspace become the same window. You stop exporting Claude's output into another tool and just edit it live, by asking.\n\nComment ARTIFACTS and I will send you the prompt I use to spin one up. More at 51ultron.com",
+      "generated_date": "2026-06-19",
+      "added": 1781870100,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
       "id": "claude-code-start-editorial45-carousel",
       "title": "Claude Code Start Editorial45",
       "channel": "tiktok",
@@ -1435,7 +1462,7 @@
       "alt": "Dark editorial carousel on a slate background with book-orange accents. The cover reads re-explaining your business to Claude, you should never type it twice, over a Claude Project mockup titled GTM Co-pilot showing custom instructions, knowledge files and recent chats. The next slides show the full Project panel, three things to put in it (your rules, your docs, your context), and a before-and-after: a plain chat where Claude asks for context versus the same ask inside the Project where it already knows. Closes on a Comment PROJECTS call to action and the Ultron logo.",
       "first_comment": "A Project is just custom instructions plus your key files, saved once. After that every chat starts with your full context, so you never paste your ICP or brand voice again.\n\nComment PROJECTS and I will send you my exact Project setup template. More at 51ultron.com",
       "generated_date": "2026-06-19",
-      "added": 1781865451,
+      "added": 1781865463,
       "source": "generated",
       "status": "ready",
       "posted": false,
