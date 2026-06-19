@@ -9,7 +9,7 @@
    6-step engine. Dominant = a numbered pipeline (distinct from docs-12's agent roster). Dark Ultron. */
 :root{--slate:#191919;--slate2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);
 --ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);
---book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--cloud:#919180;}
+--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--deep:#A93914;--cloud:#919180;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
 .frame{width:1080px;height:1450px;background:var(--slate);padding:34px 44px 22px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;}
@@ -32,7 +32,7 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 .pipe{flex:1;min-height:0;margin-top:15px;display:flex;flex-direction:column;gap:9px;}
 .stage{position:relative;flex:1;display:flex;align-items:center;gap:20px;border:1px solid var(--rule);border-radius:14px;background:var(--slate2);padding:0 22px 0 0;overflow:hidden;min-height:0;}
 .stage .snum{align-self:stretch;width:80px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:34px;letter-spacing:-1px;color:var(--ivory);background:var(--book-d);}
-.stage.k .snum{background:var(--book-d);}.stage.d .snum{background:var(--book-d);color:var(--ivory);}
+.stage.k .snum{background:var(--kraft);color:var(--slate);}.stage.d .snum{background:var(--deep);color:var(--ivory);}
 .stage .smid{flex:1;min-width:0;}
 .stage .st{font-size:25px;font-weight:800;color:var(--ivory);letter-spacing:-.4px;line-height:1.02;}
 .stage .sv{font-size:16.5px;font-weight:500;color:var(--ink70);margin-top:5px;line-height:1.2;}
