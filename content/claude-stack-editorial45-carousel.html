@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Claude stack/MCP - carousel - TikTok editorial 4:5 1080x1350 (Dark Ultron)</title>
+<style>
+@import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
+/* VIRAL batch-2 #5 carousel - MCP / connect your stack. Reframe hook. Dark Ultron. Premium graphic =
+   a connected-stack mockup + tool-capability rows + a timestamped action log. Founder-facing, no code. 5 slides. */
+:root{--slate:#191919;--slate2:#262625;--win:#1e1e1d;--win2:#151514;--ivory:#FAFAF7;
+--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);
+--rule:rgba(250,250,247,.10);--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--cloud:#919180;
+--book-lo:rgba(204,120,92,.10);--book-bd:rgba(204,120,92,.34);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0c0a09;display:flex;flex-direction:column;align-items:center;gap:34px;padding:30px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.slide{width:1080px;height:1350px;position:relative;overflow:hidden;background:var(--slate);color:var(--ivory);padding:58px 64px 50px;display:flex;flex-direction:column;}
+.slide::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.4px,transparent 1.5px);background-size:34px 34px;}
+.slide::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 56% 24% at 86% 0%,rgba(204,120,92,.18),transparent 60%),radial-gradient(ellipse 50% 20% at 6% 100%,rgba(212,162,127,.09),transparent 60%);}
+.slide>*{position:relative;z-index:2;}
+.spk{width:54px;height:54px;flex-shrink:0;filter:drop-shadow(0 0 16px rgba(204,120,92,.4));}
+.kick{display:flex;align-items:center;gap:14px;flex-shrink:0;}
+.kick .tag{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;letter-spacing:.2em;color:var(--book);border:1px solid var(--book-bd);background:var(--book-lo);padding:8px 14px;border-radius:8px;}
+.kick .pg{margin-left:auto;font-family:'DM Mono',monospace;font-size:15px;letter-spacing:.18em;color:var(--ink46);}
+.h2{font-size:56px;font-weight:900;letter-spacing:-2.3px;line-height:.97;color:var(--ivory);margin-top:22px;flex-shrink:0;}
+.h2 em{font-style:normal;color:var(--book);}
+.lede{font-size:23px;font-weight:500;color:var(--ink70);line-height:1.3;margin-top:13px;flex-shrink:0;}.lede b{color:var(--ivory);font-weight:700;}
+/* connected-stack mockup */
+.stack{margin-top:22px;border-radius:18px;overflow:hidden;background:var(--win);box-shadow:0 30px 70px rgba(0,0,0,.5);display:flex;flex-direction:column;flex:1;min-height:0;border:1px solid var(--ink14);}
+.stackhd{flex-shrink:0;display:flex;align-items:center;gap:12px;padding:16px 22px;background:var(--win2);border-bottom:1px solid var(--rule);}
+.stackhd .cm{width:27px;height:27px;}.stackhd b{font-size:20px;font-weight:800;color:var(--ivory);}
+.stackhd .sbadge{margin-left:auto;font-family:'DM Mono',monospace;font-size:13px;font-weight:600;letter-spacing:.08em;color:#1a0f0a;background:var(--book);padding:6px 13px;border-radius:7px;}
+.stack-bd{flex:1;min-height:0;padding:20px 22px;display:flex;flex-direction:column;gap:13px;}
+.tools{flex-shrink:0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.tool{display:flex;align-items:center;gap:12px;background:var(--slate2);border:1px solid var(--rule);border-radius:12px;padding:14px 16px;}
+.tool .tic{width:40px;height:40px;border-radius:11px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--book-lo);border:1px solid var(--book-bd);}
+.tool .tic svg{width:22px;height:22px;stroke:var(--book);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.tool .tn{flex:1;min-width:0;font-size:19px;font-weight:700;color:var(--ivory);letter-spacing:-.3px;}
+.tool .tdot{width:10px;height:10px;border-radius:50%;background:var(--book);flex-shrink:0;box-shadow:0 0 10px rgba(204,120,92,.9);}
+.acts{flex:1;display:flex;flex-direction:column;gap:11px;min-height:0;}
+.act{flex:1;display:flex;align-items:center;gap:15px;background:rgba(204,120,92,.1);border:1px solid var(--book-bd);border-radius:12px;padding:0 20px;min-height:0;}
+.act .ac{width:34px;height:34px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:rgba(204,120,92,.2);border:1px solid var(--book-bd);}
+.act .ac svg{width:19px;height:19px;stroke:var(--book);stroke-width:2.8;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.act .atx{flex:1;font-size:21px;font-weight:600;color:var(--ivory);letter-spacing:-.2px;}
+.act .atag{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--book);flex-shrink:0;}
+/* tool-capability rows */
+.caps{flex:1;display:flex;flex-direction:column;gap:11px;margin-top:22px;min-height:0;}
+.cap{flex:1;display:flex;align-items:center;gap:20px;border:1px solid var(--rule);border-left:5px solid var(--book);border-radius:14px;background:var(--slate2);padding:0 24px;min-height:0;}
+.cap.k{border-left-color:var(--kraft);}.cap.d{border-left-color:var(--book-d);}
+.cap .cic{width:52px;height:52px;border-radius:13px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--book-lo);border:1px solid var(--book-bd);}
+.cap.k .cic{background:rgba(212,162,127,.1);border-color:rgba(212,162,127,.3);}.cap.d .cic{border-color:var(--book-d);}
+.cap .cic svg{width:27px;height:27px;stroke:var(--book);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.cap.k .cic svg{stroke:var(--kraft);}.cap.d .cic svg{stroke:var(--book-d);}
+.cap .cn{font-size:23px;font-weight:800;color:var(--ivory);width:150px;flex-shrink:0;letter-spacing:-.4px;}
+.cap .cv{flex:1;font-size:19px;font-weight:500;color:var(--ink70);line-height:1.2;}
+/* activity log */
+.log{flex:1;display:flex;flex-direction:column;gap:10px;margin-top:22px;min-height:0;}
+.lrow{flex:1;display:flex;align-items:center;gap:18px;border:1px solid var(--rule);border-radius:13px;background:var(--slate2);padding:0 24px;min-height:0;}
+.lrow .lt{font-family:'DM Mono',monospace;font-size:18px;font-weight:500;color:var(--book);width:78px;flex-shrink:0;}
+.lrow .lx{flex:1;font-size:21px;font-weight:600;color:var(--ivory);letter-spacing:-.2px;}
+.lrow .lg{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink46);flex-shrink:0;}
+.lrow.gate{border-left:5px solid var(--book);background:rgba(204,120,92,.1);}
+.lrow.gate .lx{color:var(--ivory);}.lrow.gate .lx b{color:var(--book);font-weight:800;}
+.lrow.gate .lg{color:var(--book);}
+/* wins */
+.wins{flex:1;display:flex;flex-direction:column;gap:13px;margin-top:22px;min-height:0;}
+.win{flex:1;display:flex;align-items:center;gap:22px;border:1px solid var(--rule);border-radius:16px;background:var(--slate2);padding:0 28px;min-height:0;}
+.win.b{border-left:5px solid var(--book);}.win.k{border-left:5px solid var(--kraft);}.win.d{border-left:5px solid var(--book-d);}
+.win .winic{width:60px;height:60px;border-radius:15px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--book-lo);border:1px solid var(--book-bd);}
+.win.k .winic{background:rgba(212,162,127,.1);border-color:rgba(212,162,127,.3);}.win.d .winic{border-color:var(--book-d);}
+.win .winic svg{width:30px;height:30px;stroke:var(--book);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.win.k .winic svg{stroke:var(--kraft);}.win.d .winic svg{stroke:var(--book-d);}
+.win .winx{flex:1;min-width:0;}
+.win .wint{font-size:26px;font-weight:800;color:var(--ivory);letter-spacing:-.4px;}
+.win .wind{font-size:17px;font-weight:500;color:var(--ink70);margin-top:4px;line-height:1.2;}
+.win .winr{flex-shrink:0;text-align:right;font-family:'DM Mono',monospace;font-size:18px;font-weight:500;color:var(--ink46);white-space:nowrap;}.win .winr b{color:var(--book);font-weight:700;}
+/* setup steps */
+.setup{flex:1;display:flex;flex-direction:column;gap:13px;margin-top:22px;min-height:0;}
+.sstep{flex:1;display:flex;align-items:center;gap:24px;border:1px solid var(--rule);border-left:5px solid var(--book);border-radius:16px;background:var(--slate2);padding:0 28px;min-height:0;}
+.sstep.k{border-left-color:var(--kraft);}.sstep.d{border-left-color:var(--book-d);}
+.sstep .spn{font-family:'DM Mono',monospace;font-size:15px;font-weight:600;letter-spacing:.12em;color:var(--book);width:128px;flex-shrink:0;}
+.sstep.k .spn{color:var(--kraft);}.sstep.d .spn{color:var(--book-d);}
+.sstep .spx{flex:1;min-width:0;}
+.sstep .spt{font-size:27px;font-weight:800;color:var(--ivory);letter-spacing:-.4px;}
+.sstep .spd{font-size:18px;font-weight:500;color:var(--ink70);margin-top:4px;line-height:1.2;}
+/* cover */
+.cv-eyb{font-family:'DM Mono',monospace;font-size:17px;font-weight:500;letter-spacing:.24em;color:var(--kraft);flex-shrink:0;margin-top:20px;}
+.cv-h{font-size:74px;font-weight:900;letter-spacing:-3px;line-height:.92;color:var(--ivory);margin-top:14px;flex-shrink:0;}
+.cv-h em{font-style:normal;color:var(--book);}
+.cv-sub{font-size:25px;font-weight:500;color:var(--ink70);line-height:1.3;margin-top:16px;flex-shrink:0;}.cv-sub b{color:var(--ivory);font-weight:700;}
+.swipe{margin-top:auto;display:flex;align-items:center;gap:11px;font-family:'DM Mono',monospace;font-size:16px;letter-spacing:.16em;text-transform:uppercase;color:var(--book);flex-shrink:0;padding-top:18px;}
+.swipe svg{width:23px;height:23px;stroke:var(--book);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ctawrap{flex-shrink:0;margin-top:auto;padding-top:20px;}
+.savel{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--kraft);margin-bottom:12px;padding-left:4px;}
+.cta{display:flex;align-items:center;gap:16px;border:1.5px solid var(--book);border-radius:20px;background:rgba(204,120,92,.08);padding:15px 15px 15px 28px;box-shadow:0 0 44px rgba(204,120,92,.2);}
+.cta .ph{flex:1;font-size:26px;font-weight:600;color:var(--ink70);line-height:1.2;}.cta .ph b{color:var(--book);font-weight:900;}
+.cta .send{width:66px;height:66px;border-radius:50%;background:var(--book);flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(204,120,92,.45);}
+.cta .send svg{width:30px;height:30px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ftr{margin-top:auto;padding-top:20px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-shrink:0;}
+.ftr-l{display:flex;align-items:center;gap:13px;min-width:0;}.ftr-l img{width:42px;height:42px;border-radius:50%;flex-shrink:0;object-fit:cover;}
+.ftr-tx{font-family:'DM Mono',monospace;font-size:14px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--ink70);white-space:nowrap;}.ftr-tx b{color:var(--ivory);font-weight:500;}
+.ftr-url{font-size:24px;font-weight:900;letter-spacing:-.5px;color:var(--ivory);flex-shrink:0;}.ftr-url em{font-style:normal;color:var(--book);}
+</style>
+</head>
+<body>
+
+<!-- S1 COVER -->
+<div class="slide">
+  <div class="kick"><svg class="spk" viewBox="0 0 1200 1200"><path fill="#CC785C" d="M 233.96 800.21 L 468.64 668.54 L 472.59 657.10 L 468.64 650.74 L 457.21 650.74 L 417.99 648.32 L 283.89 644.70 L 167.60 639.87 L 54.93 633.83 L 26.58 627.79 L 0 592.75 L 2.74 575.28 L 26.58 559.25 L 60.72 562.23 L 136.19 567.38 L 249.42 575.19 L 331.57 580.03 L 453.26 592.67 L 472.59 592.67 L 475.33 584.86 L 468.72 580.03 L 463.57 575.19 L 346.39 495.79 L 219.54 411.87 L 153.10 363.54 L 117.18 339.06 L 99.06 316.11 L 91.25 266.01 L 123.87 230.09 L 167.68 233.07 L 178.87 236.05 L 223.25 270.20 L 318.04 343.57 L 441.83 434.74 L 459.95 449.80 L 467.19 444.64 L 468.08 441.02 L 459.95 427.41 L 392.62 305.72 L 320.78 181.93 L 288.81 130.63 L 280.35 99.87 C 277.37 87.22 275.19 76.59 275.19 63.62 L 312.32 13.21 L 332.86 6.60 L 382.39 13.21 L 403.25 31.33 L 434.01 101.72 L 483.87 212.54 L 561.18 363.22 L 583.81 407.92 L 595.89 449.32 L 600.40 461.96 L 608.21 461.96 L 608.21 454.71 L 614.58 369.83 L 626.34 265.61 L 637.77 131.52 L 641.72 93.75 L 660.40 48.48 L 697.53 24.00 L 726.52 37.85 L 750.36 72 L 747.06 94.07 L 732.89 186.20 L 705.10 330.52 L 686.98 427.17 L 697.53 427.17 L 709.61 415.09 L 758.50 350.17 L 840.64 247.49 L 876.89 206.74 L 919.17 161.72 L 946.31 140.30 L 997.61 140.30 L 1035.38 196.43 L 1018.47 254.42 L 965.64 321.42 L 921.83 378.20 L 859.01 462.77 L 819.79 530.42 L 823.41 535.81 L 832.75 534.93 L 974.66 504.72 L 1051.33 490.87 L 1142.82 475.17 L 1184.21 494.50 L 1188.72 514.15 L 1172.46 554.34 L 1074.60 578.50 L 959.84 601.45 L 788.94 641.88 L 786.85 643.41 L 789.26 646.39 L 866.26 653.64 L 899.19 655.41 L 979.81 655.41 L 1129.93 666.60 L 1169.15 692.54 L 1192.67 724.27 L 1188.72 748.43 L 1128.32 779.19 L 1046.82 759.87 L 856.59 714.60 L 791.36 698.34 L 782.34 698.34 L 782.34 703.73 L 836.70 756.89 L 936.32 846.85 L 1061.07 962.82 L 1067.44 991.49 L 1051.41 1014.12 L 1034.50 1011.70 L 924.89 929.23 L 882.60 892.11 L 786.85 811.49 L 780.48 811.49 L 780.48 819.95 L 802.55 852.24 L 919.09 1027.41 L 925.13 1081.13 L 916.67 1098.60 L 886.47 1109.15 L 853.29 1103.11 L 785.07 1007.36 L 714.68 899.52 L 657.91 802.87 L 650.98 806.82 L 617.48 1167.70 L 601.77 1186.15 L 565.53 1200 L 535.33 1177.05 L 519.30 1139.92 L 535.33 1066.55 L 554.66 970.79 L 570.36 894.68 L 584.54 800.13 L 592.99 768.72 L 592.43 766.63 L 585.50 767.52 L 514.23 865.37 L 405.83 1011.87 L 320.05 1103.68 L 299.52 1111.81 L 263.92 1093.37 L 267.22 1060.43 L 287.11 1031.11 L 405.83 880.11 L 477.42 786.52 L 523.65 732.48 L 523.33 724.67 L 520.59 724.67 L 205.29 929.40 L 149.15 936.64 L 124.99 914.01 L 127.97 876.89 L 139.41 864.81 L 234.20 799.57 Z"/></svg><span class="pg">01 / 05</span></div>
+  <div class="cv-eyb">talk vs do</div>
+  <div class="cv-h">You think Claude<br>just <em>talks</em>.</div>
+  <div class="cv-sub">Connect it to your stack and <b>it does the work</b>. Not chat. Actions.</div>
+  <div class="stack">
+    <div class="stackhd"><svg class="cm" viewBox="0 0 1200 1200"><path fill="#CC785C" d="M 233.96 800.21 L 468.64 668.54 L 468.64 650.74 L 417.99 648.32 L 167.60 639.87 L 26.58 627.79 L 0 592.75 L 26.58 559.25 L 136.19 567.38 L 331.57 580.03 L 472.59 592.67 L 475.33 584.86 L 463.57 575.19 L 219.54 411.87 L 117.18 339.06 L 91.25 266.01 L 123.87 230.09 L 178.87 236.05 L 318.04 343.57 L 459.95 449.80 L 468.08 441.02 L 392.62 305.72 L 288.81 130.63 L 275.19 63.62 L 312.32 13.21 L 382.39 13.21 L 403.25 31.33 L 483.87 212.54 L 583.81 407.92 L 600.40 461.96 L 608.21 454.71 L 626.34 265.61 L 641.72 93.75 L 697.53 24.00 L 750.36 72 L 732.89 186.20 L 686.98 427.17 L 709.61 415.09 L 840.64 247.49 L 946.31 140.30 L 1035.38 196.43 L 965.64 321.42 L 819.79 530.42 L 832.75 534.93 L 1051.33 490.87 L 1184.21 494.50 L 1172.46 554.34 L 959.84 601.45 L 786.85 643.41 L 789.26 646.39 L 979.81 655.41 L 1169.15 692.54 L 1188.72 748.43 L 1046.82 759.87 L 791.36 698.34 L 782.34 703.73 L 936.32 846.85 L 1067.44 991.49 L 1034.50 1011.70 L 882.60 892.11 L 780.48 819.95 L 919.09 1027.41 L 916.67 1098.60 L 853.29 1103.11 L 714.68 899.52 L 650.98 806.82 L 601.77 1186.15 L 535.33 1177.05 L 535.33 1066.55 L 570.36 894.68 L 592.99 768.72 L 585.50 767.52 L 405.83 1011.87 L 299.52 1111.81 L 267.22 1060.43 L 405.83 880.11 L 523.65 732.48 L 520.59 724.67 L 205.29 929.40 L 124.99 914.01 L 139.41 864.81 Z"/></svg><b>Connected to your stack</b><span class="sbadge">6 tools live</span></div>
+    <div class="stack-bd">
+      <div class="tools">
+        <div class="tool"><span class="tic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></span><span class="tn">Your CRM</span><span class="tdot"></span></div>
+        <div class="tool"><span class="tic"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg></span><span class="tn">Inbox</span><span class="tdot"></span></div>
+        <div class="tool"><span class="tic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><span class="tn">Calendar</span><span class="tdot"></span></div>
+        <div class="tool"><span class="tic"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><span class="tn">Slack</span><span class="tdot"></span></div>
+        <div class="tool"><span class="tic"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span><span class="tn">Stripe</span><span class="tdot"></span></div>
+        <div class="tool"><span class="tic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span><span class="tn">Docs</span><span class="tdot"></span></div>
+      </div>
+      <div class="acts">
+        <div class="act"><span class="ac"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span class="atx">Updated 14 deals after the call</span><span class="atag">CRM</span></div>
+        <div class="act"><span class="ac"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span class="atx">Drafted 6 follow-up emails</span><span class="atag">Inbox</span></div>
+        <div class="act"><span class="ac"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span class="atx">Booked 3 discovery calls</span><span class="atag">Calendar</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="swipe">Every tool it touches<svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+</div>
+
+<!-- S2 capabilities -->
+<div class="slide">
+  <div class="kick"><span class="tag">ONE CHAT, YOUR WHOLE STACK</span><span class="pg">02 / 05</span></div>
+  <div class="h2">What it can <em>run</em></div>
+  <div class="caps">
+    <div class="cap"><span class="cic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></span><span class="cn">Your CRM</span><span class="cv">logs calls, updates deals, moves stages</span></div>
+    <div class="cap k"><span class="cic"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg></span><span class="cn">Inbox</span><span class="cv">drafts and sends your follow-ups</span></div>
+    <div class="cap d"><span class="cic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><span class="cn">Calendar</span><span class="cv">books, reschedules, sends invites</span></div>
+    <div class="cap"><span class="cic"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span><span class="cn">Stripe</span><span class="cv">pulls revenue, flags failed payments</span></div>
+    <div class="cap k"><span class="cic"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><span class="cn">Slack + Docs</span><span class="cv">posts updates, writes the briefs</span></div>
+  </div>
+  <div class="swipe">A real run<svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+</div>
+
+<!-- S3 activity log -->
+<div class="slide">
+  <div class="kick"><span class="tag">WHILE YOU WERE IN A MEETING</span><span class="pg">03 / 05</span></div>
+  <div class="h2">One brief. <em>It ran.</em></div>
+  <div class="log">
+    <div class="lrow"><span class="lt">09:02</span><span class="lx">Logged the 11am call, updated the deal</span><span class="lg">CRM</span></div>
+    <div class="lrow"><span class="lt">09:03</span><span class="lx">Drafted 4 follow-ups in your voice</span><span class="lg">Inbox</span></div>
+    <div class="lrow"><span class="lt">09:05</span><span class="lx">Booked 2 demos for Thursday</span><span class="lg">Calendar</span></div>
+    <div class="lrow"><span class="lt">09:06</span><span class="lx">Posted the pipeline update</span><span class="lg">Slack</span></div>
+    <div class="lrow gate"><span class="lt">09:07</span><span class="lx">Flagged 2 emails for <b>your approval</b></span><span class="lg">Gate</span></div>
+  </div>
+  <div class="swipe">Why it changes the day<svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+</div>
+
+<!-- S4 wins -->
+<div class="slide">
+  <div class="kick"><span class="tag">WHY IT CHANGES YOUR DAY</span><span class="pg">04 / 05</span></div>
+  <div class="h2">An operator, <em>not a chatbot</em></div>
+  <div class="wins">
+    <div class="win b"><span class="winic"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="4"/></svg></span><div class="winx"><div class="wint">Your stack runs itself</div><div class="wind">you brief, it executes across tools</div></div><span class="winr"><b>6</b> tools, 1 chat</span></div>
+    <div class="win k"><span class="winic"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span><div class="winx"><div class="wint">Stop copying between tabs</div><div class="wind">no more paste from CRM to email</div></div><span class="winr"><b>0</b> tab-switching</span></div>
+    <div class="win d"><span class="winic"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><path d="M12 3a9 9 0 1 0 9 9"/><path d="M21 3v6h-6"/></svg></span><div class="winx"><div class="wint">Nothing ships without you</div><div class="wind">the Human Gate holds every send</div></div><span class="winr">you <b>approve</b></span></div>
+    <div class="win b"><span class="winic"><svg viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></svg></span><div class="winx"><div class="wint">It finishes the job</div><div class="wind">a done task, not another draft</div></div><span class="winr">done, not <b>draft</b></span></div>
+  </div>
+  <div class="swipe">Connect yours<svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+</div>
+
+<!-- S5 CTA -->
+<div class="slide">
+  <div class="kick"><span class="tag">CONNECT YOUR STACK</span><span class="pg">05 / 05</span></div>
+  <div class="h2">Stop chatting.<br>Start <em>shipping</em>.</div>
+  <div class="setup">
+    <div class="sstep"><span class="spn">CONNECT</span><div class="spx"><div class="spt">Plug in your tools</div><div class="spd">CRM, inbox, calendar, Slack, the lot</div></div></div>
+    <div class="sstep k"><span class="spn">BRIEF</span><div class="spx"><div class="spt">Tell it the job</div><div class="spd">what to do and what good looks like</div></div></div>
+    <div class="sstep d"><span class="spn">APPROVE</span><div class="spx"><div class="spt">It runs, you sign off</div><div class="spd">the Human Gate before anything sends</div></div></div>
+  </div>
+  <div class="ctawrap">
+    <div class="savel">Save this, then</div>
+    <div class="cta"><span class="ph">Comment <b>STACK</b> for my connect-your-tools setup</span><span class="send"><svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div>
+  </div>
+  <div class="ftr">
+    <div class="ftr-l"><img src="__LOGO_URI__" alt="Ultron"><span class="ftr-tx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span></div>
+    <div class="ftr-url">51ultron<em>.</em>com</div>
+  </div>
+</div>
+
+</body>
+</html>
