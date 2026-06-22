@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron AI Personas - LinkedIn carousel (Dark Ultron, 1080x1350)</title>
+<style>
+@import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
+/* Ultron AI Personas - LinkedIn carousel. REBUILD of an off-brand generated deck (green/purple,
+   OpenAI/Perplexity/Notion + brand icons) to Dark Ultron with the REAL skills from the personas doc.
+   Founder-facing: seven heads of department, one slash command each. 9 slides, 1080x1350. */
+:root{--slate:#191919;--slate2:#262625;--win2:#151514;--ivory:#FAFAF7;
+--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);
+--rule:rgba(250,250,247,.10);--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--deep:#A93914;--cloud:#919180;
+--book-lo:rgba(204,120,92,.10);--book-bd:rgba(204,120,92,.34);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0c0a09;display:flex;flex-direction:column;align-items:center;gap:34px;padding:30px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.slide{width:1080px;height:1350px;position:relative;overflow:hidden;background:var(--slate);color:var(--ivory);padding:54px 60px 40px;display:flex;flex-direction:column;}
+.slide::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.4px,transparent 1.5px);background-size:32px 32px;}
+.slide::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 56% 24% at 88% 0%,rgba(204,120,92,.18),transparent 60%),radial-gradient(ellipse 50% 20% at 4% 100%,rgba(212,162,127,.09),transparent 60%);}
+.slide>*{position:relative;z-index:2;}
+/* kick */
+.kick{display:flex;align-items:center;gap:12px;flex-shrink:0;}
+.kick .tag{font-family:'DM Mono',monospace;font-size:14px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--book);border:1px solid var(--book-bd);background:var(--book-lo);padding:8px 14px;border-radius:8px;}
+.kick .tag.k{color:var(--kraft);border-color:rgba(212,162,127,.3);background:rgba(212,162,127,.1);}
+.kick .tag.d{color:var(--book-d);border-color:var(--book-d);}
+.kick .tier{font-family:'DM Mono',monospace;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink46);border:1px solid var(--rule);padding:7px 12px;border-radius:7px;}
+.kick .pg{margin-left:auto;font-family:'DM Mono',monospace;font-size:14px;letter-spacing:.18em;color:var(--ink46);}
+.klogo{width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+/* persona header */
+.phead{flex-shrink:0;margin-top:20px;display:flex;align-items:flex-end;gap:18px;}
+.pname{font-size:72px;font-weight:900;letter-spacing:-3px;line-height:.85;color:var(--ivory);}
+.pname.b{color:var(--book);}.pname.k{color:var(--kraft);}.pname.d{color:var(--book-d);}
+.pslash{font-family:'DM Mono',monospace;font-size:21px;font-weight:500;color:var(--book);background:var(--book-lo);border:1px solid var(--book-bd);border-radius:9px;padding:9px 15px;margin-bottom:7px;}
+.pslash.k{color:var(--kraft);border-color:rgba(212,162,127,.3);background:rgba(212,162,127,.1);}
+.pslash.d{color:var(--book-d);border-color:var(--book-d);}
+.prole{flex-shrink:0;margin-top:11px;font-family:'DM Mono',monospace;font-size:15px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink46);}
+.pfocus{flex-shrink:0;margin-top:10px;font-size:24px;font-weight:500;color:var(--ink70);line-height:1.3;max-width:940px;}.pfocus b{color:var(--ivory);font-weight:700;}
+/* runs card */
+.runs{flex:1;min-height:0;margin-top:20px;border:1px solid var(--rule);border-radius:18px;background:var(--win2);padding:22px 24px;display:flex;flex-direction:column;gap:12px;}
+.runs-h{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;font-family:'DM Mono',monospace;font-size:13px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink46);}
+.runs-h em{color:var(--book);font-style:normal;}
+.srow{flex:1;display:flex;align-items:center;gap:18px;background:var(--slate2);border:1px solid var(--rule);border-radius:13px;padding:0 20px;min-height:0;}
+.srow .sn{width:42px;height:42px;border-radius:11px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:19px;font-weight:500;color:var(--book);background:var(--book-lo);border:1px solid var(--book-bd);}
+.srow.k .sn,.runs.k .srow .sn{color:var(--kraft);background:rgba(212,162,127,.1);border-color:rgba(212,162,127,.3);}
+.srow.d .sn{color:var(--book-d);border-color:var(--book-d);}
+.srow .sx{flex:1;min-width:0;}
+.srow .st{font-size:23px;font-weight:800;color:var(--ivory);letter-spacing:-.4px;line-height:1.05;}
+.srow .sd{font-size:16px;font-weight:500;color:var(--ink70);margin-top:4px;line-height:1.2;}
+.srow .sc{flex-shrink:0;font-family:'DM Mono',monospace;font-size:13px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--book);background:var(--book-lo);border:1px solid var(--book-bd);border-radius:30px;padding:7px 14px;white-space:nowrap;}
+.runs.k .sc{color:var(--kraft);background:rgba(212,162,127,.1);border-color:rgba(212,162,127,.3);}
+.runs.d .sc{color:var(--book-d);border-color:var(--book-d);}
+.result{flex-shrink:0;margin-top:2px;display:flex;align-items:center;gap:13px;background:var(--book-lo);border:1px solid var(--book-bd);border-radius:12px;padding:15px 18px;}
+.runs.k .result{background:rgba(212,162,127,.1);border-color:rgba(212,162,127,.3);}
+.runs.d .result{border-color:var(--book-d);}
+.result .rl{font-family:'DM Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--book);flex-shrink:0;}
+.runs.k .result .rl{color:var(--kraft);}.runs.d .result .rl{color:var(--book-d);}
+.result .rt{flex:1;font-size:19px;font-weight:700;color:var(--ivory);letter-spacing:-.2px;line-height:1.15;}
+/* hub-and-spokes org chart (cover) */
+.hubwrap{flex:1;display:flex;align-items:center;justify-content:center;min-height:0;margin-top:8px;}
+.hub{position:relative;width:940px;height:560px;flex-shrink:0;}
+.hub .lines{position:absolute;inset:0;z-index:1;}
+.hubc{position:absolute;left:470px;top:250px;transform:translate(-50%,-50%);width:134px;height:134px;border-radius:50%;background:rgba(204,120,92,.14);border:1.6px solid var(--book);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 48px rgba(204,120,92,.38);z-index:2;}
+.hubc b{font-size:24px;font-weight:900;color:var(--ivory);letter-spacing:-.6px;line-height:1;}
+.hubc span{font-family:'DM Mono',monospace;font-size:11px;color:var(--book);text-transform:uppercase;letter-spacing:.12em;margin-top:4px;}
+.node{position:absolute;transform:translate(-50%,-50%);font-family:'DM Mono',monospace;font-size:20px;font-weight:500;color:var(--book);background:var(--slate2);border:1px solid var(--book-bd);border-radius:30px;padding:13px 19px;white-space:nowrap;box-shadow:0 8px 22px rgba(0,0,0,.5);z-index:2;}
+.node.k{color:var(--kraft);border-color:rgba(212,162,127,.34);}
+.node.d{color:var(--book-d);border-color:var(--book-d);}
+/* org grid (cta) */
+.org{flex:1;min-height:0;margin-top:20px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+.ocell{display:flex;align-items:center;gap:14px;border:1px solid var(--rule);border-left:4px solid var(--book);border-radius:13px;background:var(--slate2);padding:0 20px;}
+.ocell.k{border-left-color:var(--kraft);}.ocell.d{border-left-color:var(--book-d);}
+.ocell .os{font-family:'DM Mono',monospace;font-size:16px;font-weight:500;color:var(--book);width:104px;flex-shrink:0;}
+.ocell.k .os{color:var(--kraft);}.ocell.d .os{color:var(--book-d);}
+.ocell .on{font-size:18px;font-weight:700;color:var(--ivory);letter-spacing:-.2px;}
+.ocell .od{font-family:'DM Mono',monospace;font-size:12px;color:var(--ink46);text-transform:uppercase;letter-spacing:.08em;margin-top:3px;}
+/* cover + cta type */
+.eyb{font-family:'DM Mono',monospace;font-size:16px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--kraft);flex-shrink:0;margin-top:24px;}
+.cvh{font-size:88px;font-weight:900;letter-spacing:-3.8px;line-height:.9;color:var(--ivory);margin-top:14px;flex-shrink:0;}.cvh em{font-style:normal;color:var(--book);}
+.cvs{font-size:25px;font-weight:500;color:var(--ink70);line-height:1.32;margin-top:18px;flex-shrink:0;max-width:940px;}.cvs b{color:var(--ivory);font-weight:700;}
+.swipe{margin-top:auto;display:flex;align-items:center;gap:11px;font-family:'DM Mono',monospace;font-size:16px;letter-spacing:.16em;text-transform:uppercase;color:var(--book);flex-shrink:0;padding-top:16px;}
+.swipe svg{width:23px;height:23px;stroke:var(--book);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ctawrap{flex-shrink:0;margin-top:20px;}
+.savel{font-family:'DM Mono',monospace;font-size:14px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--kraft);margin-bottom:11px;padding-left:4px;}
+.cta{display:flex;align-items:center;gap:16px;border:1.5px solid var(--book);border-radius:18px;background:rgba(204,120,92,.08);padding:14px 14px 14px 26px;box-shadow:0 0 44px rgba(204,120,92,.2);}
+.cta .ph{flex:1;font-size:24px;font-weight:600;color:var(--ink70);line-height:1.2;}.cta .ph b{color:var(--book);font-weight:900;}
+.cta .send{width:62px;height:62px;border-radius:50%;background:var(--book);flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(204,120,92,.45);}
+.cta .send svg{width:29px;height:29px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+/* slim footer */
+.sftr{flex-shrink:0;margin-top:16px;padding-top:13px;border-top:1px solid var(--rule);display:flex;align-items:center;gap:11px;}
+.sftr img{width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.sftr .ft{font-family:'DM Mono',monospace;font-size:12px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--ink70);}.sftr .ft b{color:var(--ivory);font-weight:500;}
+.sftr .fu{margin-left:auto;font-size:19px;font-weight:900;letter-spacing:-.5px;color:var(--ivory);}.sftr .fu em{font-style:normal;color:var(--book);}
+</style>
+</head>
+<body>
+
+<!-- S1 COVER -->
+<div class="slide">
+  <div class="kick"><img class="klogo" src="__LOGO_URI__" alt="Ultron"><span class="tag">AI AGENTS</span><span class="tier">7 UNITS / 56 SKILLS</span><span class="pg">01 / 09</span></div>
+  <div class="eyb">the command roster</div>
+  <div class="cvh">Ultron AI<br><em>Personas</em></div>
+  <div class="cvs">Seven specialists run your company. <b>Each answers to one slash command.</b></div>
+  <div class="hubwrap"><div class="hub">
+    <svg class="lines" viewBox="0 0 940 560" fill="none" preserveAspectRatio="none">
+      <line x1="470" y1="250" x2="470" y2="35"  stroke="rgba(204,120,92,.32)" stroke-width="2"/>
+      <line x1="470" y1="250" x2="767" y2="116" stroke="rgba(204,120,92,.32)" stroke-width="2"/>
+      <line x1="470" y1="250" x2="840" y2="298" stroke="rgba(204,120,92,.32)" stroke-width="2"/>
+      <line x1="470" y1="250" x2="635" y2="444" stroke="rgba(204,120,92,.32)" stroke-width="2"/>
+      <line x1="470" y1="250" x2="305" y2="444" stroke="rgba(204,120,92,.32)" stroke-width="2"/>
+      <line x1="470" y1="250" x2="100" y2="298" stroke="rgba(204,120,92,.32)" stroke-width="2"/>
+      <line x1="470" y1="250" x2="173" y2="116" stroke="rgba(204,120,92,.32)" stroke-width="2"/>
+    </svg>
+    <div class="hubc"><b>ULTRON</b><span>router</span></div>
+    <div class="node"   style="left:470px;top:35px">/cortex</div>
+    <div class="node k" style="left:767px;top:116px">/specter</div>
+    <div class="node d" style="left:840px;top:298px">/striker</div>
+    <div class="node"   style="left:635px;top:444px">/pulse</div>
+    <div class="node k" style="left:305px;top:444px">/sentinel</div>
+    <div class="node d" style="left:100px;top:298px">/amplify</div>
+    <div class="node"   style="left:173px;top:116px">/counsel</div>
+  </div></div>
+  <div class="swipe">Meet the seven<svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+  <div class="sftr"><img src="__LOGO_URI__" alt="Ultron"><span class="ft"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span><span class="fu">51ultron<em>.</em>com</span></div>
+</div>
+
+<!-- S2 CORTEX -->
+<div class="slide">
+  <div class="kick"><span class="tag">AGENT 01 &middot; INTELLIGENCE</span><span class="tier">TIER &middot; DEEP</span><span class="pg">02 / 09</span></div>
+  <div class="phead"><div class="pname b">CORTEX</div><div class="pslash">/cortex</div></div>
+  <div class="prole">Head of Intelligence</div>
+  <div class="pfocus">Researches markets, competitors and internal signals into <b>concise decision support</b>.</div>
+  <div class="runs">
+    <div class="runs-h"><span>What it runs</span><span><em>10</em> skills</span></div>
+    <div class="srow"><span class="sn">1</span><div class="sx"><div class="st">Competitive teardown</div><div class="sd">strengths, gaps and pricing of any rival</div></div><span class="sc">ranked</span></div>
+    <div class="srow"><span class="sn">2</span><div class="sx"><div class="st">Company deep-dive</div><div class="sd">a full profile before any meeting</div></div><span class="sc">full profile</span></div>
+    <div class="srow"><span class="sn">3</span><div class="sx"><div class="st">Pricing research</div><div class="sd">what the market actually charges</div></div><span class="sc">real numbers</span></div>
+    <div class="srow"><span class="sn">4</span><div class="sx"><div class="st">Signal scan</div><div class="sd">funding, news, tech-stack and hiring moves</div></div><span class="sc">live</span></div>
+    <div class="result"><span class="rl">Result</span><span class="rt">Better decisions with less research overhead.</span></div>
+  </div>
+  <div class="sftr"><img src="__LOGO_URI__" alt="Ultron"><span class="ft"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span><span class="fu">51ultron<em>.</em>com</span></div>
+</div>
+
+<!-- S3 SPECTER -->
+<div class="slide">
+  <div class="kick"><span class="tag k">AGENT 02 &middot; ACQUISITION</span><span class="tier">TIER &middot; SMART</span><span class="pg">03 / 09</span></div>
+  <div class="phead"><div class="pname k">SPECTER</div><div class="pslash k">/specter</div></div>
+  <div class="prole">Head of Acquisition</div>
+  <div class="pfocus">Fills the pipeline: the ICP, the candidate leads, <b>the outreach that gets a reply</b>.</div>
+  <div class="runs k">
+    <div class="runs-h"><span>What it runs</span><span><em>11</em> skills</span></div>
+    <div class="srow k"><span class="sn">1</span><div class="sx"><div class="st">Find decision-makers</div><div class="sd">VCs, buyers and hiring managers by ICP</div></div><span class="sc">targeted</span></div>
+    <div class="srow k"><span class="sn">2</span><div class="sx"><div class="st">Enrich the leads</div><div class="sd">contact data and buying signals</div></div><span class="sc">enriched</span></div>
+    <div class="srow k"><span class="sn">3</span><div class="sx"><div class="st">First-touch email</div><div class="sd">the opener built to land a reply</div></div><span class="sc">first touch</span></div>
+    <div class="srow k"><span class="sn">4</span><div class="sx"><div class="st">Follow-up cadence</div><div class="sd">the sequence that does not drop off</div></div><span class="sc">no drop-off</span></div>
+    <div class="result"><span class="rl">Result</span><span class="rt">A full pipeline without a prospecting subscription.</span></div>
+  </div>
+  <div class="sftr"><img src="__LOGO_URI__" alt="Ultron"><span class="ft"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span><span class="fu">51ultron<em>.</em>com</span></div>
+</div>
+
+<!-- S4 STRIKER -->
+<div class="slide">
+  <div class="kick"><span class="tag d">AGENT 03 &middot; GROWTH</span><span class="tier">TIER &middot; SMART</span><span class="pg">04 / 09</span></div>
+  <div class="phead"><div class="pname d">STRIKER</div><div class="pslash d">/striker</div></div>
+  <div class="prole">Head of Growth</div>
+  <div class="pfocus">Carries deal momentum from the first call <b>all the way to the close</b>.</div>
+  <div class="runs d">
+    <div class="runs-h"><span>What it runs</span><span><em>6</em> skills</span></div>
+    <div class="srow d"><span class="sn">1</span><div class="sx"><div class="st">Pre-call brief</div><div class="sd">walk in knowing the account cold</div></div><span class="sc">call-ready</span></div>
+    <div class="srow d"><span class="sn">2</span><div class="sx"><div class="st">Objection handler</div><div class="sd">the answer to every pushback</div></div><span class="sc">rebuttals</span></div>
+    <div class="srow d"><span class="sn">3</span><div class="sx"><div class="st">Post-call recap</div><div class="sd">notes and next steps, sent for you</div></div><span class="sc">recap sent</span></div>
+    <div class="srow d"><span class="sn">4</span><div class="sx"><div class="st">Follow-up</div><div class="sd">the nudge that keeps the deal moving</div></div><span class="sc">momentum</span></div>
+    <div class="result"><span class="rl">Result</span><span class="rt">Consistent follow-through on every deal.</span></div>
+  </div>
+  <div class="sftr"><img src="__LOGO_URI__" alt="Ultron"><span class="ft"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span><span class="fu">51ultron<em>.</em>com</span></div>
+</div>
+
+<!-- S5 PULSE -->
+<div class="slide">
+  <div class="kick"><span class="tag">AGENT 04 &middot; MARKETING</span><span class="tier">TIER &middot; SMART</span><span class="pg">05 / 09</span></div>
+  <div class="phead"><div class="pname b">PULSE</div><div class="pslash">/pulse</div></div>
+  <div class="prole">Head of Marketing</div>
+  <div class="pfocus">Runs the content engine <b>in your voice</b>, on every channel.</div>
+  <div class="runs">
+    <div class="runs-h"><span>What it runs</span><span><em>9</em> skills</span></div>
+    <div class="srow"><span class="sn">1</span><div class="sx"><div class="st">Blog and post outlines</div><div class="sd">long-form and social, structured</div></div><span class="sc">outline</span></div>
+    <div class="srow"><span class="sn">2</span><div class="sx"><div class="st">Brand voice lock</div><div class="sd">every line sounds like you</div></div><span class="sc">your voice</span></div>
+    <div class="srow"><span class="sn">3</span><div class="sx"><div class="st">Humanizer pass</div><div class="sd">strips the model-generated cadence</div></div><span class="sc">human</span></div>
+    <div class="srow"><span class="sn">4</span><div class="sx"><div class="st">Repurpose</div><div class="sd">one idea into ten posts</div></div><span class="sc">10x reach</span></div>
+    <div class="result"><span class="rl">Result</span><span class="rt">A full content calendar without a ghostwriter.</span></div>
+  </div>
+  <div class="sftr"><img src="__LOGO_URI__" alt="Ultron"><span class="ft"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span><span class="fu">51ultron<em>.</em>com</span></div>
+</div>
+
+<!-- S6 SENTINEL -->
+<div class="slide">
+  <div class="kick"><span class="tag k">AGENT 05 &middot; ENGINEERING</span><span class="tier">TIER &middot; DEEP</span><span class="pg">06 / 09</span></div>
+  <div class="phead"><div class="pname k">SENTINEL</div><div class="pslash k">/sentinel</div></div>
+  <div class="prole">Head of Engineering</div>
+  <div class="pfocus">Builds, ships and tests internal tools <b>in a live sandbox</b>.</div>
+  <div class="runs k">
+    <div class="runs-h"><span>What it runs</span><span><em>6</em> skills</span></div>
+    <div class="srow k"><span class="sn">1</span><div class="sx"><div class="st">Build the tool</div><div class="sd">the internal app you keep postponing</div></div><span class="sc">shipped</span></div>
+    <div class="srow k"><span class="sn">2</span><div class="sx"><div class="st">Deploy it</div><div class="sd">live, on a real URL</div></div><span class="sc">live</span></div>
+    <div class="srow k"><span class="sn">3</span><div class="sx"><div class="st">Run the tests</div><div class="sd">and fix what breaks</div></div><span class="sc">tested</span></div>
+    <div class="srow k"><span class="sn">4</span><div class="sx"><div class="st">Security audit</div><div class="sd">before anything goes out</div></div><span class="sc">secure</span></div>
+    <div class="result"><span class="rl">Result</span><span class="rt">Internal tools shipped the same day, not next quarter.</span></div>
+  </div>
+  <div class="sftr"><img src="__LOGO_URI__" alt="Ultron"><span class="ft"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span><span class="fu">51ultron<em>.</em>com</span></div>
+</div>
+
+<!-- S7 AMPLIFY -->
+<div class="slide">
+  <div class="kick"><span class="tag d">AGENT 06 &middot; PAID MEDIA</span><span class="tier">TIER &middot; LITE</span><span class="pg">07 / 09</span></div>
+  <div class="phead"><div class="pname d">AMPLIFY</div><div class="pslash d">/amplify</div></div>
+  <div class="prole">Head of Paid Media</div>
+  <div class="pfocus">Runs paid acquisition, <b>consistent with your organic voice</b>.</div>
+  <div class="runs d">
+    <div class="runs-h"><span>What it runs</span><span><em>8</em> skills</span></div>
+    <div class="srow d"><span class="sn">1</span><div class="sx"><div class="st">Campaign setup</div><div class="sd">structure, budgets and tracking</div></div><span class="sc">launched</span></div>
+    <div class="srow d"><span class="sn">2</span><div class="sx"><div class="st">Audience targeting</div><div class="sd">who to reach and where</div></div><span class="sc">targeted</span></div>
+    <div class="srow d"><span class="sn">3</span><div class="sx"><div class="st">Ad creative and copy</div><div class="sd">on-brand and ready to ship</div></div><span class="sc">creative</span></div>
+    <div class="srow d"><span class="sn">4</span><div class="sx"><div class="st">Bidding and optimization</div><div class="sd">spend that compounds</div></div><span class="sc">optimized</span></div>
+    <div class="result"><span class="rl">Result</span><span class="rt">Campaigns live without an agency retainer.</span></div>
+  </div>
+  <div class="sftr"><img src="__LOGO_URI__" alt="Ultron"><span class="ft"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span><span class="fu">51ultron<em>.</em>com</span></div>
+</div>
+
+<!-- S8 COUNSEL -->
+<div class="slide">
+  <div class="kick"><span class="tag">AGENT 07 &middot; LEGAL</span><span class="tier">TIER &middot; DEEP</span><span class="pg">08 / 09</span></div>
+  <div class="phead"><div class="pname b">COUNSEL</div><div class="pslash">/counsel</div></div>
+  <div class="prole">General Counsel &middot; /counsel = /legal</div>
+  <div class="pfocus">Handles contracts: <b>parties, scope, term, fees, IP, liability</b>.</div>
+  <div class="runs">
+    <div class="runs-h"><span>What it runs</span><span><em>6</em> skills</span></div>
+    <div class="srow"><span class="sn">1</span><div class="sx"><div class="st">Draft the contract</div><div class="sd">from your template or a standard</div></div><span class="sc">drafted</span></div>
+    <div class="srow"><span class="sn">2</span><div class="sx"><div class="st">Redline review</div><div class="sd">risks flagged with citations</div></div><span class="sc">redlined</span></div>
+    <div class="srow"><span class="sn">3</span><div class="sx"><div class="st">Clause library</div><div class="sd">the right clause, on demand</div></div><span class="sc">clauses</span></div>
+    <div class="srow"><span class="sn">4</span><div class="sx"><div class="st">Plain-English pass</div><div class="sd">what the contract actually means</div></div><span class="sc">plain words</span></div>
+    <div class="result"><span class="rl">Result</span><span class="rt">Contracts drafted and reviewed without billable hours.</span></div>
+  </div>
+  <div class="sftr"><img src="__LOGO_URI__" alt="Ultron"><span class="ft"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span><span class="fu">51ultron<em>.</em>com</span></div>
+</div>
+
+<!-- S9 CTA -->
+<div class="slide">
+  <div class="kick"><img class="klogo" src="__LOGO_URI__" alt="Ultron"><span class="tag">BUILD YOUR ORG CHART</span><span class="pg">09 / 09</span></div>
+  <div class="eyb">one box, seven heads, you on the gate</div>
+  <div class="cvh">Your Ultron<br><em>org chart</em></div>
+  <div class="org">
+    <div class="ocell"><span class="os">/cortex</span><div><div class="on">CORTEX</div><div class="od">Intelligence</div></div></div>
+    <div class="ocell k"><span class="os">/specter</span><div><div class="on">SPECTER</div><div class="od">Acquisition</div></div></div>
+    <div class="ocell d"><span class="os">/striker</span><div><div class="on">STRIKER</div><div class="od">Growth</div></div></div>
+    <div class="ocell"><span class="os">/pulse</span><div><div class="on">PULSE</div><div class="od">Marketing</div></div></div>
+    <div class="ocell k"><span class="os">/sentinel</span><div><div class="on">SENTINEL</div><div class="od">Engineering</div></div></div>
+    <div class="ocell d"><span class="os">/amplify</span><div><div class="on">AMPLIFY</div><div class="od">Paid Media</div></div></div>
+    <div class="ocell"><span class="os">/counsel</span><div><div class="on">COUNSEL</div><div class="od">Legal</div></div></div>
+    <div class="ocell k"><span class="os">+ router</span><div><div class="on">YOU</div><div class="od">on the gate</div></div></div>
+  </div>
+  <div class="ctawrap">
+    <div class="savel">Save the roster, then</div>
+    <div class="cta"><span class="ph">Comment <b>ROSTER</b> for the seven-command cheat sheet</span><span class="send"><svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div>
+  </div>
+  <div class="sftr"><img src="__LOGO_URI__" alt="Ultron"><span class="ft"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span><span class="fu">51ultron<em>.</em>com</span></div>
+</div>
+
+</body>
+</html>

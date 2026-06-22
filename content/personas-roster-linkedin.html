@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>personas roster - slash commands - LinkedIn 1080x1450</title>
+<style>
+@import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
+/* personas-roster - Slash commands + seven heads of department. Founder-facing (no route.ts / regex):
+   type a slash, the right specialist runs. Dominant = a dense 7-row command roster (distinct from
+   docs-13's pipeline + docs-12's icon-nodes). Dark Ultron. 1080x1450.
+   BUDGET 1394: mast 30 + hero 206 + roster ~951 + cta 95 + ftr 50 + gaps ~62 */
+:root{--slate:#191919;--slate2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);
+--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);
+--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--deep:#A93914;--cloud:#919180;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.frame{width:1080px;height:1450px;background:var(--slate);padding:34px 44px 22px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;}
+.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.4px,transparent 1.5px);background-size:30px 30px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 54% 22% at 90% -2%,rgba(204,120,92,.2) 0%,transparent 60%),radial-gradient(ellipse 48% 24% at 2% 102%,rgba(212,162,127,.1) 0%,transparent 60%);}
+.frame>*{position:relative;z-index:2;}
+.mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;}
+.mast .ml{color:var(--ink46);}.mast .ml em{color:var(--book);font-style:normal;}
+.mast .mr{color:var(--ink70);}.mast .mr em{color:var(--book);font-style:normal;}
+.hero{flex-shrink:0;margin-top:15px;}
+.eye{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--kraft);}
+.hook{margin-top:9px;font-weight:900;font-size:47px;line-height:1.0;letter-spacing:-1.7px;color:var(--ivory);}.hook em{color:var(--book);font-style:normal;}
+.sub{margin-top:12px;font-size:22px;font-weight:500;line-height:1.32;color:var(--ink70);max-width:960px;}.sub b{color:var(--ivory);font-weight:700;}.sub i{font-style:normal;font-family:'DM Mono',monospace;font-size:20px;color:var(--book);}
+/* roster (dominant) */
+.rhead{flex-shrink:0;margin-top:15px;display:flex;align-items:center;justify-content:space-between;font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink46);padding:0 4px 9px;}
+.rhead em{color:var(--book);font-style:normal;}
+.roster{flex:1;min-height:0;display:flex;flex-direction:column;gap:9px;}
+.prow{flex:1;display:flex;align-items:center;gap:18px;border:1px solid var(--rule);border-left:5px solid var(--book);border-radius:14px;background:var(--slate2);padding:0 22px;min-height:0;overflow:hidden;}
+.prow.k{border-left-color:var(--kraft);}.prow.d{border-left-color:var(--deep);}
+.scmd{flex-shrink:0;width:158px;font-family:'DM Mono',monospace;font-size:23px;font-weight:500;color:var(--book);background:rgba(204,120,92,.1);border:1px solid rgba(204,120,92,.32);border-radius:9px;padding:11px 0;text-align:center;letter-spacing:-.5px;}
+.prow.k .scmd{color:var(--kraft);background:rgba(212,162,127,.1);border-color:rgba(212,162,127,.3);}
+.prow.d .scmd{color:var(--book-d);border-color:var(--book-d);}
+.pmid{flex-shrink:0;width:236px;min-width:0;}
+.pname{font-size:26px;font-weight:900;letter-spacing:-.6px;color:var(--ivory);line-height:1;}
+.prole{font-family:'DM Mono',monospace;font-size:12.5px;font-weight:500;letter-spacing:.04em;color:var(--book);margin-top:6px;text-transform:uppercase;}
+.prow.k .prole{color:var(--kraft);}.prow.d .prole{color:var(--book-d);}
+.powns{flex:1;min-width:0;font-size:19px;font-weight:600;color:var(--ink70);letter-spacing:-.2px;line-height:1.2;}
+.pcnt{flex-shrink:0;text-align:center;width:78px;}
+.pcnt b{display:block;font-weight:900;font-size:31px;line-height:.85;letter-spacing:-1px;color:var(--ivory);}
+.pcnt span{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink46);margin-top:6px;display:block;}
+/* cta */
+.ctawrap{flex-shrink:0;margin-top:14px;}
+.savel{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--kraft);margin-bottom:10px;padding-left:4px;}
+.cta{display:flex;align-items:center;gap:16px;border:1.5px solid var(--book);border-radius:18px;background:rgba(204,120,92,.08);padding:13px 13px 13px 26px;box-shadow:0 0 44px rgba(204,120,92,.2);}
+.cta .ph{flex:1;font-size:23px;font-weight:600;color:var(--ink70);line-height:1.2;}.cta .ph b{color:var(--book);font-weight:900;}
+.cta .send{width:58px;height:58px;border-radius:50%;background:var(--book);flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(204,120,92,.45);}
+.cta .send svg{width:28px;height:28px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ftr{flex-shrink:0;margin-top:13px;padding-top:12px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.fl2{display:flex;align-items:center;gap:11px;min-width:0;}.flogo{width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.ftx{font-family:'DM Mono',monospace;font-size:11.5px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--ink70);white-space:nowrap;}.ftx b{color:var(--ivory);font-weight:500;}
+.furl{font-weight:900;font-size:21px;letter-spacing:-.5px;color:var(--ivory);}.furl em{color:var(--book);font-style:normal;}
+</style>
+</head>
+<body>
+<div class="frame"><div class="atm"></div>
+  <div class="mast"><span class="ml">AI AGENTS <em>&middot;</em> SLASH COMMANDS <em>&middot;</em> SEVEN UNITS</span><span class="mr">ULTRON <em>&middot;</em> <em>7</em> HEADS / <em>56</em> SKILLS</span></div>
+  <div class="hero">
+    <div class="eye">The command roster</div>
+    <div class="hook">One AI box does everything average. I run <em>seven specialists</em>.</div>
+    <div class="sub">Each is a head of department on its own slash command. Type <i>/cortex</i> for research, <i>/specter</i> for outbound, <i>/striker</i> for deals. <b>56 skills underneath, one slash to reach them.</b></div>
+  </div>
+  <div class="rhead"><span>Seven heads of department</span><span><em>/counsel</em> = <em>/legal</em></span></div>
+  <div class="roster">
+    <div class="prow"><div class="scmd">/cortex</div><div class="pmid"><div class="pname">CORTEX</div><div class="prole">Head of Intelligence</div></div><div class="powns">Research, competitor teardowns, signal scans</div><div class="pcnt"><b>10</b><span>skills</span></div></div>
+    <div class="prow k"><div class="scmd">/specter</div><div class="pmid"><div class="pname">SPECTER</div><div class="prole">Head of Acquisition</div></div><div class="powns">Prospecting, lead enrichment, outreach sequences</div><div class="pcnt"><b>11</b><span>skills</span></div></div>
+    <div class="prow d"><div class="scmd">/striker</div><div class="pmid"><div class="pname">STRIKER</div><div class="prole">Head of Growth</div></div><div class="powns">Discovery prep, objection handling, follow-through</div><div class="pcnt"><b>6</b><span>skills</span></div></div>
+    <div class="prow"><div class="scmd">/pulse</div><div class="pmid"><div class="pname">PULSE</div><div class="prole">Head of Marketing</div></div><div class="powns">Posts, blogs, brand voice, repurposing</div><div class="pcnt"><b>9</b><span>skills</span></div></div>
+    <div class="prow k"><div class="scmd">/sentinel</div><div class="pmid"><div class="pname">SENTINEL</div><div class="prole">Head of Engineering</div></div><div class="powns">Builds, ships and tests internal tools</div><div class="pcnt"><b>6</b><span>skills</span></div></div>
+    <div class="prow d"><div class="scmd">/amplify</div><div class="pmid"><div class="pname">AMPLIFY</div><div class="prole">Head of Paid Media</div></div><div class="powns">Ad campaigns, audiences, creative, bidding</div><div class="pcnt"><b>8</b><span>skills</span></div></div>
+    <div class="prow"><div class="scmd">/counsel</div><div class="pmid"><div class="pname">COUNSEL</div><div class="prole">General Counsel</div></div><div class="powns">Contracts, clause library, redline review</div><div class="pcnt"><b>6</b><span>skills</span></div></div>
+  </div>
+  <div class="ctawrap">
+    <div class="savel">Save the command roster, then</div>
+    <div class="cta"><span class="ph">Comment <b>ROSTER</b> for the seven-command cheat sheet</span><span class="send"><svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div>
+  </div>
+  <div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span></div><div class="furl">51ultron<em>.</em>com</div></div>
+</div>
+</body>
+</html>
