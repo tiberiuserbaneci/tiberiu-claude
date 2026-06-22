@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-06-22T14:03:36",
+  "generated_at": "2026-06-22T14:06:52",
   "counts": {
-    "total": 125,
-    "generated": 81,
+    "total": 126,
+    "generated": 82,
     "reference": 44,
     "crosspost": 0
   },
@@ -2689,6 +2689,35 @@
       "status": "ready",
       "posted": true,
       "posted_date": "2026-06-16",
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "personas-roster-editorial45-carousel",
+      "title": "Personas Roster Editorial45",
+      "channel": "tiktok",
+      "type": "carousel",
+      "slides": 5,
+      "dims": "2160x2700 (1080x1350 @2x)",
+      "preview": "content/personas-roster-editorial45-carousel-01.png",
+      "download": "content/portal/zips/personas-roster-editorial45-carousel.zip",
+      "files": [
+        "content/personas-roster-editorial45-carousel-01.png",
+        "content/personas-roster-editorial45-carousel-02.png",
+        "content/personas-roster-editorial45-carousel-03.png",
+        "content/personas-roster-editorial45-carousel-04.png",
+        "content/personas-roster-editorial45-carousel-05.png"
+      ],
+      "variants": [],
+      "caption": "Comment COMMANDS and I will send you my slash-command setup.\n\nYou run one Claude chat for everything. The trick is running a stack of slash commands instead.\n\nNow I do not re-explain the job every time. I type a slash.\n\n/research pulls the market and the competitors. /outreach finds the leads and writes the sequence. /deals preps the call and handles objections. /content writes in my voice. /ship builds and tests a tool. Each command carries its own instructions and tools, so Claude shows up already in role.\n\nStop re-briefing one Claude. Give it specialists.\n\n#claude #ai #founder #startup #buildinpublic",
+      "alt": "Light editorial infographic on a cream background with coral accents and a Claude sunburst. The hook reads you run one Claude, I run seven commands. Below it, a dark command-palette mockup with the prompt pick a command and seven saved slash commands, each a command, a role and a one-line job: /research for markets and signals, /outreach for leads and sequences, /deals for call prep and objections, /content for posts in your voice, /ship to build and deploy a tool, /ads for campaigns, and /legal to draft and review a contract. Three steps below read save the command, type the slash, Claude arrives in role. Closes on a Comment COMMANDS call to action and the Ultron logo.",
+      "first_comment": "One Claude chat doing everything forgets the brief every time. Saved slash commands fix that: each one carries its own instructions and tools, so Claude opens already in role. Type /research and it is the researcher. Type /ship and it builds.\n\nComment COMMANDS and I will send you my slash-command setup. More at 51ultron.com",
+      "generated_date": "2026-06-22",
+      "added": 1782137158,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
       "analytics": null,
       "crossposts": []
     },
