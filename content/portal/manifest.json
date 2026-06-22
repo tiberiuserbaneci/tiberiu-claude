@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-06-22T12:50:19",
+  "generated_at": "2026-06-22T13:47:50",
   "counts": {
-    "total": 123,
-    "generated": 79,
+    "total": 124,
+    "generated": 80,
     "reference": 44,
     "crosspost": 0
   },
@@ -677,7 +677,7 @@
       "alt": "Dark editorial visual on slate background. Hero on the left reads 'I ran 8 GTM jobs through one AI. It won once,' with once in book-orange. On the right, a WINS BY MODEL leaderboard with real model logos and proportional bars: Claude 5 in a full book-orange bar, ChatGPT 1, Gemini 1, Perplexity 1, captioned 'best single model wins only 5 of 8, route and win 8 of 8.' Below, a routing map titled the routing map, a table of GTM Job, Winner, Runner-up slash Avoid, and Why, with eight numbered rows and each winner shown as a logo chip: lead research to Perplexity, account enrichment to Gemini, ICP scoring, cold outreach, call prep, proposal draft and objection handling to Claude, follow-up to close to ChatGPT. A before-and-after block compares the old stack to the routing layer, each metric with an icon and a mini bar: monthly cost 13 thousand dollars to 19, tabs per job 5 to 1, decision time 30 minutes to 0, jobs won 1 of 8 to 8 of 8, context kept across jobs none to all 8, and wrong-tool sends 7 to 0. A one-line note says Ultron is the routing layer over CORTEX, SPECTER, STRIKER, PULSE, and SENTINEL. Closes with a Comment ROUTING call to action and the Ultron logo.",
       "first_comment": "Eight founder GTM jobs, four AIs. Run all eight through one model and it is the right tool for exactly one of them. Perplexity wins research, Gemini wins enrichment, Claude wins the judgment and the writing, ChatGPT wins the close.\n\nUltron routes each job to its winner automatically, holds the context across all eight, and gates every send.\n\nDrop ROUTING below and I will send you the full routing map plus the exact Claude workflow we run: https://app.51ultron.com/docs/platform/overview",
       "generated_date": "2026-06-02",
-      "added": 1780371054,
+      "added": 1780371057,
       "source": "generated",
       "status": "ready",
       "posted": true,
@@ -1158,7 +1158,7 @@
       "alt": "Dark editorial infographic on a slate background with book-orange and kraft accents. The headline reads Most AI hands you words, mine has 92 tools and runs the stack. A four-cell strip shows 92 native tools, 8 categories, 1 approval gate and plus your own MCP servers. The dominant block is an eight-row category table, each row an icon, a category name, example tools and a count: Research and web 5, Leads and CRM 14, Email and calendar 12, Content and social 15, Integrations 19, Payments 7, Build deploy and analyze 6, and Memory agents and the gate 14, which sum to 92. Closes on a Comment TOOLS call to action and the Ultron logo.",
       "first_comment": "The point is not the number, it is the gate. Ninety-two tools, but it only uses the ones you connected, and anything irreversible waits for your approval. Search, enrich, email, build, deploy, charge a card, all from one chat.\n\nComment TOOLS and I will send you the full 92-tool catalog. See how it works at app.51ultron.com/docs",
       "generated_date": "2026-06-22",
-      "added": 1782132557,
+      "added": 1782132629,
       "source": "generated",
       "status": "ready",
       "posted": false,
@@ -2951,6 +2951,33 @@
       "first_comment": "Zero hires, six roles, one operator. I run research, outbound, deals, content, ops and internal tools through one Claude box, and I approve every move before it ships.\n\nComment TEAM and I will send you the exact 6-role setup I run my company on.",
       "generated_date": "2026-06-15",
       "added": 1781529123,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "tools-catalog-editorial45-infographic",
+      "title": "Tools Catalog Editorial45 Infographic",
+      "channel": "tiktok",
+      "type": "single",
+      "slides": 1,
+      "dims": "2160x2700 (1080x1350 @2x)",
+      "preview": "content/tools-catalog-editorial45-infographic.png",
+      "download": "content/tools-catalog-editorial45-infographic.png",
+      "files": [
+        "content/tools-catalog-editorial45-infographic.png"
+      ],
+      "variants": [
+        ""
+      ],
+      "caption": "Comment TOOLS and I will send you my Claude tool-use setup.\n\nYou think Claude just writes text back. It can actually use tools.\n\nNow I do not copy its answer into five different apps. I let it do the work.\n\nIt searches the web, enriches a lead, saves it to the CRM and drafts the intro, all from one chat. The only thing it will not do is hit send. Anything irreversible stops and waits for one tap of approval.\n\nThat gate is the whole point. Real actions, but you stay in control of what ships.\n\nStop pasting Claude's output around. Let it act.\n\n#claude #ai #founder #startup #buildinpublic",
+      "alt": "Light editorial infographic on a cream background with coral accents and a Claude sunburst. The hook reads Claude can use tools, it still asks first. Below it, a dark activity panel titled Claude is working on the request find this lead, save it, draft the intro, with four steps marked done, searched the web, enriched the lead, saved it to the CRM and drafted the intro, then a highlighted locked row, send the email, marked waiting for you. Three cards read it acts not just answers, only what you link, and you approve the gate holds every send. Closes on a Comment TOOLS call to action and the Ultron logo.",
+      "first_comment": "The number of tools is not the point, the gate is. Claude can search, enrich, draft, book and post, but anything irreversible waits for your yes. Real actions, zero surprises.\n\nComment TOOLS and I will send you my Claude tool-use setup, including the approval step. More at 51ultron.com",
+      "generated_date": "2026-06-22",
+      "added": 1782135878,
       "source": "generated",
       "status": "ready",
       "posted": false,
