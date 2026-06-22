@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Claude tool use - TikTok carousel (Dark Ultron, 1080x1350)</title>
+<style>
+@import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
+/* Claude tool use - TikTok carousel. CLAUDE PERSPECTIVE: Claude can use tools and asks before the
+   irreversible ones. Claude sunburst, Ultron only in footer. Distinct from the MCP/stack material
+   (this leans on tool breadth + the gate). 5 slides. */
+:root{--slate:#191919;--slate2:#262625;--win:#1e1e1d;--win2:#151514;--ivory:#FAFAF7;
+--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);
+--rule:rgba(250,250,247,.10);--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--cloud:#919180;
+--book-lo:rgba(204,120,92,.10);--book-bd:rgba(204,120,92,.34);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0c0a09;display:flex;flex-direction:column;align-items:center;gap:34px;padding:30px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.slide{width:1080px;height:1350px;position:relative;overflow:hidden;background:var(--slate);color:var(--ivory);padding:58px 64px 50px;display:flex;flex-direction:column;}
+.slide::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.4px,transparent 1.5px);background-size:34px 34px;}
+.slide::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 56% 24% at 86% 0%,rgba(204,120,92,.18),transparent 60%),radial-gradient(ellipse 50% 20% at 6% 100%,rgba(212,162,127,.09),transparent 60%);}
+.slide>*{position:relative;z-index:2;}
+.spk{width:54px;height:54px;flex-shrink:0;filter:drop-shadow(0 0 16px rgba(204,120,92,.4));}
+.kick{display:flex;align-items:center;gap:14px;flex-shrink:0;}
+.kick .tag{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;letter-spacing:.2em;color:var(--book);border:1px solid var(--book-bd);background:var(--book-lo);padding:8px 14px;border-radius:8px;}
+.kick .pg{margin-left:auto;font-family:'DM Mono',monospace;font-size:15px;letter-spacing:.18em;color:var(--ink46);}
+.h2{font-size:56px;font-weight:900;letter-spacing:-2.3px;line-height:.97;color:var(--ivory);margin-top:22px;flex-shrink:0;}
+.h2 em{font-style:normal;color:var(--book);}
+.lede{font-size:23px;font-weight:500;color:var(--ink70);line-height:1.3;margin-top:13px;flex-shrink:0;}.lede b{color:var(--ivory);font-weight:700;}
+/* activity-trace mockup */
+.trace{margin-top:22px;border-radius:18px;overflow:hidden;background:var(--win);box-shadow:0 30px 70px rgba(0,0,0,.5);display:flex;flex-direction:column;flex:1;min-height:0;border:1px solid var(--ink14);}
+.trace-hd{flex-shrink:0;display:flex;align-items:center;gap:12px;padding:16px 22px;background:var(--win2);border-bottom:1px solid var(--rule);}
+.trace-hd .dot{width:10px;height:10px;border-radius:50%;background:var(--book);box-shadow:0 0 10px rgba(204,120,92,.9);flex-shrink:0;}
+.trace-hd b{font-size:19px;font-weight:800;color:var(--ivory);}
+.trace-hd .req{margin-left:auto;font-family:'DM Mono',monospace;font-size:14px;color:var(--ink46);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:420px;}
+.trace-bd{flex:1;min-height:0;padding:18px 22px;display:flex;flex-direction:column;gap:11px;}
+.trow{flex:1;display:flex;align-items:center;gap:16px;background:var(--slate2);border:1px solid var(--rule);border-radius:12px;padding:0 20px;min-height:0;}
+.trow .tc{width:34px;height:34px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--book-lo);border:1px solid var(--book-bd);}
+.trow .tc svg{width:18px;height:18px;stroke:var(--book);stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.trow .tv{flex:1;font-size:21px;font-weight:700;color:var(--ivory);letter-spacing:-.2px;}
+.trow .tt{font-family:'DM Mono',monospace;font-size:14px;color:var(--ink46);flex-shrink:0;}
+.trow .ts{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--cloud);flex-shrink:0;}
+.trow.gate{background:rgba(204,120,92,.13);border-color:var(--book-bd);border-left:5px solid var(--book);}
+.trow.gate .tv b{color:#fff;}.trow.gate .ts{color:var(--book);}
+/* capability list */
+.caps{flex:1;display:flex;flex-direction:column;gap:12px;margin-top:22px;min-height:0;}
+.cap{flex:1;display:flex;align-items:center;gap:22px;border:1px solid var(--rule);border-left:5px solid var(--book);border-radius:15px;background:var(--slate2);padding:0 26px;min-height:0;}
+.cap.k{border-left-color:var(--kraft);}.cap.d{border-left-color:var(--book-d);}
+.cap .ci{width:56px;height:56px;border-radius:14px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--book-lo);border:1px solid var(--book-bd);}
+.cap.k .ci{background:rgba(212,162,127,.1);border-color:rgba(212,162,127,.3);}.cap.d .ci{border-color:var(--book-d);}
+.cap .ci svg{width:28px;height:28px;stroke:var(--book);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.cap.k .ci svg{stroke:var(--kraft);}.cap.d .ci svg{stroke:var(--book-d);}
+.cap .cx{flex:1;min-width:0;}
+.cap .ct{font-size:25px;font-weight:800;color:var(--ivory);letter-spacing:-.4px;}
+.cap .cd{font-size:17px;font-weight:500;color:var(--ink70);margin-top:3px;line-height:1.2;}
+/* gate: what runs vs what waits */
+.glist{flex:1;display:flex;flex-direction:column;gap:12px;margin-top:22px;min-height:0;}
+.grow{flex:1;display:flex;align-items:center;gap:20px;border:1px solid var(--rule);border-radius:15px;background:var(--slate2);padding:0 28px;min-height:0;}
+.grow .gci{width:50px;height:50px;border-radius:13px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--book-lo);border:1px solid var(--book-bd);}
+.grow.wait{border-left:5px solid var(--book);background:rgba(204,120,92,.1);}
+.grow.wait .gci{background:rgba(204,120,92,.22);}
+.grow .gci svg{width:26px;height:26px;stroke:var(--book);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.grow .gl{flex:1;font-size:26px;font-weight:800;letter-spacing:-.4px;color:var(--ink70);}
+.grow.wait .gl{color:var(--ivory);}
+.grow .gv{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;flex-shrink:0;color:var(--cloud);}
+.grow.wait .gv{color:var(--book);}
+/* before / after */
+.ba{flex:1;display:flex;flex-direction:column;gap:14px;margin-top:22px;min-height:0;}
+.bacol{flex:1;display:flex;flex-direction:column;gap:9px;border:1px solid var(--rule);border-radius:16px;background:var(--slate2);padding:18px 22px;min-height:0;}
+.bacol.good{border-color:var(--book-bd);background:rgba(204,120,92,.08);}
+.bacol .bh{flex-shrink:0;font-family:'DM Mono',monospace;font-size:14px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--cloud);}
+.bacol.good .bh{color:var(--book);}
+.barow{flex:1;display:flex;align-items:center;gap:13px;font-size:20px;font-weight:600;color:var(--ink70);min-height:0;}
+.bacol.good .barow{color:var(--ivory);}
+.barow svg{width:21px;height:21px;flex-shrink:0;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke:var(--cloud);}
+.bacol.good .barow svg{stroke:var(--book);}
+/* cover */
+.cv-eyb{font-family:'DM Mono',monospace;font-size:17px;font-weight:500;letter-spacing:.24em;color:var(--kraft);flex-shrink:0;margin-top:20px;}
+.cv-h{font-size:74px;font-weight:900;letter-spacing:-3px;line-height:.92;color:var(--ivory);margin-top:14px;flex-shrink:0;}
+.cv-h em{font-style:normal;color:var(--book);}
+.cv-sub{font-size:25px;font-weight:500;color:var(--ink70);line-height:1.3;margin-top:16px;flex-shrink:0;}.cv-sub b{color:var(--ivory);font-weight:700;}
+.swipe{margin-top:auto;display:flex;align-items:center;gap:11px;font-family:'DM Mono',monospace;font-size:16px;letter-spacing:.16em;text-transform:uppercase;color:var(--book);flex-shrink:0;padding-top:18px;}
+.swipe svg{width:23px;height:23px;stroke:var(--book);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ctawrap{flex-shrink:0;margin-top:auto;padding-top:20px;}
+.savel{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--kraft);margin-bottom:12px;padding-left:4px;}
+.cta{display:flex;align-items:center;gap:16px;border:1.5px solid var(--book);border-radius:20px;background:rgba(204,120,92,.08);padding:15px 15px 15px 28px;box-shadow:0 0 44px rgba(204,120,92,.2);}
+.cta .ph{flex:1;font-size:26px;font-weight:600;color:var(--ink70);line-height:1.2;}.cta .ph b{color:var(--book);font-weight:900;}
+.cta .send{width:66px;height:66px;border-radius:50%;background:var(--book);flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(204,120,92,.45);}
+.cta .send svg{width:30px;height:30px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ftr{margin-top:auto;padding-top:20px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-shrink:0;}
+.ftr-l{display:flex;align-items:center;gap:13px;min-width:0;}.ftr-l img{width:42px;height:42px;border-radius:50%;flex-shrink:0;object-fit:cover;}
+.ftr-tx{font-family:'DM Mono',monospace;font-size:14px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--ink70);white-space:nowrap;}.ftr-tx b{color:var(--ivory);font-weight:500;}
+.ftr-url{font-size:24px;font-weight:900;letter-spacing:-.5px;color:var(--ivory);flex-shrink:0;}.ftr-url em{font-style:normal;color:var(--book);}
+</style>
+</head>
+<body>
+
+<!-- S1 COVER -->
+<div class="slide">
+  <div class="kick"><svg class="spk" viewBox="0 0 1200 1200"><path fill="#CC785C" d="M 233.96 800.21 L 468.64 668.54 L 472.59 657.10 L 468.64 650.74 L 457.21 650.74 L 417.99 648.32 L 283.89 644.70 L 167.60 639.87 L 54.93 633.83 L 26.58 627.79 L 0 592.75 L 2.74 575.28 L 26.58 559.25 L 60.72 562.23 L 136.19 567.38 L 249.42 575.19 L 331.57 580.03 L 453.26 592.67 L 472.59 592.67 L 475.33 584.86 L 468.72 580.03 L 463.57 575.19 L 346.39 495.79 L 219.54 411.87 L 153.10 363.54 L 117.18 339.06 L 99.06 316.11 L 91.25 266.01 L 123.87 230.09 L 167.68 233.07 L 178.87 236.05 L 223.25 270.20 L 318.04 343.57 L 441.83 434.74 L 459.95 449.80 L 467.19 444.64 L 468.08 441.02 L 459.95 427.41 L 392.62 305.72 L 320.78 181.93 L 288.81 130.63 L 280.35 99.87 C 277.37 87.22 275.19 76.59 275.19 63.62 L 312.32 13.21 L 332.86 6.60 L 382.39 13.21 L 403.25 31.33 L 434.01 101.72 L 483.87 212.54 L 561.18 363.22 L 583.81 407.92 L 595.89 449.32 L 600.40 461.96 L 608.21 461.96 L 608.21 454.71 L 614.58 369.83 L 626.34 265.61 L 637.77 131.52 L 641.72 93.75 L 660.40 48.48 L 697.53 24.00 L 726.52 37.85 L 750.36 72 L 747.06 94.07 L 732.89 186.20 L 705.10 330.52 L 686.98 427.17 L 697.53 427.17 L 709.61 415.09 L 758.50 350.17 L 840.64 247.49 L 876.89 206.74 L 919.17 161.72 L 946.31 140.30 L 997.61 140.30 L 1035.38 196.43 L 1018.47 254.42 L 965.64 321.42 L 921.83 378.20 L 859.01 462.77 L 819.79 530.42 L 823.41 535.81 L 832.75 534.93 L 974.66 504.72 L 1051.33 490.87 L 1142.82 475.17 L 1184.21 494.50 L 1188.72 514.15 L 1172.46 554.34 L 1074.60 578.50 L 959.84 601.45 L 788.94 641.88 L 786.85 643.41 L 789.26 646.39 L 866.26 653.64 L 899.19 655.41 L 979.81 655.41 L 1129.93 666.60 L 1169.15 692.54 L 1192.67 724.27 L 1188.72 748.43 L 1128.32 779.19 L 1046.82 759.87 L 856.59 714.60 L 791.36 698.34 L 782.34 698.34 L 782.34 703.73 L 836.70 756.89 L 936.32 846.85 L 1061.07 962.82 L 1067.44 991.49 L 1051.41 1014.12 L 1034.50 1011.70 L 924.89 929.23 L 882.60 892.11 L 786.85 811.49 L 780.48 811.49 L 780.48 819.95 L 802.55 852.24 L 919.09 1027.41 L 925.13 1081.13 L 916.67 1098.60 L 886.47 1109.15 L 853.29 1103.11 L 785.07 1007.36 L 714.68 899.52 L 657.91 802.87 L 650.98 806.82 L 617.48 1167.70 L 601.77 1186.15 L 565.53 1200 L 535.33 1177.05 L 519.30 1139.92 L 535.33 1066.55 L 554.66 970.79 L 570.36 894.68 L 584.54 800.13 L 592.99 768.72 L 592.43 766.63 L 585.50 767.52 L 514.23 865.37 L 405.83 1011.87 L 320.05 1103.68 L 299.52 1111.81 L 263.92 1093.37 L 267.22 1060.43 L 287.11 1031.11 L 405.83 880.11 L 477.42 786.52 L 523.65 732.48 L 523.33 724.67 L 520.59 724.67 L 205.29 929.40 L 149.15 936.64 L 124.99 914.01 L 127.97 876.89 L 139.41 864.81 L 234.20 799.57 Z"/></svg><span class="pg">01 / 05</span></div>
+  <div class="cv-eyb">claude tool use</div>
+  <div class="cv-h">Claude can use tools.<br>It still <em>asks first</em>.</div>
+  <div class="cv-sub">Point it at your stack and it does the work, then <b>waits for your yes before anything sends.</b></div>
+  <div class="trace">
+    <div class="trace-hd"><span class="dot"></span><b>Claude is working</b><span class="req">"find this lead, save it, draft the intro"</span></div>
+    <div class="trace-bd">
+      <div class="trow"><span class="tc"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span class="tv">Searched the web</span><span class="tt">web search</span><span class="ts">done</span></div>
+      <div class="trow"><span class="tc"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span class="tv">Saved it to the CRM</span><span class="tt">crm</span><span class="ts">done</span></div>
+      <div class="trow"><span class="tc"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span class="tv">Drafted the intro</span><span class="tt">email</span><span class="ts">done</span></div>
+      <div class="trow gate"><span class="tc"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span class="tv"><b>Send the email</b></span><span class="tt">gmail</span><span class="ts">waiting for you</span></div>
+    </div>
+  </div>
+  <div class="swipe">What it can reach<svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+</div>
+
+<!-- S2 capabilities -->
+<div class="slide">
+  <div class="kick"><span class="tag">GIVE IT THE TOOLS</span><span class="pg">02 / 05</span></div>
+  <div class="h2">What it can <em>actually do</em></div>
+  <div class="caps">
+    <div class="cap"><span class="ci"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span><div class="cx"><div class="ct">Search and read the web</div><div class="cd">live pages, not stale memory</div></div></div>
+    <div class="cap k"><span class="ci"><svg viewBox="0 0 24 24"><path d="m18 16 4-4-4-4M6 8l-4 4 4 4M14.5 4l-5 16"/></svg></span><div class="cx"><div class="ct">Write and run code</div><div class="cd">build a tool, crunch a spreadsheet</div></div></div>
+    <div class="cap d"><span class="ci"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg></span><div class="cx"><div class="ct">Run your CRM and leads</div><div class="cd">enrich, save, update deals</div></div></div>
+    <div class="cap"><span class="ci"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg></span><div class="cx"><div class="ct">Email and book calls</div><div class="cd">draft, send, schedule</div></div></div>
+    <div class="cap k"><span class="ci"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><div class="cx"><div class="ct">Post to Slack and docs</div><div class="cd">updates, notes, briefs</div></div></div>
+    <div class="cap d"><span class="ci"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span><div class="cx"><div class="ct">Pull revenue and charge</div><div class="cd">invoices, links, MRR</div></div></div>
+  </div>
+  <div class="swipe">Why it is safe<svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+</div>
+
+<!-- S3 the gate -->
+<div class="slide">
+  <div class="kick"><span class="tag">WHY THAT IS NOT SCARY</span><span class="pg">03 / 05</span></div>
+  <div class="h2">What runs, <em>what waits</em></div>
+  <div class="glist">
+    <div class="grow"><span class="gci"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span class="gl">Read, search, analyze</span><span class="gv">runs</span></div>
+    <div class="grow"><span class="gci"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span class="gl">Draft and build</span><span class="gv">runs</span></div>
+    <div class="grow wait"><span class="gci"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span class="gl">Send an email</span><span class="gv">waits for you</span></div>
+    <div class="grow wait"><span class="gci"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span class="gl">Charge a card</span><span class="gv">waits for you</span></div>
+    <div class="grow wait"><span class="gci"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><span class="gl">Post in public</span><span class="gv">waits for you</span></div>
+  </div>
+  <div class="swipe">Your day, rewritten<svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+</div>
+
+<!-- S4 before / after -->
+<div class="slide">
+  <div class="kick"><span class="tag">YOUR DAY, REWRITTEN</span><span class="pg">04 / 05</span></div>
+  <div class="h2">Stop being the <em>copy-paste</em></div>
+  <div class="ba">
+    <div class="bacol">
+      <div class="bh">Before, you</div>
+      <div class="barow"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>Ask, then copy the answer out</div>
+      <div class="barow"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>Switch to the CRM, paste, fix it</div>
+      <div class="barow"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>Open the inbox, retype the email</div>
+    </div>
+    <div class="bacol good">
+      <div class="bh">After, Claude</div>
+      <div class="barow"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Searches, saves and drafts in one go</div>
+      <div class="barow"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Updates the CRM itself</div>
+      <div class="barow"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Writes the email and waits for your yes</div>
+    </div>
+  </div>
+  <div class="swipe">Set it up<svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+</div>
+
+<!-- S5 CTA -->
+<div class="slide">
+  <div class="kick"><span class="tag">LET CLAUDE ACT</span><span class="pg">05 / 05</span></div>
+  <div class="h2">Stop pasting.<br>Let it <em>act</em>.</div>
+  <div class="caps">
+    <div class="cap"><span class="ci"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 2v10l8 4"/></svg></span><div class="cx"><div class="ct">Connect a tool or two</div><div class="cd">CRM, inbox, calendar to start</div></div></div>
+    <div class="cap k"><span class="ci"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span><div class="cx"><div class="ct">Give it the whole task</div><div class="cd">"find, save and draft", not one step</div></div></div>
+    <div class="cap d"><span class="ci"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><div class="cx"><div class="ct">Approve the sends</div><div class="cd">you stay on the gate</div></div></div>
+  </div>
+  <div class="ctawrap">
+    <div class="savel">Save this, then</div>
+    <div class="cta"><span class="ph">Comment <b>TOOLS</b> for my Claude tool-use setup</span><span class="send"><svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div>
+  </div>
+  <div class="ftr">
+    <div class="ftr-l"><img src="__LOGO_URI__" alt="Ultron"><span class="ftr-tx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span></div>
+    <div class="ftr-url">51ultron<em>.</em>com</div>
+  </div>
+</div>
+
+</body>
+</html>
