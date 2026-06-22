@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-22T13:47:50",
+  "generated_at": "2026-06-22T13:58:04",
   "counts": {
     "total": 124,
     "generated": 80,
@@ -677,7 +677,7 @@
       "alt": "Dark editorial visual on slate background. Hero on the left reads 'I ran 8 GTM jobs through one AI. It won once,' with once in book-orange. On the right, a WINS BY MODEL leaderboard with real model logos and proportional bars: Claude 5 in a full book-orange bar, ChatGPT 1, Gemini 1, Perplexity 1, captioned 'best single model wins only 5 of 8, route and win 8 of 8.' Below, a routing map titled the routing map, a table of GTM Job, Winner, Runner-up slash Avoid, and Why, with eight numbered rows and each winner shown as a logo chip: lead research to Perplexity, account enrichment to Gemini, ICP scoring, cold outreach, call prep, proposal draft and objection handling to Claude, follow-up to close to ChatGPT. A before-and-after block compares the old stack to the routing layer, each metric with an icon and a mini bar: monthly cost 13 thousand dollars to 19, tabs per job 5 to 1, decision time 30 minutes to 0, jobs won 1 of 8 to 8 of 8, context kept across jobs none to all 8, and wrong-tool sends 7 to 0. A one-line note says Ultron is the routing layer over CORTEX, SPECTER, STRIKER, PULSE, and SENTINEL. Closes with a Comment ROUTING call to action and the Ultron logo.",
       "first_comment": "Eight founder GTM jobs, four AIs. Run all eight through one model and it is the right tool for exactly one of them. Perplexity wins research, Gemini wins enrichment, Claude wins the judgment and the writing, ChatGPT wins the close.\n\nUltron routes each job to its winner automatically, holds the context across all eight, and gates every send.\n\nDrop ROUTING below and I will send you the full routing map plus the exact Claude workflow we run: https://app.51ultron.com/docs/platform/overview",
       "generated_date": "2026-06-02",
-      "added": 1780371057,
+      "added": 1780371054,
       "source": "generated",
       "status": "ready",
       "posted": true,
@@ -2707,9 +2707,9 @@
       "variants": [
         ""
       ],
-      "caption": "Comment ROSTER and I will send you the seven-command cheat sheet.\n\nYou prompt one AI to do everything. Operators command seven specialists.\n\nNow I do not type into a chat box. I type a slash.\n\n/cortex researches. /specter prospects. /striker closes. /pulse writes. /sentinel ships. /amplify advertises. /counsel drafts.\n\nSeven heads of department, 56 skills underneath, and you stay on the gate so nothing sends without you.\n\nStop prompting one generalist. Command a team.\n\n#claude #ai #founder #startup #buildinpublic",
-      "alt": "Light editorial infographic on a cream background with coral accents and the Ultron logo. The hook reads you prompt one AI, I command seven. Below it, a dark slash-command palette mockup with the prompt run a specialist and a menu of seven commands, each a slash command, an agent name, its unit and a skill count: /cortex CORTEX intelligence 10 skills, /specter SPECTER acquisition 11, /striker STRIKER growth 6, /pulse PULSE marketing 9, /sentinel SENTINEL engineering 6, /amplify AMPLIFY paid media 8, /counsel COUNSEL legal 6. Three steps below read type the slash, the specialist runs, you stay on the gate. Closes on a Comment ROSTER call to action and the Ultron logo.",
-      "first_comment": "One generalist AI does everything averagely. Seven specialists, one slash each, each with its own skills and the right model tier, do it properly. /cortex for research, /sentinel to ship a tool, /counsel for a contract. You stay on the gate.\n\nComment ROSTER and I will send you the seven-command cheat sheet. See the full system at app.51ultron.com/docs",
+      "caption": "Comment COMMANDS and I will send you my slash-command setup.\n\nYou run one Claude chat for everything. The trick is running a stack of slash commands instead.\n\nNow I do not re-explain the job every time. I type a slash.\n\n/research pulls the market and the competitors. /outreach finds the leads and writes the sequence. /deals preps the call and handles objections. /content writes in my voice. /ship builds and tests a tool. Each command carries its own instructions and tools, so Claude shows up already in role.\n\nStop re-briefing one Claude. Give it specialists.\n\n#claude #ai #founder #startup #buildinpublic",
+      "alt": "Light editorial infographic on a cream background with coral accents and a Claude sunburst. The hook reads you run one Claude, I run seven commands. Below it, a dark command-palette mockup with the prompt pick a command and seven saved slash commands, each a command, a role and a one-line job: /research for markets and signals, /outreach for leads and sequences, /deals for call prep and objections, /content for posts in your voice, /ship to build and deploy a tool, /ads for campaigns, and /legal to draft and review a contract. Three steps below read save the command, type the slash, Claude arrives in role. Closes on a Comment COMMANDS call to action and the Ultron logo.",
+      "first_comment": "One Claude chat doing everything forgets the brief every time. Saved slash commands fix that: each one carries its own instructions and tools, so Claude opens already in role. Type /research and it is the researcher. Type /ship and it builds.\n\nComment COMMANDS and I will send you my slash-command setup. More at 51ultron.com",
       "generated_date": "2026-06-22",
       "added": 1782132421,
       "source": "generated",
@@ -2977,7 +2977,7 @@
       "alt": "Light editorial infographic on a cream background with coral accents and a Claude sunburst. The hook reads Claude can use tools, it still asks first. Below it, a dark activity panel titled Claude is working on the request find this lead, save it, draft the intro, with four steps marked done, searched the web, enriched the lead, saved it to the CRM and drafted the intro, then a highlighted locked row, send the email, marked waiting for you. Three cards read it acts not just answers, only what you link, and you approve the gate holds every send. Closes on a Comment TOOLS call to action and the Ultron logo.",
       "first_comment": "The number of tools is not the point, the gate is. Claude can search, enrich, draft, book and post, but anything irreversible waits for your yes. Real actions, zero surprises.\n\nComment TOOLS and I will send you my Claude tool-use setup, including the approval step. More at 51ultron.com",
       "generated_date": "2026-06-22",
-      "added": 1782135878,
+      "added": 1782136070,
       "source": "generated",
       "status": "ready",
       "posted": false,

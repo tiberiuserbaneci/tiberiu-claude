@@ -1,28 +1,26 @@
-# Ultron personas - TikTok caption kit
-For: personas-roster-editorial45-infographic (+ cross-post carousel) | Keyword: ROSTER
+# Claude slash commands - TikTok caption kit
+For: personas-roster-editorial45-infographic (+ carousel) | Keyword: COMMANDS | Claude perspective
 
 ## CAPTION
 
-Comment ROSTER and I will send you the seven-command cheat sheet.
+Comment COMMANDS and I will send you my slash-command setup.
 
-You prompt one AI to do everything. Operators command seven specialists.
+You run one Claude chat for everything. The trick is running a stack of slash commands instead.
 
-Now I do not type into a chat box. I type a slash.
+Now I do not re-explain the job every time. I type a slash.
 
-/cortex researches. /specter prospects. /striker closes. /pulse writes. /sentinel ships. /amplify advertises. /counsel drafts.
+/research pulls the market and the competitors. /outreach finds the leads and writes the sequence. /deals preps the call and handles objections. /content writes in my voice. /ship builds and tests a tool. Each command carries its own instructions and tools, so Claude shows up already in role.
 
-Seven heads of department, 56 skills underneath, and you stay on the gate so nothing sends without you.
-
-Stop prompting one generalist. Command a team.
+Stop re-briefing one Claude. Give it specialists.
 
 #claude #ai #founder #startup #buildinpublic
 
 ## ALT TEXT
 
-Light editorial infographic on a cream background with coral accents and the Ultron logo. The hook reads you prompt one AI, I command seven. Below it, a dark slash-command palette mockup with the prompt run a specialist and a menu of seven commands, each a slash command, an agent name, its unit and a skill count: /cortex CORTEX intelligence 10 skills, /specter SPECTER acquisition 11, /striker STRIKER growth 6, /pulse PULSE marketing 9, /sentinel SENTINEL engineering 6, /amplify AMPLIFY paid media 8, /counsel COUNSEL legal 6. Three steps below read type the slash, the specialist runs, you stay on the gate. Closes on a Comment ROSTER call to action and the Ultron logo.
+Light editorial infographic on a cream background with coral accents and a Claude sunburst. The hook reads you run one Claude, I run seven commands. Below it, a dark command-palette mockup with the prompt pick a command and seven saved slash commands, each a command, a role and a one-line job: /research for markets and signals, /outreach for leads and sequences, /deals for call prep and objections, /content for posts in your voice, /ship to build and deploy a tool, /ads for campaigns, and /legal to draft and review a contract. Three steps below read save the command, type the slash, Claude arrives in role. Closes on a Comment COMMANDS call to action and the Ultron logo.
 
 ## FIRST COMMENT
 
-One generalist AI does everything averagely. Seven specialists, one slash each, each with its own skills and the right model tier, do it properly. /cortex for research, /sentinel to ship a tool, /counsel for a contract. You stay on the gate.
+One Claude chat doing everything forgets the brief every time. Saved slash commands fix that: each one carries its own instructions and tools, so Claude opens already in role. Type /research and it is the researcher. Type /ship and it builds.
 
-Comment ROSTER and I will send you the seven-command cheat sheet. See the full system at app.51ultron.com/docs
+Comment COMMANDS and I will send you my slash-command setup. More at 51ultron.com
