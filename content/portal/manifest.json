@@ -1718,8 +1718,8 @@
       "added": 1781872176,
       "source": "generated",
       "status": "ready",
-      "posted": false,
-      "posted_date": null,
+      "posted": true,
+      "posted_date": "2026-06-22",
       "analytics": null,
       "crossposts": []
     },
