@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-06-23T11:23:43",
+  "generated_at": "2026-06-23T11:31:11",
   "counts": {
-    "total": 140,
-    "generated": 96,
+    "total": 138,
+    "generated": 94,
     "reference": 44,
     "crosspost": 0
   },
@@ -2992,31 +2992,6 @@
       "crossposts": []
     },
     {
-      "id": "run-claude-free-bw-dodge",
-      "title": "Run Claude Free Bw Dodge",
-      "channel": "tiktok",
-      "type": "video",
-      "slides": 1,
-      "dims": "720x1280",
-      "preview": "content/portal/thumbs/run-claude-free-bw-dodge.png",
-      "download": "content/run-claude-free-bw-dodge.mp4",
-      "files": [
-        "content/run-claude-free-bw-dodge.mp4"
-      ],
-      "variants": [],
-      "caption": "Comment FREE and I will send you the setup to run Claude Code without the subscription.\n\nYou think coding with Claude is locked behind a monthly bill. It is not.\n\nNow I run the full Claude Code workflow without paying for it.\n\nSomeone on GitHub shared the way, and it takes about five minutes to set up.\n\nYou install a free, open coding agent, point it at the model, and let it work the repo: read the codebase, write the feature, run the tests, open the pull request. Same agent-in-your-editor flow, none of the monthly bill. Every tool in this video is free.\n\nMost people keep paying because they never go looking.\n\nStop paying just to try it.\n\n#claude #ai #founder #startup #buildinpublic",
-      "alt": "",
-      "first_comment": "The setup is free and takes about five minutes. A free open coding agent, the Claude workflow living in your editor, and no subscription on top.\n\nComment FREE and I will send you the exact steps.",
-      "generated_date": "2026-06-23",
-      "added": 1782212642,
-      "source": "generated",
-      "status": "ready",
-      "posted": false,
-      "posted_date": null,
-      "analytics": null,
-      "crossposts": []
-    },
-    {
       "id": "run-claude-free-claude-theme",
       "title": "Run Claude Free Claude Theme",
       "channel": "tiktok",
@@ -3027,31 +3002,6 @@
       "download": "content/run-claude-free-claude-theme.mp4",
       "files": [
         "content/run-claude-free-claude-theme.mp4"
-      ],
-      "variants": [],
-      "caption": "Comment FREE and I will send you the setup to run Claude Code without the subscription.\n\nYou think coding with Claude is locked behind a monthly bill. It is not.\n\nNow I run the full Claude Code workflow without paying for it.\n\nSomeone on GitHub shared the way, and it takes about five minutes to set up.\n\nYou install a free, open coding agent, point it at the model, and let it work the repo: read the codebase, write the feature, run the tests, open the pull request. Same agent-in-your-editor flow, none of the monthly bill. Every tool in this video is free.\n\nMost people keep paying because they never go looking.\n\nStop paying just to try it.\n\n#claude #ai #founder #startup #buildinpublic",
-      "alt": "",
-      "first_comment": "The setup is free and takes about five minutes. A free open coding agent, the Claude workflow living in your editor, and no subscription on top.\n\nComment FREE and I will send you the exact steps.",
-      "generated_date": "2026-06-23",
-      "added": 1782212642,
-      "source": "generated",
-      "status": "ready",
-      "posted": false,
-      "posted_date": null,
-      "analytics": null,
-      "crossposts": []
-    },
-    {
-      "id": "run-claude-free-claude-theme-dodge",
-      "title": "Run Claude Free Claude Theme Dodge",
-      "channel": "tiktok",
-      "type": "video",
-      "slides": 1,
-      "dims": "720x1280",
-      "preview": "content/portal/thumbs/run-claude-free-claude-theme-dodge.png",
-      "download": "content/run-claude-free-claude-theme-dodge.mp4",
-      "files": [
-        "content/run-claude-free-claude-theme-dodge.mp4"
       ],
       "variants": [],
       "caption": "Comment FREE and I will send you the setup to run Claude Code without the subscription.\n\nYou think coding with Claude is locked behind a monthly bill. It is not.\n\nNow I run the full Claude Code workflow without paying for it.\n\nSomeone on GitHub shared the way, and it takes about five minutes to set up.\n\nYou install a free, open coding agent, point it at the model, and let it work the repo: read the codebase, write the feature, run the tests, open the pull request. Same agent-in-your-editor flow, none of the monthly bill. Every tool in this video is free.\n\nMost people keep paying because they never go looking.\n\nStop paying just to try it.\n\n#claude #ai #founder #startup #buildinpublic",
@@ -3083,7 +3033,7 @@
       "alt": "",
       "first_comment": "The 6 cover memory across sessions, real tool access, custom slash commands and a review gate before anything ships. That is the gap between Claude Code as a chatbot and Claude Code as an operator.\n\nComment PLUGINS and I will send you the exact setup.",
       "generated_date": "2026-06-23",
-      "added": 1782213810,
+      "added": 1782213839,
       "source": "generated",
       "status": "ready",
       "posted": false,
@@ -3108,7 +3058,7 @@
       "alt": "",
       "first_comment": "The 6 cover memory across sessions, real tool access, custom slash commands and a review gate before anything ships. That is the gap between Claude Code as a chatbot and Claude Code as an operator.\n\nComment PLUGINS and I will send you the exact setup.",
       "generated_date": "2026-06-23",
-      "added": 1782213810,
+      "added": 1782213839,
       "source": "generated",
       "status": "ready",
       "posted": false,
@@ -3133,7 +3083,7 @@
       "alt": "",
       "first_comment": "The 6 cover memory across sessions, real tool access, custom slash commands and a review gate before anything ships. That is the gap between Claude Code as a chatbot and Claude Code as an operator.\n\nComment PLUGINS and I will send you the exact setup.",
       "generated_date": "2026-06-23",
-      "added": 1782213810,
+      "added": 1782213839,
       "source": "generated",
       "status": "ready",
       "posted": false,
@@ -3158,7 +3108,7 @@
       "alt": "",
       "first_comment": "The 6 cover memory across sessions, real tool access, custom slash commands and a review gate before anything ships. That is the gap between Claude Code as a chatbot and Claude Code as an operator.\n\nComment PLUGINS and I will send you the exact setup.",
       "generated_date": "2026-06-23",
-      "added": 1782213810,
+      "added": 1782213839,
       "source": "generated",
       "status": "ready",
       "posted": false,
