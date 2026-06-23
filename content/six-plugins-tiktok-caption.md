@@ -1,5 +1,5 @@
 # 6 plugins to unlock Claude Code - TikTok caption kit
-For: six-plugins recolor variants (cream / B&W / high-contrast / duotone) | Keyword: PLUGINS | Claude perspective
+For: six-plugins recolor variants (cream / B&W / book-cloth / duotone) | Keyword: PLUGINS | Claude perspective
 Note: on-screen hook differs per variant (burned in, first 3s). Captions below also differ so the two accounts never match on text either.
 
 ## CAPTION A (primary)
