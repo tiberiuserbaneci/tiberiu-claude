@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-06-22T14:06:52",
+  "generated_at": "2026-06-23T10:37:55",
   "counts": {
-    "total": 126,
-    "generated": 82,
+    "total": 129,
+    "generated": 85,
     "reference": 44,
     "crosspost": 0
   },
@@ -1132,6 +1132,33 @@
       "first_comment": "",
       "generated_date": "2026-06-22",
       "added": 1782125811,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "tool-stack-linkedin",
+      "title": "Tool Stack",
+      "channel": "linkedin",
+      "type": "single",
+      "slides": 1,
+      "dims": "2160x2900 (1080x1450 @2x)",
+      "preview": "content/tool-stack-linkedin.png",
+      "download": "content/tool-stack-linkedin.png",
+      "files": [
+        "content/tool-stack-linkedin.png"
+      ],
+      "variants": [
+        ""
+      ],
+      "caption": "Most founders think they need another AI tool. They need fewer open tabs.\n\nI counted mine once: nine apps to run a single outbound motion, from finding a lead to sending the invoice.\n\n- - -\n\nThe problem was never capability. Each tool did its job well. The problem was me, stitching them together by hand, copy-pasting between nine tabs all day, and being the integration layer no one was paying me to be. Every handoff between two tabs was a place to drop the ball, and most days I dropped at least one. A lead I enriched in the morning never made it into the sequence by the afternoon.\n\nSo I stopped adding tools and changed the shape of the stack instead. One AI operator, with native access to the apps I already pay for, firing them from one chat.\n\nHere is what one operator actually runs:\n\n\u2192 Research and enrich. web_search, scrape_website, enrich_lead, search_people. The 30-tab research sprint collapses into one instruction.\n\n\u2192 The whole CRM. 11 native tools, from crm_save_lead to crm_pipeline_velocity, so the pipeline updates itself instead of waiting for me on a Friday night.\n\n\u2192 Outbound and meetings. gmail_send_email and crm_email_sequences write and send, calendly_create_link and gcal_create_event book the call, none of it leaving the thread.\n\n\u2192 Content and revenue. content_create_post and generate_carousel ship the post, stripe_create_invoice and stripe_revenue_metrics charge the card and read back the MRR.\n\n\u2192 The team and build layer. slack_send_message, notion_action, n8n_trigger_workflow, code_task. 92 native tools in total, plus your own MCP servers.\n\n- - -\n\nThe unlock was not the number of tools. It was the two rules underneath them. The operator only fires the tools you have actually connected, so it never reaches into an app you do not run. And anything irreversible, a send, a charge, a post, stops at one approval gate and waits for your yes.\n\nMost founders answer tab sprawl by buying a tenth tool. The leverage is the opposite move: stop adding surfaces and put one operator in front of the apps you already pay for. That is the line between a chatbot and an operator. One hands you words. The other runs the stack and asks permission before it ships.\n\nYou do not need a tenth tab. You need the nine you have to answer to one operator.\n\n- - -\n\nFollow for one AI system for founders every day.\nComment STACK and I will send you the full 92-tool operator map we use to run GTM from one chat.",
+      "alt": "Dark editorial infographic on a slate background with book-orange accents and the Ultron logo. The headline reads 'I handed my AI 92 tools. It runs the whole stack,' with 92 tools in book-orange. A four-cell stat strip shows 92 native tools, 9 GTM jobs, 1 approval gate, and plus MCP. Below is a nine-row map. Each row names a GTM job and the apps a founder juggles on the left, an arrow, then the native tools one operator fires on the right with a tool count: Research a target maps to web_search and browser_action at 5 tools, Run the CRM and pipeline to crm_save_lead and crm_pipeline_velocity at 11, Charge and track revenue to stripe_create_invoice and stripe_revenue_metrics at 7, on through 19 team tools. A footer note adds 17 more for memory, skills, documents and the approval gate. Closes with a Comment STACK call to action and the Ultron logo.",
+      "first_comment": "Nine tabs to run one outbound motion. That was my stack before. Now one AI operator fires all 92 native tools from a single chat, and only the ones I have connected. Search, enrich, email, book, charge, post, with an approval gate on anything that ships.\n\nDrop STACK below and I will send you the full 92-tool operator map. More at app.51ultron.com/resources",
+      "generated_date": "2026-06-23",
+      "added": 1782206676,
       "source": "generated",
       "status": "ready",
       "posted": false,
@@ -2713,7 +2740,7 @@
       "alt": "Light editorial infographic on a cream background with coral accents and a Claude sunburst. The hook reads you run one Claude, I run seven commands. Below it, a dark command-palette mockup with the prompt pick a command and seven saved slash commands, each a command, a role and a one-line job: /research for markets and signals, /outreach for leads and sequences, /deals for call prep and objections, /content for posts in your voice, /ship to build and deploy a tool, /ads for campaigns, and /legal to draft and review a contract. Three steps below read save the command, type the slash, Claude arrives in role. Closes on a Comment COMMANDS call to action and the Ultron logo.",
       "first_comment": "One Claude chat doing everything forgets the brief every time. Saved slash commands fix that: each one carries its own instructions and tools, so Claude opens already in role. Type /research and it is the researcher. Type /ship and it builds.\n\nComment COMMANDS and I will send you my slash-command setup. More at 51ultron.com",
       "generated_date": "2026-06-22",
-      "added": 1782137158,
+      "added": 1782137281,
       "source": "generated",
       "status": "ready",
       "posted": false,
@@ -2988,6 +3015,62 @@
       "crossposts": []
     },
     {
+      "id": "tool-stack-editorial45-carousel",
+      "title": "Tool Stack Editorial45",
+      "channel": "tiktok",
+      "type": "carousel",
+      "slides": 5,
+      "dims": "2160x2700 (1080x1350 @2x)",
+      "preview": "content/tool-stack-editorial45-carousel-01.png",
+      "download": "content/portal/zips/tool-stack-editorial45-carousel.zip",
+      "files": [
+        "content/tool-stack-editorial45-carousel-01.png",
+        "content/tool-stack-editorial45-carousel-02.png",
+        "content/tool-stack-editorial45-carousel-03.png",
+        "content/tool-stack-editorial45-carousel-04.png",
+        "content/tool-stack-editorial45-carousel-05.png"
+      ],
+      "variants": [],
+      "caption": "Comment STACK and I will send you my one-chat operator setup.\n\nYou keep Claude in one tab and run the other nine yourself.\n\nNow I do not copy-paste between apps all day. I let one chat do it.\n\nConnect your apps once, then point Claude at the job.\n\nIt searches the web, enriches the lead, updates the CRM, drafts the intro, books the call and posts to the team, all from one message. The only step it will not take on its own is the irreversible one. Charging a card, sending the email, anything that ships stops and waits for one tap.\n\nThat gate is the whole point. Real actions across your stack, and you still decide what goes out.\n\nStop being your own integration layer.\n\n#claude #ai #founder #startup #buildinpublic",
+      "alt": "Light editorial infographic on a cream background with coral accents and a Claude sunburst. The hook reads you keep Claude in one tab, it runs the other nine. Below it sits a dark Claude chat mockup labeled 7 apps connected, with a user request to run outbound for Acme. A grid of six app cards shows the work done across connected apps: researched the account on web, found the buyer in data, updated the CRM, drafted the intro by email, offered three slots on calendar, and posted to the team. A highlighted bar at the bottom reads charge the retainer, waiting for your yes, with an Approve button. Closes on a Comment STACK call to action and the Ultron logo.",
+      "first_comment": "One chat instead of nine tabs. Claude connects to the apps you already pay for and runs the job end to end, then stops at anything irreversible and waits for your yes. Real actions, one approval gate.\n\nComment STACK and I will send you the one-chat operator setup. More at app.51ultron.com/resources",
+      "generated_date": "2026-06-23",
+      "added": 1782210579,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "tool-stack-editorial45-infographic",
+      "title": "Tool Stack Editorial45 Infographic",
+      "channel": "tiktok",
+      "type": "single",
+      "slides": 1,
+      "dims": "2160x2700 (1080x1350 @2x)",
+      "preview": "content/tool-stack-editorial45-infographic.png",
+      "download": "content/tool-stack-editorial45-infographic.png",
+      "files": [
+        "content/tool-stack-editorial45-infographic.png"
+      ],
+      "variants": [
+        ""
+      ],
+      "caption": "Comment STACK and I will send you my one-chat operator setup.\n\nYou keep Claude in one tab and run the other nine yourself.\n\nNow I do not copy-paste between apps all day. I let one chat do it.\n\nConnect your apps once, then point Claude at the job.\n\nIt searches the web, enriches the lead, updates the CRM, drafts the intro, books the call and posts to the team, all from one message. The only step it will not take on its own is the irreversible one. Charging a card, sending the email, anything that ships stops and waits for one tap.\n\nThat gate is the whole point. Real actions across your stack, and you still decide what goes out.\n\nStop being your own integration layer.\n\n#claude #ai #founder #startup #buildinpublic",
+      "alt": "Light editorial infographic on a cream background with coral accents and a Claude sunburst. The hook reads you keep Claude in one tab, it runs the other nine. Below it sits a dark Claude chat mockup labeled 7 apps connected, with a user request to run outbound for Acme. A grid of six app cards shows the work done across connected apps: researched the account on web, found the buyer in data, updated the CRM, drafted the intro by email, offered three slots on calendar, and posted to the team. A highlighted bar at the bottom reads charge the retainer, waiting for your yes, with an Approve button. Closes on a Comment STACK call to action and the Ultron logo.",
+      "first_comment": "One chat instead of nine tabs. Claude connects to the apps you already pay for and runs the job end to end, then stops at anything irreversible and waits for your yes. Real actions, one approval gate.\n\nComment STACK and I will send you the one-chat operator setup. More at app.51ultron.com/resources",
+      "generated_date": "2026-06-23",
+      "added": 1782210093,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
       "id": "tools-catalog-editorial45-carousel",
       "title": "Tools Catalog Editorial45",
       "channel": "tiktok",
@@ -3008,7 +3091,7 @@
       "alt": "Light editorial infographic on a cream background with coral accents and a Claude sunburst. The hook reads Claude can use tools, it still asks first. Below it, a dark activity panel titled Claude is working on the request find this lead, save it, draft the intro, with four steps marked done, searched the web, enriched the lead, saved it to the CRM and drafted the intro, then a highlighted locked row, send the email, marked waiting for you. Three cards read it acts not just answers, only what you link, and you approve the gate holds every send. Closes on a Comment TOOLS call to action and the Ultron logo.",
       "first_comment": "The number of tools is not the point, the gate is. Claude can search, enrich, draft, book and post, but anything irreversible waits for your yes. Real actions, zero surprises.\n\nComment TOOLS and I will send you my Claude tool-use setup, including the approval step. More at 51ultron.com",
       "generated_date": "2026-06-22",
-      "added": 1782136936,
+      "added": 1782137281,
       "source": "generated",
       "status": "ready",
       "posted": false,
