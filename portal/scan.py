@@ -198,6 +198,39 @@ for mid, m in mats.items():
         "analytics": None, "crossposts": []
     })
 
+# ---- gather video materials (*.mp4) -> frame thumbnail + manifest entry ----
+try:
+    import imageio_ffmpeg
+    FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
+except Exception:
+    FFMPEG = None
+for v in sorted(CONTENT.glob("*.mp4")):
+    mid = v.stem
+    thumb = THUMBS / (mid + ".png")
+    if FFMPEG and not thumb.exists():
+        try:
+            subprocess.run([FFMPEG, "-y", "-loglevel", "error", "-ss", "2", "-i", str(v),
+                            "-frames:v", "1", str(thumb)], cwd=ROOT, timeout=40)
+        except Exception as e:
+            print("video thumb fail", mid, e)
+    wh = png_size(thumb) if thumb.exists() else None
+    ch = channel_of(mid)
+    if ch == "linkedin" and "linkedin" not in mid and wh and wh[1] > wh[0]:
+        ch = "tiktok"   # vertical video with no explicit channel token -> TikTok/short-form
+    cap = find_caption(slug_prefix(mid), ch)
+    gd, gts = git_when(v)
+    materials.append({
+        "id": mid, "title": title_from(mid),
+        "channel": ch, "type": "video", "slides": 1,
+        "dims": fmt_dims(wh) if wh else "",
+        "preview": "content/portal/thumbs/" + thumb.name if thumb.exists() else None,
+        "download": "content/" + v.name, "files": ["content/" + v.name], "variants": [],
+        "caption": cap.get("caption", ""), "alt": cap.get("alt", ""), "first_comment": cap.get("first_comment", ""),
+        "generated_date": gd, "added": gts, "source": "generated",
+        "status": "ready", "posted": False, "posted_date": None,
+        "analytics": None, "crossposts": []
+    })
+
 # ---- references (script-*.html / logos-reference.html) -> thumbnails ----
 ref_htmls = sorted(CONTENT.glob("script-*.html")) + sorted(CONTENT.glob("logos-reference.html"))
 refs = []

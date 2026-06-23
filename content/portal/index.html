@@ -105,6 +105,7 @@ a.dl{color:var(--ivory);}
    <button class="lb-nav prev" onclick="slide(-1)" title="Previous (left arrow)">&#8249;</button>
    <img id="lb-img" alt="">
    <iframe id="lb-frame" style="display:none" title="preview"></iframe>
+   <video id="lb-video" style="display:none;max-width:100%;max-height:100%" controls playsinline></video>
    <button class="lb-nav next" onclick="slide(1)" title="Next (right arrow)">&#8250;</button>
    <div class="lb-dims" id="lb-dims"></div>
    <div class="lb-count" id="lb-count"></div>
@@ -235,25 +236,31 @@ function remCard(m){
 function curMat(){return LB?DATA.materials.find(m=>m.id===LB.id):null;}
 function lbSlides(m){
  if(m.type==='carousel')return m.files.map(f=>({t:'img',src:f}));
+ if(m.type==='video')return [{t:'video',src:m.download}];
  if(m.source==='reference'&&(m.files&&(m.files[0]||'').endsWith('.html')))return [{t:'frame',src:m.files[0]}];
  return [{t:'img',src:m.preview}];
 }
 function nativeWH(m){const d=m.dims||'';const x=d.match(/\((\d+)x(\d+)\s*@2x\)/)||d.match(/(\d+)x(\d+)/);if(x)return {w:+x[1],h:+x[2]};return {w:1080,h:m.channel==='linkedin'?1450:1920};}
 function fitFrame(){const m=curMat();if(!m)return;const wh=nativeWH(m);const stage=document.querySelector('.lb-stage');if(!stage)return;const s=Math.min((stage.clientWidth-40)/wh.w,(stage.clientHeight-40)/wh.h);document.getElementById('lb-frame').style.transform=`translate(-50%,-50%) scale(${s})`;}
 function openLB(id){LB={id,idx:0};document.getElementById('lb').classList.add('on');document.body.style.overflow='hidden';renderLB();}
-function closeLB(){LB=null;document.getElementById('lb').classList.remove('on');document.body.style.overflow='';document.getElementById('lb-frame').src='about:blank';}
+function closeLB(){LB=null;document.getElementById('lb').classList.remove('on');document.body.style.overflow='';document.getElementById('lb-frame').src='about:blank';const v=document.getElementById('lb-video');if(v){try{v.pause();}catch(e){}v.removeAttribute('src');}}
 function lbBg(e){if(e.target.id==='lb'||e.target.classList.contains('lb-inner'))closeLB();}
 function slide(d){const m=curMat();if(!m)return;const s=lbSlides(m);LB.idx=(LB.idx+d+s.length)%s.length;paintSlide();}
 function paintSlide(){
  const m=curMat();if(!m)return;const s=lbSlides(m);const cur=s[LB.idx];
- const img=document.getElementById('lb-img'),fr=document.getElementById('lb-frame');
- if(cur.t==='frame'){
-  img.style.display='none';fr.style.display='block';
+ const img=document.getElementById('lb-img'),fr=document.getElementById('lb-frame'),vid=document.getElementById('lb-video');
+ const hideVid=()=>{if(vid){vid.style.display='none';try{vid.pause();}catch(e){}}};
+ if(cur.t==='video'){
+  img.style.display='none';fr.style.display='none';fr.src='about:blank';
+  vid.style.display='block';if(vid.getAttribute('src')!=='/'+cur.src){vid.src='/'+cur.src;}
+ }
+ else if(cur.t==='frame'){
+  hideVid();img.style.display='none';fr.style.display='block';
   const wh=nativeWH(m);fr.style.width=wh.w+'px';fr.style.height=wh.h+'px';
   if(fr.getAttribute('src')!=='/'+cur.src){fr.src='/'+cur.src;fr.onload=fitFrame;}
   fitFrame();
  }
- else{fr.style.display='none';fr.src='about:blank';img.style.display='block';img.src='/'+cur.src;}
+ else{hideVid();fr.style.display='none';fr.src='about:blank';img.style.display='block';img.src='/'+cur.src;}
  const cnt=document.getElementById('lb-count');cnt.style.display=s.length>1?'block':'none';cnt.textContent=(LB.idx+1)+' / '+s.length;
  document.querySelectorAll('.lb-nav').forEach(b=>b.classList.toggle('hidden',s.length<2));
  const dots=document.getElementById('lb-dots');dots.innerHTML=s.length>1?s.map((_,i)=>`<button class="lb-dot ${i===LB.idx?'on':''}" onclick="LB.idx=${i};paintSlide()"></button>`).join(''):'';
