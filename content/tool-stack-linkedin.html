@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>The operator stack - 92 native tools - LinkedIn 1080x1450</title>
+<style>
+@import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
+/* tool-stack (operator stack) - DIFFERENT angle from tools-catalog (which is the 8-category count table)
+   and from the TikTok gate-demo. Here: STACK CONSOLIDATION - the GTM jobs you juggle across many app
+   tabs, and the real native tools one operator fires for each. Dominant = a dense 9-row job->tools map.
+   All tool names real (from the 92-tool catalog). Dark Ultron. 1080x1450.
+   BUDGET 1394: mast 28 + hero 196 + stats 72 + map 882 + cta 96 + ftr 50 + gaps ~70 = ~1394 */
+:root{--slate:#191919;--slate2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);
+--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);
+--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--deep:#A93914;--cloud:#919180;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.frame{width:1080px;height:1450px;background:var(--slate);padding:34px 44px 22px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;}
+.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.4px,transparent 1.5px);background-size:30px 30px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 54% 22% at 90% -2%,rgba(204,120,92,.2) 0%,transparent 60%),radial-gradient(ellipse 48% 24% at 2% 102%,rgba(212,162,127,.1) 0%,transparent 60%);}
+.frame>*{position:relative;z-index:2;}
+.mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;}
+.mast .ml{color:var(--ink46);}.mast .ml em{color:var(--book);font-style:normal;}
+.mast .mr{color:var(--ink70);}.mast .mr em{color:var(--book);font-style:normal;}
+.hero{flex-shrink:0;margin-top:15px;}
+.eye{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--kraft);}
+.hook{margin-top:9px;font-weight:900;font-size:49px;line-height:1.0;letter-spacing:-1.9px;color:var(--ivory);}.hook em{color:var(--book);font-style:normal;}
+.sub{margin-top:11px;font-size:20px;font-weight:500;line-height:1.32;color:var(--ink70);max-width:986px;}.sub b{color:var(--ivory);font-weight:700;}
+.stats{flex-shrink:0;margin-top:14px;display:flex;border:1px solid var(--rule);border-radius:13px;overflow:hidden;}
+.stat{flex:1;padding:12px 14px;text-align:center;}.stat+.stat{border-left:1px solid var(--rule);}
+.stat b{display:block;font-weight:900;font-size:28px;line-height:.85;letter-spacing:-1px;}
+.stat.a b{color:var(--book);}.stat.b b{color:var(--kraft);}.stat.c b{color:var(--ivory);}.stat.d b{color:var(--book);}
+.stat span{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink46);margin-top:7px;display:block;}
+/* DOMINANT: job -> native-tools consolidation map */
+.smap{flex:1;min-height:0;margin-top:14px;display:flex;flex-direction:column;gap:7px;}
+.shead{flex-shrink:0;display:flex;align-items:center;gap:16px;padding:0 20px 2px;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink30);}
+.shead .hl{width:330px;flex-shrink:0;}.shead .hr{flex:1;}.shead .hc{width:60px;text-align:center;flex-shrink:0;}
+.srow{flex:1;display:flex;align-items:center;gap:16px;border:1px solid var(--rule);border-left:5px solid var(--book);border-radius:12px;background:var(--slate2);padding:0 20px;min-height:0;overflow:hidden;}
+.srow.k{border-left-color:var(--kraft);}.srow.d{border-left-color:var(--deep);}
+.sjob{width:330px;flex-shrink:0;min-width:0;}
+.sjn{font-size:21px;font-weight:800;color:var(--ivory);letter-spacing:-.4px;line-height:1.04;}
+.sapps{font-family:'DM Mono',monospace;font-size:12.5px;font-weight:400;color:var(--ink46);margin-top:4px;letter-spacing:.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sapps i{font-style:normal;color:var(--cloud);}
+.sarr{flex-shrink:0;width:22px;height:22px;display:flex;align-items:center;justify-content:center;}
+.sarr svg{width:22px;height:22px;stroke:var(--book);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.srow.k .sarr svg{stroke:var(--kraft);}.srow.d .sarr svg{stroke:var(--book-d);}
+.stools{flex:1;min-width:0;display:flex;flex-wrap:wrap;gap:6px 7px;align-content:center;}
+.tt{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--ivory);background:rgba(204,120,92,.1);border:1px solid rgba(204,120,92,.28);border-radius:6px;padding:4px 9px;line-height:1;white-space:nowrap;}
+.srow.k .tt{background:rgba(212,162,127,.1);border-color:rgba(212,162,127,.3);}
+.scount{flex-shrink:0;width:60px;text-align:center;}
+.scount b{display:block;font-weight:900;font-size:27px;line-height:.85;letter-spacing:-1px;color:var(--book);}
+.srow.k .scount b{color:var(--kraft);}.srow.d .scount b{color:var(--book-d);}
+.scount span{font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink46);margin-top:4px;display:block;}
+.smfoot{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:2px 6px 0;font-family:'DM Mono',monospace;font-size:11.5px;font-weight:400;letter-spacing:.04em;color:var(--ink46);}
+.smfoot em{color:var(--kraft);font-style:normal;}.smfoot b{color:var(--ivory);font-weight:500;}
+/* cta */
+.ctawrap{flex-shrink:0;margin-top:13px;}
+.savel{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--kraft);margin-bottom:9px;padding-left:4px;}
+.cta{display:flex;align-items:center;gap:16px;border:1.5px solid var(--book);border-radius:18px;background:rgba(204,120,92,.08);padding:13px 13px 13px 26px;box-shadow:0 0 44px rgba(204,120,92,.2);}
+.cta .ph{flex:1;font-size:22px;font-weight:600;color:var(--ink70);line-height:1.2;}.cta .ph b{color:var(--book);font-weight:900;}
+.cta .send{width:56px;height:56px;border-radius:50%;background:var(--book);flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(204,120,92,.45);}
+.cta .send svg{width:27px;height:27px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ftr{flex-shrink:0;margin-top:13px;padding-top:12px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.fl2{display:flex;align-items:center;gap:11px;min-width:0;}.flogo{width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.ftx{font-family:'DM Mono',monospace;font-size:11.5px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--ink70);white-space:nowrap;}.ftx b{color:var(--ivory);font-weight:500;}
+.furl{font-weight:900;font-size:21px;letter-spacing:-.5px;color:var(--ivory);}.furl em{color:var(--book);font-style:normal;}
+</style></head>
+<body>
+<div class="frame" id="artifact"><div class="atm"></div>
+  <div class="mast"><span class="ml">FOUNDER STACK <em>&middot;</em> TAB SPRAWL <em>&middot;</em> ONE OPERATOR</span><span class="mr">ULTRON <em>&middot;</em> <em>92</em> NATIVE TOOLS</span></div>
+  <div class="hero">
+    <div class="eye">The operator stack</div>
+    <div class="hook">I handed my AI <em>92 tools</em>. It runs the whole stack.</div>
+    <div class="sub">HubSpot, Gmail, Calendly, Stripe, Slack, Notion, n8n, your data. The apps I switched between all day. <b>Now one operator drives them from one chat, and only fires the ones I connect.</b></div>
+  </div>
+  <div class="stats">
+    <div class="stat a"><b>92</b><span>native tools</span></div>
+    <div class="stat b"><b>9</b><span>GTM jobs</span></div>
+    <div class="stat c"><b>1</b><span>approval gate</span></div>
+    <div class="stat d"><b>+MCP</b><span>your servers</span></div>
+  </div>
+  <div class="smap">
+    <div class="shead"><span class="hl">The GTM job &middot; the tabs you open</span><span class="hr">The native tools one operator fires</span><span class="hc">#</span></div>
+
+    <div class="srow"><div class="sjob"><div class="sjn">Research a target</div><div class="sapps"><i>across:</i> Perplexity, 30 open tabs</div></div><span class="sarr"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><div class="stools"><span class="tt">web_search</span><span class="tt">web_search_multiple</span><span class="tt">scrape_website</span><span class="tt">browser_action</span></div><div class="scount"><b>5</b><span>tools</span></div></div>
+
+    <div class="srow k"><div class="sjob"><div class="sjn">Find &amp; enrich leads</div><div class="sapps"><i>across:</i> Apollo, manual lookups</div></div><span class="sarr"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><div class="stools"><span class="tt">enrich_lead</span><span class="tt">search_people</span><span class="tt">search_companies</span></div><div class="scount"><b>3</b><span>tools</span></div></div>
+
+    <div class="srow"><div class="sjob"><div class="sjn">Run the CRM &amp; pipeline</div><div class="sapps"><i>across:</i> HubSpot, spreadsheets</div></div><span class="sarr"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><div class="stools"><span class="tt">crm_save_lead</span><span class="tt">crm_manage_deals</span><span class="tt">crm_workflows</span><span class="tt">crm_pipeline_velocity</span></div><div class="scount"><b>11</b><span>tools</span></div></div>
+
+    <div class="srow d"><div class="sjob"><div class="sjn">Email &amp; sequences</div><div class="sapps"><i>across:</i> Gmail, Lemlist, Brevo</div></div><span class="sarr"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><div class="stools"><span class="tt">gmail_send_email</span><span class="tt">gmail_read_emails</span><span class="tt">brevo_send_email</span><span class="tt">crm_email_sequences</span></div><div class="scount"><b>5</b><span>tools</span></div></div>
+
+    <div class="srow"><div class="sjob"><div class="sjn">Book the meetings</div><div class="sapps"><i>across:</i> Calendly, Google Calendar</div></div><span class="sarr"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><div class="stools"><span class="tt">calendly_create_link</span><span class="tt">calendly_list_events</span><span class="tt">gcal_create_event</span><span class="tt">gcal_list_events</span></div><div class="scount"><b>8</b><span>tools</span></div></div>
+
+    <div class="srow k"><div class="sjob"><div class="sjn">Publish content</div><div class="sapps"><i>across:</i> Buffer, Hootsuite, Canva</div></div><span class="sarr"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><div class="stools"><span class="tt">content_create_post</span><span class="tt">content_get_calendar</span><span class="tt">generate_carousel</span><span class="tt">content_get_analytics</span></div><div class="scount"><b>11</b><span>tools</span></div></div>
+
+    <div class="srow"><div class="sjob"><div class="sjn">Charge &amp; track revenue</div><div class="sapps"><i>across:</i> Stripe dashboard</div></div><span class="sarr"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><div class="stools"><span class="tt">stripe_create_invoice</span><span class="tt">stripe_create_payment_link</span><span class="tt">stripe_revenue_metrics</span><span class="tt">stripe_create_subscription</span></div><div class="scount"><b>7</b><span>tools</span></div></div>
+
+    <div class="srow d"><div class="sjob"><div class="sjn">Work across the team</div><div class="sapps"><i>across:</i> Slack, Notion, Drive, n8n</div></div><span class="sarr"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><div class="stools"><span class="tt">slack_send_message</span><span class="tt">notion_action</span><span class="tt">google_sheets_action</span><span class="tt">n8n_trigger_workflow</span></div><div class="scount"><b>19</b><span>tools</span></div></div>
+
+    <div class="srow k"><div class="sjob"><div class="sjn">Build &amp; ship it</div><div class="sapps"><i>across:</i> Replit, Zapier, a dev</div></div><span class="sarr"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><div class="stools"><span class="tt">code_task</span><span class="tt">data_task</span><span class="tt">deploy_task</span><span class="tt">multi_agent_task</span></div><div class="scount"><b>6</b><span>tools</span></div></div>
+
+    <div class="smfoot"><span><em>+ 17 more</em> for memory, skills, documents and the <b>approval gate</b> that holds every send</span><span>connect once <b>&middot;</b> fire from one chat</span></div>
+  </div>
+  <div class="ctawrap">
+    <div class="savel">Save this for your next tool-stack audit</div>
+    <div class="cta"><span class="ph">Comment <b>STACK</b> and I will send you the full 92-tool operator map</span><span class="send"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+  </div>
+  <div class="ftr">
+    <div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS &middot; 92 NATIVE TOOLS</span></div>
+    <span class="furl">51ultron<em>.</em>com</span>
+  </div>
+</div>
+</body></html>
