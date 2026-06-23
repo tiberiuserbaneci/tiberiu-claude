@@ -1826,8 +1826,8 @@
       "added": 1782218960,
       "source": "generated",
       "status": "ready",
-      "posted": false,
-      "posted_date": null,
+      "posted": true,
+      "posted_date": "2026-06-23",
       "analytics": null,
       "crossposts": []
     },
