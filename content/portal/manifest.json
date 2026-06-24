@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-06-24T05:03:30",
+  "generated_at": "2026-06-24T09:18:17",
   "counts": {
-    "total": 153,
-    "generated": 109,
+    "total": 155,
+    "generated": 111,
     "reference": 44,
     "crosspost": 0
   },
@@ -1386,8 +1386,8 @@
       "caption": "Your AI agent works in the demo. Then a real user hits it and it falls apart.\n\nNow I build every agent for production from day one, not after it breaks.\n\nThe demo-to-prod gap is always the same six things:\n\nMatch the model to the task and write a load-bearing system prompt. Wrap every tool call in a retry, a timeout and a fallback, so a dead API never crashes the run. Give it memory that survives across sessions, working, vector and long-term. Trace every run, so a silent failure is not a guessing game. Gate the high-risk actions behind human approval, then resume exactly where it stopped. And eval it like software against a golden set before any change reaches a user.\n\nThat boring engineering layer is the whole difference between a clip that gets likes and an agent you trust with a paying customer.\n\nThis is how we ship agents on the Ultron platform.\n\nComment AGENTS and I will send you the full production-agents checklist we run inside Ultron.\n\n#claude #ai #founder #startup #buildinpublic",
       "alt": "Dark editorial carousel cover on a slate background. A large headline reads Build Production Ready AI Agents, with AI Agents in book-orange, over a Founder's guide label and a one line note that an agent working in a demo is not enough. A marker reads 01 of 10 and the footer carries the Ultron logo with the label ULTRON, AI Agents for Founders, beside a Swipe to Start cue. The ten-slide guide that follows covers demo versus production, a six-point readiness checklist, then six steps: model and prompt foundation, tool retry patterns, the four kinds of agent memory, observability and tracing, human-in-the-loop safety gates, and systematic evals, closing on a Comment AGENTS call to action.",
       "first_comment": "A demo agent works once. A production agent works every time, and the gap is all engineering: retries, memory, traces, guardrails and evals. Six things that must be true before real users touch it.\n\nComment AGENTS and I will send you the full production-agents checklist, all six steps in order.\n\napp.51ultron.com/docs",
-      "generated_date": "2026-06-12",
-      "added": 1781269049,
+      "generated_date": "2026-06-11",
+      "added": 1781188957,
       "source": "generated",
       "status": "ready",
       "posted": false,
@@ -3567,6 +3567,62 @@
       "crossposts": []
     },
     {
+      "id": "tool-engine-3d-tiktok-carousel",
+      "title": "Tool Engine 3D",
+      "channel": "tiktok",
+      "type": "carousel",
+      "slides": 5,
+      "dims": "1080x1350",
+      "preview": "content/tool-engine-3d-tiktok-carousel-01.png",
+      "download": "content/portal/zips/tool-engine-3d-tiktok-carousel.zip",
+      "files": [
+        "content/tool-engine-3d-tiktok-carousel-01.png",
+        "content/tool-engine-3d-tiktok-carousel-02.png",
+        "content/tool-engine-3d-tiktok-carousel-03.png",
+        "content/tool-engine-3d-tiktok-carousel-04.png",
+        "content/tool-engine-3d-tiktok-carousel-05.png"
+      ],
+      "variants": [],
+      "caption": "Comment ENGINE and I will send you the map of how Ultron routes a request to the right tool.\n\nMost AI has tools. It just grabs the wrong one.\n\nUltron routes every ask twice: first to the right model, then to the exact tool out of 92.\n\nIt runs the safe steps on its own, and stops at anything irreversible until you say yes.\n\nThat routing layer, model then tool then gate, is the whole difference between an AI that talks and one that actually does the job.\n\nStop guessing which tool. Route it.\n\n#claude #ai #founder #startup #buildinpublic",
+      "alt": "",
+      "first_comment": "Two hops happen before anything runs: Ultron picks the model tier, then the dispatcher finds the exact tool out of 92 and runs it behind an approval gate. The chat answer is the last step, not the system.\n\nComment ENGINE and I will send you the routing map.",
+      "generated_date": "2026-06-24",
+      "added": 1782292602,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
+      "id": "tool-engine-3d-tiktok-infographic",
+      "title": "Tool Engine 3D",
+      "channel": "tiktok",
+      "type": "single",
+      "slides": 1,
+      "dims": "1080x1350",
+      "preview": "content/tool-engine-3d-tiktok-infographic.png",
+      "download": "content/tool-engine-3d-tiktok-infographic.png",
+      "files": [
+        "content/tool-engine-3d-tiktok-infographic.png"
+      ],
+      "variants": [
+        ""
+      ],
+      "caption": "Comment ENGINE and I will send you the map of how Ultron routes a request to the right tool.\n\nMost AI has tools. It just grabs the wrong one.\n\nUltron routes every ask twice: first to the right model, then to the exact tool out of 92.\n\nIt runs the safe steps on its own, and stops at anything irreversible until you say yes.\n\nThat routing layer, model then tool then gate, is the whole difference between an AI that talks and one that actually does the job.\n\nStop guessing which tool. Route it.\n\n#claude #ai #founder #startup #buildinpublic",
+      "alt": "",
+      "first_comment": "Two hops happen before anything runs: Ultron picks the model tier, then the dispatcher finds the exact tool out of 92 and runs it behind an approval gate. The chat answer is the last step, not the system.\n\nComment ENGINE and I will send you the routing map.",
+      "generated_date": "2026-06-24",
+      "added": 1782292602,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
+    {
       "id": "tool-engine-editorial45-carousel",
       "title": "Tool Engine Editorial45",
       "channel": "tiktok",
@@ -3587,7 +3643,7 @@
       "alt": "Light editorial infographic on a cream background with coral accents and a Claude sunburst. The hook reads Claude picks the tool before it picks the words. Below it, a dark Claude chat mockup labeled routing to your tools, with a request to run outbound for Acme. A dense list routes each step to the exact tool: research the account to web search, find the buyer to people data, update the CRM, draft the intro to email, offer 3 slots to calendar, post to the team to Slack, read the revenue to Stripe, each marked done, then a highlighted final row sends charge the retainer to a waiting-for-your-yes gate. Closes on a Comment ENGINE call to action and the Ultron logo.",
       "first_comment": "The trick is not the number of tools, it is the routing. One ask, and Claude picks the exact tool for each step, runs it, and stops at anything irreversible until you approve.\n\nComment ENGINE and I will send you the routing setup, gate included.",
       "generated_date": "2026-06-24",
-      "added": 1782277211,
+      "added": 1782277427,
       "source": "generated",
       "status": "ready",
       "posted": false,
@@ -3614,7 +3670,7 @@
       "alt": "Light editorial infographic on a cream background with coral accents and a Claude sunburst. The hook reads Claude picks the tool before it picks the words. Below it, a dark Claude chat mockup labeled routing to your tools, with a request to run outbound for Acme. A dense list routes each step to the exact tool: research the account to web search, find the buyer to people data, update the CRM, draft the intro to email, offer 3 slots to calendar, post to the team to Slack, read the revenue to Stripe, each marked done, then a highlighted final row sends charge the retainer to a waiting-for-your-yes gate. Closes on a Comment ENGINE call to action and the Ultron logo.",
       "first_comment": "The trick is not the number of tools, it is the routing. One ask, and Claude picks the exact tool for each step, runs it, and stops at anything irreversible until you approve.\n\nComment ENGINE and I will send you the routing setup, gate included.",
       "generated_date": "2026-06-24",
-      "added": 1782276886,
+      "added": 1782277427,
       "source": "generated",
       "status": "ready",
       "posted": false,
