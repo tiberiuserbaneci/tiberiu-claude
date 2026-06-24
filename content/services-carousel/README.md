@@ -1,31 +1,28 @@
 # Ultron Services Carousel (TikTok / Instagram)
 
-Motion carousel reel, **1080×1450 source slides → 1080×1350 (4:5) reel**, 39.2s, voiced.
 New TikTok/Instagram direction (operator, 2026-06-24): **Ultron-forward hook, services not GTM.**
-Redesign of the first TikTok REVIEW post ("Tool Engine Editorial45"), rebuilt on the
-**Vertex cream 3D template** generated this cycle.
+Vertex-designed, **4:5 full-bleed (1080×1350)**, voiced + captioned.
 
 ## What it is
-- **5 slides:** cover hook (static) → Collections, Proposals, Support (each with motion) → CTA (static).
-- Each service slide shows the same premium dark console: a single ask in, five steps routed to real
-  apps, and a final **gate row that waits for your yes** before anything spends money or hits send.
-- **Design = Vertex** (`gemini-3-pro-image`, 2K, 4:5). All 5 rendered in one batch with the cover as
-  the style anchor, so the set is one coherent generation.
-- **Motion = composited on top of the Vertex pixels** (no rebuild): the clean design shows from frame 1,
-  then each row lights up in sequence (orange fire + scan line + check pings), the gate pulses, a swipe
-  arrow nudges. Slide 1 (hook) and slide 5 (CTA) stay static.
-- **Voice:** Cloud TTS `en-US-Studio-Q` (male). **Captions:** burned-in subtitles, synced.
+- **5 slides, each a distinct composition** (Vertex owns the design; brand system is the only guardrail):
+  1. **Hook** — the Ultron orb hero, mixed service objects swirling in. "You run every service by hand. Ultron runs it for you."
+  2. **Collections** — the real app icons (accounting, Gmail, CRM, Calendar, Slack, payments), invoices + coins flowing the lines.
+  3. **Proposals** — a central proposal document being assembled from its app pieces (Docs, Sheets, e-sign, CRM).
+  4. **Support** — a vertical ticket queue clearing into an empty inbox (Gmail, helpdesk, orders, tracker, Slack).
+  5. **CTA** — "One ask. Every service runs." + COMMENT SERVICES.
+- The **orb appears only on the hook**; service slides carry their real tools. Orange **51ultron.com** footer on every slide, consistent typography.
+- **Motion (Instagram movie):** model-generated frames (image-to-image, seeded from each slide) where the app icons float/glow and the objects travel the flow lines / assemble / clear — crossfaded into loops, headline + footer locked so text never drifts. Cover + CTA static.
+- **Voice:** Azure Neural `en-US-Andrew:DragonHDLatestNeural` via the Monolith's `/api/tts` (the same engine the Remix/revoice feature uses), normal rate. **Captions:** word-by-word karaoke, burned in.
+- **TikTok = the 5 static slides (carousel). Instagram = the movie.**
 
 ## Files
-- `services-carousel-45.mp4` — the final reel (the deliverable; in the Monolith vault, tagged Review · TikTok + Instagram).
-- `slides/slide-1..5.png` — the Vertex slide designs (scrubbed, operator authorship).
-- `poster.jpg` — vault thumbnail (cover frame).
-- `caption.md` — TikTok/Instagram caption (CTA-first, Ultron-forward, 5 hashtags).
-- `_build/` — reproducible pipeline: `run-deck2.mjs` + `decks/serviceinfo.json` (Vertex render),
-  `detect.py` (console detection), `build_slide.py` (per-slide motion), `build_reel.py` (voice + stitch).
+- `services-movie-45.mp4` — the 42.8s Instagram movie (in the vault, Review · Instagram).
+- `slides/slide-1..5.png` — the 5 static slides, 1080×1350, scrubbed (the TikTok carousel; vault Review · TikTok).
+- `poster.jpg` — Instagram video thumbnail.
+- `caption.md` — caption (CTA-first, Ultron-forward, 5 hashtags).
+- `_build/` — reproducible pipeline: `gen_creative.py` (design direction) · `gen_apps.py`/`gen_fix.py` (Vertex slides) · `add_footer.py` (orange footer) · `gen_motion_all.py`/`gen_34_lite.py` (motion frames) · `stitch_motion.py` (loops) · `build_movie45.py` (voice + karaoke + stitch) · `detect.py`/`rows.py` helpers.
 
-## Reproduce
-1. `TOKENFILE=gcp_token.txt PROJECT=<gcp> DECK=decks/serviceinfo.json node _build/run-deck2.mjs` → 5 Vertex slides.
-2. `python3 _build/build_reel.py` → synth voice, composite motion, burn captions, stitch the reel.
-
-Storage: Monolith vault (live library) + this repo (reference/model copy).
+## Notes
+- Design = Vertex `gemini-3-pro-image` (2K). Motion frames at 1K to stay in budget.
+- Storage: Monolith vault (live library) + this repo (reference/model copy).
+- Supersedes the earlier console-table version (this replaces it).
