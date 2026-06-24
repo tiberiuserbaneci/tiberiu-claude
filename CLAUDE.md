@@ -83,8 +83,11 @@ Plus **HUMAN GATE**: human approval before anything sends.
 > `ultron-reels/imports/`. Items are tagged by channel: **LinkedIn / TikTok / Instagram**, titles
 > status-marked (`Posted …` / `Review …` / `Revision …`), caption = caption + first comment (ALT
 > dropped). The GitHub Pages portal + Codespace auto-push are **disabled** (they cost money and were
-> unreliable). Do **not** auto-push materials or the portal manifest to GitHub; code commits to the
-> work branch on explicit request only.
+> unreliable) — do **not** run the always-on portal or push its manifest. The cost was the *hosted
+> portal* (Codespace compute + Pages), NOT plain repo commits. **Every material built IS committed to
+> the work branch as a reference/model copy (operator, 2026-06-24): the git repo is the reference
+> archive; the Monolith vault is the live library.** New builds: wire the asset into the vault (R2 +
+> `vault_items`) AND commit the source (HTML/PNG/caption) to the work branch so it exists as a model.
 
 This repo is **not** the old personal `ultron-content` repo. The original config referenced
 `tiberiuserbaneci/ultron-content`, a remote named `ultron-content`, and a `GH_PAT` env var —
