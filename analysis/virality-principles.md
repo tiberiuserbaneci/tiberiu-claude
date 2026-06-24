@@ -82,3 +82,19 @@ rate (0.87%)** but only **mid reach (2,190)**.
 - **Off-lane winners** (non-routing topics that did well) to break the topic/brand confound.
 - **More carousels** — only 1 in the sample, so the format read is a single data point.
 - **The full post list** (export caps at top-50), to learn from posts that failed, not only winners.
+
+---
+
+## BEST-PERFORMER DECOMPILE (2026-06-24) - post 7473683676527071232 ("routing/engine")
+
+Hook: "Your AI tool sends your prompt to a model..." (6/19, 2 PM). Best performer since this workspace started.
+Single-post analytics: 1,939 impressions / 1,147 reached. Engagement 62 = **35 comments**, 26 reactions, **1 save**, 0 reposts, 0 sends. 5 profile views, 5 followers.
+Audience: 46% Founder/Co-Founder/CEO/Owner, 66% Owner/CXO/Senior, 57% at <=50-employee IT/software/consulting (exact ICP).
+
+Reverse-engineered - what made it click:
+1. **COMMENTS play, not saves/design.** 35 comments vs 1 save; comment:reaction ratio >1 is rare. The keyword comment-CTA was the engine, NOT the visual (saves ~0). On this lane, optimise the CTA for comments, not the design for saves.
+2. **Hook = hidden mechanic.** "Your AI [invisible thing it does]" - a curiosity gap about how it works under the hood. This is the reach lane that travels.
+3. **Topic = the engine under the hood** (routing / which model). A reveal, not a tip. The topic self-selected the ICP.
+
+Formula to repeat: hidden-mechanic "Your AI..." hook -> dense single-image infographic -> **keyword comment-CTA** -> "how it actually works" topic.
+First application: the **tool-engine** set (tool routing = the next layer of the same engine), keyword ENGINE.
