@@ -2,61 +2,63 @@
 <title>The routing engine - LinkedIn 1080x1450</title>
 <style>
 @import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
-/* tool-engine - applies the best-performer formula (post 7473683676527071232: "Your AI tool sends your
-   prompt to a model" - 35 comments, hidden-mechanic hook + comment CTA). Topic = the NEXT layer of that
-   engine: tool routing. Your request -> a model -> the RIGHT tool of 92 (dispatcher: module-first, native
-   fallback) -> run (connection gate) -> ship (approval gate). Dense single-image reach-lane infographic.
-   Ultron brand. 1080x1450. BUDGET 1394: mast 28 + hero 196 + stats 70 + pipe 880 + cta 96 + ftr 50 */
-:root{--slate:#191919;--slate2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);
+/* tool-engine v2 - DENSE rebuild (v1 was airy: 4 tall pipeline cards). Dominant = a packed 9-row routing
+   table: you ask -> model tier (Lite/Smart/Deep) -> the exact tool the dispatcher picks -> module/native.
+   Every cell real. Applies the best-performer formula (hidden-mechanic hook + ENGINE comment CTA).
+   Ultron brand. 1080x1450. BUDGET 1394: mast 28 + hero 168 + stats 66 + table 936 + cta 92 + ftr 50 */
+:root{--slate:#191919;--slate2:#262625;--slate3:#2f2e2c;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);
 --ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);
 --book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--deep:#A93914;--cloud:#919180;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
-.frame{width:1080px;height:1450px;background:var(--slate);padding:34px 44px 22px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;}
+.frame{width:1080px;height:1450px;background:var(--slate);padding:32px 40px 20px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;}
 .frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.4px,transparent 1.5px);background-size:30px 30px;}
 .atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 54% 22% at 90% -2%,rgba(204,120,92,.2) 0%,transparent 60%),radial-gradient(ellipse 48% 24% at 2% 102%,rgba(212,162,127,.1) 0%,transparent 60%);}
 .frame>*{position:relative;z-index:2;}
-.mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;}
+.mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding-bottom:11px;border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.17em;text-transform:uppercase;}
 .mast .ml{color:var(--ink46);}.mast .ml em{color:var(--book);font-style:normal;}
 .mast .mr{color:var(--ink70);}.mast .mr em{color:var(--book);font-style:normal;}
-.hero{flex-shrink:0;margin-top:15px;}
-.eye{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--kraft);}
-.hook{margin-top:9px;font-weight:900;font-size:47px;line-height:1.0;letter-spacing:-1.8px;color:var(--ivory);}.hook em{color:var(--book);font-style:normal;}
-.sub{margin-top:11px;font-size:20px;font-weight:500;line-height:1.32;color:var(--ink70);max-width:986px;}.sub b{color:var(--ivory);font-weight:700;}
-.stats{flex-shrink:0;margin-top:14px;display:flex;border:1px solid var(--rule);border-radius:13px;overflow:hidden;}
-.stat{flex:1;padding:12px 14px;text-align:center;}.stat+.stat{border-left:1px solid var(--rule);}
-.stat b{display:block;font-weight:900;font-size:27px;line-height:.85;letter-spacing:-1px;}
+.hero{flex-shrink:0;margin-top:13px;}
+.eye{font-family:'DM Mono',monospace;font-size:12.5px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--kraft);}
+.hook{margin-top:8px;font-weight:900;font-size:44px;line-height:1.0;letter-spacing:-1.7px;color:var(--ivory);}.hook em{color:var(--book);font-style:normal;}
+.sub{margin-top:9px;font-size:18.5px;font-weight:500;line-height:1.28;color:var(--ink70);max-width:1000px;}.sub b{color:var(--ivory);font-weight:700;}
+.stats{flex-shrink:0;margin-top:12px;display:flex;border:1px solid var(--rule);border-radius:12px;overflow:hidden;}
+.stat{flex:1;padding:10px 12px;text-align:center;}.stat+.stat{border-left:1px solid var(--rule);}
+.stat b{display:block;font-weight:900;font-size:24px;line-height:.85;letter-spacing:-1px;}
 .stat.a b{color:var(--book);}.stat.b b{color:var(--kraft);}.stat.c b{color:var(--ivory);}.stat.d b{color:var(--book);}
-.stat span{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink46);margin-top:7px;display:block;}
-/* DOMINANT: the 2-hop routing engine pipeline */
-.pipe{flex:1;min-height:0;margin-top:13px;display:flex;flex-direction:column;gap:6px;}
-.hopnote{flex-shrink:0;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink30);padding-left:4px;}
-.stg{flex:1;display:flex;align-items:center;gap:18px;border:1px solid var(--rule);border-left:5px solid var(--book);border-radius:13px;background:var(--slate2);padding:0 22px;min-height:0;overflow:hidden;}
-.stg.k{border-left-color:var(--kraft);}.stg.d{border-left-color:var(--deep);}
-.stg .num{flex-shrink:0;width:54px;height:54px;border-radius:13px;display:flex;align-items:center;justify-content:center;background:rgba(204,120,92,.1);border:1px solid rgba(204,120,92,.32);font-weight:900;font-size:25px;color:var(--book);}
-.stg.k .num{background:rgba(212,162,127,.1);border-color:rgba(212,162,127,.3);color:var(--kraft);}
-.stg.d .num{border-color:var(--deep);color:var(--book-d);}
-.stg .mid{flex:1;min-width:0;}
-.stg .t{font-size:23px;font-weight:800;color:var(--ivory);letter-spacing:-.4px;line-height:1.04;}
-.stg .t em{color:var(--book);font-style:normal;}.stg.k .t em{color:var(--kraft);}.stg.d .t em{color:var(--book-d);}
-.stg .d2{font-size:15px;font-weight:500;color:var(--ink70);margin-top:4px;line-height:1.22;}
-.stg .chips{flex-shrink:0;display:flex;flex-direction:column;gap:6px;align-items:flex-end;}
-.stg .chip{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;color:var(--ivory);background:rgba(204,120,92,.1);border:1px solid rgba(204,120,92,.28);border-radius:6px;padding:5px 10px;line-height:1;white-space:nowrap;}
-.stg.k .chip{background:rgba(212,162,127,.1);border-color:rgba(212,162,127,.3);}
-.cat{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:14px;border:1px dashed var(--rule);border-radius:11px;padding:11px 18px;margin-top:1px;}
-.cat .ce{font-size:16px;font-weight:700;color:var(--ink70);}.cat .ce b{color:var(--ivory);font-weight:900;}.cat .ce em{color:var(--book);font-style:normal;font-weight:900;}
-.cat .cn{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.04em;color:var(--ink46);text-align:right;}
+.stat span{font-family:'DM Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--ink46);margin-top:6px;display:block;}
+/* DENSE routing table */
+.rt{flex:1;min-height:0;margin-top:12px;display:flex;flex-direction:column;gap:5px;}
+.rth{flex-shrink:0;display:flex;align-items:center;gap:12px;padding:0 16px 3px;font-family:'DM Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--ink30);}
+.c1{width:268px;flex-shrink:0;}.c2{width:82px;flex-shrink:0;text-align:center;}.c3{flex:1;min-width:0;}.c4{width:78px;flex-shrink:0;text-align:center;}
+.rtr{flex:1;display:flex;align-items:center;gap:12px;border:1px solid var(--rule);border-radius:10px;background:var(--slate2);padding:0 16px;min-height:0;overflow:hidden;}
+.rtr.gate{border-color:var(--book-d);background:rgba(200,70,35,.12);}
+.ask{width:268px;flex-shrink:0;font-size:19px;font-weight:800;color:var(--ivory);letter-spacing:-.3px;line-height:1.05;}
+.ask span{display:block;font-family:'DM Mono',monospace;font-size:11px;font-weight:400;color:var(--ink46);letter-spacing:.02em;margin-top:3px;text-transform:none;}
+.tier{width:82px;flex-shrink:0;display:flex;justify-content:center;}
+.tg{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;padding:5px 0;width:70px;text-align:center;border-radius:6px;letter-spacing:.02em;}
+.tg.lite{color:var(--kraft);background:rgba(212,162,127,.12);border:1px solid rgba(212,162,127,.32);}
+.tg.smart{color:var(--book);background:rgba(204,120,92,.12);border:1px solid rgba(204,120,92,.34);}
+.tg.deep{color:#E5926F;background:rgba(169,57,20,.22);border:1px solid var(--deep);}
+.tg.none{color:var(--ink46);background:rgba(250,250,247,.05);border:1px solid var(--rule);}
+.tools{flex:1;min-width:0;display:flex;flex-wrap:wrap;gap:5px 6px;align-content:center;}
+.tt{font-family:'DM Mono',monospace;font-size:12.5px;font-weight:500;color:var(--ivory);background:rgba(204,120,92,.1);border:1px solid rgba(204,120,92,.26);border-radius:6px;padding:4px 8px;line-height:1;white-space:nowrap;}
+.rtr.gate .tt{background:rgba(200,70,35,.16);border-color:var(--book-d);}
+.src{width:78px;flex-shrink:0;text-align:center;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;}
+.src.nat{color:var(--ink46);}.src.mod{color:var(--book);}
+.disp{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:14px;border:1px dashed var(--rule);border-radius:10px;padding:9px 16px;margin-top:1px;font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.03em;color:var(--ink46);}
+.disp b{color:var(--ivory);font-weight:700;}.disp em{color:var(--book);font-style:normal;font-weight:700;}
 /* cta */
-.ctawrap{flex-shrink:0;margin-top:13px;}
-.savel{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--kraft);margin-bottom:9px;padding-left:4px;}
-.cta{display:flex;align-items:center;gap:16px;border:1.5px solid var(--book);border-radius:18px;background:rgba(204,120,92,.08);padding:13px 13px 13px 26px;box-shadow:0 0 44px rgba(204,120,92,.2);}
-.cta .ph{flex:1;font-size:22px;font-weight:600;color:var(--ink70);line-height:1.2;}.cta .ph b{color:var(--book);font-weight:900;}
-.cta .send{width:56px;height:56px;border-radius:50%;background:var(--book);flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(204,120,92,.45);}
-.cta .send svg{width:27px;height:27px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-.ftr{flex-shrink:0;margin-top:13px;padding-top:12px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:16px;}
-.fl2{display:flex;align-items:center;gap:11px;min-width:0;}.flogo{width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;}
-.ftx{font-family:'DM Mono',monospace;font-size:11.5px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--ink70);white-space:nowrap;}.ftx b{color:var(--ivory);font-weight:500;}
-.furl{font-weight:900;font-size:21px;letter-spacing:-.5px;color:var(--ivory);}.furl em{color:var(--book);font-style:normal;}
+.ctawrap{flex-shrink:0;margin-top:11px;}
+.savel{font-family:'DM Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--kraft);margin-bottom:8px;padding-left:4px;}
+.cta{display:flex;align-items:center;gap:15px;border:1.5px solid var(--book);border-radius:16px;background:rgba(204,120,92,.08);padding:12px 12px 12px 24px;box-shadow:0 0 44px rgba(204,120,92,.2);}
+.cta .ph{flex:1;font-size:21px;font-weight:600;color:var(--ink70);line-height:1.2;}.cta .ph b{color:var(--book);font-weight:900;}
+.cta .send{width:54px;height:54px;border-radius:50%;background:var(--book);flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(204,120,92,.45);}
+.cta .send svg{width:26px;height:26px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ftr{flex-shrink:0;margin-top:11px;padding-top:11px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.fl2{display:flex;align-items:center;gap:11px;min-width:0;}.flogo{width:29px;height:29px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.ftx{font-family:'DM Mono',monospace;font-size:11px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--ink70);white-space:nowrap;}.ftx b{color:var(--ivory);font-weight:500;}
+.furl{font-weight:900;font-size:20px;letter-spacing:-.5px;color:var(--ivory);}.furl em{color:var(--book);font-style:normal;}
 </style></head>
 <body>
 <div class="frame" id="artifact"><div class="atm"></div>
@@ -64,21 +66,28 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
   <div class="hero">
     <div class="eye">The routing engine</div>
     <div class="hook">Your AI picks a model. The hard part is picking <em>the right tool</em>.</div>
-    <div class="sub">Ask Ultron anything and a dispatcher routes the request to the exact tool out of 92, runs it, and <b>waits for your yes before anything ships.</b></div>
+    <div class="sub">Ask Ultron anything and it routes twice: to a model tier, then to the exact tool out of 92. <b>The dispatcher tries the module first, falls back to native, and waits for your yes before it ships.</b></div>
   </div>
   <div class="stats">
     <div class="stat a"><b>92</b><span>native tools</span></div>
     <div class="stat b"><b>2</b><span>routing hops</span></div>
-    <div class="stat c"><b>module</b><span>first, then native</span></div>
+    <div class="stat c"><b>3</b><span>model tiers</span></div>
     <div class="stat d"><b>1</b><span>approval gate</span></div>
   </div>
-  <div class="pipe">
-    <div class="hopnote">One request &middot; two hops &middot; then run</div>
-    <div class="stg"><span class="num">1</span><div class="mid"><div class="t">Route to the <em>model</em></div><div class="d2">The router reads the job and picks the tier. Quick lookup, default, or hard judgement.</div></div><div class="chips"><span class="chip">Lite = Haiku</span><span class="chip">Smart = Sonnet</span><span class="chip">Deep = Opus</span></div></div>
-    <div class="stg k"><span class="num">2</span><div class="mid"><div class="t">Route to the <em>right tool</em></div><div class="d2">The dispatcher tries the module first, falls back to native. It finds 1 of 92 by name, in constant time.</div></div><div class="chips"><span class="chip">module-first</span><span class="chip">native fallback</span><span class="chip">O(1) by name</span></div></div>
-    <div class="stg"><span class="num">3</span><div class="mid"><div class="t">Run it</div><div class="d2">The connection gate only ever fires the tools you have actually connected, so it never touches an app you do not run.</div></div><div class="chips"><span class="chip">connection gate</span></div></div>
-    <div class="stg d"><span class="num">4</span><div class="mid"><div class="t">Ship it</div><div class="d2">Anything irreversible, a send, a charge, a post, stops at the approval gate and waits for your yes.</div></div><div class="chips"><span class="chip">human-in-the-loop</span></div></div>
-    <div class="cat"><span class="ce"><b>84</b> native <em>+</em> <b>7</b> Stripe <em>+</em> <b>1</b> approval <em>=</em> <b>92</b></span><span class="cn">new tools plug in as modules &middot; the old ones never break</span></div>
+  <div class="rt">
+    <div class="rth"><span class="c1">You ask for</span><span class="c2">Model</span><span class="c3">The tool the dispatcher picks</span><span class="c4">Source</span></div>
+
+    <div class="rtr"><div class="ask">Research a target<span>company, market, people</span></div><div class="tier"><span class="tg smart">Smart</span></div><div class="tools"><span class="tt">web_search</span><span class="tt">scrape_website</span><span class="tt">browser_action</span></div><div class="src nat">native</div></div>
+    <div class="rtr"><div class="ask">Find + enrich the buyer<span>email, title, firmographics</span></div><div class="tier"><span class="tg smart">Smart</span></div><div class="tools"><span class="tt">enrich_lead</span><span class="tt">search_people</span></div><div class="src nat">native</div></div>
+    <div class="rtr"><div class="ask">Update the CRM<span>lead, deal, pipeline</span></div><div class="tier"><span class="tg lite">Lite</span></div><div class="tools"><span class="tt">crm_save_lead</span><span class="tt">crm_manage_deals</span></div><div class="src nat">native</div></div>
+    <div class="rtr"><div class="ask">Write + send the email<span>cold or follow-up</span></div><div class="tier"><span class="tg smart">Smart</span></div><div class="tools"><span class="tt">gmail_send_email</span><span class="tt">crm_email_sequences</span></div><div class="src nat">native</div></div>
+    <div class="rtr"><div class="ask">Book the meeting<span>link, invite, slots</span></div><div class="tier"><span class="tg lite">Lite</span></div><div class="tools"><span class="tt">calendly_create_link</span><span class="tt">gcal_create_event</span></div><div class="src nat">native</div></div>
+    <div class="rtr"><div class="ask">Publish + post<span>content, team update</span></div><div class="tier"><span class="tg smart">Smart</span></div><div class="tools"><span class="tt">content_create_post</span><span class="tt">slack_send_message</span></div><div class="src nat">native</div></div>
+    <div class="rtr"><div class="ask">Charge + read revenue<span>invoice, MRR, subs</span></div><div class="tier"><span class="tg deep">Deep</span></div><div class="tools"><span class="tt">stripe_create_invoice</span><span class="tt">stripe_revenue_metrics</span></div><div class="src mod">module</div></div>
+    <div class="rtr"><div class="ask">Build + ship a tool<span>code, test, deploy</span></div><div class="tier"><span class="tg deep">Deep</span></div><div class="tools"><span class="tt">code_task</span><span class="tt">deploy_task</span><span class="tt">multi_agent_task</span></div><div class="src nat">native</div></div>
+    <div class="rtr gate"><div class="ask">Anything irreversible<span>send, charge, post</span></div><div class="tier"><span class="tg none">gate</span></div><div class="tools"><span class="tt">wait_for_approval</span></div><div class="src mod">module</div></div>
+
+    <div class="disp"><span>dispatch order <em>&rarr;</em> <b>module first</b>, then native fallback &middot; resolves 1 of 92 by name</span><span><b>84</b> native <em>+</em> <b>7</b> Stripe <em>+</em> <b>1</b> approval <em>=</em> <b>92</b></span></div>
   </div>
   <div class="ctawrap">
     <div class="savel">Save this for how your AI actually routes a request</div>
