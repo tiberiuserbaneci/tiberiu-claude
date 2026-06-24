@@ -16,14 +16,11 @@ LOG=/tmp/portal.log
 git merge --abort 2>/dev/null
 git rebase --abort 2>/dev/null
 
-# 2) get on the work branch (fast, local). Only touch the network if the branch is not here yet
-#    (first creation); every later wake is an instant local checkout. A Codespace left on main
-#    would otherwise serve main with none of the new posters.
-git checkout "$BRANCH" 2>/dev/null || { echo "portal: fetching $BRANCH ..."; git fetch origin "$BRANCH" 2>&1 | tail -1; git checkout -b "$BRANCH" "origin/$BRANCH" 2>/dev/null; }
-# pull the latest work-branch code (clean tree only) so a manual re-run always launches the newest
-# server.py; if the tree has diverged/local edits this no-ops and the server's sync worker handles it.
-git pull --ff-only origin "$BRANCH" 2>/dev/null && echo "portal: pulled latest code" || true
-echo "portal: on branch $(git branch --show-current)"
+# 2) get on the work branch (fast, LOCAL ONLY). GitHub link disabled by operator directive
+#    (2026-06-24): storage moved to the Monolith account, so the portal no longer fetches or pulls
+#    from origin (that GitHub traffic cost money and was unreliable). Local checkout only.
+git checkout "$BRANCH" 2>/dev/null || true
+echo "portal: on branch $(git branch --show-current) (offline - no origin fetch/pull)"
 
 # 3) START THE SERVER NOW under the watchdog, before any network work. It serves the committed
 #    manifest instantly and, on boot, server.py's sync worker pulls origin right away (no 15s

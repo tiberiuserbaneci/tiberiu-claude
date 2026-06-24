@@ -76,6 +76,16 @@ Plus **HUMAN GATE**: human approval before anything sends.
 
 ## 2. GIT WORKFLOW (rebuilt for this environment)
 
+> **STORAGE MOVED TO MONOLITH (operator, 2026-06-24 — binding, per §0.1; supersedes the GitHub
+> Pages / `main` publishing rule below and the portal auto-push rules in §29):** material storage is
+> now **exclusively the Monolith account vault** — Cloudflare D1 `opencut-vault` (binding `VAULT_DB`),
+> owner `x5SELCqkIRk7HmZmJrQGzrgRP9hSzxk3` = **tiberiu@nexitynetwork.org**, media in R2
+> `ultron-reels/imports/`. Items are tagged by channel: **LinkedIn / TikTok / Instagram**, titles
+> status-marked (`Posted …` / `Review …` / `Revision …`), caption = caption + first comment (ALT
+> dropped). The GitHub Pages portal + Codespace auto-push are **disabled** (they cost money and were
+> unreliable). Do **not** auto-push materials or the portal manifest to GitHub; code commits to the
+> work branch on explicit request only.
+
 This repo is **not** the old personal `ultron-content` repo. The original config referenced
 `tiberiuserbaneci/ultron-content`, a remote named `ultron-content`, and a `GH_PAT` env var —
 **none of that applies here.** Use the values below.
@@ -1035,6 +1045,15 @@ Commit trailers (the session link) live in git history only, never in a delivere
 ---
 
 ## 29. CONTENT PORTAL + ANALYTICS LOOP (operator, 2026-06-05 — binding)
+
+> **DEPRECATED / GITHUB-DISABLED (operator, 2026-06-24 — binding, per §0.1):** storage moved to the
+> Monolith vault (see §2). The portal's GitHub auto-commit/push/sync are now **OFF by default**
+> (`portal/server.py`: `PORTAL_PUSH` / `PORTAL_COMMIT` / `PORTAL_SYNC` default `0`;
+> `portal/codespace-start.sh` no longer fetches/pulls origin on boot). The always-on GitHub Pages
+> portal is retired (kill the Codespace + turn off Pages on GitHub's side to stop the cost). The
+> portal may still be run **locally** as a read-only viewer, but it no longer writes to GitHub. New
+> materials are wired straight into the Monolith Library (R2 `ultron-reels/imports/` + `vault_items`,
+> tagged by channel), not the portal manifest. The 155 portal materials were migrated on 2026-06-24.
 
 The portal maps every material into one dashboard: channels (LinkedIn / TikTok / Instagram),
 grid previews, per-material caption / ALT / first-comment copy boxes, single or one-click carousel

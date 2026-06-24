@@ -43,9 +43,13 @@ ANALYTICS.mkdir(exist_ok=True)
 PORT = int(os.environ.get("PORTAL_PORT", "8753"))
 HOST = os.environ.get("PORTAL_HOST", "127.0.0.1")
 BRANCH = os.environ.get("PORTAL_BRANCH", "claude/epic-davinci-eGOGS")
-AUTOPUSH = os.environ.get("PORTAL_PUSH", "1") != "0"
-AUTOCOMMIT = os.environ.get("PORTAL_COMMIT", "1") != "0"   # PORTAL_COMMIT=0 -> write manifest but no git (testing)
-SYNC = os.environ.get("PORTAL_SYNC", "1") != "0"           # background pull of materials pushed by content sessions
+# GitHub link DISABLED by operator directive (2026-06-24): material storage now lives exclusively
+# in the Monolith account (Cloudflare vault), not GitHub. The portal no longer commits, pushes, or
+# pulls from origin by default (the GitHub Pages/Codespace portal generated cost and was unreliable).
+# Re-enable explicitly per-run if ever needed: PORTAL_PUSH=1 / PORTAL_COMMIT=1 / PORTAL_SYNC=1.
+AUTOPUSH = os.environ.get("PORTAL_PUSH", "0") != "0"
+AUTOCOMMIT = os.environ.get("PORTAL_COMMIT", "0") != "0"    # default OFF: write manifest locally, no git
+SYNC = os.environ.get("PORTAL_SYNC", "0") != "0"           # default OFF: no background pull from origin
 SYNC_SECS = int(os.environ.get("PORTAL_SYNC_SECS", "15"))  # how often to check origin for new content
 P_USER = os.environ.get("PORTAL_USER", "ultron")
 P_PASS = os.environ.get("PORTAL_PASS", "")   # set -> HTTP Basic Auth on every request, so the port is safe to make Public
