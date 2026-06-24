@@ -6,7 +6,7 @@ Applies the best-performer formula (post 7473683676527071232: hidden-mechanic "Y
 
 Your prompt does not go straight to an answer. It gets routed twice before your AI does anything.
 
-Most people picture an AI assistant as one model in a chat box. The work that decides whether it is actually useful happens before a single word comes back.
+Most people picture an AI assistant as one model in a chat box. I used to think the model was the whole product too. The work that decides whether it is actually useful happens before a single word comes back, in how the request gets routed.
 
 - - -
 
@@ -22,11 +22,11 @@ Then it routes to a tool. This is the part most AI skips entirely.
 
 → Anything irreversible, a send, a charge, a post, stops at an approval gate and waits for your yes.
 
-→ New tools plug in as self-contained modules. 84 native plus 7 for Stripe plus 1 for approvals is 92 today, and the next one ships without touching the tools that already work.
+→ New tools plug in as self-contained modules. 84 native plus 7 for Stripe plus 1 for approvals is 92 today, and the next one ships without touching the tools that already work, so the catalog only ever grows.
 
 - - -
 
-Nobody posts about this part because it is invisible. But it is the whole difference between an AI that talks and an AI that does the job. The chat is the surface. The routing engine underneath, model then tool then gate, is the product.
+Nobody posts about this part because it is invisible. But it is the whole difference between an AI that talks and an AI that does the job. The chat is the surface. The routing engine underneath, model then tool then gate, is the product. An AI with no tools, or one that grabs the wrong tool, hands you a confident paragraph instead of a finished task.
 
 Most teams still judge AI by the answer in the box. The leverage is one layer down, in how the request gets routed.
 
