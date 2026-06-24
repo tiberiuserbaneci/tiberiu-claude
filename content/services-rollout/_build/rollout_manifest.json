@@ -1,0 +1,27 @@
+{
+  "_note": "Rollout manifest: TikTok REVIEW materials -> Ultron-perspective 5-slide carousels. Hook reviewed (Claude->Ultron where it doesn't fit), viral 'You X by hand / Ultron does it' or 'Most AI X / Ultron Y' format. Each: cover hook + 3 content slides (real app icons / proof) + CTA. Footer 51ultron.com orange on all.",
+  "items": [
+    {"slug":"tool-stack","row":"Review Tool Stack Editorial45","kw":"STACK","hook":"You stitch ten tools together by hand. / Ultron runs them as one.","theme":"the operator's tool stack collapsed into one Ultron workspace; app icons converging"},
+    {"slug":"tools-catalog","row":"Review Tools Catalog Editorial45","kw":"TOOLS","hook":"You pick the tool for the job. / Ultron already picked it.","theme":"Ultron auto-selecting the right tool/app per task; a catalog of app icons with one highlighted"},
+    {"slug":"personas-roster","row":"Review Personas Roster Editorial45","kw":"ROLES","hook":"You wear every hat in the company. / Ultron runs all seven.","theme":"the 7 Ultron agents as roles (research/outbound/deals/content/code/publish/legal) as 3D role tiles"},
+    {"slug":"claude-code-start","row":"Review Claude Code Start Editorial45 Infographic","kw":"SETUP","hook":"You set your AI up from scratch. / Ultron ships configured.","theme":"a configured Ultron workspace vs an empty setup; a settings/config 3D scene"},
+    {"slug":"realnumbers-stack","row":"Review Realnumbers Stack Editorial45 Infographic","kw":"STACK","hook":"I cancelled $7,200 in tools. / Ultron replaced the stack.","theme":"cancelled subscription cards vs one Ultron; real numbers, 3D receipts/cards"},
+    {"slug":"team","row":"Review Team","kw":"TEAM","hook":"You hire for every role. / Ultron runs the team.","theme":"a 6-role team as 3D agent tiles working together"},
+    {"slug":"projects","row":"Review Projects 45","kw":"PROJECTS","hook":"You open a new tab for every task. / Ultron keeps one workspace.","theme":"scattered tabs collapsing into one Ultron workspace"},
+    {"slug":"weekend-engine","row":"Review Gtm Weekend 45","kw":"WEEKEND","hook":"I built a full services engine in a weekend. / Ultron runs it.","theme":"a services engine built fast; 5 agent tiles + a weekend timeline"},
+    {"slug":"agents-prod","row":"Review Agents Prod Editorial45","kw":"PROD","hook":"Your AI works in the demo. / Ultron works in production.","theme":"demo vs production; a robust pipeline of app icons holding under load"},
+    {"slug":"skills","row":"Review Skills 45","kw":"SKILLS","hook":"Your AI runs on prompts. / Ultron runs on skills.","theme":"prompt text vs reusable skill modules; 3D skill blocks"},
+    {"slug":"chat-habits","row":"Review Chat Habits 45","kw":"HABITS","hook":"Eight habits put my whole company / inside one AI.","theme":"8 operator habits as 3D numbered tiles feeding one Ultron"},
+    {"slug":"proof-shared","row":"Review Shared","kw":"PROOF","hook":"You screenshot your AI wins. / Ultron ships the proof.","theme":"one screenshot vs 44 shipped proof artifacts; 3D content/proof cards"},
+    {"slug":"turn-loop","row":"Review Turn","kw":"LOOP","hook":"Most AI answers once. / Ultron runs until it is done.","theme":"single reply vs a loop running to completion; a 3D progress loop"},
+    {"slug":"sessions","row":"Review Sessions","kw":"SESSIONS","hook":"Most AI forgets between chats. / Ultron resumes where you stopped.","theme":"memory/resume; a 3D session timeline picking back up"},
+    {"slug":"computer","row":"Review Computer","kw":"COMPUTER","hook":"Most AI tells you the fix. / Ultron runs it for you.","theme":"description vs execution; Ultron operating a computer/app UI in 3D"},
+    {"slug":"ai-native-index","row":"Review Ai Native Index","kw":"INDEX","hook":"I scored 58,351 companies / on how AI-native they really are.","theme":"a data/index proof piece; 3D charts, 58,351 -> 408 funnel, real numbers"},
+    {"slug":"builder","row":"Review Builder","kw":"BUILDER","hook":"You read walls of AI text. / Ultron builds the answer.","theme":"text wall vs a built UI/artifact; 3D builder blocks"},
+    {"slug":"brain","row":"Review Brain","kw":"BRAIN","hook":"You re-explain your business every time. / Ultron already knows it.","theme":"context/brain; a 3D knowledge core that Ultron reads from"},
+    {"slug":"jobs","row":"Review Jobs","kw":"JOBS","hook":"You babysit every long task. / Ultron runs them in the background.","theme":"spinner-watching vs background jobs; 3D job queue running unattended"},
+    {"slug":"workforce","row":"Review Workforce","kw":"WORKFORCE","hook":"You run the company across six tabs. / Ultron drives seven agents.","theme":"six scattered tabs vs seven Ultron agents in one cockpit"},
+    {"slug":"one-chat","row":"Review Chat","kw":"CHAT","hook":"You run your AI in ten tabs. / Ultron runs it in one.","theme":"ten tabs collapsing into one Ultron workspace"},
+    {"slug":"routing","row":"Review Routing","kw":"ROUTING","hook":"One AI cannot win every job. / Ultron routes each to the right agent.","theme":"a router sending 8 jobs to the right specialist agent; 3D routing diagram"}
+  ]
+}
