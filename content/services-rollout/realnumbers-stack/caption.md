@@ -1,6 +1,6 @@
 Comment STACK and I will send you the stack map.
 
-I cancelled $7,200 a month in GTM software.
+I cancelled $7,200 a month in software.
 
 Now the whole stack runs inside one box, and I am the one operator who runs it.
 
