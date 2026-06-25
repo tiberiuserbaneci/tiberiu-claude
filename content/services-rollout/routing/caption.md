@@ -1,8 +1,11 @@
-Comment ROUTING and I will send you the Ultron setup.
+Comment ROUTING and I will send you the full 8-job model map.
 
-One AI cannot win every job. 
- Ultron routes each to the right agent.
+I gave one AI eight founder jobs. It won one.
 
-One ask, and Ultron runs the whole service for you.
+Now Ultron routes each job to the model that actually wins it.
+
+Research to Perplexity. Judgment to Claude. The close to ChatGPT.
+
+One founder. Every model. The right one wins, every time.
 
 #claude #ai #founder #startup #buildinpublic
