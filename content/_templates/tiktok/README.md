@@ -29,13 +29,18 @@ The 3D model = ONE example per slide; vary treatment, never all the same.
 Chrome rendered in PIL (locked typography); Vertex renders ONLY the focal 3D model;
 composited into a fixed zone. Two sub-variants:
 
-- **B1 tilted three-quarter** — `build_slides.py` + `gen_models.py`. Each slide a
-  *different* 3D shape (phone, card cluster, dashboard, stat tiles, node flow,
-  comment card) at a three-quarter angle.
-- **B2 front-on framed** — `build_front.py` + `gen_front.py`. Same elements viewed
+- **B1 tilted three-quarter** — `gen_models.py` (models). Each slide a *different* 3D
+  shape (phone, card cluster, dashboard, stat tiles, node flow, comment card) at a
+  three-quarter angle.
+- **B2 front-on framed** — `gen_front.py` (models_front). Same elements viewed
   **straight-on (orthographic front, no tilt)**, each cropped + alpha-keyed (charcoal
   → transparent, so NO visible frame/box) into one fixed invisible zone, with a soft
   grounding drop-shadow so it doesn't look "dropped in".
+
+**Page builders:** `build_3d916.py <models_dir> <out_dir>` renders the 9:16 (1080×1920)
+page for EITHER model set, reusing the existing model images (no Vertex regen needed to
+re-page or reformat). `build_slides.py` / `build_front.py` are the older 4:5 pagers.
+`reupload_916.py <out_dir> <prefix>` pushes a rebuilt page to an existing vault item.
 
 ### Vertex pro 3D-render formula (learned from Google's Nano Banana guide)
 > `[Subject] + [PBR material] + [lighting] + [camera/view] + [color] + [background]`
@@ -52,10 +57,10 @@ Source: https://cloud.google.com/blog/products/ai-machine-learning/ultimate-prom
 
 ---
 
-## Shipped examples (Monolith vault, owner tiberiu@nexitynetwork.org, tag TikTok)
-- `OPERATOR STACK (9:16 docs)` — Model A (9:16) → `content/services-rollout/operator-docs/`
-- `OPERATOR STACK (3D Vertex)` — Model B1 tilted (4:5) → `content/services-rollout/operator-stack/`
-- `OPERATOR STACK (4:5 front-framed)` — Model B2 front-on (4:5) → `content/services-rollout/operator-front/`
+## Shipped examples (Monolith vault, owner tiberiu@nexitynetwork.org, tag TikTok) — all 9:16
+- `OPERATOR STACK (9:16 docs)` — Model A → `content/services-rollout/operator-docs/`
+- `OPERATOR STACK (3D Vertex · 9:16)` — Model B1 tilted → `content/services-rollout/operator-stack/`
+- `OPERATOR STACK (front-framed · 9:16)` — Model B2 front-on → `content/services-rollout/operator-front/`
 
 > NOTE: build scripts use this session's scratchpad paths + read credentials
 > (`adc.json` for Vertex, `cfenv` for Cloudflare) that are NEVER committed. They are
