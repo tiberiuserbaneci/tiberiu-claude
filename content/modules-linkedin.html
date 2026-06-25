@@ -2,61 +2,51 @@
 :root{--slate:#191919;--slate2:#222221;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink55:rgba(250,250,247,.55);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--cloud:#919180;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:#0d0d0d;display:flex;justify-content:center;padding:20px 0;font-family:'DM Sans',sans-serif;}
-.frame{width:1080px;height:1450px;background:var(--slate);padding:24px 30px 16px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;gap:9px;}
+.frame{width:1080px;height:1450px;background:var(--slate);padding:26px 32px 17px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;gap:10px;}
 .frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.05) 1.2px,transparent 1.3px);background-size:26px 26px;}
-.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 50% 18% at 92% -2%,rgba(204,120,92,.15) 0%,transparent 60%),radial-gradient(ellipse 44% 16% at 3% 102%,rgba(212,162,127,.07) 0%,transparent 60%);}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 52% 20% at 92% -2%,rgba(204,120,92,.16) 0%,transparent 60%),radial-gradient(ellipse 44% 16% at 3% 102%,rgba(212,162,127,.08) 0%,transparent 60%);}
 .frame>*{position:relative;z-index:2;}
 /* TOP */
-.top{flex-shrink:0;display:flex;align-items:flex-end;justify-content:space-between;gap:22px;padding-bottom:10px;border-bottom:1px solid var(--rule);}
-.eye{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--book);margin-bottom:6px;}
-.hook{font-weight:900;font-size:34px;line-height:.9;letter-spacing:-1.1px;}.hook em{color:var(--book);font-style:normal;}
-.sub{margin-top:7px;font-size:11.5px;font-weight:500;line-height:1.3;color:var(--ink70);max-width:520px;}
-.glance{flex-shrink:0;display:grid;grid-template-columns:repeat(3,1fr);gap:5px;width:360px;}
-.gc{background:rgba(38,38,37,.55);border:1px solid var(--ink14);border-radius:7px;padding:6px 9px;}
+.top{flex-shrink:0;display:flex;align-items:flex-end;justify-content:space-between;gap:22px;padding-bottom:11px;border-bottom:1px solid var(--rule);}
+.eye{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--book);margin-bottom:7px;}
+.hook{font-weight:900;font-size:42px;line-height:.92;letter-spacing:-1.4px;}.hook em{color:var(--book);font-style:normal;}
+.sub{margin-top:8px;font-size:13px;font-weight:500;line-height:1.32;color:var(--ink70);max-width:560px;}
+.glance{flex-shrink:0;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;width:372px;}
+.gc{background:rgba(38,38,37,.55);border:1px solid var(--ink14);border-radius:8px;padding:7px 10px;}
 .gc:nth-child(3n+1){background:rgba(204,120,92,.1);border-color:rgba(204,120,92,.26);}
-.gk{display:block;font-family:'DM Mono',monospace;font-size:7.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink46);}
-.gv{display:block;font-size:13px;font-weight:800;letter-spacing:-.3px;color:var(--ivory);margin-top:2px;line-height:1;}
-.gm{display:block;font-family:'DM Mono',monospace;font-size:8px;font-weight:500;color:var(--book);margin-top:2px;}
+.gk{display:block;font-size:15px;font-weight:900;letter-spacing:-.4px;color:var(--ivory);line-height:1;}
+.gc:nth-child(3n+1) .gk{color:var(--book);}
+.gm{display:block;font-family:'DM Mono',monospace;font-size:8.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink46);margin-top:4px;}
 /* GRID */
-.mid{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:9px;}
-.col{display:flex;flex-direction:column;gap:8px;min-height:0;}
-.pan{background:rgba(38,38,37,.4);border:1px solid var(--ink14);border-radius:10px;padding:9px 11px;display:flex;flex-direction:column;}
+.mid{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.col{display:flex;flex-direction:column;gap:9px;min-height:0;}
+.pan{background:rgba(38,38,37,.4);border:1px solid var(--ink14);border-radius:11px;padding:10px 13px;display:flex;flex-direction:column;min-height:0;}
 .pan.bt{border-top:2.5px solid var(--book);background:rgba(204,120,92,.06);}
 .pan.kt{border-top:2.5px solid var(--kraft);}
-.pan.grow{flex:1;min-height:0;}
-.ph{display:flex;align-items:baseline;justify-content:space-between;gap:6px;font-size:13px;font-weight:900;letter-spacing:-.2px;color:var(--ivory);padding-bottom:6px;margin-bottom:6px;border-bottom:1px solid var(--rule);}
-.ph span{font-family:'DM Mono',monospace;font-size:8.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--book);white-space:nowrap;}
-pre.code{font-family:'DM Mono',monospace;font-size:9px;line-height:1.42;color:var(--ink70);background:rgba(0,0,0,.28);border:1px solid var(--rule);border-radius:7px;padding:7px 9px;white-space:pre;overflow:hidden;}
-pre.code .k{color:var(--book);}pre.code .s{color:var(--kraft);}pre.code .c{color:var(--ink46);}pre.code .t{color:#e0a888;}
-.note{font-size:10px;font-weight:500;color:var(--ink55);line-height:1.28;margin-top:6px;}
-.note b{color:var(--kraft);font-weight:700;}
-.kv{font-size:11px;font-weight:500;color:var(--ink70);line-height:1.25;padding:3.5px 0;border-bottom:1px dotted var(--rule);}
-.kv:last-child{border-bottom:none;}
-.kv b{font-family:'DM Mono',monospace;font-size:10.5px;font-weight:600;color:var(--kraft);}
-.ctx{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;color:var(--ink70);line-height:1.5;}
-.ctx b{color:var(--book);font-weight:600;}
-/* stripe rows */
-.trow{flex:1;display:flex;align-items:center;gap:8px;padding:2.5px 0;border-bottom:1px solid rgba(250,250,247,.07);min-height:0;}
-.trow:last-child{border-bottom:none;}
-.trow .tn{font-family:'DM Mono',monospace;font-size:10px;font-weight:600;color:var(--ivory);white-space:nowrap;}
-.trow .td{margin-left:auto;text-align:right;font-size:10px;font-weight:500;color:var(--ink46);line-height:1.1;}
-/* compare */
-.cmp{display:grid;grid-template-columns:62px 1fr 1fr;gap:6px;align-items:center;padding:3px 0;border-bottom:1px dotted var(--rule);}
-.cmp:last-child{border-bottom:none;}
-.ck{font-family:'DM Mono',monospace;font-size:8.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--ink46);}
-.cm{font-size:10.5px;font-weight:700;color:var(--book);letter-spacing:-.2px;line-height:1.05;}
-.cn{font-size:10.5px;font-weight:600;color:var(--ink55);letter-spacing:-.2px;line-height:1.05;}
-.fm{font-family:'DM Mono',monospace;font-size:10px;font-weight:600;color:var(--book);}
-.fm2{font-family:'DM Mono',monospace;font-size:9px;font-weight:400;color:var(--ink55);line-height:1.35;margin:1px 0 4px;}
-.gl{flex:1;display:flex;align-items:center;font-size:9.5px;font-weight:500;color:var(--ink70);line-height:1.18;border-bottom:1px dotted var(--rule);min-height:0;}
-.gl:last-child{border-bottom:none;}
-.gl b{color:var(--ivory);font-weight:800;}
+.pan.grow{flex:1;}
+.ph{display:flex;align-items:baseline;justify-content:space-between;gap:6px;font-size:15px;font-weight:900;letter-spacing:-.3px;color:var(--ivory);padding-bottom:7px;margin-bottom:6px;border-bottom:1px solid var(--rule);flex-shrink:0;}
+.ph span{font-family:'DM Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--book);white-space:nowrap;}
 .glist{flex:1;display:flex;flex-direction:column;min-height:0;}
-.wr{flex:1;display:flex;align-items:center;font-size:11px;font-weight:500;color:var(--ink70);line-height:1.2;border-bottom:1px dotted var(--rule);min-height:0;}
+.trow{flex:1;display:flex;align-items:center;gap:10px;padding:2px 0;border-bottom:1px solid rgba(250,250,247,.07);min-height:0;}
+.trow:last-child{border-bottom:none;}
+.trow .ti{flex-shrink:0;width:6px;height:6px;border-radius:50%;background:var(--book);}
+.kt .trow .ti{background:var(--kraft);}
+.trow .tn{font-size:13.5px;font-weight:700;color:var(--ivory);letter-spacing:-.2px;line-height:1.1;}
+.trow .td{margin-left:auto;text-align:right;font-family:'DM Mono',monospace;font-size:9.5px;font-weight:500;color:var(--ink46);line-height:1.1;text-transform:uppercase;letter-spacing:.04em;}
+.wr{flex:1;display:flex;align-items:center;font-size:12.5px;font-weight:500;color:var(--ink70);line-height:1.2;border-bottom:1px dotted var(--rule);min-height:0;}
 .wr:last-child{border-bottom:none;}
 .wr::before{content:'';flex-shrink:0;width:5px;height:5px;border-radius:50%;background:var(--book);margin-right:10px;}
 .wr b{color:var(--ivory);font-weight:700;}
-/* CTA + footer */
+/* compare */
+.cmp{flex:1;display:grid;grid-template-columns:58px 1fr 1fr;gap:8px;align-items:center;padding:2px 0;border-bottom:1px dotted var(--rule);min-height:0;}
+.cmp:last-child{border-bottom:none;}
+.ck{font-family:'DM Mono',monospace;font-size:8.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink46);}
+.cn{font-size:11.5px;font-weight:600;color:var(--ink55);letter-spacing:-.2px;line-height:1.04;}
+.cm{font-size:11.5px;font-weight:700;color:var(--book);letter-spacing:-.2px;line-height:1.04;}
+.chh{display:grid;grid-template-columns:58px 1fr 1fr;gap:8px;padding-bottom:5px;margin-bottom:2px;border-bottom:1px solid var(--rule);}
+.chh span{font-family:'DM Mono',monospace;font-size:8.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;}
+.chh .a{color:var(--ink46);}.chh .b{color:var(--ink55);}.chh .c{color:var(--book);}
+/* CTA chat bar */
 .cta{flex-shrink:0;display:flex;align-items:center;gap:14px;background:rgba(38,38,37,.6);border:1.5px solid var(--book);border-radius:16px;padding:9px 10px 9px 19px;box-shadow:0 0 34px rgba(204,120,92,.16),inset 0 1px 0 rgba(250,250,247,.04);}
 .cta-ic{width:21px;height:21px;flex-shrink:0;stroke:var(--book);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
 .cta-txt{flex:1;font-size:19px;font-weight:600;color:var(--ink70);letter-spacing:-.2px;line-height:1.1;}.cta-txt b{color:var(--ivory);font-weight:900;}
@@ -68,115 +58,82 @@ pre.code .k{color:var(--book);}pre.code .s{color:var(--kraft);}pre.code .c{color
 .furl{font-weight:900;font-size:18px;letter-spacing:-.5px;color:var(--ivory);}.furl em{color:var(--book);font-style:normal;}
 </style></head><body><div class="frame" id="artifact"><div class="atm"></div>
 <div class="top"><div>
-<div class="eye">Ultron Platform &middot; Provider Modules &middot; Spec</div>
-<div class="hook">Most AI hardcodes its tools.<br><em>Ultron ships them as modules.</em></div>
-<div class="sub">A provider module is one file: schemas, executors, status labels, a connection gate. The dispatcher checks modules first, then falls back to the native catalog. Two ship today, hitl and stripe.</div>
+<div class="eye">Ultron &middot; What it actually does</div>
+<div class="hook">Most AI hands you words.<br><em>Ultron runs the work.</em></div>
+<div class="sub">Ultron does not just answer. It acts across the apps you connect, runs the whole job from one chat, and stops at your approval before anything ships.</div>
 </div>
 <div class="glance">
-<div class="gc"><span class="gk">Type</span><span class="gv">ToolModule</span><span class="gm">types.ts</span></div>
-<div class="gc"><span class="gk">Dispatcher</span><span class="gv">registry.ts</span><span class="gm">O(1) lookup</span></div>
-<div class="gc"><span class="gk">Folder</span><span class="gv">providers/</span><span class="gm">one file each</span></div>
-<div class="gc"><span class="gk">Shipped</span><span class="gv">2 modules</span><span class="gm">8 tools</span></div>
-<div class="gc"><span class="gk">Order</span><span class="gv">module first</span><span class="gm">native fallback</span></div>
-<div class="gc"><span class="gk">Schemas</span><span class="gv">OpenAI</span><span class="gm">function calling</span></div>
+<div class="gc"><span class="gk">Acts</span><span class="gm">not just chat</span></div>
+<div class="gc"><span class="gk">Real</span><span class="gm">actions, not text</span></div>
+<div class="gc"><span class="gk">Stripe</span><span class="gm">billing in chat</span></div>
+<div class="gc"><span class="gk">Gate</span><span class="gm">approve to ship</span></div>
+<div class="gc"><span class="gk">Connect</span><span class="gm">your own apps</span></div>
+<div class="gc"><span class="gk">Yours</span><span class="gm">you stay operator</span></div>
 </div></div>
 <div class="mid">
 <div class="col">
-<div class="pan bt"><div class="ph">The contract <span>types.ts</span></div>
-<pre class="code"><span class="k">interface</span> <span class="t">ToolModule</span> {
-  provider: <span class="t">string</span>
-  schemas: <span class="t">OpenAIFunctionSchema</span>[]
-  executors: <span class="t">Record</span>&lt;string, <span class="t">ToolExecutor</span>&gt;
-  statusLabels?: <span class="t">Record</span>&lt;string, <span class="t">StatusLabelFn</span>&gt;
-}</pre>
-<div class="note"><b>Four fields.</b> provider is the id in logs and status labels. schemas are what the model sees. executors run the call. statusLabels render a verb phrase while it runs.</div></div>
-<div class="pan"><div class="ph">The dispatcher <span>registry.ts</span></div>
-<pre class="code"><span class="k">const</span> MODULES = [hitlModule, stripeModule]
-<span class="k">const</span> idx = <span class="k">new</span> <span class="t">Map</span>()
-<span class="k">for</span> (<span class="k">const</span> m <span class="k">of</span> MODULES)
-  <span class="k">for</span> (<span class="k">const</span> [n, fn] <span class="k">of</span> entries(m.executors))
-    idx.set(n, { fn, provider: m.provider })
-
-getModuleSchemas()  <span class="c">// flatten every schema</span>
-dispatchModuleTool(name, args, ctx)  <span class="c">// -&gt; string | null</span></pre>
-<div class="note">Index built once at load, so dispatch is constant time. The dispatcher is <b>dumb on purpose</b>, it only finds the executor by name.</div></div>
-<div class="pan"><div class="ph">Call lifecycle <span>chat-tools.ts</span></div>
-<pre class="code"><span class="k">const</span> mod = <span class="k">await</span> dispatchModuleTool(name, args, ctx)
-<span class="k">if</span> (mod !== <span class="k">null</span>) <span class="k">return</span> { result: mod }
-<span class="c">// else fall through to the legacy switch</span></pre>
-<div class="note">Module first, then the historical switch that still owns every un-migrated name. Migration is one tool at a time; both paths coexist.</div></div>
-<div class="pan"><div class="ph">ToolContext <span>the executor gets</span></div>
-<div class="ctx"><b>supabase</b> client &middot; <b>userId</b> &middot; <b>conversationId</b> &middot; <b>turnIndex</b> &middot; <b>modelTier</b> &middot; logging hook for live progress</div></div>
-<div class="pan kt grow"><div class="ph">Human approval <span>hitl &middot; 1 tool</span></div>
+<div class="pan bt"><div class="ph">It acts, not just answers</div>
 <div class="glist">
-<div class="trow"><span class="tn">wait_for_approval</span><span class="td">the one tool it exports</span></div>
-<div class="trow"><span class="tn">writes a row</span><span class="td">into pause_points</span></div>
-<div class="trow"><span class="tn">returns the sentinel</span><span class="td">that pauses the turn</span></div>
-<div class="trow"><span class="tn">a send</span><span class="td">held until you say yes</span></div>
-<div class="trow"><span class="tn">a charge</span><span class="td">held until you say yes</span></div>
-<div class="trow"><span class="tn">a posted message</span><span class="td">held until you say yes</span></div>
-<div class="trow"><span class="tn">you approve</span><span class="td">the turn resumes and ships</span></div>
+<div class="wr">Point it at a job, it runs the steps</div>
+<div class="wr">It works across the apps <b>you connect</b></div>
+<div class="wr">It reports back the finished work, not a wall of text</div>
 </div></div>
-<div class="pan grow"><div class="ph">Why a module <span>not the native catalog</span></div>
+<div class="pan grow"><div class="ph">What it runs for you <span>one chat</span></div>
 <div class="glist">
-<div class="wr">The native catalog grew into one thousand-line file</div>
-<div class="wr">A module adds new tools without making it longer</div>
-<div class="wr">It owns its surface: <b>schemas, executor, status, gate</b></div>
-<div class="wr">The dispatcher is dumb on purpose: finds the executor by name</div>
-<div class="wr">New modules ship without touching shared code</div>
-<div class="wr">The contract is small enough to fit one file</div>
-<div class="wr">New tools should ship as modules, not the catalog</div>
-<div class="wr">Native stays for the existing surface and shared helpers</div>
+<div class="trow"><span class="ti"></span><span class="tn">Researches an account</span><span class="td">web</span></div>
+<div class="trow"><span class="ti"></span><span class="tn">Enriches a lead</span><span class="td">data</span></div>
+<div class="trow"><span class="ti"></span><span class="tn">Updates the CRM</span><span class="td">pipeline</span></div>
+<div class="trow"><span class="ti"></span><span class="tn">Drafts and sends email</span><span class="td">inbox</span></div>
+<div class="trow"><span class="ti"></span><span class="tn">Books the meeting</span><span class="td">calendar</span></div>
+<div class="trow"><span class="ti"></span><span class="tn">Posts to the team</span><span class="td">chat</span></div>
+<div class="trow"><span class="ti"></span><span class="tn">Builds a doc or carousel</span><span class="td">content</span></div>
+<div class="trow"><span class="ti"></span><span class="tn">Runs a scheduled job</span><span class="td">on time</span></div>
+<div class="trow"><span class="ti"></span><span class="tn">Charges a card</span><span class="td">stripe</span></div>
+<div class="trow"><span class="ti"></span><span class="tn">Reads revenue</span><span class="td">mrr</span></div>
+</div></div>
+<div class="pan"><div class="ph">Connect once</div>
+<div class="glist">
+<div class="wr">It uses only the apps you have connected</div>
+<div class="wr">No fake capability, no empty buttons</div>
+<div class="wr">No surprise reach into an account you never linked</div>
+</div></div>
+<div class="pan"><div class="ph">It already knows your business</div>
+<div class="glist">
+<div class="wr">Your profile and offer</div>
+<div class="wr">Your pipeline and deals</div>
+<div class="wr">Your voice, your ICP, your apps, no re-explaining</div>
 </div></div>
 </div>
 <div class="col">
-<div class="pan"><div class="ph">Schema <span>OpenAI function calling</span></div>
-<pre class="code">{ type: <span class="s">"function"</span>, function: {
-  name: <span class="s">"stripe_list_customers"</span>,
-  description: <span class="s">"List recent customers..."</span>,
-  parameters: { type: <span class="s">"object"</span>, properties: {
-    email:  { type: <span class="s">"string"</span> },
-    limit:  { type: <span class="s">"integer"</span> } } } }</pre>
-<div class="note">The model only sees the schema. Keep the description <b>short and operational</b>, selection leans on it more than any docstring.</div></div>
-<div class="pan"><div class="ph">Executor <span>async, returns string</span></div>
-<pre class="code"><span class="k">async function</span> stripeListCustomers(ctx, args) {
-  <span class="k">const</span> stripe = <span class="k">await</span> getStripeFor(ctx.userId)
-  <span class="k">if</span> (!stripe) <span class="k">return</span> <span class="s">"Stripe not connected."</span>
-  <span class="k">const</span> list = <span class="k">await</span> stripe.customers.list({
-    email: args.email, limit: clamp(args.limit,1,100) })
-  <span class="k">return</span> JSON.stringify(list.data.map(pick))
-}</pre></div>
-<div class="pan"><div class="ph">Status label <span>verb phrase</span></div>
-<pre class="code">stripe_list_customers: (args) =&gt;
-  args.email ? <span class="s">`Looking up ${args.email}`</span>
-             : <span class="s">"Pulling recent Stripe customers"</span></pre>
-<div class="note">Runs on every tool start with the args. <b>Sync, cheap, never throws.</b></div></div>
-<div class="pan bt"><div class="ph">Stripe billing <span>stripe &middot; 7 tools</span></div>
-<div class="trow"><span class="tn">stripe_list_customers</span><span class="td">email filter</span></div>
-<div class="trow"><span class="tn">stripe_list_payments</span><span class="td">recent charges</span></div>
-<div class="trow"><span class="tn">stripe_list_subscriptions</span><span class="td">by status</span></div>
-<div class="trow"><span class="tn">stripe_create_payment_link</span><span class="td">for a deal</span></div>
-<div class="trow"><span class="tn">stripe_create_invoice</span><span class="td">create and send</span></div>
-<div class="trow"><span class="tn">stripe_create_subscription</span><span class="td">recurring</span></div>
-<div class="trow"><span class="tn">stripe_revenue_metrics</span><span class="td">MRR, ARR, 30d, outstanding</span></div></div>
-<div class="pan"><div class="ph">Module vs native</div>
-<div class="cmp"><span class="ck">File</span><span class="cm">providers/x.ts</span><span class="cn">chat-tools.ts</span></div>
-<div class="cmp"><span class="ck">Schema</span><span class="cm">in the module</span><span class="cn">in the catalog</span></div>
-<div class="cmp"><span class="ck">Executor</span><span class="cm">same file</span><span class="cn">same file</span></div>
-<div class="cmp"><span class="ck">Status</span><span class="cm">statusLabels map</span><span class="cn">getToolStatusLabel</span></div>
-<div class="cmp"><span class="ck">Gate</span><span class="cm">in the executor</span><span class="cn">connection-gate fn</span></div>
-<div class="cmp"><span class="ck">Best</span><span class="cm">new providers</span><span class="cn">existing surface</span></div></div>
-<div class="pan grow"><div class="ph">Glossary &amp; file map</div>
-<div class="gl"><b>Module</b> a self-contained tool bundle, one provider id</div>
-<div class="gl"><b>Dispatcher</b> finds the executor by name, returns null if none</div>
-<div class="gl"><b>Executor</b> async fn, ToolContext + args, returns a string</div>
-<div class="gl"><b>Schema</b> the OpenAI function def the model sees</div>
-<div class="gl"><b>Gate</b> hides a tool until the provider is connected</div>
-<div class="gl"><b>Native catalog</b> the legacy switch in chat-tools.ts</div>
-<div class="gl"><b>ToolContext</b> supabase, userId, conversationId, tier</div>
-<div class="fm2" style="margin-top:5px">src/lib/tools/ &rarr; types.ts &middot; registry.ts &middot; providers/{hitl.ts, stripe.ts} &nbsp;|&nbsp; src/lib/chat-tools.ts</div></div>
+<div class="pan bt grow"><div class="ph">Billing, run from chat <span>stripe</span></div>
+<div class="glist">
+<div class="trow"><span class="ti"></span><span class="tn">See your customers</span><span class="td">by email</span></div>
+<div class="trow"><span class="ti"></span><span class="tn">See recent payments</span><span class="td">charges</span></div>
+<div class="trow"><span class="ti"></span><span class="tn">See subscriptions</span><span class="td">by status</span></div>
+<div class="trow"><span class="ti"></span><span class="tn">Send a payment link</span><span class="td">for a deal</span></div>
+<div class="trow"><span class="ti"></span><span class="tn">Create and send an invoice</span><span class="td">one line</span></div>
+<div class="trow"><span class="ti"></span><span class="tn">Start a subscription</span><span class="td">recurring</span></div>
+<div class="trow"><span class="ti"></span><span class="tn">Read MRR and ARR</span><span class="td">outstanding</span></div>
+</div></div>
+<div class="pan kt"><div class="ph">Nothing ships without your yes <span>the gate</span></div>
+<div class="glist">
+<div class="trow"><span class="ti"></span><span class="tn">A send</span><span class="td">held</span></div>
+<div class="trow"><span class="ti"></span><span class="tn">A charge</span><span class="td">held</span></div>
+<div class="trow"><span class="ti"></span><span class="tn">A posted message</span><span class="td">held</span></div>
+<div class="trow"><span class="ti"></span><span class="tn">You approve</span><span class="td">it ships</span></div>
+<div class="trow"><span class="ti"></span><span class="tn">You reject</span><span class="td">it never does</span></div>
+</div></div>
+<div class="pan grow"><div class="ph">Chatbot vs operator</div>
+<div class="chh"><span></span><span class="b">A chatbot</span><span class="c">Ultron</span></div>
+<div class="glist">
+<div class="cmp"><span class="ck">Gives</span><span class="cn">words back</span><span class="cm">real actions</span></div>
+<div class="cmp"><span class="ck">Apps</span><span class="cn">you copy-paste</span><span class="cm">it does it</span></div>
+<div class="cmp"><span class="ck">Memory</span><span class="cn">forgets you</span><span class="cm">knows your business</span></div>
+<div class="cmp"><span class="ck">Stops at</span><span class="cn">an answer</span><span class="cm">your approval</span></div>
+<div class="cmp"><span class="ck">You are</span><span class="cn">the glue</span><span class="cm">the operator</span></div>
+</div></div>
 </div>
 </div>
-<div class="cta"><svg class="cta-ic" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><div class="cta-txt">Comment <b>MODULES</b> for the full provider-module guide</div><div class="cta-send"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
-<div class="ftr"><div class="fl"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS &middot; TOOL ARCHITECTURE</div></div><div class="furl">51ultron<em>.</em>com</div></div>
+<div class="cta"><svg class="cta-ic" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><div class="cta-txt">Comment <b>OPERATOR</b> and I will send you the setup</div><div class="cta-send"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+<div class="ftr"><div class="fl"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</div></div><div class="furl">51ultron<em>.</em>com</div></div>
 </div></body></html>
