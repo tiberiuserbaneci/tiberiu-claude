@@ -57,12 +57,11 @@ pre.code .k{color:var(--book);}pre.code .s{color:var(--kraft);}pre.code .c{color
 .wr::before{content:'';flex-shrink:0;width:5px;height:5px;border-radius:50%;background:var(--book);margin-right:10px;}
 .wr b{color:var(--ivory);font-weight:700;}
 /* CTA + footer */
-.cta{flex-shrink:0;display:flex;align-items:stretch;border:1px solid var(--book);border-radius:11px;overflow:hidden;box-shadow:0 0 30px rgba(204,120,92,.14);}
-.cta-l{flex:1;padding:10px 20px;display:flex;flex-direction:column;justify-content:center;gap:2px;background:rgba(204,120,92,.07);}
-.cta-k{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink46);}
-.cta-t{font-size:18px;font-weight:700;color:var(--ivory);line-height:1.12;}.cta-t b{color:var(--book);font-weight:900;}
-.cta-chip{flex-shrink:0;padding:0 24px;gap:9px;background:var(--book);display:flex;align-items:center;font-size:20px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#1a0f0a;}
-.cta-chip svg{width:20px;height:20px;stroke:#1a0f0a;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.cta{flex-shrink:0;display:flex;align-items:center;gap:14px;background:rgba(38,38,37,.6);border:1.5px solid var(--book);border-radius:16px;padding:9px 10px 9px 19px;box-shadow:0 0 34px rgba(204,120,92,.16),inset 0 1px 0 rgba(250,250,247,.04);}
+.cta-ic{width:21px;height:21px;flex-shrink:0;stroke:var(--book);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.cta-txt{flex:1;font-size:19px;font-weight:600;color:var(--ink70);letter-spacing:-.2px;line-height:1.1;}.cta-txt b{color:var(--ivory);font-weight:900;}
+.cta-send{flex-shrink:0;width:50px;height:50px;border-radius:50%;background:var(--book);display:flex;align-items:center;justify-content:center;box-shadow:0 0 22px rgba(204,120,92,.45),inset 0 0 0 1px rgba(250,255,247,.12);}
+.cta-send svg{width:25px;height:25px;stroke:#1a0f0a;stroke-width:2.7;fill:none;stroke-linecap:round;stroke-linejoin:round;}
 .ftr{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid var(--rule);padding-top:9px;}
 .fl{display:flex;align-items:center;gap:10px;min-width:0;}.flogo{width:28px;height:28px;border-radius:50%;object-fit:cover;}
 .ftx{font-family:'DM Mono',monospace;font-size:10.5px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--ink70);}.ftx b{color:var(--ivory);font-weight:500;}
@@ -110,11 +109,13 @@ dispatchModuleTool(name, args, ctx)  <span class="c">// -&gt; string | null</spa
 <div class="ctx"><b>supabase</b> client &middot; <b>userId</b> &middot; <b>conversationId</b> &middot; <b>turnIndex</b> &middot; <b>modelTier</b> &middot; logging hook for live progress</div></div>
 <div class="pan kt grow"><div class="ph">Human approval <span>hitl &middot; 1 tool</span></div>
 <div class="glist">
-<div class="trow"><span class="tn">wait_for_approval</span><span class="td">writes pause_points, returns the sentinel</span></div>
+<div class="trow"><span class="tn">wait_for_approval</span><span class="td">the one tool it exports</span></div>
+<div class="trow"><span class="tn">writes a row</span><span class="td">into pause_points</span></div>
+<div class="trow"><span class="tn">returns the sentinel</span><span class="td">that pauses the turn</span></div>
 <div class="trow"><span class="tn">a send</span><span class="td">held until you say yes</span></div>
 <div class="trow"><span class="tn">a charge</span><span class="td">held until you say yes</span></div>
 <div class="trow"><span class="tn">a posted message</span><span class="td">held until you say yes</span></div>
-<div class="trow"><span class="tn">your approval</span><span class="td">the turn resumes</span></div>
+<div class="trow"><span class="tn">you approve</span><span class="td">the turn resumes and ships</span></div>
 </div></div>
 <div class="pan grow"><div class="ph">Why a module <span>not the native catalog</span></div>
 <div class="glist">
@@ -123,6 +124,8 @@ dispatchModuleTool(name, args, ctx)  <span class="c">// -&gt; string | null</spa
 <div class="wr">It owns its surface: <b>schemas, executor, status, gate</b></div>
 <div class="wr">The dispatcher is dumb on purpose: finds the executor by name</div>
 <div class="wr">New modules ship without touching shared code</div>
+<div class="wr">The contract is small enough to fit one file</div>
+<div class="wr">New tools should ship as modules, not the catalog</div>
 <div class="wr">Native stays for the existing surface and shared helpers</div>
 </div></div>
 </div>
@@ -169,9 +172,11 @@ dispatchModuleTool(name, args, ctx)  <span class="c">// -&gt; string | null</spa
 <div class="gl"><b>Executor</b> async fn, ToolContext + args, returns a string</div>
 <div class="gl"><b>Schema</b> the OpenAI function def the model sees</div>
 <div class="gl"><b>Gate</b> hides a tool until the provider is connected</div>
+<div class="gl"><b>Native catalog</b> the legacy switch in chat-tools.ts</div>
+<div class="gl"><b>ToolContext</b> supabase, userId, conversationId, tier</div>
 <div class="fm2" style="margin-top:5px">src/lib/tools/ &rarr; types.ts &middot; registry.ts &middot; providers/{hitl.ts, stripe.ts} &nbsp;|&nbsp; src/lib/chat-tools.ts</div></div>
 </div>
 </div>
-<div class="cta"><div class="cta-l"><div class="cta-k">Save this. Then</div><div class="cta-t">Comment <b>MODULES</b> for the full provider-module guide.</div></div><div class="cta-chip">MODULES <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+<div class="cta"><svg class="cta-ic" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><div class="cta-txt">Comment <b>MODULES</b> for the full provider-module guide</div><div class="cta-send"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
 <div class="ftr"><div class="fl"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS &middot; TOOL ARCHITECTURE</div></div><div class="furl">51ultron<em>.</em>com</div></div>
 </div></body></html>
