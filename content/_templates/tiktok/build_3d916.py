@@ -10,7 +10,7 @@ TE="/tmp/claude-0/-home-user-tiberiu-claude/27326f10-40bf-555b-a3d3-cdb5d2e54cdb
 W,H,MX=1080,1920,72
 BG=B.BG; WHITE=B.WHITE; CORAL=B.CORAL; MUTED=B.MUTED; N=B.N
 ULOGO="/home/user/tiberiu-claude/content/ultron-logo.png"; GEN=f"{TE}/claude_logo_genuine.png"
-ZONE=(46,672,1034,1600)
+ZONE=(70,946,950,1604)   # within left:70 / right:130 safe; lowered so content sits mid-page
 
 def crop_obj(im):
     a=np.asarray(im.convert("RGB")).astype(int); diff=np.abs(a-np.array([25,25,25])).sum(2)
@@ -30,9 +30,9 @@ def place_in_zone(base,el):
     base.alpha_composite(Image.merge("RGBA",(Image.new("L",base.size,0),)*3+(shmask,)))
     base.alpha_composite(el,(ox,oy))
 
-def ghost(base,num):
-    f=B.dm(900,380); layer=Image.new("RGBA",(W,H),(0,0,0,0)); dl=ImageDraw.Draw(layer)
-    tw=dl.textlength(num,font=f); dl.text((W-tw-36,34),num,font=f,fill=(56,55,52,255))
+def ghost(base,num):                                  # big page number, kept FREE in the top-right (no content over it)
+    f=B.dm(900,360); layer=Image.new("RGBA",(W,H),(0,0,0,0)); dl=ImageDraw.Draw(layer)
+    tw=dl.textlength(num,font=f); dl.text((W-tw-58,150),num,font=f,fill=(56,55,52,255))
     base.alpha_composite(layer.filter(ImageFilter.GaussianBlur(5)))
 
 def progress(d,page,n):
@@ -57,16 +57,16 @@ def swipe(base):
     d.line([(ax0,ay),(ax1,ay)],fill=WHITE,width=5); d.line([(ax1-12,ay-11),(ax1,ay)],fill=WHITE,width=5); d.line([(ax1-12,ay+11),(ax1,ay)],fill=WHITE,width=5)
 
 def cover_logo(base):
-    mk=Image.open(GEN).convert("RGBA"); mk.thumbnail((150,150),Image.LANCZOS); base.alpha_composite(mk,(MX,60))
+    mk=Image.open(GEN).convert("RGBA"); mk.thumbnail((150,150),Image.LANCZOS); base.alpha_composite(mk,(MX,340))
 
 def build(n,MF,OUT):
     s=B.SPECS[n]; base=Image.new("RGBA",(W,H),BG+(255,))
     if s["role"]=="cover": cover_logo(base)
     else: place_in_zone(base,crop_obj(Image.open(f"{MF}/m{n}.png")))
     ghost(base,s["num"]); d=ImageDraw.Draw(base)
-    if s.get("eyebrow"): B.ls_text(d,(MX,250),s["eyebrow"],B.mono(28),CORAL,4); y=314
-    elif s["role"]=="cover": y=600
-    else: y=278
+    if s.get("eyebrow"): B.ls_text(d,(MX,560),s["eyebrow"],B.mono(28),CORAL,4); y=624   # lowered below top safe zone (300px)
+    elif s["role"]=="cover": y=640
+    else: y=590
     hsize=104 if s["role"]=="cover" else 92; hf=B.dm(900,hsize); lh=hsize+(18 if s["role"]=="cover" else 12)
     for line in s["head"]: B.seg_line(d,MX,y,line,hf); y+=lh
     y+=16
