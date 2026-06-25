@@ -10,7 +10,7 @@ TE="/tmp/claude-0/-home-user-tiberiu-claude/27326f10-40bf-555b-a3d3-cdb5d2e54cdb
 W,H,MX=1080,1920,72
 BG=B.BG; WHITE=B.WHITE; CORAL=B.CORAL; MUTED=B.MUTED; N=B.N
 ULOGO="/home/user/tiberiu-claude/content/ultron-logo.png"; GEN=f"{TE}/claude_logo_genuine.png"
-ZONE=(70,946,950,1604)   # within left:70 / right:130 safe; lowered so content sits mid-page
+ZONE=(70,1064,950,1648)   # lowered further: clear gap below the sub-hook so text + element never touch
 
 def crop_obj(im):
     a=np.asarray(im.convert("RGB")).astype(int); diff=np.abs(a-np.array([25,25,25])).sum(2)
