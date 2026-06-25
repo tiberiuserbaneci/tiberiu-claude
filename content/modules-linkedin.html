@@ -1,57 +1,53 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
-:root{--cream:#EFEBE0;--cream2:#F5F1E8;--ink:#15130F;--ink70:#5b554c;--ink46:#8a8478;--rule:rgba(21,19,15,.10);--book:#CC785C;--bookd:#C84623;--edit:#D26446;--kraft:#D4A27F;--dorange:#BE4628;--cloud:#6f6a62;}
+:root{--cream:#EFEBE0;--ink:#15130F;--ink70:#5b554c;--ink46:#8a8478;--rule:rgba(21,19,15,.10);--book:#CC785C;--bookd:#C84623;--edit:#D26446;--kraft:#D4A27F;--dorange:#BE4628;--cloud:#6f6a62;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:#cfcabd;display:flex;justify-content:center;padding:20px 0;font-family:'DM Sans',sans-serif;}
-.frame{width:1080px;height:1450px;background:var(--cream);position:relative;overflow:hidden;color:var(--ink);display:flex;flex-direction:column;padding:30px 40px 22px;}
-.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(200,70,35,.05) 1.3px,transparent 1.4px);background-size:30px 30px;}
-.spark{position:absolute;color:rgba(204,120,92,.16);z-index:0;font-weight:400;}
-.frame>*{position:relative;z-index:2;}
-/* header */
-.hd{flex-shrink:0;display:flex;align-items:center;gap:18px;padding-bottom:16px;border-bottom:2px solid rgba(21,19,15,.12);}
-.mk{width:60px;height:60px;border-radius:15px;background:linear-gradient(150deg,#d86a4a,#C84623);flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 18px rgba(200,70,35,.3);}
-.mk svg{width:34px;height:34px;fill:#fff;}
+.frame{width:1080px;height:1450px;background:var(--cream);position:relative;overflow:hidden;color:var(--ink);}
+.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(200,70,35,.045) 1.3px,transparent 1.4px);background-size:30px 30px;}
+.spark{position:absolute;color:rgba(204,120,92,.13);z-index:0;}
+/* zones, absolutely pinned */
+.hd{position:absolute;top:26px;left:36px;right:36px;z-index:2;display:flex;align-items:center;gap:16px;padding-bottom:14px;border-bottom:2px solid rgba(21,19,15,.12);}
+.mklogo{width:60px;height:60px;border-radius:50%;flex-shrink:0;object-fit:cover;box-shadow:0 6px 16px rgba(0,0,0,.22);}
 .hd .tt{flex:1;}
-.hd .h{font-family:'DM Mono',monospace;font-size:36px;font-weight:500;letter-spacing:-1px;color:var(--ink);line-height:1;}
+.hd .h{font-family:'DM Mono',monospace;font-size:34px;font-weight:500;letter-spacing:-1px;color:var(--ink);line-height:1;}
 .hd .h em{color:var(--bookd);font-style:normal;}
-.hd .s{font-size:14.5px;font-weight:500;color:var(--ink70);margin-top:8px;letter-spacing:-.1px;}
-.orb{width:62px;height:62px;border-radius:50%;flex-shrink:0;object-fit:cover;box-shadow:0 6px 16px rgba(0,0,0,.18);}
-/* tree */
-.tree{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;padding:8px 0;font-family:'DM Mono',monospace;}
-.row{display:flex;align-items:center;padding:3.5px 0;line-height:1;}
-.lhs{display:flex;align-items:center;gap:9px;flex-shrink:0;}
-.ic{width:17px;height:14px;flex-shrink:0;border-radius:3px;}
+.hd .s{font-size:13.5px;font-weight:500;color:var(--ink70);margin-top:8px;}
+.tree{position:absolute;top:118px;left:36px;right:36px;height:1182px;overflow:hidden;z-index:2;font-family:'DM Mono',monospace;}
+.row{display:flex;align-items:center;line-height:1;padding:6.5px 0;}
+.lhs{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+.ic{width:16px;height:13px;flex-shrink:0;border-radius:3px;}
 .ic.book{background:linear-gradient(150deg,#d68e72,#CC785C);}.ic.bookd{background:linear-gradient(150deg,#d86a4a,#C84623);}
 .ic.kraft{background:linear-gradient(150deg,#e0bd9c,#D4A27F);}.ic.edit{background:linear-gradient(150deg,#dd7f63,#D26446);}
 .ic.cloud{background:linear-gradient(150deg,#9a948a,#6f6a62);}.ic.dor{background:linear-gradient(150deg,#cf5e40,#BE4628);}
-.ic.doc{width:13px;height:15px;border:1.6px solid #b9b1a2;border-radius:2px;background:#fff;position:relative;}
-.ic.doc::after{content:'';position:absolute;top:3px;left:2.5px;right:2.5px;height:1.4px;background:#cfc7b8;box-shadow:0 3px 0 #cfc7b8,0 6px 0 #cfc7b8;}
-.nm{font-size:16px;font-weight:600;color:var(--ink);letter-spacing:-.3px;white-space:nowrap;}
+.ic.doc{width:12px;height:14px;border:1.6px solid #b9b1a2;border-radius:2px;background:#fff;position:relative;}
+.ic.doc::after{content:'';position:absolute;top:3px;left:2px;right:2px;height:1.3px;background:#cfc7b8;box-shadow:0 3px 0 #cfc7b8;}
+.nm{font-size:15px;font-weight:600;color:var(--ink);letter-spacing:-.3px;white-space:nowrap;}
 .row.fdr .nm{font-weight:700;}
-.dash{flex:1;border-bottom:2px dotted rgba(21,19,15,.22);margin:0 12px;height:1px;min-width:24px;}
-.pill{width:388px;flex-shrink:0;display:flex;align-items:center;gap:7px;}
-.p{display:inline-block;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;letter-spacing:-.2px;padding:4px 12px;border-radius:7px;color:#fff;white-space:nowrap;box-shadow:0 2px 5px rgba(0,0,0,.1);}
+.dash{flex:1;border-bottom:2px dotted rgba(21,19,15,.2);margin:0 11px;height:1px;min-width:18px;}
+.pill{width:380px;flex-shrink:0;}
+.p{display:inline-block;font-family:'DM Sans',sans-serif;font-size:12.5px;font-weight:700;letter-spacing:-.2px;padding:3.5px 11px;border-radius:7px;color:#fff;white-space:nowrap;box-shadow:0 2px 5px rgba(0,0,0,.09);}
 .p.book{background:var(--book);}.p.bookd{background:var(--bookd);}.p.edit{background:var(--edit);}
 .p.kraft{background:var(--kraft);color:#3a2417;}.p.dor{background:var(--dorange);}.p.cloud{background:var(--cloud);}.p.dk{background:var(--ink);}
-.ct{font-family:'DM Mono',monospace;font-size:11.5px;font-weight:500;color:var(--ink46);}
-.grp{margin-left:8px;border-left:1.5px dotted rgba(21,19,15,.18);padding-left:19px;}
-/* footer / CTA */
-.tag{flex-shrink:0;text-align:center;font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--ink70);padding:10px 0 12px;letter-spacing:-.1px;}
-.cta{flex-shrink:0;display:flex;align-items:center;justify-content:center;gap:13px;background:var(--bookd);border-radius:13px;padding:15px 0;box-shadow:0 8px 22px rgba(200,70,35,.28);}
-.cta .ci{width:23px;height:23px;stroke:#fff;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.grp{margin-left:7px;border-left:1.5px dotted rgba(21,19,15,.18);padding-left:17px;}
+.botzone{position:absolute;bottom:18px;left:36px;right:36px;z-index:2;}
+.tag{text-align:center;font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--ink70);padding:0 0 12px;}
+.cta{display:flex;align-items:center;justify-content:center;gap:12px;background:var(--bookd);border-radius:13px;padding:15px 0;box-shadow:0 8px 22px rgba(200,70,35,.28);}
+.cta .ci{width:22px;height:22px;stroke:#fff;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
 .cta .x{font-family:'DM Sans',sans-serif;font-size:25px;font-weight:800;color:#fff;letter-spacing:-.4px;}.cta .x b{font-weight:900;}
-.foot{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;margin-top:13px;}
+.foot{display:flex;align-items:center;justify-content:space-between;margin-top:13px;}
 .foot .l{font-family:'DM Mono',monospace;font-size:11.5px;color:var(--ink46);letter-spacing:.04em;}.foot .l b{color:var(--bookd);font-weight:500;}
 .foot .br{font-family:'DM Sans',sans-serif;font-weight:900;font-size:18px;letter-spacing:-.4px;color:var(--ink);}.foot .br em{color:var(--bookd);font-style:normal;}
 </style></head><body><div class="frame" id="artifact">
-<div class="spark" style="font-size:90px;top:300px;left:-10px;">&#10033;</div><div class="spark" style="font-size:120px;top:620px;right:-20px;">&#10033;</div><div class="spark" style="font-size:70px;bottom:170px;left:30px;">&#10033;</div>
-<div class="hd"><div class="mk"><svg viewBox="0 0 24 24"><path d="M12 1.5l2.4 6.3 6.6.3-5.1 4.2 1.8 6.4L12 15.6l-5.7 3.4 1.8-6.4L3 8.1l6.6-.3z"/></svg></div><div class="tt"><div class="h">.ultron/ <em>fully mapped</em></div><div class="s">7 agents, 92 tools, hooks and the human gate, the complete AI operator for founders</div></div><img class="orb" src="__LOGO_URI__" alt="Ultron"></div>
+<div class="spark" style="font-size:150px;top:300px;right:-26px;">&#10033;</div><div class="spark" style="font-size:96px;bottom:230px;left:18px;">&#10033;</div>
+<div class="hd"><img class="mklogo" src="__LOGO_URI__" alt="Ultron"><div class="tt"><div class="h">.ultron/ <em>fully mapped</em></div><div class="s">7 agents, 71 skills, 92 tools and the human gate, the complete AI operator for founders</div></div></div>
 <div class="tree">
-<div class="row fdr"><div class="lhs"><span class="ic book"></span><span class="nm">ultron/</span></div><div class="dash"></div><div class="pill"><span class="p dk">The operator root</span></div></div>
+<div class="row fdr"><div class="lhs"><span class="ic book"></span><span class="nm">ultron/</span></div><div class="dash"></div><div class="pill"><span class="p dk">The operator root, one chat</span></div></div>
 <div class="grp">
 <div class="row"><div class="lhs"><span class="ic doc"></span><span class="nm">CLAUDE.md</span></div><div class="dash"></div><div class="pill"><span class="p bookd">ICP, tone, banned words</span></div></div>
 <div class="row"><div class="lhs"><span class="ic doc"></span><span class="nm">brain.md</span></div><div class="dash"></div><div class="pill"><span class="p edit">Your business, pipeline, voice</span></div></div>
-<div class="row"><div class="lhs"><span class="ic doc"></span><span class="nm">router.md</span></div><div class="dash"></div><div class="pill"><span class="p book">Routes the job, picks the model</span></div></div>
+<div class="row"><div class="lhs"><span class="ic doc"></span><span class="nm">router.md</span></div><div class="dash"></div><div class="pill"><span class="p book">Routes the job, picks the tier</span></div></div>
 <div class="row"><div class="lhs"><span class="ic doc"></span><span class="nm">human-gate.md</span></div><div class="dash"></div><div class="pill"><span class="p dor">Nothing ships without your yes</span></div></div>
+<div class="row"><div class="lhs"><span class="ic doc"></span><span class="nm">memory.md</span></div><div class="dash"></div><div class="pill"><span class="p kraft">Saves the lesson, run 50 beats run 4</span></div></div>
 <div class="row fdr"><div class="lhs"><span class="ic bookd"></span><span class="nm">agents/</span></div><div class="dash"></div><div class="pill"><span class="p dk">7 specialists, one per job</span></div></div>
 <div class="grp">
 <div class="row"><div class="lhs"><span class="ic doc"></span><span class="nm">cortex.md</span></div><div class="dash"></div><div class="pill"><span class="p edit">Research, a ranked brief</span></div></div>
@@ -62,18 +58,25 @@ body{background:#cfcabd;display:flex;justify-content:center;padding:20px 0;font-
 <div class="row"><div class="lhs"><span class="ic doc"></span><span class="nm">amplify.md</span></div><div class="dash"></div><div class="pill"><span class="p edit">Publishing, per channel</span></div></div>
 <div class="row"><div class="lhs"><span class="ic doc"></span><span class="nm">counsel.md</span></div><div class="dash"></div><div class="pill"><span class="p book">Legal, drafts the NDA</span></div></div>
 </div>
-<div class="row fdr"><div class="lhs"><span class="ic edit"></span><span class="nm">tools/</span></div><div class="dash"></div><div class="pill"><span class="p dk">92 actions, your apps</span></div></div>
+<div class="row fdr"><div class="lhs"><span class="ic kraft"></span><span class="nm">skills/</span></div><div class="dash"></div><div class="pill"><span class="p dk">71 skills, load on demand</span></div></div>
 <div class="grp">
-<div class="row fdr"><div class="lhs"><span class="ic book"></span><span class="nm">billing/</span></div><div class="dash"></div><div class="pill"><span class="p bookd">Stripe, run from chat &middot; 7</span></div></div>
-<div class="grp">
-<div class="row"><div class="lhs"><span class="ic doc"></span><span class="nm">customers.md</span></div><div class="dash"></div><div class="pill"><span class="p kraft">See who is paying</span></div></div>
-<div class="row"><div class="lhs"><span class="ic doc"></span><span class="nm">invoice.md</span></div><div class="dash"></div><div class="pill"><span class="p book">Create and send, one line</span></div></div>
-<div class="row"><div class="lhs"><span class="ic doc"></span><span class="nm">payment-link.md</span></div><div class="dash"></div><div class="pill"><span class="p edit">Send one for a deal</span></div></div>
-<div class="row"><div class="lhs"><span class="ic doc"></span><span class="nm">revenue.md</span></div><div class="dash"></div><div class="pill"><span class="p dor">MRR, ARR, outstanding</span></div></div>
+<div class="row"><div class="lhs"><span class="ic doc"></span><span class="nm">research/</span></div><div class="dash"></div><div class="pill"><span class="p book">Accounts, markets, signals</span></div></div>
+<div class="row"><div class="lhs"><span class="ic doc"></span><span class="nm">lead-gen/</span></div><div class="dash"></div><div class="pill"><span class="p edit">Enrich, score, build the list</span></div></div>
+<div class="row"><div class="lhs"><span class="ic doc"></span><span class="nm">sales/</span></div><div class="dash"></div><div class="pill"><span class="p bookd">Discovery, objections, proposals</span></div></div>
+<div class="row"><div class="lhs"><span class="ic doc"></span><span class="nm">content/</span></div><div class="dash"></div><div class="pill"><span class="p kraft">Posts, carousels, launches</span></div></div>
+<div class="row"><div class="lhs"><span class="ic doc"></span><span class="nm">ops/</span></div><div class="dash"></div><div class="pill"><span class="p dor">Briefs, digests, internal tools</span></div></div>
+<div class="row"><div class="lhs"><span class="ic doc"></span><span class="nm">_spec.md</span></div><div class="dash"></div><div class="pill"><span class="p edit">Model, tools, budget, gate, format</span></div></div>
 </div>
-<div class="row"><div class="lhs"><span class="ic kraft"></span><span class="nm">outreach/</span></div><div class="dash"></div><div class="pill"><span class="p book">Gmail, calendar, CRM, Slack &middot; 38</span></div></div>
-<div class="row"><div class="lhs"><span class="ic kraft"></span><span class="nm">research/</span></div><div class="dash"></div><div class="pill"><span class="p edit">Web, scrape, enrich &middot; 19</span></div></div>
-<div class="row"><div class="lhs"><span class="ic kraft"></span><span class="nm">content/</span></div><div class="dash"></div><div class="pill"><span class="p kraft">Posts, carousels, analytics &middot; 15</span></div></div>
+<div class="row fdr"><div class="lhs"><span class="ic edit"></span><span class="nm">tools/</span></div><div class="dash"></div><div class="pill"><span class="p dk">92 actions across your apps</span></div></div>
+<div class="grp">
+<div class="row"><div class="lhs"><span class="ic doc"></span><span class="nm">research/</span></div><div class="dash"></div><div class="pill"><span class="p book">Web, scrape, browse &middot; 5</span></div></div>
+<div class="row"><div class="lhs"><span class="ic doc"></span><span class="nm">leads-crm/</span></div><div class="dash"></div><div class="pill"><span class="p edit">Enrich, deals, sequences &middot; 14</span></div></div>
+<div class="row"><div class="lhs"><span class="ic doc"></span><span class="nm">email-cal/</span></div><div class="dash"></div><div class="pill"><span class="p kraft">Gmail, Calendly, GCal &middot; 12</span></div></div>
+<div class="row"><div class="lhs"><span class="ic doc"></span><span class="nm">content/</span></div><div class="dash"></div><div class="pill"><span class="p bookd">Posts, carousels, analytics &middot; 15</span></div></div>
+<div class="row"><div class="lhs"><span class="ic doc"></span><span class="nm">integrations/</span></div><div class="dash"></div><div class="pill"><span class="p book">Slack, Notion, HubSpot, n8n &middot; 19</span></div></div>
+<div class="row"><div class="lhs"><span class="ic doc"></span><span class="nm">payments/</span></div><div class="dash"></div><div class="pill"><span class="p dor">Stripe, links, invoices, MRR &middot; 7</span></div></div>
+<div class="row"><div class="lhs"><span class="ic doc"></span><span class="nm">build/</span></div><div class="dash"></div><div class="pill"><span class="p edit">Code, deploy, sub-agents &middot; 6</span></div></div>
+<div class="row"><div class="lhs"><span class="ic doc"></span><span class="nm">memory-gate/</span></div><div class="dash"></div><div class="pill"><span class="p kraft">Recall, route, approve &middot; 14</span></div></div>
 </div>
 <div class="row fdr"><div class="lhs"><span class="ic cloud"></span><span class="nm">models/</span></div><div class="dash"></div><div class="pill"><span class="p dk">3 tiers, routed per job</span></div></div>
 <div class="grp">
@@ -81,11 +84,13 @@ body{background:#cfcabd;display:flex;justify-content:center;padding:20px 0;font-
 <div class="row"><div class="lhs"><span class="ic doc"></span><span class="nm">smart.md</span></div><div class="dash"></div><div class="pill"><span class="p book">Sonnet, the default</span></div></div>
 <div class="row"><div class="lhs"><span class="ic doc"></span><span class="nm">deep.md</span></div><div class="dash"></div><div class="pill"><span class="p bookd">Opus, hard judgment</span></div></div>
 </div>
-<div class="row fdr"><div class="lhs"><span class="ic dor"></span><span class="nm">jobs/</span></div><div class="dash"></div><div class="pill"><span class="p edit">Long work, in the background</span></div></div>
-<div class="row fdr"><div class="lhs"><span class="ic book"></span><span class="nm">skills/</span></div><div class="dash"></div><div class="pill"><span class="p kraft">Reusable, load on demand</span></div></div>
+<div class="row fdr"><div class="lhs"><span class="ic dor"></span><span class="nm">jobs/</span></div><div class="dash"></div><div class="pill"><span class="p edit">Long work, runs in the background</span></div></div>
+<div class="row fdr"><div class="lhs"><span class="ic book"></span><span class="nm">sessions/</span></div><div class="dash"></div><div class="pill"><span class="p kraft">Resumes where you stopped</span></div></div>
 </div>
 </div>
-<div class="tag">CLAUDE.md loads first. Tools fire on demand. Agents work while you sleep.</div>
+<div class="botzone">
+<div class="tag">CLAUDE.md loads first. Skills load on demand. Agents work while you sleep.</div>
 <div class="cta"><svg class="ci" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><div class="x">Comment <b>OPERATOR</b> and I will send it</div></div>
-<div class="foot"><div class="l"><b>7</b> agents &middot; <b>92</b> tools &middot; <b>1</b> human gate &middot; one chat</div><div class="br">51ultron<em>.</em>com</div></div>
+<div class="foot"><div class="l"><b>7</b> agents &middot; <b>71</b> skills &middot; <b>92</b> tools &middot; <b>1</b> human gate</div><div class="br">51ultron<em>.</em>com</div></div>
+</div>
 </div></body></html>
