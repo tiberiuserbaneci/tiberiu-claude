@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>routing - TikTok carousel - editorial 4:5</title>
+<style>
+@import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
+/* BUDGET per slide: 1350 - header 96 + content ~1156 + footer 98. editorial cream 4:5, REALNUMBERS palette. */
+:root{
+  --cream:#EFEBE0; --cream-card:#FAF9F7; --ink:#111111;
+  --ink-78:rgba(17,17,17,.78); --ink-60:rgba(17,17,17,.60); --ink-bd:rgba(17,17,17,.85);
+  --orange:#C84623; --orange-deep:#BE4628; --orange-ed:#D26446; --kraft:#D4A27F;
+  --dark:#171310; --paper:rgba(250,249,247,.88); --paper-60:rgba(250,249,247,.60); --paper-38:rgba(250,249,247,.38);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0c0b0a;display:flex;flex-direction:column;align-items:center;gap:28px;padding:28px 0;}
+.slide{width:1080px;height:1350px;flex-shrink:0;background:var(--cream);padding:0 52px;
+  display:flex;flex-direction:column;position:relative;overflow:hidden;}
+.slide::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:radial-gradient(rgba(17,17,17,.045) 1px,transparent 1.1px);background-size:30px 30px;}
+.slide>*{position:relative;z-index:1;}
+.hd{flex-shrink:0;height:96px;display:flex;align-items:center;justify-content:space-between;}
+.hd-pg{font-family:'DM Mono',monospace;font-size:20px;font-weight:500;letter-spacing:.14em;color:var(--orange);}
+.hd-site{font-family:'DM Mono',monospace;font-size:20px;font-weight:400;letter-spacing:.10em;color:var(--ink);}
+.ft{flex-shrink:0;height:98px;margin-top:auto;border-top:2px solid var(--ink);
+  display:flex;align-items:center;justify-content:space-between;gap:18px;}
+.ft-l{display:flex;align-items:center;gap:12px;min-width:0;}
+.ft-logo{width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.ft-brand{font-family:'DM Mono',monospace;font-size:18px;font-weight:500;letter-spacing:.10em;color:var(--ink);white-space:nowrap;}
+.ft-brand span{color:var(--ink-60);font-weight:400;}
+.ft-r{font-family:'DM Mono',monospace;font-size:18px;font-weight:400;letter-spacing:.08em;color:var(--ink-60);white-space:nowrap;}
+.chip{align-self:flex-start;background:var(--ink);color:#FAF9F7;font-family:'DM Mono',monospace;font-size:17px;
+  font-weight:500;letter-spacing:.16em;text-transform:uppercase;padding:10px 18px;margin-bottom:30px;}
+.eyebrow{font-family:'DM Mono',monospace;font-size:19px;font-weight:500;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--orange);margin-bottom:26px;}
+.h{font-family:'DM Sans',sans-serif;font-weight:800;text-transform:uppercase;color:var(--ink);letter-spacing:-2.5px;line-height:1.02;}
+.h .o{color:var(--orange);}
+.intro{font-family:'DM Mono',monospace;font-size:21px;line-height:1.55;color:var(--ink-78);}
+.intro b{color:var(--ink);font-weight:500;}
+.bar{background:var(--ink);border-radius:10px;padding:20px 24px;font-family:'DM Mono',monospace;font-size:18.5px;line-height:1.5;color:var(--paper);}
+.bar .lab{color:var(--orange-ed);font-weight:500;letter-spacing:.16em;text-transform:uppercase;font-size:15px;margin-right:14px;}
+.bar em{color:var(--kraft);font-style:normal;}
+/* bar chart (model wins) */
+.bars{margin-top:36px;display:flex;flex-direction:column;gap:22px;}
+.barrow{display:flex;align-items:center;gap:20px;}
+.barrow .nm{font-family:'DM Sans',sans-serif;font-weight:700;font-size:26px;color:var(--ink);width:190px;flex-shrink:0;}
+.barrow .track{flex:1;height:34px;background:rgba(17,17,17,.08);border-radius:6px;overflow:hidden;}
+.barrow .fill{height:100%;background:var(--orange);border-radius:6px;}
+.barrow.dim .fill{background:var(--ink-60);}
+.barrow .val{font-family:'DM Mono',monospace;font-weight:500;font-size:24px;color:var(--ink);width:46px;text-align:right;flex-shrink:0;}
+.barrow.dim .val{color:var(--ink-60);}
+/* orchestration / comparison table */
+.tbl{margin-top:30px;border:2px solid var(--ink-bd);border-radius:10px;overflow:hidden;background:var(--cream-card);}
+.trow{display:flex;align-items:center;border-top:1.5px solid rgba(17,17,17,.16);}
+.trow:first-child{border-top:none;}
+.trow.head{background:var(--ink);}
+.trow.head .td{font-family:'DM Mono',monospace;font-size:15.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--paper);}
+.td{padding:17px 22px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:23px;color:var(--ink);}
+.td.mono{font-family:'DM Mono',monospace;font-weight:500;font-size:20px;}
+.td.job{flex:1.5;font-weight:700;}
+.td.ag{flex:1;color:var(--orange);}
+.td.md{flex:.8;font-family:'DM Mono',monospace;font-weight:500;font-size:20px;color:var(--ink-78);}
+.td.st{width:74px;flex-shrink:0;display:flex;justify-content:center;}
+.dot{width:26px;height:26px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;}
+.dot svg{width:15px;height:15px;stroke:#FAF9F7;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+/* 2-col compare for cost slide */
+.vs{display:flex;gap:24px;margin-top:34px;}
+.vs .col{flex:1;border:2px solid var(--ink-bd);border-radius:10px;overflow:hidden;background:var(--cream-card);}
+.vs .col.dk{background:var(--dark);border-color:var(--dark);}
+.vs .ch{font-family:'DM Mono',monospace;font-size:16px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;padding:18px 22px;border-bottom:1.5px solid rgba(17,17,17,.16);color:var(--ink-60);}
+.vs .col.dk .ch{color:var(--orange-ed);border-color:rgba(255,255,255,.12);}
+.vs .vr{display:flex;justify-content:space-between;align-items:baseline;padding:18px 22px;border-top:1.5px solid rgba(17,17,17,.1);}
+.vs .vr:first-of-type{border-top:none;}
+.vs .vk{font-family:'DM Mono',monospace;font-size:18px;color:var(--ink-60);}
+.vs .vv{font-family:'DM Sans',sans-serif;font-weight:800;font-size:34px;color:var(--ink);letter-spacing:-1px;}
+.vs .col.dk .vk{color:var(--paper-60);} .vs .col.dk .vv{color:#FAF9F7;}
+.vs .col.dk .vv.o{color:var(--orange);}
+/* cards (per-job detail) */
+.cards{margin-top:30px;display:flex;flex-direction:column;gap:18px;}
+.card{background:var(--cream-card);border:2px solid var(--ink-bd);border-radius:10px;padding:24px 26px;}
+.card-lab{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;}
+.card-t{font-family:'DM Sans',sans-serif;font-weight:700;font-size:27px;color:var(--ink);letter-spacing:-.4px;}
+.card-d{font-family:'DM Mono',monospace;font-size:18.5px;line-height:1.48;color:var(--ink-78);margin-top:9px;}
+.card-d b{color:var(--ink);font-weight:500;}
+.card.dk{background:var(--dark);border-color:var(--dark);} .card.dk .card-t{color:var(--paper);} .card.dk .card-d{color:var(--paper-60);} .card.dk .card-d b{color:var(--kraft);}
+.recap{margin-top:38px;display:flex;flex-direction:column;}
+.recap .it{display:flex;align-items:center;gap:16px;padding:15px 2px;border-top:1.5px solid rgba(17,17,17,.22);font-family:'DM Mono',monospace;font-size:20px;color:var(--ink-78);}
+.recap .it b{color:var(--ink);font-weight:500;} .recap .n{color:var(--orange);font-weight:500;width:36px;flex-shrink:0;}
+.cta-chip{margin-top:42px;align-self:flex-start;display:flex;align-items:center;gap:14px;background:var(--orange);color:#FAF9F7;
+  border-radius:8px;padding:24px 38px;font-family:'DM Sans',sans-serif;font-weight:900;font-size:31px;letter-spacing:.05em;text-transform:uppercase;box-shadow:0 14px 34px rgba(200,70,35,.30);}
+.cta-chip svg{width:26px;height:26px;stroke:#FAF9F7;stroke-width:2.8;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.h.cov{font-size:104px;letter-spacing:-4px;line-height:1.0;} .s10 .h{font-size:128px;letter-spacing:-4px;}
+.ft2{flex-shrink:0;height:1px;}
+</style>
+</head>
+<body>
+
+<!-- S1 COVER -->
+<div class="slide">
+  <div class="hd"><div class="hd-pg">01 / 08</div><div class="hd-site">51ultron.com</div></div>
+  <div style="height:150px;flex-shrink:0;"></div>
+  <div class="eyebrow">Founder's GTM &middot; Model Routing</div>
+  <div class="h cov">I Ran 8 Jobs<br>Through One AI.<br><span class="o">It Won Once.</span></div>
+  <div class="intro" style="margin-top:34px;max-width:880px;font-size:22px;">So I stopped running one model for everything. Now Ultron routes each founder job to the model that <b>actually wins it</b>.</div>
+  <div class="ft"><div class="ft-l"><img class="ft-logo" src="__LOGO_URI__" alt=""><div class="ft-brand">ULTRON <span>&middot; AI OPERATOR FOR FOUNDERS</span></div></div><div class="ft-r">Swipe to Start &rarr;</div></div>
+</div>
+
+<!-- S2 THE DATA / BARS -->
+<div class="slide">
+  <div class="hd"><div class="hd-pg">02 / 08</div><div class="hd-site">51ultron.com</div></div>
+  <div class="chip">&middot; The Data</div>
+  <div class="h" style="font-size:84px;">No One Model<br><span class="o">Wins It All.</span></div>
+  <div class="intro" style="margin-top:24px;">Across <b>8 founder GTM jobs</b>, here is how many each model actually won, scored head to head.</div>
+  <div class="bars">
+    <div class="barrow"><div class="nm">Claude</div><div class="track"><div class="fill" style="width:62%"></div></div><div class="val">5</div></div>
+    <div class="barrow dim"><div class="nm">ChatGPT</div><div class="track"><div class="fill" style="width:14%"></div></div><div class="val">1</div></div>
+    <div class="barrow dim"><div class="nm">Gemini</div><div class="track"><div class="fill" style="width:14%"></div></div><div class="val">1</div></div>
+    <div class="barrow dim"><div class="nm">Perplexity</div><div class="track"><div class="fill" style="width:14%"></div></div><div class="val">1</div></div>
+  </div>
+  <div class="bar" style="margin-top:34px;"><span class="lab">Read It</span>Claude takes the most. But pick it for <em>all eight</em> and you lose research, fresh data and one of the closes.</div>
+  <div class="ft"><div class="ft-l"><img class="ft-logo" src="__LOGO_URI__" alt=""><div class="ft-brand">ULTRON <span>&middot; AI OPERATOR FOR FOUNDERS</span></div></div><div class="ft-r">Swipe to Know More &rarr;</div></div>
+</div>
+
+<!-- S3 THE ORCHESTRATION TABLE -->
+<div class="slide">
+  <div class="hd"><div class="hd-pg">03 / 08</div><div class="hd-site">51ultron.com</div></div>
+  <div class="chip">&middot; The Routing Map</div>
+  <div class="h" style="font-size:66px;">One Request.<br><span class="o">Ultron Routes<br>The Whole Table.</span></div>
+  <div class="tbl">
+    <div class="trow head"><div class="td job">Job</div><div class="td ag">Model</div><div class="td md">Tier</div><div class="td st">Win</div></div>
+    <div class="trow"><div class="td job">Research an account</div><div class="td ag">Perplexity</div><div class="td md">Live</div><div class="td st"><span class="dot"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span></div></div>
+    <div class="trow"><div class="td job">Pull fresh market data</div><div class="td ag">Gemini</div><div class="td md">Long</div><div class="td st"><span class="dot"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span></div></div>
+    <div class="trow"><div class="td job">Write cold emails</div><div class="td ag">Claude</div><div class="td md">Smart</div><div class="td st"><span class="dot"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span></div></div>
+    <div class="trow"><div class="td job">Qualify the deal</div><div class="td ag">Claude</div><div class="td md">Deep</div><div class="td st"><span class="dot"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span></div></div>
+    <div class="trow"><div class="td job">Draft the proposal</div><div class="td ag">Claude</div><div class="td md">Deep</div><div class="td st"><span class="dot"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span></div></div>
+    <div class="trow"><div class="td job">Handle objections</div><div class="td ag">Claude</div><div class="td md">Smart</div><div class="td st"><span class="dot"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span></div></div>
+    <div class="trow"><div class="td job">Book the meeting</div><div class="td ag">ChatGPT</div><div class="td md">Smart</div><div class="td st"><span class="dot"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span></div></div>
+  </div>
+  <div class="ft"><div class="ft-l"><img class="ft-logo" src="__LOGO_URI__" alt=""><div class="ft-brand">ULTRON <span>&middot; AI OPERATOR FOR FOUNDERS</span></div></div><div class="ft-r">Swipe to Know More &rarr;</div></div>
+</div>
+
+<!-- S4 WHY EACH WINS -->
+<div class="slide">
+  <div class="hd"><div class="hd-pg">04 / 08</div><div class="hd-site">51ultron.com</div></div>
+  <div class="chip">&middot; Why Each Wins</div>
+  <div class="h" style="font-size:74px;">Right Job,<br><span class="o">Right Brain.</span></div>
+  <div class="cards">
+    <div class="card"><div class="card-lab">Research &amp; Data</div><div class="card-t">Perplexity &amp; Gemini</div><div class="card-d">Live signals and Google-native data, fresh and <b>untruncated</b>. Claude was confidently out of date.</div></div>
+    <div class="card dk"><div class="card-lab">Judgment &amp; Writing</div><div class="card-t">Claude</div><div class="card-d">Five jobs need tone, nuance and judgment, cold email through proposal. It <b>holds the voice and finds the one issue that loses the deal.</b></div></div>
+    <div class="card"><div class="card-lab">The Close</div><div class="card-t">ChatGPT</div><div class="card-d">Pressure-tests the booking logic and surfaces the objection you were <b>about to walk past</b>.</div></div>
+  </div>
+  <div class="ft"><div class="ft-l"><img class="ft-logo" src="__LOGO_URI__" alt=""><div class="ft-brand">ULTRON <span>&middot; AI OPERATOR FOR FOUNDERS</span></div></div><div class="ft-r">Swipe to Know More &rarr;</div></div>
+</div>
+
+<!-- S5 ONE AI VS ROUTED -->
+<div class="slide">
+  <div class="hd"><div class="hd-pg">05 / 08</div><div class="hd-site">51ultron.com</div></div>
+  <div class="chip">&middot; One AI vs Routed</div>
+  <div class="h" style="font-size:78px;">Same Eight Jobs.<br><span class="o">One Thing<br>Changed.</span></div>
+  <div class="intro" style="margin-top:22px;">Who runs each one. That is the only difference, and it decides everything downstream.</div>
+  <div class="vs">
+    <div class="col"><div class="ch">One AI for all</div>
+      <div class="vr"><div class="vk">Stack cost</div><div class="vv">$13K</div></div>
+      <div class="vr"><div class="vk">Decide / job</div><div class="vv">30m</div></div>
+      <div class="vr"><div class="vk">Jobs won</div><div class="vv">1 / 8</div></div></div>
+    <div class="col dk"><div class="ch">Routed by Ultron</div>
+      <div class="vr"><div class="vk">Stack cost</div><div class="vv o">$19</div></div>
+      <div class="vr"><div class="vk">Decide / job</div><div class="vv o">0m</div></div>
+      <div class="vr"><div class="vk">Jobs won</div><div class="vv o">8 / 8</div></div></div>
+  </div>
+  <div class="ft"><div class="ft-l"><img class="ft-logo" src="__LOGO_URI__" alt=""><div class="ft-brand">ULTRON <span>&middot; AI OPERATOR FOR FOUNDERS</span></div></div><div class="ft-r">Swipe to Know More &rarr;</div></div>
+</div>
+
+<!-- S6 THE SYSTEM -->
+<div class="slide">
+  <div class="hd"><div class="hd-pg">06 / 08</div><div class="hd-site">51ultron.com</div></div>
+  <div class="chip">&middot; The Layer</div>
+  <div class="h" style="font-size:74px;">The Model Is Not<br><span class="o">The System.</span></div>
+  <div class="intro" style="margin-top:24px;"><b>Ultron is the routing layer.</b> You type the job in plain English, it picks the model and tier that wins it, holds context across all eight, and gates before anything goes out.</div>
+  <div class="cards">
+    <div class="card"><div class="card-lab">Picks</div><div class="card-t">The right model, per job</div><div class="card-d">No tab-switching, no copy-paste. One request, the router chooses <b>Lite, Smart or Deep</b>.</div></div>
+    <div class="card"><div class="card-lab">Holds</div><div class="card-t">Context across the table</div><div class="card-d">Every job sees the account, the deal and the thread. <b>You never re-brief.</b></div></div>
+    <div class="card dk"><div class="card-lab">Gates</div><div class="card-t">Before it sends</div><div class="card-d">Anything that emails, charges or ships <b>waits for your yes</b>.</div></div>
+  </div>
+  <div class="ft"><div class="ft-l"><img class="ft-logo" src="__LOGO_URI__" alt=""><div class="ft-brand">ULTRON <span>&middot; AI OPERATOR FOR FOUNDERS</span></div></div><div class="ft-r">Swipe to Know More &rarr;</div></div>
+</div>
+
+<!-- S7 RECAP -->
+<div class="slide">
+  <div class="hd"><div class="hd-pg">07 / 08</div><div class="hd-site">51ultron.com</div></div>
+  <div class="chip">&middot; The Map In One View</div>
+  <div class="h" style="font-size:80px;">Eight Jobs.<br><span class="o">Eight Winners.</span></div>
+  <div class="recap" style="margin-top:30px;">
+    <div class="it"><span class="n">01</span><b>Research</b>&nbsp;&middot;&nbsp;Perplexity, live signals</div>
+    <div class="it"><span class="n">02</span><b>Market data</b>&nbsp;&middot;&nbsp;Gemini, long context</div>
+    <div class="it"><span class="n">03</span><b>Cold email</b>&nbsp;&middot;&nbsp;Claude, the voice</div>
+    <div class="it"><span class="n">04</span><b>Qualify</b>&nbsp;&middot;&nbsp;Claude Deep, judgment</div>
+    <div class="it"><span class="n">05</span><b>Proposal</b>&nbsp;&middot;&nbsp;Claude Deep, finds the risk</div>
+    <div class="it"><span class="n">06</span><b>Objections</b>&nbsp;&middot;&nbsp;Claude, holds tone</div>
+    <div class="it"><span class="n">07</span><b>Book it</b>&nbsp;&middot;&nbsp;ChatGPT, the close</div>
+    <div class="it"><span class="n">08</span><b>Route it</b>&nbsp;&middot;&nbsp;Ultron, the layer</div>
+  </div>
+  <div class="ft"><div class="ft-l"><img class="ft-logo" src="__LOGO_URI__" alt=""><div class="ft-brand">ULTRON <span>&middot; AI OPERATOR FOR FOUNDERS</span></div></div><div class="ft-r">Swipe to Finish &rarr;</div></div>
+</div>
+
+<!-- S8 CTA -->
+<div class="slide s10">
+  <div class="hd"><div class="hd-pg">08 / 08</div><div class="hd-site">51ultron.com</div></div>
+  <div style="height:96px;flex-shrink:0;"></div>
+  <div class="eyebrow">That's a Wrap &middot; GTM Model Routing</div>
+  <div class="h">Comment<br><span class="o">Routing.</span></div>
+  <div class="intro" style="margin-top:32px;max-width:880px;font-size:22px;">Comment <b>ROUTING</b> and I will send you the full 8-job routing map, which model wins each job and why.</div>
+  <div class="cta-chip">Comment Routing<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+  <div class="ft"><div class="ft-l"><img class="ft-logo" src="__LOGO_URI__" alt=""><div class="ft-brand">ULTRON <span>&middot; AI OPERATOR FOR FOUNDERS</span></div></div><div class="ft-r">51ultron.com</div></div>
+</div>
+
+</body>
+</html>
