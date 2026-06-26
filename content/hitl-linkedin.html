@@ -1,145 +1,121 @@
 <!DOCTYPE html><html><head><meta charset="utf-8"><style>
 @font-face{font-family:'DM Sans';src:url('file:///tmp/claude-0/-home-user-tiberiu-claude/27326f10-40bf-555b-a3d3-cdb5d2e54cdb/scratchpad/te-gen/DMSans-VF.ttf');font-weight:100 900;}
 @font-face{font-family:'DM Mono';src:url('file:///tmp/claude-0/-home-user-tiberiu-claude/27326f10-40bf-555b-a3d3-cdb5d2e54cdb/scratchpad/te-gen/DMMono-Medium.ttf');font-weight:500;}
-:root{--slate:#191919;--med:#211f1e;--ivory:#FAFAF7;--book:#CC785C;--bookd:#C84623;--kraft:#D4A27F;--cloud:#919180;
---ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--rule:rgba(250,250,247,.12);--booklo:rgba(204,120,92,.10);--bookbd:rgba(204,120,92,.34);}
-*{margin:0;padding:0;box-sizing:border-box;}html,body{background:#0d0d0d;}
-#artifact{width:1080px;height:1450px;background:var(--slate);padding:28px 42px 20px;position:relative;overflow:hidden;display:flex;flex-direction:column;font-family:'DM Sans',sans-serif;}
+:root{--slate:#191919;--med:#211f1e;--med2:#1d1c1a;--ivory:#FAFAF7;--book:#CC785C;--bookd:#C84623;--kraft:#D4A27F;
+--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--rule:rgba(250,250,247,.10);--bookbd:rgba(204,120,92,.34);--booklo:rgba(204,120,92,.10);--kraftlo:rgba(212,162,127,.10);}
+*{margin:0;padding:0;box-sizing:border-box;}html,body{background:#0c0c0c;}
+#artifact{width:1080px;height:1450px;background:var(--slate);padding:30px 34px 22px;position:relative;overflow:hidden;display:flex;flex-direction:column;font-family:'DM Sans',sans-serif;}
 #artifact::before{content:'';position:absolute;inset:0;z-index:0;background-image:radial-gradient(rgba(204,120,92,.05) 1.2px,transparent 1.3px);background-size:24px 24px;}
-.atm{position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse 60% 36% at 94% 0%,rgba(204,120,92,.18) 0%,transparent 60%),radial-gradient(ellipse 40% 26% at 4% 100%,rgba(212,162,127,.08) 0%,transparent 60%);}
+.atm{position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse 54% 32% at 96% 0%,rgba(204,120,92,.16) 0%,transparent 60%),radial-gradient(ellipse 40% 24% at 2% 100%,rgba(212,162,127,.07) 0%,transparent 60%);}
 .z{position:relative;z-index:2;}
-.mast{display:flex;align-items:center;justify-content:space-between;padding-bottom:9px;border-bottom:1px solid var(--rule);}
-.mk{font-family:'DM Mono';font-size:9px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink46);}
+.mast{display:flex;align-items:center;justify-content:space-between;padding-bottom:10px;border-bottom:1px solid var(--rule);}
+.mk{font-family:'DM Mono';font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--ink46);}
 .mk .s{color:var(--book);margin:0 6px;}
-.mr{font-family:'DM Mono';font-size:9px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink70);}
+.mr{font-family:'DM Mono';font-size:9px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--ink70);}
 .mr em{color:var(--book);font-style:normal;}
-/* hook - raw, heavy */
-.eye{margin-top:15px;font-family:'DM Mono';font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--book);}
-.h1{margin-top:10px;font-weight:900;font-size:74px;line-height:.98;letter-spacing:-2.6px;color:var(--ivory);text-transform:none;}
-.log{margin-top:11px;display:flex;align-items:stretch;border:1px solid var(--rule);border-radius:9px;overflow:hidden;}
-.log .lh{font-family:'DM Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--book);padding:13px 16px;border-right:1px solid var(--rule);display:flex;align-items:center;white-space:nowrap;background:var(--booklo);}
-.log .li{flex:1;display:flex;align-items:center;justify-content:space-around;gap:14px;padding:13px 16px;font-family:'DM Mono';font-size:12px;color:var(--ink70);}
-.log .li b{color:var(--ivory);font-weight:500;}
-.log .li .ok{color:var(--book);}
-.h1 .b{color:var(--book);}
-.h1 .k{color:var(--kraft);}
-.sub{margin-top:13px;font-weight:500;font-size:18.5px;line-height:1.4;color:var(--ink70);max-width:1000px;}
-.sub b{color:var(--ivory);font-weight:800;}
-.sub .kw{color:var(--kraft);font-weight:700;}
-/* keyword strip - SEO + raw */
-.kws{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px;}
-.kw-c{font-family:'DM Mono';font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink70);border:1px solid var(--rule);border-radius:4px;padding:5px 9px;}
-.kw-c.on{color:var(--book);border-color:var(--bookbd);background:var(--booklo);}
-/* split: runs vs stops */
-.split{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.col{border:1px solid var(--rule);border-radius:12px;padding:14px 16px;background:rgba(255,255,255,.015);}
-.col.stop{border-color:var(--bookbd);background:var(--booklo);}
-.col .ct{font-family:'DM Mono';font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink46);}
-.col.stop .ct{color:var(--book);}
-.col .ch{margin-top:6px;font-weight:800;font-size:20px;color:var(--ivory);letter-spacing:-.4px;}
-.col .cl{margin-top:8px;font-family:'DM Mono';font-size:13px;line-height:1.7;color:var(--ink70);}
-.col .cl b{color:var(--ivory);font-weight:500;}
-.col.stop .cl b{color:var(--kraft);}
-/* section label */
-.sl{margin-top:15px;display:flex;align-items:baseline;gap:9px;}
-.sl-n{font-family:'DM Mono';font-size:11px;color:var(--book);}
-.sl-t{font-weight:900;font-size:18px;color:var(--ivory);letter-spacing:-.3px;text-transform:uppercase;}
-.sl-d{margin-left:auto;font-family:'DM Mono';font-size:10px;color:var(--ink46);letter-spacing:.08em;text-transform:uppercase;}
-.line{height:1px;background:var(--rule);margin-top:7px;}
-/* triggers - dense grid */
-.grid{margin-top:9px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;}
-.trg{display:flex;align-items:center;gap:9px;border:1px solid var(--rule);border-radius:8px;padding:9px 11px;}
-.trg .ti{width:24px;height:24px;border-radius:5px;background:var(--booklo);border:1px solid var(--bookbd);display:flex;align-items:center;justify-content:center;flex:none;}
-.trg .ti svg{width:13px;height:13px;stroke:var(--book);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-.trg .tt{font-weight:700;font-size:13px;color:var(--ivory);line-height:1.05;}
-/* modes + rule row */
-.mr2{margin-top:11px;display:grid;grid-template-columns:1fr 1fr 1fr 1.25fr;gap:9px;}
-.mc{border:1px solid var(--rule);border-radius:9px;padding:11px 13px;}
-.mc .mk2{font-family:'DM Mono';font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--kraft);}
-.mc .mt{margin-top:5px;font-weight:800;font-size:15px;color:var(--ivory);}
-.mc .md{margin-top:3px;font-size:11.5px;color:var(--ink70);line-height:1.25;}
-.mc.rule{border-color:var(--bookbd);background:var(--booklo);}
-.mc.rule .mt{color:var(--book);font-size:16px;}
-.mc.rule .md{color:var(--ink70);}
-.flowmini{margin-top:6px;font-family:'DM Mono';font-size:10px;letter-spacing:.04em;color:var(--ink70);text-transform:uppercase;}
-.flowmini b{color:var(--book);font-weight:500;}
-/* gate-live card */
-.gate{margin-top:10px;display:flex;gap:14px;border:1px solid var(--bookbd);border-radius:12px;background:var(--med);padding:15px 18px;align-items:center;box-shadow:0 14px 32px rgba(0,0,0,.36);}
-.gate .gl{flex:1;}
-.gate .gt{font-family:'DM Mono';font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--book);}
-.gate .ga{margin-top:6px;font-weight:800;font-size:24px;color:var(--ivory);letter-spacing:-.5px;}
-.gate .gm{margin-top:4px;font-size:13.5px;color:var(--ink70);}
+/* bento */
+.bento{flex:1;margin-top:11px;display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(9,1fr);gap:9px;}
+.cell{border:1px solid var(--rule);border-radius:13px;padding:15px 17px;background:rgba(255,255,255,.012);position:relative;overflow:hidden;}
+.cl{font-family:'DM Mono';font-size:9.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;}
+/* hook */
+.hook{grid-column:1/8;grid-row:1/4;border-color:transparent;background:transparent;padding:4px 6px;display:flex;flex-direction:column;justify-content:center;}
+.hook .eye{color:var(--book);}
+.hook h1{margin-top:9px;font-weight:900;font-size:55px;line-height:.97;letter-spacing:-2px;color:var(--ivory);}
+.hook h1 .b{color:var(--book);}
+.hook .sub{margin-top:11px;font-weight:500;font-size:15.5px;line-height:1.4;color:var(--ink70);}
+.hook .sub b{color:var(--ivory);font-weight:800;}.hook .sub .k{color:var(--kraft);font-weight:700;}
+/* gate card (tall right) */
+.gate{grid-column:8/13;grid-row:1/4;border-color:var(--bookbd);background:var(--med);display:flex;flex-direction:column;}
+.gate .gh{display:flex;align-items:center;gap:8px;}
+.gate .gd{width:8px;height:8px;border-radius:50%;background:var(--book);box-shadow:0 0 10px var(--book);}
+.gate .gt{font-family:'DM Mono';font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--book);}
+.gate .gp{margin-left:auto;font-family:'DM Mono';font-size:9px;color:var(--ink46);border:1px solid var(--rule);border-radius:4px;padding:2px 7px;text-transform:uppercase;letter-spacing:.1em;}
+.gate .ga{margin-top:13px;font-weight:800;font-size:23px;line-height:1.1;color:var(--ivory);letter-spacing:-.4px;}
+.gate .gm{margin-top:8px;font-size:13px;line-height:1.45;color:var(--ink70);}
 .gate .gm b{color:var(--kraft);font-weight:700;}
-.gate .gb{display:flex;gap:9px;flex:none;}
-.gbt{border-radius:8px;padding:13px 22px;font-weight:800;font-size:14px;}
-.gbt.ok{background:var(--book);color:#1a0f0a;box-shadow:0 0 24px rgba(204,120,92,.34);}
+.gate .gb{margin-top:auto;display:flex;flex-direction:column;gap:8px;}
+.gbt{text-align:center;border-radius:8px;padding:12px 0;font-weight:800;font-size:14px;}
+.gbt.ok{background:var(--book);color:#1a0f0a;box-shadow:0 0 22px rgba(204,120,92,.32);}
 .gbt.no{border:1px solid var(--rule);color:var(--ink70);}
-/* chat-bar CTA */
-.cta{margin-top:auto;}
-.cta-h{font-weight:800;font-size:15px;color:var(--ivory);}
-.cta-h span{color:var(--book);}
-.chatbar{margin-top:9px;display:flex;align-items:center;gap:12px;background:var(--med);border:1px solid var(--bookbd);border-radius:14px;padding:10px 10px 10px 20px;box-shadow:0 14px 34px rgba(0,0,0,.4);}
-.chatbar .ph{flex:1;font-family:'DM Mono';font-size:16px;color:var(--ink70);}
-.chatbar .ph b{color:var(--ivory);font-weight:500;}
-.chatbar .ph .cur{display:inline-block;width:2px;height:18px;background:var(--book);margin-left:2px;transform:translateY(3px);}
-.send{width:52px;height:52px;border-radius:11px;background:var(--book);display:flex;align-items:center;justify-content:center;flex:none;box-shadow:0 0 26px rgba(204,120,92,.4);}
-.send svg{width:24px;height:24px;stroke:#1a0f0a;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+/* runs / stops */
+.runs{grid-column:1/4;grid-row:4/6;}
+.stops{grid-column:4/8;grid-row:4/6;border-color:var(--bookbd);background:var(--booklo);}
+.runs .cl{color:var(--ink46);}.stops .cl{color:var(--book);}
+.ch{margin-top:7px;font-weight:800;font-size:17px;color:var(--ivory);letter-spacing:-.3px;}
+.cd{margin-top:6px;font-family:'DM Mono';font-size:11.5px;line-height:1.5;color:var(--ink70);}
+.cd b{color:var(--ivory);font-weight:500;}.stops .cd b{color:var(--kraft);}
+/* triggers */
+.trg{grid-column:1/8;grid-row:6/10;display:flex;flex-direction:column;}
+.trg .th{display:flex;align-items:baseline;gap:8px;}
+.trg .tt{font-weight:900;font-size:16px;color:var(--ivory);letter-spacing:-.2px;text-transform:uppercase;}
+.trg .tn{font-family:'DM Mono';font-size:10px;color:var(--book);}
+.tg{margin-top:10px;flex:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;}
+.ti{display:flex;align-items:center;gap:8px;border:1px solid var(--rule);border-radius:7px;padding:0 9px;}
+.ti .ic{width:20px;height:20px;flex:none;}.ti .ic svg{width:14px;height:14px;stroke:var(--book);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ti .il{font-weight:700;font-size:12px;color:var(--ivory);line-height:1.02;}
+/* modes */
+.modes{grid-column:8/13;grid-row:4/7;display:flex;flex-direction:column;}
+.modes .mh{font-weight:900;font-size:15px;color:var(--ivory);text-transform:uppercase;letter-spacing:-.2px;}
+.mrow{margin-top:9px;flex:1;display:flex;flex-direction:column;justify-content:space-between;}
+.mi{display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid var(--rule);padding-bottom:7px;}
+.mi:last-child{border-bottom:0;}
+.mi .mk2{font-weight:800;font-size:15px;color:var(--ivory);}
+.mi .md{font-family:'DM Mono';font-size:11px;color:var(--kraft);}
+/* rule */
+.rule{grid-column:8/13;grid-row:7/10;border-color:var(--bookbd);background:var(--booklo);display:flex;flex-direction:column;justify-content:center;}
+.rule .rt{font-weight:900;font-size:19px;color:var(--ivory);letter-spacing:-.4px;line-height:1.05;}
+.rule .rt span{color:var(--book);}
+.rule .rf{margin-top:10px;font-family:'DM Mono';font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink70);}
+.rule .rf b{color:var(--book);font-weight:500;}.rule .rf i{color:var(--ink30);font-style:normal;margin:0 4px;}
+.rule .rl{margin-top:7px;font-family:'DM Mono';font-size:10px;color:var(--ink46);letter-spacing:.06em;text-transform:uppercase;}
+/* CTA */
+.cta{margin-top:11px;}
+.cta .ctah{font-weight:800;font-size:16px;color:var(--ivory);}
+.bar{margin-top:8px;display:flex;align-items:center;gap:12px;background:var(--med);border:1px solid var(--bookbd);border-radius:14px;padding:11px 11px 11px 22px;box-shadow:0 14px 32px rgba(0,0,0,.4);}
+.bar .ph{flex:1;font-family:'DM Mono';font-weight:500;font-size:19px;color:var(--book);}
+.bar .ph .w{color:var(--ivory);}
+.bar .cur{display:inline-block;width:2px;height:20px;background:var(--book);margin-left:2px;transform:translateY(3px);}
+.send{width:54px;height:54px;border-radius:11px;background:var(--book);display:flex;align-items:center;justify-content:center;flex:none;box-shadow:0 0 26px rgba(204,120,92,.42);}
+.send svg{width:25px;height:25px;stroke:#1a0f0a;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
 /* footer */
-.ftr{margin-top:11px;padding-top:11px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;}
+.ftr{margin-top:10px;padding-top:10px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;}
 .fl{display:flex;align-items:center;gap:10px;}
-.flogo{width:28px;height:28px;border-radius:50%;object-fit:cover;}
-.ftx{font-family:'DM Mono';font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink70);}
+.flogo{width:27px;height:27px;border-radius:50%;object-fit:cover;}
+.ftx{font-family:'DM Mono';font-size:8.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink70);}
 .ftx strong{color:var(--ivory);font-weight:500;}
-.furl{font-weight:900;font-size:15px;letter-spacing:-.4px;color:var(--ivory);}
+.furl{font-weight:900;font-size:14px;letter-spacing:-.4px;color:var(--ivory);}
 .furl em{color:var(--book);font-style:normal;}
 </style></head>
 <body><div id="artifact">
   <div class="atm"></div>
-  <div class="mast z"><div class="mk">FOUNDER<span class="s">·</span>AI OPERATOR<span class="s">·</span>AGENT ROUTER<span class="s">·</span>HUMAN-IN-THE-LOOP<span class="s">·</span>APPROVAL</div><div class="mr">FIELD NOTE 07<span class="s" style="color:var(--book)">·</span>THE <em>YES</em> THAT SHIPS</div></div>
+  <div class="mast z"><div class="mk">FOUNDER<span class="s">·</span>AI OPERATOR<span class="s">·</span>AGENT ROUTER<span class="s">·</span>HUMAN-IN-THE-LOOP<span class="s">·</span>APPROVAL LAYER<span class="s">·</span>AI SAFETY</div><div class="mr">FIELD NOTE 07<span class="s" style="color:var(--book)">·</span>THE <em>YES</em> THAT SHIPS</div></div>
 
-  <div class="eye z">The human gate</div>
-  <div class="h1 z">Everyone wants an AI<br>that acts on its own.<br><span class="b">The risk is when it does.</span></div>
-  <div class="sub z">I run my whole <span class="kw">founder</span> stack on <span class="kw">AI</span> agents: research, <span class="kw">outbound</span>, deals, content, code. The <span class="kw">router</span> picks the model, the agents do the work. But <b>nothing irreversible leaves the building</b> until one human gate gets a yes. Speed on the inside, control on the way out.</div>
+  <div class="bento z">
+    <div class="hook"><div class="cl eye">The human gate</div><h1>Your AI can act<br>on its own.<br><span class="b">The risk is<br>when it does.</span></h1><div class="sub">I run my <span class="k">founder</span> stack on <span class="k">AI</span> agents: research, <span class="k">outbound</span>, deals, content. The <span class="k">router</span> picks the model. But <b>nothing irreversible ships</b> without one human yes.</div></div>
 
-  <div class="kws z">
-    <span class="kw-c on">FOUNDER</span><span class="kw-c">AI AGENTS</span><span class="kw-c">AI OPERATOR</span><span class="kw-c">MODEL ROUTER</span><span class="kw-c on">HUMAN-IN-THE-LOOP</span><span class="kw-c">APPROVAL LAYER</span><span class="kw-c">COLD OUTBOUND</span><span class="kw-c">AUTOMATION</span><span class="kw-c on">AI SAFETY</span>
+    <div class="cell gate"><div class="gh"><span class="gd"></span><span class="gt">Approval required</span><span class="gp">paused</span></div><div class="ga">Send 240 cold emails to the Q3 list</div><div class="gm">Drafted by the outbound agent. <b>Cannot be unsent.</b> 240 founders, US + UK.</div><div class="gb"><span class="gbt ok">Approve</span><span class="gbt no">Decline &middot; Edit</span></div></div>
+
+    <div class="cell runs"><div class="cl">Runs free</div><div class="ch">Draft, research, score</div><div class="cd"><b>Reads</b> the account. <b>Writes</b> the email. No gate.</div></div>
+    <div class="cell stops"><div class="cl">Stops at the gate</div><div class="ch">Anything you can't undo</div><div class="cd"><b>Send. Charge. Publish. Delete. Sign.</b> One yes.</div></div>
+
+    <div class="cell trg"><div class="th"><span class="tt">7 moves that need your yes</span><span class="tn">irreversible only</span></div><div class="tg">
+      <div class="ti"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 5h18v14H3z"/><path d="M3 6l9 7 9-7"/></svg></span><span class="il">Send a campaign</span></div>
+      <div class="ti"><span class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span><span class="il">Charge a card</span></div>
+      <div class="ti"><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h16v12H4z"/><path d="M8 20h8"/></svg></span><span class="il">Publish a post</span></div>
+      <div class="ti"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M6 6l1 14h10l1-14"/></svg></span><span class="il">Delete records</span></div>
+      <div class="ti"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></span><span class="il">Schedule meetings</span></div>
+      <div class="ti"><span class="ic"><svg viewBox="0 0 24 24"><path d="M5 21V5a2 2 0 0 1 2-2h7l5 5v13z"/><path d="M9 13l2 2 4-4"/></svg></span><span class="il">Sign a contract</span></div>
+      <div class="ti"><span class="ic"><svg viewBox="0 0 24 24"><path d="M8 12a4 4 0 0 1 4-4h3a4 4 0 0 1 0 8h-1"/></svg></span><span class="il">Connect a tool</span></div>
+      <div class="ti"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span class="il">Anything timed</span></div>
+      <div class="ti"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/></svg></span><span class="il">Move money</span></div>
+    </div></div>
+
+    <div class="cell modes"><div class="mh">3 ways to clear it</div><div class="mrow"><div class="mi"><span class="mk2">Approve / Decline</span><span class="md">one tap</span></div><div class="mi"><span class="mk2">Choose</span><span class="md">pick a path</span></div><div class="mi"><span class="mk2">Edit</span><span class="md">tweak first</span></div></div></div>
+
+    <div class="cell rule"><div class="rt">Before the action.<br><span>Never after.</span></div><div class="rf"><b>DRAFT</b><i>&rarr;</i><b>GATE</b><i>&rarr;</i><b>SHIP</b></div><div class="rl">Every decision logged</div></div>
   </div>
 
-  <div class="split z">
-    <div class="col"><div class="ct">Runs on autopilot</div><div class="ch">Drafting + research + analysis</div><div class="cl"><b>Reads</b> the account. <b>Drafts</b> the email. <b>Scores</b> the list. <b>Writes</b> the post. No gate, no waiting.</div></div>
-    <div class="col stop"><div class="ct">Stops at the gate</div><div class="ch">Anything you cannot undo</div><div class="cl"><b>Send.</b> <b>Charge.</b> <b>Publish.</b> <b>Delete.</b> <b>Sign.</b> One tap from the founder before it ships.</div></div>
-  </div>
-
-  <div class="sl z"><span class="sl-n">01</span><span class="sl-t">7 moves that wait for your yes</span><span class="sl-d">irreversible only</span></div><div class="line z"></div>
-  <div class="grid z">
-    <div class="trg"><span class="ti"><svg viewBox="0 0 24 24"><path d="M3 5h18v14H3z"/><path d="M3 6l9 7 9-7"/></svg></span><span class="tt">Send a campaign</span></div>
-    <div class="trg"><span class="ti"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span><span class="tt">Charge a card</span></div>
-    <div class="trg"><span class="ti"><svg viewBox="0 0 24 24"><path d="M4 4h16v12H4z"/><path d="M8 20h8"/></svg></span><span class="tt">Publish a post</span></div>
-    <div class="trg"><span class="ti"><svg viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M6 6l1 14h10l1-14"/></svg></span><span class="tt">Delete records</span></div>
-    <div class="trg"><span class="ti"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></span><span class="tt">Schedule meetings</span></div>
-    <div class="trg"><span class="ti"><svg viewBox="0 0 24 24"><path d="M5 21V5a2 2 0 0 1 2-2h7l5 5v13z"/><path d="M9 13l2 2 4-4"/></svg></span><span class="tt">Sign an agreement</span></div>
-    <div class="trg"><span class="ti"><svg viewBox="0 0 24 24"><path d="M8 12a4 4 0 0 1 4-4h3a4 4 0 0 1 0 8h-1"/><path d="M16 12a4 4 0 0 1-4 4H9a4 4 0 0 1 0-8h1"/></svg></span><span class="tt">Connect a tool</span></div>
-    <div class="trg"><span class="ti"><svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/></svg></span><span class="tt">Move real money</span></div>
-    <div class="trg"><span class="ti"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span class="tt">Anything timed</span></div>
-  </div>
-
-  <div class="sl z"><span class="sl-n">02</span><span class="sl-t">3 ways to clear it · 1 rule</span><span class="sl-d">before, never after</span></div><div class="line z"></div>
-  <div class="mr2 z">
-    <div class="mc"><div class="mk2">Approve / Decline</div><div class="mt">One tap</div><div class="md">Ship it or kill it.</div></div>
-    <div class="mc"><div class="mk2">Choose</div><div class="mt">Pick a path</div><div class="md">Tap one option.</div></div>
-    <div class="mc"><div class="mk2">Edit</div><div class="mt">Tweak first</div><div class="md">Change, then approve.</div></div>
-    <div class="mc rule"><div class="mk2" style="color:var(--book)">The one rule</div><div class="mt">Gate before the action</div><div class="flowmini"><b>DRAFT</b> &rarr; <b>GATE</b> &rarr; <b>SHIP</b> &middot; every decision logged</div></div>
-  </div>
-
-  <div class="sl z"><span class="sl-n">03</span><span class="sl-t">The gate, live</span><span class="sl-d">paused for you</span></div><div class="line z"></div>
-  <div class="gate z"><div class="gl"><div class="gt">Approval required &middot; paused</div><div class="ga">Send 240 cold emails to the Q3 list</div><div class="gm">Drafted by the outbound agent &middot; <b>cannot be unsent</b> &middot; 240 founders, US + UK</div></div><div class="gb"><span class="gbt ok">Approve</span><span class="gbt no">Decline</span></div></div>
-
-  <div class="log z"><div class="lh">Every decision logged</div><div class="li"><span><span class="ok">&#10003;</span> Approved &middot; Q3 campaign <b>2h</b></span><span><span class="ok">&#9998;</span> Edited &middot; invoice 4,200 to 3,800 <b>1d</b></span><span>&#10005; Declined &middot; delete 1,204 rows <b>3d</b></span></div></div>
-
-  <div class="cta z">
-    <div class="cta-h">Follow for one AI system for founders every day. <span>Comment GATE and I will send the exact setup.</span></div>
-    <div class="chatbar"><div class="ph">Comment <b>GATE</b><span class="cur"></span></div><div class="send"><svg viewBox="0 0 24 24"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg></div></div>
-  </div>
+  <div class="cta z"><div class="ctah">Follow for one AI system for founders every day.</div><div class="bar"><div class="ph">Comment GATE for the exact human-gate setup<span class="cur"></span></div><div class="send"><svg viewBox="0 0 24 24"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg></div></div></div>
 
   <div class="ftr z"><div class="fl"><img class="flogo" src="file:///home/user/tiberiu-claude/content/ultron-logo.png"><div class="ftx"><strong>ULTRON</strong> &middot; AI OPERATOR FOR FOUNDERS &middot; HUMAN GATE</div></div><div class="furl">51ultron<em>.</em>com</div></div>
 </div></body></html>
