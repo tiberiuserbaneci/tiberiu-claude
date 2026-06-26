@@ -1,0 +1,130 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:'DM Sans';src:url('file:///tmp/claude-0/-home-user-tiberiu-claude/27326f10-40bf-555b-a3d3-cdb5d2e54cdb/scratchpad/te-gen/DMSans-VF.ttf');font-weight:100 900;}
+@font-face{font-family:'DM Mono';src:url('file:///tmp/claude-0/-home-user-tiberiu-claude/27326f10-40bf-555b-a3d3-cdb5d2e54cdb/scratchpad/te-gen/DMMono-Medium.ttf');font-weight:500;}
+:root{--slate-dark:#191919;--slate-med:#262625;--ivory:#FAFAF7;--book:#CC785C;--book-dark:#C84623;--kraft:#D4A27F;--cloud:#919180;
+--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);--booklo:rgba(204,120,92,.10);--bookbd:rgba(204,120,92,.32);}
+*{margin:0;padding:0;box-sizing:border-box;}html,body{background:#0d0d0d;}
+#artifact{width:1080px;height:1450px;background:var(--slate-dark);padding:30px 44px 22px;position:relative;overflow:hidden;display:flex;flex-direction:column;font-family:'DM Sans',sans-serif;}
+#artifact::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.05) 1.2px,transparent 1.3px);background-size:26px 26px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 60% 40% at 92% 2%,rgba(204,120,92,.16) 0%,transparent 64%),radial-gradient(ellipse 44% 30% at 6% 99%,rgba(212,162,127,.08) 0%,transparent 62%);}
+.z{position:relative;z-index:2;}
+.mast{display:flex;align-items:center;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid var(--rule);}
+.mast-kw{font-family:'DM Mono';font-size:9.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink46);white-space:nowrap;}
+.mast-kw .sep{color:var(--book);margin:0 7px;}
+.mast-r{font-family:'DM Mono';font-size:9.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink70);white-space:nowrap;}
+.mast-r em{color:var(--book);font-style:normal;}
+.hook{margin-top:22px;}
+.eye{font-family:'DM Mono';font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--book);}
+.h1{margin-top:12px;font-weight:800;font-size:52px;line-height:1.04;letter-spacing:-1.4px;color:var(--ivory);}
+.h1 .b{color:var(--book);}
+.sub{margin-top:12px;font-weight:400;font-size:18px;line-height:1.45;color:var(--ink70);max-width:760px;}
+.sub b{color:var(--ivory);font-weight:700;}
+/* approval card hero */
+.hero{margin-top:18px;display:flex;gap:18px;}
+.card{flex:1;background:var(--slate-med);border:1px solid var(--bookbd);border-radius:14px;padding:18px 20px;box-shadow:0 18px 40px rgba(0,0,0,.4);}
+.card-h{display:flex;align-items:center;gap:10px;}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--book);box-shadow:0 0 12px var(--book);}
+.card-t{font-family:'DM Mono';font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--book);font-weight:500;}
+.card-pill{margin-left:auto;font-family:'DM Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink46);border:1px solid var(--rule);border-radius:5px;padding:3px 8px;}
+.card-act{margin-top:13px;font-weight:800;font-size:23px;color:var(--ivory);letter-spacing:-.5px;}
+.card-meta{margin-top:5px;font-size:14px;color:var(--ink70);}
+.card-meta b{color:var(--kraft);font-weight:700;}
+.btns{margin-top:16px;display:flex;gap:10px;}
+.btn{flex:1;text-align:center;border-radius:8px;padding:11px 0;font-weight:800;font-size:14px;letter-spacing:.04em;}
+.btn.ok{background:var(--book);color:#1a0f0a;box-shadow:inset 0 0 0 1px rgba(255,255,247,.12),0 0 24px rgba(204,120,92,.35);}
+.btn.no{background:transparent;color:var(--ink70);border:1px solid var(--rule);}
+.btn.ed{background:transparent;color:var(--kraft);border:1px solid var(--kraft-bd,rgba(212,162,127,.3));flex:.7;}
+.note{width:300px;display:flex;flex-direction:column;justify-content:center;gap:10px;}
+.note .nh{font-family:'DM Mono';font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink46);}
+.note .nb{font-weight:700;font-size:17px;color:var(--ivory);line-height:1.3;}
+.note .nb span{color:var(--book);}
+.note .nd{font-size:13.5px;color:var(--ink70);line-height:1.4;}
+/* section label */
+.sl{margin-top:20px;display:flex;align-items:center;gap:10px;}
+.sl-n{font-family:'DM Mono';font-size:11px;color:var(--book);letter-spacing:.1em;}
+.sl-t{font-weight:800;font-size:19px;color:var(--ivory);letter-spacing:-.3px;}
+.sl-line{flex:1;height:1px;background:var(--rule);}
+/* triggers grid */
+.grid{margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;}
+.trg{display:flex;align-items:center;gap:11px;background:rgba(255,255,255,.02);border:1px solid var(--rule);border-radius:9px;padding:10px 13px;}
+.tic{width:30px;height:30px;border-radius:7px;background:var(--booklo);border:1px solid var(--bookbd);display:flex;align-items:center;justify-content:center;flex:none;}
+.tic svg{width:16px;height:16px;stroke:var(--book);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.tx .tt{font-weight:700;font-size:14.5px;color:var(--ivory);}
+.tx .td{font-size:12px;color:var(--ink46);margin-top:1px;}
+/* decide row */
+.three{margin-top:11px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+.dc{background:var(--slate-med);border:1px solid var(--rule);border-radius:11px;padding:13px 14px;}
+.dc .dk{font-family:'DM Mono';font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--kraft);}
+.dc .dt{margin-top:6px;font-weight:800;font-size:16px;color:var(--ivory);}
+.dc .dd{margin-top:4px;font-size:12.5px;color:var(--ink70);line-height:1.35;}
+/* rule strip */
+.rule{margin-top:14px;display:flex;align-items:center;gap:14px;background:var(--booklo);border:1px solid var(--bookbd);border-radius:11px;padding:13px 18px;}
+.rule .rt{font-weight:800;font-size:16px;color:var(--ivory);}
+.rule .rt span{color:var(--book);}
+.flow{margin-left:auto;display:flex;align-items:center;gap:8px;font-family:'DM Mono';font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink70);}
+.flow b{color:var(--book);font-weight:500;}
+.flow i{color:var(--ink30);font-style:normal;}
+/* cta */
+.cta{margin-top:auto;display:flex;align-items:stretch;border:1px solid var(--book);border-radius:8px;overflow:hidden;}
+.cta-l{flex:1;padding:14px 18px;display:flex;flex-direction:column;justify-content:center;gap:4px;background:rgba(204,120,92,.07);}
+.cta-l .c1{font-size:13.5px;color:rgba(250,250,247,.82);}
+.cta-l .c1 b{color:var(--ivory);font-weight:800;}
+.cta-chip{flex-shrink:0;padding:0 24px;gap:9px;background:var(--book);display:flex;align-items:center;font-weight:900;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:#1a0f0a;box-shadow:inset 0 0 0 1px rgba(250,255,247,.12),0 0 30px rgba(204,120,92,.35);}
+.cta-chip svg{width:17px;height:17px;stroke:#1a0f0a;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+/* footer */
+.ftr{margin-top:12px;padding-top:12px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.ftr-l{display:flex;align-items:center;gap:11px;}
+.ftr-logo{width:30px;height:30px;border-radius:50%;object-fit:cover;}
+.ftr-txt{font-family:'DM Mono';font-size:9.5px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--ink70);}
+.ftr-txt strong{color:var(--ivory);font-weight:500;}
+.ftr-url{font-weight:900;font-size:15px;letter-spacing:-.4px;color:var(--ivory);}
+.ftr-url em{color:var(--book);font-style:normal;}
+</style></head>
+<body><div id="artifact">
+  <div class="atm"></div>
+  <div class="mast z"><div class="mast-kw">AI AGENTS<span class="sep">·</span>HUMAN GATE<span class="sep">·</span>APPROVAL LAYER</div><div class="mast-r">SCRIPT 07<span class="sep" style="color:var(--book);margin:0 7px">·</span>THE <em>YES</em> THAT SHIPS</div></div>
+
+  <div class="hook z">
+    <div class="eye">The human gate</div>
+    <div class="h1">I gave my AI the keys.<br>It still can't ship a thing <span class="b">without my yes.</span></div>
+    <div class="sub">It drafts the campaign, builds the invoice, writes the post. Then it <b>stops at one gate</b> and waits for me. Every send, charge, publish and delete needs a tap before it leaves the building.</div>
+  </div>
+
+  <div class="hero z">
+    <div class="card">
+      <div class="card-h"><span class="dot"></span><span class="card-t">Approval required</span><span class="card-pill">paused</span></div>
+      <div class="card-act">Send 240 cold emails to the Q3 list</div>
+      <div class="card-meta">Drafted by SPECTER &middot; <b>cannot be unsent</b> &middot; 240 founders, US + UK</div>
+      <div class="btns"><div class="btn ok">Approve</div><div class="btn no">Decline</div><div class="btn ed">Edit</div></div>
+    </div>
+    <div class="note">
+      <div class="nh">Why a gate</div>
+      <div class="nb">The model is fast. <span>Some moves can't be undone.</span></div>
+      <div class="nd">So the work runs on autopilot, but anything irreversible parks here until you decide.</div>
+    </div>
+  </div>
+
+  <div class="sl z"><span class="sl-n">01</span><span class="sl-t">7 moves that need your yes</span><span class="sl-line"></span></div>
+  <div class="grid z">
+    <div class="trg"><span class="tic"><svg viewBox="0 0 24 24"><path d="M3 5h18v14H3z"/><path d="M3 6l9 7 9-7"/></svg></span><div class="tx"><div class="tt">Send a campaign</div><div class="td">mass mail you can't unsend</div></div></div>
+    <div class="trg"><span class="tic"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span><div class="tx"><div class="tt">Charge a card</div><div class="td">invoice, fee, refund risk</div></div></div>
+    <div class="trg"><span class="tic"><svg viewBox="0 0 24 24"><path d="M4 4h16v12H4z"/><path d="M8 20h8"/></svg></span><div class="tx"><div class="tt">Publish a post</div><div class="td">public, on your brand voice</div></div></div>
+    <div class="trg"><span class="tic"><svg viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M6 6l1 14h10l1-14"/></svg></span><div class="tx"><div class="tt">Delete records</div><div class="td">state you can't recover</div></div></div>
+    <div class="trg"><span class="tic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></span><div class="tx"><div class="tt">Schedule meetings</div><div class="td">calendars of real people</div></div></div>
+    <div class="trg"><span class="tic"><svg viewBox="0 0 24 24"><path d="M5 21V5a2 2 0 0 1 2-2h7l5 5v13z"/><path d="M9 13l2 2 4-4"/></svg></span><div class="tx"><div class="tt">Sign an agreement</div><div class="td">a legal commitment</div></div></div>
+    <div class="trg" style="grid-column:1 / span 2"><span class="tic"><svg viewBox="0 0 24 24"><path d="M8 12a4 4 0 0 1 4-4h3a4 4 0 0 1 0 8h-1"/><path d="M16 12a4 4 0 0 1-4 4H9a4 4 0 0 1 0-8h1"/></svg></span><div class="tx"><div class="tt">Connect or disconnect an integration</div><div class="td">permission changes that touch every later flow</div></div></div>
+  </div>
+
+  <div class="sl z"><span class="sl-n">02</span><span class="sl-t">3 ways to clear the gate</span><span class="sl-line"></span></div>
+  <div class="three z">
+    <div class="dc"><div class="dk">Approve / Decline</div><div class="dt">One tap</div><div class="dd">Ship it or kill it. The binary call for a clear yes or no.</div></div>
+    <div class="dc"><div class="dk">Choose</div><div class="dt">Pick a path</div><div class="dd">Several options on the card. Tap the one you want.</div></div>
+    <div class="dc"><div class="dk">Edit</div><div class="dt">Tweak first</div><div class="dd">Change the action, then approve the edited version.</div></div>
+  </div>
+
+  <div class="rule z"><div class="rt">Always <span>before</span> the action. Never after.</div><div class="flow"><b>Draft</b><i>&rarr;</i><b>Gate</b><i>&rarr;</i><b>Ship</b></div></div>
+
+  <div class="cta z"><div class="cta-l"><div class="c1"><b>Follow for one AI system for founders every day.</b></div><div class="c1">Comment GATE and I will send you the exact setup.</div></div><div class="cta-chip">COMMENT GATE <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+
+  <div class="ftr z"><div class="ftr-l"><img class="ftr-logo" src="file:///home/user/tiberiu-claude/content/ultron-logo.png"><div class="ftr-txt"><strong>ULTRON</strong> &middot; AI OPERATOR FOR FOUNDERS &middot; HUMAN GATE</div></div><div class="ftr-url">51ultron<em>.</em>com</div></div>
+</div></body></html>
