@@ -12,6 +12,12 @@ BG=B.BG; WHITE=B.WHITE; CORAL=B.CORAL; MUTED=B.MUTED; N=B.N
 ULOGO="/home/user/tiberiu-claude/content/ultron-logo.png"; GEN=f"{TE}/claude_official.png"
 ZONE=(90,888,928,1290)   # legacy default; build() now uses an adaptive zone that fills the band
 LOGO3D="/home/user/tiberiu-claude/content/_templates/tiktok/lib/claude-logo-3d-glossy.png"  # cover hero (3D Claude)
+CENTER_COVER=False   # new-batch spec: cover title centered in the middle (per-material builder sets True)
+
+def seg_center(d,y,segs,font):   # horizontally-centered segmented line (for centered covers)
+    tw=sum(d.textlength(t,font=font) for t,_ in segs); x=(W-tw)//2
+    for t,c in segs: d.text((x,y),t,font=font,fill=c); x+=d.textlength(t,font=font)
+    return x
 
 def crop_obj(im):
     # EDGE crop: the panel (even its dark frame/bevel) has SHARP edges; the soft drop-shadow and the
@@ -74,6 +80,14 @@ def build(n,MF,OUT,transparent=False):
     s=B.SPECS[n]; base=Image.new("RGBA",(W,H),(0,0,0,0) if transparent else BG+(255,)); d=ImageDraw.Draw(base)
     cover=s["role"]=="cover"; last=s["role"]=="last"
     if not transparent: ghost(base,s["num"])              # corner watermark (skipped for the IG overlay cover)
+    if cover and CENTER_COVER and not transparent:        # normal (opaque) TikTok cover: 3D Claude mark on top, title centered in the middle
+        place_in_zone(base,crop_obj(Image.open(LOGO3D)),(360,372,720,732))
+        if s.get("eyebrow"):
+            ew=B.ls_width(d,s["eyebrow"],B.mono(28),4); B.ls_text(d,((W-ew)//2,820),s["eyebrow"],B.mono(28),CORAL,4)
+        y=884; hf=B.dm(900,84); lh=96
+        for line in s["head"]: seg_center(d,y,line,hf); y+=lh
+        swipe(base)
+        o=f"{OUT}/s{n}.png"; base.convert("RGB").save(o); return o
     # --- text block at the top of the safe band (clears the watermark) ---
     # FIXED positions on EVERY slide so the 0.5s reel-flip has no visual jump:
     # eyebrow at 476, headline at 540 (size 84, 2 lines), 3D element zone top at 758.
