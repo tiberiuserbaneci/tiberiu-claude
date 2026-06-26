@@ -18,6 +18,12 @@ HITL={
 B.SPECS=HITL
 MF=f"{T.TE}/roll3/models_hitl"; OUT=f"{T.TE}/roll3/hitl_3d_9"; os.makedirs(OUT,exist_ok=True)
 for n in range(1,9): T.build(n,MF,OUT); print("built",n)
+# Instagram variant: slide 1 = transparent overlay (hook + 3D logo only, no corner number, no swipe),
+# laid over a short reel video; slides 2-8 identical to the TikTok 3D set.
+import shutil
+IGOUT=f"{T.TE}/roll3/hitl_ig_3d"; os.makedirs(IGOUT,exist_ok=True)
+T.build(1,MF,IGOUT,transparent=True); print("built IG s1 (transparent overlay)")
+for n in range(2,9): shutil.copy(f"{OUT}/s{n}.png", f"{IGOUT}/s{n}.png")
 ims=[Image.open(f"{OUT}/s{i}.png") for i in range(1,9)]
 cols=4;rows=2;sc=300;sh=int(sc*1920/1080)
 st=Image.new("RGB",(sc*cols+8*(cols+1),sh*rows+8*(rows+1)),(18,18,20))

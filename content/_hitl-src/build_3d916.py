@@ -59,10 +59,10 @@ def swipe(base):
 def cover_logo(base):
     mk=Image.open(GEN).convert("RGBA"); mk.thumbnail((150,150),Image.LANCZOS); base.alpha_composite(mk,(MX,340))
 
-def build(n,MF,OUT):
-    s=B.SPECS[n]; base=Image.new("RGBA",(W,H),BG+(255,)); d=ImageDraw.Draw(base)
+def build(n,MF,OUT,transparent=False):
+    s=B.SPECS[n]; base=Image.new("RGBA",(W,H),(0,0,0,0) if transparent else BG+(255,)); d=ImageDraw.Draw(base)
     cover=s["role"]=="cover"; last=s["role"]=="last"
-    ghost(base,s["num"])                                   # small corner watermark, behind the text
+    if not transparent: ghost(base,s["num"])              # corner watermark (skipped for the IG overlay cover)
     # --- text block at the top of the safe band (clears the watermark) ---
     if s.get("eyebrow"): B.ls_text(d,(MX,476),s["eyebrow"],B.mono(28),CORAL,4); y=540
     elif cover: y=486
@@ -76,12 +76,13 @@ def build(n,MF,OUT):
     src=LOGO3D if cover else f"{MF}/m{n}.png"
     place_in_zone(base,crop_obj(Image.open(src)),(90,int(y)+26,930,elt_bottom))
     # --- chrome ---
-    if cover: swipe(base)
+    if cover:
+        if not transparent: swipe(base)                   # IG overlay cover: no swipe (sits over a video)
     elif last:
         d.text((MX,1258),"Follow for one AI system for founders every day.",font=B.dm(700,29),fill=WHITE)
         footer(base,n,N)
     else: progress(d,n,N)
-    o=f"{OUT}/s{n}.png"; base.convert("RGB").save(o); return o
+    o=f"{OUT}/s{n}.png"; (base if transparent else base.convert("RGB")).save(o); return o
 
 if __name__=="__main__":
     md=sys.argv[1]; od=sys.argv[2]; MF=f"{TE}/roll3/{md}"; OUT=f"{TE}/roll3/{od}"; os.makedirs(OUT,exist_ok=True)
