@@ -124,8 +124,8 @@ def html(s):
     if s.get("card"): body+=s["card"]
     if s.get("desc"): body+=f'<div class="desc">{s["desc"]}</div>'
     if s["role"]=="cover": body+='<div class="swipe"><span>Swipe &#8594;</span></div>'
-    elif s["role"]=="last": body+=f'<div class="foot"><img class="ulogo" src="{ULOGO}"><span class="url" style="margin-left:4px">51ultron.com</span><div style="flex:1"></div><span class="pg">{s["n"]:02d} / {N:02d}</span></div>'
-    else: body+=f'<div class="foot"><div class="bar"><i style="width:{int(s["n"]/N*100)}%"></i></div><span class="pg">{s["n"]:02d} / {N:02d}</span></div>'
+    elif s["role"]=="last": body+=f'<div class="foot"><img class="ulogo" src="{ULOGO}"><span class="url" style="margin-left:4px">51ultron.com</span></div>'
+    else: body+=f'<div class="foot"><div class="bar"><i style="width:{int(s["n"]/N*100)}%"></i></div></div>'
     return f'<!DOCTYPE html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body><div id="artifact">{body}</div></body></html>'
 with sync_playwright() as p:
     b=p.chromium.launch(); pg=b.new_page(viewport={"width":1080,"height":1920},device_scale_factor=2)

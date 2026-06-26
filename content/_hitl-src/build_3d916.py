@@ -15,7 +15,7 @@ LOGO3D="/home/user/tiberiu-claude/content/_templates/tiktok/lib/claude-logo-3d-g
 
 def crop_obj(im):
     a=np.asarray(im.convert("RGB")).astype(int); diff=np.abs(a-np.array([25,25,25])).sum(2)
-    ys,xs=np.where(diff>90)   # tight to the solid object (excludes the soft shadow halo) so it fills the zone
+    ys,xs=np.where(diff>160)  # tight to the solid object (excludes soft shadow/glow halos, incl. m2's bright halo) so it fills the zone
     if len(xs)==0: return im.convert("RGBA")
     pad=8; x0=max(0,int(xs.min())-pad); x1=min(im.width,int(xs.max())+pad); y0=max(0,int(ys.min())-pad); y1=min(im.height,int(ys.max())+pad)
     crop=im.convert("RGB").crop((x0,y0,x1,y1)); c=np.asarray(crop).astype(int); d2=np.abs(c-np.array([25,25,25])).sum(2)
@@ -40,12 +40,11 @@ def progress(d,page,n):
     x0,x1=90,928; y=1352; h=7                          # inside the cross-channel band (y<1450, x<930)
     d.rounded_rectangle([x0,y,x1,y+h],radius=4,fill=B.TRACK)
     d.rounded_rectangle([x0,y,x0+int((x1-x0)*page/n),y+h],radius=4,fill=CORAL)
-    f=B.mono(26); lbl=f"{page:02d} / {n:02d}"; lw=d.textlength(lbl,font=f); d.text((928-lw,y-46),lbl,font=f,fill=MUTED)
+    # page-number label removed (the corner watermark already shows it) - bar only
 
 def footer(base,page,n):
     d=ImageDraw.Draw(base); lg=Image.open(ULOGO).convert("RGBA"); lg.thumbnail((50,50),Image.LANCZOS)
     base.alpha_composite(lg,(90,1330)); f=B.mono(30); d.text((154,1340),"51ultron.com",font=f,fill=CORAL)
-    f2=B.mono(26); lbl=f"{page:02d} / {n:02d}"; lw=d.textlength(lbl,font=f2); d.text((928-lw,1342),lbl,font=f2,fill=MUTED)
 
 def swipe(base):
     bw,bh=252,78; bx=(W-bw)//2; by=1316                # raised into the cross-channel band (clears IG caption block)
@@ -73,7 +72,7 @@ def build(n,MF,OUT):
     y+=14
     if cover and s.get("sub"): d.text((MX,y),s["sub"],font=B.dm(500,34),fill=MUTED); y+=62
     # --- big 3D element fills the rest of the band (cover hero = 3D Claude logo) ---
-    elt_bottom=1232 if last else 1322
+    elt_bottom=1232 if last else 1322   # only the thin progress bar sits below now
     src=LOGO3D if cover else f"{MF}/m{n}.png"
     place_in_zone(base,crop_obj(Image.open(src)),(90,int(y)+26,930,elt_bottom))
     # --- chrome ---
