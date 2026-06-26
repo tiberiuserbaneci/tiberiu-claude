@@ -137,8 +137,8 @@ TILES=(tile("Max","500","per search",True)
       +tile("Modes","Fast / Full","your call"))
 HEAD=(f'<div class="hd"><div class="hook">'
  f'<div class="eye"><b>Ultron</b> &middot; Maps scraper &middot; AI as a service</div>'
- f'<div class="h1">I typed one search.<br>500 leads came back,<br><span class="o">phones included.</span></div>'
- f'<div class="desc">The Ultron Maps scraper turns a category and a city into a clean lead list, '
+ f'<div class="h1">I gave an AI one search.<br>500 leads came back,<br><span class="o">phones included.</span></div>'
+ f'<div class="desc">Ultron\'s AI Maps scraper turns a category and a city into a clean lead list, '
  f'<b>one row per place</b>, with the phone, website, rating and hours you need to reach them.</div></div>'
  f'<div class="tiles">{TILES}</div></div>')
 
@@ -162,7 +162,9 @@ why=card("Built to not break","the engineering",
   bull("Clean-room, only <b>public DOM</b>, no reverse-engineering")
   +bull("Multiple selector fallbacks per field, logged")
   +bull("Patient crawl, waits for the count to settle")
+  +bull("Backs off and retries when the map rate-limits")
   +bull("<b>No half-empty rows</b>, waits for each field")
+  +bull("Dedupes on the stable <b>place id</b>, never twice")
   +bull("Residential proxy on by default")
   +bull("One row per place, straight to your stack"),
   cls="fill")
@@ -171,7 +173,7 @@ COLL=f'<div class="col">{hero}{fields}{modes}{why}</div>'
 # right column
 flow=card("The flow","lead to outbound",
   '<div class="flow"><span class="node">Scrape</span><span class="ar">&rarr;</span><span class="node">Enrich</span><span class="ar">&rarr;</span><span class="node on">Outbound</span></div>'
-  '<div class="fcap">Maps feeds the leads, the next skills <b>enrich and contact</b> them, end to end.</div>')
+  '<div class="fcap">Maps feeds the leads, the next AI skills <b>enrich and contact</b> them, end to end.</div>')
 example=card("One place, full file","example",
   frow("Joe Coffee","Coffee shop")+frow("Phone","+1 512 555 1234")
   +frow("Website","joecoffee.com")+frow("Rating","4.7 / 312"))
@@ -189,6 +191,7 @@ gloss=card("Glossary","plain words",
   glo("Place","one business, one row")
   +glo("Fast mode","names and ratings only")
   +glo("Full mode","the phone, site and hours")
+  +glo("Place id","the stable key per row")
   +glo("Residential proxy","real-IP, hard to block")
   +glo("Webhook","results land in your stack")
   +'<div class="gmono">one search term and a city into a clean, structured local-lead list</div>',
@@ -215,8 +218,9 @@ with sync_playwright() as p:
     meas=pg.evaluate("""()=>{const q=s=>document.querySelector(s).getBoundingClientRect();
       const body=q('.body'),cols=document.querySelectorAll('.col');
       const g=[...cols].map(c=>{const last=c.lastElementChild.getBoundingClientRect();return Math.round(body.bottom-last.bottom);});
-      return {art:Math.round(q('#artifact').height),hd:Math.round(q('.hd').height),bodyH:Math.round(body.bottom-body.top),botH:Math.round(q('.bot').height),gaps:g};}""")
-    print("ART",meas["art"],"HD",meas["hd"],"BODY",meas["bodyH"],"BOT",meas["botH"],"GAPS",meas["gaps"])
+      const fillgap=[...document.querySelectorAll('.card.fill')].map(c=>{const k=c.lastElementChild.getBoundingClientRect();return Math.round(c.getBoundingClientRect().bottom-k.bottom-11);});
+      return {art:Math.round(q('#artifact').height),hd:Math.round(q('.hd').height),bodyH:Math.round(body.bottom-body.top),botH:Math.round(q('.bot').height),gaps:g,fillgap:fillgap};}""")
+    print("ART",meas["art"],"HD",meas["hd"],"BODY",meas["bodyH"],"BOT",meas["botH"],"COLGAPS",meas["gaps"],"FILLGAP(internal)",meas["fillgap"])
     pg.locator("#artifact").screenshot(path=PNG)
     b.close()
 print("wrote",OUT)
