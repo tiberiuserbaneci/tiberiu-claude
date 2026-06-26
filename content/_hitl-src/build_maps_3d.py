@@ -11,7 +11,7 @@ TE=T.TE; LIB="/home/user/tiberiu-claude/content/_templates/tiktok/lib"
 JOBS=f"{TE}/roll3/models_maps"; CTA=f"{TE}/roll3/cta3d/cta-founder.png"
 T.LOGO3D=f"{LIB}/claude-logo-3d-extruded.png"   # vary the cover logo (HITL used glossy)
 
-COVER=dict(role="cover",head=[[wo("One ask.")],[co("Five hundred leads.")]],
+COVER=dict(role="cover",eyebrow="AI LEAD SCRAPER",head=[[wo("One ask.")],[co("Five hundred leads.")]],
            sub="Name a category and a city. Get a clean local-lead list back, with phone and website.")
 # (eyebrow, head, object-key) - first 6 -> TikTok 8, all 8 -> IG 10
 CONTENT=[
@@ -35,7 +35,8 @@ def build_ig_cover(out,head):
         hf=B.dm(900,hsize)
         if max(d.textlength("".join(s[0] for s in ln),font=hf) for ln in head)<=cw: break
         hsize-=2*SS
-    hf=B.dm(900,hsize); lh=hsize+16*SS; y=404*SS
+    if COVER.get("eyebrow"): B.ls_text(d,(MX,476*SS),COVER["eyebrow"],B.mono(28*SS),B.CORAL,4)
+    hf=B.dm(900,hsize); lh=hsize+16*SS; y=540*SS         # hook pinned to 540, same as every content slide
     for ln in head: B.seg_line(d,MX,y,ln,hf); y+=lh
     L=200*SS; SLOT=156*SS; BOOK=(204,120,92,255)        # wide gap: logo  +  logo
     def orb():
@@ -45,7 +46,7 @@ def build_ig_cover(out,head):
         m=Image.new("L",(s,s),0); ImageDraw.Draw(m).ellipse([0,0,s,s],fill=255); sq.putalpha(m); return sq
     logos=[Image.open(T.GEN).convert("RGBA"),orb()]     # Claude + Ultron only
     for im in logos: im.thumbnail((L,L),Image.LANCZOS)
-    n=len(logos); x=(W-(L*n+SLOT*(n-1)))//2; ly=int(y)+62*SS; cy=ly+L//2
+    n=len(logos); x=(W-(L*n+SLOT*(n-1)))//2; ly=778*SS; cy=ly+L//2       # logos in the element zone (~758)
     for i,im in enumerate(logos):
         base.alpha_composite(im,(x+(L-im.width)//2, cy-im.height//2))
         if i<n-1:
@@ -65,7 +66,7 @@ def build_variant(n_content, outdir, overlay):
     SPECS={};
     for i,(eb,head,key,role) in enumerate(slides,1):
         SPECS[i]=dict(role=role,num=f"{i:02d}",head=head)
-        if role=="cover": SPECS[i]["sub"]=COVER["sub"]
+        if role=="cover": SPECS[i]["eyebrow"]=COVER.get("eyebrow","")
         elif eb: SPECS[i]["eyebrow"]=eb
         if key: shutil.copy(src_for(key), f"{md}/m{i}.png")
     B.SPECS=SPECS; T.N=len(slides)

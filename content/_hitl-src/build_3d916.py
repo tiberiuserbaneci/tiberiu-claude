@@ -14,10 +14,13 @@ ZONE=(90,888,928,1290)   # legacy default; build() now uses an adaptive zone tha
 LOGO3D="/home/user/tiberiu-claude/content/_templates/tiktok/lib/claude-logo-3d-glossy.png"  # cover hero (3D Claude)
 
 def crop_obj(im):
+    # DENSITY crop: keep the whole dense panel (its dark frame + padding included), drop only the
+    # sparse soft drop-shadow. A plain bright-pixel threshold sliced off the dark frame -> never again.
     a=np.asarray(im.convert("RGB")).astype(int); diff=np.abs(a-np.array([25,25,25])).sum(2)
-    ys,xs=np.where(diff>160)  # tight to the solid object (excludes soft shadow/glow halos, incl. m2's bright halo) so it fills the zone
-    if len(xs)==0: return im.convert("RGBA")
-    pad=8; x0=max(0,int(xs.min())-pad); x1=min(im.width,int(xs.max())+pad); y0=max(0,int(ys.min())-pad); y1=min(im.height,int(ys.max())+pad)
+    mask=diff>45; col=mask.sum(0); row=mask.sum(1)
+    if col.max()==0 or row.max()==0: return im.convert("RGBA")
+    xs=np.where(col>col.max()*0.10)[0]; ys=np.where(row>row.max()*0.10)[0]
+    pad=12; x0=max(0,int(xs.min())-pad); x1=min(im.width,int(xs.max())+pad); y0=max(0,int(ys.min())-pad); y1=min(im.height,int(ys.max())+pad)
     crop=im.convert("RGB").crop((x0,y0,x1,y1)); c=np.asarray(crop).astype(int); d2=np.abs(c-np.array([25,25,25])).sum(2)
     alpha=np.clip((d2-30)*14,0,255).astype("uint8")
     return Image.fromarray(np.dstack([np.asarray(crop).astype("uint8"),alpha]),"RGBA")
@@ -47,7 +50,7 @@ def footer(base,page,n):
     base.alpha_composite(lg,(90,1330)); f=B.mono(30); d.text((154,1340),"51ultron.com",font=f,fill=CORAL)
 
 def swipe(base):
-    bw,bh=252,78; bx=(W-bw)//2; by=1316                # raised into the cross-channel band (clears IG caption block)
+    bw,bh=252,78; bx=(W-bw)//2; by=1360                # lower so it clears the cover logo (still inside the band)
     sh=Image.new("RGBA",(bw+60,bh+60),(0,0,0,0)); ImageDraw.Draw(sh).rounded_rectangle([30,34,30+bw,34+bh],radius=bh//2,fill=(200,100,63,150))
     base.alpha_composite(sh.filter(ImageFilter.GaussianBlur(15)),(bx-30,by-30))
     btn=Image.new("RGBA",(bw,bh),(0,0,0,0)); ImageDraw.Draw(btn).rounded_rectangle([0,0,bw-1,bh-1],radius=bh//2,fill=(200,100,63,255))
@@ -64,17 +67,14 @@ def build(n,MF,OUT,transparent=False):
     cover=s["role"]=="cover"; last=s["role"]=="last"
     if not transparent: ghost(base,s["num"])              # corner watermark (skipped for the IG overlay cover)
     # --- text block at the top of the safe band (clears the watermark) ---
-    if s.get("eyebrow"): B.ls_text(d,(MX,476),s["eyebrow"],B.mono(28),CORAL,4); y=540
-    elif cover: y=486
-    else: y=504
-    hsize=88 if cover else 84; hf=B.dm(900,hsize); lh=hsize+(14 if cover else 12)
+    # FIXED positions on EVERY slide so the 0.5s reel-flip has no visual jump:
+    # eyebrow at 476, headline at 540 (size 84, 2 lines), 3D element zone top at 758.
+    if s.get("eyebrow"): B.ls_text(d,(MX,476),s["eyebrow"],B.mono(28),CORAL,4)
+    y=540; hf=B.dm(900,84); lh=96
     for line in s["head"]: B.seg_line(d,MX,y,line,hf); y+=lh
-    y+=14
-    if cover and s.get("sub"): d.text((MX,y),s["sub"],font=B.dm(500,34),fill=MUTED); y+=62
-    # --- big 3D element fills the rest of the band (cover hero = 3D Claude logo) ---
     elt_bottom=1232 if last else 1322   # only the thin progress bar sits below now
     src=LOGO3D if cover else f"{MF}/m{n}.png"
-    place_in_zone(base,crop_obj(Image.open(src)),(90,int(y)+26,930,elt_bottom))
+    place_in_zone(base,crop_obj(Image.open(src)),(90,758,930,elt_bottom))
     # --- chrome ---
     if cover:
         if not transparent: swipe(base)                   # IG overlay cover: no swipe (sits over a video)
