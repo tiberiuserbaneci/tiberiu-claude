@@ -110,7 +110,7 @@ def c_gate():
 def c_comment():
     b=('<div class="row"><div class="l"><span class="av"></span><div><div class="nm" style="font-size:24px">founder_mode</div><div class="sub">send me this</div></div></div></div>'
        '<div class="row"><div class="l"><span class="av"></span><div><div class="nm" style="font-size:24px">ops_anna</div><div class="sub">need it</div></div></div></div>'
-       '<div class="inp" style="margin-top:14px;justify-content:space-between"><span>JOBS<span class="cur"></span></span><span class="tag o" style="padding:10px 20px;font-size:19px">Post</span></div>')
+       '<div class="inp" style="margin-top:14px;justify-content:space-between"><span>OPERATOR<span class="cur"></span></span><span class="tag o" style="padding:10px 20px;font-size:19px">Post</span></div>')
     return card("Comments","1.4k",b)
 
 S=[
@@ -121,11 +121,11 @@ S=[
  dict(n=5,role="mid",eb="The board",head='Every job,<br><span class="o">one live board.</span>',card=c_dash(),desc='Watch them all run from a single board, each with its own status and progress.'),
  dict(n=6,role="mid",eb="The controls",head='Cancel, pause,<br><span class="o">resume, retry.</span>',card=c_controls(),desc='Every job is yours to steer. <b>Stop or restart any one</b> the moment you want.'),
  dict(n=7,role="mid",eb="The gate",head='It still stops<br><span class="o">for your yes.</span>',card=c_gate(),desc='Before anything irreversible ships, the job pauses and waits for one human approval.'),
- dict(n=8,role="last",eb="Get the walkthrough",head='Comment <span class="o">JOBS</span>.<br>I will send it.',card=c_comment(),desc='The background jobs walkthrough I run my company on.<span class="fl">Follow for one AI system for founders every day.</span>'),
+ dict(n=8,role="last",eb="Get the walkthrough",head='Comment <span class="o">OPERATOR</span>.<br>I will send it.',card=c_comment(),desc='The background jobs walkthrough I run my company on.<span class="fl">Follow for one AI system for founders every day.</span>'),
 ]
 N=len(S)
 def html(s):
-    g=f'<div class="ghost">{s["n"]:02d}</div>'; body=g
+    body='' if s["role"]=="cover" else f'<div class="ghost">{s["n"]:02d}</div>'   # no number on the cover (it collides with the big hook)
     # Claude logo only on the cover (big burst). Slides 2-8 carry no mark (operator).
     if s.get("eb"): body+=f'<div class="eyebrow">{s["eb"]}</div>'
     body+=f'<div class="head{"" if s.get("burst") else " mid"}">{s["head"]}</div>'

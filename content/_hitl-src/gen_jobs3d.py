@@ -11,8 +11,11 @@ MBASE=("A HIGH-FIDELITY 3D PRODUCT RENDER (Octane / Cinema 4D quality, physicall
  "viewed STRAIGHT-ON in ORTHOGRAPHIC FRONT VIEW - upright and perfectly symmetric, no perspective tilt. It IS a real 3D "
  "object: a soft-touch MATTE panel with subtly BEVELED rounded edges and visible THICKNESS, lit by a three-point SOFTBOX "
  "studio setup with ambient occlusion and a SOFT CONTACT SHADOW beneath it. NOT a flat 2D screenshot, NOT a sticker, NOT "
- "an illustration. On a COMPLETELY FLAT #191919 dark charcoal background, vertical 4:5, a WIDE LANDSCAPE panel (about 3:2) "
- "centred with even margins. ALL accent colours, buttons, chips, icons use the EXACT warm orange hex C8643F and nothing "
+ "an illustration. On a COMPLETELY FLAT #191919 dark charcoal background, vertical 4:5, a panel about 3:2 sitting in the "
+ "MIDDLE at roughly 70% width so there is a GENEROUS EMPTY CHARCOAL MARGIN on ALL FOUR sides. CRITICAL: the panel is rendered "
+ "WHOLE and COMPLETE - every one of its four rounded corners and its full LEFT, RIGHT, TOP and BOTTOM edges are clearly visible "
+ "inside the frame; NOTHING is cropped, cut off, or running past the frame edge; the object is not a fragment. "
+ "ALL accent colours, buttons, chips, icons use the EXACT warm orange hex C8643F and nothing "
  "else orange or red. NO green, NO blue, NO purple - only charcoal, white, muted grey and that orange. Real legible text, "
  "numbers EXACT, no garbled words. NO eyebrow/headline/title/footer/page number anywhere - ONLY the panel. The panel shows ")
 MTAIL=" The whole panel is exactly this, centred, front-on. No other panels."
