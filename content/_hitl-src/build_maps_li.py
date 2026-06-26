@@ -137,7 +137,7 @@ TILES=(tile("Max","500","per search",True)
       +tile("Modes","Fast / Full","your call"))
 HEAD=(f'<div class="hd"><div class="hook">'
  f'<div class="eye"><b>Ultron</b> &middot; Maps scraper &middot; AI as a service</div>'
- f'<div class="h1">One category.<br>One city.<br><span class="o">500 local leads.</span></div>'
+ f'<div class="h1">I typed one search.<br>500 leads came back,<br><span class="o">phones included.</span></div>'
  f'<div class="desc">The Ultron Maps scraper turns a category and a city into a clean lead list, '
  f'<b>one row per place</b>, with the phone, website, rating and hours you need to reach them.</div></div>'
  f'<div class="tiles">{TILES}</div></div>')
