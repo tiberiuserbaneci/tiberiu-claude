@@ -30,13 +30,13 @@ def build_ig_cover(out,head):
     import numpy as np
     SS=2; W,H,MX=T.W*SS,T.H*SS,T.MX*SS                 # render 2x then downscale -> crisp text + logos
     base=Image.new("RGBA",(W,H),(0,0,0,0)); d=ImageDraw.Draw(base)
-    cw=W-2*MX; hsize=116*SS
-    while hsize>72*SS:
+    cw=W-2*MX; hsize=84*SS
+    while hsize>64*SS:
         hf=B.dm(900,hsize)
         if max(d.textlength("".join(s[0] for s in ln),font=hf) for ln in head)<=cw: break
         hsize-=2*SS
     if COVER.get("eyebrow"): B.ls_text(d,(MX,476*SS),COVER["eyebrow"],B.mono(28*SS),B.CORAL,4)
-    hf=B.dm(900,hsize); lh=hsize+16*SS; y=540*SS         # hook pinned to 540, same as every content slide
+    hf=B.dm(900,hsize); lh=96*SS; y=540*SS               # 84px/lh96/y540 - identical to content slides, clears logos at 778
     for ln in head: B.seg_line(d,MX,y,ln,hf); y+=lh
     L=200*SS; SLOT=156*SS; BOOK=(204,120,92,255)        # wide gap: logo  +  logo
     def orb():

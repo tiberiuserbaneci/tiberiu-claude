@@ -14,19 +14,27 @@ ZONE=(90,888,928,1290)   # legacy default; build() now uses an adaptive zone tha
 LOGO3D="/home/user/tiberiu-claude/content/_templates/tiktok/lib/claude-logo-3d-glossy.png"  # cover hero (3D Claude)
 
 def crop_obj(im):
-    # DENSITY crop: keep the whole dense panel (its dark frame + padding included), drop only the
-    # sparse soft drop-shadow. A plain bright-pixel threshold sliced off the dark frame -> never again.
-    a=np.asarray(im.convert("RGB")).astype(int); diff=np.abs(a-np.array([25,25,25])).sum(2)
-    mask=diff>45; col=mask.sum(0); row=mask.sum(1)
+    # EDGE crop: the panel (even its dark frame/bevel) has SHARP edges; the soft drop-shadow and the
+    # faint full-frame vignette are SMOOTH. So bound the object by its edge-gradient, not by brightness
+    # or bright-pixel density. A dark panel body is nearly as dark as the bg, so density/brightness crops
+    # sliced the frame and bevels. The full extent of the edge-bearing rows/cols IS the whole panel - text
+    # may cluster on one side (e.g. a checklist) with the opposite frame edge far across an empty interior,
+    # so take the plain min..max of edge lines, never the "largest run" (that sliced off the far frame).
+    # Image-border artifacts (the 1px diff at row/col 0 and the last row/col) are the only strays, and the
+    # 2px border zeroing below removes them - the vignette is smooth so it never trips the gradient mask.
+    g=np.asarray(im.convert("L")).astype(float)
+    gx=np.abs(np.diff(g,axis=1,prepend=g[:,:1])); gy=np.abs(np.diff(g,axis=0,prepend=g[:1,:]))
+    em=(gx+gy)>10; em[:2,:]=em[-2:,:]=em[:,:2]=em[:,-2:]=False    # sharp panel edges only; kill image-border artifacts
+    col=em.sum(0).astype(float); row=em.sum(1).astype(float)
     if col.max()==0 or row.max()==0: return im.convert("RGBA")
-    xs=np.where(col>col.max()*0.10)[0]; ys=np.where(row>row.max()*0.10)[0]
-    pad=12; x0=max(0,int(xs.min())-pad); x1=min(im.width,int(xs.max())+pad); y0=max(0,int(ys.min())-pad); y1=min(im.height,int(ys.max())+pad)
+    cx=np.where(col>col.max()*0.04)[0]; ry=np.where(row>row.max()*0.04)[0]   # full span of edge-bearing lines = whole panel
+    pad=16; x0=max(0,int(cx.min())-pad); x1=min(im.width,int(cx.max())+pad); y0=max(0,int(ry.min())-pad); y1=min(im.height,int(ry.max())+pad)
     crop=im.convert("RGB").crop((x0,y0,x1,y1)); c=np.asarray(crop).astype(int); d2=np.abs(c-np.array([25,25,25])).sum(2)
-    alpha=np.clip((d2-30)*14,0,255).astype("uint8")
+    alpha=np.clip((d2-30)*14,0,255).astype("uint8")               # key the charcoal bg out so the grounding shadow follows the silhouette
     return Image.fromarray(np.dstack([np.asarray(crop).astype("uint8"),alpha]),"RGBA")
 
 def place_in_zone(base,el,zone):
-    zx0,zy0,zx1,zy1=zone; pad=8; zw,zh=zx1-zx0-2*pad, zy1-zy0-2*pad
+    zx0,zy0,zx1,zy1=zone; pad=4; zw,zh=zx1-zx0-2*pad, zy1-zy0-2*pad
     r=min(zw/el.width, zh/el.height); nw,nh=max(1,int(el.width*r)),max(1,int(el.height*r))
     el=el.resize((nw,nh),Image.LANCZOS); ox=zx0+pad+(zw-nw)//2; oy=zy0+pad+(zh-nh)//2
     al=el.split()[3]; shmask=Image.new("L",base.size,0); shmask.paste(al,(ox,oy+30))
@@ -72,9 +80,9 @@ def build(n,MF,OUT,transparent=False):
     if s.get("eyebrow"): B.ls_text(d,(MX,476),s["eyebrow"],B.mono(28),CORAL,4)
     y=540; hf=B.dm(900,84); lh=96
     for line in s["head"]: B.seg_line(d,MX,y,line,hf); y+=lh
-    elt_bottom=1232 if last else 1322   # only the thin progress bar sits below now
+    elt_bottom=1238 if last else 1326   # only the thin progress bar sits below now
     src=LOGO3D if cover else f"{MF}/m{n}.png"
-    place_in_zone(base,crop_obj(Image.open(src)),(90,758,930,elt_bottom))
+    place_in_zone(base,crop_obj(Image.open(src)),(88,758,942,elt_bottom))  # wider band -> bigger element
     # --- chrome ---
     if cover:
         if not transparent: swipe(base)                   # IG overlay cover: no swipe (sits over a video)

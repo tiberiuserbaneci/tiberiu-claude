@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Jobs 3D: TikTok (8 slides) + Instagram (10 slides, transparent overlay cover).
-# Reuses build_3d916's pager, the Jobs Vertex objects, the reusable OPERATOR CTA pill,
-# and the 3D Claude logo. No per-material CTA generation.
+# Reuses build_3d916's fixed pager (edge crop, fixed positions), the Jobs Vertex objects,
+# the reusable OPERATOR CTA pill, and the 3D Claude logo. No per-material CTA generation.
 import os, shutil
 from PIL import Image, ImageDraw
 import build_slides as B
@@ -9,11 +9,11 @@ import build_3d916 as T
 co=lambda s:(s,B.CORAL); wo=lambda s:(s,B.WHITE)
 TE=T.TE; LIB="/home/user/tiberiu-claude/content/_templates/tiktok/lib"
 JOBS=f"{TE}/roll3/models_jobs"; CTA=f"{TE}/roll3/cta3d/cta-operator.png"
-T.LOGO3D=f"{LIB}/claude-logo-3d-matte.png"   # vary the cover logo (HITL used glossy)
+T.LOGO3D=f"{LIB}/claude-logo-3d-matte.png"   # vary the cover logo per material
 
-COVER=dict(role="cover",head=[[wo("You close the tab.")],[co("Claude keeps working.")]],
+COVER=dict(role="cover",eyebrow="BACKGROUND JOBS",head=[[wo("You close the tab.")],[co("Claude keeps working.")]],
            sub="Long AI tasks run in the background while you move on with your day.")
-# (eyebrow, head, object-key)
+# (eyebrow, head, object-key) - first 6 -> TikTok 8, all 8 -> IG 10
 CONTENT=[
  ("THE TRIGGER",[[wo("Longer than seconds?")],[co("It becomes a job.")]],"trigger"),
  ("THE MISSION",[[wo("One line.")],[co("A whole mission.")]],"mission"),
@@ -21,7 +21,7 @@ CONTENT=[
  ("THE BOARD",[[wo("Every job,")],[co("one live board.")]],"dashboard"),
  ("THE CONTROLS",[[wo("Cancel, pause,")],[co("resume, retry.")]],"controls"),
  ("THE GATE",[[wo("It still stops")],[co("for your yes.")]],"gate"),
- ("WHEN IT ENDS",[[wo("It pings you")],[co("the moment it is done.")]],"notify"),
+ ("WHEN IT ENDS",[[wo("It pings you")],[co("when it is done.")]],"notify"),
  ("ON A SCHEDULE",[[wo("Set it once.")],[co("It runs at 9am.")]],"scheduled"),
 ]
 CTA_SLIDE=("GET THE WALKTHROUGH",[[wo("Long work that")],[co("runs itself.")]],"cta")
@@ -30,12 +30,13 @@ def build_ig_cover(out,head):
     import numpy as np
     SS=2; W,H,MX=T.W*SS,T.H*SS,T.MX*SS                 # render 2x then downscale -> crisp text + logos
     base=Image.new("RGBA",(W,H),(0,0,0,0)); d=ImageDraw.Draw(base)
-    cw=W-2*MX; hsize=116*SS
-    while hsize>72*SS:
+    cw=W-2*MX; hsize=84*SS
+    while hsize>64*SS:
         hf=B.dm(900,hsize)
         if max(d.textlength("".join(s[0] for s in ln),font=hf) for ln in head)<=cw: break
         hsize-=2*SS
-    hf=B.dm(900,hsize); lh=hsize+16*SS; y=404*SS
+    if COVER.get("eyebrow"): B.ls_text(d,(MX,476*SS),COVER["eyebrow"],B.mono(28*SS),B.CORAL,4)
+    hf=B.dm(900,hsize); lh=96*SS; y=540*SS               # 84px/lh96/y540 - identical to content slides, clears logos at 778
     for ln in head: B.seg_line(d,MX,y,ln,hf); y+=lh
     L=200*SS; SLOT=156*SS; BOOK=(204,120,92,255)        # wide gap: logo  +  logo
     def orb():
@@ -45,7 +46,7 @@ def build_ig_cover(out,head):
         m=Image.new("L",(s,s),0); ImageDraw.Draw(m).ellipse([0,0,s,s],fill=255); sq.putalpha(m); return sq
     logos=[Image.open(T.GEN).convert("RGBA"),orb()]     # Claude + Ultron only
     for im in logos: im.thumbnail((L,L),Image.LANCZOS)
-    n=len(logos); x=(W-(L*n+SLOT*(n-1)))//2; ly=int(y)+62*SS; cy=ly+L//2
+    n=len(logos); x=(W-(L*n+SLOT*(n-1)))//2; ly=778*SS; cy=ly+L//2       # logos in the element zone (~758)
     for i,im in enumerate(logos):
         base.alpha_composite(im,(x+(L-im.width)//2, cy-im.height//2))
         if i<n-1:
@@ -62,10 +63,10 @@ def build_variant(n_content, outdir, overlay):
     slides=[("COVER",COVER["head"],None,"cover")]
     for eb,head,key in CONTENT[:n_content]: slides.append((eb,head,key,"mid"))
     eb,head,key=CTA_SLIDE; slides.append((eb,head,key,"last"))
-    SPECS={};
+    SPECS={}
     for i,(eb,head,key,role) in enumerate(slides,1):
         SPECS[i]=dict(role=role,num=f"{i:02d}",head=head)
-        if role=="cover": SPECS[i]["sub"]=COVER["sub"]
+        if role=="cover": SPECS[i]["eyebrow"]=COVER.get("eyebrow","")
         elif eb: SPECS[i]["eyebrow"]=eb
         if key: shutil.copy(src_for(key), f"{md}/m{i}.png")
     B.SPECS=SPECS; T.N=len(slides)

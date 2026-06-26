@@ -1,70 +1,89 @@
 #!/usr/bin/env python3
-# TikTok 3D (Model B) - HUMAN GATE. Reuses build_3d916's 9:16 pager with HITL content + HITL models.
-import os
-from PIL import Image
+# HUMAN GATE 3D: TikTok (8 slides) + Instagram (8 slides, transparent overlay cover).
+# Reuses build_3d916's fixed pager (edge crop, fixed positions) with the HITL Vertex objects.
+# HITL has 6 content objects (m2..m7) + m8 as the CTA element (a comments mockup with GATE baked in),
+# so both variants are 8 slides. Keyword GATE -> no reusable pill (those say OPERATOR/FOUNDER/BUILDER),
+# the m8 comments panel is the call to action.
+import os, shutil
+from PIL import Image, ImageDraw
 import build_slides as B
 import build_3d916 as T
 co=lambda s:(s,B.CORAL); wo=lambda s:(s,B.WHITE)
-HITL={
-1:dict(role="cover",num="01",head=[[wo("Your AI can send,")],[wo("charge and delete.")],[co("Mine asks first.")]],sub="It runs the busywork. It stops before anything it cannot undo."),
-2:dict(role="mid",num="02",eyebrow="THE GATE",head=[[wo("It stops before")],[co("it ships.")]],body=[("It drafts the work and runs it, then pauses at every step that leaves the building.",0)]),
-3:dict(role="mid",num="03",eyebrow="WHAT NEEDS A YES",head=[[co("7 moves")],[wo("that need your yes.")]]),
-4:dict(role="mid",num="04",eyebrow="THE DECISION",head=[[wo("Approve, decline,")],[co("or pick a path.")]]),
-5:dict(role="mid",num="05",eyebrow="EDIT FIRST",head=[[wo("Change it before")],[co("it ships.")]],body=[("Edit the action on the card, then approve the version you actually want.",0)]),
-6:dict(role="mid",num="06",eyebrow="THE RULE",head=[[wo("Before the action.")],[co("Never after.")]],body=[("An approval after the fact is theatre. The gate sits before the irreversible step.",0)]),
-7:dict(role="mid",num="07",eyebrow="THE RECORD",head=[[wo("Every yes")],[co("is logged.")]]),
-8:dict(role="last",num="08",eyebrow="GET THE SETUP",head=[[wo("Comment "),co("GATE")],[wo("I will send it.")]],body=[("The exact human-gate setup I run my company on. Follow for one AI system for founders every day.",0)]),
-}
-B.SPECS=HITL
+TE=T.TE; LIB="/home/user/tiberiu-claude/content/_templates/tiktok/lib"
+HITL=f"{TE}/roll3/models_hitl"; CTA=f"{HITL}/m8.png"
+T.LOGO3D=f"{LIB}/claude-logo-3d-glossy.png"   # vary the cover logo per material
 
-def build_ig_cover(out):
-    # Transparent IG overlay: BIG hook only (no subhook), STATIC flat Claude logo (not the 3D one),
-    # no corner number, no swipe. Designed to sit over a short reel video.
-    from PIL import ImageDraw
-    W,H,MX=T.W,T.H,T.MX
-    base=Image.new("RGBA",(W,H),(0,0,0,0)); d=ImageDraw.Draw(base)
-    head=HITL[1]["head"]; cw=W-2*MX
-    hsize=116                                              # largest hook that still fits the width
-    while hsize>72:
-        hf=B.dm(900,hsize)
-        if max(d.textlength("".join(s[0] for s in line),font=hf) for line in head)<=cw: break
-        hsize-=2
-    hf=B.dm(900,hsize); lh=hsize+16; y=404
-    for line in head: B.seg_line(d,MX,y,line,hf); y+=lh
-    # 4 AI logos in a row under the hook, equal size: Claude, Gemini, ChatGPT, Ultron
+COVER=dict(role="cover",eyebrow="THE HUMAN GATE",head=[[wo("Your AI just acts.")],[co("Mine asks first.")]],
+           sub="It runs the busywork. It stops before anything it cannot undo.")
+# (eyebrow, head, object-key) - 6 content objects -> 8 slides on both TikTok and IG
+CONTENT=[
+ ("THE GATE",[[wo("It stops before")],[co("it ships.")]],"m2"),
+ ("WHAT NEEDS A YES",[[co("7 moves")],[wo("that need your yes.")]],"m3"),
+ ("THE DECISION",[[wo("Approve, decline,")],[co("or pick a path.")]],"m4"),
+ ("EDIT FIRST",[[wo("Change it before")],[co("it ships.")]],"m5"),
+ ("THE RULE",[[wo("Before the action.")],[co("Never after.")]],"m6"),
+ ("THE RECORD",[[wo("Every yes")],[co("is logged.")]],"m7"),
+]
+CTA_SLIDE=("GET THE SETUP",[[wo("Comment "),co("GATE")],[wo("I will send it.")]],"cta")
+
+def build_ig_cover(out,head):
     import numpy as np
-    LOGOD=f"{T.TE}/logos"; L=160; SLOT=76; BOOK=(204,120,92,255)
-    def ultron_orb():
+    SS=2; W,H,MX=T.W*SS,T.H*SS,T.MX*SS                 # render 2x then downscale -> crisp text + logos
+    base=Image.new("RGBA",(W,H),(0,0,0,0)); d=ImageDraw.Draw(base)
+    cw=W-2*MX; hsize=84*SS
+    while hsize>64*SS:
+        hf=B.dm(900,hsize)
+        if max(d.textlength("".join(s[0] for s in ln),font=hf) for ln in head)<=cw: break
+        hsize-=2*SS
+    if COVER.get("eyebrow"): B.ls_text(d,(MX,476*SS),COVER["eyebrow"],B.mono(28*SS),B.CORAL,4)
+    hf=B.dm(900,hsize); lh=96*SS; y=540*SS               # 84px/lh96/y540 - identical to content slides, clears logos at 778
+    for ln in head: B.seg_line(d,MX,y,ln,hf); y+=lh
+    L=200*SS; SLOT=156*SS; BOOK=(204,120,92,255)        # wide gap: logo  +  logo
+    def orb():
         im=Image.open(T.ULOGO).convert("RGB"); lum=np.asarray(im).astype(int).sum(2)
-        ys,xs=np.where(lum>36)                                 # crop tight to the sphere (drop the black)
-        c=im.convert("RGBA").crop((int(xs.min()),int(ys.min()),int(xs.max())+1,int(ys.max())+1))
+        ys,xs=np.where(lum>36); c=im.convert("RGBA").crop((int(xs.min()),int(ys.min()),int(xs.max())+1,int(ys.max())+1))
         s=max(c.size); sq=Image.new("RGBA",(s,s),(0,0,0,0)); sq.alpha_composite(c,((s-c.width)//2,(s-c.height)//2))
-        m=Image.new("L",(s,s),0); ImageDraw.Draw(m).ellipse([0,0,s,s],fill=255); sq.putalpha(m)
-        return sq
-    logos=[Image.open(T.GEN).convert("RGBA"),
-           Image.open(f"{LOGOD}/gemini.png").convert("RGBA"),
-           Image.open(f"{LOGOD}/openai.png").convert("RGBA"),
-           ultron_orb()]
+        m=Image.new("L",(s,s),0); ImageDraw.Draw(m).ellipse([0,0,s,s],fill=255); sq.putalpha(m); return sq
+    logos=[Image.open(T.GEN).convert("RGBA"),orb()]     # Claude + Ultron only
     for im in logos: im.thumbnail((L,L),Image.LANCZOS)
-    n=len(logos); x=(W-(L*n+SLOT*(n-1)))//2; ly=int(y)+62; cy=ly+L//2
+    n=len(logos); x=(W-(L*n+SLOT*(n-1)))//2; ly=778*SS; cy=ly+L//2       # logos in the element zone (~758)
     for i,im in enumerate(logos):
         base.alpha_composite(im,(x+(L-im.width)//2, cy-im.height//2))
-        if i<n-1:                                              # book "+" between logos
-            px=x+L+SLOT//2; ph,pt=23,5
+        if i<n-1:
+            px=x+L+SLOT//2; ph,pt=23*SS,5*SS
             d.rectangle([px-ph,cy-pt,px+ph,cy+pt],fill=BOOK); d.rectangle([px-pt,cy-ph,px+pt,cy+ph],fill=BOOK)
         x+=L+SLOT
-    base.save(out)
+    base.resize((T.W,T.H),Image.LANCZOS).save(out)
 
-MF=f"{T.TE}/roll3/models_hitl"; OUT=f"{T.TE}/roll3/hitl_3d_9"; os.makedirs(OUT,exist_ok=True)
-for n in range(1,9): T.build(n,MF,OUT); print("built",n)
-# Instagram variant: slide 1 = transparent overlay (hook + 3D logo only, no corner number, no swipe),
-# laid over a short reel video; slides 2-8 identical to the TikTok 3D set.
-import shutil
-IGOUT=f"{T.TE}/roll3/hitl_ig_3d"; os.makedirs(IGOUT,exist_ok=True)
-build_ig_cover(f"{IGOUT}/s1.png"); print("built IG s1 (transparent overlay: big hook + static logo)")
-for n in range(2,9): shutil.copy(f"{OUT}/s{n}.png", f"{IGOUT}/s{n}.png")
-ims=[Image.open(f"{OUT}/s{i}.png") for i in range(1,9)]
-cols=4;rows=2;sc=300;sh=int(sc*1920/1080)
-st=Image.new("RGB",(sc*cols+8*(cols+1),sh*rows+8*(rows+1)),(18,18,20))
-for k,im in enumerate(ims): st.paste(im.resize((sc,sh)),(8+(k%cols)*(sc+8),8+(k//cols)*(sh+8)))
-st.save(f"{T.TE}/hitl_3d_montage.png"); print("montage saved")
+def src_for(key):
+    return CTA if key=="cta" else f"{HITL}/{key}.png"
+
+def build_variant(n_content, outdir, overlay):
+    os.makedirs(outdir,exist_ok=True); md=f"{outdir}/_models"; os.makedirs(md,exist_ok=True)
+    slides=[("COVER",COVER["head"],None,"cover")]
+    for eb,head,key in CONTENT[:n_content]: slides.append((eb,head,key,"mid"))
+    eb,head,key=CTA_SLIDE; slides.append((eb,head,key,"last"))
+    SPECS={}
+    for i,(eb,head,key,role) in enumerate(slides,1):
+        SPECS[i]=dict(role=role,num=f"{i:02d}",head=head)
+        if role=="cover": SPECS[i]["eyebrow"]=COVER.get("eyebrow","")
+        elif eb: SPECS[i]["eyebrow"]=eb
+        if key: shutil.copy(src_for(key), f"{md}/m{i}.png")
+    B.SPECS=SPECS; T.N=len(slides)
+    for i,(eb,head,key,role) in enumerate(slides,1):
+        if role=="cover" and overlay: build_ig_cover(f"{outdir}/s{i}.png", head)
+        else: T.build(i, md, outdir)
+    return len(slides)
+
+tt=build_variant(6, f"{TE}/roll3/hitl_3d_tt", overlay=False)   # TikTok: cover + 6 content + CTA = 8
+ig=build_variant(6, f"{TE}/roll3/hitl_3d_ig", overlay=True)    # IG: overlay cover + 6 content + CTA = 8
+print("TikTok 3D slides:",tt," IG slides:",ig)
+# montages
+for od,name in [("hitl_3d_tt","hitl3d_tt"),("hitl_3d_ig","hitl3d_ig")]:
+    N=len(os.listdir(f"{TE}/roll3/{od}"))-1  # minus _models
+    ims=[Image.open(f"{TE}/roll3/{od}/s{i}.png") for i in range(1,N+1)]
+    cols=4; rows=(N+cols-1)//cols; sc=240; sh=int(sc*1920/1080)
+    st=Image.new("RGB",(sc*cols+8*(cols+1),sh*rows+8*(rows+1)),(18,18,20))
+    for k,im in enumerate(ims): st.paste(im.resize((sc,sh)),(8+(k%cols)*(sc+8),8+(k//cols)*(sh+8)))
+    st.save(f"{TE}/{name}_montage.png")
+print("montages done")
