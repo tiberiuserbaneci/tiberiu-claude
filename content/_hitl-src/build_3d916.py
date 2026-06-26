@@ -10,19 +10,20 @@ TE="/tmp/claude-0/-home-user-tiberiu-claude/27326f10-40bf-555b-a3d3-cdb5d2e54cdb
 W,H,MX=1080,1920,72
 BG=B.BG; WHITE=B.WHITE; CORAL=B.CORAL; MUTED=B.MUTED; N=B.N
 ULOGO="/home/user/tiberiu-claude/content/ultron-logo.png"; GEN=f"{TE}/claude_official.png"
-ZONE=(90,888,928,1290)   # CROSS-CHANNEL standard: content within y[300,1450] x[90,930] (TikTok + IG)
+ZONE=(90,888,928,1290)   # legacy default; build() now uses an adaptive zone that fills the band
+LOGO3D="/home/user/tiberiu-claude/content/_templates/tiktok/lib/claude-logo-3d-glossy.png"  # cover hero (3D Claude)
 
 def crop_obj(im):
     a=np.asarray(im.convert("RGB")).astype(int); diff=np.abs(a-np.array([25,25,25])).sum(2)
-    ys,xs=np.where(diff>40)
+    ys,xs=np.where(diff>90)   # tight to the solid object (excludes the soft shadow halo) so it fills the zone
     if len(xs)==0: return im.convert("RGBA")
     pad=8; x0=max(0,int(xs.min())-pad); x1=min(im.width,int(xs.max())+pad); y0=max(0,int(ys.min())-pad); y1=min(im.height,int(ys.max())+pad)
     crop=im.convert("RGB").crop((x0,y0,x1,y1)); c=np.asarray(crop).astype(int); d2=np.abs(c-np.array([25,25,25])).sum(2)
     alpha=np.clip((d2-30)*14,0,255).astype("uint8")
     return Image.fromarray(np.dstack([np.asarray(crop).astype("uint8"),alpha]),"RGBA")
 
-def place_in_zone(base,el):
-    zx0,zy0,zx1,zy1=ZONE; pad=8; zw,zh=zx1-zx0-2*pad, zy1-zy0-2*pad
+def place_in_zone(base,el,zone):
+    zx0,zy0,zx1,zy1=zone; pad=8; zw,zh=zx1-zx0-2*pad, zy1-zy0-2*pad
     r=min(zw/el.width, zh/el.height); nw,nh=max(1,int(el.width*r)),max(1,int(el.height*r))
     el=el.resize((nw,nh),Image.LANCZOS); ox=zx0+pad+(zw-nw)//2; oy=zy0+pad+(zh-nh)//2
     al=el.split()[3]; shmask=Image.new("L",base.size,0); shmask.paste(al,(ox,oy+30))
@@ -30,10 +31,10 @@ def place_in_zone(base,el):
     base.alpha_composite(Image.merge("RGBA",(Image.new("L",base.size,0),)*3+(shmask,)))
     base.alpha_composite(el,(ox,oy))
 
-def ghost(base,num):                                  # big page number, FREE + INSIDE the top safe band (y>300, x<950)
-    f=B.dm(900,270); layer=Image.new("RGBA",(W,H),(0,0,0,0)); dl=ImageDraw.Draw(layer)
-    tw=dl.textlength(num,font=f); dl.text((916-tw,316),num,font=f,fill=(56,55,52,255))
-    base.alpha_composite(layer.filter(ImageFilter.GaussianBlur(5)))
+def ghost(base,num):                                  # SMALL top-right corner watermark; sits ABOVE the headline so titles never touch it
+    f=B.dm(900,150); layer=Image.new("RGBA",(W,H),(0,0,0,0)); dl=ImageDraw.Draw(layer)
+    tw=dl.textlength(num,font=f); dl.text((922-tw,298),num,font=f,fill=(54,53,50,255))
+    base.alpha_composite(layer.filter(ImageFilter.GaussianBlur(4)))
 
 def progress(d,page,n):
     x0,x1=90,928; y=1352; h=7                          # inside the cross-channel band (y<1450, x<930)
@@ -60,20 +61,26 @@ def cover_logo(base):
     mk=Image.open(GEN).convert("RGBA"); mk.thumbnail((150,150),Image.LANCZOS); base.alpha_composite(mk,(MX,340))
 
 def build(n,MF,OUT):
-    s=B.SPECS[n]; base=Image.new("RGBA",(W,H),BG+(255,))
-    if s["role"]=="cover": cover_logo(base)
-    else: place_in_zone(base,crop_obj(Image.open(f"{MF}/m{n}.png")))
-    ghost(base,s["num"]); d=ImageDraw.Draw(base)
-    if s.get("eyebrow"): B.ls_text(d,(MX,468),s["eyebrow"],B.mono(28),CORAL,4); y=532   # within cross-channel band
-    elif s["role"]=="cover": y=556
-    else: y=500
-    hsize=104 if s["role"]=="cover" else 92; hf=B.dm(900,hsize); lh=hsize+(18 if s["role"]=="cover" else 12)
+    s=B.SPECS[n]; base=Image.new("RGBA",(W,H),BG+(255,)); d=ImageDraw.Draw(base)
+    cover=s["role"]=="cover"; last=s["role"]=="last"
+    ghost(base,s["num"])                                   # small corner watermark, behind the text
+    # --- text block at the top of the safe band (clears the watermark) ---
+    if s.get("eyebrow"): B.ls_text(d,(MX,476),s["eyebrow"],B.mono(28),CORAL,4); y=540
+    elif cover: y=486
+    else: y=504
+    hsize=88 if cover else 84; hf=B.dm(900,hsize); lh=hsize+(14 if cover else 12)
     for line in s["head"]: B.seg_line(d,MX,y,line,hf); y+=lh
-    y+=16
-    if s.get("sub"): d.text((MX,y),s["sub"],font=B.dm(500,34),fill=MUTED); y+=54
-    if s.get("body"): B.draw_body(d,MX,y,s["body"],W-2*MX)
-    if s["role"]=="cover": swipe(base)
-    elif s["role"]=="last": footer(base,n,N)
+    y+=14
+    if cover and s.get("sub"): d.text((MX,y),s["sub"],font=B.dm(500,34),fill=MUTED); y+=62
+    # --- big 3D element fills the rest of the band (cover hero = 3D Claude logo) ---
+    elt_bottom=1232 if last else 1322
+    src=LOGO3D if cover else f"{MF}/m{n}.png"
+    place_in_zone(base,crop_obj(Image.open(src)),(90,int(y)+26,930,elt_bottom))
+    # --- chrome ---
+    if cover: swipe(base)
+    elif last:
+        d.text((MX,1258),"Follow for one AI system for founders every day.",font=B.dm(700,29),fill=WHITE)
+        footer(base,n,N)
     else: progress(d,n,N)
     o=f"{OUT}/s{n}.png"; base.convert("RGB").save(o); return o
 

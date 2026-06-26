@@ -19,6 +19,7 @@ CSS=f"""
 .head .o{{color:#C8643F;}}
 .desc{{position:relative;z-index:2;margin-top:30px;font-weight:400;font-size:31px;line-height:1.46;color:#9a988f;max-width:910px;}}
 .desc b{{color:#FAFAF7;font-weight:700;}}
+.desc .fl{{display:block;color:#FAFAF7;font-weight:700;margin-top:10px;}}
 .card{{position:relative;z-index:2;margin-top:34px;background:#1d1c1a;border:1px solid rgba(250,250,247,.09);border-radius:22px;padding:22px 24px;box-shadow:0 30px 70px rgba(0,0,0,.45);}}
 .chead{{display:flex;align-items:center;justify-content:space-between;padding:2px 4px 13px;margin-bottom:6px;border-bottom:1px solid rgba(250,250,247,.07);}}
 .chead .t{{display:flex;align-items:center;gap:13px;font-family:'DMSans';font-weight:700;font-size:27px;color:#FAFAF7;}}
@@ -110,12 +111,12 @@ S=[
  dict(n=5,role="mid",eb="Edit first",head='Change it before<br><span class="o">it ships.</span>',card=c_edit(),desc='Not happy with the draft? <b>Edit the action on the card</b>, then approve the version you actually want.'),
  dict(n=6,role="mid",eb="The rule",head='Before the action.<br><span class="o">Never after.</span>',card=c_flow(),desc='An approval after the fact is theatre. The gate sits before the irreversible step, every single time.'),
  dict(n=7,role="mid",eb="The record",head='Every yes<br><span class="o">is logged.</span>',card=c_audit(),desc='Who approved what, when, and any edit. A clean trail you can hand to anyone.'),
- dict(n=8,role="last",eb="Get the setup",head='Comment <span class="o">GATE</span>.<br>I will send it.',card=c_comment(),desc='The exact human-gate setup I run my company on. Follow for one AI system for founders every day.'),
+ dict(n=8,role="last",eb="Get the setup",head='Comment <span class="o">GATE</span>.<br>I will send it.',card=c_comment(),desc='The exact human-gate setup I run my company on.<span class="fl">Follow for one AI system for founders every day.</span>'),
 ]
 N=len(S)
 def html(s):
     g=f'<div class="ghost">{s["n"]:02d}</div>'; body=g
-    if not s.get("burst"): body+=f'<img class="mark" src="{ACCENT}">'
+    # Claude logo only on the cover (big burst). Slides 2-8 carry no mark (operator).
     if s.get("eb"): body+=f'<div class="eyebrow">{s["eb"]}</div>'
     body+=f'<div class="head{"" if s.get("burst") else " mid"}">{s["head"]}</div>'
     if s.get("sub"): body+=f'<div class="desc" style="margin-top:30px">{s["sub"]}</div>'
