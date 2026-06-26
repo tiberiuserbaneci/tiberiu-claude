@@ -1,6 +1,6 @@
-# HUMAN GATE — LinkedIn caption kit
+# HUMAN GATE - LinkedIn caption kit
 
-Keyword: **GATE** (DM lead-magnet trigger — no link in first comment)
+Keyword: **GATE** (DM lead-magnet trigger - no link in first comment)
 Visual: `content/hitl-linkedin.png`
 SEO terms woven in: autonomous AI agents, AI agent, human-in-the-loop, approval layer, audit trail, AI safety, founder GTM, outbound, irreversible actions, operator.
 
@@ -25,7 +25,7 @@ The human gate is an approval layer, the human-in-the-loop step most AI demos sk
 
 - - -
 
-Most teams believe the trade is speed or control, so they either babysit the AI or let it run blind. It is a false choice. The gate sits before the irreversible step and never after, so the agents stay fast on everything safe and stop only on the few moves that can actually burn a domain, a budget, or a contract. That is what AI safety looks like for a founder running GTM alone. You stay the operator. The agent stays the engine.
+Most teams believe the trade is speed or control, so they either babysit the AI or let it run blind. It is a false choice. The gate sits before the irreversible step and never after, so the agents stay fast on everything safe and stop only on the few moves that can actually burn a domain, a budget, or a contract. That is what AI safety looks like for a founder running GTM alone: human-in-the-loop control wrapped around outbound, billing and publishing, not a polished research demo. You stay the operator. The agent stays the engine.
 
 - - -
 
