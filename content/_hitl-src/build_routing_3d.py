@@ -35,8 +35,8 @@ def build_ig_cover(out,head):
         hf=B.dm(900,hsize)
         if max(d.textlength("".join(s[0] for s in ln),font=hf) for ln in head)<=cw: break
         hsize-=2*SS
-    if COVER.get("eyebrow"): B.ls_text(d,(MX,476*SS),COVER["eyebrow"],B.mono(28*SS),B.CORAL,4)
-    hf=B.dm(900,hsize); lh=96*SS; y=540*SS               # 84px/lh96/y540 - identical to content slides, clears logos at 778
+    if COVER.get("eyebrow"): B.ls_text(d,(MX,340*SS),COVER["eyebrow"],B.mono(28*SS),B.CORAL,4)
+    hf=B.dm(900,hsize); lh=96*SS; y=404*SS               # over-video intro cover -> top-anchored, NOT centered mid-slide
     for ln in head: B.seg_line(d,MX,y,ln,hf); y+=lh
     L=200*SS; SLOT=156*SS; BOOK=(204,120,92,255)        # wide gap: logo  +  logo
     def orb():
@@ -46,7 +46,7 @@ def build_ig_cover(out,head):
         m=Image.new("L",(s,s),0); ImageDraw.Draw(m).ellipse([0,0,s,s],fill=255); sq.putalpha(m); return sq
     logos=[Image.open(T.GEN).convert("RGBA"),orb()]     # Claude + Ultron only
     for im in logos: im.thumbnail((L,L),Image.LANCZOS)
-    n=len(logos); x=(W-(L*n+SLOT*(n-1)))//2; ly=778*SS; cy=ly+L//2       # logos in the element zone (~758)
+    n=len(logos); x=(W-(L*n+SLOT*(n-1)))//2; cy=720*SS       # logos tucked under the hook in the top third, not floating
     for i,im in enumerate(logos):
         base.alpha_composite(im,(x+(L-im.width)//2, cy-im.height//2))
         if i<n-1:
