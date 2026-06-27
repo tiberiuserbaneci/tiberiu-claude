@@ -41,9 +41,17 @@ def crop_obj(im):
     return Image.fromarray(np.dstack([np.asarray(crop).astype("uint8"),alpha]),"RGBA")
 
 def place_in_zone(base,el,zone):
-    zx0,zy0,zx1,zy1=zone; pad=4; zw,zh=zx1-zx0-2*pad, zy1-zy0-2*pad
-    r=min(zw/el.width, zh/el.height); nw,nh=max(1,int(el.width*r)),max(1,int(el.height*r))
-    el=el.resize((nw,nh),Image.LANCZOS); ox=zx0+pad+(zw-nw)//2; oy=zy0+pad+(zh-nh)//2
+    # Center the SOLID PANEL (not the crop, whose shadow margins are uneven) at the canvas X-centre and the
+    # zone's Y-centre, identically on every slide -> all 3D elements line up; none sit higher/lower. Scale by
+    # the panel bbox so the panel (not its margins) fills the zone.
+    zx0,zy0,zx1,zy1=zone; pad=6; zw,zh=zx1-zx0-2*pad, zy1-zy0-2*pad
+    solid=el.split()[3].point(lambda v:255 if v>140 else 0); pb=solid.getbbox() or (0,0,el.width,el.height)
+    pw,ph=max(1,pb[2]-pb[0]),max(1,pb[3]-pb[1]); r=min(zw/pw, zh/ph)
+    nw,nh=max(1,int(el.width*r)),max(1,int(el.height*r)); el=el.resize((nw,nh),Image.LANCZOS)
+    solid=el.split()[3].point(lambda v:255 if v>140 else 0); pb=solid.getbbox() or (0,0,nw,nh)
+    pcx=(pb[0]+pb[2])/2; pcy=(pb[1]+pb[3])/2
+    cx=W//2; cy=(zy0+zy1)//2                       # canvas X-centre, zone Y-centre: same for every slide
+    ox=int(round(cx-pcx)); oy=int(round(cy-pcy))
     al=el.split()[3]; shmask=Image.new("L",base.size,0); shmask.paste(al,(ox,oy+30))
     shmask=shmask.filter(ImageFilter.GaussianBlur(42)).point(lambda v:int(v*0.5))
     base.alpha_composite(Image.merge("RGBA",(Image.new("L",base.size,0),)*3+(shmask,)))
