@@ -31,7 +31,18 @@ def build_ig_cover(out,head):
     import numpy as np
     SS=2; W,H,MX=T.W*SS,T.H*SS,T.MX*SS                 # render 2x then downscale -> crisp text + logos
     base=Image.new("RGBA",(W,H),(0,0,0,0)); d=ImageDraw.Draw(base)
-    # Claude + Ultron logos near the top (mirrors the normal cover's top mark)
+    # hook CENTERED on top, no eyebrow / no sub-hook
+    cw=W-2*MX; hsize=84*SS
+    while hsize>64*SS:
+        hf=B.dm(900,hsize)
+        if max(d.textlength("".join(s[0] for s in ln),font=hf) for ln in head)<=cw: break
+        hsize-=2*SS
+    hf=B.dm(900,hsize); lh=96*SS; y=700*SS
+    for ln in head:
+        tw=sum(d.textlength(t,font=hf) for t,_ in ln); xx=(W-tw)//2
+        for t,c in ln: d.text((xx,y),t,font=hf,fill=c); xx+=d.textlength(t,font=hf)
+        y+=lh
+    # Claude + Ultron logos BELOW the hook
     L=190*SS; SLOT=150*SS; BOOK=(204,120,92,255)
     def orb():
         im=Image.open(T.ULOGO).convert("RGB"); lum=np.asarray(im).astype(int).sum(2)
@@ -40,26 +51,13 @@ def build_ig_cover(out,head):
         m=Image.new("L",(s,s),0); ImageDraw.Draw(m).ellipse([0,0,s,s],fill=255); sq.putalpha(m); return sq
     logos=[Image.open(T.GEN).convert("RGBA"),orb()]
     for im in logos: im.thumbnail((L,L),Image.LANCZOS)
-    n=len(logos); x=(W-(L*n+SLOT*(n-1)))//2; cy=540*SS
+    n=len(logos); x=(W-(L*n+SLOT*(n-1)))//2; cy=1040*SS
     for i,im in enumerate(logos):
         base.alpha_composite(im,(x+(L-im.width)//2, cy-im.height//2))
         if i<n-1:
             px=x+L+SLOT//2; ph,pt=22*SS,5*SS
             d.rectangle([px-ph,cy-pt,px+ph,cy+pt],fill=BOOK); d.rectangle([px-pt,cy-ph,px+pt,cy+ph],fill=BOOK)
         x+=L+SLOT
-    # eyebrow + title CENTERED in the middle
-    cw=W-2*MX; hsize=84*SS
-    while hsize>64*SS:
-        hf=B.dm(900,hsize)
-        if max(d.textlength("".join(s[0] for s in ln),font=hf) for ln in head)<=cw: break
-        hsize-=2*SS
-    if COVER.get("eyebrow"):
-        ew=B.ls_width(d,COVER["eyebrow"],B.mono(28*SS),4*SS); B.ls_text(d,((W-ew)//2,820*SS),COVER["eyebrow"],B.mono(28*SS),B.CORAL,4*SS)
-    hf=B.dm(900,hsize); lh=96*SS; y=884*SS
-    for ln in head:
-        tw=sum(d.textlength(t,font=hf) for t,_ in ln); xx=(W-tw)//2
-        for t,c in ln: d.text((xx,y),t,font=hf,fill=c); xx+=d.textlength(t,font=hf)
-        y+=lh
     base.resize((T.W,T.H),Image.LANCZOS).save(out)
 
 def src_for(key):

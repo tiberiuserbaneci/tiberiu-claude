@@ -80,12 +80,10 @@ def build(n,MF,OUT,transparent=False):
     s=B.SPECS[n]; base=Image.new("RGBA",(W,H),(0,0,0,0) if transparent else BG+(255,)); d=ImageDraw.Draw(base)
     cover=s["role"]=="cover"; last=s["role"]=="last"
     if not transparent: ghost(base,s["num"])              # corner watermark (skipped for the IG overlay cover)
-    if cover and CENTER_COVER and not transparent:        # normal (opaque) TikTok cover: 3D Claude mark on top, title centered in the middle
-        place_in_zone(base,crop_obj(Image.open(LOGO3D)),(360,372,720,732))
-        if s.get("eyebrow"):
-            ew=B.ls_width(d,s["eyebrow"],B.mono(28),4); B.ls_text(d,((W-ew)//2,820),s["eyebrow"],B.mono(28),CORAL,4)
-        y=884; hf=B.dm(900,84); lh=96
-        for line in s["head"]: seg_center(d,y,line,hf); y+=lh
+    if cover and CENTER_COVER and not transparent:        # normal (opaque) TikTok cover: hook centered on top, 3D Claude mark BELOW it, no eyebrow/sub
+        y=700; hf=B.dm(900,84); lh=96
+        for line in s["head"]: seg_center(d,y,line,hf); y+=lh   # hook centered, no eyebrow / no sub-hook
+        place_in_zone(base,crop_obj(Image.open(LOGO3D)),(380,910,700,1250))   # logos BELOW the hook
         swipe(base)
         o=f"{OUT}/s{n}.png"; base.convert("RGB").save(o); return o
     # --- text block at the top of the safe band (clears the watermark) ---
