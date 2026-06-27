@@ -20,23 +20,24 @@ def seg_center(d,y,segs,font):   # horizontally-centered segmented line (for cen
     return x
 
 def crop_obj(im):
-    # EDGE crop: the panel (even its dark frame/bevel) has SHARP edges; the soft drop-shadow and the
-    # faint full-frame vignette are SMOOTH. So bound the object by its edge-gradient, not by brightness
-    # or bright-pixel density. A dark panel body is nearly as dark as the bg, so density/brightness crops
-    # sliced the frame and bevels. The full extent of the edge-bearing rows/cols IS the whole panel - text
-    # may cluster on one side (e.g. a checklist) with the opposite frame edge far across an empty interior,
-    # so take the plain min..max of edge lines, never the "largest run" (that sliced off the far frame).
-    # Image-border artifacts (the 1px diff at row/col 0 and the last row/col) are the only strays, and the
-    # 2px border zeroing below removes them - the vignette is smooth so it never trips the gradient mask.
-    g=np.asarray(im.convert("L")).astype(float)
-    gx=np.abs(np.diff(g,axis=1,prepend=g[:,:1])); gy=np.abs(np.diff(g,axis=0,prepend=g[:1,:]))
-    em=(gx+gy)>10; em[:2,:]=em[-2:,:]=em[:,:2]=em[:,-2:]=False    # sharp panel edges only; kill image-border artifacts
-    col=em.sum(0).astype(float); row=em.sum(1).astype(float)
-    if col.max()==0 or row.max()==0: return im.convert("RGBA")
-    cx=np.where(col>col.max()*0.04)[0]; ry=np.where(row>row.max()*0.04)[0]   # full span of edge-bearing lines = whole panel
-    pad=16; x0=max(0,int(cx.min())-pad); x1=min(im.width,int(cx.max())+pad); y0=max(0,int(ry.min())-pad); y1=min(im.height,int(ry.max())+pad)
-    crop=im.convert("RGB").crop((x0,y0,x1,y1)); c=np.asarray(crop).astype(int); d2=np.abs(c-np.array([25,25,25])).sum(2)
-    alpha=np.clip((d2-30)*14,0,255).astype("uint8")               # key the charcoal bg out so the grounding shadow follows the silhouette
+    # FRAME THE WHOLE PANEL (never trim). The Vertex objects are generated complete; the container must show
+    # the whole panel. Bound it by its DIFFERENCE FROM ITS OWN CORNER BACKGROUND, taking the most-inclusive
+    # bbox that is still the panel (stop before the soft full-frame vignette explodes the box to the frame).
+    # The earlier edge/bright crops trimmed soft right/bottom panel edges -> objects looked cut. place_in_zone
+    # then scales this WHOLE captured panel to fit the zone, so the element is ALWAYS fully visible.
+    a=np.asarray(im.convert("RGB")).astype(int); H,W=a.shape[:2]; area=H*W
+    cs=np.concatenate([a[:48,:48].reshape(-1,3),a[:48,-48:].reshape(-1,3),a[-48:,:48].reshape(-1,3),a[-48:,-48:].reshape(-1,3)])
+    bg=np.median(cs,0).astype(int); diff=np.abs(a-bg).sum(2); bbox=None
+    for thr in (120,100,80,65,52,42,34,28,22):           # high->low: keep the largest bbox that is still panel-sized
+        ys,xs=np.where(diff>thr)
+        if len(xs)==0: continue
+        b=(int(xs.min()),int(ys.min()),int(xs.max()),int(ys.max()))
+        if (b[2]-b[0])*(b[3]-b[1])<=0.93*area: bbox=b
+        else: break                                      # this threshold caught the vignette -> stop, keep the panel bbox
+    if bbox is None: return im.convert("RGBA")
+    pad=18; x0=max(0,bbox[0]-pad); y0=max(0,bbox[1]-pad); x1=min(W,bbox[2]+pad); y1=min(H,bbox[3]+pad)
+    crop=im.convert("RGB").crop((x0,y0,x1,y1)); c=np.asarray(crop).astype(int); d2=np.abs(c-bg).sum(2)
+    alpha=np.clip((d2-16)*18,0,255).astype("uint8")      # key the panel's own bg out -> grounding shadow follows the panel
     return Image.fromarray(np.dstack([np.asarray(crop).astype("uint8"),alpha]),"RGBA")
 
 def place_in_zone(base,el,zone):
