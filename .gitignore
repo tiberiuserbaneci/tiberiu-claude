@@ -5,3 +5,6 @@ __pycache__/
 # Portal runtime artifacts
 content/portal/manifest.json.tmp
 *.log
+
+# Local session secrets / scratch (NEVER commit - holds Cloudflare token)
+scratchpad/
