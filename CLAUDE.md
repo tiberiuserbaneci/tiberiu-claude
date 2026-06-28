@@ -1150,6 +1150,18 @@ the depth/shadow/texture "3D-look" is coded (soft shadows, bevels, layered cards
 **Type 3 - TikTok + IG, 3D.** The 9:16 fast-flip carousels with Vertex-rendered 3D "object" panels
 (`build_3d916.py` + `build_*_3d.py`). Objects per `analysis/vertex-3d-prompting.md`.
 
+**Ultron logo rule (operator, 2026-06-28 - binding):** whenever Ultron appears on a slide or inside a
+3D object, use the **Ultron SPHERE logo** (`content/ultron-logo.png`, the blue/orange orb). NEVER the
+"51" wordmark, the number 51, "51Ultron", a generic sunburst, or any other mark to stand for Ultron.
+Applies to the Ultron chat object, any app/landing object, footers and covers. (Vertex objects that
+must show the Ultron brand are generated with the sphere; if Vertex renders the wrong mark, regenerate
+or composite the real sphere.)
+
+**Object quality bar (operator, 2026-06-28):** the UNFAIR ADVANTAGE material is the reference - every
+3D object is a recognizable REAL app dashboard/window (real logos), dense and concrete, one material
+system (charcoal / softbox / one warm-orange accent), front-on and complete. Match or beat that bar;
+no generic/abstract panels, no thin 2-3 line cards.
+
 **Shared rules for Types 2 and 3 (TikTok + IG):**
 1. **TikTok and IG are the SAME deck - identical slide set, 10 pages each. ONLY page 1 (the cover)
    differs** (operator-confirmed 2026-06-28). IG cover = transparent OVERLAY (hook + brand logos,
