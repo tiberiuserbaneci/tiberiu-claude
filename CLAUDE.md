@@ -1132,4 +1132,39 @@ into `analysis/virality-principles.md`. Metrics priority stays: reach+impression
 
 ---
 
+## 31. THE THREE MATERIAL TYPES (operator, 2026-06-28 - binding, per §0.1)
+
+> Every deliverable is exactly ONE of three types. These rules are permanent and supersede any
+> looser earlier phrasing. They reuse and tighten §9 (canvas), §27/§30 (3D pills, covers, density)
+> and the fast-flip system in `analysis/reel-carousel-design.md`.
+
+**Type 1 - LinkedIn** (single-image infographic). Dark Ultron, 1080x1450, hand-coded HTML poster.
+Full design rules in §7-§16 + §27; full caption kit (caption 400-470w + ALT 80-150w + first comment
+40-80w) per §15. One material per topic.
+
+**Type 2 - TikTok + IG, 2D.** Coded-canvas carousels (1080x1920 reel band, or the 1080x1350 editorial
+4:5 where specified). Built ENTIRELY by me from code (`build_slides.py` + `build_*_docs.py`, PIL) -
+the depth/shadow/texture "3D-look" is coded (soft shadows, bevels, layered cards), the SAME way as the
+`app.51ultron.com/docs` coded mockups. **NO Vertex / no generated images in 2D.**
+
+**Type 3 - TikTok + IG, 3D.** The 9:16 fast-flip carousels with Vertex-rendered 3D "object" panels
+(`build_3d916.py` + `build_*_3d.py`). Objects per `analysis/vertex-3d-prompting.md`.
+
+**Shared rules for Types 2 and 3 (TikTok + IG):**
+1. **TikTok and IG are the SAME deck - identical slide set, 10 pages each. ONLY page 1 (the cover)
+   differs** (operator-confirmed 2026-06-28). IG cover = transparent OVERLAY (hook + brand logos,
+   sits over the video intro, `build_ig_cover` / `overlay=True`). TikTok cover = normal opaque page
+   (hook centered + 3D Claude mark below, `overlay=False`, per §30). All other slides are byte-identical
+   between channels. Standard = 10pp (the agentsprod model). **Earlier materials at TikTok 8pp / IG 10pp
+   (jobs, maps, modules, routing, toolstack) are NON-CONFORMING** - bring them to 10/10 on any rebuild.
+2. **3D CTA = one of the 3 pre-rendered reusable pills ONLY** (OPERATOR / FOUNDER / BUILDER), generated
+   ONCE and rotated across materials to keep 3D cost down; I change only the page content, never mint a
+   new CTA object (§30). Comment keyword aligns to the pill word.
+3. **Cover 3D logos are REUSED from the pre-rendered library** (`content/_templates/tiktok/lib/
+   claude-logo-3d-*.png`), picked per material - NEVER regenerated via Vertex per build.
+4. Vertex is called only for NEW content objects that don't exist in `models_*`; covers and CTAs never
+   call Vertex.
+
+---
+
 END OF CONFIG.
