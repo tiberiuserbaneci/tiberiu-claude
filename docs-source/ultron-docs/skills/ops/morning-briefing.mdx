@@ -1,0 +1,65 @@
+---
+title: "Morning Briefing"
+description: "Daily summary of pipeline status, pending tasks, content queue, recent activity, and one recommended action."
+icon: "sun"
+---
+
+The morning briefing skill generates a complete daily summary in 90 seconds. Pipeline, tasks, content, metrics, and one clear recommended action — everything you need to prioritize the day.
+
+## What it produces
+
+```text
+MORNING BRIEFING — April 5, 2026
+
+Pipeline
+  Active deals: 12
+  Moved forward this week: 3 (Acme Corp → proposal, Beta Inc → meeting set)
+  Stuck > 7 days: 2 (Gamma Co, Delta Ltd — Striker follow-up recommended)
+  New this week: 5 leads from Specter batch (4 warm, 1 hot)
+
+Tasks
+  P0: Send Acme Corp proposal (due today)
+  P1: Review Specter's lead batch from yesterday
+  P1: Approve 3 content drafts in queue
+  P2: Update ICP definition for new mid-market focus
+
+Content queue
+  Scheduled today: LinkedIn post (12:00pm) — "Why cold email lists matter more than copy"
+  Pending approval: 2 drafts (Twitter thread, Instagram carousel)
+  This week: 5 pieces planned, 2 published
+
+Metrics (7 days)
+  Leads added: 24
+  Emails sent: 18
+  Reply rate: 11%
+  Meetings booked: 3
+
+Recommended action
+  Striker follow-up on Gamma Co — last contact 9 days ago, deal is stalling.
+  A Day 5 follow-up goes out today if you approve.
+```
+
+## Configuration
+
+| Setting | Value |
+|---------|-------|
+| Model | Fast (Haiku-class) |
+| Max turns | 6 |
+| Execution | Inline |
+| Tools | `get_pipeline_stats`, `get_tasks`, `search_memories`, `lookup_leads` |
+
+Uses the fast model — it's aggregating and formatting, not reasoning. Keeps it quick.
+
+## How to invoke
+
+```text
+Give me my morning briefing.
+```
+
+```text
+What's the state of play today?
+```
+
+<Tip>
+  Run the morning briefing first thing. The recommended action at the bottom is generated based on actual deal state — it's the highest-leverage thing Ultron can suggest for today.
+</Tip>

@@ -1,0 +1,49 @@
+---
+title: "Channels"
+description: "Talk to Ultron from your web browser, Telegram, Slack, or WhatsApp."
+---
+
+Ultron runs on four channels simultaneously.
+
+## Web Dashboard
+- Full-featured interface at [ultron-rouge.vercel.app](https://ultron-rouge.vercel.app)
+- Chat, leads table, content calendar, deal pipeline, agent registry
+- Works on desktop, tablet, and mobile
+
+## Telegram
+- Talk to Ultron in a direct message
+- Send `/connect [workspace_code]` to link your account
+- Full department access from chat
+
+## Slack
+- Install the Ultron app in your Slack workspace
+- Send `/connect [workspace_code]` in any channel
+- Team members can connect their own workspaces
+
+## WhatsApp
+- Message the Ultron number directly
+- Send `/connect [workspace_code]` to link
+- End-to-end encrypted
+
+## Workspace Code
+
+Every user gets a unique workspace code (e.g., `UTR-A3F9K2`). This code links your channel identity to your Ultron workspace.
+
+<Steps>
+  <Step title="Send connect command">
+    `/connect UTR-A3F9K2` in Telegram, Slack, or WhatsApp
+  </Step>
+  <Step title="OpenClaw validates">
+    Gateway checks the code against Supabase
+  </Step>
+  <Step title="Channel linked">
+    Creates a `channel_connections` record linking your channel ID to your user_id
+  </Step>
+  <Step title="Confirmed">
+    Bot responds: "Connected. Your Ultron workspace is now linked."
+  </Step>
+</Steps>
+
+**One workspace, multiple channels.** You can connect all three simultaneously. All channels share the same data.
+
+**Disconnecting:** Send `/disconnect` in any channel to unlink.

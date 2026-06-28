@@ -1,0 +1,62 @@
+---
+title: "Lessons System"
+description: "How Ultron agents learn from errors and apply fixes automatically on the next run."
+icon: "graduation-cap"
+---
+
+Every error an Ultron agent encounters becomes a lesson. Every lesson is recalled before the next run. Errors happen at most once.
+
+## How it works
+
+<Steps>
+  <Step title="Error occurs">
+    An agent encounters a failure: an API rate limit, a scraping block, a tool returning an unexpected format, a cold email failing the quality gate.
+  </Step>
+  <Step title="Lesson stored">
+    The agent immediately stores a feedback memory:
+
+    ```json
+    {
+      "type": "feedback",
+      "tags": ["lesson", "specter"],
+      "text": "LESSON: Apollo returns 429 on bulk enrichment over 10 leads. PREVENTION: Batch max 10 leads per run, wait 2s between batches."
+    }
+    ```
+  </Step>
+  <Step title="Next run starts">
+    Before starting any work, the agent searches memory for lessons tagged with its name:
+
+    ```text
+    search_memories({ query: "lesson specter", limit: 10 })
+    ```
+  </Step>
+  <Step title="Lessons applied">
+    The retrieved lessons are injected before any tool calls. The agent adjusts its behavior — batching correctly, using alternative approaches, avoiding known failure patterns.
+  </Step>
+</Steps>
+
+## Real examples
+
+| Error | Lesson stored |
+|-------|---------------|
+| Apollo 429 on bulk enrichment | Batch max 10, wait 2s between batches |
+| ZeroBounce returns catch-all for a domain | Flag domain as catch-all, reduce outreach priority |
+| LinkedIn scrape blocked | Switch to Apollo for profile data on this domain |
+| Cold email failed quality gate 3x | Default to 2-sentence body for technical audiences |
+| Stripe API key expired mid-session | Check Stripe token validity at session start |
+
+## Why both errors AND successes
+
+The lessons system stores confirmed patterns too:
+
+```text
+VALIDATION: The 3-sentence body + open question CTA
+outperformed longer formats. Reply rate: 12% vs 4%.
+Keep as default for SaaS founder ICP.
+```
+
+Storing only failures causes drift. Ultron starts changing what's working, trying to improve. Storing validations locks in what works.
+
+<Tip>
+  You can manually add lessons. In chat, say: "Remember that [thing you learned] — apply this going forward." Ultron stores it as a feedback memory immediately.
+</Tip>

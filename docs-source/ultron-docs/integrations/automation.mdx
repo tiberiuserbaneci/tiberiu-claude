@@ -1,0 +1,43 @@
+---
+title: "Automation Integrations"
+description: "n8n and Calendly."
+icon: "robot"
+---
+
+## n8n
+
+**What Ultron can do:** List workflows, trigger a workflow by name or ID, activate/deactivate workflows, get execution logs.
+
+**Connection:** n8n instance URL + API key — Settings → Integrations → n8n → Add credentials
+
+**Tools:** `n8n_list_workflows`, `n8n_trigger_workflow`, `n8n_manage_workflow`, `n8n_get_executions`
+
+**How it works with Ultron:** Ultron can trigger n8n workflows as a side effect of any chat action. After Specter saves a new lead, trigger an n8n workflow to notify Slack, update a spreadsheet, or send a webhook.
+
+**Example:**
+```text
+Trigger my "New Hot Lead" n8n workflow for Acme Corp — pass the company name and contact email.
+```
+```text
+List my active n8n workflows and show me the last execution status of each.
+```
+
+---
+
+## Calendly
+
+**What Ultron can do:** List event types, list upcoming events, get event details, create scheduling links, cancel events.
+
+**Connection:** Calendly OAuth — Settings → Integrations → Calendly → Connect
+
+**Tools:** `calendly_list_event_types`, `calendly_list_events`, `calendly_create_link`, `calendly_cancel_event`
+
+**How agents use it:** Striker includes a personalized Calendly link in follow-up emails. The link is generated dynamically with the right event type for the conversation stage.
+
+**Example:**
+```text
+Create a 30-minute Calendly link for discovery calls and include it in the Acme Corp Day 5 follow-up.
+```
+```text
+What meetings do I have booked through Calendly this week?
+```

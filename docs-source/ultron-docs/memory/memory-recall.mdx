@@ -1,0 +1,48 @@
+---
+title: "Memory Recall"
+description: "How Ultron selects the right memories for each turn — and why it caps at 5."
+icon: "magnifying-glass"
+---
+
+Ultron doesn't inject all memories into every conversation. That would flood context with irrelevant information. Instead, a targeted recall system selects exactly the entries most relevant to the current task.
+
+## How recall works
+
+<Steps>
+  <Step title="Side-query runs">
+    Before each agent turn, a separate fast-model side-query runs against the memory store. It receives the current task objective and searches for relevant entries.
+  </Step>
+  <Step title="Candidates scored">
+    Memory entries are ranked by semantic relevance to the current objective. Recency is a secondary factor — fresh entries score slightly higher when relevance is equal.
+  </Step>
+  <Step title="Deduplication applied">
+    Entries that were already surfaced in recent turns are skipped. This prevents the same memory from appearing repeatedly and wasting context.
+  </Step>
+  <Step title="Top 5 injected">
+    The 5 highest-scoring entries are injected into context before Kimi K2 sees the message. More than 5 adds noise without improving output.
+  </Step>
+</Steps>
+
+## Why the cap is 5
+
+Intuition says more context is better. In practice, it isn't.
+
+With more than 5 memories injected, two things happen:
+1. Irrelevant entries dilute the signal of relevant ones
+2. Token budget fills up faster, triggering compression sooner
+
+5 high-signal entries outperform 15 mixed-relevance entries every time.
+
+## Memory drift defense
+
+Before any memory entry is injected, Ultron validates it:
+
+- File paths mentioned — do they still exist?
+- Functions referenced — are they still in the codebase?
+- External references — are they still current?
+
+Stale memories that reference deleted files or outdated context are flagged or skipped rather than injected and acted on incorrectly.
+
+<Warning>
+  If Ultron says "I don't have recent information on this" when you expect it to, the relevant memory may be stale or tagged with a different topic. Use the Brain Graph to audit what's stored.
+</Warning>

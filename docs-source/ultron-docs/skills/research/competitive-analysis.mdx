@@ -1,0 +1,81 @@
+---
+title: "Competitive Analysis"
+description: "Full market map of a competitor: funding, pricing, product, customers, weaknesses, and win strategy."
+icon: "chart-bar"
+---
+
+The competitive analysis skill produces a complete intelligence package on any competitor or market category. Not a summary — a structured brief with pricing, positioning, identified weaknesses, and a clear win strategy.
+
+## What it produces
+
+```text
+COMPETITIVE ANALYSIS — HubSpot
+
+Overview
+  Category: CRM + Marketing + Sales automation
+  Founded: 2006 | Public (NYSE: HUBS) | $2.6B ARR
+  Positioning: "All-in-one growth platform for SMB to mid-market"
+
+Pricing (verified 2026-04-01)
+  Starter: $20/seat/month (Marketing + Sales + Service)
+  Professional: $890/month (3 seats included)
+  Enterprise: $3,600/month (5 seats included)
+  Note: Significant add-on costs for additional seats and features
+
+Product strengths
+  - Breadth: CRM + email + landing pages + reporting in one product
+  - Ecosystem: 1,500+ integrations in marketplace
+  - Brand: dominant awareness in SMB segment
+
+Product gaps
+  - AI: bolt-on AI, not native to the workflow
+  - LinkedIn: poor native integration, requires Zapier
+  - Complexity: high onboarding cost for full feature set
+
+Customer profile
+  - SMB to mid-market (10–500 employees)
+  - Marketing-led growth companies
+  - Teams that prioritize breadth over depth
+
+Win strategy vs HubSpot
+  - ICP where depth beats breadth (outbound-heavy teams)
+  - AI-native positioning — not a feature, the foundation
+  - Faster time to first value (no 3-month onboarding)
+  - LinkedIn-native workflow as differentiator
+```
+
+## Configuration
+
+| Setting | Value |
+|---------|-------|
+| Model | Kimi K2 |
+| Max turns | 10 |
+| Execution | Fork |
+| Tools | `web_search_multiple`, `scrape_website`, `browser_action`, `search_memories`, `save_memory` |
+
+## When to use it
+
+- Before a sales call where you know a competitor is in the deal
+- Before a board presentation or investor update
+- When a competitor announces a new product, pricing change, or funding round
+- When entering a new market and mapping the landscape
+
+## How to invoke
+
+```text
+Run a competitive analysis on Salesforce.
+```
+
+```text
+I have a deal where HubSpot is the incumbent. Run competitive analysis so I know how to position.
+```
+
+## Anti-fabrication
+
+If a pricing page is behind a login or unavailable, the output notes "pricing not publicly listed — verify at salesforce.com/pricing" rather than estimating. Only confirmed public data is reported as fact.
+
+## Canvas outputs
+
+- [Comparison Table](/canvas/sales) — feature/pricing side-by-side
+- [SWOT Grid](/canvas/research) — competitor's strengths and weaknesses
+- [Positioning Map](/canvas/research) — landscape visualization

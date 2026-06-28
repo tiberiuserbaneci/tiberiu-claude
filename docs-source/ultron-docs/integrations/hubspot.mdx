@@ -1,0 +1,43 @@
+---
+title: "HubSpot"
+description: "Sync your leads and deals to HubSpot so Ultron and your CRM stay in sync."
+---
+
+HubSpot integration keeps your Ultron leads and deals synchronized with your CRM. Leads Specter finds flow into HubSpot contacts. Deals Striker tracks update in both places.
+
+## What it enables
+
+- Leads from Specter automatically sync to HubSpot contacts
+- Deal stage updates in Ultron reflect in HubSpot deals
+- Outreach activity logged in HubSpot contact timelines
+- Pull existing HubSpot contacts into Ultron for research and enrichment
+
+## How to connect
+
+<Steps>
+  <Step title="Create a HubSpot private app">
+    1. Log in to HubSpot → **Settings → Integrations → Private Apps**
+    2. Click **Create a private app**
+    3. Name it "Ultron"
+    4. Under **Scopes**, enable:
+       - `crm.objects.contacts.read`
+       - `crm.objects.contacts.write`
+       - `crm.objects.deals.read`
+       - `crm.objects.deals.write`
+    5. Click **Create app** and copy the access token
+  </Step>
+  <Step title="Add it to Ultron">
+    1. Open your Ultron dashboard → **Integrations**
+    2. Find the HubSpot card and click **Connect**
+    3. Paste your HubSpot access token and save
+  </Step>
+</Steps>
+
+## Sync behavior
+
+| Direction | What syncs |
+|-----------|-----------|
+| Ultron → HubSpot | New leads Specter finds, deal stage changes, outreach activity |
+| HubSpot → Ultron | Existing contacts (for research and enrichment tasks) |
+
+Sync happens when leads or deals are saved — not on a delay. When Specter saves a lead, it appears in HubSpot within seconds.

@@ -1,0 +1,61 @@
+---
+title: "Trigger Events"
+description: "Identify companies with recent signals that indicate buying intent or ideal entry points for outreach."
+icon: "bell"
+---
+
+The best time to reach a prospect is right after something changes. Trigger Events finds companies where something just changed — and surfaces the right outreach angle for each one.
+
+## Triggers Ultron watches
+
+| Trigger | Why it matters | Outreach angle |
+|---------|---------------|----------------|
+| Funding round closed | Company has budget, is actively scaling | "Congrats on the raise — most teams at your stage hit [X] next" |
+| New executive hire | Evaluation cycle in motion, new priorities | Reference the hire, address their mandate |
+| Job posting pattern | Hiring X roles signals specific problems | "You're hiring 3 SDRs — here's what most teams get wrong at that stage" |
+| Competitor switch | Highest-intent signal available | "Saw you moved off [competitor] — here's what teams usually need next" |
+| News / press coverage | Raised profile, ego is up, receptive | Reference the press, acknowledge the milestone |
+| Tech stack change | Infrastructure decision signals adjacent needs | Address the new stack specifically |
+
+## What it produces
+
+```text
+TRIGGER EVENTS — this week
+
+Acme Corp — Series B announced April 3
+  Signal strength: High
+  Contact: Sarah Chen (CEO)
+  Angle: "Congrats on the $42M raise. Most B2B teams at your stage
+          hit the ops wall right after Series B. Worth 20 minutes?"
+
+Beta Inc — New VP Sales hired from Workato (April 1)
+  Signal strength: High
+  Contact: New VP (Rachel Kim)
+  Angle: "Saw you just joined Beta as VP Sales. Teams coming from
+          Workato usually have specific expectations about integrations..."
+
+Gamma Co — 3 SDR job postings (this week)
+  Signal strength: Medium
+  Contact: Head of Sales
+  Angle: "You're scaling the SDR team. Here's the playbook most teams
+          wish they had before the first hire."
+```
+
+## Configuration
+
+| Setting | Value |
+|---------|-------|
+| Model | Kimi K2 |
+| Max turns | 10 |
+| Execution | Fork |
+| Tools | `web_search`, `web_search_multiple`, `scrape_website`, `search_memories`, `save_lead`, `create_task` |
+
+## How to invoke
+
+```text
+Find trigger events for companies in my target market this week.
+```
+
+```text
+Look for recent funding rounds and executive hires at B2B SaaS companies 50–500 employees in the US.
+```

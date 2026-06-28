@@ -1,0 +1,46 @@
+---
+title: "Onboarding"
+description: "How Ultron learns about your business."
+---
+
+When you first chat with Ultron, it runs an onboarding sequence to learn about your business.
+
+## What Ultron asks
+
+### Business Profile
+- What's your business name?
+- What do you sell? (products, services, pricing)
+- Who is your ideal customer? (ICP description)
+- Who are your main competitors?
+- What are common objections you hear?
+- Do you have case studies or testimonials?
+
+### Content Voice
+- What platforms do you publish on? (LinkedIn, Twitter, Instagram, Substack, Blog, Email)
+- What tone do you write in? (professional, casual, provocative, educational)
+- Paste 2-3 examples of content you've written so Ultron can calibrate your voice
+
+### Sales Context
+- What's your average deal size?
+- What's your sales cycle length?
+- What verticals do you target?
+- What job titles do you sell to?
+
+## Where this data lives
+
+All onboarding data is stored in your `profiles` table:
+
+| Field | Purpose |
+|---|---|
+| `business_name` | Company name |
+| `business_description` | What you do |
+| `icp_description` | Your ideal customer |
+| `platforms` | Where you publish (array) |
+| `voice_tone` | Your writing style |
+| `voice_samples` | Example posts (array) |
+| `business_profile` | Pricing, case studies, objections, competitors (JSON) |
+| `onboarding_completed` | Whether onboarding is done |
+
+## Re-running onboarding
+
+Update your business profile anytime from **Dashboard → Settings → Business Profile**. Changes take effect immediately on your next conversation.

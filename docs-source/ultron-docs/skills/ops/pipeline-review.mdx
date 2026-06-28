@@ -1,0 +1,79 @@
+---
+title: "Pipeline Review"
+description: "Full deal pipeline analysis: stage distribution, stuck deals, velocity, win rate by source, and next actions."
+icon: "chart-gantt"
+---
+
+The pipeline review skill analyzes your full deal pipeline and returns a structured assessment — where deals stand, which ones are at risk, what's moving, and what to do next.
+
+## What it produces
+
+- **Stage distribution** — deal count and value at each stage
+- **At-risk deals** — deals with no activity in more than 7 days
+- **Deals advanced this week** — what moved and why
+- **Average time in each stage** — where deals slow down
+- **Win rate by lead source** — which sources close best
+- **Recommended actions per stuck deal** — specific next step for each
+
+## Example output
+
+```text
+PIPELINE REVIEW — April 5, 2026
+
+Stage distribution
+  Contacted:    8 deals  ($140K)
+  Engaged:      5 deals  ($210K)
+  Meeting set:  3 deals  ($180K)
+  Proposal:     2 deals  ($95K)
+  Total pipeline: $625K
+
+At-risk (no activity > 7 days)
+  Gamma Co — 9 days stalled at Engaged
+    Recommended: Day 5 follow-up, different angle
+  Delta Ltd — 11 days stalled at Meeting Set
+    Recommended: Re-confirm the meeting or move to nurture
+
+Advanced this week
+  Acme Corp: Engaged → Proposal (meeting went well, proposal requested)
+  Beta Inc: Contacted → Meeting Set (replied to Day 3 follow-up)
+
+Stage velocity (avg days)
+  Contacted → Engaged: 4.2 days
+  Engaged → Meeting Set: 8.7 days  ← slowest stage
+  Meeting Set → Proposal: 3.1 days
+
+Win rate by source
+  Trigger events: 28%
+  ICP batch (Specter): 19%
+  Inbound: 34%
+  Referral: 41%
+
+Recommended actions
+  1. Striker: Day 5 follow-up on Gamma Co today
+  2. Striker: Re-confirm Delta Ltd meeting — 11 days is too long
+  3. Specter: Source more trigger event leads (highest close rate)
+```
+
+## Configuration
+
+| Setting | Value |
+|---------|-------|
+| Model | Kimi K2 |
+| Max turns | 8 |
+| Execution | Fork |
+| Tools | `get_pipeline_stats`, `lookup_leads`, `search_memories`, `hubspot_list_deals` |
+
+## Canvas outputs
+
+- [Funnel Chart](/canvas/ops) — visual pipeline stage breakdown
+- [Metrics Dashboard](/canvas/ops) — KPI cards with trend indicators
+
+## How to invoke
+
+```text
+Review my pipeline.
+```
+
+```text
+What's stuck in the pipeline and what should I do about it?
+```

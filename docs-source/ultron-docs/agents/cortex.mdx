@@ -1,0 +1,81 @@
+---
+title: "Cortex"
+description: "Research and intelligence. Company profiles, competitive maps, pricing benchmarks, meeting prep."
+icon: "microscope"
+---
+
+Cortex turns a company name into a full intelligence package. Funding history, leadership, product strengths and gaps, pricing, customer profile, win strategy. Everything a sales or strategy conversation needs.
+
+## What Cortex produces
+
+- **Company deep-dive** — overview, funding, team, product, tech stack signals, recent news
+- **Competitive landscape** — full market map with positioning, pricing, and identified weaknesses
+- **Pricing research** — tier analysis across competitors, benchmarked against market
+- **Meeting prep brief** — pre-call summary with talking points, anticipated objections, and recommended questions
+- **ICP fit scoring** — 1–10 score against your defined ICP, with reasoning
+
+## Tools
+
+| Tool | Purpose |
+|------|---------|
+| `web_search` | Brave Search — real-time company and market research |
+| `web_search_multiple` | 3 parallel searches simultaneously |
+| `scrape_website` | Full page extraction via Browserbase |
+| `browser_action` | Playwright for JS-rendered pages and gated content |
+| `search_people` | Apollo — leadership and stakeholder lookup |
+| `search_memories` | Pull past research on the same company |
+| `save_memory` | Store research for Striker and Pulse to use |
+
+## Skills
+
+- [Competitive Analysis](/skills/research/competitive-analysis)
+- [Company Deep Dive](/skills/research/company-deep-dive)
+- [Pricing Research](/skills/research/pricing-research)
+- [Meeting Prep](/skills/research/meeting-prep)
+
+## Example output
+
+Task: *"Research Acme Corp before my call Friday."*
+
+```text
+ACME CORP — MEETING PREP BRIEF
+
+Company: Acme Corp | Series B ($42M) | 180 employees | San Francisco
+Product: B2B workflow automation for operations teams
+Founded: 2019 | CEO: Sarah Chen (ex-Salesforce, ex-McKinsey)
+
+Recent news:
+  - Launched enterprise tier Q1 2026
+  - Hired VP Sales from Workato (signal: scaling revenue motion)
+  - 3 open SDR roles posted this week
+
+ICP fit score: 8/10
+  Strengths: right size, right funding stage, operations focus matches our use case
+  Gap: no data on current tool stack
+
+Talking points:
+  1. Their Q1 enterprise launch — new needs at that scale
+  2. SDR hiring signal — they're investing in outbound
+  3. Workato VP hire — they know integration complexity
+
+Anticipated objections:
+  - "We already use [X]" — focus on what X doesn't do for their new enterprise tier
+  - "Not the right time" — the SDR hiring suggests they're actively scaling now
+
+Recommended questions:
+  1. What's the biggest bottleneck in your current workflow for enterprise accounts?
+  2. How is the Workato hire changing how you think about integrations?
+  3. What does success look like in the next 90 days for your ops team?
+```
+
+## Anti-fabrication
+
+If Cortex can't find a specific number (revenue, headcount, exact pricing), it says so explicitly rather than estimating. It uses qualitative language: "strong growth signals", "market-leading position", "verify current pricing at acmecorp.com".
+
+## Canvas outputs
+
+Cortex research can be rendered as:
+- [Comparison Table](/canvas/sales) — competitor feature/pricing comparison
+- [SWOT Grid](/canvas/research) — strengths, weaknesses, opportunities, threats
+- [Score Card](/canvas/research) — weighted ICP fit scoring
+- [Positioning Map](/canvas/research) — competitive landscape visualization

@@ -1,0 +1,28 @@
+---
+title: "Overview"
+description: "How Ultron is organized into three departments."
+---
+
+## Department Map
+
+| Department | Skills | What it does |
+|---|---|---|
+| **Ultron Sales** | ProspectIQ Engine, Deal Closer | Find leads, enrich data, send outreach, track deals |
+| **Ultron Creates** | Ghost Writer, Content Engine | Write content, scrape trends, repurpose across platforms |
+| **Ultron Builds** | Clone Army | Deploy AI agents, schedule tasks, sell agents to clients |
+
+## How Departments Work
+
+When you open a chat, you select a department. Ultron loads the right system prompt with all the skills, rules, and integrations for that department.
+
+You can switch departments at any time. Each conversation is tagged to a department so you can find it later.
+
+## Data Flow
+
+```
+You (chat) → Ultron → Department Skill → Integration APIs → Results → Dashboard
+                                                                    → Supabase Tables
+                                                                    → Activity Feed
+```
+
+Every action Ultron takes is stored in your workspace: leads go to the Leads table, content goes to the Content table, deals go to the Deals pipeline, agents go to the Agent registry.

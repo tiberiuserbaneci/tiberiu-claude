@@ -1,0 +1,50 @@
+---
+title: "Self-Hosting"
+description: "Run OpenClaw on your own server for full control."
+---
+
+<Info>
+  Full installation guide: [docs.openclaw.ai/start/getting-started](https://docs.openclaw.ai/start/getting-started)
+</Info>
+
+## Requirements
+
+- Node.js 22+
+- An API key (Anthropic recommended)
+- A server with persistent process (EC2, Railway, VPS, etc.)
+
+## Quick Start
+
+```bash
+# Install OpenClaw globally
+npm install -g openclaw@latest
+
+# Run guided setup
+openclaw onboard --install-daemon
+
+# Connect channels
+openclaw channels login
+
+# Start the Gateway
+openclaw gateway --port 18789
+```
+
+## Ultron's Setup
+
+Ultron runs OpenClaw on an AWS EC2 instance. The Gateway process stays alive 24/7, serving all connected channels simultaneously.
+
+## Remote Access
+
+For accessing the Gateway from outside your local network:
+
+- **SSH tunnel:** `ssh -L 18789:localhost:18789 user@server`
+- **Tailscale:** Connect via tailnet for secure remote access
+- **Reverse proxy:** Nginx/Caddy for HTTPS access
+
+For full remote access guide: [docs.openclaw.ai/gateway/remote](https://docs.openclaw.ai/gateway/remote)
+
+## Resources
+
+- **Docs:** [docs.openclaw.ai](https://docs.openclaw.ai)
+- **GitHub:** [github.com/openclaw/openclaw](https://github.com/openclaw/openclaw)
+- **Releases:** [github.com/openclaw/openclaw/releases](https://github.com/openclaw/openclaw/releases)

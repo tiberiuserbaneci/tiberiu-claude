@@ -1,0 +1,47 @@
+---
+title: "How Canvas Works"
+description: "Entity extraction, live web research, schema construction, and inline rendering in four steps."
+icon: "gears"
+---
+
+Every canvas goes through the same pipeline before it renders. The result is a visual built on real data — not placeholder content.
+
+## Generation pipeline
+
+```text
+User request: "Compare HubSpot vs Salesforce on pricing and key features."
+    ↓
+Step 1: Entity extraction
+    Identifies: ["HubSpot", "Salesforce"]
+    Canvas type: comparison_table
+    ↓
+Step 2: Pre-research (Brave Search × 3 in parallel)
+    web_search("HubSpot pricing 2026")
+    web_search("Salesforce pricing enterprise 2026")  ← parallel
+    web_search("HubSpot vs Salesforce features")      ← parallel
+    Scrapes live pricing pages where accessible
+    ↓
+Step 3: Schema construction
+    Research data mapped to comparison_table JSON schema
+    Kimi K2 fills sections: features, pricing tiers, verdict
+    Only verified data from step 2 used as facts
+    ↓
+Step 4: React render
+    comparison_table component renders inline in chat
+    All styling applied, no external iframe
+    Export button available immediately
+```
+
+## Real data
+
+Ultron runs 3 web searches before generating any canvas that involves external data. Pricing figures, feature lists, company stats — all sourced from live pages, not from training data.
+
+If a source is unavailable or pricing is gated, the canvas notes it: *"Enterprise pricing not publicly listed — verify at salesforce.com/pricing."*
+
+## Inline rendering
+
+Canvases render as React components inside the chat thread. They're not images. They're live components with full visual fidelity — readable, scrollable (for long canvases), and exportable on demand.
+
+<Tip>
+  For best results with comparison canvases, name specific products: "Compare HubSpot, Salesforce, and Pipedrive" produces better output than "Compare CRM tools."
+</Tip>

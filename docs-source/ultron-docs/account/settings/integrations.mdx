@@ -1,0 +1,43 @@
+---
+title: "Managing Integrations"
+description: "Connect, manage, and disconnect your external tools."
+icon: "plug"
+---
+
+## Connecting an integration
+
+**OAuth integrations** (Gmail, HubSpot, Slack, Notion, LinkedIn, GitHub, Calendly):
+1. Go to **Settings → Integrations**
+2. Find the integration
+3. Click **Connect**
+4. Authorize in the popup
+5. Done — available in your next session
+
+**API key integrations** (Apollo, Stripe, ZeroBounce, Brevo, n8n, Apify, Browserbase):
+1. Go to **Settings → Integrations**
+2. Find the integration
+3. Click **Add API key**
+4. Paste your key — it's validated on save
+5. Done — available in your next session
+
+## Credential storage
+
+All credentials are encrypted with AES-256 at rest. Decrypted only at session start for injection into MCP server configuration. Keys are never logged or exposed in tool call output.
+
+For OAuth integrations, Ultron requests minimum required scope. You can review what access was granted from your OAuth provider's connected apps page.
+
+## Integration status
+
+Each integration shows one of three statuses:
+
+| Status | Meaning |
+|--------|---------|
+| Connected | Active and ready |
+| Disconnected | Removed or not yet connected |
+| Expired | OAuth token needs refresh — click Reconnect |
+
+OAuth tokens refresh automatically in most cases. If a token expires and auto-refresh fails, a banner appears in the next session prompting you to reconnect.
+
+## Disconnecting
+
+Click **Disconnect** on any integration to remove it. The stored token or API key is deleted immediately. The integration becomes unavailable in the next session.

@@ -1,0 +1,67 @@
+---
+title: "Your AI Team"
+description: "Five specialized agents that cover research, lead generation, sales, content, and infrastructure."
+icon: "users"
+---
+
+Ultron runs five agents. Each is a specialist. They don't generalize — they go deep on one domain and hand work off to each other when the task crosses into another agent's territory.
+
+## The team
+
+| Agent | Specialty | Primary tools | Use when |
+|-------|-----------|---------------|----------|
+| **Cortex** | Research & intelligence | web_search, scrape_website, browser_action | You need deep company or market intel |
+| **Specter** | Lead generation | Apollo, enrich_lead, verify_email, save_lead | You're building or qualifying a prospect list |
+| **Striker** | Sales execution | cold email, follow-up sequences, HubSpot | You're running outbound or nurturing deals |
+| **Pulse** | Content & brand | VIRALS scoring, social scheduling, trend research | You're creating and publishing content |
+| **Sentinel** | Infrastructure | health checks, uptime monitoring, lessons logging | System reliability and self-improvement |
+
+## How agents coordinate
+
+Agents hand work off via tasks. Specter finds a lead with a score of 8 or higher — it creates a task assigned to Striker. Striker picks it up, reads Specter's research from memory, writes the cold email, and begins the follow-up sequence.
+
+```text
+Specter finds "Acme Corp CTO" — ICP match, score: 9
+    ↓
+  Saves lead to CRM
+  Creates task: "Cold outreach — Acme Corp CTO" (P1, assignee: Striker)
+    ↓
+Striker picks up task
+  Reads Specter's research from memory
+  Writes cold email — passes 6-point quality gate
+  Sends via Gmail
+    ↓ (no reply after 3 days)
+Striker Day 3 follow-up
+  New angle, new value add, 75 words
+    ↓ (reply received)
+Striker logs outcome to memory
+  Updates deal stage in HubSpot
+  Creates task: "Send proposal — Acme Corp" (P0, assignee: Striker)
+```
+
+This chain happens without you manually directing each step.
+
+## Assigning work
+
+You assign tasks to agents directly from chat:
+
+```text
+Assign Cortex to research Notion's pricing and product positioning.
+```
+
+```text
+Have Specter find 20 CTOs at Series A SaaS companies in the US.
+```
+
+```text
+Tell Striker to follow up on all emails sent more than 5 days ago with no reply.
+```
+
+Agents also pick up tasks automatically when they're assigned in the task queue.
+
+<CardGroup cols={2}>
+  <Card title="Cortex" icon="microscope" href="/agents/cortex">Research and intelligence.</Card>
+  <Card title="Specter" icon="crosshairs" href="/agents/specter">Lead generation and enrichment.</Card>
+  <Card title="Striker" icon="paper-plane" href="/agents/striker">Sales execution and outreach.</Card>
+  <Card title="Pulse" icon="signal" href="/agents/pulse">Content creation and publishing.</Card>
+</CardGroup>

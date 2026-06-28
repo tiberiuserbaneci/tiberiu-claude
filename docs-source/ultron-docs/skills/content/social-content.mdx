@@ -1,0 +1,113 @@
+---
+title: "Social Content"
+description: "Platform-optimized content for Twitter/X, Instagram, Reels, and blog. VIRALS scored before delivery."
+icon: "share-nodes"
+---
+
+The social content skill adapts a single idea or brief into platform-specific formats. One brief → four platform versions, each following the rules of that platform.
+
+## Platform rules
+
+<Tabs>
+  <Tab title="Twitter / X">
+    - Max 6 tweets in a thread
+    - First tweet must stand alone as a hook
+    - Staccato rhythm — short sentences, one idea per tweet
+    - No thread padding: if it doesn't add value, cut it
+    - Numbered tweets for threads (1/6, 2/6, etc.)
+
+    ```text
+    1/5 Most founders price their product wrong.
+         Not too high. Too vague.
+
+    2/5 "It depends" is not a price.
+         It's a stall. Buyers don't buy what they can't budget.
+
+    3/5 The fix: anchor to an outcome, not a feature list.
+         "$2,000/month to replace a $6,000/month hire" lands.
+         "Starting at $2,000" doesn't.
+
+    4/5 Pricing clarity = faster sales cycles.
+         When buyers know the number, they can make a decision.
+         Mystery creates friction, not intrigue.
+
+    5/5 Simplest test: can your prospect explain your pricing
+         to their boss in one sentence?
+         If not, simplify it until they can.
+    ```
+  </Tab>
+
+  <Tab title="Instagram Carousel">
+    - Slide 1: hook, max 8 words
+    - Slides 2–8: one idea per slide, max 15 words each
+    - Final slide: CTA
+    - Visual-first thinking: every slide is a standalone unit
+    - No paragraphs — fragments and punchy statements only
+
+    ```text
+    Slide 1: "Your cold emails aren't the problem."
+    Slide 2: "The list is."
+    Slide 3: "80% of your prospects don't match your ICP."
+    Slide 4: "You're optimizing the email for the wrong 80%."
+    Slide 5: "Fix the list first. Then write the email."
+    Slide 6: "Start with 50 people who match exactly. Not 500 who kinda do."
+    Slide 7: "Quality beats quantity every time in outbound."
+    Slide 8: "Save this. Share it with your SDR."
+    ```
+  </Tab>
+
+  <Tab title="Reels / TikTok">
+    - Max 120 words for the full script
+    - Hook in the first 3 seconds (spoken, not text overlay)
+    - Pattern interrupt opening — no slow builds
+    - Conversational, direct, one idea
+    - End with a clear takeaway or question
+
+    ```text
+    [0-3s] "Your pricing page is killing your close rate."
+
+    [3-15s] Most SaaS pricing pages do three things wrong:
+             they bury the price, they list features not outcomes,
+             and they give three tiers when one would close faster.
+
+    [15-30s] The fix is simple. Put the price above the fold.
+              Replace feature bullets with outcome bullets.
+              And if you're early stage, one tier, one price,
+              one sentence about who it's for.
+
+    [30-35s] What does your pricing page do wrong?
+              Drop it in the comments.
+    ```
+  </Tab>
+
+  <Tab title="Blog">
+    - Outline-first: clear thesis before body
+    - First paragraph: thesis stated plainly, no preamble
+    - Each section: one idea, one header, no padding
+    - No filler phrases: "In today's world," "It goes without saying"
+    - Conclusion: what to do, not what was said
+    - Length: as long as needed, not a word longer
+  </Tab>
+</Tabs>
+
+## Configuration
+
+| Setting | Value |
+|---------|-------|
+| Model | Kimi K2 |
+| Max turns | 8 |
+| Tools | `web_search`, `web_search_multiple`, `search_reddit`, `search_memories`, `save_content` |
+
+## How to invoke
+
+```text
+Create a Twitter thread about why most product demos fail.
+```
+
+```text
+Write an Instagram carousel on the 5 mistakes founders make in their first sales hire.
+```
+
+```text
+Write a Reels script on why cold email lists matter more than cold email copy.
+```

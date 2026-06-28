@@ -1,0 +1,31 @@
+---
+title: "Integrations"
+description: "Connect your APIs and tools to unlock more capabilities."
+---
+
+## Integration Cards
+
+| Integration | Description | Required? |
+|---|---|---|
+| Claude API / OpenRouter | Power Ultron's AI brain | **Yes** |
+| Apollo.io | Verified lead data | Optional |
+| Google Workspace | Send emails, schedule meetings, create docs | Optional |
+| Apify | Deep social media scraping | Optional |
+| ZeroBounce | Email deliverability verification | Optional |
+| N8N | Automation workflow engine | Optional |
+
+## Connecting
+
+Click any card to enter your API key or start an OAuth flow.
+
+<Warning>
+All API keys are encrypted before storage. Keys are never exposed to the frontend. The server decrypts them only when making API calls on your behalf.
+</Warning>
+
+## Google Workspace OAuth
+
+1. Click "Connect Google" on the Integrations page
+2. Google OAuth consent screen opens
+3. Grant permissions for Gmail, Calendar, Drive, Sheets, Docs
+4. Callback saves encrypted refresh token
+5. Works from both dashboard AND Telegram/Slack/WhatsApp

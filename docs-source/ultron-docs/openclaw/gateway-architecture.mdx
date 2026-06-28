@@ -1,0 +1,59 @@
+---
+title: "Gateway Architecture"
+description: "How the OpenClaw Gateway processes messages and routes to agents."
+---
+
+<Info>
+  For complete Gateway documentation, see [docs.openclaw.ai/concepts/architecture](https://docs.openclaw.ai/concepts/architecture)
+</Info>
+
+## Overview
+
+A single long-lived **Gateway** process owns all messaging surfaces (WhatsApp via Baileys, Telegram via grammY, Slack, Discord, Signal, iMessage, WebChat).
+
+Control-plane clients (macOS app, CLI, web UI, automations) connect to the Gateway over **WebSocket** on the configured bind host (default `127.0.0.1:18789`).
+
+## Components
+
+### Gateway (daemon)
+- Maintains provider connections
+- Exposes a typed WebSocket API (requests, responses, server-push events)
+- Validates inbound frames against JSON Schema
+- Emits events: `agent`, `chat`, `presence`, `health`, `heartbeat`, `cron`
+
+### Clients (web admin / CLI)
+- One WebSocket connection per client
+- Send requests: `health`, `status`, `send`, `agent`, `system-presence`
+- Subscribe to events: `tick`, `agent`, `presence`, `shutdown`
+
+### Nodes (mobile / headless)
+- Connect over WebSocket with `role: node`
+- Declare explicit capabilities and commands
+- Support Canvas for rich UI rendering
+
+## Key Invariants
+
+- One Gateway per host
+- Gateway is the only process that opens WhatsApp/Telegram sessions
+- All data flows through the Gateway WebSocket
+- Sessions are isolated per agent/workspace/sender
+
+## Configuration
+
+Config lives at `~/.openclaw/openclaw.json`. Default behavior uses the bundled AI agent with per-sender sessions.
+
+```json
+{
+  "channels": {
+    "whatsapp": {
+      "allowFrom": ["+15555550123"],
+      "groups": { "*": { "requireMention": true } }
+    }
+  },
+  "messages": {
+    "groupChat": { "mentionPatterns": ["@openclaw"] }
+  }
+}
+```
+
+For full configuration reference: [docs.openclaw.ai/gateway/configuration](https://docs.openclaw.ai/gateway/configuration)

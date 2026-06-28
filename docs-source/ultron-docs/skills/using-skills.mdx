@@ -1,0 +1,66 @@
+---
+title: "Using Skills"
+description: "How to invoke skills from chat, what to expect during execution, and how results are saved."
+icon: "play"
+---
+
+## Invoking a skill
+
+You don't need a command or syntax. Describe what you need in plain language and Ultron routes to the right skill:
+
+```text
+Run a competitive analysis on HubSpot.
+```
+
+```text
+Write a cold email to the VP of Engineering at Stripe referencing their recent infrastructure blog post.
+```
+
+```text
+Create a LinkedIn post about why most B2B cold emails fail.
+```
+
+The more specific the objective, the better the output. Vague objectives produce vague results.
+
+## Good vs. vague objectives
+
+| Too vague | Specific |
+|-----------|----------|
+| "Write an email" | "Write a cold email to the Head of Growth at Linear referencing their recent Series B" |
+| "Research a company" | "Deep dive on Notion — I'm pitching their CTO next Thursday" |
+| "Create content" | "Write a LinkedIn post about why most SDR-to-AE handoffs fail, for a sales ops audience" |
+
+## What you see during execution
+
+Tool activity streams in real-time as the skill runs:
+
+```text
+[skill]  competitive-analysis: starting
+[tool]   web_search("HubSpot pricing 2026")
+[tool]   web_search("HubSpot vs competitors features")  ← parallel
+[tool]   scrape_website("hubspot.com/pricing")           ← parallel
+[tool]   search_memories("competitor research hubspot")
+[result] 4 sources processed
+[tool]   save_memory({ tags: ["cortex", "competitive", "hubspot"] })
+[skill]  competitive-analysis: complete
+```
+
+You can follow along with exactly what Ultron is doing and why.
+
+## After execution
+
+Every skill run automatically:
+
+1. **Saves results to memory** — tagged with skill category and the entity researched
+2. **Logs activity** — timestamped entry in the activity feed
+3. **Returns the result inline** — text, table, or canvas in the chat thread
+
+You don't need to save anything manually.
+
+## Cancelling a skill
+
+Type "stop" or "cancel" at any point to interrupt a running skill. Partial results are still returned if any tool calls completed.
+
+<Tip>
+  If a skill produces output that's close but not quite right, follow up directly in chat: "Make the email shorter" or "Add a SWOT section to that analysis." Ultron updates in the same thread.
+</Tip>

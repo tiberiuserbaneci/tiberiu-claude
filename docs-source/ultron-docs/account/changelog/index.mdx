@@ -1,0 +1,63 @@
+---
+title: "Changelog"
+description: "What's new in Ultron."
+icon: "clock"
+---
+
+## v0.3 — March 2026
+
+**Kimi K2 model upgrade**
+- Upgraded the primary execution model to Kimi K2 via Moonshot AI
+- Significant improvements to cold email personalization, competitive analysis depth, and content quality
+- Model routing updated: Kimi K2 for complex reasoning, fast model for lightweight tasks
+
+**Compression engine v2**
+- 3-layer cascade compression: MicroCompact → Session Memory Compact → API Digest
+- Sessions now run indefinitely without manual restarts
+- CompactBoundary mechanism prevents re-compressing already-compressed content
+
+**Brain Graph**
+- Visual semantic memory map launched
+- Navigate, audit, and delete memory entries from a connected graph view
+- Edge strength reflects semantic similarity between memory nodes
+
+**50+ MCP servers**
+- Expanded from 20 to 50+ pre-loaded MCP servers per sandbox session
+- Added: Sentry, PostHog, Webflow, Monday, Make, Cloudflare, Atlassian
+- Per-user dynamic loading: servers load based on your connected integrations
+
+---
+
+## v0.2 — January 2026
+
+**Canvas system**
+- Launched 30+ visual canvas templates across Sales, Research, Content, Ops, and Data categories
+- All canvases pre-research with 3 live Brave searches before generation
+- PDF and PNG export from every canvas
+- Inline rendering — no separate builder or page switch
+
+**Composio integration**
+- 250+ integrations available via Composio gateway
+- Auto-routed in sandbox sessions based on connected services
+
+**Parallel execution**
+- Increased to 75 concurrent task slots (5 agents × 15 workspaces)
+- Within-skill parallel tool execution via Promise.all
+- Semaphore control: max 2 concurrent skills per session
+
+**Skills expanded to 35+**
+- Added: ICP Deep Match, Trigger Events, Pricing Research, Post-Call Blueprint
+- All skills now auto-save memory and auto-log activity after completion
+
+---
+
+## v0.1 — November 2025
+
+**Initial release**
+- Five specialized agents: Cortex, Specter, Striker, Pulse, Sentinel
+- 15 skills across Research, Lead Gen, Sales, Content, and Ops
+- Core chat interface with SSE streaming and tool activity feed
+- VIRALS scoring for content (0–12 scale)
+- Cold email 6-point quality gate
+- Memory system with 4 types and Sonnet-powered recall
+- Lessons system: errors stored and applied on next run

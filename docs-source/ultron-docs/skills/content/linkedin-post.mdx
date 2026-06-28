@@ -1,0 +1,100 @@
+---
+title: "LinkedIn Post"
+description: "Hook-driven LinkedIn posts, VIRALS scored and revised until 7+ before delivery."
+icon: "linkedin"
+---
+
+Every LinkedIn post Pulse creates is scored on the VIRALS framework before it reaches you. If it scores below 7 out of 12, Pulse revises automatically. You only see drafts that pass.
+
+## Post structure
+
+```text
+Hook (lines 1–3)
+    Must make them stop scrolling. Pattern interrupt.
+    Negative framing, surprising stat, or direct challenge works best.
+    Example: "90% of cold emails fail before the subject line is read."
+
+Mind Read
+    Name the feeling or situation your reader is in right now.
+    Make them feel seen before you make your point.
+    Example: "You've written the email. You've read it ten times.
+              Nobody opens it."
+
+Twist
+    The counterintuitive angle. The unexpected take.
+    Example: "The problem isn't the email. It's who you're sending it to."
+
+CTA
+    One clear, frictionless action.
+    Example: "Here's how I'd fix the list:"
+
+Payoff
+    The tactical value. Specific, actionable, saves them time.
+    3–5 concrete points. No filler.
+```
+
+## VIRALS scoring
+
+| Dimension | What it checks | Max |
+|-----------|---------------|-----|
+| V — Viral potential | Will people share or comment? | 2 |
+| I — Interest | Does the hook land in 3 seconds? | 2 |
+| R — Relatability | Does the audience see themselves in it? | 2 |
+| A — Actionability | Is there something to do or think? | 2 |
+| L — Length | Right length for LinkedIn? | 2 |
+| S — Specificity | Concrete details over vague claims? | 2 |
+| **Total** | | **12** |
+
+Score 7+ required. Score below 7 → automatic revision loop.
+
+## Platform rules
+
+- Max 150 words
+- Max 3 hashtags (fewer is better)
+- No emojis
+- Hook on line 1 — no preamble
+- Each line break is intentional — used to create visual rhythm
+
+## Example output
+
+```text
+90% of cold emails fail before the subject line is read.
+
+You've written the perfect pitch. You've timed the send.
+Nobody opens it.
+
+The problem isn't the email. It's the list.
+
+Here's what I'd fix before writing one more word:
+
+1. Your list has 500 people. 80 of them match your ICP.
+   Prioritize the 80.
+
+2. "VP Marketing" isn't a contact. The person's name and
+   a specific reason to reach out is a contact.
+
+3. The subject line is the product. If it doesn't create
+   curiosity in 5 words, delete it and start over.
+
+The email is the last thing to fix.
+```
+
+**VIRALS score: V:2 I:2 R:2 A:2 L:2 S:2 = 12/12**
+
+## Configuration
+
+| Setting | Value |
+|---------|-------|
+| Model | Kimi K2 |
+| Max turns | 8 |
+| Tools | `web_search`, `web_search_multiple`, `search_reddit`, `search_memories`, `save_content` |
+
+## How to invoke
+
+```text
+Write a LinkedIn post about why most SDR-to-AE handoffs fail.
+```
+
+```text
+Create a LinkedIn post on the mistake founders make when hiring their first salesperson.
+```

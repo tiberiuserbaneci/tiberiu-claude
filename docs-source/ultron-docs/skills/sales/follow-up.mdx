@@ -1,0 +1,78 @@
+---
+title: "Follow-Up Sequence"
+description: "Day 3, Day 5, and Day 7 follow-ups. Each adds new value. No 'just checking in' ever sent."
+icon: "arrows-rotate"
+---
+
+When a cold email goes unanswered, Striker sends three follow-ups on a specific schedule. Each one adds new information. The sequence ends with a clean breakup email that leaves the door open.
+
+## The sequence
+
+| Follow-up | Send timing | Length | Rule |
+|-----------|-------------|--------|------|
+| Day 3 | 3 days after cold email | Max 75 words | New value angle — case study, insight, or stat they haven't seen |
+| Day 5 | 5 days after cold email | Max 100 words | Completely different angle — different pain, different benefit |
+| Day 7 | 7 days after cold email | Max 50 words | Breakup email — polite, assumes no interest, leaves door open |
+
+## Example sequence
+
+**Day 3:**
+```text
+Subject: Re: Your Series B + the ops bottleneck
+
+One more angle: teams that implement this in Q2 typically
+see the ops team handle 3x the volume by Q4 without new hires.
+
+Happened with a similar-sized B2B SaaS team in SF last quarter.
+
+Still worth 20 minutes?
+```
+
+**Day 5:**
+```text
+Subject: Re: Your Series B + the ops bottleneck
+
+Different angle: the real cost isn't the ops work itself,
+it's the senior time spent doing it. Your Series B probably
+doubled the leadership workload without doubling the team.
+
+We fix the senior time problem specifically. Different from
+general ops tooling.
+
+Open to a 15-minute call this week to see if it fits?
+```
+
+**Day 7:**
+```text
+Subject: Re: Your Series B + the ops bottleneck
+
+Assuming the timing isn't right — totally fair.
+
+I'll leave the door open if things change in Q3.
+```
+
+## What's never sent
+
+- "Just checking in"
+- "Wanted to follow up on my previous email"
+- "Did you get a chance to look at this?"
+- Any follow-up that adds no new information
+
+## Configuration
+
+| Setting | Value |
+|---------|-------|
+| Model | Kimi K2 |
+| Max turns | 6 |
+| Execution | Fork |
+| Tools | `lookup_leads`, `search_memories`, `save_content` |
+
+## How to invoke
+
+```text
+Send follow-ups for all cold emails sent more than 3 days ago with no reply.
+```
+
+```text
+Write the Day 5 follow-up for the Acme Corp thread.
+```

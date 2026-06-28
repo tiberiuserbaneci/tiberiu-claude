@@ -1,0 +1,51 @@
+---
+title: "Data Integrations"
+description: "ZeroBounce and Brevo."
+icon: "database"
+---
+
+## ZeroBounce
+
+Email verification before any outreach. ZeroBounce checks every email Specter finds before Striker sends.
+
+**What Ultron can do:** Verify email addresses with deliverability scoring.
+
+**Verification results:**
+
+| Result | Meaning | Action |
+|--------|---------|--------|
+| Valid | Confirmed deliverable | Safe to send |
+| Catch-all | Domain accepts all email, can't confirm individual | Send with caution, note in lead record |
+| Invalid | Does not exist or undeliverable | Do not send, exclude from list |
+| Disposable | Temporary email address | Do not send |
+
+**Connection:** ZeroBounce API key — Settings → Integrations → ZeroBounce → Add API key
+
+**Example:**
+```text
+Verify all emails in the lead batch Specter found yesterday before Striker starts outreach.
+```
+
+---
+
+## Brevo
+
+Brevo handles volume email sending — sequences, campaigns, and transactional messages.
+
+**What Ultron can do:** Send transactional emails, send marketing campaigns, manage sender domain configuration, track delivery and opens.
+
+**Connection:** Brevo API key + domain verification — Settings → Integrations → Brevo → Add API key
+
+**Gmail vs Brevo:**
+
+| Use case | Tool |
+|----------|------|
+| 1:1 personalized cold email | Gmail (personal sender) |
+| Multi-lead sequences at volume | Brevo (deliverability at scale) |
+| Nurture campaigns | Brevo |
+| Transactional (onboarding, alerts) | Brevo |
+
+**Example:**
+```text
+Send the Day 3 follow-up to all 18 leads in the current sequence via Brevo.
+```

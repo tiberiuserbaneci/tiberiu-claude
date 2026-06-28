@@ -1,0 +1,42 @@
+---
+title: "Channel Setup"
+description: "How to connect Telegram, Slack, and WhatsApp via OpenClaw."
+---
+
+<Info>
+  For detailed channel setup guides, see [docs.openclaw.ai/channels](https://docs.openclaw.ai/channels)
+</Info>
+
+## Telegram
+
+1. Create a bot via [@BotFather](https://t.me/botfather)
+2. Get your bot token
+3. Configure in OpenClaw: `openclaw channels add telegram`
+4. Start the Gateway: `openclaw gateway`
+
+## WhatsApp
+
+1. Run `openclaw channels login`
+2. Scan the QR code with WhatsApp
+3. Gateway maintains the session automatically
+4. Uses the Baileys library (no Business API needed)
+
+## Slack
+
+1. Create a Slack App at [api.slack.com](https://api.slack.com)
+2. Add Bot Token scopes: `chat:write`, `app_mentions:read`, `im:history`
+3. Install to your workspace
+4. Configure in OpenClaw with the Bot Token
+
+## Workspace Linking
+
+When a user sends `/connect UTR-XXXXXX`:
+1. OpenClaw receives the message
+2. Extracts the workspace code
+3. Queries Supabase `profiles` table for matching code
+4. Creates a `channel_connections` record
+5. Confirms connection to the user
+
+## Multi-Channel
+
+All channels run simultaneously through the single Gateway process. A user can connect Telegram, Slack, and WhatsApp at the same time, all sharing the same Ultron workspace data.

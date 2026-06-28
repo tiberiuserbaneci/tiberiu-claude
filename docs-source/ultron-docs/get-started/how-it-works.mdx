@@ -1,0 +1,61 @@
+---
+title: "How Ultron Works"
+description: "The one-interface model: every capability lives in chat, nothing requires a page switch."
+icon: "gears"
+---
+
+Ultron is built around one principle: the user never leaves the chat. Research, outreach, content creation, pipeline management — all of it happens inside a single conversation interface.
+
+The chat is not a wrapper around other tools. It is the command plane. Every capability Ultron has is accessible by typing.
+
+## What happens when you send a message
+
+<Steps>
+  <Step title="You describe what you need">
+    Plain language. No commands, no syntax. "Research Acme Corp before my meeting Friday" or "Write a cold email to the Head of Growth at Linear."
+  </Step>
+  <Step title="Ultron selects the right tools">
+    Ultron decides whether to run a skill, search the web, scrape a page, query your CRM, or combine several operations. You don't choose — it routes automatically.
+  </Step>
+  <Step title="Tool activity streams in real-time">
+    You see each tool call as it happens. Web searches, enrichment lookups, skill progress — all visible in the chat thread as Ultron works.
+
+    ```text
+    [tool] web_search("Acme Corp Series B 2026")
+    [tool] web_search("Acme Corp CEO background")    ← parallel
+    [tool] scrape_website("acmecorp.com")             ← parallel
+    [result] 3 sources processed
+    ```
+  </Step>
+  <Step title="Results render inline">
+    Text answers, tables, and visual canvases all appear inside the conversation. A comparison table renders as a React component in the thread. A sales blueprint renders as a full visual document. No new tab, no export.
+  </Step>
+  <Step title="Memory saves automatically">
+    After every skill run, results are saved to memory with tags. Next session, Ultron already knows what was researched, what emails were sent, what the outcome was.
+  </Step>
+</Steps>
+
+## A real example
+
+You type: **"Research Acme Corp before my meeting tomorrow."**
+
+Ultron:
+1. Detects intent — routes to the `company-deep-dive` skill
+2. Loads your profile context (ICP definition, voice tone, competitors)
+3. Pulls relevant memories (past research on Acme Corp, if any)
+4. Fires 3 parallel web searches: company overview, funding history, recent news
+5. Scrapes the Acme Corp website for product and team details
+6. Searches Apollo for key stakeholders
+7. Assembles a structured brief: company overview, funding, leadership, product, talking points, likely objections
+8. Saves the brief to memory tagged `["cortex", "acme-corp", "meeting-prep"]`
+9. Returns the brief inline in chat
+
+Total time: under 3 minutes.
+
+## Memory across sessions
+
+Ultron remembers. Every session starts with your business profile loaded, relevant past research surfaced, and lessons from previous runs applied. You don't repeat context. You build on it.
+
+<Info>
+Memory is not a log. It is a filtered, compressed, semantically organized knowledge store. Ultron selects the most relevant entries per turn — not everything at once.
+</Info>

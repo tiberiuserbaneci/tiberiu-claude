@@ -1,0 +1,47 @@
+---
+title: "Credits"
+description: "How credits work, what they cost, and where to see your usage."
+icon: "coins"
+---
+
+Credits are consumed when Ultron executes tasks. Every token processed — input and output — costs credits. The model used and the task type determine the rate.
+
+## What drives credit consumption
+
+| Factor | Impact |
+|--------|--------|
+| Model: Kimi K2 | Higher credit cost — used for complex reasoning tasks |
+| Model: Fast (Haiku-class) | Lower credit cost — used for simple lookups and routing |
+| Sandbox session | Higher base cost (50-min runtime, 50+ MCP servers loaded) |
+| API mode | Lower base cost (3-min timeout, fewer servers) |
+| Tool calls | Each tool call adds input/output tokens |
+| Canvas generation | Pre-research (3 searches) + generation = medium cost |
+
+## Approximate costs by task
+
+| Task | Model | Approx. cost |
+|------|-------|--------------|
+| Quick question or lookup | Fast | Low |
+| Lead scoring (per lead) | Fast | Very low |
+| LinkedIn post (Pulse) | Kimi K2 | Medium |
+| Cold email (Striker) | Kimi K2 | Medium |
+| Competitive analysis | Kimi K2 | Medium-high |
+| Company deep-dive | Kimi K2 | Medium-high |
+| Cold email sequence (10 leads) | Kimi K2 | High |
+| Sandbox session (complex task) | Kimi K2 | High |
+
+## Credits don't expire
+
+Unused credits roll over month to month. You can also purchase additional credits at any time from Settings → Credits without changing your plan.
+
+## Where to see usage
+
+**Settings → Usage** shows:
+- Credits consumed per session
+- Model breakdown (Kimi K2 vs fast model)
+- Top sessions by credit consumption
+- Daily and monthly trend
+
+<Tip>
+  Check usage after your first few complex sessions (competitive analysis, multi-lead enrichment batches) to calibrate which task types consume the most — then decide whether to run them in sandbox mode or API mode.
+</Tip>

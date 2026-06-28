@@ -1,0 +1,48 @@
+---
+title: "Brain Graph"
+description: "A visual semantic map of every memory Ultron holds about your business."
+icon: "diagram-project"
+---
+
+The Brain Graph is a visual representation of everything Ultron knows about your business. Every memory entry is a node. Semantic relationships between entries are edges.
+
+## What you see
+
+```text
+[user: founder context]
+    ├── [project: Q2 launch freeze]
+    ├── [feedback: no em-dashes in emails]
+    └── [reference: ICP — Series A CTOs]
+            ├── [reference: competitive analysis — HubSpot]
+            ├── [reference: competitive analysis — Salesforce]
+            └── [reference: meeting prep — Linear call 2026-03-28]
+                    └── [feedback: lesson — Specter Apollo rate limit]
+```
+
+Nodes are color-coded by type: user (blue), feedback (yellow), project (green), reference (gray). Edge thickness reflects semantic similarity strength.
+
+## How the graph is built
+
+Every time a memory entry is saved:
+
+1. Its embedding is computed
+2. Similarity is compared against all existing nodes
+3. Edges are added where similarity exceeds a threshold
+4. The graph updates in real-time
+
+You don't build the graph. It builds itself from Ultron's activity.
+
+## What you can do with it
+
+- **Audit knowledge** — see exactly what Ultron knows, grouped by topic
+- **Find gaps** — notice that a competitor has no research node yet
+- **Delete outdated entries** — remove a reference memory that's no longer accurate
+- **Trace connections** — see how a lesson learned by Specter connects to your ICP definition
+
+## Accessing the Brain Graph
+
+Open it from the **Memory** section in the left navigation of your dashboard. Search and filter by memory type, agent, or tag. Click any node to read the full memory entry.
+
+<Tip>
+  After your first month of using Ultron, the Brain Graph becomes one of the most useful views in the product. It shows you exactly what institutional knowledge has accumulated — and what's missing.
+</Tip>

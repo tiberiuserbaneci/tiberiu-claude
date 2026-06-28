@@ -1,0 +1,40 @@
+---
+title: "Model Routing"
+description: "How Ultron routes tasks between Kimi K2 and fast models based on complexity and cost."
+icon: "route"
+---
+
+Not every task needs the same model. Ultron routes requests to the right model based on what the task actually requires — keeping complex reasoning powerful and simple lookups fast.
+
+## Routing logic
+
+| Task type | Model | Rationale |
+|-----------|-------|----------|
+| Research, competitive analysis | Kimi K2 | Deep reasoning, multi-source synthesis |
+| Cold email, content creation | Kimi K2 | Voice matching, quality gate compliance |
+| Objection handling, strategy | Kimi K2 | Nuanced reasoning, context awareness |
+| Lead scoring | Fast model | Pattern matching, high throughput |
+| Quick lookups, summaries | Fast model | Speed matters, complexity doesn't |
+| Routing decisions | Fast model | Lightweight classification |
+| Memory compression | Fast model | Summarization at scale |
+
+## How routing is decided
+
+The decision happens before the API call based on:
+
+1. **Message complexity** — length, number of entities, implied reasoning depth
+2. **Task type** — skill runs always use the model specified in their `SKILL.md` config
+3. **User plan** — free plan routes more aggressively to fast models
+4. **Token estimate** — very short tasks default to fast even if complex-looking
+
+## Credit impact
+
+Kimi K2 costs more per token than the fast model. The routing system keeps your credits efficient by:
+
+- Routing memory compression, scoring, and routing decisions to the fast model
+- Reserving Kimi K2 for tasks where output quality directly affects business outcomes
+- Giving you visibility into model usage per session in **Settings → Usage**
+
+<Info>
+  Each skill's `SKILL.md` file specifies which model it uses. Research and sales skills use Kimi K2. Ops skills like morning briefing and pipeline review use the fast model.
+</Info>

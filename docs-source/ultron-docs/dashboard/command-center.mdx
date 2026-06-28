@@ -1,0 +1,72 @@
+---
+title: "Command Center"
+description: "Real-time view of what your agents are doing, what they've done, and what's queued."
+---
+
+The Command Center is where you watch your agents work. It shows live activity, agent status, and your task board — all in one view.
+
+## Agent status panel
+
+At the top: a status card for each of your 5 agents.
+
+| Status | Meaning |
+|--------|---------|
+| 🟢 **Active** | Agent is currently executing a task |
+| 🟡 **Standby** | Agent checked in, no tasks queued |
+| ⚫ **Sleeping** | Agent hasn't run yet this cycle |
+
+Each card shows:
+- Agent name (Cortex, Specter, Striker, Pulse, Sentinel)
+- Current status
+- Last active timestamp
+- Tasks completed this week
+
+## Live activity feed
+
+The feed updates in real time as agents work. Every meaningful step an agent takes gets logged here — what it searched, what it found, what it saved.
+
+**Example activity log entries:**
+
+```
+Specter  →  start: Starting lead generation run — checking task queue
+Specter  →  task: Found 1 task assigned — working on: Find B2B SaaS leads in Austin
+Specter  →  search: Searching Apollo for SaaS companies in Austin, 50-200 employees
+Specter  →  lead: Saved lead: Marcus Webb, VP Sales, Stackline — score 84/100
+Specter  →  lead: Saved lead: Diana Park, CEO, FlowOps — score 79/100
+Specter  →  memory: Saved 3 insights about Austin SaaS landscape to memory
+Specter  →  complete: Found and saved 5 qualified leads. All in Leads table.
+```
+
+You can watch this happen live. Each `start:` marks a new run, `complete:` marks the end.
+
+## Task board
+
+Below the activity feed: a Kanban-style task board showing all tasks across agents.
+
+**Columns:**
+- **Queued** — tasks assigned, waiting for the agent's next run
+- **In Progress** — agent is actively working on this task right now
+- **Done** — completed tasks with a summary of output
+- **Failed** — tasks that hit an error (with error details)
+
+Each task card shows: assigned agent, task description, priority (P0/P1/P2), and last updated time.
+
+## Assigning tasks from Command Center
+
+You can create tasks directly from the task board without going to Chat:
+
+1. Click **+ New Task**
+2. Select an agent
+3. Write the task description
+4. Set priority
+5. Save
+
+The agent picks it up on its next run (within 6 hours) or you can trigger an immediate run from Chat.
+
+## Reading the activity feed effectively
+
+**Look for:** `start:` → confirms the agent ran. `task:` → confirms it found your task. `complete:` → confirms successful execution.
+
+**Watch for:** Long gaps between `start:` and `complete:` (normal for complex research tasks). Error entries with `error:` prefix (usually integration issues — check your connected integrations).
+
+**If you see `standby: no tasks, standing by`** — the agent ran but had nothing assigned. Create a task in the task board or via Chat to give it work on the next cycle.

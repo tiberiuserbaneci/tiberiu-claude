@@ -1,0 +1,58 @@
+---
+title: "Context Injection"
+description: "What Ultron knows before you type your first message in any session."
+icon: "syringe"
+---
+
+Every Ultron session starts with context already loaded. By the time you type your first message, the model already knows your business, your ICP, your voice, your connected tools, and the most relevant memories from past sessions.
+
+## Injection order
+
+```text
+Session start — system prompt assembly
+├── 1. Static instructions
+│      Ultron behavior rules, tool use guidelines,
+│      quality gates (VIRALS scoring, cold email rules),
+│      anti-fabrication rules, response style
+├── 2. User profile
+│      Company name, ICP definition, voice tone,
+│      competitors, platforms, voice samples,
+│      banned words
+├── 3. Connected integrations
+│      List of active services: Gmail, Stripe,
+│      HubSpot, Notion, Slack, etc.
+├── 4. Relevant memories (max 5)
+│      Selected by Sonnet-powered recall query
+│      against current session objective
+└── 5. Current date
+           Injected as system reminder per turn
+```
+
+## Why order matters
+
+The ordering is deliberate, not arbitrary. Static content at the top is cache-friendly — it doesn't change between sessions, so the model can reuse previous computation. Dynamic content at the bottom always gets fresh context.
+
+This means:
+- Faster session start times (cache hits on static sections)
+- Lower token cost for repeated sessions
+- Fresh profile and integration data every time
+
+## Profile completeness
+
+The quality of Ultron's output is directly proportional to how complete your profile is.
+
+| Profile field | Impact on output |
+|---------------|------------------|
+| ICP definition | Specter targets the right leads. Striker personalizes correctly. |
+| Voice tone | Pulse writes in your style. Striker emails sound human. |
+| Voice samples | The single highest-leverage input. Actual examples = accurate mimicry. |
+| Competitors | Cortex frames research correctly. Striker handles objections accurately. |
+| Banned words | Every output automatically avoids your banned patterns. |
+
+<Tip>
+  Add 2–3 voice samples — real emails or LinkedIn posts you've written. This one change improves output quality more than any other setting.
+</Tip>
+
+## Anti-fabrication rules
+
+Part of the static instructions injected at session start. If a web search returns no data on a specific pricing figure or revenue number, Ultron uses qualitative language ("strong growth signals", "market-leading position") rather than inventing a number. The instructions explicitly prohibit fabricating stats, pricing, or revenue figures.

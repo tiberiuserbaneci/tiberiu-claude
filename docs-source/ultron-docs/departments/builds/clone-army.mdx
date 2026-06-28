@@ -1,0 +1,49 @@
+---
+title: "Clone Army"
+description: "Deploy, manage, and scale AI agents."
+---
+
+## Pre-Built Agent Templates
+
+| Template | What it does | Default Schedule |
+|---|---|---|
+| **AI SDR Agent** | Prospect, enrich, outreach daily | Every morning, 8 AM |
+| **AI Content Manager** | Write and schedule content | Daily, 9 AM |
+| **AI Account Manager** | Client check-ins, flag risks | Weekly, Monday |
+| **AI Research Analyst** | Monitor competitors, industry news | Daily, 7 AM |
+| **AI Finance Agent** | Track invoices, chase payments | Weekly, Friday |
+| **AI Recruiter** | Source candidates, screen resumes | On-demand |
+| **Custom Agent** | Define any workflow | User-defined |
+
+## Deploying an Agent
+
+Say: **"Deploy an SDR agent that runs every morning"**
+
+Ultron creates:
+1. Agent record in the `agents` table
+2. Schedule configuration (frequency, time, tasks)
+3. Webhook URL for external triggers (optional)
+4. N8N workflow ID for automation chains (optional)
+
+## Agent Performance
+
+Each agent tracks:
+
+| Metric | Description |
+|---|---|
+| Tasks Completed | Successfully finished tasks |
+| Tasks Assigned | Total tasks given |
+| Tasks Failed | Errors or failures |
+| Performance Score | Success rate (0-100) |
+| Last Active | Most recent execution |
+| Error Log | Failed task details |
+
+## Example Prompts
+
+```
+"Deploy an SDR agent that prospects every morning at 8 AM"
+"Create a content agent that publishes to LinkedIn daily"
+"Show me all active agents"
+"Pause the research agent"
+"What did my SDR agent do today?"
+```

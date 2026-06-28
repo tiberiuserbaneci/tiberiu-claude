@@ -1,0 +1,71 @@
+---
+title: "Google Workspace"
+description: "Connect Gmail and Google Calendar so Striker can triage your inbox, draft emails, and schedule meetings."
+---
+
+Google Workspace is the most impactful integration for sales. Once connected, Striker can read your inbox, identify deal opportunities, draft context-aware replies, and schedule follow-ups on your calendar — from your actual email address.
+
+## What it enables
+
+<CardGroup cols={2}>
+  <Card title="Gmail" icon="envelope">
+    - Inbox triage — Striker flags deal-related emails with suggested next steps
+    - Context-aware follow-ups — Striker reads your email history before drafting
+    - Outreach sending — send emails drafted by agents from your real Gmail address
+    - Reply drafting — never write a "just checking in" email again
+  </Card>
+  <Card title="Google Calendar" icon="calendar">
+    - Schedule follow-up meetings directly from a task
+    - Block prep time before demos automatically
+    - Check availability before suggesting meeting times in emails
+  </Card>
+</CardGroup>
+
+## How to connect
+
+<Steps>
+  <Step title="Go to Integrations">
+    Open your dashboard and navigate to **Integrations**.
+  </Step>
+  <Step title="Click Connect Google">
+    Find the Google Workspace card and click **Connect Google**.
+  </Step>
+  <Step title="Complete the OAuth flow">
+    A Google consent screen will open. Sign in with the Google account you want to connect — this should be the email address you use for outreach.
+
+    Grant the requested permissions for Gmail and Calendar access.
+
+    <Warning>
+      Use your primary business email. Agents will read from and draft to this address. If you connect a secondary account, outreach will come from that address.
+    </Warning>
+  </Step>
+  <Step title="Confirm connection">
+    Once authorized, you'll be redirected back to Integrations. The Google card will show as **Connected** with your email address.
+  </Step>
+</Steps>
+
+## What agents can do with Gmail
+
+| Action | What it means |
+|--------|--------------|
+| **Read inbox** | Striker can see recent emails to identify deal opportunities |
+| **Read thread history** | Striker reads previous conversations before drafting replies |
+| **Draft emails** | Striker creates drafts in your Gmail drafts folder |
+| **Send emails** | When you explicitly ask, Striker can send from your address |
+
+<Warning>
+  Agents **never send emails automatically**. Striker will draft and save, but sending requires explicit instruction from you. You're always in control.
+</Warning>
+
+## Permissions granted
+
+When you connect Google, you authorize access to:
+
+- Gmail (read and send)
+- Google Calendar (read and write)
+
+You can revoke access at any time from [myaccount.google.com/permissions](https://myaccount.google.com/permissions) or by clicking **Disconnect** on the Integrations page.
+
+## Disconnecting
+
+Go to **Integrations**, find the Google Workspace card, and click **Disconnect**. Agent access to your Gmail and Calendar is revoked immediately. Any previously created drafts remain in your Gmail drafts folder.

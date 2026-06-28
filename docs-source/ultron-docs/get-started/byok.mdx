@@ -1,0 +1,41 @@
+---
+title: "Connecting Your AI (BYOK)"
+description: "Bring Your Own Key — you control the AI, you control the costs."
+---
+
+BYOK stands for **Bring Your Own Key**. Ultron runs on your AI API key, not ours.
+
+## Why BYOK?
+
+- **You control costs.** Pay only for what you use directly to the AI provider.
+- **No hidden margins.** We don't mark up AI costs.
+- **You choose the model.** Claude via Anthropic or any model via OpenRouter.
+- **Privacy.** Your conversations go directly to the AI provider.
+
+## Supported Providers
+
+| Provider | Models | Setup |
+|---|---|---|
+| **Anthropic** (recommended) | Claude Sonnet, Opus | [console.anthropic.com](https://console.anthropic.com) → API Keys |
+| **OpenRouter** | Claude, GPT-4, Gemini, Llama, etc. | [openrouter.ai](https://openrouter.ai) → Keys |
+
+## How it works
+
+1. You paste your API key on the Integrations page
+2. Ultron encrypts it and stores it in Supabase
+3. When you chat, the server reads your encrypted key
+4. The server calls the AI provider using YOUR key
+5. The response streams back to your dashboard
+6. Your key is never exposed to the frontend
+
+## Cost Estimates
+
+Average monthly AI cost per user (Claude Sonnet):
+
+| Usage Level | Chats/Day | Estimated Cost |
+|---|---|---|
+| Light | 5-10 | ~$5-15/month |
+| Medium | 20-30 | ~$20-40/month |
+| Heavy | 50+ | ~$50-100/month |
+
+These costs go directly to Anthropic or OpenRouter, not to us.

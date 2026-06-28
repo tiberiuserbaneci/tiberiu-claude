@@ -1,0 +1,54 @@
+---
+title: "Composio"
+description: "The integration layer behind 250+ connected services. One connection, everything routed automatically."
+icon: "grid"
+---
+
+Composio is the integration gateway that gives Ultron access to 250+ external services. You connect a service once — Composio handles auth, token refresh, API versioning, rate limit backoff, and schema normalization.
+
+## What Composio handles
+
+| Concern | What Composio does |
+|---------|-------------------|
+| OAuth flows | Full OAuth 2.0 with PKCE, token storage, refresh |
+| API versioning | Normalizes schema differences across API versions |
+| Rate limit backoff | Automatic retry with exponential backoff on 429s |
+| Schema normalization | Consistent tool interface regardless of underlying API |
+| Error handling | Structured errors returned to Ultron, not raw API errors |
+
+## What's covered
+
+Composio covers every major category:
+
+```text
+CRM & Sales          — Salesforce, HubSpot, Pipedrive, Close, Outreach
+Productivity         — Google Workspace, Microsoft 365, Notion, Confluence
+Project Management   — Linear, Asana, Jira, Monday, Trello, ClickUp
+Communication        — Slack, Discord, Microsoft Teams, Intercom
+Dev Tools            — GitHub, GitLab, Bitbucket, Vercel, Netlify, Sentry
+Analytics            — PostHog, Mixpanel, Amplitude, Google Analytics
+Finance              — Stripe, QuickBooks, Xero, Chargebee
+HR                   — Greenhouse, Lever, Rippling, BambooHR
+Design               — Figma, Canva, Miro
+Infrastructure       — Cloudflare, AWS, Supabase, PlanetScale
+Marketing            — Webflow, HubSpot Marketing, Mailchimp, Brevo
+Automation           — Make, Zapier, n8n
+```
+
+## How it works in Ultron
+
+The Composio MCP server loads in every Ultron sandbox session. When you ask Ultron to interact with any connected service, the tool call routes through Composio:
+
+```text
+You: "Update the Acme Corp deal stage in Salesforce to Proposal."
+    ↓
+Ultron calls: composio_salesforce_update_opportunity({ id: "...", stage: "Proposal" })
+    ↓
+Composio: validates auth, calls Salesforce API, returns result
+    ↓
+Ultron: "Done — Acme Corp deal stage updated to Proposal."
+```
+
+<Info>
+  Connecting a Composio integration in settings doesn't consume credits. Credits are consumed only when a tool call executes against the service.
+</Info>

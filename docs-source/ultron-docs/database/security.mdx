@@ -1,0 +1,41 @@
+---
+title: "Security"
+description: "Row Level Security, encryption, and data isolation."
+---
+
+## Row Level Security (RLS)
+
+Every table in Ultron has RLS enabled. Every policy enforces:
+
+```sql
+auth.uid() = user_id
+```
+
+This means User A can **never** see User B's data, even if there's a bug in the application code. Supabase enforces isolation at the database level.
+
+## Tables with RLS
+
+All 17 tables: profiles, integrations, conversations, messages, leads, campaigns, deals, content, content_research, agents, agent_tasks, channel_connections, google_tokens, usage_tracking, billing_events, activity_feed.
+
+## API Key Encryption
+
+- All API keys are encrypted before storing in the `integrations` table
+- Keys are decrypted server-side only when making API calls
+- Keys are never exposed to the frontend
+- The `api_key_encrypted` field contains the encrypted value, never plaintext
+
+## Google OAuth Tokens
+
+Stored in a separate `google_tokens` table with:
+- `access_token_encrypted` — short-lived access token
+- `refresh_token_encrypted` — long-lived refresh token
+- `token_expiry` — when the access token expires
+- Tokens are refreshed automatically when expired
+
+## Workspace Isolation
+
+Each user gets a unique workspace code (`UTR-XXXXXX`). This code:
+- Links their channel connections (Telegram/Slack/WhatsApp) to their user_id
+- Is generated automatically on signup
+- Cannot be guessed (6 random hex characters)
+- Can be regenerated from Settings if compromised

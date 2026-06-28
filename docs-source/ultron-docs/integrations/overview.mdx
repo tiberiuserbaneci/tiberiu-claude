@@ -1,0 +1,47 @@
+---
+title: "Integrations"
+description: "250+ integrations via Composio. 50+ MCP servers per session. Your entire stack accessible from chat."
+icon: "plug"
+---
+
+Ultron connects to your existing tools. You don't replace your stack — Ultron operates it. Gmail, HubSpot, Stripe, Notion, Slack, Linear — all accessible from the chat interface without switching apps.
+
+## Two integration layers
+
+```text
+Ultron session starts
+├── Fixed MCP servers (always loaded)
+│   ├── context7          — library and API documentation
+│   ├── apify             — web scraping at scale
+│   ├── tavily            — AI-optimized search
+│   ├── brave-search      — real-time web search
+│   ├── fetch             — raw HTTP requests
+│   ├── filesystem        — read/write in sandbox
+│   ├── memory            — persistent key-value store
+│   ├── puppeteer         — browser automation
+│   ├── github            — repos, issues, PRs
+│   ├── composio          — gateway to 250+ integrations
+│   └── ultron            — platform callback hooks
+├── User-connected servers (loaded per your settings)
+│   ├── notion, slack, figma, linear, stripe, hubspot
+│   ├── asana, sentry, vercel, supabase, cloudflare
+│   └── intercom, postHog, webflow, monday, make, miro, canva
+└── Composio (250+ integrations via one gateway)
+    Available for any service not natively supported
+```
+
+## How to connect
+
+Go to **Settings → Integrations**. Each integration shows its connection status and auth method:
+
+- **OAuth** — click Connect, authorize in the popup, done
+- **API key** — paste your key, it's validated and stored encrypted (AES-256)
+
+Connected integrations are available in your next session automatically.
+
+<CardGroup cols={2}>
+  <Card title="Composio" icon="grid" href="/integrations/composio">250+ integrations via one gateway.</Card>
+  <Card title="MCP Servers" icon="server" href="/integrations/mcp-servers">50+ pre-loaded servers per session.</Card>
+  <Card title="Productivity" icon="briefcase" href="/integrations/productivity">Google Workspace, Notion, Slack, GitHub.</Card>
+  <Card title="Sales & CRM" icon="chart-line" href="/integrations/sales-crm">HubSpot, Apollo, Stripe.</Card>
+</CardGroup>

@@ -1,0 +1,96 @@
+---
+title: "Objection Handler"
+description: "The Acknowledge-Answer-Bridge-Ask framework applied to the 5 most common sales objections."
+icon: "shield"
+---
+
+The objection handler skill generates responses to sales objections using a four-part framework: Acknowledge the concern, Answer it with a fact or reframe, Bridge back to their goal, Ask a question that moves the conversation forward.
+
+## The AABA framework
+
+```text
+Acknowledge — validate the concern without agreeing with it
+    "That's fair — a lot of teams feel that way at first."
+
+Answer — address the objection directly with a fact or reframe
+    Specific, not generic. Reference their situation where possible.
+
+Bridge — connect back to what they actually want
+    "The teams that worked through it saw [specific outcome] in [timeframe]."
+
+Ask — end with a question that advances the conversation
+    Not a yes/no. A question that gets them thinking, not defending.
+```
+
+## The 5 common objections
+
+<AccordionGroup>
+  <Accordion title="Too expensive">
+    **Acknowledge:** "Totally fair — it's a real line item."
+
+    **Answer:** Reframe on cost of the alternative. What does the status quo actually cost? Manual work, headcount, errors, speed.
+
+    **Bridge:** "Most teams find the ROI in the first 60 days, usually in time saved rather than direct revenue."
+
+    **Ask:** "What would the cost need to be for it to make sense?"
+  </Accordion>
+
+  <Accordion title="We already have a solution">
+    **Acknowledge:** "Makes sense — switching is a real cost."
+
+    **Answer:** Probe what the current solution doesn't do. Don't attack the competitor. Find the gap.
+
+    **Bridge:** "We usually work alongside existing tools rather than replacing them. The question is whether [specific gap] is worth solving."
+
+    **Ask:** "What does your current setup not handle well?"
+  </Accordion>
+
+  <Accordion title="Not the right time">
+    **Acknowledge:** "Timing is real — I get it."
+
+    **Answer:** Surface a signal that suggests now might actually be the right time (funding, hiring, a trigger event you know about).
+
+    **Bridge:** "The teams that see the most value are usually the ones who got set up before the growth spike, not after."
+
+    **Ask:** "What would need to be true for the timing to work?"
+  </Accordion>
+
+  <Accordion title="Need to check with my team">
+    **Acknowledge:** "Absolutely — decisions like this need the right people in the room."
+
+    **Answer:** Offer to make the next conversation easier, not to bypass it.
+
+    **Bridge:** "Happy to put together a one-pager tailored to their questions, or join the call directly if that's easier."
+
+    **Ask:** "Who else would be in that conversation, and what would they want to know?"
+  </Accordion>
+
+  <Accordion title="Send me more info">
+    **Acknowledge:** "Happy to — want to make sure I send the right thing."
+
+    **Answer:** Don't send a generic deck. Ask what specific question they want answered.
+
+    **Bridge:** "The teams that find it most useful usually want [specific format] focused on [specific question]."
+
+    **Ask:** "What specific question would you want it to answer?"
+  </Accordion>
+</AccordionGroup>
+
+## Configuration
+
+| Setting | Value |
+|---------|-------|
+| Model | Kimi K2 |
+| Max turns | 6 |
+| Execution | Inline |
+| Tools | `search_memories`, `lookup_leads` |
+
+## How to invoke
+
+```text
+The prospect at Acme Corp said "we already have HubSpot." How do I respond?
+```
+
+```text
+Handle this objection: "Your pricing is too high for us right now."
+```

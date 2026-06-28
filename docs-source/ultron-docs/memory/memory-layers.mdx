@@ -1,0 +1,93 @@
+---
+title: "Memory Layers"
+description: "Four memory types, what each stores, and how they're created."
+icon: "layer-group"
+---
+
+Ultron classifies every memory entry into one of four types. The type determines how the entry is recalled, how long it's retained, and what it's used for.
+
+## The four types
+
+<Tabs>
+  <Tab title="user">
+    **Stores:** Your identity, role, background, and stable preferences.
+
+    Created when you or an agent establishes something fundamental about you that won't change session to session.
+
+    ```text
+    I'm a B2B SaaS founder. My ICP is Series A CTOs
+    at companies with 50-500 employees. I prefer
+    direct, technical communication with no filler.
+    ```
+
+    **When it's created:**
+    - You fill out your profile in settings
+    - You correct Ultron on something about your role or preferences
+    - An agent learns something stable about how you work
+  </Tab>
+
+  <Tab title="feedback">
+    **Stores:** Corrections AND confirmations. Both matter equally.
+
+    This is the most important memory type for output quality. Ultron stores what you reject ("don't use em-dashes in emails") and what you validate ("that cold email structure works well").
+
+    ```text
+    Correction: Do not use bullet points in cold emails.
+    They look like marketing templates.
+
+    Validation: The 3-sentence body + question CTA
+    structure performed well. Use it as default.
+    ```
+
+    **Why validations matter:**
+    Storing only corrections causes drift. Over time, Ultron changes what's working trying to improve. Storing confirmations prevents this.
+  </Tab>
+
+  <Tab title="project">
+    **Stores:** Business context that isn't in the codebase or files.
+
+    Dates, team decisions, constraints, priorities — things that change the shape of the work but aren't visible from any file.
+
+    ```text
+    Q2 launch freeze starts April 15. No new features
+    after that date. Only bug fixes and copy changes.
+
+    We're dropping the SMB tier. Focus outreach on
+    mid-market only (100+ employees) from now on.
+    ```
+
+    **When it's created:**
+    - You share context about an upcoming deadline or constraint
+    - An agent captures a strategic decision made in conversation
+  </Tab>
+
+  <Tab title="reference">
+    **Stores:** Research outputs, external pointers, factual intel.
+
+    The largest category. Competitive research, meeting prep briefs, lead profiles, post-call summaries — all stored as reference memories.
+
+    ```text
+    Competitive analysis: HubSpot
+    Pricing: $45-$1200/month depending on tier
+    Weakness: Poor LinkedIn integration, no AI outreach
+    Win angle: Position on speed and AI-native workflow
+    Source: Verified 2026-04-01
+    ```
+
+    **When it's created:**
+    - A skill completes a research task
+    - An agent saves a lead profile or meeting brief
+    - You explicitly ask Ultron to remember something
+  </Tab>
+</Tabs>
+
+## What memory does NOT store
+
+Ultron only stores what can't be deduced from current state. It does not store:
+
+- File contents (fetched live when needed)
+- Git history (read live from the repo)
+- CRM data (queried live from HubSpot/Apollo)
+- Pricing from integrations (fetched fresh each time)
+
+This keeps memory lean and prevents staleness.

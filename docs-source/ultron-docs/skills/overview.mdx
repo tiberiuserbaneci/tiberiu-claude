@@ -1,0 +1,68 @@
+---
+title: "Skills"
+description: "35+ specialized AI sub-agents you invoke from chat. Each does one thing exceptionally well."
+icon: "puzzle-piece"
+---
+
+A skill is a focused AI sub-agent with its own model, tool set, token budget, and instructions. You don't configure skills — you describe what you need and Ultron routes to the right one.
+
+## How skill execution works
+
+```text
+You: "Write a cold email to the Head of Growth at Linear."
+    ↓
+Chat detects intent → routes to cold-email skill
+    ↓
+Skill loads: model=kimi-k2, maxTurns=8,
+  tools=[web_search, scrape_website, lookup_leads, save_content]
+    ↓
+Context built:
+  ├── Your business profile (ICP, voice, competitors)
+  ├── Past cold emails in memory (what worked, what didn't)
+  └── Relevant lessons (quality gate failures, style corrections)
+    ↓
+Kimi K2 runs the skill agent loop:
+  ├── web_search("Linear Head of Growth 2026")  ← parallel
+  ├── scrape_website("linear.app")              ← parallel
+  └── lookup_leads("Linear")
+    ↓
+Email drafted → 6-point quality gate applied → passed
+    ↓
+Result returned to chat
+Memory saved: ["skill-run", "sales", "cold-email"]
+Activity logged
+```
+
+## Concurrency
+
+Max 2 skills run simultaneously per session. If you invoke a third while two are active, it queues and starts the moment a slot opens. Rate limits (429 responses) trigger exponential backoff (1s → 2s → 4s) with up to 3 retries.
+
+## Execution modes
+
+| Mode | How it works | Best for |
+|------|-------------|----------|
+| **Inline** | Skill continues in the main conversation thread | Short tasks, iterative work |
+| **Fork** | Skill runs as isolated child agent, results returned | Long research, heavy tool use |
+
+## Skills by category
+
+<CardGroup cols={2}>
+  <Card title="Research" icon="microscope" href="/skills/research/competitive-analysis">
+    Competitive analysis, company deep-dive, pricing research, meeting prep.
+  </Card>
+  <Card title="Lead Generation" icon="crosshairs" href="/skills/lead-gen/find-decision-makers">
+    Find decision makers, ICP matching, lead scoring, trigger events.
+  </Card>
+  <Card title="Sales" icon="paper-plane" href="/skills/sales/cold-email">
+    Cold email, follow-up sequences, objection handling, pre/post call.
+  </Card>
+  <Card title="Content" icon="pen" href="/skills/content/linkedin-post">
+    LinkedIn posts, social content for all platforms.
+  </Card>
+  <Card title="Operations" icon="chart-line" href="/skills/ops/morning-briefing">
+    Morning briefing, pipeline review.
+  </Card>
+  <Card title="How skills work" icon="gears" href="/skills/using-skills">
+    Invocation, progress streaming, memory auto-save.
+  </Card>
+</CardGroup>

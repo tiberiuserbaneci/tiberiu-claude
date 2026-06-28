@@ -1,0 +1,52 @@
+---
+title: "Session Management"
+description: "Persisted transcripts, resumable sessions, automatic compression, and cost tracking."
+icon: "clock-rotate-left"
+---
+
+Every Ultron session is persisted. Transcripts are saved turn-by-turn as JSONL. Sessions can be resumed exactly where they left off.
+
+## Context injection at session start
+
+Before you type your first message, Ultron loads context in a specific order:
+
+```text
+Session start — context assembly
+├── 1. Static system instructions    — Ultron behavior rules, tool use guidelines, quality gates
+├── 2. User profile                  — business name, ICP, voice tone, competitors, platforms
+├── 3. Connected integrations         — list of active services (Gmail, Stripe, HubSpot, etc.)
+├── 4. Relevant memories              — max 5 entries selected by Sonnet-powered recall
+└── 5. Current date                  — injected as system reminder
+```
+
+This order is intentional. Static content at the top enables cache sharing across sessions (lower latency, lower cost). Dynamic content at the bottom gets fresh context every time.
+
+## Session persistence
+
+- Transcripts saved as **JSONL** — one JSON object per message turn
+- Includes: message content, tool calls, tool results, token counts, timestamps
+- Resume at any time — context is fully reconstructed from the transcript
+- Cost tracking accumulated per session and per-turn
+
+## Automatic compression
+
+As conversations grow, the compression engine manages context automatically. You never need to manually summarize or restart a session:
+
+1. **MicroCompact** fires first — removes stale tool outputs from old turns (no API call)
+2. **Session Memory Compact** — uses stored memories as compression baseline (no API call)
+3. **API Digest** — full LLM summary via fast model (last resort)
+
+After each compression, a boundary marker is inserted. All subsequent processing only touches messages after that boundary, preventing repeated compression of already-compressed content.
+
+## Cost tracking
+
+| What's tracked | Where to see it |
+|---------------|----------------|
+| Input tokens per turn | Settings → Usage |
+| Output tokens per turn | Settings → Usage |
+| Model used per call | Settings → Usage |
+| Total session cost | Settings → Usage |
+
+<Tip>
+  Long research sessions with many tool calls accumulate tokens quickly. Check usage after complex sessions to calibrate which tasks to run in API mode vs sandbox mode.
+</Tip>

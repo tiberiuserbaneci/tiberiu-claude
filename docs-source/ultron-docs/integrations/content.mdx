@@ -1,0 +1,49 @@
+---
+title: "Content Integrations"
+description: "LinkedIn, Apify, and Browserbase."
+icon: "pen-nib"
+---
+
+## LinkedIn
+
+**What Ultron can do:** OAuth connection for identity verification and platform context. Pulse uses LinkedIn data for content creation, research, and audience awareness.
+
+**Connection:** LinkedIn OAuth — Settings → Integrations → LinkedIn → Connect
+
+**Note on posting:** Direct LinkedIn API posting requires LinkedIn API access approval. For most users, Pulse generates content ready to copy-paste, or schedules via a connected tool (n8n, Make).
+
+**How agents use it:** Specter uses LinkedIn data for lead research. Pulse writes LinkedIn-native content following platform rules. Cortex uses LinkedIn profiles for meeting prep.
+
+---
+
+## Apify
+
+Apify provides structured web scraping for data that standard web scraping can't reach — protected pages, structured datasets, specific platform scrapers.
+
+**What Ultron can do:** Run Apify actors (pre-built scrapers), extract structured data from any website, scrape LinkedIn company pages, Google Maps, Amazon, and more.
+
+**Connection:** Apify API token — Settings → Integrations → Apify → Add API token
+
+**When it's used:** Cortex and Specter use Apify when a target page blocks standard scraping or when structured dataset extraction is needed (e.g., scraping a conference speakers list as a lead source).
+
+**Example:**
+```text
+Scrape the speakers list from [conference website] and save each person as a lead.
+```
+
+---
+
+## Browserbase
+
+Browserbase provides full browser automation — navigate, click, fill forms, screenshot, and extract from any JavaScript-rendered page.
+
+**What Ultron can do:** Navigate to any URL, interact with page elements, fill forms, take screenshots, extract text from pages that require JavaScript rendering.
+
+**Connection:** Browserbase API key — Settings → Integrations → Browserbase → Add API key
+
+**When it's used:** For pricing pages behind login, for sites that block headless browsers, for any page where standard scraping fails. Cortex uses it for deep product and pricing research.
+
+**Example:**
+```text
+Log into our analytics platform and take a screenshot of the weekly report dashboard.
+```

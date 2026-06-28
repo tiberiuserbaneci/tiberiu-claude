@@ -1,0 +1,58 @@
+---
+title: "ICP Deep Match"
+description: "Score a list of companies against your ICP definition and rank them for outreach priority."
+icon: "bullseye-arrow"
+---
+
+ICP Deep Match takes a list of companies (or criteria to find them) and scores each against your exact ICP definition from your profile. The output is a prioritized list — highest-fit companies at the top with a clear rationale for each score.
+
+## What it produces
+
+```text
+ICP MATCH RESULTS — 20 companies evaluated
+
+Score 9/10 — Acme Corp
+  Size: 180 employees (target: 100–500) ✓
+  Stage: Series B (target: Series A–B) ✓
+  Industry: B2B SaaS (target: B2B SaaS) ✓
+  Geography: US (target: US/Canada) ✓
+  Signal: VP Sales hire + enterprise tier launch ✓
+  Gap: Tech stack unconfirmed
+
+Score 7/10 — Beta Inc
+  Size: 45 employees (below target range)
+  Stage: Series A ✓
+  Industry: B2B SaaS ✓
+  Signal: No recent triggers
+  Recommendation: Warm nurture
+
+Score 4/10 — Gamma Co
+  Size: 2,000 employees (above target)
+  Stage: Public
+  Recommendation: Archive
+```
+
+## Configuration
+
+| Setting | Value |
+|---------|-------|
+| Model | Kimi K2 |
+| Max turns | 8 |
+| Execution | Fork |
+| Tools | `web_search`, `search_companies`, `get_company_profile`, `search_memories`, `save_lead` |
+
+## When to use it
+
+- Cleaning an existing lead list before running outreach
+- Prioritizing a large prospect list when you can't contact everyone
+- Validating whether a new market segment fits your ICP before investing in research
+
+## How to invoke
+
+```text
+Score these 20 companies against my ICP: [list]
+```
+
+```text
+Find 30 companies in the HR tech space and score them against my ICP.
+```

@@ -1,0 +1,62 @@
+---
+title: "Sentinel"
+description: "Infrastructure monitoring, health checks, uptime tracking, and self-improvement logging."
+icon: "shield-halved"
+---
+
+Sentinel watches your systems. It catches problems before they become failures, logs every error as a lesson, and attempts self-healing before escalating. It's the agent that runs in the background so every other agent can run cleanly.
+
+## What Sentinel monitors
+
+```text
+Sentinel health check run
+├── API connectivity
+│   ├── Ultron platform endpoints
+│   ├── Connected integrations (Gmail, HubSpot, Stripe, etc.)
+│   └── MCP server availability
+├── Auth status
+│   ├── OAuth token expiry checks
+│   └── API key validity
+├── Performance
+│   ├── Response time baselines
+│   └── Error rate trends
+└── Self-checks
+    ├── Memory store integrity
+    └── Lessons database review
+```
+
+## Error handling
+
+When Sentinel detects a problem:
+
+1. **Attempt self-healing** — retry with backoff, re-auth, clear cache
+2. **Log the lesson** — store what broke and how to prevent it next time
+3. **Alert if unresolved** — Slack message or email to the configured recipient
+
+Sentinel never escalates without first attempting a fix.
+
+## Lessons logging
+
+Every error Sentinel catches becomes a lessons-system entry:
+
+```json
+{
+  "type": "feedback",
+  "tags": ["lesson", "sentinel", "auth"],
+  "text": "LESSON: Gmail OAuth token expired mid-session without warning. PREVENTION: Check token expiry at session start, refresh if within 24 hours of expiry."
+}
+```
+
+Next run, Sentinel checks for its own lessons first and applies them before starting any task.
+
+## Alerting
+
+Sentinel sends alerts via connected channels when critical thresholds are hit:
+
+- **Slack** — message to your configured #alerts channel
+- **Email** — via Gmail or Brevo to your notification address
+- **Threshold examples** — API error rate > 10%, auth token expired, uptime < 99.5%
+
+## Self-improvement over time
+
+Sentinel is the primary contributor to the lessons system. Over weeks of operation, the lessons database accumulates a complete picture of every failure mode in your configuration — and the fix for each one. The entire Ultron agent team benefits from what Sentinel learns.

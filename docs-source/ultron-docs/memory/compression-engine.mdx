@@ -1,0 +1,70 @@
+---
+title: "Compression Engine"
+description: "Three-layer cascade compression that keeps Ultron sessions running indefinitely without losing context."
+icon: "compress"
+---
+
+Long sessions accumulate tokens. Without compression, every conversation would hit context limits and require a restart. Ultron's compression engine prevents that — automatically, without losing the information that matters.
+
+## Three-layer cascade
+
+```text
+Context approaching token limit
+    ↓
+Layer 1: MicroCompact
+    Scans all tool outputs in the conversation
+    Removes outputs from old turns (Read, Bash, Grep, Glob, WebSearch, Scrape)
+    Keeps recent outputs intact
+    Replaces cleared content with: [tool output cleared — content was X chars]
+    No API call required
+    ↓ (if still over limit)
+Layer 2: Session Memory Compact
+    Uses stored memories as the compression baseline
+    Preserves: minimum 10K tokens of context, minimum 5 text messages
+    Targets: maximum 40K tokens in active window
+    Prevents cutting tool_use / tool_result pairs (API invariant)
+    No API call required
+    ↓ (if still over limit)
+Layer 3: API Digest
+    Full LLM summary via fast model
+    Strips all images (replaced with [image] placeholders)
+    Re-injects 50K token budget of critical content:
+        ├── Recent files (max 5 files, max 5K each)
+        ├── Active skill instructions
+        └── Project instructions
+    One API call required
+```
+
+## CompactBoundary
+
+After each compression, a boundary marker is inserted into the conversation:
+
+```json
+{
+  "type": "compact_boundary",
+  "compactType": "auto",
+  "preCompactTokenCount": 87420,
+  "preservedSegment": {
+    "summaryMessageUuid": "msg_abc123",
+    "preservedMessageUuids": ["msg_xyz789", "msg_def456"]
+  }
+}
+```
+
+All subsequent operations only process messages after the last boundary. This prevents re-compressing content that was already compressed in a previous pass.
+
+## What is never compressed away
+
+- Active tool calls and their results (current turn)
+- The last 5 messages with substantive text content
+- Memories injected at session start
+- The user's profile context
+- Any content marked with a "must-retain" pre-compression hook
+
+## When compression triggers
+
+Compression is fully automatic. It triggers when the active context window approaches the model's limit. You don't need to manage it, restart sessions, or summarize manually.
+
+<Info>
+  Sessions can run for hours across dozens of tool calls without hitting limits. The compression engine handles it invisibly.
+</Info>

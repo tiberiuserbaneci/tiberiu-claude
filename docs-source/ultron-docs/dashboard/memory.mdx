@@ -1,0 +1,60 @@
+---
+title: "Memory"
+description: "How your agents learn from experience and get better over time."
+---
+
+Every agent has memory. After each run, agents save what they learn — successful outreach angles, lead patterns that worked, content formats that performed well. On subsequent runs, they use this context to make better decisions.
+
+## What gets remembered
+
+<CardGroup cols={2}>
+  <Card title="Cortex" icon="brain">
+    Research sources that yielded high-quality data. Competitor update patterns. Market trends worth tracking.
+  </Card>
+  <Card title="Specter" icon="crosshairs">
+    Lead criteria that produced high-scoring prospects. Outreach angles that got responses. Industries with strong ICP match.
+  </Card>
+  <Card title="Striker" icon="handshake">
+    Follow-up timing that got replies. Objections encountered and what countered them. Deal patterns that closed.
+  </Card>
+  <Card title="Pulse" icon="pen-nib">
+    Content formats that got high engagement predictions. Voice patterns that matched your samples best. Topics that resonated.
+  </Card>
+  <Card title="Sentinel" icon="shield-check">
+    Baseline performance benchmarks for your sites and APIs. Competitor change patterns. What "normal" looks like for your infrastructure.
+  </Card>
+</CardGroup>
+
+## Viewing memory
+
+The Memory page shows recent memory entries by agent. Each entry includes:
+
+- **Agent** — which agent stored this memory
+- **Text** — the insight or finding that was saved
+- **Tags** — searchable categories (e.g., `lead-generation`, `outreach`, `competitor`)
+- **Date** — when it was stored
+
+You can filter by agent or search across all memories by keyword.
+
+## How memory improves output
+
+When an agent runs a new task, it searches its memory for relevant context before executing. This means:
+
+- Specter doesn't waste time on lead criteria that historically scored low for your ICP
+- Pulse uses content formats that previously matched your voice best
+- Cortex knows which research sources are most reliable for your industry
+- Striker knows what kind of follow-up timing worked for your deals
+
+The improvement is gradual but real. After 2-3 weeks of regular use, agents accumulate enough context to produce noticeably better output than when you started.
+
+## Privacy and isolation
+
+Memory is strictly scoped to your workspace. No agent can read another user's memories. Your insights stay yours.
+
+## Deleting memories
+
+You can delete individual memory entries from the Memory view. Click the trash icon on any entry to remove it. This is useful if an agent stored something incorrect — deleting it prevents the bad information from being used in future runs.
+
+<Note>
+  You can also say in Chat: "Tell [agent] to forget what it learned about [topic]." The agent will find and clear relevant memory entries from your workspace.
+</Note>

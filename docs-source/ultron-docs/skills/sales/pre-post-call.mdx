@@ -1,0 +1,59 @@
+---
+title: "Pre & Post Call"
+description: "Pre-call prep brief before meetings and a post-call blueprint to capture outcomes and next steps."
+icon: "phone"
+---
+
+Two skills that bracket every important sales conversation: a pre-call brief you generate before the meeting, and a post-call blueprint you generate after.
+
+## Pre-call brief
+
+Generated in under 3 minutes from a name and company. Contains:
+
+- Company snapshot (size, funding, product, recent news)
+- Who you're meeting (background, past companies, public takes)
+- Why now (current signals and triggers)
+- Recommended talking points (3–5, specific to their situation)
+- Anticipated objections and counters
+- Questions to ask
+
+Saved to memory automatically — Striker can reference it when writing the post-call follow-up.
+
+**How to invoke:**
+```text
+Prep me for my call with the CTO at Linear tomorrow.
+```
+
+## Post-call blueprint
+
+Generated after the meeting from your call notes or a transcript. Produces a full canvas with:
+
+- **Meeting recap** — key points discussed, decisions made
+- **Audience profile** — updated picture of who you're selling to based on the call
+- **Content that resonates** — topics and angles they responded to
+- **Outreach plan** — next steps, timing, who owns what
+- **Competitor mentions** — what they said about the competition
+- **Sales playbook update** — what to do differently next time
+- **Outcomes** — where the deal stands, next milestone
+- **Follow-up email draft** — ready to send, references the specific conversation
+
+**How to invoke:**
+```text
+Create a post-call blueprint. Here are my notes: [paste notes]
+```
+
+```text
+I just finished a call with Acme Corp. The CTO mentioned budget concerns and
+asked about our enterprise tier. They want a proposal by Friday. Create the blueprint.
+```
+
+## Configuration
+
+| Setting | Value |
+|---------|-------|
+| Model | Kimi K2 |
+| Max turns | 8 |
+| Execution | Fork |
+| Tools | `web_search`, `search_people`, `search_memories`, `get_company_profile`, `save_memory`, `hubspot_list_deals` |
+
+Post-call blueprint triggers the [Post-Call Blueprint canvas](/canvas/sales) automatically.

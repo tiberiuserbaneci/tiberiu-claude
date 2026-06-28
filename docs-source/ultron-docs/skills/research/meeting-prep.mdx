@@ -1,0 +1,63 @@
+---
+title: "Meeting Prep"
+description: "Pre-call brief with company context, stakeholder background, talking points, and anticipated objections."
+icon: "calendar-check"
+---
+
+The meeting prep skill generates a full pre-call brief in under 3 minutes. Everything you need to walk into a conversation prepared — without spending an hour on LinkedIn and Google.
+
+## What it produces
+
+```text
+MEETING PREP — Sarah Chen, CEO @ Acme Corp
+
+Company snapshot
+  Acme Corp | Series B ($42M) | 180 employees | SF
+  Product: B2B workflow automation for operations teams
+  Recent: Launched enterprise tier Q1 2026, hired VP Sales from Workato
+
+About Sarah Chen
+  CEO since founding (2019) | ex-Salesforce (VP Product), ex-McKinsey
+  Public takes: advocates for ops-led growth, skeptical of AI hype without ROI
+  Recent post: "The ops tools market is broken. We're fixing it."
+
+Why now
+  - New enterprise tier means new complexity, new needs
+  - VP Sales hire signals they're scaling the revenue motion
+  - 3 open SDR roles = actively investing in outbound
+
+Talking points
+  1. The enterprise launch — what new challenges came with it?
+  2. The Workato VP hire — how is that changing how they think about integrations?
+  3. The SDR investment — what does the outbound playbook look like at their scale?
+
+Anticipated objections
+  "We already have a solution" — ask what's working and what isn't at enterprise scale
+  "Not the right time" — their SDR hiring says the opposite; they're moving now
+
+Questions to ask
+  1. What's the biggest bottleneck in your ops workflow since launching enterprise?
+  2. How are you thinking about AI in the stack right now?
+  3. What would make the next 90 days a success for your team?
+```
+
+## Configuration
+
+| Setting | Value |
+|---------|-------|
+| Model | Kimi K2 |
+| Max turns | 8 |
+| Execution | Fork |
+| Tools | `web_search`, `scrape_website`, `search_people`, `search_memories`, `get_company_profile`, `save_memory` |
+
+## How to invoke
+
+```text
+Meeting prep for my call with the CTO at Linear tomorrow at 2pm.
+```
+
+```text
+I have a call with Sarah Chen at Acme Corp on Friday. Prep me.
+```
+
+Results are saved to memory automatically — Striker can reference the brief when writing the follow-up email after the call.

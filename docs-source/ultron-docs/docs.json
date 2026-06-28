@@ -1,0 +1,241 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "willow",
+  "name": "Ultron",
+  "logo": {
+    "light": "/logo/favicon.svg",
+    "dark": "/logo/favicon.svg"
+  },
+  "favicon": "/logo/favicon.svg",
+  "colors": {
+    "primary": "#6366F1",
+    "light": "#818CF8",
+    "dark": "#4F46E5"
+  },
+  "topbarLinks": [
+    { "name": "Dashboard", "url": "https://app.51ultron.com" }
+  ],
+  "topbarCtaButton": {
+    "name": "Get Started Free",
+    "url": "https://app.51ultron.com"
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Getting Started",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "get-started/introduction",
+              "get-started/how-it-works",
+              "get-started/quickstart",
+              "get-started/key-concepts"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "The Platform",
+        "groups": [
+          {
+            "group": "Architecture",
+            "pages": [
+              "platform/overview",
+              "platform/chat-interface",
+              "platform/execution-engine",
+              "platform/parallel-execution",
+              "platform/model-routing",
+              "platform/session-management"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Memory & Intelligence",
+        "groups": [
+          {
+            "group": "Memory System",
+            "pages": [
+              "memory/overview",
+              "memory/memory-layers",
+              "memory/brain-graph",
+              "memory/memory-recall",
+              "memory/compression-engine",
+              "memory/lessons-system",
+              "memory/context-injection"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Your AI Team",
+        "groups": [
+          {
+            "group": "Agents",
+            "pages": [
+              "agents/overview",
+              "agents/cortex",
+              "agents/specter",
+              "agents/striker",
+              "agents/pulse",
+              "agents/sentinel"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Skills",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "skills/overview",
+              "skills/using-skills",
+              "skills/skill-anatomy"
+            ]
+          },
+          {
+            "group": "Research",
+            "pages": [
+              "skills/research/competitive-analysis",
+              "skills/research/company-deep-dive",
+              "skills/research/pricing-research",
+              "skills/research/meeting-prep"
+            ]
+          },
+          {
+            "group": "Lead Generation",
+            "pages": [
+              "skills/lead-gen/find-decision-makers",
+              "skills/lead-gen/icp-deep-match",
+              "skills/lead-gen/lead-scoring",
+              "skills/lead-gen/trigger-events"
+            ]
+          },
+          {
+            "group": "Sales",
+            "pages": [
+              "skills/sales/cold-email",
+              "skills/sales/follow-up",
+              "skills/sales/objection-handler",
+              "skills/sales/pre-post-call"
+            ]
+          },
+          {
+            "group": "Content",
+            "pages": [
+              "skills/content/linkedin-post",
+              "skills/content/social-content"
+            ]
+          },
+          {
+            "group": "Operations",
+            "pages": [
+              "skills/ops/morning-briefing",
+              "skills/ops/pipeline-review"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Canvas & Builder",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "canvas/overview",
+              "canvas/how-it-works",
+              "canvas/export"
+            ]
+          },
+          {
+            "group": "Templates",
+            "pages": [
+              "canvas/sales",
+              "canvas/research",
+              "canvas/content",
+              "canvas/ops",
+              "canvas/data"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Integrations",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "integrations/overview",
+              "integrations/composio",
+              "integrations/mcp-servers"
+            ]
+          },
+          {
+            "group": "By Category",
+            "pages": [
+              "integrations/productivity",
+              "integrations/sales-crm",
+              "integrations/automation",
+              "integrations/content",
+              "integrations/data"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Workflows",
+        "groups": [
+          {
+            "group": "End-to-End Playbooks",
+            "pages": [
+              "workflows/overview",
+              "workflows/outbound-sales",
+              "workflows/inbound-nurture",
+              "workflows/research-to-content",
+              "workflows/competitive-intel",
+              "workflows/meeting-to-deal",
+              "workflows/content-calendar"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Account",
+        "groups": [
+          {
+            "group": "Settings",
+            "pages": [
+              "account/settings/profile",
+              "account/settings/integrations"
+            ]
+          },
+          {
+            "group": "Pricing",
+            "pages": [
+              "account/pricing/plans",
+              "account/pricing/credits"
+            ]
+          },
+          {
+            "group": "Help",
+            "pages": [
+              "account/help/faq"
+            ]
+          },
+          {
+            "group": "Changelog",
+            "pages": [
+              "account/changelog/index"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "footerSocials": {
+    "instagram": "https://instagram.com/51ultron",
+    "linkedin": "https://linkedin.com/company/51ultron"
+  }
+}

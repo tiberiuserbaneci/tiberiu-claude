@@ -1,0 +1,66 @@
+---
+title: "FAQ"
+description: "Common questions about Ultron."
+icon: "circle-question"
+---
+
+<AccordionGroup>
+  <Accordion title="How is Ultron different from ChatGPT or Copilot?">
+    ChatGPT is a general-purpose assistant. Copilot is a code assistant. Ultron is an operating system for running business functions — lead generation, sales outreach, content creation, competitive research — with persistent memory, specialized agents, and 250+ tool integrations.
+
+    Ultron doesn't just answer questions. It does the work.
+  </Accordion>
+
+  <Accordion title="Does Ultron replace my CRM?">
+    No. Ultron connects to your CRM (HubSpot, Salesforce, Notion database) and operates it. Specter saves leads to it. Striker updates deal stages. Morning briefing reads from it. Your CRM stays where it is — Ultron makes it more useful.
+  </Accordion>
+
+  <Accordion title="How long does it take to set up?">
+    First output: under 5 minutes. Complete profile + first integration: 20–30 minutes. Ultron running your first full workflow (outbound, content calendar, or competitive research): the same day.
+  </Accordion>
+
+  <Accordion title="What happens to my data?">
+    Your profile and memories are stored in your workspace. Credentials are encrypted with AES-256 at rest and decrypted only at session start. Tool calls route through Composio with your own OAuth tokens — Ultron doesn't store third-party data beyond what's saved in memory.
+  </Accordion>
+
+  <Accordion title="Can Ultron actually send emails?">
+    Yes. Connect Gmail or Brevo in settings. Striker drafts emails and sends them via your connected account. Cold emails go from your Gmail address. Volume sequences go via Brevo for deliverability. You can review drafts before sending if you prefer.
+  </Accordion>
+
+  <Accordion title="What's the difference between an agent and a skill?">
+    An agent is persistent — it runs on a schedule, has a defined domain (sales, content, research), and coordinates with other agents via tasks.
+
+    A skill is on-demand — you invoke it from chat with a specific objective, it runs once, returns a result, and saves to memory. Skills are the specialized capabilities agents use.
+  </Accordion>
+
+  <Accordion title="How do I get the best cold emails from Striker?">
+    Three things matter most:
+    1. Complete your profile with voice samples — real examples of emails you've written
+    2. Give Striker a specific objective: name, company, and a reference point
+    3. Make sure Specter has enriched the lead first so Striker has research to work from
+  </Accordion>
+
+  <Accordion title="Why does Ultron sometimes say 'verify on website' instead of giving a number?">
+    Anti-fabrication rules. If Ultron can't find a pricing figure or revenue number on a live public page, it won't invent one. It uses qualitative language or directs you to verify. This is intentional — invented numbers in sales conversations cause problems.
+  </Accordion>
+
+  <Accordion title="Can I connect a tool that's not on the integrations list?">
+    If the tool has an MCP server available, it can be connected. Enterprise plans include custom MCP server support. For tools available through Composio (250+), connect them through the Composio integration in settings.
+  </Accordion>
+
+  <Accordion title="What does 'sandbox' mean?">
+    The sandbox is an isolated cloud execution environment. It's used for complex, long-running tasks that need more time and more tools than a standard API call allows. Sandbox sessions have a 50-minute runtime window, access to 50+ MCP servers, and full browser and filesystem capabilities. Available on Growth and Scale plans.
+  </Accordion>
+
+  <Accordion title="How does memory work across sessions?">
+    After every skill run and agent task, results are saved to memory with tags. When you start a new session, Ultron runs a recall query against the memory store and injects the 5 most relevant entries into context. You pick up where you left off without re-explaining your business.
+  </Accordion>
+
+  <Accordion title="Can multiple team members use the same workspace?">
+    Team workspaces are available on Growth and Scale plans. Each team member has their own session and profile. Agents and memory are shared across the workspace — Specter's research is accessible to every team member's Striker.
+  </Accordion>
+
+  <Accordion title="What if I hit my credit limit mid-session?">
+    The session pauses and a notification appears. You can purchase additional credits immediately from Settings → Credits and continue. Partial results from the interrupted task are preserved — you don't lose work.
+  </Accordion>
+</AccordionGroup>

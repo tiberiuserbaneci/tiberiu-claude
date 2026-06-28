@@ -1,0 +1,46 @@
+---
+title: "Competitive Intelligence Workflow"
+description: "Trigger to memory: how Cortex builds competitive intel that every other agent uses."
+icon: "chart-bar"
+---
+
+Competitive intelligence in Ultron is not a one-time report. It's a live knowledge base that Cortex builds and every other agent draws from.
+
+## The workflow
+
+<Steps>
+  <Step title="Trigger: something changes">
+    A competitor announces a new product, raises funding, changes pricing, or hires a notable exec. You notice, or Cortex catches it via trigger event monitoring.
+  </Step>
+
+  <Step title="Cortex: full competitive deep-dive">
+    ```text
+    Run a competitive analysis on HubSpot.
+    They just launched an AI feature — I need to know what it does and how to position against it.
+    ```
+
+    Cortex runs the competitive analysis skill: 3 parallel searches, pricing page scrape, product page analysis. Returns a structured brief.
+  </Step>
+
+  <Step title="Canvas: comparison table rendered">
+    Comparison table canvas generated inline — your product vs the competitor, feature by feature, price by price. Export as PDF for the team.
+  </Step>
+
+  <Step title="Memory saved with tags">
+    Research saved to memory: `["competitive", "hubspot", "ai-feature", "2026-04"]`.
+
+    Now available to every agent in every future session.
+  </Step>
+
+  <Step title="Every agent uses it">
+    **Striker:** References the competitive research when handling "we already use HubSpot" objections. Cites the specific gap identified.
+
+    **Pulse:** Uses the competitive angle for content: "Here's what HubSpot's new AI feature actually does (and what it doesn't)."
+
+    **Cortex:** Pulls the memory as baseline for meeting prep when HubSpot is mentioned.
+  </Step>
+
+  <Step title="Refresh when needed">
+    Re-run competitive analysis when the competitor releases an update, raises another round, or changes pricing. Memory updates. All agents use the fresh intel automatically.
+  </Step>
+</Steps>

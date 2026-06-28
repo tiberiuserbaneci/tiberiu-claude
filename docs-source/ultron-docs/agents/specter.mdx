@@ -1,0 +1,72 @@
+---
+title: "Specter"
+description: "Lead generation. ICP matching, Apollo enrichment, email verification, and 1\u201310 scoring."
+icon: "crosshairs"
+---
+
+Specter finds the right companies, surfaces the right contacts, verifies their emails, and scores every lead against your ICP. Hot leads go directly to Striker. Warm leads enter a nurture sequence. Cold leads get archived.
+
+## The enrichment pipeline
+
+```text
+Objective: "Find 20 CTOs at Series A SaaS companies in the US"
+    ↓
+Company research
+  web_search("Series A SaaS companies 2026 US")
+  search_companies(Apollo) — filters: industry, size, funding stage, geo
+    ↓
+Contact research
+  search_people(Apollo) — filters: title, seniority, company
+  web_search("{name} {company} LinkedIn") for additional context
+    ↓
+Enrichment
+  enrich_lead(Apollo) — verified email, phone, LinkedIn URL
+  verify_email(ZeroBounce) — valid / catch-all / invalid
+    ↓
+ICP scoring
+  Score each lead 1–10 against your ICP definition
+  8–10: create Striker task immediately
+  5–7: tag as warm, enter nurture
+  1–4: archive
+    ↓
+Save
+  save_lead() — name, email, company, title, score, research_summary
+  save_memory() — tagged ["specter", company_name]
+```
+
+## Scoring criteria
+
+| Score | Label | Action |
+|-------|-------|--------|
+| 8–10 | Hot | Striker task created immediately |
+| 5–7 | Warm | Enter 4-email nurture sequence |
+| 1–4 | Cold | Archived, no outreach |
+
+Scoring factors: ICP fit (industry, size, funding stage), signal strength (trigger events), contact quality (verified email, title seniority), budget indicators (job postings, tech stack).
+
+## Trigger events Specter watches
+
+- **Funding rounds** — company just raised, has budget, is actively scaling
+- **Executive hires** — new VP Sales or CTO signals tool evaluation cycles
+- **Job postings** — hiring SDRs, growth engineers, or ops roles signals relevant needs
+- **Tech stack changes** — switching from a competitor is the highest-intent signal
+- **News mentions** — raised profile, awards, press coverage = receptive to outreach
+
+## Tools
+
+| Tool | Purpose |
+|------|---------|
+| `search_companies` | Apollo company search with filters |
+| `search_people` | Apollo contact search by title and company |
+| `enrich_lead` | Apollo enrichment — verified email, phone, LinkedIn |
+| `verify_email` | ZeroBounce — valid / catch-all / invalid |
+| `web_search` | Supplemental research on companies and people |
+| `save_lead` | Write to CRM with score and research summary |
+| `create_task` | Create Striker outreach task for hot leads |
+
+## Skills
+
+- [Find Decision Makers](/skills/lead-gen/find-decision-makers)
+- [ICP Deep Match](/skills/lead-gen/icp-deep-match)
+- [Lead Scoring](/skills/lead-gen/lead-scoring)
+- [Trigger Events](/skills/lead-gen/trigger-events)

@@ -1,0 +1,59 @@
+---
+title: "Parallel Execution"
+description: "75 concurrent tasks: how Ultron runs multiple agents across multiple workspaces simultaneously."
+icon: "bolt"
+---
+
+Ultron executes up to 75 tasks at the same time. This is not a queue where tasks wait their turn. It is genuine parallel execution across agents and workspaces.
+
+## How the math works
+
+```text
+Ultron — up to 75 parallel executions
+├── Workspace A
+│   ├── Cortex    → deep-diving Series A SaaS companies (3 searches in parallel)
+│   ├── Specter   → enriching 10 leads (Apollo + ZeroBounce in parallel)
+│   ├── Striker   → writing cold emails for 5 qualified leads
+│   ├── Pulse     → drafting LinkedIn post (trend research + VIRALS scoring)
+│   └── Sentinel  → monitoring system health
+├── Workspace B
+│   ├── Cortex    → competitive analysis on HubSpot
+│   ├── Specter   → ICP matching for a new lead list
+│   ├── Striker   → Day 3 follow-ups for last week's outreach
+│   └── ...
+└── ... up to 15 workspaces
+```
+
+5 agents × 15 workspaces = 75 concurrent task slots.
+
+## Within each task
+
+Parallelism doesn't stop at the task level. Inside each skill run, independent tool calls fire simultaneously:
+
+```typescript
+// Specter enriching one lead — all three calls fire at once
+const [company, contacts, emailCheck] = await Promise.all([
+  search_companies({ name: "Acme Corp" }),
+  search_people({ company: "Acme Corp", title: "CTO" }),
+  verify_email({ email: "john@acmecorp.com" })
+]);
+```
+
+A single lead enrichment that would take 30 seconds sequentially completes in 8–10 seconds with parallel execution.
+
+## Concurrency controls
+
+Parallelism is managed at two levels to protect against rate limit cascades:
+
+| Level | Limit | Reason |
+|-------|-------|--------|
+| Skills per session | Max 2 concurrent | Prevents token-per-minute overflow |
+| Tool calls per skill turn | Unlimited parallel | Independent ops always concurrent |
+
+If you invoke a third skill while two are running, it queues and starts the moment a slot opens.
+
+**Rate limit handling:** On a 429 response, Ultron reads the `retry-after` header, falls back to exponential backoff (1s → 2s → 4s), and retries up to 3 times before surfacing an error.
+
+## Why it matters
+
+A complete outbound cycle — ICP research, lead discovery, enrichment, scoring, cold email draft, quality check — that takes a human 4 hours runs in under 15 minutes when Cortex and Specter work in parallel and hand off to Striker automatically.

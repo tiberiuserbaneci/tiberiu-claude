@@ -1,0 +1,92 @@
+---
+title: "Leads"
+description: "Your prospect database. Every lead Specter finds lands here, scored and ready."
+---
+
+The Leads table is your prospect database. Every company or contact Specter finds gets saved here automatically — enriched with data, scored for fit, and ready for your next step.
+
+## The leads table
+
+Sortable by any column:
+
+| Column | Description |
+|--------|-------------|
+| **Name** | Contact's full name |
+| **Title** | Job title |
+| **Company** | Company name and domain |
+| **Score** | Lead score 0–100 (ICP fit + intent signals) |
+| **Status** | new → enriched → emailed → replied → meeting → closed / lost |
+| **Source** | Which agent found them (usually Specter) |
+| **Last Contact** | Date of most recent outreach |
+| **Actions** | View profile, email, move to deal |
+
+## Lead scores explained
+
+Every lead is scored 0–100 when Specter saves it:
+
+| Score | What it means |
+|-------|--------------|
+| **80–100** | Strong ICP fit, clear intent signals. Prioritize these. |
+| **60–79** | Good fit, some signals. Worth pursuing. |
+| **40–59** | Marginal fit. Nurture or deprioritize. |
+| **0–39** | Doesn't match your ICP. Likely to skip. |
+
+Score is based on: company size match, industry fit, hiring signals, funding stage, geographic match, and tech stack overlap. Open a lead profile to see exactly why it scored the way it did.
+
+## Lead statuses
+
+Move leads through these stages as you work them:
+
+```
+new → enriched → emailed → replied → meeting → closed / lost
+```
+
+- **new** — Specter just saved this lead. Not yet reviewed.
+- **enriched** — additional data has been added (email verified, more context found)
+- **emailed** — outreach has been sent
+- **replied** — they responded to your outreach
+- **meeting** — a call or meeting is scheduled
+- **closed / lost** — deal outcome
+
+You can move status manually, or tell Striker: _"Move all leads who replied this week to 'meeting' status."_
+
+## Lead profile
+
+Click any row to open the full lead profile slide-over:
+
+- Contact info (name, title, email, LinkedIn URL)
+- Company details (size, industry, location, funding stage)
+- Lead score with full reasoning
+- Research summary (what Specter or Cortex found about them)
+- Outreach history (emails sent, replies received)
+- Notes field for your own observations
+- **"Move to deal"** button — promotes this lead into your Deals pipeline
+
+## Filtering and searching
+
+- Filter by score range (e.g., "show me only leads scored 70+")
+- Filter by status (e.g., "show me all leads who haven't been emailed")
+- Filter by source agent
+- Filter by industry or location
+- Search by name, company, or keyword in research notes
+
+## Bulk actions
+
+Select multiple leads with the checkbox column:
+
+- **Bulk email** — tell Striker to draft outreach for all selected leads at once
+- **Bulk status change** — move all selected to a new status
+- **Export to CSV** — download for use in other tools
+- **Move to deal** — bulk-promote high-score leads to your pipeline
+
+## Where leads come from
+
+| Source | How they get here |
+|--------|-------------------|
+| Specter | Direct lead gen tasks (most common) |
+| Cortex | Research tasks that identify companies as leads |
+| Manual | You can add leads directly with the "+ Add Lead" button |
+
+<Tip>
+  To prioritize: sort by Score descending, filter for Status = "new." That's your daily hit list — highest-fit leads who haven't been contacted yet.
+</Tip>

@@ -1,0 +1,88 @@
+---
+title: "Changelog"
+description: "What's new in Ultron. Recent features, fixes, and improvements."
+---
+
+<Note>
+  Ultron ships updates regularly. This page tracks notable changes — features you'll actually notice.
+</Note>
+
+---
+
+## Feb 2025
+
+### Content intelligence frameworks
+Agents now use structured content intelligence when researching and creating content. Pulse pulls from real engagement data patterns before writing, not just general knowledge.
+
+### Dispatcher mode
+The chat interface now operates in dispatcher mode — Ultron confirms which agent is handling your request and what they'll do, then routes execution to the right agent. Less essay-writing in chat, more actual work from agents.
+
+### Gmail integration overhaul
+- Fixed Gmail token lookup and refresh
+- Striker can now accurately detect and read Gmail threads
+- Email drafts go to your Gmail drafts folder directly
+
+### Cron schedule optimization
+Agents now run every 6 hours instead of more frequently, reducing unnecessary token usage while maintaining responsiveness for scheduled tasks.
+
+---
+
+## Jan 2025
+
+### Strict task gating
+Agents now check their task queue before doing any work. If no tasks are assigned, agents stand by instead of generating unsolicited content or research. This prevents wasted API calls and keeps your dashboard clean.
+
+### User isolation hardening
+Complete workspace isolation — agents can only access data from the workspace they're authorized for. Activity logs, leads, and content are now fully scoped per user with no cross-workspace data leakage.
+
+### Real-time activity feed
+The Command Center now shows live activity as agents work — individual log entries appear as they're created, not just on run completion. Watch Specter find and save leads in real time.
+
+### Agent memory system
+Agents now save insights across runs. Specter remembers which lead criteria worked best for your ICP. Pulse remembers which voice patterns matched your samples. Memory accumulates and improves agent output over time.
+
+### Lead scoring overhaul
+Lead scores are now based on a structured rubric: ICP fit, intent signals, funding stage, geographic match, tech stack overlap. Every lead profile shows the full scoring breakdown.
+
+---
+
+## Dec 2024
+
+### Autonomous dispatch architecture
+Complete rebuild of how agents receive and execute tasks. Agents now run as truly autonomous cron processes — they check their task queue, execute assigned work, log every step, and report completion. No human needs to be present.
+
+### Gmail + Cortex integration
+Cortex can now read Gmail conversations and dispatch them to appropriate agents for action. Cortex identifies lead opportunities in your inbox and routes them to Striker.
+
+### Granular activity logging
+Every agent action now generates a specific log entry with context. Activity feed shows what an agent searched, what it found, what it saved, and what it skipped — not just a summary at the end.
+
+### Multi-agent combos
+Agents can now hand off work to each other. Cortex research flows to Specter for lead building. Specter lead lists flow to Striker for outreach drafting. Chain prompts work across agents in sequence.
+
+---
+
+## Nov 2024
+
+### Five agent archetypes
+Launched the current five-agent model: Cortex (research), Specter (leads), Striker (sales), Pulse (content), Sentinel (monitoring). Each agent has a defined role, schedule, and task queue.
+
+### Conversational chat UI
+Replaced the form-based interface with a streaming chat interface. Natural language task assignment. Markdown rendering for agent responses.
+
+### Google OAuth integration
+Google Workspace connection via OAuth. Gmail and Calendar access for Striker. Encrypted credential storage.
+
+### Apollo integration
+Specter now connects to Apollo.io for verified contact data. Lead enrichment pulls firmographic data, verified emails, and intent signals from Apollo.
+
+---
+
+## Oct 2024
+
+### Beta launch
+Initial release of Ultron. Three departments (Sales, Creates, Builds), basic lead generation, content drafting, and agent deployment. BYOK model with Claude and OpenRouter support.
+
+---
+
+_Have a feature request? Email hello@51ultron.com or mention it in Chat — we read everything._

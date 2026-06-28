@@ -1,0 +1,66 @@
+---
+title: "Sales & CRM Integrations"
+description: "HubSpot, Apollo, and Stripe."
+icon: "chart-line"
+---
+
+## HubSpot
+
+**What Ultron can do:** Search contacts, list deals, create contacts, update deal stages, read pipeline data.
+
+**Connection:** HubSpot OAuth — Settings → Integrations → HubSpot → Connect
+
+**Tools:** `hubspot_search_contacts`, `hubspot_list_deals`, `hubspot_create_contact`
+
+**How agents use it:**
+- Specter saves enriched leads as new HubSpot contacts
+- Striker updates deal stages as conversations progress
+- Morning briefing pulls current pipeline state
+- Pipeline review analyzes deal velocity and stuck deals
+
+**Example:**
+```text
+Show me all deals stuck in the Proposal stage for more than 14 days.
+```
+
+---
+
+## Apollo
+
+Apollo is Specter's primary prospecting and enrichment tool.
+
+**What Ultron can do:** Search people (by title, company, location, seniority), search companies (by industry, size, funding stage), enrich individual leads with email and LinkedIn data.
+
+**Connection:** Apollo API key — Settings → Integrations → Apollo → Add API key
+
+**Tools:** `search_people`, `search_companies`, `enrich_lead`
+
+**Example:**
+```text
+Find CTOs at Series A B2B SaaS companies in the US with 50–500 employees.
+```
+```text
+Enrich this lead: Sarah Chen at Acme Corp. I need her verified email and LinkedIn URL.
+```
+
+<Tip>
+  Apollo is used in combination with ZeroBounce. Apollo finds and enriches contacts. ZeroBounce verifies the email before Striker sends.
+</Tip>
+
+---
+
+## Stripe
+
+**What Ultron can do:** List customers, list payments, list subscriptions, create payment links, create invoices, create subscription plans, pull revenue metrics.
+
+**Connection:** Stripe API key (restricted key recommended) — Settings → Integrations → Stripe → Add API key
+
+**Tools:** `stripe_list_customers`, `stripe_list_payments`, `stripe_list_subscriptions`, `stripe_create_payment_link`, `stripe_create_invoice`, `stripe_revenue_metrics`
+
+**Example:**
+```text
+Show me MRR for Q1 2026 and list the 5 customers with the highest LTV.
+```
+```text
+Create a payment link for $4,500/month for the Acme Corp proposal.
+```

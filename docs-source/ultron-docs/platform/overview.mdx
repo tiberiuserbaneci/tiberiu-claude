@@ -1,0 +1,54 @@
+---
+title: "Platform Overview"
+description: "The five-layer architecture that powers every Ultron session."
+icon: "layer-group"
+---
+
+Ultron is built on a five-layer stack. Each layer has a single responsibility. Together they make it possible for a single chat message to trigger parallel web searches, tool executions, memory saves, and real-time streaming — all in one coherent loop.
+
+## The five-layer stack
+
+```text
+Ultron Platform
+├── Layer 1: Interaction     — Chat UI, SSE streaming, tool activity feed
+├── Layer 2: Orchestration   — Session state, cost tracking, transcript persistence
+├── Layer 3: Core Loop       — compress → call Kimi K2 → execute tools → loop
+├── Layer 4: Tools           — 50+ built-in tools + dynamic MCP server discovery
+└── Layer 5: API             — Kimi K2 via Moonshot AI (Anthropic-compatible)
+```
+
+## Layer breakdown
+
+**Layer 1 — Interaction**
+The chat interface. Captures input, streams tool activity in real-time via SSE, renders results inline. Canvases render as React components inside the conversation thread. Nothing requires a page switch.
+
+**Layer 2 — Orchestration**
+Manages the session. Tracks token usage across turns, persists transcripts to JSONL, maintains file history snapshots, and holds the permission context for tool calls. This layer keeps multi-turn conversations coherent and resumable.
+
+**Layer 3 — Core Loop**
+The agent loop. Each iteration: run compression if needed → call Kimi K2 with full context → collect tool calls → execute tools (in parallel where possible) → feed results back → check if another iteration is needed. Repeats until the task is complete.
+
+**Layer 4 — Tools**
+The execution surface. 50+ built-in tools (web search, browser automation, CRM lookups, email, enrichment, document generation) plus dynamic MCP server discovery. Every session starts with 50+ MCP servers already loaded and available.
+
+**Layer 5 — API**
+Kimi K2 via Moonshot AI's Anthropic-compatible endpoint. Model routing selects Kimi K2 for complex reasoning and a fast model for lightweight tasks. All API communication is streamed — responses and tool calls arrive as they're generated, not after the full response completes.
+
+## Design principle
+
+The user never leaves the chat. No separate apps for research. No external CRM for outreach. No content tool for publishing. One interface, every capability.
+
+<CardGroup cols={2}>
+  <Card title="Chat Interface" icon="message" href="/platform/chat-interface">
+    How SSE streaming, tool activity, and inline rendering work.
+  </Card>
+  <Card title="Execution Engine" icon="microchip" href="/platform/execution-engine">
+    The sandboxed runtime, tool pipeline, and 50-minute window.
+  </Card>
+  <Card title="Parallel Execution" icon="bolt" href="/platform/parallel-execution">
+    75 concurrent tasks — how the math works and why it matters.
+  </Card>
+  <Card title="Model Routing" icon="route" href="/platform/model-routing">
+    How Ultron picks between Kimi K2 and fast models per request.
+  </Card>
+</CardGroup>

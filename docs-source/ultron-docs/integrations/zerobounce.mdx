@@ -1,0 +1,39 @@
+---
+title: "ZeroBounce"
+description: "Email validation — confirm addresses are deliverable before you send outreach."
+---
+
+ZeroBounce validates email addresses before Specter (or you) sends outreach. Sending to bad addresses hurts your sender reputation and tanks deliverability. ZeroBounce catches invalid, disposable, and role-based addresses before they cause damage.
+
+## What it enables
+
+- Real-time email validation during Specter's enrichment phase
+- Catch invalid addresses before sending outreach
+- Protect your Gmail sender reputation
+- Lower bounce rates on outreach campaigns
+
+## How to connect
+
+<Steps>
+  <Step title="Get your ZeroBounce API key">
+    1. Log in to [zerobounce.net](https://zerobounce.net)
+    2. Go to **API** in the top navigation
+    3. Copy your API key
+  </Step>
+  <Step title="Add it to Ultron">
+    1. Open your Ultron dashboard → **Integrations**
+    2. Find the ZeroBounce card and click **Connect**
+    3. Paste your API key and save
+  </Step>
+</Steps>
+
+## How it works with Specter
+
+When Specter finds a lead and pulls an email address, it sends the address to ZeroBounce for validation before saving. The lead is saved with a validation status:
+
+- **Valid** — safe to send
+- **Catch-all** — the domain accepts all mail, deliverability uncertain
+- **Invalid** — do not send, address doesn't exist
+- **Unknown** — validation inconclusive
+
+Specter will note the validation status on each lead profile so you know which addresses are safe to contact.

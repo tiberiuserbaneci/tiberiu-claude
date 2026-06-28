@@ -1,0 +1,42 @@
+---
+title: "Inbound Nurture Workflow"
+description: "Lead capture to Striker handoff: scoring inbound leads and running the right sequence for each tier."
+icon: "inbox"
+---
+
+When a lead comes in — form fill, email reply, Calendly booking, or referral — Ultron scores it, routes it to the right sequence, and hands it to Striker when it's ready.
+
+## The workflow
+
+<Steps>
+  <Step title="Lead arrives">
+    Lead enters via form fill, webhook, email reply, or Calendly booking. Saved to CRM via Specter or manually.
+  </Step>
+
+  <Step title="Specter scores the lead">
+    Specter scores the lead 1–10 against your ICP definition.
+
+    Score 8–10 (Hot) → immediate Striker outreach task created.
+    Score 5–7 (Warm) → enter 4-email nurture sequence.
+    Score 1–4 (Cold) → tagged and archived.
+  </Step>
+
+  <Step title="Hot lead: immediate Striker outreach">
+    Striker picks up the task within the session. Researches the lead, writes a personalized email referencing the trigger that brought them in (form fill → reference their company and pain point).
+  </Step>
+
+  <Step title="Warm lead: 4-email nurture sequence">
+    | Email | Timing | Content |
+    |-------|--------|--------|
+    | 1 | Day 0 | Welcome + one tactical value they can use today |
+    | 2 | Day 3 | Case study or proof point |
+    | 3 | Day 7 | Tactical insight specific to their situation |
+    | 4 | Day 10 | Soft pitch: here's how to get started |
+
+    Each email is personalized. Each adds new value. None is a "check-in."
+  </Step>
+
+  <Step title="Reply at any point: Striker takes over">
+    If the warm lead replies during the nurture sequence, Striker switches from automated sequence to active sales mode. Pipeline stage updated. Follow-up becomes 1:1 and contextual.
+  </Step>
+</Steps>

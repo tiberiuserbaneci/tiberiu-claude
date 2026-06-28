@@ -1,0 +1,64 @@
+---
+title: "Credits & AI Costs"
+description: "How credits work, what uses them, and what AI actually costs."
+---
+
+## How credits work
+
+Ultron is a platform subscription — $19/month covers access to the platform, your agent team, and all features.
+
+AI usage costs are separate. You bring your own API key (Claude or OpenRouter) and pay your AI provider directly. Ultron never marks up or charges for AI calls.
+
+## What your $19/month covers
+
+- Platform access and dashboard
+- All 5 agents (Cortex, Specter, Striker, Pulse, Sentinel)
+- Scheduled agent runs
+- Lead database, content drops, deals pipeline, memory system
+- All integrations (Google, Apollo, Apify, etc.)
+- Agent activity logs and task board
+
+**What it doesn't cover:** AI inference costs. Those go directly to Anthropic or OpenRouter via your key.
+
+## AI costs in practice
+
+Your agents are powered by your Claude or OpenRouter API key. You pay your provider based on tokens used.
+
+Typical monthly AI spend for an active Ultron user: **$15–50/month**, depending on how many tasks you run and how complex they are.
+
+Research tasks (Cortex) and multi-step lead generation (Specter) use more tokens than simple content tasks (Pulse). Sentinel's health checks use very few.
+
+## Choosing your AI provider
+
+<Tabs>
+  <Tab title="Claude API (Recommended)">
+    **Best for:** Quality output, strong reasoning, reliable performance.
+
+    1. Go to [console.anthropic.com](https://console.anthropic.com)
+    2. Create an API key
+    3. Add it in Dashboard → Integrations → Claude API
+
+    Pricing: Pay per token. See [Anthropic's pricing page](https://www.anthropic.com/pricing) for current rates.
+  </Tab>
+  <Tab title="OpenRouter">
+    **Best for:** Model flexibility, potentially lower costs on specific tasks.
+
+    1. Go to [openrouter.ai](https://openrouter.ai)
+    2. Create an API key and add credits
+    3. Add it in Dashboard → Integrations → OpenRouter
+
+    OpenRouter routes to multiple AI providers. You can switch models without changing your integration.
+  </Tab>
+</Tabs>
+
+## Controlling AI spend
+
+A few ways to keep costs predictable:
+
+- **Fewer, better prompts.** A well-scoped prompt uses fewer tokens than a vague one that requires back-and-forth.
+- **Use scheduled tasks wisely.** Agents run automatically — make sure their tasks are useful before enabling recurring schedules.
+- **Monitor in your provider dashboard.** Anthropic and OpenRouter both show usage by day and by API key. Set a budget alert if you want a ceiling.
+
+<Note>
+  Neither Claude API nor OpenRouter charges per agent run. You pay for tokens (input + output). A typical Specter lead generation run uses roughly 5,000–15,000 tokens total, costing pennies.
+</Note>

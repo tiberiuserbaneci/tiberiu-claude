@@ -1,0 +1,59 @@
+---
+title: "Lead Scoring"
+description: "Score leads 1\u201310 against your ICP and route hot, warm, and cold leads to the right next step."
+icon: "star-half-stroke"
+---
+
+Lead scoring runs after enrichment to give every lead a clear priority tier. Scores drive automatic routing: hot leads get a Striker task, warm leads enter nurture, cold leads are archived.
+
+## Scoring scale
+
+| Score | Tier | Automatic action |
+|-------|------|-----------------|
+| 8–10 | Hot | Striker outreach task created immediately |
+| 5–7 | Warm | Enter 4-email nurture sequence |
+| 1–4 | Cold | Archived, no outreach |
+
+## Scoring criteria
+
+**ICP fit (40%)**
+- Company size match
+- Industry match
+- Funding stage match
+- Geography match
+
+**Signal strength (30%)**
+- Recent trigger events (funding, hires, tech changes)
+- Time since trigger (fresher = higher score)
+- Number of concurrent signals
+
+**Contact quality (20%)**
+- Email verification status (valid > catch-all)
+- Title seniority (C-level > VP > Director > Manager)
+- LinkedIn profile completeness
+
+**Budget indicators (10%)**
+- Job postings signaling relevant spend
+- Tech stack choices that imply budget
+- Press coverage and growth signals
+
+## Configuration
+
+| Setting | Value |
+|---------|-------|
+| Model | Fast (Haiku-class) |
+| Max turns | 6 |
+| Execution | Inline |
+| Tools | `lookup_leads`, `search_memories`, `update_lead` |
+
+Lead scoring uses the fast model because it's pattern matching against defined criteria — not complex reasoning. This keeps scoring fast and cheap across large lists.
+
+## How to invoke
+
+```text
+Score the 15 leads Specter found yesterday.
+```
+
+```text
+Re-score our warm leads list with the updated ICP I just set.
+```

@@ -1,0 +1,52 @@
+---
+title: "Workflows"
+description: "End-to-end playbooks showing how Ultron agents chain together to run complete business functions."
+icon: "diagram-project"
+---
+
+A workflow is what happens when agents, skills, tools, and memory work together across a complete business function. Not one task — a full cycle, from trigger to outcome.
+
+## How workflows emerge
+
+Workflows in Ultron aren't configured pipelines. They emerge from agent coordination:
+
+- Specter saves research to memory → Striker reads it when writing the email
+- Cortex builds a competitive brief → Pulse references it in content → Striker uses it in objection handling
+- Striker logs a deal outcome → Morning briefing surfaces it → the recommended action reflects it
+
+Memory is the connective tissue. Tasks are the handoff mechanism.
+
+## The cross-agent chain
+
+```text
+Specter: "Acme Corp CTO" — ICP match, score 9
+    ↓
+  Saves lead + research to CRM + memory
+  Creates task: "Cold outreach — Acme Corp CTO" → Striker
+    ↓
+Striker reads Specter's memory
+  Writes cold email (6-point quality gate)
+  Sends via Gmail
+    ↓ (day 3, no reply)
+Striker: Day 3 follow-up (new value angle, 75 words)
+    ↓ (day 5, no reply)
+Striker: Day 5 follow-up (different angle, 100 words)
+    ↓ (reply received)
+Striker: logs outcome, updates HubSpot deal stage
+  Cortex: pre-call brief requested for the meeting
+    ↓ (meeting happens)
+Striker: post-call blueprint from call notes
+  Proposal drafted as Structured Doc canvas
+  Sent. Deal stage → Proposal.
+```
+
+This entire chain runs with minimal manual intervention.
+
+<CardGroup cols={2}>
+  <Card title="Outbound Sales" icon="paper-plane" href="/workflows/outbound-sales">ICP match → enrich → cold email → follow-up → deal.</Card>
+  <Card title="Inbound Nurture" icon="inbox" href="/workflows/inbound-nurture">Lead capture → score → nurture sequence → handoff.</Card>
+  <Card title="Research to Content" icon="pen" href="/workflows/research-to-content">Trend research → post draft → VIRALS score → publish.</Card>
+  <Card title="Competitive Intel" icon="chart-bar" href="/workflows/competitive-intel">Trigger → deep-dive → comparison canvas → memory.</Card>
+  <Card title="Meeting to Deal" icon="handshake" href="/workflows/meeting-to-deal">Pre-call prep → post-call blueprint → proposal → close.</Card>
+  <Card title="Content Calendar" icon="calendar" href="/workflows/content-calendar">Weekly plan → platform drafts → queue → publish.</Card>
+</CardGroup>

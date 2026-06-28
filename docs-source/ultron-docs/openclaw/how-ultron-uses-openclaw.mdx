@@ -1,0 +1,38 @@
+---
+title: "How Ultron Uses OpenClaw"
+description: "OpenClaw is Ultron's execution backbone for multi-channel AI."
+---
+
+## Architecture
+
+```
+User (Telegram / Slack / WhatsApp)
+         ↓
+OpenClaw Gateway (running on server)
+         ↓
+Validates workspace code → Supabase
+         ↓
+Routes to Ultron AI (Claude API via user's BYOK key)
+         ↓
+Executes skills (ProspectIQ, Ghost Writer, Clone Army, etc.)
+         ↓
+Stores results → Supabase (leads, content, deals, agents)
+         ↓
+Returns response → User's channel
+```
+
+## What OpenClaw handles
+
+- **Channel connections** — manages WhatsApp, Telegram, Slack connections
+- **Message routing** — receives messages and routes to the right agent
+- **Session management** — maintains conversation state per user per channel
+- **Workspace linking** — validates `/connect` commands against Supabase
+- **Media handling** — processes images, documents, audio from channels
+
+## What Ultron handles
+
+- **Business logic** — department routing, skill execution, plan gating
+- **Data storage** — leads, content, deals, agents in Supabase
+- **AI execution** — system prompts, skill prompts, Claude API calls
+- **User management** — auth, profiles, billing, integrations
+- **Dashboard** — web UI for managing everything

@@ -1,0 +1,75 @@
+---
+title: "Cold Email"
+description: "Personalized B2B cold emails with a 6-point quality gate. Under 150 words, one CTA, passes before delivery."
+icon: "envelope"
+---
+
+The cold email skill writes one highly personalized email per lead. It researches before writing, applies a 6-point quality gate, and only returns the email when it passes. If it doesn't pass, it revises automatically.
+
+## The 6-point quality gate
+
+Every cold email Striker writes is checked against all six before delivery:
+
+| Check | Rule |
+|-------|------|
+| 1. Specific mention | References something real and specific about the recipient or their company |
+| 2. Subject length | Under 6 words. Curiosity gap or direct reference. Never vague. |
+| 3. Body length | Under 150 words total |
+| 4. CTA count | Exactly one ask. Never two. |
+| 5. Reads naturally | Sounds like a person wrote it, not a template generator |
+| 6. No banned words | Zero: synergy, leverage, innovative, revolutionary, cutting-edge, game-changing |
+
+Fails any check → revised. Passes all six → returned.
+
+## Email structure
+
+```text
+Subject: [Under 6 words — specific or curiosity gap]
+
+Line 1: Specific reference to them.
+         Something real: a recent announcement, a job posting, a hire,
+         something they published, something their company just did.
+
+Lines 2–3: Your pitch framed as their problem.
+            What you do, positioned as the solution to what they're
+            facing right now. Not features. Not capabilities. Their problem.
+
+Line 4: One CTA. One question. One ask.
+         "Worth a 20-minute call this week?"
+         "Open to a quick demo Tuesday or Wednesday?"
+```
+
+## Full example
+
+```text
+Subject: Your Series B + the ops bottleneck
+
+Saw Acme Corp closed the $42M Series B last week — congrats.
+
+Most B2B teams at your stage hit the same wall right after a
+raise: the manual ops work that ran fine at 50 people starts
+breaking at 180. Fixing it without another ops hire is solvable.
+
+Worth 20 minutes this week to see if it's relevant?
+
+— [Name]
+```
+
+## Configuration
+
+| Setting | Value |
+|---------|-------|
+| Model | Kimi K2 |
+| Max turns | 8 |
+| Execution | Fork |
+| Tools | `web_search`, `scrape_website`, `lookup_leads`, `search_memories`, `save_content` |
+
+## How to invoke
+
+```text
+Write a cold email to the Head of Growth at Linear.
+```
+
+```text
+Write a cold email to Sarah Chen at Acme Corp referencing their Series B.
+```

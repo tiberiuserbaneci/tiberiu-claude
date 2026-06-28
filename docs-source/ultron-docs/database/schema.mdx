@@ -1,0 +1,39 @@
+---
+title: "Database Schema"
+description: "All Supabase tables powering Ultron."
+---
+
+Ultron uses Supabase (PostgreSQL) with Row Level Security.
+
+## Tables Overview
+
+| Table | Department | Description |
+|---|---|---|
+| `profiles` | Core | User profiles, business info, workspace code, plan |
+| `plan_limits` | Core | Plan tiers and feature limits |
+| `integrations` | Core | Encrypted API keys and OAuth tokens |
+| `conversations` | Core | Chat conversation records |
+| `messages` | Core | Individual chat messages |
+| `leads` | Sales | Lead records with enrichment and scoring |
+| `campaigns` | Sales | Outreach campaign tracking |
+| `deals` | Sales | Deal pipeline records |
+| `content` | Creates | Content pieces with platform and status |
+| `content_research` | Creates | Content research and trend analysis |
+| `agents` | Builds | Deployed agent configurations |
+| `agent_tasks` | Builds | Individual task logs per agent |
+| `channel_connections` | Channels | Telegram/Slack/WhatsApp links |
+| `google_tokens` | Integrations | Encrypted Google OAuth tokens |
+| `usage_tracking` | Billing | Daily usage counts per user |
+| `billing_events` | Billing | Stripe webhook events |
+| `activity_feed` | Core | Auto-logged activity stream |
+
+## Auto-Triggers
+
+| Trigger | Action |
+|---|---|
+| User signup | Auto-creates profile with workspace code |
+| New conversation | Increments daily usage counter |
+| New lead | Logs to activity feed |
+| Deal stage change | Logs to activity feed |
+| New content | Logs to activity feed |
+| Any record update | Updates `updated_at` timestamp |

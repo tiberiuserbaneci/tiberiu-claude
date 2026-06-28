@@ -1,0 +1,67 @@
+---
+title: "Chat"
+description: "Where you create tasks and talk to your agents. The most important page."
+---
+
+Chat is how you assign work. Type what you need in plain English. Ultron figures out which agent handles it, confirms the dispatch, and the agent starts executing.
+
+## Layout
+
+- **Left panel:** Your conversation history, searchable and filterable
+- **Center:** Chat messages with streaming responses
+- **Top bar:** Department selector — Sales, Creates, or Builds
+
+## Department selector
+
+<Tabs>
+  <Tab title="Sales">
+    **Ultron Sales** routes tasks to Specter (lead gen) and Striker (deals + inbox).
+
+    Use this for: finding leads, researching prospects, drafting outreach, managing deals, triaging your inbox.
+  </Tab>
+  <Tab title="Creates">
+    **Ultron Creates** routes tasks to Pulse (content).
+
+    Use this for: LinkedIn posts, Twitter threads, cold emails, blog posts, case studies, content calendars.
+  </Tab>
+  <Tab title="Builds">
+    **Ultron Builds** routes tasks to the agent scheduler.
+
+    Use this for: setting up recurring tasks, scheduling agents to run on a specific cadence.
+  </Tab>
+</Tabs>
+
+## How tasks work
+
+When you send a message that asks for real work to be done, Ultron responds briefly:
+
+> "On it — I've briefed Specter. They'll search for matching companies and draft outreach for each. Results will appear in your Leads table."
+
+That's it. The agent has the task. Flip to **Command Center** to watch the activity feed update in real time.
+
+For conversational questions — "how does scoring work?" or "what did Cortex find yesterday?" — Ultron responds directly in chat.
+
+## What gets auto-saved
+
+Agents extract structured data from their work and save it automatically:
+
+| Output type | Where it saves |
+|-------------|----------------|
+| Lead data | Leads table |
+| Content pieces | Content Drops |
+| Deal updates | Deals pipeline |
+| Research findings | Activity log |
+
+You don't need to copy-paste anything. If Specter finds 10 companies, they're in your Leads table before the chat response finishes loading.
+
+## Conversation history
+
+All conversations are saved and searchable. Filter by department (Sales, Creates, Builds) or search by keyword. Past conversations show which agent was dispatched and what they produced.
+
+## Tips for better tasks
+
+**Be specific with context.** "Find leads" gives Specter nothing to work with. "Find 5 CFOs at mid-market logistics companies in the US with 100-500 employees" gives Specter everything it needs.
+
+**Chain requests.** You can give multi-step instructions in one message: "Find 5 leads, research each one, then draft outreach referencing something specific about their business." Ultron breaks this into agent tasks automatically.
+
+**Reference previous work.** "Using the leads Specter found yesterday, draft follow-up emails for anyone who was scored above 70." Ultron can access your previous task history.

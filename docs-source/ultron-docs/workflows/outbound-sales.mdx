@@ -1,0 +1,62 @@
+---
+title: "Outbound Sales Workflow"
+description: "ICP matching through deal tracking: how Specter and Striker run your full outbound motion."
+icon: "paper-plane"
+---
+
+The outbound sales workflow runs the complete cycle from prospect discovery to closed deal — Specter handles research and qualification, Striker handles outreach and follow-up.
+
+## The full cycle
+
+<Steps>
+  <Step title="Define your ICP">
+    Set your Ideal Customer Profile in **Settings → Profile**: company size, industry, funding stage, geography, and any specific signals (job postings, tech stack, etc.).
+
+    This is the foundation. Every Specter search and every Striker email uses it.
+  </Step>
+
+  <Step title="Specter: find and score leads">
+    ```text
+    Find 20 CTOs at Series A SaaS companies in the US.
+    ```
+
+    Specter runs: Apollo company search → contact lookup → email enrichment → ZeroBounce verification → ICP scoring.
+
+    Results saved to CRM. Hot leads (score 8+) get a Striker task created automatically.
+  </Step>
+
+  <Step title="Striker: cold email">
+    Striker picks up the task, reads Specter's research from memory, and writes the cold email.
+
+    6-point quality gate applied. Subject < 6 words. Body < 150 words. Exactly 1 CTA. Specific reference to the recipient. Passes or revises automatically.
+  </Step>
+
+  <Step title="Day 3 follow-up">
+    No reply after 3 days. Striker sends follow-up #1: new value angle, max 75 words. A case study or insight they haven't seen.
+  </Step>
+
+  <Step title="Day 5 follow-up">
+    Still no reply. Striker sends follow-up #2: completely different angle, max 100 words. Different pain point, different benefit.
+  </Step>
+
+  <Step title="Day 7 breakup">
+    Final follow-up: 50-word breakup email. Polite. Assumes no interest. Leaves the door open for Q3 or when timing changes.
+  </Step>
+
+  <Step title="Reply received: Cortex in">
+    Lead replies. Striker logs the outcome to memory. Cortex generates a meeting prep brief. You go into the call prepared.
+  </Step>
+
+  <Step title="Post-call: proposal">
+    After the call, Striker generates the post-call blueprint from your notes. Follow-up email drafted and sent. Proposal built as a Structured Doc canvas. Deal stage updated in HubSpot.
+  </Step>
+</Steps>
+
+## What to configure first
+
+| Setting | Why it matters |
+|---------|----------------|
+| ICP definition | Specter targets and scores against this |
+| Voice samples | Striker emails sound like you, not a template |
+| Gmail or Brevo | Striker needs a connected sender to send emails |
+| HubSpot or CRM | Striker updates deal stages as conversations progress |

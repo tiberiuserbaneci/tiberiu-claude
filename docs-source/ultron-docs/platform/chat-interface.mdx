@@ -1,0 +1,54 @@
+---
+title: "Chat Interface"
+description: "SSE streaming, inline artifacts, and the tool activity feed — everything visible in one thread."
+icon: "message"
+---
+
+The chat interface is not a wrapper around a tool. It is the command plane. Every Ultron capability — research, outreach, content creation, competitive analysis, pipeline management — is accessible by typing.
+
+## Real-time tool activity
+
+Ultron uses Server-Sent Events (SSE) to stream tool activity as it happens. You see each tool call in the chat thread before the final result arrives:
+
+```text
+[skill]  running: competitive-analysis
+[tool]   web_search("Salesforce pricing 2026")
+[tool]   web_search("HubSpot enterprise features")  ← parallel
+[tool]   scrape_website("salesforce.com/pricing")   ← parallel
+[tool]   search_memories("competitor research")
+[result] 4 sources processed — assembling canvas
+[canvas] comparison_table rendered
+```
+
+You know exactly what Ultron is doing and why. No black box.
+
+## What renders inline
+
+Every output type appears inside the conversation thread:
+
+| Output type | How it renders |
+|-------------|----------------|
+| Text answer | Markdown, inline |
+| Table | Formatted table, inline |
+| Canvas | React component (SWOT grid, sales blueprint, chart, etc.) |
+| Document | Download link (DOCX, XLSX, PDF) |
+| Tool activity | Streaming event log |
+
+Canvases are not images. They are live React components with full fidelity — exportable to PDF or PNG at any time.
+
+## Stateful sessions
+
+The chat holds your full context throughout a session:
+
+- Your business profile (company, ICP, voice tone, competitors)
+- Your connected integrations (Gmail, HubSpot, Stripe, Notion, etc.)
+- Up to 5 relevant memories from past sessions
+- The full conversation history for this session
+
+<Info>
+  Context is managed automatically. When conversations grow long, the compression engine trims stale tool outputs and summarizes old turns — keeping important context without hitting limits.
+</Info>
+
+## No navigation required
+
+A typical workflow — research a company, write a cold email, generate a sales blueprint, update the CRM — happens entirely inside one chat thread. No tabs, no exports to edit in another app, no copy-pasting between tools.

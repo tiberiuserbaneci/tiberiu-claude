@@ -1,0 +1,58 @@
+---
+title: "Memory & Intelligence"
+description: "How Ultron learns from every session and builds a persistent knowledge base about your business."
+icon: "brain"
+---
+
+Ultron doesn't reset between sessions. Every research output, every confirmed preference, every error and its fix — all of it is stored, organized, and recalled automatically.
+
+Memory is what separates Ultron from a stateless chatbot. Agents get smarter with every run. Skills produce better output over time. The more you use Ultron, the more it knows about your business.
+
+## What gets stored
+
+```text
+~/.ultron/memory/
+├── MEMORY.md                        — index file (max 200 lines, 25KB)
+├── user_founder_context.md          — your role, background, preferences
+├── feedback_email_style.md          — corrections and confirmed patterns
+├── project_q2_launch.md             — business context, dates, constraints
+├── reference_competitor_acme.md     — research outputs, external pointers
+├── feedback_lesson_specter.md       — self-improvement logs from agent errors
+└── reference_meeting_prep_linear.md — pre-call briefs, post-call outcomes
+```
+
+Memory entries are plain markdown files. Each is tagged with type, agent, and topic. The index (MEMORY.md) gives Ultron a fast overview of everything stored.
+
+## Four memory types
+
+| Type | Stores | Example |
+|------|--------|---------|
+| **user** | Your role, background, preferences | "I'm a B2B SaaS founder, ICP is Series A CTOs" |
+| **feedback** | Corrections AND confirmations | "Don't use em-dashes" / "That cold email structure works" |
+| **project** | Non-code business context | "Q2 freeze starts April 15, no new features after that" |
+| **reference** | Research outputs, external pointers | Competitive analysis on HubSpot, meeting prep for Stripe |
+
+<Info>
+  Feedback memory stores both errors and validations. When you confirm something works, Ultron stores that too. This prevents behavior drift — Ultron doesn't unlearn what's working.
+</Info>
+
+## How memory is used
+
+At the start of every agent turn, a separate Sonnet-powered side-query runs against the memory store. It selects the 5 most relevant entries for the current task. Those entries are injected into context before Kimi K2 sees the message.
+
+You don't manage this. It happens automatically.
+
+<CardGroup cols={2}>
+  <Card title="Memory Layers" icon="layer-group" href="/memory/memory-layers">
+    The four memory types and when each is created.
+  </Card>
+  <Card title="Brain Graph" icon="diagram-project" href="/memory/brain-graph">
+    Visual map of everything Ultron knows about your business.
+  </Card>
+  <Card title="Memory Recall" icon="magnifying-glass" href="/memory/memory-recall">
+    How Ultron selects the right memories per turn.
+  </Card>
+  <Card title="Compression Engine" icon="compress" href="/memory/compression-engine">
+    Three-layer cascade that keeps sessions running indefinitely.
+  </Card>
+</CardGroup>

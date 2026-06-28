@@ -1,0 +1,74 @@
+---
+title: "Skill Anatomy"
+description: "How skills are configured: SKILL.md frontmatter, execution modes, and tool access."
+icon: "code"
+---
+
+Every skill is defined by a `SKILL.md` file with YAML frontmatter and a system prompt body. The frontmatter controls execution behavior. The body defines quality standards, output format, and task-specific rules.
+
+## Frontmatter reference
+
+```yaml
+---
+name: cold-email
+description: Write personalized B2B cold outreach emails
+model: kimi-k2
+maxTurns: 8
+tools:
+  - web_search
+  - scrape_website
+  - lookup_leads
+  - search_memories
+  - save_content
+tags:
+  - sales
+  - outreach
+context: fork
+---
+```
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `name` | string | Skill identifier used for routing |
+| `description` | string | Plain-language description for intent detection |
+| `model` | string | `kimi-k2` for complex reasoning, `fast` for lightweight tasks |
+| `maxTurns` | number | Max agent loop iterations (6–12 typical) |
+| `tools` | array | Explicit list of tools this skill can access |
+| `tags` | array | Used for memory tagging and activity logging |
+| `context` | string | `inline` (main thread) or `fork` (isolated child agent) |
+
+## Execution modes
+
+**Inline mode** (`context: inline`)
+
+The skill prompt is injected as a user message into the main conversation. The skill runs in the same thread. Output appears inline. Used for short, iterative tasks where you might want to follow up.
+
+**Fork mode** (`context: fork`)
+
+The skill runs as an isolated child agent with its own token budget. The main conversation thread doesn't accumulate the skill's internal tool calls. Once the skill finishes, only the final result is returned to the main thread. All intermediate messages are discarded.
+
+Fork mode is used for long research tasks, heavy tool use, or anything where you don't need to see the internal work — just the output.
+
+## Tool access
+
+Each skill has an explicit `tools` list. Tools not in the list are not accessible during that skill run. This prevents skills from taking actions outside their defined scope.
+
+**Common tool assignments by category:**
+
+| Category | Common tools |
+|----------|--------------|
+| Research | `web_search`, `web_search_multiple`, `scrape_website`, `browser_action`, `search_memories` |
+| Lead gen | `search_people`, `search_companies`, `enrich_lead`, `verify_email`, `save_lead`, `create_task` |
+| Sales | `web_search`, `lookup_leads`, `search_memories`, `save_content`, `gmail_send_email` |
+| Content | `web_search`, `web_search_multiple`, `search_reddit`, `save_content` |
+| Ops | `get_pipeline_stats`, `get_tasks`, `lookup_leads`, `search_memories` |
+
+## The instruction body
+
+Below the frontmatter, the skill's `.md` body contains the system prompt — task-specific instructions, quality gates, output format requirements, and banned patterns.
+
+For example, the `cold-email` skill body defines:
+- The 6-point quality gate (checked before returning)
+- The required email structure (specific reference → pitch → one CTA)
+- Banned words and phrases
+- The self-scoring loop (draft → score → revise if below threshold → return if passed)

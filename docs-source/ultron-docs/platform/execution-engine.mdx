@@ -1,0 +1,77 @@
+---
+title: "Execution Engine"
+description: "Ultron's sandboxed runtime: 50-minute sessions, 50+ tools, 50+ MCP servers, full browser access."
+icon: "microchip"
+---
+
+Ultron's execution engine is a custom-built sandboxed runtime that runs in isolated cloud environments. It's what makes long, complex, multi-step tasks possible — not a 3-minute timeout, but a 50-minute window with a full toolchain available from the start.
+
+## What the sandbox provides
+
+```text
+Sandbox session starts
+├── 50+ built-in tools loaded
+├── 70+ slash commands available
+├── 50+ MCP servers pre-configured
+│   ├── Fixed: Brave Search, Puppeteer, GitHub, Apify, Tavily, Fetch, Filesystem, Memory
+│   └── User-connected: Notion, Slack, Stripe, Linear, HubSpot, Figma, and more
+├── Full filesystem access (read, write, execute)
+├── Full browser automation (Playwright via Puppeteer MCP)
+└── 50-minute runtime window
+```
+
+## Tool execution pipeline
+
+Every tool call follows the same pipeline:
+
+```text
+Tool call received from Kimi K2
+    ↓
+validateInput()      — Zod schema validation against tool definition
+    ↓
+checkPermissions()   — Rule matching against allowed tool set
+    ↓
+call()               — Execute the tool (API call, shell command, browser action, etc.)
+    ↓
+onProgress()         — Stream live update to chat UI via SSE
+    ↓
+result()             — Formatted output returned for next loop iteration
+```
+
+## Parallel tool execution
+
+When Kimi K2 returns multiple tool calls in a single turn, they execute concurrently. Independent operations don't wait for each other:
+
+```typescript
+// Three searches fire simultaneously
+const [companyData, ceoBackground, recentNews] = await Promise.all([
+  web_search("Acme Corp overview"),
+  web_search("Acme Corp CEO background"),
+  web_search("Acme Corp news 2026")
+]);
+```
+
+This is what makes research tasks run in minutes instead of sequentially chaining one search after another.
+
+## Budget control
+
+Large tool outputs are handled gracefully:
+
+- Results exceeding **30,000 characters** are persisted to disk; the file path is returned instead
+- The engine tracks token accumulation across all turns
+- Compression triggers automatically before context limits are hit
+- Sandbox sessions with heavy output (browser screenshots, large scraped pages) manage their own storage
+
+## Sandbox vs API mode
+
+| | API Mode | Sandbox Mode |
+|---|---|---|
+| Runtime limit | 3 minutes | 50 minutes |
+| MCP servers | Selected subset | 50+ pre-loaded |
+| Browser access | Via Browserbase API | Full Playwright |
+| Filesystem | None | Full read/write |
+| Plans | All plans | Growth, Scale |
+
+<Tip>
+  Complex multi-step tasks — building a full competitive report, running a lead enrichment batch, generating a content calendar with research — run in sandbox mode to take advantage of the extended runtime.
+</Tip>

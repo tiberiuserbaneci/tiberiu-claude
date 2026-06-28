@@ -1,0 +1,82 @@
+---
+title: "Key Concepts"
+description: "The vocabulary of Ultron: agents, skills, memory, canvas, MCP, and more."
+icon: "book"
+---
+
+Ultron has a specific architecture. Understanding these concepts makes everything else in the documentation make sense.
+
+<AccordionGroup>
+  <Accordion title="Agent">
+    A persistent, specialized AI worker. Ultron has five: **Cortex** (research), **Specter** (lead gen), **Striker** (sales), **Pulse** (content), **Sentinel** (infrastructure).
+
+    Agents have domain expertise, access to specific tools, and memory of past runs. They coordinate with each other — Specter finds a qualified lead and creates a task, Striker picks it up and writes the email.
+  </Accordion>
+
+  <Accordion title="Skill">
+    An on-demand specialized sub-agent. Invoked from chat with a specific objective. Each skill has its own model, tool set, token budget, and instructions.
+
+    Skills run as isolated agents. You don't configure them — you describe what you need and Ultron routes to the right skill. Results are saved to memory automatically after every run.
+
+    Example skills: `cold-email`, `competitive-analysis`, `linkedin-post`, `meeting-prep`.
+  </Accordion>
+
+  <Accordion title="Task">
+    A unit of work assigned to a specific agent. Has a title, priority (P0/P1/P2), and status (inbox / in_progress / review / done / blocked).
+
+    Tasks are how agents coordinate. Specter creates a task for Striker. Striker completes it and closes it. You can assign tasks directly from chat.
+  </Accordion>
+
+  <Accordion title="Canvas">
+    A visual artifact rendered inline in the chat thread. 30+ templates across five categories: Sales, Research, Content, Ops, and Data.
+
+    Canvases are built with real data — Ultron runs web searches before generating them. They export as PDF or image. They render as React components inside the conversation.
+
+    Examples: Sales Blueprint, SWOT Grid, Pricing Cards, Funnel Chart, Content Calendar.
+  </Accordion>
+
+  <Accordion title="Memory">
+    A cross-session knowledge store. Four types:
+    - **user** — your role, background, preferences
+    - **feedback** — corrections and confirmations (both matter equally)
+    - **project** — non-code business context (launch dates, team changes, priorities)
+    - **reference** — external pointers ("See Linear board INGEST for context")
+
+    Memory persists across sessions. Ultron selects the 5 most relevant entries per turn via a separate Sonnet side-query.
+  </Accordion>
+
+  <Accordion title="Compression">
+    Automatic context management that keeps long sessions running without losing important information. Three layers:
+    1. **MicroCompact** — removes stale tool outputs. No API call.
+    2. **Session Memory Compact** — uses stored memories as compression baseline. No API call.
+    3. **API Digest** — full LLM summary via fast model. Last resort.
+
+    Compression triggers automatically. You never need to manage it manually.
+  </Accordion>
+
+  <Accordion title="MCP (Model Context Protocol)">
+    The standard protocol for connecting AI to external tools and data sources. JSON-RPC 2.0 over HTTP.
+
+    Every Ultron session starts with 50+ MCP servers pre-configured: Brave Search, Puppeteer, GitHub, Apify, Tavily, Filesystem, Memory, and all your connected integrations.
+
+    You don't configure MCP servers manually — they load automatically based on your connected integrations.
+  </Accordion>
+
+  <Accordion title="Session">
+    A single continuous conversation. Transcript is persisted as JSONL after every turn. Sessions can be resumed exactly where you left off.
+
+    Token usage is tracked per session. You can see cost breakdown in Settings → Usage.
+  </Accordion>
+
+  <Accordion title="Sandbox">
+    The isolated cloud execution environment where complex tasks run. 50-minute runtime window. 50+ MCP servers available. Full filesystem and browser access.
+
+    Sandbox sessions handle tasks that need more time or more tools than a standard API call allows. Available on Growth and Scale plans.
+  </Accordion>
+
+  <Accordion title="Composio">
+    The integration layer that gives Ultron access to 250+ external services. Handles OAuth, token refresh, API versioning, and rate limit backoff for every connected tool.
+
+    You connect a service once in settings. Composio handles everything else.
+  </Accordion>
+</AccordionGroup>

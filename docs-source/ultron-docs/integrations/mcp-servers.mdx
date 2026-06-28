@@ -1,0 +1,72 @@
+---
+title: "MCP Servers"
+description: "50+ Model Context Protocol servers pre-loaded in every Ultron sandbox session."
+icon: "server"
+---
+
+MCP (Model Context Protocol) is the standard for connecting AI to external tools and data sources. JSON-RPC 2.0 over HTTP. Every Ultron sandbox session starts with 50+ MCP servers already configured and ready.
+
+## Protocol basics
+
+MCP works in two phases:
+
+1. **Discovery** — `tools/list` request returns all available tools from the server
+2. **Execution** — `tools/call` request executes a specific tool with parameters
+
+Ultron auto-discovers tools from every connected server at session start. By the time you type your first message, all tools from all connected servers are available.
+
+## Fixed servers (always loaded)
+
+| Server | What it provides |
+|--------|------------------|
+| `brave-search` | Real-time web search via Brave Search API |
+| `puppeteer` | Full browser automation (Playwright) |
+| `github` | Repos, issues, PRs, code search, commits |
+| `apify` | Web scraping actors, structured data extraction |
+| `tavily` | AI-optimized search with clean structured results |
+| `context7` | Library documentation, API references |
+| `fetch` | Raw HTTP requests to any URL |
+| `filesystem` | Read, write, and execute in the sandbox environment |
+| `memory` | Persistent key-value store within the session |
+| `composio` | Gateway to 250+ external integrations |
+| `ultron` | Callback hooks to the Ultron platform |
+
+## User-connected servers
+
+Loaded per session based on what you've connected in settings:
+
+```text
+├── notion          — pages, databases, bi-directional sync
+├── slack           — messages, channels, search
+├── figma           — files, components, exports
+├── linear          — issues, projects, cycles
+├── asana           — tasks, projects, teams
+├── stripe          — customers, payments, subscriptions
+├── vercel          — deployments, logs, domains
+├── supabase        — database, auth, storage
+├── sentry          — errors, issues, releases
+├── intercom        — conversations, contacts, articles
+├── postHog         — events, funnels, feature flags
+├── webflow         — CMS, sites, collections
+├── miro            — boards, frames, elements
+├── canva           — designs, exports
+├── monday          — boards, items, automations
+├── make            — scenarios, executions, webhooks
+├── cloudflare      — zones, workers, DNS records
+└── atlassian       — Jira issues, Confluence pages
+```
+
+## Tool naming
+
+MCP tools follow a consistent naming pattern:
+
+```text
+mcp__<server-name>__<tool-name>
+
+Examples:
+  mcp__github__list_issues
+  mcp__notion__create_page
+  mcp__stripe__list_customers
+```
+
+This naming is internal. In chat, you just describe what you want — Ultron routes to the right tool automatically.

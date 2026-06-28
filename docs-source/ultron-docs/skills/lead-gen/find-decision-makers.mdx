@@ -1,0 +1,67 @@
+---
+title: "Find Decision Makers"
+description: "Surface verified decision-makers at target companies using Apollo, web research, and email verification."
+icon: "user-magnifying-glass"
+---
+
+This skill takes a company name or ICP criteria and returns a verified list of decision-makers — name, title, email, LinkedIn — ready for Striker to contact.
+
+## What it produces
+
+```text
+DECISION MAKERS — Acme Corp
+
+1. Sarah Chen | CEO | sarah@acmecorp.com (valid)
+   LinkedIn: linkedin.com/in/sarahchen
+   Background: ex-Salesforce VP Product, ex-McKinsey
+
+2. James Park | CTO | j.park@acmecorp.com (valid)
+   LinkedIn: linkedin.com/in/jamespark-cto
+   Background: ex-Stripe, built infrastructure at scale
+
+3. Rachel Torres | VP Sales | r.torres@acmecorp.com (catch-all)
+   LinkedIn: linkedin.com/in/rachelttorres
+   Note: Domain is catch-all — send with caution, verify via LinkedIn first
+
+ICP fit score: 8/10
+Recommended contact: James Park (CTO) — highest technical authority, recent infrastructure hire signals
+```
+
+## Pipeline
+
+```text
+Input: company name or ICP criteria
+    ↓
+Company lookup via Apollo (search_companies)
+    ↓
+Contact lookup via Apollo (search_people) — filtered by title, seniority
+    ↓
+Email enrichment (enrich_lead) — adds verified email + LinkedIn URL
+    ↓
+Email verification (verify_email via ZeroBounce)
+    ├── Valid → safe to send
+    ├── Catch-all → send with caution, note in output
+    └── Invalid → excluded from results
+    ↓
+Save to CRM (save_lead)
+Create Striker task if score 8+ (create_task)
+```
+
+## Configuration
+
+| Setting | Value |
+|---------|-------|
+| Model | Kimi K2 |
+| Max turns | 10 |
+| Execution | Fork |
+| Tools | `search_companies`, `search_people`, `enrich_lead`, `verify_email`, `web_search`, `save_lead`, `create_task` |
+
+## How to invoke
+
+```text
+Find the CTO and VP Engineering at Linear.
+```
+
+```text
+Find 10 decision-makers at Series A SaaS companies in the US focused on developer tools.
+```
