@@ -115,7 +115,7 @@ def body_slide(base, eyebrow, head, objpath, page, n, last=False, fill=1.0):
     d=ImageDraw.Draw(base)
     ghost(base, f"{page:02d}")
     ls_text(d,(MX,476),eyebrow,mono(28),CORAL,4)
-    y=540; hf=dm(900,84); lh=96
+    s=fit_hook(d,head,W-2*MX,start=84,floor=64); hf=dm(900,s); lh=int(s*1.14); y=540   # auto-fit guard: stays 84 unless a line would overflow
     for ln in head: seg_line(d,MX,y,ln,hf); y+=lh
     elt_bottom=1238 if last else 1326
     place_in_zone(base, crop_obj(Image.open(objpath)), (88,758,942,elt_bottom), fill=fill)
