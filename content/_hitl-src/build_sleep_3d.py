@@ -5,16 +5,16 @@ spec=importlib.util.spec_from_file_location("T2","/home/user/tiberiu-claude/cont
 T2=importlib.util.module_from_spec(spec); spec.loader.exec_module(T2)
 wo=lambda s:(s,T2.WHITE); co=lambda s:(s,T2.CORAL)
 M=f"{T2.OBJ}/models_money"; V=f"{T2.OBJ}/models_team/v3"; LIB=T2.LIB
-T2.COVER=dict(head=[[wo("I woke up to")],[co("$4,000 in Stripe.")]])
+T2.COVER=dict(head=[[wo("I slept 8 hours.")],[co("It worked all 8.")]])
 T2.CONTENT=[
- ("STRIPE",   [[wo("Stripe pinged")],[co("all night.")]],        f"{M}/stripe_phone.png", 0.90),
- ("PAYMENTS", [[wo("Cards charged")],[co("while I slept.")]],     f"{M}/stripe_dash.png",  0.95),
- ("CALENDAR", [[wo("My calendar")],[co("booked itself.")]],       f"{M}/calendly.png",     0.95),
- ("DEALS",    [[wo("Deals closed")],[co("on their own.")]],       f"{M}/hubspot.png",      0.95),
- ("INBOX",    [[wo("Replies stacked up")],[co("overnight.")]],    f"{M}/gmail.png",        0.95),
- ("THE GATE", [[wo("It still asks")],[co("before it acts.")]],    f"{V}/gate.png",         0.62),
- ("REVENUE",  [[wo("I just watched")],[co("it climb.")]],         f"{M}/revenue.png",      0.95),
- ("HOW",      [[wo("One chat")],[co("ran the night shift.")]],    f"{M}/ultron_chat.png",  0.92),
+ ("APOLLO",   [[wo("It sourced")],[co("200 leads.")]],           f"{M}/leads.png",        0.95),
+ ("GMAIL",    [[wo("It sent")],[co("every email.")]],            f"{M}/gmail_sent.png",   0.93),
+ ("REPLIES",  [[wo("18 replies")],[co("by 6am.")]],              f"{M}/gmail.png",        0.95),
+ ("CALENDLY", [[wo("6 calls")],[co("booked.")]],                 f"{M}/calendly.png",     0.95),
+ ("HUBSPOT",  [[wo("2 deals")],[co("Closed Won.")]],             f"{M}/hubspot.png",      0.95),
+ ("STRIPE",   [[wo("$8,400")],[co("collected.")]],               f"{M}/stripe_dash.png",  0.95),
+ ("THE GATE", [[wo("Nothing ran")],[co("without my yes.")]],     f"{V}/gate.png",         0.62),
+ ("ULTRON",   [[wo("One operator.")],[co("The night shift.")]],  f"{M}/ultron_sphere.png",0.90),
 ]
 T2.CTA=("WAKE UP TO IT", [[wo("Wake up to it,")],[co("comment OPERATOR.")]], f"{LIB}/cta3d-operator.png", 0.92)
 if __name__=="__main__":
