@@ -96,16 +96,17 @@ def fit_hook(d,head,maxw,start=84,floor=58):
 
 # ---- content ----
 co=lambda s:(s,CORAL); wo=lambda s:(s,WHITE)
-COVER=dict(eyebrow="THE TEAM", head=[[wo("I run a company of seven.")],[co("I work alone.")]])
+COVER=dict(head=[[wo("I run a company of seven.")],[co("I work alone.")]])   # no eyebrow on the cover (rule)
+DASH=f"{OBJ}/models_team"
 CONTENT=[
- ("CORTEX",   [[wo("One researches")],[co("the account.")]], f"{OBJ}/models_skills/cortex.png"),
- ("SPECTER",  [[wo("One writes")],[co("the outreach.")]],    f"{OBJ}/models_skills/specter.png"),
- ("STRIKER",  [[wo("One works")],[co("the deal.")]],         f"{OBJ}/models_skills/striker.png"),
- ("PULSE",    [[wo("One posts")],[co("in your voice.")]],    f"{OBJ}/models_skills/pulse.png"),
- ("SENTINEL", [[wo("One ships")],[co("the code.")]],         f"{OBJ}/models_skills/sentinel.png"),
- ("THE GATE", [[wo("You approve")],[co("every move.")]],     f"{OBJ}/models_hitl/m3.png"),
- ("THE TEAM", [[wo("The whole team,")],[co("one chat.")]],   f"{OBJ}/models_team/roster7.png"),
- ("HOW",      [[wo("Each one")],[co("a slash away.")]],      f"{OBJ}/models_chat/slash.png"),
+ ("CORTEX",   [[wo("One researches")],[co("the account.")]], f"{DASH}/cortex_dash.png"),
+ ("SPECTER",  [[wo("One writes")],[co("the outreach.")]],    f"{DASH}/specter_dash.png"),
+ ("STRIKER",  [[wo("One works")],[co("the deal.")]],         f"{DASH}/striker_dash.png"),
+ ("PULSE",    [[wo("One posts")],[co("in your voice.")]],    f"{DASH}/pulse_dash.png"),
+ ("SENTINEL", [[wo("One ships")],[co("the code.")]],         f"{DASH}/sentinel_dash.png"),
+ ("THE GATE", [[wo("You approve")],[co("every move.")]],     f"{DASH}/gate_dash.png"),
+ ("THE TEAM", [[wo("Seven of them,")],[co("one chat.")]],    f"{DASH}/team_dash.png"),
+ ("HOW",      [[wo("Each one")],[co("a slash away.")]],      f"{DASH}/commands_dash.png"),
 ]
 CTA=("GET THE TEAM", [[wo("Your team,")],[co("in your chat.")]], f"{LIB}/cta3d-operator.png")
 
@@ -124,12 +125,12 @@ def body_slide(base, eyebrow, head, objpath, page, n, last=False):
         progress(d,page,n)
 
 def cover_tt(base, n):
+    # NO eyebrow on the cover (rule). Hook centered in the middle, 3D Claude mark below, per S30.
     d=ImageDraw.Draw(base)
     ghost(base,"01")
-    ls_text(d,(MX,476),COVER["eyebrow"],mono(28),CORAL,4)
-    s=fit_hook(d,COVER["head"],W-2*MX); hf=dm(900,s); lh=int(s*1.14); y=540
-    for ln in COVER["head"]: seg_line(d,MX,y,ln,hf); y+=lh
-    place_in_zone(base, crop_obj(Image.open(LOGO3D)), (88,800,942,1300))
+    s=fit_hook(d,COVER["head"],W-2*MX,start=84); hf=dm(900,s); lh=int(s*1.18); y=640
+    for ln in COVER["head"]: seg_center(d,y,ln,hf); y+=lh
+    place_in_zone(base, crop_obj(Image.open(LOGO3D)), (380,900,700,1260))
     swipe(base)
 
 def cover_ig(out):
@@ -140,8 +141,7 @@ def cover_ig(out):
         hf=dm(900,s)
         if max(d.textlength("".join(t for t,_ in ln),font=hf) for ln in COVER["head"])<=w-2*mx: break
         s-=2*SS
-    ls_text(d,(mx,340*SS),COVER["eyebrow"],mono(28*SS),CORAL,4)
-    hf=dm(900,s); lh=int(s*1.14); y=404*SS
+    hf=dm(900,s); lh=int(s*1.14); y=404*SS   # no eyebrow on the cover (rule)
     for ln in COVER["head"]: seg_line(d,mx,y,ln,hf); y+=lh
     # Claude sunburst + Ultron sphere, tucked under the hook
     L=200*SS; SLOT=156*SS
