@@ -74,6 +74,26 @@ survives a single 0.5-1s glance: one anchored shape, one bold word, one accent.
 - Aim for completion: a deck where ~60-80% reach the last slide gets pushed by the algorithm. The arc
   is an engineering target, not decoration.
 
+## D0. Congruence is NOT uniformity (operator, 2026-06-28 - hard lesson)
+
+The single biggest object mistake: making every slide the SAME object shape (e.g. eight identical
+dashboards where only the numbers change). On a fast flip that reads as ONE repeated frame, monotone
+and skippable - the eye sees "same thing again", not a new beat. Congruence does NOT come from
+identical object form. It comes from a constant VISUAL SYSTEM:
+
+- same material (matte charcoal panel, same bevel, same thickness), same three-point softbox lighting
+  and light direction, same soft grounded contact shadow
+- same palette + exactly ONE warm-orange accent, same charcoal background + dot grid + glow
+- same canvas anchors (eyebrow / headline baseline / object optical-center Y / footer) locked frame to frame
+- same coded typography (DM Sans / DM Mono), same sizes/positions
+
+Within that constant system, the OBJECT ITSELF should VARY in form and size beat to beat: a terminal,
+a kanban board, a calendar grid, a phone, a chat window, an org/hub graph, a command palette, a single
+focused modal. Different shapes, different footprints - that is what keeps a 0.5s flip alive. The
+winning billing reel did this (charge card / invoice / payment link / revenue panel / approval / ledger
+/ tools list = different forms), NOT eight clones. So: vary the FORM, hold the SYSTEM. (This refines D
+below - "tight size band" was wrong as an absolute; size may vary, the system may not.)
+
 ## D. Symmetry and balance of a single 3D object in its zone
 
 - Center the object on the canvas X-axis (540px) by its true optical center, not its bounding box.
