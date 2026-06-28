@@ -49,10 +49,10 @@ def crop_obj(im):
     alpha=np.clip((d2-16)*18,0,255).astype("uint8")
     return Image.fromarray(np.dstack([np.asarray(crop).astype("uint8"),alpha]),"RGBA")
 
-def place_in_zone(base,el,zone):
+def place_in_zone(base,el,zone,fill=1.0):
     zx0,zy0,zx1,zy1=zone; pad=6; zw,zh=zx1-zx0-2*pad, zy1-zy0-2*pad
     solid=el.split()[3].point(lambda v:255 if v>140 else 0); pb=solid.getbbox() or (0,0,el.width,el.height)
-    pw,ph=max(1,pb[2]-pb[0]),max(1,pb[3]-pb[1]); r=min(zw/pw, zh/ph)
+    pw,ph=max(1,pb[2]-pb[0]),max(1,pb[3]-pb[1]); r=min(zw/pw, zh/ph)*fill
     el=el.resize((max(1,int(el.width*r)),max(1,int(el.height*r))),Image.LANCZOS)
     solid=el.split()[3].point(lambda v:255 if v>140 else 0); pb=solid.getbbox() or (0,0,el.width,el.height)
     pcx=(pb[0]+pb[2])/2; pcy=(pb[1]+pb[3])/2
@@ -97,27 +97,28 @@ def fit_hook(d,head,maxw,start=84,floor=58):
 # ---- content ----
 co=lambda s:(s,CORAL); wo=lambda s:(s,WHITE)
 COVER=dict(head=[[wo("I run a company of seven.")],[co("I work alone.")]])   # no eyebrow on the cover (rule)
-DASH=f"{OBJ}/models_team"
+V=f"{OBJ}/models_team/v3"   # varied forms, one material system (congruence != uniformity)
+# (eyebrow, head, object, fill) - fill varies object footprint so sizes differ slide to slide
 CONTENT=[
- ("CORTEX",   [[wo("One researches")],[co("the account.")]], f"{DASH}/cortex_dash.png"),
- ("SPECTER",  [[wo("One writes")],[co("the outreach.")]],    f"{DASH}/specter_dash.png"),
- ("STRIKER",  [[wo("One works")],[co("the deal.")]],         f"{DASH}/striker_dash.png"),
- ("PULSE",    [[wo("One posts")],[co("in your voice.")]],    f"{DASH}/pulse_dash.png"),
- ("SENTINEL", [[wo("One ships")],[co("the code.")]],         f"{DASH}/sentinel_dash.png"),
- ("THE GATE", [[wo("You approve")],[co("every move.")]],     f"{DASH}/gate_dash.png"),
- ("THE TEAM", [[wo("Seven of them,")],[co("one chat.")]],    f"{DASH}/team_dash.png"),
- ("HOW",      [[wo("Each one")],[co("a slash away.")]],      f"{DASH}/commands_dash.png"),
+ ("CORTEX",   [[wo("One researches")],[co("the account.")]], f"{V}/cortex.png",  0.92),
+ ("SPECTER",  [[wo("One writes")],[co("the outreach.")]],    f"{V}/specter.png", 0.96),
+ ("STRIKER",  [[wo("One works")],[co("the deal.")]],         f"{V}/striker.png", 0.99),
+ ("PULSE",    [[wo("One posts")],[co("in your voice.")]],    f"{V}/pulse.png",   0.95),
+ ("SENTINEL", [[wo("One ships")],[co("the code.")]],         f"{V}/sentinel.png",0.93),
+ ("THE GATE", [[wo("You approve")],[co("every move.")]],     f"{V}/gate.png",    0.62),
+ ("THE TEAM", [[wo("Seven of them,")],[co("one chat.")]],    f"{V}/team.png",    0.82),
+ ("HOW",      [[wo("Each one")],[co("a slash away.")]],      f"{V}/how.png",     0.84),
 ]
-CTA=("GET THE TEAM", [[wo("Your team,")],[co("in your chat.")]], f"{LIB}/cta3d-operator.png")
+CTA=("GET THE TEAM", [[wo("Your team,")],[co("in your chat.")]], f"{LIB}/cta3d-operator.png", 0.92)
 
-def body_slide(base, eyebrow, head, objpath, page, n, last=False):
+def body_slide(base, eyebrow, head, objpath, page, n, last=False, fill=1.0):
     d=ImageDraw.Draw(base)
     ghost(base, f"{page:02d}")
     ls_text(d,(MX,476),eyebrow,mono(28),CORAL,4)
     y=540; hf=dm(900,84); lh=96
     for ln in head: seg_line(d,MX,y,ln,hf); y+=lh
     elt_bottom=1238 if last else 1326
-    place_in_zone(base, crop_obj(Image.open(objpath)), (88,758,942,elt_bottom))
+    place_in_zone(base, crop_obj(Image.open(objpath)), (88,758,942,elt_bottom), fill=fill)
     if last:
         d.text((MX,1258),"Follow for one AI system for founders every day.",font=dm(700,29),fill=WHITE)
         footer(base)
@@ -170,9 +171,9 @@ def deck(outdir, overlay):
             if overlay: cover_ig(f"{outdir}/s{i}.png"); continue
             base=Image.new("RGBA",(W,H),BG+(255,)); cover_tt(base,n)
             base.convert("RGB").save(f"{outdir}/s{i}.png"); continue
-        eb,head,objp=sl[1]
+        eb,head,objp,fill=sl[1]
         base=Image.new("RGBA",(W,H),BG+(255,))
-        body_slide(base,eb,head,objp,i,n,last=(sl[0]=="last"))
+        body_slide(base,eb,head,objp,i,n,last=(sl[0]=="last"),fill=fill)
         base.convert("RGB").save(f"{outdir}/s{i}.png")
     return n
 
