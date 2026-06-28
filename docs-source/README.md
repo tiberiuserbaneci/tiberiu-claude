@@ -11,3 +11,10 @@
 - Use: read for full Ultron context (agents, skills, commands, canvas, database/ledger,
   departments, memory, integrations, platform, pricing, prompts, workflows) - per material
   or in general when reasoning about Claude + Ultron. Numbers/features come from here, never invented.
+
+## ultron-leads/
+- Source: `NexityNetwork/ultron-leads` (Next.js lead-magnet app), branch `claude/build-ultron-lead-magnet-iJDDq`.
+- Synced: 2026-06-28. Kept the SOURCE only (src/ app routes, api/, configs); dropped `public/`
+  (~38MB png/mp4 assets) and the lockfile to keep the repo lean. Re-upload if assets are ever needed.
+- Use: real Ultron lead-magnet pages, calculator, blueprint, cheatsheets, agent map, skill data -
+  reference for content + the live tool URLs. Numbers/features come from here, never invented.
