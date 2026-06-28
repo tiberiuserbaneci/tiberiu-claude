@@ -7,7 +7,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 import build_slides as B
 TE="/tmp/claude-0/-home-user-tiberiu-claude/27326f10-40bf-555b-a3d3-cdb5d2e54cdb/scratchpad/te-gen"
-W,H,MX=1080,1920,72
+W,H,MX=1080,1920,90   # left text margin: 90 aligns the text column with the progress bar / 3D zone (was 72, which sat ~16px left of everything else and touched the margin). Propagates to all build_*_3d.py via T.MX.
 BG=B.BG; WHITE=B.WHITE; CORAL=B.CORAL; MUTED=B.MUTED; N=B.N
 ULOGO="/home/user/tiberiu-claude/content/ultron-logo.png"; GEN=f"{TE}/claude_official.png"
 ZONE=(90,888,928,1290)   # legacy default; build() now uses an adaptive zone that fills the band
