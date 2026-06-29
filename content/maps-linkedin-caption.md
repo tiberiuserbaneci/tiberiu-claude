@@ -37,7 +37,7 @@ Comment FOUNDER and I will send you the exact Claude local-lead scraper setup we
 
 ## ALT TEXT
 
-Dark editorial infographic on slate. Top left, a large ivory headline reads 'I gave an AI one search. 500 leads came back, phones included.' with 'phones included.' in book-orange, beside three stat tiles labeled Max 500 per search, Fields 9 per place, and Modes Fast or Full. Below sit two dense columns. Left: an input card reading 'dentist in Austin, TX, max 500' with Run, Fast and Full buttons; a nine-row table of fields you get per place, from name and phone to opening hours and place id; a two-mode list; and six engineering notes. Right: a Scrape to Enrich to Outbound flow, a single populated place card for Joe Coffee with phone, website and a 4.7 rating, a cost-per-thousand table, a sample run, and a glossary. Closes with a Comment FOUNDER chat bar and the Ultron logo.
+Dark editorial infographic on slate. Top left, a large ivory headline reads 'I stopped buying lead lists. AI pulls 500 live ones, phones included.' with 'phones included.' in book-orange, beside three stat tiles labeled Max 500 per search, Fields 9 per place, and Modes Fast or Full. Below sit two dense columns. Left: an input card reading 'dentist in Austin, TX, max 500' with Run, Fast and Full buttons; a nine-row table of fields you get per place, from name and phone to opening hours and place id; a two-mode list; and six engineering notes. Right: a Scrape to Enrich to Outbound flow, a single populated place card for Joe Coffee with phone, website and a 4.7 rating, a cost-per-thousand table, a sample run, and a glossary. Closes with a Comment FOUNDER chat bar and the Ultron logo.
 
 ---
 
