@@ -1157,6 +1157,12 @@ Applies to the Ultron chat object, any app/landing object, footers and covers. (
 must show the Ultron brand are generated with the sphere; if Vertex renders the wrong mark, regenerate
 or composite the real sphere.)
 
+**Pricing value-prop rule (operator, 2026-06-29 - binding):** Ultron's price story is **cents** -
+pay-per-token, "cents per thousand rows", everything at Ultron costs cents. NEVER show a scary/high
+dollar amount for an Ultron action in a material (e.g. "$120 to send 240 emails") - it frightens
+clients and contradicts the cents value prop. Either show no price, or a tiny cents figure. High
+prices may ONLY appear as a COMPETITOR's cost (the expensive stack Ultron replaces), never as ours.
+
 **Object quality bar (operator, 2026-06-28):** the UNFAIR ADVANTAGE material is the reference - every
 3D object is a recognizable REAL app dashboard/window (real logos), dense and concrete, one material
 system (charcoal / softbox / one warm-orange accent), front-on and complete. Match or beat that bar;
