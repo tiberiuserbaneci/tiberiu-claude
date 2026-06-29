@@ -58,7 +58,7 @@ def place_in_zone(base,el,zone,fill=1.0):
     pcx=(pb[0]+pb[2])/2; pcy=(pb[1]+pb[3])/2
     cx=W//2; cy=(zy0+zy1)//2; ox=int(round(cx-pcx)); oy=int(round(cy-pcy))
     al=el.split()[3]; shmask=Image.new("L",base.size,0); shmask.paste(al,(ox,oy+30))
-    shmask=shmask.filter(ImageFilter.GaussianBlur(42)).point(lambda v:int(v*0.5))
+    shmask=shmask.filter(ImageFilter.GaussianBlur(60)).point(lambda v:int(v*0.20))   # softer, lighter ground shadow
     base.alpha_composite(Image.merge("RGBA",(Image.new("L",base.size,0),)*3+(shmask,)))
     base.alpha_composite(el,(ox,oy))
 
@@ -131,7 +131,7 @@ def cover_tt(base, n):
     ghost(base,"01")
     s=fit_hook(d,COVER["head"],W-2*MX,start=84); hf=dm(900,s); lh=int(s*1.18); y=640
     for ln in COVER["head"]: seg_center(d,y,ln,hf); y+=lh
-    place_in_zone(base, crop_obj(Image.open(LOGO3D)), (380,900,700,1260))
+    place_in_zone(base, Image.open(CLAUDE_SUN).convert("RGBA"), (380,900,700,1260))   # clean transparent sunburst (no tile square)
     swipe(base)
 
 def cover_ig(out):
