@@ -7,7 +7,7 @@ wo=lambda s:(s,T2.WHITE); co=lambda s:(s,T2.CORAL)
 M=f"{T2.OBJ}/models_code"; P=f"{T2.OBJ}/models_money/p"; LIB=T2.LIB
 T2.COVER=dict(head=[[wo("I've never written a line of code.")],[co("My app has 5,000+ users.")]])
 T2.CONTENT=[
- ("CLAUDE CODE",[[wo("I asked")],[co("in plain English.")]],   f"{M}/claudecode.png", 0.95),
+ ("CLAUDE CODE",[[wo("I asked")],[co("in plain English.")]],   f"{M}/claudecode.png", 1.0),
  ("BUILD",     [[wo("It built")],[co("the whole app.")]],      f"{M}/build.png",      0.88),
  ("DEPLOY",    [[wo("It shipped")],[co("to production.")]],     f"{M}/vercel.png",     0.95),
  ("LIVE",      [[wo("This is")],[co("the live app.")]],         f"{M}/liveapp.png",    0.95),

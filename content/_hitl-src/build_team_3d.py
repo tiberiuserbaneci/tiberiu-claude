@@ -117,8 +117,8 @@ def body_slide(base, eyebrow, head, objpath, page, n, last=False, fill=1.0):
     ls_text(d,(MX,476),eyebrow,mono(28),CORAL,4)
     s=fit_hook(d,head,W-2*MX,start=84,floor=64); hf=dm(900,s); lh=int(s*1.14); y=540   # auto-fit guard: stays 84 unless a line would overflow
     for ln in head: seg_line(d,MX,y,ln,hf); y+=lh
-    elt_bottom=1238 if last else 1326
-    place_in_zone(base, crop_obj(Image.open(objpath)), (88,758,942,elt_bottom), fill=fill)
+    z=(60,730,1020,1240) if last else (60,730,1020,1345)   # bigger object zone (operator: display objects larger)
+    place_in_zone(base, crop_obj(Image.open(objpath)), z, fill=fill)
     if last:
         d.text((MX,1258),"Follow for one AI system for founders every day.",font=dm(700,29),fill=WHITE)
         footer(base)
