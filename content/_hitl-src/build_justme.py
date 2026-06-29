@@ -1,22 +1,20 @@
 #!/usr/bin/env python3
-# IT'S JUST ME - 9:16 3D, TikTok + IG. Freedom/mobility founder fantasy (platform-safe).
-# Objects = REAL Ultron mobile app (app.51ultron.com, captured live) in a coded phone frame +
-# real-style notification banners (deal/reply/ship/meeting/standup/gate). Real reference, no Vertex.
+# IT'S JUST ME (phone, solo flex)
 import importlib.util
 spec=importlib.util.spec_from_file_location("T2","/home/user/tiberiu-claude/content/_hitl-src/build_team_3d.py")
 T2=importlib.util.module_from_spec(spec); spec.loader.exec_module(T2)
 wo=lambda s:(s,T2.WHITE); co=lambda s:(s,T2.CORAL)
-PH=f"{T2.OBJ}/models_phone"; LIB=T2.LIB
+PH=f"{T2.OBJ}/models_phone"; LIB=T2.LIB; UL=f"{T2.OBJ}/models_rival2/ultron_login.png"
 T2.COVER=dict(head=[[wo("It's just me.")],[co("And one chat.")]])
 T2.CONTENT=[
- ("THE TEAM", [[wo("This looks like")],[co("a whole team.")]],     f"{PH}/p_jobs.png",     1.0),
- ("DEALS",    [[wo("Three agents,")],[co("one deal.")]],            f"{PH}/p_deals.png",    1.0),
- ("UNITS",    [[wo("Seven units.")],[co("One person.")]],           f"{PH}/p_skills.png",   1.0),
- ("MEMORY",   [[wo("One shared")],[co("memory.")]],                 f"{PH}/p_brain.png",    1.0),
- ("PROJECTS", [[wo("Every project.")],[co("One owner. Me.")]],      f"{PH}/p_projects.png", 1.0),
- ("CHAT",     [[wo("I just")],[co("ask.")]],                        f"{PH}/p_chat.png",     1.0),
- ("STACK",    [[wo("One bill,")],[co("not ten salaries.")]],        f"{PH}/p_stack.png",    1.0),
- ("ULTRON",   [[wo("It's just me.")],[co("And one chat.")]],        f"{T2.OBJ}/models_rival2/ultron_login.png", 0.98),
+  ("THE TEAM", [[wo("This looks like")],[co("a whole team.")]], f"{PH}/p_jobs.png", 1.0),
+  ("DEALS", [[wo("Three agents,")],[co("one deal.")]], f"{PH}/p_deals.png", 1.0),
+  ("UNITS", [[wo("Seven units.")],[co("One person.")]], f"{PH}/p_skills.png", 1.0),
+  ("MEMORY", [[wo("One shared")],[co("memory.")]], f"{PH}/p_brain.png", 1.0),
+  ("PROJECTS", [[wo("Every project.")],[co("One owner. Me.")]], f"{PH}/p_projects.png", 1.0),
+  ("PLAYBOOKS", [[wo("My playbooks,")],[co("on tap.")]], f"{PH}/p_playbooks.png", 1.0),
+  ("STACK", [[wo("One bill,")],[co("not ten salaries.")]], f"{PH}/p_stack.png", 1.0),
+  ("ULTRON", [[wo("It's just me.")],[co("And one chat.")]], UL, 0.98),
 ]
 T2.CTA=("RUN ON ONE", [[wo("Run on one,")],[co("comment OPERATOR.")]], f"{LIB}/cta3d-operator.png", 0.92)
 from PIL import Image as _I
