@@ -18,7 +18,7 @@ T2.CONTENT=[
  ("CONTENT",  [[wo("Four content writers.")],[co("Or one chat.")]],   f"{R}/notion.png",    0.95),
  ("DESIGN",   [[wo("Three designers.")],[co("Or one chat.")]],        f"{R}/figma.png",     0.95),
  ("GROWTH",   [[wo("A growth team of five.")],[co("Or one chat.")]],  f"{R}/googleads.png", 0.95),
- ("ULTRON",   [[wo("Fifty people.")],[co("Or one chat.")]],           f"{P}/ultron.png",    0.92),
+ ("ULTRON",   [[wo("Fifty people.")],[co("Or one chat.")]],           f"{R}/ultron_login.png", 0.98),
 ]
 T2.CTA=("RUN ON ONE", [[wo("Run on one,")],[co("comment OPERATOR.")]], f"{LIB}/cta3d-operator.png", 0.92)
 
