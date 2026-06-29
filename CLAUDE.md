@@ -705,8 +705,16 @@ Order:
 
 **HASHTAGS — exactly 5, only these, no more, no fewer, no substitutes:**
 `#claude #ai #founder #startup #buildinpublic`
-Broad tags shared across TikTok, Twitter and LinkedIn. NEVER niche tags (#aiagents, #anthropic,
+Broad tags shared across TikTok and Twitter. NEVER niche tags (#aiagents, #anthropic,
 #gtm, #saas, #aiworkflow, #claudeai, etc.). NEVER in the body — only the last line. Emoji still forbidden.
+
+**CAPTION RULES BY CHANNEL (operator, 2026-06-29 — binding, supersedes looser phrasing above):**
+- **TikTok / Instagram:** CTA appears **once**, as the **first sentence** (CTA-first) — do NOT repeat
+  the CTA at the end of the body. Order: CTA line → body (one beat per paragraph) → the 5 hashtags →
+  then a **FIRST COMMENT** block (a different-angle restatement + the trigger word, 2-3 short
+  paragraphs). The vault `caption` field stores body + hashtags + first comment together.
+- **LinkedIn:** include a full **ALT TEXT** (§15.2, 80-150w). **NO hashtags** in the caption and **NO
+  `---` separators** through the text (LinkedIn captions run clean prose + the `→` body list only).
 
 ---
 
@@ -1136,7 +1144,7 @@ into `analysis/virality-principles.md`. Metrics priority stays: reach+impression
 - **Stay on ICP (founders, not engineers)** - no raw code or dev internals inside a material; show the product UI and the founder-facing value (operator: "nu mai pune linii de cod ... te indepartezi de ICP").
 - **Content is real** - numbers/features pulled from the docs, never invented; links only to confirmed app.51ultron.com paths, first comment only.
 - **Portal** - after adding materials, rescan + commit the manifest; last-added is first in every category; private port, open in a real browser.
-- **Captions** - LinkedIn 5-block 400-470w + ALT 80-150w + first comment 40-80w; TikTok one-beat paragraphs + exactly 5 hashtags.
+- **Captions** - LinkedIn 5-block 400-470w + ALT 80-150w + first comment 40-80w, NO hashtags, NO `---` separators; TikTok/IG one-beat paragraphs, CTA-first ONCE (no CTA repeat in body), 5 hashtags, then a first-comment block (see §15.6).
 
 ---
 
