@@ -88,6 +88,14 @@ Plus **HUMAN GATE**: human approval before anything sends.
 > the work branch as a reference/model copy (operator, 2026-06-24): the git repo is the reference
 > archive; the Monolith vault is the live library.** New builds: wire the asset into the vault (R2 +
 > `vault_items`) AND commit the source (HTML/PNG/caption) to the work branch so it exists as a model.
+>
+> **VAULT SORT ORDER (operator, 2026-06-29 — binding):** the vault Browse sorts `created_at DESC` and
+> `created_at` is static, so a status change does NOT re-order. After ANY push or status change,
+> re-stamp so **Review (and any non-Posted) sit ABOVE Posted** (review list on top, posted block at the
+> bottom, newest-first within each). Run it every time you touch the vault: `monolith/restamp_sort.py`
+> (or the REST equivalent: non-posted newest-first, then posted). `app.51ultron.com` and the other
+> `*.51ultron.com` domains are reachable directly from this environment (own-domain allowlist) — use
+> Playwright to capture real app screenshots for mockups instead of recreating them.
 
 This repo is **not** the old personal `ultron-content` repo. The original config referenced
 `tiberiuserbaneci/ultron-content`, a remote named `ultron-content`, and a `GH_PAT` env var —

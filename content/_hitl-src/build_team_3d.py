@@ -141,7 +141,8 @@ def cover_ig(out):
         if max(d.textlength("".join(t for t,_ in ln),font=hf) for ln in COVER["head"])<=w-2*mx: break
         s-=2*SS
     hf=dm(900,s); lh=int(s*1.14); y=404*SS   # no eyebrow on the cover (rule)
-    for ln in COVER["head"]: seg_line(d,mx,y,ln,hf); y+=lh
+    for ln in COVER["head"]:                  # centered horizontally (match TikTok cover + logos)
+        tw=sum(d.textlength(t,font=hf) for t,_ in ln); seg_line(d,(w-tw)//2,y,ln,hf); y+=lh
     # Claude sunburst + Ultron sphere, tucked under the hook
     L=200*SS; SLOT=156*SS
     def orb():
