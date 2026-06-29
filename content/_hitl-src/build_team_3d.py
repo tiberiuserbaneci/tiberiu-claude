@@ -129,6 +129,8 @@ def cover_tt(base, n):
     ghost(base,"01")
     s=fit_hook(d,COVER["head"],W-2*MX,start=84); hf=dm(900,s); lh=int(s*1.18); y=640
     for ln in COVER["head"]: seg_center(d,y,ln,hf); y+=lh
+    if COVER.get("sub"):
+        sf=dm(500,32); tw=d.textlength(COVER["sub"],font=sf); d.text(((W-tw)//2,y+14),COVER["sub"],font=sf,fill=MUTED)
     place_in_zone(base, Image.open(CLAUDE_SUN).convert("RGBA"), (380,900,700,1260))   # clean transparent sunburst (no tile square)
     swipe(base)
 
@@ -143,6 +145,8 @@ def cover_ig(out):
     hf=dm(900,s); lh=int(s*1.14); y=404*SS   # no eyebrow on the cover (rule)
     for ln in COVER["head"]:                  # centered horizontally (match TikTok cover + logos)
         tw=sum(d.textlength(t,font=hf) for t,_ in ln); seg_line(d,(w-tw)//2,y,ln,hf); y+=lh
+    if COVER.get("sub"):
+        sf=dm(500,32*SS); tw=d.textlength(COVER["sub"],font=sf); d.text(((w-tw)//2,y+14*SS),COVER["sub"],font=sf,fill=MUTED)
     # Claude sunburst + Ultron sphere, tucked under the hook
     L=200*SS; SLOT=156*SS
     def orb():
