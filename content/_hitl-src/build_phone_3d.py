@@ -16,7 +16,7 @@ T2.CONTENT=[
  ("PRICING",  [[wo("It scraped")],[co("12 vendor tables.")]],       f"{PH}/w_pricing.png",1.0),
  ("THE GATE", [[wo("I just tap")],[co("approve.")]],                f"{PH}/w_gate.png",   1.0),
  ("DONE",     [[wo("It cleared")],[co("the backlog.")]],            f"{PH}/w_recent.png", 1.0),
- ("ULTRON",   [[wo("One chat.")],[co("In my pocket.")]],            f"{PH}/home.png",     1.0),
+ ("ULTRON",   [[wo("One chat.")],[co("In my pocket.")]],            f"{T2.OBJ}/models_rival2/ultron_login.png", 0.98),
 ]
 T2.CTA=("RUN ON ONE", [[wo("Run on one,")],[co("comment OPERATOR.")]], f"{LIB}/cta3d-operator.png", 0.92)
 from PIL import Image as _I
