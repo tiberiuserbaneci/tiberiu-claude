@@ -9,13 +9,13 @@ wo=lambda s:(s,T2.WHITE); co=lambda s:(s,T2.CORAL)
 PH=f"{T2.OBJ}/models_phone"; LIB=T2.LIB
 T2.COVER=dict(head=[[wo("My company runs")],[co("from my phone.")]])
 T2.CONTENT=[
- ("LIVE",     [[wo("A whole team's work,")],[co("running live.")]], f"{PH}/jobs.png",     1.0),
- ("MISSION",  [[wo("It runs")],[co("the whole mission.")]],         f"{PH}/w_tree.png",   1.0),
- ("TOOLS",    [[wo("It calls")],[co("the tools itself.")]],         f"{PH}/w_tools.png",  1.0),
- ("STANDUP",  [[wo("It read")],[co("47 pull requests.")]],          f"{PH}/w_standup.png",1.0),
- ("PRICING",  [[wo("It scraped")],[co("12 vendor tables.")]],       f"{PH}/w_pricing.png",1.0),
- ("THE GATE", [[wo("I just tap")],[co("approve.")]],                f"{PH}/w_gate.png",   1.0),
- ("DONE",     [[wo("It cleared")],[co("the backlog.")]],            f"{PH}/w_recent.png", 1.0),
+ ("CHAT",     [[wo("It starts")],[co("with one line.")]],          f"{PH}/p_chat.png",     1.0),
+ ("LIVE",     [[wo("A whole team's work,")],[co("running live.")]], f"{PH}/p_jobs.png",     1.0),
+ ("DEALS",    [[wo("Agents work")],[co("the deals.")]],             f"{PH}/p_deals.png",    1.0),
+ ("SKILLS",   [[wo("Seven units.")],[co("One operator.")]],         f"{PH}/p_skills.png",   1.0),
+ ("MEMORY",   [[wo("It remembers")],[co("everything.")]],           f"{PH}/p_brain.png",    1.0),
+ ("PROJECTS", [[wo("Every project,")],[co("one place.")]],          f"{PH}/p_projects.png", 1.0),
+ ("STACK",    [[wo("One subscription.")],[co("My whole stack.")]],  f"{PH}/p_stack.png",    1.0),
  ("ULTRON",   [[wo("One chat.")],[co("In my pocket.")]],            f"{T2.OBJ}/models_rival2/ultron_login.png", 0.98),
 ]
 T2.CTA=("RUN ON ONE", [[wo("Run on one,")],[co("comment OPERATOR.")]], f"{LIB}/cta3d-operator.png", 0.92)
