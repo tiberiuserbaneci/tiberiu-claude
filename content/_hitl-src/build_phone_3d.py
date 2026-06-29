@@ -9,14 +9,14 @@ wo=lambda s:(s,T2.WHITE); co=lambda s:(s,T2.CORAL)
 PH=f"{T2.OBJ}/models_phone"; LIB=T2.LIB
 T2.COVER=dict(head=[[wo("My company runs")],[co("from my phone.")]])
 T2.CONTENT=[
- ("LIVE",    [[wo("A whole team's work,")],[co("running live.")]], f"{PH}/jobs.png",    1.0),
- ("REPLIES", [[wo("It answered")],[co("the lead.")]],             f"{PH}/n_reply.png",  1.0),
- ("CALLS",   [[wo("It booked")],[co("the call.")]],               f"{PH}/n_meeting.png",1.0),
- ("DEALS",   [[wo("It moved")],[co("the deal.")]],                f"{PH}/n_deal.png",   1.0),
- ("SHIP",    [[wo("It shipped")],[co("the update.")]],            f"{PH}/n_ship.png",   1.0),
- ("BRIEF",   [[wo("It wrote")],[co("the standup.")]],             f"{PH}/n_standup.png",1.0),
- ("THE GATE",[[wo("I just tap")],[co("approve.")]],               f"{PH}/n_gate.png",   1.0),
- ("ULTRON",  [[wo("One chat.")],[co("In my pocket.")]],           f"{PH}/home.png",     1.0),
+ ("LIVE",     [[wo("A whole team's work,")],[co("running live.")]], f"{PH}/jobs.png",     1.0),
+ ("MISSION",  [[wo("It runs")],[co("the whole mission.")]],         f"{PH}/w_tree.png",   1.0),
+ ("TOOLS",    [[wo("It calls")],[co("the tools itself.")]],         f"{PH}/w_tools.png",  1.0),
+ ("STANDUP",  [[wo("It read")],[co("47 pull requests.")]],          f"{PH}/w_standup.png",1.0),
+ ("PRICING",  [[wo("It scraped")],[co("12 vendor tables.")]],       f"{PH}/w_pricing.png",1.0),
+ ("THE GATE", [[wo("I just tap")],[co("approve.")]],                f"{PH}/w_gate.png",   1.0),
+ ("DONE",     [[wo("It cleared")],[co("the backlog.")]],            f"{PH}/w_recent.png", 1.0),
+ ("ULTRON",   [[wo("One chat.")],[co("In my pocket.")]],            f"{PH}/home.png",     1.0),
 ]
 T2.CTA=("RUN ON ONE", [[wo("Run on one,")],[co("comment OPERATOR.")]], f"{LIB}/cta3d-operator.png", 0.92)
 from PIL import Image as _I
