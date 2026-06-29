@@ -1,4 +1,4 @@
-50 EMPLOYEES vs ME 9:16 (TikTok + Instagram, 3D) - caption
+38 EMPLOYEES vs ME 9:16 (TikTok + Instagram, 3D) - caption
 
 CTA-first, one beat per paragraph, exactly 5 hashtags. Same caption for both channels.
 
@@ -6,7 +6,7 @@ CTA-first, one beat per paragraph, exactly 5 hashtags. Same caption for both cha
 
 Comment OPERATOR and I will send you the exact setup.
 
-My competitor has fifty employees. I have one.
+My competitor has 38 employees. I have one.
 
 A research team, eight SDRs, a sales floor, support, content, design, growth.
 

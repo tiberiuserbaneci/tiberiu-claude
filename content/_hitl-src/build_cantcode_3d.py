@@ -14,7 +14,7 @@ T2.CONTENT=[
  ("FIXES",     [[wo("It fixes")],[co("its own bugs.")]],        f"{M}/fixes.png",      0.90),
  ("USERS",     [[wo("5,000+")],[co("signed up.")]],             f"{M}/analytics.png",  0.95),
  ("THE GATE",  [[wo("I approve")],[co("every ship.")]],         f"{M}/gate.png",       0.72),
- ("ULTRON",    [[wo("I can't code.")],[co("It can.")]],         f"{P}/ultron.png",     0.92),
+ ("ULTRON",    [[wo("I can't code.")],[co("It can.")]],         f"{T2.OBJ}/models_rival2/ultron_login.png", 0.98),
 ]
 T2.CTA=("BUILD YOURS", [[wo("Build yours,")],[co("comment BUILDER.")]], f"{LIB}/cta3d-builder.png", 0.92)
 if __name__=="__main__":
