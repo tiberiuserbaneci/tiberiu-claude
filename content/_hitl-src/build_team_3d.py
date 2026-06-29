@@ -57,9 +57,7 @@ def place_in_zone(base,el,zone,fill=1.0):
     solid=el.split()[3].point(lambda v:255 if v>140 else 0); pb=solid.getbbox() or (0,0,el.width,el.height)
     pcx=(pb[0]+pb[2])/2; pcy=(pb[1]+pb[3])/2
     cx=W//2; cy=(zy0+zy1)//2; ox=int(round(cx-pcx)); oy=int(round(cy-pcy))
-    al=el.split()[3]; shmask=Image.new("L",base.size,0); shmask.paste(al,(ox,oy+30))
-    shmask=shmask.filter(ImageFilter.GaussianBlur(60)).point(lambda v:int(v*0.20))   # softer, lighter ground shadow
-    base.alpha_composite(Image.merge("RGBA",(Image.new("L",base.size,0),)*3+(shmask,)))
+    # ground shadow removed entirely (operator: "tot are umbra") - objects carry only their own whisper contact shadow
     base.alpha_composite(el,(ox,oy))
 
 def ghost(base,num):
