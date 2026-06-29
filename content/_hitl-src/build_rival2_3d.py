@@ -9,7 +9,7 @@ T2=importlib.util.module_from_spec(spec); spec.loader.exec_module(T2)
 wo=lambda s:(s,T2.WHITE); co=lambda s:(s,T2.CORAL)
 R=f"{T2.OBJ}/models_rival2"; P=f"{T2.OBJ}/models_money/p"; LIB=T2.LIB
 
-T2.COVER=dict(head=[[wo("My rival has 38 staff.")],[co("I have one chat.")]])
+T2.COVER=dict(head=[[wo("38 staff, 9 to 5.")],[co("vs me. One chat.")]])
 T2.CONTENT=[
  ("RESEARCH", [[wo("A research team of six.")],[co("Or one chat.")]], f"{R}/zoominfo.png",  0.95),
  ("OUTBOUND", [[wo("Eight SDRs on the floor.")],[co("Or one chat.")]],f"{R}/salesloft.png", 0.95),
@@ -21,6 +21,21 @@ T2.CONTENT=[
  ("ULTRON",   [[wo("38 people.")],[co("Or one chat.")]],           f"{R}/ultron_login.png", 0.98),
 ]
 T2.CTA=("RUN ON ONE", [[wo("Run on one,")],[co("comment OPERATOR.")]], f"{LIB}/cta3d-operator.png", 0.92)
+
+# --- uniform hook size across content slides (no per-slide drift); cover keeps its own sizing ---
+from PIL import Image as _I
+from PIL import ImageDraw as _ID
+def _uniform_size():
+    d=_ID.Draw(_I.new("RGB",(10,10)))
+    heads=[h for _,h,_,_ in T2.CONTENT]+[T2.CTA[1]]
+    s=84
+    while s>50:
+        hf=T2.dm(900,s)
+        if all(max(d.textlength("".join(t for t,_ in ln),font=hf) for ln in head)<=T2.W-2*T2.MX for head in heads): break
+        s-=2
+    return s
+_USZ=_uniform_size(); _origfit=T2.fit_hook
+T2.fit_hook=lambda d,head,maxw,start=84,floor=58:( _origfit(d,head,maxw,start=start,floor=floor) if head is T2.COVER["head"] else _USZ )
 
 if __name__=="__main__":
     a=T2.deck(f"{T2.OUTBASE}/rival2_tt",False); b=T2.deck(f"{T2.OUTBASE}/rival2_ig",True)
