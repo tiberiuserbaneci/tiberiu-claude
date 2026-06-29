@@ -21,11 +21,11 @@ def _body(base, eyebrow, head, objpath, page, n, last=False, fill=1.0):
         T2.place_in_zone(base, T2.crop_obj(Image.open(objpath)), (50,720,1030,1245), fill=fill)
         d.text((T2.MX,1262),"Follow for one AI system for founders every day.",font=T2.dm(700,29),fill=T2.WHITE); T2.footer(base)
         return
-    T2.ls_text(d,(T2.MX,318),eyebrow,T2.mono(26),T2.CORAL,4)
-    s=min(T2.fit_hook(d,head,T2.W-2*T2.MX,start=64,floor=44),58); hf=T2.dm(900,s); y=360
+    T2.ls_text(d,(T2.MX,300),eyebrow,T2.mono(26),T2.CORAL,4)
+    s=min(T2.fit_hook(d,head,T2.W-2*T2.MX,start=64,floor=44),56); hf=T2.dm(900,s); y=340
     for ln in head: T2.seg_line(d,T2.MX,y,ln,hf); y+=int(s*1.12)
-    T2.place_in_zone(base, T2.crop_obj(Image.open(objpath)), (40,478,1040,1548), fill=fill)
-    x0,x1=90,928; yb=1566; d.rounded_rectangle([x0,yb,x1,yb+7],radius=4,fill=T2.TRACK)
+    T2.place_in_zone(base, T2.crop_obj(Image.open(objpath)), (32,452,1048,1562), fill=1.0)
+    x0,x1=90,928; yb=1578; d.rounded_rectangle([x0,yb,x1,yb+7],radius=4,fill=T2.TRACK)
     d.rounded_rectangle([x0,yb,x0+int((x1-x0)*page/n),yb+7],radius=4,fill=T2.CORAL)
 T2.body_slide=_body
 if __name__=="__main__":
@@ -41,7 +41,7 @@ decks={
   content="\n".join([
     r("LIVE","A whole team's work,","running live.","p2_jobs"),
     r("DEALS","Agents work","the deals.","p2_deals"),
-    r("UNITS","Seven units.","One operator.","p2_skills"),
+    r("PIPELINE","Every deal,","one pipeline.","p2_pipeline"),
     r("PROJECTS","Every project,","one place.","p2_projects"),
     r("STACK","One subscription.","My whole stack.","p2_stack"),
     r("PLAYBOOKS","Proven playbooks,","built in.","p2_playbooks"),
@@ -52,12 +52,12 @@ decks={
   cover='[[wo("One chat.")],[co("One operator.")]]', sub='',
   content="\n".join([
     r("MEMORY","It never","forgets.","p2_brain"),
-    r("PRIMITIVES","Drop-in","workflows.","p2_primitives"),
+    r("COMPUTER","It runs","its own computer.","p2_computer"),
     r("EVERYTHING","Everything,","already built.","p2_everything"),
     r("UNITS","A team of seven,","on tap.","p2_skills"),
     r("STACK","Ten tools,","one bill.","p2_stack"),
     r("DEALS","It works","every deal.","p2_deals"),
-    r("PLAYBOOKS","Battle-tested","playbooks.","p2_playbooks"),
+    r("PIPELINE","The whole","pipeline.","p2_pipeline"),
     rul("Always on.","In your pocket."),
   ])),
 "build_zero.py":dict(title="FROM ZERO TO COMPANY",tt="zero_tt",ig="zero_ig",
@@ -67,7 +67,7 @@ decks={
     r("UNITS","It staffs","every unit.","p2_skills"),
     r("PLAYBOOKS","It loads","the playbooks.","p2_playbooks"),
     r("OUTBOUND","It runs","the outbound.","p2_jobs"),
-    r("DEALS","It works","the deals.","p2_deals"),
+    r("COMPUTER","It runs","its own computer.","p2_computer"),
     r("STACK","It connects","your tools.","p2_stack"),
     r("EVERYTHING","Everything,","already built.","p2_everything"),
     rul("The whole company.","One chat."),
@@ -80,7 +80,7 @@ decks={
     r("UNITS","Seven units.","One person.","p2_skills"),
     r("MEMORY","One shared","memory.","p2_brain"),
     r("PROJECTS","Every project.","One owner. Me.","p2_projects"),
-    r("STACK","One bill,","not ten salaries.","p2_stack"),
+    r("PRIMITIVES","Drop-in workflows,","ready.","p2_primitives"),
     r("EVERYTHING","Everything,","already built.","p2_everything"),
     rul("No team.","Just me."),
   ])),

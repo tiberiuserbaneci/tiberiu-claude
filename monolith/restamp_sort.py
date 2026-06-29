@@ -41,7 +41,7 @@ def main():
     nonposted = [r for r in rows if not r["name"].startswith("Posted")]
     posted    = [r for r in rows if r["name"].startswith("Posted")]
     seq = nonposted + posted            # non-posted on top, posted at the bottom
-    base = 1_780_000_000_000            # fixed base so dates stay realistic + stable
+    base = 1_783_000_000_000            # fixed base, kept ABOVE imported reference items so Reviews stay on top
     T = base + len(seq) * SP
     sql = [f"UPDATE vault_items SET created_at={T - i*SP} "
            f"WHERE id='{r['id']}' AND owner='{OWNER}';" for i, r in enumerate(seq)]
