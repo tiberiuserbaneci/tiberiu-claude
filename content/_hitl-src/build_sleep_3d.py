@@ -18,6 +18,6 @@ T2.CONTENT=[
 ]
 T2.CTA=("WAKE UP TO IT", [[wo("Wake up to it,")],[co("comment OPERATOR.")]], f"{LIB}/cta3d-operator.png", 0.92)
 if __name__=="__main__":
-    a=T2.deck(f"{T2.OUTBASE}/sleep_tt",overlay=False); b=T2.deck(f"{T2.OUTBASE}/sleep_ig",overlay=True)
+    a=T2.deck_poll(f"{T2.OUTBASE}/sleep_tt",overlay=False); b=T2.deck_poll(f"{T2.OUTBASE}/sleep_ig",overlay=True)
     T2.montage(f"{T2.OUTBASE}/sleep_tt","sleep_tt",a); T2.montage(f"{T2.OUTBASE}/sleep_ig","sleep_ig",b)
     print("tt",a,"ig",b)

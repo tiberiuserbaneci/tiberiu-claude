@@ -18,6 +18,6 @@ T2.CONTENT=[
 ]
 T2.CTA=("START TODAY", [[wo("Start today,")],[co("comment BUILDER.")]], f"{LIB}/cta3d-builder.png", 0.92)
 if __name__=="__main__":
-    a=T2.deck(f"{T2.OUTBASE}/first_tt",overlay=False); b=T2.deck(f"{T2.OUTBASE}/first_ig",overlay=True)
+    a=T2.deck_poll(f"{T2.OUTBASE}/first_tt",overlay=False); b=T2.deck_poll(f"{T2.OUTBASE}/first_ig",overlay=True)
     T2.montage(f"{T2.OUTBASE}/first_tt","first_tt",a); T2.montage(f"{T2.OUTBASE}/first_ig","first_ig",b)
     print("tt",a,"ig",b)

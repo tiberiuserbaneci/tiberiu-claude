@@ -22,8 +22,8 @@ T2.CONTENT=[
 T2.CTA=("GET THE EDGE", [[wo("Replace your stack,")],[co("in your chat.")]], f"{LIB}/cta3d-founder.png", 0.92)
 
 if __name__=="__main__":
-    ntt=T2.deck(f"{T2.OUTBASE}/rival_tt", overlay=False)
-    nig=T2.deck(f"{T2.OUTBASE}/rival_ig", overlay=True)
+    ntt=T2.deck_poll(f"{T2.OUTBASE}/rival_tt", overlay=False)
+    nig=T2.deck_poll(f"{T2.OUTBASE}/rival_ig", overlay=True)
     T2.montage(f"{T2.OUTBASE}/rival_tt","rival_tt",ntt)
     T2.montage(f"{T2.OUTBASE}/rival_ig","rival_ig",nig)
     print("TikTok slides:",ntt," IG slides:",nig)

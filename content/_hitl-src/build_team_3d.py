@@ -118,7 +118,8 @@ def body_slide(base, eyebrow, head, objpath, page, n, last=False, fill=1.0):
     z=(60,730,1020,1240) if last else (60,730,1020,1345)   # bigger object zone (operator: display objects larger)
     place_in_zone(base, crop_obj(Image.open(objpath)), z, fill=fill)
     if last:
-        d.text((MX,1258),"Follow for one AI system for founders every day.",font=dm(700,29),fill=WHITE)
+        _ft=save_foot() if globals().get('_TT') else "Follow for one AI system for founders every day."
+        d.text((MX,1258),_ft,font=dm(700,29),fill=WHITE)
         footer(base)
     else:
         progress(d,page,n)
@@ -191,7 +192,9 @@ def montage(outdir,name,n):
 POLL=dict(eye="BEFORE YOU SCROLL", q=[[wo("Which founder")],[co("are you?")]],
           opts=[("1","Hire a team of thirty."),("2","Run one chat.")],
           cta="Comment 1 or 2 below. I reply to every one.")
-SAVE_FOOT="Save this video. Comment OPERATOR, I reply to the first 20."
+import re as _re
+def save_foot(): return f"Save this video. Comment {globals().get('_KW','OPERATOR')}, I reply to the first 20."
+SAVE_FOOT=save_foot  # back-compat handle
 def poll_slide(base,n,page=2):
     d=ImageDraw.Draw(base); ghost(base,f"{page:02d}")
     ls_text(d,(MX,300),POLL["eye"],mono(26),CORAL,4)
@@ -212,6 +215,9 @@ def poll_slide(base,n,page=2):
 def deck_poll(outdir, overlay):
     os.makedirs(outdir,exist_ok=True)
     globals()['_TT']=not overlay
+    try:
+        _t="".join(t for t,_ in CTA[1][-1]); _m=_re.search(r'[Cc]omment\s+([A-Z]{3,12})',_t); globals()['_KW']=_m.group(1) if _m else "OPERATOR"
+    except Exception: globals()['_KW']="OPERATOR"
     slides=[("cover",)]
     if not overlay: slides.append(("poll",))
     slides+=[("mid",c) for c in CONTENT]+[("last",CTA)]

@@ -19,7 +19,7 @@ def _body(base, eyebrow, head, objpath, page, n, last=False, fill=1.0):
         s=T2.fit_hook(d,head,T2.W-2*T2.MX,start=84,floor=58); hf=T2.dm(900,s); y=534
         for ln in head: T2.seg_line(d,T2.MX,y,ln,hf); y+=int(s*1.14)
         T2.place_in_zone(base, T2.crop_obj(Image.open(objpath)), (50,720,1030,1245), fill=fill)
-        _ft=(T2.SAVE_FOOT if getattr(T2,"_TT",False) else "Follow for one AI system for founders every day.")
+        _ft=(T2.save_foot() if getattr(T2,"_TT",False) else "Follow for one AI system for founders every day.")
         d.text((T2.MX,1262),_ft,font=T2.dm(700,29),fill=T2.WHITE); T2.footer(base)
         return
     T2.ls_text(d,(T2.MX,296),eyebrow,T2.mono(26),T2.CORAL,4)
