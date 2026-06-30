@@ -21,11 +21,11 @@ def _body(base, eyebrow, head, objpath, page, n, last=False, fill=1.0):
         T2.place_in_zone(base, T2.crop_obj(Image.open(objpath)), (50,720,1030,1245), fill=fill)
         d.text((T2.MX,1262),"Follow for one AI system for founders every day.",font=T2.dm(700,29),fill=T2.WHITE); T2.footer(base)
         return
-    T2.ls_text(d,(T2.MX,300),eyebrow,T2.mono(26),T2.CORAL,4)
-    s=min(T2.fit_hook(d,head,T2.W-2*T2.MX,start=64,floor=44),56); hf=T2.dm(900,s); y=340
+    T2.ls_text(d,(T2.MX,296),eyebrow,T2.mono(26),T2.CORAL,4)
+    s=min(T2.fit_hook(d,head,T2.W-2*T2.MX,start=64,floor=44),54); hf=T2.dm(900,s); y=336
     for ln in head: T2.seg_line(d,T2.MX,y,ln,hf); y+=int(s*1.12)
-    T2.place_in_zone(base, T2.crop_obj(Image.open(objpath)), (32,452,1048,1562), fill=1.0)
-    x0,x1=90,928; yb=1578; d.rounded_rectangle([x0,yb,x1,yb+7],radius=4,fill=T2.TRACK)
+    T2.place_in_zone(base, T2.crop_obj(Image.open(objpath)), (32,512,1048,1566), fill=1.0)
+    x0,x1=90,928; yb=1582; d.rounded_rectangle([x0,yb,x1,yb+7],radius=4,fill=T2.TRACK)
     d.rounded_rectangle([x0,yb,x0+int((x1-x0)*page/n),yb+7],radius=4,fill=T2.CORAL)
 T2.body_slide=_body
 if __name__=="__main__":
@@ -39,49 +39,49 @@ decks={
 "build_phone_3d.py":dict(title="FROM MY PHONE v1",tt="phone_tt",ig="phone_ig",
   cover='[[wo("My company runs")],[co("from my phone.")]]', sub='',
   content="\n".join([
-    r("LIVE","A whole team's work,","running live.","p2_jobs"),
-    r("DEALS","Agents work","the deals.","p2_deals"),
-    r("PIPELINE","Every deal,","one pipeline.","p2_pipeline"),
+    r("LIVE","A whole team's work,","running live.","p2_deals"),
+    r("BUILD","It builds and","ships itself.","p2_build"),
+    r("UNITS","Seven units.","One operator.","p2_units"),
     r("PROJECTS","Every project,","one place.","p2_projects"),
     r("STACK","One subscription.","My whole stack.","p2_stack"),
-    r("PLAYBOOKS","Proven playbooks,","built in.","p2_playbooks"),
-    r("PRIMITIVES","Drop-in workflows,","ready.","p2_primitives"),
+    r("MEMORY","It never","forgets.","p2_brain"),
+    r("ROI","Real numbers,","one tap.","p2_sub"),
     rul("One chat.","In my pocket."),
   ])),
 "build_phone_v2.py":dict(title="FROM MY PHONE v2",tt="phv2_tt",ig="phv2_ig",
   cover='[[wo("One chat.")],[co("One operator.")]]', sub='',
   content="\n".join([
     r("MEMORY","It never","forgets.","p2_brain"),
-    r("COMPUTER","It runs","its own computer.","p2_computer"),
-    r("EVERYTHING","Everything,","already built.","p2_everything"),
-    r("UNITS","A team of seven,","on tap.","p2_skills"),
-    r("STACK","Ten tools,","one bill.","p2_stack"),
+    r("COMPUTER","It runs","its own computer.","p2_build"),
+    r("UNITS","A team of seven,","on tap.","p2_units"),
     r("DEALS","It works","every deal.","p2_deals"),
-    r("PIPELINE","The whole","pipeline.","p2_pipeline"),
+    r("STACK","Ten tools,","one bill.","p2_stack"),
+    r("PROJECTS","Every project,","one place.","p2_projects"),
+    r("ROI","One bill,","real numbers.","p2_sub"),
     rul("Always on.","In your pocket."),
   ])),
 "build_zero.py":dict(title="FROM ZERO TO COMPANY",tt="zero_tt",ig="zero_ig",
   cover='[[wo("From zero to a company.")],[co("One command.")]]', sub='',
   content="\n".join([
     r("WORKSPACE","It opens","the workspace.","p2_projects"),
-    r("UNITS","It staffs","every unit.","p2_skills"),
-    r("PLAYBOOKS","It loads","the playbooks.","p2_playbooks"),
-    r("OUTBOUND","It runs","the outbound.","p2_jobs"),
-    r("COMPUTER","It runs","its own computer.","p2_computer"),
+    r("UNITS","It staffs","every unit.","p2_units"),
+    r("BUILD","It builds","the product.","p2_build"),
+    r("OUTBOUND","It runs","the outbound.","p2_deals"),
     r("STACK","It connects","your tools.","p2_stack"),
-    r("EVERYTHING","Everything,","already built.","p2_everything"),
+    r("MEMORY","It remembers","everything.","p2_brain"),
+    r("ROI","One bill,","real numbers.","p2_sub"),
     rul("The whole company.","One chat."),
   ])),
 "build_justme.py":dict(title="IT'S JUST ME",tt="justme_tt",ig="justme_ig",
-  cover='''[[wo("It's just me.")],[co("And one chat.")]]''', sub=', sub="Everyone thinks I have a team of thirty."',
+  cover='''[[wo("It's just me.")],[co("And one chat.")]]''', sub='',
   content="\n".join([
-    r("THE TEAM","This looks like","a whole team.","p2_jobs"),
-    r("DEALS","Three agents,","one deal.","p2_deals"),
-    r("UNITS","Seven units.","One person.","p2_skills"),
+    r("THE TEAM","This looks like","a whole team.","p2_deals"),
+    r("BUILD","One person","ships the product.","p2_build"),
+    r("UNITS","Seven units.","One person.","p2_units"),
     r("MEMORY","One shared","memory.","p2_brain"),
     r("PROJECTS","Every project.","One owner. Me.","p2_projects"),
-    r("PRIMITIVES","Drop-in workflows,","ready.","p2_primitives"),
-    r("EVERYTHING","Everything,","already built.","p2_everything"),
+    r("STACK","One bill,","not ten salaries.","p2_stack"),
+    r("ROI","Real numbers,","one tap.","p2_sub"),
     rul("No team.","Just me."),
   ])),
 }

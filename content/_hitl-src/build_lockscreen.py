@@ -13,7 +13,7 @@ W,H,MX=T2.W,T2.H,T2.MX
 WHITE,CORAL,MUTED,SLATE=T2.WHITE,T2.CORAL,T2.MUTED,(25,25,25)
 wo=lambda s:(s,WHITE); co=lambda s:(s,CORAL)
 
-T2.COVER=dict(head=[[wo("My company had")],[co("a full day.")]], sub="I barely touched my phone.")
+T2.COVER=dict(head=[[wo("My company had")],[co("a full day.")]])
 T2.CTA=("RUN ON ONE", [[wo("Run on one,")],[co("comment OPERATOR.")]], f"{T2.LIB}/cta3d-operator.png", 0.92)
 
 # (clock, eyebrow context, title, subtitle) - newest stacks on top, time = newest's clock
@@ -47,10 +47,24 @@ def _wallpaper():
     vg=1-0.20*(((xx-W/2)/(W/2))**2 + ((yy-H/2)/(H/2))**2); base*=np.clip(vg,0,1)[...,None]
     return Image.fromarray(np.clip(base,0,255).astype("uint8"),"RGB").convert("RGBA")
 
-def _statusbar(d):
-    d.text((MX,300),"",font=T2.mono(28),fill=MUTED)  # reserved
-    # right side: battery / signal hint (minimal)
-    d.text((W-MX-150,300),"100%",font=T2.mono(26),fill=(150,150,146))
+TODAY="Tuesday, June 30"
+def _wifi(d, cx, cyb, col):
+    for r in (21,14,7): d.arc([cx-r,cyb-r,cx+r,cyb+r],222,318,fill=col,width=5)
+    d.ellipse([cx-4,cyb-4,cx+4,cyb+4],fill=col)
+def _battery(d, x, y, pct, col):
+    # body 52x26 + nub, inner fill proportional
+    d.rounded_rectangle([x,y,x+52,y+26],radius=7,outline=col,width=3)
+    d.rounded_rectangle([x+52+3,y+8,x+52+7,y+18],radius=2,fill=col)
+    w=int((52-8)*max(0.06,pct))
+    d.rounded_rectangle([x+4,y+4,x+4+w,y+22],radius=4,fill=col)
+def _statusrow(d, page):
+    y=300; col=(225,225,220)
+    d.text((MX,y),TODAY,font=T2.dm(500,34),fill=col)            # date left
+    batt=max(10,80-(page-2)*10)                                  # 80% slide2 -> 10% slide9
+    bx=W-MX-52; by=y+5; _battery(d,bx,by,batt/100,col)          # battery right
+    pf=T2.mono(28); pt=f"{batt}%"; pw=d.textlength(pt,font=pf)
+    d.text((bx-22-pw,y+2),pt,font=pf,fill=col)                  # % left of battery
+    _wifi(d, bx-22-pw-42, y+30, col)                            # wifi left of %
 
 ICON=_sphere_icon(88)
 
@@ -60,10 +74,9 @@ def _lock_body(base, eyebrow, head, objpath, page, n, last=False, fill=1.0):
     d=ImageDraw.Draw(base)
     count=page-1                               # slide 2 -> 1 notif ... slide 9 -> 8
     clock=NOTIFS[count-1][0]
-    # date + clock (top, inside safe zone)
-    d.text((MX,322),"Monday, June 29",font=T2.dm(500,34),fill=(210,210,205))
-    cf=T2.dm(900,184); tw=d.textlength(clock,font=cf); d.text(((W-tw)//2,360),clock,font=cf,fill=WHITE)
-    _statusbar(d)
+    # status row (date left, wifi + battery right) + clock
+    _statusrow(d, page)
+    cf=T2.dm(900,184); tw=d.textlength(clock,font=cf); d.text(((W-tw)//2,372),clock,font=cf,fill=WHITE)
     # eyebrow (narrative voice)
     T2.ls_text(d,(MX,604),eyebrow,T2.mono(27),CORAL,4)
     # notification stack: newest on top, show newest 5, collapse older

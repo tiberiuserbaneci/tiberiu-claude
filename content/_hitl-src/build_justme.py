@@ -6,15 +6,15 @@ T2=importlib.util.module_from_spec(spec); spec.loader.exec_module(T2)
 from PIL import Image, ImageDraw
 wo=lambda s:(s,T2.WHITE); co=lambda s:(s,T2.CORAL)
 PH=f"{T2.OBJ}/models_phone"; LIB=T2.LIB; UL=f"{T2.OBJ}/models_rival2/ultron_login.png"
-T2.COVER=dict(head=[[wo("It's just me.")],[co("And one chat.")]], sub="Everyone thinks I have a team of thirty.")
+T2.COVER=dict(head=[[wo("It's just me.")],[co("And one chat.")]])
 T2.CONTENT=[
-  ("THE TEAM", [[wo("This looks like")],[co("a whole team.")]], f"{PH}/p2_jobs.png", 1.0),
-  ("DEALS", [[wo("Three agents,")],[co("one deal.")]], f"{PH}/p2_deals.png", 1.0),
-  ("UNITS", [[wo("Seven units.")],[co("One person.")]], f"{PH}/p2_skills.png", 1.0),
+  ("THE TEAM", [[wo("This looks like")],[co("a whole team.")]], f"{PH}/p2_deals.png", 1.0),
+  ("BUILD", [[wo("One person")],[co("ships the product.")]], f"{PH}/p2_build.png", 1.0),
+  ("UNITS", [[wo("Seven units.")],[co("One person.")]], f"{PH}/p2_units.png", 1.0),
   ("MEMORY", [[wo("One shared")],[co("memory.")]], f"{PH}/p2_brain.png", 1.0),
   ("PROJECTS", [[wo("Every project.")],[co("One owner. Me.")]], f"{PH}/p2_projects.png", 1.0),
-  ("PRIMITIVES", [[wo("Drop-in workflows,")],[co("ready.")]], f"{PH}/p2_primitives.png", 1.0),
-  ("EVERYTHING", [[wo("Everything,")],[co("already built.")]], f"{PH}/p2_everything.png", 1.0),
+  ("STACK", [[wo("One bill,")],[co("not ten salaries.")]], f"{PH}/p2_stack.png", 1.0),
+  ("ROI", [[wo("Real numbers,")],[co("one tap.")]], f"{PH}/p2_sub.png", 1.0),
   ("ULTRON", [[wo("No team.")],[co("Just me.")]], UL, 0.98),
 ]
 T2.CTA=("RUN ON ONE", [[wo("Run on one,")],[co("comment OPERATOR.")]], f"{LIB}/cta3d-operator.png", 0.92)
@@ -28,11 +28,11 @@ def _body(base, eyebrow, head, objpath, page, n, last=False, fill=1.0):
         T2.place_in_zone(base, T2.crop_obj(Image.open(objpath)), (50,720,1030,1245), fill=fill)
         d.text((T2.MX,1262),"Follow for one AI system for founders every day.",font=T2.dm(700,29),fill=T2.WHITE); T2.footer(base)
         return
-    T2.ls_text(d,(T2.MX,300),eyebrow,T2.mono(26),T2.CORAL,4)
-    s=min(T2.fit_hook(d,head,T2.W-2*T2.MX,start=64,floor=44),56); hf=T2.dm(900,s); y=340
+    T2.ls_text(d,(T2.MX,296),eyebrow,T2.mono(26),T2.CORAL,4)
+    s=min(T2.fit_hook(d,head,T2.W-2*T2.MX,start=64,floor=44),54); hf=T2.dm(900,s); y=336
     for ln in head: T2.seg_line(d,T2.MX,y,ln,hf); y+=int(s*1.12)
-    T2.place_in_zone(base, T2.crop_obj(Image.open(objpath)), (32,452,1048,1562), fill=1.0)
-    x0,x1=90,928; yb=1578; d.rounded_rectangle([x0,yb,x1,yb+7],radius=4,fill=T2.TRACK)
+    T2.place_in_zone(base, T2.crop_obj(Image.open(objpath)), (32,512,1048,1566), fill=1.0)
+    x0,x1=90,928; yb=1582; d.rounded_rectangle([x0,yb,x1,yb+7],radius=4,fill=T2.TRACK)
     d.rounded_rectangle([x0,yb,x0+int((x1-x0)*page/n),yb+7],radius=4,fill=T2.CORAL)
 T2.body_slide=_body
 if __name__=="__main__":
