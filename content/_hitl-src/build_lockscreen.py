@@ -30,13 +30,13 @@ NOTIFS=[
 T2.CONTENT=[(NOTIFS[i][1],[[wo("x")]],"",1.0) for i in range(len(NOTIFS))]  # drives the deck loop
 
 def _sphere_icon(px):
+    # clean round orb, transparent around it (NO black square under the logo)
     im=Image.open(T2.ULOGO).convert("RGB"); lum=np.asarray(im).astype(int).sum(2)
     ys,xs=np.where(lum>36); c=im.convert("RGBA").crop((int(xs.min()),int(ys.min()),int(xs.max())+1,int(ys.max())+1))
     sq=max(c.size); s2=Image.new("RGBA",(sq,sq),(0,0,0,0)); s2.alpha_composite(c,((sq-c.width)//2,(sq-c.height)//2))
-    s2=s2.resize((px,px),Image.LANCZOS)
-    # rounded-square app-icon mask
-    m=Image.new("L",(px,px),0); ImageDraw.Draw(m).rounded_rectangle([0,0,px-1,px-1],radius=int(px*0.24),fill=255)
-    out=Image.new("RGBA",(px,px),(0,0,0,0)); out.paste(s2,(0,0),m); return out
+    m=Image.new("L",(sq,sq),0); ImageDraw.Draw(m).ellipse([0,0,sq-1,sq-1],fill=255)
+    s2.putalpha(m)
+    return s2.resize((px,px),Image.LANCZOS)
 
 def _wallpaper():
     # slate base + soft warm glow (coded depth), subtle vignette
