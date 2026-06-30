@@ -187,6 +187,50 @@ def montage(outdir,name,n):
     for k,im in enumerate(ims): st.paste(im.resize((sc,sh)),(8+(k%cols)*(sc+8),8+(k//cols)*(sh+8)))
     st.save(f"{OUTBASE}/{name}_montage.jpg")
 
+# ---- TikTok engagement layer (poll slide @2 + save-first CTA). IG keeps keyword-DM. ----
+POLL=dict(eye="BEFORE YOU SCROLL", q=[[wo("Which founder")],[co("are you?")]],
+          opts=[("1","Hire a team of thirty."),("2","Run one chat.")],
+          cta="Comment 1 or 2 below. I reply to every one.")
+SAVE_FOOT="Save this video. Comment OPERATOR, I reply to the first 20."
+def poll_slide(base,n,page=2):
+    d=ImageDraw.Draw(base); ghost(base,f"{page:02d}")
+    ls_text(d,(MX,300),POLL["eye"],mono(26),CORAL,4)
+    hf=dm(900,72); y=350
+    for ln in POLL["q"]: seg_line(d,MX,y,ln,hf); y+=int(72*1.12)
+    oy=600; ow=W-2*MX; oh=158
+    for num,txt in POLL["opts"]:
+        card=Image.new("RGBA",(W,H),(0,0,0,0)); cd=ImageDraw.Draw(card)
+        cd.rounded_rectangle([MX,oy,MX+ow,oy+oh],radius=28,fill=(38,38,37,255))
+        cd.rounded_rectangle([MX,oy,MX+108,oy+oh],radius=28,fill=CORAL+(255,))
+        base.alpha_composite(card); d=ImageDraw.Draw(base)
+        d.text((MX+30,oy+oh//2-46),num,font=dm(900,86),fill=(18,18,18))
+        d.text((MX+152,oy+oh//2-26),txt,font=dm(800,42),fill=WHITE)
+        oy+=oh+30
+    d.text((MX,oy+18),POLL["cta"],font=dm(700,34),fill=CORAL)
+    x0,x1=90,928; yb=1582; d.rounded_rectangle([x0,yb,x1,yb+7],radius=4,fill=TRACK)
+    d.rounded_rectangle([x0,yb,x0+int((x1-x0)*page/n),yb+7],radius=4,fill=CORAL)
+def deck_poll(outdir, overlay):
+    os.makedirs(outdir,exist_ok=True)
+    globals()['_TT']=not overlay
+    slides=[("cover",)]
+    if not overlay: slides.append(("poll",))
+    slides+=[("mid",c) for c in CONTENT]+[("last",CTA)]
+    n=len(slides)
+    for i,sl in enumerate(slides,1):
+        if sl[0]=="cover":
+            if overlay: cover_ig(f"{outdir}/s{i}.png")
+            else:
+                base=Image.new("RGBA",(W,H),BG+(255,)); cover_tt(base,n); base.convert("RGB").save(f"{outdir}/s{i}.png")
+            continue
+        if sl[0]=="poll":
+            base=Image.new("RGBA",(W,H),BG+(255,)); poll_slide(base,n,i); base.convert("RGB").save(f"{outdir}/s{i}.png"); continue
+        eb,head,objp,fill=sl[1]
+        base=Image.new("RGBA",(W,H),BG+(255,))
+        body_slide(base,eb,head,objp,i,n,last=(sl[0]=="last"),fill=fill)
+        base.convert("RGB").save(f"{outdir}/s{i}.png")
+    globals()['_TT']=False
+    return n
+
 if __name__=="__main__":
     ntt=deck(f"{OUTBASE}/team_tt", overlay=False)
     nig=deck(f"{OUTBASE}/team_ig", overlay=True)
