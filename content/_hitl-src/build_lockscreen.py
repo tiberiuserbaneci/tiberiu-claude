@@ -114,9 +114,11 @@ def _last_body(base, eyebrow, head, objpath, page, n, last=False, fill=1.0):
 
 def body_slide(base, eyebrow, head, objpath, page, n, last=False, fill=1.0):
     (_last_body if last else _lock_body)(base,eyebrow,head,objpath,page,n,last,fill)
-T2.body_slide=body_slide
+# deck_close drives mids with last=False; it appends the two account closing pages (no poll, no CTA pill)
+T2.body_slide=_lock_body
+T2.CLOSE=dict(l1="Save this for",l2="your first full day off.",q="What would you wake up to?")
 
 if __name__=="__main__":
-    a=T2.deck(f"{T2.OUTBASE}/lock_tt",False); b=T2.deck(f"{T2.OUTBASE}/lock_ig",True)
+    a=T2.deck_close(f"{T2.OUTBASE}/lock_tt",False); b=T2.deck_close(f"{T2.OUTBASE}/lock_ig",True)
     T2.montage(f"{T2.OUTBASE}/lock_tt","lock_tt",a); T2.montage(f"{T2.OUTBASE}/lock_ig","lock_ig",b)
     print("tt",a,"ig",b)

@@ -60,6 +60,23 @@ def place_in_zone(base,el,zone,fill=1.0):
     # ground shadow removed entirely (operator: "tot are umbra") - objects carry only their own whisper contact shadow
     base.alpha_composite(el,(ox,oy))
 
+def place_panel(base, objpath, pw=820, cy=1008, bez=0.045, rad=0.055):
+    """Normalise every framed dashboard to an IDENTICAL thin frame: crop to the white app
+    SCREEN + a fixed thin bezel margin, re-round the corners, scale to a FIXED width and
+    centre at (W/2, cy). Vertex renders bezels at different thicknesses; this makes them all
+    look the same (operator: 'ramele diferite ... pandadoc prea groasa'). No jitter, no trim."""
+    im=Image.open(objpath).convert("RGB"); a=np.asarray(im).astype(int); lum=a.sum(2)/3
+    ys,xs=np.where(lum>150)                                  # the bright white screen
+    x0,y0,x1,y1=int(xs.min()),int(ys.min()),int(xs.max()),int(ys.max())
+    m=int((x1-x0)*bez)                                       # uniform thin bezel from screen edge
+    bx0=max(0,x0-m); by0=max(0,y0-m); bx1=min(im.width,x1+m); by1=min(im.height,y1+m)
+    crop=im.crop((bx0,by0,bx1,by1)); s=pw/crop.width
+    crop=crop.resize((pw,max(1,int(crop.height*s))),Image.LANCZOS).convert("RGBA")
+    r=int(pw*rad); mask=Image.new("L",crop.size,0)
+    ImageDraw.Draw(mask).rounded_rectangle([0,0,crop.width-1,crop.height-1],radius=r,fill=255)
+    crop.putalpha(mask)
+    base.alpha_composite(crop,((W-pw)//2, int(cy-crop.height/2)))
+
 def ghost(base,num):
     f=dm(900,150); layer=Image.new("RGBA",(W,H),(0,0,0,0)); dl=ImageDraw.Draw(layer)
     tw=dl.textlength(num,font=f); dl.text((922-tw,298),num,font=f,fill=GHOST+(255,))
@@ -263,6 +280,19 @@ def deck_close(outdir, overlay):
             eb,head,objp,fill=sl[1]; body_slide(base,eb,head,objp,i,n,last=False,fill=fill)
         base.convert("RGB").save(f"{outdir}/s{i}.png")
     globals()['_TT']=False; return n
+
+# ---- shared body for the no-phone DASHBOARD materials (mat1/2/3/5): congruent framed panels ----
+def dash_body(base, eyebrow, head, objpath, page, n, last=False, fill=1.0):
+    d=ImageDraw.Draw(base); ghost(base,f"{page:02d}")
+    ls_text(d,(MX,300),eyebrow,mono(26),CORAL,4)
+    s=min(fit_hook(d,head,W-2*MX,start=64,floor=44),56); hf=dm(900,s); y=340
+    for ln in head: seg_line(d,MX,y,ln,hf); y+=int(s*1.12)
+    if "models_dash" in objpath:
+        place_panel(base, objpath)                       # normalised framed dashboard (no jitter/trim)
+    else:
+        place_in_zone(base, crop_obj(Image.open(objpath)), (130,520,950,1500), fill=fill)  # Ultron payoff
+    x0,x1=90,928; yb=1576; d.rounded_rectangle([x0,yb,x1,yb+7],radius=4,fill=TRACK)
+    d.rounded_rectangle([x0,yb,x0+int((x1-x0)*page/n),yb+7],radius=4,fill=CORAL)
 
 if __name__=="__main__":
     ntt=deck(f"{OUTBASE}/team_tt", overlay=False)
