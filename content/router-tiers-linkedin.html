@@ -31,18 +31,18 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 /* lanes (dominant) */
 .lanes{flex:1;min-height:0;margin-top:15px;display:flex;gap:12px;}
 .lane{flex:1;display:flex;flex-direction:column;border:1px solid var(--rule);border-radius:16px;background:var(--slate2);overflow:hidden;min-height:0;}
-.lhead{flex-shrink:0;padding:15px 18px 14px;border-bottom:1px solid var(--rule);}
-.ltier{font-weight:900;font-size:31px;letter-spacing:-1.2px;line-height:.9;}
-.lmodel{font-family:'DM Mono',monospace;font-size:12.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink70);margin-top:8px;}
-.lwhen{font-size:15px;font-weight:500;color:var(--ink46);margin-top:6px;line-height:1.18;}
-.lane.lite .ltier{color:var(--kraft);} .lane.lite .lhead{background:rgba(212,162,127,.08);}
-.lane.smart .ltier{color:var(--book);} .lane.smart .lhead{background:rgba(204,120,92,.1);}
-.lane.deep .ltier{color:var(--book-d);} .lane.deep .lhead{background:rgba(200,70,35,.12);}
-.ljobs{flex:1;min-height:0;display:flex;flex-direction:column;padding:0 16px;}
-.job{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;padding:7px 0;border-bottom:1px solid var(--rule);}
+.lhead{flex-shrink:0;padding:13px 16px 12px;border-bottom:1.5px solid var(--rule);}
+.ltier{font-weight:900;font-size:29px;letter-spacing:-1.2px;line-height:.9;}
+.lmodel{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink70);margin-top:7px;}
+.lwhen{font-size:13.5px;font-weight:500;color:var(--ink46);margin-top:5px;line-height:1.15;}
+.lane.lite .ltier{color:var(--kraft);} .lane.lite .lhead{background:rgba(212,162,127,.1);}
+.lane.smart .ltier{color:var(--book);} .lane.smart .lhead{background:rgba(204,120,92,.12);}
+.lane.deep .ltier{color:var(--book-d);} .lane.deep .lhead{background:rgba(200,70,35,.14);}
+.ljobs{flex:1;min-height:0;display:flex;flex-direction:column;padding:0 15px;}
+.job{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;padding:4px 0;border-bottom:1px solid var(--rule);}
 .job:last-child{border-bottom:none;}
-.job .jt{font-size:18px;font-weight:700;color:var(--ivory);letter-spacing:-.3px;line-height:1.08;}
-.job .ja{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--kraft);margin-top:4px;}
+.job .jt{font-size:16.5px;font-weight:700;color:var(--ivory);letter-spacing:-.3px;line-height:1.06;}
+.job .ja{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--kraft);margin-top:3px;}
 .lane.smart .job .ja{color:var(--book);}.lane.deep .job .ja{color:var(--book-d);}
 /* cta */
 .ctawrap{flex-shrink:0;margin-top:14px;}
@@ -62,8 +62,8 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
   <div class="mast"><span class="ml">MODEL ROUTING <em>&middot;</em> 3 TIERS <em>&middot;</em> ONE CHAT</span><span class="mr">ULTRON <em>&middot;</em> WHICH MODEL, WHICH JOB</span></div>
   <div class="hero">
     <div class="eye">The router decides</div>
-    <div class="hook">Most AI tools run every job on the same model. Ultron sends each one to the <em>brain that fits</em>.</div>
-    <div class="sub">Lite for lookups, Smart for the daily work, Deep for the calls that matter. One chat picks the tier for every job, so you never pay top-tier prices for a search. <b>You pay per token, so most tasks cost cents.</b></div>
+    <div class="hook">One model for every job is why your AI is slow and overpriced. Ultron picks the <em>right brain</em> each time.</div>
+    <div class="sub">Lite for lookups, Smart for the daily work, Deep for the calls that matter. <b>You pay per token, so most tasks cost cents</b> and the expensive tier is saved for jobs that earn it.</div>
   </div>
   <div class="stats">
     <div class="stat a"><b>3</b><span>model tiers</span></div>
@@ -79,6 +79,9 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
         <div class="job"><div class="jt">Qualify a lead</div><div class="ja">STRIKER</div></div>
         <div class="job"><div class="jt">Enrich a contact</div><div class="ja">CORTEX</div></div>
         <div class="job"><div class="jt">Sort and tag replies</div><div class="ja">SPECTER</div></div>
+        <div class="job"><div class="jt">Pull company basics</div><div class="ja">CORTEX</div></div>
+        <div class="job"><div class="jt">Classify intent</div><div class="ja">STRIKER</div></div>
+        <div class="job"><div class="jt">Dedupe a list</div><div class="ja">CORTEX</div></div>
         <div class="job"><div class="jt">Schedule and publish</div><div class="ja">AMPLIFY</div></div>
       </div>
     </div>
@@ -89,6 +92,9 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
         <div class="job"><div class="jt">Post in your voice</div><div class="ja">PULSE</div></div>
         <div class="job"><div class="jt">Draft a follow-up sequence</div><div class="ja">SPECTER</div></div>
         <div class="job"><div class="jt">Summarize a sales call</div><div class="ja">STRIKER</div></div>
+        <div class="job"><div class="jt">Write a newsletter</div><div class="ja">PULSE</div></div>
+        <div class="job"><div class="jt">Rewrite a pitch</div><div class="ja">STRIKER</div></div>
+        <div class="job"><div class="jt">Reply to a lead</div><div class="ja">SPECTER</div></div>
         <div class="job"><div class="jt">Repurpose a post</div><div class="ja">PULSE</div></div>
       </div>
     </div>
@@ -99,7 +105,10 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
         <div class="job"><div class="jt">Objection and proposal</div><div class="ja">STRIKER</div></div>
         <div class="job"><div class="jt">Build or fix a page</div><div class="ja">SENTINEL</div></div>
         <div class="job"><div class="jt">Review an NDA</div><div class="ja">COUNSEL</div></div>
+        <div class="job"><div class="jt">Write a close plan</div><div class="ja">STRIKER</div></div>
+        <div class="job"><div class="jt">Competitive teardown</div><div class="ja">CORTEX</div></div>
         <div class="job"><div class="jt">Plan a launch</div><div class="ja">AMPLIFY</div></div>
+        <div class="job"><div class="jt">Review a term sheet</div><div class="ja">COUNSEL</div></div>
       </div>
     </div>
   </div>
