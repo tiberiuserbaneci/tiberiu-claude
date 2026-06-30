@@ -17,7 +17,8 @@ T2.CONTENT=[
  ("ULTRON",   [[wo("Four closed.")],[co("One chat.")]],       f"{P}/ultron.png",   0.92),
 ]
 T2.CTA=("CLOSE ON AUTOPILOT", [[wo("Close on autopilot,")],[co("comment FOUNDER.")]], f"{LIB}/cta3d-founder.png", 0.92)
+T2.CLOSE=dict(l1="Save this for",l2="your next close.",q="Which deal would you start with?")
 if __name__=="__main__":
-    a=T2.deck_poll(f"{T2.OUTBASE}/closed_tt",overlay=False); b=T2.deck_poll(f"{T2.OUTBASE}/closed_ig",overlay=True)
+    a=T2.deck_close(f"{T2.OUTBASE}/closed_tt",overlay=False); b=T2.deck_close(f"{T2.OUTBASE}/closed_ig",overlay=True)
     T2.montage(f"{T2.OUTBASE}/closed_tt","closed_tt",a); T2.montage(f"{T2.OUTBASE}/closed_ig","closed_ig",b)
     print("tt",a,"ig",b)

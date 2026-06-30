@@ -17,7 +17,8 @@ T2.CONTENT=[
  ("PROOF",     [[wo("9 customers.")],[co("No product yet.")]],    f"{M}/stripe_customers.png",  0.95),
 ]
 T2.CTA=("START TODAY", [[wo("Start today,")],[co("comment BUILDER.")]], f"{LIB}/cta3d-builder.png", 0.92)
+T2.CLOSE=dict(l1="Save this for",l2="your first dollar.",q="What would you sell first?")
 if __name__=="__main__":
-    a=T2.deck_poll(f"{T2.OUTBASE}/first_tt",overlay=False); b=T2.deck_poll(f"{T2.OUTBASE}/first_ig",overlay=True)
+    a=T2.deck_close(f"{T2.OUTBASE}/first_tt",overlay=False); b=T2.deck_close(f"{T2.OUTBASE}/first_ig",overlay=True)
     T2.montage(f"{T2.OUTBASE}/first_tt","first_tt",a); T2.montage(f"{T2.OUTBASE}/first_ig","first_ig",b)
     print("tt",a,"ig",b)

@@ -31,7 +31,8 @@ def _uniform_size():
     return s
 _USZ=_uniform_size(); _origfit=T2.fit_hook
 T2.fit_hook=lambda d,head,maxw,start=84,floor=58:( _origfit(d,head,maxw,start=start,floor=floor) if head is T2.COVER["head"] else _USZ )
+T2.CLOSE=dict(l1="Save this for",l2="the day you build.",q="What would you ship without code?")
 if __name__=="__main__":
-    a=T2.deck_poll(f"{T2.OUTBASE}/code_tt",False); b=T2.deck_poll(f"{T2.OUTBASE}/code_ig",True)
+    a=T2.deck_close(f"{T2.OUTBASE}/code_tt",False); b=T2.deck_close(f"{T2.OUTBASE}/code_ig",True)
     T2.montage(f"{T2.OUTBASE}/code_tt","code_tt",a); T2.montage(f"{T2.OUTBASE}/code_ig","code_ig",b)
     print("tt",a,"ig",b)
