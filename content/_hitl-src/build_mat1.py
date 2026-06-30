@@ -8,13 +8,13 @@ wo=lambda s:(s,T2.WHITE); co=lambda s:(s,T2.CORAL)
 D=f"{T2.OBJ}/models_dash"; LIB=T2.LIB; UL=f"{T2.OBJ}/models_rival2/ultron_login.png"
 T2.COVER=dict(head=[[wo("Start your company")],[co("tonight.")]])
 T2.CONTENT=[
-  ("LIVE", [[wo("A whole company,")],[co("running tonight.")]], f"{D}/m1_01.png", 1.0),
-  ("LEADS", [[wo("It finds your")],[co("first buyers.")]], f"{D}/m1_02.png", 1.0),
-  ("OUTREACH", [[wo("It writes")],[co("every message.")]], f"{D}/m1_03.png", 1.0),
-  ("UNITS", [[wo("Seven units,")],[co("one operator.")]], f"{D}/m1_04.png", 1.0),
-  ("PROJECTS", [[wo("Every workstream,")],[co("one place.")]], f"{D}/m1_05.png", 1.0),
-  ("MEMORY", [[wo("It remembers")],[co("everything.")]], f"{D}/m1_06.png", 1.0),
-  ("STACK", [[wo("Your whole stack,")],[co("connected.")]], f"{D}/m1_07.png", 1.0),
+  ("LEADS", [[wo("Find your")],[co("first buyers.")]], f"{D}/m1b_01.png", 1.0),
+  ("OUTREACH", [[wo("Reach them")],[co("at scale.")]], f"{D}/m1b_02.png", 1.0),
+  ("PIPELINE", [[wo("Track every")],[co("deal.")]], f"{D}/m1b_03.png", 1.0),
+  ("CALLS", [[wo("Book the")],[co("calls.")]], f"{D}/m1b_04.png", 1.0),
+  ("PROJECTS", [[wo("Run the whole")],[co("company.")]], f"{D}/m1b_05.png", 1.0),
+  ("PAYMENTS", [[wo("Get")],[co("paid.")]], f"{D}/m1b_06.png", 1.0),
+  ("STACK", [[wo("One chat")],[co("runs it all.")]], f"{D}/m1b_07.png", 1.0),
   ("ULTRON", [[wo("No team.")],[co("Just you and one chat.")]], UL, 0.98),
 ]
 T2.CTA=("RUN ON ONE", [[wo("Run on one,")],[co("comment OPERATOR.")]], f"{LIB}/cta3d-operator.png", 0.92)
