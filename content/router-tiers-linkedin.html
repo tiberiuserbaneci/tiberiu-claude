@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>router-tiers - LinkedIn 1080x1450</title>
+<style>
+@import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
+/* router-tiers - Which model for which job. Dominant = 3 tier LANES (Lite/Smart/Deep), each packed
+   with real founder jobs. Distinct from docs-13's vertical pipeline. Dark Ultron. Save + comment. */
+:root{--slate:#191919;--slate2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);
+--ink30:rgba(250,250,247,.30);--rule:rgba(250,250,247,.10);
+--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--cloud:#919180;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.frame{width:1080px;height:1450px;background:var(--slate);padding:34px 44px 22px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;}
+.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.4px,transparent 1.5px);background-size:30px 30px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 54% 22% at 90% -2%,rgba(204,120,92,.2) 0%,transparent 60%),radial-gradient(ellipse 48% 24% at 2% 102%,rgba(212,162,127,.1) 0%,transparent 60%);}
+.frame>*{position:relative;z-index:2;}
+.mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;}
+.mast .ml{color:var(--ink46);}.mast .ml em{color:var(--book);font-style:normal;}
+.mast .mr{color:var(--ink70);}.mast .mr em{color:var(--book);font-style:normal;}
+.hero{flex-shrink:0;margin-top:16px;}
+.eye{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--kraft);}
+.hook{margin-top:9px;font-weight:900;font-size:50px;line-height:.99;letter-spacing:-1.8px;color:var(--ivory);}.hook em{color:var(--book);font-style:normal;}
+.sub{margin-top:12px;font-size:22px;font-weight:500;line-height:1.32;color:var(--ink70);max-width:960px;}.sub b{color:var(--ivory);font-weight:700;}
+.stats{flex-shrink:0;margin-top:15px;display:flex;border:1px solid var(--rule);border-radius:13px;overflow:hidden;}
+.stat{flex:1;padding:12px 16px;text-align:center;}.stat+.stat{border-left:1px solid var(--rule);}
+.stat b{display:block;font-weight:900;font-size:30px;line-height:.85;letter-spacing:-1px;}
+.stat.a b{color:var(--book);}.stat.b b{color:var(--kraft);}.stat.c b{color:var(--ivory);}.stat.d b{color:var(--book);}
+.stat span{font-family:'DM Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink46);margin-top:7px;display:block;}
+/* lanes (dominant) */
+.lanes{flex:1;min-height:0;margin-top:15px;display:flex;gap:12px;}
+.lane{flex:1;display:flex;flex-direction:column;border:1px solid var(--rule);border-radius:16px;background:var(--slate2);overflow:hidden;min-height:0;}
+.lhead{flex-shrink:0;padding:15px 18px 14px;border-bottom:1px solid var(--rule);}
+.ltier{font-weight:900;font-size:31px;letter-spacing:-1.2px;line-height:.9;}
+.lmodel{font-family:'DM Mono',monospace;font-size:12.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink70);margin-top:8px;}
+.lwhen{font-size:15px;font-weight:500;color:var(--ink46);margin-top:6px;line-height:1.18;}
+.lane.lite .ltier{color:var(--kraft);} .lane.lite .lhead{background:rgba(212,162,127,.08);}
+.lane.smart .ltier{color:var(--book);} .lane.smart .lhead{background:rgba(204,120,92,.1);}
+.lane.deep .ltier{color:var(--book-d);} .lane.deep .lhead{background:rgba(200,70,35,.12);}
+.ljobs{flex:1;min-height:0;display:flex;flex-direction:column;padding:0 16px;}
+.job{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;padding:7px 0;border-bottom:1px solid var(--rule);}
+.job:last-child{border-bottom:none;}
+.job .jt{font-size:18px;font-weight:700;color:var(--ivory);letter-spacing:-.3px;line-height:1.08;}
+.job .ja{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--kraft);margin-top:4px;}
+.lane.smart .job .ja{color:var(--book);}.lane.deep .job .ja{color:var(--book-d);}
+/* cta */
+.ctawrap{flex-shrink:0;margin-top:14px;}
+.savel{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--kraft);margin-bottom:10px;padding-left:4px;}
+.cta{display:flex;align-items:center;gap:16px;border:1.5px solid var(--book);border-radius:18px;background:rgba(204,120,92,.08);padding:13px 13px 13px 26px;box-shadow:0 0 44px rgba(204,120,92,.2);}
+.cta .ph{flex:1;font-size:23px;font-weight:600;color:var(--ink70);line-height:1.2;}.cta .ph b{color:var(--book);font-weight:900;}
+.cta .send{width:58px;height:58px;border-radius:50%;background:var(--book);flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(204,120,92,.45);}
+.cta .send svg{width:28px;height:28px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ftr{flex-shrink:0;margin-top:13px;padding-top:12px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.fl2{display:flex;align-items:center;gap:11px;min-width:0;}.flogo{width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.ftx{font-family:'DM Mono',monospace;font-size:11.5px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--ink70);white-space:nowrap;}.ftx b{color:var(--ivory);font-weight:500;}
+.furl{font-weight:900;font-size:21px;letter-spacing:-.5px;color:var(--ivory);}.furl em{color:var(--book);font-style:normal;}
+</style>
+</head>
+<body>
+<div class="frame" id="artifact"><div class="atm"></div>
+  <div class="mast"><span class="ml">MODEL ROUTING <em>&middot;</em> 3 TIERS <em>&middot;</em> ONE CHAT</span><span class="mr">ULTRON <em>&middot;</em> WHICH MODEL, WHICH JOB</span></div>
+  <div class="hero">
+    <div class="eye">The router decides</div>
+    <div class="hook">Most AI tools run every job on the same model. Ultron sends each one to the <em>brain that fits</em>.</div>
+    <div class="sub">Lite for lookups, Smart for the daily work, Deep for the calls that matter. One chat picks the tier for every job, so you never pay top-tier prices for a search. <b>You pay per token, so most tasks cost cents.</b></div>
+  </div>
+  <div class="stats">
+    <div class="stat a"><b>3</b><span>model tiers</span></div>
+    <div class="stat b"><b>7</b><span>agents on tap</span></div>
+    <div class="stat c"><b>1</b><span>chat picks it</span></div>
+    <div class="stat d"><b>&cent;</b><span>cents per task</span></div>
+  </div>
+  <div class="lanes">
+    <div class="lane lite">
+      <div class="lhead"><div class="ltier">LITE</div><div class="lmodel">Haiku</div><div class="lwhen">Quick lookups and sorting</div></div>
+      <div class="ljobs">
+        <div class="job"><div class="jt">Build a live lead list</div><div class="ja">CORTEX</div></div>
+        <div class="job"><div class="jt">Qualify a lead</div><div class="ja">STRIKER</div></div>
+        <div class="job"><div class="jt">Enrich a contact</div><div class="ja">CORTEX</div></div>
+        <div class="job"><div class="jt">Sort and tag replies</div><div class="ja">SPECTER</div></div>
+        <div class="job"><div class="jt">Schedule and publish</div><div class="ja">AMPLIFY</div></div>
+      </div>
+    </div>
+    <div class="lane smart">
+      <div class="lhead"><div class="ltier">SMART</div><div class="lmodel">Sonnet</div><div class="lwhen">The daily work, by default</div></div>
+      <div class="ljobs">
+        <div class="job"><div class="jt">Write 50 cold emails</div><div class="ja">SPECTER</div></div>
+        <div class="job"><div class="jt">Post in your voice</div><div class="ja">PULSE</div></div>
+        <div class="job"><div class="jt">Draft a follow-up sequence</div><div class="ja">SPECTER</div></div>
+        <div class="job"><div class="jt">Summarize a sales call</div><div class="ja">STRIKER</div></div>
+        <div class="job"><div class="jt">Repurpose a post</div><div class="ja">PULSE</div></div>
+      </div>
+    </div>
+    <div class="lane deep">
+      <div class="lhead"><div class="ltier">DEEP</div><div class="lmodel">Opus</div><div class="lwhen">Hard judgement, high stakes</div></div>
+      <div class="ljobs">
+        <div class="job"><div class="jt">Research an account</div><div class="ja">CORTEX</div></div>
+        <div class="job"><div class="jt">Objection and proposal</div><div class="ja">STRIKER</div></div>
+        <div class="job"><div class="jt">Build or fix a page</div><div class="ja">SENTINEL</div></div>
+        <div class="job"><div class="jt">Review an NDA</div><div class="ja">COUNSEL</div></div>
+        <div class="job"><div class="jt">Plan a launch</div><div class="ja">AMPLIFY</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="ctawrap">
+    <div class="savel">Save this routing map, then</div>
+    <div class="cta"><span class="ph">Comment <b>ROUTER</b> for the full model routing map</span><span class="send"><svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div>
+  </div>
+  <div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span></div><div class="furl">51ultron<em>.</em>com</div></div>
+</div>
+</body>
+</html>
