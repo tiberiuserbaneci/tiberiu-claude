@@ -14,7 +14,7 @@ T2.CONTENT=[
   ("DEALS", [[wo("It works")],[co("every deal.")]], f"{PH}/p2_deals.png", 1.0),
   ("STACK", [[wo("Ten tools,")],[co("one bill.")]], f"{PH}/p2_stack.png", 1.0),
   ("PROJECTS", [[wo("Every project,")],[co("one place.")]], f"{PH}/p2_projects.png", 1.0),
-  ("ROI", [[wo("One bill,")],[co("real numbers.")]], f"{PH}/p2_sub.png", 1.0),
+  ("PLAYBOOKS", [[wo("Battle-tested")],[co("playbooks.")]], f"{PH}/p2_sub.png", 1.0),
   ("ULTRON", [[wo("Always on.")],[co("In your pocket.")]], UL, 0.98),
 ]
 T2.CTA=("RUN ON ONE", [[wo("Run on one,")],[co("comment OPERATOR.")]], f"{LIB}/cta3d-operator.png", 0.92)

@@ -14,7 +14,7 @@ T2.CONTENT=[
   ("MEMORY", [[wo("One shared")],[co("memory.")]], f"{PH}/p2_brain.png", 1.0),
   ("PROJECTS", [[wo("Every project.")],[co("One owner. Me.")]], f"{PH}/p2_projects.png", 1.0),
   ("STACK", [[wo("One bill,")],[co("not ten salaries.")]], f"{PH}/p2_stack.png", 1.0),
-  ("ROI", [[wo("Real numbers,")],[co("one tap.")]], f"{PH}/p2_sub.png", 1.0),
+  ("PLAYBOOKS", [[wo("Proven playbooks,")],[co("built in.")]], f"{PH}/p2_sub.png", 1.0),
   ("ULTRON", [[wo("No team.")],[co("Just me.")]], UL, 0.98),
 ]
 T2.CTA=("RUN ON ONE", [[wo("Run on one,")],[co("comment OPERATOR.")]], f"{LIB}/cta3d-operator.png", 0.92)
