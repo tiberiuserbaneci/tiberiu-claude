@@ -115,7 +115,7 @@ def body_slide(base, eyebrow, head, objpath, page, n, last=False, fill=1.0):
     ls_text(d,(MX,476),eyebrow,mono(28),CORAL,4)
     s=fit_hook(d,head,W-2*MX,start=84,floor=64); hf=dm(900,s); lh=int(s*1.14); y=540   # auto-fit guard: stays 84 unless a line would overflow
     for ln in head: seg_line(d,MX,y,ln,hf); y+=lh
-    z=(60,730,1020,1240) if last else (60,730,1020,1345)   # bigger object zone (operator: display objects larger)
+    z=(130,730,950,1240) if last else (130,730,950,1345)   # bigger object zone (operator: display objects larger)
     place_in_zone(base, crop_obj(Image.open(objpath)), z, fill=fill)
     if last:
         _ft=save_foot() if globals().get('_TT') else "Follow for one AI system for founders every day."
@@ -200,16 +200,16 @@ def poll_slide(base,n,page=2):
     ls_text(d,(MX,300),POLL["eye"],mono(26),CORAL,4)
     hf=dm(900,72); y=350
     for ln in POLL["q"]: seg_line(d,MX,y,ln,hf); y+=int(72*1.12)
-    oy=600; ow=W-2*MX; oh=158
+    oy=600; LX,RX=130,950; oh=158   # safe zone: left>=70, right<=950
     for num,txt in POLL["opts"]:
         card=Image.new("RGBA",(W,H),(0,0,0,0)); cd=ImageDraw.Draw(card)
-        cd.rounded_rectangle([MX,oy,MX+ow,oy+oh],radius=28,fill=(38,38,37,255))
-        cd.rounded_rectangle([MX,oy,MX+108,oy+oh],radius=28,fill=CORAL+(255,))
+        cd.rounded_rectangle([LX,oy,RX,oy+oh],radius=28,fill=(38,38,37,255))
+        cd.rounded_rectangle([LX,oy,LX+108,oy+oh],radius=28,fill=CORAL+(255,))
         base.alpha_composite(card); d=ImageDraw.Draw(base)
-        d.text((MX+30,oy+oh//2-46),num,font=dm(900,86),fill=(18,18,18))
-        d.text((MX+152,oy+oh//2-26),txt,font=dm(800,42),fill=WHITE)
+        d.text((LX+30,oy+oh//2-46),num,font=dm(900,86),fill=(18,18,18))
+        d.text((LX+152,oy+oh//2-26),txt,font=dm(800,42),fill=WHITE)
         oy+=oh+30
-    d.text((MX,oy+18),POLL["cta"],font=dm(700,34),fill=CORAL)
+    d.text((LX,oy+18),POLL["cta"],font=dm(700,34),fill=CORAL)
     x0,x1=90,928; yb=1582; d.rounded_rectangle([x0,yb,x1,yb+7],radius=4,fill=TRACK)
     d.rounded_rectangle([x0,yb,x0+int((x1-x0)*page/n),yb+7],radius=4,fill=CORAL)
 def deck_poll(outdir, overlay):

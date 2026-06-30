@@ -25,7 +25,7 @@ def _body(base, eyebrow, head, objpath, page, n, last=False, fill=1.0):
         T2.ls_text(d,(MX,470),eyebrow,T2.mono(28),T2.CORAL,4)
         s=T2.fit_hook(d,head,T2.W-2*MX,start=84,floor=58); hf=T2.dm(900,s); y=534
         for ln in head: T2.seg_line(d,MX,y,ln,hf); y+=int(s*1.14)
-        T2.place_in_zone(base, T2.crop_obj(Image.open(objpath)), (50,720,1030,1245), fill=fill)
+        T2.place_in_zone(base, T2.crop_obj(Image.open(objpath)), (130,720,950,1245), fill=fill)
         _ft=(T2.save_foot() if getattr(T2,"_TT",False) else "Follow for one AI system for founders every day.")
         d.text((MX,1262),_ft,font=T2.dm(700,29),fill=T2.WHITE); T2.footer(base)
         return
@@ -33,7 +33,7 @@ def _body(base, eyebrow, head, objpath, page, n, last=False, fill=1.0):
     s=min(T2.fit_hook(d,head,T2.W-2*MX,start=64,floor=44),56); hf=T2.dm(900,s); y=340
     for ln in head: T2.seg_line(d,MX,y,ln,hf); y+=int(s*1.12)
     # NORMAL dashboard: native aspect, uniform scale (no distortion, sphere stays circular)
-    T2.place_in_zone(base, T2.crop_obj(Image.open(objpath)), (40,492,1040,1560), fill=1.0)
+    T2.place_in_zone(base, T2.crop_obj(Image.open(objpath)), (130,492,950,1560), fill=1.0)
     x0,x1=90,928; yb=1576; d.rounded_rectangle([x0,yb,x1,yb+7],radius=4,fill=T2.TRACK)
     d.rounded_rectangle([x0,yb,x0+int((x1-x0)*page/n),yb+7],radius=4,fill=T2.CORAL)
 T2.body_slide=_body
