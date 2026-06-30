@@ -14,7 +14,7 @@ T2.CONTENT=[
   ("PROJECTS", [[wo("Every project,")],[co("one place.")]], f"{PH}/p2_projects.png", 1.0),
   ("STACK", [[wo("One subscription.")],[co("My whole stack.")]], f"{PH}/p2_stack.png", 1.0),
   ("MEMORY", [[wo("It never")],[co("forgets.")]], f"{PH}/p2_brain.png", 1.0),
-  ("PLAYBOOKS", [[wo("Proven playbooks,")],[co("built in.")]], f"{PH}/p2_sub.png", 1.0),
+  ("AGENTS", [[wo("Agents run")],[co("the missions.")]], f"{PH}/p2_sub.png", 1.0),
   ("ULTRON", [[wo("One chat.")],[co("In my pocket.")]], UL, 0.98),
 ]
 T2.CTA=("RUN ON ONE", [[wo("Run on one,")],[co("comment OPERATOR.")]], f"{LIB}/cta3d-operator.png", 0.92)

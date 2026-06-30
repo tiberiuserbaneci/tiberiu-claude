@@ -14,7 +14,7 @@ T2.CONTENT=[
   ("OUTBOUND", [[wo("It runs")],[co("the outbound.")]], f"{PH}/p2_deals.png", 1.0),
   ("STACK", [[wo("It connects")],[co("your tools.")]], f"{PH}/p2_stack.png", 1.0),
   ("MEMORY", [[wo("It remembers")],[co("everything.")]], f"{PH}/p2_brain.png", 1.0),
-  ("PLAYBOOKS", [[wo("Battle-tested")],[co("playbooks.")]], f"{PH}/p2_sub.png", 1.0),
+  ("AGENTS", [[wo("Agents work")],[co("in parallel.")]], f"{PH}/p2_sub.png", 1.0),
   ("ULTRON", [[wo("The whole company.")],[co("One chat.")]], UL, 0.98),
 ]
 T2.CTA=("RUN ON ONE", [[wo("Run on one,")],[co("comment OPERATOR.")]], f"{LIB}/cta3d-operator.png", 0.92)
