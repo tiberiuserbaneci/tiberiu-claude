@@ -31,6 +31,7 @@ T2.CONTENT=[
   ("ULTRON", [[wo("No team.")],[co("Just you and one chat.")]], UL, 0.98),
 ]
 T2.CTA=("RUN ON ONE", [[wo("Run on one,")],[co("comment OPERATOR.")]], f"{LIB}/cta3d-operator.png", 0.92)
+T2.CLOSE=dict(l1="Save this for",l2="the day you start.",q="Which tool are you wiring first?")
 MX=T2.MX
 def _body(base, eyebrow, head, objpath, page, n, last=False, fill=1.0):
     d=ImageDraw.Draw(base); T2.ghost(base,f"{page:02d}")
@@ -54,6 +55,6 @@ def _body(base, eyebrow, head, objpath, page, n, last=False, fill=1.0):
     d.rounded_rectangle([x0,yb,x0+int((x1-x0)*page/n),yb+7],radius=4,fill=T2.CORAL)
 T2.body_slide=_body
 if __name__=="__main__":
-    a=T2.deck_poll(f"{T2.OUTBASE}/mat1_tt",False); b=T2.deck_poll(f"{T2.OUTBASE}/mat1_ig",True)
+    a=T2.deck_close(f"{T2.OUTBASE}/mat1_tt",False); b=T2.deck_close(f"{T2.OUTBASE}/mat1_ig",True)
     T2.montage(f"{T2.OUTBASE}/mat1_tt","mat1_tt",a); T2.montage(f"{T2.OUTBASE}/mat1_ig","mat1_ig",b)
     print("tt",a,"ig",b)

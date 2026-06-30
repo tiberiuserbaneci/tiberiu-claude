@@ -237,6 +237,33 @@ def deck_poll(outdir, overlay):
     globals()['_TT']=False
     return n
 
+# ---- closing slide (Save this + handle), two account variants; replaces the poll + CTA pill ----
+CLOSE=dict(l1="Save this for",l2="later",q="Which one would you run first?")
+def closing_slide(base, handle, n, page):
+    d=ImageDraw.Draw(base); ghost(base,f"{page:02d}")
+    ls_text(d,(MX,452),"SAVE THIS",mono(28),CORAL,4)
+    hf=dm(900,84); y=524
+    for ln in [CLOSE["l1"],CLOSE["l2"]]: d.text((MX,y),ln,font=hf,fill=WHITE); y+=int(84*1.10)
+    d.text((MX,y+12),CLOSE["q"],font=dm(500,36),fill=MUTED)
+    py=y+100; txt=f"{handle}   →"; f=dm(800,42); tw=int(d.textlength(txt,font=f)); pw=tw+80; ph=92
+    d.rounded_rectangle([MX,py,MX+pw,py+ph],radius=ph//2,fill=CORAL); d.text((MX+40,py+ph//2-28),txt,font=f,fill=(22,13,8))
+    lg=Image.open(ULOGO).convert("RGBA"); lg.thumbnail((52,52),Image.LANCZOS); base.alpha_composite(lg,(MX,1330))
+    d.text((MX+66,1340),handle,font=mono(30),fill=CORAL)
+def deck_close(outdir, overlay):
+    os.makedirs(outdir,exist_ok=True); globals()['_TT']=not overlay
+    slides=[("cover",)]+[("mid",c) for c in CONTENT]+[("close","@tiberiu.ai"),("close","@51ultron")]
+    n=len(slides)
+    for i,sl in enumerate(slides,1):
+        if sl[0]=="cover":
+            if overlay: cover_ig(f"{outdir}/s{i}.png"); continue
+            base=Image.new("RGBA",(W,H),BG+(255,)); cover_tt(base,n); base.convert("RGB").save(f"{outdir}/s{i}.png"); continue
+        base=Image.new("RGBA",(W,H),BG+(255,))
+        if sl[0]=="close": closing_slide(base, sl[1], n, i)
+        else:
+            eb,head,objp,fill=sl[1]; body_slide(base,eb,head,objp,i,n,last=False,fill=fill)
+        base.convert("RGB").save(f"{outdir}/s{i}.png")
+    globals()['_TT']=False; return n
+
 if __name__=="__main__":
     ntt=deck(f"{OUTBASE}/team_tt", overlay=False)
     nig=deck(f"{OUTBASE}/team_ig", overlay=True)
