@@ -4,8 +4,21 @@ import importlib.util
 spec=importlib.util.spec_from_file_location("T2","/home/user/tiberiu-claude/content/_hitl-src/build_team_3d.py")
 T2=importlib.util.module_from_spec(spec); spec.loader.exec_module(T2)
 from PIL import Image, ImageDraw
+import numpy as np
 wo=lambda s:(s,T2.WHITE); co=lambda s:(s,T2.CORAL)
 D=f"{T2.OBJ}/models_dash"; LIB=T2.LIB; UL=f"{T2.OBJ}/models_rival2/ultron_login.png"
+# Fixed panel box: every dashboard at the SAME size + position (no per-slide jitter)
+PBW,PBH,PX,PY=820,1044,130,486
+def fixed_panel(objpath):
+    im=Image.open(objpath).convert("RGB"); a=np.asarray(im).astype(int)
+    diff=np.abs(a-np.array([25,25,25])).sum(2); ys,xs=np.where(diff>40)
+    x0,y0,x1,y1=int(xs.min()),int(ys.min()),int(xs.max()),int(ys.max())
+    pan=im.crop((x0,y0,x1,y1)); pw,ph=pan.size; tar=PBW/PBH
+    if pw/ph>tar:  # too wide -> crop sides
+        nw=int(ph*tar); pan=pan.crop(((pw-nw)//2,0,(pw-nw)//2+nw,ph))
+    else:          # too tall -> crop top/bottom
+        nh=int(pw/tar); pan=pan.crop((0,(ph-nh)//2,pw,(ph-nh)//2+nh))
+    return pan.resize((PBW,PBH),Image.LANCZOS)
 T2.COVER=dict(head=[[wo("Start your company")],[co("tonight.")]])
 T2.CONTENT=[
   ("LEADS", [[wo("Find your")],[co("first buyers.")]], f"{D}/m1b_01.png", 1.0),
@@ -32,8 +45,11 @@ def _body(base, eyebrow, head, objpath, page, n, last=False, fill=1.0):
     T2.ls_text(d,(MX,300),eyebrow,T2.mono(26),T2.CORAL,4)
     s=min(T2.fit_hook(d,head,T2.W-2*MX,start=64,floor=44),56); hf=T2.dm(900,s); y=340
     for ln in head: T2.seg_line(d,MX,y,ln,hf); y+=int(s*1.12)
-    # NORMAL dashboard: native aspect, uniform scale (no distortion, sphere stays circular)
-    T2.place_in_zone(base, T2.crop_obj(Image.open(objpath)), (130,492,950,1560), fill=1.0)
+    # dashboards: fixed box + fixed position (no jitter); other objects: place_in_zone
+    if "models_dash" in objpath:
+        base.alpha_composite(fixed_panel(objpath).convert("RGBA"),(PX,PY))
+    else:
+        T2.place_in_zone(base, T2.crop_obj(Image.open(objpath)), (130,492,950,1560), fill=1.0)
     x0,x1=90,928; yb=1576; d.rounded_rectangle([x0,yb,x1,yb+7],radius=4,fill=T2.TRACK)
     d.rounded_rectangle([x0,yb,x0+int((x1-x0)*page/n),yb+7],radius=4,fill=T2.CORAL)
 T2.body_slide=_body
