@@ -156,8 +156,46 @@ def c_ultron(base,d,reg,accent):
     sbd=by1-by0-16; scx=bx1-30-sbd
     d.ellipse([scx*SS,(by0+8)*SS,(scx+sbd)*SS,(by0+8+sbd)*SS],fill=CORAL)
 
+def c_designer(base,d,reg,accent):
+    x0,y0,x1,y1=reg; cx=sidebar(d,reg,["Designs","Brand","Uploads","Apps"],0)+24
+    text(d,(cx,y0+24),"Content Studio",F(800,24),WHITE); text(d,(x1-170,y0+30),"On brand",MONO(13),CORAL2)
+    ry=y0+70; cols=3; cw=(x1-40-cx-2*16)/cols
+    pal=[(196,120,92),(150,120,150),(120,150,140),(180,150,110),(150,130,120),(120,140,170)]
+    labels=["Launch post","Carousel","Story","Ad set","Reel cover","Newsletter"]
+    for i in range(6):
+        r=i//cols; c=i%cols; bx=cx+c*(cw+16); by=ry+r*140
+        card(base,d,(bx,by,bx+cw,by+124),12,fill=CARD,sh=False)
+        rr(d,(bx+10,by+10,bx+cw-10,by+80),8,fill=pal[i]+(190,)); text(d,(bx+12,by+90),labels[i],F(700,14),WHITE)
+
+def c_developer(base,d,reg,accent):
+    x0,y0,x1,y1=reg; cx=sidebar(d,reg,["Project","Deploy","Logs","Domains"],1)+24
+    text(d,(cx,y0+24),"Deployments",F(800,24),WHITE); text(d,(x1-150,y0+30),"Live",MONO(13),CORAL2)
+    card(base,d,(cx,y0+64,x1-40,y0+214),12,fill=CARD)
+    rr(d,(cx+16,y0+80,x1-56,y0+198),8,fill=(40,40,38)); text(d,(cx+30,y0+96),"yoursite.com",F(700,16),MUT)
+    rr(d,(cx+30,y0+126,cx+250,y0+142),4,fill=(70,69,66)); rr(d,(cx+30,y0+152,cx+190,y0+166),4,fill=(60,59,56))
+    ry=y0+234
+    for nm,st in [("main  ·  production","Ready"),("landing  ·  preview","Ready"),("pricing  ·  preview","Building")]:
+        card(base,d,(cx,ry,x1-40,ry+56),10,fill=CARD,sh=False); text(d,(cx+18,ry+16),nm,F(500,17),WHITE)
+        ok=st=="Ready"; rr(d,(x1-40-120,ry+15,x1-40-16,ry+41),13,fill=(204,120,92,205) if ok else (60,59,56))
+        text(d,(x1-40-108,ry+18),st,F(700,14),(26,15,10) if ok else MUT); ry+=66
+
+def c_bill(base,d,reg,accent):
+    x0,y0,x1,y1=reg; cx=x0+48
+    text(d,(cx,y0+34),"What a team costs",F(800,30),WHITE); text(d,(x1-190,y0+42),"per month",MONO(15),MUT)
+    ry=y0+108
+    for nm,amt in [("Researcher","$4,000"),("SDR","$5,000"),("Ops lead","$6,000"),("Designer","$4,500"),("Developer","$7,500")]:
+        text(d,(cx,ry+14),nm,F(500,26),MUT); text(d,(x1-48-180,ry+8),amt,F(700,28),WHITE)
+        d.line([(cx*SS,(ry+62)*SS),((x1-48)*SS,(ry+62)*SS)],fill=LINE+(255,),width=1*SS); ry+=76
+    ry+=10; d.line([(cx*SS,ry*SS),((x1-48)*SS,ry*SS)],fill=(96,94,90,255),width=2*SS); ry+=24
+    text(d,(cx,ry+8),"Team total",F(800,28),WHITE); text(d,(x1-48-280,ry+2),"$15,000/mo",F(900,40),WHITE); ry+=90
+    rr(d,(cx,ry,x1-48,ry+88),14,fill=CORAL)
+    text(d,(cx+26,ry+24),"One chat",F(800,28),(26,15,10)); text(d,(x1-48-150,ry+16),"cents",F(900,44),(26,15,10))
+
 MOCK={
  "stripe":lambda:window(1380,940,c_stripe,"stripe.com"),
+ "designer":lambda:window(1380,940,c_designer,"studio.51ultron.com"),
+ "developer":lambda:window(1380,940,c_developer,"deploy.51ultron.com"),
+ "bill":lambda:window(1380,940,c_bill,"ultron"),
  "apollo":lambda:window(1380,940,c_apollo,"apollo.io"),
  "gmail":lambda:window(1380,940,lambda b,d,r,a:c_gmail(b,d,r,a,sent=False),"mail.google.com"),
  "gmail_sent":lambda:window(1380,940,lambda b,d,r,a:c_gmail(b,d,r,a,sent=True),"mail.google.com"),

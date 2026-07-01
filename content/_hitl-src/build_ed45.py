@@ -78,7 +78,7 @@ def _place_dark(base,objpath,fill=1.0):
     arr=np.asarray(Image.open(objpath).convert("RGB")).astype(int); H0,W0=arr.shape[:2]
     cs=np.concatenate([arr[:48,:48].reshape(-1,3),arr[:48,-48:].reshape(-1,3),arr[-48:,:48].reshape(-1,3),arr[-48:,-48:].reshape(-1,3)])
     bg=np.median(cs,0); d=np.abs(arr-bg).sum(2)
-    tx0,ty0,tx1,ty1=_tbox(d)                               # the whole tablet
+    tx0,ty0,tx1,ty1=_tbox(d, getattr(T2,"OBJ_THR",55))     # the whole panel (lower thr for dark 2.5D windows)
     pad=42; cx0,cy0=max(0,tx0-pad),max(0,ty0-pad); cx1,cy1=min(W0,tx1+pad),min(H0,ty1+pad)
     alpha=np.clip((d-16)*18,0,255).astype("uint8")         # near-opaque: dark lower half stays solid; far bg drops out
     el=Image.fromarray(np.dstack([arr.astype("uint8"),alpha]),"RGBA").crop((cx0,cy0,cx1,cy1))
