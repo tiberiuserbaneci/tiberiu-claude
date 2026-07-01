@@ -267,8 +267,18 @@ def closing_slide(base, handle, n, page):
     lg=Image.open(ULOGO).convert("RGBA"); lg.thumbnail((52,52),Image.LANCZOS); base.alpha_composite(lg,(MX,1330))
     d.text((MX+66,1340),handle,font=mono(30),fill=CORAL)
 def deck_close(outdir, overlay):
+    """Channel-divergent ending (operator, 2026-07-01):
+      - Instagram (overlay=True): cover + content + the keyword CTA-pill slide (one of the 3
+        established pills OPERATOR/FOUNDER/BUILDER) - the keyword-DM CTA that converts on IG.
+      - TikTok (overlay=False): cover + content + TWO account closing pages (@tiberiu.ai /
+        @51ultron), no poll, so the operator picks one per account when posting."""
     os.makedirs(outdir,exist_ok=True); globals()['_TT']=not overlay
-    slides=[("cover",)]+[("mid",c) for c in CONTENT]+[("close","@tiberiu.ai"),("close","@51ultron")]
+    for _f in os.listdir(outdir):                        # clear stale slides (avoid leftover s11 on shorter rebuilds)
+        if _f.startswith("s") and _f.endswith(".png"): os.remove(os.path.join(outdir,_f))
+    if overlay:
+        slides=[("cover",)]+[("mid",c) for c in CONTENT]+[("last",CTA)]
+    else:
+        slides=[("cover",)]+[("mid",c) for c in CONTENT]+[("close","@tiberiu.ai"),("close","@51ultron")]
     n=len(slides)
     for i,sl in enumerate(slides,1):
         if sl[0]=="cover":
@@ -277,13 +287,20 @@ def deck_close(outdir, overlay):
         base=Image.new("RGBA",(W,H),BG+(255,))
         if sl[0]=="close": closing_slide(base, sl[1], n, i)
         else:
-            eb,head,objp,fill=sl[1]; body_slide(base,eb,head,objp,i,n,last=False,fill=fill)
+            eb,head,objp,fill=sl[1]; body_slide(base,eb,head,objp,i,n,last=(sl[0]=="last"),fill=fill)
         base.convert("RGB").save(f"{outdir}/s{i}.png")
     globals()['_TT']=False; return n
 
 # ---- shared body for the no-phone DASHBOARD materials (mat1/2/3/5): congruent framed panels ----
 def dash_body(base, eyebrow, head, objpath, page, n, last=False, fill=1.0):
     d=ImageDraw.Draw(base); ghost(base,f"{page:02d}")
+    if last:                                             # IG keyword CTA-pill slide (OPERATOR/FOUNDER/BUILDER)
+        ls_text(d,(MX,470),eyebrow,mono(28),CORAL,4)
+        s=fit_hook(d,head,W-2*MX,start=84,floor=58); hf=dm(900,s); y=534
+        for ln in head: seg_line(d,MX,y,ln,hf); y+=int(s*1.14)
+        place_in_zone(base, crop_obj(Image.open(objpath)), (130,720,950,1245), fill=fill)
+        d.text((MX,1262),"Follow for one AI system for founders every day.",font=dm(700,29),fill=WHITE)
+        footer(base); return
     ls_text(d,(MX,300),eyebrow,mono(26),CORAL,4)
     s=min(fit_hook(d,head,W-2*MX,start=64,floor=44),56); hf=dm(900,s); y=340
     for ln in head: seg_line(d,MX,y,ln,hf); y+=int(s*1.12)

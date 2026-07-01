@@ -114,8 +114,8 @@ def _last_body(base, eyebrow, head, objpath, page, n, last=False, fill=1.0):
 
 def body_slide(base, eyebrow, head, objpath, page, n, last=False, fill=1.0):
     (_last_body if last else _lock_body)(base,eyebrow,head,objpath,page,n,last,fill)
-# deck_close drives mids with last=False; it appends the two account closing pages (no poll, no CTA pill)
-T2.body_slide=_lock_body
+# deck_close: TikTok gets the two account closing pages; IG gets the CTA-pill slide (_last_body).
+T2.body_slide=body_slide
 T2.CLOSE=dict(l1="Save this for",l2="your first full day off.",q="What would you wake up to?")
 
 if __name__=="__main__":

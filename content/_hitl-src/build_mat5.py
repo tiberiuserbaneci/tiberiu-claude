@@ -17,6 +17,7 @@ T2.CONTENT=[
   ("ULTRON",    [[wo("Solo.")],[co("Looks like thirty.")]],      UL, 0.98),
 ]
 T2.CLOSE=dict(l1="Save this to",l2="look funded solo.",q="Which one sells you short today?")
+T2.CTA=("RUN ON ONE", [[wo("Run on one,")],[co("comment OPERATOR.")]], f"{T2.LIB}/cta3d-operator.png", 0.92)
 T2.body_slide=T2.dash_body
 if __name__=="__main__":
     a=T2.deck_close(f"{T2.OUTBASE}/mat5_tt",False); b=T2.deck_close(f"{T2.OUTBASE}/mat5_ig",True)

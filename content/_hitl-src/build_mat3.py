@@ -17,6 +17,7 @@ T2.CONTENT=[
   ("ULTRON",   [[wo("Quit when")],[co("it pays you.")]],       UL, 0.98),
 ]
 T2.CLOSE=dict(l1="Save this for",l2="the day you quit.",q="What would you automate first?")
+T2.CTA=("RUN ON ONE", [[wo("Run on one,")],[co("comment BUILDER.")]], f"{T2.LIB}/cta3d-builder.png", 0.92)
 T2.body_slide=T2.dash_body
 if __name__=="__main__":
     a=T2.deck_close(f"{T2.OUTBASE}/mat3_tt",False); b=T2.deck_close(f"{T2.OUTBASE}/mat3_ig",True)

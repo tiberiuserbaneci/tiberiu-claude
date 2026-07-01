@@ -17,6 +17,7 @@ T2.CONTENT=[
   ("ULTRON",   [[wo("No team.")],[co("Just you and one chat.")]], UL, 0.98),
 ]
 T2.CLOSE=dict(l1="Save this for",l2="the day you start.",q="Which tool are you wiring first?")
+T2.CTA=("RUN ON ONE", [[wo("Run on one,")],[co("comment OPERATOR.")]], f"{T2.LIB}/cta3d-operator.png", 0.92)
 T2.body_slide=T2.dash_body
 if __name__=="__main__":
     a=T2.deck_close(f"{T2.OUTBASE}/mat1_tt",False); b=T2.deck_close(f"{T2.OUTBASE}/mat1_ig",True)

@@ -28,8 +28,8 @@ L.NOTIFS=[
 T2.CONTENT=[(L.NOTIFS[i][1],[[wo("x")]],"",1.0) for i in range(len(L.NOTIFS))]
 T2.CLOSE=dict(l1="Save this for",l2="your first quiet night.",q="What would you run overnight?")
 
-# mids use the lock-screen scene; deck_close appends the two closing pages (no poll, no last CTA)
-T2.body_slide=L._lock_body
+# mids use the lock-screen scene; deck_close: TikTok -> 2 closing pages, IG -> CTA-pill (_last_body)
+T2.body_slide=L.body_slide
 
 if __name__=="__main__":
     a=T2.deck_close(f"{T2.OUTBASE}/night_tt",False); b=T2.deck_close(f"{T2.OUTBASE}/night_ig",True)

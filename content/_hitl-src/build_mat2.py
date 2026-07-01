@@ -17,6 +17,7 @@ T2.CONTENT=[
   ("ULTRON",    [[wo("Your first customer,")],[co("closed.")]],   UL, 0.98),
 ]
 T2.CLOSE=dict(l1="Save this for",l2="customer number one.",q="Which step are you missing?")
+T2.CTA=("RUN ON ONE", [[wo("Run on one,")],[co("comment FOUNDER.")]], f"{T2.LIB}/cta3d-founder.png", 0.92)
 T2.body_slide=T2.dash_body
 if __name__=="__main__":
     a=T2.deck_close(f"{T2.OUTBASE}/mat2_tt",False); b=T2.deck_close(f"{T2.OUTBASE}/mat2_ig",True)
