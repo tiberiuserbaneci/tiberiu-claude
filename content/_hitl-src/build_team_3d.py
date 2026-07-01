@@ -60,22 +60,27 @@ def place_in_zone(base,el,zone,fill=1.0):
     # ground shadow removed entirely (operator: "tot are umbra") - objects carry only their own whisper contact shadow
     base.alpha_composite(el,(ox,oy))
 
-def place_panel(base, objpath, pw=820, cy=1008, bez=0.045, rad=0.055):
-    """Normalise every framed dashboard to an IDENTICAL thin frame: crop to the white app
-    SCREEN + a fixed thin bezel margin, re-round the corners, scale to a FIXED width and
-    centre at (W/2, cy). Vertex renders bezels at different thicknesses; this makes them all
-    look the same (operator: 'ramele diferite ... pandadoc prea groasa'). No jitter, no trim."""
+def place_panel(base, objpath, pw=828, cy=1008, rad=0.028):
+    """NO bezel (operator: 'rama asta deranjeaza vizual'). Crop to JUST the white app SCREEN,
+    scale to a FIXED width, centre at (W/2, cy) -> every dashboard identical. Round the corners,
+    softly FADE the edges, and lay a soft DROP SHADOW behind it so it floats, not looks pasted."""
     im=Image.open(objpath).convert("RGB"); a=np.asarray(im).astype(int); lum=a.sum(2)/3
-    ys,xs=np.where(lum>150)                                  # the bright white screen
+    ys,xs=np.where(lum>170)                                  # the bright white screen only
     x0,y0,x1,y1=int(xs.min()),int(ys.min()),int(xs.max()),int(ys.max())
-    m=int((x1-x0)*bez)                                       # uniform thin bezel from screen edge
-    bx0=max(0,x0-m); by0=max(0,y0-m); bx1=min(im.width,x1+m); by1=min(im.height,y1+m)
-    crop=im.crop((bx0,by0,bx1,by1)); s=pw/crop.width
+    p=int((x1-x0)*0.012)                                     # inset to drop any leftover bezel rim
+    x0+=p; y0+=p; x1-=p; y1-=p
+    crop=im.crop((x0,y0,x1,y1)); s=pw/crop.width
     crop=crop.resize((pw,max(1,int(crop.height*s))),Image.LANCZOS).convert("RGBA")
-    r=int(pw*rad); mask=Image.new("L",crop.size,0)
-    ImageDraw.Draw(mask).rounded_rectangle([0,0,crop.width-1,crop.height-1],radius=r,fill=255)
+    cw,ch=crop.size; r=int(pw*rad)
+    mask=Image.new("L",(cw,ch),0); ImageDraw.Draw(mask).rounded_rectangle([0,0,cw-1,ch-1],radius=r,fill=255)
+    mask=mask.filter(ImageFilter.GaussianBlur(3))            # soft edge fade
     crop.putalpha(mask)
-    base.alpha_composite(crop,((W-pw)//2, int(cy-crop.height/2)))
+    px=(W-pw)//2; py=int(cy-ch/2)
+    sm=Image.new("L",(W,H),0); sd=Image.new("L",(cw,ch),0)
+    ImageDraw.Draw(sd).rounded_rectangle([0,0,cw-1,ch-1],radius=r,fill=140)
+    sm.paste(sd,(px,py+20)); sm=sm.filter(ImageFilter.GaussianBlur(32))   # soft drop shadow
+    shadow=Image.merge("RGBA",(Image.new("L",(W,H),0),)*3+(sm,))
+    base.alpha_composite(shadow); base.alpha_composite(crop,(px,py))
 
 def ghost(base,num):
     f=dm(900,150); layer=Image.new("RGBA",(W,H),(0,0,0,0)); dl=ImageDraw.Draw(layer)
