@@ -28,13 +28,22 @@ L.NOTIFS=[
 T2.CONTENT=[(L.NOTIFS[i][1],[[wo("x")]],"",1.0) for i in range(len(L.NOTIFS))]
 T2.CLOSE=dict(l1="Save this for",l2="your first quiet night.",q="What would you run overnight?")
 
-# Date rolls over at midnight: the 23:10 slide is Tue Jun 30, everything from 00:40 on is Wed Jul 1.
+# Overnight on the charger: date rolls over at midnight AND the battery CHARGES from 10% at
+# lights-out (23:10) up to 100% within ~3h, then holds at 100% till morning (charging bolt shown).
+def _bolt(d,cx,cy,s,col):
+    w=s*0.55
+    pts=[(cx+0.10*w,cy-s),(cx-w,cy+0.15*s),(cx-0.15*w,cy+0.15*s),
+         (cx-0.10*w,cy+s),(cx+w,cy-0.15*s),(cx+0.15*w,cy-0.15*s)]
+    d.polygon(pts,fill=col)
 def _statusrow_ns(d, page):
     y=300; col=(225,225,220)
-    hh=int(L.NOTIFS[page-2][0].split(":")[0])
+    hh,mm=(int(x) for x in L.NOTIFS[page-2][0].split(":")); t=hh*60+mm
+    elapsed=(t-1390) if t>=1390 else (50+t)          # minutes since 23:10 (handles midnight)
+    batt=max(10,min(100,int(round(10+elapsed*0.5))))  # +30%/h from 10% -> 100% by ~02:10, then holds
     date="Tuesday, June 30" if hh>=20 else "Wednesday, July 1"
     d.text((L.MX,y),date,font=T2.dm(500,34),fill=col)
-    batt=max(10,80-(page-2)*10); bx=L.W-L.MX-52; by=y+5; L._battery(d,bx,by,batt/100,col)
+    bx=L.W-L.MX-52; by=y+5; L._battery(d,bx,by,batt/100,col)
+    _bolt(d, bx+26, by+13, 12, T2.CORAL)              # charging bolt inside the battery
     pf=T2.mono(28); pt=f"{batt}%"; pw=d.textlength(pt,font=pf)
     d.text((bx-22-pw,y+2),pt,font=pf,fill=col); L._wifi(d, bx-22-pw-42, y+30, col)
 L._statusrow=_statusrow_ns
