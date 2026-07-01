@@ -48,22 +48,23 @@ def wrap(d,text,font,maxw,maxlines=2):
     if cur: lines.append(cur)
     return lines[:maxlines]
 
-OBJ_CY=770; OBJ_H=628; OBJ_MAXW=884   # raised; centred by ALPHA CENTROID; high floor kills the dark halo
+OBJ_CY=760; OBJ_H=650; OBJ_MAXW=900   # uniform box; cropped TIGHT to the panel, centred by BBOX centre
+def _panelbox(d,thr=90,dens=20):
+    # bbox of the actual PANEL (dense high-contrast region), excluding the soft shadow tails that
+    # reach the frame edges on some renders (research/site/cost) and inflate a naive diff-bbox.
+    m=d>thr; cols=np.where(m.sum(0)>dens)[0]; rows=np.where(m.sum(1)>dens)[0]
+    if len(cols) and len(rows): return int(cols.min()),int(rows.min()),int(cols.max()),int(rows.max())
+    ys,xs=np.where(d>40); return int(xs.min()),int(ys.min()),int(xs.max()),int(ys.max())
 def place_obj(base,objpath):
     arr=np.asarray(Image.open(objpath).convert("RGB")).astype(int)
     cs=np.concatenate([arr[:40,:40].reshape(-1,3),arr[:40,-40:].reshape(-1,3),arr[-40:,:40].reshape(-1,3),arr[-40:,-40:].reshape(-1,3)])
     bg=np.median(cs,0); d=np.abs(arr-bg).sum(2)
-    alpha=np.clip((d-46)*8,0,255).astype("uint8")          # floor 46 -> the flat near-black bg/halo goes transparent
-    ys,xs=np.where(alpha>120)
-    if len(xs)==0: ys,xs=np.where(alpha>40)
-    x0,y0,x1,y1=int(xs.min()),int(ys.min()),int(xs.max()),int(ys.max())
-    el=Image.fromarray(np.dstack([arr.astype("uint8"),alpha]),"RGBA").crop((x0,y0,x1,y1))
+    x0,y0,x1,y1=_panelbox(d)                              # tight to the panel -> no shadow inflation, uniform size
+    alpha=np.clip((d-16)*16,0,255).astype("uint8")        # near-opaque: dark screen areas stay SOLID (no muddy slate blend); only true bg drops out
+    el=Image.fromarray(np.dstack([arr.astype("uint8"),alpha]),"RGBA").crop((x0,y0,x1+1,y1+1))
     s=min(OBJ_H/el.height, OBJ_MAXW/el.width)
     el=el.resize((max(1,int(el.width*s)),max(1,int(el.height*s))),Image.LANCZOS)
-    a=np.asarray(el.split()[3]).astype(float); tot=a.sum() or 1.0
-    cyy=float((np.arange(el.height)[:,None]*a).sum()/tot)   # mass centre = the panel
-    cxx=float((np.arange(el.width)[None,:]*a).sum()/tot)
-    base.alpha_composite(el,(int(W/2-cxx), int(OBJ_CY-cyy)))
+    base.alpha_composite(el,(int(W/2-el.width/2), int(OBJ_CY-el.height/2)))   # bbox centre -> every object at the SAME position
 def body(base,eyebrow,head,sub,foot,objpath,page,n,fill):
     ghost(base,f"{page:02d}"); d=ImageDraw.Draw(base)
     ls_text(d,(MX,66),eyebrow,mono(27),CORAL,4)
