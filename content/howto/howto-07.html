@@ -1,0 +1,69 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><style>
+@import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
+:root{--slate:#191919;--card:#1e1e1e;--card2:#242424;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.70);--ink46:rgba(250,250,247,.44);
+--ink28:rgba(250,250,247,.28);--rule:rgba(250,250,247,.08);--book:#CC785C;--kraft:#D4A27F;--mut:#8b857d;--ok:#5ea884;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.frame{width:1080px;height:1450px;background:var(--slate);padding:34px 44px 20px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;}
+.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.4px,transparent 1.5px);background-size:30px 30px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 54% 20% at 90% -2%,rgba(204,120,92,.18) 0%,transparent 60%);}
+.frame>*{position:relative;z-index:2;}
+.mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding-bottom:11px;border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;}
+.mast .ml{color:var(--ink46);}.mast .ml em{color:var(--book);font-style:normal;}.mast .mr{color:var(--ink70);}
+.hero{flex-shrink:0;margin-top:15px;}
+.eye{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--kraft);}
+.hook{margin-top:8px;font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-1.6px;}.hook em{color:var(--book);font-style:normal;}
+.sub{margin-top:11px;font-size:19px;font-weight:500;line-height:1.3;color:var(--ink70);max-width:1000px;}.sub b{color:var(--ivory);font-weight:700;}
+.cols{flex:1;min-height:0;display:flex;gap:15px;margin-top:16px;}
+.steps{flex:1.3;min-width:0;display:flex;flex-direction:column;gap:9px;}
+.side{flex:1;min-width:0;display:flex;flex-direction:column;gap:9px;}
+.lbl{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink46);margin:1px 0 -1px;}
+.lbl b{color:var(--book);font-weight:500;}
+.step{background:var(--card);border:1px solid var(--rule);border-radius:13px;padding:14px 17px;display:flex;gap:15px;align-items:center;flex:1;}
+.step .n{flex-shrink:0;width:48px;height:48px;border-radius:11px;background:rgba(204,120,92,.13);border:1px solid rgba(204,120,92,.3);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:23px;font-weight:500;color:var(--book);}
+.step .b{min-width:0;flex:1;}
+.step .t{font-size:21px;font-weight:800;letter-spacing:-.3px;display:flex;align-items:baseline;justify-content:space-between;gap:8px;}
+.step .t .chip{flex-shrink:0;font-family:'DM Mono',monospace;font-size:11.5px;font-weight:500;color:var(--book);background:rgba(204,120,92,.09);border:1px solid rgba(204,120,92,.28);border-radius:6px;padding:2px 9px;letter-spacing:0;}
+.step .d{margin-top:5px;font-size:16.5px;color:var(--ink70);line-height:1.34;}.step .d b{color:var(--ivory);font-weight:700;}
+.stat{background:var(--card);border:1px solid var(--rule);border-radius:13px;padding:14px 17px;flex-shrink:0;display:flex;align-items:baseline;gap:14px;}
+.stat .v{font-size:40px;font-weight:900;letter-spacing:-1.4px;color:var(--book);line-height:1;flex-shrink:0;}
+.stat .k{font-size:15px;color:var(--ink70);font-weight:500;line-height:1.22;}
+.result{flex:1;background:linear-gradient(180deg,rgba(204,120,92,.1),var(--card));border:1px solid rgba(204,120,92,.3);border-radius:13px;padding:20px 20px;display:flex;flex-direction:column;justify-content:center;gap:14px;}
+.result .h{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--book);}
+.result .x{font-size:29px;font-weight:800;line-height:1.18;letter-spacing:-.6px;}.result .x b{color:var(--book);font-weight:800;}
+.result .kw{align-self:flex-start;font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:#1a0f0a;background:var(--book);border-radius:8px;padding:7px 14px;box-shadow:0 0 24px rgba(204,120,92,.35);}
+.tools{background:var(--card);border:1px solid var(--rule);border-radius:13px;padding:13px 17px;flex-shrink:0;}
+.tools .h{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink46);}
+.tools .row{margin-top:10px;display:flex;flex-wrap:wrap;gap:7px;}
+.tools .tc{font-family:'DM Mono',monospace;font-size:12.5px;color:var(--ink70);background:rgba(250,250,247,.05);border:1px solid var(--rule);border-radius:7px;padding:5px 10px;}
+.tools .tc.on{color:var(--book);border-color:rgba(204,120,92,.3);background:rgba(204,120,92,.08);}
+.gate{background:linear-gradient(180deg,rgba(94,168,132,.07),var(--card));border:1px solid rgba(94,168,132,.34);border-radius:13px;padding:14px 16px;}
+.gate .h{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:800;}
+.gate .h i{width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px rgba(94,168,132,.8);}
+.gate .d{margin-top:6px;font-size:14px;color:var(--ink70);line-height:1.3;}
+.cta{flex-shrink:0;margin-top:14px;display:flex;align-items:center;gap:16px;border:1.5px solid var(--book);border-radius:18px;background:rgba(204,120,92,.08);padding:13px 13px 13px 26px;box-shadow:0 0 44px rgba(204,120,92,.2);}
+.cta .ph{flex:1;font-size:22px;font-weight:600;color:var(--ink70);line-height:1.2;}.cta .ph b{color:var(--book);font-weight:900;}
+.cta .send{width:54px;height:54px;border-radius:50%;background:var(--book);flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(204,120,92,.45);}
+.cta .send svg{width:26px;height:26px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ftr{flex-shrink:0;margin-top:12px;padding-top:10px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.fl2{display:flex;align-items:center;gap:11px;min-width:0;}.flogo{width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.ftx{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink70);white-space:nowrap;}.ftx b{color:var(--ivory);font-weight:500;}
+.furl{font-weight:900;font-size:20px;letter-spacing:-.5px;color:var(--ivory);}.furl em{color:var(--book);font-style:normal;}
+</style></head><body>
+<div class="frame" id="artifact"><div class="atm"></div>
+  <div class="mast"><span class="ml">HOW TO <em>&middot;</em> SPECTER <em>&middot;</em> ULTRON</span><span class="mr">USE CASE 07</span></div>
+  <div class="hero"><div class="eye">SPECTER</div>
+    <div class="hook">How to let AI touch outbound <em>without it firing alone</em></div>
+    <div class="sub">Every high-stakes action pauses on a card showing the exact payload. <b>Nothing runs until you tap approve.</b></div></div>
+  <div class="cols">
+    <div class="steps"><div class="lbl">The play <b>&middot; 6 steps</b></div><div class="step"><div class="n">1</div><div class="b"><div class="t">Draft the whole run<span class="chip">240 leads</span></div><div class="d">Give SPECTER 240 leads. It drafts the full sequence, then waits for approval instead of sending.</div></div></div><div class="step"><div class="n">2</div><div class="b"><div class="t">Five gated actions<span class="chip">5 gated</span></div><div class="d">Sending, spending credits, writing to CRM or calendar, deleting data, sending legal docs never run alone.</div></div></div><div class="step"><div class="n">3</div><div class="b"><div class="t">Three risk levels<span class="chip">3 levels</span></div><div class="d">Low auto-runs, medium asks once then remembers, high always asks. Set it once.</div></div></div><div class="step"><div class="n">4</div><div class="b"><div class="t">See the exact payload<span class="chip">payload card</span></div><div class="d">The card shows 240 recipients, 3 emails over 6 days, 25 a day cap, first send 8am, agent SPECTER.</div></div></div><div class="step"><div class="n">5</div><div class="b"><div class="t">Three moves<span class="chip">approve / edit / reject</span></div><div class="d">Approve and it runs, edit the payload then approve, or reject with a note and it replans.</div></div></div><div class="step"><div class="n">6</div><div class="b"><div class="t">Set it once<span class="chip">set once</span></div><div class="d">Configure the three levels once, then drafts never interrupt and high-risk always asks.</div></div></div></div>
+    <div class="side">
+      <div class="lbl">Proof</div><div class="stat"><div class="v">5</div><div class="k">gated action types</div></div><div class="stat"><div class="v">3</div><div class="k">risk levels</div></div><div class="stat"><div class="v">0</div><div class="k">surprise sends</div></div>
+      <div class="tools"><div class="h">Wired to</div><div class="row"><span class="tc on">outbound</span><span class="tc">credits</span><span class="tc">crm</span><span class="tc">calendar</span><span class="tc">legal</span></div></div>
+      <div class="gate"><div class="h"><i></i>Resume in place</div><div class="d">On approve the turn continues from the exact pause point, logged with your user id and timestamp.</div></div>
+      <div class="result"><div class="h">The result</div><div class="x">AI runs outbound and CRM, <b>and never fires alone</b>.</div><span class="kw">Comment RESUME</span></div>
+    </div>
+  </div>
+  <div class="cta"><span class="ph">Comment <b>RESUME</b> for the approvals setup</span><span class="send"><svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div>
+  <div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span></div><div class="furl">51ultron<em>.</em>com</div></div>
+</div></body></html>
