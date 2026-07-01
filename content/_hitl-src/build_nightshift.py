@@ -28,6 +28,17 @@ L.NOTIFS=[
 T2.CONTENT=[(L.NOTIFS[i][1],[[wo("x")]],"",1.0) for i in range(len(L.NOTIFS))]
 T2.CLOSE=dict(l1="Save this for",l2="your first quiet night.",q="What would you run overnight?")
 
+# Date rolls over at midnight: the 23:10 slide is Tue Jun 30, everything from 00:40 on is Wed Jul 1.
+def _statusrow_ns(d, page):
+    y=300; col=(225,225,220)
+    hh=int(L.NOTIFS[page-2][0].split(":")[0])
+    date="Tuesday, June 30" if hh>=20 else "Wednesday, July 1"
+    d.text((L.MX,y),date,font=T2.dm(500,34),fill=col)
+    batt=max(10,80-(page-2)*10); bx=L.W-L.MX-52; by=y+5; L._battery(d,bx,by,batt/100,col)
+    pf=T2.mono(28); pt=f"{batt}%"; pw=d.textlength(pt,font=pf)
+    d.text((bx-22-pw,y+2),pt,font=pf,fill=col); L._wifi(d, bx-22-pw-42, y+30, col)
+L._statusrow=_statusrow_ns
+
 # mids use the lock-screen scene; deck_close: TikTok -> 2 closing pages, IG -> CTA-pill (_last_body)
 T2.body_slide=L.body_slide
 
