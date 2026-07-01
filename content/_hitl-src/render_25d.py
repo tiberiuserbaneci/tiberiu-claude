@@ -191,8 +191,65 @@ def c_bill(base,d,reg,accent):
     rr(d,(cx,ry,x1-48,ry+88),14,fill=CORAL)
     text(d,(cx+26,ry+24),"One chat",F(800,28),(26,15,10)); text(d,(x1-48-150,ry+16),"cents",F(900,44),(26,15,10))
 
+def c_scheduler(base,d,reg,accent):
+    x0,y0,x1,y1=reg; cx=sidebar(d,reg,["Queue","Calendar","Analytics","Channels"],1)+22
+    text(d,(cx,y0+22),"Post Scheduler",F(800,24),WHITE); text(d,(x1-170,y0+28),"42 queued",MONO(13),CORAL2)
+    days=["Mon","Tue","Wed","Thu","Fri"]; cw=(x1-40-cx)/5; gy=y0+62
+    for i,dn in enumerate(days): text(d,(cx+i*cw+8,gy),dn,F(700,13),MUT)
+    gy+=26; pal=[(196,120,92),(150,120,150),(120,150,140),(180,150,110),(150,130,120)]
+    sched={(0,0),(0,2),(1,1),(2,0),(2,2),(3,1),(4,0),(4,2),(1,3),(3,3)}
+    for row in range(3):
+        for col in range(5):
+            bx=cx+col*cw+6; by=gy+row*118
+            if (col,row) in sched:
+                card(base,d,(bx,by,bx+cw-12,by+104),10,fill=CARD,sh=False)
+                rr(d,(bx+10,by+10,bx+cw-22,by+54),6,fill=pal[col]+(180,))
+                text(d,(bx+10,by+66),["LinkedIn","X","IG","TikTok","Blog"][col],F(700,12),MUT)
+            else: rr(d,(bx,by,bx+cw-12,by+104),10,fill=(40,40,38))
+
+def c_warmup(base,d,reg,accent):
+    x0,y0,x1,y1=reg; cx=x0+40; text(d,(cx,y0+24),"Deliverability",F(800,26),WHITE); text(d,(x1-180,y0+30),"all inboxing",MONO(13),CORAL2)
+    text(d,(cx,y0+70),"99.2%",F(900,88),CORAL); text(d,(cx,y0+172),"inbox placement, 4 domains warm",F(700,18),CORAL2)
+    cbx,cby,cbw,cbh=cx,y0+220,x1-40-cx,150; card(base,d,(cbx,cby,cbx+cbw,cby+cbh))
+    pts=[0.2,0.3,0.45,0.5,0.62,0.7,0.82,0.9,0.94,0.99]
+    for i in range(len(pts)-1):
+        xa=cbx+20+i*(cbw-40)/(len(pts)-1); xb=cbx+20+(i+1)*(cbw-40)/(len(pts)-1)
+        ya=cby+cbh-20-pts[i]*(cbh-40); yb=cby+cbh-20-pts[i+1]*(cbh-40)
+        d.line([(xa*SS,ya*SS),(xb*SS,yb*SS)],fill=CORAL,width=4*SS)
+    ry=cby+cbh+22
+    for nm in ["hello@acme.co","mail.acme.io","team.acme.dev","out.acme.app"]:
+        card(base,d,(cx,ry,x1-40,ry+50),10,fill=CARD,sh=False); text(d,(cx+16,ry+14),nm,F(500,17),WHITE)
+        rr(d,(x1-40-96,ry+14,x1-40-16,ry+40),13,fill=(204,120,92,200)); text(d,(x1-40-84,ry+17),"warm",F(700,14),(26,15,10)); ry+=60
+
+def c_seowriter(base,d,reg,accent):
+    x0,y0,x1,y1=reg; cx=x0+40; text(d,(cx,y0+24),"SEO Writer",F(800,26),WHITE)
+    rr(d,(x1-40-120,y0+22,x1-40,y0+56),14,fill=(204,120,92,200)); text(d,(x1-40-104,y0+27),"92 score",F(800,16),(26,15,10))
+    text(d,(cx,y0+80),"How founders rank in 2026",F(900,30),WHITE)
+    ry=y0+128
+    for w in [(1.0),(0.94),(0.72),(0.98),(0.66),(0.9),(0.5)]:
+        d.rounded_rectangle([cx*SS,ry*SS,int((cx+(x1-40-cx)*w))*SS,(ry+16)*SS],radius=4*SS,fill=(70,69,66)); ry+=34
+    ry+=6; text(d,(cx,ry),"Target keywords",F(700,14),MUT); ry+=32
+    x=cx
+    for kw in ["ai gtm","founder tools","cold email","icp",]:
+        w=len(kw)*11+34; rr(d,(x,ry,x+w,ry+34),16,fill=(204,120,92,60)); rr(d,(x,ry,x+w,ry+34),16,outline=CORAL,w=1); text(d,(x+16,ry+8),kw,F(500,15),CORAL2); x+=w+12
+
+def c_softwarebill(base,d,reg,accent):
+    x0,y0,x1,y1=reg; cx=x0+46
+    text(d,(cx,y0+30),"Software subscriptions",F(800,26),WHITE); text(d,(x1-180,y0+36),"per month",MONO(14),MUT)
+    ry=y0+92
+    for nm,amt in [("Buffer","$15"),("Instantly","$97"),("Jasper","$49"),("Typeform","$25"),("Calendly","$16")]:
+        text(d,(cx,ry+12),nm,F(500,24),MUT); text(d,(x1-46-140,ry+8),amt,F(700,26),WHITE)
+        d.line([(cx*SS,(ry+58)*SS),((x1-46)*SS,(ry+58)*SS)],fill=LINE+(255,),width=1*SS); ry+=72
+    ry+=10; d.line([(cx*SS,ry*SS),((x1-46)*SS,ry*SS)],fill=(96,94,90,255),width=2*SS); ry+=22
+    text(d,(cx,ry+8),"Every month",F(800,26),WHITE); text(d,(x1-46-200,ry+2),"$202/mo",F(900,38),WHITE); ry+=86
+    rr(d,(cx,ry,x1-46,ry+84),14,fill=CORAL); text(d,(cx+26,ry+24),"Ultron",F(800,28),(26,15,10)); text(d,(x1-46-150,ry+18),"cents",F(900,42),(26,15,10))
+
 MOCK={
  "stripe":lambda:window(1380,940,c_stripe,"stripe.com"),
+ "scheduler":lambda:window(1380,940,c_scheduler,"schedule.51ultron.com"),
+ "warmup":lambda:window(1380,940,c_warmup,"deliver.51ultron.com"),
+ "seowriter":lambda:window(1380,940,c_seowriter,"write.51ultron.com"),
+ "softwarebill":lambda:window(1380,940,c_softwarebill,"ultron"),
  "designer":lambda:window(1380,940,c_designer,"studio.51ultron.com"),
  "developer":lambda:window(1380,940,c_developer,"deploy.51ultron.com"),
  "bill":lambda:window(1380,940,c_bill,"ultron"),
