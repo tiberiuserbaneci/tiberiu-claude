@@ -244,8 +244,118 @@ def c_softwarebill(base,d,reg,accent):
     text(d,(cx,ry+8),"Every month",F(800,26),WHITE); text(d,(x1-46-200,ry+2),"$202/mo",F(900,38),WHITE); ry+=86
     rr(d,(cx,ry,x1-46,ry+84),14,fill=CORAL); text(d,(cx+26,ry+24),"Ultron",F(800,28),(26,15,10)); text(d,(x1-46-150,ry+18),"cents",F(900,42),(26,15,10))
 
+def c_orgchart(base,d,reg,accent):
+    x0,y0,x1,y1=reg; cx=x0+40; text(d,(cx,y0+22),"Your org chart",F(800,24),WHITE); text(d,(x1-190,y0+28),"headcount 0",MONO(13),CORAL2)
+    roles=["Research","Sales","Ops","Design","Dev"]; n=len(roles); cw=(x1-40-cx)/n
+    ty=y0+78
+    for i,rname in enumerate(roles):
+        bx=cx+i*cw+6
+        card(base,d,(bx,ty,bx+cw-14,ty+70),10,fill=(40,40,38),sh=False)
+        text(d,(bx+14,ty+14),rname,F(700,16),MUT); text(d,(bx+14,ty+40),"1 seat",F(500,13),(120,119,114))
+        mid=bx+(cw-14)/2
+        d.line([(mid*SS,(ty+70)*SS),(mid*SS,(ty+104)*SS)],fill=LINE+(255,),width=2*SS)
+    hub=x0+(x1-x0)//2
+    d.line([((cx+cw/2)*SS,(ty+104)*SS),((x1-40-cw/2)*SS,(ty+104)*SS)],fill=LINE+(255,),width=2*SS)
+    d.line([(hub*SS,(ty+104)*SS),(hub*SS,(ty+140)*SS)],fill=CORAL+(255,),width=3*SS)
+    bw=340; by=ty+140; bx=hub-bw//2
+    card(base,d,(bx,by,bx+bw,by+108),14,fill=CORAL); text(d,(bx+28,by+22),"One chat",F(900,34),(26,15,10)); text(d,(bx+28,by+70),"runs every role",F(700,18),(60,32,20))
+
+def c_workflows(base,d,reg,accent):
+    x0,y0,x1,y1=reg; cx=sidebar(d,reg,["Workflows","Runs","Triggers","Logs"],0)+22
+    text(d,(cx,y0+22),"Active workflows",F(800,24),WHITE); text(d,(x1-160,y0+28),"7 running",MONO(13),CORAL2)
+    ry=y0+66
+    for nm,tg,on in [("Inbound triage","every message",True),("Lead enrichment","on new lead",True),("Follow-up cadence","daily 9am",True),("Deal updates","on reply",True),("Weekly report","mondays",False),("Churn watch","on usage drop",True)]:
+        card(base,d,(cx,ry,x1-40,ry+62),10,fill=CARD,sh=False)
+        text(d,(cx+18,ry+12),nm,F(700,18),WHITE); text(d,(cx+18,ry+38),tg,F(500,14),MUT)
+        tw=64; tx=x1-40-tw-18; ty=ry+18
+        rr(d,(tx,ty,tx+tw,ty+28),14,fill=(204,120,92,205) if on else (60,59,56))
+        kx=tx+tw-24 if on else tx+2; d.ellipse([(kx+2)*SS,(ty+2)*SS,(kx+24)*SS,(ty+24)*SS],fill=(250,248,244))
+        ry+=72
+
+def c_leadscore(base,d,reg,accent):
+    x0,y0,x1,y1=reg; cx=x0+40; text(d,(cx,y0+22),"Lead machine",F(800,24),WHITE); text(d,(x1-180,y0+28),"1,284 in pipe",MONO(13),CORAL2)
+    stages=[("Sourced","1,284"),("Enriched","902"),("Scored","471"),("Booked","63")]; sw=(x1-40-cx)/4; gy=y0+62
+    for i,(nm,v) in enumerate(stages):
+        bx=cx+i*sw; h=[104,84,60,36][i]
+        rr(d,(bx+8,gy+110-h,bx+sw-18,gy+110),8,fill=(204,120,92,120+i*30))
+        text(d,(bx+8,gy+120),nm,F(700,14),MUT); text(d,(bx+8,gy+140),v,F(900,24),WHITE)
+    ry=y0+240
+    for nm,co,sc in [("Sarah Lin","Northwind","94"),("Marco Diaz","Globex","88"),("Priya Rao","Initech","81"),("Tom Fisher","Umbrella","76")]:
+        card(base,d,(cx,ry,x1-40,ry+56),10,fill=CARD,sh=False)
+        text(d,(cx+18,ry+8),nm,F(700,17),WHITE); text(d,(cx+18,ry+32),co,F(500,14),MUT)
+        rr(d,(x1-40-96,ry+14,x1-40-16,ry+42),13,fill=(204,120,92,205)); text(d,(x1-40-84,ry+17),sc+" hot",F(700,14),(26,15,10)); ry+=64
+
+def c_skills(base,d,reg,accent):
+    x0,y0,x1,y1=reg; cx=sidebar(d,reg,["Skills","Installed","Store","Runs"],1)+22
+    text(d,(cx,y0+22),"Ultron Skills",F(800,24),WHITE); text(d,(x1-170,y0+28),"10 installed",MONO(13),CORAL2)
+    names=["Cold outreach","Lead research","Deal desk","Content studio","Deliverability","Meeting booker","Proposal writer","Weekly report","Data cleanup"]
+    cols=3; cw=(x1-40-cx-2*14)/cols; ry=y0+64
+    for i,nm in enumerate(names):
+        r=i//cols; c=i%cols; bx=cx+c*(cw+14); by=ry+r*112
+        card(base,d,(bx,by,bx+cw,by+98),11,fill=CARD,sh=False)
+        rr(d,(bx+14,by+14,bx+52,by+52),9,fill=(204,120,92,70)); rr(d,(bx+14,by+14,bx+52,by+52),9,outline=CORAL,w=1)
+        text(d,(bx+14,by+60),nm,F(700,14),WHITE)
+        rr(d,(bx+cw-70,by+16,bx+cw-14,by+40),12,fill=(204,120,92,205)); text(d,(bx+cw-62,by+19),"on",F(700,13),(26,15,10))
+
+def c_revenue(base,d,reg,accent):
+    x0,y0,x1,y1=reg; cx=x0+40; text(d,(cx,y0+22),"Revenue",F(800,24),WHITE); text(d,(x1-150,y0+28),"MRR",MONO(13),CORAL2)
+    text(d,(cx,y0+58),"$48,200",F(900,80),CORAL); text(d,(cx,y0+152),"up 32% this month, one operator",F(700,17),CORAL2)
+    cbx,cby,cbw,cbh=cx,y0+196,x1-40-cx,168; card(base,d,(cbx,cby,cbx+cbw,cby+cbh))
+    bars=[0.28,0.34,0.4,0.38,0.5,0.58,0.64,0.72,0.8,0.86,0.92,1.0]; bw=(cbw-40)/len(bars)
+    for i,h in enumerate(bars):
+        bh=(cbh-40)*h; bx=cbx+20+i*bw
+        rr(d,(bx,cby+cbh-20-bh,bx+bw-8,cby+cbh-20),4,fill=(204,120,92,150+int(90*h)))
+    ry=cby+cbh+20
+    for nm,v in [("New customers","+38"),("Churn","0.9%"),("Expansion","+$6.2k")]:
+        card(base,d,(cx,ry,x1-40,ry+52),10,fill=CARD,sh=False); text(d,(cx+16,ry+14),nm,F(500,17),MUT); text(d,(x1-40-140,ry+10),v,F(800,20),WHITE); ry+=60
+
+def c_agents(base,d,reg,accent):
+    x0,y0,x1,y1=reg; cx=sidebar(d,reg,["Agents","Runs","Memory","Tools"],1)+22
+    text(d,(cx,y0+22),"Agent runs",F(800,24),WHITE); text(d,(x1-160,y0+28),"live now",MONO(13),CORAL2)
+    ry=y0+66
+    for nm,act,st in [("Research","profiling 40 accounts","running"),("Outreach","writing sequence 3/8","running"),("Deals","scoring 12 replies","running"),("Ops","syncing pipeline","done"),("Content","drafting 5 posts","running"),("Report","building weekly","queued")]:
+        card(base,d,(cx,ry,x1-40,ry+62),10,fill=CARD,sh=False)
+        dot=CORAL if st=="running" else ((120,190,120) if st=="done" else MUT)
+        d.ellipse([(cx+18)*SS,(ry+26)*SS,(cx+32)*SS,(ry+40)*SS],fill=dot+(255,))
+        text(d,(cx+46,ry+12),nm,F(700,18),WHITE); text(d,(cx+46,ry+38),act,F(500,14),MUT)
+        text(d,(x1-40-130,ry+22),st,MONO(14),(CORAL2 if st=="running" else MUT)); ry+=72
+
+def c_levels(base,d,reg,accent):
+    x0,y0,x1,y1=reg; cx=x0+40; text(d,(cx,y0+22),"7 levels of Ultron",F(800,24),WHITE); text(d,(x1-160,y0+28),"you: L5",MONO(13),CORAL2)
+    lv=[("L1","Ask one question"),("L2","Chain a few steps"),("L3","Run a named agent"),("L4","Wire agents together"),("L5","Automate a workflow"),("L6","Approve, do not do"),("L7","Run the whole company")]
+    ry=y0+64; here=4
+    for i,(lb,tx) in enumerate(lv):
+        on=i<=here
+        card(base,d,(cx,ry,x1-40,ry+52),9,fill=(204,120,92,45) if i==here else CARD,sh=False)
+        rr(d,(cx+12,ry+12,cx+52,ry+40),7,fill=CORAL if on else (60,59,56)); text(d,(cx+18,ry+16),lb,F(800,16),(26,15,10) if on else MUT)
+        text(d,(cx+70,ry+15),tx,F(700,18),WHITE if on else MUT); ry+=58
+
+def c_content(base,d,reg,accent):
+    x0,y0,x1,y1=reg; cx=sidebar(d,reg,["Calendar","Drafts","Assets","Analytics"],0)+22
+    text(d,(cx,y0+22),"Content calendar",F(800,24),WHITE); text(d,(x1-160,y0+28),"14 scheduled",MONO(13),CORAL2)
+    days=["Mon","Tue","Wed","Thu"]; cw=(x1-40-cx)/4; gy=y0+62; pal=[(196,120,92),(150,120,150),(120,150,140),(180,150,110)]
+    for i,dn in enumerate(days): text(d,(cx+i*cw+6,gy),dn,F(700,14),MUT)
+    gy+=26
+    plan={0:[0,2],1:[1],2:[0,2],3:[1]}
+    for col in range(4):
+        for r in range(3):
+            bx=cx+col*cw+4; by=gy+r*116
+            if r in plan.get(col,[]):
+                card(base,d,(bx,by,bx+cw-12,by+104),10,fill=CARD,sh=False)
+                rr(d,(bx+10,by+10,bx+cw-22,by+50),6,fill=pal[col]+(180,))
+                text(d,(bx+10,by+62),["Post","Carousel","Reel","Story"][(col+r)%4],F(700,13),WHITE)
+            else: rr(d,(bx,by,bx+cw-12,by+104),10,fill=(40,40,38))
+
 MOCK={
  "stripe":lambda:window(1380,940,c_stripe,"stripe.com"),
+ "orgchart":lambda:window(1380,940,c_orgchart,"team.51ultron.com"),
+ "workflows":lambda:window(1380,940,c_workflows,"flows.51ultron.com"),
+ "leadscore":lambda:window(1380,940,c_leadscore,"leads.51ultron.com"),
+ "skills":lambda:window(1380,940,c_skills,"skills.51ultron.com"),
+ "revenue":lambda:window(1380,940,c_revenue,"app.51ultron.com"),
+ "agents":lambda:window(1380,940,c_agents,"app.51ultron.com"),
+ "levels":lambda:window(1380,940,c_levels,"app.51ultron.com"),
+ "content":lambda:window(1380,940,c_content,"studio.51ultron.com"),
  "scheduler":lambda:window(1380,940,c_scheduler,"schedule.51ultron.com"),
  "warmup":lambda:window(1380,940,c_warmup,"deliver.51ultron.com"),
  "seowriter":lambda:window(1380,940,c_seowriter,"write.51ultron.com"),
