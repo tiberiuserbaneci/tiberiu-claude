@@ -86,7 +86,15 @@ def _place_dark(base,objpath,fill=1.0):
     el=el.resize((max(1,int(el.width*r)),max(1,int(el.height*r))),Image.LANCZOS)
     tcx=((tx0+tx1)/2-cx0)*r; tcy=((ty0+ty1)/2-cy0)*r          # tablet centre inside the scaled crop
     base.alpha_composite(el,(int(W/2-tcx), int(OBJ_CY-tcy)))  # tablet centre -> identical X/Y every slide
+def _place_alpha(base,objpath,fill=1.0):
+    # coded-3D objects carry real alpha (panel+depth+shadow). Composite as-is, sized/centred by alpha bbox.
+    el=Image.open(objpath).convert("RGBA"); bb=el.split()[3].getbbox()
+    if bb: el=el.crop(bb)
+    s=min(OBJ_MAXW/el.width, OBJ_H/el.height)*fill
+    el=el.resize((max(1,int(el.width*s)),max(1,int(el.height*s))),Image.LANCZOS)
+    base.alpha_composite(el,(int(W/2-el.width/2), int(OBJ_CY-el.height/2)))
 def place_obj(base,objpath,fill=1.0):
+    if getattr(T2,"ALPHA_OBJ",False): return _place_alpha(base,objpath,fill)
     (place_screen if getattr(T2,"SCREEN_CROP",False) else _place_dark)(base,objpath,fill)
 def body(base,eyebrow,head,sub,foot,objpath,page,n,fill):
     ghost(base,f"{page:02d}"); d=ImageDraw.Draw(base)

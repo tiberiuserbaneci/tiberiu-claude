@@ -6,8 +6,8 @@ import importlib.util
 spec=importlib.util.spec_from_file_location("T2","/home/user/tiberiu-claude/content/_hitl-src/build_team_3d.py")
 T2=importlib.util.module_from_spec(spec); spec.loader.exec_module(T2)
 wo=lambda s:(s,T2.WHITE); co=lambda s:(s,T2.CORAL); mu=lambda s:(s,T2.MUTED)
-M=f"{T2.OBJ}/models_25d"; LIB=T2.LIB
-T2.OBJ_THR=20   # 2.5D windows have a dark body close to the bg -> lower crop threshold than Vertex tablets
+M=f"{T2.OBJ}/models_solo3d"; LIB=T2.LIB
+T2.ALPHA_OBJ=True   # coded-3D objects (render_3d): tilted panels with depth + shadow, real alpha
 
 T2.COVER=dict(head=[[wo("I replaced my team")],[co("with one chat.")]])
 # 6-tuple: (eyebrow, hook, SUBHOOK, FOOT idea, object, fill)
