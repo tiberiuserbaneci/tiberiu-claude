@@ -5,11 +5,10 @@
 <title>tools-external - LinkedIn 1080x1450</title>
 <style>
 @import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
-/* tools-external - One chat wired into your whole stack. Dominant = 6 category CARDS of real
-   integrations (chips), distinct from router's 3 lanes and any catalog table. Dark Ultron. Save+comment. */
-:root{--slate:#191919;--slate2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);
---ink30:rgba(250,250,247,.30);--rule:rgba(250,250,247,.10);
---book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--cloud:#919180;}
+/* tools-external v2 - NEW approach: a realistic Ultron CHAT mockup where one message fires six real
+   tools (product UI, coded-depth like app.51ultron.com/docs). Distinct from any grid/table. Dark Ultron. */
+:root{--slate:#191919;--slate2:#262625;--slate3:#2f2e2c;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);
+--ink30:rgba(250,250,247,.30);--rule:rgba(250,250,247,.10);--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--cloud:#919180;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
 .frame{width:1080px;height:1450px;background:var(--slate);padding:34px 44px 22px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;}
@@ -21,38 +20,41 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 .mast .mr{color:var(--ink70);}.mast .mr em{color:var(--book);font-style:normal;}
 .hero{flex-shrink:0;margin-top:16px;}
 .eye{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--kraft);}
-.hook{margin-top:9px;font-weight:900;font-size:52px;line-height:.99;letter-spacing:-1.9px;color:var(--ivory);}.hook em{color:var(--book);font-style:normal;}
-.sub{margin-top:12px;font-size:21px;font-weight:500;line-height:1.32;color:var(--ink70);max-width:970px;}.sub b{color:var(--ivory);font-weight:700;}
-.stats{flex-shrink:0;margin-top:15px;display:flex;border:1px solid var(--rule);border-radius:13px;overflow:hidden;}
-.stat{flex:1;padding:12px 14px;text-align:center;}.stat+.stat{border-left:1px solid var(--rule);}
-.stat b{display:block;font-weight:900;font-size:30px;line-height:.85;letter-spacing:-1px;}
-.stat.a b{color:var(--book);}.stat.b b{color:var(--kraft);}.stat.c b{color:var(--ivory);}.stat.d b{color:var(--book);}
-.stat span{font-family:'DM Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink46);margin-top:7px;display:block;}
-/* category grid (dominant) */
-.grid{flex:1;min-height:0;margin-top:15px;display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:12px;}
-.cat{display:flex;flex-direction:column;border:1px solid var(--rule);border-radius:16px;background:var(--slate2);overflow:hidden;min-height:0;padding:14px 16px 15px;position:relative;}
-.cat::before{content:'';position:absolute;left:0;top:16px;bottom:16px;width:4px;border-radius:3px;}
-.cat.a::before{background:var(--book);}.cat.b::before{background:var(--kraft);}.cat.c::before{background:var(--book-d);}
-.cat.d::before{background:var(--book);}.cat.e::before{background:var(--kraft);}.cat.f::before{background:var(--book-d);}
-.chead{display:flex;align-items:baseline;justify-content:space-between;padding-left:14px;}
-.cname{font-weight:900;font-size:22px;letter-spacing:-.7px;line-height:.95;}
-.cat.a .cname{color:var(--book);}.cat.b .cname{color:var(--kraft);}.cat.c .cname{color:var(--book-d);}
-.cat.d .cname{color:var(--book);}.cat.e .cname{color:var(--kraft);}.cat.f .cname{color:var(--book-d);}
-.cn{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:var(--ink46);letter-spacing:.04em;}
-.cwork{padding-left:14px;margin-top:4px;font-size:12.5px;font-weight:500;color:var(--ink46);line-height:1.1;}
-.tools{flex:1;min-height:0;display:flex;flex-direction:column;padding-left:14px;margin-top:7px;}
-.trow{flex:1;min-height:0;display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid var(--rule);}
-.trow:last-child{border-bottom:none;}
-.tn{font-size:16.5px;font-weight:700;color:var(--ivory);letter-spacing:-.3px;line-height:1;}
-.ta{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:var(--ink46);letter-spacing:.02em;text-align:right;line-height:1;}
+.hook{margin-top:9px;font-weight:900;font-size:53px;line-height:.99;letter-spacing:-1.9px;color:var(--ivory);}.hook em{color:var(--book);font-style:normal;}
+.sub{margin-top:11px;font-size:21px;font-weight:500;line-height:1.3;color:var(--ink70);max-width:966px;}.sub b{color:var(--ivory);font-weight:700;}
+/* chat mockup (dominant) */
+.chat{flex:1;min-height:0;margin-top:15px;display:flex;flex-direction:column;border:1px solid var(--rule);border-radius:20px;background:var(--slate2);overflow:hidden;}
+.cbar{flex-shrink:0;display:flex;align-items:center;gap:12px;padding:15px 20px;border-bottom:1px solid var(--rule);background:rgba(250,250,247,.02);}
+.cbar .orb{width:30px;height:30px;border-radius:50%;object-fit:cover;}
+.cbar .cn{font-weight:800;font-size:18px;letter-spacing:-.4px;}
+.cbar .cmodel{margin-left:auto;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#1a0f0a;background:var(--book);padding:5px 12px;border-radius:20px;}
+.cbody{flex:1;min-height:0;display:flex;flex-direction:column;padding:18px 20px 16px;gap:12px;}
+.ume{align-self:flex-end;max-width:78%;background:rgba(204,120,92,.16);border:1px solid var(--book-bd,rgba(204,120,92,.34));border-radius:16px 16px 5px 16px;padding:13px 17px;font-size:18px;font-weight:600;line-height:1.28;color:var(--ivory);}
+.act{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink46);padding-left:2px;}
+.act em{color:var(--book);font-style:normal;}
+.calls{flex:1;min-height:0;display:flex;flex-direction:column;gap:9px;}
+.tc{flex:1;min-height:0;display:flex;align-items:center;gap:14px;background:var(--slate3);border:1px solid var(--rule);border-radius:13px;padding:0 16px;}
+.tc .ic{width:38px;height:38px;flex-shrink:0;border-radius:10px;background:var(--slate);border:1px solid var(--book-bd,rgba(204,120,92,.34));display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-weight:500;font-size:15px;color:var(--book);}
+.tc .tx{flex:1;min-width:0;}
+.tc .tt{font-size:16.5px;font-weight:800;letter-spacing:-.3px;line-height:1.05;}
+.tc .td{font-size:14px;font-weight:500;color:var(--ink46);line-height:1.1;margin-top:2px;}
+.tc .tk{flex-shrink:0;display:flex;align-items:center;gap:7px;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--kraft);}
+.tc .tk .dot{width:8px;height:8px;border-radius:50%;background:var(--book);box-shadow:0 0 10px rgba(204,120,92,.7);}
+.ame{background:rgba(250,250,247,.05);border:1px solid var(--rule);border-radius:16px 16px 16px 5px;padding:13px 17px;font-size:17.5px;font-weight:600;line-height:1.28;color:var(--ivory);}.ame b{color:var(--book);font-weight:800;}
+/* breadth strip */
+.strip{flex-shrink:0;margin-top:14px;display:flex;gap:9px;}
+.pill{flex:1;border:1px solid var(--rule);border-radius:12px;background:var(--slate2);padding:11px 6px;text-align:center;}
+.pill b{display:block;font-weight:900;font-size:24px;letter-spacing:-1px;color:var(--book);line-height:.9;}
+.pill span{display:block;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink46);margin-top:6px;}
+.pill.tot b{color:var(--ivory);}
 /* cta */
 .ctawrap{flex-shrink:0;margin-top:14px;}
-.savel{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--kraft);margin-bottom:10px;padding-left:4px;}
-.cta{display:flex;align-items:center;gap:16px;border:1.5px solid var(--book);border-radius:18px;background:rgba(204,120,92,.08);padding:13px 13px 13px 26px;box-shadow:0 0 44px rgba(204,120,92,.2);}
+.savel{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--kraft);margin-bottom:9px;padding-left:4px;}
+.cta{display:flex;align-items:center;gap:16px;border:1.5px solid var(--book);border-radius:18px;background:rgba(204,120,92,.08);padding:12px 12px 12px 26px;box-shadow:0 0 44px rgba(204,120,92,.2);}
 .cta .ph{flex:1;font-size:23px;font-weight:600;color:var(--ink70);line-height:1.2;}.cta .ph b{color:var(--book);font-weight:900;}
-.cta .send{width:58px;height:58px;border-radius:50%;background:var(--book);flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(204,120,92,.45);}
-.cta .send svg{width:28px;height:28px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-.ftr{flex-shrink:0;margin-top:13px;padding-top:12px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.cta .send{width:56px;height:56px;border-radius:50%;background:var(--book);flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(204,120,92,.45);}
+.cta .send svg{width:27px;height:27px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ftr{flex-shrink:0;margin-top:12px;padding-top:11px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:16px;}
 .fl2{display:flex;align-items:center;gap:11px;min-width:0;}.flogo{width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;}
 .ftx{font-family:'DM Mono',monospace;font-size:11.5px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--ink70);white-space:nowrap;}.ftx b{color:var(--ivory);font-weight:500;}
 .furl{font-weight:900;font-size:21px;letter-spacing:-.5px;color:var(--ivory);}.furl em{color:var(--book);font-style:normal;}
@@ -60,89 +62,39 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 </head>
 <body>
 <div class="frame" id="artifact"><div class="atm"></div>
-  <div class="mast"><span class="ml">AI OPERATOR <em>&middot;</em> YOUR STACK <em>&middot;</em> 31 TOOLS</span><span class="mr">ULTRON <em>&middot;</em> ONE CHAT, EVERY TOOL</span></div>
+  <div class="mast"><span class="ml">AI OPERATOR <em>&middot;</em> ONE MESSAGE <em>&middot;</em> 6 TOOLS</span><span class="mr">ULTRON <em>&middot;</em> ONE CHAT, YOUR WHOLE STACK</span></div>
   <div class="hero">
-    <div class="eye">The stack you already run</div>
-    <div class="hook">I gave one AI chat the keys to my <em>whole stack</em>.</div>
-    <div class="sub">Gmail, Slack, HubSpot, Stripe, Notion and 26 more connect to Ultron. It reads and acts across all of them from one chat, and <b>each teammate only sees the apps they linked</b>.</div>
+    <div class="eye">One message, not twelve tabs</div>
+    <div class="hook">I sent one message. My AI used <em>six tools</em> to close the deal.</div>
+    <div class="sub">Ultron connects to 31 apps you already run. Ask once and it acts across all of them, <b>Gmail to Stripe, from a single chat</b>.</div>
   </div>
-  <div class="stats">
-    <div class="stat a"><b>31</b><span>tools connected</span></div>
-    <div class="stat b"><b>6</b><span>categories</span></div>
-    <div class="stat c"><b>1</b><span>chat runs them</span></div>
-    <div class="stat d"><b>&cent;</b><span>your own keys</span></div>
+  <div class="chat">
+    <div class="cbar"><img class="orb" src="__LOGO_URI__" alt="Ultron"><span class="cn">Ultron</span><span class="cmodel">Deep &middot; Opus</span></div>
+    <div class="cbody">
+      <div class="ume">Close the NorthPeak deal: send the signed contract, update the CRM, book the kickoff and invoice them.</div>
+      <div class="act">Ultron used <em>6 connected tools</em></div>
+      <div class="calls">
+        <div class="tc"><span class="ic">Gm</span><div class="tx"><div class="tt">Gmail</div><div class="td">Sent the signed contract to NorthPeak</div></div><span class="tk"><span class="dot"></span>done</span></div>
+        <div class="tc"><span class="ic">Hs</span><div class="tx"><div class="tt">HubSpot</div><div class="td">Moved the deal to Closed Won</div></div><span class="tk"><span class="dot"></span>done</span></div>
+        <div class="tc"><span class="ic">Ca</span><div class="tx"><div class="tt">Calendly</div><div class="td">Booked the kickoff for Tuesday 10:00</div></div><span class="tk"><span class="dot"></span>done</span></div>
+        <div class="tc"><span class="ic">St</span><div class="tx"><div class="tt">Stripe</div><div class="td">Raised the first invoice, cents on fees</div></div><span class="tk"><span class="dot"></span>done</span></div>
+        <div class="tc"><span class="ic">Sl</span><div class="tx"><div class="tt">Slack</div><div class="td">Posted the win to the revenue channel</div></div><span class="tk"><span class="dot"></span>done</span></div>
+        <div class="tc"><span class="ic">No</span><div class="tx"><div class="tt">Notion</div><div class="td">Logged the account notes and next steps</div></div><span class="tk"><span class="dot"></span>done</span></div>
+      </div>
+      <div class="ame">Done. One message, <b>six tools</b>, no tab switching. Want the kickoff agenda drafted too?</div>
+    </div>
   </div>
-  <div class="grid">
-    <div class="cat a">
-      <div class="chead"><div class="cname">GOOGLE</div><div class="cn">7</div></div>
-      <div class="cwork">Mail, files, docs and analytics</div>
-      <div class="tools">
-        <div class="trow"><span class="tn">Gmail</span><span class="ta">send + read</span></div>
-        <div class="trow"><span class="tn">Drive</span><span class="ta">file ops</span></div>
-        <div class="trow"><span class="tn">Sheets</span><span class="ta">read + batch write</span></div>
-        <div class="trow"><span class="tn">Docs</span><span class="ta">create + update</span></div>
-        <div class="trow"><span class="tn">Analytics</span><span class="ta">accounts + properties</span></div>
-        <div class="trow"><span class="tn">Meet</span><span class="ta">meetings + transcripts</span></div>
-        <div class="trow"><span class="tn">Maps</span><span class="ta">places + search</span></div>
-      </div>
-    </div>
-    <div class="cat b">
-      <div class="chead"><div class="cname">MESSAGING</div><div class="cn">6</div></div>
-      <div class="cwork">Channels, DMs and calls</div>
-      <div class="tools">
-        <div class="trow"><span class="tn">Slack</span><span class="ta">channels + DMs</span></div>
-        <div class="trow"><span class="tn">Outlook</span><span class="ta">mail + folders</span></div>
-        <div class="trow"><span class="tn">Teams</span><span class="ta">channels + replies</span></div>
-        <div class="trow"><span class="tn">Zoom</span><span class="ta">meetings + recordings</span></div>
-        <div class="trow"><span class="tn">Telegram</span><span class="ta">messages + channels</span></div>
-        <div class="trow"><span class="tn">Instagram</span><span class="ta">insights + media</span></div>
-      </div>
-    </div>
-    <div class="cat c">
-      <div class="chead"><div class="cname">CRM &amp; OUTREACH</div><div class="cn">5</div></div>
-      <div class="cwork">Contacts, deals and meetings</div>
-      <div class="tools">
-        <div class="trow"><span class="tn">HubSpot</span><span class="ta">contacts + deals</span></div>
-        <div class="trow"><span class="tn">Salesforce</span><span class="ta">records + reports</span></div>
-        <div class="trow"><span class="tn">Apollo</span><span class="ta">people + companies</span></div>
-        <div class="trow"><span class="tn">Calendly</span><span class="ta">events + invitees</span></div>
-        <div class="trow"><span class="tn">Intercom</span><span class="ta">conversations</span></div>
-      </div>
-    </div>
-    <div class="cat d">
-      <div class="chead"><div class="cname">WORKSPACE</div><div class="cn">4</div></div>
-      <div class="cwork">Pages, tables and records</div>
-      <div class="tools">
-        <div class="trow"><span class="tn">Notion</span><span class="ta">pages + databases</span></div>
-        <div class="trow"><span class="tn">Airtable</span><span class="ta">tables + records</span></div>
-        <div class="trow"><span class="tn">ClickUp</span><span class="ta">tasks + spaces</span></div>
-        <div class="trow"><span class="tn">Supabase</span><span class="ta">records (read only)</span></div>
-      </div>
-    </div>
-    <div class="cat e">
-      <div class="chead"><div class="cname">AUTOMATION &amp; DATA</div><div class="cn">5</div></div>
-      <div class="cwork">Workflows, scraping and events</div>
-      <div class="tools">
-        <div class="trow"><span class="tn">n8n</span><span class="ta">workflow triggers</span></div>
-        <div class="trow"><span class="tn">Apify</span><span class="ta">actors + runs</span></div>
-        <div class="trow"><span class="tn">Reddit</span><span class="ta">search + comments</span></div>
-        <div class="trow"><span class="tn">Brave Search</span><span class="ta">web fallback</span></div>
-        <div class="trow"><span class="tn">PostHog</span><span class="ta">event analytics</span></div>
-      </div>
-    </div>
-    <div class="cat f">
-      <div class="chead"><div class="cname">MONEY &amp; WEB</div><div class="cn">4</div></div>
-      <div class="cwork">Payments, mail and hosting</div>
-      <div class="tools">
-        <div class="trow"><span class="tn">Stripe</span><span class="ta">customers + invoices</span></div>
-        <div class="trow"><span class="tn">Brevo</span><span class="ta">transactional + campaign</span></div>
-        <div class="trow"><span class="tn">Cloudflare</span><span class="ta">Workers AI + R2 + D1</span></div>
-        <div class="trow"><span class="tn">Webflow</span><span class="ta">sites + items</span></div>
-      </div>
-    </div>
+  <div class="strip">
+    <div class="pill"><b>7</b><span>Google</span></div>
+    <div class="pill"><b>6</b><span>Messaging</span></div>
+    <div class="pill"><b>5</b><span>CRM</span></div>
+    <div class="pill"><b>4</b><span>Workspace</span></div>
+    <div class="pill"><b>5</b><span>Data</span></div>
+    <div class="pill"><b>4</b><span>Money</span></div>
+    <div class="pill tot"><b>31</b><span>tools live</span></div>
   </div>
   <div class="ctawrap">
-    <div class="savel">Save this stack map, then</div>
+    <div class="savel">Save this, then</div>
     <div class="cta"><span class="ph">Comment <b>STACK</b> for the full integration map and setup</span><span class="send"><svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div>
   </div>
   <div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span></div><div class="furl">51ultron<em>.</em>com</div></div>
