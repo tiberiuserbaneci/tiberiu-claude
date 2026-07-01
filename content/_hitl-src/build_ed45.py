@@ -48,14 +48,23 @@ def wrap(d,text,font,maxw,maxlines=2):
     if cur: lines.append(cur)
     return lines[:maxlines]
 
-OBJ_CY=832; OBJ_H=660; OBJ_MAXW=884   # every object: same target height, centred at the same Y -> congruent
+OBJ_CY=770; OBJ_H=628; OBJ_MAXW=884   # raised; centred by ALPHA CENTROID; high floor kills the dark halo
 def place_obj(base,objpath):
-    el=crop_obj(Image.open(objpath))
-    solid=el.split()[3].point(lambda v:255 if v>120 else 0); pb=solid.getbbox() or (0,0,el.width,el.height)
-    el=el.crop(pb); s=min(OBJ_H/el.height, OBJ_MAXW/el.width)
+    arr=np.asarray(Image.open(objpath).convert("RGB")).astype(int)
+    cs=np.concatenate([arr[:40,:40].reshape(-1,3),arr[:40,-40:].reshape(-1,3),arr[-40:,:40].reshape(-1,3),arr[-40:,-40:].reshape(-1,3)])
+    bg=np.median(cs,0); d=np.abs(arr-bg).sum(2)
+    alpha=np.clip((d-46)*8,0,255).astype("uint8")          # floor 46 -> the flat near-black bg/halo goes transparent
+    ys,xs=np.where(alpha>120)
+    if len(xs)==0: ys,xs=np.where(alpha>40)
+    x0,y0,x1,y1=int(xs.min()),int(ys.min()),int(xs.max()),int(ys.max())
+    el=Image.fromarray(np.dstack([arr.astype("uint8"),alpha]),"RGBA").crop((x0,y0,x1,y1))
+    s=min(OBJ_H/el.height, OBJ_MAXW/el.width)
     el=el.resize((max(1,int(el.width*s)),max(1,int(el.height*s))),Image.LANCZOS)
-    base.alpha_composite(el,((W-el.width)//2, int(OBJ_CY-el.height/2)))
-def body(base,eyebrow,head,sub,objpath,page,n,fill):
+    a=np.asarray(el.split()[3]).astype(float); tot=a.sum() or 1.0
+    cyy=float((np.arange(el.height)[:,None]*a).sum()/tot)   # mass centre = the panel
+    cxx=float((np.arange(el.width)[None,:]*a).sum()/tot)
+    base.alpha_composite(el,(int(W/2-cxx), int(OBJ_CY-cyy)))
+def body(base,eyebrow,head,sub,foot,objpath,page,n,fill):
     ghost(base,f"{page:02d}"); d=ImageDraw.Draw(base)
     ls_text(d,(MX,66),eyebrow,mono(27),CORAL,4)
     s=min(fit_hook(d,head,W-2*MX,start=64,floor=46),60); hf=dm(900,s); y=108
@@ -65,6 +74,9 @@ def body(base,eyebrow,head,sub,objpath,page,n,fill):
         sf=dm(500,31)
         for ln in wrap(d,sub,sf,W-2*MX): d.text((MX,y),ln,font=sf,fill=INK); y+=41
     place_obj(base,objpath)
+    if foot:   # the idea line under the object (fills the lower space)
+        ff=dm(800,34); fw=int(d.textlength("".join(t for t,_ in foot),font=ff))
+        seg_line(d,(W-fw)//2,H-176,foot,ff)
     progress(d,page,n)
 
 def cover_tt(base):
@@ -116,8 +128,10 @@ def closing(base,handle,page,n):
     d.text((MX+64,H-150),handle,font=mono(30),fill=CORAL)
 
 def unpack(item):
-    eb,head=item[0],item[1]; sub=item[2] if len(item)>4 else None
-    return eb,head,sub,item[-2],item[-1]
+    eb,head=item[0],item[1]
+    sub=item[2] if len(item)>4 else None
+    foot=item[3] if len(item)>5 else None
+    return eb,head,sub,foot,item[-2],item[-1]
 
 def deck(outdir, overlay):
     os.makedirs(outdir,exist_ok=True)
@@ -140,7 +154,7 @@ def deck(outdir, overlay):
             T2.place_in_zone(base, crop_obj(Image.open(objp)), (MX,690,W-MX,1120), fill=fill)
             d.text((MX,1150),"Follow for one AI system for founders every day.",font=dm(700,28),fill=WHITE); footer(base)
         else:
-            eb,head,sub,objp,fill=unpack(sl[1]); body(base,eb,head,sub,objp,i,n,fill)
+            eb,head,sub,foot,objp,fill=unpack(sl[1]); body(base,eb,head,sub,foot,objp,i,n,fill)
         base.convert("RGB").save(f"{outdir}/s{i}.png")
     return n
 
