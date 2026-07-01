@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>jobs-laptop - LinkedIn 1080x1450</title>
+<style>
+@import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
+/* jobs-laptop - Background Jobs shown on a 2D laptop, relevant info populated around it. Dark Ultron, flat 2D. */
+:root{--slate:#191919;--slate2:#262625;--slate3:#302f2d;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);
+--ink30:rgba(250,250,247,.30);--rule:rgba(250,250,247,.10);--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--cloud:#919180;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.frame{width:1080px;height:1450px;background:var(--slate);padding:34px 44px 22px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;}
+.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.4px,transparent 1.5px);background-size:30px 30px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 54% 22% at 90% -2%,rgba(204,120,92,.2) 0%,transparent 60%),radial-gradient(ellipse 48% 24% at 2% 102%,rgba(212,162,127,.1) 0%,transparent 60%);}
+.frame>*{position:relative;z-index:2;}
+.mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;}
+.mast .ml{color:var(--ink46);}.mast .ml em{color:var(--book);font-style:normal;}
+.mast .mr{color:var(--ink70);}.mast .mr em{color:var(--book);font-style:normal;}
+.hero{flex-shrink:0;margin-top:15px;}
+.eye{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--kraft);}
+.hook{margin-top:8px;font-weight:900;font-size:52px;line-height:.99;letter-spacing:-1.9px;color:var(--ivory);}.hook em{color:var(--book);font-style:normal;}
+.sub{margin-top:10px;font-size:20px;font-weight:500;line-height:1.3;color:var(--ink70);max-width:980px;}.sub b{color:var(--ivory);font-weight:700;}
+/* laptop */
+.stage{flex:1;min-height:0;margin-top:16px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;}
+.laptop{width:940px;flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;}
+.screen{width:900px;flex:1;min-height:0;background:#111010;border:10px solid #050505;border-radius:20px 20px 4px 4px;overflow:hidden;box-shadow:0 0 0 1px rgba(250,250,247,.05);display:flex;flex-direction:column;}
+.deck{width:940px;height:26px;background:linear-gradient(180deg,#3a3936,#1c1b1a);border-radius:0 0 16px 16px;position:relative;box-shadow:0 14px 26px rgba(0,0,0,.5);}
+.deck::after{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:150px;height:10px;background:#0d0d0d;border-radius:0 0 12px 12px;}
+/* app UI */
+.abar{flex-shrink:0;display:flex;align-items:center;gap:12px;padding:16px 22px 12px;border-bottom:1px solid var(--rule);}
+.abar .title{font-weight:800;font-size:24px;letter-spacing:-.6px;}
+.abar .meta{font-size:14px;color:var(--ink46);}.abar .meta b{color:var(--book);font-weight:700;}
+.abar .live{margin-left:auto;display:flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--kraft);}
+.abar .live .d{width:9px;height:9px;border-radius:50%;background:var(--book);box-shadow:0 0 10px rgba(204,120,92,.7);}
+.tabs{flex-shrink:0;display:flex;gap:8px;padding:11px 22px;border-bottom:1px solid var(--rule);}
+.tab{font-size:14px;font-weight:600;color:var(--ink46);padding:6px 15px;border-radius:20px;}
+.tab.on{background:var(--ivory);color:#161514;font-weight:800;}
+.acols{flex:1;min-height:0;display:flex;}
+.col{flex:1;min-height:0;padding:14px 20px;display:flex;flex-direction:column;}
+.col.l{border-right:1px solid var(--rule);}
+.clab{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink46);margin-bottom:10px;}
+.clab b{color:var(--book);}
+.mcard{background:var(--slate2);border:1px solid var(--rule);border-radius:12px;padding:13px 15px;}
+.mrow{display:flex;align-items:center;gap:10px;}
+.mrow .mt{font-weight:800;font-size:17px;letter-spacing:-.3px;}
+.chip{font-family:'DM Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:20px;}
+.chip.run{background:rgba(204,120,92,.16);color:var(--book);}
+.chip.done{background:rgba(250,250,247,.09);color:var(--ink70);}
+.chip.q{background:rgba(250,250,247,.06);color:var(--ink46);}
+.msub{font-size:13px;color:var(--ink46);margin-top:6px;}
+.pbar{margin-top:9px;height:6px;border-radius:3px;background:rgba(250,250,247,.1);overflow:hidden;}
+.pbar>i{display:block;height:100%;background:var(--book);border-radius:3px;}
+.pmeta{font-family:'DM Mono',monospace;font-size:11px;color:var(--ink46);margin-top:6px;}
+.checks{margin-top:12px;display:flex;flex-direction:column;gap:9px;}
+.ck{display:flex;align-items:center;gap:10px;font-size:14.5px;}
+.ck .b{width:16px;height:16px;border-radius:50%;flex-shrink:0;border:1.6px solid var(--ink30);}
+.ck.d .b{background:var(--book);border-color:var(--book);}
+.ck.d span{color:var(--ink46);text-decoration:line-through;}
+.ck.r .b{border-color:var(--book);border-right-color:transparent;}
+.ck.r span{color:var(--ivory);font-weight:600;}
+.ck span{color:var(--ink70);}
+.jobs{flex:1;min-height:0;display:flex;flex-direction:column;gap:9px;}
+.job{flex:1;min-height:0;background:var(--slate2);border:1px solid var(--rule);border-radius:11px;padding:10px 14px;display:flex;flex-direction:column;justify-content:center;gap:5px;}
+.job .jt{display:flex;align-items:center;gap:9px;}
+.job .jn{font-weight:700;font-size:15px;letter-spacing:-.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.job .js{font-size:12.5px;color:var(--ink46);}
+.job .jm{font-family:'DM Mono',monospace;font-size:10.5px;color:var(--ink46);letter-spacing:.04em;}
+.subs{margin-top:12px;display:flex;flex-direction:column;gap:9px;flex:1;min-height:0;}
+.sj{background:var(--slate2);border:1px solid var(--rule);border-radius:11px;padding:11px 14px;flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;gap:5px;}
+.sj .jt{display:flex;align-items:center;gap:9px;}
+.sj .jn{font-weight:700;font-size:15px;letter-spacing:-.2px;}
+.sj .js{font-size:12.5px;color:var(--ink46);}
+.sj .jm{font-family:'DM Mono',monospace;font-size:10.5px;color:var(--ink46);letter-spacing:.04em;}
+/* info around */
+.info{flex-shrink:0;margin-top:16px;display:flex;gap:12px;}
+.ic{flex:1;border:1px solid var(--rule);border-radius:14px;background:var(--slate2);padding:14px 16px;}
+.ic .k{font-family:'DM Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--book);}
+.ic .t{font-weight:800;font-size:19px;letter-spacing:-.4px;margin-top:7px;line-height:1.05;}
+.ic .dsc{font-size:13.5px;color:var(--ink46);margin-top:6px;line-height:1.2;}
+/* cta */
+.cta{flex-shrink:0;margin-top:15px;display:flex;align-items:center;gap:16px;border:1.5px solid var(--book);border-radius:18px;background:rgba(204,120,92,.08);padding:12px 12px 12px 26px;box-shadow:0 0 44px rgba(204,120,92,.2);}
+.cta .ph{flex:1;font-size:22px;font-weight:600;color:var(--ink70);line-height:1.2;}.cta .ph b{color:var(--book);font-weight:900;}
+.cta .send{width:56px;height:56px;border-radius:50%;background:var(--book);flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(204,120,92,.45);}
+.cta .send svg{width:27px;height:27px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ftr{flex-shrink:0;margin-top:12px;padding-top:11px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.fl2{display:flex;align-items:center;gap:11px;min-width:0;}.flogo{width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.ftx{font-family:'DM Mono',monospace;font-size:11.5px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--ink70);white-space:nowrap;}.ftx b{color:var(--ivory);font-weight:500;}
+.furl{font-weight:900;font-size:21px;letter-spacing:-.5px;color:var(--ivory);}.furl em{color:var(--book);font-style:normal;}
+</style>
+</head>
+<body>
+<div class="frame" id="artifact"><div class="atm"></div>
+  <div class="mast"><span class="ml">AI OPERATOR <em>&middot;</em> BACKGROUND JOBS <em>&middot;</em> RUNS 24/7</span><span class="mr">ULTRON <em>&middot;</em> WORKS WHILE YOU DO NOT</span></div>
+  <div class="hero">
+    <div class="eye">Background jobs</div>
+    <div class="hook">I closed the laptop. My AI <em>kept working</em>.</div>
+    <div class="sub">Ultron runs whole missions on its own, sourcing, drafting and scraping in the background, and <b>holds every send for your approval</b>.</div>
+  </div>
+  <div class="stage">
+    <div class="laptop">
+      <div class="screen">
+        <div class="abar"><span class="title">Background Jobs</span><span class="meta"><b>4 active</b> &middot; 1 mission</span><span class="live"><span class="d"></span>Live</span></div>
+        <div class="tabs"><span class="tab on">All</span><span class="tab">Running</span><span class="tab">Awaiting</span><span class="tab">Done</span></div>
+        <div class="acols">
+          <div class="col l">
+            <div class="clab">Mission <b>&middot; Q1 outbound engine</b></div>
+            <div class="mcard">
+              <div class="mrow"><span class="mt">Q1 outbound engine</span><span class="chip run">running</span></div>
+              <div class="msub">Find 300 ICP founders, draft personalised sequences</div>
+              <div class="pbar"><i style="width:26%"></i></div>
+              <div class="pmeta">1 / 4 steps &middot; 38m 14s left</div>
+              <div class="checks">
+                <div class="ck d"><span class="b"></span><span>Pull ICP shape from HubSpot</span></div>
+                <div class="ck r"><span class="b"></span><span>Find 300 W24 founders on LinkedIn</span></div>
+                <div class="ck"><span class="b"></span><span>Draft 3-touch sequences</span></div>
+                <div class="ck"><span class="b"></span><span>Schedule across time zones</span></div>
+              </div>
+            </div>
+            <div class="clab" style="margin-top:14px">Sub-jobs</div>
+            <div class="subs">
+              <div class="sj"><div class="jt"><span class="jn">Pull ICP shape from HubSpot</span><span class="chip done">done</span></div><div class="js">Apify &middot; hubspot_export</div><div class="jm">4m 0s &middot; 12 records</div></div>
+              <div class="sj"><div class="jt"><span class="jn">Find 300 W24 founders</span><span class="chip run">running</span></div><div class="js">Apify &middot; linkedin_finder</div><div class="pbar"><i style="width:62%"></i></div><div class="jm">62% &middot; 30m 14s &middot; 84 found</div></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="clab">Active <b>&middot; 4 running now</b></div>
+            <div class="jobs">
+              <div class="job"><div class="jt"><span class="jn">Find 300 founders</span><span class="chip run">running</span></div><div class="js">Apollo &middot; sourcing now</div><div class="pbar"><i style="width:62%"></i></div><div class="jm">62% &middot; 84 found</div></div>
+              <div class="job"><div class="jt"><span class="jn">Monday standup digest</span><span class="chip run">running</span></div><div class="js">Read 47 PRs and 12 issues</div><div class="pbar"><i style="width:71%"></i></div><div class="jm">71% &middot; 7m 14s left</div></div>
+              <div class="job"><div class="jt"><span class="jn">Refresh competitor pricing</span><span class="chip run">running</span></div><div class="js">Parsed 5 of 12 vendor tables</div><div class="pbar"><i style="width:43%"></i></div><div class="jm">43% &middot; 4m 14s left</div></div>
+              <div class="job"><div class="jt"><span class="jn">Reconcile Stripe payouts</span><span class="chip done">done</span></div><div class="js">Matched 128 charges</div><div class="jm">Done &middot; 2m 08s</div></div>
+              <div class="job"><div class="jt"><span class="jn">Draft the launch post</span><span class="chip q">awaiting you</span></div><div class="js">Written in your voice</div><div class="jm">Needs your approval</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="deck"></div>
+    </div>
+  </div>
+  <div class="info">
+    <div class="ic"><div class="k">Autonomous</div><div class="t">Runs in the background</div><div class="dsc">Close the tab. Missions keep going on their own computer.</div></div>
+    <div class="ic"><div class="k">In parallel</div><div class="t">Many jobs at once</div><div class="dsc">Sourcing, drafting and scraping run side by side, not in a queue.</div></div>
+    <div class="ic"><div class="k">Human gate</div><div class="t">You approve the sends</div><div class="dsc">Nothing leaves until you say go. You wake up to a decision, not a mess.</div></div>
+  </div>
+  <div class="cta"><span class="ph">Comment <b>JOBS</b> for the background-jobs setup and the mission template</span><span class="send"><svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div>
+  <div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span></div><div class="furl">51ultron<em>.</em>com</div></div>
+</div>
+</body>
+</html>
