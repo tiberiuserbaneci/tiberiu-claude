@@ -215,7 +215,7 @@ POLL=dict(eye="BEFORE YOU SCROLL", q=[[wo("Which founder")],[co("are you?")]],
           opts=[("1","Hire a team of thirty."),("2","Run one chat.")],
           cta="Comment 1 or 2 below. I reply to every one.")
 import re as _re
-def save_foot(): return f"Save this video. Comment {globals().get('_KW','OPERATOR')}, I reply to the first 20."
+def save_foot(): return f"Save this video. Comment {globals().get('_KW','OPERATOR')}."
 SAVE_FOOT=save_foot  # back-compat handle
 def poll_slide(base,n,page=2):
     d=ImageDraw.Draw(base); ghost(base,f"{page:02d}")
