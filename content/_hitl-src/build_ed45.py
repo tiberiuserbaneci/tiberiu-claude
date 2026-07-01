@@ -32,8 +32,9 @@ def ghost(base,num):
     d=ImageDraw.Draw(base); f=dm(900,112)   # smaller + higher so it clears the sub-hook line
     d.text((W-MX-d.textlength(num,font=f),58),num,font=f,fill=GHOST)
 def progress(d,page,n):
-    # right end pulled in (symmetric) so it clears the IG action-icon rail on the right (operator, validated)
-    pm=158; x0,x1=pm,W-pm; yb=H-56; d.rounded_rectangle([x0,yb,x1,yb+7],radius=4,fill=TRACK)
+    # symmetric inset sized for the LARGER TikTok action-icon rail so ONE deck works on both TikTok + IG
+    # (operator: TikTok icons are bigger; one standard, no per-channel slides). right end ~880.
+    pm=200; x0,x1=pm,W-pm; yb=H-56; d.rounded_rectangle([x0,yb,x1,yb+7],radius=4,fill=TRACK)
     d.rounded_rectangle([x0,yb,x0+int((x1-x0)*page/n),yb+7],radius=4,fill=CORAL)
 def footer(base):
     d=ImageDraw.Draw(base); y=H-70
