@@ -5,46 +5,89 @@
 <title>tools-external - LinkedIn 1080x1450</title>
 <style>
 @import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
-/* tools-external v4 - Ultron TERMINAL, dense external-tools console. Ultron hook (not Claude). Dark Ultron. */
-:root{--slate:#191919;--term:#15110f;--termbar:#0f0c0b;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);
---rule:rgba(250,250,247,.08);--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--mut:#8b857d;}
+/* tools-external v5 - Ultron "External Tools" app screen, modelled on the Background Jobs app UI
+   (operator: colours/font/processes/everything from that screen). Ultron hook. Dark Ultron + muted
+   emerald status (matches the real app; not neon). Laptop app window, two dense columns, no dead space. */
+:root{--slate:#191919;--scr:#100f0e;--card:#1b1a18;--card2:#201e1c;--ivory:#FAFAF7;
+--ink70:rgba(250,250,247,.70);--ink46:rgba(250,250,247,.44);--ink28:rgba(250,250,247,.28);
+--rule:rgba(250,250,247,.08);--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--mut:#8b857d;
+--ok:#5ea884;--ok-lo:rgba(94,168,132,.14);--ok-bd:rgba(94,168,132,.34);}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
-.frame{width:1080px;height:1450px;background:var(--slate);padding:32px 40px 20px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;}
+.frame{width:1080px;height:1450px;background:var(--slate);padding:30px 40px 18px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;}
 .frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.4px,transparent 1.5px);background-size:30px 30px;}
 .atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 54% 20% at 90% -2%,rgba(204,120,92,.18) 0%,transparent 60%);}
 .frame>*{position:relative;z-index:2;}
-.mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding-bottom:11px;border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;}
+.mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding-bottom:10px;border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;}
 .mast .ml{color:var(--ink46);}.mast .ml em{color:var(--book);font-style:normal;}.mast .mr{color:var(--ink70);}
-.hero{flex-shrink:0;margin-top:13px;}
+.hero{flex-shrink:0;margin-top:12px;}
 .eye{font-family:'DM Mono',monospace;font-size:12.5px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--kraft);}
 .hook{margin-top:7px;font-weight:900;font-size:46px;line-height:1;letter-spacing:-1.7px;}.hook em{color:var(--book);font-style:normal;}
 .sub{margin-top:9px;font-size:18.5px;font-weight:500;line-height:1.28;color:var(--ink70);max-width:1000px;}.sub b{color:var(--ivory);font-weight:700;}
-/* terminal */
-.term{flex:1;min-height:0;margin-top:13px;display:flex;flex-direction:column;border:1px solid var(--rule);border-radius:14px;overflow:hidden;background:var(--term);box-shadow:0 24px 50px rgba(0,0,0,.45);}
-.tbar{flex-shrink:0;display:flex;align-items:center;gap:8px;padding:12px 16px;background:var(--termbar);border-bottom:1px solid var(--rule);}
-.tbar .dot{width:12px;height:12px;border-radius:50%;background:#39332f;}
-.tbar .tt{flex:1;text-align:center;font-family:'DM Mono',monospace;font-size:13px;color:var(--mut);letter-spacing:.04em;}
-.tbar .lv{display:flex;align-items:center;gap:7px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--book);}
-.tbar .lv .d{width:8px;height:8px;border-radius:50%;background:var(--book);box-shadow:0 0 8px rgba(204,120,92,.8);}
-.tbody{flex:1;min-height:0;padding:26px 24px;font-family:'DM Mono',monospace;display:flex;flex-direction:column;justify-content:space-between;gap:0;}
-.ln{display:flex;align-items:baseline;gap:10px;font-size:19px;line-height:1.35;white-space:nowrap;}
-.ln .p{color:var(--book);font-weight:500;}
-.ln .cmd{color:var(--ivory);font-weight:500;}
-.ln .ok{color:var(--book);}
-.ln .nm{color:var(--ivory);font-weight:500;}
-.ln .m{color:var(--mut);}
-.ln .r{margin-left:auto;color:var(--mut);}
-.ln .r b{color:var(--book);font-weight:500;}
-.sep{height:1px;background:var(--rule);margin:2px 0;}
-.blank{height:2px;}
+/* laptop app window */
+.app{flex:1;min-height:0;margin-top:13px;display:flex;flex-direction:column;border:1px solid rgba(250,250,247,.10);border-radius:16px;overflow:hidden;background:var(--scr);box-shadow:0 26px 54px rgba(0,0,0,.5);}
+.abar{flex-shrink:0;display:flex;align-items:center;gap:9px;padding:11px 16px;background:#0a0908;border-bottom:1px solid var(--rule);}
+.abar .dot{width:11px;height:11px;border-radius:50%;background:#332e2a;}
+.abar .url{margin-left:8px;font-family:'DM Mono',monospace;font-size:12.5px;color:var(--mut);letter-spacing:.02em;}
+.abar .live{margin-left:auto;display:flex;align-items:center;gap:6px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ok);}
+.abar .live i{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px rgba(94,168,132,.9);}
+.scr{flex:1;min-height:0;display:flex;flex-direction:column;padding:17px 20px 14px;}
+.shead{flex-shrink:0;display:flex;align-items:flex-end;justify-content:space-between;}
+.stitle{font-size:31px;font-weight:800;letter-spacing:-.8px;}
+.ssub{font-size:14.5px;color:var(--mut);font-weight:500;}.ssub em{color:var(--ok);font-style:normal;}
+.gear{width:34px;height:34px;border-radius:9px;border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;}
+.gear svg{width:17px;height:17px;stroke:var(--mut);stroke-width:1.7;fill:none;}
+.tabs{flex-shrink:0;display:flex;align-items:center;gap:8px;margin-top:13px;}
+.tab{font-size:13.5px;font-weight:600;color:var(--mut);padding:7px 15px;border-radius:20px;}
+.tab.on{background:rgba(250,250,247,.92);color:#161311;}
+.tab.al{color:var(--book);}
+/* columns */
+.cols{flex:1;min-height:0;display:flex;gap:14px;margin-top:15px;}
+.col{flex:1;min-width:0;display:flex;flex-direction:column;gap:10px;}
+.lbl{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink46);margin:2px 0 -1px;}
+.lbl b{color:var(--book);font-weight:500;}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:13px;padding:13px 14px;}
+.card.hot{border-color:var(--ok-bd);background:linear-gradient(180deg,rgba(94,168,132,.06),var(--card));}
+.crow{display:flex;align-items:center;gap:10px;}
+.ico{width:30px;height:30px;flex-shrink:0;border-radius:8px;background:rgba(204,120,92,.13);border:1px solid rgba(204,120,92,.26);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:14px;font-weight:500;color:var(--kraft);}
+.ico.g{background:rgba(94,168,132,.13);border-color:var(--ok-bd);color:var(--ok);}
+.cname{font-size:15.5px;font-weight:700;letter-spacing:-.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.cname.mono{font-family:'DM Mono',monospace;font-weight:500;font-size:14.5px;}
+.pill{margin-left:auto;flex-shrink:0;display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;padding:4px 10px;border-radius:14px;letter-spacing:.02em;}
+.pill i{width:7px;height:7px;border-radius:50%;}
+.pill.ok{background:var(--ok-lo);color:var(--ok);border:1px solid var(--ok-bd);}.pill.ok i{background:var(--ok);}
+.pill.run{background:rgba(204,120,92,.13);color:var(--book);border:1px solid rgba(204,120,92,.3);}.pill.run i{background:var(--book);}
+.pill.cc{background:rgba(250,250,247,.06);color:var(--ink70);border:1px solid var(--rule);}.pill.cc i{background:var(--mut);}
+.cdesc{margin-top:8px;font-size:13.5px;color:var(--ink70);line-height:1.32;}
+.cdesc b{color:var(--ivory);font-weight:600;}
+.cdesc .t{font-family:'DM Mono',monospace;font-size:12.5px;color:var(--mut);}
+.prog{margin-top:10px;height:6px;border-radius:4px;background:rgba(250,250,247,.09);overflow:hidden;}
+.prog i{display:block;height:100%;border-radius:4px;background:rgba(250,250,247,.82);}
+.prog i.b{background:var(--book);}
+.meta{margin-top:8px;font-family:'DM Mono',monospace;font-size:12px;color:var(--mut);letter-spacing:.01em;}
+.meta b{color:var(--ink70);font-weight:500;}
+.chips{margin-top:9px;display:flex;flex-wrap:wrap;gap:6px;}
+.chip{font-family:'DM Mono',monospace;font-size:11px;color:var(--ink70);background:rgba(250,250,247,.05);border:1px solid var(--rule);border-radius:6px;padding:3px 8px;}
+.chip.more{color:var(--book);border-color:rgba(204,120,92,.28);background:rgba(204,120,92,.08);}
+.check{margin-top:11px;display:flex;flex-direction:column;gap:9px;}
+.ci{display:flex;align-items:center;gap:9px;font-size:13.5px;}
+.ci .b{width:16px;height:16px;flex-shrink:0;border-radius:50%;border:1.6px solid var(--ink28);}
+.ci.done .b{border:none;background:var(--ok);}
+.ci.done .b svg{width:16px;height:16px;stroke:#10120f;stroke-width:2.6;fill:none;}
+.ci.run .b{border-color:var(--book);border-right-color:transparent;}
+.ci .tx{color:var(--ink70);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ci .tx b{color:var(--ivory);font-weight:600;font-family:'DM Mono',monospace;font-size:12.5px;}
+.ci.done .tx{color:var(--ink46);}
+.ci.run .tx b{color:var(--book);}
+.sbar{flex-shrink:0;margin-top:12px;display:flex;align-items:center;gap:14px;padding:11px 14px;border-radius:11px;background:rgba(250,250,247,.03);border:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:12px;color:var(--mut);letter-spacing:.03em;}
+.sbar b{color:var(--book);font-weight:500;}.sbar .sp{margin-left:auto;color:var(--ink46);}
 /* cta */
-.cta{flex-shrink:0;margin-top:13px;display:flex;align-items:center;gap:16px;border:1.5px solid var(--book);border-radius:18px;background:rgba(204,120,92,.08);padding:12px 12px 12px 26px;box-shadow:0 0 44px rgba(204,120,92,.2);}
+.cta{flex-shrink:0;margin-top:12px;display:flex;align-items:center;gap:16px;border:1.5px solid var(--book);border-radius:18px;background:rgba(204,120,92,.08);padding:12px 12px 12px 26px;box-shadow:0 0 44px rgba(204,120,92,.2);}
 .cta .ph{flex:1;font-size:22px;font-weight:600;color:var(--ink70);line-height:1.2;}.cta .ph b{color:var(--book);font-weight:900;}
-.cta .send{width:56px;height:56px;border-radius:50%;background:var(--book);flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(204,120,92,.45);}
-.cta .send svg{width:27px;height:27px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-.ftr{flex-shrink:0;margin-top:11px;padding-top:10px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:16px;}
-.fl2{display:flex;align-items:center;gap:11px;min-width:0;}.flogo{width:29px;height:29px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.cta .send{width:54px;height:54px;border-radius:50%;background:var(--book);flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(204,120,92,.45);}
+.cta .send svg{width:26px;height:26px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ftr{flex-shrink:0;margin-top:10px;padding-top:9px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.fl2{display:flex;align-items:center;gap:11px;min-width:0;}.flogo{width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0;}
 .ftx{font-family:'DM Mono',monospace;font-size:11px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--ink70);white-space:nowrap;}.ftx b{color:var(--ivory);font-weight:500;}
 .furl{font-weight:900;font-size:20px;letter-spacing:-.5px;color:var(--ivory);}.furl em{color:var(--book);font-style:normal;}
 </style>
@@ -57,30 +100,107 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
     <div class="hook">I typed one line. Ultron ran <em>my whole stack</em>.</div>
     <div class="sub">Ultron discovers every tool your apps expose, merges them into one catalog, and <b>calls the right ones on command</b>.</div>
   </div>
-  <div class="term">
-    <div class="tbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="tt">ultron &mdash; external tools</span><span class="lv"><span class="d"></span>live</span></div>
-    <div class="tbody">
-      <div class="ln"><span class="p">ultron&nbsp;~&nbsp;%</span><span class="cmd">connect --all</span></div>
-      <div class="ln"><span class="m">handshake&nbsp;&nbsp;initialize &rarr; tools/list</span><span class="r"><b>6</b> servers</span></div>
-      <div class="sep"></div>
-      <div class="ln"><span class="ok">&check;</span><span class="nm">google</span><span class="m">gmail drive sheets docs +3</span><span class="r"><b>7</b> tools &middot; cached 10m</span></div>
-      <div class="ln"><span class="ok">&check;</span><span class="nm">messaging</span><span class="m">slack outlook teams zoom +2</span><span class="r"><b>6</b> tools &middot; cached 10m</span></div>
-      <div class="ln"><span class="ok">&check;</span><span class="nm">crm</span><span class="m">hubspot salesforce apollo +2</span><span class="r"><b>5</b> tools &middot; cached 10m</span></div>
-      <div class="ln"><span class="ok">&check;</span><span class="nm">workspace</span><span class="m">notion airtable clickup supabase</span><span class="r"><b>4</b> tools</span></div>
-      <div class="ln"><span class="ok">&check;</span><span class="nm">automation</span><span class="m">n8n apify reddit brave +1</span><span class="r"><b>5</b> tools</span></div>
-      <div class="ln"><span class="ok">&check;</span><span class="nm">money</span><span class="m">stripe brevo cloudflare webflow</span><span class="r"><b>4</b> tools</span></div>
-      <div class="ln"><span class="m">merged&nbsp;&nbsp;prefixed per server &middot; per-user scoped</span><span class="r"><b>31</b> tools</span></div>
-      <div class="blank"></div>
-      <div class="ln"><span class="p">ultron&nbsp;~&nbsp;%</span><span class="cmd">"close the NorthPeak deal"</span></div>
-      <div class="ln"><span class="p">&rarr;</span><span class="nm">gmail_send</span><span class="m">sent the signed contract</span><span class="r">200 &middot; <b>1.2s</b></span></div>
-      <div class="ln"><span class="p">&rarr;</span><span class="nm">hubspot_update_deal</span><span class="m">moved to Closed Won</span><span class="r">200 &middot; <b>0.8s</b></span></div>
-      <div class="ln"><span class="p">&rarr;</span><span class="nm">stripe_create_invoice</span><span class="m">raised, cents on fees</span><span class="r">200 &middot; <b>640ms</b></span></div>
-      <div class="ln"><span class="p">&rarr;</span><span class="nm">calendly_create_event</span><span class="m">kickoff Tue 10:00</span><span class="r">200 &middot; <b>0.5s</b></span></div>
-      <div class="ln"><span class="p">&rarr;</span><span class="nm">notion_append_block</span><span class="m">logged the account notes</span><span class="r">200 &middot; <b>0.9s</b></span></div>
-      <div class="ln"><span class="p">&rarr;</span><span class="nm">slack_post_message</span><span class="m">posted to #revenue</span><span class="r">200 &middot; <b>410ms</b></span></div>
-      <div class="ln"><span class="ok">&check; done</span><span class="m">6 tools &middot; one command &middot; waiting your approval to send</span></div>
+
+  <div class="app">
+    <div class="abar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">app.51ultron.com/tools</span><span class="live"><i></i>live</span></div>
+    <div class="scr">
+      <div class="shead">
+        <div><div class="stitle">External Tools</div><div class="ssub">31 tools &middot; 6 servers &middot; 1 command <em>&#9679; live</em></div></div>
+        <div class="gear"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg></div>
+      </div>
+      <div class="tabs"><span class="tab on">All</span><span class="tab al">Calling</span><span class="tab">Connected</span><span class="tab">Cached</span></div>
+
+      <div class="cols">
+        <!-- LEFT: the command that ran the stack -->
+        <div class="col">
+          <div class="lbl">Command <b>&middot; 1</b></div>
+          <div class="card hot">
+            <div class="crow"><span class="ico g"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:#5ea884;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round"><path d="M5 3l14 9-14 9z"/></svg></span><span class="cname">close the NorthPeak deal</span><span class="pill run"><i></i>running</span></div>
+            <div class="cdesc">One request. Ultron <b>picked the tools and ran the play</b>, in order.</div>
+            <div class="prog"><i style="width:84%"></i></div>
+            <div class="meta"><b>5 of 6 done</b> &middot; 4.4s elapsed &middot; 6 tools called</div>
+            <div class="check">
+              <div class="ci done"><span class="b"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span class="tx"><b>gmail_send</b> sent the signed contract</span></div>
+              <div class="ci done"><span class="b"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span class="tx"><b>hubspot_update_deal</b> moved to Closed Won</span></div>
+              <div class="ci run"><span class="b"></span><span class="tx"><b>stripe_create_invoice</b> raised, cents on fees</span></div>
+              <div class="ci"><span class="b"></span><span class="tx"><b>calendly_create_event</b> kickoff Tue 10:00</span></div>
+            </div>
+          </div>
+          <div class="lbl">Tool calls</div>
+          <div class="card">
+            <div class="crow"><span class="ico">@</span><span class="cname mono">gmail_send</span><span class="pill ok"><i></i>done</span></div>
+            <div class="cdesc"><span class="t">google</span> &middot; sent the signed contract to NorthPeak</div>
+            <div class="meta">1.2s &middot; <b>200 OK</b> &middot; 1 attachment</div>
+          </div>
+          <div class="card">
+            <div class="crow"><span class="ico">$</span><span class="cname mono">stripe_create_invoice</span><span class="pill run"><i></i>running</span></div>
+            <div class="cdesc"><span class="t">money</span> &middot; raising the invoice, cents on fees</div>
+            <div class="prog"><i class="b" style="width:64%"></i></div>
+            <div class="meta">64% &middot; 0.6s &middot; <b>200</b></div>
+          </div>
+          <div class="card">
+            <div class="crow"><span class="ico">S</span><span class="cname mono">slack_post_message</span><span class="pill ok"><i></i>done</span></div>
+            <div class="cdesc"><span class="t">messaging</span> &middot; posted the win to #revenue</div>
+            <div class="meta">410ms &middot; <b>200 OK</b> &middot; 1 channel</div>
+          </div>
+          <div class="card">
+            <div class="crow"><span class="ico">N</span><span class="cname mono">notion_append_block</span><span class="pill ok"><i></i>done</span></div>
+            <div class="cdesc"><span class="t">workspace</span> &middot; logged the account notes</div>
+            <div class="meta">0.9s &middot; <b>200 OK</b> &middot; 4 blocks</div>
+          </div>
+          <div class="card">
+            <div class="crow"><span class="ico">C</span><span class="cname mono">calendly_create_event</span><span class="pill cc"><i></i>queued</span></div>
+            <div class="cdesc"><span class="t">workspace</span> &middot; kickoff with NorthPeak, Tue 10:00</div>
+            <div class="meta">waiting your approval &middot; <b>1 invite</b></div>
+          </div>
+        </div>
+
+        <!-- RIGHT: connected servers -->
+        <div class="col">
+          <div class="lbl">Connected <b>&middot; 6</b></div>
+          <div class="card">
+            <div class="crow"><span class="ico">g</span><span class="cname">google</span><span class="pill ok"><i></i>connected</span></div>
+            <div class="cdesc"><span class="t">gmail drive sheets docs +3</span></div>
+            <div class="meta"><b>7 tools</b> &middot; cached 10m</div>
+            <div class="chips"><span class="chip">gmail_send</span><span class="chip">drive_search</span><span class="chip">sheets_append</span><span class="chip more">+4</span></div>
+          </div>
+          <div class="card">
+            <div class="crow"><span class="ico">m</span><span class="cname">messaging</span><span class="pill ok"><i></i>connected</span></div>
+            <div class="cdesc"><span class="t">slack outlook teams zoom +2</span></div>
+            <div class="meta"><b>6 tools</b> &middot; cached 10m</div>
+            <div class="chips"><span class="chip">slack_post</span><span class="chip">outlook_send</span><span class="chip">teams_msg</span><span class="chip more">+3</span></div>
+          </div>
+          <div class="card">
+            <div class="crow"><span class="ico">c</span><span class="cname">crm</span><span class="pill ok"><i></i>connected</span></div>
+            <div class="cdesc"><span class="t">hubspot salesforce apollo +2</span></div>
+            <div class="meta"><b>5 tools</b> &middot; cached 10m</div>
+            <div class="chips"><span class="chip">hubspot_deal</span><span class="chip">sf_lead</span><span class="chip">apollo_find</span><span class="chip more">+2</span></div>
+          </div>
+          <div class="card">
+            <div class="crow"><span class="ico">w</span><span class="cname">workspace</span><span class="pill run"><i></i>calling</span></div>
+            <div class="cdesc"><span class="t">notion airtable clickup supabase</span></div>
+            <div class="meta"><b>4 tools</b> &middot; live now</div>
+            <div class="chips"><span class="chip">notion_append</span><span class="chip">airtable_row</span><span class="chip">clickup_task</span><span class="chip more">+1</span></div>
+          </div>
+          <div class="card">
+            <div class="crow"><span class="ico">a</span><span class="cname">automation</span><span class="pill cc"><i></i>cached</span></div>
+            <div class="cdesc"><span class="t">n8n apify reddit brave +1</span></div>
+            <div class="meta"><b>5 tools</b> &middot; cached 10m</div>
+            <div class="chips"><span class="chip">n8n_run</span><span class="chip">apify_scrape</span><span class="chip">brave_search</span><span class="chip more">+2</span></div>
+          </div>
+          <div class="card">
+            <div class="crow"><span class="ico">$</span><span class="cname">money</span><span class="pill run"><i></i>calling</span></div>
+            <div class="cdesc"><span class="t">stripe brevo cloudflare webflow</span></div>
+            <div class="meta"><b>4 tools</b> &middot; live now</div>
+            <div class="chips"><span class="chip">stripe_invoice</span><span class="chip">brevo_send</span><span class="chip">cf_deploy</span><span class="chip more">+1</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sbar">merged catalog <span class="sp"></span> <b>prefixed per server</b> &middot; per-user scoped &middot; auto-discovered &middot; 31 tools</div>
     </div>
   </div>
+
   <div class="cta"><span class="ph">Comment <b>STACK</b> for the full integration map and setup</span><span class="send"><svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div>
   <div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span></div><div class="furl">51ultron<em>.</em>com</div></div>
 </div>
