@@ -7,7 +7,7 @@
 # Usage: python3 build_ed45.py <build_module.py> <outprefix>
 import importlib.util, os, sys
 import numpy as np
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFilter
 def load(p):
     s=importlib.util.spec_from_file_location("MAT",p); m=importlib.util.module_from_spec(s); s.loader.exec_module(m); return m
 MAT=load(sys.argv[1]); OUT=sys.argv[2]
@@ -57,7 +57,24 @@ def _tbox(d,thr=55,dens=80):
     m=d>thr; cols=np.where(m.sum(0)>dens)[0]; rows=np.where(m.sum(1)>dens)[0]
     if len(cols) and len(rows): return int(cols.min()),int(rows.min()),int(cols.max()),int(rows.max())
     ys,xs=np.where(d>40); return int(xs.min()),int(ys.min()),int(xs.max()),int(ys.max())
-def place_obj(base,objpath,fill=1.0):
+def place_screen(base,objpath,fill=1.0):
+    # NO-bezel path for light app dashboards: crop to the bright screen, round + fade edges, drop shadow,
+    # fit the zone, centre at (W/2, OBJ_CY) -> every dashboard identical, no device frame.
+    im=Image.open(objpath).convert("RGB"); a=np.asarray(im).astype(int); lum=a.sum(2)/3
+    ys,xs=np.where(lum>170)
+    if len(xs)==0: return _place_dark(base,objpath,fill)
+    x0,y0,x1,y1=int(xs.min()),int(ys.min()),int(xs.max()),int(ys.max())
+    p=int((x1-x0)*0.012); x0+=p;y0+=p;x1-=p;y1-=p
+    crop=im.crop((x0,y0,x1,y1)).convert("RGBA")
+    s=min(OBJ_MAXW/crop.width, OBJ_H/crop.height)*fill
+    cw,ch=max(1,int(crop.width*s)),max(1,int(crop.height*s)); crop=crop.resize((cw,ch),Image.LANCZOS)
+    r=int(cw*0.03); mask=Image.new("L",(cw,ch),0); ImageDraw.Draw(mask).rounded_rectangle([0,0,cw-1,ch-1],radius=r,fill=255)
+    crop.putalpha(mask.filter(ImageFilter.GaussianBlur(3)))
+    px=(W-cw)//2; py=int(OBJ_CY-ch/2)
+    sm=Image.new("L",(W,H),0); sd=Image.new("L",(cw,ch),0); ImageDraw.Draw(sd).rounded_rectangle([0,0,cw-1,ch-1],radius=r,fill=140)
+    sm.paste(sd,(px,py+16)); sm=sm.filter(ImageFilter.GaussianBlur(30))
+    base.alpha_composite(Image.merge("RGBA",(Image.new("L",(W,H),0),)*3+(sm,))); base.alpha_composite(crop,(px,py))
+def _place_dark(base,objpath,fill=1.0):
     arr=np.asarray(Image.open(objpath).convert("RGB")).astype(int); H0,W0=arr.shape[:2]
     cs=np.concatenate([arr[:48,:48].reshape(-1,3),arr[:48,-48:].reshape(-1,3),arr[-48:,:48].reshape(-1,3),arr[-48:,-48:].reshape(-1,3)])
     bg=np.median(cs,0); d=np.abs(arr-bg).sum(2)
@@ -69,6 +86,8 @@ def place_obj(base,objpath,fill=1.0):
     el=el.resize((max(1,int(el.width*r)),max(1,int(el.height*r))),Image.LANCZOS)
     tcx=((tx0+tx1)/2-cx0)*r; tcy=((ty0+ty1)/2-cy0)*r          # tablet centre inside the scaled crop
     base.alpha_composite(el,(int(W/2-tcx), int(OBJ_CY-tcy)))  # tablet centre -> identical X/Y every slide
+def place_obj(base,objpath,fill=1.0):
+    (place_screen if getattr(T2,"SCREEN_CROP",False) else _place_dark)(base,objpath,fill)
 def body(base,eyebrow,head,sub,foot,objpath,page,n,fill):
     ghost(base,f"{page:02d}"); d=ImageDraw.Draw(base)
     ls_text(d,(MX,66),eyebrow,mono(27),CORAL,4)
