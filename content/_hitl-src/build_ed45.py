@@ -48,23 +48,25 @@ def wrap(d,text,font,maxw,maxlines=2):
     if cur: lines.append(cur)
     return lines[:maxlines]
 
-OBJ_CY=760; OBJ_H=650; OBJ_MAXW=900   # uniform box; cropped TIGHT to the panel, centred by BBOX centre
-def _panelbox(d,thr=90,dens=20):
-    # bbox of the actual PANEL (dense high-contrast region), excluding the soft shadow tails that
-    # reach the frame edges on some renders (research/site/cost) and inflate a naive diff-bbox.
+OBJ_CY=762; OBJ_H=636; OBJ_MAXW=904   # every object: WHOLE (uncut), sized by the dense TABLET (not the glow), centred -> equal
+def _tbox(d,thr=55,dens=80):
+    # bbox of the WHOLE tablet (dense region), incl. its dark lower half; the diffuse drop-glow is
+    # not dense enough to survive the column/row filter, so it is excluded from sizing.
     m=d>thr; cols=np.where(m.sum(0)>dens)[0]; rows=np.where(m.sum(1)>dens)[0]
     if len(cols) and len(rows): return int(cols.min()),int(rows.min()),int(cols.max()),int(rows.max())
     ys,xs=np.where(d>40); return int(xs.min()),int(ys.min()),int(xs.max()),int(ys.max())
-def place_obj(base,objpath):
-    arr=np.asarray(Image.open(objpath).convert("RGB")).astype(int)
-    cs=np.concatenate([arr[:40,:40].reshape(-1,3),arr[:40,-40:].reshape(-1,3),arr[-40:,:40].reshape(-1,3),arr[-40:,-40:].reshape(-1,3)])
+def place_obj(base,objpath,fill=1.0):
+    arr=np.asarray(Image.open(objpath).convert("RGB")).astype(int); H0,W0=arr.shape[:2]
+    cs=np.concatenate([arr[:48,:48].reshape(-1,3),arr[:48,-48:].reshape(-1,3),arr[-48:,:48].reshape(-1,3),arr[-48:,-48:].reshape(-1,3)])
     bg=np.median(cs,0); d=np.abs(arr-bg).sum(2)
-    x0,y0,x1,y1=_panelbox(d)                              # tight to the panel -> no shadow inflation, uniform size
-    alpha=np.clip((d-16)*16,0,255).astype("uint8")        # near-opaque: dark screen areas stay SOLID (no muddy slate blend); only true bg drops out
-    el=Image.fromarray(np.dstack([arr.astype("uint8"),alpha]),"RGBA").crop((x0,y0,x1+1,y1+1))
-    s=min(OBJ_H/el.height, OBJ_MAXW/el.width)
-    el=el.resize((max(1,int(el.width*s)),max(1,int(el.height*s))),Image.LANCZOS)
-    base.alpha_composite(el,(int(W/2-el.width/2), int(OBJ_CY-el.height/2)))   # bbox centre -> every object at the SAME position
+    tx0,ty0,tx1,ty1=_tbox(d)                               # the whole tablet
+    pad=42; cx0,cy0=max(0,tx0-pad),max(0,ty0-pad); cx1,cy1=min(W0,tx1+pad),min(H0,ty1+pad)
+    alpha=np.clip((d-16)*18,0,255).astype("uint8")         # near-opaque: dark lower half stays solid; far bg drops out
+    el=Image.fromarray(np.dstack([arr.astype("uint8"),alpha]),"RGBA").crop((cx0,cy0,cx1,cy1))
+    tw,th=tx1-tx0,ty1-ty0; r=min(OBJ_MAXW/tw, OBJ_H/th)*fill   # SIZE by the tablet -> equal across slides
+    el=el.resize((max(1,int(el.width*r)),max(1,int(el.height*r))),Image.LANCZOS)
+    tcx=((tx0+tx1)/2-cx0)*r; tcy=((ty0+ty1)/2-cy0)*r          # tablet centre inside the scaled crop
+    base.alpha_composite(el,(int(W/2-tcx), int(OBJ_CY-tcy)))  # tablet centre -> identical X/Y every slide
 def body(base,eyebrow,head,sub,foot,objpath,page,n,fill):
     ghost(base,f"{page:02d}"); d=ImageDraw.Draw(base)
     ls_text(d,(MX,66),eyebrow,mono(27),CORAL,4)
@@ -74,7 +76,7 @@ def body(base,eyebrow,head,sub,foot,objpath,page,n,fill):
     if sub:
         sf=dm(500,31)
         for ln in wrap(d,sub,sf,W-2*MX): d.text((MX,y),ln,font=sf,fill=INK); y+=41
-    place_obj(base,objpath)
+    place_obj(base,objpath,fill)
     if foot:   # the idea line under the object (fills the lower space)
         ff=dm(800,34); fw=int(d.textlength("".join(t for t,_ in foot),font=ff))
         seg_line(d,(W-fw)//2,H-176,foot,ff)
