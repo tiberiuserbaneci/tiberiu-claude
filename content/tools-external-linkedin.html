@@ -5,11 +5,9 @@
 <title>tools-external - LinkedIn 1080x1450</title>
 <style>
 @import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
-/* tools-external v3 - the Background Jobs SCREEN look (dark, live processes) put in a laptop WINDOW,
-   external-tools context, packed edge to edge like the phone. No drawn laptop device. Flat 2D. */
-:root{--slate:#191919;--panel:#151413;--card:#211f1e;--card2:#272523;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);
---ink46:rgba(250,250,247,.46);--rule:rgba(250,250,247,.09);--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;
---run:#5b93c7;--ok:#6bbf8a;}
+/* tools-external v4 - Ultron TERMINAL, dense external-tools console. Ultron hook (not Claude). Dark Ultron. */
+:root{--slate:#191919;--term:#15110f;--termbar:#0f0c0b;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);
+--rule:rgba(250,250,247,.08);--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--mut:#8b857d;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
 .frame{width:1080px;height:1450px;background:var(--slate);padding:32px 40px 20px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;}
@@ -17,55 +15,29 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 .atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 54% 20% at 90% -2%,rgba(204,120,92,.18) 0%,transparent 60%);}
 .frame>*{position:relative;z-index:2;}
 .mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding-bottom:11px;border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;}
-.mast .ml{color:var(--ink46);}.mast .ml em{color:var(--book);font-style:normal;}
-.mast .mr{color:var(--ink70);}
+.mast .ml{color:var(--ink46);}.mast .ml em{color:var(--book);font-style:normal;}.mast .mr{color:var(--ink70);}
 .hero{flex-shrink:0;margin-top:13px;}
 .eye{font-family:'DM Mono',monospace;font-size:12.5px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--kraft);}
-.hook{margin-top:7px;font-weight:900;font-size:44px;line-height:1;letter-spacing:-1.6px;}.hook em{color:var(--book);font-style:normal;}
+.hook{margin-top:7px;font-weight:900;font-size:46px;line-height:1;letter-spacing:-1.7px;}.hook em{color:var(--book);font-style:normal;}
 .sub{margin-top:9px;font-size:18.5px;font-weight:500;line-height:1.28;color:var(--ink70);max-width:1000px;}.sub b{color:var(--ivory);font-weight:700;}
-/* browser window */
-.win{flex:1;min-height:0;margin-top:13px;display:flex;flex-direction:column;border:1px solid var(--rule);border-radius:16px;overflow:hidden;background:var(--panel);box-shadow:0 24px 50px rgba(0,0,0,.45);}
-.wbar{flex-shrink:0;display:flex;align-items:center;gap:8px;padding:12px 16px;background:#0f0e0d;border-bottom:1px solid var(--rule);}
-.wbar .dot{width:12px;height:12px;border-radius:50%;background:#3a3836;}
-.wurl{flex:1;margin:0 14px;height:30px;border-radius:8px;background:#1c1b1a;display:flex;align-items:center;justify-content:center;gap:9px;font-family:'DM Mono',monospace;font-size:13px;color:var(--ink70);}
-.wurl .lock{width:11px;height:9px;border:1.5px solid var(--ink46);border-radius:2px;position:relative;margin-top:2px;}
-.wlive{display:flex;align-items:center;gap:7px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ok);}
-.wlive .d{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px rgba(107,191,138,.7);}
-/* app */
-.ahead{flex-shrink:0;padding:16px 22px 0;}
-.atop{display:flex;align-items:baseline;gap:12px;}
-.atop h1{font-weight:800;font-size:26px;letter-spacing:-.6px;}
-.atop .m{font-size:14px;color:var(--ink46);}.atop .m b{color:var(--book);font-weight:700;}
-.tabs{display:flex;gap:8px;margin-top:13px;}
-.tab{font-size:13.5px;font-weight:600;color:var(--ink46);padding:6px 14px;border-radius:18px;}
-.tab.on{background:var(--ivory);color:#161514;font-weight:800;}
-.acols{flex:1;min-height:0;display:flex;gap:0;}
-.col{flex:1;min-height:0;padding:15px 22px 18px;display:flex;flex-direction:column;}
-.col.l{border-right:1px solid var(--rule);}
-.clab{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--ink46);margin-bottom:11px;}
-.clab b{color:var(--book);}
-.calls{flex:1;min-height:0;display:flex;flex-direction:column;gap:10px;}
-.call{flex:1;min-height:0;background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:12px 15px;display:flex;flex-direction:column;justify-content:center;gap:6px;}
-.crow{display:flex;align-items:center;gap:9px;}
-.cname{font-family:'DM Mono',monospace;font-weight:500;font-size:15.5px;color:var(--ivory);letter-spacing:-.2px;}
-.chip{display:flex;align-items:center;gap:6px;font-family:'DM Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:16px;background:rgba(250,250,247,.06);color:var(--ink70);margin-left:auto;}
-.chip .sd{width:8px;height:8px;border-radius:50%;}
-.chip.run .sd{background:var(--run);box-shadow:0 0 7px rgba(91,147,199,.7);}.chip.run{color:#9fc0e0;}
-.chip.ok .sd{background:var(--ok);}.chip.ok{color:#9ed6b6;}
-.chip.q .sd{background:#6b6a66;}
-.cdesc{font-size:14px;color:var(--ink70);}
-.pbar{height:6px;border-radius:3px;background:rgba(250,250,247,.09);overflow:hidden;}.pbar>i{display:block;height:100%;background:var(--book);border-radius:3px;}
-.cmeta{font-family:'DM Mono',monospace;font-size:11px;color:var(--ink46);letter-spacing:.03em;}
-.srv{flex:1;min-height:0;display:flex;flex-direction:column;gap:9px;}
-.s{flex:1;min-height:0;background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:11px 15px;display:flex;align-items:center;gap:13px;}
-.s .ic{width:38px;height:38px;flex-shrink:0;border-radius:9px;background:var(--card2);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-weight:500;font-size:13px;color:var(--book);}
-.s .sx{flex:1;min-width:0;}
-.s .sn{font-weight:700;font-size:16px;letter-spacing:-.3px;}
-.s .sm{font-family:'DM Mono',monospace;font-size:11px;color:var(--ink46);margin-top:3px;letter-spacing:.02em;}
-.s .sc{display:flex;align-items:center;gap:6px;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:#9ed6b6;flex-shrink:0;}
-.s .sc .sd{width:8px;height:8px;border-radius:50%;background:var(--ok);}
-.note{flex-shrink:0;margin-top:11px;font-family:'DM Mono',monospace;font-size:11.5px;color:var(--ink46);letter-spacing:.02em;}
-.note b{color:var(--book);}
+/* terminal */
+.term{flex:1;min-height:0;margin-top:13px;display:flex;flex-direction:column;border:1px solid var(--rule);border-radius:14px;overflow:hidden;background:var(--term);box-shadow:0 24px 50px rgba(0,0,0,.45);}
+.tbar{flex-shrink:0;display:flex;align-items:center;gap:8px;padding:12px 16px;background:var(--termbar);border-bottom:1px solid var(--rule);}
+.tbar .dot{width:12px;height:12px;border-radius:50%;background:#39332f;}
+.tbar .tt{flex:1;text-align:center;font-family:'DM Mono',monospace;font-size:13px;color:var(--mut);letter-spacing:.04em;}
+.tbar .lv{display:flex;align-items:center;gap:7px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--book);}
+.tbar .lv .d{width:8px;height:8px;border-radius:50%;background:var(--book);box-shadow:0 0 8px rgba(204,120,92,.8);}
+.tbody{flex:1;min-height:0;padding:26px 24px;font-family:'DM Mono',monospace;display:flex;flex-direction:column;justify-content:space-between;gap:0;}
+.ln{display:flex;align-items:baseline;gap:10px;font-size:19px;line-height:1.35;white-space:nowrap;}
+.ln .p{color:var(--book);font-weight:500;}
+.ln .cmd{color:var(--ivory);font-weight:500;}
+.ln .ok{color:var(--book);}
+.ln .nm{color:var(--ivory);font-weight:500;}
+.ln .m{color:var(--mut);}
+.ln .r{margin-left:auto;color:var(--mut);}
+.ln .r b{color:var(--book);font-weight:500;}
+.sep{height:1px;background:var(--rule);margin:2px 0;}
+.blank{height:2px;}
 /* cta */
 .cta{flex-shrink:0;margin-top:13px;display:flex;align-items:center;gap:16px;border:1.5px solid var(--book);border-radius:18px;background:rgba(204,120,92,.08);padding:12px 12px 12px 26px;box-shadow:0 0 44px rgba(204,120,92,.2);}
 .cta .ph{flex:1;font-size:22px;font-weight:600;color:var(--ink70);line-height:1.2;}.cta .ph b{color:var(--book);font-weight:900;}
@@ -82,39 +54,31 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
   <div class="mast"><span class="ml">AI OPERATOR <em>&middot;</em> EXTERNAL TOOLS <em>&middot;</em> 31 CONNECTED</span><span class="mr">ULTRON</span></div>
   <div class="hero">
     <div class="eye">External tools</div>
-    <div class="hook">I connect my apps once. Claude finds every tool and <em>uses them live</em>.</div>
-    <div class="sub">Ultron discovers what each app offers, merges it into the chat, and <b>calls the right tool the moment you ask</b>.</div>
+    <div class="hook">I typed one line. Ultron ran <em>my whole stack</em>.</div>
+    <div class="sub">Ultron discovers every tool your apps expose, merges them into one catalog, and <b>calls the right ones on command</b>.</div>
   </div>
-  <div class="win">
-    <div class="wbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="wurl"><span class="lock"></span>app.51ultron.com/tools</span><span class="wlive"><span class="d"></span>Live</span></div>
-    <div class="ahead">
-      <div class="atop"><h1>External Tools</h1><span class="m"><b>31 tools</b> &middot; 6 servers &middot; discovered live</span></div>
-      <div class="tabs"><span class="tab on">All</span><span class="tab">Calling</span><span class="tab">Connected</span><span class="tab">Cached</span></div>
-    </div>
-    <div class="acols">
-      <div class="col l">
-        <div class="clab">Calling now <b>&middot; 4 live</b></div>
-        <div class="calls">
-          <div class="call"><div class="crow"><span class="cname">gmail_send</span><span class="chip run"><span class="sd"></span>running</span></div><div class="cdesc">Sending the signed contract to NorthPeak</div><div class="pbar"><i style="width:70%"></i></div><div class="cmeta">prefix gmail &middot; 1.2s</div></div>
-          <div class="call"><div class="crow"><span class="cname">hubspot_update_deal</span><span class="chip run"><span class="sd"></span>running</span></div><div class="cdesc">Moving the deal to Closed Won</div><div class="pbar"><i style="width:44%"></i></div><div class="cmeta">prefix hubspot &middot; 0.8s</div></div>
-          <div class="call"><div class="crow"><span class="cname">stripe_create_invoice</span><span class="chip ok"><span class="sd"></span>done</span></div><div class="cdesc">Raised the first invoice, cents on fees</div><div class="cmeta">prefix stripe &middot; 640ms</div></div>
-          <div class="call"><div class="crow"><span class="cname">calendly_create_event</span><span class="chip run"><span class="sd"></span>running</span></div><div class="cdesc">Booking the kickoff for Tuesday 10:00</div><div class="pbar"><i style="width:32%"></i></div><div class="cmeta">prefix calendly &middot; 0.5s</div></div>
-          <div class="call"><div class="crow"><span class="cname">notion_append_block</span><span class="chip run"><span class="sd"></span>running</span></div><div class="cdesc">Logging the account notes and next steps</div><div class="pbar"><i style="width:58%"></i></div><div class="cmeta">prefix notion &middot; 0.9s</div></div>
-          <div class="call"><div class="crow"><span class="cname">slack_post_message</span><span class="chip ok"><span class="sd"></span>done</span></div><div class="cdesc">Posted the win to the revenue channel</div><div class="cmeta">prefix slack &middot; 410ms</div></div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="clab">Connected servers <b>&middot; 6</b></div>
-        <div class="srv">
-          <div class="s"><span class="ic">Go</span><span class="sx"><div class="sn">Google</div><div class="sm">Gmail, Drive, Sheets, Docs +3 &middot; 7 tools</div></span><span class="sc"><span class="sd"></span>connected</span></div>
-          <div class="s"><span class="ic">Ms</span><span class="sx"><div class="sn">Messaging</div><div class="sm">Slack, Outlook, Teams, Zoom +2 &middot; 6 tools</div></span><span class="sc"><span class="sd"></span>connected</span></div>
-          <div class="s"><span class="ic">Cr</span><span class="sx"><div class="sn">CRM &amp; outreach</div><div class="sm">HubSpot, Salesforce, Apollo +2 &middot; 5 tools</div></span><span class="sc"><span class="sd"></span>connected</span></div>
-          <div class="s"><span class="ic">Wk</span><span class="sx"><div class="sn">Workspace</div><div class="sm">Notion, Airtable, ClickUp, Supabase &middot; 4 tools</div></span><span class="sc"><span class="sd"></span>connected</span></div>
-          <div class="s"><span class="ic">Da</span><span class="sx"><div class="sn">Automation &amp; data</div><div class="sm">n8n, Apify, Reddit, Brave +1 &middot; 5 tools</div></span><span class="sc"><span class="sd"></span>connected</span></div>
-          <div class="s"><span class="ic">$</span><span class="sx"><div class="sn">Money &amp; web</div><div class="sm">Stripe, Brevo, Cloudflare, Webflow &middot; 4 tools</div></span><span class="sc"><span class="sd"></span>connected</span></div>
-        </div>
-        <div class="note">tools/list merged &middot; prefixed per server &middot; <b>per-user scoped</b> &middot; cached 10m</div>
-      </div>
+  <div class="term">
+    <div class="tbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="tt">ultron &mdash; external tools</span><span class="lv"><span class="d"></span>live</span></div>
+    <div class="tbody">
+      <div class="ln"><span class="p">ultron&nbsp;~&nbsp;%</span><span class="cmd">connect --all</span></div>
+      <div class="ln"><span class="m">handshake&nbsp;&nbsp;initialize &rarr; tools/list</span><span class="r"><b>6</b> servers</span></div>
+      <div class="sep"></div>
+      <div class="ln"><span class="ok">&check;</span><span class="nm">google</span><span class="m">gmail drive sheets docs +3</span><span class="r"><b>7</b> tools &middot; cached 10m</span></div>
+      <div class="ln"><span class="ok">&check;</span><span class="nm">messaging</span><span class="m">slack outlook teams zoom +2</span><span class="r"><b>6</b> tools &middot; cached 10m</span></div>
+      <div class="ln"><span class="ok">&check;</span><span class="nm">crm</span><span class="m">hubspot salesforce apollo +2</span><span class="r"><b>5</b> tools &middot; cached 10m</span></div>
+      <div class="ln"><span class="ok">&check;</span><span class="nm">workspace</span><span class="m">notion airtable clickup supabase</span><span class="r"><b>4</b> tools</span></div>
+      <div class="ln"><span class="ok">&check;</span><span class="nm">automation</span><span class="m">n8n apify reddit brave +1</span><span class="r"><b>5</b> tools</span></div>
+      <div class="ln"><span class="ok">&check;</span><span class="nm">money</span><span class="m">stripe brevo cloudflare webflow</span><span class="r"><b>4</b> tools</span></div>
+      <div class="ln"><span class="m">merged&nbsp;&nbsp;prefixed per server &middot; per-user scoped</span><span class="r"><b>31</b> tools</span></div>
+      <div class="blank"></div>
+      <div class="ln"><span class="p">ultron&nbsp;~&nbsp;%</span><span class="cmd">"close the NorthPeak deal"</span></div>
+      <div class="ln"><span class="p">&rarr;</span><span class="nm">gmail_send</span><span class="m">sent the signed contract</span><span class="r">200 &middot; <b>1.2s</b></span></div>
+      <div class="ln"><span class="p">&rarr;</span><span class="nm">hubspot_update_deal</span><span class="m">moved to Closed Won</span><span class="r">200 &middot; <b>0.8s</b></span></div>
+      <div class="ln"><span class="p">&rarr;</span><span class="nm">stripe_create_invoice</span><span class="m">raised, cents on fees</span><span class="r">200 &middot; <b>640ms</b></span></div>
+      <div class="ln"><span class="p">&rarr;</span><span class="nm">calendly_create_event</span><span class="m">kickoff Tue 10:00</span><span class="r">200 &middot; <b>0.5s</b></span></div>
+      <div class="ln"><span class="p">&rarr;</span><span class="nm">notion_append_block</span><span class="m">logged the account notes</span><span class="r">200 &middot; <b>0.9s</b></span></div>
+      <div class="ln"><span class="p">&rarr;</span><span class="nm">slack_post_message</span><span class="m">posted to #revenue</span><span class="r">200 &middot; <b>410ms</b></span></div>
+      <div class="ln"><span class="ok">&check; done</span><span class="m">6 tools &middot; one command &middot; waiting your approval to send</span></div>
     </div>
   </div>
   <div class="cta"><span class="ph">Comment <b>STACK</b> for the full integration map and setup</span><span class="send"><svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div>
