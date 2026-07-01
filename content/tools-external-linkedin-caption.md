@@ -1,18 +1,18 @@
-Most founders pay for 31 tools and still do all the clicking by hand.
-The AI that can actually use those tools for you changes the whole equation.
+Most people connect an app to their AI and get one tool.
+I connected mine and got the whole app, live in the chat.
 
-I connected our stack to Ultron, the AI operator built on Claude, and stopped switching tabs. It does not replace Gmail or HubSpot or Stripe. It reaches into the ones you already pay for and does the work across them from a single chat.
+Ultron, the AI operator built on Claude, talks to your apps directly. Connect one and it discovers every tool that app offers, merges them into the chat, and calls the right one the moment you ask.
 
-→ Connect your apps once. Ultron reads what each one offers and adds those tools to the chat on its own.
-→ Ask in plain English. It sends the mail in Gmail, updates the deal in HubSpot, books the call in Calendly, pulls the invoice in Stripe.
-→ 31 tools across 6 categories are live today, from Google and Slack to Notion, Apollo and Cloudflare.
-→ Every teammate only sees the apps they personally connected, so the chat is scoped to each person.
-→ You bring your own keys, so most actions cost cents, not another seat.
+→ 31 tools across 6 servers, discovered live. Google, messaging, CRM, workspace, automation and money, all in one catalog.
+→ You ask in plain English. It runs gmail_send, hubspot_update_deal, stripe_create_invoice and calendly_create_event without you touching a tab.
+→ Every server is prefixed and cached for ten minutes, so the chat stays fast even with a dozen apps wired in.
+→ The catalog is per-user scoped. Each teammate only sees the tools they personally connected.
+→ Add a new app and its tools show up on their own. The catalog grows without shipping any code.
 
-The unlock is not another tool. It is one operator that can drive the tools you already have, so the work happens in one place instead of twelve tabs.
+Most AI tools bolt on one integration at a time. An operator discovers your whole stack and uses it. That is the difference between a chatbot and a company that runs itself.
 
 Follow for one AI system for founders every day.
-Comment STACK and I will send you the full Claude integration map and the exact setup we use.
+Comment STACK and I will send you the full integration map and the exact setup we use.
 
 ALT TEXT:
-Dark editorial infographic on slate background. The headline reads I sent one message, my AI used six tools to close the deal, with six tools in book-orange. Below sits a realistic Ultron chat panel with depth. Its top bar shows the Ultron sphere logo, the name Ultron, and a Deep Opus model chip. A book-orange user message reads close the NorthPeak deal, send the signed contract, update the CRM, book the kickoff and invoice them. A label reads Ultron used six connected tools, followed by six tool rows, each with a lettered icon, the tool name, the action, and a done marker: Gmail sent the signed contract, HubSpot moved the deal to Closed Won, Calendly booked the kickoff for Tuesday, Stripe raised the first invoice for cents on fees, Slack posted the win, and Notion logged the account notes. A closing assistant line reads one message, six tools, no tab switching. Under the chat, a strip of counts reads Google 7, Messaging 6, CRM 5, Workspace 4, Data 5, Money 4 and 31 tools live. Closes with a Comment STACK call to action and the Ultron logo.
+Dark editorial LinkedIn visual on a slate background. The headline reads I connect my apps once, Claude finds every tool and uses them live, with uses them live in book-orange. Below it, a browser window titled app.51ultron.com/tools with a Live indicator shows the Ultron External Tools screen in a dark live-console style. A header reads External Tools, 31 tools, 6 servers, discovered live, with tabs for All, Calling, Connected and Cached. The left column, Calling now, lists six live tool calls with status and progress: gmail_send running, hubspot_update_deal running, stripe_create_invoice done, calendly_create_event running, notion_append_block running, and slack_post_message done, each with its prefix and response time. The right column, Connected servers, lists six connected servers with tool counts: Google 7 tools, Messaging 6, CRM and outreach 5, Workspace 4, Automation and data 5, and Money and web 4, each marked connected. A footer line notes the catalog is merged, prefixed per server, per-user scoped and cached ten minutes. Closes with a Comment STACK call to action and the Ultron logo.

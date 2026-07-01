@@ -48,17 +48,23 @@ def wrap(d,text,font,maxw,maxlines=2):
     if cur: lines.append(cur)
     return lines[:maxlines]
 
+OBJ_CY=832; OBJ_H=660; OBJ_MAXW=884   # every object: same target height, centred at the same Y -> congruent
+def place_obj(base,objpath):
+    el=crop_obj(Image.open(objpath))
+    solid=el.split()[3].point(lambda v:255 if v>120 else 0); pb=solid.getbbox() or (0,0,el.width,el.height)
+    el=el.crop(pb); s=min(OBJ_H/el.height, OBJ_MAXW/el.width)
+    el=el.resize((max(1,int(el.width*s)),max(1,int(el.height*s))),Image.LANCZOS)
+    base.alpha_composite(el,((W-el.width)//2, int(OBJ_CY-el.height/2)))
 def body(base,eyebrow,head,sub,objpath,page,n,fill):
     ghost(base,f"{page:02d}"); d=ImageDraw.Draw(base)
     ls_text(d,(MX,66),eyebrow,mono(27),CORAL,4)
     s=min(fit_hook(d,head,W-2*MX,start=64,floor=46),60); hf=dm(900,s); y=108
     for ln in head: seg_line(d,MX,y,ln,hf); y+=int(s*1.12)
-    y+=12
+    y+=32   # clear gap between hook and sub-hook
     if sub:
         sf=dm(500,31)
         for ln in wrap(d,sub,sf,W-2*MX): d.text((MX,y),ln,font=sf,fill=INK); y+=41
-    top=y+28
-    T2.place_in_zone(base, crop_obj(Image.open(objpath)), (MX,top,W-MX,H-104), fill=min(1.0,fill*1.08))
+    place_obj(base,objpath)
     progress(d,page,n)
 
 def cover_tt(base):
