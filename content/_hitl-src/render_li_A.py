@@ -19,7 +19,7 @@ svg.wires{position:absolute;inset:0;pointer-events:none;}
 .card{position:absolute;border-radius:12px;padding:12px 15px;box-shadow:0 3px 0 rgba(23,21,15,.14);}
 .card .t{font-weight:900;font-size:19.5px;letter-spacing:-.3px;}
 .card .d{margin-top:4px;font-size:13.5px;line-height:1.28;font-weight:500;}
-.card.terra{background:#DE8A66;border:2px solid #17150F;}
+.card.terra{background:#D29A79;border:2px solid #17150F;}
 .card.terra .t{color:#17150F;}.card.terra .d{color:#3d2416;}
 .card.black{background:#211F1A;border:2px solid #17150F;}
 .card.black .t{color:#F7F1E6;}.card.black .d{color:rgba(247,241,230,.78);}
@@ -28,10 +28,13 @@ svg.wires{position:absolute;inset:0;pointer-events:none;}
 .card.mono .t{font-family:'DM Mono',monospace;font-weight:500;font-size:16.5px;}
 .hub{position:absolute;background:#FBF7EE;border:2.5px solid #17150F;border-radius:10px;padding:9px 14px;font-weight:900;font-size:19px;letter-spacing:-.3px;box-shadow:0 3px 0 rgba(23,21,15,.2);white-space:nowrap;}
 .hub.dark{background:#211F1A;color:#F7F1E6;}
-.hub.terra{background:#DE8A66;}
+.hub.terra{background:#D29A79;}
 .center{position:absolute;width:220px;height:220px;border-radius:50%;background:#FBF7EE;border:3px solid #C84623;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 0 rgba(200,70,35,.18);}
 .center img{width:150px;height:150px;border-radius:50%;object-fit:cover;}
-.ftr{position:absolute;left:0;right:0;bottom:0;height:56px;border-top:2px solid #17150F;background:#F2EBDF;display:flex;align-items:center;justify-content:space-between;padding:0 60px;}
+.ctab{position:absolute;left:40px;right:40px;bottom:74px;background:#211F1A;border-radius:14px;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;box-shadow:0 4px 0 rgba(23,21,15,.2);}
+.ctab .l{font-size:18px;font-weight:700;color:#F7F1E6;}.ctab .l b{color:#E5A183;font-weight:900;}
+.ctab .r{background:#F7F1E6;color:#17150F;border-radius:999px;padding:8px 18px;font-weight:900;font-size:15px;}
+.ftr{position:absolute;left:0;right:0;bottom:0;height:52px;border-top:2px solid #17150F;background:#F2EBDF;display:flex;align-items:center;justify-content:space-between;padding:0 60px;}
 .ftr .l{font-size:16.5px;font-weight:600;color:#3d3427;}.ftr .l b{font-weight:900;color:#17150F;}
 .ftr .r{display:flex;align-items:center;gap:10px;font-size:16.5px;font-weight:600;color:#3d3427;}
 .ftr .r img{width:26px;height:26px;border-radius:50%;}
@@ -50,13 +53,15 @@ def wires(paths):
     joints="".join(f'<rect x="{x-4}" y="{y-4}" width="8" height="8" fill="#C84623"/>' for x,y in JOINTS)
     return f'<svg class="wires" viewBox="0 0 1080 1450">{seg}{joints}</svg>'
 
-def emit(fn,title,sub,body):
+def emit(fn,title,sub,body,asset="the full map",pin="app.51ultron.com/docs"):
     html=f"""<!DOCTYPE html><html><head><meta charset="UTF-8"><style>{CSS}</style></head><body>
 <div class="frame" id="artifact">{SPARK}
 <div class="title">{title}</div><div class="sub">{sub}</div>
 {body}
-<div class="ftr"><span class="l">Comment <b>__KW__</b> and I will send you the full map</span><span class="r"><img src="__LOGO__"><span><b>ULTRON</b> &middot; 51ultron.com</span></span></div>
+<div class="ctab"><span class="l">Comment <b>__KW__</b> and I will DM you __ASSET__</span><span class="r">__KW__ &rarr;</span></div>
+<div class="ftr"><span class="l">__PIN__</span><span class="r"><img src="__LOGO__"><span><b>ULTRON</b> &middot; 51ultron.com</span></span></div>
 </div></body></html>"""
+    html=html.replace("__ASSET__",asset).replace("__PIN__",pin)
     open(fn,"w").write(html); print("wrote",fn)
 
 os.makedirs("content/howto2",exist_ok=True)
@@ -90,12 +95,12 @@ y=712
 for t,d in integ:
     B.append(card(744,y,300,"terra",t,d)); y+=112
 B.append(card(36,1058,300,"line","The brain","Your ICP, voice, pricing and deal stages. Briefed once, recalled in every run."))
-B.append(card(36,1180,300,"line","The router","Reads the job, hires the agent, picks the tier. You never choose a model."))
+B.append(card(36,1168,300,"line","The router","Reads the job, hires the agent, picks the tier. You never choose a model."))
 # bottom mono strip: what you type
-B.append(card(370,1122,224,"line mono","&gt; source 200 founders",""))
-B.append(card(610,1122,190,"line mono","&gt; audit my GTM",""))
-B.append(card(370,1196,224,"line mono","&gt; fix the pricing page",""))
-B.append(card(610,1196,190,"line mono","&gt; review this NDA",""))
+B.append(card(370,1108,224,"line mono","&gt; source 200 founders",""))
+B.append(card(610,1108,190,"line mono","&gt; audit my GTM",""))
+B.append(card(370,1182,224,"line mono","&gt; fix the pricing page",""))
+B.append(card(610,1182,190,"line mono","&gt; review this NDA",""))
 # hubs
 B.append(hub(368,332,"terra","The Agents"))
 B.append(hub(556,242,"dark","Model Tiers"))
@@ -122,10 +127,11 @@ paths.append("M716 760 V886 H714"); J(716,886)
 # center to hubs (short spokes)
 paths+=["M540 560 V280","M540 780 V1046","M430 670 H408","M650 670 H690 V530"]
 body1="".join(B)+wires(paths)
+emit_args1=True
 emit("content/howto2/li-01.html",
- 'Ultron is <em>eating up</em> your <u>GTM stack</u>.',
- "Seven agents, one chat box. You type plain English, the router does the rest.",
- body1)
+ 'You hired tools. I hired <em>seven agents</em>.',
+ "The full Ultron map: seven agents, three model tiers, one human gate. Save it.",
+ body1,asset="the full agent map + the docs link",pin="PINPOINT: app.51ultron.com/docs")
 
 # ================= li-04: THE BRAIN MAP =================
 JOINTS=[]
@@ -141,7 +147,7 @@ voice=[("Voice sample","How you actually write. PULSE drafts in it."),
 y=560
 for t,d in voice: B.append(card(36,y,300,"line",t,d)); y+=112
 B.append(card(36,952,300,"black","What dies elsewhere","Every other chat forgets this at close. You re-brief 15 minutes per session, forever."))
-B.append(card(36,1108,300,"black","Here it compounds","Every correction becomes a rule. It sounds more like you every month."))
+B.append(card(36,1100,300,"black","Here it compounds","Every correction becomes a rule. It sounds more like you every month."))
 money=[("Pricing","Starter free, Max $19, Enterprise $297. Quoted right, every time."),
 ("Objection bank","What worked, what died, per objection."),
 ("Cost rules","Cents per run. Deep tier only where it pays.")]
@@ -153,8 +159,8 @@ wired=[("CRM + inbox","Reads deals and threads before answering."),
 y=628
 for t,d in wired: B.append(card(744,y,300,"terra",t,d)); y+=112
 B.append(card(744,1010,300,"line mono","&gt; /init my business",""))
-B.append(card(744,1084,300,"line mono","&gt; remember: no discounts",""))
-B.append(card(744,1158,300,"line mono","&gt; what do you know about me?",""))
+B.append(card(744,1078,300,"line mono","&gt; remember: no discounts",""))
+B.append(card(744,1146,300,"line mono","&gt; what do you know about me?",""))
 B.append(hub(352,330,"terra","Who you sell to"))
 B.append(hub(352,500,"","How you sound"))
 B.append(hub(548,244,"dark","What you charge"))
@@ -184,6 +190,6 @@ paths.append("M392 1004 V1036 H408"); J(392,1036)
 paths+=["M540 560 V282","M540 780 V1006","M430 670 H406","M650 670 H700"]
 body4="".join(B)+wires(paths)
 emit("content/howto2/li-04.html",
- 'Brief your AI <em>once</em>. It <u>never asks twice</u>.',
- "The Ultron brain holds your business. Every agent recalls it on every run.",
- body4)
+ 'You brief your AI every day. <em>I briefed mine once.</em>',
+ "The brain map: what Ultron memorises about your business, and where it pays you back.",
+ body4,asset="the brain setup + the BCP link",pin="PINPOINT: app.51ultron.com/bcp")

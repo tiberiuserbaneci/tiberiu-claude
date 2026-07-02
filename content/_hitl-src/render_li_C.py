@@ -14,9 +14,9 @@ body{background:#d9d2c4;display:flex;justify-content:center;padding:24px 0;font-
 .hdr{flex-shrink:0;display:flex;align-items:center;gap:14px;}
 .hdr svg{width:52px;height:52px;flex-shrink:0;}
 .hdr .t{font-weight:900;font-size:45px;letter-spacing:-1.7px;}
-.hdr .t em{font-style:normal;color:#C84623;}
+.hdr .t em{font-style:normal;color:#A85B38;}
 .sub{flex-shrink:0;margin:6px 0 0 66px;font-size:17.5px;font-weight:600;color:#5d564a;}
-.sub b{color:#C84623;}
+.sub b{color:#A85B38;}
 .eras{flex-shrink:0;display:flex;gap:10px;margin-top:12px;}
 .era{flex:1;background:#FDFAF3;border:1.5px solid #d8cdb8;border-radius:12px;padding:9px 12px;}
 .era .k{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8d8371;}
@@ -25,13 +25,13 @@ body{background:#d9d2c4;display:flex;justify-content:center;padding:24px 0;font-
 .grid{flex:1;min-height:0;margin-top:12px;display:flex;gap:88px;position:relative;}
 .gcol{flex:1;display:flex;flex-direction:column;gap:11px;min-width:0;}
 .spine{position:absolute;left:50%;top:8px;bottom:8px;transform:translateX(-50%);width:64px;}
-.spine .rail{position:absolute;left:50%;top:0;bottom:0;width:38px;transform:translateX(-50%);border:3px solid #C84623;border-radius:22px;background:transparent;}
+.spine .rail{position:absolute;left:50%;top:0;bottom:0;width:38px;transform:translateX(-50%);border:3px solid #B08A62;border-radius:22px;background:transparent;}
 .spine .lbl{position:absolute;top:-4px;left:50%;transform:translateX(-50%);background:#F5F0E6;padding:0 6px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.13em;color:#8d8371;white-space:nowrap;}
 .sstop{position:absolute;left:50%;transform:translateX(-50%);background:#FDFAF3;border:2px solid #17150F;border-radius:999px;padding:4px 10px;font-family:'DM Mono',monospace;font-size:11px;white-space:nowrap;display:flex;align-items:center;gap:6px;}
 .sstop i{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
-.sorb{position:absolute;left:50%;top:47%;transform:translate(-50%,-50%);width:96px;height:96px;border-radius:50%;background:#FDFAF3;border:3px solid #C84623;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 0 rgba(200,70,35,.16);}
+.sorb{position:absolute;left:50%;top:47%;transform:translate(-50%,-50%);width:96px;height:96px;border-radius:50%;background:#FDFAF3;border:3px solid #B08A62;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 0 rgba(200,70,35,.16);}
 .sorb img{width:64px;height:64px;border-radius:50%;}
-.kard{flex:1;background:#FDFAF3;border:2px solid var(--bc);border-radius:14px;padding:11px 14px;display:flex;flex-direction:column;box-shadow:0 3px 0 rgba(23,21,15,.1);}
+.kard{flex:1;background:#FDFAF3;border:2px solid var(--bc);border-radius:14px;padding:11px 14px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 3px 0 rgba(23,21,15,.1);}
 .kard .top{display:flex;align-items:center;gap:9px;}
 .kard .num{width:26px;height:26px;border-radius:8px;background:var(--bc);color:#fff;font-weight:900;font-size:15px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .kard .sec{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--bc);font-weight:500;}
@@ -39,7 +39,7 @@ body{background:#d9d2c4;display:flex;justify-content:center;padding:24px 0;font-
 .kard .tt{margin-top:5px;font-weight:900;font-size:21px;letter-spacing:-.4px;}
 .kard .bd{margin-top:3px;font-size:13px;color:#57503f;line-height:1.3;}
 .kard .bd b{color:#17150F;}
-.flow{margin-top:8px;display:flex;align-items:center;gap:6px;}
+.flow{margin-top:auto;padding-top:8px;display:flex;align-items:center;gap:6px;}
 .fstep{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:0;}
 .fico{width:40px;height:40px;border-radius:10px;background:#F0E9DA;border:1.5px solid #d8cdb8;display:flex;align-items:center;justify-content:center;}
 .fico svg{width:20px;height:20px;stroke:#17150F;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
@@ -50,10 +50,13 @@ body{background:#d9d2c4;display:flex;justify-content:center;padding:24px 0;font-
 .farr .al{font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.08em;color:#8d8371;text-transform:uppercase;}
 .farr svg{width:22px;height:10px;stroke:#8d8371;stroke-width:2;fill:none;stroke-linecap:round;}
 .chip{margin-top:8px;background:#F0E9DA;border:1.5px solid #d8cdb8;border-radius:8px;padding:6px 10px;font-family:'DM Mono',monospace;font-size:12.5px;color:#17150F;}
-.chip b{color:#C84623;font-weight:500;}
+.chip b{color:#A85B38;font-weight:500;}
 .why{margin-top:7px;display:flex;gap:8px;font-size:12px;color:#57503f;line-height:1.3;}
 .why b{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--bc);flex-shrink:0;margin-top:1px;}
-.ftr{flex-shrink:0;height:52px;margin:12px -34px 0;background:#17150F;display:flex;align-items:center;justify-content:center;gap:12px;color:#F5F0E6;}
+.ctab{flex-shrink:0;margin:11px 0 0;background:#211F1A;border-radius:14px;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;box-shadow:0 3px 0 rgba(23,21,15,.18);}
+.ctab .l{font-size:18px;font-weight:700;color:#F7F1E6;}.ctab .l b{color:#E5A183;font-weight:900;}
+.ctab .r{background:#F7F1E6;color:#17150F;border-radius:999px;padding:8px 18px;font-weight:900;font-size:15px;}
+.ftr{flex-shrink:0;height:48px;margin:10px -34px 0;background:#17150F;display:flex;align-items:center;justify-content:center;gap:12px;color:#F5F0E6;}
 .ftr img{width:26px;height:26px;border-radius:50%;}
 .ftr .a{font-weight:900;font-size:15.5px;}.ftr .b{font-size:14.5px;color:rgba(245,240,230,.6);}
 .ftr .kw{font-family:'DM Mono',monospace;font-size:13px;color:#E8A17F;}
@@ -91,7 +94,7 @@ def kard(color,num,sec,tag,tt,bd,fl,chip,why):
             f'<div class="tt">{tt}</div><div class="bd">{bd}</div>{fl}'
             f'<div class="chip">{chip}</div><div class="why"><b>WHY</b><span>{why}</span></div></div>')
 
-def emit(fn,title,sub,eras,cardsL,cardsR,spine_lbl,stops,kw):
+def emit(fn,title,sub,eras,cardsL,cardsR,spine_lbl,stops,kw,asset="the playbook",pin="51ultron.com"):
     er="".join(f'<div class="era"><div class="k">{k}</div><div class="n">{n}</div><div class="d">{d}</div></div>' for k,n,d in eras)
     st="".join(f'<span class="sstop" style="top:{p}%"><i style="background:{c}"></i>{t}</span>' for p,c,t in stops)
     html=f"""<!DOCTYPE html><html><head><meta charset="UTF-8"><style>{CSS}</style></head><body>
@@ -102,12 +105,13 @@ def emit(fn,title,sub,eras,cardsL,cardsR,spine_lbl,stops,kw):
 <div class="grid"><div class="gcol">{cardsL}</div>
 <div class="spine"><span class="rail"></span><span class="lbl">{spine_lbl}</span>{st}<span class="sorb"><img src="__LOGO__"></span></div>
 <div class="gcol">{cardsR}</div></div>
-<div class="ftr"><img src="__LOGO__"><span class="a">ULTRON</span><span class="b">&middot; AI operator for founders &middot; 51ultron.com &middot;</span><span class="kw">comment {kw}</span></div>
+<div class="ctab"><span class="l">Comment <b>{kw}</b> and I will DM you {asset}</span><span class="r">{kw} &rarr;</span></div>
+<div class="ftr"><img src="__LOGO__"><span class="a">ULTRON</span><span class="b">&middot; 51ultron.com &middot;</span><span class="kw">{pin}</span></div>
 </div></body></html>"""
     open(fn,"w").write(html); print("wrote",fn)
 
 os.makedirs("content/howto2",exist_ok=True)
-TER="#C84623"; KRA="#B98A5F"; GRN="#4d8b6a"; BLK="#211F1A"
+TER="#A85B38"; KRA="#B08A62"; GRN="#4d8b6a"; BLK="#211F1A"
 
 # ---------------- li-05 AUDIT ----------------
 eras=[("HOW IT WAS","Gut feel","You ship and hope. No score, no fixes."),
@@ -132,10 +136,10 @@ cR=(kard(BLK,2,"THE CHECK","score 39","Follow-up","<b>68% of threads die</b> aft
 +kard(KRA,6,"THE VERDICT","61 / 100","The score","3 keep, 5 fix, each with the exact move. Re-run <b>every Monday</b>.",
  flow([("chart","61/100","TODAY",1),("bolt","5 fixes","THIS WK",0),("loop","Re-run","MONDAY",0)]),
  "<b>&gt; audit my GTM</b> &middot; three words, whole teardown","A score you re-run beats a deck you shelve."))
-emit("content/howto2/li-05.html",'GTM Audits, <em>Clearly Explained</em>.',
+emit("content/howto2/li-05.html",'Three words graded my funnel: <em>61/100</em>.',
  'Stop guessing what is broken. One sentence scores your whole funnel. <b>Six of the 8 checks below.</b>',
  eras,cL,cR,"THE AUDIT LOOP",
- [(6,TER,"Scan"),(30,KRA,"Score"),(62,"#4d8b6a","Fix"),(88,TER,"Re-run")],"AUDIT")
+ [(6,TER,"Scan"),(30,KRA,"Score"),(62,"#4d8b6a","Fix"),(88,TER,"Re-run")],"AUDIT",asset="the audit sentence + the rubric",pin="PINPOINT: app.51ultron.com/techniques")
 
 # ---------------- li-08 PROOF ----------------
 eras=[("HOW IT WAS","Screenshots","30 crops pasted into chat. Zero sources."),
@@ -160,10 +164,10 @@ cR=(kard(BLK,2,"THE CLAIM","conf 99%","ICP drift","<b>31% of pipeline</b> was ou
 +kard(KRA,6,"THE HABIT","every claim","Stamp it","Every number in every brief carries <b>source + run ID + confidence</b>.",
  flow([("doc","Claim","WRITTEN",0),("gear","Auto-stamp","RUN ID",1),("check","Trusted","DEFAULT",0)]),
  "<b>/brief</b> &middot; stamping is automatic","Proof by default beats proof on demand."))
-emit("content/howto2/li-08.html",'Research Proof, <em>Clearly Explained</em>.',
+emit("content/howto2/li-08.html",'One link ended a <em>three-week</em> argument.',
  'Three weeks of research, defended in one link. <b>No screenshots, no decks.</b>',
  eras,cL,cR,"THE EVIDENCE LOOP",
- [(6,TER,"Claim"),(30,KRA,"Source"),(62,"#4d8b6a","Stamp"),(88,TER,"Share")],"PROOF")
+ [(6,TER,"Claim"),(30,KRA,"Source"),(62,"#4d8b6a","Stamp"),(88,TER,"Share")],"PROOF",asset="the evidence-brief template",pin="PINPOINT: app.51ultron.com/resources")
 
 # ---------------- li-09 RESUME ----------------
 eras=[("HOW IT WAS","New chat daily","Yesterday died at midnight."),
@@ -189,7 +193,7 @@ cR=(kard(BLK,2,"CARRIES OVER","zero re-brief","The context","ICP, pricing, voice
 +kard(KRA,6,"THE RESULT","10 minutes","Reopen to sent","Two words in, proposal out the door by <b>09:11</b>.",
  flow([("bolt","Resume","09:01",1),("doc","Finish v3","09:03",0),("send","Proposal","09:11",0)]),
  "<b>&gt; resume</b> &middot; the whole ceremony","The fastest morning is the one that starts mid-stride."))
-emit("content/howto2/li-09.html",'Sessions That Resume, <em>Clearly Explained</em>.',
+emit("content/howto2/li-09.html",'I vanished for two days. <em>The deal survived.</em>',
  'Closed the laptop mid-negotiation Monday. Typed two words Wednesday. <b>Nothing was lost.</b>',
  eras,cL,cR,"THE SESSION LOOP",
- [(6,TER,"Work"),(30,KRA,"Close"),(62,"#4d8b6a","Resume"),(88,TER,"Continue")],"RESUME")
+ [(6,TER,"Work"),(30,KRA,"Close"),(62,"#4d8b6a","Resume"),(88,TER,"Continue")],"RESUME",asset="the session workflow + the docs link",pin="PINPOINT: app.51ultron.com/docs")

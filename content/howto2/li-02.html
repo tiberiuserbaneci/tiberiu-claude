@@ -6,23 +6,24 @@ body{background:#0a0a09;display:flex;justify-content:center;padding:24px 0;font-
 .frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
 background-image:linear-gradient(rgba(250,250,247,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(250,250,247,.05) 1px,transparent 1px);
 background-size:36px 36px;}
-.frame::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 70% 34% at 50% -6%,rgba(200,70,35,.22),transparent 62%);}
+.frame::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 70% 34% at 50% -6%,rgba(168,91,56,.16),transparent 62%);}
 .frame>*{position:relative;z-index:2;}
 .hdr{flex-shrink:0;display:flex;align-items:center;gap:18px;justify-content:center;}
 .hdr img{width:54px;height:54px;border-radius:12px;}
 .hdr .t{font-weight:900;font-size:47px;letter-spacing:-1.8px;}
-.hdr .t em{font-style:normal;color:#E8845F;text-shadow:0 0 34px rgba(232,132,95,.55);}
+.hdr .t em{font-style:normal;color:#D89572;text-shadow:0 0 26px rgba(216,149,114,.4);}
 .sub{flex-shrink:0;text-align:center;margin-top:8px;font-size:17.5px;font-weight:600;color:rgba(246,241,231,.66);}
 .sub b{color:#E8A17F;font-weight:700;}
-.start{flex-shrink:0;align-self:center;margin-top:12px;border:1.5px solid rgba(232,132,95,.55);background:rgba(200,70,35,.10);border-radius:999px;padding:8px 22px;display:flex;gap:14px;align-items:center;}
+.start{flex-shrink:0;align-self:center;margin-top:12px;border:1.5px solid rgba(201,146,116,.5);background:rgba(168,91,56,.08);border-radius:999px;padding:8px 22px;display:flex;gap:14px;align-items:center;}
 .start .a{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.16em;color:#E8845F;}
 .start .b{font-weight:800;font-size:15.5px;color:#F6F1E7;}
 .cols{flex:1;min-height:0;margin-top:16px;display:flex;gap:56px;position:relative;}
 .col{flex:1;display:flex;flex-direction:column;gap:12px;min-width:0;}
+.col .card{flex:1;display:flex;flex-direction:column;justify-content:center;}
 .spine{position:absolute;left:50%;top:0;bottom:0;width:0;transform:translateX(-50%);}
-.spine .bar{position:absolute;left:-2px;top:6px;bottom:6px;width:4px;border-radius:2px;background:linear-gradient(#E8845F,#C84623 55%,#D4A27F);box-shadow:0 0 18px rgba(200,70,35,.6);}
-.stop{position:absolute;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-weight:500;font-size:18px;border:3px solid #171716;box-shadow:0 0 0 2px rgba(232,132,95,.5),0 0 22px rgba(200,70,35,.5);background:#C84623;color:#fff;}
-.stop.k{background:#D4A27F;color:#211505;}.stop.w{background:#F6F1E7;color:#1b140e;}
+.spine .bar{position:absolute;left:-2px;top:6px;bottom:6px;width:4px;border-radius:2px;background:linear-gradient(#C99274,#A85B38 55%,#C9AE8C);box-shadow:0 0 14px rgba(168,91,56,.45);}
+.stop{position:absolute;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-weight:500;font-size:18px;border:3px solid #171716;box-shadow:0 0 0 2px rgba(201,146,116,.45),0 0 16px rgba(168,91,56,.4);background:#A85B38;color:#fff;}
+.stop.k{background:#C9AE8C;color:#211505;}.stop.w{background:#F6F1E7;color:#1b140e;}
 .card{background:rgba(25,25,24,.92);border:1px solid rgba(250,250,247,.11);border-radius:14px;padding:13px 16px;box-shadow:0 12px 34px rgba(0,0,0,.45);}
 .card .hd{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:8px;}
 .card .hd .t{font-weight:900;font-size:20.5px;letter-spacing:-.4px;}
@@ -31,19 +32,19 @@ background-size:36px 36px;}
 .card p b{color:#F6F1E7;}
 .term{margin-top:8px;background:#0d0d0c;border:1px solid rgba(250,250,247,.10);border-radius:10px;padding:10px 12px;display:flex;align-items:center;gap:10px;}
 .term .c{flex:1;font-family:'DM Mono',monospace;font-size:14.5px;color:#F0C9AF;}
-.term .go{width:26px;height:26px;border-radius:50%;background:#C84623;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.term .go{width:26px;height:26px;border-radius:50%;background:#A85B38;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .term .go svg{width:13px;height:13px;stroke:#fff;stroke-width:3;fill:none;stroke-linecap:round;}
 .row{display:flex;align-items:center;gap:10px;padding:6.5px 0;border-top:1px solid rgba(250,250,247,.07);}
 .row:first-of-type{border-top:none;}
 .row .n{font-weight:800;font-size:15.5px;flex-shrink:0;}
 .row .d{flex:1;font-size:13px;color:rgba(246,241,231,.6);}
-.row .bg{flex-shrink:0;font-family:'DM Mono',monospace;font-size:12px;background:#C84623;color:#fff;border-radius:7px;padding:3px 10px;font-weight:500;}
+.row .bg{flex-shrink:0;font-family:'DM Mono',monospace;font-size:12px;background:#A85B38;color:#fff;border-radius:7px;padding:3px 10px;font-weight:500;}
 .row .bg.k{background:#3a2c20;color:#E8A17F;border:1px solid rgba(232,132,95,.4);}
 .chk{display:flex;gap:10px;align-items:flex-start;padding:5.5px 0;font-size:14.5px;color:rgba(246,241,231,.82);}
 .chk b{color:#F6F1E7;}
-.chk .bx{width:19px;height:19px;border-radius:5px;background:#2e7d54;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.chk .bx{width:19px;height:19px;border-radius:5px;background:#3f7d5c;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
 .chk .bx svg{width:11px;height:11px;stroke:#fff;stroke-width:3.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-.chk.x .bx{background:#8a3category;background:#8a3520;}
+.chk.x .bx{background:#8a3520;}
 .cheat{flex-shrink:0;margin:14px 0 0;background:rgba(15,15,14,.94);border:1px solid rgba(250,250,247,.10);border-radius:14px 14px 0 0;padding:13px 20px 12px;}
 .cheat .hd{display:flex;justify-content:space-between;margin-bottom:9px;}
 .cheat .hd .t{font-weight:900;font-size:17px;}
@@ -51,16 +52,20 @@ background-size:36px 36px;}
 .cheat .gridc{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px 22px;}
 .ci{display:flex;align-items:center;gap:9px;font-size:13px;color:rgba(246,241,231,.62);}
 .ci b{font-family:'DM Mono',monospace;font-weight:500;font-size:13px;color:#E8A17F;background:rgba(200,70,35,.13);border:1px solid rgba(232,132,95,.32);border-radius:6px;padding:2.5px 9px;white-space:nowrap;}
+.ctab{flex-shrink:0;margin:12px 0 10px;background:linear-gradient(160deg,#B4693F,#8f4e2e);border-radius:14px;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;}
+.ctab .l{font-size:18.5px;font-weight:700;color:#fff;}.ctab .l b{font-weight:900;}
+.ctab .r{background:#F6F1E7;color:#1b140e;border-radius:999px;padding:8px 18px;font-weight:900;font-size:15px;}
 .ftr{flex-shrink:0;height:52px;margin:0 -36px;background:#0c0c0b;border-top:1px solid rgba(250,250,247,.1);display:flex;align-items:center;justify-content:center;gap:12px;}
 .ftr img{width:26px;height:26px;border-radius:50%;}
 .ftr .a{font-weight:900;font-size:15.5px;}.ftr .b{font-size:14.5px;color:rgba(246,241,231,.55);}
 .ftr .kw{font-family:'DM Mono',monospace;font-size:13px;color:#E8A17F;}
 </style></head><body>
 <div class="frame" id="artifact">
-<div class="hdr"><img src="__LOGO__"><span class="t">Replace <em>six AI tabs</em> with one box.</span></div>
+<div class="hdr"><img src="__LOGO__"><span class="t">Your AI stack: $129/mo. Mine: <em>cents</em>.</span></div>
 <div class="sub">Six subscriptions, six logins, six dead contexts. Here is the whole swap, priced.</div>
 <div class="start"><span class="a">THE MATH</span><span class="b">$129/mo of tabs &rarr; cents per day</span></div>
 <div class="cols"><div class="col"><div class="card"><div class="hd"><span class="t">The stack you pay for</span><span class="tag">$129 / MO</span></div><div class="row"><span class="n">ChatGPT</span><span class="d">answers, no memory of you</span><span class="bg">$20</span></div><div class="row"><span class="n">Claude</span><span class="d">same, second tab</span><span class="bg">$20</span></div><div class="row"><span class="n">Perplexity</span><span class="d">research only</span><span class="bg k">$20</span></div><div class="row"><span class="n">Jasper</span><span class="d">copy only</span><span class="bg k">$49</span></div><div class="row"><span class="n">Midjourney</span><span class="d">images only</span><span class="bg k">$10</span></div><div class="row"><span class="n">Notion AI</span><span class="d">notes only</span><span class="bg k">$10</span></div></div><div class="card"><div class="hd"><span class="t">What actually breaks</span><span class="tag">THE TAB TAX</span></div><div class="chk x"><span class="bx"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></span><span>Context dies inside <b>every tab</b></span></div><div class="chk x"><span class="bx"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></span><span>You re-paste your ICP <b>all day</b></span></div><div class="chk x"><span class="bx"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></span><span><b>You</b> are the router between them</span></div><div class="chk x"><span class="bx"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></span><span>Answers instead of <b>finished work</b></span></div></div></div><div class="spine"><span class="bar"></span><span class="stop " style="top:12%">1</span><span class="stop k" style="top:37%">2</span><span class="stop w" style="top:62%">3</span><span class="stop " style="top:87%">4</span></div><div class="col"><div class="card"><div class="hd"><span class="t">One box instead</span><span class="tag">THE SWAP</span></div><div class="term"><span class="c">&gt; write the cold sequence</span><span class="go"><svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span></div><div class="term"><span class="c">&gt; audit my GTM</span><span class="go"><svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span></div><p style="margin-top:8px">The router reads each job, hires the agent, picks the model tier. <b>You never choose.</b></p></div><div class="card"><div class="hd"><span class="t">One context</span><span class="tag">THE BRAIN</span></div><div class="row"><span class="n">Your ICP</span><span class="d">loaded in every job</span><span class="bg">SET</span></div><div class="row"><span class="n">Your voice</span><span class="d">under every draft</span><span class="bg k">SET</span></div><div class="row"><span class="n">Your pipeline</span><span class="d">live in every answer</span><span class="bg k">LIVE</span></div></div><div class="card"><div class="hd"><span class="t">What you keep</span><span class="tag">THE PAYOFF</span></div><div class="chk"><span class="bx"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg></span><span>One login, one history, <b>one bill</b></span></div><div class="chk"><span class="bx"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg></span><span>Work lands <b>done</b>: briefs, sends, PRs</span></div><div class="chk"><span class="bx"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg></span><span>A day of work costs <b>cents</b>, not seats</span></div></div></div></div>
 <div class="cheat"><div class="hd"><span class="t">The agents inside</span><span class="tag">ONE SUBSCRIPTION</span></div><div class="gridc"><span class="ci"><b>/cortex</b>research</span><span class="ci"><b>/specter</b>outbound</span><span class="ci"><b>/striker</b>deals</span><span class="ci"><b>/pulse</b>content</span><span class="ci"><b>/sentinel</b>code</span><span class="ci"><b>/amplify</b>publishing</span></div></div>
-<div class="ftr"><img src="__LOGO__"><span class="a">ULTRON</span><span class="b">&middot; AI operator for founders &middot; 51ultron.com &middot;</span><span class="kw">comment TABS</span></div>
+<div class="ctab"><span class="l">Comment <b>TABS</b> and I will DM you the migration map + the cost calculator</span><span class="r">TABS &rarr;</span></div>
+<div class="ftr"><img src="__LOGO__"><span class="a">ULTRON</span><span class="b">&middot; AI operator for founders &middot;</span><span class="kw">PINPOINT: work.51ultron.com/calculator</span></div>
 </div></body></html>

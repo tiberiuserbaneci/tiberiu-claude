@@ -17,7 +17,7 @@ body{background:#d9d2c4;display:flex;justify-content:center;padding:24px 0;font-
 .hdr{flex-shrink:0;display:flex;align-items:center;gap:16px;justify-content:center;}
 .hdr img{width:56px;height:56px;border-radius:13px;}
 .hdr .t{font-weight:900;font-size:49px;letter-spacing:-1.8px;}
-.hdr .t em{font-style:normal;color:#C84623;}
+.hdr .t em{font-style:normal;color:#A85B38;}
 .sub{flex-shrink:0;text-align:center;margin-top:6px;font-size:18px;font-weight:600;color:#5d564a;}
 .sub b{color:#17150F;}
 .band{flex:1;min-height:0;margin-top:13px;background:#FDFAF3;border:2px solid #17150F;border-radius:16px;box-shadow:0 4px 0 rgba(23,21,15,.16);display:flex;gap:16px;padding:13px 16px;}
@@ -36,7 +36,10 @@ body{background:#d9d2c4;display:flex;justify-content:center;padding:24px 0;font-
 .gp{font-family:'DM Mono',monospace;font-size:11.5px;color:#8d8371;background:#F0E9DA;border:1.5px solid #d8cdb8;border-radius:8px;padding:5px 14px;white-space:nowrap;}
 .gp.hot{color:#fff;background:var(--gc);border-color:var(--gc);opacity:1;}
 .garr{width:2px;height:9px;background:#c4b89f;}
-.ftr{flex-shrink:0;height:52px;margin:13px -40px 0;background:#17150F;display:flex;align-items:center;justify-content:center;gap:12px;color:#F6F1E7;}
+.ctab{flex-shrink:0;margin:12px 0 0;background:#211F1A;border-radius:14px;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;box-shadow:0 3px 0 rgba(23,21,15,.18);}
+.ctab .l{font-size:18px;font-weight:700;color:#F7F1E6;}.ctab .l b{color:#E5A183;font-weight:900;}
+.ctab .r{background:#F7F1E6;color:#17150F;border-radius:999px;padding:8px 18px;font-weight:900;font-size:15px;}
+.ftr{flex-shrink:0;height:48px;margin:11px -40px 0;background:#17150F;display:flex;align-items:center;justify-content:center;gap:12px;color:#F6F1E7;}
 .ftr img{width:26px;height:26px;border-radius:50%;}
 .ftr .a{font-weight:900;font-size:15.5px;}.ftr .b{font-size:14.5px;color:rgba(246,241,231,.6);}
 .ftr .kw{font-family:'DM Mono',monospace;font-size:13px;color:#E8A17F;}
@@ -51,7 +54,7 @@ def band(color,tile_a,tile_n,title,chip,bullets,ghost):
             f'<div class="ghost">{gh}</div></div>')
 
 def emit_ladder():
-    T="#C84623"; B="#CC785C"; K="#D4A27F"; G="#3f7d5c"; BK="#211F1A"
+    T="#B4693F"; B="#C08A6C"; K="#CDB392"; G="#3f7d5c"; BK="#211F1A"
     bands=(
      band(BK,"STEP","5","Replies route back","AFTER THE SEND",
       ["<b>STRIKER takes every reply.</b> Qualify, objection, book the call.",
@@ -80,10 +83,11 @@ def emit_ladder():
       [("one sentence",0),"",("SPECTER",1),"",("240 drafts",0)]))
     html=f"""<!DOCTYPE html><html><head><meta charset="UTF-8"><style>{CSS_D}</style></head><body>
 <div class="frame" id="artifact">
-<div class="hdr"><img src="__LOGO__"><span class="t">THE OUTBOUND <em>GATE</em> LADDER</span></div>
-<div class="sub">AI writes 240 emails. <b>You approve every one.</b> Five steps, one tap, zero accidents.</div>
+<div class="hdr"><img src="__LOGO__"><span class="t">AI wrote 240 emails. <em>Zero</em> left alone.</span></div>
+<div class="sub">The outbound gate ladder: five steps, <b>one human tap</b>, zero accidents. Save it.</div>
 {bands}
-<div class="ftr"><img src="__LOGO__"><span class="a">ULTRON</span><span class="b">&middot; AI operator for founders &middot; 51ultron.com &middot;</span><span class="kw">comment GATE</span></div>
+<div class="ctab"><span class="l">Comment <b>GATE</b> and I will DM you the gated outbound setup + the architecture doc</span><span class="r">GATE &rarr;</span></div>
+<div class="ftr"><img src="__LOGO__"><span class="a">ULTRON</span><span class="b">&middot; 51ultron.com &middot;</span><span class="kw">PINPOINT: app.51ultron.com/docs/architecture</span></div>
 </div></body></html>"""
     open("content/howto2/li-07.html","w").write(html); print("wrote li-07 (ladder)")
 
@@ -98,7 +102,7 @@ body{background:#d9d2c4;display:flex;justify-content:center;padding:24px 0;font-
 .hdr{flex-shrink:0;display:flex;align-items:center;gap:14px;}
 .hdr svg{width:50px;height:50px;flex-shrink:0;}
 .hdr .t{font-weight:900;font-size:46px;letter-spacing:-1.8px;}
-.hdr .t em{font-style:normal;color:#C84623;}
+.hdr .t em{font-style:normal;color:#A85B38;}
 .sub{flex-shrink:0;margin:5px 0 0 64px;font-size:17.5px;font-weight:600;color:#5d564a;}
 .sub b{background:#EED9A3;padding:1px 7px;border-radius:5px;color:#17150F;}
 .gridw{flex:1;min-height:0;margin-top:12px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:11px;}
@@ -112,19 +116,22 @@ body{background:#d9d2c4;display:flex;justify-content:center;padding:24px 0;font-
 .pb{margin-top:auto;background:#1B1A16;border-radius:9px;padding:8px 10px;display:flex;gap:8px;align-items:flex-start;}
 .pb .c{flex:1;font-family:'DM Mono',monospace;font-size:11px;line-height:1.42;color:#E8D9C4;}
 .pb .c i{color:#E8845F;font-style:normal;}
-.pb .go{width:20px;height:20px;border-radius:50%;background:#C84623;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.pb .go{width:20px;height:20px;border-radius:50%;background:#A85B38;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
 .pb .go svg{width:10px;height:10px;stroke:#fff;stroke-width:3;fill:none;stroke-linecap:round;}
 .pbl{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.12em;color:#a5613f;text-transform:uppercase;margin:7px 0 3px;}
 .band9{flex-shrink:0;margin-top:12px;background:#17150F;border-radius:14px;padding:12px 16px;display:flex;align-items:center;gap:12px;color:#F6F1E7;}
-.band9 .n9{width:26px;height:26px;border-radius:50%;background:#C84623;color:#fff;font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.band9 .n9{width:26px;height:26px;border-radius:50%;background:#A85B38;color:#fff;font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .band9 .t9{font-weight:900;font-size:16.5px;flex-shrink:0;}
 .b9s{flex:1;display:flex;align-items:center;gap:8px;}
 .b9c{flex:1;background:#242219;border:1px solid rgba(246,241,231,.14);border-radius:9px;padding:6px 10px;}
 .b9c .k{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.13em;color:#E8A17F;text-transform:uppercase;}
 .b9c .v{font-size:12px;color:rgba(246,241,231,.8);margin-top:1px;}
 .b9a{flex-shrink:0;color:#8d8371;font-weight:900;}
-.ftr{flex-shrink:0;height:50px;margin:12px -36px 0;background:#F6F1E7;border-top:2px solid #17150F;display:flex;align-items:center;justify-content:space-between;padding:0 56px;}
-.ftr .l{font-size:15.5px;font-weight:600;color:#3d3427;}.ftr .l b{font-weight:900;color:#C84623;}
+.ctab{flex-shrink:0;margin:11px 0 0;background:#211F1A;border-radius:14px;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;box-shadow:0 3px 0 rgba(23,21,15,.18);}
+.ctab .l{font-size:18px;font-weight:700;color:#F7F1E6;}.ctab .l b{color:#E5A183;font-weight:900;}
+.ctab .r{background:#F7F1E6;color:#17150F;border-radius:999px;padding:8px 18px;font-weight:900;font-size:15px;}
+.ftr{flex-shrink:0;height:46px;margin:10px -36px 0;background:#F6F1E7;border-top:2px solid #17150F;display:flex;align-items:center;justify-content:space-between;padding:0 56px;}
+.ftr .l{font-size:15.5px;font-weight:600;color:#3d3427;}.ftr .l b{font-weight:900;color:#A85B38;}
 .ftr .r{display:flex;align-items:center;gap:9px;font-size:15.5px;font-weight:600;color:#3d3427;}
 .ftr .r img{width:25px;height:25px;border-radius:50%;}
 .ftr .r b{font-weight:900;color:#17150F;}
@@ -139,7 +146,7 @@ def cell(color,n,tt,bullets,pbl,pb):
     return f'<div class="cell"><div class="top"><span class="num" style="background:{color}">{n}</span><span class="tt">{tt}</span></div>{bl}{pbh}</div>'
 
 def emit_grid():
-    T="#C84623"; B="#CC785C"; K="#B98A5F"; G="#3f7d5c"; BK="#211F1A"
+    T="#B4693F"; B="#C08A6C"; K="#B08A62"; G="#3f7d5c"; BK="#211F1A"
     cells=(
      cell(T,1,"Drop your list.",["<b>40 accounts</b>, straight from your CRM export.","Or say the niche and <b>CORTEX builds the list</b>."],
       "PASTE THIS","<i>&gt;</i> score my list on AI-readiness. CSV attached. Rank call-now first.")
@@ -162,11 +169,12 @@ def emit_grid():
       '<div class="b9c"><div class="k">Call</div><div class="v">you, at the right time</div></div></div></div>')
     html=f"""<!DOCTYPE html><html><head><meta charset="UTF-8"><style>{CSS_E}</style></head><body>
 <div class="frame" id="artifact">
-<div class="hdr">{SPARK}<span class="t">How to score <em>40 companies</em> on AI-readiness</span></div>
-<div class="sub">9 steps, one run, <b>62 minutes</b>. Stop guessing who is ready to buy.</div>
+<div class="hdr">{SPARK}<span class="t">Two buyers were <em>hiding</em> in my list of 40.</span></div>
+<div class="sub">The AI-readiness index: 9 steps, one run, <b>62 minutes</b>. It found both before lunch.</div>
 <div class="gridw">{cells}</div>
 {band}
-<div class="ftr"><span class="l">Comment <b>INDEX</b> and I will send you the rubric + the run</span><span class="r"><img src="__LOGO__"><span><b>ULTRON</b> &middot; 51ultron.com</span></span></div>
+<div class="ctab" style="margin-top:11px"><span class="l">Comment <b>INDEX</b> and I will DM you the rubric + the scoring run</span><span class="r">INDEX &rarr;</span></div>
+<div class="ftr"><span class="l">PINPOINT: app.51ultron.com/techniques</span><span class="r"><img src="__LOGO__"><span><b>ULTRON</b> &middot; 51ultron.com</span></span></div>
 </div></body></html>"""
     open("content/howto2/li-10.html","w").write(html); print("wrote li-10 (grid)")
 
