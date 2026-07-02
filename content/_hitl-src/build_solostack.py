@@ -6,8 +6,8 @@ import importlib.util
 spec=importlib.util.spec_from_file_location("T2","/home/user/tiberiu-claude/content/_hitl-src/build_team_3d.py")
 T2=importlib.util.module_from_spec(spec); spec.loader.exec_module(T2)
 wo=lambda s:(s,T2.WHITE); co=lambda s:(s,T2.CORAL); mu=lambda s:(s,T2.MUTED)
-M="/home/user/tiberiu-claude/content/_hitl-src/models_prem/solostack"; LIB=T2.LIB
-PREMIUM=1   # Vertex premium panels (operator 2026-07-02), uniform front-on frame
+M="/home/user/tiberiu-claude/content/_hitl-src/models_clay/solostack"; LIB=T2.LIB
+PREMIUM=1   # coded clay3d panels
 T2.ACCENT=(204,120,92); T2.CORAL=T2.ACCENT   # per-material accent (anti-sameness)
 T2.COVER_OBJ="/home/user/tiberiu-claude/content/_hitl-src/covers/solostack.png"  # Vertex real-logo cover visual
 T2.OBJ_THR=30   # front-on 2.5D windows: whole window+shadow bbox
@@ -27,4 +27,6 @@ T2.CONTENT=[
 T2.CTA=("RUN IT SOLO", [[wo("Run it solo,")],[co("comment OPERATOR.")]], f"{LIB}/cta3d-operator.png", 0.92)
 T2.CLOSE=dict(l1="Save this to",l2="run lean.",q="Which hire would you skip first?")
 
-MARK2="strip"   # contextual: materialul e despre stack-ul de tool-uri inlocuit
+
+MARK2="strip"
+STRIP="/home/user/tiberiu-claude/content/_hitl-src/covers/solostack_strip.png"

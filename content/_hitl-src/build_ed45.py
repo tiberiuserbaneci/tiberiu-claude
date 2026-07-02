@@ -556,10 +556,15 @@ def cover_tt(base):
     if mk2=="strip":
         # replacement narrative (operator 2026-07-02): ONLY the tool icons, BIG, no shelf
         # shadow, NO plus, NO Ultron logo on slide 1 - Ultron replaces them, it does not sit next to them
-        stk=Image.open("/home/user/tiberiu-claude/content/_hitl-src/covers/tabsrow_clean.png").convert("RGBA")
+        sp=getattr(MAT,"STRIP","/home/user/tiberiu-claude/content/_hitl-src/covers/tabsrow_clean.png")
+        stk=Image.open(sp).convert("RGBA")
         tw2=min(W-260, stk.width)
         stk=stk.resize((tw2,int(stk.height*tw2/stk.width)),Image.LANCZOS)
         base.alpha_composite(stk,((W-stk.width)//2, my))
+    elif mk2=="orb":
+        # Ultron IS the subject: the sphere alone, large, centred
+        ob=_orb(); ob.thumbnail((170,170),Image.LANCZOS)
+        base.alpha_composite(ob,((W-ob.width)//2, my))
     else:
         logos=[Image.open(CLAUDE_SUN).convert("RGBA"), _orb()]
         L=120; SLOT=88
@@ -590,10 +595,14 @@ def cover_ig(out):
     mk2=getattr(MAT,"MARK2",getattr(T2,"MARK2","claude"))
     if mk2=="strip":
         # ONLY the tool icons, big, clean - no shelf shadow, no plus, no Ultron logo on slide 1
-        stk=Image.open("/home/user/tiberiu-claude/content/_hitl-src/covers/tabsrow_clean.png").convert("RGBA")
+        sp=getattr(MAT,"STRIP","/home/user/tiberiu-claude/content/_hitl-src/covers/tabsrow_clean.png")
+        stk=Image.open(sp).convert("RGBA")
         tw2=min(W-280, stk.width)
         stk=stk.resize((tw2,int(stk.height*tw2/stk.width)),Image.LANCZOS)
         base.alpha_composite(stk,((W-stk.width)//2, my))
+    elif mk2=="orb":
+        ob=_orb(); ob.thumbnail((160,160),Image.LANCZOS)
+        base.alpha_composite(ob,((W-ob.width)//2, my))
     else:
         logos=[Image.open(CLAUDE_SUN).convert("RGBA"), _orb()]
         L=112; SLOT=84
