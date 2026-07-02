@@ -11,11 +11,11 @@ info=json.load(open(f"{SP}/adc.json"))
 def token():
     return requests.post("https://oauth2.googleapis.com/token",data={"client_id":info["client_id"],"client_secret":info["client_secret"],"refresh_token":info["refresh_token"],"grant_type":"refresh_token"},verify=CA,timeout=30).json()["access_token"]
 def b64(p): return base64.b64encode(open(p,"rb").read()).decode()
-SEED=b64("/home/user/tiberiu-claude/content/_hitl-src/models_agentsprod/gate.png")
+SEED=b64("/home/user/tiberiu-claude/content/_hitl-src/models_prem/solostack/apollo.png")
 
 MBASE=("A HIGH-FIDELITY 3D PRODUCT RENDER (Octane / Cinema 4D quality, physically-based rendering) of a premium UI panel, "
  "viewed STRAIGHT-ON in ORTHOGRAPHIC FRONT VIEW - upright and perfectly symmetric, no perspective tilt. It IS a real 3D "
- "object: a soft-touch MATTE panel with subtly BEVELED rounded edges and visible THICKNESS, lit by a three-point SOFTBOX "
+ "object: a soft-touch MATTE panel with subtly BEVELED rounded edges and visible THICKNESS, its BODY the same DARK CHARCOAL family as the reference panel (never white, never cream), lit by a three-point SOFTBOX "
  "studio setup with ambient occlusion and a SOFT CONTACT SHADOW beneath it. NOT a flat 2D screenshot, NOT a sticker, NOT "
  "an illustration. On a COMPLETELY FLAT #191919 dark charcoal background, vertical 4:5, a panel about 3:2 sitting in the "
  "MIDDLE at roughly 70% width so there is a GENEROUS EMPTY CHARCOAL MARGIN on ALL FOUR sides. CRITICAL: the panel is rendered "
@@ -31,12 +31,12 @@ MTAIL=" The whole panel is exactly this, centred, front-on. No other panels. No 
 PANELS={
  "apollo":"a lead list table: a slim header strip titled 'Leads', then three list rows, each with a small round avatar dot on the left, a name in clean sans-serif ('Sarah Lin', 'Marco Diaz', 'Priya Rao') and a rounded warm-orange score chip on the right reading '94', '88', '81'.",
  "gmail_sent":"an email outbox: a header strip titled 'Outbox' with a small paper-plane icon, then three message rows, each a short subject ('Acme intro', 'Globex pricing', 'Northwind') with a small warm-orange 'Sent' chip carrying a tiny check on the right.",
- "hubspot":"a sales pipeline board: three upright columns side by side labelled 'Qualified', 'Proposal', 'Won', each column holding one rounded deal card with a faint company row; the card in the 'Won' column is filled warm orange with a small white check.",
- "designer":"a brand board titled 'On brand': a row of three large rounded colour swatch tiles (terracotta, warm sand, soft cream), and beneath them a neat row of four small outlined chips labelled 'hero', 'pricing', 'FAQ', 'CTA'.",
+ "hubspot":"a sales pipeline board, the panel body DARK CHARCOAL like the reference: three upright columns side by side labelled 'Qualified', 'Proposal', 'Won', each column holding one rounded deal card with a faint company row; the card in the 'Won' column is filled warm orange with a small white check.",
+ "designer":"a brand board, the panel body DARK CHARCOAL like the reference, titled 'On brand': a row of three large rounded colour swatch tiles (terracotta, warm sand, soft cream), and beneath them a neat row of four small outlined chips labelled 'hero', 'pricing', 'FAQ', 'CTA'.",
  "developer":"a dark deploy console: a title strip reading 'Deploy', three short status rows each led by a small warm-orange dot reading 'building', 'tests passed', 'live', and a large round warm-orange button with a white check in the lower right corner of the panel.",
- "bill":"a cost comparison: two stacked full-width rounded rows inside the panel; the top row muted grey labelled 'Five tools' with a small grey cross icon; the bottom row filled warm orange, slightly taller, labelled 'One chat' with a small white check icon.",
- "gate":"an approvals queue titled 'The gate': one parked task row reading 'Send 240 emails' with a small padlock icon, and beneath it two side-by-side buttons: a filled warm-orange 'Approve' button and an outlined 'Hold' button.",
- "ultron_real":"a chat composer: a short assistant message row with a small round dot avatar near the top, and a large rounded input bar reading 'run it solo' with a circular filled warm-orange send button holding a white arrow on its right end.",
+ "bill":"a cost comparison, the panel body DARK CHARCOAL like the reference: two stacked full-width rounded rows inside the panel; the top row muted grey labelled 'Five tools' with a small grey cross icon; the bottom row filled warm orange, slightly taller, labelled 'One chat' with a small white check icon.",
+ "gate":"an approvals queue, the panel body DARK CHARCOAL like the reference, titled 'The gate': one parked task row reading 'Send 240 emails' with a small padlock icon, and beneath it two side-by-side buttons: a filled warm-orange 'Approve' button and an outlined 'Hold' button.",
+ "ultron_real":"a chat composer, the panel body DARK CHARCOAL like the reference: a short assistant message row with a small round dot avatar near the top, and a large rounded input bar reading 'run it solo' with a circular filled warm-orange send button holding a white arrow on its right end.",
 }
 
 def gen(stem,desc):
