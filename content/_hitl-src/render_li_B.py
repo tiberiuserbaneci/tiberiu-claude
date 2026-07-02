@@ -14,12 +14,13 @@ background-image:linear-gradient(rgba(250,250,247,.05) 1px,transparent 1px),line
 background-size:36px 36px;}
 .frame::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 70% 34% at 50% -6%,rgba(168,91,56,.16),transparent 62%);}
 .frame>*{position:relative;z-index:2;}
-.hdr{flex-shrink:0;display:flex;align-items:center;gap:18px;justify-content:center;}
-.hdr img{width:54px;height:54px;border-radius:12px;}
-.hdr .t{font-weight:900;font-size:47px;letter-spacing:-1.8px;}
-.hdr .t em{font-style:normal;color:#D89572;text-shadow:0 0 26px rgba(216,149,114,.4);}
-.sub{flex-shrink:0;text-align:center;margin-top:8px;font-size:17.5px;font-weight:600;color:rgba(246,241,231,.66);}
-.sub b{color:#E8A17F;font-weight:700;}
+.mast{flex-shrink:0;display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:1px solid rgba(246,241,231,.25);font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(246,241,231,.5);}
+.mast em{color:#D89572;font-style:normal;}
+.hook{margin-top:14px;font-weight:900;font-size:55px;letter-spacing:-2.2px;line-height:1.0;color:#F6F1E7;}
+.hook em{color:#D89572;font-style:normal;}
+.subl{margin-top:9px;font-size:18.5px;font-weight:600;color:rgba(246,241,231,.68);}
+.subl b{color:#F6F1E7;}
+
 .start{flex-shrink:0;align-self:center;margin-top:12px;border:1.5px solid rgba(201,146,116,.5);background:rgba(168,91,56,.08);border-radius:999px;padding:8px 22px;display:flex;gap:14px;align-items:center;}
 .start .a{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.16em;color:#E8845F;}
 .start .b{font-weight:800;font-size:15.5px;color:#F6F1E7;}
@@ -78,17 +79,16 @@ def checks(cc,x=False): return "".join(f'<div class="chk{" x" if x else ""}">{XX
 def cheat(t,tag,items): return ('<div class="cheat"><div class="hd"><span class="t">'+t+'</span><span class="tag">'+tag+'</span></div><div class="gridc">'
     +"".join(f'<span class="ci"><b>{a}</b>{b}</span>' for a,b in items)+'</div></div>')
 
-def emit(fn,title,sub,start_a,start_b,left,right,nstops,cheat_html,kw,asset="the playbook",pin="51ultron.com"):
+def emit(fn,title,sub,start_a,start_b,left,right,nstops,cheat_html,kw,asset="the playbook",pin="",mastl="ULTRON <em>&middot;</em> FOUNDER PLAYBOOK",mastr="SAVE THIS"):
     stops="".join(f'<span class="stop{[" "," k"," w"][i%3]}" style="top:{int((i+0.5)*100/nstops)}%">{i+1}</span>' for i in range(nstops))
     html=f"""<!DOCTYPE html><html><head><meta charset="UTF-8"><style>{CSS}</style></head><body>
 <div class="frame" id="artifact">
-<div class="hdr"><img src="__LOGO__"><span class="t">{title}</span></div>
-<div class="sub">{sub}</div>
+<div class="mast"><span>{mastl}</span><span>{mastr}</span></div><div class="hook">{title}</div><div class="subl">{sub}</div>
 <div class="start"><span class="a">{start_a}</span><span class="b">{start_b}</span></div>
 <div class="cols"><div class="col">{left}</div><div class="spine"><span class="bar"></span>{stops}</div><div class="col">{right}</div></div>
 {cheat_html}
 <div class="ctab"><span class="l">Comment <b>{kw}</b> and I will DM you {asset}</span><span class="r">{kw} &rarr;</span></div>
-<div class="ftr"><img src="__LOGO__"><span class="a">ULTRON</span><span class="b">&middot; AI operator for founders &middot;</span><span class="kw">{pin}</span></div>
+<div class="ftr"><img src="__LOGO__"><span class="a">ULTRON</span><span class="b">&middot; AI operator for founders &middot; 51ultron.com</span></div>
 </div></body></html>"""
     open(fn,"w").write(html); print("wrote",fn)
 
@@ -103,7 +103,7 @@ R=(bcard("CORTEX runs","LIVE DATA",rows([("Pulled","companies matching the niche
 +bcard("The gate holds","NO ACCIDENTS",'<p><b>240 sends parked on HOLD.</b> Nothing external fires until you approve. Read 12, spot-check the rest, one tap.</p>')
 +bcard("The clock","REAL TIMING",rows([("09:14","you type the sentence","IN",1),("09:33","top 200 exported","+19 MIN",1),("09:47","queue ready, gate holds","47 MIN",0)])+'<p style="margin-top:8px">The laptop was closed for <b>46 of the 47 minutes</b>.</p>'))
 CH=cheat("Handy commands","CHEAT SHEET",[("/cortex","profile + source"),("/specter","openers + sequences"),("/amplify","10:00 local queue"),("/striker","triage the replies"),("approve","release the queue"),("/brief","one-page account brief")])
-emit("content/howto2/li-03.html",'200 founders sourced. I typed <em>one sentence</em>.',
+emit("content/howto2/li-03.html",'200 founders sourced.<br>I typed <em>one sentence</em>.',
  'The unedited run from this morning. One line in, briefed pipeline out. <b>47 minutes.</b>',
  "START HERE","one sentence &middot; laptop closed &middot; 47 min",L,R,6,CH,"SOURCE",asset="the sourcing sentence + the techniques link",pin="PINPOINT: app.51ultron.com/techniques")
 
@@ -114,7 +114,7 @@ R=(bcard("One box instead","THE SWAP",term("&gt; write the cold sequence")+term(
 +bcard("One context","THE BRAIN",rows([("Your ICP","loaded in every job","SET",0),("Your voice","under every draft","SET",1),("Your pipeline","live in every answer","LIVE",1)]))
 +bcard("What you keep","THE PAYOFF",checks(["One login, one history, <b>one bill</b>","Work lands <b>done</b>: briefs, sends, PRs","A day of work costs <b>cents</b>, not seats"])))
 CH=cheat("The agents inside","ONE SUBSCRIPTION",[("/cortex","research"),("/specter","outbound"),("/striker","deals"),("/pulse","content"),("/sentinel","code"),("/amplify","publishing")])
-emit("content/howto2/li-02.html",'Your AI stack: $129/mo. Mine: <em>cents</em>.',
+emit("content/howto2/li-02.html",'Your AI stack: $129 a month.<br>Mine: <em>cents</em>.',
  'Six subscriptions, six logins, six dead contexts. Here is the whole swap, priced.',
  "THE MATH","$129/mo of tabs &rarr; cents per day",L,R,4,CH,"TABS",asset="the migration map + the cost calculator",pin="PINPOINT: work.51ultron.com/calculator")
 
@@ -126,7 +126,7 @@ R=(bcard("It assembles, then verifies","NO AI LOOK",checks(["Sections from the <
 +bcard("App screens too","BEYOND LANDINGS",rows([("Mail / Kanban / CRM","full app screens, wired","SCREENS",1),("Onboarding","multi-step wizard","FLOW",1),("Settings + auth","profile, keys, danger zone","DONE",1)]))
 +bcard("You approve, it deploys","THE GATE",'<p>Preview link first. <b>You say go</b>, it ships to your domain.</p>'+term("&gt; ship it")+'<p style="margin-top:8px">Live the same evening. <b>$0 beyond the plan.</b></p>'))
 CH=cheat("The build commands","CHEAT SHEET",[("/sentinel build","kit to live site"),("crescendo","browse 822 parts"),("/sections","hero, pricing, FAQ"),("/dash","CRM / ops / analytics"),("preview","before anything ships"),("ship","your one word")])
-emit("content/howto2/li-06.html",'One chat. A <em>whole website</em>. Tonight.',
+emit("content/howto2/li-06.html",'One chat. A <em>whole website</em>.<br>Live tonight.',
  'SENTINEL builds from Crescendo: 822 components, 30+ kits, real dashboards. You just describe it.',
  "THE LIBRARY","822 components &middot; 30+ kits &middot; preview &rarr; ship",L,R,6,CH,"SHIP",
  asset="the build playbook + the Crescendo link",pin="PINPOINT: app.51ultron.com/crescendo")

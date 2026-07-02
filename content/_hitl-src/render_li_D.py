@@ -14,12 +14,13 @@ body{background:#d9d2c4;display:flex;justify-content:center;padding:24px 0;font-
 .frame{width:1080px;height:1450px;background:#F6F1E7;position:relative;overflow:hidden;display:flex;flex-direction:column;padding:26px 40px 0;}
 .frame::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(23,21,15,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,15,.045) 1px,transparent 1px);background-size:40px 40px;}
 .frame>*{position:relative;}
-.hdr{flex-shrink:0;display:flex;align-items:center;gap:16px;justify-content:center;}
-.hdr img{width:56px;height:56px;border-radius:13px;}
-.hdr .t{font-weight:900;font-size:49px;letter-spacing:-1.8px;}
-.hdr .t em{font-style:normal;color:#A85B38;}
-.sub{flex-shrink:0;text-align:center;margin-top:6px;font-size:18px;font-weight:600;color:#5d564a;}
-.sub b{color:#17150F;}
+.mast{flex-shrink:0;display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:2px solid #17150F;font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#8d8371;}
+.mast em{color:#A85B38;font-style:normal;}
+.hook{margin-top:14px;font-weight:900;font-size:55px;letter-spacing:-2.2px;line-height:1.0;color:#17150F;}
+.hook em{color:#A85B38;font-style:normal;}
+.subl{margin-top:9px;font-size:18.5px;font-weight:600;color:#5d564a;}
+.subl b{color:#17150F;}
+
 .band{flex:1;min-height:0;margin-top:13px;background:#FDFAF3;border:2px solid #17150F;border-radius:16px;box-shadow:0 4px 0 rgba(23,21,15,.16);display:flex;gap:16px;padding:13px 16px;}
 .lvl{flex-shrink:0;width:86px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:2px solid #17150F;}
 .lvl .a{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.1em;}
@@ -83,11 +84,10 @@ def emit_ladder():
       [("one sentence",0),"",("SPECTER",1),"",("240 drafts",0)]))
     html=f"""<!DOCTYPE html><html><head><meta charset="UTF-8"><style>{CSS_D}</style></head><body>
 <div class="frame" id="artifact">
-<div class="hdr"><img src="__LOGO__"><span class="t">AI wrote 240 emails. <em>Zero</em> left alone.</span></div>
-<div class="sub">The outbound gate ladder: five steps, <b>one human tap</b>, zero accidents. Save it.</div>
+<div class="mast"><span>ULTRON <em>&middot;</em> THE GATE LADDER</span><span>SAVE THIS</span></div><div class="hook">AI wrote 240 emails.<br><em>Zero</em> left without my tap.</div><div class="subl">Five steps, <b>one human tap</b>, zero accidents. The whole outbound gate on one image.</div>
 {bands}
 <div class="ctab"><span class="l">Comment <b>GATE</b> and I will DM you the gated outbound setup + the architecture doc</span><span class="r">GATE &rarr;</span></div>
-<div class="ftr"><img src="__LOGO__"><span class="a">ULTRON</span><span class="b">&middot; 51ultron.com &middot;</span><span class="kw">PINPOINT: app.51ultron.com/docs/architecture</span></div>
+<div class="ftr"><img src="__LOGO__"><span class="a">ULTRON</span><span class="b">&middot; AI operator for founders &middot; 51ultron.com</span></div>
 </div></body></html>"""
     open("content/howto2/li-07.html","w").write(html); print("wrote li-07 (ladder)")
 
@@ -99,12 +99,13 @@ body{background:#d9d2c4;display:flex;justify-content:center;padding:24px 0;font-
 .frame{width:1080px;height:1450px;background:#F6F1E7;position:relative;overflow:hidden;display:flex;flex-direction:column;padding:28px 36px 0;}
 .frame::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(23,21,15,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,15,.045) 1px,transparent 1px);background-size:40px 40px;}
 .frame>*{position:relative;}
-.hdr{flex-shrink:0;display:flex;align-items:center;gap:14px;}
-.hdr svg{width:50px;height:50px;flex-shrink:0;}
-.hdr .t{font-weight:900;font-size:46px;letter-spacing:-1.8px;}
-.hdr .t em{font-style:normal;color:#A85B38;}
-.sub{flex-shrink:0;margin:5px 0 0 64px;font-size:17.5px;font-weight:600;color:#5d564a;}
-.sub b{background:#EED9A3;padding:1px 7px;border-radius:5px;color:#17150F;}
+.mast{flex-shrink:0;display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:2px solid #17150F;font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#8d8371;}
+.mast em{color:#A85B38;font-style:normal;}
+.hook{margin-top:14px;font-weight:900;font-size:55px;letter-spacing:-2.2px;line-height:1.0;color:#17150F;}
+.hook em{color:#A85B38;font-style:normal;}
+.subl{margin-top:9px;font-size:18.5px;font-weight:600;color:#5d564a;}
+.subl b{color:#17150F;}
+
 .gridw{flex:1;min-height:0;margin-top:12px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:11px;}
 .cell{background:#FDFAF3;border:1.5px solid #d8cdb8;border-radius:14px;padding:11px 13px;display:flex;flex-direction:column;box-shadow:0 3px 0 rgba(23,21,15,.08);}
 .cell .top{display:flex;align-items:center;gap:8px;}
@@ -113,7 +114,7 @@ body{background:#d9d2c4;display:flex;justify-content:center;padding:24px 0;font-
 .mb{display:flex;gap:7px;align-items:flex-start;margin-top:5px;font-size:12.5px;color:#57503f;line-height:1.28;}
 .mb b{color:#17150F;}
 .mb .d{flex-shrink:0;width:15px;height:15px;border-radius:50%;background:#e5dbc6;color:#57503f;font-size:9.5px;font-weight:900;display:flex;align-items:center;justify-content:center;margin-top:1px;}
-.pb{margin-top:auto;background:#1B1A16;border-radius:9px;padding:8px 10px;display:flex;gap:8px;align-items:flex-start;}
+.pb{margin-top:9px;background:#1B1A16;border-radius:9px;padding:8px 10px;display:flex;gap:8px;align-items:flex-start;}
 .pb .c{flex:1;font-family:'DM Mono',monospace;font-size:11px;line-height:1.42;color:#E8D9C4;}
 .pb .c i{color:#E8845F;font-style:normal;}
 .pb .go{width:20px;height:20px;border-radius:50%;background:#A85B38;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
@@ -148,19 +149,19 @@ def cell(color,n,tt,bullets,pbl,pb):
 def emit_grid():
     T="#B4693F"; B="#C08A6C"; K="#B08A62"; G="#3f7d5c"; BK="#211F1A"
     cells=(
-     cell(T,1,"Drop your list.",["<b>40 accounts</b>, straight from your CRM export.","Or say the niche and <b>CORTEX builds the list</b>."],
+     cell(T,1,"Drop your list.",["<b>40 accounts</b>, straight from your CRM export.","Or say the niche and <b>CORTEX builds the list</b> from live data.","Dedupes against your pipeline first: <b>no double-touching</b> an open deal.","Works from 10 accounts to 4,000. Same sentence."],
       "PASTE THIS","<i>&gt;</i> score my list on AI-readiness. CSV attached. Rank call-now first.")
-    +cell(B,2,"It reads the signals.",["<b>Hiring</b> for ops / RevOps roles.","Stack has <b>no AI layer</b> yet.","Founder posts about <b>scaling pain</b>.","Raised in the last <b>18 months</b>."],"","")
-    +cell(K,3,"Every account scored.",["0-100, from <b>public data only</b>.","Scored against <b>your ICP band</b>, not a generic one."],
+    +cell(B,2,"It reads the signals.",["<b>Hiring</b> for ops / RevOps roles right now.","Stack has <b>no AI layer</b> yet: the gap you fill.","Founder posts about <b>scaling pain</b> in the last 90 days.","Raised in the last <b>18 months</b>: budget exists.","Sits inside your <b>2-50 seat</b> ICP band.","Each signal weighted, not a checkbox."],"","")
+    +cell(K,3,"Every account scored.",["0-100, from <b>public data only</b>. No scraping your CRM.","Scored against <b>your ICP band</b>, not a generic one.","Score explains itself: <b>every point traces</b> to a signal.","Ties broken by intent recency, not alphabet."],
       "THE OUTPUT","Northwind 86 &middot; Globex 81 &middot; Initech 74 &middot; Stark 70 &middot; ...")
-    +cell(G,4,"Verdicts, not vibes.",["<b>CALL NOW</b> &middot; 2 accounts, ready to buy.","<b>WARM</b> &middot; 3 accounts, nurture + re-score.","<b>SKIP</b> &middot; 3 accounts, not this quarter."],"","")
-    +cell(BK,5,"Briefs attached.",["Each call-now account ships with a <b>1-page brief</b>.","Champion, signals, opener angle, <b>next step</b>."],
+    +cell(G,4,"Verdicts, not vibes.",["<b>CALL NOW</b> &middot; 2 accounts, ready to buy this quarter.","<b>WARM</b> &middot; 3 accounts, nurture and re-score weekly.","<b>SKIP</b> &middot; 3 accounts, wrong window, zero time spent.","A verdict is a decision, not a dashboard. <b>You act on it same day.</b>","No verdict ships without the <b>why</b> attached."],"","")
+    +cell(BK,5,"Briefs attached.",["Each call-now account ships with a <b>1-page brief</b>.","Champion, signals, opener angle, <b>next step</b>.","Pulled live the morning of the call, <b>never stale</b>.","STRIKER loads the same brief when the reply lands."],
       "PASTE THIS","<i>&gt;</i> brief me on Northwind before the call.")
-    +cell(T,6,"The week-3 test.",["Manual research finds these in <b>week 3</b>.","The index found both call-nows <b>before lunch</b>.","62 minutes, <b>40 accounts</b>, zero tabs."],"","")
-    +cell(B,7,"Wire the outreach.",["SPECTER drafts openers <b>for call-nows only</b>.","One trigger each, from the brief."],
+    +cell(T,6,"The week-3 test.",["Manual research finds these accounts in <b>week 3</b>.","The index found both call-nows <b>before lunch</b>.","62 minutes, <b>40 accounts</b>, zero tabs open.","Cost of the run: <b>cents</b>, on the Ultron meter.","Your competitor is still exporting LinkedIn searches."],"","")
+    +cell(B,7,"Wire the outreach.",["SPECTER drafts openers <b>for call-nows only</b>: no spray.","One trigger each, pulled <b>from the brief</b>, 62 words.","Warm accounts get the nurture track instead.","Sequences queue at <b>10:00 local</b> per prospect."],
       "PASTE THIS","<i>&gt;</i> draft openers for the call-now accounts.")
-    +cell(K,8,"Gate before send.",["Everything parks at the <b>human gate</b>.","You read, you tap, <b>then</b> it moves."],"","")
-    +cell(G,9,"Re-run weekly.",["Scores <b>decay and spike</b> with the news.","A warm account crossing 80 <b>pings you</b>."],
+    +cell(K,8,"Gate before send.",["Everything parks at the <b>human gate</b>. Nothing fires alone.","You read, you tap, <b>then</b> it moves.","The gate has caught tone drift, wrong CCs, broken fields.","<b>AI speed, zero accidents.</b> That is the whole deal.","Every release is logged with a run ID."],"","")
+    +cell(G,9,"Re-run weekly.",["Scores <b>decay and spike</b> with the news cycle.","A warm account crossing 80 <b>pings you</b> same morning.","New raises and new hires re-rank the list for you.","Set once. The loop runs while you sell."],
       "SET ONCE","<i>&gt;</i> re-score every Monday 07:00. Ping me on movers."))
     band=('<div class="band9"><span class="n9">&#10003;</span><span class="t9">The loop, on autopilot.</span><div class="b9s">'
       '<div class="b9c"><div class="k">Score</div><div class="v">40 accounts, weekly</div></div><span class="b9a">&rarr;</span>'
@@ -169,12 +170,11 @@ def emit_grid():
       '<div class="b9c"><div class="k">Call</div><div class="v">you, at the right time</div></div></div></div>')
     html=f"""<!DOCTYPE html><html><head><meta charset="UTF-8"><style>{CSS_E}</style></head><body>
 <div class="frame" id="artifact">
-<div class="hdr">{SPARK}<span class="t">Two buyers were <em>hiding</em> in my list of 40.</span></div>
-<div class="sub">The AI-readiness index: 9 steps, one run, <b>62 minutes</b>. It found both before lunch.</div>
+<div class="mast"><span>ULTRON <em>&middot;</em> THE AI-READINESS INDEX</span><span>SAVE THIS</span></div><div class="hook">Two buyers were <em>hiding</em><br>in my list of 40.</div><div class="subl">9 steps, one run, <b>62 minutes</b>. It found both before lunch.</div>
 <div class="gridw">{cells}</div>
 {band}
 <div class="ctab" style="margin-top:11px"><span class="l">Comment <b>INDEX</b> and I will DM you the rubric + the scoring run</span><span class="r">INDEX &rarr;</span></div>
-<div class="ftr"><span class="l">PINPOINT: app.51ultron.com/techniques</span><span class="r"><img src="__LOGO__"><span><b>ULTRON</b> &middot; 51ultron.com</span></span></div>
+<div class="ftr"><span class="l">AI OPERATOR FOR FOUNDERS</span><span class="r"><img src="__LOGO__"><span><b>ULTRON</b> &middot; 51ultron.com</span></span></div>
 </div></body></html>"""
     open("content/howto2/li-10.html","w").write(html); print("wrote li-10 (grid)")
 
