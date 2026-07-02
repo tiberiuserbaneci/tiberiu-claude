@@ -8,7 +8,7 @@ M="/home/user/tiberiu-claude/content/_hitl-src/models_clay/aios"; LIB=T2.LIB
 PREMIUM=1
 T2.ACCENT=(204, 120, 92); T2.CORAL=T2.ACCENT
 T2.OBJ_THR=30
-T2.COVER=dict(head=[[wo('I quit 9 tools in one night.')],[co('They kept forgetting me.')]])
+T2.COVER=dict(head=[[wo('Nine tools forgot who I was.')],[co('I quit all nine.')]])
 T2.CONTENT=[
  ('THE BOTTLENECK', [[wo('My AI asked who I was.')],[co('For the 40th time.')]], 'Every chat starts from zero. That is the real bottleneck, not the model.', [co('The tab is not a system.')], f"{M}/amnesia.png", 1.0),
  ('THE BRAIN', [[wo('It knows my no-list')],[co('better than my cofounder.')]], 'Your ICP, voice, pricing and pipeline live in one memory, loaded in every run.', [co('Set once. Never re-briefed.')], f"{M}/brain.png", 1.0),

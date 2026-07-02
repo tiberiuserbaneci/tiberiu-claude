@@ -8,7 +8,7 @@ M="/home/user/tiberiu-claude/content/_hitl-src/models_clay/patterns"; LIB=T2.LIB
 PREMIUM=1
 T2.ACCENT=(204, 120, 92); T2.CORAL=T2.ACCENT
 T2.OBJ_THR=30
-T2.COVER=dict(head=[[wo('Your agent is fine.')],[co('Your architecture is not.')]])
+T2.COVER=dict(head=[[wo('Agents do not fail.')],[co('Their builders do.')]])
 T2.CONTENT=[
  ('PATTERN 1', [[wo('Think, act, look.')],[co('Then think again.')]], 'Real agents think before every tool call and check what came back.', [co('No blind execution.')], f"{M}/react.png", 1.0),
  ('PATTERN 2', [[wo('It does not describe fixes.')],[co('It merges them.')]], 'SENTINEL does not describe the fix. It writes it, tests it, ships it.', [co('Output you can merge.')], f"{M}/codeact.png", 1.0),

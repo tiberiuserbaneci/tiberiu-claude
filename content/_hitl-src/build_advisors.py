@@ -8,7 +8,7 @@ M="/home/user/tiberiu-claude/content/_hitl-src/models_clay/advisors"; LIB=T2.LIB
 PREMIUM=1
 T2.ACCENT=(200, 70, 35); T2.CORAL=T2.ACCENT
 T2.OBJ_THR=30
-T2.COVER=dict(head=[[wo('I built a board')],[co('that knows my numbers.')]])
+T2.COVER=dict(head=[[wo('Three advisors, on call at 2am.')],[co('They know my numbers.')]])
 T2.CONTENT=[
  ('THE PROBLEM', [[wo('Advice is cheap.')],[co('Context is not.')]], 'Generic advice ignores your deals, your clients, your cash. That is why it fails.', [co('Context is the moat.')], f"{M}/context.png", 1.0),
  ('THE BOARD', [[wo('Three advisors,')],[co('three lenses.')]], 'The pricer, the editor, the strategist. Each one a skill, each one on call.', [co('Zero retainers.')], f"{M}/three.png", 1.0),

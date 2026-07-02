@@ -8,7 +8,7 @@ M="/home/user/tiberiu-claude/content/_hitl-src/models_clay/million"; LIB=T2.LIB
 PREMIUM=1
 T2.ACCENT=(204, 120, 92); T2.CORAL=T2.ACCENT
 T2.OBJ_THR=30
-T2.COVER=dict(head=[[wo('The next big company')],[co('is one person.')]])
+T2.COVER=dict(head=[[wo('Your next competitor')],[co('has no employees.')]])
 T2.CONTENT=[
  ('THE SHAPE', [[wo('Not a funded startup.')],[co('Not a team of 20.')]], 'A laptop, a subscription measured in cents, systems that do not sleep.', [co('New shape of company.')], f"{M}/notteam.png", 1.0),
  ('THE SPLIT', [[wo('The agents work.')],[co('The founder decides.')]], 'Research, outreach, content, builds: parallel, gated by one tap.', [co('Judgement is the job.')], f"{M}/agents.png", 1.0),

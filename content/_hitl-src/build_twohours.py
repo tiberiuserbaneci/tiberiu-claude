@@ -8,7 +8,7 @@ M="/home/user/tiberiu-claude/content/_hitl-src/models_clay/twohours"; LIB=T2.LIB
 PREMIUM=1
 T2.ACCENT=(204, 120, 92); T2.CORAL=T2.ACCENT
 T2.OBJ_THR=30
-T2.COVER=dict(head=[[wo('I gave it one idea')],[co('and two hours.')]])
+T2.COVER=dict(head=[[wo('Idea at 14:00.')],[co('Business live at 16:00.')]])
 T2.CONTENT=[
  ('14:00', [[wo('One sentence.')],[co('The idea goes in.')]], 'A service for founders who hate bookkeeping. That was the entire input.', [co('No deck, no plan.')], f"{M}/input.png", 1.0),
  ('14:20', [[wo('The offer')],[co('stands up.')]], 'Positioning, price, guarantee: drafted against the niche, not a template.', [co('Offer before logo.')], f"{M}/offer.png", 1.0),

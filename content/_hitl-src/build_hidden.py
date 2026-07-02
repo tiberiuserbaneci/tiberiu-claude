@@ -8,7 +8,7 @@ M="/home/user/tiberiu-claude/content/_hitl-src/models_clay/hidden"; LIB=T2.LIB
 PREMIUM=1
 T2.ACCENT=(212, 162, 127); T2.CORAL=T2.ACCENT
 T2.OBJ_THR=30
-T2.COVER=dict(head=[[wo('Prompting is level zero.')],[co('Installing is the game.')]])
+T2.COVER=dict(head=[[wo('You mastered prompting.')],[co('That was the tutorial level.')]])
 T2.CONTENT=[
  ('THE MYTH', [[wo('Re-wording requests')],[co('is not a skill.')]], 'The top operators install capabilities. The rest re-word requests.', [co('Skills beat phrasing.')], f"{M}/myth.png", 1.0),
  ('DECKS', [[wo('The proposal built itself.')],[co('I added the price.')]], 'Client name in, structured deck out, in your tokens and your voice.', [co('No blank slides.')], f"{M}/decks.png", 1.0),

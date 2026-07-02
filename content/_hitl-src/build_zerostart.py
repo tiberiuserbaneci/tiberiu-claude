@@ -8,7 +8,7 @@ M="/home/user/tiberiu-claude/content/_hitl-src/models_clay/zerostart"; LIB=T2.LI
 PREMIUM=1
 T2.ACCENT=(200, 70, 35); T2.CORAL=T2.ACCENT
 T2.OBJ_THR=30
-T2.COVER=dict(head=[[wo('If I started from zero,')],[co('I would write no code.')]])
+T2.COVER=dict(head=[[wo('Do not learn to code.')],[co('Build the business instead.')]])
 T2.CONTENT=[
  ('THE SHIFT', [[wo('The barrier moved.')],[co('It is not technical.')]], 'Niche, distribution, consistency: the only three problems left.', [co('Everything else is solved.')], f"{M}/barrier.png", 1.0),
  ('THE BUILD', [[wo('The build is')],[co('a sentence now.')]], 'Describe the offer; Crescendo assembles the page from 822 parts.', [co('Live the same day.')], f"{M}/build.png", 1.0),

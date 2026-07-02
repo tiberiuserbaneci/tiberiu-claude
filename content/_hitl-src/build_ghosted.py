@@ -8,7 +8,7 @@ M="/home/user/tiberiu-claude/content/_hitl-src/models_clay/ghosted"; LIB=T2.LIB
 PREMIUM=1
 T2.ACCENT=(212, 162, 127); T2.CORAL=T2.ACCENT
 T2.OBJ_THR=30
-T2.COVER=dict(head=[[wo('Your copy is fine.')],[co('Your infra is dead.')]])
+T2.COVER=dict(head=[[wo('Nobody reads your cold emails.')],[co('Nobody even gets them.')]])
 T2.CONTENT=[
  ('THE PATTERN', [[wo('Same writer.')],[co('Opposite results.')]], 'Some campaigns crushed. Others went to spam without a trace. Copy was never the variable.', [co('The infra was.')], f"{M}/sent.png", 1.0),
  ('MISTAKE 1', [[wo('You count opens.')],[co('Buyers count replies.')]], 'Tracking pixels hurt placement and measure vanity. Kill them.', [co('Replies or nothing.')], f"{M}/opens.png", 1.0),

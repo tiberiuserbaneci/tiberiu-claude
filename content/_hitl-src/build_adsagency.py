@@ -8,7 +8,7 @@ M="/home/user/tiberiu-claude/content/_hitl-src/models_clay/adsagency"; LIB=T2.LI
 PREMIUM=1
 T2.ACCENT=(212, 162, 127); T2.CORAL=T2.ACCENT
 T2.OBJ_THR=30
-T2.COVER=dict(head=[[wo('I brought the ad desk')],[co('in-house. It fits in a chat.')]])
+T2.COVER=dict(head=[[wo('I fired my ad agency.')],[co('A chat window replaced it.')]])
 T2.CONTENT=[
  ('THE RETAINER', [[wo('It bought slides')],[co('and delays.')]], 'Research, copy, audits: billed monthly, delivered quarterly.', [co('That bill ends here.')], f"{M}/retainer.png", 1.0),
  ('MONDAY', [[wo('Rival ads,')],[co('diffed weekly.')]], 'Every new creative your competitors launched, in one report.', [co('You see their moves.')], f"{M}/spy.png", 1.0),

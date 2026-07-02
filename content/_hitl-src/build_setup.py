@@ -8,7 +8,7 @@ M="/home/user/tiberiu-claude/content/_hitl-src/models_clay/setup"; LIB=T2.LIB
 PREMIUM=1
 T2.ACCENT=(212, 162, 127); T2.CORAL=T2.ACCENT
 T2.OBJ_THR=30
-T2.COVER=dict(head=[[wo('60 minutes on a Sunday.')],[co('A coworker by lunch.')]])
+T2.COVER=dict(head=[[wo('Give me one hour.')],[co('Get back a coworker.')]])
 T2.CONTENT=[
  ('MIN 0-10', [[wo('Minute 10:')],[co('the stack clicks in.')]], 'Mail, CRM, calendar, payments. Ultron plugs into what you already run.', [co('No migration.')], f"{M}/connect.png", 1.0),
  ('MIN 10-20', [[wo('Minute 20:')],[co('it knows my business.')]], 'It interviews you once: ICP, offer, pricing, the no-list.', [co('The memory is born.')], f"{M}/init.png", 1.0),

@@ -8,7 +8,7 @@ M="/home/user/tiberiu-claude/content/_hitl-src/models_clay/unstuck"; LIB=T2.LIB
 PREMIUM=1
 T2.ACCENT=(204, 120, 92); T2.CORAL=T2.ACCENT
 T2.OBJ_THR=30
-T2.COVER=dict(head=[[wo('You are at level 1.')],[co('The map goes to 5.')]])
+T2.COVER=dict(head=[[wo('You use 12% of Claude.')],[co('Here is the other 88.')]])
 T2.CONTENT=[
  ('LEVEL 1', [[wo('Ask. Copy. Close.')],[co('The hamster wheel.')]], 'Ask, copy, close the tab. A smarter search bar, nothing more.', [co('The floor, not the ceiling.')], f"{M}/floor.png", 1.0),
  ('LEVEL 2', [[wo('Level 2: it remembers')],[co('what you hate.')]], 'Your ICP, voice and pricing persist. No more introductions every morning.', [co('It remembers you now.')], f"{M}/memory.png", 1.0),

@@ -8,7 +8,7 @@ M="/home/user/tiberiu-claude/content/_hitl-src/models_clay/contentdesk"; LIB=T2.
 PREMIUM=1
 T2.ACCENT=(200, 70, 35); T2.CORAL=T2.ACCENT
 T2.OBJ_THR=30
-T2.COVER=dict(head=[[wo('Five salaries quit my desk.')],[co('Output went up.')]])
+T2.COVER=dict(head=[[wo('My content team never sleeps')],[co('and never meets.')]])
 T2.CONTENT=[
  ('SKILL 1', [[wo('Monday, 07:00.')],[co('The week plans itself.')]], 'One line in, 14 slots out, spread across channels at 10:00 local.', [co('Zero coordinators.')], f"{M}/cal.png", 1.0),
  ('SKILL 2', [[wo('Three hooks fight.')],[co('I crown one.')]], 'Three angles per post from your proven hook bank. You pick the winner.', [co('A/B/C, one tap.')], f"{M}/hooks.png", 1.0),

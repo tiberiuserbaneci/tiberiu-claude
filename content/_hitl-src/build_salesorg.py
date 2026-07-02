@@ -8,7 +8,7 @@ M="/home/user/tiberiu-claude/content/_hitl-src/models_clay/salesorg"; LIB=T2.LIB
 PREMIUM=1
 T2.ACCENT=(200, 70, 35); T2.CORAL=T2.ACCENT
 T2.OBJ_THR=30
-T2.COVER=dict(head=[[wo('100-node sales bots fail.')],[co('Structure wins.')]])
+T2.COVER=dict(head=[[wo('Your sales bot failed')],[co('because nobody was in charge.')]])
 T2.CONTENT=[
  ('THE TRAP', [[wo('One agent doing all')],[co('does nothing well.')]], 'The mega-automation collapses under its own hundred branches.', [co('Complexity is not power.')], f"{M}/everything.png", 1.0),
  ('THE FIX', [[wo('Real teams')],[co('have structure.')]], 'Chief, desks, specialists. Sales worked this way for a century for a reason.', [co('Copy what works.')], f"{M}/structure.png", 1.0),

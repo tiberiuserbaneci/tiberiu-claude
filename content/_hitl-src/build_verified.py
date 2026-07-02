@@ -8,7 +8,7 @@ M="/home/user/tiberiu-claude/content/_hitl-src/models_clay/verified"; LIB=T2.LIB
 PREMIUM=1
 T2.ACCENT=(200, 70, 35); T2.CORAL=T2.ACCENT
 T2.OBJ_THR=30
-T2.COVER=dict(head=[[wo('Everyone posts skill lists.')],[co('I actually tested them.')]])
+T2.COVER=dict(head=[[wo('I installed all 50 viral skills.')],[co('A third are fake.')]])
 T2.CONTENT=[
  ('THE FLOOD', [[wo('Fifty skills per list.')],[co('Zero receipts.')]], 'The same recycled lists, reposted daily. Nobody installs them, nobody verifies them.', [co('So I did.')], f"{M}/flood.png", 1.0),
  ('THE TEST', [[wo('I installed')],[co('every single one.')]], 'One week, every skill run on real work: briefs, drafts, builds, audits.', [co('Real work, not demos.')], f"{M}/test.png", 1.0),

@@ -8,7 +8,7 @@ M="/home/user/tiberiu-claude/content/_hitl-src/models_clay/aibody"; LIB=T2.LIB
 PREMIUM=1
 T2.ACCENT=(212, 162, 127); T2.CORAL=T2.ACCENT
 T2.OBJ_THR=30
-T2.COVER=dict(head=[[wo('You bought a mouth.')],[co('You needed a body.')]])
+T2.COVER=dict(head=[[wo('You rented a mouth.')],[co('Your company needs hands.')]])
 T2.CONTENT=[
  ('THE DIFFERENCE', [[wo('Talking is not working.')],[co('Ask your chatbot.')]], 'Most founders rent one mouth. The top operators wire every organ.', [co('Augment, not chat.')], f"{M}/difference.png", 1.0),
  ('THE BRAIN', [[wo('A brain that budgets')],[co('its own thinking.')]], 'It reads each job, hires the right agent, picks the model tier per turn.', [co('You never pick a model.')], f"{M}/router.png", 1.0),

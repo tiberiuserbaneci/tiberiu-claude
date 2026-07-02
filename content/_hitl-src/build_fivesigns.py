@@ -8,7 +8,7 @@ M="/home/user/tiberiu-claude/content/_hitl-src/models_clay/fivesigns"; LIB=T2.LI
 PREMIUM=1
 T2.ACCENT=(204, 120, 92); T2.CORAL=T2.ACCENT
 T2.OBJ_THR=30
-T2.COVER=dict(head=[[wo('Answer 5 questions.')],[co('Count your leaks.')]])
+T2.COVER=dict(head=[[wo('Most founders fail')],[co('this five-question test.')]])
 T2.CONTENT=[
  ('SIGN 1', [[wo('Q1: same answer,')],[co('typed 40 times a week?')]], 'If support answers repeat daily, a flow should answer them in seconds.', [co('Ultron replies 24/7.')], f"{M}/sign1.png", 1.0),
  ('SIGN 2', [[wo('Q2: is payroll')],[co('moving data by hand?')]], 'Hours spent moving data between apps is payroll spent on glue work.', [co('Flows move it instantly.')], f"{M}/sign2.png", 1.0),

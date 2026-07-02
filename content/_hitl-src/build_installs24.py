@@ -8,7 +8,7 @@ M="/home/user/tiberiu-claude/content/_hitl-src/models_clay/installs24"; LIB=T2.L
 PREMIUM=1
 T2.ACCENT=(204, 120, 92); T2.CORAL=T2.ACCENT
 T2.OBJ_THR=30
-T2.COVER=dict(head=[[wo('Your AI is stock.')],[co('Power users install.')]])
+T2.COVER=dict(head=[[wo('Stock Claude answers questions.')],[co('Installed Claude runs your company.')]])
 T2.CONTENT=[
  ('STOCK', [[wo('Out of the box')],[co('it only answers.')]], 'Stock settings are training wheels. Installed right, it operates.', [co('Stock is the floor.')], f"{M}/stock.png", 1.0),
  ('PLUGINS', [[wo('A whole team')],[co('in one install.')]], 'Each plugin is a desk: research, content, deals, code. Installed once.', [co('Desks, not features.')], f"{M}/plugins.png", 1.0),

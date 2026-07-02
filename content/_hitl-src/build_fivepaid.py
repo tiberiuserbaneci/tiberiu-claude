@@ -8,7 +8,7 @@ M="/home/user/tiberiu-claude/content/_hitl-src/models_clay/fivepaid"; LIB=T2.LIB
 PREMIUM=1
 T2.ACCENT=(212, 162, 127); T2.CORAL=T2.ACCENT
 T2.OBJ_THR=30
-T2.COVER=dict(head=[[wo('Learn what businesses')],[co('already pay for.')]])
+T2.COVER=dict(head=[[wo('Stop learning AI skills')],[co('nobody will pay for.')]])
 T2.CONTENT=[
  ('SKILL 1', [[wo('Research')],[co('that closes.')]], 'Account briefs that turn cold calls warm. Companies pay retainers for this.', [co('CORTEX does it daily.')], f"{M}/research.png", 1.0),
  ('SKILL 2', [[wo('Outbound')],[co('that lands.')]], 'Sequences with one trigger per email and domains that stay warm.', [co('Placement is the skill.')], f"{M}/outbound.png", 1.0),

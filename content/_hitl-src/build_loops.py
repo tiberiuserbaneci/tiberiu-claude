@@ -8,7 +8,7 @@ M="/home/user/tiberiu-claude/content/_hitl-src/models_clay/loops"; LIB=T2.LIB
 PREMIUM=1
 T2.ACCENT=(200, 70, 35); T2.CORAL=T2.ACCENT
 T2.OBJ_THR=30
-T2.COVER=dict(head=[[wo('Stop writing prompts.')],[co('Start setting exits.')]])
+T2.COVER=dict(head=[[wo('You are the cron job')],[co('in your own company.')]])
 T2.CONTENT=[
  ('THE OLD WAY', [[wo('You are a human cron job.')],[co('Admit it.')]], 'If you type prompt after prompt, you work backwards, one output at a time.', [co('You are the cron job.')], f"{M}/oldway.png", 1.0),
  ('THE LOOP', [[wo('212 cycles ran.')],[co('I typed 3 sentences.')]], 'An Ultron flow has a goal, a checker and an exit. It cycles until done.', [co('24/7, no typing.')], f"{M}/loop.png", 1.0),

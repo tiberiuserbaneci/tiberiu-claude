@@ -8,7 +8,7 @@ M="/home/user/tiberiu-claude/content/_hitl-src/models_clay/carouselcmd"; LIB=T2.
 PREMIUM=1
 T2.ACCENT=(200, 70, 35); T2.CORAL=T2.ACCENT
 T2.OBJ_THR=30
-T2.COVER=dict(head=[[wo('My designer invoice')],[co('died mid-month.')]])
+T2.COVER=dict(head=[[wo('This carousel built itself.')],[co('Yours can too.')]])
 T2.CONTENT=[
  ('THE OLD BILL', [[wo('A week per deck.')],[co('Plus revision rounds.')]], 'Briefs, revisions, queue time. A week per deck, every deck.', [co('That bill ends today.')], f"{M}/oldbill.png", 1.0),
  ('THE COMMAND', [[wo('It interviews me.')],[co('Then builds alone.')]], 'PULSE interviews you for the angle, then owns the build end to end.', [co('It asks, you answer.')], f"{M}/command.png", 1.0),
