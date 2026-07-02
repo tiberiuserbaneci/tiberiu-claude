@@ -23,12 +23,12 @@ body{background:#d9d2c4;display:flex;justify-content:center;padding:24px 0;font-
 .era .k{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8d8371;}
 .era .n{font-weight:900;font-size:18px;margin-top:2px;}
 .era .d{font-size:12px;color:#6b6357;margin-top:2px;line-height:1.25;}
-.grid{flex:1;min-height:0;margin-top:12px;display:flex;gap:88px;position:relative;}
+.grid{flex:1;min-height:0;margin-top:11px;display:flex;gap:58px;position:relative;}
 .gcol{flex:1;display:flex;flex-direction:column;gap:11px;min-width:0;}
 .spine{position:absolute;left:50%;top:8px;bottom:8px;transform:translateX(-50%);width:64px;}
 .spine .rail{position:absolute;left:50%;top:0;bottom:0;width:38px;transform:translateX(-50%);border:3px solid #B08A62;border-radius:22px;background:transparent;}
 .spine .lbl{position:absolute;top:-4px;left:50%;transform:translateX(-50%);background:#F5F0E6;padding:0 6px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.13em;color:#8d8371;white-space:nowrap;}
-.sstop{position:absolute;left:50%;transform:translateX(-50%);background:#FDFAF3;border:2px solid #17150F;border-radius:999px;padding:4px 10px;font-family:'DM Mono',monospace;font-size:11px;white-space:nowrap;display:flex;align-items:center;gap:6px;}
+.sstop{position:absolute;left:50%;transform:translateX(-50%);background:#FDFAF3;border:2px solid #17150F;border-radius:999px;padding:5px 12px;font-family:'DM Mono',monospace;font-size:12px;white-space:nowrap;display:flex;align-items:center;gap:6px;}
 .sstop i{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
 .sorb{position:absolute;left:50%;top:47%;transform:translate(-50%,-50%);width:96px;height:96px;border-radius:50%;background:#FDFAF3;border:3px solid #B08A62;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 0 rgba(200,70,35,.16);}
 .sorb img{width:64px;height:64px;border-radius:50%;}
@@ -38,7 +38,7 @@ body{background:#d9d2c4;display:flex;justify-content:center;padding:24px 0;font-
 .kard .sec{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--bc);font-weight:500;}
 .kard .tag{margin-left:auto;font-family:'DM Mono',monospace;font-size:10.5px;color:#8d8371;background:#F0E9DA;border-radius:6px;padding:2px 8px;white-space:nowrap;}
 .kard .tt{margin-top:5px;font-weight:900;font-size:21px;letter-spacing:-.4px;}
-.kard .bd{margin-top:4px;font-size:13.5px;color:#57503f;line-height:1.34;}
+.kard .bd{margin-top:5px;font-size:14px;color:#57503f;line-height:1.36;}
 .kard .bd b{color:#17150F;}
 .flow{margin-top:9px;display:flex;align-items:center;gap:6px;}
 .fstep{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:0;}
@@ -57,10 +57,13 @@ body{background:#d9d2c4;display:flex;justify-content:center;padding:24px 0;font-
 .ctab{flex-shrink:0;margin:11px 0 0;background:#211F1A;border-radius:14px;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;box-shadow:0 3px 0 rgba(23,21,15,.18);}
 .ctab .l{font-size:18px;font-weight:700;color:#F7F1E6;}.ctab .l b{color:#E5A183;font-weight:900;}
 .ctab .r{background:#F7F1E6;color:#17150F;border-radius:999px;padding:8px 18px;font-weight:900;font-size:15px;}
-.ftr{flex-shrink:0;height:48px;margin:10px -34px 0;background:#17150F;display:flex;align-items:center;justify-content:center;gap:12px;color:#F5F0E6;}
-.ftr img{width:26px;height:26px;border-radius:50%;}
-.ftr .a{font-weight:900;font-size:15.5px;}.ftr .b{font-size:14.5px;color:rgba(245,240,230,.6);}
-.ftr .kw{font-family:'DM Mono',monospace;font-size:13px;color:#E8A17F;}
+.ftr{flex-shrink:0;margin:10px 0 0;padding:10px 0 14px;border-top:2px solid #17150F;display:flex;align-items:center;justify-content:space-between;}
+.fl{display:flex;align-items:center;gap:10px;min-width:0;}
+.ftr img{width:28px;height:28px;border-radius:50%;flex-shrink:0;}
+.ftx{font-family:'DM Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:#6b6357;white-space:nowrap;}
+.ftx b{color:#17150F;}
+.furl{font-family:'DM Sans',sans-serif;font-weight:900;font-size:19px;letter-spacing:-.4px;color:#17150F;flex-shrink:0;}
+.furl em{color:#A85B38;font-style:normal;}
 """
 
 SPARK='<svg viewBox="0 0 100 100"><g fill="#C84623"><path d="M50 4 L56 38 L50 50 L44 38 Z"/><path d="M50 96 L56 62 L50 50 L44 62 Z"/><path d="M4 50 L38 44 L50 50 L38 56 Z"/><path d="M96 50 L62 44 L50 50 L62 56 Z"/><path d="M17 17 L44 40 L50 50 L38 46 Z"/><path d="M83 83 L56 60 L50 50 L62 54 Z"/><path d="M83 17 L60 44 L50 50 L54 38 Z"/><path d="M17 83 L40 56 L50 50 L46 62 Z"/></g></svg>'
@@ -95,7 +98,7 @@ def kard(color,num,sec,tag,tt,bd,fl,chip,why,bd2=""):
             f'<div class="tt">{tt}</div><div class="bd">{bd}</div>'+(f'<div class="bd" style="margin-top:5px">{bd2}</div>' if bd2 else '')+f'{fl}'
             f'<div class="chip">{chip}</div><div class="why"><b>WHY</b><span>{why}</span></div></div>')
 
-def emit(fn,title,sub,eras,cardsL,cardsR,spine_lbl,stops,kw,asset="the playbook",pin="",mastl="ULTRON <em>&middot;</em> CLEARLY EXPLAINED",mastr="SAVE THIS"):
+def emit(fn,title,sub,eras,cardsL,cardsR,spine_lbl,stops,kw,asset="the playbook",pin="",mastl="ULTRON <em>&middot;</em> CLEARLY EXPLAINED",mastr="SAVE THIS",ctx="CLEARLY EXPLAINED"):
     er="".join(f'<div class="era"><div class="k">{k}</div><div class="n">{n}</div><div class="d">{d}</div></div>' for k,n,d in eras)
     st="".join(f'<span class="sstop" style="top:{p}%"><i style="background:{c}"></i>{t}</span>' for p,c,t in stops)
     html=f"""<!DOCTYPE html><html><head><meta charset="UTF-8"><style>{CSS}</style></head><body>
@@ -106,7 +109,7 @@ def emit(fn,title,sub,eras,cardsL,cardsR,spine_lbl,stops,kw,asset="the playbook"
 <div class="spine"><span class="rail"></span><span class="lbl">{spine_lbl}</span>{st}<span class="sorb"><img src="__LOGO__"></span></div>
 <div class="gcol">{cardsR}</div></div>
 <div class="ctab"><span class="l">Comment <b>{kw}</b> and I will DM you {asset}</span><span class="r">{kw} &rarr;</span></div>
-<div class="ftr"><img src="__LOGO__"><span class="a">ULTRON</span><span class="b">&middot; AI operator for founders &middot; 51ultron.com</span></div>
+<div class="ftr"><div class="fl"><img src="__LOGO__"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS &middot; {ctx}</span></div><span class="furl">51ultron<em>.</em>com</span></div>
 </div></body></html>"""
     open(fn,"w").write(html); print("wrote",fn)
 
@@ -136,10 +139,10 @@ cR=(kard(BLK,2,"THE CHECK","score 39","Follow-up","<b>68% of threads die</b> aft
 +kard(KRA,6,"THE VERDICT","61 / 100","The score","3 keep, 5 fix, each with the exact move. Re-run <b>every Monday</b>.",
  flow([("chart","61/100","TODAY",1),("bolt","5 fixes","THIS WK",0),("loop","Re-run","MONDAY",0)]),
  "<b>&gt; audit my GTM</b> &middot; three words, whole teardown","A score you re-run beats a deck you shelve.",bd2="Monday re-runs take 4 minutes and diff against last week: what moved, what regressed, which fix paid. The score becomes your operating metric, not a one-off report."))
-emit("content/howto2/li-05.html",'Three words graded<br>my whole funnel: <em>61/100</em>.',
+emit("content/howto2/li-05.html",'Three words. Ultron graded<br>my funnel: <em>61/100</em>.',
  'Stop guessing what is broken. One sentence scores your whole funnel. <b>Six of the 8 checks below.</b>',
  eras,cL,cR,"THE AUDIT LOOP",
- [(6,TER,"Scan"),(30,KRA,"Score"),(62,"#4d8b6a","Fix"),(88,TER,"Re-run")],"AUDIT",asset="the audit sentence + the rubric",pin="PINPOINT: app.51ultron.com/techniques")
+ [(6,TER,"Scan"),(30,KRA,"Score"),(62,"#4d8b6a","Fix"),(88,TER,"Re-run")],"AUDIT",asset="the audit sentence + the rubric",ctx="THE GTM AUDIT")
 
 # ---------------- li-08 PROOF ----------------
 eras=[("HOW IT WAS","Screenshots","30 crops pasted into chat. Zero sources."),
@@ -164,10 +167,10 @@ cR=(kard(BLK,2,"THE CLAIM","conf 99%","ICP drift","<b>31% of pipeline</b> was ou
 +kard(KRA,6,"THE HABIT","every claim","Stamp it","Every number in every brief carries <b>source + run ID + confidence</b>.",
  flow([("doc","Claim","WRITTEN",0),("gear","Auto-stamp","RUN ID",1),("check","Trusted","DEFAULT",0)]),
  "<b>/brief</b> &middot; stamping is automatic","Proof by default beats proof on demand.",bd2="You never assemble evidence again: it is attached at write time, by the agent that produced the number. The habit costs zero minutes."))
-emit("content/howto2/li-08.html",'One link ended<br>a <em>three-week</em> argument.',
+emit("content/howto2/li-08.html",'One Ultron link ended<br>a <em>three-week</em> argument.',
  'Three weeks of research, defended in one link. <b>No screenshots, no decks.</b>',
  eras,cL,cR,"THE EVIDENCE LOOP",
- [(6,TER,"Claim"),(30,KRA,"Source"),(62,"#4d8b6a","Stamp"),(88,TER,"Share")],"PROOF",asset="the evidence-brief template",pin="PINPOINT: app.51ultron.com/resources")
+ [(6,TER,"Claim"),(30,KRA,"Source"),(62,"#4d8b6a","Stamp"),(88,TER,"Share")],"PROOF",asset="the evidence-brief template",ctx="EVIDENCE BRIEFS")
 
 # ---------------- li-09 RESUME ----------------
 eras=[("HOW IT WAS","New chat daily","Yesterday died at midnight."),
@@ -193,7 +196,7 @@ cR=(kard(BLK,2,"CARRIES OVER","zero re-brief","The context","ICP, pricing, voice
 +kard(KRA,6,"THE RESULT","10 minutes","Reopen to sent","Two words in, proposal out the door by <b>09:11</b>.",
  flow([("bolt","Resume","09:01",1),("doc","Finish v3","09:03",0),("send","Proposal","09:11",0)]),
  "<b>&gt; resume</b> &middot; the whole ceremony","The fastest morning is the one that starts mid-stride.",bd2="Two words replace the standup you hold with yourself. By 09:11 the proposal was out and the calendar hold was booked."))
-emit("content/howto2/li-09.html",'I vanished for two days.<br><em>The deal survived.</em>',
+emit("content/howto2/li-09.html",'I vanished for two days.<br>Ultron <em>kept the deal alive</em>.',
  'Closed the laptop mid-negotiation Monday. Typed two words Wednesday. <b>Nothing was lost.</b>',
  eras,cL,cR,"THE SESSION LOOP",
- [(6,TER,"Work"),(30,KRA,"Close"),(62,"#4d8b6a","Resume"),(88,TER,"Continue")],"RESUME",asset="the session workflow + the docs link",pin="PINPOINT: app.51ultron.com/docs")
+ [(6,TER,"Work"),(30,KRA,"Close"),(62,"#4d8b6a","Resume"),(88,TER,"Continue")],"RESUME",asset="the session workflow + the docs link",ctx="SESSIONS")

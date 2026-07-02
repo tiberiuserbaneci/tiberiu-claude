@@ -18,8 +18,8 @@ body{background:#d9d2c4;display:flex;justify-content:center;padding:24px 0;font-
 .subl{margin-top:9px;font-size:18.5px;font-weight:600;color:#5d564a;}
 .subl b{color:#17150F;}
 
-.cols{flex:1;min-height:0;margin-top:14px;display:flex;gap:13px;}
-.colL,.colR{flex:1;display:flex;flex-direction:column;gap:13px;min-width:0;}
+.cols{flex:1;min-height:0;margin-top:12px;display:flex;gap:10px;}
+.colL,.colR{flex:1;display:flex;flex-direction:column;gap:10px;min-width:0;}
 .grp{border:2px solid #17150F;border-radius:16px;background:#FBF7EE;box-shadow:0 4px 0 rgba(23,21,15,.14);overflow:hidden;display:flex;flex-direction:column;}
 .grp .gh{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:2px solid #17150F;}
 .grp .gh .n{font-weight:900;font-size:20px;letter-spacing:-.4px;}
@@ -37,16 +37,18 @@ body{background:#d9d2c4;display:flex;justify-content:center;padding:24px 0;font-
 .grp.grow .rows{flex:1;display:flex;flex-direction:column;}
 .grp.grow .rows .row{flex:1;align-items:center;}
 .mono4{display:flex;flex-wrap:wrap;gap:8px;padding:11px 16px;}
-.mchip{font-family:'DM Mono',monospace;font-size:14px;background:#F2EBDF;border:1.5px solid #17150F;border-radius:9px;padding:7px 13px;}
+.mchip{flex:1;text-align:center;font-family:'DM Mono',monospace;font-size:14px;background:#F2EBDF;border:1.5px solid #17150F;border-radius:9px;padding:8px 10px;white-space:nowrap;}
 .mchip b{color:#A85B38;font-weight:500;}
 .ctab{flex-shrink:0;margin:13px 0 0;background:#211F1A;border-radius:14px;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;box-shadow:0 4px 0 rgba(23,21,15,.2);}
 .ctab .l{font-size:18px;font-weight:700;color:#F7F1E6;}.ctab .l b{color:#E5A183;font-weight:900;}
 .ctab .r{background:#F7F1E6;color:#17150F;border-radius:999px;padding:8px 18px;font-weight:900;font-size:15px;}
-.ftr{flex-shrink:0;height:50px;margin:11px -40px 0;border-top:2px solid #17150F;background:#F2EBDF;display:flex;align-items:center;justify-content:space-between;padding:0 56px;}
-.ftr .l{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8d8371;}
-.ftr .r{display:flex;align-items:center;gap:10px;font-size:16.5px;font-weight:600;color:#3d3427;}
-.ftr .r img{width:26px;height:26px;border-radius:50%;}
-.ftr .r b{font-weight:900;color:#A85B38;}
+.ftr{flex-shrink:0;margin:10px 0 0;padding:10px 0 14px;border-top:2px solid #17150F;display:flex;align-items:center;justify-content:space-between;}
+.fl{display:flex;align-items:center;gap:10px;min-width:0;}
+.ftr img{width:28px;height:28px;border-radius:50%;flex-shrink:0;}
+.ftx{font-family:'DM Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:#6b6357;white-space:nowrap;}
+.ftx b{color:#17150F;}
+.furl{font-family:'DM Sans',sans-serif;font-weight:900;font-size:19px;letter-spacing:-.4px;color:#17150F;flex-shrink:0;}
+.furl em{color:#A85B38;font-style:normal;}
 """
 
 SPARK='<svg class="spark" viewBox="0 0 100 100"><g fill="#C87B57"><path d="M50 4 L56 38 L50 50 L44 38 Z"/><path d="M50 96 L56 62 L50 50 L44 62 Z"/><path d="M4 50 L38 44 L50 50 L38 56 Z"/><path d="M96 50 L62 44 L50 50 L62 56 Z"/><path d="M17 17 L44 40 L50 50 L38 46 Z"/><path d="M83 83 L56 60 L50 50 L62 54 Z"/><path d="M83 17 L60 44 L50 50 L54 38 Z"/><path d="M17 83 L40 56 L50 50 L46 62 Z"/></g></svg>'
@@ -57,13 +59,13 @@ def row(nm,tag,ds,hot=False):
     small=f'<small>{tag}</small>' if tag else ''
     return f'<div class="row{" hot" if hot else ""}"><span class="nm">{nm}{small}</span><span class="ds">{ds}</span></div>'
 
-def emit(fn,title,sub,left,right,kw,asset,mastl="ULTRON <em>&middot;</em> THE OPERATING MAP",mastr="SAVE THIS"):
+def emit(fn,title,sub,left,right,kw,asset,mastl="ULTRON <em>&middot;</em> THE OPERATING MAP",mastr="SAVE THIS",ctx="THE AGENT MAP"):
     html=f"""<!DOCTYPE html><html><head><meta charset="UTF-8"><style>{CSS}</style></head><body>
 <div class="frame" id="artifact">
 <div class="mast"><span>{mastl}</span><span>{mastr}</span></div><div class="hook">{title}</div><div class="subl">{sub}</div>
 <div class="cols"><div class="colL">{left}</div><div class="colR">{right}</div></div>
 <div class="ctab"><span class="l">Comment <b>{kw}</b> and I will DM you {asset}</span><span class="r">{kw} &rarr;</span></div>
-<div class="ftr"><span class="l">AI OPERATOR FOR FOUNDERS</span><span class="r"><img src="__LOGO__"><span><b>ULTRON</b> &middot; 51ultron.com</span></span></div>
+<div class="ftr"><div class="fl"><img src="__LOGO__"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS &middot; {ctx}</span></div><span class="furl">51ultron<em>.</em>com</span></div>
 </div></body></html>"""
     open(fn,"w").write(html); print("wrote",fn)
 
@@ -92,9 +94,9 @@ R=(grp("dark","The router picks the tier","YOU NEVER CHOOSE",
 +grp("","You just type","PLAIN ENGLISH",
    '<div class="mono4"><span class="mchip"><b>&gt;</b> source 200 founders</span><span class="mchip"><b>&gt;</b> audit my GTM</span><span class="mchip"><b>&gt;</b> build my landing page</span><span class="mchip"><b>&gt;</b> review this NDA</span></div>'))
 emit("content/howto2/li-01.html",
- 'You hired tools.<br>I hired <em>seven agents</em>.',
+ 'You hired tools. I hired<br>Ultron\'s <em>seven agents</em>.',
  "The full Ultron map on one image: agents, tiers, gate, wiring. Save it.",
- L,R,"ROUTER","the full agent map + the docs link")
+ L,R,"ROUTER","the full agent map + the docs link",ctx="THE AGENT MAP")
 
 # ================= li-04: THE BRAIN MAP (line-free groups) =================
 L=(grp("terra","Who you sell to","LOADED IN EVERY RUN",
@@ -119,6 +121,6 @@ R=(grp("dark","What you charge","QUOTED RIGHT",
 +grp("","Seed it once","THREE LINES",
    '<div class="mono4"><span class="mchip"><b>&gt;</b> /init my business</span><span class="mchip"><b>&gt;</b> remember: no discounts</span><span class="mchip"><b>&gt;</b> what do you know about me?</span></div>'))
 emit("content/howto2/li-04.html",
- 'You brief your AI every day.<br><em>I briefed mine once.</em>',
+ 'You brief your AI every day.<br>I briefed <em>Ultron once</em>.',
  "The brain map: what Ultron memorises about your business, and where it pays you back.",
- L,R,"BRAIN","the brain setup + the BCP link")
+ L,R,"BRAIN","the brain setup + the BCP link",ctx="THE BRAIN MAP")

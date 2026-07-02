@@ -1047,6 +1047,13 @@ Before any push to LinkedIn / IG / repo:
 9. **DENSITY — the dominant element must be HEAVY (operator HARD rule, repeated 2026-06-10):** the central block (table / trace / chart / list) must be packed with real, weighty content - every row filled, tight, visually heavy, edge to edge. **NEVER spread sparse rows with `justify-content:space-between`** - it creates airy, skippable gaps. This is THE recurring rejection ("tabelul central e slab si aerisit, te face sa dai skip"). If a block looks airy: pull MORE real rows/columns from the docs, enlarge the content, or pack tighter - never distribute thin content across empty space. Every row carries real data (numbers, names, values, log lines). "Fiecare mm trebuie sa se zbata sa fie acolo."
 10. **Vary every material - nothing standard or linear (operator, repeated):** each material is bespoke. Within one LinkedIn infographic use DIFFERENT treatments per section (e.g. table / pipeline / cards) + a different palette accent per section (book / book-dark / kraft) + one focal element. Never three identical stacked tables. TikTok is NOT a dry table - use a visual scene/mockup (e.g. chat-session mockup), CTA styled to that scene.
 
+11. **ZERO FREE PIXELS (operator HARD rule, 2026-07-02 - binding, per §0.1):** pe un infografic
+    LinkedIn NU exista nici un pixel liber, nici o "zona care respira", nici un spatiu gol. Fiecare
+    caseta e plina de text pana jos, fiecare coloana egala, gap-urile minime functionale, coloanele
+    laterale/ghost umplute pe toata inaltimea. Daca o zona ramane goala: adauga continut real (bullets,
+    rows, chips, outputs), NU o intinde si NU o lasa sa respire. Verificare per-poster la rezolutie
+    reala inainte de livrare.
+
 **Pre-publish gate (7 questions):** easy to scan? · idea immediately useful? · title clear? · visually structured? · **is the central block dense and heavy, with no airy gaps?** · would people save it? · would someone repost it?
 
 ---

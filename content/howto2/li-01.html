@@ -12,8 +12,8 @@ body{background:#d9d2c4;display:flex;justify-content:center;padding:24px 0;font-
 .subl{margin-top:9px;font-size:18.5px;font-weight:600;color:#5d564a;}
 .subl b{color:#17150F;}
 
-.cols{flex:1;min-height:0;margin-top:14px;display:flex;gap:13px;}
-.colL,.colR{flex:1;display:flex;flex-direction:column;gap:13px;min-width:0;}
+.cols{flex:1;min-height:0;margin-top:12px;display:flex;gap:10px;}
+.colL,.colR{flex:1;display:flex;flex-direction:column;gap:10px;min-width:0;}
 .grp{border:2px solid #17150F;border-radius:16px;background:#FBF7EE;box-shadow:0 4px 0 rgba(23,21,15,.14);overflow:hidden;display:flex;flex-direction:column;}
 .grp .gh{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:2px solid #17150F;}
 .grp .gh .n{font-weight:900;font-size:20px;letter-spacing:-.4px;}
@@ -31,20 +31,22 @@ body{background:#d9d2c4;display:flex;justify-content:center;padding:24px 0;font-
 .grp.grow .rows{flex:1;display:flex;flex-direction:column;}
 .grp.grow .rows .row{flex:1;align-items:center;}
 .mono4{display:flex;flex-wrap:wrap;gap:8px;padding:11px 16px;}
-.mchip{font-family:'DM Mono',monospace;font-size:14px;background:#F2EBDF;border:1.5px solid #17150F;border-radius:9px;padding:7px 13px;}
+.mchip{flex:1;text-align:center;font-family:'DM Mono',monospace;font-size:14px;background:#F2EBDF;border:1.5px solid #17150F;border-radius:9px;padding:8px 10px;white-space:nowrap;}
 .mchip b{color:#A85B38;font-weight:500;}
 .ctab{flex-shrink:0;margin:13px 0 0;background:#211F1A;border-radius:14px;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;box-shadow:0 4px 0 rgba(23,21,15,.2);}
 .ctab .l{font-size:18px;font-weight:700;color:#F7F1E6;}.ctab .l b{color:#E5A183;font-weight:900;}
 .ctab .r{background:#F7F1E6;color:#17150F;border-radius:999px;padding:8px 18px;font-weight:900;font-size:15px;}
-.ftr{flex-shrink:0;height:50px;margin:11px -40px 0;border-top:2px solid #17150F;background:#F2EBDF;display:flex;align-items:center;justify-content:space-between;padding:0 56px;}
-.ftr .l{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8d8371;}
-.ftr .r{display:flex;align-items:center;gap:10px;font-size:16.5px;font-weight:600;color:#3d3427;}
-.ftr .r img{width:26px;height:26px;border-radius:50%;}
-.ftr .r b{font-weight:900;color:#A85B38;}
+.ftr{flex-shrink:0;margin:10px 0 0;padding:10px 0 14px;border-top:2px solid #17150F;display:flex;align-items:center;justify-content:space-between;}
+.fl{display:flex;align-items:center;gap:10px;min-width:0;}
+.ftr img{width:28px;height:28px;border-radius:50%;flex-shrink:0;}
+.ftx{font-family:'DM Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:#6b6357;white-space:nowrap;}
+.ftx b{color:#17150F;}
+.furl{font-family:'DM Sans',sans-serif;font-weight:900;font-size:19px;letter-spacing:-.4px;color:#17150F;flex-shrink:0;}
+.furl em{color:#A85B38;font-style:normal;}
 </style></head><body>
 <div class="frame" id="artifact">
-<div class="mast"><span>ULTRON <em>&middot;</em> THE OPERATING MAP</span><span>SAVE THIS</span></div><div class="hook">You hired tools.<br>I hired <em>seven agents</em>.</div><div class="subl">The full Ultron map on one image: agents, tiers, gate, wiring. Save it.</div>
+<div class="mast"><span>ULTRON <em>&middot;</em> THE OPERATING MAP</span><span>SAVE THIS</span></div><div class="hook">You hired tools. I hired<br>Ultron's <em>seven agents</em>.</div><div class="subl">The full Ultron map on one image: agents, tiers, gate, wiring. Save it.</div>
 <div class="cols"><div class="colL"><div class="grp terra grow"><div class="gh"><span class="n">The seven agents</span><span class="m">ONE CHAT BOX</span></div><div class="rows"><div class="row"><span class="nm">CORTEX<small>research</small></span><span class="ds">Profiles people, companies and markets into <b>one ranked brief</b>: funding, size, stack, intent, 40 signals a page.</span></div><div class="row"><span class="nm">SPECTER<small>outbound</small></span><span class="ds">Cold emails and <b>multi-step sequences</b>: one trigger per email, 62 words a step, personalised from the brief.</span></div><div class="row"><span class="nm">STRIKER<small>deals</small></span><span class="ds">Qualification, discovery, <b>objection handling</b>, proposals, close plans. Reads your CRM before it answers.</span></div><div class="row"><span class="nm">PULSE<small>content</small></span><span class="ds">Posts, launches and newsletters <b>in your voice</b>, from the stored sample. Hook first, no fluff.</span></div><div class="row hot"><span class="nm">SENTINEL<small>code</small></span><span class="ds">Reads, writes, tests and <b>ships from Crescendo</b>: 822 components, 30+ kits. Opens the PR, waits for you.</span></div><div class="row"><span class="nm">AMPLIFY<small>publishing</small></span><span class="ds">Formats and schedules every asset <b>per channel and timezone</b>. 10:00 local, ramped volume.</span></div><div class="row"><span class="nm">COUNSEL<small>legal</small></span><span class="ds">NDAs, MSAs, term sheets. <b>Flags the risk lines</b> and drafts the redlines in minutes.</span></div></div></div></div><div class="colR"><div class="grp dark"><div class="gh"><span class="n">The router picks the tier</span><span class="m">YOU NEVER CHOOSE</span></div><div class="rows"><div class="row"><span class="nm">Lite<small>haiku</small></span><span class="ds">Lookups, digests, classifications. The <b>cheap gear</b> for high-volume work.</span></div><div class="row"><span class="nm">Smart<small>sonnet</small></span><span class="ds">The <b>default operator</b> for briefs, sequences and posts. Your daily driver.</span></div><div class="row"><span class="nm">Deep<small>opus</small></span><span class="ds">Hard judgement only: objections, code, legal. <b>Paid where it pays.</b></span></div><div class="row hot"><span class="nm">The bill<small>cents</small></span><span class="ds">Pay per token through one subscription. A full day of agent work costs <b>cents, not seats</b>.</span></div></div></div><div class="grp dark"><div class="gh"><span class="n">The human gate</span><span class="m">NOTHING SENDS ALONE</span></div><div class="rows"><div class="row"><span class="nm">Your tap<small>1 click</small></span><span class="ds">Every email, post, PR and contract <b>parks on HOLD</b>. You read, you tap, then it moves. Zero external accidents.</span></div></div></div><div class="grp terra"><div class="gh"><span class="n">Wired into your stack</span><span class="m">IT ACTS, NOT ANSWERS</span></div><div class="rows"><div class="row"><span class="nm">CRM + mail<small>live</small></span><span class="ds">Reads deals and threads before answering. <b>Writes stages back</b> as replies land.</span></div><div class="row"><span class="nm">Calendar<small>auto</small></span><span class="ds">Replies become <b>booked calls</b> on their own, timezone-correct.</span></div><div class="row hot"><span class="nm">Crescendo<small>822 parts</small></span><span class="ds">The build library: kits, sections, dashboards. <b>Sites ship from chat.</b></span></div></div></div><div class="grp "><div class="gh"><span class="n">You just type</span><span class="m">PLAIN ENGLISH</span></div><div class="rows"><div class="mono4"><span class="mchip"><b>&gt;</b> source 200 founders</span><span class="mchip"><b>&gt;</b> audit my GTM</span><span class="mchip"><b>&gt;</b> build my landing page</span><span class="mchip"><b>&gt;</b> review this NDA</span></div></div></div></div></div>
 <div class="ctab"><span class="l">Comment <b>ROUTER</b> and I will DM you the full agent map + the docs link</span><span class="r">ROUTER &rarr;</span></div>
-<div class="ftr"><span class="l">AI OPERATOR FOR FOUNDERS</span><span class="r"><img src="__LOGO__"><span><b>ULTRON</b> &middot; 51ultron.com</span></span></div>
+<div class="ftr"><div class="fl"><img src="__LOGO__"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS &middot; THE AGENT MAP</span></div><span class="furl">51ultron<em>.</em>com</span></div>
 </div></body></html>

@@ -24,7 +24,7 @@ background-size:36px 36px;}
 .start{flex-shrink:0;align-self:center;margin-top:12px;border:1.5px solid rgba(201,146,116,.5);background:rgba(168,91,56,.08);border-radius:999px;padding:8px 22px;display:flex;gap:14px;align-items:center;}
 .start .a{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.16em;color:#E8845F;}
 .start .b{font-weight:800;font-size:15.5px;color:#F6F1E7;}
-.cols{flex:1;min-height:0;margin-top:16px;display:flex;gap:56px;position:relative;}
+.cols{flex:1;min-height:0;margin-top:13px;display:flex;gap:46px;position:relative;}
 .col{flex:1;display:flex;flex-direction:column;gap:12px;min-width:0;}
 .col .card{flex:1;display:flex;flex-direction:column;justify-content:center;}
 .spine{position:absolute;left:50%;top:0;bottom:0;width:0;transform:translateX(-50%);}
@@ -35,19 +35,19 @@ background-size:36px 36px;}
 .card .hd{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:8px;}
 .card .hd .t{font-weight:900;font-size:20.5px;letter-spacing:-.4px;}
 .card .hd .tag{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.15em;color:#D4A27F;text-transform:uppercase;flex-shrink:0;}
-.card p{font-size:14px;color:rgba(246,241,231,.72);line-height:1.32;}
+.card p{font-size:15px;color:rgba(246,241,231,.72);line-height:1.32;}
 .card p b{color:#F6F1E7;}
 .term{margin-top:8px;background:#0d0d0c;border:1px solid rgba(250,250,247,.10);border-radius:10px;padding:10px 12px;display:flex;align-items:center;gap:10px;}
 .term .c{flex:1;font-family:'DM Mono',monospace;font-size:14.5px;color:#F0C9AF;}
 .term .go{width:26px;height:26px;border-radius:50%;background:#A85B38;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .term .go svg{width:13px;height:13px;stroke:#fff;stroke-width:3;fill:none;stroke-linecap:round;}
-.row{display:flex;align-items:center;gap:10px;padding:6.5px 0;border-top:1px solid rgba(250,250,247,.07);}
+.row{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid rgba(250,250,247,.07);}
 .row:first-of-type{border-top:none;}
 .row .n{font-weight:800;font-size:15.5px;flex-shrink:0;}
 .row .d{flex:1;font-size:13px;color:rgba(246,241,231,.6);}
 .row .bg{flex-shrink:0;font-family:'DM Mono',monospace;font-size:12px;background:#A85B38;color:#fff;border-radius:7px;padding:3px 10px;font-weight:500;}
 .row .bg.k{background:#3a2c20;color:#E8A17F;border:1px solid rgba(232,132,95,.4);}
-.chk{display:flex;gap:10px;align-items:flex-start;padding:5.5px 0;font-size:14.5px;color:rgba(246,241,231,.82);}
+.chk{display:flex;gap:10px;align-items:flex-start;padding:7px 0;font-size:15px;color:rgba(246,241,231,.82);}
 .chk b{color:#F6F1E7;}
 .chk .bx{width:19px;height:19px;border-radius:5px;background:#3f7d5c;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
 .chk .bx svg{width:11px;height:11px;stroke:#fff;stroke-width:3.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
@@ -62,10 +62,13 @@ background-size:36px 36px;}
 .ctab{flex-shrink:0;margin:12px 0 10px;background:linear-gradient(160deg,#B4693F,#8f4e2e);border-radius:14px;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;}
 .ctab .l{font-size:18.5px;font-weight:700;color:#fff;}.ctab .l b{font-weight:900;}
 .ctab .r{background:#F6F1E7;color:#1b140e;border-radius:999px;padding:8px 18px;font-weight:900;font-size:15px;}
-.ftr{flex-shrink:0;height:52px;margin:0 -36px;background:#0c0c0b;border-top:1px solid rgba(250,250,247,.1);display:flex;align-items:center;justify-content:center;gap:12px;}
-.ftr img{width:26px;height:26px;border-radius:50%;}
-.ftr .a{font-weight:900;font-size:15.5px;}.ftr .b{font-size:14.5px;color:rgba(246,241,231,.55);}
-.ftr .kw{font-family:'DM Mono',monospace;font-size:13px;color:#E8A17F;}
+.ftr{flex-shrink:0;margin:10px 0 0;padding:10px 0 14px;border-top:1px solid rgba(246,241,231,.22);display:flex;align-items:center;justify-content:space-between;}
+.fl{display:flex;align-items:center;gap:10px;min-width:0;}
+.ftr img{width:28px;height:28px;border-radius:50%;flex-shrink:0;}
+.ftx{font-family:'DM Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:rgba(246,241,231,.55);white-space:nowrap;}
+.ftx b{color:#F6F1E7;}
+.furl{font-family:'DM Sans',sans-serif;font-weight:900;font-size:19px;letter-spacing:-.4px;color:#F6F1E7;flex-shrink:0;}
+.furl em{color:#D89572;font-style:normal;}
 """
 
 GO='<span class="go"><svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span>'
@@ -79,7 +82,7 @@ def checks(cc,x=False): return "".join(f'<div class="chk{" x" if x else ""}">{XX
 def cheat(t,tag,items): return ('<div class="cheat"><div class="hd"><span class="t">'+t+'</span><span class="tag">'+tag+'</span></div><div class="gridc">'
     +"".join(f'<span class="ci"><b>{a}</b>{b}</span>' for a,b in items)+'</div></div>')
 
-def emit(fn,title,sub,start_a,start_b,left,right,nstops,cheat_html,kw,asset="the playbook",pin="",mastl="ULTRON <em>&middot;</em> FOUNDER PLAYBOOK",mastr="SAVE THIS"):
+def emit(fn,title,sub,start_a,start_b,left,right,nstops,cheat_html,kw,asset="the playbook",pin="",mastl="ULTRON <em>&middot;</em> FOUNDER PLAYBOOK",mastr="SAVE THIS",ctx="FOUNDER PLAYBOOK"):
     stops="".join(f'<span class="stop{[" "," k"," w"][i%3]}" style="top:{int((i+0.5)*100/nstops)}%">{i+1}</span>' for i in range(nstops))
     html=f"""<!DOCTYPE html><html><head><meta charset="UTF-8"><style>{CSS}</style></head><body>
 <div class="frame" id="artifact">
@@ -88,7 +91,7 @@ def emit(fn,title,sub,start_a,start_b,left,right,nstops,cheat_html,kw,asset="the
 <div class="cols"><div class="col">{left}</div><div class="spine"><span class="bar"></span>{stops}</div><div class="col">{right}</div></div>
 {cheat_html}
 <div class="ctab"><span class="l">Comment <b>{kw}</b> and I will DM you {asset}</span><span class="r">{kw} &rarr;</span></div>
-<div class="ftr"><img src="__LOGO__"><span class="a">ULTRON</span><span class="b">&middot; AI operator for founders &middot; 51ultron.com</span></div>
+<div class="ftr"><div class="fl"><img src="__LOGO__"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS &middot; {ctx}</span></div><span class="furl">51ultron<em>.</em>com</span></div>
 </div></body></html>"""
     open(fn,"w").write(html); print("wrote",fn)
 
@@ -103,9 +106,9 @@ R=(bcard("CORTEX runs","LIVE DATA",rows([("Pulled","companies matching the niche
 +bcard("The gate holds","NO ACCIDENTS",'<p><b>240 sends parked on HOLD.</b> Nothing external fires until you approve. Read 12, spot-check the rest, one tap.</p>')
 +bcard("The clock","REAL TIMING",rows([("09:14","you type the sentence","IN",1),("09:33","top 200 exported","+19 MIN",1),("09:47","queue ready, gate holds","47 MIN",0)])+'<p style="margin-top:8px">The laptop was closed for <b>46 of the 47 minutes</b>.</p>'))
 CH=cheat("Handy commands","CHEAT SHEET",[("/cortex","profile + source"),("/specter","openers + sequences"),("/amplify","10:00 local queue"),("/striker","triage the replies"),("approve","release the queue"),("/brief","one-page account brief")])
-emit("content/howto2/li-03.html",'200 founders sourced.<br>I typed <em>one sentence</em>.',
+emit("content/howto2/li-03.html",'Ultron sourced 200 founders.<br>I typed <em>one sentence</em>.',
  'The unedited run from this morning. One line in, briefed pipeline out. <b>47 minutes.</b>',
- "START HERE","one sentence &middot; laptop closed &middot; 47 min",L,R,6,CH,"SOURCE",asset="the sourcing sentence + the techniques link",pin="PINPOINT: app.51ultron.com/techniques")
+ "START HERE","one sentence &middot; laptop closed &middot; 47 min",L,R,6,CH,"SOURCE",asset="the sourcing sentence + the techniques link",ctx="THE SOURCING RUN")
 
 # ---------------- li-02 TABS ----------------
 L=(bcard("The stack you pay for","$129 / MO",rows([("ChatGPT","answers, no memory of you","$20",0),("Claude","same, second tab","$20",0),("Perplexity","research only","$20",1),("Jasper","copy only","$49",1),("Midjourney","images only","$10",1),("Notion AI","notes only","$10",1)]))
@@ -114,9 +117,9 @@ R=(bcard("One box instead","THE SWAP",term("&gt; write the cold sequence")+term(
 +bcard("One context","THE BRAIN",rows([("Your ICP","loaded in every job","SET",0),("Your voice","under every draft","SET",1),("Your pipeline","live in every answer","LIVE",1)]))
 +bcard("What you keep","THE PAYOFF",checks(["One login, one history, <b>one bill</b>","Work lands <b>done</b>: briefs, sends, PRs","A day of work costs <b>cents</b>, not seats"])))
 CH=cheat("The agents inside","ONE SUBSCRIPTION",[("/cortex","research"),("/specter","outbound"),("/striker","deals"),("/pulse","content"),("/sentinel","code"),("/amplify","publishing")])
-emit("content/howto2/li-02.html",'Your AI stack: $129 a month.<br>Mine: <em>cents</em>.',
+emit("content/howto2/li-02.html",'Your AI stack: $129 a month.<br>Ultron: <em>cents</em>.',
  'Six subscriptions, six logins, six dead contexts. Here is the whole swap, priced.',
- "THE MATH","$129/mo of tabs &rarr; cents per day",L,R,4,CH,"TABS",asset="the migration map + the cost calculator",pin="PINPOINT: work.51ultron.com/calculator")
+ "THE MATH","$129/mo of tabs &rarr; cents per day",L,R,4,CH,"TABS",asset="the migration map + the cost calculator",ctx="THE STACK SWAP")
 
 # ---------------- li-06 SHIP (Crescendo) ----------------
 L=(bcard("Say what you need","PLAIN ENGLISH",term("&gt; build me a landing page for my agency")+'<p style="margin-top:8px">No Figma, no template hunt. <b>SENTINEL</b> picks the kit and builds.</p>')
@@ -126,10 +129,10 @@ R=(bcard("It assembles, then verifies","NO AI LOOK",checks(["Sections from the <
 +bcard("App screens too","BEYOND LANDINGS",rows([("Mail / Kanban / CRM","full app screens, wired","SCREENS",1),("Onboarding","multi-step wizard","FLOW",1),("Settings + auth","profile, keys, danger zone","DONE",1)]))
 +bcard("You approve, it deploys","THE GATE",'<p>Preview link first. <b>You say go</b>, it ships to your domain.</p>'+term("&gt; ship it")+'<p style="margin-top:8px">Live the same evening. <b>$0 beyond the plan.</b></p>'))
 CH=cheat("The build commands","CHEAT SHEET",[("/sentinel build","kit to live site"),("crescendo","browse 822 parts"),("/sections","hero, pricing, FAQ"),("/dash","CRM / ops / analytics"),("preview","before anything ships"),("ship","your one word")])
-emit("content/howto2/li-06.html",'One chat. A <em>whole website</em>.<br>Live tonight.',
+emit("content/howto2/li-06.html",'One chat with Ultron.<br>A <em>whole website</em>, live tonight.',
  'SENTINEL builds from Crescendo: 822 components, 30+ kits, real dashboards. You just describe it.',
  "THE LIBRARY","822 components &middot; 30+ kits &middot; preview &rarr; ship",L,R,6,CH,"SHIP",
- asset="the build playbook + the Crescendo link",pin="PINPOINT: app.51ultron.com/crescendo")
+ asset="the build playbook + the Crescendo link",ctx="CRESCENDO BUILDS")
 
 # ---------------- li-07 GATE ----------------
 L=(bcard("SPECTER writes","09:38",rows([("240 emails","4-step sequence","62W",0),("One trigger each","from the account brief","REAL",1)]))

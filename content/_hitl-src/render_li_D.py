@@ -21,7 +21,7 @@ body{background:#d9d2c4;display:flex;justify-content:center;padding:24px 0;font-
 .subl{margin-top:9px;font-size:18.5px;font-weight:600;color:#5d564a;}
 .subl b{color:#17150F;}
 
-.band{flex:1;min-height:0;margin-top:13px;background:#FDFAF3;border:2px solid #17150F;border-radius:16px;box-shadow:0 4px 0 rgba(23,21,15,.16);display:flex;gap:16px;padding:13px 16px;}
+.band{flex:1;min-height:0;margin-top:10px;background:#FDFAF3;border:2px solid #17150F;border-radius:16px;box-shadow:0 4px 0 rgba(23,21,15,.16);display:flex;gap:15px;padding:11px 15px;}
 .lvl{flex-shrink:0;width:86px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:2px solid #17150F;}
 .lvl .a{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.1em;}
 .lvl .n{font-weight:900;font-size:38px;line-height:1;}
@@ -29,21 +29,24 @@ body{background:#d9d2c4;display:flex;justify-content:center;padding:24px 0;font-
 .brow{display:flex;align-items:center;gap:10px;}
 .brow .bt{font-weight:900;font-size:24px;letter-spacing:-.5px;}
 .brow .chipc{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#fff;border-radius:999px;padding:3.5px 11px;font-weight:500;}
-.bi{display:flex;gap:8px;align-items:flex-start;margin-top:5.5px;font-size:14px;color:#57503f;line-height:1.3;}
+.bi{display:flex;gap:8px;align-items:flex-start;margin-top:6px;font-size:14.5px;color:#57503f;line-height:1.32;}
 .bi b{color:#17150F;}
 .bi .d{flex-shrink:0;width:17px;height:17px;border-radius:50%;color:#fff;font-size:10.5px;font-weight:900;display:flex;align-items:center;justify-content:center;margin-top:1.5px;}
 .bi code{font-family:'DM Mono',monospace;font-size:12.5px;background:#F0E9DA;border:1px solid #d8cdb8;border-radius:5px;padding:1px 7px;}
-.ghost{flex-shrink:0;width:210px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;opacity:.65;}
-.gp{font-family:'DM Mono',monospace;font-size:11.5px;color:#8d8371;background:#F0E9DA;border:1.5px solid #d8cdb8;border-radius:8px;padding:5px 14px;white-space:nowrap;}
-.gp.hot{color:#fff;background:var(--gc);border-color:var(--gc);opacity:1;}
-.garr{width:2px;height:9px;background:#c4b89f;}
+.ghost{flex-shrink:0;width:210px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:2px 0;}
+.gp{font-family:'DM Mono',monospace;font-size:12.5px;color:#17150F;background:#F0E9DA;border:2px solid #17150F;border-radius:8px;padding:6px 15px;white-space:nowrap;font-weight:500;box-shadow:0 2px 0 rgba(23,21,15,.14);}
+.gp.hot{color:#fff;background:var(--gc);border-color:#17150F;}
+.garr{width:2.5px;flex:1;min-height:7px;background:#8d8371;}
 .ctab{flex-shrink:0;margin:12px 0 0;background:#211F1A;border-radius:14px;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;box-shadow:0 3px 0 rgba(23,21,15,.18);}
 .ctab .l{font-size:18px;font-weight:700;color:#F7F1E6;}.ctab .l b{color:#E5A183;font-weight:900;}
 .ctab .r{background:#F7F1E6;color:#17150F;border-radius:999px;padding:8px 18px;font-weight:900;font-size:15px;}
-.ftr{flex-shrink:0;height:48px;margin:11px -40px 0;background:#17150F;display:flex;align-items:center;justify-content:center;gap:12px;color:#F6F1E7;}
-.ftr img{width:26px;height:26px;border-radius:50%;}
-.ftr .a{font-weight:900;font-size:15.5px;}.ftr .b{font-size:14.5px;color:rgba(246,241,231,.6);}
-.ftr .kw{font-family:'DM Mono',monospace;font-size:13px;color:#E8A17F;}
+.ftr{flex-shrink:0;margin:10px 0 0;padding:10px 0 14px;border-top:2px solid #17150F;display:flex;align-items:center;justify-content:space-between;}
+.fl{display:flex;align-items:center;gap:10px;min-width:0;}
+.ftr img{width:28px;height:28px;border-radius:50%;flex-shrink:0;}
+.ftx{font-family:'DM Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:#6b6357;white-space:nowrap;}
+.ftx b{color:#17150F;}
+.furl{font-family:'DM Sans',sans-serif;font-weight:900;font-size:19px;letter-spacing:-.4px;color:#17150F;flex-shrink:0;}
+.furl em{color:#A85B38;font-style:normal;}
 """
 def bi(c,i,txt): return f'<div class="bi"><span class="d" style="background:{c}">{i}</span><span>{txt}</span></div>'
 def band(color,tile_a,tile_n,title,chip,bullets,ghost):
@@ -60,34 +63,39 @@ def emit_ladder():
      band(BK,"STEP","5","Replies route back","AFTER THE SEND",
       ["<b>STRIKER takes every reply.</b> Qualify, objection, book the call.",
        "<b>You read a digest</b>, not an inbox. Hot threads flagged first.",
-       "Every send logged with <code>run id</code>. The loop is auditable."],
-      [("reply",0),"",("STRIKER",1),"",("booked call",0)])
+       "Every send logged with <code>run id</code>. The loop is auditable.",
+       "Hot reply overnight? The digest is on your phone <b>before coffee</b>."],
+      [("reply in",0),"",("qualify",0),"",("STRIKER",1),"",("digest",0),"",("booked call",0)])
     +band(G,"STEP","4","THE GATE: your tap","THE WHOLE TRICK",
       ["<b>All 240 park on HOLD.</b> Nothing external ever fires alone.",
        "<b>Read 12, spot-check the rest</b>, one tap: <code>approve all</code> &middot; <code>hold</code> &middot; <code>edit 3</code>.",
-       "It caught <b>tone drift on 3</b>, a wrong CC and a broken merge field."],
-      [("240 on HOLD",1),"",("your tap",0),"",("released",0)])
+       "It caught <b>tone drift on 3</b>, a wrong CC and a broken merge field.",
+       "Hold parks the batch with <b>zero loss</b>. Edit fixes inline, then release."],
+      [("240 on HOLD",1),"",("read 12",0),"",("your tap",0),"",("edit 3",0),"",("released",0)])
     +band(K,"STEP","3","Queue the sends","RAMPED, NOT BLASTED",
       ["<b>10:00 local time</b> per prospect, spread over 4 days.",
        "<b>Warm domains only.</b> The ramp keeps you at <b>99.2% inboxed</b>.",
-       "AMPLIFY owns the calendar: <code>/amplify schedule</code>."],
-      [("Mon 60",0),"",("Tue 60",0),"",("10:00 local",1)])
+       "AMPLIFY owns the calendar: <code>/amplify schedule</code>.",
+       "Volume ramps 60 &rarr; 60 &rarr; 60 &rarr; 60. <b>Blasts kill domains</b>, ramps keep them."],
+      [("Mon 60",0),"",("Tue 60",0),"",("Wed 60",0),"",("Thu 60",0),"",("10:00 local",1)])
     +band(B,"STEP","2","Personalise each","NO MERGE SMELL",
       ["<b>One trigger per email</b>, pulled from the account brief.",
        "Company signal + role pain, <b>62 words a step</b>.",
-       "Winners carry a trigger. Templates carry adjectives."],
-      [("brief",0),"",("trigger",1),"",("62 words",0)])
+       "Winners carry a trigger. Templates carry adjectives.",
+       "Every draft cites its brief line, so <b>you can audit the claim</b> in one look."],
+      [("account brief",0),"",("signal",0),"",("trigger",1),"",("62 words",0)])
     +band(T,"STEP","1","SPECTER writes 240","09:38 THIS MORNING",
       ["<b>4-step sequence</b> per account, drafted from one sentence.",
        "You typed: <code>&gt; run outbound on the 200 list</code>.",
-       "Drafts, not sends. <b>Everything waits at step 4.</b>"],
-      [("one sentence",0),"",("SPECTER",1),"",("240 drafts",0)]))
+       "Drafts, not sends. <b>Everything waits at step 4.</b>",
+       "Cost of the whole batch on the meter: <b>cents</b>, not an SDR month."],
+      [("one sentence",0),"",("SPECTER",1),"",("4-step seq",0),"",("240 drafts",0)]))
     html=f"""<!DOCTYPE html><html><head><meta charset="UTF-8"><style>{CSS_D}</style></head><body>
 <div class="frame" id="artifact">
-<div class="mast"><span>ULTRON <em>&middot;</em> THE GATE LADDER</span><span>SAVE THIS</span></div><div class="hook">AI wrote 240 emails.<br><em>Zero</em> left without my tap.</div><div class="subl">Five steps, <b>one human tap</b>, zero accidents. The whole outbound gate on one image.</div>
+<div class="mast"><span>ULTRON <em>&middot;</em> THE GATE LADDER</span><span>SAVE THIS</span></div><div class="hook">I let Ultron write 240 emails.<br><em>Zero</em> left without my tap.</div><div class="subl">Five steps, <b>one human tap</b>, zero accidents. The whole outbound gate on one image.</div>
 {bands}
 <div class="ctab"><span class="l">Comment <b>GATE</b> and I will DM you the gated outbound setup + the architecture doc</span><span class="r">GATE &rarr;</span></div>
-<div class="ftr"><img src="__LOGO__"><span class="a">ULTRON</span><span class="b">&middot; AI operator for founders &middot; 51ultron.com</span></div>
+<div class="ftr"><div class="fl"><img src="__LOGO__"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS &middot; THE OUTBOUND GATE</span></div><span class="furl">51ultron<em>.</em>com</span></div>
 </div></body></html>"""
     open("content/howto2/li-07.html","w").write(html); print("wrote li-07 (ladder)")
 
@@ -131,11 +139,13 @@ body{background:#d9d2c4;display:flex;justify-content:center;padding:24px 0;font-
 .ctab{flex-shrink:0;margin:11px 0 0;background:#211F1A;border-radius:14px;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;box-shadow:0 3px 0 rgba(23,21,15,.18);}
 .ctab .l{font-size:18px;font-weight:700;color:#F7F1E6;}.ctab .l b{color:#E5A183;font-weight:900;}
 .ctab .r{background:#F7F1E6;color:#17150F;border-radius:999px;padding:8px 18px;font-weight:900;font-size:15px;}
-.ftr{flex-shrink:0;height:46px;margin:10px -36px 0;background:#F6F1E7;border-top:2px solid #17150F;display:flex;align-items:center;justify-content:space-between;padding:0 56px;}
-.ftr .l{font-size:15.5px;font-weight:600;color:#3d3427;}.ftr .l b{font-weight:900;color:#A85B38;}
-.ftr .r{display:flex;align-items:center;gap:9px;font-size:15.5px;font-weight:600;color:#3d3427;}
-.ftr .r img{width:25px;height:25px;border-radius:50%;}
-.ftr .r b{font-weight:900;color:#17150F;}
+.ftr{flex-shrink:0;margin:10px 0 0;padding:10px 0 14px;border-top:2px solid #17150F;display:flex;align-items:center;justify-content:space-between;}
+.fl{display:flex;align-items:center;gap:10px;min-width:0;}
+.ftr img{width:28px;height:28px;border-radius:50%;flex-shrink:0;}
+.ftx{font-family:'DM Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:#6b6357;white-space:nowrap;}
+.ftx b{color:#17150F;}
+.furl{font-family:'DM Sans',sans-serif;font-weight:900;font-size:19px;letter-spacing:-.4px;color:#17150F;flex-shrink:0;}
+.furl em{color:#A85B38;font-style:normal;}
 """
 SPARK='<svg viewBox="0 0 100 100"><g fill="#C84623"><path d="M50 4 L56 38 L50 50 L44 38 Z"/><path d="M50 96 L56 62 L50 50 L44 62 Z"/><path d="M4 50 L38 44 L50 50 L38 56 Z"/><path d="M96 50 L62 44 L50 50 L62 56 Z"/><path d="M17 17 L44 40 L50 50 L38 46 Z"/><path d="M83 83 L56 60 L50 50 L62 54 Z"/><path d="M83 17 L60 44 L50 50 L54 38 Z"/><path d="M17 83 L40 56 L50 50 L46 62 Z"/></g></svg>'
 GO='<span class="go"><svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span>'
@@ -170,11 +180,11 @@ def emit_grid():
       '<div class="b9c"><div class="k">Call</div><div class="v">you, at the right time</div></div></div></div>')
     html=f"""<!DOCTYPE html><html><head><meta charset="UTF-8"><style>{CSS_E}</style></head><body>
 <div class="frame" id="artifact">
-<div class="mast"><span>ULTRON <em>&middot;</em> THE AI-READINESS INDEX</span><span>SAVE THIS</span></div><div class="hook">Two buyers were <em>hiding</em><br>in my list of 40.</div><div class="subl">9 steps, one run, <b>62 minutes</b>. It found both before lunch.</div>
+<div class="mast"><span>ULTRON <em>&middot;</em> THE AI-READINESS INDEX</span><span>SAVE THIS</span></div><div class="hook">Ultron found 2 buyers <em>hiding</em><br>in my list of 40.</div><div class="subl">9 steps, one run, <b>62 minutes</b>. It found both before lunch.</div>
 <div class="gridw">{cells}</div>
 {band}
 <div class="ctab" style="margin-top:11px"><span class="l">Comment <b>INDEX</b> and I will DM you the rubric + the scoring run</span><span class="r">INDEX &rarr;</span></div>
-<div class="ftr"><span class="l">AI OPERATOR FOR FOUNDERS</span><span class="r"><img src="__LOGO__"><span><b>ULTRON</b> &middot; 51ultron.com</span></span></div>
+<div class="ftr"><div class="fl"><img src="__LOGO__"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS &middot; THE AI-READINESS INDEX</span></div><span class="furl">51ultron<em>.</em>com</span></div>
 </div></body></html>"""
     open("content/howto2/li-10.html","w").write(html); print("wrote li-10 (grid)")
 
