@@ -592,13 +592,14 @@ def cover_ig(out):
     # opaque-grid experiment is dead). Hook + brand marks float free; the video runs behind.
     base=Image.new("RGBA",(W,H),(0,0,0,0)); d=ImageDraw.Draw(base)
     s=fit_hook(d,COVER["head"],W-2*MX,start=80,floor=54); hf=dm(900,s); y=112
-    # per-glyph soft drop shadow (NOT a degrade band - operator 2026-07-02): keeps the hook
-    # readable over light OR dark video without darkening the overlay
-    sh=Image.new("RGBA",(W,H),(0,0,0,0)); sd=ImageDraw.Draw(sh); yy=y
-    for ln in COVER["head"]:
-        txt="".join(t for t,_ in ln); tw2=sd.textlength(txt,font=hf)
-        sd.text(((W-tw2)//2+4, yy+5), txt, font=hf, fill=(0,0,0,215)); yy+=int(s*1.12)
-    base.alpha_composite(sh.filter(ImageFilter.GaussianBlur(7)))
+    # SEMI-TRANSPARENT BACKGROUND BAND behind hook + marks - the EXACT STOP PAYING reference
+    # (operator 2026-07-02 FINAL, "backgroundul asta functioneaza asa transparent"): dark but
+    # see-through, the video reads through it. DO NOT remove, DO NOT replace with per-glyph
+    # shadows, solid plates or anything else. Below the band everything stays fully open.
+    halo=Image.new("RGBA",(W,H),(0,0,0,0)); hd2=ImageDraw.Draw(halo)
+    hh=int(s*1.12)*len(COVER["head"])
+    hd2.rounded_rectangle([40,y-30,W-40,y+hh+56+112+34],radius=38,fill=(12,10,9,170))
+    base.alpha_composite(halo.filter(ImageFilter.GaussianBlur(34)))
     for ln in COVER["head"]: seg_center(d,y,ln,hf); y+=int(s*1.12)
     # NO 3D model (operator 2026-07-02): marks raised right under the hook, centre stays open for the movie
     my=y+56
