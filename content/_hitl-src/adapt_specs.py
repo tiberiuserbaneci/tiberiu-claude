@@ -9,7 +9,7 @@
 
 BATCH1=[
  dict(slug="aios", title="THE AI OPERATING SYSTEM", accent=(204,120,92), mark="claude", pill="operator",
-  cover=("I quit 9 tools in one night.","They kept forgetting me."),
+  cover=("Nine tools forgot who I was.","I quit all nine."),
   close=("Save this to","own your OS.","Rented tools or your own command center?"),
   slides=[
    ("THE BOTTLENECK",("My AI asked who I was.","For the 40th time."),"Every chat starts from zero. That is the real bottleneck, not the model.",("The tab is not a system.",),"amnesia"),
@@ -22,7 +22,7 @@ BATCH1=[
    ("THE OPERATOR",("Renters restart daily.","Owners compound."),"One subscription, one memory, one command center behind a chat.",("Build yours today.",),"own"),
   ]),
  dict(slug="loops", title="PROMPTS ARE DEAD, LOOPS RUN", accent=(200,70,35), mark="claude", pill="builder",
-  cover=("Stop writing prompts.","Start setting exits."),
+  cover=("You are the cron job","in your own company."),
   close=("Save this before","your next prompt.","Which task would you loop first?"),
   slides=[
    ("THE OLD WAY",("You are a human cron job.","Admit it."),"If you type prompt after prompt, you work backwards, one output at a time.",("You are the cron job.",),"oldway"),
@@ -35,7 +35,7 @@ BATCH1=[
    ("THE SCALE",("My hours stopped scaling.","My systems did not."),"Nine flows ran 212 cycles last week. You typed three sentences.",("Scale past your hours.",),"scale"),
   ]),
  dict(slug="aibody", title="THE COMPLETE AI BODY", accent=(212,162,127), mark="claude", pill="founder",
-  cover=("You bought a mouth.","You needed a body."),
+  cover=("You rented a mouth.","Your company needs hands."),
   close=("Save this and","augment every part.","Which part of you needs the upgrade first?"),
   slides=[
    ("THE DIFFERENCE",("Talking is not working.","Ask your chatbot."),"Most founders rent one mouth. The top operators wire every organ.",("Augment, not chat.",),"difference"),
@@ -48,7 +48,7 @@ BATCH1=[
    ("THE OPERATOR",("Stop chatting with organs.","Assemble the body."),"One chat wires brain, eyes, voice, hands and heart into one operator.",("The full body, one login.",),"operator"),
   ]),
  dict(slug="fivesigns", title="5 SIGNS YOU NEED AI NOW", accent=(204,120,92), mark="claude", pill="founder",
-  cover=("Answer 5 questions.","Count your leaks."),
+  cover=("Most founders fail","this five-question test."),
   close=("Save this checklist","and score yourself.","How many of the 5 did you tick?"),
   slides=[
    ("SIGN 1",("Q1: same answer,","typed 40 times a week?"),"If support answers repeat daily, a flow should answer them in seconds.",("Ultron replies 24/7.",),"sign1"),
@@ -61,7 +61,7 @@ BATCH1=[
    ("THE GATE",("Automate the work.","Keep the veto."),"Every flow that touches a customer parks for your tap first.",("You stay in control.",),"gate"),
   ]),
  dict(slug="contentdesk", title="THE 500K CONTENT DESK", accent=(200,70,35), mark="claude", pill="operator",
-  cover=("Five salaries quit my desk.","Output went up."),
+  cover=("My content team never sleeps","and never meets."),
   close=("Save the desk","and steal the setup.","Which of the five would you run first?"),
   slides=[
    ("SKILL 1",("Monday, 07:00.","The week plans itself."),"One line in, 14 slots out, spread across channels at 10:00 local.",("Zero coordinators.",),"cal"),
@@ -77,7 +77,7 @@ BATCH1=[
 
 BATCH2=[
  dict(slug="unstuck", title="STUCK AT LEVEL ONE", accent=(204,120,92), mark="claude", pill="builder",
-  cover=("You are at level 1.","The map goes to 5."),
+  cover=("You use 12% of Claude.","Here is the other 88."),
   close=("Save the map","and climb one level.","Which level are you honestly at?"),
   slides=[
    ("LEVEL 1",("Ask. Copy. Close.","The hamster wheel."),"Ask, copy, close the tab. A smarter search bar, nothing more.",("The floor, not the ceiling.",),"floor"),
@@ -90,7 +90,7 @@ BATCH2=[
    ("THE CEILING",("The ceiling is quiet.","Just running."),"One founder, one subscription, a company that moves overnight.",("See you up there.",),"ceiling"),
   ]),
  dict(slug="hidden", title="THE HIDDEN SKILLS", accent=(212,162,127), mark="claude", pill="operator",
-  cover=("Prompting is level zero.","Installing is the game."),
+  cover=("You mastered prompting.","That was the tutorial level."),
   close=("Save the list","before you prompt again.","Which skill would save you the most hours?"),
   slides=[
    ("THE MYTH",("Re-wording requests","is not a skill."),"The top operators install capabilities. The rest re-word requests.",("Skills beat phrasing.",),"myth"),
@@ -103,7 +103,7 @@ BATCH2=[
    ("THE GATE",("Executes at AI speed.","Sends at my speed."),"Everything external parks first. You stay the only trigger.",("Power needs brakes.",),"gate"),
   ]),
  dict(slug="carouselcmd", title="THE CAROUSEL COMMAND", accent=(200,70,35), mark="claude", pill="operator",
-  cover=("My designer invoice","died mid-month."),
+  cover=("This carousel built itself.","Yours can too."),
   close=("Save this before","your next invoice.","What would you build with the saved retainer?"),
   slides=[
    ("THE OLD BILL",("A week per deck.","Plus revision rounds."),"Briefs, revisions, queue time. A week per deck, every deck.",("That bill ends today.",),"oldbill"),
@@ -116,7 +116,7 @@ BATCH2=[
    ("THE MATH",("Retainer money","became runway."),"Metered by use, not by seats. The retainer becomes runway.",("Cancel, then compound.",),"math"),
   ]),
  dict(slug="patterns", title="HOW REAL AGENTS ARE BUILT", accent=(204,120,92), mark="claude", pill="builder",
-  cover=("Your agent is fine.","Your architecture is not."),
+  cover=("Agents do not fail.","Their builders do."),
   close=("Save the patterns","and check your stack.","Which pattern is your setup missing?"),
   slides=[
    ("PATTERN 1",("Think, act, look.","Then think again."),"Real agents think before every tool call and check what came back.",("No blind execution.",),"react"),
@@ -129,7 +129,7 @@ BATCH2=[
    ("THE OPERATOR",("Same models.","Different companies."),"The same models, structured right, become a workforce.",("Architecture wins.",),"operator"),
   ]),
  dict(slug="setup", title="60 MINUTES TO AN OPERATOR", accent=(212,162,127), mark="claude", pill="founder",
-  cover=("60 minutes on a Sunday.","A coworker by lunch."),
+  cover=("Give me one hour.","Get back a coworker."),
   close=("Save the checklist","and block the hour.","Which minute are you stuck on?"),
   slides=[
    ("MIN 0-10",("Minute 10:","the stack clicks in."),"Mail, CRM, calendar, payments. Ultron plugs into what you already run.",("No migration.",),"connect"),
@@ -144,7 +144,7 @@ BATCH2=[
 ]
 BATCH3=[
  dict(slug="verified", title="I CHECKED THE LISTS", accent=(200,70,35), mark="claude", pill="operator",
-  cover=("Everyone posts skill lists.","I actually tested them."),
+  cover=("I installed all 50 viral skills.","A third are fake."),
   close=("Save the shortlist,","skip the flood.","Which list burned you last?"),
   slides=[
    ("THE FLOOD",("Fifty skills per list.","Zero receipts."),"The same recycled lists, reposted daily. Nobody installs them, nobody verifies them.",("So I did.",),"flood"),
@@ -157,7 +157,7 @@ BATCH3=[
    ("THE DESK",("My desk runs","on survivors."),"Twelve skills, each tested on my own pipeline, running daily.",("Quality beats quantity.",),"desk"),
   ]),
  dict(slug="fivepaid", title="THE 5 SKILLS THAT PAY", accent=(212,162,127), mark="claude", pill="founder",
-  cover=("Learn what businesses","already pay for."),
+  cover=("Stop learning AI skills","nobody will pay for."),
   close=("Save this and","pick your one.","Which of the 5 fits you?"),
   slides=[
    ("SKILL 1",("Research","that closes."),"Account briefs that turn cold calls warm. Companies pay retainers for this.",("CORTEX does it daily.",),"research"),
@@ -170,7 +170,7 @@ BATCH3=[
    ("THE MATH",("Cents to practice.","Real money to sell."),"The meter runs in cents while you learn. The invoice runs high when you deliver.",("Practice is free now.",),"meter"),
   ]),
  dict(slug="installs24", title="THE POWER USER SETUP", accent=(204,120,92), mark="claude", pill="builder",
-  cover=("Your AI is stock.","Power users install."),
+  cover=("Stock Claude answers questions.","Installed Claude runs your company."),
   close=("Save the setup","and install tonight.","Which install goes first?"),
   slides=[
    ("STOCK",("Out of the box","it only answers."),"Stock settings are training wheels. Installed right, it operates.",("Stock is the floor.",),"stock"),
@@ -183,7 +183,7 @@ BATCH3=[
    ("COMPOUND",("Set once.","Collect monthly."),"Corrections become rules. The setup pays rent every month after.",("It only gets sharper.",),"compound"),
   ]),
  dict(slug="advisors", title="THE BOARD OF ADVISORS", accent=(200,70,35), mark="claude", pill="founder",
-  cover=("I built a board","that knows my numbers."),
+  cover=("Three advisors, on call at 2am.","They know my numbers."),
   close=("Save this and","seat your board.","Which advisor do you need first?"),
   slides=[
    ("THE PROBLEM",("Advice is cheap.","Context is not."),"Generic advice ignores your deals, your clients, your cash. That is why it fails.",("Context is the moat.",),"context"),
@@ -196,7 +196,7 @@ BATCH3=[
    ("THE SEAT",("Your board sits","in one chat."),"On call at 2am, briefed on everything you sell, costing cents.",("Seat them tonight.",),"board"),
   ]),
  dict(slug="ghosted", title="WHY COLD EMAILS DIE", accent=(212,162,127), mark="claude", pill="builder",
-  cover=("Your copy is fine.","Your infra is dead."),
+  cover=("Nobody reads your cold emails.","Nobody even gets them."),
   close=("Save the 5 mistakes","before your next batch.","Which one is killing you?"),
   slides=[
    ("THE PATTERN",("Same writer.","Opposite results."),"Some campaigns crushed. Others went to spam without a trace. Copy was never the variable.",("The infra was.",),"sent"),
@@ -211,7 +211,7 @@ BATCH3=[
 ]
 BATCH4=[
  dict(slug="twohours", title="ONE IDEA, TWO HOURS", accent=(204,120,92), mark="claude", pill="founder",
-  cover=("I gave it one idea","and two hours."),
+  cover=("Idea at 14:00.","Business live at 16:00."),
   close=("Save this timeline","and pick your idea.","What would you build in two hours?"),
   slides=[
    ("14:00",("One sentence.","The idea goes in."),"A service for founders who hate bookkeeping. That was the entire input.",("No deck, no plan.",),"input"),
@@ -224,7 +224,7 @@ BATCH4=[
    ("THE MOAT",("Speed is the moat.","The gate keeps it safe."),"Idea to live while others plan. Feedback to fix within the hour.",("Move first, gated.",),"moat"),
   ]),
  dict(slug="salesorg", title="A SALES ORG, NOT A BOT", accent=(200,70,35), mark="claude", pill="operator",
-  cover=("100-node sales bots fail.","Structure wins."),
+  cover=("Your sales bot failed","because nobody was in charge."),
   close=("Save the org chart","before you build a bot.","Which desk do you need first?"),
   slides=[
    ("THE TRAP",("One agent doing all","does nothing well."),"The mega-automation collapses under its own hundred branches.",("Complexity is not power.",),"everything"),
@@ -237,7 +237,7 @@ BATCH4=[
    ("THE CHIEF",("You sit on top.","One tap a day."),"The org runs; you approve. Hierarchy with a human at the head.",("Chief, not operator.",),"chief"),
   ]),
  dict(slug="adsagency", title="THE AD DESK, IN-HOUSE", accent=(212,162,127), mark="claude", pill="operator",
-  cover=("I brought the ad desk","in-house. It fits in a chat."),
+  cover=("I fired my ad agency.","A chat window replaced it."),
   close=("Save the ad desk,","cancel the retainer.","Which check would save you most?"),
   slides=[
    ("THE RETAINER",("It bought slides","and delays."),"Research, copy, audits: billed monthly, delivered quarterly.",("That bill ends here.",),"retainer"),
@@ -250,7 +250,7 @@ BATCH4=[
    ("THE SIGNATURE",("Every launch","signs with your tap."),"Nothing spends without you. In-house means in your hands.",("Your call, always.",),"sign"),
   ]),
  dict(slug="million", title="THE ONE-LAPTOP COMPANY", accent=(204,120,92), mark="claude", pill="founder",
-  cover=("The next big company","is one person."),
+  cover=("Your next competitor","has no employees."),
   close=("Save this thesis,","then start tonight.","Could you run it alone?"),
   slides=[
    ("THE SHAPE",("Not a funded startup.","Not a team of 20."),"A laptop, a subscription measured in cents, systems that do not sleep.",("New shape of company.",),"notteam"),
@@ -263,7 +263,7 @@ BATCH4=[
    ("THE BET",("Someone builds this","this year."),"The only question left is whether it is you.",("Why not you.",),"you"),
   ]),
  dict(slug="zerostart", title="STARTING FROM ZERO, 2026", accent=(200,70,35), mark="claude", pill="builder",
-  cover=("If I started from zero,","I would write no code."),
+  cover=("Do not learn to code.","Build the business instead."),
   close=("Save the zero plan","and pick the niche.","What would you start with?"),
   slides=[
    ("THE SHIFT",("The barrier moved.","It is not technical."),"Niche, distribution, consistency: the only three problems left.",("Everything else is solved.",),"barrier"),
