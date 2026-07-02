@@ -27,15 +27,14 @@ body{background:#d9d2c4;display:flex;justify-content:center;padding:24px 0;font-
 .grp.terra .gh{background:#D29A79;}
 .grp.dark .gh{background:#211F1A;}.grp.dark .gh .n{color:#F7F1E6;}.grp.dark .gh .m{color:rgba(247,241,230,.6);}
 .grp.grow{flex:1;}
-.row{display:flex;gap:11px;padding:9px 16px;border-top:1px solid #e5dbc6;align-items:flex-start;}
+.row{display:flex;gap:11px;padding:10px 16px;border-top:1px solid #e5dbc6;align-items:flex-start;}
 .row:first-of-type{border-top:none;}
 .row .nm{width:118px;flex-shrink:0;font-weight:900;font-size:16px;letter-spacing:-.2px;padding-top:1px;}
 .row .nm small{display:block;font-family:'DM Mono',monospace;font-weight:500;font-size:10px;letter-spacing:.1em;color:#A85B38;margin-top:2px;text-transform:uppercase;}
-.row .ds{flex:1;font-size:13.5px;line-height:1.32;color:#57503f;}
+.row .ds{flex:1;font-size:14px;line-height:1.36;color:#57503f;}
 .row .ds b{color:#17150F;}
 .row.hot{background:#F6E7DB;}
-.grp.grow .rows{flex:1;display:flex;flex-direction:column;}
-.grp.grow .rows .row{flex:1;align-items:center;}
+.grp.grow .rows{flex:1;display:flex;flex-direction:column;justify-content:space-between;}
 .mono4{display:flex;flex-wrap:wrap;gap:8px;padding:11px 16px;}
 .mchip{flex:1;text-align:center;font-family:'DM Mono',monospace;font-size:14px;background:#F2EBDF;border:1.5px solid #17150F;border-radius:9px;padding:8px 10px;white-space:nowrap;}
 .mchip b{color:#A85B38;font-weight:500;}
@@ -59,9 +58,9 @@ def row(nm,tag,ds,hot=False):
     small=f'<small>{tag}</small>' if tag else ''
     return f'<div class="row{" hot" if hot else ""}"><span class="nm">{nm}{small}</span><span class="ds">{ds}</span></div>'
 
-def emit(fn,title,sub,left,right,kw,asset,mastl="ULTRON <em>&middot;</em> THE OPERATING MAP",mastr="SAVE THIS",ctx="THE AGENT MAP"):
+def emit(fn,title,sub,left,right,kw,asset,mastl="ULTRON <em>&middot;</em> THE OPERATING MAP",mastr="SAVE THIS",ctx="THE AGENT MAP",bg=""):
     html=f"""<!DOCTYPE html><html><head><meta charset="UTF-8"><style>{CSS}</style></head><body>
-<div class="frame" id="artifact">
+<div class="frame" id="artifact" style="{bg}">
 <div class="mast"><span>{mastl}</span><span>{mastr}</span></div><div class="hook">{title}</div><div class="subl">{sub}</div>
 <div class="cols"><div class="colL">{left}</div><div class="colR">{right}</div></div>
 <div class="ctab"><span class="l">Comment <b>{kw}</b> and I will DM you {asset}</span><span class="r">{kw} &rarr;</span></div>
@@ -73,26 +72,31 @@ os.makedirs("content/howto2",exist_ok=True)
 
 # ================= li-01: THE AGENT MAP (line-free groups) =================
 L=(grp("terra","The seven agents","ONE CHAT BOX",
-   row("CORTEX","research","Profiles people, companies and markets into <b>one ranked brief</b>: funding, size, stack, intent, 40 signals a page.")
-  +row("SPECTER","outbound","Cold emails and <b>multi-step sequences</b>: one trigger per email, 62 words a step, personalised from the brief.")
-  +row("STRIKER","deals","Qualification, discovery, <b>objection handling</b>, proposals, close plans. Reads your CRM before it answers.")
-  +row("PULSE","content","Posts, launches and newsletters <b>in your voice</b>, from the stored sample. Hook first, no fluff.")
-  +row("SENTINEL","code","Reads, writes, tests and <b>ships from Crescendo</b>: 822 components, 30+ kits. Opens the PR, waits for you.",True)
-  +row("AMPLIFY","publishing","Formats and schedules every asset <b>per channel and timezone</b>. 10:00 local, ramped volume.")
-  +row("COUNSEL","legal","NDAs, MSAs, term sheets. <b>Flags the risk lines</b> and drafts the redlines in minutes."),grow=True))
+   row("CORTEX","research","Profiles people, companies and markets into <b>one ranked brief</b>: funding, size, stack, intent, 40 signals a page. This morning: 1,284 pulled, 902 net-new, <b>200 exported with briefs</b> in 19 minutes.")
+  +row("SPECTER","outbound","Cold emails and <b>multi-step sequences</b>: one trigger per email, 62 words a step, personalised from the brief. 240 drafts from one sentence, <b>every one parked at the gate</b> before sending.")
+  +row("STRIKER","deals","Qualification, discovery, <b>objection handling</b>, proposals, close plans. Reads your CRM before it answers, and <b>every reply routes back to it</b>: qualify, rebut, book the call.")
+  +row("PULSE","content","Posts, launches and newsletters <b>in your voice</b>, from the stored sample. Hook first, no fluff, banned words enforced. <b>You approve before anything publishes.</b>")
+  +row("SENTINEL","code","Reads, writes, tests and <b>ships from Crescendo</b>: 822 components, 30+ kits, live dashboards. Bug to merged PR in 15 minutes. <b>Opens the PR, waits for your merge.</b>",True)
+  +row("AMPLIFY","publishing","Formats and schedules every asset <b>per channel and timezone</b>. 10:00 local per prospect, volume ramped 60 a day so <b>your domains stay at 99.2% inboxed</b>.")
+  +row("COUNSEL","legal","NDAs, MSAs, term sheets. <b>Flags the risk lines</b>, drafts the redlines and explains each one in plain English, minutes after you drop the file in.")
+  +row("Handoffs","compose","Agents hand off to each other: the CORTEX brief feeds SPECTER, replies feed STRIKER, closed-won stories feed PULSE. <b>One pipeline, zero copy-paste.</b>",True),grow=True))
 R=(grp("dark","The router picks the tier","YOU NEVER CHOOSE",
-   row("Lite","haiku","Lookups, digests, classifications. The <b>cheap gear</b> for high-volume work.")
+   row("Router","reads the job","You type plain English. It <b>hires the right agent and picks the tier</b>, per turn. No menus, no model picker.")
+  +row("Lite","haiku","Lookups, digests, classifications. The <b>cheap gear</b> for high-volume work.")
   +row("Smart","sonnet","The <b>default operator</b> for briefs, sequences and posts. Your daily driver.")
   +row("Deep","opus","Hard judgement only: objections, code, legal. <b>Paid where it pays.</b>")
   +row("The bill","cents","Pay per token through one subscription. A full day of agent work costs <b>cents, not seats</b>.",True))
 +grp("dark","The human gate","NOTHING SENDS ALONE",
-   row("Your tap","1 click","Every email, post, PR and contract <b>parks on HOLD</b>. You read, you tap, then it moves. Zero external accidents."))
+   row("Your tap","1 click","Every email, post, PR and contract <b>parks on HOLD</b>. You read, you tap, then it moves. Zero external accidents.")
+  +row("It caught","real saves","Tone drift on 3 drafts, a wrong-tier CC, a broken merge field. <b>Before they went out</b>, not after.")
+  +row("The log","audit","Every release is stamped with a <b>run ID</b>. The whole loop is auditable, send by send."))
 +grp("terra","Wired into your stack","IT ACTS, NOT ANSWERS",
    row("CRM + mail","live","Reads deals and threads before answering. <b>Writes stages back</b> as replies land.")
   +row("Calendar","auto","Replies become <b>booked calls</b> on their own, timezone-correct.")
+  +row("Send logs","evidence","2,140 sends of evidence. <b>Every claim it makes traces to a run.</b>")
   +row("Crescendo","822 parts","The build library: kits, sections, dashboards. <b>Sites ship from chat.</b>",True))
 +grp("","You just type","PLAIN ENGLISH",
-   '<div class="mono4"><span class="mchip"><b>&gt;</b> source 200 founders</span><span class="mchip"><b>&gt;</b> audit my GTM</span><span class="mchip"><b>&gt;</b> build my landing page</span><span class="mchip"><b>&gt;</b> review this NDA</span></div>'))
+   '<div class="mono4"><span class="mchip"><b>&gt;</b> source 200 founders</span><span class="mchip"><b>&gt;</b> audit my GTM</span><span class="mchip"><b>&gt;</b> build my landing page</span><span class="mchip"><b>&gt;</b> review this NDA</span><span class="mchip"><b>&gt;</b> run outbound on the list</span><span class="mchip"><b>&gt;</b> resume northwind</span></div>'))
 emit("content/howto2/li-01.html",
  'You hired tools. I hired<br>Ultron\'s <em>seven agents</em>.',
  "The full Ultron map on one image: agents, tiers, gate, wiring. Save it.",
@@ -100,27 +104,35 @@ emit("content/howto2/li-01.html",
 
 # ================= li-04: THE BRAIN MAP (line-free groups) =================
 L=(grp("terra","Who you sell to","LOADED IN EVERY RUN",
-   row("Your ICP","filter","Founder / CEO, 2-50 employees, IT services and software, US + UK. <b>Every agent filters by it</b>: CORTEX sources inside it, STRIKER scores against it, SPECTER never writes outside it. Set it once and the whole pipeline stays on-profile.")
+   row("Your ICP","filter","Founder / CEO, 2-50 employees, IT services and software, US + UK. <b>Every agent filters by it</b>: CORTEX sources inside it, STRIKER scores against it, SPECTER never writes outside it. Set once, the whole pipeline stays on-profile. The audit flagged <b>31% of my old pipe</b> as outside the band.")
   +row("Named accounts","200","Your target list with <b>one-page briefs attached</b>: champion, signals, opener angle, next step. Briefs refresh the morning of every call, so nothing you read is stale by the time you dial.")
-  +row("Deal stages","pipeline","Your stages, your close plan, your champions. STRIKER <b>never asks where a deal is</b>, and every reply lands in the right stage without you dragging a card."),grow=True)
+  +row("Deal stages","pipeline","Your stages, your close plan, your champions. STRIKER <b>never asks where a deal is</b>, and every reply lands in the right stage without you dragging a card.")
+  +row("Buying signals","intent","Hiring, fresh raises, stack gaps, founder posts about scaling pain: <b>the four signals it watches</b> on every account, weekly.")
+  +row("Disqualifiers","auto-skip","Wrong geo, wrong size, agencies: <b>skipped before they cost a send</b>. The pipe stops refilling with misfits.")
+  +row("Champions","people","Who said yes last time, who blocks, who signs. <b>Remembered per account</b>, loaded before every call.",True),grow=True)
 +grp("","How you sound","EVERY DRAFT",
-   row("Voice sample","pulse","How you actually write. PULSE drafts <b>in it</b>, not in AI-speak.")
-  +row("Banned words","clean","The hedging and the fluff it <b>never uses</b>. Your no-list is enforced.")
-  +row("Brand system","tokens","Colors, formats, rules. <b>Crescendo builds inherit them</b>, so even your site sounds like you.",True)))
+   row("Voice sample","pulse","How you actually write. PULSE drafts <b>in it</b>, not in AI-speak. Sentence length, cadence, the words you lean on: sampled from your real posts.")
+  +row("Banned words","clean","The hedging and the fluff it <b>never uses</b>. Your no-list is enforced on every draft, every channel, <b>including the website copy</b>.")
+  +row("Brand system","tokens","Colors, formats, rules. <b>Crescendo builds inherit them</b>, so even your site sounds like you.",True)
+  +row("Formats","channels","LinkedIn long-form, TikTok caption, cold email: <b>each channel gets its native format</b>, never a repost of the same text.")
+  +row("Hook bank","proven","Your winning hook patterns, <b>reused and rotated</b>. Never the same opener twice in a row.")))
 R=(grp("dark","What you charge","QUOTED RIGHT",
    row("Pricing","3 tiers","Starter free, Max $19, Enterprise $297. <b>Quoted correctly every time</b>, no accidental discount.")
   +row("Objection bank","learned","What worked and what died, <b>per objection</b>. Every close feeds it back.")
-  +row("Cost rules","cents","Cents per run. Deep tier <b>only where it pays</b>: objections, code, legal."))
+  +row("Cost rules","cents","Cents per run. Deep tier <b>only where it pays</b>: objections, code, legal.")
+  +row("Discount floor","guarded","The floor you never cross. <b>The gate blocks anything under it</b>, even your own late-night generosity."))
 +grp("terra","What it wires","EVIDENCE, NOT VIBES",
    row("CRM + inbox","live","Reads deals and threads <b>before answering</b>. Your pipeline is context, not a screenshot.")
   +row("Send logs","2,140","Every claim it makes carries <b>evidence from your own sends</b>, stamped with run IDs.")
-  +row("Calendar","week","Knows your week <b>before it schedules</b> anything on it."),grow=True)
+  +row("Calendar","week","Knows your week <b>before it schedules</b> anything on it.")
+  +row("Docs + files","citable","Proposals, decks and PDFs it has read <b>stay citable</b>. Ask where a number came from and it points at the page."),grow=True)
 +grp("dark","Why it matters","THE COMPOUND",
    row("Elsewhere","15 min","Every other chat forgets this at close. You re-brief <b>15 minutes per session, forever</b>.")
-  +row("Here","rules","Every correction becomes a rule. It sounds <b>more like you every month</b>.",True))
+  +row("Here","rules","Every correction becomes a rule. It sounds <b>more like you every month</b>.",True)
+  +row("The math","1 day/mo","15 minutes a session, two sessions a day: <b>a full working day refunded every month</b>."))
 +grp("","Seed it once","THREE LINES",
    '<div class="mono4"><span class="mchip"><b>&gt;</b> /init my business</span><span class="mchip"><b>&gt;</b> remember: no discounts</span><span class="mchip"><b>&gt;</b> what do you know about me?</span></div>'))
 emit("content/howto2/li-04.html",
  'You brief your AI every day.<br>I briefed <em>Ultron once</em>.',
  "The brain map: what Ultron memorises about your business, and where it pays you back.",
- L,R,"BRAIN","the brain setup + the BCP link",ctx="THE BRAIN MAP")
+ L,R,"BRAIN","the brain setup + the BCP link",ctx="THE BRAIN MAP",bg="background:#EAE0CC;")

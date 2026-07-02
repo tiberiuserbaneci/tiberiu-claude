@@ -1,54 +1,76 @@
 <!DOCTYPE html><html><head><meta charset="UTF-8"><style>
 @import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
 *{box-sizing:border-box;margin:0;padding:0;}
-body{background:#d9d2c4;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;color:#17150F;}
-.frame{width:1080px;height:1450px;background:#F6F1E7;position:relative;overflow:hidden;display:flex;flex-direction:column;padding:28px 36px 0;}
-.frame::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(23,21,15,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,15,.045) 1px,transparent 1px);background-size:40px 40px;}
-.frame>*{position:relative;}
-.mast{flex-shrink:0;display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:2px solid #17150F;font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#8d8371;}
-.mast em{color:#A85B38;font-style:normal;}
-.hook{margin-top:14px;font-weight:900;font-size:55px;letter-spacing:-2.2px;line-height:1.0;color:#17150F;}
-.hook em{color:#A85B38;font-style:normal;}
-.subl{margin-top:9px;font-size:18.5px;font-weight:600;color:#5d564a;}
-.subl b{color:#17150F;}
+body{background:#0a0a09;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;color:#F6F1E7;}
+.frame{width:1080px;height:1450px;background:#171716;position:relative;overflow:hidden;display:flex;flex-direction:column;padding:30px 36px 0;}
+.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+background-image:linear-gradient(rgba(250,250,247,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(250,250,247,.05) 1px,transparent 1px);
+background-size:36px 36px;}
+.frame::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 70% 34% at 50% -6%,rgba(168,91,56,.16),transparent 62%);}
+.frame>*{position:relative;z-index:2;}
+.mast{flex-shrink:0;display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:1px solid rgba(246,241,231,.25);font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(246,241,231,.5);}
+.mast em{color:#D89572;font-style:normal;}
+.hook{margin-top:14px;font-weight:900;font-size:55px;letter-spacing:-2.2px;line-height:1.0;color:#F6F1E7;}
+.hook em{color:#D89572;font-style:normal;}
+.subl{margin-top:9px;font-size:18.5px;font-weight:600;color:rgba(246,241,231,.68);}
+.subl b{color:#F6F1E7;}
 
-.gridw{flex:1;min-height:0;margin-top:12px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:11px;}
-.cell{background:#FDFAF3;border:1.5px solid #d8cdb8;border-radius:14px;padding:11px 13px;display:flex;flex-direction:column;box-shadow:0 3px 0 rgba(23,21,15,.08);}
-.cell .top{display:flex;align-items:center;gap:8px;}
-.cell .num{width:25px;height:25px;border-radius:50%;color:#fff;font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.cell .tt{font-weight:900;font-size:17.5px;letter-spacing:-.3px;}
-.mb{display:flex;gap:7px;align-items:flex-start;margin-top:5px;font-size:12.5px;color:#57503f;line-height:1.28;}
-.mb b{color:#17150F;}
-.mb .d{flex-shrink:0;width:15px;height:15px;border-radius:50%;background:#e5dbc6;color:#57503f;font-size:9.5px;font-weight:900;display:flex;align-items:center;justify-content:center;margin-top:1px;}
-.pb{margin-top:9px;background:#1B1A16;border-radius:9px;padding:8px 10px;display:flex;gap:8px;align-items:flex-start;}
-.pb .c{flex:1;font-family:'DM Mono',monospace;font-size:11px;line-height:1.42;color:#E8D9C4;}
-.pb .c i{color:#E8845F;font-style:normal;}
-.pb .go{width:20px;height:20px;border-radius:50%;background:#A85B38;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
-.pb .go svg{width:10px;height:10px;stroke:#fff;stroke-width:3;fill:none;stroke-linecap:round;}
-.pbl{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.12em;color:#a5613f;text-transform:uppercase;margin:7px 0 3px;}
-.band9{flex-shrink:0;margin-top:12px;background:#17150F;border-radius:14px;padding:12px 16px;display:flex;align-items:center;gap:12px;color:#F6F1E7;}
-.band9 .n9{width:26px;height:26px;border-radius:50%;background:#A85B38;color:#fff;font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.band9 .t9{font-weight:900;font-size:16.5px;flex-shrink:0;}
-.b9s{flex:1;display:flex;align-items:center;gap:8px;}
-.b9c{flex:1;background:#242219;border:1px solid rgba(246,241,231,.14);border-radius:9px;padding:6px 10px;}
-.b9c .k{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.13em;color:#E8A17F;text-transform:uppercase;}
-.b9c .v{font-size:12px;color:rgba(246,241,231,.8);margin-top:1px;}
-.b9a{flex-shrink:0;color:#8d8371;font-weight:900;}
-.ctab{flex-shrink:0;margin:11px 0 0;background:#211F1A;border-radius:14px;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;box-shadow:0 3px 0 rgba(23,21,15,.18);}
-.ctab .l{font-size:18px;font-weight:700;color:#F7F1E6;}.ctab .l b{color:#E5A183;font-weight:900;}
-.ctab .r{background:#F7F1E6;color:#17150F;border-radius:999px;padding:8px 18px;font-weight:900;font-size:15px;}
-.ftr{flex-shrink:0;margin:10px 0 0;padding:10px 0 14px;border-top:2px solid #17150F;display:flex;align-items:center;justify-content:space-between;}
+.start{flex-shrink:0;align-self:center;margin-top:12px;border:1.5px solid rgba(201,146,116,.5);background:rgba(168,91,56,.08);border-radius:999px;padding:8px 22px;display:flex;gap:14px;align-items:center;}
+.start .a{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.16em;color:#E8845F;}
+.start .b{font-weight:800;font-size:15.5px;color:#F6F1E7;}
+.cols{flex:1;min-height:0;margin-top:13px;display:flex;gap:46px;position:relative;}
+.col{flex:1;display:flex;flex-direction:column;gap:12px;min-width:0;}
+.col .card{flex:1;display:flex;flex-direction:column;}
+.card .hd{flex-shrink:0;}
+.binner{flex:1;display:flex;flex-direction:column;justify-content:space-evenly;}
+.spine{position:absolute;left:50%;top:0;bottom:0;width:0;transform:translateX(-50%);}
+.spine .bar{position:absolute;left:-2px;top:6px;bottom:6px;width:4px;border-radius:2px;background:linear-gradient(#C99274,#A85B38 55%,#C9AE8C);box-shadow:0 0 14px rgba(168,91,56,.45);}
+.stop{position:absolute;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-weight:500;font-size:18px;border:3px solid #171716;box-shadow:0 0 0 2px rgba(201,146,116,.45),0 0 16px rgba(168,91,56,.4);background:#A85B38;color:#fff;}
+.stop.k{background:#C9AE8C;color:#211505;}.stop.w{background:#F6F1E7;color:#1b140e;}
+.card{background:rgba(25,25,24,.92);border:1px solid rgba(250,250,247,.11);border-radius:14px;padding:13px 16px;box-shadow:0 12px 34px rgba(0,0,0,.45);}
+.card .hd{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:8px;}
+.card .hd .t{font-weight:900;font-size:20.5px;letter-spacing:-.4px;}
+.card .hd .tag{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.15em;color:#D4A27F;text-transform:uppercase;flex-shrink:0;}
+.card p{font-size:15px;color:rgba(246,241,231,.72);line-height:1.32;}
+.card p b{color:#F6F1E7;}
+.term{margin-top:8px;background:#0d0d0c;border:1px solid rgba(250,250,247,.10);border-radius:10px;padding:10px 12px;display:flex;align-items:center;gap:10px;}
+.term .c{flex:1;font-family:'DM Mono',monospace;font-size:14.5px;color:#F0C9AF;}
+.term .go{width:26px;height:26px;border-radius:50%;background:#A85B38;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.term .go svg{width:13px;height:13px;stroke:#fff;stroke-width:3;fill:none;stroke-linecap:round;}
+.row{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid rgba(250,250,247,.07);}
+.row:first-of-type{border-top:none;}
+.row .n{font-weight:800;font-size:15.5px;flex-shrink:0;}
+.row .d{flex:1;font-size:13px;color:rgba(246,241,231,.6);}
+.row .bg{flex-shrink:0;font-family:'DM Mono',monospace;font-size:12px;background:#A85B38;color:#fff;border-radius:7px;padding:3px 10px;font-weight:500;}
+.row .bg.k{background:#3a2c20;color:#E8A17F;border:1px solid rgba(232,132,95,.4);}
+.chk{display:flex;gap:10px;align-items:flex-start;padding:7px 0;font-size:15px;color:rgba(246,241,231,.82);}
+.chk b{color:#F6F1E7;}
+.chk .bx{width:19px;height:19px;border-radius:5px;background:#3f7d5c;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.chk .bx svg{width:11px;height:11px;stroke:#fff;stroke-width:3.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.chk.x .bx{background:#8a3520;}
+.cheat{flex-shrink:0;margin:14px 0 0;background:rgba(15,15,14,.94);border:1px solid rgba(250,250,247,.10);border-radius:14px 14px 0 0;padding:13px 20px 12px;}
+.cheat .hd{display:flex;justify-content:space-between;margin-bottom:9px;}
+.cheat .hd .t{font-weight:900;font-size:17px;}
+.cheat .hd .tag{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.15em;color:rgba(246,241,231,.4);text-transform:uppercase;}
+.cheat .gridc{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px 22px;}
+.ci{display:flex;align-items:center;gap:9px;font-size:13px;color:rgba(246,241,231,.62);}
+.ci b{font-family:'DM Mono',monospace;font-weight:500;font-size:13px;color:#E8A17F;background:rgba(200,70,35,.13);border:1px solid rgba(232,132,95,.32);border-radius:6px;padding:2.5px 9px;white-space:nowrap;}
+.ctab{flex-shrink:0;margin:12px 0 10px;background:linear-gradient(160deg,#B4693F,#8f4e2e);border-radius:14px;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;}
+.ctab .l{font-size:18.5px;font-weight:700;color:#fff;}.ctab .l b{font-weight:900;}
+.ctab .r{background:#F6F1E7;color:#1b140e;border-radius:999px;padding:8px 18px;font-weight:900;font-size:15px;}
+.ftr{flex-shrink:0;margin:10px 0 0;padding:10px 0 14px;border-top:1px solid rgba(246,241,231,.22);display:flex;align-items:center;justify-content:space-between;}
 .fl{display:flex;align-items:center;gap:10px;min-width:0;}
 .ftr img{width:28px;height:28px;border-radius:50%;flex-shrink:0;}
-.ftx{font-family:'DM Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:#6b6357;white-space:nowrap;}
-.ftx b{color:#17150F;}
-.furl{font-family:'DM Sans',sans-serif;font-weight:900;font-size:19px;letter-spacing:-.4px;color:#17150F;flex-shrink:0;}
-.furl em{color:#A85B38;font-style:normal;}
+.ftx{font-family:'DM Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:rgba(246,241,231,.55);white-space:nowrap;}
+.ftx b{color:#F6F1E7;}
+.furl{font-family:'DM Sans',sans-serif;font-weight:900;font-size:19px;letter-spacing:-.4px;color:#F6F1E7;flex-shrink:0;}
+.furl em{color:#D89572;font-style:normal;}
 </style></head><body>
 <div class="frame" id="artifact">
-<div class="mast"><span>ULTRON <em>&middot;</em> THE AI-READINESS INDEX</span><span>SAVE THIS</span></div><div class="hook">Ultron found 2 buyers <em>hiding</em><br>in my list of 40.</div><div class="subl">9 steps, one run, <b>62 minutes</b>. It found both before lunch.</div>
-<div class="gridw"><div class="cell"><div class="top"><span class="num" style="background:#B4693F">1</span><span class="tt">Drop your list.</span></div><div class="mb"><span class="d">1</span><span><b>40 accounts</b>, straight from your CRM export.</span></div><div class="mb"><span class="d">2</span><span>Or say the niche and <b>CORTEX builds the list</b> from live data.</span></div><div class="mb"><span class="d">3</span><span>Dedupes against your pipeline first: <b>no double-touching</b> an open deal.</span></div><div class="mb"><span class="d">4</span><span>Works from 10 accounts to 4,000. Same sentence.</span></div><div class="pbl">PASTE THIS</div><div class="pb"><span class="c"><i>&gt;</i> score my list on AI-readiness. CSV attached. Rank call-now first.</span><span class="go"><svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span></div></div><div class="cell"><div class="top"><span class="num" style="background:#C08A6C">2</span><span class="tt">It reads the signals.</span></div><div class="mb"><span class="d">1</span><span><b>Hiring</b> for ops / RevOps roles right now.</span></div><div class="mb"><span class="d">2</span><span>Stack has <b>no AI layer</b> yet: the gap you fill.</span></div><div class="mb"><span class="d">3</span><span>Founder posts about <b>scaling pain</b> in the last 90 days.</span></div><div class="mb"><span class="d">4</span><span>Raised in the last <b>18 months</b>: budget exists.</span></div><div class="mb"><span class="d">5</span><span>Sits inside your <b>2-50 seat</b> ICP band.</span></div><div class="mb"><span class="d">6</span><span>Each signal weighted, not a checkbox.</span></div></div><div class="cell"><div class="top"><span class="num" style="background:#B08A62">3</span><span class="tt">Every account scored.</span></div><div class="mb"><span class="d">1</span><span>0-100, from <b>public data only</b>. No scraping your CRM.</span></div><div class="mb"><span class="d">2</span><span>Scored against <b>your ICP band</b>, not a generic one.</span></div><div class="mb"><span class="d">3</span><span>Score explains itself: <b>every point traces</b> to a signal.</span></div><div class="mb"><span class="d">4</span><span>Ties broken by intent recency, not alphabet.</span></div><div class="pbl">THE OUTPUT</div><div class="pb"><span class="c">Northwind 86 &middot; Globex 81 &middot; Initech 74 &middot; Stark 70 &middot; ...</span><span class="go"><svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span></div></div><div class="cell"><div class="top"><span class="num" style="background:#3f7d5c">4</span><span class="tt">Verdicts, not vibes.</span></div><div class="mb"><span class="d">1</span><span><b>CALL NOW</b> &middot; 2 accounts, ready to buy this quarter.</span></div><div class="mb"><span class="d">2</span><span><b>WARM</b> &middot; 3 accounts, nurture and re-score weekly.</span></div><div class="mb"><span class="d">3</span><span><b>SKIP</b> &middot; 3 accounts, wrong window, zero time spent.</span></div><div class="mb"><span class="d">4</span><span>A verdict is a decision, not a dashboard. <b>You act on it same day.</b></span></div><div class="mb"><span class="d">5</span><span>No verdict ships without the <b>why</b> attached.</span></div></div><div class="cell"><div class="top"><span class="num" style="background:#211F1A">5</span><span class="tt">Briefs attached.</span></div><div class="mb"><span class="d">1</span><span>Each call-now account ships with a <b>1-page brief</b>.</span></div><div class="mb"><span class="d">2</span><span>Champion, signals, opener angle, <b>next step</b>.</span></div><div class="mb"><span class="d">3</span><span>Pulled live the morning of the call, <b>never stale</b>.</span></div><div class="mb"><span class="d">4</span><span>STRIKER loads the same brief when the reply lands.</span></div><div class="pbl">PASTE THIS</div><div class="pb"><span class="c"><i>&gt;</i> brief me on Northwind before the call.</span><span class="go"><svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span></div></div><div class="cell"><div class="top"><span class="num" style="background:#B4693F">6</span><span class="tt">The week-3 test.</span></div><div class="mb"><span class="d">1</span><span>Manual research finds these accounts in <b>week 3</b>.</span></div><div class="mb"><span class="d">2</span><span>The index found both call-nows <b>before lunch</b>.</span></div><div class="mb"><span class="d">3</span><span>62 minutes, <b>40 accounts</b>, zero tabs open.</span></div><div class="mb"><span class="d">4</span><span>Cost of the run: <b>cents</b>, on the Ultron meter.</span></div><div class="mb"><span class="d">5</span><span>Your competitor is still exporting LinkedIn searches.</span></div></div><div class="cell"><div class="top"><span class="num" style="background:#C08A6C">7</span><span class="tt">Wire the outreach.</span></div><div class="mb"><span class="d">1</span><span>SPECTER drafts openers <b>for call-nows only</b>: no spray.</span></div><div class="mb"><span class="d">2</span><span>One trigger each, pulled <b>from the brief</b>, 62 words.</span></div><div class="mb"><span class="d">3</span><span>Warm accounts get the nurture track instead.</span></div><div class="mb"><span class="d">4</span><span>Sequences queue at <b>10:00 local</b> per prospect.</span></div><div class="pbl">PASTE THIS</div><div class="pb"><span class="c"><i>&gt;</i> draft openers for the call-now accounts.</span><span class="go"><svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span></div></div><div class="cell"><div class="top"><span class="num" style="background:#B08A62">8</span><span class="tt">Gate before send.</span></div><div class="mb"><span class="d">1</span><span>Everything parks at the <b>human gate</b>. Nothing fires alone.</span></div><div class="mb"><span class="d">2</span><span>You read, you tap, <b>then</b> it moves.</span></div><div class="mb"><span class="d">3</span><span>The gate has caught tone drift, wrong CCs, broken fields.</span></div><div class="mb"><span class="d">4</span><span><b>AI speed, zero accidents.</b> That is the whole deal.</span></div><div class="mb"><span class="d">5</span><span>Every release is logged with a run ID.</span></div></div><div class="cell"><div class="top"><span class="num" style="background:#3f7d5c">9</span><span class="tt">Re-run weekly.</span></div><div class="mb"><span class="d">1</span><span>Scores <b>decay and spike</b> with the news cycle.</span></div><div class="mb"><span class="d">2</span><span>A warm account crossing 80 <b>pings you</b> same morning.</span></div><div class="mb"><span class="d">3</span><span>New raises and new hires re-rank the list for you.</span></div><div class="mb"><span class="d">4</span><span>Set once. The loop runs while you sell.</span></div><div class="pbl">SET ONCE</div><div class="pb"><span class="c"><i>&gt;</i> re-score every Monday 07:00. Ping me on movers.</span><span class="go"><svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span></div></div></div>
-<div class="band9"><span class="n9">&#10003;</span><span class="t9">The loop, on autopilot.</span><div class="b9s"><div class="b9c"><div class="k">Score</div><div class="v">40 accounts, weekly</div></div><span class="b9a">&rarr;</span><div class="b9c"><div class="k">Rank</div><div class="v">call-now first</div></div><span class="b9a">&rarr;</span><div class="b9c"><div class="k">Brief</div><div class="v">1 page per target</div></div><span class="b9a">&rarr;</span><div class="b9c"><div class="k">Call</div><div class="v">you, at the right time</div></div></div></div>
-<div class="ctab" style="margin-top:11px"><span class="l">Comment <b>INDEX</b> and I will DM you the rubric + the scoring run</span><span class="r">INDEX &rarr;</span></div>
-<div class="ftr"><div class="fl"><img src="__LOGO__"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS &middot; THE AI-READINESS INDEX</span></div><span class="furl">51ultron<em>.</em>com</span></div>
+<div class="mast"><span>ULTRON <em>&middot;</em> FOUNDER PLAYBOOK</span><span>SAVE THIS</span></div><div class="hook">Score <em>40 companies</em> on AI-readiness.</div><div class="subl">Stop guessing who is ready to buy. One run reads the public signals and ranks your list.</div>
+<div class="start"><span class="a">ONE RUN</span><span class="b">40 accounts &middot; 62 minutes &middot; call-now first</span></div>
+<div class="cols"><div class="col"><div class="card"><div class="hd"><span class="t">The list, ranked</span><span class="tag">TOP 8 OF 40</span></div><div class="binner"><div class="row"><span class="n">Northwind</span><span class="d">IT services &middot; 34 ppl</span><span class="bg">86</span></div><div class="row"><span class="n">Globex</span><span class="d">software &middot; 22 ppl</span><span class="bg">81</span></div><div class="row"><span class="n">Initech</span><span class="d">consulting &middot; 41 ppl</span><span class="bg k">74</span></div><div class="row"><span class="n">Stark Labs</span><span class="d">software &middot; 12 ppl</span><span class="bg k">70</span></div><div class="row"><span class="n">Umbrella</span><span class="d">IT services &middot; 48 ppl</span><span class="bg k">63</span></div><div class="row"><span class="n">Hooli</span><span class="d">agency &middot; 19 ppl</span><span class="bg k">52</span></div><div class="row"><span class="n">Wayne Co</span><span class="d">consulting &middot; 26 ppl</span><span class="bg k">41</span></div><div class="row"><span class="n">Oscorp</span><span class="d">hardware &middot; 44 ppl</span><span class="bg k">28</span></div></div></div></div><div class="spine"><span class="bar"></span><span class="stop " style="top:12%">1</span><span class="stop k" style="top:37%">2</span><span class="stop w" style="top:62%">3</span><span class="stop " style="top:87%">4</span></div><div class="col"><div class="card"><div class="hd"><span class="t">The signals it reads</span><span class="tag">PUBLIC DATA</span></div><div class="binner"><div class="chk"><span class="bx"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg></span><span>Hiring for <b>ops / RevOps</b></span></div><div class="chk"><span class="bx"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg></span><span>Stack has <b>no AI layer</b> yet</span></div><div class="chk"><span class="bx"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg></span><span>Founder posts about <b>scaling pain</b></span></div><div class="chk"><span class="bx"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg></span><span>Raised in the last <b>18 months</b></span></div><div class="chk"><span class="bx"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg></span><span>Sits in the <b>2-50 seat</b> ICP band</span></div></div></div><div class="card"><div class="hd"><span class="t">The verdicts</span><span class="tag">SO WHAT</span></div><div class="binner"><div class="row"><span class="n">CALL NOW</span><span class="d">86 + 81: ready to buy</span><span class="bg">2</span></div><div class="row"><span class="n">WARM</span><span class="d">nurture, re-score weekly</span><span class="bg k">3</span></div><div class="row"><span class="n">SKIP</span><span class="d">not this quarter</span><span class="bg k">3</span></div></div></div><div class="card"><div class="hd"><span class="t">Week 3, in hour 1</span><span class="tag">THE POINT</span></div><div class="binner"><p>These two call-now accounts were <b>invisible</b> in my CRM. Manual research finds them in week 3. The index found them <b>before lunch</b>.</p></div></div></div></div>
+<div class="cheat"><div class="hd"><span class="t">Run it yourself</span><span class="tag">ONE SENTENCE</span></div><div class="gridc"><span class="ci"><b>&gt; score my list</b>40 accounts in</span><span class="ci"><b>/cortex index</b>the readiness run</span><span class="ci"><b>weekly</b>auto re-score</span><span class="ci"><b>call-now</b>sorted first</span><span class="ci"><b>brief</b>attached per account</span><span class="ci"><b>gate</b>before any outreach</span></div></div>
+<div class="ctab"><span class="l">Comment <b>INDEX</b> and I will DM you the playbook</span><span class="r">INDEX &rarr;</span></div>
+<div class="ftr"><div class="fl"><img src="__LOGO__"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS &middot; FOUNDER PLAYBOOK</span></div><span class="furl">51ultron<em>.</em>com</span></div>
 </div></body></html>

@@ -26,7 +26,9 @@ background-size:36px 36px;}
 .start .b{font-weight:800;font-size:15.5px;color:#F6F1E7;}
 .cols{flex:1;min-height:0;margin-top:13px;display:flex;gap:46px;position:relative;}
 .col{flex:1;display:flex;flex-direction:column;gap:12px;min-width:0;}
-.col .card{flex:1;display:flex;flex-direction:column;justify-content:center;}
+.col .card{flex:1;display:flex;flex-direction:column;}
+.card .hd{flex-shrink:0;}
+.binner{flex:1;display:flex;flex-direction:column;justify-content:space-evenly;}
 .spine{position:absolute;left:50%;top:0;bottom:0;width:0;transform:translateX(-50%);}
 .spine .bar{position:absolute;left:-2px;top:6px;bottom:6px;width:4px;border-radius:2px;background:linear-gradient(#C99274,#A85B38 55%,#C9AE8C);box-shadow:0 0 14px rgba(168,91,56,.45);}
 .stop{position:absolute;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-weight:500;font-size:18px;border:3px solid #171716;box-shadow:0 0 0 2px rgba(201,146,116,.45),0 0 16px rgba(168,91,56,.4);background:#A85B38;color:#fff;}
@@ -75,7 +77,7 @@ GO='<span class="go"><svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/><
 CK='<span class="bx"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg></span>'
 XX='<span class="bx"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></span>'
 
-def bcard(t,tag,inner): return f'<div class="card"><div class="hd"><span class="t">{t}</span><span class="tag">{tag}</span></div>{inner}</div>'
+def bcard(t,tag,inner): return f'<div class="card"><div class="hd"><span class="t">{t}</span><span class="tag">{tag}</span></div><div class="binner">{inner}</div></div>'
 def term(c): return f'<div class="term"><span class="c">{c}</span>{GO}</div>'
 def rows(rr): return "".join(f'<div class="row"><span class="n">{n}</span><span class="d">{d}</span><span class="bg{" k" if k else ""}">{b}</span></div>' for n,d,b,k in rr)
 def checks(cc,x=False): return "".join(f'<div class="chk{" x" if x else ""}">{XX if x else CK}<span>{c}</span></div>' for c in cc)
@@ -111,11 +113,11 @@ emit("content/howto2/li-03.html",'Ultron sourced 200 founders.<br>I typed <em>on
  "START HERE","one sentence &middot; laptop closed &middot; 47 min",L,R,6,CH,"SOURCE",asset="the sourcing sentence + the techniques link",ctx="THE SOURCING RUN")
 
 # ---------------- li-02 TABS ----------------
-L=(bcard("The stack you pay for","$129 / MO",rows([("ChatGPT","answers, no memory of you","$20",0),("Claude","same, second tab","$20",0),("Perplexity","research only","$20",1),("Jasper","copy only","$49",1),("Midjourney","images only","$10",1),("Notion AI","notes only","$10",1)]))
-+bcard("What actually breaks","THE TAB TAX",checks(["Context dies inside <b>every tab</b>","You re-paste your ICP <b>all day</b>","<b>You</b> are the router between them","Answers instead of <b>finished work</b>"],x=True)))
-R=(bcard("One box instead","THE SWAP",term("&gt; write the cold sequence")+term("&gt; audit my GTM")+'<p style="margin-top:8px">The router reads each job, hires the agent, picks the model tier. <b>You never choose.</b></p>')
-+bcard("One context","THE BRAIN",rows([("Your ICP","loaded in every job","SET",0),("Your voice","under every draft","SET",1),("Your pipeline","live in every answer","LIVE",1)]))
-+bcard("What you keep","THE PAYOFF",checks(["One login, one history, <b>one bill</b>","Work lands <b>done</b>: briefs, sends, PRs","A day of work costs <b>cents</b>, not seats"])))
+L=(bcard("The stack you pay for","$129 / MO",rows([("ChatGPT","answers, no memory of you","$20",0),("Claude","same, second tab","$20",0),("Perplexity","research only","$20",1),("Jasper","copy only","$49",1),("Midjourney","images only","$10",1),("Notion AI","notes only","$10",1),("The total","six tools that never talk to each other","$129",0)]))
++bcard("What actually breaks","THE TAB TAX",checks(["Context dies inside <b>every tab</b>","You re-paste your ICP <b>all day</b>","<b>You</b> are the router between them","Answers instead of <b>finished work</b>","Six histories, <b>zero memory</b> of your business","Five renewal dates you forgot about"],x=True)))
+R=(bcard("One box instead","THE SWAP",term("&gt; write the cold sequence")+term("&gt; audit my GTM")+term("&gt; build my landing page")+'<p style="margin-top:8px">The router reads each job, hires the agent, picks the model tier. <b>You never choose</b>, and every external step waits for your tap.</p>')
++bcard("One context","THE BRAIN",rows([("Your ICP","loaded in every job","SET",0),("Your voice","under every draft","SET",1),("Your pipeline","live in every answer","LIVE",1),("Your pricing","quoted right, every time","SET",1),("Your no-list","banned words enforced","SET",1)]))
++bcard("What you keep","THE PAYOFF",checks(["One login, one history, <b>one bill</b>","Work lands <b>done</b>: briefs, sends, PRs","A day of work costs <b>cents</b>, not seats","The gate holds <b>everything external</b>","Every run logged with an <b>audit ID</b>"])))
 CH=cheat("The agents inside","ONE SUBSCRIPTION",[("/cortex","research"),("/specter","outbound"),("/striker","deals"),("/pulse","content"),("/sentinel","code"),("/amplify","publishing")])
 emit("content/howto2/li-02.html",'Your AI stack: $129 a month.<br>Ultron: <em>cents</em>.',
  'Six subscriptions, six logins, six dead contexts. Here is the whole swap, priced.',

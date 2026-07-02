@@ -1,47 +1,76 @@
 <!DOCTYPE html><html><head><meta charset="UTF-8"><style>
 @import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
 *{box-sizing:border-box;margin:0;padding:0;}
-body{background:#d9d2c4;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;color:#17150F;}
-.frame{width:1080px;height:1450px;background:#F6F1E7;position:relative;overflow:hidden;display:flex;flex-direction:column;padding:26px 40px 0;}
-.frame::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(23,21,15,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,15,.045) 1px,transparent 1px);background-size:40px 40px;}
-.frame>*{position:relative;}
-.mast{flex-shrink:0;display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:2px solid #17150F;font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#8d8371;}
-.mast em{color:#A85B38;font-style:normal;}
-.hook{margin-top:14px;font-weight:900;font-size:55px;letter-spacing:-2.2px;line-height:1.0;color:#17150F;}
-.hook em{color:#A85B38;font-style:normal;}
-.subl{margin-top:9px;font-size:18.5px;font-weight:600;color:#5d564a;}
-.subl b{color:#17150F;}
+body{background:#0a0a09;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;color:#F6F1E7;}
+.frame{width:1080px;height:1450px;background:#171716;position:relative;overflow:hidden;display:flex;flex-direction:column;padding:30px 36px 0;}
+.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+background-image:linear-gradient(rgba(250,250,247,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(250,250,247,.05) 1px,transparent 1px);
+background-size:36px 36px;}
+.frame::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 70% 34% at 50% -6%,rgba(168,91,56,.16),transparent 62%);}
+.frame>*{position:relative;z-index:2;}
+.mast{flex-shrink:0;display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:1px solid rgba(246,241,231,.25);font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(246,241,231,.5);}
+.mast em{color:#D89572;font-style:normal;}
+.hook{margin-top:14px;font-weight:900;font-size:55px;letter-spacing:-2.2px;line-height:1.0;color:#F6F1E7;}
+.hook em{color:#D89572;font-style:normal;}
+.subl{margin-top:9px;font-size:18.5px;font-weight:600;color:rgba(246,241,231,.68);}
+.subl b{color:#F6F1E7;}
 
-.band{flex:1;min-height:0;margin-top:10px;background:#FDFAF3;border:2px solid #17150F;border-radius:16px;box-shadow:0 4px 0 rgba(23,21,15,.16);display:flex;gap:15px;padding:11px 15px;}
-.lvl{flex-shrink:0;width:86px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:2px solid #17150F;}
-.lvl .a{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.1em;}
-.lvl .n{font-weight:900;font-size:38px;line-height:1;}
-.bmain{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;}
-.brow{display:flex;align-items:center;gap:10px;}
-.brow .bt{font-weight:900;font-size:24px;letter-spacing:-.5px;}
-.brow .chipc{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#fff;border-radius:999px;padding:3.5px 11px;font-weight:500;}
-.bi{display:flex;gap:8px;align-items:flex-start;margin-top:6px;font-size:14.5px;color:#57503f;line-height:1.32;}
-.bi b{color:#17150F;}
-.bi .d{flex-shrink:0;width:17px;height:17px;border-radius:50%;color:#fff;font-size:10.5px;font-weight:900;display:flex;align-items:center;justify-content:center;margin-top:1.5px;}
-.bi code{font-family:'DM Mono',monospace;font-size:12.5px;background:#F0E9DA;border:1px solid #d8cdb8;border-radius:5px;padding:1px 7px;}
-.ghost{flex-shrink:0;width:210px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:2px 0;}
-.gp{font-family:'DM Mono',monospace;font-size:12.5px;color:#17150F;background:#F0E9DA;border:2px solid #17150F;border-radius:8px;padding:6px 15px;white-space:nowrap;font-weight:500;box-shadow:0 2px 0 rgba(23,21,15,.14);}
-.gp.hot{color:#fff;background:var(--gc);border-color:#17150F;}
-.garr{width:2.5px;flex:1;min-height:7px;background:#8d8371;}
-.ctab{flex-shrink:0;margin:12px 0 0;background:#211F1A;border-radius:14px;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;box-shadow:0 3px 0 rgba(23,21,15,.18);}
-.ctab .l{font-size:18px;font-weight:700;color:#F7F1E6;}.ctab .l b{color:#E5A183;font-weight:900;}
-.ctab .r{background:#F7F1E6;color:#17150F;border-radius:999px;padding:8px 18px;font-weight:900;font-size:15px;}
-.ftr{flex-shrink:0;margin:10px 0 0;padding:10px 0 14px;border-top:2px solid #17150F;display:flex;align-items:center;justify-content:space-between;}
+.start{flex-shrink:0;align-self:center;margin-top:12px;border:1.5px solid rgba(201,146,116,.5);background:rgba(168,91,56,.08);border-radius:999px;padding:8px 22px;display:flex;gap:14px;align-items:center;}
+.start .a{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.16em;color:#E8845F;}
+.start .b{font-weight:800;font-size:15.5px;color:#F6F1E7;}
+.cols{flex:1;min-height:0;margin-top:13px;display:flex;gap:46px;position:relative;}
+.col{flex:1;display:flex;flex-direction:column;gap:12px;min-width:0;}
+.col .card{flex:1;display:flex;flex-direction:column;}
+.card .hd{flex-shrink:0;}
+.binner{flex:1;display:flex;flex-direction:column;justify-content:space-evenly;}
+.spine{position:absolute;left:50%;top:0;bottom:0;width:0;transform:translateX(-50%);}
+.spine .bar{position:absolute;left:-2px;top:6px;bottom:6px;width:4px;border-radius:2px;background:linear-gradient(#C99274,#A85B38 55%,#C9AE8C);box-shadow:0 0 14px rgba(168,91,56,.45);}
+.stop{position:absolute;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-weight:500;font-size:18px;border:3px solid #171716;box-shadow:0 0 0 2px rgba(201,146,116,.45),0 0 16px rgba(168,91,56,.4);background:#A85B38;color:#fff;}
+.stop.k{background:#C9AE8C;color:#211505;}.stop.w{background:#F6F1E7;color:#1b140e;}
+.card{background:rgba(25,25,24,.92);border:1px solid rgba(250,250,247,.11);border-radius:14px;padding:13px 16px;box-shadow:0 12px 34px rgba(0,0,0,.45);}
+.card .hd{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:8px;}
+.card .hd .t{font-weight:900;font-size:20.5px;letter-spacing:-.4px;}
+.card .hd .tag{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.15em;color:#D4A27F;text-transform:uppercase;flex-shrink:0;}
+.card p{font-size:15px;color:rgba(246,241,231,.72);line-height:1.32;}
+.card p b{color:#F6F1E7;}
+.term{margin-top:8px;background:#0d0d0c;border:1px solid rgba(250,250,247,.10);border-radius:10px;padding:10px 12px;display:flex;align-items:center;gap:10px;}
+.term .c{flex:1;font-family:'DM Mono',monospace;font-size:14.5px;color:#F0C9AF;}
+.term .go{width:26px;height:26px;border-radius:50%;background:#A85B38;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.term .go svg{width:13px;height:13px;stroke:#fff;stroke-width:3;fill:none;stroke-linecap:round;}
+.row{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid rgba(250,250,247,.07);}
+.row:first-of-type{border-top:none;}
+.row .n{font-weight:800;font-size:15.5px;flex-shrink:0;}
+.row .d{flex:1;font-size:13px;color:rgba(246,241,231,.6);}
+.row .bg{flex-shrink:0;font-family:'DM Mono',monospace;font-size:12px;background:#A85B38;color:#fff;border-radius:7px;padding:3px 10px;font-weight:500;}
+.row .bg.k{background:#3a2c20;color:#E8A17F;border:1px solid rgba(232,132,95,.4);}
+.chk{display:flex;gap:10px;align-items:flex-start;padding:7px 0;font-size:15px;color:rgba(246,241,231,.82);}
+.chk b{color:#F6F1E7;}
+.chk .bx{width:19px;height:19px;border-radius:5px;background:#3f7d5c;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.chk .bx svg{width:11px;height:11px;stroke:#fff;stroke-width:3.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.chk.x .bx{background:#8a3520;}
+.cheat{flex-shrink:0;margin:14px 0 0;background:rgba(15,15,14,.94);border:1px solid rgba(250,250,247,.10);border-radius:14px 14px 0 0;padding:13px 20px 12px;}
+.cheat .hd{display:flex;justify-content:space-between;margin-bottom:9px;}
+.cheat .hd .t{font-weight:900;font-size:17px;}
+.cheat .hd .tag{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.15em;color:rgba(246,241,231,.4);text-transform:uppercase;}
+.cheat .gridc{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px 22px;}
+.ci{display:flex;align-items:center;gap:9px;font-size:13px;color:rgba(246,241,231,.62);}
+.ci b{font-family:'DM Mono',monospace;font-weight:500;font-size:13px;color:#E8A17F;background:rgba(200,70,35,.13);border:1px solid rgba(232,132,95,.32);border-radius:6px;padding:2.5px 9px;white-space:nowrap;}
+.ctab{flex-shrink:0;margin:12px 0 10px;background:linear-gradient(160deg,#B4693F,#8f4e2e);border-radius:14px;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;}
+.ctab .l{font-size:18.5px;font-weight:700;color:#fff;}.ctab .l b{font-weight:900;}
+.ctab .r{background:#F6F1E7;color:#1b140e;border-radius:999px;padding:8px 18px;font-weight:900;font-size:15px;}
+.ftr{flex-shrink:0;margin:10px 0 0;padding:10px 0 14px;border-top:1px solid rgba(246,241,231,.22);display:flex;align-items:center;justify-content:space-between;}
 .fl{display:flex;align-items:center;gap:10px;min-width:0;}
 .ftr img{width:28px;height:28px;border-radius:50%;flex-shrink:0;}
-.ftx{font-family:'DM Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:#6b6357;white-space:nowrap;}
-.ftx b{color:#17150F;}
-.furl{font-family:'DM Sans',sans-serif;font-weight:900;font-size:19px;letter-spacing:-.4px;color:#17150F;flex-shrink:0;}
-.furl em{color:#A85B38;font-style:normal;}
+.ftx{font-family:'DM Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:rgba(246,241,231,.55);white-space:nowrap;}
+.ftx b{color:#F6F1E7;}
+.furl{font-family:'DM Sans',sans-serif;font-weight:900;font-size:19px;letter-spacing:-.4px;color:#F6F1E7;flex-shrink:0;}
+.furl em{color:#D89572;font-style:normal;}
 </style></head><body>
 <div class="frame" id="artifact">
-<div class="mast"><span>ULTRON <em>&middot;</em> THE GATE LADDER</span><span>SAVE THIS</span></div><div class="hook">I let Ultron write 240 emails.<br><em>Zero</em> left without my tap.</div><div class="subl">Five steps, <b>one human tap</b>, zero accidents. The whole outbound gate on one image.</div>
-<div class="band"><div class="lvl" style="background:#211F1A;color:#fff"><span class="a">STEP</span><span class="n">5</span></div><div class="bmain"><div class="brow"><span class="bt">Replies route back</span><span class="chipc" style="background:#211F1A;">AFTER THE SEND</span></div><div class="bi"><span class="d" style="background:#211F1A">1</span><span><b>STRIKER takes every reply.</b> Qualify, objection, book the call.</span></div><div class="bi"><span class="d" style="background:#211F1A">2</span><span><b>You read a digest</b>, not an inbox. Hot threads flagged first.</span></div><div class="bi"><span class="d" style="background:#211F1A">3</span><span>Every send logged with <code>run id</code>. The loop is auditable.</span></div><div class="bi"><span class="d" style="background:#211F1A">4</span><span>Hot reply overnight? The digest is on your phone <b>before coffee</b>.</span></div></div><div class="ghost"><span class="gp" style="--gc:#211F1A">reply in</span><span class="garr"></span><span class="gp" style="--gc:#211F1A">qualify</span><span class="garr"></span><span class="gp hot" style="--gc:#211F1A">STRIKER</span><span class="garr"></span><span class="gp" style="--gc:#211F1A">digest</span><span class="garr"></span><span class="gp" style="--gc:#211F1A">booked call</span></div></div><div class="band"><div class="lvl" style="background:#3f7d5c;color:#fff"><span class="a">STEP</span><span class="n">4</span></div><div class="bmain"><div class="brow"><span class="bt">THE GATE: your tap</span><span class="chipc" style="background:#3f7d5c;">THE WHOLE TRICK</span></div><div class="bi"><span class="d" style="background:#3f7d5c">1</span><span><b>All 240 park on HOLD.</b> Nothing external ever fires alone.</span></div><div class="bi"><span class="d" style="background:#3f7d5c">2</span><span><b>Read 12, spot-check the rest</b>, one tap: <code>approve all</code> &middot; <code>hold</code> &middot; <code>edit 3</code>.</span></div><div class="bi"><span class="d" style="background:#3f7d5c">3</span><span>It caught <b>tone drift on 3</b>, a wrong CC and a broken merge field.</span></div><div class="bi"><span class="d" style="background:#3f7d5c">4</span><span>Hold parks the batch with <b>zero loss</b>. Edit fixes inline, then release.</span></div></div><div class="ghost"><span class="gp hot" style="--gc:#3f7d5c">240 on HOLD</span><span class="garr"></span><span class="gp" style="--gc:#3f7d5c">read 12</span><span class="garr"></span><span class="gp" style="--gc:#3f7d5c">your tap</span><span class="garr"></span><span class="gp" style="--gc:#3f7d5c">edit 3</span><span class="garr"></span><span class="gp" style="--gc:#3f7d5c">released</span></div></div><div class="band"><div class="lvl" style="background:#CDB392;color:#fff"><span class="a">STEP</span><span class="n">3</span></div><div class="bmain"><div class="brow"><span class="bt">Queue the sends</span><span class="chipc" style="background:#CDB392;">RAMPED, NOT BLASTED</span></div><div class="bi"><span class="d" style="background:#CDB392">1</span><span><b>10:00 local time</b> per prospect, spread over 4 days.</span></div><div class="bi"><span class="d" style="background:#CDB392">2</span><span><b>Warm domains only.</b> The ramp keeps you at <b>99.2% inboxed</b>.</span></div><div class="bi"><span class="d" style="background:#CDB392">3</span><span>AMPLIFY owns the calendar: <code>/amplify schedule</code>.</span></div><div class="bi"><span class="d" style="background:#CDB392">4</span><span>Volume ramps 60 &rarr; 60 &rarr; 60 &rarr; 60. <b>Blasts kill domains</b>, ramps keep them.</span></div></div><div class="ghost"><span class="gp" style="--gc:#CDB392">Mon 60</span><span class="garr"></span><span class="gp" style="--gc:#CDB392">Tue 60</span><span class="garr"></span><span class="gp" style="--gc:#CDB392">Wed 60</span><span class="garr"></span><span class="gp" style="--gc:#CDB392">Thu 60</span><span class="garr"></span><span class="gp hot" style="--gc:#CDB392">10:00 local</span></div></div><div class="band"><div class="lvl" style="background:#C08A6C;color:#fff"><span class="a">STEP</span><span class="n">2</span></div><div class="bmain"><div class="brow"><span class="bt">Personalise each</span><span class="chipc" style="background:#C08A6C;">NO MERGE SMELL</span></div><div class="bi"><span class="d" style="background:#C08A6C">1</span><span><b>One trigger per email</b>, pulled from the account brief.</span></div><div class="bi"><span class="d" style="background:#C08A6C">2</span><span>Company signal + role pain, <b>62 words a step</b>.</span></div><div class="bi"><span class="d" style="background:#C08A6C">3</span><span>Winners carry a trigger. Templates carry adjectives.</span></div><div class="bi"><span class="d" style="background:#C08A6C">4</span><span>Every draft cites its brief line, so <b>you can audit the claim</b> in one look.</span></div></div><div class="ghost"><span class="gp" style="--gc:#C08A6C">account brief</span><span class="garr"></span><span class="gp" style="--gc:#C08A6C">signal</span><span class="garr"></span><span class="gp hot" style="--gc:#C08A6C">trigger</span><span class="garr"></span><span class="gp" style="--gc:#C08A6C">62 words</span></div></div><div class="band"><div class="lvl" style="background:#B4693F;color:#fff"><span class="a">STEP</span><span class="n">1</span></div><div class="bmain"><div class="brow"><span class="bt">SPECTER writes 240</span><span class="chipc" style="background:#B4693F;">09:38 THIS MORNING</span></div><div class="bi"><span class="d" style="background:#B4693F">1</span><span><b>4-step sequence</b> per account, drafted from one sentence.</span></div><div class="bi"><span class="d" style="background:#B4693F">2</span><span>You typed: <code>&gt; run outbound on the 200 list</code>.</span></div><div class="bi"><span class="d" style="background:#B4693F">3</span><span>Drafts, not sends. <b>Everything waits at step 4.</b></span></div><div class="bi"><span class="d" style="background:#B4693F">4</span><span>Cost of the whole batch on the meter: <b>cents</b>, not an SDR month.</span></div></div><div class="ghost"><span class="gp" style="--gc:#B4693F">one sentence</span><span class="garr"></span><span class="gp hot" style="--gc:#B4693F">SPECTER</span><span class="garr"></span><span class="gp" style="--gc:#B4693F">4-step seq</span><span class="garr"></span><span class="gp" style="--gc:#B4693F">240 drafts</span></div></div>
-<div class="ctab"><span class="l">Comment <b>GATE</b> and I will DM you the gated outbound setup + the architecture doc</span><span class="r">GATE &rarr;</span></div>
-<div class="ftr"><div class="fl"><img src="__LOGO__"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS &middot; THE OUTBOUND GATE</span></div><span class="furl">51ultron<em>.</em>com</span></div>
+<div class="mast"><span>ULTRON <em>&middot;</em> FOUNDER PLAYBOOK</span><span>SAVE THIS</span></div><div class="hook">Let AI write <em>240 emails</em>. Approve every one.</div><div class="subl">Outbound at AI speed without AI accidents. The gate is the whole trick.</div>
+<div class="start"><span class="a">THE DEAL</span><span class="b">AI writes &middot; you approve &middot; then it sends</span></div>
+<div class="cols"><div class="col"><div class="card"><div class="hd"><span class="t">SPECTER writes</span><span class="tag">09:38</span></div><div class="binner"><div class="row"><span class="n">240 emails</span><span class="d">4-step sequence</span><span class="bg">62W</span></div><div class="row"><span class="n">One trigger each</span><span class="d">from the account brief</span><span class="bg k">REAL</span></div></div></div><div class="card"><div class="hd"><span class="t">The queue</span><span class="tag">SPREAD</span></div><div class="binner"><div class="row"><span class="n">10:00 local</span><span class="d">per prospect timezone</span><span class="bg k">AUTO</span></div><div class="row"><span class="n">4 days</span><span class="d">ramped, not blasted</span><span class="bg k">SAFE</span></div></div></div><div class="card"><div class="hd"><span class="t">After the send</span><span class="tag">REPLIES</span></div><div class="binner"><p>Every reply routes to <b>STRIKER</b>: qualify, handle the objection, book the call. You see a digest.</p></div></div></div><div class="spine"><span class="bar"></span><span class="stop " style="top:10%">1</span><span class="stop k" style="top:30%">2</span><span class="stop w" style="top:50%">3</span><span class="stop " style="top:70%">4</span><span class="stop k" style="top:90%">5</span></div><div class="col"><div class="card"><div class="hd"><span class="t">THE GATE: your tap</span><span class="tag">1 CLICK</span></div><div class="binner"><p>All 240 wait here. You read 12, spot-check the rest.</p><div style="display:flex;gap:8px;margin:9px 0 2px"><span style="background:#2e7d54;color:#fff;border-radius:999px;padding:6px 15px;font-family:DM Mono,monospace;font-size:12.5px">Approve all</span><span style="border:1.5px solid rgba(246,241,231,.3);color:rgba(246,241,231,.75);border-radius:999px;padding:6px 15px;font-family:DM Mono,monospace;font-size:12.5px">Hold</span><span style="border:1.5px solid rgba(246,241,231,.3);color:rgba(246,241,231,.75);border-radius:999px;padding:6px 15px;font-family:DM Mono,monospace;font-size:12.5px">Edit 3</span></div></div></div><div class="card"><div class="hd"><span class="t">What the gate caught</span><span class="tag">SAVED YOU</span></div><div class="binner"><div class="chk x"><span class="bx"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></span><span>Tone drift on <b>3 drafts</b></span></div><div class="chk x"><span class="bx"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></span><span>Wrong tier CC'd on one thread</span></div><div class="chk x"><span class="bx"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></span><span>A broken merge field</span></div></div></div><div class="card"><div class="hd"><span class="t">The send fires</span><span class="tag">10:00</span></div><div class="binner"><div class="chk"><span class="bx"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg></span><span><b>99.2%</b> landed in the inbox</span></div><div class="chk"><span class="bx"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg></span><span>Warm domains, ramped volume</span></div><div class="chk"><span class="bx"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg></span><span><b>0</b> emails sent without you</span></div></div></div></div></div>
+<div class="cheat"><div class="hd"><span class="t">Gate rules</span><span class="tag">HOW IT HOLDS</span></div><div class="gridc"><span class="ci"><b>external</b>never fires alone</span><span class="ci"><b>approve</b>releases the queue</span><span class="ci"><b>hold</b>parks it, no loss</span><span class="ci"><b>edit</b>fix inline, resend</span><span class="ci"><b>log</b>every send stamped</span><span class="ci"><b>digest</b>replies summarised</span></div></div>
+<div class="ctab"><span class="l">Comment <b>GATE</b> and I will DM you the playbook</span><span class="r">GATE &rarr;</span></div>
+<div class="ftr"><div class="fl"><img src="__LOGO__"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS &middot; FOUNDER PLAYBOOK</span></div><span class="furl">51ultron<em>.</em>com</span></div>
 </div></body></html>
