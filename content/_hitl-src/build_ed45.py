@@ -406,6 +406,37 @@ def anchor(base,stem,light):
             d.text((x0+300,ry+22),b2,font=dm(500,20),fill=mut)
         meta("one chat · every role · you approve every send")
 
+def place_prem(base,objpath,light):
+    # PREMIUM Vertex panel, uniform frame on every slide (operator 2026-07-02): rounded charcoal
+    # plate, FIXED width + FIXED top Y, same orthographic view -> the deck reads as one family.
+    im=Image.open(objpath).convert("RGB")
+    a=np.asarray(im).astype(int); h,w=a.shape[:2]; area=h*w
+    cs=np.concatenate([a[:48,:48].reshape(-1,3),a[:48,-48:].reshape(-1,3),a[-48:,:48].reshape(-1,3),a[-48:,-48:].reshape(-1,3)])
+    bgm=np.median(cs,0).astype(int); diff=np.abs(a-bgm).sum(2); bbox=None
+    for thr in (120,100,80,65,52,42,34,28,22):
+        ys,xs=np.where(diff>thr)
+        if len(xs)==0: continue
+        b=(int(xs.min()),int(ys.min()),int(xs.max()),int(ys.max()))
+        if (b[2]-b[0])*(b[3]-b[1])<=0.93*area: bbox=b
+        else: break
+    if bbox is None: bbox=(0,0,w,h)
+    pad=30
+    x0=max(0,bbox[0]-pad); y0=max(0,bbox[1]-pad); x1=min(w,bbox[2]+pad); y1=min(h,bbox[3]+pad)
+    plate=im.crop((x0,y0,x1,y1))
+    # fit WHOLE plate (never crop the object) in the fixed lower zone, centred at a fixed point
+    ZW,ZH=900,600; CX,CY=W//2,970
+    sc=min(ZW/plate.width, ZH/plate.height)
+    plate=plate.resize((max(1,int(plate.width*sc)),max(1,int(plate.height*sc))),Image.LANCZOS)
+    r=28
+    m=Image.new("L",plate.size,0); ImageDraw.Draw(m).rounded_rectangle([0,0,plate.width,plate.height],radius=r,fill=255)
+    px=CX-plate.width//2; py=CY-plate.height//2
+    sh=Image.new("RGBA",base.size,(0,0,0,0))
+    ImageDraw.Draw(sh).rounded_rectangle([px+6,py+18,px+plate.width+6,py+plate.height+18],radius=r,fill=(0,0,0,120 if light else 180))
+    base.alpha_composite(sh.filter(ImageFilter.GaussianBlur(20)))
+    base.paste(plate,(px,py),m)
+    d=ImageDraw.Draw(base)
+    d.rounded_rectangle([px,py,px+plate.width,py+plate.height],radius=r,outline=((23,21,15) if light else (84,82,78)),width=3)
+
 def body(base,eyebrow,head,sub,foot,objpath,page,n,fill):
     stem=os.path.splitext(os.path.basename(objpath))[0]
     light=(page%2==0)   # alternating editorial slides
@@ -453,7 +484,9 @@ def body(base,eyebrow,head,sub,foot,objpath,page,n,fill):
                 d.line([bx+8,ty+23,bx+24,ty+23],fill=_mut(light),width=3)
                 d.polygon([(bx+24,ty+17),(bx+32,ty+23),(bx+24,ty+29)],fill=_mut(light))
                 bx+=44
-    if stem=="ultron_real":
+    if getattr(MAT,"PREMIUM",0):
+        place_prem(base,objpath,light)
+    elif stem=="ultron_real":
         _bloom(base,W//2,980,430,300,alpha=70); place_obj(base,objpath,fill)
     else:
         anchor(base,stem,light)
@@ -489,16 +522,12 @@ def _bloom(base,cx,cy,rw,rh,alpha=90):
     base.alpha_composite(gl.filter(ImageFilter.GaussianBlur(120)))
 
 def cover_tt(base):
+    # NO 3D model on page 1 (operator 2026-07-02): hook + the two brand marks raised high.
+    # The marks rotate per material (MARK2), Ultron orb ALWAYS present.
     ghost(base,"01"); d=ImageDraw.Draw(base)
-    s=fit_hook(d,COVER["head"],W-2*MX,start=84,floor=58); hf=dm(900,s); y=118
+    s=fit_hook(d,COVER["head"],W-2*MX,start=84,floor=58); hf=dm(900,s); y=150
     for ln in COVER["head"]: seg_center(d,y,ln,hf); y+=int(s*1.12)
-    # small logo band right under the hook - top third only, the rest of the canvas stays open
-    el=_keyed_cluster(W-300, 442)
-    if el is not None:
-        _bloom(base,W//2,y+44+el.height//2,360,210,alpha=64)
-        base.alpha_composite(el,((W-el.width)//2, y+44))
-        my=y+44+el.height+34
-    else: my=y+60
+    my=y+72
     mk2=getattr(MAT,"MARK2",getattr(T2,"MARK2","claude"))
     if mk2=="strip":
         st=Image.open("/home/user/tiberiu-claude/content/_hitl-src/covers/tabsrow.png").convert("RGB")
@@ -506,11 +535,11 @@ def cover_tt(base):
         bg2=np.median(cs,0); df=np.abs(arr-bg2).sum(2); alp=np.clip((df-26)*7,0,255).astype("uint8")
         stk=Image.fromarray(np.dstack([arr.astype("uint8"),alp]),"RGBA"); bb=Image.fromarray((alp>90).astype("uint8")*255,"L").getbbox()
         if bb: stk=stk.crop(bb)
-        stk=stk.resize((int(stk.width*76/stk.height),76),Image.LANCZOS)
+        stk=stk.resize((int(stk.width*96/stk.height),96),Image.LANCZOS)
         logos=[stk,_orb()]
     else:
         logos=[Image.open(CLAUDE_SUN).convert("RGBA"), _orb()]
-    L=84; SLOT=72
+    L=120; SLOT=88
     for im in logos:
         if im.width<=im.height*2: im.thumbnail((L,L),Image.LANCZOS)
     d=ImageDraw.Draw(base)
@@ -532,13 +561,11 @@ def cover_ig(out):
     s=fit_hook(d,COVER["head"],W-2*MX,start=80,floor=54); hf=dm(900,s); y=112
     halo=Image.new("RGBA",(W,H),(0,0,0,0)); hd=ImageDraw.Draw(halo)
     hh=int(s*1.12)*len(COVER["head"])
-    hd.rounded_rectangle([40,y-30,W-40,y+hh+20],radius=38,fill=(12,10,9,170))
+    hd.rounded_rectangle([40,y-30,W-40,y+hh+56+112+34],radius=38,fill=(12,10,9,170))
     base.alpha_composite(halo.filter(ImageFilter.GaussianBlur(34)))
     for ln in COVER["head"]: seg_center(d,y,ln,hf); y+=int(s*1.12)
-    el=_keyed_cluster(W-320, 408)
-    if el is not None:
-        base.alpha_composite(el,((W-el.width)//2, y+38)); my=y+38+el.height+30
-    else: my=y+54
+    # NO 3D model (operator 2026-07-02): marks raised right under the hook, centre stays open for the movie
+    my=y+56
     mk2=getattr(MAT,"MARK2",getattr(T2,"MARK2","claude"))
     if mk2=="strip":
         st=Image.open("/home/user/tiberiu-claude/content/_hitl-src/covers/tabsrow.png").convert("RGB")
@@ -546,11 +573,11 @@ def cover_ig(out):
         bg2=np.median(cs,0); df=np.abs(arr-bg2).sum(2); alp=np.clip((df-26)*7,0,255).astype("uint8")
         stk=Image.fromarray(np.dstack([arr.astype("uint8"),alp]),"RGBA"); bb=Image.fromarray((alp>90).astype("uint8")*255,"L").getbbox()
         if bb: stk=stk.crop(bb)
-        stk=stk.resize((int(stk.width*72/stk.height),72),Image.LANCZOS)
+        stk=stk.resize((int(stk.width*88/stk.height),88),Image.LANCZOS)
         logos=[stk,_orb()]
     else:
         logos=[Image.open(CLAUDE_SUN).convert("RGBA"), _orb()]
-    L=80; SLOT=68
+    L=112; SLOT=84
     for im in logos:
         if im.width<=im.height*2: im.thumbnail((L,L),Image.LANCZOS)
     d=ImageDraw.Draw(base)
@@ -591,8 +618,9 @@ def deck(outdir, overlay):
     for i,sl in enumerate(slides,1):
         if sl[0]=="cover":
             if overlay: cover_ig(f"{outdir}/s{i}.png"); continue
-            base=Image.new("RGBA",(W,H),BG+(255,)); dots(base); cover_tt(base); base.convert("RGB").save(f"{outdir}/s{i}.png"); continue
-        base=Image.new("RGBA",(W,H),BG+(255,)); dots(base)
+            base=slide_base(False); cover_tt(base); base.convert("RGB").save(f"{outdir}/s{i}.png"); continue
+        # first AND last slides share the same grid texture as the body slides (operator 2026-07-02)
+        base=slide_base(False)
         if sl[0]=="close": closing(base,sl[1],i,n)
         elif sl[0]=="last":
             eb,head,objp,fill=CTA[0],CTA[1],CTA[-2],CTA[-1]; ghost(base,f"{i:02d}"); d=ImageDraw.Draw(base)
