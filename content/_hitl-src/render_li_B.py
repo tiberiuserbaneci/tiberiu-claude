@@ -119,20 +119,20 @@ R=(bcard("One box instead","THE SWAP",term("&gt; write the cold sequence")+term(
 +bcard("One context","THE BRAIN",rows([("Your ICP","loaded in every job","SET",0),("Your voice","under every draft","SET",1),("Your pipeline","live in every answer","LIVE",1),("Your pricing","quoted right, every time","SET",1),("Your no-list","banned words enforced","SET",1)]))
 +bcard("What you keep","THE PAYOFF",checks(["One login, one history, <b>one bill</b>","Work lands <b>done</b>: briefs, sends, PRs","A day of work costs <b>cents</b>, not seats","The gate holds <b>everything external</b>","Every run logged with an <b>audit ID</b>"])))
 CH=cheat("The agents inside","ONE SUBSCRIPTION",[("/cortex","research"),("/specter","outbound"),("/striker","deals"),("/pulse","content"),("/sentinel","code"),("/amplify","publishing")])
-emit("content/howto2/li-02.html",'Your AI stack: $129 a month.<br>Ultron: <em>cents</em>.',
+emit("content/howto2/li-02.html",'You pay $129/mo to babysit AI tabs.<br>Ultron does the work for <em>cents</em>.',
  'Six subscriptions, six logins, six dead contexts. Here is the whole swap, priced.',
  "THE MATH","$129/mo of tabs &rarr; cents per day",L,R,4,CH,"TABS",asset="the migration map + the cost calculator",ctx="THE STACK SWAP")
 
 # ---------------- li-06 SHIP (Crescendo) ----------------
-L=(bcard("Say what you need","PLAIN ENGLISH",term("&gt; build me a landing page for my agency")+'<p style="margin-top:8px">No Figma, no template hunt. <b>SENTINEL</b> picks the kit and builds.</p>')
+L=(bcard("Say what you need","PLAIN ENGLISH",term("&gt; build the launch funnel for the 200 list")+'<p style="margin-top:8px">No Figma, no template hunt. <b>SENTINEL</b> picks the kit and builds.</p>')
 +bcard("It picks from Crescendo","THE LIBRARY",rows([("822","pre-built components","READY",0),("30+","site + app kits","KITS",1),("15","dashboards: CRM, ops, analytics","LIVE",1),("Blueprints","hand-built from linear.app-class sites","GOLD",1)]))
 +bcard("Kits for your niche","PICK ONE",rows([("AI Startup","gradient orb hero, waitlist","KIT",1),("Fintech","card mockup, compliance","KIT",1),("Dev Tool","terminal hero, code blocks","KIT",1),("B2B Enterprise","pillars, ROI, demo request","KIT",1)])))
 R=(bcard("It assembles, then verifies","NO AI LOOK",checks(["Sections from the <b>pack</b>, styled to your brand","Screenshots <b>every page</b>, reviews its own output","Copy in <b>your voice</b>, from the brain"]))
 +bcard("App screens too","BEYOND LANDINGS",rows([("Mail / Kanban / CRM","full app screens, wired","SCREENS",1),("Onboarding","multi-step wizard","FLOW",1),("Settings + auth","profile, keys, danger zone","DONE",1)]))
 +bcard("You approve, it deploys","THE GATE",'<p>Preview link first. <b>You say go</b>, it ships to your domain.</p>'+term("&gt; ship it")+'<p style="margin-top:8px">Live the same evening. <b>$0 beyond the plan.</b></p>'))
 CH=cheat("The build commands","CHEAT SHEET",[("/sentinel build","kit to live site"),("crescendo","browse 822 parts"),("/sections","hero, pricing, FAQ"),("/dash","CRM / ops / analytics"),("preview","before anything ships"),("ship","your one word")])
-emit("content/howto2/li-06.html",'One chat with Ultron.<br>A <em>whole website</em>, live tonight.',
- 'SENTINEL builds from Crescendo: 822 components, 30+ kits, real dashboards. You just describe it.',
+emit("content/howto2/li-06.html",'Your agency quoted 3 weeks.<br>Ultron shipped my funnel <em>tonight</em>.',
+ 'The launch funnel for the 200 list: built from Crescendo, 822 components, 30+ kits. <b>You just describe it.</b>',
  "THE LIBRARY","822 components &middot; 30+ kits &middot; preview &rarr; ship",L,R,6,CH,"SHIP",
  asset="the build playbook + the Crescendo link",ctx="CRESCENDO BUILDS")
 

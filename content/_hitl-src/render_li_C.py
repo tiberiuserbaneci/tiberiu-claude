@@ -167,7 +167,7 @@ cR=(kard(BLK,2,"THE CLAIM","conf 99%","ICP drift","<b>31% of pipeline</b> was ou
 +kard(KRA,6,"THE HABIT","every claim","Stamp it","Every number in every brief carries <b>source + run ID + confidence</b>.",
  flow([("doc","Claim","WRITTEN",0),("gear","Auto-stamp","RUN ID",1),("check","Trusted","DEFAULT",0)]),
  "<b>/brief</b> &middot; stamping is automatic","Proof by default beats proof on demand.",bd2="You never assemble evidence again: it is attached at write time, by the agent that produced the number. The habit costs zero minutes."))
-emit("content/howto2/li-08.html",'One Ultron link ended<br>a <em>three-week</em> argument.',
+emit("content/howto2/li-08.html",'My co-founder called my numbers fake.<br>Ultron ended it with <em>one link</em>.',
  'Three weeks of research, defended in one link. <b>No screenshots, no decks.</b>',
  eras,cL,cR,"THE EVIDENCE LOOP",
  [(6,TER,"Claim"),(30,KRA,"Source"),(62,"#4d8b6a","Stamp"),(88,TER,"Share")],"PROOF",asset="the evidence-brief template",ctx="EVIDENCE BRIEFS")
@@ -196,7 +196,7 @@ cR=(kard(BLK,2,"CARRIES OVER","zero re-brief","The context","ICP, pricing, voice
 +kard(KRA,6,"THE RESULT","10 minutes","Reopen to sent","Two words in, proposal out the door by <b>09:11</b>.",
  flow([("bolt","Resume","09:01",1),("doc","Finish v3","09:03",0),("send","Proposal","09:11",0)]),
  "<b>&gt; resume</b> &middot; the whole ceremony","The fastest morning is the one that starts mid-stride.",bd2="Two words replace the standup you hold with yourself. By 09:11 the proposal was out and the calendar hold was booked."))
-emit("content/howto2/li-09.html",'I vanished for two days.<br>Ultron <em>kept the deal alive</em>.',
+emit("content/howto2/li-09.html",'I went dark for two days, mid-deal.<br>Ultron <em>kept it moving</em>.',
  'Closed the laptop mid-negotiation Monday. Typed two words Wednesday. <b>Nothing was lost.</b>',
  eras,cL,cR,"THE SESSION LOOP",
  [(6,TER,"Work"),(30,KRA,"Close"),(62,"#4d8b6a","Resume"),(88,TER,"Continue")],"RESUME",asset="the session workflow + the docs link",ctx="SESSIONS")

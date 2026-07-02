@@ -133,6 +133,6 @@ R=(grp("dark","What you charge","QUOTED RIGHT",
 +grp("","Seed it once","THREE LINES",
    '<div class="mono4"><span class="mchip"><b>&gt;</b> /init my business</span><span class="mchip"><b>&gt;</b> remember: no discounts</span><span class="mchip"><b>&gt;</b> what do you know about me?</span></div>'))
 emit("content/howto2/li-04.html",
- 'You brief your AI every day.<br>I briefed <em>Ultron once</em>.',
+ 'Your AI forgets you at midnight.<br><em>Ultron never asks twice.</em>',
  "The brain map: what Ultron memorises about your business, and where it pays you back.",
  L,R,"BRAIN","the brain setup + the BCP link",ctx="THE BRAIN MAP",bg="background:#EAE0CC;")
