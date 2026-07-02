@@ -23,3 +23,5 @@ T2.CONTENT=[
 ]
 T2.CTA=("SYSTEMS", [[wo("Want the systems?")],[co("comment OPERATOR.")]], f"{LIB}/cta3d-operator.png", 0.92)
 T2.CLOSE=dict(l1="Save this before",l2="you hire again.",q="Which role would you systemize first?")
+
+MARK2="claude"

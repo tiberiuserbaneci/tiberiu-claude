@@ -23,3 +23,5 @@ T2.CONTENT=[
 ]
 T2.CTA=("OPERATOR", [[wo("Want the agent?")],[co("comment OPERATOR.")]], f"{LIB}/cta3d-operator.png", 0.92)
 T2.CLOSE=dict(l1="Save this if you",l2="still just chat.",q="Chatbot or operator, which do you run?")
+
+MARK2="strip"

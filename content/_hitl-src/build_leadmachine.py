@@ -23,3 +23,5 @@ T2.CONTENT=[
 ]
 T2.CTA=("LEADS", [[wo("Want the machine?")],[co("comment OPERATOR.")]], f"{LIB}/cta3d-operator.png", 0.92)
 T2.CLOSE=dict(l1="Save this to",l2="fill your pipe.",q="Where does your pipeline break today?")
+
+MARK2="strip"

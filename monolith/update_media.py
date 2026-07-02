@@ -15,7 +15,13 @@ def req(url,method="GET",data=None,ct=None):
     with urllib.request.urlopen(r,context=ctx,timeout=120) as resp: return resp.read()
 
 def r2put(key,path):
-    req(f"https://api.cloudflare.com/client/v4/accounts/{ACCT}/r2/buckets/{BUCKET}/objects/{key}","PUT",open(path,"rb").read(),"image/png")
+    for att in range(5):
+        try:
+            req(f"https://api.cloudflare.com/client/v4/accounts/{ACCT}/r2/buckets/{BUCKET}/objects/{key}","PUT",open(path,"rb").read(),"image/png")
+            return
+        except Exception as e:
+            if att==4: raise
+            time.sleep(2**att)
 
 def d1(sql):
     out=json.loads(req(f"https://api.cloudflare.com/client/v4/accounts/{ACCT}/d1/database/{DBID}/query","POST",json.dumps({"sql":sql}).encode(),"application/json"))

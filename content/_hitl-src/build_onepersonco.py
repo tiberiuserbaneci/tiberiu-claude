@@ -23,3 +23,5 @@ T2.CONTENT=[
 ]
 T2.CTA=("COMPANY", [[wo("Want the build?")],[co("comment OPERATOR.")]], f"{LIB}/cta3d-operator.png", 0.92)
 T2.CLOSE=dict(l1="Save this to",l2="run it solo.",q="Which department would you automate first?")
+
+MARK2="strip"

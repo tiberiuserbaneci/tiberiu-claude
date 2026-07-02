@@ -167,7 +167,7 @@ cR=(kard(BLK,2,"THE CLAIM","conf 99%","ICP drift","<b>31% of pipeline</b> was ou
 +kard(KRA,6,"THE HABIT","every claim","Stamp it","Every number in every brief carries <b>source + run ID + confidence</b>.",
  flow([("doc","Claim","WRITTEN",0),("gear","Auto-stamp","RUN ID",1),("check","Trusted","DEFAULT",0)]),
  "<b>/brief</b> &middot; stamping is automatic","Proof by default beats proof on demand.",bd2="You never assemble evidence again: it is attached at write time, by the agent that produced the number. The habit costs zero minutes."))
-emit("content/howto2/li-08.html",'My co-founder called my numbers fake.<br>Ultron ended it with <em>one link</em>.',
+emit("content/howto2/li-08.html",'I replaced 30 screenshots<br>with <em>one Ultron link</em>.',
  'Three weeks of research, defended in one link. <b>No screenshots, no decks.</b>',
  eras,cL,cR,"THE EVIDENCE LOOP",
  [(6,TER,"Claim"),(30,KRA,"Source"),(62,"#4d8b6a","Stamp"),(88,TER,"Share")],"PROOF",asset="the evidence-brief template",ctx="EVIDENCE BRIEFS")

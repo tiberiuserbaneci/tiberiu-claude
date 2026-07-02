@@ -227,26 +227,239 @@ def _flow_card(base,stem,page):
     bf=mono(20); d.text((x0+30,y0+ch-52),"ULTRON  ·  ONE CHAT, WHOLE COMPANY",font=bf,fill=CMUT)
     uf=dm(900,24); u="51ultron.com"; d.text((x0+cw-30-d.textlength(u,font=uf),y0+ch-56),u,font=uf,fill=(165,97,63))
 
-def body(base,eyebrow,head,sub,foot,objpath,page,n,fill):
-    ghost(base,f"{page:02d}"); d=ImageDraw.Draw(base)
-    ls_text(d,(MX,66),eyebrow,mono(27),ACC,4)
-    s=min(fit_hook(d,head,W-2*MX,start=64,floor=46),60); hf=dm(900,s); y=108
-    for ln in head: seg_line(d,MX,y,ln,hf); y+=int(s*1.12)
-    y+=32   # clear gap between hook and sub-hook
-    if sub:
-        sf=dm(500,31)
-        for ln in wrap(d,sub,sf,W-2*MX): d.text((MX,y),ln,font=sf,fill=INK); y+=41
-    stem=os.path.splitext(os.path.basename(objpath))[0]
-    if stem in FLOWS:
-        _bloom(base,W//2,OBJ_CY,470,330,alpha=64)
-        _flow_card(base,stem,page)
+
+# ---------- EDITORIAL v5 (operator refs: alternating light/dark, TIP pill, one elegant anchor) ----------
+LIGHT_BG=(246,241,231); LIGHT_INK=(23,21,15); LIGHT_MUT=(87,80,63); LIGHT_CARD=(253,250,243); LIGHT_LINE=(216,205,184)
+DARK_CARD=(31,31,30); DARK_LINE=(64,63,60)
+def slide_base(light):
+    base=Image.new("RGBA",(W,H),(LIGHT_BG if light else BG)+(255,))
+    grid=Image.new("RGBA",(W,H),(0,0,0,0)); gd=ImageDraw.Draw(grid)
+    gc=(23,21,15,26) if light else (250,250,247,18)
+    for gy in range(0,H,44): gd.line([(0,gy),(W,gy)],fill=gc,width=1)
+    for gx in range(0,W,44): gd.line([(gx,0),(gx,H)],fill=gc,width=1)
+    base.alpha_composite(grid)
+    return base
+def _card(base,d,x0,y0,x1,y1,light,r=24):
+    sh=Image.new("RGBA",base.size,(0,0,0,0)); ImageDraw.Draw(sh).rounded_rectangle([x0+5,y0+16,x1+5,y1+16],radius=r,fill=(0,0,0,110 if light else 170))
+    base.alpha_composite(sh.filter(ImageFilter.GaussianBlur(18)))
+    d.rounded_rectangle([x0,y0,x1,y1],radius=r,fill=(LIGHT_CARD if light else DARK_CARD))
+    d.rounded_rectangle([x0,y0,x1,y1],radius=r,outline=(LIGHT_INK if light else (96,94,90)),width=3)
+def _ink(light): return LIGHT_INK if light else WHITE
+def _mut(light): return LIGHT_MUT if light else (168,163,152)
+def anchor(base,stem,light):
+    # ONE elegant crescendo-model mini card, centered in the lower band
+    d=ImageDraw.Draw(base)
+    x0,y0,x1,y1=150,660,W-150,1218; cx=(x0+x1)//2
+    ink=_ink(light); mut=_mut(light); ln=(LIGHT_LINE if light else DARK_LINE)
+    _card(base,d,x0,y0,x1,y1,light)
+    f8=dm(800,26); f5=dm(500,21); m5=mono(20)
+    def hdr(t,tag):
+        d.text((x0+34,y0+26),t,font=f8,fill=ink)
+        d.text((x1-34-d.textlength(tag,font=m5),y0+30),tag,font=m5,fill=tuple(ACC))
+    def meta(txt,rule=True,xr=None):
+        if rule: d.line([x0+34,y1-76,(xr or x1)-34,y1-76],fill=ln,width=2)
+        d.text((x0+34,y1-58),txt,font=mono(18),fill=mut)
+    if stem in ("scheduler","content"):
+        hdr("Content board","CRESCENDO · KANBAN")
+        cols=["Queued","Drafted","Posted"]; cw=(x1-x0-68-40)//3
+        for i,cn in enumerate(cols):
+            bx=x0+34+i*(cw+20); d.text((bx+4,y0+84),cn,font=f5,fill=mut)
+            for j in range(3):
+                cy=y0+124+j*114
+                d.rounded_rectangle([bx,cy,bx+cw,cy+98],radius=12,fill=((240,233,218) if light else (42,42,40)))
+                d.rounded_rectangle([bx+14,cy+14,bx+cw-14,cy+50],radius=7,fill=tuple(ACC) if (i==2 and j==0) else ((214,203,182) if light else (58,58,55)))
+                d.text((bx+14,cy+60),["Post","Reel","Carousel","Story","Launch","Newsletter","Thread","Teardown","Case study"][(i+j*3)%9],font=dm(700,17),fill=mut)
+        meta("42 pieces queued · drafted in your voice · posts 10:00 local")
+    elif stem in ("hubspot","leadscore"):
+        hdr("Pipeline","CRESCENDO · CRM")
+        st=[("Qualified","$25k"),("Proposal","$90k"),("Closed won","$120k")]; cw=(x1-x0-68-40)//3
+        for i,(cn,v) in enumerate(st):
+            bx=x0+34+i*(cw+20); won=i==2
+            d.text((bx+4,y0+84),cn,font=f5,fill=mut)
+            d.rounded_rectangle([bx,y0+120,bx+cw,y0+236],radius=12,fill=tuple(ACC) if won else ((240,233,218) if light else (42,42,40)))
+            d.text((bx+18,y0+138),["Acme","Globex","Northwind"][i],font=dm(800,24),fill=(255,255,255) if won else ink)
+            d.text((bx+18,y0+180),v,font=dm(900,30),fill=(255,240,230) if won else tuple(ACC))
+            if i<2:
+                ay=y0+178; d.line([bx+cw+2,ay,bx+cw+18,ay],fill=mut,width=4); d.polygon([(bx+cw+18,ay-7),(bx+cw+28,ay),(bx+cw+18,ay+7)],fill=mut)
+        ny=y0+272
+        d.rounded_rectangle([x0+34,ny,x1-34,ny+108],radius=12,fill=((240,233,218) if light else (42,42,40)))
+        d.text((x0+58,ny+16),"Next: Globex proposal",font=dm(700,23),fill=ink)
+        d.text((x0+58,ny+50),"drafted from the last call · parked on HOLD for your tap",font=dm(500,18),fill=mut)
+        d.rounded_rectangle([x1-186,ny+30,x1-58,ny+78],radius=24,fill=tuple(ACC)); d.text((x1-166,ny+42),"Review",font=dm(700,20),fill=(255,255,255))
+        meta("$235k open · every stage moved by a reply, not by dragging")
+    elif stem in ("gmail_sent","warmup"):
+        hdr("Outbox","CRESCENDO · MAIL")
+        rows=[("Acme · partnership","Sent 10:00"),("Globex · pricing","Sent 10:00"),("Northwind · intro","Sent 10:01"),("Initech · follow-up 2","Sent 10:01")]
+        for j,(a,b2) in enumerate(rows):
+            ry=y0+92+j*84
+            d.rounded_rectangle([x0+34,ry,x1-34,ry+70],radius=12,fill=((240,233,218) if light else (42,42,40)))
+            d.ellipse([x0+52,ry+19,x0+84,ry+51],fill=tuple(ACC))
+            d.text((x0+102,ry+11),a,font=dm(700,23),fill=ink); d.text((x0+102,ry+41),"one trigger · 62 words",font=dm(500,17),fill=mut)
+            d.text((x1-54-d.textlength(b2,font=m5),ry+23),b2,font=m5,fill=tuple(ACC))
+        meta("240 sends this week · every one gated on your tap first")
+    elif stem in ("revenue","stripe"):
+        hdr("Revenue","CRESCENDO · ANALYTICS")
+        d.text((x0+34,y0+84),"$48,200",font=dm(900,84),fill=tuple(ACC))
+        d.text((x0+40,y0+186),"MRR · up 32% · one operator",font=dm(700,22),fill=mut)
+        for j,(a,b2) in enumerate([("New MRR","$6,4k"),("Churn","1.8%"),("Payroll","$0")]):
+            ry=y0+240+j*74
+            d.rounded_rectangle([x0+34,ry,x0+446,ry+60],radius=10,fill=((240,233,218) if light else (42,42,40)))
+            d.text((x0+56,ry+16),a,font=dm(700,21),fill=mut)
+            d.text((x0+446-24-d.textlength(b2,font=dm(800,24)),ry+14),b2,font=dm(800,24),fill=ink)
+        bars=[0.3,0.42,0.5,0.62,0.74,0.9,1.0]; bw=56
+        for i,hh in enumerate(bars):
+            bx=x0+520+i*(bw+12); bh=int(300*hh)
+            d.rounded_rectangle([bx,y1-100-bh,bx+bw,y1-100],radius=9,fill=tuple(ACC) if i==len(bars)-1 else ((214,203,182) if light else (58,58,55)))
+            d.text((bx+10,y1-90),["J","F","M","A","M","J","J"][i],font=dm(700,17),fill=mut)
+        meta("subscription + credits · the whole company on one bill",rule=False)
+    elif stem in ("softwarebill","bill","orgchart"):
+        hdr("The bill","CRESCENDO · PRICING")
+        rows=[("Five tools / five seats","$202/mo"),("One operator + Ultron","cents")]
+        for j,(a,b2) in enumerate(rows):
+            ry=y0+100+j*150; onc=j==1
+            d.rounded_rectangle([x0+34,ry,x1-34,ry+118],radius=14,fill=tuple(ACC) if onc else ((240,233,218) if light else (42,42,40)))
+            d.text((x0+60,ry+22),a,font=dm(800,28),fill=(255,255,255) if onc else ink)
+            d.text((x0+60,ry+66),"context lost · logins · renewals" if not onc else "one context · one bill · the gate",font=dm(500,19),fill=(255,235,225) if onc else mut)
+            d.text((x1-60-d.textlength(b2,font=dm(900,42)),ry+34),b2,font=dm(900,42),fill=(255,255,255) if onc else tuple(ACC))
+        for i,ch2 in enumerate(["writer","designer","researcher","SDR","ops"]):
+            chf=dm(700,19); chw=int(d.textlength(ch2,font=chf))+36
+            bx=x0+34+sum(int(d.textlength(c,font=chf))+36+14 for c in ["writer","designer","researcher","SDR","ops"][:i])
+            d.rounded_rectangle([bx,y0+404,bx+chw,y0+452],radius=24,outline=ln,width=2)
+            d.text((bx+18,y0+416),ch2,font=chf,fill=mut)
+        meta("all five roles fold into the chat · you keep the approval tap")
+    elif stem in ("developer",):
+        hdr("Deploy","CRESCENDO · DEV KIT")
+        d.rounded_rectangle([x0+34,y0+88,x1-34,y1-90],radius=14,fill=(20,20,19))
+        for j,l in enumerate(["> build the launch funnel","> pulling: hero · pricing · FAQ · CTA","> wired to the 200-founder list","> tests: 42 passed · 0 failed","> live at /launch · $0 beyond the plan","> next: connect the calendar"]):
+            d.text((x0+60,y0+116+j*52),l,font=mono(23),fill=(240,201,175) if j==0 else (168,163,152))
+        d.ellipse([x1-108,y1-158,x1-64,y1-114],fill=(63,125,92)); d.line([x1-98,y1-136,x1-88,y1-126],fill=(255,255,255),width=5); d.line([x1-88,y1-126,x1-72,y1-146],fill=(255,255,255),width=5)
+        meta("plain English in · tested page out · no builder to learn",rule=False)
+    elif stem in ("apollo",):
+        hdr("The list","CRESCENDO · DATA TABLE")
+        for j,(nm,co,sc) in enumerate([("Sarah Lin","Northwind · hiring SDRs","94"),("Marco Diaz","Globex · raised $4M","88"),("Priya Rao","Initech · new CMO","81"),("Alex Chen","Vandelay · tech switch","79")]):
+            ry=y0+92+j*84
+            d.rounded_rectangle([x0+34,ry,x1-34,ry+70],radius=12,fill=((240,233,218) if light else (42,42,40)))
+            d.text((x0+58,ry+11),nm,font=dm(700,23),fill=ink); d.text((x0+58,ry+41),co,font=dm(500,17),fill=mut)
+            d.rounded_rectangle([x1-150,ry+15,x1-58,ry+55],radius=11,fill=tuple(ACC)); d.text((x1-136,ry+21),sc+" hot",font=dm(700,20),fill=(255,255,255))
+        meta("1,284 scanned · 200 match your ICP · scored while you typed")
+    elif stem in ("workflows","skills"):
+        hdr("Systems","CRESCENDO · SETTINGS")
+        for j,(nm,tg) in enumerate([("Inbound triage","every message"),("Follow-up cadence","daily 09:00"),("Churn watch","on usage drop"),("Weekly digest","Fri 17:00")]):
+            ry=y0+92+j*84
+            d.rounded_rectangle([x0+34,ry,x1-34,ry+70],radius=12,fill=((240,233,218) if light else (42,42,40)))
+            d.text((x0+58,ry+11),nm,font=dm(700,23),fill=ink); d.text((x0+58,ry+41),tg,font=dm(500,17),fill=mut)
+            tx=x1-128; d.rounded_rectangle([tx,ry+19,tx+72,ry+51],radius=16,fill=tuple(ACC)); d.ellipse([tx+42,ry+23,tx+68,ry+49],fill=(255,255,255))
+        meta("set once · fires on triggers · no standing meetings")
+    elif stem in ("calendly",):
+        hdr("Booked","CRESCENDO · CALENDAR")
+        days=["Mon","Tue","Wed","Thu","Fri"]; cw=(x1-x0-68-64)//5
+        for i,dn in enumerate(days):
+            bx=x0+34+i*(cw+16); d.text((bx+6,y0+88),dn,font=f5,fill=mut)
+            for j in range(3):
+                cy=y0+126+j*106; on=(i,j) in ((0,0),(2,0),(3,1),(1,1),(4,2),(1,2))
+                d.rounded_rectangle([bx,cy,bx+cw,cy+92],radius=10,fill=tuple(ACC) if on else ((240,233,218) if light else (42,42,40)))
+                if on: d.text((bx+12,cy+12),"Call",font=dm(700,19),fill=(255,255,255)); d.text((bx+12,cy+42),"30m",font=dm(500,16),fill=(255,230,220))
+        meta("6 calls this week · found, confirmed and prepped from replies")
+    elif stem in ("levels",):
+        hdr("The climb","CRESCENDO · ONBOARDING")
+        d.text((x0+34,y0+84),"L1 answers a question. L7 runs the company.",font=dm(700,22),fill=mut)
+        for i in range(7):
+            bw2=90; bx=x0+40+i*112; bh=56+i*44
+            d.rounded_rectangle([bx,y1-96-bh,bx+bw2,y1-96],radius=9,fill=tuple(ACC) if i==6 else ((214,203,182) if light else (58,58,55)))
+            d.text((bx+28,y1-96-bh+8),f"L{i+1}",font=dm(800,20),fill=(255,255,255) if i==6 else mut)
+            d.text((bx+10,y1-84),["ask","draft","flow","desk","team","gate","run"][i],font=dm(500,16),fill=mut)
+        meta("most founders sit at L2 · the stack above is one chat away",rule=False)
+    elif stem in ("gate",):
+        hdr("The gate","YOUR TAP")
+        for j,(a,b2,hold) in enumerate([("Send 240 outreach emails","parked on HOLD · waiting for you",True),("Publish 3 posts + newsletter","drafted in your voice · queued",True),("Move Globex to Proposal","from this morning's reply",False)]):
+            ry=y0+92+j*98
+            d.rounded_rectangle([x0+34,ry,x1-34,ry+84],radius=14,fill=((240,233,218) if light else (42,42,40)))
+            d.text((x0+60,ry+12),a,font=dm(800,25),fill=ink)
+            d.text((x0+60,ry+50),b2,font=dm(500,18),fill=mut)
+            tg="HOLD" if hold else "AUTO"; tgf=dm(800,18)
+            d.rounded_rectangle([x1-166,ry+22,x1-58,ry+62],radius=20,fill=tuple(ACC) if hold else ((214,203,182) if light else (58,58,55)))
+            d.text((x1-146,ry+32),tg,font=tgf,fill=(255,255,255) if hold else mut)
+        d.rounded_rectangle([x0+34,y0+404,x0+366,y0+474],radius=35,fill=(46,125,84)); d.text((x0+96,y0+422),"Approve all",font=dm(800,26),fill=(255,255,255))
+        d.rounded_rectangle([x0+392,y0+404,x0+620,y0+474],radius=35,outline=ink,width=3); d.text((x0+456,y0+422),"Hold",font=dm(800,26),fill=ink)
+        meta("nothing reaches a customer without your tap · undo anytime")
+    elif stem in ("designer","seowriter"):
+        hdr("On brand","CRESCENDO · SECTIONS")
+        pal=[tuple(ACC),(212,162,127),(168,132,108)]
+        for i,c in enumerate(pal):
+            bx=x0+34+i*((x1-x0-68-40)//3+20)
+            d.rounded_rectangle([bx,y0+92,bx+(x1-x0-68-40)//3,y0+240],radius=12,fill=c)
+            d.text((bx+16,y0+200),["primary","kraft","earth"][i],font=dm(700,18),fill=(255,255,255))
+        d.text((x0+34,y0+266),"assembled from the pack, in your tokens:",font=dm(500,20),fill=mut)
+        for i,ch2 in enumerate(["hero","pricing","FAQ","CTA","proof","footer"]):
+            chf=dm(700,19); chw=int(d.textlength(ch2,font=chf))+36
+            bx=x0+34+sum(int(d.textlength(c,font=chf))+36+14 for c in ["hero","pricing","FAQ","CTA","proof","footer"][:i])
+            d.rounded_rectangle([bx,y0+310,bx+chw,y0+358],radius=24,outline=ln,width=2)
+            d.text((bx+18,y0+322),ch2,font=chf,fill=ink)
+        d.text((x0+34,y0+392),"9 assets out of one brief · same tokens on every asset",font=dm(500,20),fill=mut)
+        meta("822 components in the pack · zero briefs to a designer")
     else:
-        _bloom(base,W//2,OBJ_CY,470,330,alpha=54)
-        place_obj(base,objpath,fill)
-    if foot:   # the idea line under the object (fills the lower space)
-        ff=dm(800,34); fw=int(d.textlength("".join(t for t,_ in foot),font=ff))
-        seg_line(d,(W-fw)//2,H-176,foot,ff)
+        hdr("Ultron","ONE CHAT")
+        for j,(a,b2) in enumerate([("Research","CORTEX briefs the account"),("Outbound","SPECTER drafts, the gate holds"),("Deals","STRIKER moves the pipeline"),("Content","PULSE writes in your voice")]):
+            ry=y0+92+j*84
+            d.rounded_rectangle([x0+34,ry,x1-34,ry+70],radius=12,fill=((240,233,218) if light else (42,42,40)))
+            d.text((x0+58,ry+20),a,font=dm(800,23),fill=ink)
+            d.text((x0+300,ry+22),b2,font=dm(500,20),fill=mut)
+        meta("one chat · every role · you approve every send")
+
+def body(base,eyebrow,head,sub,foot,objpath,page,n,fill):
+    stem=os.path.splitext(os.path.basename(objpath))[0]
+    light=(page%2==0)   # alternating editorial slides
+    nb=slide_base(light); base.paste(nb,(0,0))
+    d=ImageDraw.Draw(base)
+    ink=_ink(light); mut=_mut(light)
+    # TIP pill + ghost page no
+    pill=f"{eyebrow}"
+    pf=mono(22); pw=int(d.textlength(pill,font=pf))+44
+    d.rounded_rectangle([70,64,70+pw,112],radius=12,outline=tuple(ACC),width=3)
+    d.text((92,76),pill,font=pf,fill=tuple(ACC))
+    gf=dm(900,96); gn=f"{page:02d}"
+    gh=Image.new("RGBA",(W,H),(0,0,0,0))
+    ImageDraw.Draw(gh).text((W-90-d.textlength(gn,font=gf),52),gn,font=gf,fill=((23,21,15,52) if light else (250,250,247,44)))
+    base.alpha_composite(gh)
+    # hook
+    s=min(fit_hook(d,head,W-160,start=66,floor=48),62); hf=dm(900,s); y=150
+    for ln in head:
+        seg_line(d,80,y,[(t,(ink if c==WHITE else c)) for t,c in ln],hf); y+=int(s*1.12)
+    y+=26
+    # body paragraphs (bold-lead editorial)
+    sf=dm(500,30)
+    if sub:
+        for lnw in wrap(d,sub,sf,W-170,maxlines=3): d.text((80,y),lnw,font=sf,fill=mut); y+=42
+    y+=14
+    if foot:
+        ff=dm(800,30)
+        seg_line(d,80,y,[(t,(ink if c==WHITE else tuple(ACC))) for t,c in foot],ff); y+=46
+    if stem in FLOWS:
+        cmd=FLOWS[stem][0]; cf=mono(24); cw2=int(d.textlength(cmd,font=cf))+56
+        cy=y+8
+        d.rounded_rectangle([80,cy,80+cw2,cy+56],radius=12,fill=((27,26,22) if light else (12,12,11)))
+        d.text((106,cy+14),cmd,font=cf,fill=(232,217,196))
+        # trace strip: what happens after the command (fills the mid band with real steps)
+        steps=[lb for _,lb in FLOWS[stem][1]]
+        tf=dm(700,20); ty=cy+82; bx=80
+        for i,lb in enumerate(steps):
+            tw2=int(d.textlength(lb,font=tf))+34
+            if bx+tw2>W-80: break
+            last=(i==len(steps)-1)
+            d.rounded_rectangle([bx,ty,bx+tw2,ty+46],radius=23,fill=(tuple(ACC) if last else None),outline=(None if last else (tuple(ACC) if False else ((199,187,164) if light else (74,73,70)))),width=2)
+            d.text((bx+17,ty+11),lb,font=tf,fill=((255,255,255) if last else _mut(light)))
+            bx+=tw2
+            if not last:
+                d.line([bx+8,ty+23,bx+24,ty+23],fill=_mut(light),width=3)
+                d.polygon([(bx+24,ty+17),(bx+32,ty+23),(bx+24,ty+29)],fill=_mut(light))
+                bx+=44
+    if stem=="ultron_real":
+        _bloom(base,W//2,980,430,300,alpha=70); place_obj(base,objpath,fill)
+    else:
+        anchor(base,stem,light)
+    d=ImageDraw.Draw(base)
     progress(d,page,n)
+
 
 def _orb():
     im=Image.open(ULOGO).convert("RGB"); lum=np.asarray(im).astype(int).sum(2)
@@ -286,17 +499,28 @@ def cover_tt(base):
         base.alpha_composite(el,((W-el.width)//2, y+44))
         my=y+44+el.height+34
     else: my=y+60
-    logos=[Image.open(CLAUDE_SUN).convert("RGBA"), _orb()]
+    mk2=getattr(MAT,"MARK2",getattr(T2,"MARK2","claude"))
+    if mk2=="strip":
+        st=Image.open("/home/user/tiberiu-claude/content/_hitl-src/covers/tabsrow.png").convert("RGB")
+        arr=np.asarray(st).astype(int); cs=np.concatenate([arr[:24,:24].reshape(-1,3),arr[:24,-24:].reshape(-1,3),arr[-24:,:24].reshape(-1,3),arr[-24:,-24:].reshape(-1,3)])
+        bg2=np.median(cs,0); df=np.abs(arr-bg2).sum(2); alp=np.clip((df-26)*7,0,255).astype("uint8")
+        stk=Image.fromarray(np.dstack([arr.astype("uint8"),alp]),"RGBA"); bb=Image.fromarray((alp>90).astype("uint8")*255,"L").getbbox()
+        if bb: stk=stk.crop(bb)
+        stk=stk.resize((int(stk.width*76/stk.height),76),Image.LANCZOS)
+        logos=[stk,_orb()]
+    else:
+        logos=[Image.open(CLAUDE_SUN).convert("RGBA"), _orb()]
     L=84; SLOT=72
-    for im in logos: im.thumbnail((L,L),Image.LANCZOS)
+    for im in logos:
+        if im.width<=im.height*2: im.thumbnail((L,L),Image.LANCZOS)
     d=ImageDraw.Draw(base)
-    nn=len(logos); x=(W-(L*nn+SLOT*(nn-1)))//2
+    tot=sum(im.width for im in logos)+SLOT*(len(logos)-1); x=(W-tot)//2
     for i,im in enumerate(logos):
-        base.alpha_composite(im,(x+(L-im.width)//2, my+(L-im.height)//2))
-        if i<nn-1:
-            px=x+L+SLOT//2; ph,pt=12,3
+        base.alpha_composite(im,(x, my+(L-im.height)//2))
+        if i<len(logos)-1:
+            px=x+im.width+SLOT//2; ph,pt=12,3
             d.rectangle([px-ph,my+L//2-pt,px+ph,my+L//2+pt],fill=T2.BOOK+(255,)); d.rectangle([px-pt,my+L//2-ph,px+pt,my+L//2+ph],fill=T2.BOOK+(255,))
-        x+=L+SLOT
+        x+=im.width+SLOT
     txt="Swipe  "+chr(8594); f=dm(900,34); tw=int(d.textlength(txt,font=f)); pw=tw+84; ph=78; px=(W-pw)//2; py=H-184
     d.rounded_rectangle([px,py,px+pw,py+ph],radius=ph//2,fill=(250,250,247))
     d.text((px+42,py+ph//2-24),txt,font=f,fill=(20,14,10))
@@ -315,17 +539,28 @@ def cover_ig(out):
     if el is not None:
         base.alpha_composite(el,((W-el.width)//2, y+38)); my=y+38+el.height+30
     else: my=y+54
-    logos=[Image.open(CLAUDE_SUN).convert("RGBA"), _orb()]
+    mk2=getattr(MAT,"MARK2",getattr(T2,"MARK2","claude"))
+    if mk2=="strip":
+        st=Image.open("/home/user/tiberiu-claude/content/_hitl-src/covers/tabsrow.png").convert("RGB")
+        arr=np.asarray(st).astype(int); cs=np.concatenate([arr[:24,:24].reshape(-1,3),arr[:24,-24:].reshape(-1,3),arr[-24:,:24].reshape(-1,3),arr[-24:,-24:].reshape(-1,3)])
+        bg2=np.median(cs,0); df=np.abs(arr-bg2).sum(2); alp=np.clip((df-26)*7,0,255).astype("uint8")
+        stk=Image.fromarray(np.dstack([arr.astype("uint8"),alp]),"RGBA"); bb=Image.fromarray((alp>90).astype("uint8")*255,"L").getbbox()
+        if bb: stk=stk.crop(bb)
+        stk=stk.resize((int(stk.width*72/stk.height),72),Image.LANCZOS)
+        logos=[stk,_orb()]
+    else:
+        logos=[Image.open(CLAUDE_SUN).convert("RGBA"), _orb()]
     L=80; SLOT=68
-    for im in logos: im.thumbnail((L,L),Image.LANCZOS)
+    for im in logos:
+        if im.width<=im.height*2: im.thumbnail((L,L),Image.LANCZOS)
     d=ImageDraw.Draw(base)
-    nn=len(logos); x=(W-(L*nn+SLOT*(nn-1)))//2
+    tot=sum(im.width for im in logos)+SLOT*(len(logos)-1); x=(W-tot)//2
     for i,im in enumerate(logos):
-        base.alpha_composite(im,(x+(L-im.width)//2, my+(L-im.height)//2))
-        if i<nn-1:
-            px=x+L+SLOT//2; ph,pt=11,3
+        base.alpha_composite(im,(x, my+(L-im.height)//2))
+        if i<len(logos)-1:
+            px=x+im.width+SLOT//2; ph,pt=11,3
             d.rectangle([px-ph,my+L//2-pt,px+ph,my+L//2+pt],fill=T2.BOOK+(255,)); d.rectangle([px-pt,my+L//2-ph,px+pt,my+L//2+ph],fill=T2.BOOK+(255,))
-        x+=L+SLOT
+        x+=im.width+SLOT
     base.save(out)
 
 

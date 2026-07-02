@@ -23,3 +23,5 @@ T2.CONTENT=[
 ]
 T2.CTA=("LEVELS", [[wo("Want the map?")],[co("comment OPERATOR.")]], f"{LIB}/cta3d-operator.png", 0.92)
 T2.CLOSE=dict(l1="Save this and",l2="climb a level.",q="What level are you stuck on?")
+
+MARK2="claude"
