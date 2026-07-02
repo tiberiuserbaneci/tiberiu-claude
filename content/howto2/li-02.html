@@ -1,0 +1,52 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><style>
+@import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
+:root{--slate:#191919;--card:#1f1f1e;--card2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.70);--ink46:rgba(250,250,247,.44);
+--rule:rgba(250,250,247,.08);--acc:#D4A27F;--kraft:#D4A27F;--ok:#5ea884;--mut:#8b857d;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;color:var(--ivory);}
+.frame{width:1080px;height:1450px;background:var(--slate);padding:32px 44px 20px;position:relative;overflow:hidden;display:flex;flex-direction:column;}
+.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.4px,transparent 1.5px);background-size:30px 30px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 54% 20% at 90% -2%,rgba(204,120,92,.16) 0%,transparent 60%);}
+.frame>*{position:relative;z-index:2;}
+.mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding-bottom:11px;border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;}
+.mast .ml{color:var(--ink46);}.mast .ml em{color:var(--acc);font-style:normal;}.mast .mr{color:var(--ink70);}
+.hook{margin-top:16px;font-weight:900;font-size:54px;line-height:1.0;letter-spacing:-1.8px;flex-shrink:0;}.hook em{color:var(--acc);font-style:normal;}
+.sub{margin-top:10px;font-size:19.5px;font-weight:500;line-height:1.3;color:var(--ink70);flex-shrink:0;}.sub b{color:var(--ivory);font-weight:700;}
+.main{flex:1;min-height:0;margin-top:16px;display:flex;gap:14px;}
+.cta{flex-shrink:0;margin-top:13px;display:flex;align-items:center;gap:16px;border:1.5px solid var(--acc);border-radius:16px;background:rgba(204,120,92,.08);padding:12px 12px 12px 24px;}
+.cta .ph{flex:1;font-size:21px;font-weight:600;color:var(--ink70);}.cta .ph b{color:var(--acc);font-weight:900;}
+.cta .send{width:50px;height:50px;border-radius:50%;background:var(--acc);flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.cta .send svg{width:24px;height:24px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ftr{flex-shrink:0;margin-top:11px;padding-top:10px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;}
+.fl{display:flex;align-items:center;gap:11px;}.flogo{width:28px;height:28px;border-radius:50%;object-fit:cover;}
+.ftx{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink70);}.ftx b{color:var(--ivory);font-weight:500;}
+.furl{font-weight:900;font-size:20px;letter-spacing:-.5px;}.furl em{color:var(--acc);font-style:normal;}
+
+.col{flex:1;display:flex;flex-direction:column;border-radius:14px;border:1px solid var(--rule);background:var(--card);overflow:hidden;}
+.col .hd{padding:13px 18px;background:var(--card2);display:flex;justify-content:space-between;align-items:baseline;}
+.col .hd .t{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink46);}
+.col .hd .p{font-weight:900;font-size:22px;color:var(--ivory);}.col .hd .p.bad{color:var(--mut);text-decoration:line-through;text-decoration-color:rgba(200,70,35,.7);text-decoration-thickness:3px;}
+.trow{flex:1;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-top:1px solid var(--rule);}
+.trow .n{font-weight:700;font-size:18px;}.trow .m{font-family:'DM Mono',monospace;font-size:13.5px;color:var(--mut);}
+.trow .pr{font-weight:800;font-size:17px;color:var(--ink70);}
+.vs{align-self:center;font-weight:900;font-size:26px;color:var(--acc);flex-shrink:0;padding:0 2px;}
+.one{flex:1.15;display:flex;flex-direction:column;border-radius:14px;border:1.5px solid var(--acc);background:linear-gradient(180deg,rgba(204,120,92,.10),var(--card));overflow:hidden;}
+.one .hd{padding:13px 18px;display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--rule);}
+.one .hd .t{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);}
+.one .hd .p{font-weight:900;font-size:22px;color:var(--acc);}
+.feat{flex:1;display:flex;align-items:center;gap:12px;padding:0 18px;border-top:1px solid var(--rule);}
+.feat i{width:8px;height:8px;border-radius:50%;background:var(--acc);flex-shrink:0;}
+.feat .x{font-size:16.5px;color:var(--ink70);line-height:1.25;}.feat .x b{color:var(--ivory);}
+.chips{display:flex;flex-wrap:wrap;gap:7px;padding:12px 18px;border-top:1px solid var(--rule);}
+.chip{font-family:'DM Mono',monospace;font-size:12px;color:var(--acc);border:1px solid rgba(204,120,92,.34);background:rgba(204,120,92,.08);border-radius:7px;padding:4px 10px;}
+
+</style></head><body><div class="frame" id="artifact"><div class="atm"></div>
+<div class="mast"><span class="ml">HOW TO <em>&middot;</em> ONE CONTEXT <em>&middot;</em> ULTRON</span><span class="mr">USE CASE 02</span></div>
+<div class="hook">I closed <em>six AI tabs.</em> One box replaced them.</div><div class="sub">Six subscriptions, six logins, six dead contexts. The stack on the left is what I cancelled. Do the math with me.</div>
+<div class="main"><div class="col"><div class="hd"><span class="t">The tab stack &middot; 6 logins</span><span class="p bad">$168/mo</span></div><div class="trow"><span class="n">ChatGPT Plus</span><span class="m">context dies per tab</span><span class="pr">$20</span></div><div class="trow"><span class="n">Claude Pro</span><span class="m">re-paste everything</span><span class="pr">$20</span></div><div class="trow"><span class="n">Perplexity Pro</span><span class="m">research only</span><span class="pr">$20</span></div><div class="trow"><span class="n">Jasper</span><span class="m">copy only</span><span class="pr">$49</span></div><div class="trow"><span class="n">Midjourney</span><span class="m">images only</span><span class="pr">$10</span></div><div class="trow"><span class="n">Copy.ai</span><span class="m">one more login</span><span class="pr">$49</span></div></div>
+<div class="vs">VS</div>
+<div class="one"><div class="hd"><span class="t">One chat box</span><span class="p">cents</span></div><div class="feat"><i></i><span class="x">One context. Your ICP, voice and pipeline <b>live in every job</b>.</span></div><div class="feat"><i></i><span class="x">The router reads the task and <b>picks the model tier</b> for you.</span></div><div class="feat"><i></i><span class="x">Research flows into outreach flows into <b>deals</b>, no re-pasting.</span></div><div class="feat"><i></i><span class="x">Output lands as <b>work done</b>: briefs, sequences, PRs, schedules.</span></div><div class="feat"><i></i><span class="x">You pay per token. A day of work costs <b>cents, not seats</b>.</span></div>
+<div class="chips"><span class="chip">CORTEX</span><span class="chip">SPECTER</span><span class="chip">STRIKER</span><span class="chip">PULSE</span><span class="chip">SENTINEL</span><span class="chip">AMPLIFY</span><span class="chip">COUNSEL</span></div></div></div>
+<div class="cta"><span class="ph">Comment <b>TABS</b> and I will send you the migration map, tab by tab</span><span class="send"><svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div>
+<div class="ftr"><div class="fl"><img class="flogo" src="__LOGO__"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span></div><span class="furl">51ultron<em>.</em>com</span></div>
+</div></body></html>

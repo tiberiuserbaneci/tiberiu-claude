@@ -1,0 +1,54 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><style>
+@import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
+:root{--slate:#191919;--card:#1f1f1e;--card2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.70);--ink46:rgba(250,250,247,.44);
+--rule:rgba(250,250,247,.08);--acc:#CC785C;--kraft:#D4A27F;--ok:#5ea884;--mut:#8b857d;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;color:var(--ivory);}
+.frame{width:1080px;height:1450px;background:var(--slate);padding:32px 44px 20px;position:relative;overflow:hidden;display:flex;flex-direction:column;}
+.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.4px,transparent 1.5px);background-size:30px 30px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 54% 20% at 90% -2%,rgba(204,120,92,.16) 0%,transparent 60%);}
+.frame>*{position:relative;z-index:2;}
+.mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding-bottom:11px;border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;}
+.mast .ml{color:var(--ink46);}.mast .ml em{color:var(--acc);font-style:normal;}.mast .mr{color:var(--ink70);}
+.hook{margin-top:16px;font-weight:900;font-size:54px;line-height:1.0;letter-spacing:-1.8px;flex-shrink:0;}.hook em{color:var(--acc);font-style:normal;}
+.sub{margin-top:10px;font-size:19.5px;font-weight:500;line-height:1.3;color:var(--ink70);flex-shrink:0;}.sub b{color:var(--ivory);font-weight:700;}
+.main{flex:1;min-height:0;margin-top:16px;display:flex;gap:14px;}
+.cta{flex-shrink:0;margin-top:13px;display:flex;align-items:center;gap:16px;border:1.5px solid var(--acc);border-radius:16px;background:rgba(204,120,92,.08);padding:12px 12px 12px 24px;}
+.cta .ph{flex:1;font-size:21px;font-weight:600;color:var(--ink70);}.cta .ph b{color:var(--acc);font-weight:900;}
+.cta .send{width:50px;height:50px;border-radius:50%;background:var(--acc);flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.cta .send svg{width:24px;height:24px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ftr{flex-shrink:0;margin-top:11px;padding-top:10px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;}
+.fl{display:flex;align-items:center;gap:11px;}.flogo{width:28px;height:28px;border-radius:50%;object-fit:cover;}
+.ftx{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink70);}.ftx b{color:var(--ivory);font-weight:500;}
+.furl{font-weight:900;font-size:20px;letter-spacing:-.5px;}.furl em{color:var(--acc);font-style:normal;}
+
+.term{flex:1;display:flex;flex-direction:column;border-radius:14px;border:1px solid var(--rule);background:#151514;overflow:hidden;}
+.tbar{display:flex;align-items:center;gap:8px;padding:11px 16px;background:var(--card2);border-bottom:1px solid var(--rule);}
+.dot{width:11px;height:11px;border-radius:50%;background:#5a5955;}
+.tbar .tt{margin-left:8px;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.14em;color:var(--ink46);text-transform:uppercase;}
+.ln{flex:1;display:flex;align-items:center;gap:14px;padding:0 18px;font-family:'DM Mono',monospace;font-size:15.5px;border-top:1px solid rgba(250,250,247,.04);}
+.ts{color:var(--ink46);width:52px;flex-shrink:0;font-size:13px;}
+.ag{width:92px;flex-shrink:0;font-weight:500;color:var(--acc);}
+.ms{color:var(--ink70);}.ms b{color:var(--ivory);font-weight:500;}.ms i{color:var(--kraft);font-style:normal;}
+.ln.gate .ag{color:var(--ok);} .ln.gate .ms b{color:var(--ok);}
+.rail{width:250px;display:flex;flex-direction:column;gap:10px;}
+.icp{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:12px 15px;}
+.icp .h{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink46);margin-bottom:8px;}
+.icp .r{font-size:14.5px;color:var(--ink70);padding:5px 0;border-top:1px solid var(--rule);}.icp .r b{color:var(--ivory);}
+.st{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:12px 15px;}
+.st .v{font-size:36px;font-weight:900;color:var(--acc);letter-spacing:-1px;line-height:1;}
+.st .k{margin-top:5px;font-size:13.5px;color:var(--ink70);line-height:1.2;}
+
+</style></head><body><div class="frame" id="artifact"><div class="atm"></div>
+<div class="mast"><span class="ml">HOW TO <em>&middot;</em> SOURCING <em>&middot;</em> ULTRON</span><span class="mr">USE CASE 03</span></div>
+<div class="hook">I sourced <em>200 founders</em> with the laptop closed.</div><div class="sub">One sentence at 09:14. This is the unedited run trace of what happened in the next <b>47 minutes</b>.</div>
+<div class="main"><div class="term"><div class="tbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="tt">ultron &middot; run trace &middot; this morning</span></div><div class="ln"><span class="ts">09:14</span><span class="ag">ROUTER</span><span class="ms">job read: <b>source 200 founders</b> matching my ICP</span></div><div class="ln"><span class="ts">09:14</span><span class="ag">CORTEX</span><span class="ms">pulled <b>1,284</b> companies, IT services, US + UK</span></div><div class="ln"><span class="ts">09:16</span><span class="ag">CORTEX</span><span class="ms">deduped vs CRM: <i>902 net-new</i></span></div><div class="ln"><span class="ts">09:19</span><span class="ag">CORTEX</span><span class="ms">enriched 902: funding, size, tech stack</span></div><div class="ln"><span class="ts">09:24</span><span class="ag">CORTEX</span><span class="ms">scored vs ICP: <b>471 pass</b> the 2-50 seat filter</span></div><div class="ln"><span class="ts">09:31</span><span class="ag">CORTEX</span><span class="ms">ranked by signal: hiring + recent raise + intent</span></div><div class="ln"><span class="ts">09:33</span><span class="ag">CORTEX</span><span class="ms">top <b>200 exported</b> with 1-page briefs</span></div><div class="ln"><span class="ts">09:38</span><span class="ag">SPECTER</span><span class="ms">drafted <b>200 openers</b>, one trigger each, 62 words</span></div><div class="ln"><span class="ts">09:44</span><span class="ag">STRIKER</span><span class="ms">flagged 37 accounts as <i>deal-ready</i></span></div><div class="ln"><span class="ts">09:45</span><span class="ag">AMPLIFY</span><span class="ms">queue set: 10:00 local, per timezone</span></div><div class="ln gate"><span class="ts">09:46</span><span class="ag">GATE</span><span class="ms"><b>240 sends on HOLD</b>, waiting for your approve</span></div><div class="ln"><span class="ts">09:47</span><span class="ag">ROUTER</span><span class="ms">done in <b>47 min</b>. laptop was closed for 46 of them</span></div></div>
+<div class="rail">
+<div class="st"><div class="v">200</div><div class="k">founders sourced, briefed, sequenced</div></div>
+<div class="st"><div class="v">47<span style="font-size:22px">min</span></div><div class="k">one sentence in, work out</div></div>
+<div class="icp"><div class="h">The ICP it matched</div><div class="r"><b>Founder / CEO</b></div><div class="r"><b>2-50</b> employees</div><div class="r">IT services / software</div><div class="r"><b>US + UK</b></div></div>
+<div class="icp"><div class="h">You did</div><div class="r">typed <b>one sentence</b></div><div class="r">will tap <b>approve</b></div></div>
+</div></div>
+<div class="cta"><span class="ph">Comment <b>SOURCE</b> and I will send you the exact sourcing sentence + the ICP filter</span><span class="send"><svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div>
+<div class="ftr"><div class="fl"><img class="flogo" src="__LOGO__"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span></div><span class="furl">51ultron<em>.</em>com</span></div>
+</div></body></html>

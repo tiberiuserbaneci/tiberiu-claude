@@ -1,0 +1,63 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><style>
+@import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
+:root{--slate:#191919;--card:#1f1f1e;--card2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.70);--ink46:rgba(250,250,247,.44);
+--rule:rgba(250,250,247,.08);--acc:#CC785C;--kraft:#D4A27F;--ok:#5ea884;--mut:#8b857d;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;color:var(--ivory);}
+.frame{width:1080px;height:1450px;background:var(--slate);padding:32px 44px 20px;position:relative;overflow:hidden;display:flex;flex-direction:column;}
+.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.4px,transparent 1.5px);background-size:30px 30px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 54% 20% at 90% -2%,rgba(204,120,92,.16) 0%,transparent 60%);}
+.frame>*{position:relative;z-index:2;}
+.mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding-bottom:11px;border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;}
+.mast .ml{color:var(--ink46);}.mast .ml em{color:var(--acc);font-style:normal;}.mast .mr{color:var(--ink70);}
+.hook{margin-top:16px;font-weight:900;font-size:54px;line-height:1.0;letter-spacing:-1.8px;flex-shrink:0;}.hook em{color:var(--acc);font-style:normal;}
+.sub{margin-top:10px;font-size:19.5px;font-weight:500;line-height:1.3;color:var(--ink70);flex-shrink:0;}.sub b{color:var(--ivory);font-weight:700;}
+.main{flex:1;min-height:0;margin-top:16px;display:flex;gap:14px;}
+.cta{flex-shrink:0;margin-top:13px;display:flex;align-items:center;gap:16px;border:1.5px solid var(--acc);border-radius:16px;background:rgba(204,120,92,.08);padding:12px 12px 12px 24px;}
+.cta .ph{flex:1;font-size:21px;font-weight:600;color:var(--ink70);}.cta .ph b{color:var(--acc);font-weight:900;}
+.cta .send{width:50px;height:50px;border-radius:50%;background:var(--acc);flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.cta .send svg{width:24px;height:24px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ftr{flex-shrink:0;margin-top:11px;padding-top:10px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;}
+.fl{display:flex;align-items:center;gap:11px;}.flogo{width:28px;height:28px;border-radius:50%;object-fit:cover;}
+.ftx{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink70);}.ftx b{color:var(--ivory);font-weight:500;}
+.furl{font-weight:900;font-size:20px;letter-spacing:-.5px;}.furl em{color:var(--acc);font-style:normal;}
+
+.score{width:270px;display:flex;flex-direction:column;gap:10px;}
+.big{background:var(--card);border:1.5px solid var(--acc);border-radius:14px;padding:18px;text-align:left;}
+.big .v{font-size:78px;font-weight:900;letter-spacing:-3px;color:var(--acc);line-height:.95;}
+.big .of{font-size:20px;color:var(--ink46);font-weight:700;}
+.big .k{margin-top:8px;font-size:14.5px;color:var(--ink70);line-height:1.3;}
+.sent{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:13px 15px;}
+.sent .h{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink46);margin-bottom:7px;}
+.sent .q{font-family:'DM Mono',monospace;font-size:16px;color:var(--ivory);}.sent .q i{color:var(--acc);font-style:normal;}
+.leg{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:12px 15px;flex:1;}
+.leg .h{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink46);margin-bottom:6px;}
+.leg .r{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--ink70);padding:5px 0;}
+.leg .sw{width:12px;height:12px;border-radius:3px;flex-shrink:0;}
+.list{flex:1;display:flex;flex-direction:column;border:1px solid var(--rule);border-radius:14px;background:var(--card);overflow:hidden;}
+.lhd{display:flex;background:var(--card2);padding:11px 16px;font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink46);}
+.li{flex:1;display:flex;align-items:center;gap:13px;padding:0 16px;border-top:1px solid var(--rule);}
+.li .n{width:170px;font-weight:800;font-size:17px;}
+.li .bar{width:170px;height:10px;border-radius:5px;background:rgba(250,250,247,.07);overflow:hidden;flex-shrink:0;}
+.li .bar i{display:block;height:100%;border-radius:5px;background:var(--acc);}
+.li .sc{width:44px;font-family:'DM Mono',monospace;font-size:15px;color:var(--kraft);flex-shrink:0;}
+.li .fx{flex:1;font-size:14.5px;color:var(--ink70);line-height:1.2;}.li .fx b{color:var(--ivory);}
+.li .vd{flex-shrink:0;font-family:'DM Mono',monospace;font-size:11.5px;border-radius:6px;padding:4px 9px;}
+.vd.keep{color:var(--ok);border:1px solid rgba(94,168,132,.4);}
+.vd.fix{color:var(--acc);border:1px solid rgba(204,120,92,.4);}
+
+</style></head><body><div class="frame" id="artifact"><div class="atm"></div>
+<div class="mast"><span class="ml">HOW TO <em>&middot;</em> THE AUDIT <em>&middot;</em> ULTRON</span><span class="mr">USE CASE 05</span></div>
+<div class="hook">I audited my <em>whole GTM</em> with one sentence.</div><div class="sub">Three words in, a scored teardown of my real funnel out: 8 checks, a verdict each, and the exact fix.</div>
+<div class="main"><div class="list"><div class="lhd">The 8 checks it ran on my funnel</div><div class="li"><span class="n">Positioning</span><span class="bar"><i style="width:72%"></i></span><span class="sc">72</span><span class="fx">niche is clear, proof is thin: add 2 case studies</span><span class="vd keep">KEEP</span></div><div class="li"><span class="n">ICP match</span><span class="bar"><i style="width:58%"></i></span><span class="sc">58</span><span class="fx">31% of pipeline is <b>outside</b> the 2-50 band</span><span class="vd fix">FIX</span></div><div class="li"><span class="n">Outbound</span><span class="bar"><i style="width:44%"></i></span><span class="sc">44</span><span class="fx">generic openers: one trigger per email, 62 words</span><span class="vd fix">FIX</span></div><div class="li"><span class="n">Follow-up</span><span class="bar"><i style="width:39%"></i></span><span class="sc">39</span><span class="fx"><b>68% of threads die</b> after touch 1: cadence on</span><span class="vd fix">FIX</span></div><div class="li"><span class="n">Pricing</span><span class="bar"><i style="width:70%"></i></span><span class="sc">70</span><span class="fx">page converts, add the cents-per-run math</span><span class="vd keep">KEEP</span></div><div class="li"><span class="n">Content</span><span class="bar"><i style="width:66%"></i></span><span class="sc">66</span><span class="fx">posting random days: fix 10:00 cadence</span><span class="vd fix">FIX</span></div><div class="li"><span class="n">Pipeline hygiene</span><span class="bar"><i style="width:51%"></i></span><span class="sc">51</span><span class="fx">14 deals stale &gt;30 days: kill or revive</span><span class="vd fix">FIX</span></div><div class="li"><span class="n">Deliverability</span><span class="bar"><i style="width:83%"></i></span><span class="sc">83</span><span class="fx">domains warm, keep the ramp</span><span class="vd keep">KEEP</span></div></div>
+<div class="score">
+<div class="sent"><div class="h">What I typed</div><div class="q"><i>&gt;</i> audit my GTM</div></div>
+<div class="big"><span class="v">61</span><span class="of">/100</span><div class="k">funnel score, computed from my real pipeline + sends</div></div>
+<div class="leg"><div class="h">Verdict spread</div>
+<div class="r"><span class="sw" style="background:var(--ok)"></span>3 keep working</div>
+<div class="r"><span class="sw" style="background:var(--acc)"></span>5 fix this week</div>
+<div class="r"><span class="sw" style="background:rgba(250,250,247,.25)"></span>each with the exact fix</div></div>
+</div></div>
+<div class="cta"><span class="ph">Comment <b>AUDIT</b> and I will send you the audit sentence + the 8-check rubric</span><span class="send"><svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div>
+<div class="ftr"><div class="fl"><img class="flogo" src="__LOGO__"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span></div><span class="furl">51ultron<em>.</em>com</span></div>
+</div></body></html>

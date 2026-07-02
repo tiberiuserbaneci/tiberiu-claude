@@ -6,8 +6,10 @@ import importlib.util
 spec=importlib.util.spec_from_file_location("T2","/home/user/tiberiu-claude/content/_hitl-src/build_team_3d.py")
 T2=importlib.util.module_from_spec(spec); spec.loader.exec_module(T2)
 wo=lambda s:(s,T2.WHITE); co=lambda s:(s,T2.CORAL); mu=lambda s:(s,T2.MUTED)
-M=f"{T2.OBJ}/models_solo3d"; LIB=T2.LIB
-T2.ALPHA_OBJ=True   # coded-3D objects (render_3d): tilted panels with depth + shadow, real alpha
+M=f"{T2.OBJ}/models_25d"; LIB=T2.LIB
+T2.ACCENT=(204,120,92); T2.CORAL=T2.ACCENT   # per-material accent (anti-sameness)
+T2.COVER_OBJ="/home/user/tiberiu-claude/content/_hitl-src/covers/solostack.png"  # Vertex real-logo cover visual
+T2.OBJ_THR=30   # front-on 2.5D windows: whole window+shadow bbox
 
 T2.COVER=dict(head=[[wo("I replaced my team")],[co("with one chat.")]])
 # 6-tuple: (eyebrow, hook, SUBHOOK, FOOT idea, object, fill)
@@ -19,7 +21,7 @@ T2.CONTENT=[
  ("THE DEVELOPER",  [[wo("The developer?")],[co("One chat.")]],  "Pages ship straight from the chat, no builder to learn.",       [co("No dev to wait on.")],    f"{M}/developer.png",  1.0),
  ("THE TEAM",       [[wo("A five-person team.")],[co("One chat.")]], "Every role above, for the price of a chat, not a payroll.", [mu("$15k/mo in salaries."),co("  Now cents.")], f"{M}/bill.png", 1.0),
  ("THE GATE",       [[wo("And I approve")],[co("every move.")]], "Nothing sends until you say go. You stay in control.",          [co("You approve every send.")], f"{M}/gate.png",     1.0),
- ("THE OPERATOR",   [[wo("One operator.")],[co("No headcount.")]],"The whole company runs behind a single subscription.",         [co("Run it solo.")],          f"{M}/ultron.png",     1.0),
+ ("THE OPERATOR",   [[wo("One operator.")],[co("No headcount.")]],"The whole company runs behind a single subscription.",         [co("Run it solo.")],          f"{M}/ultron_real.png",     1.0),
 ]
 T2.CTA=("RUN IT SOLO", [[wo("Run it solo,")],[co("comment OPERATOR.")]], f"{LIB}/cta3d-operator.png", 0.92)
 T2.CLOSE=dict(l1="Save this to",l2="run lean.",q="Which hire would you skip first?")

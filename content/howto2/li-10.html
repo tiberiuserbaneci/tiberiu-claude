@@ -1,0 +1,61 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><style>
+@import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
+:root{--slate:#191919;--card:#1f1f1e;--card2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.70);--ink46:rgba(250,250,247,.44);
+--rule:rgba(250,250,247,.08);--acc:#C84623;--kraft:#D4A27F;--ok:#5ea884;--mut:#8b857d;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;color:var(--ivory);}
+.frame{width:1080px;height:1450px;background:var(--slate);padding:32px 44px 20px;position:relative;overflow:hidden;display:flex;flex-direction:column;}
+.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.4px,transparent 1.5px);background-size:30px 30px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 54% 20% at 90% -2%,rgba(204,120,92,.16) 0%,transparent 60%);}
+.frame>*{position:relative;z-index:2;}
+.mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding-bottom:11px;border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;}
+.mast .ml{color:var(--ink46);}.mast .ml em{color:var(--acc);font-style:normal;}.mast .mr{color:var(--ink70);}
+.hook{margin-top:16px;font-weight:900;font-size:54px;line-height:1.0;letter-spacing:-1.8px;flex-shrink:0;}.hook em{color:var(--acc);font-style:normal;}
+.sub{margin-top:10px;font-size:19.5px;font-weight:500;line-height:1.3;color:var(--ink70);flex-shrink:0;}.sub b{color:var(--ivory);font-weight:700;}
+.main{flex:1;min-height:0;margin-top:16px;display:flex;gap:14px;}
+.cta{flex-shrink:0;margin-top:13px;display:flex;align-items:center;gap:16px;border:1.5px solid var(--acc);border-radius:16px;background:rgba(204,120,92,.08);padding:12px 12px 12px 24px;}
+.cta .ph{flex:1;font-size:21px;font-weight:600;color:var(--ink70);}.cta .ph b{color:var(--acc);font-weight:900;}
+.cta .send{width:50px;height:50px;border-radius:50%;background:var(--acc);flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.cta .send svg{width:24px;height:24px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ftr{flex-shrink:0;margin-top:11px;padding-top:10px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;}
+.fl{display:flex;align-items:center;gap:11px;}.flogo{width:28px;height:28px;border-radius:50%;object-fit:cover;}
+.ftx{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink70);}.ftx b{color:var(--ivory);font-weight:500;}
+.furl{font-weight:900;font-size:20px;letter-spacing:-.5px;}.furl em{color:var(--acc);font-style:normal;}
+
+.grid{flex:1;display:flex;flex-direction:column;border:1px solid var(--rule);border-radius:14px;background:var(--card);overflow:hidden;}
+.ghd{display:flex;background:var(--card2);padding:11px 16px;font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink46);gap:12px;}
+.gr{flex:1;display:flex;align-items:center;gap:12px;padding:0 16px;border-top:1px solid var(--rule);}
+.gr .co{width:150px;font-weight:800;font-size:16.5px;flex-shrink:0;}
+.gr .co small{display:block;font-weight:500;font-size:12px;color:var(--ink46);font-family:'DM Mono',monospace;margin-top:2px;}
+.gr .bar{flex:1;height:11px;border-radius:6px;background:rgba(250,250,247,.07);overflow:hidden;}
+.gr .bar i{display:block;height:100%;border-radius:6px;background:var(--acc);}
+.gr .sc{width:46px;font-family:'DM Mono',monospace;font-size:15px;color:var(--kraft);flex-shrink:0;text-align:right;}
+.gr .vd{width:112px;flex-shrink:0;font-family:'DM Mono',monospace;font-size:11.5px;border-radius:6px;padding:4px 0;text-align:center;}
+.vd.now{color:var(--ok);border:1px solid rgba(94,168,132,.4);}
+.vd.warm{color:var(--kraft);border:1px solid rgba(212,162,127,.4);}
+.vd.skip{color:var(--mut);border:1px solid var(--rule);}
+.gr.top{background:linear-gradient(90deg,rgba(204,120,92,.1),transparent);}
+.rail{width:252px;display:flex;flex-direction:column;gap:10px;}
+.st{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:12px 15px;}
+.st .v{font-size:34px;font-weight:900;color:var(--acc);letter-spacing:-1px;line-height:1;}
+.st .k{margin-top:5px;font-size:13.5px;color:var(--ink70);line-height:1.2;}
+.sig{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:12px 15px;flex:1;}
+.sig .h{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink46);margin-bottom:6px;}
+.sig .r{font-size:13.5px;color:var(--ink70);padding:5px 0;border-top:1px solid var(--rule);line-height:1.25;}
+.sig .r b{color:var(--ivory);}
+
+</style></head><body><div class="frame" id="artifact"><div class="atm"></div>
+<div class="mast"><span class="ml">HOW TO <em>&middot;</em> AI-INDEX <em>&middot;</em> ULTRON</span><span class="mr">USE CASE 10</span></div>
+<div class="hook">I scored <em>40 companies</em> on AI-readiness in an hour.</div><div class="sub">Stop guessing who is ready to buy. The index reads public signals and ranks your whole list, call-now first.</div>
+<div class="main"><div class="grid"><div class="ghd"><span style="width:150px">Account</span><span style="flex:1">AI-readiness</span><span style="width:46px;text-align:right">Score</span><span style="width:112px;text-align:center">Verdict</span></div><div class="gr top"><span class="co">Northwind<small>IT services · 34 ppl</small></span><span class="bar"><i style="width:86%"></i></span><span class="sc">86</span><span class="vd now">CALL NOW</span></div><div class="gr"><span class="co">Globex<small>software · 22 ppl</small></span><span class="bar"><i style="width:81%"></i></span><span class="sc">81</span><span class="vd now">CALL NOW</span></div><div class="gr"><span class="co">Initech<small>consulting · 41 ppl</small></span><span class="bar"><i style="width:74%"></i></span><span class="sc">74</span><span class="vd warm">WARM</span></div><div class="gr"><span class="co">Stark Labs<small>software · 12 ppl</small></span><span class="bar"><i style="width:70%"></i></span><span class="sc">70</span><span class="vd warm">WARM</span></div><div class="gr"><span class="co">Umbrella<small>IT services · 48 ppl</small></span><span class="bar"><i style="width:63%"></i></span><span class="sc">63</span><span class="vd warm">WARM</span></div><div class="gr"><span class="co">Hooli<small>agency · 19 ppl</small></span><span class="bar"><i style="width:52%"></i></span><span class="sc">52</span><span class="vd skip">NURTURE</span></div><div class="gr"><span class="co">Wayne Co<small>consulting · 26 ppl</small></span><span class="bar"><i style="width:41%"></i></span><span class="sc">41</span><span class="vd skip">NURTURE</span></div><div class="gr"><span class="co">Oscorp<small>hardware · 44 ppl</small></span><span class="bar"><i style="width:28%"></i></span><span class="sc">28</span><span class="vd skip">SKIP</span></div></div>
+<div class="rail">
+<div class="st"><div class="v">40</div><div class="k">accounts scored in one run, 62 min</div></div>
+<div class="st"><div class="v">2</div><div class="k">call-now targets I would have found in week 3</div></div>
+<div class="sig"><div class="h">Signals in the score</div>
+<div class="r">hiring for <b>ops / RevOps</b></div><div class="r">stack has <b>no AI layer</b></div>
+<div class="r">founder posts about <b>scaling pain</b></div><div class="r">raised in last <b>18 months</b></div>
+<div class="r">2-50 seats &middot; <b>ICP band</b></div></div>
+</div></div>
+<div class="cta"><span class="ph">Comment <b>INDEX</b> and I will send you the AI-readiness rubric + the scoring run</span><span class="send"><svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div>
+<div class="ftr"><div class="fl"><img class="flogo" src="__LOGO__"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span></div><span class="furl">51ultron<em>.</em>com</span></div>
+</div></body></html>
