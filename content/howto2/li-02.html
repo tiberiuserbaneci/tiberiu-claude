@@ -1,52 +1,77 @@
 <!DOCTYPE html><html><head><meta charset="UTF-8"><style>
 @import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
-:root{--slate:#191919;--card:#1f1f1e;--card2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.70);--ink46:rgba(250,250,247,.44);
---rule:rgba(250,250,247,.08);--acc:#D4A27F;--kraft:#D4A27F;--ok:#5ea884;--mut:#8b857d;}
+:root{--slate:#161615;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);
+--rule:rgba(250,250,247,.09);--book:#CC785C;--bdark:#C84623;--kraft:#D4A27F;--ok:#5ea884;--mut:#8b857d;
+--dark:#1a0f0a;}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;color:var(--ivory);}
-.frame{width:1080px;height:1450px;background:var(--slate);padding:32px 44px 20px;position:relative;overflow:hidden;display:flex;flex-direction:column;}
-.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.4px,transparent 1.5px);background-size:30px 30px;}
-.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 54% 20% at 90% -2%,rgba(204,120,92,.16) 0%,transparent 60%);}
+body{background:#0b0b0a;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;color:var(--ivory);}
+.frame{width:1080px;height:1450px;background:var(--slate);padding:30px 42px 20px;position:relative;overflow:hidden;display:flex;flex-direction:column;}
+.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.055) 1.4px,transparent 1.5px);background-size:30px 30px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;
+background:radial-gradient(ellipse 62% 26% at 88% -4%,rgba(200,70,35,.30) 0%,transparent 62%),
+radial-gradient(ellipse 40% 20% at 4% 104%,rgba(212,162,127,.12) 0%,transparent 60%);}
 .frame>*{position:relative;z-index:2;}
 .mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding-bottom:11px;border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;}
-.mast .ml{color:var(--ink46);}.mast .ml em{color:var(--acc);font-style:normal;}.mast .mr{color:var(--ink70);}
-.hook{margin-top:16px;font-weight:900;font-size:54px;line-height:1.0;letter-spacing:-1.8px;flex-shrink:0;}.hook em{color:var(--acc);font-style:normal;}
-.sub{margin-top:10px;font-size:19.5px;font-weight:500;line-height:1.3;color:var(--ink70);flex-shrink:0;}.sub b{color:var(--ivory);font-weight:700;}
-.main{flex:1;min-height:0;margin-top:16px;display:flex;gap:14px;}
-.cta{flex-shrink:0;margin-top:13px;display:flex;align-items:center;gap:16px;border:1.5px solid var(--acc);border-radius:16px;background:rgba(204,120,92,.08);padding:12px 12px 12px 24px;}
-.cta .ph{flex:1;font-size:21px;font-weight:600;color:var(--ink70);}.cta .ph b{color:var(--acc);font-weight:900;}
-.cta .send{width:50px;height:50px;border-radius:50%;background:var(--acc);flex-shrink:0;display:flex;align-items:center;justify-content:center;}
-.cta .send svg{width:24px;height:24px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-.ftr{flex-shrink:0;margin-top:11px;padding-top:10px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;}
+.mast .ml{color:var(--ink46);}.mast .ml em{color:var(--book);font-style:normal;}.mast .mr{color:var(--ink70);}
+.hook{margin-top:18px;font-weight:900;font-size:64px;line-height:.99;letter-spacing:-2.4px;flex-shrink:0;}
+.hook em{color:var(--book);font-style:normal;text-shadow:0 0 44px rgba(204,120,92,.5);}
+.sub{margin-top:12px;font-size:20px;font-weight:500;line-height:1.3;color:var(--ink70);flex-shrink:0;max-width:960px;}.sub b{color:var(--ivory);font-weight:700;}
+.main{flex:1;min-height:0;margin-top:18px;display:flex;gap:14px;}
+/* v3 components */
+.solid{background:linear-gradient(160deg,#D0805F 0%,#C84623 78%);border-radius:20px;color:var(--ivory);box-shadow:0 24px 70px rgba(200,70,35,.35);}
+.ivory{background:var(--ivory);border-radius:20px;color:#151210;box-shadow:0 24px 60px rgba(0,0,0,.5);}
+.dcard{background:linear-gradient(180deg,#232321,#1b1b1a);border:1px solid rgba(250,250,247,.10);border-radius:18px;box-shadow:inset 0 1px 0 rgba(250,250,247,.07),0 14px 34px rgba(0,0,0,.35);}
+.pill{display:inline-flex;align-items:center;gap:10px;background:var(--ivory);color:#151210;border-radius:999px;font-weight:800;box-shadow:0 8px 26px rgba(0,0,0,.4);}
+.glow{position:relative;}
+.glow::before{content:'';position:absolute;left:50%;top:50%;width:130%;height:130%;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(204,120,92,.28),transparent);z-index:-1;}
+.cta{flex-shrink:0;margin-top:14px;display:flex;align-items:center;gap:18px;background:linear-gradient(160deg,#D0805F,#C84623);border-radius:18px;padding:15px 15px 15px 26px;box-shadow:0 20px 60px rgba(200,70,35,.35);}
+.cta .ph{flex:1;font-size:22px;font-weight:700;color:rgba(255,252,248,.94);}.cta .ph b{color:#fff;font-weight:900;}
+.cta .pl{background:var(--ivory);color:#151210;border-radius:999px;padding:13px 26px;font-weight:900;font-size:18px;flex-shrink:0;display:flex;align-items:center;gap:9px;}
+.ftr{flex-shrink:0;margin-top:12px;padding-top:10px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;}
 .fl{display:flex;align-items:center;gap:11px;}.flogo{width:28px;height:28px;border-radius:50%;object-fit:cover;}
 .ftx{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink70);}.ftx b{color:var(--ivory);font-weight:500;}
-.furl{font-weight:900;font-size:20px;letter-spacing:-.5px;}.furl em{color:var(--acc);font-style:normal;}
+.furl{font-weight:900;font-size:20px;letter-spacing:-.5px;}.furl em{color:var(--book);font-style:normal;}
 
-.col{flex:1;display:flex;flex-direction:column;border-radius:14px;border:1px solid var(--rule);background:var(--card);overflow:hidden;}
-.col .hd{padding:13px 18px;background:var(--card2);display:flex;justify-content:space-between;align-items:baseline;}
-.col .hd .t{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink46);}
-.col .hd .p{font-weight:900;font-size:22px;color:var(--ivory);}.col .hd .p.bad{color:var(--mut);text-decoration:line-through;text-decoration-color:rgba(200,70,35,.7);text-decoration-thickness:3px;}
-.trow{flex:1;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-top:1px solid var(--rule);}
-.trow .n{font-weight:700;font-size:18px;}.trow .m{font-family:'DM Mono',monospace;font-size:13.5px;color:var(--mut);}
-.trow .pr{font-weight:800;font-size:17px;color:var(--ink70);}
-.vs{align-self:center;font-weight:900;font-size:26px;color:var(--acc);flex-shrink:0;padding:0 2px;}
-.one{flex:1.15;display:flex;flex-direction:column;border-radius:14px;border:1.5px solid var(--acc);background:linear-gradient(180deg,rgba(204,120,92,.10),var(--card));overflow:hidden;}
-.one .hd{padding:13px 18px;display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--rule);}
-.one .hd .t{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);}
-.one .hd .p{font-weight:900;font-size:22px;color:var(--acc);}
-.feat{flex:1;display:flex;align-items:center;gap:12px;padding:0 18px;border-top:1px solid var(--rule);}
-.feat i{width:8px;height:8px;border-radius:50%;background:var(--acc);flex-shrink:0;}
-.feat .x{font-size:16.5px;color:var(--ink70);line-height:1.25;}.feat .x b{color:var(--ivory);}
-.chips{display:flex;flex-wrap:wrap;gap:7px;padding:12px 18px;border-top:1px solid var(--rule);}
-.chip{font-family:'DM Mono',monospace;font-size:12px;color:var(--acc);border:1px solid rgba(204,120,92,.34);background:rgba(204,120,92,.08);border-radius:7px;padding:4px 10px;}
+.wrap2{flex:1;display:flex;flex-direction:column;gap:14px;min-height:0;}
+.strip{flex-shrink:0;height:238px;border-radius:20px;overflow:hidden;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.5);}
+.strip img{width:100%;height:100%;object-fit:cover;object-position:center 42%;}
+.strip .prices{position:absolute;left:0;right:0;bottom:0;display:flex;background:linear-gradient(transparent,rgba(8,7,6,.88) 42%);padding:34px 26px 12px;}
+.strip .prices span{flex:1;text-align:center;font-family:'DM Mono',monospace;font-size:15px;color:var(--ink70);}
+.strip .prices span b{color:var(--ivory);font-weight:500;}
+.duo{flex:1;display:flex;gap:14px;min-height:0;}
+.dead{flex:1;display:flex;flex-direction:column;border-radius:18px;overflow:hidden;background:linear-gradient(180deg,#232321,#1b1b1a);border:1px solid var(--rule);}
+.dead .hd{padding:12px 18px;font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink46);border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;}
+.dead .hd b{color:var(--mut);font-size:17px;font-family:'DM Sans',sans-serif;text-decoration:line-through;text-decoration-color:rgba(200,70,35,.75);text-decoration-thickness:3px;}
+.dead .r{flex:1;display:flex;align-items:center;gap:11px;padding:0 18px;border-top:1px solid rgba(250,250,247,.05);font-size:15.5px;color:var(--mut);}
+.dead .r i{color:var(--bdark);font-style:normal;font-weight:900;}
+.one{flex:1.1;display:flex;flex-direction:column;}
+.one .top{flex:1;background:var(--ivory);border-radius:20px 20px 0 0;padding:18px 20px;color:#151210;display:flex;flex-direction:column;justify-content:center;gap:9px;box-shadow:0 24px 60px rgba(0,0,0,.45);}
+.one .top .t{font-size:24px;font-weight:900;letter-spacing:-.6px;}
+.one .top .r{display:flex;gap:10px;align-items:center;font-size:15.5px;color:#40382f;font-weight:600;}
+.one .top .r i{width:8px;height:8px;border-radius:50%;background:#C84623;flex-shrink:0;}
+.one .bot{background:linear-gradient(160deg,#D0805F,#C84623);border-radius:0 0 20px 20px;padding:14px 20px;display:flex;align-items:baseline;justify-content:space-between;box-shadow:0 24px 60px rgba(200,70,35,.3);}
+.one .bot .l{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.8);}
+.one .bot .v{font-size:44px;font-weight:900;letter-spacing:-1.5px;color:#fff;}
 
 </style></head><body><div class="frame" id="artifact"><div class="atm"></div>
 <div class="mast"><span class="ml">HOW TO <em>&middot;</em> ONE CONTEXT <em>&middot;</em> ULTRON</span><span class="mr">USE CASE 02</span></div>
-<div class="hook">I closed <em>six AI tabs.</em> One box replaced them.</div><div class="sub">Six subscriptions, six logins, six dead contexts. The stack on the left is what I cancelled. Do the math with me.</div>
-<div class="main"><div class="col"><div class="hd"><span class="t">The tab stack &middot; 6 logins</span><span class="p bad">$168/mo</span></div><div class="trow"><span class="n">ChatGPT Plus</span><span class="m">context dies per tab</span><span class="pr">$20</span></div><div class="trow"><span class="n">Claude Pro</span><span class="m">re-paste everything</span><span class="pr">$20</span></div><div class="trow"><span class="n">Perplexity Pro</span><span class="m">research only</span><span class="pr">$20</span></div><div class="trow"><span class="n">Jasper</span><span class="m">copy only</span><span class="pr">$49</span></div><div class="trow"><span class="n">Midjourney</span><span class="m">images only</span><span class="pr">$10</span></div><div class="trow"><span class="n">Copy.ai</span><span class="m">one more login</span><span class="pr">$49</span></div></div>
-<div class="vs">VS</div>
-<div class="one"><div class="hd"><span class="t">One chat box</span><span class="p">cents</span></div><div class="feat"><i></i><span class="x">One context. Your ICP, voice and pipeline <b>live in every job</b>.</span></div><div class="feat"><i></i><span class="x">The router reads the task and <b>picks the model tier</b> for you.</span></div><div class="feat"><i></i><span class="x">Research flows into outreach flows into <b>deals</b>, no re-pasting.</span></div><div class="feat"><i></i><span class="x">Output lands as <b>work done</b>: briefs, sequences, PRs, schedules.</span></div><div class="feat"><i></i><span class="x">You pay per token. A day of work costs <b>cents, not seats</b>.</span></div>
-<div class="chips"><span class="chip">CORTEX</span><span class="chip">SPECTER</span><span class="chip">STRIKER</span><span class="chip">PULSE</span><span class="chip">SENTINEL</span><span class="chip">AMPLIFY</span><span class="chip">COUNSEL</span></div></div></div>
-<div class="cta"><span class="ph">Comment <b>TABS</b> and I will send you the migration map, tab by tab</span><span class="send"><svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div>
+<div class="hook">I closed <em>six AI tabs.</em> One box replaced them.</div><div class="sub">Six subscriptions, six logins, six dead contexts. The row below is what I cancelled last month.</div>
+<div class="main"><div class="wrap2">
+<div class="strip"><img src="../_hitl-src/covers/tabsrow.png"><div class="prices"><span>ChatGPT <b>$20</b></span><span>Claude <b>$20</b></span><span>Perplexity <b>$20</b></span><span>Jasper <b>$49</b></span><span>Midjourney <b>$10</b></span><span>Notion AI <b>$10</b></span></div></div>
+<div class="duo">
+<div class="dead"><div class="hd"><span>What six tabs cost</span><b>$129/mo</b></div>
+<div class="r"><i>x</i>&nbsp;six logins, six histories, six bills</div>
+<div class="r"><i>x</i>&nbsp;context dies inside every tab</div>
+<div class="r"><i>x</i>&nbsp;you re-paste your ICP all day</div>
+<div class="r"><i>x</i>&nbsp;answers, not finished work</div>
+<div class="r"><i>x</i>&nbsp;you are the router between them</div></div>
+<div class="one"><div class="top"><span class="t">One box. Seven agents.</span>
+<span class="r"><i></i>one context: ICP, voice, pipeline, in every job</span>
+<span class="r"><i></i>the router picks the model tier for you</span>
+<span class="r"><i></i>research flows into outreach into deals</span>
+<span class="r"><i></i>output = work done: briefs, sends, PRs</span></div>
+<div class="bot"><span class="l">A day of work costs</span><span class="v">cents</span></div></div>
+</div></div></div>
+<div class="cta"><span class="ph">Comment <b>TABS</b> and I will send you the migration map, tab by tab</span><span class="pl">TABS <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#151210" stroke-width="3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
 <div class="ftr"><div class="fl"><img class="flogo" src="__LOGO__"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span></div><span class="furl">51ultron<em>.</em>com</span></div>
 </div></body></html>

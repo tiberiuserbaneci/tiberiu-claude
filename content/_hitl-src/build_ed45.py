@@ -108,6 +108,7 @@ def body(base,eyebrow,head,sub,foot,objpath,page,n,fill):
     if sub:
         sf=dm(500,31)
         for ln in wrap(d,sub,sf,W-2*MX): d.text((MX,y),ln,font=sf,fill=INK); y+=41
+    _bloom(base,W//2,OBJ_CY,470,330,alpha=54)   # warm bloom behind the window (site light language)
     place_obj(base,objpath,fill)
     if foot:   # the idea line under the object (fills the lower space)
         ff=dm(800,34); fw=int(d.textlength("".join(t for t,_ in foot),font=ff))
@@ -120,55 +121,65 @@ def _orb():
     sq=max(c.size); s2=Image.new("RGBA",(sq,sq),(0,0,0,0)); s2.alpha_composite(c,((sq-c.width)//2,(sq-c.height)//2))
     m=Image.new("L",(sq,sq),0); ImageDraw.Draw(m).ellipse([0,0,sq,sq],fill=255); s2.putalpha(m); return s2
 
-def _cover_visual(base,zone,card=False):
-    # material-specific visual under the hook (operator: diversify page 1 - the 3-second skip fix).
-    # COVER_OBJ = Vertex logo-cluster / hero render; sized to FILL the zone (edge to edge, no half-empty cover)
+def _keyed_cluster(zone_w,zone_h):
+    # Vertex cover render -> FLOATING logo stack: charcoal bg keyed out, tiles + their glow survive.
+    # This is what lets the IG overlay sit ON the video without blocking it (operator correction).
     p=getattr(T2,"COVER_OBJ",None)
-    if not p or not os.path.exists(p):
-        T2.place_in_zone(base, Image.open(CLAUDE_SUN).convert("RGBA"), (410,zone[1],670,zone[3])); return
-    im=Image.open(p).convert("RGB")
-    zx0,zy0,zx1,zy1=zone; zw,zh=zx1-zx0,zy1-zy0
-    s=min(zw/im.width, zh/im.height)                     # CONTAIN: the visual stays WHOLE (never cut)
-    im=im.resize((max(1,int(im.width*s)),max(1,int(im.height*s))),Image.LANCZOS).convert("RGBA")
-    px,py=zx0+(zw-im.width)//2, zy0+(zh-im.height)//2
-    if card:
-        a=np.asarray(im.convert("RGB")); cs=np.concatenate([a[:24,:24].reshape(-1,3),a[:24,-24:].reshape(-1,3),a[-24:,:24].reshape(-1,3),a[-24:,-24:].reshape(-1,3)])
-        pad=Image.new("RGB",(zw,zh),tuple(int(v) for v in np.median(cs,0)))   # card interior = the render's own bg
-        pad.paste(im,((zw-im.width)//2,(zh-im.height)//2)); im=pad.convert("RGBA"); px,py=zx0,zy0
-        r=26; mask=Image.new("L",(zw,zh),0); ImageDraw.Draw(mask).rounded_rectangle([0,0,zw-1,zh-1],radius=r,fill=255)
-        sh=Image.new("RGBA",base.size,(0,0,0,0)); ImageDraw.Draw(sh).rounded_rectangle([zx0,zy0+18,zx1,zy1+18],radius=r,fill=(0,0,0,160))
-        base.alpha_composite(sh.filter(ImageFilter.GaussianBlur(28)))
-        im.putalpha(mask)
-    else:
-        # seamless on canvas: fade the RENDER's own edges to transparent (no pad box, no seam)
-        m=Image.new("L",im.size,0); ImageDraw.Draw(m).rounded_rectangle([0,0,im.width-1,im.height-1],radius=54,fill=255)
-        im.putalpha(m.filter(ImageFilter.GaussianBlur(34)))
-    base.alpha_composite(im,(px,py))
+    if not p or not os.path.exists(p): return None
+    im=Image.open(p).convert("RGB"); arr=np.asarray(im).astype(int)
+    cs=np.concatenate([arr[:32,:32].reshape(-1,3),arr[:32,-32:].reshape(-1,3),arr[-32:,:32].reshape(-1,3),arr[-32:,-32:].reshape(-1,3)])
+    bg=np.median(cs,0); d=np.abs(arr-bg).sum(2)
+    alpha=np.clip((d-26)*7,0,255).astype("uint8")          # soft key: tiles opaque, glow feathers out
+    el=Image.fromarray(np.dstack([arr.astype("uint8"),alpha]),"RGBA")
+    bb=Image.fromarray((alpha>90).astype("uint8")*255,"L").getbbox()
+    if bb:
+        px=36; el=el.crop((max(0,bb[0]-px),max(0,bb[1]-px),min(el.width,bb[2]+px),min(el.height,bb[3]+px)))
+    s=min(zone_w/el.width, zone_h/el.height)
+    return el.resize((max(1,int(el.width*s)),max(1,int(el.height*s))),Image.LANCZOS)
+
+def _bloom(base,cx,cy,rw,rh,alpha=90):
+    gl=Image.new("RGBA",base.size,(0,0,0,0))
+    ImageDraw.Draw(gl).ellipse([cx-rw,cy-rh,cx+rw,cy+rh],fill=T2.BOOK+(alpha,))
+    base.alpha_composite(gl.filter(ImageFilter.GaussianBlur(120)))
 
 def cover_tt(base):
     ghost(base,"01"); d=ImageDraw.Draw(base)
-    s=fit_hook(d,COVER["head"],W-2*MX,start=80,floor=54); hf=dm(900,s); y=132
-    for ln in COVER["head"]: seg_center(d,y,ln,hf); y+=int(s*1.14)
-    _cover_visual(base,(70,y+44,W-70,1128))
+    s=fit_hook(d,COVER["head"],W-2*MX,start=84,floor=58); hf=dm(900,s); y=126
+    for ln in COVER["head"]: seg_center(d,y,ln,hf); y+=int(s*1.12)
+    el=_keyed_cluster(W-150, 1120-(y+36))
+    if el is not None:
+        _bloom(base,W//2,(y+36+1120)//2,430,330,alpha=80)   # site-style warm light bloom behind the stack
+        base.alpha_composite(el,((W-el.width)//2, y+36+(1120-(y+36)-el.height)//2))
+    else:
+        T2.place_in_zone(base, Image.open(CLAUDE_SUN).convert("RGBA"), (410,700,670,1010))
     d=ImageDraw.Draw(base)
-    txt="Swipe"; f=dm(900,34); tw=int(d.textlength(txt,font=f)); aw=int(d.textlength("  →",font=f)); pw=tw+aw+80; ph=76; px=(W-pw)//2; py=H-186
-    d.rounded_rectangle([px,py,px+pw,py+ph],radius=ph//2,fill=ACC)
-    d.text((px+40,py+ph//2-24),txt+"  →",font=f,fill=(26,15,10))
+    txt="Swipe  →"; f=dm(900,34); tw=int(d.textlength(txt,font=f)); pw=tw+84; ph=78; px=(W-pw)//2; py=H-184
+    d.rounded_rectangle([px,py,px+pw,py+ph],radius=ph//2,fill=(250,250,247))   # site-style white pill
+    d.text((px+42,py+ph//2-24),txt,font=f,fill=(20,14,10))
 
 def cover_ig(out):
+    # TRANSPARENT overlay: hook + FLOATING keyed logo stack. No card, no full-bleed panel -
+    # the video stays visible around the tiles (operator: "nu acoperi tot video-ul").
     base=Image.new("RGBA",(W,H),(0,0,0,0)); d=ImageDraw.Draw(base)
-    s=fit_hook(d,COVER["head"],W-2*MX,start=78,floor=52); hf=dm(900,s); y=150
-    for ln in COVER["head"]: seg_center(d,y,ln,hf); y+=int(s*1.14)
-    _cover_visual(base,(96,y+48,W-96,1080),card=True)   # card w/ shadow: reads on any video frame
+    s=fit_hook(d,COVER["head"],W-2*MX,start=82,floor=56); hf=dm(900,s); y=138
+    # soft dark halo behind the hook lines only (legibility on any video frame, ~narrow band)
+    halo=Image.new("RGBA",(W,H),(0,0,0,0)); hd=ImageDraw.Draw(halo)
+    hh=int(s*1.12)*len(COVER["head"])
+    hd.rounded_rectangle([46,y-34,W-46,y+hh+26],radius=40,fill=(12,10,9,168))
+    base.alpha_composite(halo.filter(ImageFilter.GaussianBlur(38)))
+    for ln in COVER["head"]: seg_center(d,y,ln,hf); y+=int(s*1.12)
+    el=_keyed_cluster(W-170, 1128-(y+40))
+    if el is not None:
+        base.alpha_composite(el,((W-el.width)//2, y+40+(1128-(y+40)-el.height)//2))
     d=ImageDraw.Draw(base)
     logos=[Image.open(CLAUDE_SUN).convert("RGBA"), _orb()]
-    L=120; SLOT=104
+    L=110; SLOT=96
     for im in logos: im.thumbnail((L,L),Image.LANCZOS)
-    nn=len(logos); x=(W-(L*nn+SLOT*(nn-1)))//2; cy=1188
+    nn=len(logos); x=(W-(L*nn+SLOT*(nn-1)))//2; cy=1214
     for i,im in enumerate(logos):
         base.alpha_composite(im,(x+(L-im.width)//2, cy-im.height//2))
         if i<nn-1:
-            px=x+L+SLOT//2; ph,pt=15,4
+            px=x+L+SLOT//2; ph,pt=14,4
             d.rectangle([px-ph,cy-pt,px+ph,cy+pt],fill=T2.BOOK+(255,)); d.rectangle([px-pt,cy-ph,px+pt,cy+ph],fill=T2.BOOK+(255,))
         x+=L+SLOT
     base.save(out)

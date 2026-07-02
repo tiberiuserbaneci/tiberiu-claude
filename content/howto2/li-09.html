@@ -1,44 +1,58 @@
 <!DOCTYPE html><html><head><meta charset="UTF-8"><style>
 @import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
-:root{--slate:#191919;--card:#1f1f1e;--card2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.70);--ink46:rgba(250,250,247,.44);
---rule:rgba(250,250,247,.08);--acc:#CC785C;--kraft:#D4A27F;--ok:#5ea884;--mut:#8b857d;}
+:root{--slate:#161615;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);
+--rule:rgba(250,250,247,.09);--book:#CC785C;--bdark:#C84623;--kraft:#D4A27F;--ok:#5ea884;--mut:#8b857d;
+--dark:#1a0f0a;}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;color:var(--ivory);}
-.frame{width:1080px;height:1450px;background:var(--slate);padding:32px 44px 20px;position:relative;overflow:hidden;display:flex;flex-direction:column;}
-.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.4px,transparent 1.5px);background-size:30px 30px;}
-.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 54% 20% at 90% -2%,rgba(204,120,92,.16) 0%,transparent 60%);}
+body{background:#0b0b0a;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;color:var(--ivory);}
+.frame{width:1080px;height:1450px;background:var(--slate);padding:30px 42px 20px;position:relative;overflow:hidden;display:flex;flex-direction:column;}
+.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.055) 1.4px,transparent 1.5px);background-size:30px 30px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;
+background:radial-gradient(ellipse 62% 26% at 88% -4%,rgba(200,70,35,.30) 0%,transparent 62%),
+radial-gradient(ellipse 40% 20% at 4% 104%,rgba(212,162,127,.12) 0%,transparent 60%);}
 .frame>*{position:relative;z-index:2;}
 .mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding-bottom:11px;border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;}
-.mast .ml{color:var(--ink46);}.mast .ml em{color:var(--acc);font-style:normal;}.mast .mr{color:var(--ink70);}
-.hook{margin-top:16px;font-weight:900;font-size:54px;line-height:1.0;letter-spacing:-1.8px;flex-shrink:0;}.hook em{color:var(--acc);font-style:normal;}
-.sub{margin-top:10px;font-size:19.5px;font-weight:500;line-height:1.3;color:var(--ink70);flex-shrink:0;}.sub b{color:var(--ivory);font-weight:700;}
-.main{flex:1;min-height:0;margin-top:16px;display:flex;gap:14px;}
-.cta{flex-shrink:0;margin-top:13px;display:flex;align-items:center;gap:16px;border:1.5px solid var(--acc);border-radius:16px;background:rgba(204,120,92,.08);padding:12px 12px 12px 24px;}
-.cta .ph{flex:1;font-size:21px;font-weight:600;color:var(--ink70);}.cta .ph b{color:var(--acc);font-weight:900;}
-.cta .send{width:50px;height:50px;border-radius:50%;background:var(--acc);flex-shrink:0;display:flex;align-items:center;justify-content:center;}
-.cta .send svg{width:24px;height:24px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-.ftr{flex-shrink:0;margin-top:11px;padding-top:10px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;}
+.mast .ml{color:var(--ink46);}.mast .ml em{color:var(--book);font-style:normal;}.mast .mr{color:var(--ink70);}
+.hook{margin-top:18px;font-weight:900;font-size:64px;line-height:.99;letter-spacing:-2.4px;flex-shrink:0;}
+.hook em{color:var(--book);font-style:normal;text-shadow:0 0 44px rgba(204,120,92,.5);}
+.sub{margin-top:12px;font-size:20px;font-weight:500;line-height:1.3;color:var(--ink70);flex-shrink:0;max-width:960px;}.sub b{color:var(--ivory);font-weight:700;}
+.main{flex:1;min-height:0;margin-top:18px;display:flex;gap:14px;}
+/* v3 components */
+.solid{background:linear-gradient(160deg,#D0805F 0%,#C84623 78%);border-radius:20px;color:var(--ivory);box-shadow:0 24px 70px rgba(200,70,35,.35);}
+.ivory{background:var(--ivory);border-radius:20px;color:#151210;box-shadow:0 24px 60px rgba(0,0,0,.5);}
+.dcard{background:linear-gradient(180deg,#232321,#1b1b1a);border:1px solid rgba(250,250,247,.10);border-radius:18px;box-shadow:inset 0 1px 0 rgba(250,250,247,.07),0 14px 34px rgba(0,0,0,.35);}
+.pill{display:inline-flex;align-items:center;gap:10px;background:var(--ivory);color:#151210;border-radius:999px;font-weight:800;box-shadow:0 8px 26px rgba(0,0,0,.4);}
+.glow{position:relative;}
+.glow::before{content:'';position:absolute;left:50%;top:50%;width:130%;height:130%;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(204,120,92,.28),transparent);z-index:-1;}
+.cta{flex-shrink:0;margin-top:14px;display:flex;align-items:center;gap:18px;background:linear-gradient(160deg,#D0805F,#C84623);border-radius:18px;padding:15px 15px 15px 26px;box-shadow:0 20px 60px rgba(200,70,35,.35);}
+.cta .ph{flex:1;font-size:22px;font-weight:700;color:rgba(255,252,248,.94);}.cta .ph b{color:#fff;font-weight:900;}
+.cta .pl{background:var(--ivory);color:#151210;border-radius:999px;padding:13px 26px;font-weight:900;font-size:18px;flex-shrink:0;display:flex;align-items:center;gap:9px;}
+.ftr{flex-shrink:0;margin-top:12px;padding-top:10px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;}
 .fl{display:flex;align-items:center;gap:11px;}.flogo{width:28px;height:28px;border-radius:50%;object-fit:cover;}
 .ftx{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink70);}.ftx b{color:var(--ivory);font-weight:500;}
-.furl{font-weight:900;font-size:20px;letter-spacing:-.5px;}.furl em{color:var(--acc);font-style:normal;}
+.furl{font-weight:900;font-size:20px;letter-spacing:-.5px;}.furl em{color:var(--book);font-style:normal;}
 
-.tl{flex:1.35;display:flex;flex-direction:column;gap:8px;}
-.day{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink46);padding:2px 2px;}
-.ev{flex:1;background:var(--card);border:1px solid var(--rule);border-radius:11px;padding:10px 15px;display:flex;align-items:center;gap:13px;}
+.tl{flex:1.35;display:flex;flex-direction:column;gap:9px;}
+.day{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink46);padding:1px 2px;}
+.ev{flex:1;background:linear-gradient(180deg,#232321,#1b1b1a);border:1px solid var(--rule);border-radius:12px;padding:10px 16px;display:flex;align-items:center;gap:13px;}
 .ev .ts{font-family:'DM Mono',monospace;font-size:12.5px;color:var(--ink46);width:52px;flex-shrink:0;}
 .ev .x{font-size:15.5px;color:var(--ink70);line-height:1.25;}.ev .x b{color:var(--ivory);}
-.gap{flex-shrink:0;display:flex;align-items:center;gap:12px;padding:4px 2px;}
-.gap .l{flex:1;border-top:2px dashed rgba(250,250,247,.14);}
-.gap .t{font-family:'DM Mono',monospace;font-size:12.5px;color:var(--acc);letter-spacing:.12em;}
-.ev.hot{border:1.5px solid var(--acc);background:linear-gradient(180deg,rgba(204,120,92,.1),var(--card));}
-.rail{width:256px;display:flex;flex-direction:column;gap:10px;}
-.st{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:12px 15px;}
-.st .v{font-size:36px;font-weight:900;color:var(--acc);letter-spacing:-1px;line-height:1;}
-.st .k{margin-top:5px;font-size:13.5px;color:var(--ink70);line-height:1.2;}
-.keep{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:12px 15px;flex:1;}
+.gap{flex-shrink:0;display:flex;align-items:center;gap:12px;padding:5px 2px;}
+.gap .l{flex:1;border-top:2px dashed rgba(204,120,92,.45);}
+.gap .t{font-family:'DM Mono',monospace;font-size:12.5px;color:var(--book);letter-spacing:.14em;background:rgba(204,120,92,.1);border:1px solid rgba(204,120,92,.35);border-radius:999px;padding:5px 13px;}
+.ev.hot{background:var(--ivory);border:none;box-shadow:0 18px 46px rgba(0,0,0,.45);}
+.ev.hot .ts{color:#a5613f;}.ev.hot .x{color:#3f382f;}.ev.hot .x b{color:#151210;}
+.rail{width:258px;display:flex;flex-direction:column;gap:12px;}
+.iv{padding:18px;}
+.iv .v{font-size:130px;font-weight:900;letter-spacing:-8px;line-height:.85;color:#C84623;}
+.iv .k{margin-top:9px;font-size:15px;font-weight:700;color:#3a332e;line-height:1.28;}
+.sol{padding:15px 18px;}
+.sol .v{font-size:44px;font-weight:900;color:#fff;letter-spacing:-1px;line-height:1;}
+.sol .k{margin-top:5px;font-size:14px;color:rgba(255,252,248,.9);line-height:1.25;}
+.keep{background:linear-gradient(180deg,#232321,#1b1b1a);border:1px solid var(--rule);border-radius:16px;padding:13px 16px;flex:1;}
 .keep .h{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink46);margin-bottom:6px;}
-.keep .r{display:flex;gap:9px;align-items:center;font-size:14px;color:var(--ink70);padding:5px 0;border-top:1px solid var(--rule);}
-.keep .r i{width:7px;height:7px;border-radius:50%;background:var(--acc);flex-shrink:0;}
+.keep .r{display:flex;gap:9px;align-items:center;font-size:14.5px;color:var(--ink70);padding:5px 0;border-top:1px solid var(--rule);}
+.keep .r i{width:7px;height:7px;border-radius:50%;background:var(--book);flex-shrink:0;}
 .keep .r b{color:var(--ivory);}
 
 </style></head><body><div class="frame" id="artifact"><div class="atm"></div>
@@ -46,13 +60,13 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 <div class="hook">I reopened a <em>2-day-old session.</em> It lost nothing.</div><div class="sub">Closed the laptop mid-negotiation on Monday. Typed two words on Wednesday. Here is the timeline.</div>
 <div class="main"><div class="tl"><div class="day">Monday</div><div class="ev"><span class="ts">14:05</span><span class="x">kicked off the Northwind deal: CORTEX brief, <b>40 signals</b></span></div><div class="ev"><span class="ts">14:31</span><span class="x">SPECTER opener v1-v3, picked v3, <b>62 words</b></span></div><div class="ev"><span class="ts">15:02</span><span class="x">STRIKER close plan drafted, champion = Sarah</span></div><div class="ev"><span class="ts">15:40</span><span class="x">objection thread started: "too expensive vs in-house"</span></div><div class="ev"><span class="ts">16:12</span><span class="x">laptop closed <b>mid-negotiation</b>, draft v3 open</span></div><div class="gap"><span class="l"></span><span class="t">2 DAYS AWAY</span><span class="l"></span></div><div class="day">Wednesday</div><div class="ev hot"><span class="ts">09:01</span><span class="x">typed <b>"resume northwind"</b>. one line.</span></div><div class="ev hot"><span class="ts">09:01</span><span class="x">it recalled: stage, champion, v3 draft, the open objection</span></div><div class="ev"><span class="ts">09:03</span><span class="x">STRIKER finished the rebuttal <b>from where it stopped</b></span></div><div class="ev"><span class="ts">09:11</span><span class="x">proposal out. <b>Zero re-briefing, zero scrolling up.</b></span></div></div>
 <div class="rail">
-<div class="st"><div class="v">0</div><div class="k">minutes re-explaining where we were</div></div>
-<div class="st"><div class="v">10<span style="font-size:20px">min</span></div><div class="k">from reopen to proposal sent</div></div>
+<div class="ivory iv glow"><span class="v">0</span><div class="k">minutes re-explaining where we were</div></div>
+<div class="solid sol"><div class="v">10 min</div><div class="k">from reopen to proposal sent</div></div>
 <div class="keep"><div class="h">What carried over</div>
 <div class="r"><i></i>deal stage + <b>champion</b></div><div class="r"><i></i>draft <b>v3</b>, not v1</div>
 <div class="r"><i></i>the open <b>objection</b></div><div class="r"><i></i>pricing already quoted</div>
 <div class="r"><i></i>next step queue</div></div>
 </div></div>
-<div class="cta"><span class="ph">Comment <b>RESUME</b> and I will send you the session workflow that never loses state</span><span class="send"><svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div>
+<div class="cta"><span class="ph">Comment <b>RESUME</b> and I will send you the session workflow that never loses state</span><span class="pl">RESUME <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#151210" stroke-width="3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
 <div class="ftr"><div class="fl"><img class="flogo" src="__LOGO__"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span></div><span class="furl">51ultron<em>.</em>com</span></div>
 </div></body></html>

@@ -1,52 +1,67 @@
 <!DOCTYPE html><html><head><meta charset="UTF-8"><style>
 @import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
-:root{--slate:#191919;--card:#1f1f1e;--card2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.70);--ink46:rgba(250,250,247,.44);
---rule:rgba(250,250,247,.08);--acc:#D4A27F;--kraft:#D4A27F;--ok:#5ea884;--mut:#8b857d;}
+:root{--slate:#161615;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);
+--rule:rgba(250,250,247,.09);--book:#CC785C;--bdark:#C84623;--kraft:#D4A27F;--ok:#5ea884;--mut:#8b857d;
+--dark:#1a0f0a;}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;color:var(--ivory);}
-.frame{width:1080px;height:1450px;background:var(--slate);padding:32px 44px 20px;position:relative;overflow:hidden;display:flex;flex-direction:column;}
-.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.4px,transparent 1.5px);background-size:30px 30px;}
-.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 54% 20% at 90% -2%,rgba(204,120,92,.16) 0%,transparent 60%);}
+body{background:#0b0b0a;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;color:var(--ivory);}
+.frame{width:1080px;height:1450px;background:var(--slate);padding:30px 42px 20px;position:relative;overflow:hidden;display:flex;flex-direction:column;}
+.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.055) 1.4px,transparent 1.5px);background-size:30px 30px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;
+background:radial-gradient(ellipse 62% 26% at 88% -4%,rgba(200,70,35,.30) 0%,transparent 62%),
+radial-gradient(ellipse 40% 20% at 4% 104%,rgba(212,162,127,.12) 0%,transparent 60%);}
 .frame>*{position:relative;z-index:2;}
 .mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding-bottom:11px;border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;}
-.mast .ml{color:var(--ink46);}.mast .ml em{color:var(--acc);font-style:normal;}.mast .mr{color:var(--ink70);}
-.hook{margin-top:16px;font-weight:900;font-size:54px;line-height:1.0;letter-spacing:-1.8px;flex-shrink:0;}.hook em{color:var(--acc);font-style:normal;}
-.sub{margin-top:10px;font-size:19.5px;font-weight:500;line-height:1.3;color:var(--ink70);flex-shrink:0;}.sub b{color:var(--ivory);font-weight:700;}
-.main{flex:1;min-height:0;margin-top:16px;display:flex;gap:14px;}
-.cta{flex-shrink:0;margin-top:13px;display:flex;align-items:center;gap:16px;border:1.5px solid var(--acc);border-radius:16px;background:rgba(204,120,92,.08);padding:12px 12px 12px 24px;}
-.cta .ph{flex:1;font-size:21px;font-weight:600;color:var(--ink70);}.cta .ph b{color:var(--acc);font-weight:900;}
-.cta .send{width:50px;height:50px;border-radius:50%;background:var(--acc);flex-shrink:0;display:flex;align-items:center;justify-content:center;}
-.cta .send svg{width:24px;height:24px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-.ftr{flex-shrink:0;margin-top:11px;padding-top:10px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;}
+.mast .ml{color:var(--ink46);}.mast .ml em{color:var(--book);font-style:normal;}.mast .mr{color:var(--ink70);}
+.hook{margin-top:18px;font-weight:900;font-size:64px;line-height:.99;letter-spacing:-2.4px;flex-shrink:0;}
+.hook em{color:var(--book);font-style:normal;text-shadow:0 0 44px rgba(204,120,92,.5);}
+.sub{margin-top:12px;font-size:20px;font-weight:500;line-height:1.3;color:var(--ink70);flex-shrink:0;max-width:960px;}.sub b{color:var(--ivory);font-weight:700;}
+.main{flex:1;min-height:0;margin-top:18px;display:flex;gap:14px;}
+/* v3 components */
+.solid{background:linear-gradient(160deg,#D0805F 0%,#C84623 78%);border-radius:20px;color:var(--ivory);box-shadow:0 24px 70px rgba(200,70,35,.35);}
+.ivory{background:var(--ivory);border-radius:20px;color:#151210;box-shadow:0 24px 60px rgba(0,0,0,.5);}
+.dcard{background:linear-gradient(180deg,#232321,#1b1b1a);border:1px solid rgba(250,250,247,.10);border-radius:18px;box-shadow:inset 0 1px 0 rgba(250,250,247,.07),0 14px 34px rgba(0,0,0,.35);}
+.pill{display:inline-flex;align-items:center;gap:10px;background:var(--ivory);color:#151210;border-radius:999px;font-weight:800;box-shadow:0 8px 26px rgba(0,0,0,.4);}
+.glow{position:relative;}
+.glow::before{content:'';position:absolute;left:50%;top:50%;width:130%;height:130%;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(204,120,92,.28),transparent);z-index:-1;}
+.cta{flex-shrink:0;margin-top:14px;display:flex;align-items:center;gap:18px;background:linear-gradient(160deg,#D0805F,#C84623);border-radius:18px;padding:15px 15px 15px 26px;box-shadow:0 20px 60px rgba(200,70,35,.35);}
+.cta .ph{flex:1;font-size:22px;font-weight:700;color:rgba(255,252,248,.94);}.cta .ph b{color:#fff;font-weight:900;}
+.cta .pl{background:var(--ivory);color:#151210;border-radius:999px;padding:13px 26px;font-weight:900;font-size:18px;flex-shrink:0;display:flex;align-items:center;gap:9px;}
+.ftr{flex-shrink:0;margin-top:12px;padding-top:10px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;}
 .fl{display:flex;align-items:center;gap:11px;}.flogo{width:28px;height:28px;border-radius:50%;object-fit:cover;}
 .ftx{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink70);}.ftx b{color:var(--ivory);font-weight:500;}
-.furl{font-weight:900;font-size:20px;letter-spacing:-.5px;}.furl em{color:var(--acc);font-style:normal;}
+.furl{font-weight:900;font-size:20px;letter-spacing:-.5px;}.furl em{color:var(--book);font-style:normal;}
 
-.led{flex:1;display:flex;flex-direction:column;border:1px solid var(--rule);border-radius:14px;background:var(--card);overflow:hidden;}
-.lhd{display:flex;background:var(--card2);padding:11px 16px;font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink46);gap:12px;}
-.lr{flex:1;display:flex;align-items:center;gap:12px;padding:0 16px;border-top:1px solid var(--rule);}
+.led{flex:1;display:flex;flex-direction:column;border-radius:20px;background:#1d1d1c;overflow:hidden;border:1px solid rgba(250,250,247,.08);box-shadow:0 20px 50px rgba(0,0,0,.4);}
+.lhd{display:flex;background:#262625;padding:12px 18px;font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink46);gap:12px;}
+.lr{flex:1;display:flex;align-items:center;gap:12px;padding:0 18px;border-top:1px solid rgba(250,250,247,.06);}
+.lr:nth-child(odd){background:#212120;}
 .lr .cl{flex:1;font-size:15.5px;color:var(--ivory);line-height:1.22;}.lr .cl b{color:var(--kraft);}
-.lr .src{width:250px;font-family:'DM Mono',monospace;font-size:12.5px;color:var(--ink70);flex-shrink:0;}
-.lr .cf{width:76px;flex-shrink:0;font-family:'DM Mono',monospace;font-size:12.5px;color:var(--ok);}
-.share{width:264px;display:flex;flex-direction:column;gap:10px;}
-.card8{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:13px 15px;}
-.card8 .h{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink46);margin-bottom:7px;}
-.card8 .v{font-size:34px;font-weight:900;color:var(--acc);letter-spacing:-1px;line-height:1;}
+.lr .src{width:238px;font-family:'DM Mono',monospace;font-size:12.5px;color:var(--ink70);flex-shrink:0;}
+.lr .cf{width:70px;flex-shrink:0;}
+.lr .cf span{font-family:'DM Mono',monospace;font-size:12px;color:#0f1a14;background:var(--ok);border-radius:999px;padding:3px 9px;font-weight:500;}
+.share{width:270px;display:flex;flex-direction:column;gap:12px;}
+.iv{padding:18px;}
+.iv .v{font-size:104px;font-weight:900;letter-spacing:-6px;line-height:.88;color:#C84623;}
+.iv .k{margin-top:8px;font-size:15px;font-weight:700;color:#3a332e;line-height:1.28;}
+.link{padding:16px 18px;}
+.link .h{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.78);margin-bottom:9px;}
+.link .u{font-family:'DM Mono',monospace;font-size:14.5px;color:#fff;word-break:break-all;line-height:1.4;background:rgba(0,0,0,.22);border-radius:9px;padding:9px 11px;}
+.link .d{margin-top:9px;font-size:13.5px;color:rgba(255,252,248,.9);line-height:1.32;}.link .d b{color:#fff;}
+.card8{background:linear-gradient(180deg,#232321,#1b1b1a);border:1px solid var(--rule);border-radius:16px;padding:13px 16px;flex:1;}
+.card8 .h{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink46);margin-bottom:6px;}
+.card8 .v{font-size:38px;font-weight:900;color:var(--book);letter-spacing:-1px;line-height:1;}
 .card8 .k{margin-top:5px;font-size:13.5px;color:var(--ink70);line-height:1.25;}
-.link{background:linear-gradient(180deg,rgba(204,120,92,.1),var(--card));border:1.5px solid var(--acc);border-radius:12px;padding:14px 15px;}
-.link .h{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);margin-bottom:8px;}
-.link .u{font-family:'DM Mono',monospace;font-size:14.5px;color:var(--ivory);word-break:break-all;line-height:1.4;}
-.link .d{margin-top:8px;font-size:13.5px;color:var(--ink70);line-height:1.3;}
 
 </style></head><body><div class="frame" id="artifact"><div class="atm"></div>
 <div class="mast"><span class="ml">HOW TO <em>&middot;</em> PROOF <em>&middot;</em> ULTRON</span><span class="mr">USE CASE 08</span></div>
 <div class="hook">I proved <em>3 weeks of research</em> in one link.</div><div class="sub">No screenshot dumps. Every claim in the brief carries its source, its run ID and a confidence score.</div>
-<div class="main"><div class="led"><div class="lhd"><span style="flex:1">Claim in the brief</span><span style="width:250px">Backed by</span><span style="width:76px">Conf.</span></div><div class="lr"><span class="cl">"US + UK founders reply <b>3.1x</b> more at 10:00 local"</span><span class="src">send logs &middot; n=2,140</span><span class="cf">98%</span></div><div class="lr"><span class="cl">"One-trigger openers beat templates <b>4.4x</b>"</span><span class="src">201 A/B sends &middot; 10 days</span><span class="cf">96%</span></div><div class="lr"><span class="cl">"62-word emails book the most calls"</span><span class="src">winner set &middot; n=7</span><span class="cf">91%</span></div><div class="lr"><span class="cl">"31% of my pipe was outside ICP"</span><span class="src">CRM scan &middot; 214 deals</span><span class="cf">99%</span></div><div class="lr"><span class="cl">"Follow-up 2 wins 58% of the meetings"</span><span class="src">thread analysis &middot; 90d</span><span class="cf">94%</span></div><div class="lr"><span class="cl">"Warm domains inbox at <b>99.2%</b>"</span><span class="src">4-domain ramp &middot; 6 wks</span><span class="cf">97%</span></div><div class="lr"><span class="cl">"Stale deals die after day 34"</span><span class="src">cohort decay curve</span><span class="cf">89%</span></div><div class="lr"><span class="cl">"Deep tier only pays off on objections"</span><span class="src">cost per close &middot; 60d</span><span class="cf">92%</span></div></div>
+<div class="main"><div class="led"><div class="lhd"><span style="flex:1">Claim in the brief</span><span style="width:238px">Backed by</span><span style="width:70px">Conf.</span></div><div class="lr"><span class="cl">"US + UK founders reply <b>3.1x</b> more at 10:00 local"</span><span class="src">send logs &middot; n=2,140</span><span class="cf"><span>98%</span></span></div><div class="lr"><span class="cl">"One-trigger openers beat templates <b>4.4x</b>"</span><span class="src">201 A/B sends &middot; 10 days</span><span class="cf"><span>96%</span></span></div><div class="lr"><span class="cl">"62-word emails book the most calls"</span><span class="src">winner set &middot; n=7</span><span class="cf"><span>91%</span></span></div><div class="lr"><span class="cl">"31% of my pipe was outside ICP"</span><span class="src">CRM scan &middot; 214 deals</span><span class="cf"><span>99%</span></span></div><div class="lr"><span class="cl">"Follow-up 2 wins 58% of the meetings"</span><span class="src">thread analysis &middot; 90d</span><span class="cf"><span>94%</span></span></div><div class="lr"><span class="cl">"Warm domains inbox at <b>99.2%</b>"</span><span class="src">4-domain ramp &middot; 6 wks</span><span class="cf"><span>97%</span></span></div><div class="lr"><span class="cl">"Stale deals die after day 34"</span><span class="src">cohort decay curve</span><span class="cf"><span>89%</span></span></div><div class="lr"><span class="cl">"Deep tier only pays off on objections"</span><span class="src">cost per close &middot; 60d</span><span class="cf"><span>92%</span></span></div></div>
 <div class="share">
-<div class="card8"><div class="h">Instead of screenshots</div><div class="v">1</div><div class="k">live link. Every number clicks through to its source run.</div></div>
-<div class="link"><div class="h">Shared with my co-founder</div><div class="u">work.51ultron.com/brief/q3-outbound</div><div class="d">He challenged claim 4. The link settled it in <b>one click</b>.</div></div>
+<div class="ivory iv glow"><span class="v">1</span><div class="k">live link instead of 30 screenshots. Every number clicks to its source run.</div></div>
+<div class="solid link"><div class="h">Shared with my co-founder</div><div class="u">work.51ultron.com/brief/q3-outbound</div><div class="d">He challenged claim 4. The link settled it in <b>one click</b>.</div></div>
 <div class="card8"><div class="h">In the brief</div><div class="v">40</div><div class="k">sources cited across 8 claims, stamped with run IDs</div></div>
 </div></div>
-<div class="cta"><span class="ph">Comment <b>PROOF</b> and I will send you the evidence-brief template</span><span class="send"><svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div>
+<div class="cta"><span class="ph">Comment <b>PROOF</b> and I will send you the evidence-brief template</span><span class="pl">PROOF <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#151210" stroke-width="3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
 <div class="ftr"><div class="fl"><img class="flogo" src="__LOGO__"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span></div><span class="furl">51ultron<em>.</em>com</span></div>
 </div></body></html>
