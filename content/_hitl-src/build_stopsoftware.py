@@ -6,7 +6,8 @@ import importlib.util
 spec=importlib.util.spec_from_file_location("T2","/home/user/tiberiu-claude/content/_hitl-src/build_team_3d.py")
 T2=importlib.util.module_from_spec(spec); spec.loader.exec_module(T2)
 wo=lambda s:(s,T2.WHITE); co=lambda s:(s,T2.CORAL); mu=lambda s:(s,T2.MUTED)
-M=f"{T2.OBJ}/models_25d"; LIB=T2.LIB
+M="/home/user/tiberiu-claude/content/_hitl-src/models_clay/stopsoftware"; LIB=T2.LIB
+PREMIUM=1   # coded clay3d panels (operator 2026-07-02): full control, no Vertex
 T2.ACCENT=(212,162,127); T2.CORAL=T2.ACCENT   # per-material accent (anti-sameness)
 T2.COVER_OBJ="/home/user/tiberiu-claude/content/_hitl-src/covers/stopsoftware.png"  # Vertex real-logo cover visual
 T2.OBJ_THR=30   # front-on 2.5D windows: whole window+shadow bbox

@@ -27,4 +27,4 @@ T2.CONTENT=[
 T2.CTA=("RUN IT SOLO", [[wo("Run it solo,")],[co("comment OPERATOR.")]], f"{LIB}/cta3d-operator.png", 0.92)
 T2.CLOSE=dict(l1="Save this to",l2="run lean.",q="Which hire would you skip first?")
 
-MARK2="claude"
+MARK2="strip"   # contextual: materialul e despre stack-ul de tool-uri inlocuit

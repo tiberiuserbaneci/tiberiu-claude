@@ -409,7 +409,13 @@ def anchor(base,stem,light):
 def place_prem(base,objpath,light):
     # PREMIUM Vertex panel, uniform frame on every slide (operator 2026-07-02): rounded charcoal
     # plate, FIXED width + FIXED top Y, same orthographic view -> the deck reads as one family.
-    im=Image.open(objpath).convert("RGB")
+    im0=Image.open(objpath)
+    if im0.mode=="RGBA" and im0.getextrema()[3][0]<250:
+        # coded clay3d panel with REAL alpha: composite as-is (it carries its own shadow),
+        # centred on its solid body at the same fixed zone as every other slide
+        T2.place_in_zone(base,im0,(90,664,W-90,1264),fill=1.0)
+        return
+    im=im0.convert("RGB")
     a=np.asarray(im).astype(int); h,w=a.shape[:2]; area=h*w
     cs=np.concatenate([a[:48,:48].reshape(-1,3),a[:48,-48:].reshape(-1,3),a[-48:,:48].reshape(-1,3),a[-48:,-48:].reshape(-1,3)])
     bgm=np.median(cs,0).astype(int); diff=np.abs(a-bgm).sum(2); bbox=None
