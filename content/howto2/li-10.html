@@ -1,77 +1,48 @@
 <!DOCTYPE html><html><head><meta charset="UTF-8"><style>
 @import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
-:root{--slate:#161615;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);
---rule:rgba(250,250,247,.09);--book:#CC785C;--bdark:#C84623;--kraft:#D4A27F;--ok:#5ea884;--mut:#8b857d;
---dark:#1a0f0a;}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{background:#0b0b0a;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;color:var(--ivory);}
-.frame{width:1080px;height:1450px;background:var(--slate);padding:30px 42px 20px;position:relative;overflow:hidden;display:flex;flex-direction:column;}
-.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.055) 1.4px,transparent 1.5px);background-size:30px 30px;}
-.atm{position:absolute;inset:0;pointer-events:none;z-index:1;
-background:radial-gradient(ellipse 62% 26% at 88% -4%,rgba(200,70,35,.30) 0%,transparent 62%),
-radial-gradient(ellipse 40% 20% at 4% 104%,rgba(212,162,127,.12) 0%,transparent 60%);}
-.frame>*{position:relative;z-index:2;}
-.mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding-bottom:11px;border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;}
-.mast .ml{color:var(--ink46);}.mast .ml em{color:var(--book);font-style:normal;}.mast .mr{color:var(--ink70);}
-.hook{margin-top:18px;font-weight:900;font-size:64px;line-height:.99;letter-spacing:-2.4px;flex-shrink:0;}
-.hook em{color:var(--book);font-style:normal;text-shadow:0 0 44px rgba(204,120,92,.5);}
-.sub{margin-top:12px;font-size:20px;font-weight:500;line-height:1.3;color:var(--ink70);flex-shrink:0;max-width:960px;}.sub b{color:var(--ivory);font-weight:700;}
-.main{flex:1;min-height:0;margin-top:18px;display:flex;gap:14px;}
-/* v3 components */
-.solid{background:linear-gradient(160deg,#D0805F 0%,#C84623 78%);border-radius:20px;color:var(--ivory);box-shadow:0 24px 70px rgba(200,70,35,.35);}
-.ivory{background:var(--ivory);border-radius:20px;color:#151210;box-shadow:0 24px 60px rgba(0,0,0,.5);}
-.dcard{background:linear-gradient(180deg,#232321,#1b1b1a);border:1px solid rgba(250,250,247,.10);border-radius:18px;box-shadow:inset 0 1px 0 rgba(250,250,247,.07),0 14px 34px rgba(0,0,0,.35);}
-.pill{display:inline-flex;align-items:center;gap:10px;background:var(--ivory);color:#151210;border-radius:999px;font-weight:800;box-shadow:0 8px 26px rgba(0,0,0,.4);}
-.glow{position:relative;}
-.glow::before{content:'';position:absolute;left:50%;top:50%;width:130%;height:130%;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(204,120,92,.28),transparent);z-index:-1;}
-.cta{flex-shrink:0;margin-top:14px;display:flex;align-items:center;gap:18px;background:linear-gradient(160deg,#D0805F,#C84623);border-radius:18px;padding:15px 15px 15px 26px;box-shadow:0 20px 60px rgba(200,70,35,.35);}
-.cta .ph{flex:1;font-size:22px;font-weight:700;color:rgba(255,252,248,.94);}.cta .ph b{color:#fff;font-weight:900;}
-.cta .pl{background:var(--ivory);color:#151210;border-radius:999px;padding:13px 26px;font-weight:900;font-size:18px;flex-shrink:0;display:flex;align-items:center;gap:9px;}
-.ftr{flex-shrink:0;margin-top:12px;padding-top:10px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;}
-.fl{display:flex;align-items:center;gap:11px;}.flogo{width:28px;height:28px;border-radius:50%;object-fit:cover;}
-.ftx{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink70);}.ftx b{color:var(--ivory);font-weight:500;}
-.furl{font-weight:900;font-size:20px;letter-spacing:-.5px;}.furl em{color:var(--book);font-style:normal;}
-
-.grid{flex:1;display:flex;flex-direction:column;border-radius:20px;background:#1d1d1c;overflow:hidden;border:1px solid rgba(250,250,247,.08);box-shadow:0 20px 50px rgba(0,0,0,.4);}
-.ghd{display:flex;background:linear-gradient(160deg,#D0805F,#C84623);padding:12px 18px;font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#fff;gap:12px;font-weight:500;}
-.gr{flex:1;display:flex;align-items:center;gap:12px;padding:0 18px;border-top:1px solid rgba(250,250,247,.06);}
-.gr:nth-child(odd){background:#212120;}
-.gr .co{width:150px;font-weight:800;font-size:16.5px;flex-shrink:0;}
-.gr .co small{display:block;font-weight:500;font-size:12px;color:var(--ink46);font-family:'DM Mono',monospace;margin-top:2px;}
-.gr .bar{flex:1;height:12px;border-radius:6px;background:rgba(250,250,247,.08);overflow:hidden;}
-.gr .bar i{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,#D4A27F,#C84623);}
-.gr .sc{width:46px;font-family:'DM Mono',monospace;font-size:15px;color:var(--kraft);flex-shrink:0;text-align:right;}
-.gr .vd{width:110px;flex-shrink:0;font-family:'DM Mono',monospace;font-size:11.5px;border-radius:999px;padding:5px 0;text-align:center;font-weight:500;}
-.vd.now{color:#0f1a14;background:var(--ok);}
-.vd.warm{color:#151210;background:var(--kraft);}
-.vd.skip{color:var(--mut);border:1px solid var(--rule);}
-.gr.top{background:var(--ivory);}
-.gr.top .co{color:#151210;}.gr.top .co small{color:#8d8479;}
-.gr.top .bar{background:#e9e2d8;}.gr.top .sc{color:#a5613f;}
-.rail{width:256px;display:flex;flex-direction:column;gap:12px;}
-.iv{padding:18px;}
-.iv .v{font-size:104px;font-weight:900;letter-spacing:-6px;line-height:.88;color:#C84623;}
-.iv .k{margin-top:8px;font-size:15px;font-weight:700;color:#3a332e;line-height:1.28;}
-.sol{padding:15px 18px;}
-.sol .v{font-size:56px;font-weight:900;color:#fff;letter-spacing:-2px;line-height:.95;}
-.sol .k{margin-top:6px;font-size:14px;color:rgba(255,252,248,.9);line-height:1.25;}
-.sig{background:linear-gradient(180deg,#232321,#1b1b1a);border:1px solid var(--rule);border-radius:16px;padding:13px 16px;flex:1;}
-.sig .h{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink46);margin-bottom:6px;}
-.sig .r{font-size:13.5px;color:var(--ink70);padding:5px 0;border-top:1px solid var(--rule);line-height:1.25;}
-.sig .r b{color:var(--ivory);}
-
-</style></head><body><div class="frame" id="artifact"><div class="atm"></div>
-<div class="mast"><span class="ml">HOW TO <em>&middot;</em> AI-INDEX <em>&middot;</em> ULTRON</span><span class="mr">USE CASE 10</span></div>
-<div class="hook">I scored <em>40 companies</em> on AI-readiness in an hour.</div><div class="sub">Stop guessing who is ready to buy. The index reads public signals and ranks your whole list, call-now first.</div>
-<div class="main"><div class="grid"><div class="ghd"><span style="width:150px">Account</span><span style="flex:1">AI-readiness</span><span style="width:46px;text-align:right">Score</span><span style="width:110px;text-align:center">Verdict</span></div><div class="gr top"><span class="co">Northwind<small>IT services · 34 ppl</small></span><span class="bar"><i style="width:86%"></i></span><span class="sc">86</span><span class="vd now">CALL NOW</span></div><div class="gr"><span class="co">Globex<small>software · 22 ppl</small></span><span class="bar"><i style="width:81%"></i></span><span class="sc">81</span><span class="vd now">CALL NOW</span></div><div class="gr"><span class="co">Initech<small>consulting · 41 ppl</small></span><span class="bar"><i style="width:74%"></i></span><span class="sc">74</span><span class="vd warm">WARM</span></div><div class="gr"><span class="co">Stark Labs<small>software · 12 ppl</small></span><span class="bar"><i style="width:70%"></i></span><span class="sc">70</span><span class="vd warm">WARM</span></div><div class="gr"><span class="co">Umbrella<small>IT services · 48 ppl</small></span><span class="bar"><i style="width:63%"></i></span><span class="sc">63</span><span class="vd warm">WARM</span></div><div class="gr"><span class="co">Hooli<small>agency · 19 ppl</small></span><span class="bar"><i style="width:52%"></i></span><span class="sc">52</span><span class="vd skip">NURTURE</span></div><div class="gr"><span class="co">Wayne Co<small>consulting · 26 ppl</small></span><span class="bar"><i style="width:41%"></i></span><span class="sc">41</span><span class="vd skip">NURTURE</span></div><div class="gr"><span class="co">Oscorp<small>hardware · 44 ppl</small></span><span class="bar"><i style="width:28%"></i></span><span class="sc">28</span><span class="vd skip">SKIP</span></div></div>
-<div class="rail">
-<div class="ivory iv glow"><span class="v">40</span><div class="k">accounts scored in one run, 62 minutes</div></div>
-<div class="solid sol"><div class="v">2</div><div class="k">call-now targets I would have found in week 3</div></div>
-<div class="sig"><div class="h">Signals in the score</div>
-<div class="r">hiring for <b>ops / RevOps</b></div><div class="r">stack has <b>no AI layer</b></div>
-<div class="r">founder posts about <b>scaling pain</b></div><div class="r">raised in last <b>18 months</b></div>
-<div class="r">2-50 seats &middot; <b>ICP band</b></div></div>
-</div></div>
-<div class="cta"><span class="ph">Comment <b>INDEX</b> and I will send you the AI-readiness rubric + the scoring run</span><span class="pl">INDEX <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#151210" stroke-width="3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
-<div class="ftr"><div class="fl"><img class="flogo" src="__LOGO__"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span></div><span class="furl">51ultron<em>.</em>com</span></div>
+body{background:#d9d2c4;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;color:#17150F;}
+.frame{width:1080px;height:1450px;background:#F6F1E7;position:relative;overflow:hidden;display:flex;flex-direction:column;padding:28px 36px 0;}
+.frame::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(23,21,15,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,15,.045) 1px,transparent 1px);background-size:40px 40px;}
+.frame>*{position:relative;}
+.hdr{flex-shrink:0;display:flex;align-items:center;gap:14px;}
+.hdr svg{width:50px;height:50px;flex-shrink:0;}
+.hdr .t{font-weight:900;font-size:46px;letter-spacing:-1.8px;}
+.hdr .t em{font-style:normal;color:#C84623;}
+.sub{flex-shrink:0;margin:5px 0 0 64px;font-size:17.5px;font-weight:600;color:#5d564a;}
+.sub b{background:#EED9A3;padding:1px 7px;border-radius:5px;color:#17150F;}
+.gridw{flex:1;min-height:0;margin-top:12px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:11px;}
+.cell{background:#FDFAF3;border:1.5px solid #d8cdb8;border-radius:14px;padding:11px 13px;display:flex;flex-direction:column;box-shadow:0 3px 0 rgba(23,21,15,.08);}
+.cell .top{display:flex;align-items:center;gap:8px;}
+.cell .num{width:25px;height:25px;border-radius:50%;color:#fff;font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cell .tt{font-weight:900;font-size:17.5px;letter-spacing:-.3px;}
+.mb{display:flex;gap:7px;align-items:flex-start;margin-top:5px;font-size:12.5px;color:#57503f;line-height:1.28;}
+.mb b{color:#17150F;}
+.mb .d{flex-shrink:0;width:15px;height:15px;border-radius:50%;background:#e5dbc6;color:#57503f;font-size:9.5px;font-weight:900;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+.pb{margin-top:auto;background:#1B1A16;border-radius:9px;padding:8px 10px;display:flex;gap:8px;align-items:flex-start;}
+.pb .c{flex:1;font-family:'DM Mono',monospace;font-size:11px;line-height:1.42;color:#E8D9C4;}
+.pb .c i{color:#E8845F;font-style:normal;}
+.pb .go{width:20px;height:20px;border-radius:50%;background:#C84623;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.pb .go svg{width:10px;height:10px;stroke:#fff;stroke-width:3;fill:none;stroke-linecap:round;}
+.pbl{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.12em;color:#a5613f;text-transform:uppercase;margin:7px 0 3px;}
+.band9{flex-shrink:0;margin-top:12px;background:#17150F;border-radius:14px;padding:12px 16px;display:flex;align-items:center;gap:12px;color:#F6F1E7;}
+.band9 .n9{width:26px;height:26px;border-radius:50%;background:#C84623;color:#fff;font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.band9 .t9{font-weight:900;font-size:16.5px;flex-shrink:0;}
+.b9s{flex:1;display:flex;align-items:center;gap:8px;}
+.b9c{flex:1;background:#242219;border:1px solid rgba(246,241,231,.14);border-radius:9px;padding:6px 10px;}
+.b9c .k{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.13em;color:#E8A17F;text-transform:uppercase;}
+.b9c .v{font-size:12px;color:rgba(246,241,231,.8);margin-top:1px;}
+.b9a{flex-shrink:0;color:#8d8371;font-weight:900;}
+.ftr{flex-shrink:0;height:50px;margin:12px -36px 0;background:#F6F1E7;border-top:2px solid #17150F;display:flex;align-items:center;justify-content:space-between;padding:0 56px;}
+.ftr .l{font-size:15.5px;font-weight:600;color:#3d3427;}.ftr .l b{font-weight:900;color:#C84623;}
+.ftr .r{display:flex;align-items:center;gap:9px;font-size:15.5px;font-weight:600;color:#3d3427;}
+.ftr .r img{width:25px;height:25px;border-radius:50%;}
+.ftr .r b{font-weight:900;color:#17150F;}
+</style></head><body>
+<div class="frame" id="artifact">
+<div class="hdr"><svg viewBox="0 0 100 100"><g fill="#C84623"><path d="M50 4 L56 38 L50 50 L44 38 Z"/><path d="M50 96 L56 62 L50 50 L44 62 Z"/><path d="M4 50 L38 44 L50 50 L38 56 Z"/><path d="M96 50 L62 44 L50 50 L62 56 Z"/><path d="M17 17 L44 40 L50 50 L38 46 Z"/><path d="M83 83 L56 60 L50 50 L62 54 Z"/><path d="M83 17 L60 44 L50 50 L54 38 Z"/><path d="M17 83 L40 56 L50 50 L46 62 Z"/></g></svg><span class="t">How to score <em>40 companies</em> on AI-readiness</span></div>
+<div class="sub">9 steps, one run, <b>62 minutes</b>. Stop guessing who is ready to buy.</div>
+<div class="gridw"><div class="cell"><div class="top"><span class="num" style="background:#C84623">1</span><span class="tt">Drop your list.</span></div><div class="mb"><span class="d">1</span><span><b>40 accounts</b>, straight from your CRM export.</span></div><div class="mb"><span class="d">2</span><span>Or say the niche and <b>CORTEX builds the list</b>.</span></div><div class="pbl">PASTE THIS</div><div class="pb"><span class="c"><i>&gt;</i> score my list on AI-readiness. CSV attached. Rank call-now first.</span><span class="go"><svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span></div></div><div class="cell"><div class="top"><span class="num" style="background:#CC785C">2</span><span class="tt">It reads the signals.</span></div><div class="mb"><span class="d">1</span><span><b>Hiring</b> for ops / RevOps roles.</span></div><div class="mb"><span class="d">2</span><span>Stack has <b>no AI layer</b> yet.</span></div><div class="mb"><span class="d">3</span><span>Founder posts about <b>scaling pain</b>.</span></div><div class="mb"><span class="d">4</span><span>Raised in the last <b>18 months</b>.</span></div></div><div class="cell"><div class="top"><span class="num" style="background:#B98A5F">3</span><span class="tt">Every account scored.</span></div><div class="mb"><span class="d">1</span><span>0-100, from <b>public data only</b>.</span></div><div class="mb"><span class="d">2</span><span>Scored against <b>your ICP band</b>, not a generic one.</span></div><div class="pbl">THE OUTPUT</div><div class="pb"><span class="c">Northwind 86 &middot; Globex 81 &middot; Initech 74 &middot; Stark 70 &middot; ...</span><span class="go"><svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span></div></div><div class="cell"><div class="top"><span class="num" style="background:#3f7d5c">4</span><span class="tt">Verdicts, not vibes.</span></div><div class="mb"><span class="d">1</span><span><b>CALL NOW</b> &middot; 2 accounts, ready to buy.</span></div><div class="mb"><span class="d">2</span><span><b>WARM</b> &middot; 3 accounts, nurture + re-score.</span></div><div class="mb"><span class="d">3</span><span><b>SKIP</b> &middot; 3 accounts, not this quarter.</span></div></div><div class="cell"><div class="top"><span class="num" style="background:#211F1A">5</span><span class="tt">Briefs attached.</span></div><div class="mb"><span class="d">1</span><span>Each call-now account ships with a <b>1-page brief</b>.</span></div><div class="mb"><span class="d">2</span><span>Champion, signals, opener angle, <b>next step</b>.</span></div><div class="pbl">PASTE THIS</div><div class="pb"><span class="c"><i>&gt;</i> brief me on Northwind before the call.</span><span class="go"><svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span></div></div><div class="cell"><div class="top"><span class="num" style="background:#C84623">6</span><span class="tt">The week-3 test.</span></div><div class="mb"><span class="d">1</span><span>Manual research finds these in <b>week 3</b>.</span></div><div class="mb"><span class="d">2</span><span>The index found both call-nows <b>before lunch</b>.</span></div><div class="mb"><span class="d">3</span><span>62 minutes, <b>40 accounts</b>, zero tabs.</span></div></div><div class="cell"><div class="top"><span class="num" style="background:#CC785C">7</span><span class="tt">Wire the outreach.</span></div><div class="mb"><span class="d">1</span><span>SPECTER drafts openers <b>for call-nows only</b>.</span></div><div class="mb"><span class="d">2</span><span>One trigger each, from the brief.</span></div><div class="pbl">PASTE THIS</div><div class="pb"><span class="c"><i>&gt;</i> draft openers for the call-now accounts.</span><span class="go"><svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span></div></div><div class="cell"><div class="top"><span class="num" style="background:#B98A5F">8</span><span class="tt">Gate before send.</span></div><div class="mb"><span class="d">1</span><span>Everything parks at the <b>human gate</b>.</span></div><div class="mb"><span class="d">2</span><span>You read, you tap, <b>then</b> it moves.</span></div></div><div class="cell"><div class="top"><span class="num" style="background:#3f7d5c">9</span><span class="tt">Re-run weekly.</span></div><div class="mb"><span class="d">1</span><span>Scores <b>decay and spike</b> with the news.</span></div><div class="mb"><span class="d">2</span><span>A warm account crossing 80 <b>pings you</b>.</span></div><div class="pbl">SET ONCE</div><div class="pb"><span class="c"><i>&gt;</i> re-score every Monday 07:00. Ping me on movers.</span><span class="go"><svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span></div></div></div>
+<div class="band9"><span class="n9">&#10003;</span><span class="t9">The loop, on autopilot.</span><div class="b9s"><div class="b9c"><div class="k">Score</div><div class="v">40 accounts, weekly</div></div><span class="b9a">&rarr;</span><div class="b9c"><div class="k">Rank</div><div class="v">call-now first</div></div><span class="b9a">&rarr;</span><div class="b9c"><div class="k">Brief</div><div class="v">1 page per target</div></div><span class="b9a">&rarr;</span><div class="b9c"><div class="k">Call</div><div class="v">you, at the right time</div></div></div></div>
+<div class="ftr"><span class="l">Comment <b>INDEX</b> and I will send you the rubric + the run</span><span class="r"><img src="__LOGO__"><span><b>ULTRON</b> &middot; 51ultron.com</span></span></div>
 </div></body></html>

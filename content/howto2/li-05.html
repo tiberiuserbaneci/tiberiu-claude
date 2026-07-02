@@ -1,74 +1,63 @@
 <!DOCTYPE html><html><head><meta charset="UTF-8"><style>
 @import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
-:root{--slate:#161615;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);
---rule:rgba(250,250,247,.09);--book:#CC785C;--bdark:#C84623;--kraft:#D4A27F;--ok:#5ea884;--mut:#8b857d;
---dark:#1a0f0a;}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{background:#0b0b0a;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;color:var(--ivory);}
-.frame{width:1080px;height:1450px;background:var(--slate);padding:30px 42px 20px;position:relative;overflow:hidden;display:flex;flex-direction:column;}
-.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.055) 1.4px,transparent 1.5px);background-size:30px 30px;}
-.atm{position:absolute;inset:0;pointer-events:none;z-index:1;
-background:radial-gradient(ellipse 62% 26% at 88% -4%,rgba(200,70,35,.30) 0%,transparent 62%),
-radial-gradient(ellipse 40% 20% at 4% 104%,rgba(212,162,127,.12) 0%,transparent 60%);}
-.frame>*{position:relative;z-index:2;}
-.mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding-bottom:11px;border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;}
-.mast .ml{color:var(--ink46);}.mast .ml em{color:var(--book);font-style:normal;}.mast .mr{color:var(--ink70);}
-.hook{margin-top:18px;font-weight:900;font-size:64px;line-height:.99;letter-spacing:-2.4px;flex-shrink:0;}
-.hook em{color:var(--book);font-style:normal;text-shadow:0 0 44px rgba(204,120,92,.5);}
-.sub{margin-top:12px;font-size:20px;font-weight:500;line-height:1.3;color:var(--ink70);flex-shrink:0;max-width:960px;}.sub b{color:var(--ivory);font-weight:700;}
-.main{flex:1;min-height:0;margin-top:18px;display:flex;gap:14px;}
-/* v3 components */
-.solid{background:linear-gradient(160deg,#D0805F 0%,#C84623 78%);border-radius:20px;color:var(--ivory);box-shadow:0 24px 70px rgba(200,70,35,.35);}
-.ivory{background:var(--ivory);border-radius:20px;color:#151210;box-shadow:0 24px 60px rgba(0,0,0,.5);}
-.dcard{background:linear-gradient(180deg,#232321,#1b1b1a);border:1px solid rgba(250,250,247,.10);border-radius:18px;box-shadow:inset 0 1px 0 rgba(250,250,247,.07),0 14px 34px rgba(0,0,0,.35);}
-.pill{display:inline-flex;align-items:center;gap:10px;background:var(--ivory);color:#151210;border-radius:999px;font-weight:800;box-shadow:0 8px 26px rgba(0,0,0,.4);}
-.glow{position:relative;}
-.glow::before{content:'';position:absolute;left:50%;top:50%;width:130%;height:130%;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(204,120,92,.28),transparent);z-index:-1;}
-.cta{flex-shrink:0;margin-top:14px;display:flex;align-items:center;gap:18px;background:linear-gradient(160deg,#D0805F,#C84623);border-radius:18px;padding:15px 15px 15px 26px;box-shadow:0 20px 60px rgba(200,70,35,.35);}
-.cta .ph{flex:1;font-size:22px;font-weight:700;color:rgba(255,252,248,.94);}.cta .ph b{color:#fff;font-weight:900;}
-.cta .pl{background:var(--ivory);color:#151210;border-radius:999px;padding:13px 26px;font-weight:900;font-size:18px;flex-shrink:0;display:flex;align-items:center;gap:9px;}
-.ftr{flex-shrink:0;margin-top:12px;padding-top:10px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;}
-.fl{display:flex;align-items:center;gap:11px;}.flogo{width:28px;height:28px;border-radius:50%;object-fit:cover;}
-.ftx{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink70);}.ftx b{color:var(--ivory);font-weight:500;}
-.furl{font-weight:900;font-size:20px;letter-spacing:-.5px;}.furl em{color:var(--book);font-style:normal;}
-
-.score{width:286px;display:flex;flex-direction:column;gap:12px;}
-.big{padding:20px;display:flex;flex-direction:column;justify-content:center;}
-.big .v{font-size:150px;font-weight:900;letter-spacing:-9px;color:#C84623;line-height:.85;}
-.big .of{font-size:24px;color:#9b9084;font-weight:800;}
-.big .k{margin-top:10px;font-size:15px;font-weight:700;color:#3a332e;line-height:1.3;}
-.sent{padding:14px 17px;}
-.sent .h{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.78);margin-bottom:7px;}
-.sent .q{font-family:'DM Mono',monospace;font-size:17px;color:#fff;}
-.leg{background:linear-gradient(180deg,#232321,#1b1b1a);border:1px solid var(--rule);border-radius:18px;padding:13px 16px;flex:1;}
-.leg .h{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink46);margin-bottom:6px;}
-.leg .r{display:flex;align-items:center;gap:9px;font-size:14.5px;color:var(--ink70);padding:6px 0;}
-.leg .sw{width:13px;height:13px;border-radius:4px;flex-shrink:0;}
-.list{flex:1;display:flex;flex-direction:column;border-radius:20px;background:#1d1d1c;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.4);border:1px solid rgba(250,250,247,.08);}
-.lhd{background:linear-gradient(160deg,#D0805F,#C84623);padding:13px 18px;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:#fff;font-weight:500;}
-.li{flex:1;display:flex;align-items:center;gap:13px;padding:0 18px;border-top:1px solid rgba(250,250,247,.06);}
-.li:nth-child(odd){background:#212120;}
-.li .n{width:168px;font-weight:800;font-size:17px;}
-.li .bar{width:150px;height:11px;border-radius:6px;background:rgba(250,250,247,.08);overflow:hidden;flex-shrink:0;}
-.li .bar i{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,#D4A27F,#C84623);}
-.li .sc{width:42px;font-family:'DM Mono',monospace;font-size:15px;color:var(--kraft);flex-shrink:0;}
-.li .fx{flex:1;font-size:14.5px;color:var(--ink70);line-height:1.22;}.li .fx b{color:var(--ivory);}
-.li .vd{flex-shrink:0;font-family:'DM Mono',monospace;font-size:11.5px;border-radius:999px;padding:5px 12px;font-weight:500;}
-.vd.keep{color:#0f1a14;background:var(--ok);}
-.vd.fix{color:#fff;background:#C84623;}
-
-</style></head><body><div class="frame" id="artifact"><div class="atm"></div>
-<div class="mast"><span class="ml">HOW TO <em>&middot;</em> THE AUDIT <em>&middot;</em> ULTRON</span><span class="mr">USE CASE 05</span></div>
-<div class="hook">I audited my <em>whole GTM</em> with one sentence.</div><div class="sub">Three words in, a scored teardown of my real funnel out: 8 checks, a verdict each, and the exact fix.</div>
-<div class="main"><div class="list"><div class="lhd">The 8 checks it ran on my real funnel</div><div class="li"><span class="n">Positioning</span><span class="bar"><i style="width:72%"></i></span><span class="sc">72</span><span class="fx">niche is clear, proof is thin: add 2 case studies</span><span class="vd keep">KEEP</span></div><div class="li"><span class="n">ICP match</span><span class="bar"><i style="width:58%"></i></span><span class="sc">58</span><span class="fx">31% of pipeline is <b>outside</b> the 2-50 band</span><span class="vd fix">FIX</span></div><div class="li"><span class="n">Outbound</span><span class="bar"><i style="width:44%"></i></span><span class="sc">44</span><span class="fx">generic openers: one trigger per email, 62 words</span><span class="vd fix">FIX</span></div><div class="li"><span class="n">Follow-up</span><span class="bar"><i style="width:39%"></i></span><span class="sc">39</span><span class="fx"><b>68% of threads die</b> after touch 1: cadence on</span><span class="vd fix">FIX</span></div><div class="li"><span class="n">Pricing</span><span class="bar"><i style="width:70%"></i></span><span class="sc">70</span><span class="fx">page converts, add the cents-per-run math</span><span class="vd keep">KEEP</span></div><div class="li"><span class="n">Content</span><span class="bar"><i style="width:66%"></i></span><span class="sc">66</span><span class="fx">posting random days: fix 10:00 cadence</span><span class="vd fix">FIX</span></div><div class="li"><span class="n">Pipeline hygiene</span><span class="bar"><i style="width:51%"></i></span><span class="sc">51</span><span class="fx">14 deals stale &gt;30 days: kill or revive</span><span class="vd fix">FIX</span></div><div class="li"><span class="n">Deliverability</span><span class="bar"><i style="width:83%"></i></span><span class="sc">83</span><span class="fx">domains warm, keep the ramp</span><span class="vd keep">KEEP</span></div></div>
-<div class="score">
-<div class="solid sent"><div class="h">What I typed</div><div class="q">&gt; audit my GTM</div></div>
-<div class="ivory big glow"><div><span class="v">61</span><span class="of">/100</span></div><div class="k">funnel score, computed from my live pipeline + send logs</div></div>
-<div class="leg"><div class="h">Verdict spread</div>
-<div class="r"><span class="sw" style="background:var(--ok)"></span>3 keep working</div>
-<div class="r"><span class="sw" style="background:#C84623"></span>5 fix this week</div>
-<div class="r"><span class="sw" style="background:rgba(250,250,247,.3)"></span>each with the exact fix</div></div>
-</div></div>
-<div class="cta"><span class="ph">Comment <b>AUDIT</b> and I will send you the audit sentence + the 8-check rubric</span><span class="pl">AUDIT <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#151210" stroke-width="3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
-<div class="ftr"><div class="fl"><img class="flogo" src="__LOGO__"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span></div><span class="furl">51ultron<em>.</em>com</span></div>
+body{background:#d9d2c4;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;color:#17150F;}
+.frame{width:1080px;height:1450px;background:#F5F0E6;position:relative;overflow:hidden;display:flex;flex-direction:column;padding:30px 34px 0;}
+.frame::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(23,21,15,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,15,.05) 1px,transparent 1px);background-size:38px 38px;}
+.frame>*{position:relative;}
+.hdr{flex-shrink:0;display:flex;align-items:center;gap:14px;}
+.hdr svg{width:52px;height:52px;flex-shrink:0;}
+.hdr .t{font-weight:900;font-size:45px;letter-spacing:-1.7px;}
+.hdr .t em{font-style:normal;color:#C84623;}
+.sub{flex-shrink:0;margin:6px 0 0 66px;font-size:17.5px;font-weight:600;color:#5d564a;}
+.sub b{color:#C84623;}
+.eras{flex-shrink:0;display:flex;gap:10px;margin-top:12px;}
+.era{flex:1;background:#FDFAF3;border:1.5px solid #d8cdb8;border-radius:12px;padding:9px 12px;}
+.era .k{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8d8371;}
+.era .n{font-weight:900;font-size:18px;margin-top:2px;}
+.era .d{font-size:12px;color:#6b6357;margin-top:2px;line-height:1.25;}
+.grid{flex:1;min-height:0;margin-top:12px;display:flex;gap:88px;position:relative;}
+.gcol{flex:1;display:flex;flex-direction:column;gap:11px;min-width:0;}
+.spine{position:absolute;left:50%;top:8px;bottom:8px;transform:translateX(-50%);width:64px;}
+.spine .rail{position:absolute;left:50%;top:0;bottom:0;width:38px;transform:translateX(-50%);border:3px solid #C84623;border-radius:22px;background:transparent;}
+.spine .lbl{position:absolute;top:-4px;left:50%;transform:translateX(-50%);background:#F5F0E6;padding:0 6px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.13em;color:#8d8371;white-space:nowrap;}
+.sstop{position:absolute;left:50%;transform:translateX(-50%);background:#FDFAF3;border:2px solid #17150F;border-radius:999px;padding:4px 10px;font-family:'DM Mono',monospace;font-size:11px;white-space:nowrap;display:flex;align-items:center;gap:6px;}
+.sstop i{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.sorb{position:absolute;left:50%;top:47%;transform:translate(-50%,-50%);width:96px;height:96px;border-radius:50%;background:#FDFAF3;border:3px solid #C84623;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 0 rgba(200,70,35,.16);}
+.sorb img{width:64px;height:64px;border-radius:50%;}
+.kard{flex:1;background:#FDFAF3;border:2px solid var(--bc);border-radius:14px;padding:11px 14px;display:flex;flex-direction:column;box-shadow:0 3px 0 rgba(23,21,15,.1);}
+.kard .top{display:flex;align-items:center;gap:9px;}
+.kard .num{width:26px;height:26px;border-radius:8px;background:var(--bc);color:#fff;font-weight:900;font-size:15px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.kard .sec{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--bc);font-weight:500;}
+.kard .tag{margin-left:auto;font-family:'DM Mono',monospace;font-size:10.5px;color:#8d8371;background:#F0E9DA;border-radius:6px;padding:2px 8px;white-space:nowrap;}
+.kard .tt{margin-top:5px;font-weight:900;font-size:21px;letter-spacing:-.4px;}
+.kard .bd{margin-top:3px;font-size:13px;color:#57503f;line-height:1.3;}
+.kard .bd b{color:#17150F;}
+.flow{margin-top:8px;display:flex;align-items:center;gap:6px;}
+.fstep{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:0;}
+.fico{width:40px;height:40px;border-radius:10px;background:#F0E9DA;border:1.5px solid #d8cdb8;display:flex;align-items:center;justify-content:center;}
+.fico svg{width:20px;height:20px;stroke:#17150F;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.fico.hot{background:var(--bc);border-color:var(--bc);}
+.fico.hot svg{stroke:#fff;}
+.fstep .fl{font-size:10.5px;font-weight:700;color:#57503f;white-space:nowrap;}
+.farr{flex-shrink:0;display:flex;flex-direction:column;align-items:center;margin-top:-12px;}
+.farr .al{font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.08em;color:#8d8371;text-transform:uppercase;}
+.farr svg{width:22px;height:10px;stroke:#8d8371;stroke-width:2;fill:none;stroke-linecap:round;}
+.chip{margin-top:8px;background:#F0E9DA;border:1.5px solid #d8cdb8;border-radius:8px;padding:6px 10px;font-family:'DM Mono',monospace;font-size:12.5px;color:#17150F;}
+.chip b{color:#C84623;font-weight:500;}
+.why{margin-top:7px;display:flex;gap:8px;font-size:12px;color:#57503f;line-height:1.3;}
+.why b{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--bc);flex-shrink:0;margin-top:1px;}
+.ftr{flex-shrink:0;height:52px;margin:12px -34px 0;background:#17150F;display:flex;align-items:center;justify-content:center;gap:12px;color:#F5F0E6;}
+.ftr img{width:26px;height:26px;border-radius:50%;}
+.ftr .a{font-weight:900;font-size:15.5px;}.ftr .b{font-size:14.5px;color:rgba(245,240,230,.6);}
+.ftr .kw{font-family:'DM Mono',monospace;font-size:13px;color:#E8A17F;}
+</style></head><body>
+<div class="frame" id="artifact">
+<div class="hdr"><svg viewBox="0 0 100 100"><g fill="#C84623"><path d="M50 4 L56 38 L50 50 L44 38 Z"/><path d="M50 96 L56 62 L50 50 L44 62 Z"/><path d="M4 50 L38 44 L50 50 L38 56 Z"/><path d="M96 50 L62 44 L50 50 L62 56 Z"/><path d="M17 17 L44 40 L50 50 L38 46 Z"/><path d="M83 83 L56 60 L50 50 L62 54 Z"/><path d="M83 17 L60 44 L50 50 L54 38 Z"/><path d="M17 83 L40 56 L50 50 L46 62 Z"/></g></svg><span class="t">GTM Audits, <em>Clearly Explained</em>.</span></div>
+<div class="sub">Stop guessing what is broken. One sentence scores your whole funnel. <b>Six of the 8 checks below.</b></div>
+<div class="eras"><div class="era"><div class="k">HOW IT WAS</div><div class="n">Gut feel</div><div class="d">You ship and hope. No score, no fixes.</div></div><div class="era"><div class="k">2023</div><div class="n">Dashboards</div><div class="d">Numbers you stare at. No verdicts.</div></div><div class="era"><div class="k">2024</div><div class="n">Consultants</div><div class="d">Three weeks, five figures, one deck.</div></div><div class="era"><div class="k">NOW</div><div class="n">One sentence</div><div class="d">&gt; audit my GTM. Scored teardown out.</div></div></div>
+<div class="grid"><div class="gcol"><div class="kard" style="--bc:#C84623"><div class="top"><span class="num">1</span><span class="sec">THE CHECK</span><span class="tag">score 44</span></div><div class="tt">Outbound</div><div class="bd">Openers are generic. Winners carry <b>one trigger</b> and 62 words.</div><div class="flow"><span class="fstep"><span class="fico"><svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><path d="M15 15l6 6"/></svg></span><span class="fl">Scan sends</span></span><span class="farr"><span class="al">GRADES</span><svg viewBox="0 0 24 10"><path d="M0 5h20M17 1.5 21 5l-4 3.5"/></svg></span><span class="fstep"><span class="fico hot"><svg viewBox="0 0 24 24"><path d="M4 20V9M10 20V4M16 20v-8M22 20H2"/></svg></span><span class="fl">Score 44</span></span><span class="farr"><span class="al">SHIPS</span><svg viewBox="0 0 24 10"><path d="M0 5h20M17 1.5 21 5l-4 3.5"/></svg></span><span class="fstep"><span class="fico"><svg viewBox="0 0 24 24"><path d="M13 2 5 13h6l-1 9 8-11h-6z"/></svg></span><span class="fl">Fix cadence</span></span></div><div class="chip"><b>/audit</b> outbound &middot; scored vs 2,140 sends</div><div class="why"><b>WHY</b><span>Copy quality was never the problem. The trigger was.</span></div></div><div class="kard" style="--bc:#B98A5F"><div class="top"><span class="num">3</span><span class="sec">THE CHECK</span><span class="tag">score 58</span></div><div class="tt">ICP match</div><div class="bd"><b>31% of the pipeline</b> sits outside the 2-50 band you set.</div><div class="flow"><span class="fstep"><span class="fico"><svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><path d="M15 15l6 6"/></svg></span><span class="fl">Scan CRM</span></span><span class="farr"><span class="al">31%</span><svg viewBox="0 0 24 10"><path d="M0 5h20M17 1.5 21 5l-4 3.5"/></svg></span><span class="fstep"><span class="fico hot"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></span><span class="fl">Flag misfits</span></span><span class="farr"><span class="al">CLEAN</span><svg viewBox="0 0 24 10"><path d="M0 5h20M17 1.5 21 5l-4 3.5"/></svg></span><span class="fstep"><span class="fico"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg></span><span class="fl">Requalify</span></span></div><div class="chip"><b>/audit</b> icp &middot; scored vs your CRM</div><div class="why"><b>WHY</b><span>Misfit deals eat the weeks your ICP deserves.</span></div></div><div class="kard" style="--bc:#4d8b6a"><div class="top"><span class="num">5</span><span class="sec">THE CHECK</span><span class="tag">score 83</span></div><div class="tt">Deliverability</div><div class="bd">Domains warm, <b>99.2% inboxing</b>. Keep the ramp exactly as is.</div><div class="flow"><span class="fstep"><span class="fico"><svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></span><span class="fl">4 domains</span></span><span class="farr"><span class="al">INBOX</span><svg viewBox="0 0 24 10"><path d="M0 5h20M17 1.5 21 5l-4 3.5"/></svg></span><span class="fstep"><span class="fico hot"><svg viewBox="0 0 24 24"><path d="M4 20V9M10 20V4M16 20v-8M22 20H2"/></svg></span><span class="fl">99.2%</span></span><span class="farr"><span class="al">AS IS</span><svg viewBox="0 0 24 10"><path d="M0 5h20M17 1.5 21 5l-4 3.5"/></svg></span><span class="fstep"><span class="fico"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg></span><span class="fl">Keep</span></span></div><div class="chip"><b>/audit</b> domains &middot; verdict: KEEP</div><div class="why"><b>WHY</b><span>The one green light. Everything else routes through it.</span></div></div></div>
+<div class="spine"><span class="rail"></span><span class="lbl">THE AUDIT LOOP</span><span class="sstop" style="top:6%"><i style="background:#C84623"></i>Scan</span><span class="sstop" style="top:30%"><i style="background:#B98A5F"></i>Score</span><span class="sstop" style="top:62%"><i style="background:#4d8b6a"></i>Fix</span><span class="sstop" style="top:88%"><i style="background:#C84623"></i>Re-run</span><span class="sorb"><img src="__LOGO__"></span></div>
+<div class="gcol"><div class="kard" style="--bc:#211F1A"><div class="top"><span class="num">2</span><span class="sec">THE CHECK</span><span class="tag">score 39</span></div><div class="tt">Follow-up</div><div class="bd"><b>68% of threads die</b> after touch one. The cadence never fires.</div><div class="flow"><span class="fstep"><span class="fico"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h5"/></svg></span><span class="fl">Threads</span></span><span class="farr"><span class="al">68%</span><svg viewBox="0 0 24 10"><path d="M0 5h20M17 1.5 21 5l-4 3.5"/></svg></span><span class="fstep"><span class="fico hot"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l4 3"/></svg></span><span class="fl">Die at T+1</span></span><span class="farr"><span class="al">AUTO</span><svg viewBox="0 0 24 10"><path d="M0 5h20M17 1.5 21 5l-4 3.5"/></svg></span><span class="fstep"><span class="fico"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0114-5M20 12a8 8 0 01-14 5"/><path d="M18 3v4h-4M6 21v-4h4"/></svg></span><span class="fl">Cadence on</span></span></div><div class="chip"><b>/audit</b> followup &middot; worst score of the 8</div><div class="why"><b>WHY</b><span>Meetings live in touch 2. Nobody sends touch 2.</span></div></div><div class="kard" style="--bc:#C84623"><div class="top"><span class="num">4</span><span class="sec">THE CHECK</span><span class="tag">score 51</span></div><div class="tt">Pipeline hygiene</div><div class="bd"><b>14 deals stale</b> past 30 days. Kill them or revive them.</div><div class="flow"><span class="fstep"><span class="fico"><svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><path d="M15 15l6 6"/></svg></span><span class="fl">Scan stages</span></span><span class="farr"><span class="al">30D+</span><svg viewBox="0 0 24 10"><path d="M0 5h20M17 1.5 21 5l-4 3.5"/></svg></span><span class="fstep"><span class="fico hot"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l4 3"/></svg></span><span class="fl">14 stale</span></span><span class="farr"><span class="al">TODAY</span><svg viewBox="0 0 24 10"><path d="M0 5h20M17 1.5 21 5l-4 3.5"/></svg></span><span class="fstep"><span class="fico"><svg viewBox="0 0 24 24"><path d="M13 2 5 13h6l-1 9 8-11h-6z"/></svg></span><span class="fl">Kill / revive</span></span></div><div class="chip"><b>/audit</b> pipeline &middot; decay curve attached</div><div class="why"><b>WHY</b><span>Stale deals die at day 34. Yours are at 31.</span></div></div><div class="kard" style="--bc:#B98A5F"><div class="top"><span class="num">6</span><span class="sec">THE VERDICT</span><span class="tag">61 / 100</span></div><div class="tt">The score</div><div class="bd">3 keep, 5 fix, each with the exact move. Re-run <b>every Monday</b>.</div><div class="flow"><span class="fstep"><span class="fico hot"><svg viewBox="0 0 24 24"><path d="M4 20V9M10 20V4M16 20v-8M22 20H2"/></svg></span><span class="fl">61/100</span></span><span class="farr"><span class="al">THIS WK</span><svg viewBox="0 0 24 10"><path d="M0 5h20M17 1.5 21 5l-4 3.5"/></svg></span><span class="fstep"><span class="fico"><svg viewBox="0 0 24 24"><path d="M13 2 5 13h6l-1 9 8-11h-6z"/></svg></span><span class="fl">5 fixes</span></span><span class="farr"><span class="al">MONDAY</span><svg viewBox="0 0 24 10"><path d="M0 5h20M17 1.5 21 5l-4 3.5"/></svg></span><span class="fstep"><span class="fico"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0114-5M20 12a8 8 0 01-14 5"/><path d="M18 3v4h-4M6 21v-4h4"/></svg></span><span class="fl">Re-run</span></span></div><div class="chip"><b>&gt; audit my GTM</b> &middot; three words, whole teardown</div><div class="why"><b>WHY</b><span>A score you re-run beats a deck you shelve.</span></div></div></div></div>
+<div class="ftr"><img src="__LOGO__"><span class="a">ULTRON</span><span class="b">&middot; AI operator for founders &middot; 51ultron.com &middot;</span><span class="kw">comment AUDIT</span></div>
 </div></body></html>

@@ -1,69 +1,66 @@
 <!DOCTYPE html><html><head><meta charset="UTF-8"><style>
 @import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
-:root{--slate:#161615;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);
---rule:rgba(250,250,247,.09);--book:#CC785C;--bdark:#C84623;--kraft:#D4A27F;--ok:#5ea884;--mut:#8b857d;
---dark:#1a0f0a;}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{background:#0b0b0a;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;color:var(--ivory);}
-.frame{width:1080px;height:1450px;background:var(--slate);padding:30px 42px 20px;position:relative;overflow:hidden;display:flex;flex-direction:column;}
-.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.055) 1.4px,transparent 1.5px);background-size:30px 30px;}
-.atm{position:absolute;inset:0;pointer-events:none;z-index:1;
-background:radial-gradient(ellipse 62% 26% at 88% -4%,rgba(200,70,35,.30) 0%,transparent 62%),
-radial-gradient(ellipse 40% 20% at 4% 104%,rgba(212,162,127,.12) 0%,transparent 60%);}
+body{background:#0a0a09;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;color:#F6F1E7;}
+.frame{width:1080px;height:1450px;background:#171716;position:relative;overflow:hidden;display:flex;flex-direction:column;padding:30px 36px 0;}
+.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+background-image:linear-gradient(rgba(250,250,247,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(250,250,247,.05) 1px,transparent 1px);
+background-size:36px 36px;}
+.frame::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 70% 34% at 50% -6%,rgba(200,70,35,.22),transparent 62%);}
 .frame>*{position:relative;z-index:2;}
-.mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding-bottom:11px;border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;}
-.mast .ml{color:var(--ink46);}.mast .ml em{color:var(--book);font-style:normal;}.mast .mr{color:var(--ink70);}
-.hook{margin-top:18px;font-weight:900;font-size:64px;line-height:.99;letter-spacing:-2.4px;flex-shrink:0;}
-.hook em{color:var(--book);font-style:normal;text-shadow:0 0 44px rgba(204,120,92,.5);}
-.sub{margin-top:12px;font-size:20px;font-weight:500;line-height:1.3;color:var(--ink70);flex-shrink:0;max-width:960px;}.sub b{color:var(--ivory);font-weight:700;}
-.main{flex:1;min-height:0;margin-top:18px;display:flex;gap:14px;}
-/* v3 components */
-.solid{background:linear-gradient(160deg,#D0805F 0%,#C84623 78%);border-radius:20px;color:var(--ivory);box-shadow:0 24px 70px rgba(200,70,35,.35);}
-.ivory{background:var(--ivory);border-radius:20px;color:#151210;box-shadow:0 24px 60px rgba(0,0,0,.5);}
-.dcard{background:linear-gradient(180deg,#232321,#1b1b1a);border:1px solid rgba(250,250,247,.10);border-radius:18px;box-shadow:inset 0 1px 0 rgba(250,250,247,.07),0 14px 34px rgba(0,0,0,.35);}
-.pill{display:inline-flex;align-items:center;gap:10px;background:var(--ivory);color:#151210;border-radius:999px;font-weight:800;box-shadow:0 8px 26px rgba(0,0,0,.4);}
-.glow{position:relative;}
-.glow::before{content:'';position:absolute;left:50%;top:50%;width:130%;height:130%;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(204,120,92,.28),transparent);z-index:-1;}
-.cta{flex-shrink:0;margin-top:14px;display:flex;align-items:center;gap:18px;background:linear-gradient(160deg,#D0805F,#C84623);border-radius:18px;padding:15px 15px 15px 26px;box-shadow:0 20px 60px rgba(200,70,35,.35);}
-.cta .ph{flex:1;font-size:22px;font-weight:700;color:rgba(255,252,248,.94);}.cta .ph b{color:#fff;font-weight:900;}
-.cta .pl{background:var(--ivory);color:#151210;border-radius:999px;padding:13px 26px;font-weight:900;font-size:18px;flex-shrink:0;display:flex;align-items:center;gap:9px;}
-.ftr{flex-shrink:0;margin-top:12px;padding-top:10px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;}
-.fl{display:flex;align-items:center;gap:11px;}.flogo{width:28px;height:28px;border-radius:50%;object-fit:cover;}
-.ftx{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink70);}.ftx b{color:var(--ivory);font-weight:500;}
-.furl{font-weight:900;font-size:20px;letter-spacing:-.5px;}.furl em{color:var(--book);font-style:normal;}
-
-.term{flex:1;display:flex;flex-direction:column;border-radius:20px;background:#111110;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.5);border:1px solid rgba(250,250,247,.08);}
-.tbar{display:flex;align-items:center;gap:8px;padding:12px 18px;background:#1c1c1b;border-bottom:1px solid var(--rule);}
-.dot{width:11px;height:11px;border-radius:50%;}
-.tbar .tt{margin-left:8px;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.14em;color:var(--ink46);text-transform:uppercase;}
-.cmd{flex-shrink:0;margin:12px 14px 4px;background:linear-gradient(160deg,#D0805F,#C84623);border-radius:12px;padding:11px 16px;font-family:'DM Mono',monospace;font-size:16px;color:#fff;box-shadow:0 10px 30px rgba(200,70,35,.35);}
-.ln{flex:1;display:flex;align-items:center;gap:14px;padding:0 20px;font-family:'DM Mono',monospace;font-size:15.5px;}
-.ts{color:var(--ink46);width:52px;flex-shrink:0;font-size:13px;}
-.ag{width:92px;flex-shrink:0;font-weight:500;color:var(--book);}
-.ms{color:var(--ink70);}.ms b{color:var(--ivory);font-weight:500;}.ms i{color:var(--kraft);font-style:normal;}
-.ln.gate{background:linear-gradient(90deg,rgba(94,168,132,.12),transparent);}
-.ln.gate .ag{color:var(--ok);} .ln.gate .ms b{color:var(--ok);}
-.rail{width:252px;display:flex;flex-direction:column;gap:12px;}
-.iv{padding:18px;display:flex;flex-direction:column;justify-content:center;}
-.iv .v{font-size:104px;font-weight:900;letter-spacing:-6px;line-height:.9;color:#C84623;}
-.iv .k{margin-top:8px;font-size:15px;font-weight:700;color:#3a332e;line-height:1.25;}
-.sol{padding:15px 18px;}
-.sol .v{font-size:46px;font-weight:900;color:#fff;letter-spacing:-1px;line-height:1;}
-.sol .k{margin-top:5px;font-size:14px;color:rgba(255,252,248,.88);line-height:1.25;}
-.icp{background:linear-gradient(180deg,#232321,#1b1b1a);border:1px solid var(--rule);border-radius:18px;padding:13px 16px;flex:1;}
-.icp .h{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink46);margin-bottom:7px;}
-.icp .r{font-size:14.5px;color:var(--ink70);padding:5px 0;border-top:1px solid var(--rule);}.icp .r b{color:var(--ivory);}
-
-</style></head><body><div class="frame" id="artifact"><div class="atm"></div>
-<div class="mast"><span class="ml">HOW TO <em>&middot;</em> SOURCING <em>&middot;</em> ULTRON</span><span class="mr">USE CASE 03</span></div>
-<div class="hook">I sourced <em>200 founders</em> with the laptop closed.</div><div class="sub">One sentence at 09:14. This is the unedited run trace of the next <b>47 minutes</b>.</div>
-<div class="main"><div class="term"><div class="tbar"><span class="dot" style="background:#e0654a"></span><span class="dot" style="background:#e0a54a"></span><span class="dot" style="background:#7fb98a"></span><span class="tt">ultron &middot; run trace &middot; this morning</span></div>
-<div class="cmd">&gt; source 200 founders matching my ICP</div><div class="ln"><span class="ts">09:14</span><span class="ag">CORTEX</span><span class="ms">pulled <b>1,284</b> companies, IT services, US + UK</span></div><div class="ln"><span class="ts">09:16</span><span class="ag">CORTEX</span><span class="ms">deduped vs CRM: <i>902 net-new</i></span></div><div class="ln"><span class="ts">09:19</span><span class="ag">CORTEX</span><span class="ms">enriched 902: funding, size, tech stack</span></div><div class="ln"><span class="ts">09:24</span><span class="ag">CORTEX</span><span class="ms">scored vs ICP: <b>471 pass</b> the 2-50 seat filter</span></div><div class="ln"><span class="ts">09:31</span><span class="ag">CORTEX</span><span class="ms">ranked: hiring + recent raise + intent signals</span></div><div class="ln"><span class="ts">09:33</span><span class="ag">CORTEX</span><span class="ms">top <b>200 exported</b> with 1-page briefs</span></div><div class="ln"><span class="ts">09:38</span><span class="ag">SPECTER</span><span class="ms">drafted <b>200 openers</b>, one trigger each, 62 words</span></div><div class="ln"><span class="ts">09:44</span><span class="ag">STRIKER</span><span class="ms">flagged 37 accounts as <i>deal-ready</i></span></div><div class="ln"><span class="ts">09:45</span><span class="ag">AMPLIFY</span><span class="ms">queue set: 10:00 local, per timezone</span></div><div class="ln gate"><span class="ts">09:46</span><span class="ag">GATE</span><span class="ms"><b>240 sends on HOLD</b>, waiting for your approve</span></div><div class="ln"><span class="ts">09:47</span><span class="ag">ROUTER</span><span class="ms">done in <b>47 min</b>. laptop closed for 46 of them</span></div></div>
-<div class="rail">
-<div class="ivory iv glow"><span class="v">200</span><span class="k">founders sourced, briefed, sequenced</span></div>
-<div class="solid sol"><div class="v">47 min</div><div class="k">one sentence in, finished work out</div></div>
-<div class="icp"><div class="h">The ICP it matched</div><div class="r"><b>Founder / CEO</b></div><div class="r"><b>2-50</b> employees</div><div class="r">IT services / software</div><div class="r"><b>US + UK</b></div></div>
-</div></div>
-<div class="cta"><span class="ph">Comment <b>SOURCE</b> and I will send you the exact sourcing sentence + the ICP filter</span><span class="pl">SOURCE <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#151210" stroke-width="3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
-<div class="ftr"><div class="fl"><img class="flogo" src="__LOGO__"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span></div><span class="furl">51ultron<em>.</em>com</span></div>
+.hdr{flex-shrink:0;display:flex;align-items:center;gap:18px;justify-content:center;}
+.hdr img{width:54px;height:54px;border-radius:12px;}
+.hdr .t{font-weight:900;font-size:47px;letter-spacing:-1.8px;}
+.hdr .t em{font-style:normal;color:#E8845F;text-shadow:0 0 34px rgba(232,132,95,.55);}
+.sub{flex-shrink:0;text-align:center;margin-top:8px;font-size:17.5px;font-weight:600;color:rgba(246,241,231,.66);}
+.sub b{color:#E8A17F;font-weight:700;}
+.start{flex-shrink:0;align-self:center;margin-top:12px;border:1.5px solid rgba(232,132,95,.55);background:rgba(200,70,35,.10);border-radius:999px;padding:8px 22px;display:flex;gap:14px;align-items:center;}
+.start .a{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.16em;color:#E8845F;}
+.start .b{font-weight:800;font-size:15.5px;color:#F6F1E7;}
+.cols{flex:1;min-height:0;margin-top:16px;display:flex;gap:56px;position:relative;}
+.col{flex:1;display:flex;flex-direction:column;gap:12px;min-width:0;}
+.spine{position:absolute;left:50%;top:0;bottom:0;width:0;transform:translateX(-50%);}
+.spine .bar{position:absolute;left:-2px;top:6px;bottom:6px;width:4px;border-radius:2px;background:linear-gradient(#E8845F,#C84623 55%,#D4A27F);box-shadow:0 0 18px rgba(200,70,35,.6);}
+.stop{position:absolute;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-weight:500;font-size:18px;border:3px solid #171716;box-shadow:0 0 0 2px rgba(232,132,95,.5),0 0 22px rgba(200,70,35,.5);background:#C84623;color:#fff;}
+.stop.k{background:#D4A27F;color:#211505;}.stop.w{background:#F6F1E7;color:#1b140e;}
+.card{background:rgba(25,25,24,.92);border:1px solid rgba(250,250,247,.11);border-radius:14px;padding:13px 16px;box-shadow:0 12px 34px rgba(0,0,0,.45);}
+.card .hd{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:8px;}
+.card .hd .t{font-weight:900;font-size:20.5px;letter-spacing:-.4px;}
+.card .hd .tag{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.15em;color:#D4A27F;text-transform:uppercase;flex-shrink:0;}
+.card p{font-size:14px;color:rgba(246,241,231,.72);line-height:1.32;}
+.card p b{color:#F6F1E7;}
+.term{margin-top:8px;background:#0d0d0c;border:1px solid rgba(250,250,247,.10);border-radius:10px;padding:10px 12px;display:flex;align-items:center;gap:10px;}
+.term .c{flex:1;font-family:'DM Mono',monospace;font-size:14.5px;color:#F0C9AF;}
+.term .go{width:26px;height:26px;border-radius:50%;background:#C84623;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.term .go svg{width:13px;height:13px;stroke:#fff;stroke-width:3;fill:none;stroke-linecap:round;}
+.row{display:flex;align-items:center;gap:10px;padding:6.5px 0;border-top:1px solid rgba(250,250,247,.07);}
+.row:first-of-type{border-top:none;}
+.row .n{font-weight:800;font-size:15.5px;flex-shrink:0;}
+.row .d{flex:1;font-size:13px;color:rgba(246,241,231,.6);}
+.row .bg{flex-shrink:0;font-family:'DM Mono',monospace;font-size:12px;background:#C84623;color:#fff;border-radius:7px;padding:3px 10px;font-weight:500;}
+.row .bg.k{background:#3a2c20;color:#E8A17F;border:1px solid rgba(232,132,95,.4);}
+.chk{display:flex;gap:10px;align-items:flex-start;padding:5.5px 0;font-size:14.5px;color:rgba(246,241,231,.82);}
+.chk b{color:#F6F1E7;}
+.chk .bx{width:19px;height:19px;border-radius:5px;background:#2e7d54;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.chk .bx svg{width:11px;height:11px;stroke:#fff;stroke-width:3.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.chk.x .bx{background:#8a3category;background:#8a3520;}
+.cheat{flex-shrink:0;margin:14px 0 0;background:rgba(15,15,14,.94);border:1px solid rgba(250,250,247,.10);border-radius:14px 14px 0 0;padding:13px 20px 12px;}
+.cheat .hd{display:flex;justify-content:space-between;margin-bottom:9px;}
+.cheat .hd .t{font-weight:900;font-size:17px;}
+.cheat .hd .tag{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.15em;color:rgba(246,241,231,.4);text-transform:uppercase;}
+.cheat .gridc{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px 22px;}
+.ci{display:flex;align-items:center;gap:9px;font-size:13px;color:rgba(246,241,231,.62);}
+.ci b{font-family:'DM Mono',monospace;font-weight:500;font-size:13px;color:#E8A17F;background:rgba(200,70,35,.13);border:1px solid rgba(232,132,95,.32);border-radius:6px;padding:2.5px 9px;white-space:nowrap;}
+.ftr{flex-shrink:0;height:52px;margin:0 -36px;background:#0c0c0b;border-top:1px solid rgba(250,250,247,.1);display:flex;align-items:center;justify-content:center;gap:12px;}
+.ftr img{width:26px;height:26px;border-radius:50%;}
+.ftr .a{font-weight:900;font-size:15.5px;}.ftr .b{font-size:14.5px;color:rgba(246,241,231,.55);}
+.ftr .kw{font-family:'DM Mono',monospace;font-size:13px;color:#E8A17F;}
+</style></head><body>
+<div class="frame" id="artifact">
+<div class="hdr"><img src="__LOGO__"><span class="t">Source <em>200 founders</em> from one sentence.</span></div>
+<div class="sub">The unedited run from this morning. One line in, briefed pipeline out. <b>47 minutes.</b></div>
+<div class="start"><span class="a">START HERE</span><span class="b">one sentence &middot; laptop closed &middot; 47 min</span></div>
+<div class="cols"><div class="col"><div class="card"><div class="hd"><span class="t">Type the sentence</span><span class="tag">THE INPUT</span></div><div class="term"><span class="c">&gt; source 200 founders matching my ICP</span><span class="go"><svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span></div><p style="margin-top:8px">Plain English. The router reads the job and hires <b>CORTEX</b>. No menus, no setup.</p></div><div class="card"><div class="hd"><span class="t">The ICP filter</span><span class="tag">SET ONCE</span></div><div class="row"><span class="n">Founder / CEO</span><span class="d">the buyer it hunts</span><span class="bg">WHO</span></div><div class="row"><span class="n">2-50 seats</span><span class="d">the size band</span><span class="bg k">SIZE</span></div><div class="row"><span class="n">IT services / software</span><span class="d">the niche</span><span class="bg k">WHAT</span></div><div class="row"><span class="n">US + UK</span><span class="d">the geo</span><span class="bg k">WHERE</span></div></div><div class="card"><div class="hd"><span class="t">SPECTER picks it up</span><span class="tag">AUTO HANDOFF</span></div><div class="term"><span class="c">&gt; draft 200 openers, one trigger each</span><span class="go"><svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span></div><p style="margin-top:8px">62 words a step, personalised from each brief. <b>No mail-merge smell.</b></p></div><div class="card"><div class="hd"><span class="t">What you get</span><span class="tag">THE PAYOFF</span></div><div class="chk"><span class="bx"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg></span><span><b>200 briefs</b>, one page each</span></div><div class="chk"><span class="bx"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg></span><span><b>200 openers</b> queued at 10:00 local</span></div><div class="chk"><span class="bx"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg></span><span><b>37 accounts</b> flagged deal-ready</span></div><div class="chk"><span class="bx"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg></span><span>You only tap <b>approve</b></span></div></div></div><div class="spine"><span class="bar"></span><span class="stop " style="top:8%">1</span><span class="stop k" style="top:25%">2</span><span class="stop w" style="top:41%">3</span><span class="stop " style="top:58%">4</span><span class="stop k" style="top:75%">5</span><span class="stop w" style="top:91%">6</span></div><div class="col"><div class="card"><div class="hd"><span class="t">CORTEX runs</span><span class="tag">LIVE DATA</span></div><div class="row"><span class="n">Pulled</span><span class="d">companies matching the niche</span><span class="bg">1,284</span></div><div class="row"><span class="n">Net-new</span><span class="d">deduped against your CRM</span><span class="bg k">902</span></div><div class="row"><span class="n">Scored</span><span class="d">pass the full ICP filter</span><span class="bg k">471</span></div><div class="row"><span class="n">Exported</span><span class="d">ranked, with 1-page briefs</span><span class="bg">200</span></div></div><div class="card"><div class="hd"><span class="t">The gate holds</span><span class="tag">NO ACCIDENTS</span></div><p><b>240 sends parked on HOLD.</b> Nothing external fires until you approve. Read 12, spot-check the rest, one tap.</p></div><div class="card"><div class="hd"><span class="t">The clock</span><span class="tag">REAL TIMING</span></div><div class="row"><span class="n">09:14</span><span class="d">you type the sentence</span><span class="bg k">IN</span></div><div class="row"><span class="n">09:33</span><span class="d">top 200 exported</span><span class="bg k">+19 MIN</span></div><div class="row"><span class="n">09:47</span><span class="d">queue ready, gate holds</span><span class="bg">47 MIN</span></div><p style="margin-top:8px">The laptop was closed for <b>46 of the 47 minutes</b>.</p></div></div></div>
+<div class="cheat"><div class="hd"><span class="t">Handy commands</span><span class="tag">CHEAT SHEET</span></div><div class="gridc"><span class="ci"><b>/cortex</b>profile + source</span><span class="ci"><b>/specter</b>openers + sequences</span><span class="ci"><b>/amplify</b>10:00 local queue</span><span class="ci"><b>/striker</b>triage the replies</span><span class="ci"><b>approve</b>release the queue</span><span class="ci"><b>/brief</b>one-page account brief</span></div></div>
+<div class="ftr"><img src="__LOGO__"><span class="a">ULTRON</span><span class="b">&middot; AI operator for founders &middot; 51ultron.com &middot;</span><span class="kw">comment SOURCE</span></div>
 </div></body></html>
