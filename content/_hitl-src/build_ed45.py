@@ -598,7 +598,8 @@ def cover_ig(out):
     # shadows, solid plates or anything else. Below the band everything stays fully open.
     halo=Image.new("RGBA",(W,H),(0,0,0,0)); hd2=ImageDraw.Draw(halo)
     hh=int(s*1.12)*len(COVER["head"])
-    hd2.rounded_rectangle([40,y-30,W-40,y+hh+56+112+34],radius=38,fill=(12,10,9,170))
+    # band ends ABOVE the marks (operator 2026-07-02: "nu-mi pune background pe icons")
+    hd2.rounded_rectangle([40,y-30,W-40,y+hh+26],radius=38,fill=(12,10,9,170))
     base.alpha_composite(halo.filter(ImageFilter.GaussianBlur(34)))
     for ln in COVER["head"]: seg_center(d,y,ln,hf); y+=int(s*1.12)
     # NO 3D model (operator 2026-07-02): marks raised right under the hook, centre stays open for the movie
