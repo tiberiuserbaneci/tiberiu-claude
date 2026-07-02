@@ -413,16 +413,29 @@ def place_prem(base,objpath,light):
     a=np.asarray(im).astype(int); h,w=a.shape[:2]; area=h*w
     cs=np.concatenate([a[:48,:48].reshape(-1,3),a[:48,-48:].reshape(-1,3),a[-48:,:48].reshape(-1,3),a[-48:,-48:].reshape(-1,3)])
     bgm=np.median(cs,0).astype(int); diff=np.abs(a-bgm).sum(2); bbox=None
-    for thr in (120,100,80,65,52,42,34,28,22):
+    # bbox on the BRIGHT panel body only (thr floor 42), so faint glow/vignette under the
+    # panel does not inflate the plate with empty charcoal (s4 dead-space bug)
+    for thr in (120,100,80,65,52,42):
         ys,xs=np.where(diff>thr)
         if len(xs)==0: continue
         b=(int(xs.min()),int(ys.min()),int(xs.max()),int(ys.max()))
-        if (b[2]-b[0])*(b[3]-b[1])<=0.93*area: bbox=b
+        if (b[2]-b[0])*(b[3]-b[1])<=0.90*area: bbox=b
         else: break
     if bbox is None: bbox=(0,0,w,h)
-    pad=30
+    pad=42
     x0=max(0,bbox[0]-pad); y0=max(0,bbox[1]-pad); x1=min(w,bbox[2]+pad); y1=min(h,bbox[3]+pad)
     plate=im.crop((x0,y0,x1,y1))
+    # refine: if the plate is mostly an empty under-board (panel floating high on a slab),
+    # re-key against the plate's own border colour and cut to the real panel
+    pa=np.asarray(plate).astype(int); ph2,pw2=pa.shape[:2]
+    pcs=np.concatenate([pa[:36,:36].reshape(-1,3),pa[:36,-36:].reshape(-1,3),pa[-36:,:36].reshape(-1,3),pa[-36:,-36:].reshape(-1,3)])
+    pbg=np.median(pcs,0).astype(int); pdiff=np.abs(pa-pbg).sum(2)
+    ys2,xs2=np.where(pdiff>44)
+    if len(xs2):
+        rb=(int(xs2.min()),int(ys2.min()),int(xs2.max()),int(ys2.max()))
+        if (rb[2]-rb[0])*(rb[3]-rb[1]) < 0.80*ph2*pw2:
+            rp=52
+            plate=plate.crop((max(0,rb[0]-rp),max(0,rb[1]-rp),min(pw2,rb[2]+rp),min(ph2,rb[3]+rp)))
     # fit WHOLE plate (never crop the object) in the fixed lower zone, centred at a fixed point
     ZW,ZH=900,600; CX,CY=W//2,970
     sc=min(ZW/plate.width, ZH/plate.height)
