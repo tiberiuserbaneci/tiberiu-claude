@@ -13,13 +13,13 @@ T2.OBJ_THR=30   # front-on 2.5D windows: whole window+shadow bbox
 
 T2.COVER=dict(head=[[wo("Yours answers.")],[co("Mine works.")]])
 T2.CONTENT=[
- ("THE RUNS",     [[wo("A chatbot talks.")],[co("This runs.")]], "Six agents work in parallel while you do one thing at a time.",    [co("Live, not a reply box.")],f"{M}/agents.png",    1.0),
- ("THE SYSTEMS",  [[wo("It keeps going")],[co("without you.")]], "Workflows fire on their own triggers all day, no prompt needed.",  [co("Set once, runs daily.")], f"{M}/workflows.png", 1.0),
- ("THE RESEARCH", [[wo("It goes")],[co("and finds it.")]],       "It pulls live account data instead of guessing from memory.",      [co("Real data, not vibes.")], f"{M}/apollo.png",    1.0),
- ("THE PIPELINE", [[wo("It updates")],[co("your systems.")]],    "Deals move in your CRM as replies land. A chatbot cannot do that.",[co("It acts on tools.")],     f"{M}/hubspot.png",   1.0),
- ("THE OUTPUT",   [[wo("It ships")],[co("real revenue.")]],      "The work turns into booked calls and closed deals, not just text.",[co("$48k MRR, one operator.")],f"{M}/revenue.png",  1.0),
- ("THE OUTREACH", [[wo("It sends,")],[co("not suggests.")]],     "The whole sequence is written and sent, not pasted for you to send.",[co("No copy-paste.")],      f"{M}/gmail_sent.png",1.0),
- ("THE GATE",     [[wo("And I approve")],[co("every move.")]],   "It acts, but nothing ships until you say go. You stay in control.",[co("You approve every send.")],f"{M}/gate.png",    1.0),
+ ("THE RUNS",     [[wo("A chatbot talks.")],[co("This one clocks in.")]], "Six agents work in parallel while you do one thing at a time.",    [co("Live, not a reply box.")],f"{M}/agents.png",    1.0),
+ ("THE SYSTEMS",  [[wo("No prompt at 9am.")],[co("It already ran.")]], "Workflows fire on their own triggers all day, no prompt needed.",  [co("Set once, runs daily.")], f"{M}/workflows.png", 1.0),
+ ("THE RESEARCH", [[wo("It does not guess.")],[co("It goes and looks.")]],       "It pulls live account data instead of guessing from memory.",      [co("Real data, not vibes.")], f"{M}/apollo.png",    1.0),
+ ("THE PIPELINE", [[wo("It touches my CRM.")],[co("Correctly.")]],    "Deals move in your CRM as replies land. A chatbot cannot do that.",[co("It acts on tools.")],     f"{M}/hubspot.png",   1.0),
+ ("THE OUTPUT",   [[wo("$48,200 MRR.")],[co("It did the reps.")]],      "The work turns into booked calls and closed deals, not just text.",[co("$48k MRR, one operator.")],f"{M}/revenue.png",  1.0),
+ ("THE OUTREACH", [[wo("It sends.")],[co("Not suggests.")]],     "The whole sequence is written and sent, not pasted for you to send.",[co("No copy-paste.")],      f"{M}/gmail_sent.png",1.0),
+ ("THE GATE",     [[wo("Autonomous,")],[co("not unsupervised.")]],   "It acts, but nothing ships until you say go. You stay in control.",[co("You approve every send.")],f"{M}/gate.png",    1.0),
  ("THE OPERATOR", [[wo("Not a chatbot.")],[co("An operator.")]], "It runs the company behind a single subscription, all day.",       [co("Run it solo.")],          f"{M}/ultron_real.png",    1.0),
 ]
 T2.CTA=("OPERATOR", [[wo("Want the agent?")],[co("comment OPERATOR.")]], f"{LIB}/cta3d-operator.png", 0.92)

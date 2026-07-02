@@ -11,16 +11,16 @@ T2.ACCENT=(204,120,92); T2.CORAL=T2.ACCENT   # per-material accent (anti-samenes
 T2.COVER_OBJ="/home/user/tiberiu-claude/content/_hitl-src/covers/levels.png"  # Vertex real-logo cover visual
 T2.OBJ_THR=30   # front-on 2.5D windows: whole window+shadow bbox
 
-T2.COVER=dict(head=[[wo("Most stop")],[co("at level 2.")]])
+T2.COVER=dict(head=[[wo("Most stop at level 2.")],[co("The map goes to 7.")]])
 T2.CONTENT=[
- ("THE LADDER",   [[wo("Seven levels.")],[co("You: level 5.")]], "Ask, chain, run an agent, wire them, automate, approve, then run it all.",[co("Climb one a week.")],  f"{M}/levels.png",    1.0),
- ("LEVEL 3",      [[wo("Level 3?")],[co("Run an agent.")]],      "Hand a whole job to one named agent instead of typing every step.",[co("It goes and finds it.")], f"{M}/apollo.png",    1.0),
- ("LEVEL 4",      [[wo("Level 4?")],[co("Wire them.")]],         "Agents hand off to each other, six working at once, in parallel.", [co("A team of agents.")],     f"{M}/agents.png",    1.0),
- ("LEVEL 5",      [[wo("Level 5?")],[co("Automate.")]],          "Workflows fire on triggers all day, no prompt, no reminder.",      [co("Set once, runs daily.")], f"{M}/workflows.png", 1.0),
- ("LEVEL 6",      [[wo("Level 6?")],[co("Approve, do not do.")]],"Your systems update the pipeline; you only say yes or no.",         [co("You stop doing.")],       f"{M}/hubspot.png",   1.0),
- ("LEVEL 7",      [[wo("Level 7?")],[co("Run the company.")]],   "The whole business runs behind a chat, and the numbers climb.",    [co("$48k MRR, one operator.")],f"{M}/revenue.png",  1.0),
- ("THE GATE",     [[wo("And I approve")],[co("every move.")]],   "At every level, nothing ships until you say go.",                  [co("You stay in control.")],  f"{M}/gate.png",      1.0),
- ("THE OPERATOR", [[wo("Level 7.")],[co("One operator.")]],      "The top level is one person running the whole thing from one chat.",[co("Run it solo.")],         f"{M}/ultron_real.png",    1.0),
+ ("THE LADDER",   [[wo("Seven levels.")],[co("You are at 2.")]], "Ask, chain, run an agent, wire them, automate, approve, then run it all.",[co("Climb one a week.")],  f"{M}/levels.png",    1.0),
+ ("LEVEL 3",      [[wo("Level 3: chains.")],[co("One line, five jobs.")]],      "Hand a whole job to one named agent instead of typing every step.",[co("It goes and finds it.")], f"{M}/apollo.png",    1.0),
+ ("LEVEL 4",      [[wo("Level 4: a team.")],[co("Running in parallel.")]],         "Agents hand off to each other, six working at once, in parallel.", [co("A team of agents.")],     f"{M}/agents.png",    1.0),
+ ("LEVEL 5",      [[wo("Level 5: triggers.")],[co("No prompts at all.")]],          "Workflows fire on triggers all day, no prompt, no reminder.",      [co("Set once, runs daily.")], f"{M}/workflows.png", 1.0),
+ ("LEVEL 6",      [[wo("Level 6: the gate.")],[co("Speed with brakes.")]],"Your systems update the pipeline; you only say yes or no.",         [co("You stop doing.")],       f"{M}/hubspot.png",   1.0),
+ ("LEVEL 7",      [[wo("Level 7: $48k MRR.")],[co("One operator.")]],   "The whole business runs behind a chat, and the numbers climb.",    [co("$48k MRR, one operator.")],f"{M}/revenue.png",  1.0),
+ ("THE GATE",     [[wo("Every level up")],[co("keeps your tap.")]],   "At every level, nothing ships until you say go.",                  [co("You stay in control.")],  f"{M}/gate.png",      1.0),
+ ("THE OPERATOR", [[wo("Level 7 is quiet.")],[co("It just runs.")]],      "The top level is one person running the whole thing from one chat.",[co("Run it solo.")],         f"{M}/ultron_real.png",    1.0),
 ]
 T2.CTA=("LEVELS", [[wo("Want the map?")],[co("comment OPERATOR.")]], f"{LIB}/cta3d-operator.png", 0.92)
 T2.CLOSE=dict(l1="Save this and",l2="climb a level.",q="What level are you stuck on?")

@@ -13,14 +13,14 @@ T2.OBJ_THR=30   # front-on 2.5D windows: whole window+shadow bbox
 
 T2.COVER=dict(head=[[wo("One person.")],[co("Every department.")]])
 T2.CONTENT=[
- ("THE CHART",    [[wo("The whole company?")],[co("One chat.")]],"Every department on the org chart runs from one place.",           [co("Headcount zero.")],       f"{M}/orgchart.png",  1.0),
- ("SALES",        [[wo("Sales?")],[co("A system.")]],            "Leads found, enriched and briefed before you open your laptop.",   [co("No SDR to hire.")],       f"{M}/apollo.png",    1.0),
- ("OPERATIONS",   [[wo("Operations?")],[co("Automated.")]],      "Workflows fire on triggers all day, no reminders, no missed steps.",[co("Set once, runs daily.")], f"{M}/workflows.png", 1.0),
- ("PRODUCT",      [[wo("Product?")],[co("Shipped from chat.")]], "Pages and updates go live straight from the chat, no builder.",     [co("No dev to wait on.")],    f"{M}/developer.png", 1.0),
- ("MARKETING",    [[wo("Marketing?")],[co("Queued.")]],          "A week of content planned and posted across channels.",             [co("14 scheduled.")],         f"{M}/content.png",   1.0),
- ("FINANCE",      [[wo("Finance?")],[co("It adds up.")]],        "One operator, $48k MRR, up 32%, no team on payroll.",               [co("Solo, not small.")],      f"{M}/revenue.png",   1.0),
- ("THE GATE",     [[wo("And I approve")],[co("every move.")]],   "Every department runs, but nothing ships until you say go.",        [co("You stay in control.")],  f"{M}/gate.png",      1.0),
- ("THE OPERATOR", [[wo("Every department.")],[co("One operator.")]],"The whole company runs behind a single subscription.",           [co("Run it solo.")],          f"{M}/ultron_real.png",    1.0),
+ ("THE CHART",    [[wo("The org chart")],[co("collapsed into a chat.")]],"Every department on the org chart runs from one place.",           [co("Headcount zero.")],       f"{M}/orgchart.png",  1.0),
+ ("SALES",        [[wo("Sales fills itself.")],[co("19 minutes flat.")]],            "Leads found, enriched and briefed before you open your laptop.",   [co("No SDR to hire.")],       f"{M}/apollo.png",    1.0),
+ ("OPERATIONS",   [[wo("Operations run")],[co("with zero meetings.")]],      "Workflows fire on triggers all day, no reminders, no missed steps.",[co("Set once, runs daily.")], f"{M}/workflows.png", 1.0),
+ ("PRODUCT",      [[wo("Product ships")],[co("from a sentence.")]], "Pages and updates go live straight from the chat, no builder.",     [co("No dev to wait on.")],    f"{M}/developer.png", 1.0),
+ ("MARKETING",    [[wo("Marketing queues a week")],[co("in one line.")]],          "A week of content planned and posted across channels.",             [co("14 scheduled.")],         f"{M}/content.png",   1.0),
+ ("FINANCE",      [[wo("Finance adds up:")],[co("$48k, payroll $0.")]],        "One operator, $48k MRR, up 32%, no team on payroll.",               [co("Solo, not small.")],      f"{M}/revenue.png",   1.0),
+ ("THE GATE",     [[wo("Every department")],[co("waits for my tap.")]],   "Every department runs, but nothing ships until you say go.",        [co("You stay in control.")],  f"{M}/gate.png",      1.0),
+ ("THE OPERATOR", [[wo("CEO, staff, and board.")],[co("All me.")]],"The whole company runs behind a single subscription.",           [co("Run it solo.")],          f"{M}/ultron_real.png",    1.0),
 ]
 T2.CTA=("COMPANY", [[wo("Want the build?")],[co("comment OPERATOR.")]], f"{LIB}/cta3d-operator.png", 0.92)
 T2.CLOSE=dict(l1="Save this to",l2="run it solo.",q="Which department would you automate first?")

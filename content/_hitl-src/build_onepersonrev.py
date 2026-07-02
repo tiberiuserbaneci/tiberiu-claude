@@ -11,16 +11,16 @@ T2.ACCENT=(212,162,127); T2.CORAL=T2.ACCENT   # per-material accent (anti-samene
 T2.COVER_OBJ="/home/user/tiberiu-claude/content/_hitl-src/covers/onepersonrev.png"  # Vertex real-logo cover visual
 T2.OBJ_THR=30   # front-on 2.5D windows: whole window+shadow bbox
 
-T2.COVER=dict(head=[[wo("One operator.")],[co("Real revenue.")]])
+T2.COVER=dict(head=[[wo("$48,200 MRR.")],[co("Headcount: me.")]])
 T2.CONTENT=[
- ("THE NUMBER",   [[wo("The result?")],[co("$48k MRR.")]],       "One person, up 32% this month, no team on the payroll.",           [co("Solo, not small.")],      f"{M}/revenue.png",   1.0),
- ("THE PAYMENTS", [[wo("Getting paid?")],[co("Automatic.")]],    "Invoices, subscriptions and receipts run without a finance seat.", [co("No bookkeeper.")],        f"{M}/stripe.png",    1.0),
- ("THE LEADS",    [[wo("Filling the pipe?")],[co("A system.")]], "Leads sourced, enriched and scored before you open your laptop.",  [co("471 scored, 63 hot.")],   f"{M}/leadscore.png", 1.0),
- ("THE DEALS",    [[wo("Closing?")],[co("Self-updating.")]],     "The pipeline moves as replies land. Nobody drags a card.",         [co("No ops seat.")],          f"{M}/hubspot.png",   1.0),
- ("THE CALLS",    [[wo("Booking?")],[co("Handled.")]],           "Replies become calls on your calendar, no back and forth.",        [co("63 booked.")],            f"{M}/calendly.png",  1.0),
- ("THE CADENCE",  [[wo("Marketing?")],[co("Queued.")]],          "A week of content posts on schedule from one message.",            [co("No coordinator.")],       f"{M}/scheduler.png", 1.0),
- ("THE GATE",     [[wo("And I approve")],[co("every move.")]],   "The money engine runs, but nothing ships until you say go.",       [co("You stay in control.")],  f"{M}/gate.png",      1.0),
- ("THE OPERATOR", [[wo("No headcount.")],[co("Just cents.")]],   "The whole revenue stack runs behind one subscription, for cents.", [co("Run it solo.")],          f"{M}/ultron_real.png",    1.0),
+ ("THE NUMBER",   [[wo("Up 32% this month.")],[co("Payroll: $0.")]],       "One person, up 32% this month, no team on the payroll.",           [co("Solo, not small.")],      f"{M}/revenue.png",   1.0),
+ ("THE PAYMENTS", [[wo("Invoices chase themselves.")],[co("I stopped asking twice.")]],    "Invoices, subscriptions and receipts run without a finance seat.", [co("No bookkeeper.")],        f"{M}/stripe.png",    1.0),
+ ("THE LEADS",    [[wo("The pipe refills")],[co("before Monday.")]], "Leads sourced, enriched and scored before you open your laptop.",  [co("471 scored, 63 hot.")],   f"{M}/leadscore.png", 1.0),
+ ("THE DEALS",    [[wo("Deals close")],[co("between my calls.")]],     "The pipeline moves as replies land. Nobody drags a card.",         [co("No ops seat.")],          f"{M}/hubspot.png",   1.0),
+ ("THE CALLS",    [[wo("6 calls booked.")],[co("I touched nothing.")]],           "Replies become calls on your calendar, no back and forth.",        [co("63 booked.")],            f"{M}/calendly.png",  1.0),
+ ("THE CADENCE",  [[wo("Marketing posts itself.")],[co("10:00 local, daily.")]],          "A week of content posts on schedule from one message.",            [co("No coordinator.")],       f"{M}/scheduler.png", 1.0),
+ ("THE GATE",     [[wo("Every dollar move")],[co("waits for my tap.")]],   "The money engine runs, but nothing ships until you say go.",       [co("You stay in control.")],  f"{M}/gate.png",      1.0),
+ ("THE OPERATOR", [[wo("$48k MRR.")],[co("Company of one.")]],   "The whole revenue stack runs behind one subscription, for cents.", [co("Run it solo.")],          f"{M}/ultron_real.png",    1.0),
 ]
 T2.CTA=("STACK", [[wo("Want the stack?")],[co("comment OPERATOR.")]], f"{LIB}/cta3d-operator.png", 0.92)
 T2.CLOSE=dict(l1="Save this to",l2="run lean.",q="What is your one-person MRR goal?")
