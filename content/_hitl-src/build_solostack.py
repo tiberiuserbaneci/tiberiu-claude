@@ -12,7 +12,7 @@ T2.ACCENT=(204,120,92); T2.CORAL=T2.ACCENT   # per-material accent (anti-samenes
 T2.COVER_OBJ="/home/user/tiberiu-claude/content/_hitl-src/covers/solostack.png"  # Vertex real-logo cover visual
 T2.OBJ_THR=30   # front-on 2.5D windows: whole window+shadow bbox
 
-T2.COVER=dict(head=[[wo("I fired my $15k/mo team.")],[co("One chat took the jobs.")]])
+T2.COVER=dict(head=[[wo("I fired my whole team.")],[co("One chat took the jobs.")]])
 # 6-tuple: (eyebrow, hook, SUBHOOK, FOOT idea, object, fill)
 T2.CONTENT=[
  ("THE RESEARCHER", [[wo("1,284 leads found.")],[co("Before my coffee.")]], "Live lead data and account briefs, pulled the moment you ask.", [co("No researcher to hire.")], f"{M}/apollo.png",     1.0),

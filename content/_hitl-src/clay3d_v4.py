@@ -307,7 +307,8 @@ def f_split(lcap,lrows,rcap,rrows):
     for a in rrows: r+='<div style="font-weight:700;font-size:16.5px;color:#fff;padding:7px 0"><span style="margin-right:9px">&#10003;</span>'+a+'</div>'
     return '<div class="split"><div class="lft">'+l+'</div><div class="rgt">'+r+'</div></div>'
 def f_gauge(pct,big,lbl,sub):
-    return ('<div class="gaugewrap"><div class="gauge" style="--g:'+str(int(pct/2))+'%"></div>'
+    g=50 if pct>=99 else int(pct/2)
+    return ('<div class="gaugewrap"><div class="gauge" style="--g:'+str(g)+'%"></div>'
             +'<div style="margin-top:-120px;position:relative;z-index:2"><div style="font-weight:900;font-size:72px;color:#FAFAF7">'+big+'</div>'
             +'<div style="font-weight:700;font-size:17px;color:#8f8f85;margin-top:2px">'+lbl+'</div>'
             +'<div style="font-weight:500;font-size:14px;color:#8f8f85;margin-top:2px">'+sub+'</div></div></div>')

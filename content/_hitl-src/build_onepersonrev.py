@@ -11,7 +11,7 @@ T2.ACCENT=(212,162,127); T2.CORAL=T2.ACCENT   # per-material accent (anti-samene
 T2.COVER_OBJ="/home/user/tiberiu-claude/content/_hitl-src/covers/onepersonrev.png"  # Vertex real-logo cover visual
 T2.OBJ_THR=30   # front-on 2.5D windows: whole window+shadow bbox
 
-T2.COVER=dict(head=[[wo("$48,200 MRR.")],[co("Headcount: me.")]])
+T2.COVER=dict(head=[[wo("Revenue up 32%.")],[co("Headcount: me.")]])
 T2.CONTENT=[
  ("THE NUMBER",   [[wo("Up 32% this month.")],[co("Payroll: $0.")]],       "One person, up 32% this month, no team on the payroll.",           [co("Solo, not small.")],      f"{M}/revenue.png",   1.0),
  ("THE PAYMENTS", [[wo("Invoices chase themselves.")],[co("I stopped asking twice.")]],    "Invoices, subscriptions and receipts run without a finance seat.", [co("No bookkeeper.")],        f"{M}/stripe.png",    1.0),

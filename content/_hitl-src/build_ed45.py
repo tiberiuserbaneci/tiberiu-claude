@@ -413,7 +413,7 @@ def place_prem(base,objpath,light):
     if im0.mode=="RGBA" and im0.getextrema()[3][0]<250:
         # coded clay3d panel with REAL alpha: composite as-is (it carries its own shadow),
         # centred on its solid body at the same fixed zone as every other slide
-        T2.place_in_zone(base,im0,(90,664,W-90,1264),fill=1.0)
+        T2.place_in_zone(base,im0,(90,636,W-90,1224),fill=1.0)
         return
     im=im0.convert("RGB")
     a=np.asarray(im).astype(int); h,w=a.shape[:2]; area=h*w
@@ -562,9 +562,13 @@ def cover_tt(base):
         stk=stk.resize((tw2,int(stk.height*tw2/stk.width)),Image.LANCZOS)
         base.alpha_composite(stk,((W-stk.width)//2, my))
     elif mk2=="orb":
-        # Ultron IS the subject: the sphere alone, large, centred
-        ob=_orb(); ob.thumbnail((170,170),Image.LANCZOS)
-        base.alpha_composite(ob,((W-ob.width)//2, my))
+        # Ultron IS the subject: sphere + ULTRON wordmark (operator: orb never alone, brand not
+        # yet recognisable on its own)
+        ob=_orb(); ob.thumbnail((150,150),Image.LANCZOS)
+        wf=dm(900,56); wtxt="ULTRON"; ww=int(d.textlength(wtxt,font=wf))
+        tot=ob.width+34+ww; x0=(W-tot)//2
+        base.alpha_composite(ob,(x0, my))
+        d.text((x0+ob.width+34, my+ob.height//2-34), wtxt, font=wf, fill=(250,250,247))
     else:
         logos=[Image.open(CLAUDE_SUN).convert("RGBA"), _orb()]
         L=120; SLOT=88
@@ -585,10 +589,13 @@ def cover_ig(out):
     # bottom stay fully open - the movie runs there (operator spec).
     base=Image.new("RGBA",(W,H),(0,0,0,0)); d=ImageDraw.Draw(base)
     s=fit_hook(d,COVER["head"],W-2*MX,start=80,floor=54); hf=dm(900,s); y=112
-    halo=Image.new("RGBA",(W,H),(0,0,0,0)); hd=ImageDraw.Draw(halo)
-    hh=int(s*1.12)*len(COVER["head"])
-    hd.rounded_rectangle([40,y-30,W-40,y+hh+56+112+34],radius=38,fill=(12,10,9,170))
-    base.alpha_composite(halo.filter(ImageFilter.GaussianBlur(34)))
+    # per-glyph soft drop shadow (NOT a degrade band - operator 2026-07-02): keeps the hook
+    # readable over light OR dark video without darkening the overlay
+    sh=Image.new("RGBA",(W,H),(0,0,0,0)); sd=ImageDraw.Draw(sh); yy=y
+    for ln in COVER["head"]:
+        txt="".join(t for t,_ in ln); tw2=sd.textlength(txt,font=hf)
+        sd.text(((W-tw2)//2+4, yy+5), txt, font=hf, fill=(0,0,0,215)); yy+=int(s*1.12)
+    base.alpha_composite(sh.filter(ImageFilter.GaussianBlur(7)))
     for ln in COVER["head"]: seg_center(d,y,ln,hf); y+=int(s*1.12)
     # NO 3D model (operator 2026-07-02): marks raised right under the hook, centre stays open for the movie
     my=y+56
@@ -601,8 +608,11 @@ def cover_ig(out):
         stk=stk.resize((tw2,int(stk.height*tw2/stk.width)),Image.LANCZOS)
         base.alpha_composite(stk,((W-stk.width)//2, my))
     elif mk2=="orb":
-        ob=_orb(); ob.thumbnail((160,160),Image.LANCZOS)
-        base.alpha_composite(ob,((W-ob.width)//2, my))
+        ob=_orb(); ob.thumbnail((140,140),Image.LANCZOS)
+        wf=dm(900,52); wtxt="ULTRON"; ww=int(d.textlength(wtxt,font=wf))
+        tot=ob.width+32+ww; x0=(W-tot)//2
+        base.alpha_composite(ob,(x0, my))
+        d.text((x0+ob.width+32, my+ob.height//2-32), wtxt, font=wf, fill=(250,250,247))
     else:
         logos=[Image.open(CLAUDE_SUN).convert("RGBA"), _orb()]
         L=112; SLOT=84
