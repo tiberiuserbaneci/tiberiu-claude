@@ -8,16 +8,16 @@ M="/home/user/tiberiu-claude/content/_hitl-src/models_clay/contentdesk"; LIB=T2.
 PREMIUM=1
 T2.ACCENT=(200, 70, 35); T2.CORAL=T2.ACCENT
 T2.OBJ_THR=30
-T2.COVER=dict(head=[[wo('My content desk runs')],[co('on five skills.')]])
+T2.COVER=dict(head=[[wo('Five salaries quit my desk.')],[co('Output went up.')]])
 T2.CONTENT=[
- ('SKILL 1', [[wo('The calendar')],[co('plans itself.')]], 'One line in, 14 slots out, spread across channels at 10:00 local.', [co('Zero coordinators.')], f"{M}/cal.png", 1.0),
- ('SKILL 2', [[wo('Hooks rotate.')],[co('Never repeat.')]], 'Three angles per post from your proven hook bank. You pick the winner.', [co('A/B/C, one tap.')], f"{M}/hooks.png", 1.0),
- ('SKILL 3', [[wo('Drafts arrive')],[co('in your voice.')]], 'Sampled from your real posts, banned words enforced, ranked before you read.', [co('No AI-speak.')], f"{M}/voice.png", 1.0),
- ('SKILL 4', [[wo('One post becomes')],[co('five formats.')]], 'LinkedIn long-form, caption, carousel, newsletter, script. Same brief.', [co('Native per channel.')], f"{M}/repurpose.png", 1.0),
- ('SKILL 5', [[wo('Newsletters land')],[co('in the inbox.')]], 'Warm domains, ramped sends, 99.2% placement. Content nobody reads is free.', [co('Delivery is the job.')], f"{M}/inbox.png", 1.0),
- ('THE DESK', [[wo('Five skills.')],[co('One desk, no meetings.')]], 'The whole pipeline runs behind one chat with one memory of your brand.', [co('PULSE owns it.')], f"{M}/desk.png", 1.0),
- ('THE GATE', [[wo('Nothing posts')],[co('without your tap.')]], 'Every draft parks first. You approve the batch in one read.', [co('Your feed, your call.')], f"{M}/gate.png", 1.0),
- ('THE MATH', [[wo('A content team')],[co('for cents.')]], 'Planner, writer, designer, distributor: one subscription, metered by use.', [co('Payroll: zero.')], f"{M}/math.png", 1.0),
+ ('SKILL 1', [[wo('Monday, 07:00.')],[co('The week plans itself.')]], 'One line in, 14 slots out, spread across channels at 10:00 local.', [co('Zero coordinators.')], f"{M}/cal.png", 1.0),
+ ('SKILL 2', [[wo('Three hooks fight.')],[co('I crown one.')]], 'Three angles per post from your proven hook bank. You pick the winner.', [co('A/B/C, one tap.')], f"{M}/hooks.png", 1.0),
+ ('SKILL 3', [[wo('It writes like me')],[co('on my best day.')]], 'Sampled from your real posts, banned words enforced, ranked before you read.', [co('No AI-speak.')], f"{M}/voice.png", 1.0),
+ ('SKILL 4', [[wo('One brief.')],[co('Five channels, native.')]], 'LinkedIn long-form, caption, carousel, newsletter, script. Same brief.', [co('Native per channel.')], f"{M}/repurpose.png", 1.0),
+ ('SKILL 5', [[wo('99.2% inboxed.')],[co('Unseen content is rent.')]], 'Warm domains, ramped sends, 99.2% placement. Content nobody reads is free.', [co('Delivery is the job.')], f"{M}/inbox.png", 1.0),
+ ('THE DESK', [[wo('No standups.')],[co('The desk never meets.')]], 'The whole pipeline runs behind one chat with one memory of your brand.', [co('PULSE owns it.')], f"{M}/desk.png", 1.0),
+ ('THE GATE', [[wo('My feed, my thumb.')],[co('Nothing posts alone.')]], 'Every draft parks first. You approve the batch in one read.', [co('Your feed, your call.')], f"{M}/gate.png", 1.0),
+ ('THE MATH', [[wo('The desk bills in cents.')],[co('Not in Mondays.')]], 'Planner, writer, designer, distributor: one subscription, metered by use.', [co('Payroll: zero.')], f"{M}/math.png", 1.0),
 ]
 T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], f"{LIB}/cta3d-operator.png", 0.92)
 T2.CLOSE=dict(l1='Save the desk',l2='and steal the setup.',q='Which of the five would you run first?')

@@ -15,6 +15,7 @@ f_rows,f_fan,f_pills,f_dial,f_paper,f_receipt,f_ticket,tick_cells,f_console,f_bu
 f_env,f_badge,f_metro,f_split,f_gauge,f_odo,f_vault,f_folder,f_stamp,f_chartline,f_keys=(
  L.f_env,L.f_badge,L.f_metro,L.f_split,L.f_gauge,L.f_odo,L.f_vault,L.f_folder,L.f_stamp,L.f_chartline,L.f_keys)
 LOCK=L.LOCK
+f_podium,f_browser,f_stat=L.f_podium,L.f_browser,L.f_stat
 
 def panels_for(slug,acc):
     A=acc
@@ -68,6 +69,57 @@ def panels_for(slug,acc):
   "desk": f_console("The desk","NO MEETINGS",[("Planner","fires Monday 07:00",True),("Writer","your voice, ranked",True),("Distributor","10:00 local, daily",True)],buttons=False),
   "gate": f_badge(LOCK,"3","Three drafts wait for you.","nothing posts without your tap"),
   "math": f_bubble("A content team, metered in cents.","The desk","PAYROLL: ZERO","run the desk",A),
+ },
+
+ "unstuck":{
+  "floor": f_split("LEVEL 1, TODAY",["Ask a question","Copy the answer","Close the tab"],"WHAT IT COULD BE",["Work arrives done","Memory persists","Runs overnight"]),
+  "memory": f_folder("What it keeps","LEVEL 2",[row("icp.md","who you sell to",chip="saved"),row("voice.md","how you write",chip="saved"),row("rules.md","every correction, forever",chip="grows")]),
+  "jobs": f_fan("Running now","LEVEL 3",[row("Sourcing the list","one line in",chip="live"),row("Briefing accounts","1 page each",chip="live"),row("Drafting openers","gate holds them",chip="live")]),
+  "ship": f_stamp("Build log","LEVEL 4","landing page &middot; from a sentence",[("Built + styled","19:04"),("Tests passed","23:12"),("Live on your domain","23:40")],"SHIPPED"),
+  "routines": f_metro("Overnight","LEVEL 5",[("23:00","triage",1),("02:00","scoring",1),("06:00","digest",1),("07:00","your coffee",0)]),
+  "gap": f_podium([("L1","chat",0),("L2","memory",0),("L3","jobs",0),("L4","ship",0),("L5","auto",1)]),
+  "gate": f_keys([("AUTONOMY","GROWS EVERY LEVEL",False),("YOUR TAP","NEVER SHRINKS",True)]),
+  "ceiling": f_bubble("The floor is chat. The ceiling runs itself.","Level 5","LAPTOP OFF","climb one level",A),
+ },
+ "hidden":{
+  "myth": f_split("THE PROMPTERS",["Re-word the ask","Hope it lands","Start over daily"],"THE OPERATORS",["Install the skill","Wire the stack","Work arrives done"]),
+  "decks": f_paper("Proposal","BUILT ITSELF","Northwind expansion offer",'<div style="display:flex;align-items:center;gap:12px"><span class="dot"></span><div><div class="rn" style="color:#17150F">In your tokens</div><div class="rs" style="color:#8a7a5e">structure from decks that closed</div></div><span class="chip">Send</span></div>'),
+  "sheets": f_browser("reports &middot; live numbers", hd("Month view","SOURCES ATTACHED")+row("Revenue","every figure traces to a run",chip="live")+row("Pipeline","refreshed this morning",chip="live")+row("Spend","cents, itemised",chip="live")),
+  "contracts": f_stamp("NDA review","COUNSEL","risk lines flagged &middot; redlines drafted",[("Clause 4.2","flagged"),("Clause 7.1","redlined"),("Everything else","clean")],"REDLINED"),
+  "visuals": f_folder("Asset pack","822 COMPONENTS",[row("Landing page","assembled, on-brand",chip="done"),row("9 visuals","your tokens, every one",chip="done"),row("Pitch one-pager","from the same pack",chip="done")]),
+  "connectors": f_pills([row("Mail + CRM","it acts inside them",chip="wired"),row("Calendar","knows your week",chip="wired"),row("Payments","invoices + chasing",chip="wired"),row("Docs","reads and cites",chip="wired")]),
+  "result": f_console("The difference","EXECUTES",[("Creates files","decks, sheets, pages",True),("Automates work","flows on triggers",True),("Finishes tasks","not just answers",True)],buttons=False),
+  "gate": f_bubble("Executes fast. Sends only on your tap.","The skills","INSTALLED ONCE","install the desk",A),
+ },
+ "carouselcmd":{
+  "oldbill": f_receipt("DESIGN RETAINER","EVERY MONTH",[("Carousel deck x4","waited a week"),("Revision rounds","two each"),("Rush fees","surprise")],"One command now","cents"),
+  "command": f_env("THE BRIEF","One line starts it.","PULSE interviews you for the angle first.","Deck started"),
+  "visuals": f_folder("Brand pack","NO TEMPLATE SMELL",[row("Colors + type","your tokens exactly",chip="locked"),row("Components","from your own pack",chip="locked"),row("Covers","hook-first, on grid",chip="locked")]),
+  "slides": f_fan("The deck","TEN PAGES",[row("Hook page","scroll-stop first",chip="1"),row("Body pages","one beat per page",chip="2-9"),row("CTA page","the fixed pill",chip="10")]),
+  "captions": f_paper("Caption kit","SHIPS WITH IT","CTA-first, hashtags, first comment",'<div style="display:flex;align-items:center;gap:12px"><span class="dot"></span><div><div class="rn" style="color:#17150F">Nothing left to write</div><div class="rs" style="color:#8a7a5e">posting kit included</div></div><span class="chip">Copy</span></div>'),
+  "clock": f_metro("Brief to done","MINUTES",[("Brief","one line",1),("Visuals","generated",1),("Slides","assembled",1),("Kit","captions in",0)]),
+  "gate": f_badge(LOCK,"1","One deck waits for your tap.","review once, then it posts"),
+  "math": f_bubble("The retainer became runway.","One command","METERED IN CENTS","build the deck",A),
+ },
+ "patterns":{
+  "react": f_metro("Every run","THINK FIRST",[("Reason","what is needed",1),("Act","tool call",1),("Observe","what came back",1),("Done","or loop",0)]),
+  "codeact": f_stamp("The action","SENTINEL","fix written, tested, shipped",[("Wrote the fix","19:04"),("42 tests passed","19:11"),("PR opened","19:12")],"EXECUTED"),
+  "plan": f_split("PLANNING",["Deep judgement","Once per job","Expensive, worth it"],"EXECUTION",["Light tier","Every step","Cents per run"]),
+  "reflect": f_fan("Before you see it","RANKED",[row("Draft v1","against your bar",chip="72"),row("Draft v2","tightened",chip="85"),row("Draft v3","what you get",chip="92")]),
+  "multi": f_pills([row("CORTEX","research, only research",chip="one job"),row("SPECTER","outbound, gated",chip="one job"),row("STRIKER","deals and replies",chip="one job"),row("PULSE","content in your voice",chip="one job")]),
+  "stack": f_console("Composed per job","YOU TYPE THE GOAL",[("Reason + act","always on",True),("Plan + execute","tiered by the router",True),("Draft + refine","before you see it",True)],buttons=False),
+  "gate": f_vault("YOU","THE 6TH PATTERN"),
+  "operator": f_bubble("Same models. Better design. A workforce.","The patterns","ARCHITECTURE WINS","check my stack",A),
+ },
+ "setup":{
+  "connect": f_pills([row("Mail","two clicks",chip="wired"),row("CRM","two clicks",chip="wired"),row("Calendar","two clicks",chip="wired"),row("Payments","two clicks",chip="wired")]),
+  "init": f_env("MINUTE 12","/init my business","It interviews you once: ICP, offer, pricing, no-list.","Memory born"),
+  "voice": f_paper("Voice sample","MINUTE 25","Paste your best posts",'<div style="display:flex;align-items:center;gap:12px"><span class="dot"></span><div><div class="rn" style="color:#17150F">Voice locked</div><div class="rs" style="color:#8a7a5e">every draft sounds like you</div></div><span class="chip">Saved</span></div>'),
+  "permissions": f_console("The gate setup","MINUTE 35",[("Internal jobs","run free",True),("External sends","wait for your tap",True),("Spend caps","on every flow",True)],buttons=False),
+  "firsttask": f_stamp("First task","MINUTE 45","source 20 accounts and brief them",[("Found","20 matches"),("Briefed","1 page each"),("Time","9 minutes")],"DONE"),
+  "digest": f_badge(LOCK,"1","Your first digest arrived.","overnight jobs, parked approvals, hot threads"),
+  "compound": f_chartline("Usefulness","EVERY SESSION",[20,30,38,52,60,74,85,100],"corrections become rules: month two beats month one alone"),
+  "operator": f_bubble("Hour one is setup. Year one is leverage.","The hour","BLOCK IT TODAY","start the clock",A),
  },
     }[slug]
     return {k:v.replace("{acc}",A) for k,v in P.items()}

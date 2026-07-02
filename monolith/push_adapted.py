@@ -50,6 +50,27 @@ KITS={
   "A content team used to mean five salaries and a Monday meeting.\n\nMine is five skills in one chat: the calendar plans itself, hooks rotate from my bank, drafts land in my voice, one brief becomes five formats, newsletters hit 99.2% inbox.\n\nNothing posts without my tap.\n\nThe desk is metered in cents, not salaries.",
   "Five skills run my whole content desk from one chat.\n\nThe calendar plans 14 slots from one line. Hooks come in three angles, I pick the winner. Drafts arrive in my voice, ranked. One brief becomes five native formats. Newsletters land at 99.2%.\n\nEvery draft parks for my tap before it posts.",
   "Planner, writer, designer, distributor: one subscription, no meetings.\n\nDrop OPERATOR below and I will DM you the 5-skill content desk setup.\n\nSave the desk and steal the pipeline."),
+
+ "unstuck":("STUCK AT LEVEL ONE","BUILDER","the 5-level climb map","2ba8c438",
+  "Chat. Close tab. Repeat. That is level 1, and most founders never leave it.\n\nLevel 2 gives it a memory. Level 3 runs real jobs. Level 4 ships product. Level 5 runs with the laptop off.\n\nThe gap is not smarts. It is knowing the next level exists.\n\nEvery level up keeps your tap on everything external.",
+  "Almost everyone stops at level 1 with AI: ask, copy, close.\n\nThe climb inside Ultron: a memory that survives, agents that run jobs, builds that ship, routines that fire with the laptop shut.\n\nAutonomy grows, your control does not shrink. The gate holds every external move.",
+  "Five levels, one chat. Most founders sit at 2 without knowing 3 exists.\n\nDrop BUILDER below and I will DM you the 5-level climb map with the first move per level.\n\nSave the map and be honest about your level."),
+ "hidden":("THE HIDDEN SKILLS","OPERATOR","the skills + connectors starter list","406038b6",
+  "You do not need better prompting. You need installed capability.\n\nProposals build themselves. Reports carry live numbers. Contracts get redlined. Assets assemble from your own pack.\n\nWired into mail, CRM, calendar and payments, it acts inside your tools.\n\nA chatbot answers. This executes, and sends only on your tap.",
+  "The secret to Claude was never phrasing. It is skills and connectors.\n\nInside Ultron: decks in your tokens, reports with sources, NDAs redlined by COUNSEL, visuals from 822 Crescendo components, all wired into your real stack.\n\nExecutor, not assistant. Gated by your tap.",
+  "Prompters re-word. Operators install.\n\nDrop OPERATOR below and I will DM you the skills and connectors starter list, in install order.\n\nSave this before you rewrite another prompt."),
+ "carouselcmd":("THE CAROUSEL COMMAND","OPERATOR","the carousel command setup","733d81bd",
+  "The designer retainer is dead. One line now starts the whole deck.\n\nPULSE interviews you for the angle, generates visuals in your tokens, assembles ten pages and ships the caption kit with it.\n\nBrief to done in minutes. The deck parks for your tap before it posts.\n\nThe retainer becomes runway.",
+  "Paying a designer per carousel is over.\n\nOne line in: PULSE takes the angle, builds ten on-brand pages from your own component pack and delivers the caption kit with hashtags and first comment.\n\nYou review once, tap, done. Metered in cents.",
+  "Brief, visuals, slides, captions: minutes, not a week.\n\nDrop OPERATOR below and I will DM you the carousel command setup end to end.\n\nSave this before your next design invoice."),
+ "patterns":("HOW REAL AGENTS ARE BUILT","BUILDER","the 6-pattern architecture map","1c1cee10",
+  "Agents do not fail. Their design does.\n\nThe patterns that ship: reason before acting, actions as real work, plan expensive execute cheap, draft-critique-refine, specialists with handoffs.\n\nThe sixth pattern is the human gate: one person on the only external trigger.\n\nSame models, better design, a workforce.",
+  "Most agent failures are design failures.\n\nInside Ultron: agents reason before every tool call, SENTINEL executes real work, the router plans deep and runs light, drafts are ranked before you see them, seven specialists hand off cleanly.\n\nAnd pattern six: your tap on everything external.",
+  "Five build patterns plus the one nobody lists: the human gate.\n\nDrop BUILDER below and I will DM you the 6-pattern architecture map.\n\nSave this before you build another 100-node automation."),
+ "setup":("60 MINUTES TO AN OPERATOR","FOUNDER","the 60-minute setup checklist","44e61328",
+  "One hour of setup buys a coworker forever.\n\nMinute 10: stack connected. Minute 20: /init my business. Minute 30: voice locked. Minute 40: the gate set. Minute 50: first real task done. Minute 60: your first digest.\n\nEvery session after gets smarter on its own.\n\nBlock the hour.",
+  "Sixty minutes, six steps: connect the stack, /init my business, teach it your voice, lock the gate, run the first task, read the first digest.\n\nBy minute 60 you did not set up a tool. You hired a coworker that knows your business.\n\nCorrections become rules. It compounds from day one.",
+  "Hour one is setup. Year one is leverage.\n\nDrop FOUNDER below and I will DM you the 60-minute checklist, minute by minute.\n\nSave it and block the hour this week."),
 }
 
 def cap_tt(kit):
@@ -83,7 +104,7 @@ if __name__=="__main__":
         d1(f"DELETE FROM vault_items WHERE owner='{ME}' AND id LIKE '%' AND name LIKE 'Scraped %' AND id IN (SELECT id FROM vault_items WHERE owner='{ME}' AND name LIKE 'Scraped %' AND created_at IN (SELECT created_at FROM vault_items WHERE owner='{ME}' AND name LIKE 'Scraped %'))" if False else "SELECT 1")
         # match sursa dupa numele copiat (prefixul numelui original)
         src=d1(f"SELECT id,name FROM vault_items WHERE owner='{ME}' AND name LIKE 'Scraped %'")
-        FIRST={"263c2cda":"Comment “OS”","6bf71ba3":"Comment “LOOP”","0a3c53ce":"AI didn’t take your job","fa7eedb6":"5 Signs Your Business","5af9c9ec":"Comment “SKILLS”"}
+        FIRST={"263c2cda":"Comment “OS”","6bf71ba3":"Comment “LOOP”","0a3c53ce":"AI didn’t take your job","fa7eedb6":"5 Signs Your Business","5af9c9ec":"Comment “SKILLS”","2ba8c438":"Comment “LEVELS”","406038b6":"16 Claude Skills","733d81bd":"Comment “CAROUSEL”","1c1cee10":"5 agent architectures","44e61328":"Set up Claude Code in one hour"}
         frag=FIRST[srcpref]
         for r in src:
             if frag in r["name"]:
