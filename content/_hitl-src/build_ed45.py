@@ -587,9 +587,11 @@ def cover_tt(base):
     d.text((px+42,py+ph//2-24),txt,font=f,fill=(20,14,10))
 
 def cover_ig(out):
-    # TRANSPARENT overlay, TOP-THIRD ONLY: hook + small logo band + brand marks. The middle and
-    # bottom stay fully open - the movie runs there (operator spec).
-    base=Image.new("RGBA",(W,H),(0,0,0,0)); d=ImageDraw.Draw(base)
+    # OPAQUE, TOP-ANCHORED (operator 2026-07-02: transparent overlays flatten to WHITE on every
+    # direct-to-IG path - Photos/AirDrop/IG all convert PNG->JPEG on white, tested twice on a
+    # posted deck). Same top-anchored composition as the old overlay, now on the dark grid so
+    # the deck posts clean with zero manual compositing. TT cover stays centered; IG stays top.
+    base=slide_base(False); d=ImageDraw.Draw(base)
     s=fit_hook(d,COVER["head"],W-2*MX,start=80,floor=54); hf=dm(900,s); y=112
     # per-glyph soft drop shadow (NOT a degrade band - operator 2026-07-02): keeps the hook
     # readable over light OR dark video without darkening the overlay
