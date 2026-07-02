@@ -21,4 +21,4 @@ T2.CONTENT=[
 ]
 T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], f"{LIB}/cta3d-builder.png", 0.92)
 T2.CLOSE=dict(l1='Save the patterns',l2='and check your stack.',q='Which pattern is your setup missing?')
-MARK2="orb"
+MARK2="claude"

@@ -21,4 +21,4 @@ T2.CONTENT=[
 ]
 T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], f"{LIB}/cta3d-founder.png", 0.92)
 T2.CLOSE=dict(l1='Save the checklist',l2='and block the hour.',q='Which minute are you stuck on?')
-MARK2="orb"
+MARK2="claude"

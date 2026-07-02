@@ -21,4 +21,4 @@ T2.CONTENT=[
 ]
 T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], f"{LIB}/cta3d-operator.png", 0.92)
 T2.CLOSE=dict(l1='Save the org chart',l2='before you build a bot.',q='Which desk do you need first?')
-MARK2="orb"
+MARK2="claude"
