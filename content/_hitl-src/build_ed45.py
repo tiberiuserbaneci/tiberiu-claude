@@ -541,34 +541,36 @@ def _bloom(base,cx,cy,rw,rh,alpha=90):
     base.alpha_composite(gl.filter(ImageFilter.GaussianBlur(120)))
 
 def cover_tt(base):
-    # NO 3D model on page 1 (operator 2026-07-02): hook + the two brand marks raised high.
-    # The marks rotate per material (MARK2), Ultron orb ALWAYS present.
+    # TikTok cover = CAROUSEL page (operator 2026-07-02): the hook + marks block sits
+    # CENTRED in the middle of the canvas, not top-anchored (that is the IG overlay).
     ghost(base,"01"); d=ImageDraw.Draw(base)
-    s=fit_hook(d,COVER["head"],W-2*MX,start=84,floor=58); hf=dm(900,s); y=150
+    s=fit_hook(d,COVER["head"],W-2*MX,start=84,floor=58); hf=dm(900,s)
+    hh=int(s*1.12)*len(COVER["head"])
+    mk_h=132   # marks band height (strip or logo pair)
+    block=hh+72+mk_h
+    y=(H-block)//2-40
     for ln in COVER["head"]: seg_center(d,y,ln,hf); y+=int(s*1.12)
     my=y+72
     mk2=getattr(MAT,"MARK2",getattr(T2,"MARK2","claude"))
+    d=ImageDraw.Draw(base)
     if mk2=="strip":
-        st=Image.open("/home/user/tiberiu-claude/content/_hitl-src/covers/tabsrow.png").convert("RGB")
-        arr=np.asarray(st).astype(int); cs=np.concatenate([arr[:24,:24].reshape(-1,3),arr[:24,-24:].reshape(-1,3),arr[-24:,:24].reshape(-1,3),arr[-24:,-24:].reshape(-1,3)])
-        bg2=np.median(cs,0); df=np.abs(arr-bg2).sum(2); alp=np.clip((df-26)*7,0,255).astype("uint8")
-        stk=Image.fromarray(np.dstack([arr.astype("uint8"),alp]),"RGBA"); bb=Image.fromarray((alp>90).astype("uint8")*255,"L").getbbox()
-        if bb: stk=stk.crop(bb)
-        stk=stk.resize((int(stk.width*96/stk.height),96),Image.LANCZOS)
-        logos=[stk,_orb()]
+        # replacement narrative (operator 2026-07-02): ONLY the tool icons, BIG, no shelf
+        # shadow, NO plus, NO Ultron logo on slide 1 - Ultron replaces them, it does not sit next to them
+        stk=Image.open("/home/user/tiberiu-claude/content/_hitl-src/covers/tabsrow_clean.png").convert("RGBA")
+        tw2=min(W-260, stk.width)
+        stk=stk.resize((tw2,int(stk.height*tw2/stk.width)),Image.LANCZOS)
+        base.alpha_composite(stk,((W-stk.width)//2, my))
     else:
         logos=[Image.open(CLAUDE_SUN).convert("RGBA"), _orb()]
-    L=120; SLOT=88
-    for im in logos:
-        if im.width<=im.height*2: im.thumbnail((L,L),Image.LANCZOS)
-    d=ImageDraw.Draw(base)
-    tot=sum(im.width for im in logos)+SLOT*(len(logos)-1); x=(W-tot)//2
-    for i,im in enumerate(logos):
-        base.alpha_composite(im,(x, my+(L-im.height)//2))
-        if i<len(logos)-1:
-            px=x+im.width+SLOT//2; ph,pt=12,3
-            d.rectangle([px-ph,my+L//2-pt,px+ph,my+L//2+pt],fill=T2.BOOK+(255,)); d.rectangle([px-pt,my+L//2-ph,px+pt,my+L//2+ph],fill=T2.BOOK+(255,))
-        x+=im.width+SLOT
+        L=120; SLOT=88
+        for im in logos: im.thumbnail((L,L),Image.LANCZOS)
+        tot=sum(im.width for im in logos)+SLOT*(len(logos)-1); x=(W-tot)//2
+        for i,im in enumerate(logos):
+            base.alpha_composite(im,(x, my+(L-im.height)//2))
+            if i<len(logos)-1:
+                px=x+im.width+SLOT//2; ph,pt=12,3
+                d.rectangle([px-ph,my+L//2-pt,px+ph,my+L//2+pt],fill=T2.BOOK+(255,)); d.rectangle([px-pt,my+L//2-ph,px+pt,my+L//2+ph],fill=T2.BOOK+(255,))
+            x+=im.width+SLOT
     txt="Swipe  "+chr(8594); f=dm(900,34); tw=int(d.textlength(txt,font=f)); pw=tw+84; ph=78; px=(W-pw)//2; py=H-184
     d.rounded_rectangle([px,py,px+pw,py+ph],radius=ph//2,fill=(250,250,247))
     d.text((px+42,py+ph//2-24),txt,font=f,fill=(20,14,10))
@@ -587,26 +589,22 @@ def cover_ig(out):
     my=y+56
     mk2=getattr(MAT,"MARK2",getattr(T2,"MARK2","claude"))
     if mk2=="strip":
-        st=Image.open("/home/user/tiberiu-claude/content/_hitl-src/covers/tabsrow.png").convert("RGB")
-        arr=np.asarray(st).astype(int); cs=np.concatenate([arr[:24,:24].reshape(-1,3),arr[:24,-24:].reshape(-1,3),arr[-24:,:24].reshape(-1,3),arr[-24:,-24:].reshape(-1,3)])
-        bg2=np.median(cs,0); df=np.abs(arr-bg2).sum(2); alp=np.clip((df-26)*7,0,255).astype("uint8")
-        stk=Image.fromarray(np.dstack([arr.astype("uint8"),alp]),"RGBA"); bb=Image.fromarray((alp>90).astype("uint8")*255,"L").getbbox()
-        if bb: stk=stk.crop(bb)
-        stk=stk.resize((int(stk.width*88/stk.height),88),Image.LANCZOS)
-        logos=[stk,_orb()]
+        # ONLY the tool icons, big, clean - no shelf shadow, no plus, no Ultron logo on slide 1
+        stk=Image.open("/home/user/tiberiu-claude/content/_hitl-src/covers/tabsrow_clean.png").convert("RGBA")
+        tw2=min(W-280, stk.width)
+        stk=stk.resize((tw2,int(stk.height*tw2/stk.width)),Image.LANCZOS)
+        base.alpha_composite(stk,((W-stk.width)//2, my))
     else:
         logos=[Image.open(CLAUDE_SUN).convert("RGBA"), _orb()]
-    L=112; SLOT=84
-    for im in logos:
-        if im.width<=im.height*2: im.thumbnail((L,L),Image.LANCZOS)
-    d=ImageDraw.Draw(base)
-    tot=sum(im.width for im in logos)+SLOT*(len(logos)-1); x=(W-tot)//2
-    for i,im in enumerate(logos):
-        base.alpha_composite(im,(x, my+(L-im.height)//2))
-        if i<len(logos)-1:
-            px=x+im.width+SLOT//2; ph,pt=11,3
-            d.rectangle([px-ph,my+L//2-pt,px+ph,my+L//2+pt],fill=T2.BOOK+(255,)); d.rectangle([px-pt,my+L//2-ph,px+pt,my+L//2+ph],fill=T2.BOOK+(255,))
-        x+=im.width+SLOT
+        L=112; SLOT=84
+        for im in logos: im.thumbnail((L,L),Image.LANCZOS)
+        tot=sum(im.width for im in logos)+SLOT*(len(logos)-1); x=(W-tot)//2
+        for i,im in enumerate(logos):
+            base.alpha_composite(im,(x, my+(L-im.height)//2))
+            if i<len(logos)-1:
+                px=x+im.width+SLOT//2; ph,pt=11,3
+                d.rectangle([px-ph,my+L//2-pt,px+ph,my+L//2+pt],fill=T2.BOOK+(255,)); d.rectangle([px-pt,my+L//2-ph,px+pt,my+L//2+ph],fill=T2.BOOK+(255,))
+            x+=im.width+SLOT
     base.save(out)
 
 
