@@ -309,9 +309,9 @@ def f_split(lcap,lrows,rcap,rrows):
 def f_gauge(pct,big,lbl,sub):
     g=50 if pct>=99 else int(pct/2)
     return ('<div class="gaugewrap"><div class="gauge" style="--g:'+str(g)+'%"></div>'
-            +'<div style="margin-top:-120px;position:relative;z-index:2"><div style="font-weight:900;font-size:72px;color:#FAFAF7">'+big+'</div>'
-            +'<div style="font-weight:700;font-size:17px;color:#8f8f85;margin-top:2px">'+lbl+'</div>'
-            +'<div style="font-weight:500;font-size:14px;color:#8f8f85;margin-top:2px">'+sub+'</div></div></div>')
+            +'<div style="margin-top:-176px;position:relative;z-index:2"><div style="font-weight:900;font-size:62px;color:#FAFAF7">'+big+'</div>'
+            +'<div style="font-weight:700;font-size:16px;color:#b9b9ae;margin:2px auto 0;max-width:300px">'+lbl+'</div>'
+            +'<div style="font-weight:500;font-size:13.5px;line-height:1.35;color:#8f8f85;margin:3px auto 0;max-width:300px">'+sub+'</div></div></div>')
 def f_odo(digits,hot_from,cap1,cap2):
     cells=''.join('<b class="'+('hot' if i>=hot_from else '')+'">'+c+'</b>' for i,c in enumerate(digits))
     return ('<div class="odow"><div style="font-family:\'DM Mono\',monospace;font-size:14px;letter-spacing:.18em;color:#8f8f85">'+cap1+'</div>'

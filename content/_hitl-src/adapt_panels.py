@@ -14,7 +14,7 @@ f_rows,f_fan,f_pills,f_dial,f_paper,f_receipt,f_ticket,tick_cells,f_console,f_bu
  L.f_rows,L.f_fan,L.f_pills,L.f_dial,L.f_paper,L.f_receipt,L.f_ticket,L.tick_cells,L.f_console,L.f_bubble)
 f_env,f_badge,f_metro,f_split,f_gauge,f_odo,f_vault,f_folder,f_stamp,f_chartline,f_keys=(
  L.f_env,L.f_badge,L.f_metro,L.f_split,L.f_gauge,L.f_odo,L.f_vault,L.f_folder,L.f_stamp,L.f_chartline,L.f_keys)
-LOCK=L.LOCK
+LOCK=L.LOCK; PLANE=L.PLANE
 f_podium,f_browser,f_stat=L.f_podium,L.f_browser,L.f_stat
 
 def panels_for(slug,acc):
@@ -120,6 +120,107 @@ def panels_for(slug,acc):
   "digest": f_badge(LOCK,"1","Your first digest arrived.","overnight jobs, parked approvals, hot threads"),
   "compound": f_chartline("Usefulness","EVERY SESSION",[20,30,38,52,60,74,85,100],"corrections become rules: month two beats month one alone"),
   "operator": f_bubble("Hour one is setup. Year one is leverage.","The hour","BLOCK IT TODAY","start the clock",A),
+ },
+
+ "verified":{
+  "flood": f_pills([row("50 AI skills you NEED","reposted 400 times",chip="recycled"),row("The ULTIMATE list","same links, new thumbnail",chip="recycled"),row("Nobody installed one","zero receipts anywhere",chip="fact")]),
+  "test": f_console("The bench","ONE WEEK, REAL WORK",[("Run on my pipeline","briefs, drafts, audits",True),("Score the output","kept or cut, no maybe",True),("Demo-only skills","cut on sight",False)],buttons=False),
+  "fakes": f_split("THE LIST CLAIMED",["50 working skills","Plug and play","Game changers"],"THE TEST FOUND",["17 dead or renamed","9 answer, never act","24 actually run"]),
+  "keepers": f_folder("The shortlist","SURVIVORS, BY JOB",[row("Writing desk","drafts in your voice",chip="kept"),row("Research desk","briefs with sources",chip="kept"),row("Build desk","pages that go live",chip="kept")]),
+  "safest": f_metro("Install order","SAFE PATH",[("First","the two Anthropic ship",1),("Second","verified community layer",1),("Third","your own custom skills",1),("Never","an unverified link",0)]),
+  "curated": f_browser_wrap("app.51ultron.com/techniques",hd("The library","TESTED BEFORE LISTED")+row("Every technique","run on real pipelines first",chip="verified")+row("Every skill","curated, not scraped",chip="verified")+row("Your desk","no gambling on links",chip="safe")),
+  "rule": f_stamp("The filter","ONE QUESTION","does it finish work, or describe it?",[("Returns advice","a bookmark"),("Returns files","a worker"),("Only workers","made the list")],"EXECUTES"),
+  "desk": f_odo(["1","2"],0,"SKILLS ON MY DESK","each tested on my own pipeline &middot; running daily"),
+ },
+ "fivepaid":{
+  "research": f_browser_wrap("account brief &middot; before the call",hd("Skill 1","RESEARCH THAT CLOSES")+row("Northwind","hiring 3 ops roles right now",chip="warm")+row("Their stack","no AI layer yet",chip="angle")+row("The opener","written from the brief",chip="ready")),
+  "outbound": f_env("SKILL 2 &middot; OUTBOUND","One trigger per email.","Warm domains, ramped sends, replies tracked. Placement is the skill.","Inboxed"),
+  "content": f_paper("Skill 3","A VOICE","Recognized before the handle",'<div style="display:flex;align-items:center;gap:12px"><span class="dot"></span><div><div class="rn" style="color:#17150F">Not words. A voice.</div><div class="rs" style="color:#8a7a5e">clients spot it in the feed</div></div><span class="chip">Post</span></div>'),
+  "builds": f_fan("Skill 4","BUILDS, NO BUILDERS",[row("Landing page","plain English in",chip="live"),row("Dashboard","same afternoon",chip="live"),row("Client portal","assembly, not code",chip="live")]),
+  "systems": f_console("Skill 5","SYSTEMS THAT RUN",[("Follow-up flow","fires on silence",True),("Digest","lands 07:00 daily",True),("Exit conditions","set once, respected",True)],buttons=False),
+  "one": f_keys([("ONE SKILL","RUN DAILY, DEEP",True),("FIVE BADGES","ON A SHELF",False)]),
+  "client": f_receipt("FIRST CLIENT","YOUR OWN COMPANY",[("Ran it on my pipeline","week 1"),("Kept the receipts","week 2"),("Receipts became pitch","week 3")],"The resume","results"),
+  "meter": f_dial(78,"THE SPREAD","cents","to practice the skill","the invoice runs high when you deliver"),
+ },
+ "installs24":{
+  "stock": f_split("STOCK, DAY ONE",["Answers questions","Waits for prompts","Forgets the thread"],"INSTALLED RIGHT",["Runs whole plays","Acts in your apps","Compounds monthly"]),
+  "plugins": f_pills([row("Marketing desk","one install",chip="desk"),row("Research desk","one install",chip="desk"),row("Deals desk","one install",chip="desk"),row("Build desk","one install",chip="desk")]),
+  "skills": f_env("ONE LINE","/audit my funnel","A slash command that replaces a page of prompting. Same play, every time.","Play run"),
+  "connectors": f_metro("Wired in","NO COPY-PASTE BRIDGE",[("Mail","it acts inside",1),("Docs","reads and cites",1),("CRM","updates itself",1),("Payments","invoices + chasing",0)]),
+  "three": f_folder("Tonight","THE STARTER TRIO",[row("Marketing","the loudest job first",chip="20:00"),row("Design","decks + visuals",chip="20:10"),row("Docs","reports that cite",chip="20:20")]),
+  "preinstalled": f_browser_wrap("app.51ultron.com",hd("Or skip setup","IT COMES INSTALLED")+row("71 skills","tested, loaded",chip="day 1")+row("7 agents","one chat box",chip="day 1")+row("Connectors","already wired",chip="day 1")),
+  "gate": f_vault("TAP","THE BRAKE, PRE-INSTALLED"),
+  "compound": f_chartline("The setup","PAYS RENT MONTHLY",[18,26,34,46,58,71,86,100],"corrections become rules: month three runs sharper than month one"),
+ },
+ "advisors":{
+  "context": f_split("GENERIC ADVICE",["Ignores your deals","Ignores your cash","Sounds smart, fails"],"YOUR BOARD",["Reads your numbers","Knows your clients","Advises on facts"]),
+  "three": f_pills([row("The pricer","unit economics, cold",chip="seat 1"),row("The editor","cuts to the spine",chip="seat 2"),row("The strategist","doors, not dollars",chip="seat 3")]),
+  "books": f_folder("The unlock","THEY READ YOUR BOOKS",[row("deals.live","every open proposal",chip="loaded"),row("clients.md","who pays, who churns",chip="loaded"),row("cash.md","runway, real",chip="loaded")]),
+  "pricer": f_stamp("The pricer","ON A REAL PROPOSAL","unit economics, line by line",[("Your floor","too low"),("The proof","margin math"),("The verdict","raise it")],"RAISE IT"),
+  "editor": f_paper("The editor","ON THE DRAFT","Cut half. The offer was buried.",'<div style="display:flex;align-items:center;gap:12px"><span class="dot"></span><div><div class="rn" style="color:#17150F">Stripped to the spine</div><div class="rs" style="color:#8a7a5e">less closed more</div></div><span class="chip">Rewrite</span></div>'),
+  "strategist": f_metro("The strategist","ONE QUESTION",[("Is it good?","wrong question",0),("Does it open doors?","the filter",1),("Doorway deals","get the yes",1),("Dead-end deals","get declined",1)]),
+  "closed": f_receipt("THE DEAL","THREE LENSES, ONE WIN",[("Repriced","the pricer"),("Rewritten","the editor"),("Requalified","the strategist")],"Signature","clean"),
+  "board": f_bubble("On call at 2am. Briefed on everything. Costs cents.","The board","SEATED IN ONE CHAT","seat my board",A),
+ },
+ "ghosted":{
+  "sent": f_split("CAMPAIGN A",["Same writer","Same offer","Crushed it"],"CAMPAIGN B",["Same writer","Same offer","Died in spam"]),
+  "opens": f_gauge(12,"REPLIES","the only metric that pays","tracking pixels hurt placement and measure vanity"),
+  "fresh": f_chartline("Reputation","EARNED, NOT CLAIMED",[8,16,26,38,52,68,84,100],"a fresh domain at full blast lands in promotions forever"),
+  "onedomain": f_pills([row("outbound-one.com","carries a quarter",chip="safe"),row("outbound-two.com","carries a quarter",chip="safe"),row("outbound-three.com","one bad batch, contained",chip="safe"),row("your main domain","never touches cold",chip="rule")]),
+  "spike": f_metro("The ramp","BORING WINS INBOXES",[("Week 1","60 a day, steady",1),("Week 2","60 a day, steady",1),("Week 3","60 a day, steady",1),("The blast","0 then 500: dead",0)]),
+  "catchall": f_console("The list","VERIFY OR PAY",[("Verified addresses","cleared to send",True),("Catch-all addresses","poison the batch",False),("Bounce watch","kills bad batches",True)],buttons=False),
+  "infra": f_odo(["9","9",".","2"],0,"PERCENT INBOXED","warm domains &middot; ramped sends &middot; watched spam rates"),
+  "road": f_bubble("Great copy on dead infra is a love letter in a locked mailbox.","The road","FIX IT FIRST","check my infra",A),
+ },
+ "twohours":{
+  "input": f_env("14:00","One sentence.","A service for founders who hate bookkeeping. That was the entire input.","Idea in"),
+  "offer": f_paper("14:20","THE OFFER","Positioning, price, guarantee",'<div style="display:flex;align-items:center;gap:12px"><span class="dot"></span><div><div class="rn" style="color:#17150F">Drafted against the niche</div><div class="rs" style="color:#8a7a5e">not a template</div></div><span class="chip">Locked</span></div>'),
+  "page": f_browser_wrap("your-offer.com &middot; live",hd("14:50","THE PAGE")+row("Hero + pricing + FAQ","assembled from the pack",chip="done")+row("Brand tokens","yours, exactly",chip="done")+row("Preview, tap","live on your domain",chip="live")),
+  "plan": f_ticket("15:10","THE CONTENT PLAN",tick_cells([("MON","Post",1),("TUE","Reel",1),("WED","Deck",1),("THU","Post",1),("FRI","News",1)]),"14 SLOTS QUEUED","10:00 LOCAL EACH"),
+  "outreach": f_badge(PLANE,"20","Twenty openers, one trigger each.","parked at the gate for your tap"),
+  "review": f_keys([("16:00","YOU REVIEW",True),("16:01","IT SHIPS",False)]),
+  "excuse": f_split("THE EXCUSES, 13:59",["No team","No budget","No time"],"THE DESK, 16:01",["One operator","Metered in cents","Two hours flat"]),
+  "moat": f_chartline("Speed","THE ONLY MOAT LEFT",[10,22,30,44,58,70,86,100],"idea to live while others plan: feedback to fix within the hour"),
+ },
+ "salesorg":{
+  "everything": f_split("THE MEGA-BOT",["100 nodes deep","Does everything","Does nothing well"],"THE SALES ORG",["Four desks","One job each","A chief on top"]),
+  "structure": f_podium([("INTEL","research",0),("SEND","outreach",0),("PREP","enablement",0),("PIPE","revops",0),("YOU","the chief",1)]),
+  "research": f_browser_wrap("prospect intel &middot; before a word is written",hd("Desk 1","CORTEX")+row("Profiled","who they are, what moved",chip="done")+row("Scored","fit against your ICP",chip="done")+row("Briefed","one page per account",chip="done")),
+  "outreach": f_env("DESK 2 &middot; SPECTER","Drafted per channel.","Every send parks at the gate. Volume with brakes.","Parked"),
+  "enable": f_folder("Desk 3","THE WORK NOBODY LOVES",[row("Proposals","drafted from the call",chip="on time"),row("Scheduling","no back-and-forth",chip="on time"),row("Follow-ups","never dropped",chip="on time")]),
+  "revops": f_console("Desk 4","TRUTH IN THE CRM",[("Stages move","on replies, not memory",True),("Data stays clean","deduped, enriched",True),("Digest lands","daily, 07:00",True)],buttons=False),
+  "onejob": f_pills([row("CORTEX","research, only research",chip="one job"),row("SPECTER","outbound, only outbound",chip="one job"),row("STRIKER","deals, only deals",chip="one job")]),
+  "chief": f_keys([("THE ORG","RUNS THE DAY",False),("YOUR TAP","RUNS THE ORG",True)]),
+ },
+ "adsagency":{
+  "retainer": f_receipt("THE RETAINER","WHAT IT BOUGHT",[("Research","delivered quarterly"),("Copy rounds","two week wait"),("The audit","a slide deck")],"That bill","ends here"),
+  "spy": f_browser_wrap("rival ads &middot; diffed weekly",hd("Monday","THE SPY REPORT")+row("Rival A","3 new creatives, testimonial angle",chip="new")+row("Rival B","dropped price hooks",chip="shift")+row("Rival C","silent for 3 weeks",chip="gap")),
+  "gap": f_split("THEY ALL HOOK ON",["Price, price, price","Feature dumps","The same promise"],"NOBODY COVERS",["The switching pain","The hidden cost","Your empty angle"]),
+  "variations": f_fan("One description in","TWENTY VARIATIONS OUT",[row("Short","hook-first, feed native",chip="x7"),row("Medium","story arc, your voice",chip="x7"),row("Long","proof-heavy, retargeting",chip="x6")]),
+  "audit": f_gauge(74,"HEALTH","186 checks, one score","fatigue, overlap, anomalies: with a fix list attached"),
+  "score": f_dial(58,"BEFORE IT SPENDS","6","dimensions, every ad","weak hooks get rewritten, not launched"),
+  "chain": f_metro("The chain","ONE MORNING",[("Spy","rivals diffed",1),("Gap","angle found",1),("Draft","20 variations",1),("Score","launch or rewrite",0)]),
+  "sign": f_stamp("The launch","EVERY TIME","nothing spends without you",[("Budget move","waits"),("New creative","waits"),("Your tap","releases")],"YOUR CALL"),
+ },
+ "million":{
+  "notteam": f_split("THE OLD SHAPE",["Funded startup","Team of 20","Burn and pray"],"THE NEW SHAPE",["One laptop","Meter in cents","Systems that compound"]),
+  "agents": f_pills([row("Research","runs parallel",chip="working"),row("Outreach","runs parallel",chip="working"),row("Content","runs parallel",chip="working"),row("You","decide, once a day",chip="the job")]),
+  "revenue": f_chartline("The curve","LINES DIVERGE",[22,30,38,44,56,68,82,100],"revenue up 32% this month: payroll unchanged since day zero"),
+  "speed": f_metro("The moat","SPEED BEATS SIZE",[("Afternoon","idea to live offer",1),("One hour","feedback to fix",1),("One day","test to verdict",1),("Committee","still scheduling",0)]),
+  "costs": f_receipt("THE MONTH","THE SPREAD",[("Research, 200 briefs","cents"),("Content, 14 posts","cents"),("The market pays","full price")],"The spread","the business"),
+  "calendar": f_ticket("The week","NO STANDUPS",tick_cells([("MON","07:00",1),("TUE","07:00",1),("WED","07:00",1),("THU","07:00",1),("FRI","07:00",1)]),"DIGESTS, NOT MEETINGS","DECISIONS WHEN YOU CHOOSE"),
+  "gated": f_vault("KEEL","AUTONOMY, KEPT"),
+  "you": f_bubble("Someone builds this company this year.","The bet","WHY NOT YOU","start tonight",A),
+ },
+ "zerostart":{
+  "barrier": f_split("THE OLD BARRIER",["Learn to code","Hire builders","Raise to start"],"THE 2026 LIST",["Pick a niche","Get distribution","Show up daily"]),
+  "build": f_env("THE BUILD","One sentence.","Describe the offer: Crescendo assembles the page from 822 parts.","Live today"),
+  "workflow": f_console("The engine","RUNS WITHOUT YOU",[("Follow-up","fires on silence",True),("Delivery","on payment, instant",True),("Reporting","weekly, cited",True)],buttons=False),
+  "problem": f_folder("The niche","BORING PRINTS MONEY",[row("Bookkeeping hate","real invoices",chip="pays"),row("Compliance dread","real invoices",chip="pays"),row("Inbox chaos","real invoices",chip="pays")]),
+  "daily": f_ticket("The habit","CHEAP TO KEEP",tick_cells([("MON","Post",1),("TUE","Post",1),("WED","Post",1),("THU","Post",1),("FRI","Post",1)]),"14 FROM ONE LINE","YOUR JOB: BE REAL"),
+  "profit": f_gauge(84,"YEAR 1","profit, not promises","cost base in cents, output of a team: the math flipped"),
+  "ten": f_odo(["1","0"],0,"CUSTOMERS, TEN HANDSHAKES","the machine sources and drafts: you close like a human"),
+  "yours": f_stamp("The stack","ONE PERSON","build, run, approve",[("The build","yours"),("The engine","yours"),("The gate","yours")],"ALL YOURS"),
  },
     }[slug]
     return {k:v.replace("{acc}",A) for k,v in P.items()}

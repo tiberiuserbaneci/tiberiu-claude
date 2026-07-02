@@ -22,7 +22,13 @@ def r2put(key,path):
 def d1(sql,params=None):
     body={"sql":sql}
     if params: body["params"]=params
-    out=json.loads(req(f"https://api.cloudflare.com/client/v4/accounts/{ACCT}/d1/database/{DBID}/query","POST",json.dumps(body).encode(),"application/json"))
+    for att in range(6):
+        try:
+            out=json.loads(req(f"https://api.cloudflare.com/client/v4/accounts/{ACCT}/d1/database/{DBID}/query","POST",json.dumps(body).encode(),"application/json"))
+            break
+        except urllib.error.HTTPError as e:
+            if e.code!=429 or att==5: raise
+            time.sleep(3*2**att)
     if not out.get("success"): raise RuntimeError(out.get("errors"))
     return out["result"][0]["results"]
 
@@ -71,6 +77,47 @@ KITS={
   "One hour of setup buys a coworker forever.\n\nMinute 10: stack connected. Minute 20: /init my business. Minute 30: voice locked. Minute 40: the gate set. Minute 50: first real task done. Minute 60: your first digest.\n\nEvery session after gets smarter on its own.\n\nBlock the hour.",
   "Sixty minutes, six steps: connect the stack, /init my business, teach it your voice, lock the gate, run the first task, read the first digest.\n\nBy minute 60 you did not set up a tool. You hired a coworker that knows your business.\n\nCorrections become rules. It compounds from day one.",
   "Hour one is setup. Year one is leverage.\n\nDrop FOUNDER below and I will DM you the 60-minute checklist, minute by minute.\n\nSave it and block the hour this week."),
+
+ "verified":("I CHECKED THE LISTS","OPERATOR","the verified skills shortlist","f276e654",
+  "Everyone posts 50-skill lists. Nobody installs them.\n\nI installed every single one and ran them on real work for a week.\n\nA third were fakes: dead links, renamed duplicates, skills that answer instead of execute.\n\nThe survivors fit on one shortlist, grouped by job, starting with the two Anthropic built.\n\nIf it cannot execute, it does not count.",
+  "The skill lists flooding your feed have zero receipts behind them.\n\nSo I tested the flood: every skill installed, every one run on real briefs, drafts and builds for a week.\n\nA third were made up. The keepers fit on one page, and Ultron ships them pre-verified in the techniques library.\n\nMy desk now runs on 12 survivors, daily.",
+  "Fifty skills per list. Twenty-four actually run. Twelve earned a slot on my desk.\n\nDrop OPERATOR below and I will DM you the verified shortlist in safe install order.\n\nSave this before you install from another random list."),
+ "fivepaid":("THE 5 SKILLS THAT PAY","FOUNDER","the 5-skills starter map","2a84f6ff",
+  "Everyone asks which AI skills to learn. Wrong list, every time.\n\nLearn what businesses already pay for: research that closes, outbound that lands, content in a voice, builds without builders, systems that keep running.\n\nPick exactly one and go deep. Your first client is your own company.\n\nThe meter runs in cents while you practice. The invoice runs high when you deliver.",
+  "The five AI skills businesses already pay for, in order:\n\nResearch that turns cold calls warm. Outbound that actually inboxes. Content in a voice clients recognize. Builds that go live from plain English. Systems that run on triggers.\n\nOne skill run daily inside Ultron beats five certificates on a shelf. Run it on your own pipeline first: the receipts become the pitch.",
+  "Cents to practice. Real money to sell. That spread is the whole opportunity.\n\nDrop FOUNDER below and I will DM you the 5-skills starter map with the first move for each.\n\nSave this and pick your one tonight."),
+ "installs24":("THE POWER USER SETUP","BUILDER","the power user install list","65e782c5",
+  "Your AI is running on stock settings. That is the floor, not the product.\n\nPlugins turn it into desks: research, content, deals, code. Skills turn a page of prompting into one line. Connectors let it act inside mail, docs, CRM and payments.\n\nInstall the starter trio tonight: marketing, design, docs. Twenty minutes.\n\nOr skip the setup: Ultron comes with 71 skills and 7 agents pre-installed, gate included.",
+  "Out of the box it only answers. Installed right, it operates.\n\nThe power user stack: plugins as whole desks, slash commands that run entire plays, connectors wired into your real apps so nothing needs copy-paste.\n\nUltron ships it assembled: 71 skills, 7 agents, connectors live on day one, and everything external waits for your tap.\n\nSet once, collect monthly. Corrections become rules.",
+  "Stock is training wheels. The trio to install first: marketing, design, docs.\n\nDrop BUILDER below and I will DM you the full power user install list in order.\n\nSave this for tonight's twenty minutes."),
+ "advisors":("THE BOARD OF ADVISORS","FOUNDER","the 3-advisor board setup","d51eb4c6",
+  "Generic advice fails because it ignores your deals, your clients, your cash.\n\nI seated a board that reads my books: the pricer, the editor, the strategist. Each one a skill, wired into the same memory.\n\nThe pricer ran real unit economics and said raise. The editor cut the proposal in half. The strategist asked one question: does this open doors?\n\nThe deal signed clean. Three lenses, one win.",
+  "Advice is cheap. Context is the moat.\n\nMy board of advisors lives in one Ultron chat: a pricer that proved my floor was too low, an editor that stripped the proposal to the spine, a strategist that filters deals by the doors they open.\n\nAll three read the same live memory: deals, clients, numbers. They advise on facts, not averages.\n\nOn call at 2am, costing cents.",
+  "Three advisors, zero retainers, briefed on everything you sell.\n\nDrop FOUNDER below and I will DM you the 3-advisor board setup with the exact skills.\n\nSave this and seat your board this week."),
+ "ghosted":("WHY COLD EMAILS DIE","BUILDER","the 5-mistake infra checklist","f98bfdf8",
+  "Your cold emails are not ignored. They are unseen. The copy was never the variable.\n\nThe five infra mistakes: counting opens instead of replies, blasting from a fresh domain, one domain carrying the whole pipeline, volume spikes, catch-all lists poisoning the batch.\n\n60 a day steady beats 0 then 500. Boring wins inboxes.\n\nUltron runs the infra by default: warm domains, ramped sends, watched spam rates. 99.2% inboxed.",
+  "Same writer, same offer: one campaign crushed, one died in spam. The difference was infrastructure.\n\nThe killers: tracking pixels, fresh domains at full blast, a single domain carrying everything, sudden volume spikes, unverified catch-all lists.\n\nUltron handles the road so your copy gets driven: warm domains, ramps instead of blasts, spam rates watched daily. 99.2% inboxed.\n\nFix the road, then the car.",
+  "Great copy on dead infra is a love letter in a locked mailbox.\n\nDrop BUILDER below and I will DM you the 5-mistake infra checklist before your next batch.\n\nSave this if your reply rate just dropped."),
+ "twohours":("ONE IDEA, TWO HOURS","FOUNDER","the 2-hour launch timeline","218721c8",
+  "One sentence went in at 14:00: a service for founders who hate bookkeeping.\n\nBy 14:20 the offer stood. By 14:50 the page was live in my brand tokens. By 15:10 the content plan had 14 slots queued. By 15:30 twenty openers parked at the gate.\n\nAt 16:00 I reviewed. It shipped.\n\nNo team, no budget, no time: none of the three excuses survived the afternoon.",
+  "I gave the desk one idea and two hours.\n\n14:00 one sentence in. 14:20 offer drafted against the niche. 14:50 page live via Crescendo. 15:10 content plan queued. 15:30 outreach parked for my tap. 16:00 reviewed and shipped.\n\nSpeed is the moat, the gate keeps it safe: nothing external moved without me.\n\nThe excuse died at 16:01.",
+  "Idea to live business in one afternoon, with every send gated.\n\nDrop FOUNDER below and I will DM you the 2-hour launch timeline, step by step.\n\nSave this and pick your idea for Saturday."),
+ "salesorg":("A SALES ORG, NOT A BOT","OPERATOR","the sales org blueprint","7cd134c8",
+  "The 100-node sales bot demo always collapses. One agent doing everything does nothing well.\n\nReal teams have structure: a research desk, an outreach desk, an enablement desk, a revops desk. One job per agent, done extremely well.\n\nCORTEX briefs before anyone writes. SPECTER drafts and parks every send. The pipe updates itself.\n\nYou sit on top: one tap a day. Chief, not operator.",
+  "Stop building mega-bots. Build a sales org.\n\nInside Ultron: CORTEX runs prospect intel, SPECTER runs gated outreach, enablement handles the paperwork nobody loves, revops keeps the CRM true.\n\nOne job per agent is the whole trick: specialists win, hundred-branch automations collapse.\n\nThe org runs the day. Your tap runs the org.",
+  "Four desks, one chief, zero dropped balls.\n\nDrop OPERATOR below and I will DM you the sales org blueprint with each desk's setup.\n\nSave this before you wire another all-in-one bot."),
+ "adsagency":("THE AD DESK, IN-HOUSE","OPERATOR","the in-house ad desk chain","73906309",
+  "The agency retainer bought slides and delays. I brought the desk in-house and it fits in a chat.\n\nMonday: rival ads diffed. The empty angle found. Twenty variations drafted in my voice. 186 checks before budget moves. Every ad scored before it spends.\n\nThe whole retainer month runs in one morning.\n\nEvery launch still signs with my tap. In-house means in your hands.",
+  "Research delivered quarterly, copy on a two-week wait, audits as slide decks. That was the retainer.\n\nThe in-house chain inside Ultron: spy on rival creatives weekly, rank the hooks, take the angle nobody covers, draft twenty variations against your brand rules, audit with 186 checks, score before anything spends.\n\nOne morning, chained. Nothing launches without your tap.",
+  "The retainer month, compressed into a Monday ritual.\n\nDrop OPERATOR below and I will DM you the in-house ad desk chain, check by check.\n\nSave this before the next agency invoice lands."),
+ "million":("THE ONE-LAPTOP COMPANY","FOUNDER","the one-person company thesis","aa81ca00",
+  "The next big company is not a funded startup with a team of 20.\n\nIt is one laptop, a meter that runs in cents, and systems that do not sleep.\n\nThe agents work in parallel: research, outreach, content, builds. The founder decides once a day.\n\nRevenue up 32% this month. Payroll unchanged since day zero. The lines diverge.\n\nSomeone builds this company this year. Why not you.",
+  "One person, one laptop, systems that compound.\n\nThe shape: agents run research, outreach, content and builds in parallel; every external move parks for one tap; costs stay flat while output multiplies.\n\nEmpty calendar, full pipeline. No standups, just digests at 07:00.\n\nSpeed beats size every quarter now. Judgement is the only job left.",
+  "Revenue compounds. Headcount stays 1. That spread is the business.\n\nDrop FOUNDER below and I will DM you the one-person company thesis with the full architecture.\n\nSave this and start tonight."),
+ "zerostart":("STARTING FROM ZERO, 2026","BUILDER","the zero-start plan","262dd98f",
+  "If I started from zero today I would write no code.\n\nThe barrier moved: niche, distribution, consistency are the only three problems left.\n\nThe build is a sentence: Crescendo assembles the page from 822 parts. Flows handle follow-up and delivery. The desk plans 14 posts from one line.\n\nTen customers, ten handshakes: the machine sources, you close like a human.\n\nZero code. One gate. All yours.",
+  "Starting from zero in 2026 is a different game.\n\nThe page assembles itself from one sentence. The workflow runs follow-up, delivery and reporting on triggers. The content desk makes daily presence cheap.\n\nPick a boring problem people already pay for: the unglamorous print money.\n\nCost base in cents, output of a team. The math flipped.",
+  "The barrier is not technical anymore. It is niche, distribution, consistency.\n\nDrop BUILDER below and I will DM you the zero-start plan, week by week.\n\nSave this if you are starting with nothing but a laptop."),
 }
 
 def cap_tt(kit):
@@ -104,7 +151,7 @@ if __name__=="__main__":
         d1(f"DELETE FROM vault_items WHERE owner='{ME}' AND id LIKE '%' AND name LIKE 'Scraped %' AND id IN (SELECT id FROM vault_items WHERE owner='{ME}' AND name LIKE 'Scraped %' AND created_at IN (SELECT created_at FROM vault_items WHERE owner='{ME}' AND name LIKE 'Scraped %'))" if False else "SELECT 1")
         # match sursa dupa numele copiat (prefixul numelui original)
         src=d1(f"SELECT id,name FROM vault_items WHERE owner='{ME}' AND name LIKE 'Scraped %'")
-        FIRST={"263c2cda":"Comment “OS”","6bf71ba3":"Comment “LOOP”","0a3c53ce":"AI didn’t take your job","fa7eedb6":"5 Signs Your Business","5af9c9ec":"Comment “SKILLS”","2ba8c438":"Comment “LEVELS”","406038b6":"16 Claude Skills","733d81bd":"Comment “CAROUSEL”","1c1cee10":"5 agent architectures","44e61328":"Set up Claude Code in one hour"}
+        FIRST={"263c2cda":"Comment “OS”","6bf71ba3":"Comment “LOOP”","0a3c53ce":"AI didn’t take your job","fa7eedb6":"5 Signs Your Business","5af9c9ec":"Comment “SKILLS”","2ba8c438":"Comment “LEVELS”","406038b6":"16 Claude Skills","733d81bd":"Comment “CAROUSEL”","1c1cee10":"5 agent architectures","44e61328":"Set up Claude Code in one hour","f276e654":"everyone is posting","2a84f6ff":"everyone keeps asking","65e782c5":"i found 24 things","d51eb4c6":"Comment “BOARD”","f98bfdf8":"Getting ghosted","218721c8":"I gave Claude one business idea","7cd134c8":"Comment “SALES”","73906309":"Comment “ADS”","aa81ca00":"The first $1M business","262dd98f":"if I had to start from $0"}
         frag=FIRST[srcpref]
         for r in src:
             if frag in r["name"]:
