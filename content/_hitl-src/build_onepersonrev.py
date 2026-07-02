@@ -26,4 +26,4 @@ T2.CTA=("STACK", [[wo("Want the stack?")],[co("comment OPERATOR.")]], f"{LIB}/ct
 T2.CLOSE=dict(l1="Save this to",l2="run lean.",q="What is your one-person MRR goal?")
 
 
-MARK2="orb"
+MARK2="claude"

@@ -34,7 +34,7 @@ BATCH1=[
    ("THE GATE",("Full speed inside.","Handbrake on the door."),"Anything external still parks on HOLD for your tap. Speed with brakes.",("You stay the exit.",),"gate"),
    ("THE SCALE",("My hours stopped scaling.","My systems did not."),"Nine flows ran 212 cycles last week. You typed three sentences.",("Scale past your hours.",),"scale"),
   ]),
- dict(slug="aibody", title="THE COMPLETE AI BODY", accent=(212,162,127), mark="orb", pill="founder",
+ dict(slug="aibody", title="THE COMPLETE AI BODY", accent=(212,162,127), mark="claude", pill="founder",
   cover=("You bought a mouth.","You needed a body."),
   close=("Save this and","augment every part.","Which part of you needs the upgrade first?"),
   slides=[
@@ -47,7 +47,7 @@ BATCH1=[
    ("THE GATE",("Strong body.","My reins."),"Every external move parks for your tap. Augmented, not replaced.",("Still your company.",),"gate"),
    ("THE OPERATOR",("Stop chatting with organs.","Assemble the body."),"One chat wires brain, eyes, voice, hands and heart into one operator.",("The full body, one login.",),"operator"),
   ]),
- dict(slug="fivesigns", title="5 SIGNS YOU NEED AI NOW", accent=(204,120,92), mark="orb", pill="founder",
+ dict(slug="fivesigns", title="5 SIGNS YOU NEED AI NOW", accent=(204,120,92), mark="claude", pill="founder",
   cover=("Answer 5 questions.","Count your leaks."),
   close=("Save this checklist","and score yourself.","How many of the 5 did you tick?"),
   slides=[
@@ -115,7 +115,7 @@ BATCH2=[
    ("THE GATE",("One review. One tap.","Then it posts."),"You review the batch once. Nothing posts alone.",("Your feed, your call.",),"gate"),
    ("THE MATH",("Retainer money","became runway."),"Metered by use, not by seats. The retainer becomes runway.",("Cancel, then compound.",),"math"),
   ]),
- dict(slug="patterns", title="HOW REAL AGENTS ARE BUILT", accent=(204,120,92), mark="orb", pill="builder",
+ dict(slug="patterns", title="HOW REAL AGENTS ARE BUILT", accent=(204,120,92), mark="claude", pill="builder",
   cover=("Your agent is fine.","Your architecture is not."),
   close=("Save the patterns","and check your stack.","Which pattern is your setup missing?"),
   slides=[
@@ -128,7 +128,7 @@ BATCH2=[
    ("PATTERN 6",("Pattern six:","a human on the trigger."),"The most reliable design keeps one human on the only external trigger.",("You are the exit.",),"gate"),
    ("THE OPERATOR",("Same models.","Different companies."),"The same models, structured right, become a workforce.",("Architecture wins.",),"operator"),
   ]),
- dict(slug="setup", title="60 MINUTES TO AN OPERATOR", accent=(212,162,127), mark="orb", pill="founder",
+ dict(slug="setup", title="60 MINUTES TO AN OPERATOR", accent=(212,162,127), mark="claude", pill="founder",
   cover=("60 minutes on a Sunday.","A coworker by lunch."),
   close=("Save the checklist","and block the hour.","Which minute are you stuck on?"),
   slides=[
@@ -156,7 +156,7 @@ BATCH3=[
    ("THE RULE",("If it cannot execute,","it does not count."),"A skill that returns advice is a bookmark. Keep the ones that finish work.",("Execution or nothing.",),"rule"),
    ("THE DESK",("My desk runs","on survivors."),"Twelve skills, each tested on my own pipeline, running daily.",("Quality beats quantity.",),"desk"),
   ]),
- dict(slug="fivepaid", title="THE 5 SKILLS THAT PAY", accent=(212,162,127), mark="orb", pill="founder",
+ dict(slug="fivepaid", title="THE 5 SKILLS THAT PAY", accent=(212,162,127), mark="claude", pill="founder",
   cover=("Learn what businesses","already pay for."),
   close=("Save this and","pick your one.","Which of the 5 fits you?"),
   slides=[
@@ -182,7 +182,7 @@ BATCH3=[
    ("THE GATE",("The brake comes","installed too."),"Everything external waits for your tap. Power without accidents.",("Default: gated.",),"gate"),
    ("COMPOUND",("Set once.","Collect monthly."),"Corrections become rules. The setup pays rent every month after.",("It only gets sharper.",),"compound"),
   ]),
- dict(slug="advisors", title="THE BOARD OF ADVISORS", accent=(200,70,35), mark="orb", pill="founder",
+ dict(slug="advisors", title="THE BOARD OF ADVISORS", accent=(200,70,35), mark="claude", pill="founder",
   cover=("I built a board","that knows my numbers."),
   close=("Save this and","seat your board.","Which advisor do you need first?"),
   slides=[
@@ -210,7 +210,7 @@ BATCH3=[
   ]),
 ]
 BATCH4=[
- dict(slug="twohours", title="ONE IDEA, TWO HOURS", accent=(204,120,92), mark="orb", pill="founder",
+ dict(slug="twohours", title="ONE IDEA, TWO HOURS", accent=(204,120,92), mark="claude", pill="founder",
   cover=("I gave it one idea","and two hours."),
   close=("Save this timeline","and pick your idea.","What would you build in two hours?"),
   slides=[
@@ -223,7 +223,7 @@ BATCH4=[
    ("16:01",("The excuse","died here."),"No team, no budget, no time: none of the three survived the afternoon.",("Excuses need effort now.",),"excuse"),
    ("THE MOAT",("Speed is the moat.","The gate keeps it safe."),"Idea to live while others plan. Feedback to fix within the hour.",("Move first, gated.",),"moat"),
   ]),
- dict(slug="salesorg", title="A SALES ORG, NOT A BOT", accent=(200,70,35), mark="orb", pill="operator",
+ dict(slug="salesorg", title="A SALES ORG, NOT A BOT", accent=(200,70,35), mark="claude", pill="operator",
   cover=("100-node sales bots fail.","Structure wins."),
   close=("Save the org chart","before you build a bot.","Which desk do you need first?"),
   slides=[
@@ -249,7 +249,7 @@ BATCH4=[
    ("THE CHAIN",("The retainer month,","in one morning."),"Spy, gap, draft, audit, score: chained, under an hour.",("Monday ritual.",),"chain"),
    ("THE SIGNATURE",("Every launch","signs with your tap."),"Nothing spends without you. In-house means in your hands.",("Your call, always.",),"sign"),
   ]),
- dict(slug="million", title="THE ONE-LAPTOP COMPANY", accent=(204,120,92), mark="orb", pill="founder",
+ dict(slug="million", title="THE ONE-LAPTOP COMPANY", accent=(204,120,92), mark="claude", pill="founder",
   cover=("The next big company","is one person."),
   close=("Save this thesis,","then start tonight.","Could you run it alone?"),
   slides=[

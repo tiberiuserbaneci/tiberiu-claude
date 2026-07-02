@@ -406,14 +406,16 @@ def anchor(base,stem,light):
             d.text((x0+300,ry+22),b2,font=dm(500,20),fill=mut)
         meta("one chat · every role · you approve every send")
 
-def place_prem(base,objpath,light):
+def place_prem(base,objpath,light,ytop=None):
     # PREMIUM Vertex panel, uniform frame on every slide (operator 2026-07-02): rounded charcoal
     # plate, FIXED width + FIXED top Y, same orthographic view -> the deck reads as one family.
     im0=Image.open(objpath)
     if im0.mode=="RGBA" and im0.getextrema()[3][0]<250:
-        # coded clay3d panel with REAL alpha: composite as-is (it carries its own shadow),
-        # centred on its solid body at the same fixed zone as every other slide
-        T2.place_in_zone(base,im0,(90,636,W-90,1224),fill=1.0)
+        # coded clay3d panel with REAL alpha: composite as-is (it carries its own shadow).
+        # Zone = the MEASURED workspace of THIS slide (operator 2026-07-02: "masoara spatiul de
+        # lucru si umple-l"): from right under the text block down to just above the progress bar.
+        zy0=max(600,(ytop or 610))
+        T2.place_in_zone(base,im0,(74,zy0,W-74,1252),fill=1.0)
         return
     im=im0.convert("RGB")
     a=np.asarray(im).astype(int); h,w=a.shape[:2]; area=h*w
@@ -504,7 +506,7 @@ def body(base,eyebrow,head,sub,foot,objpath,page,n,fill):
                 d.polygon([(bx+24,ty+17),(bx+32,ty+23),(bx+24,ty+29)],fill=_mut(light))
                 bx+=44
     if getattr(MAT,"PREMIUM",0):
-        place_prem(base,objpath,light)
+        place_prem(base,objpath,light,ytop=y+26)
     elif stem=="ultron_real":
         _bloom(base,W//2,980,430,300,alpha=70); place_obj(base,objpath,fill)
     else:

@@ -24,7 +24,14 @@ def r2put(key,path):
             time.sleep(2**att)
 
 def d1(sql):
-    out=json.loads(req(f"https://api.cloudflare.com/client/v4/accounts/{ACCT}/d1/database/{DBID}/query","POST",json.dumps({"sql":sql}).encode(),"application/json"))
+    import urllib.error
+    for att in range(6):
+        try:
+            out=json.loads(req(f"https://api.cloudflare.com/client/v4/accounts/{ACCT}/d1/database/{DBID}/query","POST",json.dumps({"sql":sql}).encode(),"application/json"))
+            break
+        except urllib.error.HTTPError as e:
+            if e.code!=429 or att==5: raise
+            time.sleep(3*2**att)
     if not out.get("success"): raise RuntimeError(out.get("errors"))
     return out["result"][0]["results"]
 
@@ -38,6 +45,11 @@ DECKS={
  "levels":     "SEVEN LEVELS OF ULTRON",     "onepersonrev":"THE 1-PERSON REVENUE STACK",
  "contentteam":"THE CONTENT TEAM",           "onepersonco": "THE ONE-PERSON COMPANY",
 }
+# + the 20 IG Scraped adaptations (titles from adapt_specs)
+import importlib.util as _iu
+_s=_iu.spec_from_file_location("_AS","/home/user/tiberiu-claude/content/_hitl-src/adapt_specs.py")
+_AS=_iu.module_from_spec(_s); _s.loader.exec_module(_AS)
+DECKS.update({d["slug"]:d["title"] for d in _AS.ALL})
 
 if __name__=="__main__":
     slugs=sys.argv[1:] or list(DECKS)

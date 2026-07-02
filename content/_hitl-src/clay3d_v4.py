@@ -176,6 +176,45 @@ body{{background:transparent;padding:90px}}
   box-shadow:inset 0 6px 12px rgba(0,0,0,.7), inset 0 -2px 3px rgba(255,255,255,.07), 0 6px 14px rgba(0,0,0,.4);position:relative}}
 .odo b::after{{content:'';position:absolute;left:0;right:0;top:50%;height:2px;background:rgba(0,0,0,.55)}}
 .odo b.hot{{color:rgb({acc});text-shadow:0 0 18px rgba({acc},.5)}}
+.batw{{width:660px;margin-top:60px;background:linear-gradient(165deg,#2b2b28,#1d1d1b);border-radius:34px;padding:36px;text-align:center;
+  border:1px solid rgba(255,255,255,.07);box-shadow:0 42px 80px rgba(0,0,0,.55),0 16px 34px rgba(0,0,0,.44), inset 0 2.5px 3px rgba(255,255,255,.12), inset 0 -14px 30px rgba(0,0,0,.45)}}
+.bat{{position:relative;width:480px;height:196px;margin:12px auto 20px;border-radius:40px;background:linear-gradient(180deg,#141412,#232320);
+  box-shadow:inset 0 5px 12px rgba(0,0,0,.68), inset 0 -2px 3px rgba(255,255,255,.07), 0 2px 3px rgba(255,255,255,.06)}}
+.bat .nub{{position:absolute;right:-28px;top:60px;width:28px;height:76px;border-radius:0 15px 15px 0;
+  background:linear-gradient(180deg,#3a3a36,#232320);box-shadow:inset 0 2px 3px rgba(255,255,255,.14)}}
+.bat .fill{{position:absolute;left:14px;top:14px;bottom:14px;border-radius:28px;
+  background:linear-gradient(180deg,rgb({acc}),rgba({acc},.72));box-shadow:0 0 46px rgba({acc},.5), inset 0 3px 4px rgba(255,255,255,.4)}}
+.bat .pct{{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:66px;color:#FAFAF7;text-shadow:0 4px 18px rgba(0,0,0,.6)}}
+.calw{{width:660px;border-radius:24px;background:linear-gradient(170deg,#f7f1e4,#e9dfc9);padding:32px 32px 28px;
+  box-shadow:0 42px 80px rgba(0,0,0,.5),0 14px 30px rgba(0,0,0,.3), inset 0 2px 2px rgba(255,255,255,.85)}}
+.cal{{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-top:20px}}
+.cal b{{height:66px;border-radius:12px;background:#efe6d2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;
+  font-weight:700;font-size:17px;color:#8a7a5e;box-shadow:inset 0 1.5px 2px rgba(255,255,255,.85), inset 0 -3px 6px rgba(0,0,0,.09)}}
+.cal b.hot{{background:linear-gradient(180deg,rgb({acc}),rgba({acc},.8));color:#fff;box-shadow:0 8px 18px rgba({acc},.35), inset 0 2px 2.5px rgba(255,255,255,.45)}}
+.cal b small{{font-size:10px;font-weight:800;letter-spacing:.05em}}
+.calfoot{{margin-top:18px;font-weight:700;font-size:17px;color:#6e5f45;text-align:center}}
+.ringsw{{width:660px;text-align:center}}
+.rings{{position:relative;width:430px;height:430px;margin:0 auto;filter:drop-shadow(0 40px 60px rgba(0,0,0,.55))}}
+.rings i{{position:absolute;border-radius:50%}}
+.rings .r1{{inset:0;background:radial-gradient(circle at 32% 26%,#33332f,#1c1c1a 74%);box-shadow:inset 0 5px 9px rgba(255,255,255,.09), inset 0 -14px 30px rgba(0,0,0,.5)}}
+.rings .r2{{inset:64px;background:radial-gradient(circle at 32% 26%,#2a2a27,#181816 74%);box-shadow:inset 0 4px 8px rgba(0,0,0,.55), 0 2px 3px rgba(255,255,255,.07)}}
+.rings .r3{{inset:128px;background:radial-gradient(circle at 32% 26%,#343430,#1d1d1b 74%);box-shadow:inset 0 4px 7px rgba(255,255,255,.08), inset 0 -8px 18px rgba(0,0,0,.5)}}
+.rings .core{{position:absolute;inset:158px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;
+  background:linear-gradient(160deg,rgb({acc}),rgba({acc},.74));font-weight:900;font-size:26px;color:#fff;line-height:1.05;
+  box-shadow:0 14px 34px rgba({acc},.45), inset 0 3px 4px rgba(255,255,255,.45)}}
+.rings-tags{{display:flex;gap:12px;justify-content:center;margin-top:30px;flex-wrap:wrap}}
+.rings-tags b{{display:flex;align-items:center;gap:9px;padding:13px 18px;border-radius:999px;background:linear-gradient(165deg,#2c2c29,#1d1d1b);
+  font-weight:700;font-size:16.5px;color:#d9d9d0;box-shadow:0 14px 26px rgba(0,0,0,.45), inset 0 2px 2.5px rgba(255,255,255,.1)}}
+.rings-tags b i{{width:11px;height:11px;border-radius:50%;background:rgb({acc});box-shadow:0 0 12px rgba({acc},.7)}}
+.shelfw{{width:640px;display:flex;flex-direction:column;gap:24px}}
+.tray{{position:relative;border-radius:18px;background:linear-gradient(165deg,#2e2e2b,#1f1f1d);padding:20px 24px 24px;
+  box-shadow:0 26px 44px rgba(0,0,0,.5), inset 0 2.5px 3px rgba(255,255,255,.12), inset 0 -12px 22px rgba(0,0,0,.4)}}
+.tray::after{{content:'';position:absolute;left:9px;right:9px;bottom:-11px;height:15px;border-radius:0 0 15px 15px;
+  background:linear-gradient(180deg,#191917,#0e0e0d);box-shadow:0 12px 20px rgba(0,0,0,.55)}}
+.tray .tn{{font-weight:800;font-size:22px;color:#FAFAF7}}
+.tray .ts{{font-weight:500;font-size:16.5px;color:#8f8f85;margin-top:4px}}
+.tray .tchip{{position:absolute;right:22px;top:24px;padding:7px 14px;border-radius:999px;background:rgba({acc},.16);
+  font-family:'DM Mono',monospace;font-size:12.5px;letter-spacing:.1em;color:rgb({acc});box-shadow:inset 0 0 0 1.5px rgba({acc},.4)}}
 .vaultw{{width:560px;margin:0 auto;text-align:center}}
 .vault{{width:400px;height:400px;margin:0 auto;border-radius:50%;position:relative;
   background:
@@ -345,6 +384,24 @@ def f_chartline(title,tag,pts,cap):
 def f_keys(keys):
     html=''.join('<span class="bigkey'+('' if on else ' dim')+'">'+a+'<small>'+b+'</small></span>' for a,b,on in keys)
     return '<div class="keysrow">'+html+'</div>'
+def f_battery(pct,cap1,cap2):
+    fw=int(452*pct/100)
+    return ('<div class="batw"><div style="font-family:\'DM Mono\',monospace;font-size:14px;letter-spacing:.18em;color:#8f8f85">'+cap1+'</div>'
+            +'<div class="bat"><span class="fill" style="width:'+str(fw)+'px"></span><span class="nub"></span><span class="pct">'+str(pct)+'%</span></div>'
+            +'<div style="font-weight:700;font-size:17px;color:#FAFAF7">'+cap2+'</div></div>')
+def f_calendar(title,tag,cells,foot):
+    body=''.join('<b'+(' class="hot"' if hot else '')+'>'+dn+('<small>'+hot+'</small>' if hot else '')+'</b>' for dn,hot in cells)
+    return ('<div class="calw"><div class="hd" style="margin-bottom:2px"><span class="t" style="color:#17150F">'+title+'</span>'
+            +'<span class="tag" style="color:#a5602f">'+tag+'</span></div>'
+            +'<div class="cal">'+body+'</div><div class="calfoot">'+foot+'</div></div>')
+def f_rings(core,items,cap):
+    tags=''.join('<b><i></i>'+a+'&nbsp;&middot;&nbsp;<span style="color:#8f8f85;font-weight:500">'+b+'</span></b>' for a,b in items)
+    return ('<div class="ringsw"><div class="rings"><i class="r1"></i><i class="r2"></i><i class="r3"></i><div class="core">'+core+'</div></div>'
+            +'<div class="rings-tags">'+tags+'</div>'
+            +'<div style="margin-top:18px;font-weight:500;font-size:15px;color:#8f8f85">'+cap+'</div></div>')
+def f_shelf(title,tag,trays):
+    body=''.join('<div class="tray"><div class="tn">'+a+'</div><div class="ts">'+b+'</div><span class="tchip">'+c+'</span></div>' for a,b,c in trays)
+    return '<div class="shelfw">'+hd(title,tag)+body+'</div>'
 
 # ---------- per-deck specs ----------
 def specs(acc):
