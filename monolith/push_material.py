@@ -32,7 +32,14 @@ def esc(s): return s.replace("'","''")
 def caption_of(p):
     t=open(p).read(); return (t.split("\n---\n",1)[1].strip() if "\n---\n" in t else t.strip())
 
-def push_deck(slug, label, suffix, tag, ddir, cap, ts, idx, dirid):
+def top_base():
+    # Browse sorts created_at DESC; restamp_sort inflates existing rows ABOVE the real epoch, so a
+    # raw time.time() stamp sinks new items to the bottom (the recurring "unde sunt" bug). Stamp new
+    # items ABOVE the current max so a fresh push always lands at the TOP of the Review list.
+    m=d1(f"SELECT MAX(created_at) AS m FROM vault_items WHERE owner='{OWNER}'")[0]["m"] or int(time.time()*1000)
+    return int(m)+600000   # 10 min of headroom above the current top
+
+def push_deck(slug, label, suffix, tag, ddir, cap, ts, idx, dirid, base):
     pngs=sorted(glob.glob(f"{ddir}/s*.png"), key=lambda f:int(''.join(c for c in os.path.basename(f) if c.isdigit())))
     keys=[]
     chan=suffix.strip("()").replace(" ","").lower()
@@ -41,7 +48,7 @@ def push_deck(slug, label, suffix, tag, ddir, cap, ts, idx, dirid):
     media=json.dumps([{"key":k,"type":"image","ext":"png","contentType":"image/png"} for k in keys])
     name=f"Review · {label} {suffix} · {ts}"
     vid=str(uuid.uuid5(uuid.NAMESPACE_URL,f"{tag.lower()}-{slug}-{suffix}-{ts}"))
-    created=int(time.time()*1000)-idx*1000; tags=json.dumps([tag])
+    created=base-idx*60000; tags=json.dumps([tag])   # above current max, newest-first, restamp-safe spacing
     d1("INSERT INTO vault_items (id,owner,kind,name,source,duration_sec,thumb_key,thumb_url,media,tags,created_at,caption) VALUES ("
        f"'{vid}','{OWNER}','carousel','{esc(name)}','generated',NULL,'{keys[0]}',NULL,'{esc(media)}','{esc(tags)}',{created},'{esc(cap)}');")
     return name, len(keys)
@@ -52,8 +59,8 @@ if __name__=="__main__":
     ap.add_argument("--tt",required=True); ap.add_argument("--ig",required=True)
     ap.add_argument("--caption",required=True); ap.add_argument("--ts",default=time.strftime("%Y-%m-%d %H:%M"))
     a=ap.parse_args()
-    cap=caption_of(a.caption); dirid=str(int(time.time()))
+    cap=caption_of(a.caption); dirid=str(int(time.time())); base=top_base()
     for idx,(suffix,tag,ddir) in enumerate([("(TikTok 3D)","TikTok",a.tt),("(Instagram)","Instagram",a.ig)]):
-        name,n=push_deck(a.slug,a.label,suffix,tag,ddir,cap,a.ts,idx,dirid)
+        name,n=push_deck(a.slug,a.label,suffix,tag,ddir,cap,a.ts,idx,dirid,base)
         print(f"OK  {name}  ({n} media)")
     print("DONE")
