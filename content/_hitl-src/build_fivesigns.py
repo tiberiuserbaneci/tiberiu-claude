@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE FIX', [[wo('Plug the worst leak')],[co('this week. One sentence.')]], 'Automate the worst leak first. Ultron sets it up from one sentence.', [co('Start small, compound.')], f"{M}/fix.png", 1.0),
  ('THE GATE', [[wo('Automate the work.')],[co('Keep the veto.')]], 'Every flow that touches a customer parks for your tap first.', [co('You stay in control.')], f"{M}/gate.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], f"{LIB}/cta3d-founder.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-founder.png", 0.82)
 T2.CLOSE=dict(l1='Save this checklist',l2='and score yourself.',q='How many of the 5 did you tick?')
 MARK2="claude"
