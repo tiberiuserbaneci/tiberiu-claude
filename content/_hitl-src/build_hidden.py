@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE RESULT', [[wo('Answers are cheap.')],[co('Execution is the product.')]], 'Files created, work automated, tasks finished. That is the difference.', [co('Executor, not assistant.')], f"{M}/result.png", 1.0),
  ('THE GATE', [[wo('Executes at AI speed.')],[co('Sends at my speed.')]], 'Everything external parks first. You stay the only trigger.', [co('Power needs brakes.')], f"{M}/gate.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], f"{LIB}/cta3d-operator.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-operator.png", 0.82)
 T2.CLOSE=dict(l1='Save the list',l2='before you prompt again.',q='Which skill would save you the most hours?')
 MARK2="claude"
