@@ -34,22 +34,28 @@ def jar():
     </div>'''
 
 # 2. EYES10 - isometric stack of structured result cards (agent-native search)
+# FIX (operator): titlul nu mai sta in spatele stivei; scena 3D e contuinuta, fara overflow/overlap.
 def eyes10():
     cards=""
-    rows=[("Northwind Robotics","hiring 3 ops roles","score 92"),
-          ("Globex Systems","raised $4M in May","score 88"),
-          ("Initech","no AI layer yet","score 81")]
+    rows=[("Northwind Robotics","hiring 3 ops roles","92"),
+          ("Globex Systems","raised $4M in May","88"),
+          ("Initech","no AI layer yet","81")]
     for i,(a,b,c) in enumerate(rows):
-        z=(2-i)*120
-        cards+=f'''<div style="position:absolute;left:0;top:{i*70}px;width:560px;transform:translateZ({z}px);
-          background:linear-gradient(160deg,#33302c,#211e1b);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:22px 26px;
-          box-shadow:0 26px 40px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:space-between">
-          <div style="text-align:left"><div style="font-family:'DM Sans';font-weight:800;font-size:23px;color:#FAFAF7">{a}</div>
-          <div style="font-family:'DM Sans';font-size:16px;color:#9a9488">{b}</div></div>
-          <div style="font-family:'DM Mono';font-size:14px;color:rgb({ACC});background:rgba({ACC},.14);padding:8px 14px;border-radius:999px;white-space:nowrap">{c}</div></div>'''
-    return f'''<div style="width:900px;{CARD};padding:44px 44px 40px">
-      <div style="font-family:'DM Sans';font-weight:800;font-size:26px;color:#FAFAF7;margin-bottom:8px">Structured, not blue links</div>
-      <div style="perspective:1500px;height:360px;margin-top:20px"><div style="transform-style:preserve-3d;transform:rotateX(34deg) rotateZ(-20deg);width:560px;height:220px;margin:0 auto;position:relative">{cards}</div></div>
+        y=i*150
+        cards+=f'''<div style="position:absolute;left:0;top:{y}px;width:600px;
+          background:linear-gradient(160deg,#413b35,#2b2723);border:1.5px solid rgba(255,255,255,.16);border-radius:18px;padding:22px 24px;
+          box-shadow:0 34px 50px rgba(0,0,0,.6), inset 0 2px 2px rgba(255,255,255,.10);display:flex;align-items:center;gap:22px">
+          <div style="flex:1;text-align:left"><div style="font-family:'DM Sans';font-weight:800;font-size:25px;color:#FAFAF7">{a}</div>
+          <div style="font-family:'DM Sans';font-size:16px;color:#a8a296;margin-top:2px">{b}</div></div>
+          <div style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;background:rgb({ACC});padding:9px 17px;border-radius:12px;box-shadow:0 6px 14px rgba({ACC},.4)">
+            <span style="font-family:'DM Sans';font-weight:900;font-size:24px;color:#1a0f0a;line-height:1">{c}</span>
+            <span style="font-family:'DM Mono';font-size:10px;letter-spacing:.1em;color:rgba(26,15,10,.7)">SCORE</span></div></div>'''
+    return f'''<div style="width:900px;{CARD};padding:38px 44px 44px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px">
+        <span style="font-family:'DM Sans';font-weight:800;font-size:26px;color:#FAFAF7">Structured, not blue links</span>
+        <span style="font-family:'DM Mono';font-size:13px;letter-spacing:.12em;color:rgb({ACC})">AGENT-NATIVE</span></div>
+      <div style="perspective:2000px;height:600px;display:flex;align-items:center;justify-content:center">
+        <div style="transform-style:preserve-3d;transform:rotateX(22deg) rotateZ(-9deg);width:600px;height:490px;position:relative">{cards}</div></div>
     </div>'''
 
 # 3. CRAWL - bezier flow: N site nodes converge into one brief
