@@ -15,26 +15,30 @@ CARD='background:linear-gradient(165deg,#2b2b28,#1d1d1b);border:1px solid rgba(2
 # reads intentional, not jarring. Still dark enough for white text. Used on even (light) pages.
 CARDL='background:linear-gradient(165deg,#463d34,#332b24);border:1px solid rgba(255,255,255,.09);border-radius:34px;box-shadow:0 40px 66px rgba(74,52,32,.34),0 14px 28px rgba(74,52,32,.26), inset 0 2.5px 3px rgba(255,255,255,.12), inset 0 -14px 30px rgba(0,0,0,.34)'
 
-# 1. JAR - isometric sealed dome over a chip (smart but sightless: closed eye slash)
+# 1. JAR - LIGHT construction, built FROM the cream slide bg (operator: "pleaca de la culoarea
+# backgroundului in constructia elementului"). Ivory clay card that emerges from the cream page
+# with gentle tonal steps + warm soft shadow; dark ink text; the warm brain-chip is the one focal
+# accent. No abrupt dark block. (slide 2 only, pending validation)
+CARDIV='background:linear-gradient(160deg,#fdfbf6,#efe6d5 62%,#e6dac4);border:1px solid rgba(120,95,60,.16);border-radius:34px;box-shadow:0 40px 70px rgba(120,95,60,.20),0 14px 28px rgba(120,95,60,.14), inset 0 2px 3px rgba(255,255,255,.95), inset 0 -16px 34px rgba(150,120,80,.12)'
 def jar():
-    return f'''<div style="width:900px;{CARDL};padding:44px;text-align:center">
+    return f'''<div style="width:900px;{CARDIV};padding:44px;text-align:center">
       <div style="perspective:1400px;height:420px;display:flex;align-items:center;justify-content:center">
         <div style="transform-style:preserve-3d;transform:rotateX(20deg)">
           <div style="position:relative;width:340px;height:300px;margin:0 auto">
             <div style="position:absolute;left:0;bottom:0;width:340px;height:150px;border-radius:0 0 170px 170px/0 0 60px 60px;
-              background:linear-gradient(180deg,#34302c,#141210);box-shadow:inset 0 -10px 24px rgba(0,0,0,.6)"></div>
+              background:linear-gradient(180deg,#e0d0b6,#c7ad88);box-shadow:inset 0 -10px 24px rgba(120,90,55,.35), 0 8px 16px rgba(120,90,55,.2)"></div>
             <div style="position:absolute;left:20px;top:0;width:300px;height:240px;border-radius:150px 150px 40px 40px/170px 170px 30px 30px;
-              background:linear-gradient(145deg,rgba(250,250,247,.16),rgba(250,250,247,.03) 45%,rgba(0,0,0,.2));
-              border:1.5px solid rgba(250,250,247,.14);box-shadow:inset 22px 14px 44px rgba(255,255,255,.10)"></div>
+              background:linear-gradient(145deg,rgba(255,255,255,.7),rgba(255,255,255,.28) 42%,rgba(150,120,80,.14));
+              border:1.5px solid rgba(255,255,255,.8);box-shadow:inset 22px 14px 48px rgba(255,255,255,.6), inset -10px -6px 26px rgba(150,120,80,.14)"></div>
             <div style="position:absolute;left:110px;top:96px;width:120px;height:120px;border-radius:50%;
-              background:radial-gradient(circle at 38% 32%,rgb({ACC}),#7a4326);box-shadow:0 0 44px rgba({ACC},.5)"></div>
+              background:radial-gradient(circle at 38% 32%,rgb({ACC}),#9a5a35);box-shadow:0 0 40px rgba({ACC},.45), 0 8px 18px rgba(120,70,40,.3)"></div>
             <div style="position:absolute;left:110px;top:96px;width:120px;height:120px">
-              <svg width="120" height="120"><line x1="26" y1="26" x2="94" y2="94" stroke="#1a1210" stroke-width="9" stroke-linecap="round"/></svg></div>
+              <svg width="120" height="120"><line x1="26" y1="26" x2="94" y2="94" stroke="#3a2416" stroke-width="9" stroke-linecap="round"/></svg></div>
           </div>
         </div>
       </div>
-      <div style="font-family:'DM Sans';font-weight:900;font-size:36px;color:#FAFAF7;margin-top:6px">A BRAIN IN A JAR</div>
-      <div style="font-family:'DM Mono';font-size:15px;color:#c9a583;letter-spacing:.06em;margin-top:6px">smart, sealed, sightless</div>
+      <div style="font-family:'DM Sans';font-weight:900;font-size:36px;color:#2a2016;margin-top:6px">A BRAIN IN A JAR</div>
+      <div style="font-family:'DM Mono';font-size:15px;color:#9a7a52;letter-spacing:.06em;margin-top:6px">smart, sealed, sightless</div>
     </div>'''
 
 # 2. EYES10 - isometric stack of structured result cards (agent-native search)
