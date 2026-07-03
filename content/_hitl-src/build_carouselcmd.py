@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE GATE', [[wo('One review. One tap.')],[co('Then it posts.')]], 'You review the batch once. Nothing posts alone.', [co('Your feed, your call.')], f"{M}/gate.png", 1.0),
  ('THE MATH', [[wo('Retainer money')],[co('became runway.')]], 'Metered by use, not by seats. The retainer becomes runway.', [co('Cancel, then compound.')], f"{M}/math.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], f"{LIB}/cta3d-operator.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-operator.png", 0.82)
 T2.CLOSE=dict(l1='Save this before',l2='your next invoice.',q='What would you build with the saved retainer?')
 MARK2="claude"
