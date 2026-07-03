@@ -34,14 +34,14 @@ body{{background:transparent;padding:90px}}
 .panel.ivory{{background:linear-gradient(160deg,#fdfbf5 0%,#f1e9da 55%,#e2d6c0 100%);border:1px solid rgba(120,95,60,.18);border-radius:26px;
   box-shadow:0 42px 80px rgba(0,0,0,.4),0 16px 34px rgba(0,0,0,.28),0 0 110px rgba({acc},.14),
    inset 0 2.5px 3px rgba(255,255,255,.9), inset 4px 4px 16px rgba(255,255,255,.55), inset 0 -12px 26px rgba(150,120,80,.22)}}
-.hd{{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}}
-.hd .t{{font-weight:800;font-size:24px;color:#FAFAF7;letter-spacing:-.2px}}
+.hd{{display:flex;align-items:center;justify-content:space-between;margin-bottom:26px}}
+.hd .t{{font-weight:800;font-size:26px;color:#FAFAF7;letter-spacing:-.2px}}
 .hd .tag{{font-family:'DM Mono',monospace;font-size:12.5px;letter-spacing:.14em;color:rgb({acc})}}
 .panel.terra .hd .t,.bubble .hd .t{{color:#fff}} .panel.terra .hd .tag{{color:rgba(255,240,232,.85)}}
 .panel.kraft .hd .t{{color:#2a1c10}} .panel.kraft .hd .tag{{color:#6e4a28}}
 .panel.ivory .hd .t{{color:#17150F}} .panel.ivory .hd .tag{{color:#a5602f}}
-.row{{background:linear-gradient(160deg,#2e2e2b,#242422);border-radius:18px;padding:15px 18px;
-  display:flex;align-items:center;gap:13px;margin-bottom:12px;border:1px solid rgba(255,255,255,.045);
+.row{{background:linear-gradient(160deg,#2e2e2b,#242422);border-radius:18px;padding:22px 20px;
+  display:flex;align-items:center;gap:14px;margin-bottom:16px;border:1px solid rgba(255,255,255,.045);
   box-shadow:0 8px 18px rgba(0,0,0,.35), inset 0 1.5px 2px rgba(255,255,255,.08), inset 0 -6px 14px rgba(0,0,0,.28)}}
 .row:last-child{{margin-bottom:0}}
 .panel.terra .row{{background:linear-gradient(160deg,rgba(255,255,255,.16),rgba(255,255,255,.06));border-color:rgba(255,255,255,.14);
@@ -52,7 +52,7 @@ body{{background:transparent;padding:90px}}
   box-shadow:0 8px 18px rgba(150,120,80,.22), inset 0 1.5px 2px rgba(255,255,255,.9)}}
 .dot{{width:26px;height:26px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 34% 30%, rgb({acc}), rgba({acc},.55));
   box-shadow:0 4px 9px rgba(0,0,0,.4), inset 0 1.5px 2px rgba(255,255,255,.35)}}
-.rn{{font-weight:700;font-size:18.5px;color:#FAFAF7}} .rs{{font-weight:500;font-size:13.5px;color:#8f8f85;margin-top:2px}}
+.rn{{font-weight:700;font-size:21px;color:#FAFAF7}} .rs{{font-weight:500;font-size:15px;color:#8f8f85;margin-top:3px}}
 .panel.terra .rn{{color:#fff}} .panel.terra .rs{{color:rgba(255,236,226,.75)}}
 .panel.kraft .rn{{color:#2a1c10}} .panel.kraft .rs{{color:#6e4a28}}
 .panel.ivory .rn{{color:#17150F}} .panel.ivory .rs{{color:#8a7a5e}}
@@ -93,7 +93,7 @@ body{{background:transparent;padding:90px}}
 .pills .pillrow:nth-child(2){{margin-left:44px}} .pills .pillrow:nth-child(3){{margin-left:88px}} .pills .pillrow:nth-child(4){{margin-left:132px}}
 .console{{width:620px;background:linear-gradient(165deg,#34342f,#1f1f1d 70%);border-radius:40px;padding:34px;border:1px solid rgba(255,255,255,.08);
   box-shadow:0 46px 85px rgba(0,0,0,.6),0 0 120px rgba({acc},.12), inset 0 3px 4px rgba(255,255,255,.12), inset 0 -16px 34px rgba(0,0,0,.5)}}
-.switchrow{{display:flex;align-items:center;justify-content:space-between;padding:15px 6px}}
+.switchrow{{display:flex;align-items:center;justify-content:space-between;padding:24px 6px}}
 .sw{{width:96px;height:50px;border-radius:999px;position:relative;flex-shrink:0;background:linear-gradient(180deg,#141412,#242421);
   box-shadow:inset 0 4px 8px rgba(0,0,0,.7), inset 0 -1.5px 2px rgba(255,255,255,.08)}}
 .sw i{{position:absolute;top:5px;width:40px;height:40px;border-radius:50%;background:linear-gradient(160deg,#efe6d4,#cbbfa4);
@@ -135,7 +135,7 @@ body{{background:transparent;padding:90px}}
 
 /* ---- v5 UTILITY FORMS (alta utilitate, nu liste re-vopsite) ---- */
 .envwrap{{filter:drop-shadow(0 36px 55px rgba(0,0,0,.5)) drop-shadow(0 12px 22px rgba(0,0,0,.32))}}
-.env{{width:600px;height:360px;position:relative;background:linear-gradient(165deg,#2e2e2b,#201f1d);border-radius:22px;overflow:hidden}}
+.env{{width:600px;height:470px;position:relative;background:linear-gradient(165deg,#2e2e2b,#201f1d);border-radius:22px;overflow:hidden}}
 .env .flap{{position:absolute;left:0;right:0;top:0;height:200px;background:linear-gradient(180deg,#3a3a36,#2a2a27);
   clip-path:polygon(0 0,100% 0,50% 100%);box-shadow:inset 0 3px 4px rgba(255,255,255,.12)}}
 .env .letter{{position:absolute;left:34px;right:34px;top:120px;bottom:-8px;background:linear-gradient(170deg,#fdfbf5,#efe6d4);

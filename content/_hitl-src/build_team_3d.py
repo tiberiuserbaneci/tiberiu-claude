@@ -49,14 +49,16 @@ def crop_obj(im):
     alpha=np.clip((d2-16)*18,0,255).astype("uint8")
     return Image.fromarray(np.dstack([np.asarray(crop).astype("uint8"),alpha]),"RGBA")
 
-def place_in_zone(base,el,zone,fill=1.0):
+def place_in_zone(base,el,zone,fill=1.0,cx=None):
     zx0,zy0,zx1,zy1=zone; pad=6; zw,zh=zx1-zx0-2*pad, zy1-zy0-2*pad
     solid=el.split()[3].point(lambda v:255 if v>140 else 0); pb=solid.getbbox() or (0,0,el.width,el.height)
     pw,ph=max(1,pb[2]-pb[0]),max(1,pb[3]-pb[1]); r=min(zw/pw, zh/ph)*fill
     el=el.resize((max(1,int(el.width*r)),max(1,int(el.height*r))),Image.LANCZOS)
     solid=el.split()[3].point(lambda v:255 if v>140 else 0); pb=solid.getbbox() or (0,0,el.width,el.height)
     pcx=(pb[0]+pb[2])/2; pcy=(pb[1]+pb[3])/2
-    cx=W//2; cy=(zy0+zy1)//2; ox=int(round(cx-pcx)); oy=int(round(cy-pcy))
+    # cx defaults to frame centre; pass an explicit cx to shift the object clear of the IG icon rail
+    if cx is None: cx=W//2
+    cy=(zy0+zy1)//2; ox=int(round(cx-pcx)); oy=int(round(cy-pcy))
     # ground shadow removed entirely (operator: "tot are umbra") - objects carry only their own whisper contact shadow
     base.alpha_composite(el,(ox,oy))
 

@@ -414,10 +414,13 @@ def place_prem(base,objpath,light,ytop=None):
         # coded clay3d panel with REAL alpha: composite as-is (it carries its own shadow).
         # Zone = the MEASURED workspace of THIS slide (operator 2026-07-02: "masoara spatiul de
         # lucru si umple-l"): from right under the text block down to just above the progress bar.
-        zy0=max(600,(ytop or 610))
-        # right/left inset 140 so the element clears the TikTok action-icon rail (operator:
-        # "muchia dreapta a elementului atinge icons"). symmetric -> stays centered.
-        T2.place_in_zone(base,im0,(140,zy0,W-140,1252),fill=1.0)
+        # DENSITY RULE (operator 2026-07-03, saved in engine): the element FILLS the working band.
+        # Zone runs from right under the text block down near the progress bar so a dense (tall) panel
+        # occupies the whole mid band, no dead space. It is shifted LEFT (cx=470) and capped on the
+        # right at x=812 so the wide panel clears the IG/TikTok like-comment icon rail (~x850);
+        # left has no rail so it stays big. Pair with the taller clay rows (dense panels).
+        zy0=max(500,(ytop or 500))
+        T2.place_in_zone(base,im0,(110,zy0,846,1210),fill=1.0,cx=492)
         return
     im=im0.convert("RGB")
     a=np.asarray(im).astype(int); h,w=a.shape[:2]; area=h*w
@@ -487,7 +490,7 @@ def body(base,eyebrow,head,sub,foot,objpath,page,n,fill):
     sub_lines=wrap(d,sub,sf,W-170,maxlines=3) if sub else []
     block_h=len(sub_lines)*42 + ((14+46) if foot else 0)
     PREM=getattr(MAT,"PREMIUM",0)
-    ELEM_TOP=648
+    ELEM_TOP=560   # element zone starts higher -> dense panel sits right under the sub-hook, no dead gap
     if PREM:
         y=hook_bottom + max(34, ((ELEM_TOP-hook_bottom)-block_h)//2)
     else:
