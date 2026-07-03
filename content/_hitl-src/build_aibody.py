@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE GATE', [[wo('Strong body.')],[co('My reins.')]], 'Every external move parks for your tap. Augmented, not replaced.', [co('Still your company.')], f"{M}/gate.png", 1.0),
  ('THE OPERATOR', [[wo('Stop chatting with organs.')],[co('Assemble the body.')]], 'One chat wires brain, eyes, voice, hands and heart into one operator.', [co('The full body, one login.')], f"{M}/operator.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], f"{LIB}/cta3d-founder.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-founder.png", 0.82)
 T2.CLOSE=dict(l1='Save this and',l2='augment every part.',q='Which part of you needs the upgrade first?')
 MARK2="claude"
