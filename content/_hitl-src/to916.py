@@ -40,13 +40,11 @@ def tt_cover(out):
     base.alpha_composite(ov); base.convert("RGB").save(out); print("tt 9:16 cover built")
 
 if __name__=="__main__":
-    tt=f"{ROOT}/scratchpad/eyes_tt"; ig=f"{ROOT}/scratchpad/eyes_ig"
-    # content + close slides -> 9:16 (skip cover s1 in both)
-    for d in (tt,ig):
-        for f in sorted(os.listdir(d)):
-            if not (f.startswith("s") and f.endswith(".png")): continue
-            if f=="s1.png": continue
-            ok=convert_slide(os.path.join(d,f)); print(d.split('/')[-1],f,"->",ok)
-    tt_cover(f"{tt}/s1.png")     # TikTok cover = opaque 9:16 eye+hook
-    # IG s1 stays the reel video (handled by put_ig_reel); the s1.png here is unused for the vault
+    # Standard: TikTok stays 4:5, Instagram -> 9:16. Convert ONLY the given dir's s2..sN.
+    # Usage: python3 to916.py <deckdir>   (s1 skipped: IG s1 is the reel video)
+    d=sys.argv[1]
+    for f in sorted(os.listdir(d)):
+        if not (f.startswith("s") and f.endswith(".png")): continue
+        if f=="s1.png": continue
+        ok=convert_slide(os.path.join(d,f)); print(os.path.basename(d),f,"->",ok)
     print("done")

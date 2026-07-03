@@ -721,17 +721,17 @@ On IG the keyword-DM CTA works (users are ManyChat-trained, DMs deliver). On Tik
 dies: DMs land in Requests with no notification, the reward never arrives, and a last-slide CTA is
 swiped past. So **TikTok and IG diverge on the CTA mechanic** (this narrows §31's "identical except
 the cover" to also allow a TikTok poll slide + a TikTok CTA slide):
-- **TikTok caption:** line-1 CTA reframed to **FOMO + SAVE** — `Comment KEYWORD for [resource] and I
-  reply to the first 20. Save this so you do not lose it.` Then body, 5 hashtags, then a **pinned
-  first-comment** that **redirects to BIO** (no DM friction): `[Resource] is in my bio right now, so
-  no waiting on a DM. Drop KEYWORD below and I will send it too, I read every comment. Save the
-  video...` The resource also lives in bio.
+- **TikTok caption (operator, 2026-07-03 — binding, supersedes the FOMO/first-20/bio phrasing
+  below):** line-1 CTA = `Comment KEYWORD for [resource]. Save this so you do not lose it.` **NO
+  "reply to the first 20" promise** (we want MAX comments, not a capped 20) and **NO bio redirect**
+  in the first comment (no TikTok bio link yet, and we want comments not bio traffic). Pinned
+  first-comment: `Drop KEYWORD below and I will send it, I read every comment. Save the video so you
+  can set it up later.` Then body, 5 hashtags. (Enforced in `monolith/push_adapted.py:cap_tt`.)
 - **TikTok deck (engine `deck_poll`):** insert an **A/B POLL slide at position 2** (before the
-  swipe-off) — two option cards, `Comment 1 or 2` (ego/poll bait drives TikTok comments), and make
-  the **last slide a save-first CTA** (`Save this video. Comment OPERATOR, I reply to the first 20.`).
-  IG keeps 10pp keyword-DM, no poll. Built into `build_team_3d.deck_poll` + `poll_slide`; the phone
-  decks use it. Roll `deck_poll` onto other TikTok 3D decks on rebuild.
-- **IG caption:** unchanged keyword-DM CTA (it converts there).
+  swipe-off) — two option cards, `Comment 1 or 2` (ego/poll bait drives TikTok comments). Keep the
+  last slide a save + comment CTA (NO "first 20"). IG keeps 10pp keyword-DM, no poll. Built into
+  `build_team_3d.deck_poll` + `poll_slide`. Roll `deck_poll` onto other TikTok 3D decks on rebuild.
+- **IG caption:** unchanged keyword-DM CTA (it converts there); already carries no first-20/bio line.
 
 ---
 

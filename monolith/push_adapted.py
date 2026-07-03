@@ -242,10 +242,12 @@ KITS={
 }
 
 def cap_tt(kit):
+    # operator 2026-07-03: drop the "reply to the first 20" promise (we want MAX comments) and the
+    # bio redirect (no TikTok bio link yet; we want comments, not bio traffic).
     t,kw,res,_,tt,_,_=kit
-    return (f"Comment {kw} for {res} and I reply to the first 20. Save this so you do not lose it.\n\n"
-            f"{tt}\n\n{H}\n\nFIRST COMMENT (pinned):\n{res.capitalize()} is in my bio right now, so no waiting on a DM. "
-            f"Drop {kw} below and I will send it too, I read every comment. Save the video so you can set it up later.")
+    return (f"Comment {kw} for {res}. Save this so you do not lose it.\n\n"
+            f"{tt}\n\n{H}\n\nFIRST COMMENT (pinned):\n"
+            f"Drop {kw} below and I will send it, I read every comment. Save the video so you can set it up later.")
 def cap_ig(kit):
     t,kw,res,_,_,ig,fc=kit
     return (f"Comment {kw} and I will send you {res}.\n\n{ig}\n\n{H}\n\nFIRST COMMENT:\n{fc}")
