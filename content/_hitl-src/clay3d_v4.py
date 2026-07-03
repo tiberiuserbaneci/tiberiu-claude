@@ -162,12 +162,13 @@ body{{background:transparent;padding:90px}}
 .split .lft{{flex:1;background:linear-gradient(165deg,#31312d,#232320);padding:28px 24px;position:relative}}
 .split .rgt{{flex:1;background:linear-gradient(165deg,#d98a63,#8a4630);padding:28px 24px}}
 .split .cap{{font-family:'DM Mono',monospace;font-size:12.5px;letter-spacing:.14em;margin-bottom:16px;display:block}}
-.gaugewrap{{width:560px;margin:0 auto;text-align:center}}
-.gauge{{width:460px;height:230px;margin:0 auto;border-radius:460px 460px 0 0;position:relative;overflow:hidden;
-  background:conic-gradient(from -90deg at 50% 100%, rgb({acc}) 0% var(--g), rgba(250,250,247,.13) var(--g) 50%);
-  box-shadow:0 30px 60px rgba(0,0,0,.5), inset 0 3px 4px rgba(255,255,255,.2)}}
-.gauge::after{{content:'';position:absolute;left:50%;bottom:-120px;transform:translateX(-50%);width:340px;height:340px;border-radius:50%;
-  background:linear-gradient(160deg,#262624,#191917);box-shadow:inset 0 4px 10px rgba(0,0,0,.6)}}
+.gaugecard{{width:660px;margin:0 auto;background:linear-gradient(165deg,#2b2b28,#1d1d1b);border-radius:34px;padding:40px 40px 34px;text-align:center;
+  border:1px solid rgba(255,255,255,.07);box-shadow:0 42px 80px rgba(0,0,0,.55),0 16px 34px rgba(0,0,0,.44), inset 0 2.5px 3px rgba(255,255,255,.12), inset 0 -14px 30px rgba(0,0,0,.45)}}
+.gaugecard .arc{{width:360px;height:180px;margin:0 auto 18px;border-radius:360px 360px 0 0;position:relative;overflow:hidden;
+  background:conic-gradient(from -90deg at 50% 100%, rgb({acc}) 0% var(--g), rgba(250,250,247,.16) var(--g) 50%);
+  box-shadow:inset 0 3px 4px rgba(255,255,255,.18)}}
+.gaugecard .arc::after{{content:'';position:absolute;left:50%;bottom:-95px;transform:translateX(-50%);width:250px;height:250px;border-radius:50%;
+  background:linear-gradient(160deg,#2e2e2b,#191917);box-shadow:inset 0 4px 9px rgba(0,0,0,.55)}}
 .odow{{width:640px;background:linear-gradient(165deg,#2b2b28,#1d1d1b);border-radius:34px;padding:34px;text-align:center;
   border:1px solid rgba(255,255,255,.07);box-shadow:0 42px 80px rgba(0,0,0,.55),0 0 110px rgba({acc},.12), inset 0 2.5px 3px rgba(255,255,255,.12), inset 0 -14px 30px rgba(0,0,0,.45)}}
 .odo{{display:inline-flex;gap:10px;margin:14px 0 8px}}
@@ -347,10 +348,10 @@ def f_split(lcap,lrows,rcap,rrows):
     return '<div class="split"><div class="lft">'+l+'</div><div class="rgt">'+r+'</div></div>'
 def f_gauge(pct,big,lbl,sub):
     g=50 if pct>=99 else int(pct/2)
-    return ('<div class="gaugewrap"><div class="gauge" style="--g:'+str(g)+'%"></div>'
-            +'<div style="margin-top:-176px;position:relative;z-index:2"><div style="font-weight:900;font-size:62px;color:#FAFAF7">'+big+'</div>'
-            +'<div style="font-weight:700;font-size:16px;color:#b9b9ae;margin:2px auto 0;max-width:300px">'+lbl+'</div>'
-            +'<div style="font-weight:500;font-size:13.5px;line-height:1.35;color:#8f8f85;margin:3px auto 0;max-width:300px">'+sub+'</div></div></div>')
+    return ('<div class="gaugecard"><div class="arc" style="--g:'+str(g)+'%"></div>'
+            +'<div style="font-weight:900;font-size:56px;color:#FAFAF7;line-height:1">'+big+'</div>'
+            +'<div style="font-weight:700;font-size:16.5px;color:#c9c9be;margin:9px auto 0;max-width:440px">'+lbl+'</div>'
+            +'<div style="font-weight:500;font-size:14px;line-height:1.35;color:#8f8f85;margin:5px auto 0;max-width:460px">'+sub+'</div></div>')
 def f_odo(digits,hot_from,cap1,cap2):
     cells=''.join('<b class="'+('hot' if i>=hot_from else '')+'">'+c+'</b>' for i,c in enumerate(digits))
     return ('<div class="odow"><div style="font-family:\'DM Mono\',monospace;font-size:14px;letter-spacing:.18em;color:#8f8f85">'+cap1+'</div>'
