@@ -1154,7 +1154,7 @@ into `analysis/virality-principles.md`. Metrics priority stays: reach+impression
 **Surfaced every run (judgement, printed not auto-blocked):** empty-row % + largest dead band (a product mockup runs ~60% empty by design, so a blind gate would false-positive on approved work - PACK the dominant block if it reads airy; never `flex:1`/`space-between` to stretch sparse rows), and a `space-between`/`flex:1` code-smell count.
 
 **Process guards (operator rules - do NOT deviate):**
-- **SHOW every render** with SendUserFile - never describe a material without attaching it (operator: "nu mi l-ai aratat").
+- **REVIEW happens in the Monolith vault, NOT in chat (operator, 2026-07-03 - binding, per §0.1; supersedes the old "SHOW every render with SendUserFile" rule):** do NOT attach renders in chat during batch work - it floods/blocks the chat ("nu le mai adu in chat ca il blochezi"). Push each material to the vault and give a short text confirmation; the operator reviews in the Monolith. Only use SendUserFile when the operator explicitly asks to see something inline, or for a single one-off preview (e.g. a Veo motion test), never for full batches.
 - **Propose before executing; fix ONE element at a time.**
 - **Every material is bespoke** - vary layout/treatment/palette per material; never reuse a "locked" template (operator: "nu repeta materialele intre ele").
 - **Density first** - the dominant block is heavy and packed; airy = skip.
