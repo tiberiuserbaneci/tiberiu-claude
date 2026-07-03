@@ -172,31 +172,73 @@ def diff10():
         </div>
       </div></div>'''
 
-# 7. SETUP10 - CIRCUIT BOARD (orthogonal traces + solder joints + gate), distinct from crawl's
-# radial fan (operator: slide 4 si 8 nu au voie identice). Black CARD.
+# 7. SETUP10 - premium MOTHERBOARD: chunky 3D sense modules w/ icons + status LEDs, thick glowing
+# orthogonal traces + solder joints, a prominent 3D GATE module, CORTEX output. Dense, dimensional
+# (operator: circuitul plat era slab). Distinct topology from crawl's radial curves. Black CARD.
 def setup10():
-    W,H=820,430
-    senses=[("SEARCH",68),("CRAWL",150),("WATCH",232),("CITE",314)]
-    busx=430; gatex0,gatey0=520,146; gatecy=191; outx=744
+    W,H=830,470
+    ICON={
+      "SEARCH":'<circle cx="0" cy="0" r="9" fill="none" stroke="rgb({A})" stroke-width="3"/><line x1="7" y1="7" x2="15" y2="15" stroke="rgb({A})" stroke-width="3" stroke-linecap="round"/>',
+      "CRAWL":'<line x1="-13" y1="0" x2="13" y2="0" stroke="rgb({A})" stroke-width="3"/><line x1="0" y1="-13" x2="0" y2="13" stroke="rgb({A})" stroke-width="3"/><circle cx="0" cy="0" r="4" fill="rgb({A})"/><circle cx="10" cy="-10" r="3" fill="rgb({A})"/><circle cx="-10" cy="10" r="3" fill="rgb({A})"/>',
+      "WATCH":'<path d="M-14 0 Q0 -11 14 0 Q0 11 -14 0Z" fill="none" stroke="rgb({A})" stroke-width="3"/><circle cx="0" cy="0" r="4.5" fill="rgb({A})"/>',
+      "CITE":'<path d="M-12 -10 h20 a3 3 0 0 1 3 3 v18 a3 3 0 0 1 -3 3 h-20 a3 3 0 0 1 -3 -3 v-18 a3 3 0 0 1 3 -3Z" fill="none" stroke="rgb({A})" stroke-width="2.6"/><line x1="-7" y1="-2" x2="7" y2="-2" stroke="rgb({A})" stroke-width="2.6"/><line x1="-7" y1="5" x2="3" y2="5" stroke="rgb({A})" stroke-width="2.6"/>',
+    }
+    senses=[("SEARCH",78),("CRAWL",166),("WATCH",254),("CITE",342)]
+    busx=452; gatex0=548; gatecy=210; outx=770
     traces=""; joints=""; chips=""
     for nm,y in senses:
-        traces+=f'<path d="M232 {y} H{busx} V{gatecy}" fill="none" stroke="rgba(212,162,127,.5)" stroke-width="2.5"/>'
-        joints+=f'<circle cx="{busx}" cy="{y}" r="4.5" fill="rgb({ACC})"/>'
-        chips+=f'<rect x="46" y="{y-25}" width="186" height="50" rx="10" fill="#242220" stroke="rgba(255,255,255,.09)"/><circle cx="72" cy="{y}" r="5" fill="rgb({ACC})"/><text x="96" y="{y+6}" font-family="DM Mono" font-size="16" letter-spacing="2" fill="#c9c3b8">{nm}</text>'
-    return f'''<div style="width:900px;{CARD};padding:40px">
-      <div style="font-family:'DM Sans';font-weight:800;font-size:26px;color:#FAFAF7;margin-bottom:8px">The senses, wired and gated</div>
+        traces+=f'<path d="M300 {y} H{busx} V{gatecy}" fill="none" stroke="rgb({ACC})" stroke-width="3.5" opacity="0.55" filter="url(#tg)"/>'
+        joints+=f'<circle cx="{busx}" cy="{y}" r="6" fill="rgb({ACC})" filter="url(#nd)"/>'
+        ic=ICON[nm].replace("{A}",ACC)
+        chips+=(f'<g><rect x="44" y="{y-33}" width="256" height="66" rx="15" fill="url(#chip)" stroke="rgba(255,255,255,.10)"/>'
+                f'<rect x="44" y="{y-33}" width="256" height="66" rx="15" fill="none" stroke="rgba(0,0,0,.4)" stroke-width="1"/>'
+                f'<g transform="translate(80,{y})">{ic}</g>'
+                f'<text x="116" y="{y+6}" font-family="DM Mono" font-size="17" letter-spacing="2.5" fill="#e2dccf">{nm}</text>'
+                f'<circle cx="272" cy="{y}" r="6" fill="#7fd39a" filter="url(#ld)"/></g>')
+    return f'''<div style="width:900px;{CARD};padding:38px 40px 34px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:6px">
+        <span style="font-family:'DM Sans';font-weight:800;font-size:26px;color:#FAFAF7">The senses, wired and gated</span>
+        <span style="font-family:'DM Mono';font-size:13px;letter-spacing:.14em;color:rgb({ACC})">4 / 4 LIVE</span></div>
       <svg width="{W}" height="{H}" viewBox="0 0 {W} {H}">
-        <defs><filter id="g2" x="-120%" y="-120%" width="340%" height="340%"><feDropShadow dx="0" dy="0" stdDeviation="12" flood-color="rgb({ACC})" flood-opacity="0.55"/></filter></defs>
-        <line x1="{busx}" y1="68" x2="{busx}" y2="314" stroke="rgba(212,162,127,.5)" stroke-width="2.5"/>
-        {traces}{joints}{chips}
-        <path d="M{busx} {gatecy} H{gatex0}" fill="none" stroke="rgba(212,162,127,.5)" stroke-width="2.5"/>
-        <g filter="url(#g2)"><rect x="{gatex0}" y="{gatey0}" width="120" height="90" rx="16" fill="#2a2724" stroke="rgb({ACC})" stroke-width="2"/></g>
-        <g transform="translate({gatex0+38},{gatecy-24})"><rect x="0" y="18" width="44" height="30" rx="6" fill="none" stroke="rgb({ACC})" stroke-width="3.5"/><path d="M8 18 V10 a14 14 0 0 1 28 0 v8" fill="none" stroke="rgb({ACC})" stroke-width="3.5"/></g>
-        <path d="M{gatex0+120} {gatecy} H{outx-42}" fill="none" stroke="rgba(212,162,127,.5)" stroke-width="2.5"/>
-        <circle cx="{outx}" cy="{gatecy}" r="42" fill="#242220" stroke="rgba(255,255,255,.1)"/>
-        <text x="{outx}" y="{gatecy+5}" text-anchor="middle" font-family="DM Sans" font-weight="800" font-size="15" fill="#e6d6c2">CORTEX</text>
+        <defs>
+          <linearGradient id="chip" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#33302c"/><stop offset="100%" stop-color="#201d1a"/></linearGradient>
+          <linearGradient id="gate" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3a352f"/><stop offset="100%" stop-color="#221f1b"/></linearGradient>
+          <radialGradient id="outc" cx="36%" cy="30%"><stop offset="0%" stop-color="#3a352f"/><stop offset="100%" stop-color="#1c1a17"/></radialGradient>
+          <filter id="tg" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="rgb({ACC})" flood-opacity="0.5"/></filter>
+          <filter id="nd" x="-200%" y="-200%" width="500%" height="500%"><feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="rgb({ACC})" flood-opacity="0.9"/></filter>
+          <filter id="ld" x="-200%" y="-200%" width="500%" height="500%"><feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#7fd39a" flood-opacity="0.9"/></filter>
+          <filter id="gg" x="-120%" y="-120%" width="340%" height="340%"><feDropShadow dx="0" dy="0" stdDeviation="16" flood-color="rgb({ACC})" flood-opacity="0.6"/></filter>
+        </defs>
+        <line x1="{busx}" y1="78" x2="{busx}" y2="342" stroke="rgb({ACC})" stroke-width="3.5" opacity="0.55" filter="url(#tg)"/>
+        {traces}
+        <path d="M{busx} {gatecy} H{gatex0}" fill="none" stroke="rgb({ACC})" stroke-width="3.5" opacity="0.55" filter="url(#tg)"/>
+        {chips}{joints}
+        <g filter="url(#gg)"><rect x="{gatex0}" y="{gatecy-62}" width="140" height="124" rx="22" fill="url(#gate)" stroke="rgb({ACC})" stroke-width="2.5"/></g>
+        <rect x="{gatex0+16}" y="{gatecy-46}" width="108" height="92" rx="14" fill="none" stroke="rgba(255,255,255,.06)"/>
+        <g transform="translate({gatex0+45},{gatecy-30})"><rect x="0" y="22" width="50" height="34" rx="7" fill="none" stroke="rgb({ACC})" stroke-width="4"/><path d="M9 22 V13 a16 16 0 0 1 32 0 v9" fill="none" stroke="rgb({ACC})" stroke-width="4"/></g>
+        <text x="{gatex0+70}" y="{gatecy+78}" text-anchor="middle" font-family="DM Mono" font-size="12" letter-spacing=".14em" fill="rgb({ACC})">GATE</text>
+        <path d="M{gatex0+140} {gatecy} H{outx-48}" fill="none" stroke="rgb({ACC})" stroke-width="3.5" opacity="0.55" filter="url(#tg)"/>
+        <circle cx="{outx}" cy="{gatecy}" r="48" fill="url(#outc)" stroke="rgba(255,255,255,.12)"/>
+        <text x="{outx}" y="{gatecy+5}" text-anchor="middle" font-family="DM Sans" font-weight="800" font-size="16" fill="#e6d6c2">CORTEX</text>
       </svg>
-      <div style="font-family:'DM Mono';font-size:14px;color:#8f8f85">every external move waits for your tap</div></div>'''
+      <div style="font-family:'DM Mono';font-size:14px;color:#8f8f85;margin-top:2px">every external move waits for your tap</div></div>'''
+
+# CTA pill "comment BUILDER" - coded to match the Tier-3 construct (glossy accent pill w/ send)
+def cta_pill():
+    return f'''<div style="width:760px;height:200px;display:flex;align-items:center;justify-content:center">
+      <div style="display:flex;align-items:center;gap:0;border-radius:999px;overflow:hidden;
+        box-shadow:0 24px 46px rgba(0,0,0,.45)">
+        <div style="display:flex;flex-direction:column;justify-content:center;padding:26px 34px 26px 40px;
+          background:linear-gradient(160deg,#2b2824,#1c1a17);border:1px solid rgba(255,255,255,.08);border-right:none">
+          <span style="font-family:'DM Mono';font-weight:500;font-size:25px;letter-spacing:.14em;color:rgb({ACC})">COMMENT</span>
+          <span style="font-family:'DM Sans';font-weight:900;font-size:46px;color:#FAFAF7;line-height:1;margin-top:4px">BUILDER</span>
+        </div>
+        <div style="align-self:stretch;display:flex;align-items:center;padding:0 40px;
+          background:linear-gradient(160deg,#e6b48f,rgb({ACC}) 55%,#9a5a35);box-shadow:inset 0 2px 3px rgba(255,255,255,.4)">
+          <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#1a0f0a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+      </div>
+    </div>'''
 
 # 8. BAR10 - closing statement card, minimal pulse spark (distinct from watch's radar rings)
 def bar10():
