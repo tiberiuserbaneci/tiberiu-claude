@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('PATTERN 6', [[wo('Pattern six:')],[co('a human on the trigger.')]], 'The most reliable design keeps one human on the only external trigger.', [co('You are the exit.')], f"{M}/gate.png", 1.0),
  ('THE OPERATOR', [[wo('Same models.')],[co('Different companies.')]], 'The same models, structured right, become a workforce.', [co('Architecture wins.')], f"{M}/operator.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], f"{LIB}/cta3d-builder.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-builder.png", 0.82)
 T2.CLOSE=dict(l1='Save the patterns',l2='and check your stack.',q='Which pattern is your setup missing?')
 MARK2="claude"
