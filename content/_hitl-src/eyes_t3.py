@@ -172,9 +172,9 @@ def diff10():
         </div>
       </div></div>'''
 
-# 7. SETUP10 - premium MOTHERBOARD: chunky 3D sense modules w/ icons + status LEDs, thick glowing
-# orthogonal traces + solder joints, a prominent 3D GATE module, CORTEX output. Dense, dimensional
-# (operator: circuitul plat era slab). Distinct topology from crawl's radial curves. Black CARD.
+# 7. SETUP10 - NEW hierarchy (operator: scapa de linii, altfel, e slab): the GATE is the dominant
+# HERO in the center; the 4 senses are a compact stack on the left that BUTT into the gate via short
+# thick glowing connectors (no long thin traces, no bus); CORTEX output butts the gate on the right.
 def setup10():
     W,H=830,470
     ICON={
@@ -183,18 +183,16 @@ def setup10():
       "WATCH":'<path d="M-14 0 Q0 -11 14 0 Q0 11 -14 0Z" fill="none" stroke="rgb({A})" stroke-width="3"/><circle cx="0" cy="0" r="4.5" fill="rgb({A})"/>',
       "CITE":'<path d="M-12 -10 h20 a3 3 0 0 1 3 3 v18 a3 3 0 0 1 -3 3 h-20 a3 3 0 0 1 -3 -3 v-18 a3 3 0 0 1 3 -3Z" fill="none" stroke="rgb({A})" stroke-width="2.6"/><line x1="-7" y1="-2" x2="7" y2="-2" stroke="rgb({A})" stroke-width="2.6"/><line x1="-7" y1="5" x2="3" y2="5" stroke="rgb({A})" stroke-width="2.6"/>',
     }
-    senses=[("SEARCH",78),("CRAWL",166),("WATCH",254),("CITE",342)]
-    busx=452; gatex0=548; gatecy=210; outx=770
-    traces=""; joints=""; chips=""
+    senses=[("SEARCH",96),("CRAWL",186),("WATCH",276),("CITE",366)]
+    gx0,gy0,gx1,gy1=470,60,672,406; gcy=(gy0+gy1)//2   # big central gate (hero)
+    chips=""; conns=""
     for nm,y in senses:
-        traces+=f'<path d="M300 {y} H{busx} V{gatecy}" fill="none" stroke="rgb({ACC})" stroke-width="3.5" opacity="0.55" filter="url(#tg)"/>'
-        joints+=f'<circle cx="{busx}" cy="{y}" r="6" fill="rgb({ACC})" filter="url(#nd)"/>'
         ic=ICON[nm].replace("{A}",ACC)
-        chips+=(f'<g><rect x="44" y="{y-33}" width="256" height="66" rx="15" fill="url(#chip)" stroke="rgba(255,255,255,.10)"/>'
-                f'<rect x="44" y="{y-33}" width="256" height="66" rx="15" fill="none" stroke="rgba(0,0,0,.4)" stroke-width="1"/>'
-                f'<g transform="translate(80,{y})">{ic}</g>'
-                f'<text x="116" y="{y+6}" font-family="DM Mono" font-size="17" letter-spacing="2.5" fill="#e2dccf">{nm}</text>'
-                f'<circle cx="272" cy="{y}" r="6" fill="#7fd39a" filter="url(#ld)"/></g>')
+        chips+=(f'<g><rect x="34" y="{y-35}" width="360" height="70" rx="16" fill="url(#chip)" stroke="rgba(255,255,255,.10)"/>'
+                f'<g transform="translate(76,{y})">{ic}</g>'
+                f'<text x="112" y="{y+6}" font-family="DM Mono" font-size="18" letter-spacing="2.5" fill="#e2dccf">{nm}</text>'
+                f'<circle cx="364" cy="{y}" r="6.5" fill="#7fd39a" filter="url(#ld)"/></g>')
+        conns+=f'<rect x="394" y="{y-5}" width="{gx0-394}" height="10" rx="5" fill="rgb({ACC})" opacity="0.85" filter="url(#tg)"/>'
     return f'''<div style="width:900px;{CARD};padding:38px 40px 34px">
       <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:6px">
         <span style="font-family:'DM Sans';font-weight:800;font-size:26px;color:#FAFAF7">The senses, wired and gated</span>
@@ -202,24 +200,23 @@ def setup10():
       <svg width="{W}" height="{H}" viewBox="0 0 {W} {H}">
         <defs>
           <linearGradient id="chip" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#33302c"/><stop offset="100%" stop-color="#201d1a"/></linearGradient>
-          <linearGradient id="gate" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3a352f"/><stop offset="100%" stop-color="#221f1b"/></linearGradient>
+          <linearGradient id="gate" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#403a33"/><stop offset="100%" stop-color="#211e1a"/></linearGradient>
           <radialGradient id="outc" cx="36%" cy="30%"><stop offset="0%" stop-color="#3a352f"/><stop offset="100%" stop-color="#1c1a17"/></radialGradient>
-          <filter id="tg" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="rgb({ACC})" flood-opacity="0.5"/></filter>
-          <filter id="nd" x="-200%" y="-200%" width="500%" height="500%"><feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="rgb({ACC})" flood-opacity="0.9"/></filter>
+          <filter id="tg" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="rgb({ACC})" flood-opacity="0.6"/></filter>
           <filter id="ld" x="-200%" y="-200%" width="500%" height="500%"><feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#7fd39a" flood-opacity="0.9"/></filter>
-          <filter id="gg" x="-120%" y="-120%" width="340%" height="340%"><feDropShadow dx="0" dy="0" stdDeviation="16" flood-color="rgb({ACC})" flood-opacity="0.6"/></filter>
+          <filter id="gg" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="0" stdDeviation="22" flood-color="rgb({ACC})" flood-opacity="0.55"/></filter>
         </defs>
-        <line x1="{busx}" y1="78" x2="{busx}" y2="342" stroke="rgb({ACC})" stroke-width="3.5" opacity="0.55" filter="url(#tg)"/>
-        {traces}
-        <path d="M{busx} {gatecy} H{gatex0}" fill="none" stroke="rgb({ACC})" stroke-width="3.5" opacity="0.55" filter="url(#tg)"/>
-        {chips}{joints}
-        <g filter="url(#gg)"><rect x="{gatex0}" y="{gatecy-62}" width="140" height="124" rx="22" fill="url(#gate)" stroke="rgb({ACC})" stroke-width="2.5"/></g>
-        <rect x="{gatex0+16}" y="{gatecy-46}" width="108" height="92" rx="14" fill="none" stroke="rgba(255,255,255,.06)"/>
-        <g transform="translate({gatex0+45},{gatecy-30})"><rect x="0" y="22" width="50" height="34" rx="7" fill="none" stroke="rgb({ACC})" stroke-width="4"/><path d="M9 22 V13 a16 16 0 0 1 32 0 v9" fill="none" stroke="rgb({ACC})" stroke-width="4"/></g>
-        <text x="{gatex0+70}" y="{gatecy+78}" text-anchor="middle" font-family="DM Mono" font-size="12" letter-spacing=".14em" fill="rgb({ACC})">GATE</text>
-        <path d="M{gatex0+140} {gatecy} H{outx-48}" fill="none" stroke="rgb({ACC})" stroke-width="3.5" opacity="0.55" filter="url(#tg)"/>
-        <circle cx="{outx}" cy="{gatecy}" r="48" fill="url(#outc)" stroke="rgba(255,255,255,.12)"/>
-        <text x="{outx}" y="{gatecy+5}" text-anchor="middle" font-family="DM Sans" font-weight="800" font-size="16" fill="#e6d6c2">CORTEX</text>
+        {conns}{chips}
+        <!-- CORTEX output butting gate right -->
+        <rect x="{gx1}" y="{gcy-5}" width="30" height="10" rx="5" fill="rgb({ACC})" opacity="0.85" filter="url(#tg)"/>
+        <circle cx="{gx1+72}" cy="{gcy}" r="52" fill="url(#outc)" stroke="rgba(255,255,255,.12)"/>
+        <text x="{gx1+72}" y="{gcy+5}" text-anchor="middle" font-family="DM Sans" font-weight="800" font-size="16" fill="#e6d6c2">CORTEX</text>
+        <!-- HERO gate -->
+        <g filter="url(#gg)"><rect x="{gx0}" y="{gy0}" width="{gx1-gx0}" height="{gy1-gy0}" rx="30" fill="url(#gate)" stroke="rgb({ACC})" stroke-width="3"/></g>
+        <rect x="{gx0+18}" y="{gy0+18}" width="{gx1-gx0-36}" height="{gy1-gy0-36}" rx="20" fill="none" stroke="rgba(255,255,255,.07)"/>
+        <g transform="translate({(gx0+gx1)//2-42},{gcy-72})"><rect x="0" y="34" width="84" height="60" rx="12" fill="none" stroke="rgb({ACC})" stroke-width="6"/><path d="M16 34 V19 a26 26 0 0 1 52 0 v15" fill="none" stroke="rgb({ACC})" stroke-width="6"/></g>
+        <text x="{(gx0+gx1)//2}" y="{gcy+92}" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="30" letter-spacing="1" fill="#FAFAF7">GATE</text>
+        <text x="{(gx0+gx1)//2}" y="{gcy+124}" text-anchor="middle" font-family="DM Mono" font-size="13" letter-spacing=".1em" fill="rgb({ACC})">your tap</text>
       </svg>
       <div style="font-family:'DM Mono';font-size:14px;color:#8f8f85;margin-top:2px">every external move waits for your tap</div></div>'''
 

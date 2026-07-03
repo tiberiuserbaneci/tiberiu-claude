@@ -680,7 +680,9 @@ def deck(outdir, overlay):
             ls_text(d,(MX,356),eb,mono(28),ACC,4)
             s=fit_hook(d,head,W-2*MX,start=76,floor=54); hf=dm(900,s); y=424
             for ln in head: seg_line(d,MX,y,ln,hf); y+=int(s*1.14)
-            T2.place_in_zone(base, crop_obj(Image.open(objp)), (MX,690,W-MX,1120), fill=fill)
+            # pill centred in the band between the hook and the follow line (operator: pila
+            # cobora prea mult / necentrata) - tight zone around the visual midpoint
+            T2.place_in_zone(base, crop_obj(Image.open(objp)), (MX,748,W-MX,1012), fill=fill)
             d.text((MX,1150),"Follow for one AI system for founders every day.",font=dm(700,28),fill=WHITE); footer(base)
         else:
             eb,head,sub,foot,objp,fill=unpack(sl[1]); body(base,eb,head,sub,foot,objp,i,n,fill)

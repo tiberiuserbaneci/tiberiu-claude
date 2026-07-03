@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE SETUP', [[wo('Wired in minutes,')],[co('not weekends.')]], 'The senses come connected on the desk: search, crawl, watch, all gated.', [co('Sight, preinstalled.')], f"{M}/setup10.png", 1.0),
  ('THE BAR10', [[wo('Never trust an answer')],[co('that cannot see today.')]], 'Ask yours what changed in your market this week. Watch it guess.', [co('Run that test now.')], f"{M}/bar10.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the wiring list?')]], "/home/user/tiberiu-claude/content/_hitl-src/models_clay/eyes/cta_builder.png", 0.82)
+T2.CTA=("SAVE THIS", [[wo('Want the wiring')],[co('list for sight?')]], "/home/user/tiberiu-claude/content/_hitl-src/models_clay/eyes/cta_builder.png", 0.82)
 T2.CLOSE=dict(l1='Save the wiring list',l2='and give yours sight.',q='What is yours still blind to?')
 MARK2="claude"
