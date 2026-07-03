@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE GATE', [[wo('Full speed inside.')],[co('Handbrake on the door.')]], 'Anything external still parks on HOLD for your tap. Speed with brakes.', [co('You stay the exit.')], f"{M}/gate.png", 1.0),
  ('THE SCALE', [[wo('My hours stopped scaling.')],[co('My systems did not.')]], 'Nine flows ran 212 cycles last week. You typed three sentences.', [co('Scale past your hours.')], f"{M}/scale.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], f"{LIB}/cta3d-builder.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-builder.png", 0.82)
 T2.CLOSE=dict(l1='Save this before',l2='your next prompt.',q='Which task would you loop first?')
 MARK2="claude"
