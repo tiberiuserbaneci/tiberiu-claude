@@ -477,14 +477,23 @@ def body(base,eyebrow,head,sub,foot,objpath,page,n,fill):
     s=min(fit_hook(d,head,W-160,start=66,floor=48),62); hf=dm(900,s); y=150
     for ln in head:
         seg_line(d,80,y,[(t,(ink if c==WHITE else c)) for t,c in ln],hf); y+=int(s*1.12)
-    y+=26
-    # body paragraphs (bold-lead editorial)
-    sf=dm(500,30)
+    # body paragraphs (bold-lead editorial). PREMIUM slides: center the sub+foot block in the
+    # gap between the hook and the element zone so it FILLS the mid band (operator: "prea sus,
+    # spatiu mort" - hook stays put, element stays put, the idea lives in the space between).
+    hook_bottom=y
+    sf=dm(500,30); ff=dm(800,30)
+    sub_lines=wrap(d,sub,sf,W-170,maxlines=3) if sub else []
+    block_h=len(sub_lines)*42 + ((14+46) if foot else 0)
+    PREM=getattr(MAT,"PREMIUM",0)
+    ELEM_TOP=648
+    if PREM:
+        y=hook_bottom + max(34, ((ELEM_TOP-hook_bottom)-block_h)//2)
+    else:
+        y+=26
     if sub:
-        for lnw in wrap(d,sub,sf,W-170,maxlines=3): d.text((80,y),lnw,font=sf,fill=mut); y+=42
-    y+=14
+        for lnw in sub_lines: d.text((80,y),lnw,font=sf,fill=mut); y+=42
     if foot:
-        ff=dm(800,30)
+        y+=14
         seg_line(d,80,y,[(t,(ink if c==WHITE else tuple(ACC))) for t,c in foot],ff); y+=46
     if stem in FLOWS:
         cmd=FLOWS[stem][0]; cf=mono(24); cw2=int(d.textlength(cmd,font=cf))+56
@@ -505,8 +514,8 @@ def body(base,eyebrow,head,sub,foot,objpath,page,n,fill):
                 d.line([bx+8,ty+23,bx+24,ty+23],fill=_mut(light),width=3)
                 d.polygon([(bx+24,ty+17),(bx+32,ty+23),(bx+24,ty+29)],fill=_mut(light))
                 bx+=44
-    if getattr(MAT,"PREMIUM",0):
-        place_prem(base,objpath,light,ytop=y+26)
+    if PREM:
+        place_prem(base,objpath,light,ytop=ELEM_TOP)
     elif stem=="ultron_real":
         _bloom(base,W//2,980,430,300,alpha=70); place_obj(base,objpath,fill)
     else:
