@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE GATE', [[wo('Climb fast.')],[co('Keep the handbrake.')]], 'Autonomy grows, control does not shrink. External moves park for you.', [co('Climb without crashing.')], f"{M}/gate.png", 1.0),
  ('THE CEILING', [[wo('The ceiling is quiet.')],[co('Just running.')]], 'One founder, one subscription, a company that moves overnight.', [co('See you up there.')], f"{M}/ceiling.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], f"{LIB}/cta3d-builder.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-builder.png", 0.82)
 T2.CLOSE=dict(l1='Save the map',l2='and climb one level.',q='Which level are you honestly at?')
 MARK2="claude"
