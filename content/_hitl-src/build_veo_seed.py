@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-# SEED frame for Veo image-to-video, CLAUDE LIGHT palette (operator: no bright red, use Claude palette
-# / the white from our presentations). Veo animates THIS (code populates, push-in). Logo stays faithful.
-import os
+# SEED for Veo image-to-video (operator: inject the assets, Veo ONLY animates).
+# Injects: Vertex 3D Claude logo + Vertex 'Fable 5' 3D logo (keyed off cream) + REAL code + REAL output.
+import os, numpy as np
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 ROOT="/home/user/tiberiu-claude"; A=f"{ROOT}/content/assets"; SP=f"{ROOT}/scratchpad/covers"
 W,H=1080,1920
@@ -9,39 +9,55 @@ CREAM=(245,243,238); CREAM2=(236,232,222); PAPER=(252,251,247); INK=(41,38,34); 
 MUT=(150,140,128); CORAL=(217,119,87); KRAFT=(196,150,110); LINEC=(222,216,205)
 def dm(w,s): return ImageFont.truetype(f"{A}/DMSans-{w}.ttf",s)
 def mono(s): return ImageFont.truetype(f"{A}/DMMono-500.ttf",s)
-cx=W//2; tx0,ty0,tx1,ty1=150,700,930,1330
+cx=W//2
+def key_logo(path,tol=30):
+    im=Image.open(path).convert("RGB"); a=np.asarray(im).astype(int)
+    corner=np.concatenate([a[6:40,6:40].reshape(-1,3),a[6:40,-40:-6].reshape(-1,3)]).mean(0)
+    dist=np.abs(a-corner).sum(2); alpha=np.clip((dist-tol)*5,0,255).astype("uint8")
+    out=Image.fromarray(np.dstack([np.asarray(im),alpha]),"RGBA"); bb=out.split()[3].getbbox()
+    return out.crop(bb) if bb else out
 
 bg=Image.new("RGB",(W,H),CREAM); d=ImageDraw.Draw(bg,"RGBA")
-glow=Image.new("RGBA",(W,H),(0,0,0,0)); ImageDraw.Draw(glow).ellipse([cx-560,520,cx+560,1420],fill=(217,119,87,26)); glow=glow.filter(ImageFilter.GaussianBlur(220))
+glow=Image.new("RGBA",(W,H),(0,0,0,0)); ImageDraw.Draw(glow).ellipse([cx-560,120,cx+560,900],fill=(217,119,87,22)); glow=glow.filter(ImageFilter.GaussianBlur(220))
 bg=Image.alpha_composite(bg.convert("RGBA"),glow).convert("RGB"); d=ImageDraw.Draw(bg,"RGBA")
-# Claude sunburst (coral) + wordmark
-sun=Image.open(f"{ROOT}/content/_hitl-src/claude_official.png").convert("RGBA"); bb=sun.split()[3].getbbox(); sun=sun.crop(bb) if bb else sun
-sun.thumbnail((92,92),Image.LANCZOS); tint=Image.new("RGBA",sun.size,CORAL+(255,)); tint.putalpha(sun.split()[3])
-bg.paste(tint,(cx-tint.width-10,452),tint); d.text((cx+2,466),"Claude",font=dm(700,44),fill=INK2)
-def spaced(dr,s,f,y,fill,ls):
-    tot=sum(dr.textlength(c,font=f)+ls for c in s)-ls; x=cx-tot/2
-    for c in s: dr.text((x,y),c,font=f,fill=fill); x+=dr.textlength(c,font=f)+ls
-spaced(d,"FABLE",dm(900,96),556,INK,16)
-# light terminal + soft warm shadow
-sh=Image.new("RGBA",(W,H),(0,0,0,0)); ImageDraw.Draw(sh).rounded_rectangle([tx0+4,ty0+16,tx1+4,ty1+16],radius=26,fill=(120,95,60,60))
-bg=Image.alpha_composite(bg.convert("RGBA"),sh.filter(ImageFilter.GaussianBlur(26))).convert("RGB"); d=ImageDraw.Draw(bg,"RGBA")
-d.rounded_rectangle([tx0,ty0,tx1,ty1],radius=26,fill=PAPER,outline=LINEC,width=2)
-d.rounded_rectangle([tx0,ty0,tx1,ty0+58],radius=26,fill=CREAM2); d.rectangle([tx0,ty0+40,tx1,ty0+58],fill=CREAM2)
-d.line([tx0,ty0+58,tx1,ty0+58],fill=LINEC,width=1)
-for i,c in enumerate([(217,119,87),(210,160,90),(180,170,150)]): d.ellipse([tx0+24+i*24,ty0+22,tx0+38+i*24,ty0+36],fill=c)
-d.text((tx0+120,ty0+18),"fable.py — agent",font=mono(24),fill=MUT)
-CODES=[("def build(brief):",None),("    plan = claude.think(brief)",None),("    ui = design(plan)","# self-assembling"),
-       ("    for step in plan:",None),("        agent.run(step)","# writing..."),("    ship(ui)","# done")]
-f=mono(27)
-for i,(ln,cm) in enumerate(CODES):
-    d.text((tx0+34,ty0+92+i*46),ln,font=f,fill=INK)
-    if cm: d.text((tx0+34+d.textlength(ln+"   ",font=f),ty0+92+i*46),cm,font=f,fill=MUT)
-base=ty0+92+6*46+8; d.text((tx0+34,base),"> shipped in 6.2s",font=f,fill=CORAL)
-chx=tx0+34+d.textlength("> shipped in 6.2s  ",font=f); d.line([chx,base+16,chx+8,base+24],fill=(120,165,120),width=3); d.line([chx+8,base+24,chx+22,base+6],fill=(120,165,120),width=3)
-# preview panel
-px0,py0=tx0+470,ty1-210
-d.rounded_rectangle([px0,py0,tx1-30,ty1-30],radius=14,fill=CREAM2,outline=LINEC,width=1)
-d.text((px0+18,py0+16),"PREVIEW",font=mono(18),fill=MUT)
-for j in range(3): d.rounded_rectangle([px0+18,py0+48+j*40,tx1-48,py0+76+j*40],radius=7,fill=(CORAL if j==0 else KRAFT))
-d.text((cx- d.textlength("the agent designs itself",font=dm(700,30))/2,1372),"the agent designs itself",font=dm(700,30),fill=INK2)
-bg.convert("RGB").save(f"{SP}/seed_fable.png"); print("saved seed_fable.png (Claude light palette)")
+
+# --- inject Vertex 3D Claude logo (top) ---
+cl=key_logo(f"{SP}/claude3d.png"); cl.thumbnail((300,300),Image.LANCZOS)
+bg.paste(cl,(cx-cl.width//2,150),cl)
+# --- inject Vertex Fable 5 3D wordmark ---
+fb=key_logo(f"{SP}/fable5.png"); fb.thumbnail((620,260),Image.LANCZOS)
+bg.paste(fb,(cx-fb.width//2,150+cl.height+8),fb)
+
+# --- inject REAL code (light editor) ---
+tx0,ty0,tx1,ty1=132,760,948,1240
+sh=Image.new("RGBA",(W,H),(0,0,0,0)); ImageDraw.Draw(sh).rounded_rectangle([tx0+4,ty0+16,tx1+4,ty1+16],radius=24,fill=(120,95,60,55))
+bg=Image.alpha_composite(bg.convert("RGBA"),sh.filter(ImageFilter.GaussianBlur(24))).convert("RGB"); d=ImageDraw.Draw(bg,"RGBA")
+d.rounded_rectangle([tx0,ty0,tx1,ty1],radius=24,fill=PAPER,outline=LINEC,width=2)
+d.rounded_rectangle([tx0,ty0,tx1,ty0+52],radius=24,fill=CREAM2); d.rectangle([tx0,ty0+34,tx1,ty0+52],fill=CREAM2)
+d.line([tx0,ty0+52,tx1,ty0+52],fill=LINEC,width=1)
+for i,c in enumerate([(217,119,87),(210,160,90),(180,170,150)]): d.ellipse([tx0+22+i*22,ty0+19,tx0+34+i*22,ty0+31],fill=c)
+d.text((tx0+110,ty0+15),"fable.py",font=mono(22),fill=MUT)
+f=mono(26)
+CODE=[("def build(brief):",None),("    plan = claude.plan(brief)",None),("    ui = fable.design(plan)","# self-designs"),
+      ("    for step in plan:",None),("        agent.run(step)","# ships it"),("    return ui",None)]
+for i,(ln,cm) in enumerate(CODE):
+    d.text((tx0+30,ty0+80+i*44),ln,font=f,fill=INK)
+    if cm: d.text((tx0+30+d.textlength(ln+"  ",font=f),ty0+80+i*44),cm,font=f,fill=MUT)
+
+# --- inject REAL output (a shipped mini interface, NOT a preview) ---
+ox0,oy0,ox1,oy1=132,1300,948,1720
+sh=Image.new("RGBA",(W,H),(0,0,0,0)); ImageDraw.Draw(sh).rounded_rectangle([ox0+4,oy0+16,ox1+4,oy1+16],radius=24,fill=(120,95,60,55))
+bg=Image.alpha_composite(bg.convert("RGBA"),sh.filter(ImageFilter.GaussianBlur(24))).convert("RGB"); d=ImageDraw.Draw(bg,"RGBA")
+d.rounded_rectangle([ox0,oy0,ox1,oy1],radius=24,fill=PAPER,outline=LINEC,width=2)
+d.text((ox0+30,oy0+22),"OUTPUT",font=mono(20),fill=CORAL); d.text((ox0+30+d.textlength("OUTPUT   ",font=mono(20)),oy0+22),"landing.app · shipped",font=mono(18),fill=MUT)
+# a finished landing hero built by the agent
+d.text((ox0+30,oy0+70),"Your services, on autopilot.",font=dm(900,42),fill=INK)
+d.text((ox0+30,oy0+128),"One operator. Every agent. Cents per run.",font=dm(500,24),fill=INK2)
+d.rounded_rectangle([ox0+30,oy0+184,ox0+250,oy0+238],radius=27,fill=CORAL); d.text((ox0+66,oy0+198),"Get started",font=dm(800,24),fill=(255,252,248))
+d.rounded_rectangle([ox0+270,oy0+184,ox0+430,oy0+238],radius=27,outline=LINEC,width=2); d.text((ox0+300,oy0+198),"See how",font=dm(700,24),fill=INK2)
+for j in range(3):
+    bx=ox0+30+j*300; d.rounded_rectangle([bx,oy0+270,bx+270,oy0+360],radius=14,fill=CREAM2,outline=LINEC,width=1)
+    d.rounded_rectangle([bx+18,oy0+288,bx+90,oy0+306],radius=6,fill=(CORAL if j==0 else KRAFT))
+    d.rounded_rectangle([bx+18,oy0+320,bx+240,oy0+334],radius=5,fill=LINEC); d.rounded_rectangle([bx+18,oy0+342,bx+180,oy0+356],radius=5,fill=LINEC)
+
+bg.convert("RGB").save(f"{SP}/seed_fable.png"); print("saved seed_fable.png (injected Vertex logos + real code + real output)")
