@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE COMPOUND', [[wo('Week two:')],[co('smarter than week one.')]], 'Corrections become rules. Month two beats month one on its own.', [co('Setup pays forever.')], f"{M}/compound.png", 1.0),
  ('THE OPERATOR', [[wo('One hour once.')],[co('Leverage forever.')]], 'One founder, one memory, a company that runs behind a chat.', [co('Block the hour.')], f"{M}/operator.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], f"{LIB}/cta3d-founder.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-founder.png", 0.82)
 T2.CLOSE=dict(l1='Save the checklist',l2='and block the hour.',q='Which minute are you stuck on?')
 MARK2="claude"
