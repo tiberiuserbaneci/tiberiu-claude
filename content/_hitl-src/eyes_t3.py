@@ -21,55 +21,40 @@ CARDL='background:linear-gradient(165deg,#463d34,#332b24);border:1px solid rgba(
 # accent. No abrupt dark block. (slide 2 only, pending validation)
 CARDIV='background:linear-gradient(160deg,#fdfbf6,#efe6d5 62%,#e6dac4);border:1px solid rgba(120,95,60,.16);border-radius:34px;box-shadow:0 40px 70px rgba(120,95,60,.20),0 14px 28px rgba(120,95,60,.14), inset 0 2px 3px rgba(255,255,255,.95), inset 0 -16px 34px rgba(150,120,80,.12)'
 def jar():
-    # recognizable BRAIN (side profile w/ gyri) under a real GLASS BELL JAR (knob, rim, base,
-    # specular streaks). Built from cream palette. cx=230.
-    # brain gyri: stacked C-curves fill the lobe so it reads as a brain, not a disc
-    import math as _m
-    gyri=""
-    folds=[(178,250,44),(196,236,52),(214,250,46),(232,238,52),(250,252,44),(200,272,60),(228,286,54)]
-    for cxg,cyg,r in folds:
-        gyri+=f'<path d="M{cxg-r/2:.0f} {cyg} q {r/4:.0f} -{r*0.55:.0f} {r/2:.0f} 0 q {r/4:.0f} {r*0.55:.0f} {r/2:.0f} 0" fill="none" stroke="#8a4a2e" stroke-width="3" stroke-linecap="round" opacity="0.75"/>'
-    return f'''<div style="width:900px;{CARDIV};padding:44px;text-align:center">
-      <div style="height:430px;display:flex;align-items:center;justify-content:center">
-      <svg width="470" height="470" viewBox="0 0 470 470">
+    # ABSTRACT: luminous atom-core (contained intelligence) inside an ABSTRACT translucent SEAL
+    # bubble (no literal jar/knob/base). Object scaled to ~OBJ_FILL of the card width (visual rule:
+    # the built element fills the card, not floats small). Mono specimen-label type. cx=310.
+    return f'''<div style="width:900px;{CARDIV};padding:38px 40px 34px;text-align:center">
+      <div style="display:flex;align-items:center;justify-content:center">
+      <svg width="612" height="560" viewBox="0 0 612 560">
         <defs>
           <radialGradient id="core" cx="38%" cy="32%"><stop offset="0%" stop-color="#f0c49e"/><stop offset="52%" stop-color="rgb({ACC})"/><stop offset="100%" stop-color="#8a4a2c"/></radialGradient>
-          <radialGradient id="bloom" cx="50%" cy="50%"><stop offset="0%" stop-color="rgba(204,120,92,.45)"/><stop offset="60%" stop-color="rgba(204,120,92,.12)"/><stop offset="100%" stop-color="rgba(204,120,92,0)"/></radialGradient>
-          <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(232,238,242,.42)"/><stop offset="55%" stop-color="rgba(214,222,228,.18)"/><stop offset="100%" stop-color="rgba(196,205,212,.30)"/></linearGradient>
-          <linearGradient id="plate" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e2d2b8"/><stop offset="100%" stop-color="#bf9f78"/></linearGradient>
-          <filter id="node" x="-200%" y="-200%" width="500%" height="500%"><feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="rgb({ACC})" flood-opacity="0.9"/></filter>
-          <filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="7"/></filter>
+          <radialGradient id="bloom" cx="50%" cy="50%"><stop offset="0%" stop-color="rgba(204,120,92,.45)"/><stop offset="58%" stop-color="rgba(204,120,92,.12)"/><stop offset="100%" stop-color="rgba(204,120,92,0)"/></radialGradient>
+          <radialGradient id="seal" cx="38%" cy="30%"><stop offset="0%" stop-color="rgba(255,255,255,.20)"/><stop offset="62%" stop-color="rgba(214,222,228,.05)"/><stop offset="100%" stop-color="rgba(200,208,214,.14)"/></radialGradient>
+          <filter id="node" x="-200%" y="-200%" width="500%" height="500%"><feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="rgb({ACC})" flood-opacity="0.9"/></filter>
+          <filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="9"/></filter>
         </defs>
-        <!-- base plate -->
-        <ellipse cx="235" cy="392" rx="168" ry="34" fill="#b1906a" opacity="0.5" filter="url(#soft)"/>
-        <ellipse cx="235" cy="378" rx="150" ry="30" fill="url(#plate)" stroke="rgba(255,255,255,.6)" stroke-width="1.5"/>
-        <path d="M85 378 a150 30 0 0 0 300 0 v16 a150 30 0 0 1 -300 0 Z" fill="#a9875f"/>
-        <!-- ABSTRACT contained intelligence (behind glass): luminous core + orbits + nodes -->
+        <ellipse cx="306" cy="518" rx="196" ry="26" fill="rgba(120,90,55,.16)" filter="url(#soft)"/>
         <g>
-          <circle cx="235" cy="268" r="118" fill="url(#bloom)"/>
-          <ellipse cx="235" cy="268" rx="104" ry="40" fill="none" stroke="rgba(204,120,92,.34)" stroke-width="2" transform="rotate(24 235 268)"/>
-          <ellipse cx="235" cy="268" rx="104" ry="40" fill="none" stroke="rgba(204,120,92,.28)" stroke-width="2" transform="rotate(-32 235 268)"/>
-          <ellipse cx="235" cy="268" rx="104" ry="40" fill="none" stroke="rgba(204,120,92,.22)" stroke-width="2" transform="rotate(84 235 268)"/>
-          <circle cx="330" cy="250" r="8" fill="rgb({ACC})" filter="url(#node)"/>
-          <circle cx="150" cy="288" r="7" fill="rgb({ACC})" filter="url(#node)"/>
-          <circle cx="252" cy="178" r="6" fill="rgb({ACC})" filter="url(#node)"/>
-          <circle cx="210" cy="356" r="6" fill="rgb({ACC})" filter="url(#node)"/>
-          <circle cx="235" cy="268" r="50" fill="url(#core)"/>
-          <ellipse cx="220" cy="250" rx="18" ry="11" fill="rgba(255,255,255,.5)" transform="rotate(-28 220 250)"/>
+          <circle cx="306" cy="268" r="184" fill="url(#bloom)"/>
+          <ellipse cx="306" cy="268" rx="176" ry="66" fill="none" stroke="rgba(204,120,92,.34)" stroke-width="3" transform="rotate(24 306 268)"/>
+          <ellipse cx="306" cy="268" rx="176" ry="66" fill="none" stroke="rgba(204,120,92,.28)" stroke-width="3" transform="rotate(-32 306 268)"/>
+          <ellipse cx="306" cy="268" rx="176" ry="66" fill="none" stroke="rgba(204,120,92,.22)" stroke-width="3" transform="rotate(84 306 268)"/>
+          <circle cx="466" cy="238" r="12" fill="rgb({ACC})" filter="url(#node)"/>
+          <circle cx="150" cy="300" r="11" fill="rgb({ACC})" filter="url(#node)"/>
+          <circle cx="338" cy="118" r="10" fill="rgb({ACC})" filter="url(#node)"/>
+          <circle cx="262" cy="418" r="9" fill="rgb({ACC})" filter="url(#node)"/>
+          <circle cx="306" cy="268" r="84" fill="url(#core)"/>
+          <ellipse cx="280" cy="238" rx="30" ry="18" fill="rgba(255,255,255,.5)" transform="rotate(-28 280 238)"/>
         </g>
-        <!-- glass bell jar (over brain, translucent) -->
-        <path d="M118 372 L118 210 Q118 96 235 96 Q352 96 352 210 L352 372 Z" fill="url(#glass)" stroke="rgba(255,255,255,.75)" stroke-width="2.5"/>
-        <!-- specular highlight streaks -->
-        <path d="M150 350 L150 214 Q150 140 196 118" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="9" stroke-linecap="round" opacity="0.55"/>
-        <path d="M172 344 L172 220" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
-        <!-- knob -->
-        <ellipse cx="235" cy="96" rx="34" ry="16" fill="#d9dfe4" opacity="0.5"/>
-        <circle cx="235" cy="78" r="20" fill="url(#glass)" stroke="rgba(255,255,255,.75)" stroke-width="2.5"/>
-        <ellipse cx="228" cy="72" rx="7" ry="4" fill="rgba(255,255,255,.8)"/>
+        <circle cx="306" cy="268" r="252" fill="url(#seal)"/>
+        <circle cx="306" cy="268" r="252" fill="none" stroke="rgba(255,255,255,.42)" stroke-width="1.5"/>
+        <path d="M128 160 A252 252 0 0 1 306 55" fill="none" stroke="rgba(255,255,255,.75)" stroke-width="5" stroke-linecap="round" opacity="0.7"/>
+        <path d="M96 250 A252 252 0 0 1 132 156" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="3.5" stroke-linecap="round" opacity="0.55"/>
       </svg>
       </div>
-      <div style="font-family:'DM Sans';font-weight:900;font-size:36px;color:#2a2016;margin-top:2px">A BRAIN IN A JAR</div>
-      <div style="font-family:'DM Mono';font-size:15px;color:#9a7a52;letter-spacing:.06em;margin-top:6px">smart, sealed, sightless</div>
+      <div style="font-family:'DM Mono';font-weight:500;font-size:19px;letter-spacing:.34em;color:#4a3f30;margin-top:8px">A BRAIN IN A JAR</div>
+      <div style="font-family:'DM Mono';font-weight:400;font-size:12px;letter-spacing:.24em;color:#a08a68;margin-top:9px;text-transform:uppercase">smart &nbsp;&middot;&nbsp; sealed &nbsp;&middot;&nbsp; sightless</div>
     </div>'''
 
 # 2. EYES10 - isometric stack of structured result cards (agent-native search)

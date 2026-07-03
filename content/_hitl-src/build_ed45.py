@@ -415,7 +415,9 @@ def place_prem(base,objpath,light,ytop=None):
         # Zone = the MEASURED workspace of THIS slide (operator 2026-07-02: "masoara spatiul de
         # lucru si umple-l"): from right under the text block down to just above the progress bar.
         zy0=max(600,(ytop or 610))
-        T2.place_in_zone(base,im0,(74,zy0,W-74,1252),fill=1.0)
+        # right/left inset 140 so the element clears the TikTok action-icon rail (operator:
+        # "muchia dreapta a elementului atinge icons"). symmetric -> stays centered.
+        T2.place_in_zone(base,im0,(140,zy0,W-140,1252),fill=1.0)
         return
     im=im0.convert("RGB")
     a=np.asarray(im).astype(int); h,w=a.shape[:2]; area=h*w
