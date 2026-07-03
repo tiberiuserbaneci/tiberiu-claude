@@ -40,34 +40,39 @@ def shotB():
     d.rounded_rectangle([tx0,ty0,tx1,ty0+56],radius=28,fill=CREAM2); d.rectangle([tx0,ty0+38,tx1,ty0+56],fill=CREAM2); d.line([tx0,ty0+56,tx1,ty0+56],fill=LINEC,width=1)
     for i,c in enumerate([(217,119,87),(210,160,90),(180,170,150)]): d.ellipse([tx0+24+i*24,ty0+20,tx0+38+i*24,ty0+34],fill=c)
     d.text((tx0+120,ty0+16),"fable.py — agent",font=mono(26),fill=MUT)
-    f=mono(32)
-    CODE=[("def build(brief):",None),("    plan = claude.plan(brief)",None),("    ui = fable.design(plan)","# self-designs"),
-          ("    for step in plan:",None),("        agent.run(step)","# ships it"),("    return ui",None)]
+    f=mono(30)
+    # code FILLS the window (operator: codul umple fereastra)
+    CODE=[("def build(brief):",None),("    plan = claude.plan(brief)","# deep model"),
+          ("    ui   = fable.design(plan)","# self-designs"),("",None),
+          ("    for step in plan:",None),("        code = agent.write(step)",None),
+          ("        test(code)","# grades itself"),("        agent.run(step)",None),("",None),
+          ("    review = human.gate(ui)","# your tap"),("    if review.ok:",None),
+          ("        ship(ui)","# done"),("    return ui",None),("",None),("build(brief)","# shipped")]
+    y=ty0+92; lh=(ty1-30-y)//len(CODE)
     for i,(ln,cm) in enumerate(CODE):
-        d.text((tx0+34,ty0+92+i*58),ln,font=f,fill=INK)
-        if cm: d.text((tx0+34+d.textlength(ln+"  ",font=f),ty0+92+i*58),cm,font=f,fill=MUT)
+        d.text((tx0+34,y+i*lh),ln,font=f,fill=INK)
+        if cm: d.text((tx0+34+d.textlength(ln+"  ",font=f),y+i*lh),cm,font=f,fill=MUT)
     # side window light gradient (left brighter)
     g=Image.new("L",(W,H),0)
     for x in range(W): ImageDraw.Draw(g).line([(x,0),(x,H)],fill=int(70*max(0,1-x/(W*0.7))))
     side=Image.merge("RGBA",(Image.new("L",(W,H),255),Image.new("L",(W,H),244),Image.new("L",(W,H),230),g)); bg.alpha_composite(side)
     return bg.convert("RGB")
 
-# ---- Shot C: shipped output, soft top light ----
+# ---- Shot C: clean DONE status (operator: output not generic; if no reference use a READY/DONE message) ----
 def shotC():
     bg=cream_bg(); d=ImageDraw.Draw(bg,"RGBA")
-    top=Image.new("RGBA",(W,H),(0,0,0,0)); ImageDraw.Draw(top).ellipse([-200,-560,W+200,560],fill=(255,250,240,80)); top=top.filter(ImageFilter.GaussianBlur(180)); bg.alpha_composite(top); d=ImageDraw.Draw(bg,"RGBA")
-    ox0,oy0,ox1,oy1=110,560,970,1360
-    sh=Image.new("RGBA",(W,H),(0,0,0,0)); ImageDraw.Draw(sh).rounded_rectangle([ox0+6,oy0+20,ox1+6,oy1+20],radius=28,fill=(120,95,60,60)); bg.alpha_composite(sh.filter(ImageFilter.GaussianBlur(28))); d=ImageDraw.Draw(bg,"RGBA")
-    d.rounded_rectangle([ox0,oy0,ox1,oy1],radius=28,fill=PAPER,outline=LINEC,width=2)
-    d.text((ox0+34,oy0+28),"OUTPUT",font=mono(22),fill=CORAL); d.text((ox0+34+d.textlength("OUTPUT   ",font=mono(22)),oy0+28),"landing.app · shipped",font=mono(20),fill=MUT)
-    d.text((ox0+34,oy0+84),"Your services,",font=dm(900,58),fill=INK); d.text((ox0+34,oy0+150),"on autopilot.",font=dm(900,58),fill=INK)
-    d.text((ox0+34,oy0+228),"One operator. Every agent. Cents per run.",font=dm(500,28),fill=INK2)
-    d.rounded_rectangle([ox0+34,oy0+292,ox0+290,oy0+356],radius=32,fill=CORAL); d.text((ox0+78,oy0+308),"Get started",font=dm(800,28),fill=(255,252,248))
-    d.rounded_rectangle([ox0+312,oy0+292,ox0+512,oy0+356],radius=32,outline=LINEC,width=2); d.text((ox0+348,oy0+308),"See how",font=dm(700,28),fill=INK2)
-    for j in range(3):
-        bx=ox0+34+j*272; d.rounded_rectangle([bx,oy0+400,bx+250,oy0+520],radius=16,fill=CREAM2,outline=LINEC,width=1)
-        d.rounded_rectangle([bx+20,oy0+420,bx+110,oy0+442],radius=7,fill=(CORAL if j==0 else KRAFT))
-        d.rounded_rectangle([bx+20,oy0+460,bx+220,oy0+476],radius=6,fill=LINEC); d.rounded_rectangle([bx+20,oy0+486,bx+170,oy0+502],radius=6,fill=LINEC)
+    top=Image.new("RGBA",(W,H),(0,0,0,0)); ImageDraw.Draw(top).ellipse([-200,-560,W+200,600],fill=(255,250,240,85)); top=top.filter(ImageFilter.GaussianBlur(180)); bg.alpha_composite(top); d=ImageDraw.Draw(bg,"RGBA")
+    # big coral ring + check
+    ccx,ccy,r=cx,830,150
+    glow=Image.new("RGBA",(W,H),(0,0,0,0)); ImageDraw.Draw(glow).ellipse([ccx-r-60,ccy-r-60,ccx+r+60,ccy+r+60],fill=(217,119,87,70)); glow=glow.filter(ImageFilter.GaussianBlur(70)); bg.alpha_composite(glow); d=ImageDraw.Draw(bg,"RGBA")
+    d.ellipse([ccx-r,ccy-r,ccx+r,ccy+r],fill=CORAL)
+    d.line([ccx-64,ccy+6,ccx-14,ccy+56],fill=(255,252,248),width=20,joint="curve"); d.line([ccx-14,ccy+56,ccx+70,ccy-52],fill=(255,252,248),width=20,joint="curve")
+    # DONE
+    t="DONE"; f=dm(900,120); w=d.textlength(t,font=f); d.text((cx-w/2,ccy+r+70),t,font=f,fill=INK)
+    s="shipped in 6.2s"; fs=mono(34); ws=d.textlength(s,font=fs); d.text((cx-ws/2,ccy+r+210),s,font=fs,fill=INK2)
+    # a slim status line
+    d.rounded_rectangle([cx-210,ccy+r+280,cx+210,ccy+r+332],radius=26,outline=CORAL,width=2)
+    st="READY TO PUBLISH"; fst=mono(24); wst=d.textlength(st,font=fst); d.text((cx-wst/2,ccy+r+293),st,font=fst,fill=CORAL)
     return bg.convert("RGB")
 
 if __name__=="__main__":
