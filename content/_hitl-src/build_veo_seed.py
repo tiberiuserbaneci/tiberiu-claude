@@ -21,8 +21,8 @@ bg=Image.new("RGB",(W,H),CREAM); d=ImageDraw.Draw(bg,"RGBA")
 glow=Image.new("RGBA",(W,H),(0,0,0,0)); ImageDraw.Draw(glow).ellipse([cx-560,120,cx+560,900],fill=(217,119,87,22)); glow=glow.filter(ImageFilter.GaussianBlur(220))
 bg=Image.alpha_composite(bg.convert("RGBA"),glow).convert("RGB"); d=ImageDraw.Draw(bg,"RGBA")
 
-# --- inject Vertex 3D Claude logo (top) ---
-cl=key_logo(f"{SP}/claude3d.png"); cl.thumbnail((300,300),Image.LANCZOS)
+# --- inject the REAL Claude 3D logo from repo (matte), keyed off its dark studio bg ---
+cl=key_logo(f"{ROOT}/content/_templates/tiktok/lib/claude-logo-3d-matte.png",tol=40); cl.thumbnail((300,300),Image.LANCZOS)
 bg.paste(cl,(cx-cl.width//2,150),cl)
 # --- inject Vertex Fable 5 3D wordmark ---
 fb=key_logo(f"{SP}/fable5.png"); fb.thumbnail((620,260),Image.LANCZOS)

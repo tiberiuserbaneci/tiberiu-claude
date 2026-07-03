@@ -1,32 +1,35 @@
-# VEO PROMPTING SKILL (in-repo, operator 2026-07-03)
+# VEO 3 PROMPTING SKILL (in-repo) — learned from DeepMind guide + GitHub Veo3 repos
+# (snubroot/Veo-3-Prompting-Guide, jax-explorer/awesome-veo3-videos, shijincai/veo3-prompt-generator).
 
-Built from Google DeepMind's Veo guide + pro image-to-video workflows. Use for every Ultron reel clip.
+## Professional 7-component structure (write the prompt in these fields)
+1. **Subject** — the thing, with specific attributes.
+2. **Action** — exact movement/behavior with timing.
+3. **Scene** — environment, props, lighting setup, atmosphere.
+4. **Style** — shot type + angle + camera movement + lighting approach + aesthetic + aspect + grade.
+5. **Dialogue** — usually none for us.
+6. **Sounds** — specify explicitly to stop audio hallucination (or "no music, quiet").
+7. **Technical (negative)** — "no subtitles, no watermark, no artifacts, no warped text/logos".
 
-## The rule that fixes "labartat / muddy / too big"
-- **ONE primary camera move per clip.** Never stack push-in + orbit + crane + cuts in one gen — that is
-  exactly what makes Veo output sprawling and messy. Pick ONE: slow push-in (dolly), OR slow drift, OR
-  slow crane-down. 2 modifiers max.
-- **Specify framing.** Say the shot size (medium / close-up). "Too big" = no framing given → Veo fills
-  chaotically. Give a contained, composed frame.
-- **100-150 words, 3-6 sentences.** More = muddy.
+## MULTIPLE camera angles (operator asked; a single 8s clip = one move)
+- Reliable pro method = **multi-shot cut**: generate 2-3 short segments, each a DIFFERENT shot
+  (angle + framing + lighting), then cut on the beat. This is how you get real angle variety.
+- Per segment use ONE primary move (dolly-in / crane-down / orbit / pan). Never stack moves (=muddy).
+- **Camera trick:** append **"(that's where the camera is)"** after the camera position — it triggers
+  camera-aware processing and sharply improves results.
+- Shots vocabulary: EWS, WS, MS, CU, ECU; low-angle, high-angle, top-down; dolly-in, tracking, crane,
+  orbit/360, pan, tilt, handheld.
 
-## The rule that fixes "logo doesn't appear"
-- **Veo text-to-video does NOT render brand logos or exact wordmarks faithfully.** Never rely on it.
-- **Use IMAGE-TO-VIDEO from a designed SEED frame.** The seed carries the real Claude logo (the
-  `claude_official.png` sunburst), the CLAUDE/FABLE wordmarks, the duotone scene, the exact framing.
-  Veo only ANIMATES it. Logo guaranteed, framing controlled. (Pro workflow: "the base image is
-  everything; output quality is constrained by the input image.")
+## Varied lighting (operator asked)
+- Give each shot a DIFFERENT setup: three-point (warm key + fill + rim), Rembrandt (triangular
+  shadow), golden-hour, chiaroscuro (stark light/shadow), soft window light. State it per shot.
 
-## Prompt structure (DeepMind 5-part), for the MOTION only
-`Camera move + Subject + Action + Context + Style/ambiance`
-- Camera: one move ("slow cinematic push-in").
-- Action: what animates inside the seed ("code streams line by line, glow pulses gently").
-- Style: "duotone charcoal + copper, film grain, shallow depth of field, premium, continuous".
-- Add "do not add new objects, keep composition" to stop Veo from re-inventing/sprawling.
+## Logos / text (operator: Veo can stylize/animate them; but keep the REAL mark)
+- The REAL Claude 3D mark lives in-repo: `content/_templates/tiktok/lib/claude-logo-3d-{matte,glossy,metal,extruded}.png`
+  (an ~11-ray coral sunburst). Do NOT let Veo invent a different burst. For a faithful logo, inject
+  the real 3D logo into the seed (image-to-video) OR reference it exactly. "Fable 5" wordmark also injected.
+- Palette: **Claude light** — cream/off-white paper, soft coral #D97757, warm tan, charcoal ink.
+  NO bright red, NO dark sci-fi.
 
-## Ultron reel spec
-- 9:16 vertical seed (start vertical for Reels).
-- Duotone charcoal + copper (the Duotone reference), NO blue/green, NO sci-fi plasma.
-- Subject = agentic Claude from the terminal: code + a UI that assembles itself (self-designing).
-- Real Claude sunburst + CLAUDE + FABLE present in the seed (so visible from second 1).
-- Veo ≥13s (extend) for the no-loop reel; single-move camera.
+## Length / cost
+- Veo 3 single clip ~8s; extend for longer. Veo 3 Fast for iteration (~$1.2/8s), Veo 3 full for finals.
+- Multi-shot movie = a few short segments cut together; iterate on Fast, finalize on full.
