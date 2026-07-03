@@ -22,6 +22,12 @@ def grid_canvas(light):
 def convert_slide(path):
     card=Image.open(path).convert("RGBA")
     if card.size!=(W,CARD_H): return False
+    # IG cover is a TRANSPARENT overlay (cover_ig, alpha bg) -> keep it transparent in 9:16 so it can
+    # sit over the video intro. Do NOT flatten it onto the solid grid (operator: "slide 1 transparent").
+    if card.split()[3].getextrema()[0] < 250:
+        canvas=Image.new("RGBA",(W,H),(0,0,0,0))
+        canvas.alpha_composite(card,(0,OY))
+        canvas.save(path); return "overlay"
     px=card.getpixel((6,6)); light=(sum(px[:3])/3)>128
     canvas=grid_canvas(light)
     canvas.alpha_composite(card,(0,OY))
