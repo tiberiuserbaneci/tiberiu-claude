@@ -10,10 +10,14 @@ ACC="212,162,127"
 
 # shared dark focal card so text always sits on dark mass (reads on cream AND dark slides)
 CARD='background:linear-gradient(165deg,#2b2b28,#1d1d1b);border:1px solid rgba(255,255,255,.07);border-radius:34px;box-shadow:0 42px 80px rgba(0,0,0,.55),0 16px 34px rgba(0,0,0,.44), inset 0 2.5px 3px rgba(255,255,255,.12), inset 0 -14px 30px rgba(0,0,0,.45)'
+# SOFT card for LIGHT/cream slides (operator: contrastul dark-on-cream e prea abrupt) - warm
+# espresso charcoal instead of near-black neutral + warm diffuse shadow -> the cream->card jump
+# reads intentional, not jarring. Still dark enough for white text. Used on even (light) pages.
+CARDL='background:linear-gradient(165deg,#463d34,#332b24);border:1px solid rgba(255,255,255,.09);border-radius:34px;box-shadow:0 40px 66px rgba(74,52,32,.34),0 14px 28px rgba(74,52,32,.26), inset 0 2.5px 3px rgba(255,255,255,.12), inset 0 -14px 30px rgba(0,0,0,.34)'
 
 # 1. JAR - isometric sealed dome over a chip (smart but sightless: closed eye slash)
 def jar():
-    return f'''<div style="width:900px;{CARD};padding:44px;text-align:center">
+    return f'''<div style="width:900px;{CARDL};padding:44px;text-align:center">
       <div style="perspective:1400px;height:420px;display:flex;align-items:center;justify-content:center">
         <div style="transform-style:preserve-3d;transform:rotateX(20deg)">
           <div style="position:relative;width:340px;height:300px;margin:0 auto">
@@ -69,7 +73,7 @@ def crawl():
         edges+=f'<path d="M180 {y} C{mx:.0f} {y},{mx:.0f} {huby},{hubx-70} {huby}" stroke="rgba(212,162,127,.5)" stroke-width="2.5" fill="none"/>'
         nodes+=f'''<rect x="40" y="{y-26}" width="150" height="52" rx="12" fill="#2a2724" stroke="rgba(255,255,255,.09)"/>
           <text x="115" y="{y+5}" text-anchor="middle" font-family="DM Mono" font-size="15" fill="#c9c3b8">{nm}</text>'''
-    return f'''<div style="width:900px;{CARD};padding:40px">
+    return f'''<div style="width:900px;{CARDL};padding:40px">
       <div style="font-family:'DM Sans';font-weight:800;font-size:26px;color:#FAFAF7;margin-bottom:10px">The web becomes briefs</div>
       <svg width="{W}" height="{H}" viewBox="0 0 {W} {H}">
         <defs><radialGradient id="hub" cx="35%" cy="30%"><stop offset="0%" stop-color="rgb({ACC})"/><stop offset="100%" stop-color="#7a4326"/></radialGradient>
@@ -119,7 +123,7 @@ def proof10():
         else:
             dots+=f'<rect x="{x}" y="{y}" width="{cell}" height="{cell}" rx="4" fill="rgba(250,250,247,.09)"/>'
     fw=cols*(cell+gap)-gap; fh=rowsn*(cell+gap)-gap
-    return f'''<div style="width:900px;{CARD};padding:40px">
+    return f'''<div style="width:900px;{CARDL};padding:40px">
       <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:16px">
         <div><span style="font-family:'DM Sans';font-weight:900;font-size:52px;color:#FAFAF7">1,284</span>
         <span style="font-family:'DM Sans';font-weight:700;font-size:20px;color:#c9a583;margin-left:10px">companies, live</span></div>
@@ -158,7 +162,7 @@ def setup10():
         edges+=f'<path d="M230 {y} C320 {y},340 {huby},{hubx-64} {huby}" stroke="rgba(212,162,127,.5)" stroke-width="2.5" fill="none"/>'
         nodes+=f'<rect x="60" y="{y-24}" width="170" height="48" rx="12" fill="#2a2724" stroke="rgba(255,255,255,.09)"/><text x="145" y="{y+6}" text-anchor="middle" font-family="DM Mono" font-size="16" letter-spacing="2" fill="#c9c3b8">{nm}</text>'
     edges+=f'<path d="M{hubx+64} {huby} C{(hubx+gatex)/2:.0f} {huby},{(hubx+gatex)/2:.0f} {huby},{gatex-46} {huby}" stroke="rgba(212,162,127,.5)" stroke-width="2.5" fill="none"/>'
-    return f'''<div style="width:900px;{CARD};padding:40px">
+    return f'''<div style="width:900px;{CARDL};padding:40px">
       <div style="font-family:'DM Sans';font-weight:800;font-size:26px;color:#FAFAF7;margin-bottom:8px">The senses, wired and gated</div>
       <svg width="{W}" height="{H}" viewBox="0 0 {W} {H}">
         <defs><radialGradient id="h2" cx="35%" cy="30%"><stop offset="0%" stop-color="rgb({ACC})"/><stop offset="100%" stop-color="#7a4326"/></radialGradient>
