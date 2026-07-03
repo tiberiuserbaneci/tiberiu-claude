@@ -197,16 +197,17 @@ def diff10():
               <radialGradient id="seal" cx="38%" cy="32%"><stop offset="0%" stop-color="#f0c49e"/><stop offset="52%" stop-color="rgb({ACC})"/><stop offset="100%" stop-color="#7a4326"/></radialGradient>
               <radialGradient id="sealbloom" cx="50%" cy="50%"><stop offset="0%" stop-color="rgba(204,120,92,.5)"/><stop offset="62%" stop-color="rgba(204,120,92,.10)"/><stop offset="100%" stop-color="rgba(204,120,92,0)"/></radialGradient>
               <filter id="sealsh" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="rgba(0,0,0,.6)"/></filter>
+              <filter id="spec" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="8"/></filter>
             </defs>
             <circle cx="145" cy="145" r="140" fill="url(#sealbloom)"/>
             <g filter="url(#sealsh)">
               {"".join(f'<line x1="145" y1="145" x2="{145+128*math.cos(math.radians(a)):.0f}" y2="{145+128*math.sin(math.radians(a)):.0f}" stroke="#8a4c2c" stroke-width="10"/>' for a in range(0,360,15))}
               <circle cx="145" cy="145" r="118" fill="url(#seal)"/>
             </g>
-            <circle cx="145" cy="145" r="118" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="2"/>
+            <circle cx="145" cy="145" r="118" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="2"/>
             <circle cx="145" cy="145" r="96" fill="none" stroke="rgba(26,15,10,.28)" stroke-width="2"/>
             <path d="M108 148 l24 24 l50 -58" fill="none" stroke="#1a0f0a" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M60 62 A118 118 0 0 1 150 30" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="6" stroke-linecap="round"/>
+            <ellipse cx="110" cy="98" rx="44" ry="24" fill="rgba(255,255,255,.28)" filter="url(#spec)" transform="rotate(-32 110 98)"/>
             <text x="145" y="212" text-anchor="middle" font-family="DM Mono" font-weight="500" font-size="19" letter-spacing="4" fill="#1a0f0a">VERIFIED</text>
           </svg>
         </div>
@@ -244,19 +245,20 @@ def setup10():
           <radialGradient id="outc" cx="36%" cy="30%"><stop offset="0%" stop-color="#3a352f"/><stop offset="100%" stop-color="#1c1a17"/></radialGradient>
           <filter id="tg" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="rgb({ACC})" flood-opacity="0.6"/></filter>
           <filter id="ld" x="-200%" y="-200%" width="500%" height="500%"><feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#7fd39a" flood-opacity="0.9"/></filter>
-          <filter id="gg" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="0" stdDeviation="22" flood-color="rgb({ACC})" flood-opacity="0.55"/></filter>
+          <filter id="gg" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="0" stdDeviation="11" flood-color="rgb({ACC})" flood-opacity="0.28"/></filter>
         </defs>
         {conns}{chips}
-        <!-- CORTEX output butting gate right -->
-        <rect x="{gx1}" y="{gcy-5}" width="30" height="10" rx="5" fill="rgb({ACC})" opacity="0.85" filter="url(#tg)"/>
-        <circle cx="{gx1+72}" cy="{gcy}" r="52" fill="url(#outc)" stroke="rgba(255,255,255,.12)"/>
-        <text x="{gx1+72}" y="{gcy+5}" text-anchor="middle" font-family="DM Sans" font-weight="800" font-size="16" fill="#e6d6c2">CORTEX</text>
-        <!-- HERO gate -->
-        <g filter="url(#gg)"><rect x="{gx0}" y="{gy0}" width="{gx1-gx0}" height="{gy1-gy0}" rx="30" fill="url(#gate)" stroke="rgb({ACC})" stroke-width="3"/></g>
+        <!-- HERO gate drawn FIRST so CORTEX sits ON TOP of it, not under the glow -->
+        <g filter="url(#gg)"><rect x="{gx0}" y="{gy0}" width="{gx1-gx0}" height="{gy1-gy0}" rx="30" fill="url(#gate)" stroke="rgb({ACC})" stroke-width="2.5"/></g>
         <rect x="{gx0+18}" y="{gy0+18}" width="{gx1-gx0-36}" height="{gy1-gy0-36}" rx="20" fill="none" stroke="rgba(255,255,255,.07)"/>
         <g transform="translate({(gx0+gx1)//2-42},{gcy-72})"><rect x="0" y="34" width="84" height="60" rx="12" fill="none" stroke="rgb({ACC})" stroke-width="6"/><path d="M16 34 V19 a26 26 0 0 1 52 0 v15" fill="none" stroke="rgb({ACC})" stroke-width="6"/></g>
         <text x="{(gx0+gx1)//2}" y="{gcy+92}" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="30" letter-spacing="1" fill="#FAFAF7">GATE</text>
         <text x="{(gx0+gx1)//2}" y="{gcy+124}" text-anchor="middle" font-family="DM Mono" font-size="13" letter-spacing=".1em" fill="rgb({ACC})">your tap</text>
+        <!-- CORTEX output ON TOP: connector + solid disc with a dark halo so the gate glow cannot swallow it -->
+        <rect x="{gx1+2}" y="{gcy-5}" width="34" height="10" rx="5" fill="rgb({ACC})" opacity="0.9"/>
+        <circle cx="{gx1+86}" cy="{gcy}" r="60" fill="#141210"/>
+        <circle cx="{gx1+86}" cy="{gcy}" r="52" fill="url(#outc)" stroke="rgba(212,162,127,.45)" stroke-width="1.5"/>
+        <text x="{gx1+86}" y="{gcy+5}" text-anchor="middle" font-family="DM Sans" font-weight="800" font-size="16" fill="#e6d6c2">CORTEX</text>
       </svg>
       <div style="font-family:'DM Mono';font-size:14px;color:#8f8f85;margin-top:2px">every external move waits for your tap</div></div>'''
 
