@@ -21,23 +21,44 @@ CARDL='background:linear-gradient(165deg,#463d34,#332b24);border:1px solid rgba(
 # accent. No abrupt dark block. (slide 2 only, pending validation)
 CARDIV='background:linear-gradient(160deg,#fdfbf6,#efe6d5 62%,#e6dac4);border:1px solid rgba(120,95,60,.16);border-radius:34px;box-shadow:0 40px 70px rgba(120,95,60,.20),0 14px 28px rgba(120,95,60,.14), inset 0 2px 3px rgba(255,255,255,.95), inset 0 -16px 34px rgba(150,120,80,.12)'
 def jar():
+    # recognizable BRAIN (side profile w/ gyri) under a real GLASS BELL JAR (knob, rim, base,
+    # specular streaks). Built from cream palette. cx=230.
+    # brain gyri: stacked C-curves fill the lobe so it reads as a brain, not a disc
+    import math as _m
+    gyri=""
+    folds=[(178,250,44),(196,236,52),(214,250,46),(232,238,52),(250,252,44),(200,272,60),(228,286,54)]
+    for cxg,cyg,r in folds:
+        gyri+=f'<path d="M{cxg-r/2:.0f} {cyg} q {r/4:.0f} -{r*0.55:.0f} {r/2:.0f} 0 q {r/4:.0f} {r*0.55:.0f} {r/2:.0f} 0" fill="none" stroke="#8a4a2e" stroke-width="3" stroke-linecap="round" opacity="0.75"/>'
     return f'''<div style="width:900px;{CARDIV};padding:44px;text-align:center">
-      <div style="perspective:1400px;height:420px;display:flex;align-items:center;justify-content:center">
-        <div style="transform-style:preserve-3d;transform:rotateX(20deg)">
-          <div style="position:relative;width:340px;height:300px;margin:0 auto">
-            <div style="position:absolute;left:0;bottom:0;width:340px;height:150px;border-radius:0 0 170px 170px/0 0 60px 60px;
-              background:linear-gradient(180deg,#e0d0b6,#c7ad88);box-shadow:inset 0 -10px 24px rgba(120,90,55,.35), 0 8px 16px rgba(120,90,55,.2)"></div>
-            <div style="position:absolute;left:20px;top:0;width:300px;height:240px;border-radius:150px 150px 40px 40px/170px 170px 30px 30px;
-              background:linear-gradient(145deg,rgba(255,255,255,.7),rgba(255,255,255,.28) 42%,rgba(150,120,80,.14));
-              border:1.5px solid rgba(255,255,255,.8);box-shadow:inset 22px 14px 48px rgba(255,255,255,.6), inset -10px -6px 26px rgba(150,120,80,.14)"></div>
-            <div style="position:absolute;left:110px;top:96px;width:120px;height:120px;border-radius:50%;
-              background:radial-gradient(circle at 38% 32%,rgb({ACC}),#9a5a35);box-shadow:0 0 40px rgba({ACC},.45), 0 8px 18px rgba(120,70,40,.3)"></div>
-            <div style="position:absolute;left:110px;top:96px;width:120px;height:120px">
-              <svg width="120" height="120"><line x1="26" y1="26" x2="94" y2="94" stroke="#3a2416" stroke-width="9" stroke-linecap="round"/></svg></div>
-          </div>
-        </div>
+      <div style="height:430px;display:flex;align-items:center;justify-content:center">
+      <svg width="470" height="470" viewBox="0 0 470 470">
+        <defs>
+          <radialGradient id="braing" cx="40%" cy="34%"><stop offset="0%" stop-color="#e6b48f"/><stop offset="100%" stop-color="#c06a3e"/></radialGradient>
+          <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(232,238,242,.42)"/><stop offset="55%" stop-color="rgba(214,222,228,.18)"/><stop offset="100%" stop-color="rgba(196,205,212,.30)"/></linearGradient>
+          <linearGradient id="plate" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e2d2b8"/><stop offset="100%" stop-color="#bf9f78"/></linearGradient>
+          <filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="7"/></filter>
+        </defs>
+        <!-- base plate -->
+        <ellipse cx="235" cy="392" rx="168" ry="34" fill="#b1906a" opacity="0.5" filter="url(#soft)"/>
+        <ellipse cx="235" cy="378" rx="150" ry="30" fill="url(#plate)" stroke="rgba(255,255,255,.6)" stroke-width="1.5"/>
+        <path d="M85 378 a150 30 0 0 0 300 0 v16 a150 30 0 0 1 -300 0 Z" fill="#a9875f"/>
+        <!-- brain (behind glass) -->
+        <g>
+          <path d="M150 292 C138 250 168 224 200 232 C210 206 262 208 270 234 C304 228 322 258 310 288 C326 304 314 334 288 330 C280 350 228 352 216 332 C184 344 152 326 160 300 C146 300 142 296 150 292 Z" fill="url(#braing)" stroke="#a0532f" stroke-width="2"/>
+          {gyri}
+        </g>
+        <!-- glass bell jar (over brain, translucent) -->
+        <path d="M118 372 L118 210 Q118 96 235 96 Q352 96 352 210 L352 372 Z" fill="url(#glass)" stroke="rgba(255,255,255,.75)" stroke-width="2.5"/>
+        <!-- specular highlight streaks -->
+        <path d="M150 350 L150 214 Q150 140 196 118" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="9" stroke-linecap="round" opacity="0.55"/>
+        <path d="M172 344 L172 220" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+        <!-- knob -->
+        <ellipse cx="235" cy="96" rx="34" ry="16" fill="#d9dfe4" opacity="0.5"/>
+        <circle cx="235" cy="78" r="20" fill="url(#glass)" stroke="rgba(255,255,255,.75)" stroke-width="2.5"/>
+        <ellipse cx="228" cy="72" rx="7" ry="4" fill="rgba(255,255,255,.8)"/>
+      </svg>
       </div>
-      <div style="font-family:'DM Sans';font-weight:900;font-size:36px;color:#2a2016;margin-top:6px">A BRAIN IN A JAR</div>
+      <div style="font-family:'DM Sans';font-weight:900;font-size:36px;color:#2a2016;margin-top:2px">A BRAIN IN A JAR</div>
       <div style="font-family:'DM Mono';font-size:15px;color:#9a7a52;letter-spacing:.06em;margin-top:6px">smart, sealed, sightless</div>
     </div>'''
 
