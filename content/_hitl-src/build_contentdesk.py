@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE GATE', [[wo('My feed, my thumb.')],[co('Nothing posts alone.')]], 'Every draft parks first. You approve the batch in one read.', [co('Your feed, your call.')], f"{M}/gate.png", 1.0),
  ('THE MATH', [[wo('The desk bills in cents.')],[co('Not in Mondays.')]], 'Planner, writer, designer, distributor: one subscription, metered by use.', [co('Payroll: zero.')], f"{M}/math.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], f"{LIB}/cta3d-operator.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-operator.png", 0.82)
 T2.CLOSE=dict(l1='Save the desk',l2='and steal the setup.',q='Which of the five would you run first?')
 MARK2="claude"
