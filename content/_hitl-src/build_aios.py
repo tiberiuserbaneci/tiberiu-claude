@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE GATE', [[wo('It can do anything.')],[co('It may do nothing alone.')]], 'Nothing external fires alone. You read, you tap, it moves.', [co('Power, gated.')], f"{M}/gate.png", 1.0),
  ('THE OPERATOR', [[wo('Renters restart daily.')],[co('Owners compound.')]], 'One subscription, one memory, one command center behind a chat.', [co('Build yours today.')], f"{M}/own.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], f"{LIB}/cta3d-operator.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-operator.png", 0.82)
 T2.CLOSE=dict(l1='Save this to',l2='own your OS.',q='Rented tools or your own command center?')
 MARK2="claude"

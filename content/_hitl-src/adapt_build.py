@@ -21,7 +21,7 @@ T2.COVER=dict(head=[[wo({cw!r})],[co({ca!r})]])
 T2.CONTENT=[
 {slides}
 ]
-T2.CTA=("SAVE THIS", [[wo({ctaw!r})],[co({ctaa!r})]], f"{{LIB}}/cta3d-{pill}.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo({ctaw!r})],[co({ctaa!r})]], "{root}/content/_hitl-src/_templates/cta/cta-{pill}.png", 0.82)
 T2.CLOSE=dict(l1={l1!r},l2={l2!r},q={q!r})
 MARK2="{mark}"
 '''

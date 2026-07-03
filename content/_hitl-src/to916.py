@@ -43,8 +43,8 @@ if __name__=="__main__":
     # Standard: TikTok stays 4:5, Instagram -> 9:16. Convert ONLY the given dir's s2..sN.
     # Usage: python3 to916.py <deckdir>   (s1 skipped: IG s1 is the reel video)
     d=sys.argv[1]
+    # convert every 1350 slide (convert_slide no-ops on non-1350 files, so a 9:16 video/frame is safe)
     for f in sorted(os.listdir(d)):
         if not (f.startswith("s") and f.endswith(".png")): continue
-        if f=="s1.png": continue
         ok=convert_slide(os.path.join(d,f)); print(os.path.basename(d),f,"->",ok)
     print("done")
