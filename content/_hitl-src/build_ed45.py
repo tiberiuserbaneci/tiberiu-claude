@@ -650,7 +650,7 @@ def closing(base,handle,page,n):
     hf=dm(900,76); y=424
     for ln in [CLOSE["l1"],CLOSE["l2"]]: d.text((MX,y),ln,font=hf,fill=WHITE); y+=int(76*1.1)
     d.text((MX,y+10),CLOSE["q"],font=dm(500,33),fill=MUTED)
-    py=y+92; txt=f"{handle}   →"; f=dm(800,42); tw=int(d.textlength(txt,font=f)); pw=tw+80; ph=90
+    py=y+92; txt=f"Follow {handle}   →"; f=dm(800,42); tw=int(d.textlength(txt,font=f)); pw=tw+80; ph=90
     d.rounded_rectangle([MX,py,MX+pw,py+ph],radius=ph//2,fill=ACC); d.text((MX+40,py+ph//2-28),txt,font=f,fill=(22,13,8))
     lg=Image.open(ULOGO).convert("RGBA"); lg.thumbnail((50,50),Image.LANCZOS); base.alpha_composite(lg,(MX,H-160))
     d.text((MX+64,H-150),handle,font=mono(30),fill=ACC)
@@ -683,7 +683,13 @@ def deck(outdir, overlay):
             # pill centred in the band between the hook and the follow line (operator: pila
             # cobora prea mult / necentrata) - tight zone around the visual midpoint
             T2.place_in_zone(base, crop_obj(Image.open(objp)), (MX,748,W-MX,1012), fill=fill)
-            d.text((MX,1150),"Follow for one AI system for founders every day.",font=dm(700,28),fill=WHITE); footer(base)
+            # single follow line (operator: no double "Follow") - handle accented, rest white
+            segs=[("Follow ",WHITE),("@tiberiu.ai",ACC),(" for one AI system for founders every day.",WHITE)]
+            full_t="".join(s for s,_ in segs); fs=30
+            while fs>22 and d.textlength(full_t,font=dm(700,fs))>W-2*MX: fs-=1
+            f=dm(700,fs); x=MX; yy=1168
+            for txt2,col in segs: d.text((x,yy),txt2,font=f,fill=col); x+=int(d.textlength(txt2,font=f))
+            footer(base)
         else:
             eb,head,sub,foot,objp,fill=unpack(sl[1]); body(base,eb,head,sub,foot,objp,i,n,fill)
         base.convert("RGB").save(f"{outdir}/s{i}.png")
