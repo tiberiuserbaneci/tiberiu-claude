@@ -93,7 +93,7 @@ def crawl():
         edges+=f'<path d="M180 {y} C{mx:.0f} {y},{mx:.0f} {huby},{hubx-70} {huby}" stroke="rgba(212,162,127,.5)" stroke-width="2.5" fill="none"/>'
         nodes+=f'''<rect x="40" y="{y-26}" width="150" height="52" rx="12" fill="#2a2724" stroke="rgba(255,255,255,.09)"/>
           <text x="115" y="{y+5}" text-anchor="middle" font-family="DM Mono" font-size="15" fill="#c9c3b8">{nm}</text>'''
-    return f'''<div style="width:900px;{CARDL};padding:40px">
+    return f'''<div style="width:900px;{CARD};padding:40px">
       <div style="font-family:'DM Sans';font-weight:800;font-size:26px;color:#FAFAF7;margin-bottom:10px">The web becomes briefs</div>
       <svg width="{W}" height="{H}" viewBox="0 0 {W} {H}">
         <defs><radialGradient id="hub" cx="35%" cy="30%"><stop offset="0%" stop-color="rgb({ACC})"/><stop offset="100%" stop-color="#7a4326"/></radialGradient>
@@ -143,7 +143,7 @@ def proof10():
         else:
             dots+=f'<rect x="{x}" y="{y}" width="{cell}" height="{cell}" rx="4" fill="rgba(250,250,247,.09)"/>'
     fw=cols*(cell+gap)-gap; fh=rowsn*(cell+gap)-gap
-    return f'''<div style="width:900px;{CARDL};padding:40px">
+    return f'''<div style="width:900px;{CARD};padding:40px">
       <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:16px">
         <div><span style="font-family:'DM Sans';font-weight:900;font-size:52px;color:#FAFAF7">1,284</span>
         <span style="font-family:'DM Sans';font-weight:700;font-size:20px;color:#c9a583;margin-left:10px">companies, live</span></div>
@@ -172,35 +172,40 @@ def diff10():
         </div>
       </div></div>'''
 
-# 7. SETUP10 - wired board (senses -> hub -> gate), bezier + lock
+# 7. SETUP10 - CIRCUIT BOARD (orthogonal traces + solder joints + gate), distinct from crawl's
+# radial fan (operator: slide 4 si 8 nu au voie identice). Black CARD.
 def setup10():
-    W,H=820,420
-    senses=[("SEARCH",70),("CRAWL",160),("WATCH",250),("CITE",340)]
-    hubx,huby=430,205; gatex=690
-    edges=""; nodes=""
+    W,H=820,430
+    senses=[("SEARCH",68),("CRAWL",150),("WATCH",232),("CITE",314)]
+    busx=430; gatex0,gatey0=520,146; gatecy=191; outx=744
+    traces=""; joints=""; chips=""
     for nm,y in senses:
-        edges+=f'<path d="M230 {y} C320 {y},340 {huby},{hubx-64} {huby}" stroke="rgba(212,162,127,.5)" stroke-width="2.5" fill="none"/>'
-        nodes+=f'<rect x="60" y="{y-24}" width="170" height="48" rx="12" fill="#2a2724" stroke="rgba(255,255,255,.09)"/><text x="145" y="{y+6}" text-anchor="middle" font-family="DM Mono" font-size="16" letter-spacing="2" fill="#c9c3b8">{nm}</text>'
-    edges+=f'<path d="M{hubx+64} {huby} C{(hubx+gatex)/2:.0f} {huby},{(hubx+gatex)/2:.0f} {huby},{gatex-46} {huby}" stroke="rgba(212,162,127,.5)" stroke-width="2.5" fill="none"/>'
-    return f'''<div style="width:900px;{CARDL};padding:40px">
+        traces+=f'<path d="M232 {y} H{busx} V{gatecy}" fill="none" stroke="rgba(212,162,127,.5)" stroke-width="2.5"/>'
+        joints+=f'<circle cx="{busx}" cy="{y}" r="4.5" fill="rgb({ACC})"/>'
+        chips+=f'<rect x="46" y="{y-25}" width="186" height="50" rx="10" fill="#242220" stroke="rgba(255,255,255,.09)"/><circle cx="72" cy="{y}" r="5" fill="rgb({ACC})"/><text x="96" y="{y+6}" font-family="DM Mono" font-size="16" letter-spacing="2" fill="#c9c3b8">{nm}</text>'
+    return f'''<div style="width:900px;{CARD};padding:40px">
       <div style="font-family:'DM Sans';font-weight:800;font-size:26px;color:#FAFAF7;margin-bottom:8px">The senses, wired and gated</div>
       <svg width="{W}" height="{H}" viewBox="0 0 {W} {H}">
-        <defs><radialGradient id="h2" cx="35%" cy="30%"><stop offset="0%" stop-color="rgb({ACC})"/><stop offset="100%" stop-color="#7a4326"/></radialGradient>
-        <filter id="g2" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="0" stdDeviation="18" flood-color="rgb({ACC})" flood-opacity="0.5"/></filter></defs>
-        {edges}{nodes}
-        <g filter="url(#g2)"><circle cx="{hubx}" cy="{huby}" r="64" fill="url(#h2)"/></g>
-        <text x="{hubx}" y="{huby+6}" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="20" fill="#1a0f0a">CORTEX</text>
-        <rect x="{gatex-46}" y="{huby-46}" width="92" height="92" rx="20" fill="#2a2724" stroke="rgba(255,255,255,.1)"/>
-        <g transform="translate({gatex-22},{huby-22})"><rect x="0" y="18" width="44" height="30" rx="6" fill="none" stroke="rgb({ACC})" stroke-width="3.5"/><path d="M8 18 V10 a14 14 0 0 1 28 0 v8" fill="none" stroke="rgb({ACC})" stroke-width="3.5"/></g>
+        <defs><filter id="g2" x="-120%" y="-120%" width="340%" height="340%"><feDropShadow dx="0" dy="0" stdDeviation="12" flood-color="rgb({ACC})" flood-opacity="0.55"/></filter></defs>
+        <line x1="{busx}" y1="68" x2="{busx}" y2="314" stroke="rgba(212,162,127,.5)" stroke-width="2.5"/>
+        {traces}{joints}{chips}
+        <path d="M{busx} {gatecy} H{gatex0}" fill="none" stroke="rgba(212,162,127,.5)" stroke-width="2.5"/>
+        <g filter="url(#g2)"><rect x="{gatex0}" y="{gatey0}" width="120" height="90" rx="16" fill="#2a2724" stroke="rgb({ACC})" stroke-width="2"/></g>
+        <g transform="translate({gatex0+38},{gatecy-24})"><rect x="0" y="18" width="44" height="30" rx="6" fill="none" stroke="rgb({ACC})" stroke-width="3.5"/><path d="M8 18 V10 a14 14 0 0 1 28 0 v8" fill="none" stroke="rgb({ACC})" stroke-width="3.5"/></g>
+        <path d="M{gatex0+120} {gatecy} H{outx-42}" fill="none" stroke="rgba(212,162,127,.5)" stroke-width="2.5"/>
+        <circle cx="{outx}" cy="{gatecy}" r="42" fill="#242220" stroke="rgba(255,255,255,.1)"/>
+        <text x="{outx}" y="{gatecy+5}" text-anchor="middle" font-family="DM Sans" font-weight="800" font-size="15" fill="#e6d6c2">CORTEX</text>
       </svg>
       <div style="font-family:'DM Mono';font-size:14px;color:#8f8f85">every external move waits for your tap</div></div>'''
 
-# 8. BAR10 - closing statement card with a small radar echo
+# 8. BAR10 - closing statement card, minimal pulse spark (distinct from watch's radar rings)
 def bar10():
     return f'''<div style="width:820px;{CARD};padding:44px;text-align:center">
-      <svg width="120" height="120" viewBox="0 0 120 120" style="margin-bottom:8px">
-        <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(212,162,127,.25)"/><circle cx="60" cy="60" r="34" fill="none" stroke="rgba(212,162,127,.4)"/>
-        <circle cx="60" cy="60" r="9" fill="rgb({ACC})"/></svg>
+      <svg width="240" height="70" viewBox="0 0 240 70" style="margin-bottom:14px">
+        <path d="M8 46 H70 L86 46 L100 20 L116 60 L132 46 H172" fill="none" stroke="rgb({ACC})" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="200" cy="46" r="9" fill="rgb({ACC})" filter="url(#pl)"/>
+        <defs><filter id="pl" x="-200%" y="-200%" width="500%" height="500%"><feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="rgb({ACC})" flood-opacity="0.9"/></filter></defs>
+      </svg>
       <div style="font-family:'DM Sans';font-weight:900;font-size:34px;color:#FAFAF7;line-height:1.1">Ask yours what changed<br>this week.</div>
       <div style="font-family:'DM Sans';font-size:19px;color:#c9a583;margin-top:14px">Watch it guess.</div></div>'''
 
