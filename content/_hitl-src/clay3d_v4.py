@@ -14,11 +14,11 @@ ORB=b64f(f"{ROOT}/content/ultron-logo.png")
 
 def css(acc):
     return f"""
-@font-face{{font-family:'DM Sans';src:url('file://{ASSETS}/DMSans-500.ttf');font-weight:500}}
-@font-face{{font-family:'DM Sans';src:url('file://{ASSETS}/DMSans-700.ttf');font-weight:700}}
-@font-face{{font-family:'DM Sans';src:url('file://{ASSETS}/DMSans-800.ttf');font-weight:800}}
-@font-face{{font-family:'DM Sans';src:url('file://{ASSETS}/DMSans-900.ttf');font-weight:900}}
-@font-face{{font-family:'DM Mono';src:url('file://{ASSETS}/DMMono-500.ttf');font-weight:500}}
+@font-face{{font-family:'DM Sans';src:url(data:font/ttf;base64,{b64f(f"{ASSETS}/DMSans-500.ttf")}) format('truetype');font-weight:500}}
+@font-face{{font-family:'DM Sans';src:url(data:font/ttf;base64,{b64f(f"{ASSETS}/DMSans-700.ttf")}) format('truetype');font-weight:700}}
+@font-face{{font-family:'DM Sans';src:url(data:font/ttf;base64,{b64f(f"{ASSETS}/DMSans-800.ttf")}) format('truetype');font-weight:800}}
+@font-face{{font-family:'DM Sans';src:url(data:font/ttf;base64,{b64f(f"{ASSETS}/DMSans-900.ttf")}) format('truetype');font-weight:900}}
+@font-face{{font-family:'DM Mono';src:url(data:font/ttf;base64,{b64f(f"{ASSETS}/DMMono-500.ttf")}) format('truetype');font-weight:500}}
 *{{margin:0;padding:0;box-sizing:border-box;font-family:'DM Sans',sans-serif}}
 body{{background:transparent;padding:90px}}
 .panel{{width:620px;background:linear-gradient(162deg,#282826 0%,#1e1e1c 58%,#191917 100%);

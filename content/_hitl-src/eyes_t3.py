@@ -153,22 +153,62 @@ def proof10():
         {dots}</svg>
       <div style="font-family:'DM Mono';font-size:14px;color:#8f8f85;margin-top:14px">hiring, funding, stack changes: this morning's web, not last year's training</div></div>'''
 
-# 6. DIFF10 - citation split (blind guess card vs sighted card with source+date footnotes)
+# 6. DIFF10 - REBUILT Tier-3 (operator: slide 7 era plat/slab): dimensional VERIFIED wax-seal
+# (embossed concentric rings + glow + rim light) as the dominant focal object, a PACKED stack of
+# 3 raised source-receipt chips (favicon + domain + date + green check LED) butting into it, and the
+# blind guess subordinated to a small dim crossed-out ghost strip on top. Fills the whole card, depth
+# everywhere, distinct form from every other slide (no iso stack, no radar, no dot field, no graph).
 def diff10():
-    return f'''<div style="width:900px;display:flex;gap:22px">
-      <div style="flex:1;{CARD};padding:32px">
-        <div style="font-family:'DM Mono';font-size:13px;letter-spacing:.14em;color:#8f8f85;margin-bottom:16px">BLIND AI</div>
-        <div style="font-family:'DM Sans';font-weight:800;font-size:24px;color:#FAFAF7;line-height:1.3">"They probably raised recently."</div>
-        <div style="margin-top:22px;font-family:'DM Sans';font-size:16px;color:#8f8f85">no source</div>
-        <div style="font-family:'DM Sans';font-size:16px;color:#8f8f85">no date</div>
-        <div style="font-family:'DM Sans';font-size:16px;color:#8f8f85">a confident guess</div>
-      </div>
-      <div style="flex:1;background:linear-gradient(158deg,#d98a63,#8a4630);border-radius:34px;padding:32px;border:1px solid rgba(255,255,255,.16);box-shadow:0 42px 80px rgba(0,0,0,.5)">
-        <div style="font-family:'DM Mono';font-size:13px;letter-spacing:.14em;color:rgba(255,240,232,.85);margin-bottom:16px">SIGHTED AI</div>
-        <div style="font-family:'DM Sans';font-weight:800;font-size:24px;color:#fff;line-height:1.3">"Raised $4M, May 2026."</div>
-        <div style="margin-top:22px">
-          <div style="background:rgba(255,255,255,.16);border-radius:10px;padding:10px 14px;margin-bottom:10px;font-family:'DM Mono';font-size:13px;color:#fff">techcrunch.com &middot; 2026-05-14</div>
-          <div style="background:rgba(255,255,255,.16);border-radius:10px;padding:10px 14px;font-family:'DM Mono';font-size:13px;color:#fff">sec filing &middot; 2026-05-20</div>
+    receipts=[("techcrunch.com","2026-05-14","funding round"),
+              ("sec.gov","2026-05-20","S-1 filing"),
+              ("linkedin.com","2026-05-22","3 ops hires")]
+    chips=""
+    for dom,date,note in receipts:
+        fav=dom[0].upper()
+        chips+=f'''<div style="display:flex;align-items:center;gap:16px;
+          background:linear-gradient(158deg,#332f2a,#211e1a);border:1px solid rgba(255,255,255,.10);
+          border-radius:16px;padding:14px 18px;box-shadow:0 14px 26px rgba(0,0,0,.5), inset 0 2px 2px rgba(255,255,255,.08)">
+          <div style="flex-shrink:0;width:40px;height:40px;border-radius:11px;background:linear-gradient(160deg,#4a423a,#2a2622);
+            display:flex;align-items:center;justify-content:center;font-family:'DM Sans';font-weight:900;font-size:20px;color:rgb({ACC});border:1px solid rgba(255,255,255,.10)">{fav}</div>
+          <div style="flex:1;text-align:left">
+            <div style="font-family:'DM Mono';font-weight:500;font-size:17px;color:#eae4d8;letter-spacing:.02em">{dom}</div>
+            <div style="font-family:'DM Sans';font-size:14px;color:#8f8f85;margin-top:1px">{note} &middot; {date}</div></div>
+          <svg width="26" height="26" viewBox="0 0 24 24" style="flex-shrink:0"><circle cx="12" cy="12" r="11" fill="rgba(127,211,154,.14)"/><path d="M7 12.5l3.2 3.2L17 8.5" fill="none" stroke="#7fd39a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>'''
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 36px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px">
+        <span style="font-family:'DM Sans';font-weight:800;font-size:26px;color:#FAFAF7">Every claim carries its receipt</span>
+        <span style="font-family:'DM Mono';font-size:13px;letter-spacing:.14em;color:rgb({ACC})">SOURCED &middot; DATED</span></div>
+      <!-- subordinated blind ghost strip -->
+      <div style="display:flex;align-items:center;gap:14px;background:rgba(250,250,247,.03);border:1px dashed rgba(250,250,247,.14);
+        border-radius:14px;padding:12px 18px;margin-bottom:22px;opacity:.72">
+        <span style="font-family:'DM Mono';font-size:12px;letter-spacing:.14em;color:#7a7468;flex-shrink:0">BLIND</span>
+        <span style="font-family:'DM Sans';font-size:18px;color:#8f8f85;text-decoration:line-through;text-decoration-color:rgba(200,70,35,.7)">"they probably raised recently"</span>
+        <span style="margin-left:auto;font-family:'DM Mono';font-size:12px;color:#c84623;flex-shrink:0">no source</span></div>
+      <!-- dominant sighted zone: claim + receipts left, dimensional seal right -->
+      <div style="display:flex;align-items:center;gap:30px">
+        <div style="flex:1">
+          <div style="font-family:'DM Sans';font-weight:900;font-size:34px;color:#FAFAF7;line-height:1.05;margin-bottom:18px">Raised <span style="color:rgb({ACC})">$4M</span>, May 2026.</div>
+          <div style="display:flex;flex-direction:column;gap:12px">{chips}</div>
+        </div>
+        <div style="flex-shrink:0;display:flex;align-items:center;justify-content:center">
+          <svg width="290" height="290" viewBox="0 0 290 290">
+            <defs>
+              <radialGradient id="seal" cx="38%" cy="32%"><stop offset="0%" stop-color="#f0c49e"/><stop offset="52%" stop-color="rgb({ACC})"/><stop offset="100%" stop-color="#7a4326"/></radialGradient>
+              <radialGradient id="sealbloom" cx="50%" cy="50%"><stop offset="0%" stop-color="rgba(204,120,92,.5)"/><stop offset="62%" stop-color="rgba(204,120,92,.10)"/><stop offset="100%" stop-color="rgba(204,120,92,0)"/></radialGradient>
+              <filter id="sealsh" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="rgba(0,0,0,.6)"/></filter>
+            </defs>
+            <circle cx="145" cy="145" r="140" fill="url(#sealbloom)"/>
+            <g filter="url(#sealsh)">
+              {"".join(f'<line x1="145" y1="145" x2="{145+128*math.cos(math.radians(a)):.0f}" y2="{145+128*math.sin(math.radians(a)):.0f}" stroke="#8a4c2c" stroke-width="10"/>' for a in range(0,360,15))}
+              <circle cx="145" cy="145" r="118" fill="url(#seal)"/>
+            </g>
+            <circle cx="145" cy="145" r="118" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="2"/>
+            <circle cx="145" cy="145" r="96" fill="none" stroke="rgba(26,15,10,.28)" stroke-width="2"/>
+            <path d="M108 148 l24 24 l50 -58" fill="none" stroke="#1a0f0a" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M60 62 A118 118 0 0 1 150 30" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="6" stroke-linecap="round"/>
+            <text x="145" y="212" text-anchor="middle" font-family="DM Mono" font-weight="500" font-size="19" letter-spacing="4" fill="#1a0f0a">VERIFIED</text>
+          </svg>
         </div>
       </div></div>'''
 
