@@ -652,8 +652,10 @@ def closing(base,handle,page,n):
     d.text((MX,y+10),CLOSE["q"],font=dm(500,33),fill=MUTED)
     py=y+92; txt=f"Follow {handle}   →"; f=dm(800,42); tw=int(d.textlength(txt,font=f)); pw=tw+80; ph=90
     d.rounded_rectangle([MX,py,MX+pw,py+ph],radius=ph//2,fill=ACC); d.text((MX+40,py+ph//2-28),txt,font=f,fill=(22,13,8))
+    # brand footer corner: sphere logo + the SITE (operator: jos in colt site-ul 51ultron.com langa logo)
     lg=Image.open(ULOGO).convert("RGBA"); lg.thumbnail((50,50),Image.LANCZOS); base.alpha_composite(lg,(MX,H-160))
-    d.text((MX+64,H-150),handle,font=mono(30),fill=ACC)
+    uf=dm(900,30); d.text((MX+64,H-152),"51ultron",font=uf,fill=WHITE); ux=MX+64+int(d.textlength("51ultron",font=uf))
+    d.text((ux,H-152),".com",font=uf,fill=ACC)
 
 def unpack(item):
     eb,head=item[0],item[1]
@@ -674,7 +676,8 @@ def deck(outdir, overlay):
             base=slide_base(False); cover_tt(base); base.convert("RGB").save(f"{outdir}/s{i}.png"); continue
         # first AND last slides share the same grid texture as the body slides (operator 2026-07-02)
         base=slide_base(False)
-        if sl[0]=="close": closing(base,sl[1],i,n)
+        # the two close slides are one closing beat alternated per account -> SAME ghost number
+        if sl[0]=="close": closing(base,sl[1],2+len(CONTENT),n)
         elif sl[0]=="last":
             eb,head,objp,fill=CTA[0],CTA[1],CTA[-2],CTA[-1]; ghost(base,f"{i:02d}"); d=ImageDraw.Draw(base)
             ls_text(d,(MX,356),eb,mono(28),ACC,4)
