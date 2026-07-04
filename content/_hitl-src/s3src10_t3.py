@@ -193,9 +193,9 @@ def loop():
         bars+=(f'<g><rect x="{x}" y="{330-h}" width="58" height="{h}" rx="9" fill="url(#spn)" stroke="rgba(150,90,45,.25)"/>'
           f'<rect x="{x+8}" y="{342-h}" width="42" height="9" rx="4" fill="#96562d" opacity="0.85"/>'
           f'<text x="{x+29}" y="352" text-anchor="middle" font-family="DM Mono" font-size="11" fill="#8a745a">{nm}</text></g>')
-    loop_arrow=(f'<path d="M556 300 a150 150 0 1 0 -150 -150" fill="none" stroke="#96562d" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 12"/>'
-      f'<path d="M406 150 l-16 -22 m16 22 l-22 8" fill="none" stroke="#96562d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>'
-      f'<text x="500" y="60" text-anchor="middle" font-family="DM Mono" font-size="13" letter-spacing=".14em" fill="#96562d">+1 EACH JOB</text>')
+    loop_arrow=(f'<path d="M520 96 C 508 14, 132 14, 78 150" fill="none" stroke="#96562d" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 12"/>'
+      f'<path d="M78 150 l20 -12 m-20 12 l10 -22" fill="none" stroke="#96562d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>'
+      f'<text x="300" y="20" text-anchor="middle" font-family="DM Mono" font-size="13" letter-spacing=".14em" fill="#96562d">+1 EACH JOB</text>')
     return f'''<div style="width:900px;{CARDIV};padding:34px 40px 34px">
       {htitle("The library compounds","THE LOOP","#2a2016")}
       <svg width="612" height="380" viewBox="0 0 612 380" style="display:block;margin:0 auto">
