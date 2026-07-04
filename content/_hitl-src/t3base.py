@@ -21,10 +21,15 @@ INK="#eae4d8"; MUT="#8f8f85"; DIM="#5f5b54"; IVINK="#2a2016"; IVMUT="#8a745a"
 # clip-path breaks the rectangle; drop-shadow (on the SAME element) follows the clipped
 # silhouette so 3D depth survives; omit_background then renders the clipped corners transparent.
 # Fills are the CARD / CARDIV gradients WITHOUT their box-shadow (clip would cut a box-shadow).
-_GRAD_D="linear-gradient(165deg,#2b2b28,#1d1d1b)"
-_GRAD_IV="linear-gradient(160deg,#fdfbf6,#efe6d5 62%,#e6dac4)"
-_DShad="filter:drop-shadow(0 34px 60px rgba(0,0,0,.55)) drop-shadow(0 12px 24px rgba(0,0,0,.4))"
-_IVShad="filter:drop-shadow(0 30px 52px rgba(120,95,60,.22)) drop-shadow(0 10px 20px rgba(120,95,60,.14))"
+_GRAD_D="linear-gradient(157deg,#37362f 0%,#26251f 44%,#161511 100%)"
+_GRAD_IV="linear-gradient(157deg,#ffffff 0%,#f4ecdf 50%,#e0d1b8 100%)"
+# TRUE 3D = a solid SIDE-WALL layer (absolute, inset:0, same clip-path) BEHIND the face, offset
+# down-right by _DEPTH -> extruded thickness that follows the non-rectangular outline. Cheap: no
+# stacked filters. One soft ambient drop-shadow grounds it.
+_DEPTH=16
+_DSIDE="linear-gradient(150deg,#211f19 0%,#0c0b09 100%)"; _IVSIDE="linear-gradient(150deg,#c6b596 0%,#8a7857 100%)"
+_DAMB="filter:drop-shadow(0 40px 46px rgba(0,0,0,.55))"
+_IVAMB="filter:drop-shadow(0 34px 42px rgba(120,95,60,.38))"
 # clip-path recipes, keyed by shape name
 CLIP={
  "notch":"polygon(0 0, calc(100% - 60px) 0, 100% 60px, 100% 100%, 0 100%)",          # top-right chamfer
@@ -36,30 +41,39 @@ CLIP={
  "slantL":"polygon(0 0, 100% 44px, 100% 100%, 0 100%)",                                 # top slants up-right
  "slantR":"polygon(0 44px, 100% 0, 100% 100%, 0 100%)",                                 # top slants up-left
 }
-def shape(inner, kind="bevel", iv=False, pad="34px 40px", radius="26px", extra=""):
-    """Wrap panel content in a non-rectangular clipped silhouette with real 3D depth."""
+def shape(inner, kind="bevel", iv=False, pad="36px 42px", radius="26px", extra=""):
+    """Non-rectangular clipped element with a real extruded 3D side-wall behind the face."""
     grad=_GRAD_IV if iv else _GRAD_D
-    shad=_IVShad if iv else _DShad
-    bd="1px solid rgba(120,95,60,.18)" if iv else "1px solid rgba(255,255,255,.08)"
-    hi="inset 0 2px 3px rgba(255,255,255,.9)" if iv else "inset 0 2.5px 3px rgba(255,255,255,.13)"
-    lo="inset 0 -16px 34px rgba(150,120,80,.12)" if iv else "inset 0 -14px 30px rgba(0,0,0,.42)"
+    side=_IVSIDE if iv else _DSIDE
+    amb=_IVAMB if iv else _DAMB
+    bd="1px solid rgba(120,95,60,.20)" if iv else "1px solid rgba(255,255,255,.09)"
+    hi=("inset 0 4px 3px rgba(255,255,255,.9), inset 0 18px 26px rgba(255,255,255,.16)" if iv
+        else "inset 0 4px 3px rgba(255,255,255,.24), inset 0 20px 30px rgba(255,255,255,.06)")
+    lo=("inset 0 -26px 52px rgba(150,120,80,.22), inset -16px 0 32px rgba(150,120,80,.12)" if iv
+        else "inset 0 -30px 58px rgba(0,0,0,.58), inset -18px 0 38px rgba(0,0,0,.38)")
     cp=CLIP.get(kind,"")
     clip=f"clip-path:{cp};" if cp else ""
     br="" if cp else f"border-radius:{radius};"   # only round when NOT clipping
-    return (f'<div style="{shad}">'
-      f'<div style="background:{grad};border:{bd};{br}{clip}box-shadow:{hi},{lo};padding:{pad};{extra}">'
-      f'{inner}</div></div>')
+    wall=(f'<div style="position:absolute;inset:0;transform:translate({_DEPTH}px,{_DEPTH}px);'
+      f'background:{side};{br}{clip}"></div>')
+    face=(f'<div style="position:relative;z-index:1;background:{grad};border:{bd};{br}{clip}'
+      f'box-shadow:{hi},{lo};padding:{pad};{extra}">{inner}</div>')
+    return f'<div style="{amb}"><div style="position:relative;display:inline-block">{wall}{face}</div></div>'
 def circle(inner, iv=False, size=760, extra=""):
-    """Circular / orbital silhouette (true round element)."""
+    """Round 3D element: extruded side-wall disc behind the face."""
     grad=_GRAD_IV if iv else _GRAD_D
-    shad=_IVShad if iv else _DShad
-    bd="1px solid rgba(120,95,60,.18)" if iv else "1px solid rgba(255,255,255,.08)"
-    hi="inset 0 3px 4px rgba(255,255,255,.9)" if iv else "inset 0 3px 4px rgba(255,255,255,.13)"
-    lo="inset 0 -20px 40px rgba(150,120,80,.14)" if iv else "inset 0 -18px 38px rgba(0,0,0,.44)"
-    return (f'<div style="{shad}">'
-      f'<div style="width:{size}px;height:{size}px;border-radius:50%;background:{grad};border:{bd};'
-      f'box-shadow:{hi},{lo};display:flex;flex-direction:column;align-items:center;justify-content:center;'
-      f'padding:70px;box-sizing:border-box;{extra}">{inner}</div></div>')
+    side=_IVSIDE if iv else _DSIDE
+    amb=_IVAMB if iv else _DAMB
+    bd="1px solid rgba(120,95,60,.20)" if iv else "1px solid rgba(255,255,255,.09)"
+    hi=("inset 0 5px 5px rgba(255,255,255,.9), inset 0 26px 40px rgba(255,255,255,.16)" if iv
+        else "inset 0 5px 5px rgba(255,255,255,.22), inset 0 26px 44px rgba(255,255,255,.06)")
+    lo=("inset 0 -30px 54px rgba(150,120,80,.22)" if iv else "inset 0 -30px 56px rgba(0,0,0,.5)")
+    wall=(f'<div style="position:absolute;width:{size}px;height:{size}px;border-radius:50%;'
+      f'background:{side};transform:translate({_DEPTH}px,{_DEPTH}px)"></div>')
+    face=(f'<div style="position:relative;z-index:1;width:{size}px;height:{size}px;border-radius:50%;'
+      f'background:{grad};border:{bd};box-shadow:{hi},{lo};display:flex;flex-direction:column;'
+      f'align-items:center;justify-content:center;padding:70px;box-sizing:border-box;{extra}">{inner}</div>')
+    return f'<div style="{amb}"><div style="position:relative;display:inline-block">{wall}{face}</div></div>'
 
 def render(slug, panels, vw=980, vh=980):
     outd=f"{ROOT}/content/_hitl-src/models_clay/{slug}"; os.makedirs(outd,exist_ok=True)

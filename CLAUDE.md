@@ -1205,8 +1205,14 @@ into `analysis/virality-principles.md`. Metrics priority stays: reach+impression
 3. **Panel colour is white OR dark, independent of the background** — all four combos are allowed and
    should be mixed across a deck: dark-bg/dark-panel (`B.CARD`), dark-bg/white-panel (`CARDIV`),
    light-bg/dark-panel, light-bg/white-panel. The editorial slide bg already alternates light/dark.
-4. **The element is 3D.** Real depth — layered shadows, bevels, inner highlights, premium `app.51ultron.com/docs`
-   finish (`B.CARD`/`CARDIV` carry it). Never a flat rectangle.
+4. **THE ELEMENT IS A REAL 3D OBJECT — NOT A FLAT PLATE (operator, 2026-07-04 — HARD; supersedes and
+   DELETES the old "B.CARD/CARDIV flat card = 3D" rule).** A rounded plate with a soft drop-shadow is
+   NOT 3D and is a REJECT. The panel must have visible EXTRUDED THICKNESS: a solid SIDE-WALL layer
+   (absolute, `inset:0`, same `clip-path`) sitting behind the face and offset down-right by ~16px, so a
+   real 3D side follows the non-rectangular outline; plus a strong top bevel-highlight and a deep bottom
+   inner-shadow on the face, and ONE soft ambient drop-shadow to ground it. Built into `t3base.shape()`
+   / `t3base.circle()` (the `_DSIDE`/`_IVSIDE` walls). Do NOT reintroduce flat `B.CARD`/`CARDIV` plates as
+   the panel body — those legacy styles are for reference only.
 5. **ALIGNMENT + SAFE ZONE (enforced in `build_ed45.py`).** Element LEFT edge = the text left edge (x=80);
    element RIGHT edge ≤ **840** (clears the IG like/comment icon rail — the hard limit). The progress bar
    starts at x=80 and ends at 840 too. Left margin (0→80) has NO IG UI, it is just design padding.
