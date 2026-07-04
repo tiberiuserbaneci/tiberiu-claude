@@ -46,7 +46,7 @@ def brief():
       f'<filter id="ws" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0" dy="6" stdDeviation="9" flood-color="rgba(0,0,0,.5)"/></filter></defs>'
       f'<g filter="url(#ws)"><path d="M64 8 L78 22 L98 20 L100 40 L118 52 L108 70 L116 90 L96 96 L90 116 L70 110 L64 124 L58 110 L38 116 L32 96 L12 90 L20 70 L10 52 L28 40 L30 20 L50 22 Z" fill="url(#wax)"/></g>'
       f'<circle cx="64" cy="64" r="34" fill="none" stroke="rgba(42,22,12,.5)" stroke-width="2"/>'
-      f'<text x="64" y="60" text-anchor="middle" font-family="DM Mono" font-size="11" letter-spacing=".1em" fill="#2a160c">GTM</text>'
+      f'<text x="64" y="60" text-anchor="middle" font-family="DM Mono" font-size="11" letter-spacing=".1em" fill="#2a160c">OPS</text>'
       f'<text x="64" y="76" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="15" fill="#2a160c">BRIEF</text></svg>')
     return f'''<div style="width:900px;{CARD};padding:34px 40px 34px">
       {htitle("You write the outcome","THE BRIEF")}
