@@ -425,8 +425,10 @@ def place_prem(base,objpath,light,ytop=None):
         #  2. TOP-anchored right under the sub-hook (no dead gap above).
         #  3. The element FILLS this working band; wide-short panels can only do that if the Tier-3
         #     panels are drawn tall (aspect ~1.2) in the _t3.py sources (redesign, do not stretch).
+        # CENTERED in the frame (operator: "centreaza elementul"), fills the working band top->bottom.
+        # Carousels do not overlay the icon rail, so the element can be wide + centred.
         zy0=max(500,(ytop or 500))
-        T2.place_in_zone(base,im0,(70,zy0,840,1180),fill=1.0,cx=455,valign="top")
+        T2.place_in_zone(base,im0,(96,zy0,984,1200),fill=1.0,valign="top")
         return
     im=im0.convert("RGB")
     a=np.asarray(im).astype(int); h,w=a.shape[:2]; area=h*w
