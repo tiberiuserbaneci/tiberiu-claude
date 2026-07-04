@@ -18,7 +18,7 @@ def cap(t,c="#8f8f85"): return f'<div style="font-family:\'DM Mono\';font-size:1
 
 # 1. STOCK - GAUGE: a capability dial pinned to "answers only", the operate zone dark and unused
 def stock():
-    cx,cy,R=306,318,214
+    cx,cy,R=306,258,210
     # ticks across the top semicircle (180deg left -> 0deg right)
     ticks=""
     for i in range(11):
@@ -34,18 +34,18 @@ def stock():
     nx=cx+(R-30)*math.cos(na); ny=cy-(R-30)*math.sin(na)
     return f'''<div style="width:900px;{CARD};padding:34px 40px 30px">
       {htitle("Out of the box, it only answers","STOCK MODE")}
-      <svg width="612" height="378" viewBox="0 0 612 378" style="display:block;margin:0 auto">
+      <svg width="612" height="430" viewBox="0 0 612 430" style="display:block;margin:0 auto">
         <defs><filter id="ng" x="-200%" y="-200%" width="500%" height="500%"><feDropShadow dx="0" dy="0" stdDeviation="9" flood-color="rgb({ACC})" flood-opacity="0.85"/></filter></defs>
         <path d="M{cx-R} {cy} A{R} {R} 0 0 1 {cx+R} {cy}" fill="none" stroke="rgba(250,250,247,.10)" stroke-width="18" stroke-linecap="round"/>
         <path d="M{lx0:.0f} {ly0:.0f} A{R} {R} 0 0 1 {lx1:.0f} {ly1:.0f}" fill="none" stroke="rgb({ACC})" stroke-width="18" stroke-linecap="round"/>
         {ticks}
-        <text x="{cx-R+6:.0f}" y="{cy+34}" text-anchor="start" font-family="DM Mono" font-size="15" letter-spacing=".1em" fill="rgb({ACC})">ASKS</text>
+        <text x="{cx-R+4:.0f}" y="{cy+34}" text-anchor="start" font-family="DM Mono" font-size="15" letter-spacing=".1em" fill="rgb({ACC})">ASKS</text>
         <text x="{cx}" y="{cy-R-14}" text-anchor="middle" font-family="DM Mono" font-size="15" letter-spacing=".1em" fill="#6f6a60">DRAFTS</text>
-        <text x="{cx+R-6:.0f}" y="{cy+34}" text-anchor="end" font-family="DM Mono" font-size="15" letter-spacing=".1em" fill="#6f6a60">OPERATES</text>
+        <text x="{cx+R-4:.0f}" y="{cy+34}" text-anchor="end" font-family="DM Mono" font-size="15" letter-spacing=".1em" fill="#6f6a60">OPERATES</text>
         <line x1="{cx}" y1="{cy}" x2="{nx:.0f}" y2="{ny:.0f}" stroke="rgb({ACC})" stroke-width="7" stroke-linecap="round" filter="url(#ng)"/>
         <circle cx="{cx}" cy="{cy}" r="15" fill="#1a1816" stroke="rgb({ACC})" stroke-width="3"/>
-        <text x="{cx}" y="{cy-58}" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="30" fill="#FAFAF7">ANSWERS</text>
-        <text x="{cx}" y="{cy-30}" text-anchor="middle" font-family="DM Mono" font-size="14" letter-spacing=".12em" fill="rgb({ACC})">the needle never moves</text>
+        <text x="{cx}" y="{cy+96}" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="34" fill="#FAFAF7">ANSWERS ONLY</text>
+        <text x="{cx}" y="{cy+126}" text-anchor="middle" font-family="DM Mono" font-size="14" letter-spacing=".12em" fill="rgb({ACC})">the needle never moves</text>
       </svg>
       {cap("stock settings are training wheels. installed right, it operates.")}</div>'''
 

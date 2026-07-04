@@ -53,7 +53,7 @@ def floor():
         {ring}{arrows}
         {bar}
         {ns}
-        <text x="{cx}" y="{cy+92}" text-anchor="middle" font-family="DM Mono" font-size="12.5" letter-spacing=".14em" fill="rgb({BAD})">SAME LOOP, EVERY DAY</text>
+        <text x="{cx}" y="{cy+204}" text-anchor="middle" font-family="DM Mono" font-size="12.5" letter-spacing=".14em" fill="rgb({BAD})">SAME LOOP, EVERY DAY</text>
       </svg>
       {cap("ask, copy, close the tab. a smarter search bar, nothing more.")}</div>'''
 

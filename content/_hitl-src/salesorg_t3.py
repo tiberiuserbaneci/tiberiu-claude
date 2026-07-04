@@ -47,8 +47,8 @@ def everything():
 
 # 2. STRUCTURE - clean org-chart: chief on top, four desks, one specialist each
 def structure():
-    W,H=820,470
-    desks=[("RESEARCH","CORTEX",110),("OUTREACH","SPECTER",300),("ENABLE","STRIKER",500),("REVOPS","AMPLIFY",700)]
+    W,H=820,430
+    desks=[("RESEARCH","CORTEX",22),("OUTREACH","SPECTER",234),("ENABLE","STRIKER",446),("REVOPS","AMPLIFY",658)]
     chx=410; chy=52; busy=176; deskY=214; specY=346
     conns=f'<line x1="{chx}" y1="{chy+56}" x2="{chx}" y2="{busy}" stroke="rgba(212,162,127,.45)" stroke-width="2.5"/>'
     conns+=f'<line x1="{desks[0][2]+70}" y1="{busy}" x2="{desks[-1][2]+70}" y2="{busy}" stroke="rgba(212,162,127,.45)" stroke-width="2.5"/>'
@@ -102,7 +102,7 @@ def research():
 
 # 4. OUTREACH - three channel drafts stacked, each parked behind an amber tap-gate
 def outreach():
-    chans=[("EMAIL","Re: your 3 new ops hires -"),("LINKEDIN","Saw the $4M round. One line -"),("FOLLOW-UP","Circling back on the ops build -")]
+    chans=[("EMAIL","Re: your 3 new ops hires"),("LINKEDIN","Saw the $4M round, one line"),("FOLLOW-UP","Circling back on the ops build")]
     ICON={"EMAIL":'<rect x="2" y="5" width="26" height="18" rx="3" fill="none" stroke="rgb({A})" stroke-width="2.2"/><path d="M3 7l12 9 12-9" fill="none" stroke="rgb({A})" stroke-width="2.2"/>',
           "LINKEDIN":'<rect x="3" y="3" width="24" height="24" rx="4" fill="none" stroke="rgb({A})" stroke-width="2.2"/><rect x="8" y="12" width="3.4" height="9" fill="rgb({A})"/><circle cx="9.7" cy="8" r="2" fill="rgb({A})"/><path d="M15 21v-5a3 3 0 0 1 6 0v5" fill="none" stroke="rgb({A})" stroke-width="2.2"/>',
           "FOLLOW-UP":'<path d="M5 9h14a4 4 0 0 1 4 4 4 4 0 0 1-4 4H9l-5 4V9z" fill="none" stroke="rgb({A})" stroke-width="2.2"/>'}
@@ -181,11 +181,11 @@ def onejob():
 
 # 8. CHIEF - the pyramid: you at the apex, one tap, the org running underneath
 def chief():
-    W,H=760,440
+    W,H=760,300
     tiers=[("apex",290,66,"YOU","1 tap a day",True),
            ("desks",470,60,"4 DESK LEADS","research &middot; outreach &middot; enable &middot; revops",False),
            ("base",650,60,"THE SPECIALISTS","seven agents, always on",False)]
-    y=30; shapes=""
+    y=20; shapes=""
     prev=None
     for name,w,h,lab,sub,apex in tiers:
         x=(W-w)/2; cxm=W/2
@@ -200,7 +200,7 @@ def chief():
               f'<text x="{cxm:.0f}" y="{y+30}" text-anchor="middle" font-family="DM Mono" font-size="14" letter-spacing=".1em" fill="rgb({ACC})">{lab}</text>')
             subcol="#8f8f85"
         shapes+=f'<text x="{cxm:.0f}" y="{y+h+ (0 if apex else -12) + (24 if apex else 0)}" text-anchor="middle" font-family="DM Mono" font-size="12" letter-spacing=".05em" fill="{subcol}">{sub}</text>'
-        y+=h+58
+        y+=h+36
     return f'''<div style="width:900px;{CARD};padding:34px 40px 34px">
       {htitle("You sit on top","ONE TAP A DAY")}
       <svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" style="display:block;margin:0 auto">

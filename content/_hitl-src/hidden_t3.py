@@ -69,6 +69,9 @@ def decks():
           <div><div style="font-family:\'DM Mono\';font-size:12px;letter-spacing:.14em;color:#96562d">INVESTMENT</div>
           <div style="font-family:\'DM Sans\';font-weight:900;font-size:34px;color:#2a2016;line-height:1.05">$9,000 <span style="font-size:18px;font-weight:700;color:#6a5238">/ mo</span></div></div>
           <span style="font-family:\'DM Sans\';font-weight:900;font-size:14px;color:#fffdf9;background:#96562d;padding:9px 18px;border-radius:999px;box-shadow:0 8px 16px rgba(150,86,45,.3)">I added this</span></div>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:16px">
+          <span style="width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f0c49e,#96562d);flex-shrink:0"></span>
+          <span style="font-family:\'DM Mono\';font-size:12px;letter-spacing:.1em;color:#a08a68">DRAFTED BY PULSE &middot; NORTHWIND ROBOTICS &middot; 2026</span></div>
       </div>
       {cap("client name in, structured deck out. in your tokens, your voice, your price.","#8a745a")}</div>'''
 
@@ -143,11 +146,11 @@ def contracts():
 # 5. VISUALS - DOT-FIELD scene: 822 component tiles, a contiguous lit block assembles into one site,
 # the rest a dim inventory. distinct tile-grid, no rows/graph.
 def visuals():
-    cols,rowsn=42,20
+    cols,rowsn=28,24
     cell=13; gap=4
     lit=set()
-    for r in range(4,13):
-        for c in range(6,20): lit.add(r*cols+c)
+    for r in range(6,18):
+        for c in range(8,20): lit.add(r*cols+c)
     dots=""
     for i in range(cols*rowsn):
         r,c=divmod(i,cols); x=c*(cell+gap); y=r*(cell+gap)
@@ -156,19 +159,20 @@ def visuals():
         else:
             dots+=f'<rect x="{x}" y="{y}" width="{cell}" height="{cell}" rx="3.5" fill="rgba(250,250,247,.10)"/>'
     fw=cols*(cell+gap)-gap; fh=rowsn*(cell+gap)-gap
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 34px;display:flex;align-items:center;gap:34px">
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 34px">
+      {htitle("Design has no queue","822 PARTS")}
+      <div style="display:flex;align-items:center;gap:34px">
       <svg width="{fw}" height="{fh}" viewBox="0 0 {fw} {fh}" style="flex-shrink:0">
         <defs><filter id="lg" x="-300%" y="-300%" width="700%" height="700%"><feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="rgb({ACC})" flood-opacity="1"/></filter></defs>
         {dots}</svg>
       <div style="flex:1">
-        {htitle("Design has no queue","822 PARTS")}
-        <div style="font-family:'DM Sans';font-weight:900;font-size:60px;color:#FAFAF7;line-height:1">822</div>
-        <div style="font-family:'DM Sans';font-weight:700;font-size:19px;color:#c9a583;margin-top:2px">Crescendo components</div>
-        <div style="display:flex;flex-direction:column;gap:9px;margin-top:18px">
-          {"".join(f'<div style="display:flex;align-items:center;gap:11px"><span style="width:11px;height:11px;border-radius:3px;background:rgb({ACC});box-shadow:0 0 10px rgba({ACC},.7)"></span><span style="font-family:DM Sans;font-size:17px;color:#d9d5cc">{t}</span></div>' for t in ["assembled into 1 on-brand site","posts, decks and covers, same kit","0 tickets in the design queue"])}
+        <div style="font-family:'DM Sans';font-weight:900;font-size:66px;color:#FAFAF7;line-height:1">822</div>
+        <div style="font-family:'DM Sans';font-weight:700;font-size:20px;color:#c9a583;margin-top:2px">Crescendo components</div>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:20px">
+          {"".join(f'<div style="display:flex;align-items:center;gap:11px"><span style="width:11px;height:11px;border-radius:3px;background:rgb({ACC});box-shadow:0 0 10px rgba({ACC},.7);flex-shrink:0"></span><span style="font-family:DM Sans;font-size:17px;color:#d9d5cc">{t}</span></div>' for t in ["assembled into 1 on-brand site","posts, decks, covers from one kit","0 tickets in the design queue"])}
         </div>
-        {cap("822 parts snap into on-brand visuals and sites. no design queue.")}
-      </div></div>'''
+      </div></div>
+      {cap("822 parts snap into on-brand visuals and sites. no design queue.")}</div>'''
 
 # 6. CONNECTORS - NODE GRAPH: a central actor hub, bezier edges reaching INTO four real tool tiles
 # with an action verb on each. it acts inside the tools, not beside them.
