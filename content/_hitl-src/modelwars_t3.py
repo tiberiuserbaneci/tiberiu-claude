@@ -184,8 +184,8 @@ def upgrade():
       <div style="display:flex;align-items:center;gap:38px">
         <div style="flex-shrink:0;position:relative;width:380px;height:230px">
           <svg width="380" height="230" viewBox="0 0 380 230">
-            <path d="M{ax0:.1f} {ay0:.1f} A{r} {r} 0 0 0 {ax1:.1f} {ay1:.1f}" fill="none" stroke="rgba(150,90,45,.16)" stroke-width="20" stroke-linecap="round"/>
-            <path d="M{ax0:.1f} {ay0:.1f} A{r} {r} 0 0 0 {ax1:.1f} {ay1:.1f}" fill="none" stroke="#96562d" stroke-width="20" stroke-linecap="round" stroke-dasharray="{dash:.1f} {circ:.1f}"/>
+            <path d="M{ax0:.1f} {ay0:.1f} A{r} {r} 0 0 1 {ax1:.1f} {ay1:.1f}" fill="none" stroke="rgba(150,90,45,.16)" stroke-width="20" stroke-linecap="round"/>
+            <path d="M{ax0:.1f} {ay0:.1f} A{r} {r} 0 0 1 {ax1:.1f} {ay1:.1f}" fill="none" stroke="#96562d" stroke-width="20" stroke-linecap="round" stroke-dasharray="{dash:.1f} {circ:.1f}"/>
             {ticks}
             <line x1="{cx}" y1="{cy}" x2="{oldx:.1f}" y2="{oldy:.1f}" stroke="rgba(120,90,55,.45)" stroke-width="3" stroke-dasharray="4 6"/>
             <line x1="{cx}" y1="{cy}" x2="{ndx:.1f}" y2="{ndy:.1f}" stroke="#2a2016" stroke-width="6" stroke-linecap="round"/>
