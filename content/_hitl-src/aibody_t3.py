@@ -17,6 +17,13 @@ IC={
  "heart":'<path d="M12 20 C4 14 4 7 8.5 7 C11 7 12 9 12 9 C12 9 13 7 15.5 7 C20 7 20 14 12 20Z" fill="none" stroke="{c}" stroke-width="1.8"/>',
 }
 def icon(k,c,s=26): return f'<svg width="{s}" height="{s}" viewBox="0 0 24 24">{IC[k].replace("{c}",c)}</svg>'
+def foot(items):
+    chips="".join(f'<div style="flex:1;text-align:center;padding:18px 8px;background:#191614;'
+      f'border:1px solid rgba(255,255,255,.06);border-radius:14px">'
+      f'<div style="font-family:DM Sans;font-weight:900;font-size:28px;color:rgb({ACC});line-height:1">{b}</div>'
+      f'<div style="font-family:DM Mono;font-size:11.5px;letter-spacing:.08em;color:{MUT};margin-top:7px">{s}</div></div>'
+      for b,s in items)
+    return f'<div style="display:flex;gap:12px;margin-top:22px">{chips}</div>'
 
 # 1. DIFFERENCE - anatomy roster, only the MOUTH lit; the rest of the body missing
 def difference():
@@ -30,8 +37,9 @@ def difference():
           f'<div style="flex:1"><div style="font-family:DM Sans;font-weight:800;font-size:20px;color:{"#FAFAF7" if on else "#9a9488"}">{nm}</div>'
           f'<div style="font-family:DM Sans;font-size:15px;color:{MUT}">{role}</div></div>'
           f'<span style="font-family:DM Mono;font-size:13px;letter-spacing:.1em;color:{c}">{tag}</span></div>')
-    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 34px">
-      {head("You rented a mouth","1 OF 5 ORGANS")}{rows}</div>'''
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 34px">
+      {head("You rented a mouth","1 OF 5 ORGANS")}{rows}
+      {foot([("1","OF 5 ORGANS"),("4","MISSING"),("chat","IN A BOX")])}</div>'''
 
 # 2. ROUTER - a brain that routes each job to the cheapest capable tier
 def router():
@@ -42,21 +50,22 @@ def router():
         bd="rgba(212,162,127,.4)" if on else "rgba(255,255,255,.07)"
         sh="box-shadow:0 0 40px rgba(212,162,127,.14)" if on else ""
         nmcol=f"rgb({ACC})" if on else MUT
-        foot=(f'<div style="margin-top:10px;font-family:DM Mono;font-size:12px;color:rgb({ACC})">&#9664; picked</div>'
+        pick=(f'<div style="margin-top:10px;font-family:DM Mono;font-size:12px;color:rgb({ACC})">&#9664; picked</div>'
               if on else '<div style="margin-top:10px;height:16px"></div>')
         cards+=(f'<div style="flex:1;background:{bg};border:1px solid {bd};border-radius:16px;padding:18px 16px;text-align:center;{sh}">'
           f'<div style="font-family:DM Mono;font-size:14px;letter-spacing:.14em;color:{nmcol}">{nm}</div>'
           f'<div style="font-family:DM Sans;font-weight:900;font-size:34px;color:#FAFAF7;margin:8px 0 2px">{cost}<span style="font-size:18px;color:rgb({ACC})">{u}</span></div>'
-          f'<div style="font-family:DM Sans;font-size:14px;color:{MUT}">{role}</div>{foot}</div>')
-    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 40px">
+          f'<div style="font-family:DM Sans;font-size:14px;color:{MUT}">{role}</div>{pick}</div>')
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 40px">
       {head("A brain that budgets itself","MODEL ROUTER")}
       <div style="font-family:DM Mono;font-size:14px;color:{MUT};margin-bottom:14px">job: "draft 12 follow-ups" &nbsp;→&nbsp; routed to the cheapest tier that can</div>
-      <div style="display:flex;gap:16px">{cards}</div></div>'''
+      <div style="display:flex;gap:16px">{cards}</div>
+      {foot([("3","TIERS"),("0.11 c","PER JOB"),("70%","CHEAPER")])}</div>'''
 
 # 3. EYES - first to see: it flagged the round days before the VC
 def eyes():
     W=780
-    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 42px">
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 42px">
       {head("It saw the round first","SIGNAL LEAD")}
       <svg width="{W}" height="150" viewBox="0 0 {W} 150" style="width:100%">
         <defs><filter id="g" x="-200%" y="-200%" width="500%" height="500%"><feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="rgb({ACC})" flood-opacity="0.9"/></filter></defs>
@@ -69,13 +78,14 @@ def eyes():
         <text x="{W-150}" y="118" text-anchor="middle" font-family="DM Mono" font-size="14" fill="{DIM}">Fri 16:40</text>
         <line x1="164" y1="80" x2="{W-164}" y2="80" stroke="rgb({ACC})" stroke-width="3" stroke-dasharray="2 8"/>
       </svg>
-      <div style="text-align:center;font-family:DM Sans;font-weight:900;font-size:26px;color:#FAFAF7;margin-top:8px">3 days of head start</div></div>'''
+      <div style="text-align:center;font-family:DM Sans;font-weight:900;font-size:26px;color:#FAFAF7;margin-top:8px">3 days of head start</div>
+      {foot([("Tue 09:12","IT SAW"),("Fri 16:40","VC SAW"),("3 days","HEAD START")])}</div>'''
 
 # 4. VOICE - style-match ring on a sample written in your voice
 def voice():
     pct=98; import math
     r=64; circ=2*math.pi*r; dash=circ*pct/100
-    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 40px;display:flex;align-items:center;gap:34px">
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 40px"><div style="display:flex;align-items:center;gap:34px">
       <div style="flex:1">
         <div style="font-family:DM Mono;font-size:13px;letter-spacing:.14em;color:{MUT};margin-bottom:10px">DRAFTED IN YOUR VOICE</div>
         <div style="background:#191614;border-left:3px solid rgb({ACC});border-radius:10px;padding:16px 18px;font-family:DM Sans;font-size:19px;color:#e9e3d7;line-height:1.4">
@@ -88,7 +98,8 @@ def voice():
         </svg>
         <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
           <span style="font-family:DM Sans;font-weight:900;font-size:36px;color:#FAFAF7">{pct}%</span>
-          <span style="font-family:DM Mono;font-size:12px;color:rgb({ACC})">style match</span></div></div></div>'''
+          <span style="font-family:DM Mono;font-size:12px;color:rgb({ACC})">style match</span></div></div></div>
+      {foot([("98%","STYLE MATCH"),("5","POSTS SAMPLED"),("0","HEDGING")])}</div>'''
 
 # 5. HANDS - build/test/ship pipeline, done while you were out
 def hands():
@@ -101,10 +112,11 @@ def hands():
           f'<div style="font-family:DM Sans;font-weight:800;font-size:20px;color:#FAFAF7;text-transform:capitalize">{nm}</div>'
           f'<div style="font-family:DM Sans;font-size:15px;color:{MUT};margin-top:2px">{sub}</div></div>')
         if i<2: nodes+=f'<div style="flex-shrink:0;align-self:flex-start;margin-top:26px"><svg width="50" height="24" viewBox="0 0 50 24"><path d="M2 12 H40 M32 5 L46 12 L32 19" fill="none" stroke="{DIM}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>'
-    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 40px">
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 40px">
       {head("Built, tested, shipped","WHILE YOU WERE OUT")}
       <div style="display:flex;align-items:flex-start;gap:8px;margin:14px 0">{nodes}</div>
-      <div style="display:inline-block;background:rgba(212,162,127,.10);border:1px solid rgba(212,162,127,.28);border-radius:999px;padding:9px 18px;font-family:DM Mono;font-size:14px;color:#e9e3d7">you: at dinner</div></div>'''
+      <div style="display:inline-block;background:rgba(212,162,127,.10);border:1px solid rgba(212,162,127,.28);border-radius:999px;padding:9px 18px;font-family:DM Mono;font-size:14px;color:#e9e3d7">you: at dinner</div>
+      {foot([("42","TESTS PASSED"),("0","FAILED"),("live","ON MAIN")])}</div>'''
 
 # 6. HEART - memory core with organ lifelines; sever it and the body dies
 def heart():
@@ -121,7 +133,7 @@ def heart():
         nn = nm if nm in IC else "brain"
         nodes+=(f'<circle cx="{x:.0f}" cy="{y:.0f}" r="26" fill="#241f1a" stroke="{"rgba(200,70,35,.6)" if cut else "rgba(255,255,255,.12)"}" stroke-width="2"/>'
           f'<g transform="translate({x-13:.0f},{y-13:.0f})">{IC[nn].replace("{c}", DIM if cut else "#cfc9bd")}</g>')
-    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:30px 40px 34px;display:flex;align-items:center;gap:20px">
+    return f'''<div style="width:900px;{CARD};padding:30px 40px 34px"><div style="display:flex;align-items:center;gap:20px">
       <svg width="400" height="380" viewBox="0 0 400 380">
         <defs><radialGradient id="hb" cx="50%" cy="45%"><stop offset="0%" stop-color="rgb({ACC})"/><stop offset="100%" stop-color="#7a4a2c"/></radialGradient>
         <filter id="hg" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="0" stdDeviation="18" flood-color="rgb({ACC})" flood-opacity="0.5"/></filter></defs>
@@ -131,11 +143,12 @@ def heart():
       <div style="flex:1">
         <div style="font-family:DM Sans;font-weight:900;font-size:32px;color:#FAFAF7;line-height:1.1">Memory is the heart</div>
         <div style="font-family:DM Sans;font-size:19px;color:{MUT};margin-top:10px;line-height:1.45">Cut it and every organ goes dark: the eyes forget, the hands stall, the voice drifts.</div>
-        <div style="font-family:DM Mono;font-size:14px;color:rgb(200,70,35);margin-top:16px">no memory → no body</div></div></div>'''
+        <div style="font-family:DM Mono;font-size:14px;color:rgb(200,70,35);margin-top:16px">no memory, no body</div></div></div>
+      {foot([("5","ORGANS FED"),("1","MEMORY"),("cut","= DARK")])}</div>'''
 
 # 7. GATE - a powerful core held on the operator's reins
 def gate():
-    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 42px">
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 42px">
       {head("Strong body. My reins.","POWER · HELD")}
       <div style="display:flex;align-items:center;gap:0;margin-top:8px">
         <div style="flex-shrink:0;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle at 38% 32%,#f0c49e,rgb({ACC}) 55%,#7a4326);box-shadow:0 0 60px rgba(212,162,127,.3),inset 0 4px 6px rgba(255,255,255,.4);display:flex;flex-direction:column;align-items:center;justify-content:center">
@@ -148,13 +161,14 @@ def gate():
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgb({ACC})" stroke-width="2"><path d="M6 11V8a6 6 0 0 1 12 0v3"/><rect x="4" y="11" width="16" height="10" rx="2.5"/></svg></div>
           <div style="font-family:DM Sans;font-weight:800;font-size:18px;color:#FAFAF7;margin-top:10px">your hand</div></div>
       </div>
-      <div style="font-family:DM Mono;font-size:14px;color:{MUT};text-align:center;margin-top:20px">all the power on a rein you never let go of</div></div>'''
+      <div style="font-family:DM Mono;font-size:14px;color:{MUT};text-align:center;margin-top:20px">all the power on a rein you never let go of</div>
+      {foot([("FULL","CAPABILITY"),("1","YOUR HAND"),("0","LEAKS")])}</div>'''
 
 # 8. OPERATOR - scattered organs assemble into one body/system
 def operator():
     chips=["brain","eyes","hands","mouth","heart"]
     scat="".join(f'<div style="width:52px;height:52px;border-radius:14px;background:#221f1b;border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center">{icon(k,DIM,26)}</div>' for k in chips)
-    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 42px">
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 42px">
       {head("Assemble the body","ONE SYSTEM")}
       <div style="display:flex;align-items:center;gap:26px">
         <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;opacity:.65">{scat}</div>
@@ -163,7 +177,8 @@ def operator():
           <div style="display:flex;gap:10px;margin-bottom:14px">{"".join(icon(k,f"rgb({ACC})",30) for k in chips)}</div>
           <div style="font-family:DM Sans;font-weight:900;font-size:30px;color:#FAFAF7">One operator body</div>
           <div style="font-family:DM Sans;font-size:16px;color:{MUT};margin-top:2px">brain, eyes, hands, voice, heart: composed, gated, yours</div></div>
-      </div></div>'''
+      </div>
+      {foot([("5","ORGANS"),("1","BODY"),("you","ON THE GATE")])}</div>'''
 
 PANELS={"difference":difference(),"router":router(),"eyes":eyes(),"voice":voice(),
         "hands":hands(),"heart":heart(),"gate":gate(),"operator":operator()}

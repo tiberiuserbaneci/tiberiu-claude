@@ -6,31 +6,36 @@ t=importlib.util.spec_from_file_location("B","/home/user/tiberiu-claude/content/
 B=importlib.util.module_from_spec(t); t.loader.exec_module(B)
 CARD=B.CARD; INK=B.INK; MUT=B.MUT; DIM=B.DIM
 ACC="212,162,127"
+def foot(items):
+    chips="".join(f'<div style="flex:1;text-align:center;padding:18px 8px;background:#191614;border:1px solid rgba(255,255,255,.06);border-radius:14px"><div style="font-family:DM Sans;font-weight:900;font-size:28px;color:rgb({ACC});line-height:1">{b}</div><div style="font-family:DM Mono;font-size:11.5px;letter-spacing:.08em;color:{MUT};margin-top:7px">{s}</div></div>' for b,s in items)
+    return f'<div style="display:flex;gap:12px;margin-top:22px">{chips}</div>'
 def head(t,tag): return (f'<div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:16px">'
     f'<span style="font-family:\'DM Sans\';font-weight:800;font-size:26px;color:#FAFAF7">{t}</span>'
     f'<span style="font-family:\'DM Mono\';font-size:13px;letter-spacing:.14em;color:rgb({ACC})">{tag}</span></div>')
 
 # 1. myth strikeout
 def myth():
-    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:40px 40px 42px;text-align:center">
+    return f'''<div style="width:900px;{CARD};padding:40px 40px 42px;text-align:center">
       <div style="font-family:'DM Mono';font-size:14px;letter-spacing:.16em;color:{MUT};margin-bottom:18px">THE MYTH</div>
       <div style="position:relative;display:inline-block;margin-bottom:8px">
         <span style="font-family:'DM Sans';font-weight:900;font-size:58px;color:{DIM}">prompt engineering</span>
         <div style="position:absolute;left:-10px;right:-10px;top:52%;height:5px;background:rgb({ACC});border-radius:3px;transform:rotate(-3deg);box-shadow:0 0 20px rgba(212,162,127,.4)"></div></div>
       <div style="font-family:'DM Sans';font-weight:800;font-size:30px;color:#FAFAF7;margin-top:16px">was the tutorial level.</div>
-      <div style="font-family:'DM Sans';font-size:19px;color:{MUT};margin-top:12px">re-wording a request is not a skill. What it can DO is.</div></div>'''
+      <div style="font-family:'DM Sans';font-size:19px;color:{MUT};margin-top:12px">re-wording a request is not a skill. What it can DO is.</div>
+      {foot([("0","A REAL SKILL"),("tutorial","LEVEL"),("what it does","MATTERS")])}</div>'''
 
 # 2. proposal deck auto-built, you add the price
 def decks():
     slides="".join(f'<div style="width:150px;height:96px;border-radius:10px;background:linear-gradient(160deg,#302c27,#211d19);border:1px solid rgba(255,255,255,.08);padding:12px"><div style="height:8px;width:70%;background:rgba(212,162,127,.5);border-radius:4px"></div><div style="height:6px;width:90%;background:#3a352f;border-radius:3px;margin-top:8px"></div><div style="height:6px;width:60%;background:#3a352f;border-radius:3px;margin-top:6px"></div><div style="font-family:DM Mono;font-size:11px;color:{MUT};margin-top:14px">0{i+1}</div></div>' for i in range(3))
-    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 40px">
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 40px">
       {head("The proposal built itself","DECKS")}
       <div style="display:flex;gap:16px;margin-bottom:18px">{slides}</div>
       <div style="display:flex;align-items:center;gap:16px;background:linear-gradient(160deg,rgba(212,162,127,.14),rgba(212,162,127,.04));border:1px solid rgba(212,162,127,.34);border-radius:14px;padding:16px 20px;box-shadow:0 0 40px rgba(212,162,127,.1)">
         <div style="flex:1"><div style="font-family:DM Mono;font-size:12px;letter-spacing:.12em;color:{MUT}">SLIDE 04 · PRICING</div>
         <div style="font-family:DM Sans;font-weight:900;font-size:28px;color:#FAFAF7">$24,000 <span style="font-size:16px;color:rgb({ACC});font-weight:600">/ engagement</span></div></div>
         <div style="font-family:DM Mono;font-size:13px;color:rgb({ACC});border:1px solid rgba(212,162,127,.4);border-radius:999px;padding:7px 14px">you added this</div></div>
-      <div style="font-family:DM Mono;font-size:14px;color:{MUT};margin-top:16px">structure, copy, layout: done. you set one number.</div></div>'''
+      <div style="font-family:DM Mono;font-size:14px;color:{MUT};margin-top:16px">structure, copy, layout: done. you set one number.</div>
+      {foot([("done","STRUCTURE"),("1","NUMBER YOU SET"),("$24k","/ ENGAGEMENT")])}</div>'''
 
 # 3. cited sheet
 def sheets():
@@ -39,23 +44,25 @@ def sheets():
       f'<span style="font-family:DM Sans;font-size:17px;color:#d7d1c6">{a}</span>'
       f'<span style="font-family:DM Sans;font-weight:800;font-size:19px;color:#FAFAF7;text-align:right">{b}</span>'
       f'<span style="font-family:DM Mono;font-size:12px;color:rgb({ACC});text-align:right;display:flex;align-items:center;justify-content:flex-end;gap:6px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgb({ACC})" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>{c}</span></div>' for a,b,c in rows)
-    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 36px">
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 36px">
       {head("Numbers with receipts","SHEETS")}
       <div style="display:grid;grid-template-columns:1fr 150px 1fr;gap:12px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.12)">
         <span style="font-family:DM Mono;font-size:12px;letter-spacing:.12em;color:{DIM}">METRIC</span>
         <span style="font-family:DM Mono;font-size:12px;letter-spacing:.12em;color:{DIM};text-align:right">VALUE</span>
-        <span style="font-family:DM Mono;font-size:12px;letter-spacing:.12em;color:{DIM};text-align:right">SOURCE</span></div>{tr}</div>'''
+        <span style="font-family:DM Mono;font-size:12px;letter-spacing:.12em;color:{DIM};text-align:right">SOURCE</span></div>{tr}
+      {foot([("4","METRICS"),("cited","EACH"),("0","MADE UP")])}</div>'''
 
 # 4. redlined contract
 def contracts():
-    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 38px">
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 38px">
       {head("The NDA came back redlined","CONTRACTS")}
       <div style="background:linear-gradient(160deg,#faf7f0,#efe7d8);border-radius:14px;padding:24px 28px;box-shadow:0 20px 40px rgba(0,0,0,.4)">
         <div style="font-family:DM Mono;font-size:12px;letter-spacing:.12em;color:#8a745a;margin-bottom:14px">MUTUAL NDA · v2 (auto-redline)</div>
         <div style="font-family:DM Sans;font-size:17px;color:#2a2016;line-height:1.9">
           Confidential info shall be retained for <span style="text-decoration:line-through;color:#b04a2a">5 years</span> <span style="background:rgba(200,70,35,.14);color:#b04a2a;font-weight:700;padding:0 4px;border-radius:3px">3 years</span> from disclosure. Governing law: <span style="text-decoration:line-through;color:#b04a2a">Delaware</span> <span style="background:rgba(200,70,35,.14);color:#b04a2a;font-weight:700;padding:0 4px;border-radius:3px">England &amp; Wales</span>. Add <span style="background:rgba(60,120,90,.16);color:#3c785c;font-weight:700;padding:0 4px;border-radius:3px">mutual non-solicit, 12 mo</span>.</div>
       </div>
-      <div style="font-family:DM Mono;font-size:14px;color:{MUT};margin-top:16px">3 risk edits flagged and drafted before it hit your inbox</div></div>'''
+      <div style="font-family:DM Mono;font-size:14px;color:{MUT};margin-top:16px">3 risk edits flagged and drafted before it hit your inbox</div>
+      {foot([("3","RISK EDITS"),("v2","REDLINED"),("0","LAWYERS FIRST")])}</div>'''
 
 # 5. visuals grid, 822 count
 def visuals():
@@ -64,12 +71,13 @@ def visuals():
     for i in range(18):
         p=pals[i%3]; op=0.3+ (i%5)*0.12
         tiles+=f'<div style="padding-top:100%;border-radius:8px;background:{p}{op:.2f})"></div>'
-    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 38px;display:flex;align-items:center;gap:34px">
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 38px"><div style="display:flex;align-items:center;gap:34px">
       <div style="flex:1;display:grid;grid-template-columns:repeat(6,1fr);gap:8px">{tiles}</div>
       <div style="flex-shrink:0;text-align:right">
         <div style="font-family:DM Sans;font-weight:900;font-size:70px;color:rgb({ACC});line-height:.9">822</div>
         <div style="font-family:DM Sans;font-weight:700;font-size:18px;color:#FAFAF7;margin-top:4px">assets shipped</div>
-        <div style="font-family:DM Mono;font-size:14px;color:{MUT};margin-top:6px">zero design queue</div></div></div>'''
+        <div style="font-family:DM Mono;font-size:14px;color:{MUT};margin-top:6px">zero design queue</div></div></div>
+      {foot([("822","ASSETS"),("0","DESIGN QUEUE"),("shipped","ALL")])}</div>'''
 
 # 6. connector map - acts INSIDE the tools
 def connectors():
@@ -80,7 +88,7 @@ def connectors():
         lines+=f'<line x1="{cx}" y1="{cy}" x2="{x:.0f}" y2="{y:.0f}" stroke="rgba(212,162,127,.4)" stroke-width="2.5"/>'
         nodes+=(f'<circle cx="{x:.0f}" cy="{y:.0f}" r="30" fill="#2a2723" stroke="rgba(255,255,255,.12)"/>'
           f'<text x="{x:.0f}" y="{y+5:.0f}" text-anchor="middle" font-family="DM Mono" font-size="12" fill="#cfc9bd">{nm}</text>')
-    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:30px 40px 34px;display:flex;align-items:center;gap:26px">
+    return f'''<div style="width:900px;{CARD};padding:30px 40px 34px"><div style="display:flex;align-items:center;gap:26px">
       <svg width="360" height="360" viewBox="0 0 360 360">
         <defs><radialGradient id="hub" cx="38%" cy="32%"><stop offset="0%" stop-color="rgb({ACC})"/><stop offset="100%" stop-color="#7a4a2c"/></radialGradient>
         <filter id="hg" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="0" stdDeviation="16" flood-color="rgb({ACC})" flood-opacity="0.5"/></filter></defs>
@@ -89,11 +97,12 @@ def connectors():
       <div style="flex:1">
         <div style="font-family:DM Sans;font-weight:900;font-size:30px;color:#FAFAF7;line-height:1.1">It acts inside your tools</div>
         <div style="font-family:DM Sans;font-size:19px;color:{MUT};margin-top:10px;line-height:1.45">Not a chat that tells you what to click. It moves the record, sends the mail, updates the deal.</div>
-        <div style="font-family:DM Mono;font-size:14px;color:rgb({ACC});margin-top:16px">inside the tools, not beside them</div></div></div>'''
+        <div style="font-family:DM Mono;font-size:14px;color:rgb({ACC});margin-top:16px">inside the tools, not beside them</div></div></div>
+      {foot([("5","TOOLS WIRED"),("inside","NOT BESIDE"),("0","COPY-PASTE")])}</div>'''
 
 # 7. answer vs execution
 def result():
-    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 40px">
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 40px">
       {head("Answers are cheap","EXECUTION IS THE PRODUCT")}
       <div style="display:flex;align-items:stretch;gap:20px;margin-top:6px">
         <div style="flex:1;background:#211d19;border:1px dashed rgba(255,255,255,.14);border-radius:16px;padding:20px;opacity:.7">
@@ -105,7 +114,8 @@ def result():
           <div style="font-family:DM Mono;font-size:12px;letter-spacing:.12em;color:rgb({ACC});margin-bottom:10px">EXECUTION</div>
           <div style="font-family:DM Sans;font-weight:800;font-size:19px;color:#FAFAF7;line-height:1.4">240 sequences written, cited, queued, gated for your send.</div>
           <div style="font-family:DM Mono;font-size:13px;color:rgb({ACC});margin-top:14px">this is what you actually pay for</div></div>
-      </div></div>'''
+      </div>
+      {foot([("240","EXECUTED"),("1 c","AN ANSWER"),("execution","THE PRODUCT")])}</div>'''
 
 # 8. dual-speed gate
 def gate():
@@ -118,12 +128,13 @@ def gate():
           f'<line x1="110" y1="120" x2="{x:.0f}" y2="{y:.0f}" stroke="{col}" stroke-width="4" stroke-linecap="round"/><circle cx="110" cy="120" r="7" fill="{col}"/></svg>'
           f'<div style="font-family:DM Sans;font-weight:800;font-size:20px;color:#FAFAF7">{label}</div>'
           f'<div style="font-family:DM Mono;font-size:13px;color:{MUT}">{note}</div></div>')
-    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 38px">
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 38px">
       {head("Executes fast. Sends at your speed.","DUAL SPEED")}
       <div style="display:flex;gap:20px;margin-top:6px">
         {dial("Execute",100,f"rgb({ACC})","machine speed")}
         {dial("Send",0,DIM,"your tap")}
-      </div></div>'''
+      </div>
+      {foot([("100%","EXECUTE SPEED"),("1","YOUR TAP"),("0","AUTO-SEND")])}</div>'''
 
 PANELS={"myth":myth(),"decks":decks(),"sheets":sheets(),"contracts":contracts(),
         "visuals":visuals(),"connectors":connectors(),"result":result(),"gate":gate()}

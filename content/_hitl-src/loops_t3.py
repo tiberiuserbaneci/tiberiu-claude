@@ -28,7 +28,7 @@ def oldway():
        f'<span style="font-family:DM Mono;font-size:16px;color:{MUT}">{tm}</span>'
        f'<span style="font-family:DM Sans;font-size:18px;color:#d7d1c6">{tk}</span>'
        f'<span style="font-family:DM Mono;font-weight:500;font-size:15px;color:rgb({ACC});text-align:right">YOU</span></div>' for tm,tk in rows)
-    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 38px">
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 38px">
       {head("Your personal crontab","RUNNER: HUMAN")}
       <div style="display:grid;grid-template-columns:96px 1fr 96px;gap:12px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.12)">
         <span style="font-family:DM Mono;font-size:12px;letter-spacing:.14em;color:{DIM}">WHEN</span>
@@ -51,7 +51,7 @@ def loop():
     for a in (-45,45,135,225):
         x=cx+R*math.cos(math.radians(a)); y=cy+R*math.sin(math.radians(a)); ang=a+90
         arcs+=f'<g transform="translate({x:.0f},{y:.0f}) rotate({ang})"><path d="M-7 -6 L7 0 L-7 6" fill="rgb({ACC})"/></g>'
-    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 38px">
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 38px">
       <div style="display:flex;align-items:center;gap:36px">
       <svg width="400" height="400" viewBox="0 0 400 400">{ring}{arcs}{nodes}
         <text x="{cx}" y="{cy-6}" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="66" fill="#FAFAF7">212</text>
@@ -65,7 +65,7 @@ def loop():
 
 # 3. DEFINE - step 1/3: a sentence compiles into a recurring job
 def define():
-    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 42px">
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 42px">
       <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px">
         <span style="font-family:'DM Sans';font-weight:900;font-size:22px;color:rgb({ACC})">01</span>
         <span style="font-family:'DM Sans';font-weight:800;font-size:26px;color:#FAFAF7">Define it once</span>
@@ -91,7 +91,7 @@ def trigger():
           f'<text x="42" y="30" text-anchor="middle" font-family="DM Mono" font-size="15" fill="{MUT}">{dd}</text>'
           f'{dot}'
           f'<text x="42" y="128" text-anchor="middle" font-family="DM Mono" font-size="13" fill="{DIM}">09:00</text></g>')
-    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 42px">
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 42px">
       <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px">
         <span style="font-family:'DM Sans';font-weight:900;font-size:22px;color:rgb({ACC})">02</span>
         <span style="font-family:'DM Sans';font-weight:800;font-size:26px;color:#FAFAF7">It fires without you</span>
@@ -109,7 +109,7 @@ def verify():
       f'<svg width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="rgba(127,211,154,.14)"/><path d="M7 12.5l3.2 3.2L17 8.5" fill="none" stroke="#7fd39a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
       f'<span style="flex:1;font-family:DM Sans;font-size:18px;color:#d7d1c6">{c}</span>'
       f'<span style="font-family:DM Mono;font-size:13px;color:#7fd39a;letter-spacing:.1em">{s}</span></div>' for c,s in checks)
-    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 40px">
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 40px">
       <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
         <span style="font-family:'DM Sans';font-weight:900;font-size:22px;color:rgb({ACC})">03</span>
         <span style="font-family:'DM Sans';font-weight:800;font-size:26px;color:#FAFAF7">It grades itself first</span>
@@ -130,7 +130,7 @@ def trap():
         col=f"rgb({ACC})" if i>=14 else ("#caa24a" if i>=9 else "#6f9e6a")
         op=1 if i>=14 else 0.4
         seg+=f'<rect x="{i*38}" y="0" width="30" height="54" rx="5" fill="{col}" opacity="{op}"/>'
-    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 40px">
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 40px">
       {head("Loops without exits eat budgets","NO EXIT")}
       <div style="display:flex;align-items:center;gap:30px;margin:6px 0 22px">
         <svg width="140" height="90" viewBox="0 0 140 90"><path d="M45 45 a25 25 0 1 1 25 25 a25 25 0 1 1 -25 -25" fill="none" stroke="rgb({ACC})" stroke-width="7" stroke-linecap="round"/><path d="M70 20 l8 -8 M70 20 l-2 11" stroke="rgb({ACC})" stroke-width="6" stroke-linecap="round" fill="none"/></svg>
@@ -145,7 +145,7 @@ def trap():
 # 7. GATE - full-speed lane with a handbrake barrier at the exit door
 def gate():
     lanes="".join(f'<rect x="{40+i*24}" y="{54+i*0}" width="14" height="8" rx="4" fill="rgba(200,70,35,{0.7-i*0.03})"/>' for i in range(22))
-    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 42px">
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 42px">
       {head("Full speed inside. Handbrake on the door.","GATED EXIT")}
       <div style="position:relative;background:#191614;border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:26px;overflow:hidden">
         <div style="font-family:'DM Mono';font-size:13px;letter-spacing:.12em;color:{MUT};margin-bottom:10px">INSIDE THE LOOP: NO LIMITS</div>
@@ -166,7 +166,7 @@ def scale():
     def blocks(n):
         return "".join(f'<div style="width:34px;height:34px;border-radius:7px;background:rgb({ACC});opacity:{0.5+0.5*(k+1)/n}"></div>' for k in range(n))
     cols="".join(f'<div style="display:flex;flex-direction:column-reverse;gap:6px;align-items:center"><div style="display:flex;flex-direction:column-reverse;gap:6px">{blocks(n)}</div><span style="font-family:DM Mono;font-size:13px;color:{MUT};margin-top:8px">wk{i+1}</span></div>' for i,n in enumerate([1,2,4,8]))
-    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 40px">
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 40px">
       {head("Hours capped. Systems did not.","LEVERAGE")}
       <div style="display:flex;gap:40px;align-items:flex-end">
         <div style="flex-shrink:0">
