@@ -19,7 +19,7 @@ def react():
         nodes+=(f'<g transform="translate({x},120)"><rect x="-70" y="-40" width="140" height="80" rx="16" fill="#2a2723" stroke="rgba(204,120,92,.4)" stroke-width="1.5"/>'
           f'<text x="0" y="7" text-anchor="middle" font-family="DM Mono" font-size="18" letter-spacing="2" fill="#e9e3d7">{s}</text></g>')
         if i<2: nodes+=f'<path d="M{x+72} 120 H{x+156}" stroke="rgb({ACC})" stroke-width="3"/><path d="M{x+150} 113 L{x+162} 120 L{x+150} 127" fill="rgb({ACC})"/>'
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 38px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 38px">
       {head("Think. Act. Look. Repeat.","PATTERN 1 · ReAct")}
       <svg width="760" height="220" viewBox="0 0 760 220" style="width:100%">
         {nodes}
@@ -32,7 +32,7 @@ def react():
 def codeact():
     files=[("auth/login.ts","+42 −8"),("api/session.ts","+15 −3"),("tests/login.test.ts","+30 −0")]
     rows="".join(f'<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06)"><span style="font-family:DM Mono;font-size:15px;color:#cfc9bd">{f}</span><span style="font-family:DM Mono;font-size:14px;color:rgb({ACC})">{d}</span></div>' for f,d in files)
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 38px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 38px">
       {head("It does not describe fixes","PATTERN 2 · CodeAct")}
       <div style="background:#191614;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:20px 22px">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><span style="font-family:DM Sans;font-weight:800;font-size:19px;color:#FAFAF7">fix/login-bug</span><span style="font-family:DM Mono;font-size:12px;color:{MUT}">3 files</span>
@@ -44,7 +44,7 @@ def codeact():
 def plan():
     steps=["pull leads","score fit","draft replies","queue sends"]
     chips="".join(f'<div style="display:flex;align-items:center;gap:10px;padding:8px 0"><span style="font-family:DM Mono;font-size:13px;color:rgb({ACC})">{i+1}</span><span style="font-family:DM Sans;font-size:16px;color:#d7d1c6">{s}</span></div>' for i,s in enumerate(steps))
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 38px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 38px">
       {head("Plan big. Run cheap.","PATTERN 3 · PLANNER")}
       <div style="display:flex;align-items:stretch;gap:20px">
         <div style="flex:1;background:linear-gradient(160deg,rgba(204,120,92,.14),rgba(204,120,92,.04));border:1px solid rgba(204,120,92,.34);border-radius:16px;padding:18px 20px">
@@ -68,14 +68,14 @@ def reflect():
           f'<span style="font-family:DM Sans;font-weight:900;font-size:30px;color:{f"rgb({ACC})" if on else DIM};width:60px">{v}</span>'
           f'<span style="flex:1;font-family:DM Sans;font-weight:{800 if on else 500};font-size:19px;color:{"#FAFAF7" if on else "#9a9488"}">{note}</span>'
           f'<span style="font-family:DM Mono;font-size:13px;color:{f"rgb({ACC})" if on else DIM}">{tag}</span></div>')
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 36px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 36px">
       {head("v1 never reaches you","PATTERN 4 · REFLECT")}{rows}</div>'''
 
 # 5. seven specialists vs one giant
 def multi():
     specs=["Research","Outbound","Deals","Content","Code","Publish","Legal"]
     chips="".join(f'<div style="background:#2a2723;border:1px solid rgba(204,120,92,.24);border-radius:10px;padding:10px 8px;text-align:center;font-family:DM Sans;font-weight:700;font-size:14px;color:#e9e3d7">{s}</div>' for s in specs)
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 38px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 38px">
       {head("Seven specialists beat one giant","PATTERN 5 · MULTI")}
       <div style="display:flex;align-items:center;gap:30px">
         <div style="flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:10px">{chips}
@@ -95,12 +95,12 @@ def stack():
         rows+=(f'<div style="width:{w}%;margin:0 auto 8px;background:linear-gradient(160deg,rgba(204,120,92,{0.20-i*0.03}),rgba(204,120,92,.04));border:1px solid rgba(204,120,92,.28);border-radius:12px;padding:13px 20px;display:flex;justify-content:space-between;align-items:center">'
           f'<span style="font-family:DM Sans;font-weight:800;font-size:18px;color:#FAFAF7">{nm}</span>'
           f'<span style="font-family:DM Mono;font-size:13px;color:{MUT}">{sub}</span></div>')
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 34px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 34px">
       {head("Real systems stack all five","THE STACK")}{rows}</div>'''
 
 # 7. trigger control - human on the trigger
 def gate():
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 42px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 42px">
       {head("A human on the trigger","PATTERN 6 · GATE")}
       <div style="display:flex;align-items:center;gap:36px;margin-top:6px">
         <div style="flex:1">
@@ -115,7 +115,7 @@ def gate():
 
 # 8. same model, different outcome
 def operator():
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 40px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 40px">
       {head("Same models. Different companies.","THE OPERATOR")}
       <div style="display:flex;align-items:center;justify-content:center;gap:20px;margin:6px 0 8px">
         <div style="background:#221f1b;border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:16px 22px;font-family:DM Sans;font-weight:800;font-size:20px;color:#FAFAF7">Same model</div>

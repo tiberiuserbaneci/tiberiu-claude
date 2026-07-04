@@ -15,7 +15,7 @@ def qhead(q,t):
 # 1. duplication row + x40/wk counter
 def sign1():
     chips="".join(f'<div style="width:150px;flex-shrink:0;background:#2a2723;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px 14px;opacity:{1-i*0.16}"><div style="font-family:DM Mono;font-size:12px;color:{MUT}">Re: pricing</div><div style="font-family:DM Sans;font-size:14px;color:#cfc9bd;margin-top:4px">"Here is how it..."</div></div>' for i in range(4))
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 40px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 40px">
       {qhead("Q1","Same answer, on repeat")}
       <div style="display:flex;align-items:center;gap:26px">
         <div style="display:flex;gap:12px;overflow:hidden;flex:1">{chips}</div>
@@ -28,7 +28,7 @@ def sign2():
     def grid(active):
         cells="".join(f'<div style="height:16px;border-radius:3px;background:{("rgba(204,120,92,.5)" if (active and i==4) else "#2f2c27")}"></div>' for i in range(9))
         return f'<div style="display:grid;grid-template-columns:repeat(3,44px);gap:5px">{cells}</div>'
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 42px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 42px">
       {qhead("Q2","Payroll moves data by hand")}
       <div style="display:flex;align-items:center;justify-content:center;gap:30px;margin:10px 0">
         <div style="text-align:center"><div style="font-family:DM Mono;font-size:12px;color:{MUT};margin-bottom:8px">SOURCE</div>{grid(True)}</div>
@@ -43,7 +43,7 @@ def sign2():
 # 3. bottleneck queue backing up behind your thumbs
 def sign3():
     q="".join(f'<div style="width:120px;height:34px;border-radius:8px;background:#2c2925;border:1px solid rgba(255,255,255,.07);opacity:{1-i*0.12};display:flex;align-items:center;padding-left:12px;font-family:DM Sans;font-size:13px;color:{MUT}">task {i+1}</div>' for i in range(5))
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 42px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 42px">
       {qhead("Q3","Work queues behind you")}
       <div style="display:flex;align-items:center;gap:16px;margin:8px 0">
         <div style="display:flex;flex-direction:column;gap:8px;flex:1">{q}</div>
@@ -58,7 +58,7 @@ def sign3():
 # 4. lead cooling gradient
 def sign4():
     dots="".join(f'<circle cx="{60+i*88}" cy="40" r="{20-i*1.5}" fill="rgb({",".join(str(int(v)) for v in (204-(204-95)*i/7,120-(120-100)*i/7,92-(92-120)*i/7))})" opacity="{1-i*0.08}"/>' for i in range(8))
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 42px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 42px">
       {qhead("Q4","Leads cool in your inbox")}
       <svg width="800" height="90" viewBox="0 0 800 90" style="width:100%">{dots}</svg>
       <div style="display:flex;justify-content:space-between;margin-top:6px">
@@ -72,7 +72,7 @@ def sign5():
     for i in range(30):
         lost=i>=27
         cells+=f'<div style="width:100%;padding-top:100%;position:relative;border-radius:5px;background:{("rgb("+ACC+")" if lost else "#2c2925")};{"box-shadow:0 0 14px rgba(204,120,92,.4)" if lost else ""}"></div>'
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 40px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 40px">
       {qhead("Q5","Month-end eats three days")}
       <div style="display:grid;grid-template-columns:repeat(15,1fr);gap:7px;margin:8px 0 14px">{cells}</div>
       <div style="display:flex;align-items:center;gap:12px">
@@ -92,7 +92,7 @@ def test():
         boxes+=(f'<div style="display:flex;align-items:center;gap:12px">'
           f'<div style="width:34px;height:34px;border-radius:9px;background:{bxbg};border:2px solid {bxbd};display:flex;align-items:center;justify-content:center">{mark}</div>'
           f'<span style="font-family:DM Sans;font-size:17px;color:{txtc}">Sign {i+1}</span></div>')
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 42px;display:flex;align-items:center;gap:40px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 42px;display:flex;align-items:center;gap:40px">
       <div style="display:flex;flex-direction:column;gap:14px">{boxes}</div>
       <div style="width:1px;height:210px;background:rgba(255,255,255,.10)"></div>
       <div style="flex:1">
@@ -102,7 +102,7 @@ def test():
 
 # 7. leak plug: one fix stops the worst drain
 def fix():
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 44px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 44px">
       {qhead("→","Plug the worst leak first")}
       <div style="display:flex;align-items:center;gap:20px;margin:10px 0">
         <div style="flex:1;height:26px;border-radius:13px;background:linear-gradient(90deg,#2c2925,#2c2925);position:relative;overflow:visible">
@@ -122,7 +122,7 @@ def fix():
 
 # 8. veto card: action pending your approval
 def gate():
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 42px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 42px">
       {qhead("✓","Automate work. Keep the veto.")}
       <div style="background:#191614;border:1px solid rgba(204,120,92,.28);border-radius:16px;padding:22px 24px;box-shadow:inset 0 2px 3px rgba(255,255,255,.05)">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">

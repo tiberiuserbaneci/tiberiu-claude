@@ -12,7 +12,7 @@ def head(t,tag): return (f'<div style="display:flex;align-items:baseline;justify
 
 # 1. myth strikeout
 def myth():
-    return f'''<div style="width:900px;{CARD};padding:40px 40px 42px;text-align:center">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:40px 40px 42px;text-align:center">
       <div style="font-family:'DM Mono';font-size:14px;letter-spacing:.16em;color:{MUT};margin-bottom:18px">THE MYTH</div>
       <div style="position:relative;display:inline-block;margin-bottom:8px">
         <span style="font-family:'DM Sans';font-weight:900;font-size:58px;color:{DIM}">prompt engineering</span>
@@ -23,7 +23,7 @@ def myth():
 # 2. proposal deck auto-built, you add the price
 def decks():
     slides="".join(f'<div style="width:150px;height:96px;border-radius:10px;background:linear-gradient(160deg,#302c27,#211d19);border:1px solid rgba(255,255,255,.08);padding:12px"><div style="height:8px;width:70%;background:rgba(212,162,127,.5);border-radius:4px"></div><div style="height:6px;width:90%;background:#3a352f;border-radius:3px;margin-top:8px"></div><div style="height:6px;width:60%;background:#3a352f;border-radius:3px;margin-top:6px"></div><div style="font-family:DM Mono;font-size:11px;color:{MUT};margin-top:14px">0{i+1}</div></div>' for i in range(3))
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 40px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 40px">
       {head("The proposal built itself","DECKS")}
       <div style="display:flex;gap:16px;margin-bottom:18px">{slides}</div>
       <div style="display:flex;align-items:center;gap:16px;background:linear-gradient(160deg,rgba(212,162,127,.14),rgba(212,162,127,.04));border:1px solid rgba(212,162,127,.34);border-radius:14px;padding:16px 20px;box-shadow:0 0 40px rgba(212,162,127,.1)">
@@ -39,7 +39,7 @@ def sheets():
       f'<span style="font-family:DM Sans;font-size:17px;color:#d7d1c6">{a}</span>'
       f'<span style="font-family:DM Sans;font-weight:800;font-size:19px;color:#FAFAF7;text-align:right">{b}</span>'
       f'<span style="font-family:DM Mono;font-size:12px;color:rgb({ACC});text-align:right;display:flex;align-items:center;justify-content:flex-end;gap:6px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgb({ACC})" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>{c}</span></div>' for a,b,c in rows)
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 36px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 36px">
       {head("Numbers with receipts","SHEETS")}
       <div style="display:grid;grid-template-columns:1fr 150px 1fr;gap:12px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.12)">
         <span style="font-family:DM Mono;font-size:12px;letter-spacing:.12em;color:{DIM}">METRIC</span>
@@ -48,7 +48,7 @@ def sheets():
 
 # 4. redlined contract
 def contracts():
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 38px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 38px">
       {head("The NDA came back redlined","CONTRACTS")}
       <div style="background:linear-gradient(160deg,#faf7f0,#efe7d8);border-radius:14px;padding:24px 28px;box-shadow:0 20px 40px rgba(0,0,0,.4)">
         <div style="font-family:DM Mono;font-size:12px;letter-spacing:.12em;color:#8a745a;margin-bottom:14px">MUTUAL NDA · v2 (auto-redline)</div>
@@ -64,7 +64,7 @@ def visuals():
     for i in range(18):
         p=pals[i%3]; op=0.3+ (i%5)*0.12
         tiles+=f'<div style="padding-top:100%;border-radius:8px;background:{p}{op:.2f})"></div>'
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 38px;display:flex;align-items:center;gap:34px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 38px;display:flex;align-items:center;gap:34px">
       <div style="flex:1;display:grid;grid-template-columns:repeat(6,1fr);gap:8px">{tiles}</div>
       <div style="flex-shrink:0;text-align:right">
         <div style="font-family:DM Sans;font-weight:900;font-size:70px;color:rgb({ACC});line-height:.9">822</div>
@@ -80,7 +80,7 @@ def connectors():
         lines+=f'<line x1="{cx}" y1="{cy}" x2="{x:.0f}" y2="{y:.0f}" stroke="rgba(212,162,127,.4)" stroke-width="2.5"/>'
         nodes+=(f'<circle cx="{x:.0f}" cy="{y:.0f}" r="30" fill="#2a2723" stroke="rgba(255,255,255,.12)"/>'
           f'<text x="{x:.0f}" y="{y+5:.0f}" text-anchor="middle" font-family="DM Mono" font-size="12" fill="#cfc9bd">{nm}</text>')
-    return f'''<div style="width:900px;{CARD};padding:30px 40px 34px;display:flex;align-items:center;gap:26px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:30px 40px 34px;display:flex;align-items:center;gap:26px">
       <svg width="360" height="360" viewBox="0 0 360 360">
         <defs><radialGradient id="hub" cx="38%" cy="32%"><stop offset="0%" stop-color="rgb({ACC})"/><stop offset="100%" stop-color="#7a4a2c"/></radialGradient>
         <filter id="hg" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="0" stdDeviation="16" flood-color="rgb({ACC})" flood-opacity="0.5"/></filter></defs>
@@ -93,7 +93,7 @@ def connectors():
 
 # 7. answer vs execution
 def result():
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 40px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 40px">
       {head("Answers are cheap","EXECUTION IS THE PRODUCT")}
       <div style="display:flex;align-items:stretch;gap:20px;margin-top:6px">
         <div style="flex:1;background:#211d19;border:1px dashed rgba(255,255,255,.14);border-radius:16px;padding:20px;opacity:.7">
@@ -118,7 +118,7 @@ def gate():
           f'<line x1="110" y1="120" x2="{x:.0f}" y2="{y:.0f}" stroke="{col}" stroke-width="4" stroke-linecap="round"/><circle cx="110" cy="120" r="7" fill="{col}"/></svg>'
           f'<div style="font-family:DM Sans;font-weight:800;font-size:20px;color:#FAFAF7">{label}</div>'
           f'<div style="font-family:DM Mono;font-size:13px;color:{MUT}">{note}</div></div>')
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 38px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 38px">
       {head("Executes fast. Sends at your speed.","DUAL SPEED")}
       <div style="display:flex;gap:20px;margin-top:6px">
         {dial("Execute",100,f"rgb({ACC})","machine speed")}

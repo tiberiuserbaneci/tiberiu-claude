@@ -18,7 +18,7 @@ def cal():
     for d,ss in zip(days,slots):
         chips="".join(f'<div style="background:{"rgba(200,70,35,.16)" if d=="MON" else "#2c2925"};border:1px solid {"rgba(200,70,35,.34)" if d=="MON" else "rgba(255,255,255,.06)"};border-radius:8px;padding:8px 6px;font-family:DM Sans;font-size:13px;color:{"#f0d8ce" if d=="MON" else "#cfc9bd"};text-align:center;margin-bottom:6px">{s}</div>' for s in ss)
         cols+=f'<div style="flex:1"><div style="font-family:DM Mono;font-size:12px;color:{MUT};text-align:center;margin-bottom:8px">{d}</div>{chips}</div>'
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 38px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 38px">
       {head("Monday 07:00, the week plans itself","AUTO-PLANNED")}
       <div style="display:flex;gap:10px;align-items:flex-start">{cols}</div>
       <div style="font-family:DM Mono;font-size:14px;color:{MUT};margin-top:18px">11 pieces slotted before you open the laptop</div></div>'''
@@ -35,12 +35,12 @@ def hooks():
           f'<div style="height:6px;border-radius:3px;background:#2c2925;margin-top:8px;overflow:hidden"><div style="height:100%;width:{sc}%;background:{f"rgb({ACC})" if on else DIM};border-radius:3px"></div></div></div>'
           f'<span style="font-family:DM Sans;font-weight:900;font-size:26px;color:{f"rgb({ACC})" if on else MUT};width:52px;text-align:right">{sc}</span>'
           f'<span style="width:74px;font-family:DM Mono;font-size:12px;color:rgb({ACC})">{"&#9664; crowned" if on else ""}</span></div>')
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 38px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 38px">
       {head("Three hooks fight. One wins.","SCORED")}{rows}</div>'''
 
 # 3. voice: signature sample with your phrases underlined
 def voice():
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 42px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 42px">
       {head("It writes like your best day","VOICE LOCKED")}
       <div style="background:#191614;border-left:3px solid rgb({ACC});border-radius:10px;padding:20px 22px;font-family:DM Sans;font-size:21px;line-height:1.5;color:#e9e3d7">
         <span style="border-bottom:2px solid rgb({ACC})">I killed nine tools</span> last month. The one I kept <span style="border-bottom:2px solid rgb({ACC})">did not have a chat box</span>. Renters restart. <span style="border-bottom:2px solid rgb({ACC})">Owners compound</span>.</div>
@@ -58,7 +58,7 @@ def repurpose():
         y=40+i*72;
         lines+=f'<path d="M{cx+40} {cy} C 300 {cy}, 360 {y}, 470 {y}" fill="none" stroke="rgba(200,70,35,.4)" stroke-width="2.5"/>'
         nodes+=f'<g transform="translate(470,{y})"><rect x="0" y="-24" width="230" height="48" rx="12" fill="#2a2723" stroke="rgba(255,255,255,.08)"/><text x="20" y="6" font-family="DM Sans" font-weight="700" font-size="18" fill="#e9e3d7">{c}</text><text x="210" y="6" text-anchor="end" font-family="DM Mono" font-size="12" fill="rgb({ACC})">native</text></g>'
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 38px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 38px">
       {head("One brief. Five channels.","REPURPOSE")}
       <svg width="740" height="400" viewBox="0 0 740 400" style="width:100%">
         {lines}
@@ -70,7 +70,7 @@ def repurpose():
 def inbox():
     pct=99.2; import math
     r=100; circ=math.pi*r; dash=circ*pct/100
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 40px;display:flex;align-items:center;gap:40px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 40px;display:flex;align-items:center;gap:40px">
       <svg width="260" height="170" viewBox="0 0 260 170">
         <path d="M30 150 A100 100 0 0 1 230 150" fill="none" stroke="#2c2925" stroke-width="20" stroke-linecap="round"/>
         <path d="M30 150 A100 100 0 0 1 230 150" fill="none" stroke="rgb({ACC})" stroke-width="20" stroke-linecap="round" stroke-dasharray="{dash:.0f} {circ:.0f}"/>
@@ -91,13 +91,13 @@ def desk():
           f'<span style="flex:1;font-family:DM Sans;font-weight:700;font-size:19px;color:#e9e3d7">{nm}</span>'
           f'<span style="font-family:DM Sans;font-size:15px;color:{MUT};margin-right:14px">{role}</span>'
           f'<span style="font-family:DM Mono;font-size:12px;color:#7fd39a;letter-spacing:.1em">RUNNING</span></div>')
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 36px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 36px">
       {head("The desk never meets","5 SKILLS · 0 STANDUPS")}{rows}
       <div style="font-family:DM Mono;font-size:14px;color:{MUT};margin-top:14px">all async, all in your voice, none of them in a meeting</div></div>'''
 
 # 7. publish gate: post held for your thumb
 def gate():
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 42px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 42px">
       {head("My feed, my thumb","HELD TO PUBLISH")}
       <div style="display:flex;align-items:center;gap:26px;margin-top:6px">
         <div style="flex:1;background:#191614;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px 20px">
@@ -113,7 +113,7 @@ def gate():
 
 # 8. cost comparison: agency retainer vs cents
 def math_():
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 40px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 40px">
       {head("Bills in cents, not Mondays","THE MATH")}
       <div style="display:flex;align-items:flex-end;gap:50px;height:250px;padding:0 30px">
         <div style="flex:1;text-align:center;display:flex;flex-direction:column;justify-content:flex-end;height:100%">

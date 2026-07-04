@@ -13,7 +13,7 @@ def head(t,tag): return (f'<div style="display:flex;align-items:baseline;justify
 # 1. old bill: a week consumed + revision rounds
 def oldbill():
     days="".join(f'<div style="flex:1;height:60px;border-radius:8px;background:#33302b;border:1px solid rgba(255,255,255,.05);display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;font-family:DM Mono;font-size:12px;color:{MUT}">D{i+1}</div>' for i in range(7))
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 40px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 40px">
       {head("A week per deck","THE OLD BILL")}
       <div style="display:flex;gap:8px;margin-bottom:20px">{days}</div>
       <div style="display:flex;align-items:center;gap:14px">
@@ -30,7 +30,7 @@ def command():
         me=who=="You"
         rows+=(f'<div style="display:flex;{"justify-content:flex-end" if me else ""};margin-bottom:10px">'
           f'<div style="max-width:74%;background:{f"rgb({ACC})" if me else "#2a2723"};color:{"#1a0f0a" if me else "#e9e3d7"};border-radius:14px;padding:11px 16px;font-family:DM Sans;font-size:16px">{txt}</div></div>')
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 38px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 38px">
       {head("It interviews me, then builds","THE COMMAND")}
       {rows}
       <div style="display:flex;align-items:center;gap:12px;margin-top:8px;background:#191614;border:1px solid rgba(200,70,35,.24);border-radius:12px;padding:14px 18px">
@@ -42,7 +42,7 @@ def visuals():
     sw=[("#191919","slate"),("#c84623","book"),("#d4a27f","kraft"),("#faf af7","ivory")]
     sw=[("#191919","slate"),("#c84623","book"),("#d4a27f","kraft"),("#fafaf7","ivory")]
     chips="".join(f'<div style="text-align:center"><div style="width:80px;height:80px;border-radius:16px;background:{h};border:1px solid rgba(255,255,255,.12)"></div><div style="font-family:DM Mono;font-size:12px;color:{MUT};margin-top:8px">{nm}</div></div>' for h,nm in sw)
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 40px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 40px">
       {head("My tokens, my type","NO TEMPLATE SMELL")}
       <div style="display:flex;gap:20px;margin-bottom:22px">{chips}</div>
       <div style="display:flex;gap:30px;align-items:flex-end;border-top:1px solid rgba(255,255,255,.08);padding-top:20px">
@@ -52,7 +52,7 @@ def visuals():
 # 4. 10-slide filmstrip on proven bones
 def slides():
     frames="".join(f'<div style="flex-shrink:0;width:66px;height:96px;border-radius:8px;background:linear-gradient(160deg,#302c27,#211d19);border:1px solid rgba(255,255,255,.08);padding:8px"><div style="height:6px;width:70%;background:rgba(200,70,35,.5);border-radius:3px"></div><div style="height:4px;width:90%;background:#3a352f;border-radius:2px;margin-top:6px"></div><div style="height:4px;width:60%;background:#3a352f;border-radius:2px;margin-top:4px"></div><div style="font-family:DM Mono;font-size:9px;color:{MUT};margin-top:auto;position:relative;top:44px">{i+1:02d}</div></div>' for i in range(10))
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 40px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 40px">
       {head("Ten pages, proven bones","THE SLIDES")}
       <div style="display:flex;gap:8px;overflow:hidden;padding-bottom:8px">{frames}</div>
       <div style="height:3px;background:linear-gradient(90deg,rgb({ACC}),transparent);border-radius:2px;margin-top:6px"></div>
@@ -61,7 +61,7 @@ def slides():
 # 5. caption kit doc
 def captions():
     def sect(lbl,body): return f'<div style="margin-bottom:14px"><div style="font-family:DM Mono;font-size:11px;letter-spacing:.14em;color:rgb({ACC});margin-bottom:6px">{lbl}</div><div style="font-family:DM Sans;font-size:16px;color:#d7d1c6;line-height:1.4">{body}</div></div>'
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 36px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 36px">
       {head("The caption kit writes itself in","CAPTIONS")}
       <div style="background:#191614;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:20px 24px">
         {sect("CAPTION","Comment BUILDER for the carousel command. Save this so you do not lose it.")}
@@ -73,7 +73,7 @@ def captions():
 def clock():
     import math
     pct=0.55; a=360*pct; x=110+80*math.sin(math.radians(a)); y=110-80*math.cos(math.radians(a))
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 40px;display:flex;align-items:center;gap:40px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 40px;display:flex;align-items:center;gap:40px">
       <svg width="220" height="220" viewBox="0 0 220 220">
         <circle cx="110" cy="110" r="80" fill="#1a1815" stroke="#2c2925" stroke-width="10"/>
         <path d="M110 30 A80 80 0 {1 if pct>0.5 else 0} 1 {x:.0f} {y:.0f}" fill="none" stroke="rgb({ACC})" stroke-width="10" stroke-linecap="round"/>
@@ -103,13 +103,13 @@ def gate():
           f'<div style="font-family:DM Sans;font-weight:800;font-size:19px;color:{tc}">{nm}</div>'
           f'<div style="font-family:DM Mono;font-size:12px;color:{MUT};margin-top:2px">{sub}</div></div>')
         if i<2: nodes+=f'<div style="flex-shrink:0;align-self:flex-start;margin-top:24px"><svg width="46" height="22" viewBox="0 0 46 22"><path d="M2 11 H36 M28 4 L44 11 L28 18" fill="none" stroke="{DIM}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>'
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 42px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 42px">
       {head("One review. One tap. Then it posts.","GATED PUBLISH")}
       <div style="display:flex;align-items:flex-start;gap:6px;margin-top:12px">{nodes}</div></div>'''
 
 # 8. retainer -> runway
 def math_():
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 42px">
+    return f'''<div style="width:900px;{CARD};min-height:740px;display:flex;flex-direction:column;justify-content:space-between;padding:34px 40px 42px">
       {head("Retainer money became runway","THE MATH")}
       <div style="display:flex;align-items:center;gap:20px;margin-top:10px">
         <div style="flex-shrink:0;text-align:center">
