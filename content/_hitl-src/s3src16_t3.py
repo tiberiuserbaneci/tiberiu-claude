@@ -68,11 +68,11 @@ def landlord():
         <text x="250" y="356" text-anchor="middle" font-family="DM Mono" font-size="14" letter-spacing=".08em" fill="#8f8f85">OWNED BY THE PLATFORM</text>
         <!-- dashed guest pass line to the right -->
         <path d="M382 200 H560" stroke="rgb({RED})" stroke-width="4" stroke-dasharray="3 12" stroke-linecap="round"/>
-        <rect x="566" y="140" width="196" height="120" rx="22" fill="#201d19" stroke="rgba(212,162,127,.35)" stroke-width="2"/>
-        <g transform="translate(590,176)"><circle cx="14" cy="14" r="13" fill="none" stroke="rgb({ACC})" stroke-width="4"/><path d="M25 25 l24 24" stroke="rgb({ACC})" stroke-width="7" stroke-linecap="round"/><path d="M40 40 l8 -8 M46 46 l8 -8" stroke="rgb({ACC})" stroke-width="5" stroke-linecap="round"/></g>
-        <text x="664" y="192" text-anchor="middle" font-family="DM Sans" font-weight="800" font-size="19" fill="#FAFAF7">GUEST PASS</text>
-        <rect x="586" y="212" width="156" height="34" rx="9" fill="rgba(200,70,35,.14)" stroke="rgba(200,70,35,.5)"/>
-        <text x="664" y="234" text-anchor="middle" font-family="DM Mono" font-size="13" letter-spacing=".08em" fill="rgb({RED})">EXPIRES · DAY 31</text>
+        <rect x="566" y="138" width="196" height="136" rx="22" fill="#201d19" stroke="rgba(212,162,127,.35)" stroke-width="2"/>
+        <g transform="translate(600,164)"><circle cx="11" cy="11" r="10" fill="none" stroke="rgb({ACC})" stroke-width="3.4"/><path d="M20 20 l17 17" stroke="rgb({ACC})" stroke-width="6" stroke-linecap="round"/><path d="M30 30 l6 -6 M35 35 l6 -6" stroke="rgb({ACC})" stroke-width="4.4" stroke-linecap="round"/></g>
+        <text x="664" y="216" text-anchor="middle" font-family="DM Sans" font-weight="800" font-size="19" fill="#FAFAF7">GUEST PASS</text>
+        <rect x="586" y="230" width="156" height="34" rx="9" fill="rgba(200,70,35,.14)" stroke="rgba(200,70,35,.5)"/>
+        <text x="664" y="252" text-anchor="middle" font-family="DM Mono" font-size="13" letter-spacing=".08em" fill="rgb({RED})">EXPIRES · DAY 31</text>
       </svg>
       {cap("the models are real. the keys are not yours to keep.")}</div>'''
 
@@ -195,7 +195,7 @@ def roster():
 
 # 7. COMPOUND - area curve: the borrowed trial peaks then cliffs to zero; the operator compounds
 def compound():
-    W,H=738,378; x0,x1,y0,yb=70,760,60,330
+    W,H=760,378; x0,x1,y0,yb=64,712,60,330
     def X(d): return x0+(d/300)*(x1-x0)
     def Y(v): return yb-v*(yb-y0)
     opts=[(0,0.05),(30,0.12),(90,0.30),(180,0.60),(300,0.95)]

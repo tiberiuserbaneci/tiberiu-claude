@@ -50,11 +50,11 @@ def cage():
 
 # 2. TAX - IVORY gauge pinned at FLAGSHIP + 3 job rows all stamped the same rate, small ones overpaid
 def tax():
-    cx,cy,R=150,168,120
+    cx,cy,R=160,150,108
     ticks=""
     for i,lab in enumerate(["LITE","SMART","DEEP","FLAG"]):
         a=180-(i*60); x=cx+R*math.cos(math.radians(a)); y=cy-R*math.sin(math.radians(a))
-        xo=cx+(R+20)*math.cos(math.radians(a)); yo=cy-(R+20)*math.sin(math.radians(a))
+        xo=cx+(R+22)*math.cos(math.radians(a)); yo=cy-(R+22)*math.sin(math.radians(a))
         ticks+=(f'<line x1="{x:.0f}" y1="{y:.0f}" x2="{cx+(R-16)*math.cos(math.radians(a)):.0f}" y2="{cy-(R-16)*math.sin(math.radians(a)):.0f}" stroke="rgba(150,90,45,.4)" stroke-width="2.5"/>'
           f'<text x="{xo:.0f}" y="{yo+4:.0f}" text-anchor="middle" font-family="DM Mono" font-size="11" fill="#96562d">{lab}</text>')
     na=0  # needle pinned at FLAG (rightmost, a=0)
@@ -70,14 +70,14 @@ def tax():
     return f'''<div style="width:900px;{CARDIV};padding:36px 42px 34px">
       {htitle_iv("One tier taxes every job","FLAT RATE")}
       <div style="display:flex;align-items:center;gap:34px">
-        <svg width="300" height="220" viewBox="0 0 300 220" style="flex-shrink:0">
+        <svg width="340" height="250" viewBox="0 0 340 250" style="flex-shrink:0">
           <path d="M{cx-R} {cy} A{R} {R} 0 0 1 {cx+R} {cy}" fill="none" stroke="rgba(150,90,45,.18)" stroke-width="16" stroke-linecap="round"/>
           <path d="M{cx-R} {cy} A{R} {R} 0 0 1 {cx+R} {cy}" fill="none" stroke="rgb(200,70,35)" stroke-width="16" stroke-linecap="round" stroke-dasharray="{math.pi*R*0.92:.0f} 999"/>
           {ticks}
           <line x1="{cx}" y1="{cy}" x2="{nx:.0f}" y2="{ny:.0f}" stroke="#2a2016" stroke-width="5" stroke-linecap="round"/>
           <circle cx="{cx}" cy="{cy}" r="9" fill="#2a2016"/>
-          <text x="{cx}" y="{cy+34}" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="20" fill="#2a2016">MAX</text>
-          <text x="{cx}" y="{cy+54}" text-anchor="middle" font-family="DM Mono" font-size="11" fill="#96562d">no way to turn it down</text>
+          <text x="{cx}" y="{cy+40}" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="20" fill="#2a2016">MAX</text>
+          <text x="{cx}" y="{cy+62}" text-anchor="middle" font-family="DM Mono" font-size="11" fill="#96562d">no way to turn it down</text>
         </svg>
         <div style="flex:1;display:flex;flex-direction:column;gap:11px">{rh}</div>
       </div>

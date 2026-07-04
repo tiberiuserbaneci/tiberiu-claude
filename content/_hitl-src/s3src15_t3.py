@@ -122,15 +122,16 @@ def sharedcore():
 
 # 5. READJOB - left-to-right lane: a job passes through the VAULT which injects 3 context chips into it
 def readjob():
+    ox,oy,orr=270,232,56
     ctx=[("ICP","seed IT founders, US/UK"),("PRICING","cents per token"),("WON","Initech, closed Mar")]
     chips=""
     for i,(k,v) in enumerate(ctx):
-        y=96+i*92
-        chips+=(f'<g><rect x="298" y="{y-30}" width="230" height="60" rx="13" fill="#211e1a" stroke="rgba(212,162,127,.32)"/>'
-            f'<rect x="298" y="{y-30}" width="8" height="60" rx="4" fill="rgb({ACC})"/>'
-            f'<text x="322" y="{y-6}" font-family="DM Mono" font-size="12" letter-spacing=".08em" fill="rgb({ACC})">{k}</text>'
-            f'<text x="322" y="{y+16}" font-family="DM Sans" font-size="15" fill="#d9d5cc">{v}</text>'
-            f'<path d="M414 {y+30} V{y+60 if i<2 else y+58}" stroke="rgba(212,162,127,.4)" stroke-width="2" stroke-dasharray="3 5"/></g>')
+        y=140+i*92
+        chips+=(f'<g><path d="M{ox+orr} {oy} C376 {oy},376 {y},404 {y}" fill="none" stroke="rgba(212,162,127,.4)" stroke-width="2" stroke-dasharray="3 5"/>'
+            f'<rect x="404" y="{y-30}" width="218" height="60" rx="13" fill="#211e1a" stroke="rgba(212,162,127,.32)"/>'
+            f'<rect x="404" y="{y-30}" width="8" height="60" rx="4" fill="rgb({ACC})"/>'
+            f'<text x="428" y="{y-6}" font-family="DM Mono" font-size="12" letter-spacing=".08em" fill="rgb({ACC})">{k}</text>'
+            f'<text x="428" y="{y+16}" font-family="DM Sans" font-size="15" fill="#d9d5cc">{v}</text></g>')
     return f'''<div style="width:900px;{CARD};padding:34px 40px 34px">
       {htitle("Read before it acts","AUTO-CONTEXT")}
       <svg width="810" height="440" viewBox="0 0 810 440" style="display:block;margin:0 auto">
@@ -139,17 +140,17 @@ def readjob():
         <rect x="24" y="196" width="150" height="72" rx="15" fill="#2a2724" stroke="rgba(255,255,255,.10)"/>
         <text x="99" y="228" text-anchor="middle" font-family="DM Mono" font-size="12" fill="#9a9488">JOB</text>
         <text x="99" y="250" text-anchor="middle" font-family="DM Sans" font-weight="700" font-size="15" fill="#FAFAF7">outbound</text>
-        <path d="M174 232 H236" stroke="rgb({ACC})" stroke-width="4" stroke-linecap="round"/>
-        <g filter="url(#vg5)"><circle cx="300" cy="232" r="58" fill="url(#v5)"/></g>
-        <text x="300" y="228" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="17" fill="#2a160c">VAULT</text>
-        <text x="300" y="248" text-anchor="middle" font-family="DM Mono" font-size="10" fill="#3a2010">loads context</text>
+        <path d="M174 232 H{ox-orr}" stroke="rgb({ACC})" stroke-width="4" stroke-linecap="round"/>
+        <g filter="url(#vg5)"><circle cx="{ox}" cy="{oy}" r="{orr}" fill="url(#v5)"/></g>
+        <text x="{ox}" y="{oy-4}" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="17" fill="#2a160c">VAULT</text>
+        <text x="{ox}" y="{oy+18}" text-anchor="middle" font-family="DM Mono" font-size="10" fill="#3a2010">loads context</text>
         {chips}
-        <path d="M528 232 H600" stroke="rgb({ACC})" stroke-width="4" stroke-linecap="round"/>
-        <rect x="600" y="176" width="186" height="112" rx="16" fill="#211e1a" stroke="rgba(212,162,127,.34)"/>
-        <text x="693" y="206" text-anchor="middle" font-family="DM Mono" font-size="12" letter-spacing=".1em" fill="rgb({ACC})">SPECTER</text>
-        <line x1="622" y1="230" x2="764" y2="230" stroke="rgba(250,250,247,.22)" stroke-width="2"/>
-        <line x1="622" y1="248" x2="764" y2="248" stroke="rgba(250,250,247,.16)" stroke-width="2"/>
-        <line x1="622" y1="266" x2="730" y2="266" stroke="rgba(250,250,247,.16)" stroke-width="2"/>
+        <path d="M622 232 H648" stroke="rgb({ACC})" stroke-width="4" stroke-linecap="round"/>
+        <rect x="648" y="176" width="160" height="112" rx="16" fill="#211e1a" stroke="rgba(212,162,127,.34)"/>
+        <text x="728" y="206" text-anchor="middle" font-family="DM Mono" font-size="12" letter-spacing=".1em" fill="rgb({ACC})">SPECTER</text>
+        <line x1="670" y1="230" x2="786" y2="230" stroke="rgba(250,250,247,.22)" stroke-width="2"/>
+        <line x1="670" y1="248" x2="786" y2="248" stroke="rgba(250,250,247,.16)" stroke-width="2"/>
+        <line x1="670" y1="266" x2="748" y2="266" stroke="rgba(250,250,247,.16)" stroke-width="2"/>
       </svg>
       {cap("every job pulls your icp, pricing and past wins before a word is written.")}</div>'''
 
@@ -162,11 +163,11 @@ def vault():
           ("WINS","41 closed, tagged","kept")]
     cards=""
     for i,(k,v,tag) in enumerate(rows):
-        y=i*94
+        y=i*84
         cards+=(f'<div style="position:absolute;left:0;top:{y}px;width:600px;background:linear-gradient(160deg,#fffdf8,#efe6d4);'
-            f'border:1px solid rgba(120,95,60,.2);border-radius:16px;padding:16px 22px;box-shadow:0 22px 34px rgba(120,95,60,.20), inset 0 2px 2px rgba(255,255,255,.9);display:flex;align-items:center;gap:20px">'
-            f'<div style="flex-shrink:0;width:74px;font-family:DM Mono;font-size:13px;letter-spacing:.08em;color:#96562d">{k}</div>'
-            f'<div style="flex:1;font-family:DM Sans;font-weight:700;font-size:20px;color:#2a2016">{v}</div>'
+            f'border:1px solid rgba(120,95,60,.2);border-radius:16px;padding:20px 24px;box-shadow:0 22px 34px rgba(120,95,60,.20), inset 0 2px 2px rgba(255,255,255,.9);display:flex;align-items:center;gap:24px">'
+            f'<div style="flex-shrink:0;width:96px;font-family:DM Mono;font-size:13px;letter-spacing:.08em;color:#96562d">{k}</div>'
+            f'<div style="flex:1;font-family:DM Sans;font-weight:700;font-size:21px;color:#2a2016">{v}</div>'
             f'<div style="flex-shrink:0;font-family:DM Mono;font-size:12px;color:#8a745a;background:rgba(150,90,45,.1);padding:4px 12px;border-radius:999px">{tag}</div></div>')
     return f'''<div style="width:900px;{CARDIV};padding:34px 42px 40px">
       <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:16px">

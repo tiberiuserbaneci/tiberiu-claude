@@ -18,7 +18,7 @@ def cap(t,c="#8f8f85"): return f'<div style="font-family:\'DM Mono\';font-size:1
 # 1. FLOOR - a front-on row of foundation-model plinths (bedrock). Swappable, rented by the token.
 def floor():
     plinths=[("CLAUDE",True),("GPT-5",False),("GEMINI",False),("GROK",False)]
-    w,h=158,132; dx,dy=26,26; x0=54; gap=28; base=316
+    w,h=158,210; dx,dy=30,30; x0=54; gap=28; base=196
     blocks=""
     for i,(nm,lit) in enumerate(plinths):
         x=x0+i*(w+gap)
@@ -36,12 +36,12 @@ def floor():
             blocks+=f'<text x="{x+w/2:.0f}" y="{base+h/2+26:.0f}" text-anchor="middle" font-family="DM Mono" font-size="11" letter-spacing=".1em" fill="rgba(26,15,10,.72)">DEFAULT</text>'
     return f'''<div style="width:900px;{CARD};padding:34px 40px 34px">
       {htitle("Models are the floor","THE BEDROCK")}
-      <svg width="820" height="430" viewBox="0 0 820 430" style="display:block;margin:0 auto">
+      <svg width="820" height="470" viewBox="0 0 820 470" style="display:block;margin:0 auto">
         <defs><linearGradient id="plit" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e2a878"/><stop offset="100%" stop-color="rgb({ACC})"/></linearGradient></defs>
-        <text x="410" y="52" text-anchor="middle" font-family="DM Mono" font-size="13" letter-spacing=".22em" fill="#7a746a">RAW INTELLIGENCE &middot; RENTED BY THE TOKEN</text>
+        <text x="410" y="66" text-anchor="middle" font-family="DM Mono" font-size="13" letter-spacing=".22em" fill="#7a746a">RAW INTELLIGENCE &middot; RENTED BY THE TOKEN</text>
         {blocks}
-        <line x1="30" y1="466" x2="790" y2="466" stroke="rgba(212,162,127,.18)" stroke-width="2"/>
-        <text x="410" y="426" text-anchor="middle" font-family="DM Mono" font-size="12.5" letter-spacing=".14em" fill="#8f8f85">SWAP ANY ONE - THE STACK ABOVE DOES NOT MOVE</text>
+        <line x1="30" y1="430" x2="790" y2="430" stroke="rgba(212,162,127,.18)" stroke-width="2"/>
+        <text x="410" y="458" text-anchor="middle" font-family="DM Mono" font-size="12.5" letter-spacing=".14em" fill="#8f8f85">SWAP ANY ONE - THE STACK ABOVE DOES NOT MOVE</text>
       </svg>
       {cap("four models, one floor. everything that matters is built on top of them.")}</div>'''
 
