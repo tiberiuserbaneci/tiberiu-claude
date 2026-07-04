@@ -1,148 +1,256 @@
 #!/usr/bin/env python3
-# TIER 3 - HOW REAL AGENTS ARE BUILT. forms: react trace / merge card / plan->run handoff /
-# version iteration / 7-specialists-vs-giant / 5-layer stack / trigger control / same-model outcome.
-import importlib.util, math
-t=importlib.util.spec_from_file_location("B","/home/user/tiberiu-claude/content/_hitl-src/t3base.py")
-B=importlib.util.module_from_spec(t); t.loader.exec_module(B)
-CARD=B.CARD; INK=B.INK; MUT=B.MUT; DIM=B.DIM
-ACC="204,120,92"
-def foot(items):
-    chips="".join(f'<div style="flex:1;text-align:center;padding:18px 8px;background:#191614;border:1px solid rgba(255,255,255,.06);border-radius:14px"><div style="font-family:DM Sans;font-weight:900;font-size:28px;color:rgb({ACC});line-height:1">{b}</div><div style="font-family:DM Mono;font-size:11.5px;letter-spacing:.08em;color:{MUT};margin-top:7px">{s}</div></div>' for b,s in items)
-    return f'<div style="display:flex;gap:12px;margin-top:22px">{chips}</div>'
-def head(t,tag): return (f'<div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px">'
-    f'<span style="font-family:\'DM Sans\';font-weight:800;font-size:26px;color:#FAFAF7">{t}</span>'
+# TIER 3 - HOW REAL AGENTS ARE BUILT, rebuilt to the WIRE-ITS-EYES bar: each panel a UNIQUE
+# hand-built coded scene filling a clean rounded card, title + one-line caption, NO generic
+# stat-chip strips. Clean rounded cards only (CARD / CARDIV) - no clip-path, no side-walls.
+import importlib.util, os, math
+from playwright.sync_api import sync_playwright
+ROOT="/home/user/tiberiu-claude"
+L=importlib.util.spec_from_file_location("L",f"{ROOT}/content/_hitl-src/clay3d_v4.py")
+Lm=importlib.util.module_from_spec(L); L.loader.exec_module(Lm)
+ACC="212,162,127"
+CARD='background:linear-gradient(165deg,#2b2b28,#1d1d1b);border:1px solid rgba(255,255,255,.07);border-radius:34px;box-shadow:0 42px 80px rgba(0,0,0,.55),0 16px 34px rgba(0,0,0,.44), inset 0 2.5px 3px rgba(255,255,255,.12), inset 0 -14px 30px rgba(0,0,0,.45)'
+CARDIV='background:linear-gradient(160deg,#fdfbf6,#efe6d5 62%,#e6dac4);border:1px solid rgba(120,95,60,.16);border-radius:34px;box-shadow:0 40px 70px rgba(120,95,60,.20),0 14px 28px rgba(120,95,60,.14), inset 0 2px 3px rgba(255,255,255,.95), inset 0 -16px 34px rgba(150,120,80,.12)'
+def htitle(t,tag,ink="#FAFAF7"): return (f'<div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px">'
+    f'<span style="font-family:\'DM Sans\';font-weight:800;font-size:26px;color:{ink}">{t}</span>'
     f'<span style="font-family:\'DM Mono\';font-size:13px;letter-spacing:.14em;color:rgb({ACC})">{tag}</span></div>')
+def cap(t,c="#8f8f85"): return f'<div style="font-family:\'DM Mono\';font-size:14px;color:{c};margin-top:16px">{t}</div>'
 
-# 1. react trace with feedback loop
+# 1. REACT - the reasoning loop drawn as a true circular flow: THINK -> ACT -> OBSERVE -> back
 def react():
-    steps=["THINK","ACT","LOOK"]
-    nodes=""
-    for i,s in enumerate(steps):
-        x=90+i*230
-        nodes+=(f'<g transform="translate({x},120)"><rect x="-70" y="-40" width="140" height="80" rx="16" fill="#2a2723" stroke="rgba(204,120,92,.4)" stroke-width="1.5"/>'
-          f'<text x="0" y="7" text-anchor="middle" font-family="DM Mono" font-size="18" letter-spacing="2" fill="#e9e3d7">{s}</text></g>')
-        if i<2: nodes+=f'<path d="M{x+72} 120 H{x+156}" stroke="rgb({ACC})" stroke-width="3"/><path d="M{x+150} 113 L{x+162} 120 L{x+150} 127" fill="rgb({ACC})"/>'
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 38px">
-      {head("Think. Act. Look. Repeat.","PATTERN 1 · ReAct")}
-      <svg width="760" height="220" viewBox="0 0 760 220" style="width:100%">
-        {nodes}
-        <path d="M560 160 C560 210, 90 210, 90 165" fill="none" stroke="rgba(204,120,92,.55)" stroke-width="3" stroke-dasharray="3 8"/>
-        <path d="M96 175 L90 160 L82 173" fill="rgb({ACC})"/>
-        <text x="325" y="205" text-anchor="middle" font-family="DM Mono" font-size="13" fill="{MUT}">observe → reason again, until it is right</text>
-      </svg>
-      {foot([("3","STEP LOOP"),("N","ITERATIONS"),("1","RIGHT ANSWER")])}</div>'''
-
-# 2. merge card (code action, product-UI)
-def codeact():
-    files=[("auth/login.ts","+42 −8"),("api/session.ts","+15 −3"),("tests/login.test.ts","+30 −0")]
-    rows="".join(f'<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06)"><span style="font-family:DM Mono;font-size:15px;color:#cfc9bd">{f}</span><span style="font-family:DM Mono;font-size:14px;color:rgb({ACC})">{d}</span></div>' for f,d in files)
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 38px">
-      {head("It does not describe fixes","PATTERN 2 · CodeAct")}
-      <div style="background:#191614;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:20px 22px">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><span style="font-family:DM Sans;font-weight:800;font-size:19px;color:#FAFAF7">fix/login-bug</span><span style="font-family:DM Mono;font-size:12px;color:{MUT}">3 files</span>
-        <span style="margin-left:auto;display:flex;align-items:center;gap:7px;font-family:DM Mono;font-size:13px;color:#7fd39a"><span style="width:9px;height:9px;border-radius:50%;background:#7fd39a"></span>tests pass</span></div>
-        {rows}
-        <div style="display:flex;align-items:center;gap:12px;margin-top:16px"><div style="background:rgb({ACC});border-radius:10px;padding:11px 22px;font-family:DM Sans;font-weight:900;font-size:17px;color:#1a0f0a">Merged ✓</div><span style="font-family:DM Mono;font-size:13px;color:{MUT}">it acts on the repo, not on a suggestion</span></div></div>
-      {foot([("3","FILES CHANGED"),("+87","LINES"),("0","YOU TYPED")])}</div>'''
-
-# 3. plan -> run handoff (big brain plans, cheap runs)
-def plan():
-    steps=["pull leads","score fit","draft replies","queue sends"]
-    chips="".join(f'<div style="display:flex;align-items:center;gap:10px;padding:8px 0"><span style="font-family:DM Mono;font-size:13px;color:rgb({ACC})">{i+1}</span><span style="font-family:DM Sans;font-size:16px;color:#d7d1c6">{s}</span></div>' for i,s in enumerate(steps))
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 38px">
-      {head("Plan big. Run cheap.","PATTERN 3 · PLANNER")}
-      <div style="display:flex;align-items:stretch;gap:20px">
-        <div style="flex:1;background:linear-gradient(160deg,rgba(204,120,92,.14),rgba(204,120,92,.04));border:1px solid rgba(204,120,92,.34);border-radius:16px;padding:18px 20px">
-          <div style="font-family:DM Mono;font-size:12px;letter-spacing:.12em;color:rgb({ACC});margin-bottom:8px">PLAN · DEEP MODEL</div>
-          <div style="font-family:DM Sans;font-weight:800;font-size:19px;color:#FAFAF7;margin-bottom:8px">builds the plan once</div>{chips}
-          <div style="font-family:DM Mono;font-size:12px;color:{MUT};margin-top:6px">~1 call · pennies</div></div>
-        <div style="flex-shrink:0;align-self:center"><svg width="46" height="24" viewBox="0 0 46 24"><path d="M2 12 H36 M28 5 L44 12 L28 19" fill="none" stroke="rgb({ACC})" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <div style="flex:1;background:#221f1b;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px 20px">
-          <div style="font-family:DM Mono;font-size:12px;letter-spacing:.12em;color:{MUT};margin-bottom:8px">RUN · LITE MODEL</div>
-          <div style="font-family:DM Sans;font-weight:800;font-size:19px;color:#FAFAF7;margin-bottom:10px">executes each step</div>
-          {"".join(f'<div style="height:12px;border-radius:6px;background:rgba(204,120,92,{0.5-i*0.1});margin-bottom:8px"></div>' for i in range(4))}
-          <div style="font-family:DM Mono;font-size:12px;color:{MUT};margin-top:2px">240 runs · cents total</div></div>
-      </div>
-      {foot([("1","DEEP PLAN"),("240","LITE RUNS"),("cents","TOTAL")])}</div>'''
-
-# 4. version iteration v1->v3
-def reflect():
-    vs=[("v1","first attempt","discarded",False),("v2","self-critiqued","discarded",False),("v3","delivered to you","shipped",True)]
-    rows=""
-    for v,note,tag,on in vs:
-        rows+=(f'<div style="display:flex;align-items:center;gap:18px;background:{"linear-gradient(160deg,rgba(204,120,92,.14),rgba(204,120,92,.04))" if on else "#221f1b"};border:1px solid {"rgba(204,120,92,.4)" if on else "rgba(255,255,255,.06)"};border-radius:14px;padding:16px 20px;margin-bottom:10px;{"box-shadow:0 0 34px rgba(204,120,92,.12)" if on else "opacity:.6"}">'
-          f'<span style="font-family:DM Sans;font-weight:900;font-size:30px;color:{f"rgb({ACC})" if on else DIM};width:60px">{v}</span>'
-          f'<span style="flex:1;font-family:DM Sans;font-weight:{800 if on else 500};font-size:19px;color:{"#FAFAF7" if on else "#9a9488"}">{note}</span>'
-          f'<span style="font-family:DM Mono;font-size:13px;color:{f"rgb({ACC})" if on else DIM}">{tag}</span></div>')
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 36px">
-      {head("v1 never reaches you","PATTERN 4 · REFLECT")}{rows}
-      {foot([("3","DRAFTS"),("2","SELF-KILLED"),("v3","YOU SEE")])}</div>'''
-
-# 5. seven specialists vs one giant
-def multi():
-    specs=["Research","Outbound","Deals","Content","Code","Publish","Legal"]
-    chips="".join(f'<div style="background:#2a2723;border:1px solid rgba(204,120,92,.24);border-radius:10px;padding:10px 8px;text-align:center;font-family:DM Sans;font-weight:700;font-size:14px;color:#e9e3d7">{s}</div>' for s in specs)
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 38px">
-      {head("Seven specialists beat one giant","PATTERN 5 · MULTI")}
-      <div style="display:flex;align-items:center;gap:30px">
-        <div style="flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:10px">{chips}
-          <div style="background:rgb({ACC});border-radius:10px;padding:10px 8px;text-align:center;font-family:DM Sans;font-weight:900;font-size:14px;color:#1a0f0a">+ orchestrator</div></div>
-        <div style="font-family:DM Sans;font-weight:900;font-size:40px;color:rgb({ACC})">&gt;</div>
-        <div style="flex-shrink:0;width:150px;text-align:center;opacity:.55">
-          <div style="width:120px;height:120px;margin:0 auto;border-radius:50%;background:#33302b;border:1px dashed {DIM};display:flex;align-items:center;justify-content:center;font-family:DM Sans;font-weight:700;font-size:15px;color:{MUT}">one<br>giant</div>
-          <div style="font-family:DM Mono;font-size:12px;color:{DIM};margin-top:8px">jack of all</div></div>
-      </div>
-      {foot([("7","SPECIALISTS"),("1","ORCHESTRATOR"),("&gt;","ONE GIANT")])}</div>'''
-
-# 6. five-layer stack
-def stack():
-    layers=[("MULTI","specialists + orchestrator"),("REFLECT","v3, not v1"),("PLAN · RUN","deep plans, lite runs"),("CodeAct","acts, not describes"),("ReAct","think · act · look")]
-    rows=""
-    for i,(nm,sub) in enumerate(layers):
-        w=100-i*7
-        rows+=(f'<div style="width:{w}%;margin:0 auto 8px;background:linear-gradient(160deg,rgba(204,120,92,{0.20-i*0.03}),rgba(204,120,92,.04));border:1px solid rgba(204,120,92,.28);border-radius:12px;padding:13px 20px;display:flex;justify-content:space-between;align-items:center">'
-          f'<span style="font-family:DM Sans;font-weight:800;font-size:18px;color:#FAFAF7">{nm}</span>'
-          f'<span style="font-family:DM Mono;font-size:13px;color:{MUT}">{sub}</span></div>')
+    cx,cy,R=310,235,150
+    nodes=[("THINK","reasons about the goal",-90),("ACT","calls one tool",30),("OBSERVE","reads what came back",150)]
+    nb=""
+    for nm,sub,a in nodes:
+        x=cx+R*math.cos(math.radians(a)); y=cy+R*math.sin(math.radians(a))
+        on=(nm=="THINK")
+        bd=f"rgb({ACC})" if on else "rgba(255,255,255,.12)"
+        nb+=(f'<g><rect x="{x-84:.0f}" y="{y-38:.0f}" width="168" height="76" rx="18" fill="#2a2622" stroke="{bd}" stroke-width="{2.4 if on else 1.4}"/>'
+             f'<rect x="{x-84:.0f}" y="{y-38:.0f}" width="168" height="76" rx="18" fill="url(#nf)" opacity="{0.9 if on else 0.55}"/>'
+             f'<text x="{x:.0f}" y="{y-6:.0f}" text-anchor="middle" font-family="DM Mono" font-size="16" letter-spacing=".14em" fill="{"#FAFAF7" if on else "#e2dccf"}">{nm}</text>'
+             f'<text x="{x:.0f}" y="{y+18:.0f}" text-anchor="middle" font-family="DM Sans" font-size="13.5" fill="#9a9488">{sub}</text></g>')
+    arcs=""
+    for a1,a2 in ((-90,30),(30,150),(150,270)):
+        sa=math.radians(a1+26); ea=math.radians(a2-26)
+        x1=cx+R*math.cos(sa); y1=cy+R*math.sin(sa); x2=cx+R*math.cos(ea); y2=cy+R*math.sin(ea)
+        arcs+=f'<path d="M{x1:.0f} {y1:.0f} A{R} {R} 0 0 1 {x2:.0f} {y2:.0f}" fill="none" stroke="rgb({ACC})" stroke-width="3.5" marker-end="url(#ah)"/>'
     return f'''<div style="width:900px;{CARD};padding:34px 40px 34px">
-      {head("Real systems stack all five","THE STACK")}{rows}
-      {foot([("5","LAYERS"),("1","STACK"),("0","SHORTCUTS")])}</div>'''
+      {htitle("Think, act, look. Then think again","REACT LOOP")}
+      <svg width="620" height="470" viewBox="0 0 620 470" style="display:block;margin:0 auto">
+        <defs>
+          <linearGradient id="nf" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(255,255,255,.06)"/><stop offset="100%" stop-color="rgba(0,0,0,.2)"/></linearGradient>
+          <marker id="ah" markerWidth="11" markerHeight="11" refX="7" refY="5.5" orient="auto"><path d="M1 1 L9 5.5 L1 10 Z" fill="rgb({ACC})"/></marker>
+        </defs>
+        {arcs}{nb}
+        <circle cx="{cx}" cy="{cy}" r="46" fill="#211d19" stroke="rgba(212,162,127,.4)" stroke-width="1.5"/>
+        <text x="{cx}" y="{cy-4}" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="26" fill="rgb({ACC})">x4</text>
+        <text x="{cx}" y="{cy+18}" text-anchor="middle" font-family="DM Mono" font-size="11" letter-spacing=".08em" fill="#8f8f85">till done</text>
+      </svg>
+      {cap("real agents reason before every tool call and check what came back.")}</div>'''
 
-# 7. trigger control - human on the trigger
+# 2. CODEACT - a git-merge graph: SENTINEL writes on a branch, tests pass, merged to main
+def codeact():
+    W,H=820,430
+    yb,ym=300,150   # base(main) lane, merge(branch) lane
+    commits=[("write the fix",180),("run the tests",370),("build passes",560)]
+    dots=""
+    for nm,x in commits:
+        dots+=(f'<circle cx="{x}" cy="{ym}" r="15" fill="#2a2622" stroke="rgb({ACC})" stroke-width="3"/>'
+               f'<circle cx="{x}" cy="{ym}" r="6" fill="rgb({ACC})"/>'
+               f'<text x="{x}" y="{ym-34}" text-anchor="middle" font-family="DM Mono" font-size="14" fill="#d9d5cc">{nm}</text>')
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 34px">
+      {htitle("It does not describe fixes. It merges them","SENTINEL")}
+      <svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" style="display:block;margin:0 auto">
+        <defs><radialGradient id="mg" cx="36%" cy="30%"><stop offset="0%" stop-color="#f0c49e"/><stop offset="55%" stop-color="rgb({ACC})"/><stop offset="100%" stop-color="#7a4326"/></radialGradient>
+        <filter id="mgw" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="0" stdDeviation="16" flood-color="rgb({ACC})" flood-opacity="0.42"/></filter></defs>
+        <line x1="40" y1="{yb}" x2="700" y2="{yb}" stroke="rgba(255,255,255,.18)" stroke-width="5"/>
+        <circle cx="40" cy="{yb}" r="12" fill="#2a2622" stroke="rgba(255,255,255,.3)" stroke-width="2.5"/>
+        <text x="40" y="{yb+38}" text-anchor="middle" font-family="DM Mono" font-size="14" fill="#8f8f85">main</text>
+        <path d="M40 {yb} C120 {yb},120 {ym},200 {ym}" fill="none" stroke="rgb({ACC})" stroke-width="4"/>
+        <line x1="200" y1="{ym}" x2="560" y2="{ym}" stroke="rgb({ACC})" stroke-width="4"/>
+        <path d="M560 {ym} C660 {ym},640 {yb},700 {yb}" fill="none" stroke="rgb({ACC})" stroke-width="4"/>
+        {dots}
+        <g filter="url(#mgw)"><circle cx="700" cy="{yb}" r="42" fill="url(#mg)"/></g>
+        <path d="M684 {yb} l11 11 l22 -26" fill="none" stroke="#1a0f0a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="700" y="{yb+72}" text-anchor="middle" font-family="DM Sans" font-weight="800" font-size="16" fill="#FAFAF7">Merged</text>
+        <text x="700" y="{yb+94}" text-anchor="middle" font-family="DM Mono" font-size="12" fill="#8f8f85">PR #182</text>
+        <g transform="translate(300,{ym+58})"><rect x="0" y="0" width="230" height="52" rx="14" fill="#211d19" stroke="rgba(212,162,127,.3)"/>
+          <circle cx="30" cy="26" r="13" fill="rgba(212,162,127,.16)"/><path d="M23 26.5 l5 5 l10 -12" fill="none" stroke="rgb({ACC})" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="56" y="32" font-family="DM Sans" font-weight="700" font-size="17" fill="#e6d6c2">42 passed &middot; 0 failed</text></g>
+      </svg>
+      {cap("plain english in, a tested pull request out - it writes it, not describes it.")}</div>'''
+
+# 3. PLAN - IVORY: deep tier drafts the plan once, the light tier runs each step (cents)
+def plan():
+    steps=["profile the account","find the trigger","draft the opener","queue the follow-ups"]
+    plancard=""
+    for i,s in enumerate(steps):
+        plancard+=(f'<div style="display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:{"1px solid rgba(120,95,60,.16)" if i<3 else "none"}">'
+          f'<span style="flex-shrink:0;width:26px;height:26px;border-radius:8px;background:#96562d;color:#fff;font-family:DM Sans;font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center">{i+1}</span>'
+          f'<span style="font-family:DM Sans;font-size:17px;color:#2a2016">{s}</span></div>')
+    runcard=""
+    for i,s in enumerate(steps):
+        runcard+=(f'<div style="display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:{"1px solid rgba(120,95,60,.16)" if i<3 else "none"}">'
+          f'<svg width="24" height="24" viewBox="0 0 24 24" style="flex-shrink:0"><circle cx="12" cy="12" r="11" fill="rgba(150,86,45,.14)"/><path d="M7 12.5l3.2 3.2L17 8.5" fill="none" stroke="#96562d" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+          f'<span style="font-family:DM Sans;font-size:17px;color:#5a4634">{s}</span>'
+          f'<span style="margin-left:auto;font-family:DM Mono;font-size:12px;color:#a08a68">0.02c</span></div>')
+    return f'''<div style="width:900px;{CARDIV};padding:34px 40px 34px">
+      {htitle("Plan with the big brain. Run with the cheap one","PLAN / RUN","#2a2016")}
+      <div style="display:flex;align-items:stretch;gap:20px">
+        <div style="flex:1;background:rgba(255,255,255,.55);border:1px solid rgba(120,95,60,.16);border-radius:18px;padding:16px 20px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px"><span style="font-family:DM Mono;font-size:13px;letter-spacing:.1em;color:#96562d">DEEP</span><span style="font-family:DM Sans;font-size:14px;color:#8a745a">plans once</span></div>
+          {plancard}</div>
+        <div style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#96562d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 6l6 6-6 6"/></svg>
+          <span style="font-family:DM Mono;font-size:11px;color:#a08a68;margin-top:6px">hands off</span></div>
+        <div style="flex:1;background:rgba(255,255,255,.55);border:1px solid rgba(120,95,60,.16);border-radius:18px;padding:16px 20px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px"><span style="font-family:DM Mono;font-size:13px;letter-spacing:.1em;color:#96562d">LITE</span><span style="font-family:DM Sans;font-size:14px;color:#8a745a">runs each</span></div>
+          {runcard}</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;margin-top:16px;background:rgba(150,86,45,.1);border-radius:12px;padding:12px 18px">
+        <span style="font-family:DM Sans;font-weight:900;font-size:24px;color:#96562d">0.08c</span>
+        <span style="font-family:DM Sans;font-size:16px;color:#5a4634">total for the whole run. cents, not seats.</span></div>
+      {cap("one deep plan, four cheap steps - judgement where it counts, thrift everywhere else.","#8a745a")}</div>'''
+
+# 4. REFLECT - IVORY: version stack scored against your bar, only v3 clears
+def reflect():
+    vers=[("v1",58,"first pass",False),("v2",71,"tightened",False),("v3",94,"cleared",True)]
+    rows=""
+    for nm,sc,note,ok in vers:
+        w=int(sc/100*340)
+        fill="#96562d" if ok else "rgba(200,70,35,.75)"
+        mark=('<svg width="26" height="26" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="rgba(150,86,45,.16)"/><path d="M7 12.5l3.2 3.2L17 8.5" fill="none" stroke="#96562d" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>' if ok
+              else '<svg width="26" height="26" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="rgba(200,70,35,.12)"/><path d="M8 8l8 8M16 8l-8 8" fill="none" stroke="rgba(200,70,35,.85)" stroke-width="2.6" stroke-linecap="round"/></svg>')
+        op="1" if ok else ".62"
+        rows+=(f'<div style="display:flex;align-items:center;gap:16px;opacity:{op}">'
+          f'<span style="flex-shrink:0;width:44px;font-family:DM Mono;font-weight:500;font-size:18px;color:#2a2016">{nm}</span>'
+          f'<div style="flex:1"><div style="height:16px;border-radius:8px;background:rgba(120,95,60,.14);overflow:hidden"><div style="width:{w}px;height:100%;border-radius:8px;background:{fill}"></div></div>'
+          f'<div style="font-family:DM Sans;font-size:13px;color:#8a745a;margin-top:4px">{note}</div></div>'
+          f'<span style="flex-shrink:0;font-family:DM Sans;font-weight:900;font-size:26px;color:{"#2a2016" if ok else "#a08a68"}">{sc}</span>'
+          f'<span style="flex-shrink:0">{mark}</span></div>')
+    return f'''<div style="width:900px;{CARDIV};padding:34px 40px 34px">
+      {htitle("v1 never reaches you. v3 does","SELF-CRITIQUE","#2a2016")}
+      <div style="background:rgba(255,255,255,.5);border:1px solid rgba(120,95,60,.16);border-radius:18px;padding:24px 28px;display:flex;flex-direction:column;gap:22px">
+        <div style="display:flex;justify-content:flex-end"><span style="font-family:DM Mono;font-size:12px;color:#96562d;letter-spacing:.06em;border:1px dashed #96562d;border-radius:8px;padding:5px 12px">your bar &middot; 90</span></div>
+        {rows}
+      </div>
+      {cap("it drafts, scores itself against your bar, and only ships the one that clears it.","#8a745a")}</div>'''
+
+# 5. MULTI - a constellation of 7 named specialists around one chat hub
+def multi():
+    cx,cy,R=310,238,178
+    agents=[("CORTEX","research"),("SPECTER","outbound"),("STRIKER","deals"),("PULSE","content"),
+            ("SENTINEL","code"),("AMPLIFY","publishing"),("COUNSEL","legal")]
+    spokes=""; nodes=""
+    for i,(nm,role) in enumerate(agents):
+        a=-90+i*(360/7)
+        x=cx+R*math.cos(math.radians(a)); y=cy+R*math.sin(math.radians(a))
+        spokes+=f'<line x1="{cx}" y1="{cy}" x2="{x:.0f}" y2="{y:.0f}" stroke="rgba(212,162,127,.28)" stroke-width="2"/>'
+        nodes+=(f'<circle cx="{x:.0f}" cy="{y:.0f}" r="38" fill="#241f1a" stroke="rgba(212,162,127,.4)" stroke-width="1.5"/>'
+          f'<text x="{x:.0f}" y="{y-2:.0f}" text-anchor="middle" font-family="DM Sans" font-weight="800" font-size="15" fill="#FAFAF7">{nm}</text>'
+          f'<text x="{x:.0f}" y="{y+16:.0f}" text-anchor="middle" font-family="DM Mono" font-size="10.5" fill="#9a9488">{role}</text>')
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 34px">
+      {htitle("Seven specialists beat one giant","SPECIALISTS")}
+      <svg width="620" height="476" viewBox="0 0 620 476" style="display:block;margin:0 auto">
+        <defs><radialGradient id="hubc" cx="36%" cy="30%"><stop offset="0%" stop-color="rgb({ACC})"/><stop offset="100%" stop-color="#7a4326"/></radialGradient>
+        <filter id="hgw" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="0" stdDeviation="18" flood-color="rgb({ACC})" flood-opacity="0.45"/></filter></defs>
+        {spokes}
+        <g filter="url(#hgw)"><circle cx="{cx}" cy="{cy}" r="62" fill="url(#hubc)"/></g>
+        <text x="{cx}" y="{cy-4}" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="17" fill="#1a0f0a">ONE CHAT</text>
+        <text x="{cx}" y="{cy+16}" text-anchor="middle" font-family="DM Mono" font-size="11" fill="#3a2010">routes the job</text>
+        {nodes}
+      </svg>
+      {cap("research, outbound, deals, content - one job each, done extremely well.")}</div>'''
+
+# 6. STACK - the five patterns stacked into one isometric system
+def stack():
+    layers=[("REACT LOOP","reason then act",0),("CODEACT","writes and merges",1),
+            ("PLAN / RUN","big brain, cheap hands",2),("SELF-CRITIQUE","only v3 ships",3),
+            ("SPECIALISTS","seven agents, one job",4)]
+    slabs=""
+    for nm,sub,i in layers:
+        y=(4-i)*96; top=(i==4)
+        bg="linear-gradient(160deg,#4a4038,#2b2420)" if top else "linear-gradient(160deg,#3a352f,#26221e)"
+        bd=f"rgb({ACC})" if top else "rgba(255,255,255,.12)"
+        glow="filter:drop-shadow(0 0 22px rgba(212,162,127,.32))" if top else ""
+        slabs+=(f'<div style="position:absolute;left:0;top:{y}px;width:520px;{glow};'
+          f'background:{bg};border:1.5px solid {bd};border-radius:16px;padding:16px 22px;'
+          f'box-shadow:0 26px 40px rgba(0,0,0,.5), inset 0 2px 2px rgba(255,255,255,.1);display:flex;align-items:center;gap:18px">'
+          f'<span style="flex-shrink:0;font-family:DM Sans;font-weight:900;font-size:30px;color:{"rgb("+ACC+")" if top else "rgba(212,162,127,.5)"}">{i+1}</span>'
+          f'<div><div style="font-family:DM Mono;font-size:14px;letter-spacing:.1em;color:{"#FAFAF7" if top else "#cfc9bd"}">{nm}</div>'
+          f'<div style="font-family:DM Sans;font-size:15px;color:#8f8f85">{sub}</div></div></div>')
+    return f'''<div style="width:900px;{CARD};padding:34px 44px 34px">
+      {htitle("Real systems stack all five","COMPOSED")}
+      <div style="perspective:2000px;height:494px;display:flex;align-items:center;justify-content:center">
+        <div style="transform-style:preserve-3d;transform:rotateX(24deg) rotateZ(-10deg);width:520px;height:460px;position:relative">{slabs}</div></div>
+      {cap("ultron composes all five per job. you just type the goal.")}</div>'''
+
+# 7. GATE - the sixth pattern: a human tap held between the agent and the one external action
 def gate():
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 42px">
-      {head("A human on the trigger","PATTERN 6 · GATE")}
-      <div style="display:flex;align-items:center;gap:36px;margin-top:6px">
-        <div style="flex:1">
-          <div style="font-family:DM Sans;font-weight:800;font-size:19px;color:#FAFAF7;margin-bottom:12px">loaded &amp; ready</div>
-          {"".join(f'<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><span style="width:9px;height:9px;border-radius:50%;background:rgb({ACC})"></span><span style="font-family:DM Sans;font-size:17px;color:#cfc9bd">{x}</span></div>' for x in ["plan built","240 actions staged","all cited"])}
-          <div style="font-family:DM Mono;font-size:13px;color:{MUT};margin-top:6px">safe until you fire it</div></div>
-        <div style="flex-shrink:0;text-align:center">
-          <div style="width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#e6b48f,rgb({ACC}) 55%,#7a4326);box-shadow:0 20px 40px rgba(0,0,0,.5),0 0 50px rgba(204,120,92,.3),inset 0 4px 6px rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center">
-            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#2a160c" stroke-width="1.8"><path d="M6 12 v4 a5 5 0 0 0 9.6 2 v-6 M6 12 v-4 a1.6 1.6 0 0 1 3.2 0 M9.2 8 v-2 a1.6 1.6 0 0 1 3.2 0 v2 M12.4 7 a1.6 1.6 0 0 1 3.2 0 v5"/></svg></div>
-          <div style="font-family:DM Sans;font-weight:800;font-size:18px;color:#FAFAF7;margin-top:12px">your finger</div></div>
-      </div>
-      {foot([("240","STAGED"),("1","YOUR TAP"),("0","AUTO-FIRE")])}</div>'''
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 36px">
+      {htitle("Pattern six: a human on the trigger","HUMAN GATE")}
+      <svg width="820" height="430" viewBox="0 0 820 430" style="display:block;margin:0 auto">
+        <defs><radialGradient id="ag" cx="38%" cy="32%"><stop offset="0%" stop-color="#f0c49e"/><stop offset="55%" stop-color="rgb({ACC})"/><stop offset="100%" stop-color="#7a4326"/></radialGradient>
+        <filter id="agw" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="0" stdDeviation="20" flood-color="rgb({ACC})" flood-opacity="0.4"/></filter></defs>
+        <g filter="url(#agw)"><circle cx="150" cy="215" r="104" fill="url(#ag)"/></g>
+        <text x="150" y="208" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="26" fill="#2a160c">AGENT</text>
+        <text x="150" y="238" text-anchor="middle" font-family="DM Mono" font-size="13" fill="#3a2010" letter-spacing=".1em">ready to send</text>
+        <path d="M258 215 H366" stroke="rgb({ACC})" stroke-width="5" stroke-dasharray="2 12" stroke-linecap="round"/>
+        <rect x="372" y="145" width="140" height="140" rx="30" fill="#201d19" stroke="rgb({ACC})" stroke-width="2.5"/>
+        <g transform="translate(414,183)"><rect x="0" y="34" width="56" height="42" rx="9" fill="none" stroke="rgb({ACC})" stroke-width="5"/><path d="M10 34 V21 a18 18 0 0 1 36 0 v13" fill="none" stroke="rgb({ACC})" stroke-width="5"/></g>
+        <text x="442" y="320" text-anchor="middle" font-family="DM Sans" font-weight="800" font-size="18" fill="#FAFAF7">your tap</text>
+        <path d="M518 215 H610" stroke="rgba(212,162,127,.35)" stroke-width="4" stroke-dasharray="6 8" stroke-linecap="round"/>
+        <rect x="614" y="160" width="176" height="110" rx="20" fill="#211d19" stroke="rgba(255,255,255,.1)"/>
+        <text x="702" y="196" text-anchor="middle" font-family="DM Sans" font-weight="700" font-size="18" fill="#e6d6c2">Send 240</text>
+        <text x="702" y="220" text-anchor="middle" font-family="DM Sans" font-weight="700" font-size="18" fill="#e6d6c2">emails</text>
+        <text x="702" y="250" text-anchor="middle" font-family="DM Mono" font-size="13" letter-spacing=".14em" fill="#c84623">HELD</text>
+      </svg>
+      {cap("the most reliable design keeps one human on the only external trigger.")}</div>'''
 
-# 8. same model, different outcome
+# 8. OPERATOR - outcome split: one model core, structured into different company workforces
 def operator():
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 40px">
-      {head("Same models. Different companies.","THE OPERATOR")}
-      <div style="display:flex;align-items:center;justify-content:center;gap:20px;margin:6px 0 8px">
-        <div style="background:#221f1b;border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:16px 22px;font-family:DM Sans;font-weight:800;font-size:20px;color:#FAFAF7">Same model</div>
+    def col(roles):
+        cards=""
+        for r in roles:
+            cards+=(f'<div style="background:linear-gradient(160deg,#332f2a,#221e1a);border:1px solid rgba(255,255,255,.1);border-radius:13px;'
+              f'padding:11px 16px;margin-bottom:10px;display:flex;align-items:center;gap:11px">'
+              f'<span style="width:9px;height:9px;border-radius:50%;background:rgb({ACC});flex-shrink:0"></span>'
+              f'<span style="font-family:DM Sans;font-weight:700;font-size:17px;color:#e6e0d6">{r}</span></div>')
+        return cards
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 34px">
+      {htitle("Same models. Different companies","WORKFORCE")}
+      <div style="display:flex;align-items:center;gap:24px">
+        <div style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:12px">
+          <div style="width:150px;height:150px;border-radius:26px;background:radial-gradient(circle at 36% 30%,#f0c49e,rgb({ACC}) 55%,#7a4326);
+            display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 40px rgba(212,162,127,.4)">
+            <span style="font-family:DM Sans;font-weight:900;font-size:22px;color:#2a160c">SAME</span>
+            <span style="font-family:DM Sans;font-weight:900;font-size:22px;color:#2a160c">MODELS</span></div>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgb({ACC})" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 6l6 6-6 6"/></svg>
+          <span style="font-family:DM Mono;font-size:11px;color:#8f8f85">structured</span>
+        </div>
+        <div style="flex:1;display:flex;gap:18px">
+          <div style="flex:1;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:16px 14px">
+            <div style="font-family:DM Sans;font-weight:900;font-size:16px;color:#FAFAF7;text-align:center;margin-bottom:6px">SaaS startup</div>
+            <div style="font-family:DM Mono;font-size:12px;letter-spacing:.12em;color:rgb({ACC});text-align:center;margin-bottom:12px">OUTBOUND</div>
+            {col(["SDR","Researcher","Closer"])}</div>
+          <div style="flex:1;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:16px 14px">
+            <div style="font-family:DM Sans;font-weight:900;font-size:16px;color:#FAFAF7;text-align:center;margin-bottom:6px">Agency</div>
+            <div style="font-family:DM Mono;font-size:12px;letter-spacing:.12em;color:rgb({ACC});text-align:center;margin-bottom:12px">DELIVERY</div>
+            {col(["Writer","Analyst","Account PM"])}</div>
+        </div>
       </div>
-      <div style="display:flex;gap:20px;margin-top:10px">
-        <div style="flex:1;background:#211d19;border:1px dashed rgba(255,255,255,.14);border-radius:16px;padding:20px;opacity:.7">
-          <div style="font-family:DM Mono;font-size:12px;letter-spacing:.12em;color:{MUT};margin-bottom:8px">NO PATTERNS</div>
-          <div style="font-family:DM Sans;font-weight:700;font-size:20px;color:#bdb7ab">still prompting</div>
-          <div style="font-family:DM Sans;font-size:15px;color:{DIM};margin-top:6px">chat in, copy out, repeat</div></div>
-        <div style="flex:1;background:linear-gradient(160deg,rgba(204,120,92,.16),rgba(204,120,92,.05));border:1px solid rgba(204,120,92,.4);border-radius:16px;padding:20px;box-shadow:0 0 40px rgba(204,120,92,.12)">
-          <div style="font-family:DM Mono;font-size:12px;letter-spacing:.12em;color:rgb({ACC});margin-bottom:8px">FIVE PATTERNS</div>
-          <div style="font-family:DM Sans;font-weight:900;font-size:20px;color:#FAFAF7">a shipping company</div>
-          <div style="font-family:DM Sans;font-size:15px;color:rgb({ACC});margin-top:6px">systems that run without you</div></div>
-      </div>
-      {foot([("same","MODEL"),("5","PATTERNS"),("1","SHIPPING CO")])}</div>'''
+      {cap("the same models, structured right, become a workforce.")}</div>'''
 
 PANELS={"react":react(),"codeact":codeact(),"plan":plan(),"reflect":reflect(),
         "multi":multi(),"stack":stack(),"gate":gate(),"operator":operator()}
 if __name__=="__main__":
-    print("patterns t3:"); B.render("patterns",PANELS)
+    outd=f"{ROOT}/content/_hitl-src/models_clay/patterns"; os.makedirs(outd,exist_ok=True)
+    with sync_playwright() as pw:
+        b=pw.chromium.launch(executable_path="/opt/pw-browsers/chromium",args=["--no-sandbox","--no-proxy-server"])
+        pg=b.new_page(viewport={"width":960,"height":900},device_scale_factor=2)
+        for name,html in PANELS.items():
+            full=f"<!DOCTYPE html><html><head><meta charset='utf-8'><style>{Lm.css(ACC)}</style></head><body style='padding:30px'>{html}</body></html>"
+            pg.set_content(full); pg.wait_for_timeout(400)
+            pg.screenshot(path=f"{outd}/{name}.png",omit_background=True,full_page=True)
+            print("rendered",name)
+        b.close()
+    print("done")
