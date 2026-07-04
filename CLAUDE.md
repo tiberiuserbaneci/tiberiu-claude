@@ -1172,6 +1172,33 @@ into `analysis/virality-principles.md`. Metrics priority stays: reach+impression
 
 ---
 
+## 31.0 3D ELEMENT — CANONICAL DESIGN RULES (operator, 2026-07-04 — BINDING, per §0.1, validated on the model)
+
+> These are the FIRST design rules for the IG/TikTok 3D element (the panel on each slide). Canonical.
+> A material passes ONLY if every panel obeys all five. Validated on the reference model
+> (`content/_hitl-src/model_panel.py`, "It saw the round first"): 4 signal rows with bars + a
+> who-knew-first comparison + a head-start stat + a week timeline — dense, real, no dead space.
+
+1. **DENSE REAL DESIGN — never a big card with two words.** The element fills its zone with real,
+   weighty content: multi-column/multi-section (data rows + bars + comparison + stat + timeline/chips).
+   Use ALL the capacity to design. FORBIDDEN: sparse black plate with a headline and one thin line;
+   `justify-content:space-between` used to STRETCH thin content across empty height (that is dead space,
+   not fill — §27.9). Fill by ADDING real content, not by stretching.
+2. **NEVER repeat the same shape within a material.** The 8 panels of one deck each use a DIFFERENT
+   form/treatment/layout — not all the same dark plate. Vary the shape per panel (§27.10 / §30).
+3. **Panel colour is white OR dark, independent of the background** — all four combos are allowed and
+   should be mixed across a deck: dark-bg/dark-panel (`B.CARD`), dark-bg/white-panel (`CARDIV`),
+   light-bg/dark-panel, light-bg/white-panel. The editorial slide bg already alternates light/dark.
+4. **The element is 3D.** Real depth — layered shadows, bevels, inner highlights, premium `app.51ultron.com/docs`
+   finish (`B.CARD`/`CARDIV` carry it). Never a flat rectangle.
+5. **ALIGNMENT + SAFE ZONE (enforced in `build_ed45.py`).** Element LEFT edge = the text left edge (x=80);
+   element RIGHT edge ≤ **840** (clears the IG like/comment icon rail — the hard limit). The progress bar
+   starts at x=80 and ends at 840 too. Left margin (0→80) has NO IG UI, it is just design padding.
+   Top-anchored under the sub-hook, fills the working band top→bottom. Tier-3 panels render from
+   `{slug}_t3.py` → `t3base.render` (never `adapt_panels.py`/clay3d).
+
+---
+
 ## 31. THE THREE MATERIAL TYPES (operator, 2026-06-28 - binding, per §0.1)
 
 > Every deliverable is exactly ONE of three types. These rules are permanent and supersede any
