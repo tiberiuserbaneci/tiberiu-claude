@@ -1172,30 +1172,43 @@ into `analysis/virality-principles.md`. Metrics priority stays: reach+impression
 
 ---
 
-## 31.0 3D ELEMENT — CANONICAL DESIGN RULES (operator, 2026-07-04 — BINDING, per §0.1, validated on the model)
+## 31.0 THE PANEL ELEMENT — CANONICAL DESIGN RULE (operator, 2026-07-04 — BINDING, per §0.1)
 
-> These are the FIRST design rules for the IG/TikTok 3D element (the panel on each slide). Canonical.
-> A material passes ONLY if every panel obeys all five. Validated on the reference model
-> (`content/_hitl-src/model_panel.py`, "It saw the round first"): 4 signal rows with bars + a
-> who-knew-first comparison + a head-start stat + a week timeline — dense, real, no dead space.
+> **THE SINGLE REFERENCE IS `content/_hitl-src/eyes_t3.py`** ("WIRE ITS EYES") — the only material the
+> operator ever called good. `content/_hitl-src/aibody_t3.py` is the second operator-approved example.
+> Every Tier-3 material's panels must match that bar. This rule SUPERSEDES and DELETES every earlier
+> panel-design rule in this file (the flat-plate "3D", the dense-stat-chip template, the non-rectangular
+> clip-path / extruded-side-wall experiment — all REJECTED). The recurring failures were: (a) a generic
+> `header + data rows + 3 stat-chips` template repeated on every panel, and (b) angled/notched clip-path
+> cuts + extruded walls that read as CROOKED, BROKEN edges. Both are forbidden.
 
-1. **DENSE REAL DESIGN — never a big card with two words.** The element fills its zone with real,
-   weighty content: multi-column/multi-section (data rows + bars + comparison + stat + timeline/chips).
-   Use ALL the capacity to design. FORBIDDEN: sparse black plate with a headline and one thin line;
-   `justify-content:space-between` used to STRETCH thin content across empty height (that is dead space,
-   not fill — §27.9). Fill by ADDING real content, not by stretching.
-2. **NEVER repeat the same shape within a material.** The 8 panels of one deck each use a DIFFERENT
-   form/treatment/layout — not all the same dark plate. Vary the shape per panel (§27.10 / §30).
-3. **Panel colour is white OR dark, independent of the background** — all four combos are allowed and
-   should be mixed across a deck: dark-bg/dark-panel (`B.CARD`), dark-bg/white-panel (`CARDIV`),
-   light-bg/dark-panel, light-bg/white-panel. The editorial slide bg already alternates light/dark.
-4. **The element is 3D.** Real depth — layered shadows, bevels, inner highlights, premium `app.51ultron.com/docs`
-   finish (`B.CARD`/`CARDIV` carry it). Never a flat rectangle.
-5. **ALIGNMENT + SAFE ZONE (enforced in `build_ed45.py`).** Element LEFT edge = the text left edge (x=80);
-   element RIGHT edge ≤ **840** (clears the IG like/comment icon rail — the hard limit). The progress bar
-   starts at x=80 and ends at 840 too. Left margin (0→80) has NO IG UI, it is just design padding.
-   Top-anchored under the sub-hook, fills the working band top→bottom. Tier-3 panels render from
-   `{slug}_t3.py` → `t3base.render` (never `adapt_panels.py`/clay3d).
+1. **EACH PANEL IS A UNIQUE, HAND-BUILT CODED SCENE.** Every one of the 8 panels is its own bespoke
+   SVG+CSS scene that ILLUSTRATES that slide's idea and fills the card — e.g. a radar sweep with blips,
+   a bezier node/flow graph, an isometric stack of result cards, a 1,000+ dot field, a radial
+   hub-and-spokes, a ring/gauge, a wax-seal with receipt chips, a routing diagram, a memory-core with
+   lifelines, an assembly/convergence. **FORBIDDEN: the generic `title + data-rows + 3 stat-chip boxes`
+   template.** Never put a row of stat chips as the payload. Vary the scene TYPE across all 8 panels —
+   no two the same diagram.
+2. **CLEAN ROUNDED CARD ONLY — NO CUTS, NO CROOKED EDGES.** The panel container is a clean rounded-corner
+   card using the `CARD` (dark) / `CARDIV` (ivory) constants (copied verbatim from `eyes_t3.py` /
+   `aibody_t3.py`; `border-radius:34px`, soft premium drop-shadow + inset highlight). **NEVER** `clip-path`
+   angled/notched/chamfered cuts, arrows, ribbons, slants; **NEVER** an extruded offset side-wall. Those
+   look like a rendering bug. Depth comes ONLY from the card's own soft shadow + the scene's internal
+   gradients/glows.
+3. **DARK OR IVORY, MIXED ACROSS THE DECK.** Use `CARD` (dark) for most panels and `CARDIV` (ivory) for
+   1–2 where a light object suits the idea. Warm palette only: accent `rgb(212,162,127)`, ivory-accent
+   `#96562d`; text `#FAFAF7` on dark, `#2a2016` on ivory; DM Sans / DM Mono. The one permitted non-warm
+   colour is a muted red `rgb(200,70,35)` for a bad/cut/severed/off state. No green, neon, blue, etc.
+4. **TITLE + ONE CAPTION, NOTHING ELSE GENERIC.** Each panel: a `htitle(title, TAG)` row (title left,
+   mono tag right) and exactly ONE mono one-line `cap(...)` at the bottom. The scene is the middle. No
+   eyebrow strips, no chip rows, no second caption.
+5. **PIPELINE.** Panels are `width:900px` cards, keyed in `PANELS={...}` by the spec's stem names, rendered
+   by the file's own `__main__` block (Playwright, viewport 960×900, `omit_background`, `device_scale_factor=2`)
+   into `models_clay/{slug}/{stem}.png`. Then `adapt_build.py {slug}` → `build_ed45.py` places the RGBA
+   panel into the slide's working band (left-aligned x=80, right ≤840, top-anchored). `to916.py` converts
+   the IG deck to 1920 and KEEPS slide-1 a transparent overlay. Author + render ONLY the `{slug}_t3.py`;
+   never touch `t3base.py` for a single material. **TikTok gets the same rebuild** — the deck build emits
+   `{slug}_tt` alongside `{slug}_ig`; push both (IG row + `(TikTok 3D)` row) to the vault.
 
 ---
 
