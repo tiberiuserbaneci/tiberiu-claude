@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE COST10', [[wo('The night shift')],[co('bills in cents.')]], 'No overtime, no burnout, no Monday mood.', [co('Payroll stayed flat.')], f"{M}/cost10.png", 1.0),
  ('THE FLIP10', [[wo('Stop starting your day.')],[co('Start joining it.')]], 'The 5am team exists. Yours is just not hired yet.', [co('Hire it tonight.')], f"{M}/flip10.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], f"{LIB}/cta3d-operator.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-operator.png", 0.82)
 T2.CLOSE=dict(l1='Save the 5am setup',l2='and hire the night shift.',q='What should run before you wake?')
 MARK2="claude"

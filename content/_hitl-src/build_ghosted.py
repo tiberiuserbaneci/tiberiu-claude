@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('ULTRON', [[wo('The infra runs')],[co('by default.')]], 'Warm domains, ramped sends, watched spam rates. You never think about it.', [co('99.2% inboxed.')], f"{M}/infra.png", 1.0),
  ('THE LESSON', [[wo('Fix the road,')],[co('then the car.')]], 'Great copy on dead infra is a love letter in a locked mailbox.', [co('Infra first, always.')], f"{M}/road.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], f"{LIB}/cta3d-builder.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-builder.png", 0.82)
 T2.CLOSE=dict(l1='Save the 5 mistakes',l2='before your next batch.',q='Which one is killing you?')
 MARK2="claude"

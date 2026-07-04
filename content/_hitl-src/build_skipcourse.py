@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE GATE9', [[wo('Every run is safe')],[co('to learn on.')]], 'Nothing external ships without your tap, so mistakes stay internal.', [co('The classroom has a keel.')], f"{M}/gate9.png", 1.0),
  ('THE DIPLOMA', [[wo('A hundred runs in,')],[co('the desk works like you.')]], 'No certificate. Just a pipeline that moves and a system that remembers.', [co('That is mastery.')], f"{M}/diploma.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], f"{LIB}/cta3d-builder.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-builder.png", 0.82)
 T2.CLOSE=dict(l1='Save the operator path',l2='and run job one today.',q='What would your first real run be?')
 MARK2="claude"

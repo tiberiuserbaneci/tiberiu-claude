@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE FIRST TEN', [[wo('Ten customers,')],[co('ten handshakes.')]], 'The machine sources and drafts; you close like a human.', [co('Humans buy from humans.')], f"{M}/ten.png", 1.0),
  ('THE DEED', [[wo('Zero code. One gate.')],[co('All yours.')]], 'Build, run, approve. The stack finally fits one person.', [co('Ownership, complete.')], f"{M}/yours.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], f"{LIB}/cta3d-builder.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-builder.png", 0.82)
 T2.CLOSE=dict(l1='Save the zero plan',l2='and pick the niche.',q='What would you start with?')
 MARK2="claude"

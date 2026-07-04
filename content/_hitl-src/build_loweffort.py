@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE RECEIPTS', [[wo('Fourteen posts a week')],[co('from one planning line.')]], 'In my voice, on my niche, each one passing the boring test before I see it.', [co('Light hands, heavy system.')], f"{M}/receipts.png", 1.0),
  ('THE VERDICT', [[wo('Work hard once.')],[co('Post easy forever.')]], 'That is the honest version of low effort. Everything else is a template farm.', [co('Front-load, then fly.')], f"{M}/verdictl.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], f"{LIB}/cta3d-operator.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-operator.png", 0.82)
 T2.CLOSE=dict(l1='Save the honest version',l2='of low effort.',q='Where does your effort actually go?')
 MARK2="strip"

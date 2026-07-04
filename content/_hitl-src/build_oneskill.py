@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE ENGINE', [[wo('One desk runs')],[co('all five shapes.')]], 'Same memory, same voice, same gate: service, product, content, teaching, tool.', [co('Five incomes, one login.')], f"{M}/engine5.png", 1.0),
  ('THE ORDER', [[wo('Service first.')],[co('Tool last.')]], 'Cash from shape one funds the rest; each shape feeds the next.', [co('Sequence beats ambition.')], f"{M}/order5.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], f"{LIB}/cta3d-founder.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-founder.png", 0.82)
 T2.CLOSE=dict(l1='Save the five shapes',l2='and pick your second one.',q='Which shape is your skill missing?')
 MARK2="claude"

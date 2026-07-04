@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE COMPOUND', [[wo('Every correction')],[co('hardens the skill.')]], 'Fix it once, the skill remembers forever. Month three runs sharper than month one.', [co('Assets, not chores.')], f"{M}/compound.png", 1.0),
  ('THE SHIFT', [[wo('Downloaders collect.')],[co('Minters compound.')]], 'The library you make beats the library you save.', [co('Cast the first one tonight.')], f"{M}/shift.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], f"{LIB}/cta3d-builder.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-builder.png", 0.82)
 T2.CLOSE=dict(l1='Save the minting steps',l2='and cast your first one.',q='Which workflow would you mint?')
 MARK2="claude"

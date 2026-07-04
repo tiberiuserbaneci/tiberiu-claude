@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('14:20', [[wo('A reply lands.')],[co('The loop already logged it.')]], 'Pipeline moved, next follow-up scheduled, digest updated for 07:00.', [co('It closes its own circle.')], f"{M}/reply.png", 1.0),
  ('THE POINT', [[wo('One guess versus')],[co('a finished job.')]], 'A prompt gives you words. A loop gives you outcomes with receipts.', [co('Put one thing on repeat.')], f"{M}/point.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], f"{LIB}/cta3d-operator.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-operator.png", 0.82)
 T2.CLOSE=dict(l1='Save the anatomy',l2='and set your first loop.',q='What would you put on repeat?')
 MARK2="claude"

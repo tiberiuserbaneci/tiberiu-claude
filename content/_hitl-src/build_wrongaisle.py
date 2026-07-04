@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE TRAP', [[wo('Ten dev plugins deep,')],[co('still drafting alone.')]], 'The graph mapper cannot write your follow-up. The desk can.', [co('Tools do not sell.')], f"{M}/trapb.png", 1.0),
  ('THE RULE', [[wo('Shop by outcome,')],[co('never by demo.')]], 'If the plugin page shows code, you are in the wrong aisle. If it shows pipeline, install.', [co('Buy desks. Skip toys.')], f"{M}/rule7.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], f"{LIB}/cta3d-builder.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-builder.png", 0.82)
 T2.CLOSE=dict(l1='Save this before',l2='your next install spree.',q='Which aisle are you shopping in?')
 MARK2="claude"

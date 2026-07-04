@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE FIRST RUN', [[wo('One sentence in.')],[co('Twenty briefs out.')]], 'Source my next twenty accounts: typed at 09:14, briefed by 09:23.', [co('That was minute ten.')], f"{M}/firstrun.png", 1.0),
  ('THE VERDICT', [[wo('Build your product.')],[co('Not your plumbing.')]], 'The company wins on offers and distribution, not on hand-wired graphs.', [co('Leverage, not homework.')], f"{M}/verdict.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], f"{LIB}/cta3d-builder.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-builder.png", 0.82)
 T2.CLOSE=dict(l1='Save the comparison',l2='before you open the tutorial.',q='Would you build or install?')
 MARK2="claude"

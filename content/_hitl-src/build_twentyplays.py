@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE DIFFERENCE10', [[wo('Tools give you features.')],[co('The palette gives you plays.')]], 'Each command is a whole workflow with your voice and your gate inside.', [co('Plays, not prompts.')], f"{M}/diff10b.png", 1.0),
  ('THE MONDAY', [[wo('The marketing Monday')],[co('runs before coffee.')]], 'Plan, draft, repurpose, audit, queue: five commands, one hour, gated.', [co('The department, typed.')], f"{M}/monday10.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], f"{LIB}/cta3d-operator.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-operator.png", 0.82)
 T2.CLOSE=dict(l1='Save the palette',l2='and run play one.',q='Which play replaces your Monday?')
 MARK2="strip"

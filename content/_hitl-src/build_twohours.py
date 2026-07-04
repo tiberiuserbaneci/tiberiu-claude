@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('16:01', [[wo('The excuse')],[co('died here.')]], 'No team, no budget, no time: none of the three survived the afternoon.', [co('Excuses need effort now.')], f"{M}/excuse.png", 1.0),
  ('THE MOAT', [[wo('Speed is the moat.')],[co('The gate keeps it safe.')]], 'Idea to live while others plan. Feedback to fix within the hour.', [co('Move first, gated.')], f"{M}/moat.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], f"{LIB}/cta3d-founder.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-founder.png", 0.82)
 T2.CLOSE=dict(l1='Save this timeline',l2='and pick your idea.',q='What would you build in two hours?')
 MARK2="claude"

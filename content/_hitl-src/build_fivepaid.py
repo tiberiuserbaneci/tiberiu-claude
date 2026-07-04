@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE PROOF', [[wo('Your first client is')],[co('your own company.')]], 'Run the skill on your business first. The receipts become the pitch.', [co('Results are the resume.')], f"{M}/client.png", 1.0),
  ('THE MATH', [[wo('Cents to practice.')],[co('Real money to sell.')]], 'The meter runs in cents while you learn. The invoice runs high when you deliver.', [co('Practice is free now.')], f"{M}/meter.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], f"{LIB}/cta3d-founder.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-founder.png", 0.82)
 T2.CLOSE=dict(l1='Save this and',l2='pick your one.',q='Which of the 5 fits you?')
 MARK2="claude"

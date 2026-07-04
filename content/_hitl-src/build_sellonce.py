@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE SPREAD', [[wo('One product funds')],[co('the second.')]], 'Validate one niche, then let the desk clone the pipeline sideways.', [co('Library, not lottery.')], f"{M}/spread.png", 1.0),
  ('THE MATH9', [[wo('Created once.')],[co('Sold while you slept.')]], 'The digital shelf never closes and never reorders stock.', [co('Ship idea number one.')], f"{M}/math9.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], f"{LIB}/cta3d-founder.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-founder.png", 0.82)
 T2.CLOSE=dict(l1='Save the pipeline',l2='and ship idea number one.',q='Which product have you been postponing?')
 MARK2="claude"

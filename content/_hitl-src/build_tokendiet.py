@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE AUTOPILOT', [[wo('On the desk,')],[co('the discipline is default.')]], 'The router tiers every turn, contexts reset per task, spend caps sit on every flow.', [co('Cents by design, not effort.')], f"{M}/autopilot.png", 1.0),
  ('THE REFRAME', [[wo('Do not chase cheap.')],[co('Chase clean.')]], 'The habits that cut cost are the same ones that raise quality.', [co('Discipline pays twice.')], f"{M}/reframe8.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], f"{LIB}/cta3d-builder.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-builder.png", 0.82)
 T2.CLOSE=dict(l1='Save the discipline',l2='before your next session.',q='Which habit is burning yours?')
 MARK2="claude"

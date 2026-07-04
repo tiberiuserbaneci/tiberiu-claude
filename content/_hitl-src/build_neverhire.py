@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE LINE', [[wo('Freeze the repetitive.')],[co('Hire the judgement.')]], 'People for taste, relationships and calls. Flows for everything that repeats.', [co('That is the split.')], f"{M}/line.png", 1.0),
  ('THE TEST', [[wo('Would a checklist')],[co('do this job?')]], 'If yes, it is a flow, not a hire. Run the test before every job posting.', [co('Post fewer jobs, ship more.')], f"{M}/test.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], f"{LIB}/cta3d-founder.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-founder.png", 0.82)
 T2.CLOSE=dict(l1='Save the freeze list',l2='before your next posting.',q='Which role would you freeze first?')
 MARK2="claude"

@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE HOUR10', [[wo('The 3 hours became')],[co('one onboarding.')]], 'Connect, interview, first run: the whole syllabus, lived by lunch.', [co('Watch it work instead.')], f"{M}/hour10.png", 1.0),
  ('THE POINT10', [[wo('Knowledge was never')],[co('the moat.')]], 'The people shipping are not the ones studying. Install, run, correct, repeat.', [co('Operators outlearn students.')], f"{M}/point10.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], f"{LIB}/cta3d-operator.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-operator.png", 0.82)
 T2.CLOSE=dict(l1='Save the checklist',l2='and skip the course.',q='Which module are you still doing by hand?')
 MARK2="claude"

@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE CLOSE', [[wo('The deal signed')],[co('clean.')]], 'Repriced, rewritten, requalified. One of the cleanest signatures this year.', [co('Three lenses, one win.')], f"{M}/closed.png", 1.0),
  ('THE SEAT', [[wo('Your board sits')],[co('in one chat.')]], 'On call at 2am, briefed on everything you sell, costing cents.', [co('Seat them tonight.')], f"{M}/board.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], f"{LIB}/cta3d-founder.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-founder.png", 0.82)
 T2.CLOSE=dict(l1='Save this and',l2='seat your board.',q='Which advisor do you need first?')
 MARK2="claude"

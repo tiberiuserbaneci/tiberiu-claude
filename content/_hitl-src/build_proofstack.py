@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE TIME', [[wo('Each build is')],[co('an evening, not a semester.')]], 'Described in plain English, assembled by the desk, tested on your real pipeline.', [co('Ship all three this week.')], f"{M}/time8.png", 1.0),
  ('THE FILTER', [[wo('Would a client pay')],[co('for this build?')]], 'If not, it is a hobby. Hobbies are fine. Just label them honestly.', [co('Invoice or hobby. Choose.')], f"{M}/filter8.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], f"{LIB}/cta3d-builder.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-builder.png", 0.82)
 T2.CLOSE=dict(l1='Save the three builds',l2='and ship the first one.',q='Which build pays your rent first?')
 MARK2="claude"

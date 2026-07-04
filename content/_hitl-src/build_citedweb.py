@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE HABIT10', [[wo('Ask for the source')],[co('one time.')]], 'Set the standard once; the desk cites forever after.', [co('One rule, permanent.')], f"{M}/habit10.png", 1.0),
  ('THE LINE10', [[wo('If it cannot say when,')],[co('it does not know.')]], 'Undated knowledge is opinion wearing a suit.', [co('Demand the date.')], f"{M}/line10.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], f"{LIB}/cta3d-founder.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-founder.png", 0.82)
 T2.CLOSE=dict(l1='Save the receipts standard',l2='and audit your last report.',q='Would your numbers survive an audit?')
 MARK2="claude"

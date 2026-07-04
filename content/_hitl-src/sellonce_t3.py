@@ -188,7 +188,7 @@ def math9():
         {dots}
         <circle cx="0" cy="264" r="7" fill="#FAFAF7"/>
         <text x="12" y="286" font-family="DM Mono" font-size="13" fill="#8f8f85">created: 1</text>
-        <text x="{W}" y="32" text-anchor="end" font-family="DM Sans" font-weight="900" font-size="22" fill="rgb({ACC})">sold: 1,900+</text>
+        <text x="24" y="52" font-family="DM Sans" font-weight="900" font-size="24" fill="rgb({ACC})">sold: 1,900+</text>
       </svg>
       <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px">
         <div style="font-family:\'DM Sans\';font-weight:900;font-size:26px;color:#FAFAF7">Build effort: flat.</div>

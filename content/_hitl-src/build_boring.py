@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE CLIENT', [[wo('One trader switched.')],[co('2K to 30K in 25 days.')]], 'Same expertise, same niche. One trade idea per post instead of technical essays.', [co('Boring delivery, expert core.')], f"{M}/client.png", 1.0),
  ('THE REFRAME', [[wo('Boring does not mean')],[co('low value.')]], 'It means legible at scroll speed. The smartest content looks the simplest.', [co('Simple is the flex.')], f"{M}/reframe.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], f"{LIB}/cta3d-operator.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-operator.png", 0.82)
 T2.CLOSE=dict(l1='Save the 4-second test',l2='and run it on your next post.',q='Are you writing for the scroll?')
 MARK2="claude"

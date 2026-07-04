@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE COST', [[wo('Chasing models is')],[co('a part-time job.')]], 'Reinstalling, re-prompting, re-learning: hours that never touch revenue.', [co('Hype is expensive.')], f"{M}/cost.png", 1.0),
  ('THE POSITION', [[wo('Own the layer')],[co('above the models.')]], 'Let them fight. Whoever wins, your system gets stronger the same afternoon.', [co('That is the only safe seat.')], f"{M}/position.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], f"{LIB}/cta3d-founder.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-founder.png", 0.82)
 T2.CLOSE=dict(l1='Save this before',l2='the next launch thread.',q='Which model panic did you buy?')
 MARK2="claude"

@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE CHAIN', [[wo('The retainer month,')],[co('in one morning.')]], 'Spy, gap, draft, audit, score: chained, under an hour.', [co('Monday ritual.')], f"{M}/chain.png", 1.0),
  ('THE SIGNATURE', [[wo('Every launch')],[co('signs with your tap.')]], 'Nothing spends without you. In-house means in your hands.', [co('Your call, always.')], f"{M}/sign.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], f"{LIB}/cta3d-operator.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-operator.png", 0.82)
 T2.CLOSE=dict(l1='Save the ad desk,',l2='cancel the retainer.',q='Which check would save you most?')
 MARK2="claude"

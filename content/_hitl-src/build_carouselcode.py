@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE DESK', [[wo('PULSE builds to the code')],[co('by default.')]], 'Every deck it drafts carries the five patterns before I ever see it.', [co('The code, automated.')], f"{M}/desk7.png", 1.0),
  ('THE PAYOFF', [[wo('Growth stopped being luck')],[co('and became a consequence.')]], 'Same niche, same effort, patterned delivery. The metrics followed.', [co('Consequence, not lottery.')], f"{M}/payoff7.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], f"{LIB}/cta3d-operator.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-operator.png", 0.82)
 T2.CLOSE=dict(l1='Save the code',l2='and grade your last post.',q='Which pattern were you missing?')
 MARK2="claude"

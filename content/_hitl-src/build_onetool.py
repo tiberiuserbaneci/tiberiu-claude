@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE PRICE', [[wo('Five subscriptions')],[co('became one meter.')]], 'Cents per run instead of a stack of seats.', [co('The math got simple.')], f"{M}/price7.png", 1.0),
  ('THE RULE', [[wo('Never add a tool')],[co('that cannot share memory.')]], 'That single filter kills most of the listicle.', [co('Memory or nothing.')], f"{M}/rule7b.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], f"{LIB}/cta3d-founder.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-founder.png", 0.82)
 T2.CLOSE=dict(l1='Save this before',l2='you add tool number six.',q='How many assistants do you juggle?')
 MARK2="strip"

@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE DESK9', [[wo('Ultron wires all five')],[co('behind one composer.')]], 'Type the goal; the router opens the right door and carries your memory through it.', [co('No door knowledge required.')], f"{M}/desk9.png", 1.0),
  ('THE UNLOCK', [[wo('Non-technical was never')],[co('the barrier.')]], 'Knowing which door exists is 80% of mastering the machine.', [co('Open door two tonight.')], f"{M}/unlock9.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], f"{LIB}/cta3d-builder.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-builder.png", 0.82)
 T2.CLOSE=dict(l1='Save the map',l2='and open the right door.',q='Which Claude have you never opened?')
 MARK2="claude"

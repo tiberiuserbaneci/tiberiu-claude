@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE LINE', [[wo('Nothing external ships')],[co('without a human finish.')]], 'First passes run free inside. The last touch is always yours.', [co('That line never moves.')], f"{M}/line8.png", 1.0),
  ('THE RESULT', [[wo('Same headcount.')],[co('Triple the throughput.')]], 'Not replacement: elevation. The work everyone hated does itself now.', [co('First pass, solved.')], f"{M}/result8.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], f"{LIB}/cta3d-operator.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-operator.png", 0.82)
 T2.CLOSE=dict(l1='Save the split',l2='and audit your week with it.',q='Where does your first pass go?')
 MARK2="claude"

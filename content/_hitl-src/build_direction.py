@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE BURNOUT', [[wo('Consistency is a system,')],[co('not a mood.')]], 'Planned slots, drafted queues, gated sends: showing up became automatic.', [co('The desk holds the streak.')], f"{M}/burnout.png", 1.0),
  ('THE SHIFT9', [[wo('Stop prompting harder.')],[co('Start directing better.')]], 'Same model, same cost: direction is the whole difference.', [co('Direct, then delegate.')], f"{M}/shift9.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], f"{LIB}/cta3d-operator.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-operator.png", 0.82)
 T2.CLOSE=dict(l1='Save the seven directions',l2='and re-run your last ask.',q='Which direction were you missing?')
 MARK2="claude"

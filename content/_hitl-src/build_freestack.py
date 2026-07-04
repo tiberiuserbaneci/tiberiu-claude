@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE KEEP', [[wo('Keep the free gems.')],[co('Wire them, gated.')]], 'Open tools plug into the desk; every external action still parks for your tap.', [co('Best of both, one gate.')], f"{M}/keep.png", 1.0),
  ('THE MATH', [[wo('Knowledge is the discount.')],[co('Assembly is the price.')]], 'Know the free twin, pay only for the layer that runs it while you sleep.', [co('That spread is yours.')], f"{M}/math.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], f"{LIB}/cta3d-founder.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-founder.png", 0.82)
 T2.CLOSE=dict(l1='Save this before',l2='your next renewal.',q='Which bill would you kill first?')
 MARK2="strip"

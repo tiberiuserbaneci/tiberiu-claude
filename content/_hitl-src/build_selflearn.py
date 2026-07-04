@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE GATE', [[wo('It learns alone.')],[co('It still sends with you.')]], 'Self-improvement stays internal; every external move parks for your tap.', [co('Smarter, not looser.')], f"{M}/gate7.png", 1.0),
  ('THE QUESTION', [[wo('If it cannot remember you,')],[co('why are you training it daily?')]], 'Demand memory before you demand intelligence.', [co('Memory first. Always.')], f"{M}/question7.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], f"{LIB}/cta3d-builder.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-builder.png", 0.82)
 T2.CLOSE=dict(l1='Save the learning loop',l2='and stop repeating yourself.',q='What has yours learned this month?')
 MARK2="claude"

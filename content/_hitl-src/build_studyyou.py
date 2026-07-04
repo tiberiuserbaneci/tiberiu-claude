@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE MOAT', [[wo('Nobody can copy')],[co('your archive.')]], 'Generic AI writes averages. This writes from evidence only you own.', [co('Your history is the moat.')], f"{M}/moat8.png", 1.0),
  ('THE ORDER', [[wo('Study first.')],[co('Generate second.')]], 'Most people ask AI to write. Operators make it learn, then write.', [co('Reverse the order.')], f"{M}/order8.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], f"{LIB}/cta3d-operator.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-operator.png", 0.82)
 T2.CLOSE=dict(l1='Save the self-study loop',l2='and feed it your archive.',q='Which post should it study first?')
 MARK2="claude"

@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE GATE', [[wo('The brake comes')],[co('installed too.')]], 'Everything external waits for your tap. Power without accidents.', [co('Default: gated.')], f"{M}/gate.png", 1.0),
  ('COMPOUND', [[wo('Set once.')],[co('Collect monthly.')]], 'Corrections become rules. The setup pays rent every month after.', [co('It only gets sharper.')], f"{M}/compound.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], f"{LIB}/cta3d-builder.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-builder.png", 0.82)
 T2.CLOSE=dict(l1='Save the setup',l2='and install tonight.',q='Which install goes first?')
 MARK2="claude"

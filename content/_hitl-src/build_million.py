@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE CONTROL', [[wo('Every send gated.')],[co('Every risk yours.')]], 'Autonomy scaled, control kept. That is the whole architecture.', [co('Power with a keel.')], f"{M}/gated.png", 1.0),
  ('THE BET', [[wo('Someone builds this')],[co('this year.')]], 'The only question left is whether it is you.', [co('Why not you.')], f"{M}/you.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], f"{LIB}/cta3d-founder.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-founder.png", 0.82)
 T2.CLOSE=dict(l1='Save this thesis,',l2='then start tonight.',q='Could you run it alone?')
 MARK2="claude"

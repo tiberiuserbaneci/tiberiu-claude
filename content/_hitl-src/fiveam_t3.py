@@ -106,29 +106,41 @@ def drafted():
 
 # 4. BUILTFLOW - horizontal pipeline graph: yesterday's cursed manual job wired into one flow
 def builtflow():
-    W,H=820,300
-    steps=[("pull 40 leads",70),("enrich",250),("score vs ICP",430),("draft outreach",610),("queued",760)]
-    nodes=""; edges=""; cy=150
-    for i,(nm,x) in enumerate(steps):
-        w=150 if i<4 else 96
+    W,H=820,180
+    steps=[("pull 40 leads","new firmographics",82,140),
+           ("enrich","email + role",250,140),
+           ("score vs ICP","fit 0 to 100",418,140),
+           ("draft outreach","in your voice",586,140),
+           ("queued","SPECTER, parked",748,96)]
+    nodes=""; arrows=""; cy=90
+    for i,(nm,det,x,w) in enumerate(steps):
         if i>0:
-            px=steps[i-1][1]+ (150 if i-1<4 else 96)/2
-            edges+=f'<path d="M{px:.0f} {cy} C{(px+x)/2:.0f} {cy},{(px+x)/2:.0f} {cy},{x-w/2:.0f} {cy}" fill="none" stroke="rgb({ACC})" stroke-width="4" filter="url(#eg)"/>'
-        fill="url(#last)" if i==4 else "url(#nd)"
-        nodes+=(f'<rect x="{x-w/2:.0f}" y="{cy-38}" width="{w}" height="76" rx="16" fill="{fill}" stroke="rgba(212,162,127,{0.9 if i==4 else 0.28})" stroke-width="{2.5 if i==4 else 1.5}"/>'
-                f'<text x="{x:.0f}" y="{cy+6}" text-anchor="middle" font-family="DM Sans" font-weight="{900 if i==4 else 700}" font-size="16" fill="{"#1a0f0a" if i==4 else "#e6e0d4"}">{nm}</text>')
+            px=steps[i-1][2]+steps[i-1][3]/2; nx=x-w/2
+            arrows+=(f'<line x1="{px:.0f}" y1="{cy}" x2="{nx-8:.0f}" y2="{cy}" stroke="rgb({ACC})" stroke-width="4" filter="url(#eg)"/>'
+                     f'<path d="M{nx-9:.0f} {cy-7} L{nx:.0f} {cy} L{nx-9:.0f} {cy+7}Z" fill="rgb({ACC})"/>')
+        last=(i==4); fill="url(#last)" if last else "url(#nd)"
+        nodes+=(f'<rect x="{x-w/2:.0f}" y="{cy-62}" width="{w}" height="124" rx="18" fill="{fill}" stroke="rgba(212,162,127,{0.95 if last else 0.28})" stroke-width="{2.5 if last else 1.5}"/>'
+                f'<text x="{x:.0f}" y="{cy-2}" text-anchor="middle" font-family="DM Sans" font-weight="{900 if last else 700}" font-size="16" fill="{"#1a0f0a" if last else "#e6e0d4"}">{nm}</text>'
+                f'<text x="{x:.0f}" y="{cy+24}" text-anchor="middle" font-family="DM Mono" font-size="11.5" fill="{"rgba(26,15,10,.65)" if last else "#8f8f85"}">{det}</text>')
+    def barrow(lbl,val,w,col,strike):
+        st="text-decoration:line-through;text-decoration-color:rgba({},.7);".format(RED) if strike else ""
+        return (f'<div style="display:flex;align-items:center;gap:16px;margin-top:14px">'
+                f'<span style="font-family:DM Mono;font-size:13px;color:#9a9488;width:78px;flex-shrink:0">{lbl}</span>'
+                f'<div style="flex:1;height:16px;background:rgba(255,255,255,.05);border-radius:8px;overflow:hidden">'
+                f'<div style="width:{w};height:100%;background:{col};border-radius:8px"></div></div>'
+                f'<span style="font-family:DM Sans;font-weight:800;font-size:17px;color:{"#8f8f85" if strike else "#FAFAF7"};width:150px;text-align:right;flex-shrink:0;white-space:nowrap;{st}">{val}</span></div>')
     return f'''<div style="width:900px;{CARD};padding:34px 40px 32px">
       {htitle("Friction became a flow","BUILT 04:30")}
-      <div style="display:flex;align-items:center;gap:14px;margin-bottom:6px">
-        <span style="font-family:DM Mono;font-size:13px;letter-spacing:.1em;color:#8f8f85;text-decoration:line-through;text-decoration-color:rgba({RED},.7)">yesterday, by hand &middot; 40 min every morning</span></div>
-      <svg width="{W}" height="{H}" viewBox="0 0 {W} {H}">
+      <div style="font-family:DM Mono;font-size:13px;letter-spacing:.06em;color:#8f8f85;margin-bottom:18px">the job you cursed at 16:00 yesterday, wired into one flow before dawn</div>
+      <svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" style="display:block;margin:0 auto">
         <defs><linearGradient id="nd" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#33302c"/><stop offset="100%" stop-color="#201d1a"/></linearGradient>
-        <radialGradient id="last" cx="40%" cy="30%"><stop offset="0%" stop-color="#f0c49e"/><stop offset="60%" stop-color="rgb({ACC})"/><stop offset="100%" stop-color="#8a4c2c"/></radialGradient>
-        <filter id="eg" x="-20%" y="-60%" width="140%" height="220%"><feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="rgb({ACC})" flood-opacity="0.5"/></filter></defs>
-        {edges}{nodes}</svg>
-      <div style="display:inline-flex;align-items:center;gap:10px;background:rgba(212,162,127,.10);border:1px solid rgba(212,162,127,.3);border-radius:999px;padding:9px 18px;margin-top:4px">
-        <span style="width:9px;height:9px;border-radius:50%;background:rgb({ACC});box-shadow:0 0 12px rgba({ACC},.8)"></span>
-        <span style="font-family:DM Sans;font-weight:800;font-size:16px;color:#FAFAF7">now one flow &middot; runs in 20 seconds</span></div>
+        <radialGradient id="last" cx="40%" cy="28%"><stop offset="0%" stop-color="#f0c49e"/><stop offset="60%" stop-color="rgb({ACC})"/><stop offset="100%" stop-color="#8a4c2c"/></radialGradient>
+        <filter id="eg" x="-20%" y="-200%" width="140%" height="500%"><feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="rgb({ACC})" flood-opacity="0.55"/></filter></defs>
+        {arrows}{nodes}</svg>
+      <div style="border-top:1px solid rgba(255,255,255,.07);margin-top:22px;padding-top:8px">
+        {barrow("by hand","40 min / day","100%","linear-gradient(90deg,rgba("+RED+",.55),rgba("+RED+",.28))",True)}
+        {barrow("one flow","20 sec / run","4%","linear-gradient(90deg,#8a4c2c,rgb("+ACC+"))",False)}
+      </div>
       {cap("the repeated job you cursed at 16:00 became a flow by 06:00.")}</div>'''
 
 # 5. DIGEST10 - dashboard grid: the whole company on one page (done / parked / waiting / suggested)

@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('ONE PLATFORM', [[wo('Pick one door.')],[co('Run the system on it.')]], 'One platform, thirty days, the full loop. Then and only then, add the second.', [co('Depth beats directory.')], f"{M}/onedoor.png", 1.0),
  ('THE TRUTH9', [[wo('The list was free.')],[co('The discipline was not.')]], '45 websites, one differentiator: the operator behind the account.', [co('Be the operator.')], f"{M}/truth9.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], f"{LIB}/cta3d-founder.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment FOUNDER.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-founder.png", 0.82)
 T2.CLOSE=dict(l1='Save this instead',l2='of another platform list.',q='Which platform are you blaming?')
 MARK2="strip"

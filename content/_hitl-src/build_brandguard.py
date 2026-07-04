@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE COST', [[wo('The design retainer')],[co('became a token file.')]], 'High bills live in the old workflow. This one is configuration.', [co('Paid once, in setup.')], f"{M}/cost8.png", 1.0),
  ('THE TEST', [[wo('Screenshot any two assets.')],[co('Same company?')]], 'If a stranger cannot tell, the guardrail works.', [co('Run it on your last five.')], f"{M}/test8.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], f"{LIB}/cta3d-operator.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-operator.png", 0.82)
 T2.CLOSE=dict(l1='Save the guardrail setup',l2='and lock your look.',q='What does your brand drift on?')
 MARK2="strip"

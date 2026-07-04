@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE TRAP', [[wo('Skipping play one')],[co('breaks the other four.')]], 'Generic context makes generic outputs. Every disappointment traces back here.', [co('Do not skip the interview.')], f"{M}/trap.png", 1.0),
  ('THE CURVE', [[wo('Day one is the floor.')],[co('It only compounds.')]], 'Corrections become rules, rules become skills, the desk gets sharper weekly.', [co('Start the clock.')], f"{M}/curve.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], f"{LIB}/cta3d-builder.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment BUILDER.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-builder.png", 0.82)
 T2.CLOSE=dict(l1='Save the five plays',l2='for your first hour.',q='Which play do you run first?')
 MARK2="claude"

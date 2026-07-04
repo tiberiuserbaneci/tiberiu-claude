@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE RULE', [[wo('One job per agent,')],[co('done extremely well.')]], 'That is a workforce, not a chatbot with a hundred to-dos.', [co('Specialists win.')], f"{M}/onejob.png", 1.0),
  ('THE CHIEF', [[wo('You sit on top.')],[co('One tap a day.')]], 'The org runs; you approve. Hierarchy with a human at the head.', [co('Chief, not operator.')], f"{M}/chief.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], f"{LIB}/cta3d-operator.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-operator.png", 0.82)
 T2.CLOSE=dict(l1='Save the org chart',l2='before you build a bot.',q='Which desk do you need first?')
 MARK2="claude"

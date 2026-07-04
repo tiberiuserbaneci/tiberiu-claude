@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE GATE', [[wo('Autonomous inside.')],[co('Your tap outside.')]], 'Skills execute and compose, and every external send still parks for you.', [co('Speed with a keel.')], f"{M}/gate.png", 1.0),
  ('THE PURGE', [[wo('I deleted mine')],[co('in one afternoon.')]], 'Kept zero prompts, minted twelve skills. The notebook is empty and the desk is full.', [co('Empty yours tonight.')], f"{M}/purge.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], f"{LIB}/cta3d-operator.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-operator.png", 0.82)
 T2.CLOSE=dict(l1='Save this and',l2='empty the notebook.',q='How many saved prompts do you own?')
 MARK2="claude"

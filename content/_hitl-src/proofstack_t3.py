@@ -234,7 +234,7 @@ def time8():
         <rect x="{x0}" y="132" width="{ev_w:.0f}" height="56" rx="14" fill="url(#ev)" style="filter:drop-shadow(0 0 22px rgba(212,162,127,.4))"/>
         <text x="{x0+ev_w+22:.0f}" y="168" font-family="DM Sans" font-weight="900" font-size="27" fill="#FAFAF7">~4 hrs</text>
         <g transform="translate({x0+ev_w+180:.0f},150)">
-          <rect x="0" y="0" width="196" height="38" rx="19" fill="rgba(127,211,154,.12)" stroke="rgba(212,162,127,.4)"/>
+          <rect x="0" y="0" width="196" height="38" rx="19" fill="rgba(212,162,127,.12)" stroke="rgba(212,162,127,.4)"/>
           <path d="M18 19 l7 7 l13 -16" fill="none" stroke="rgb({ACC})" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
           <text x="50" y="25" font-family="DM Sans" font-weight="700" font-size="16" fill="#e6d6c2">3 builds live</text></g>
         <text x="{x0}" y="230" font-family="DM Sans" font-weight="700" font-size="19" fill="#8f8f85">A semester course</text>
