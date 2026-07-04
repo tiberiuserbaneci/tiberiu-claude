@@ -165,27 +165,28 @@ def stack():
           <div style="position:absolute;left:120px;top:396px;background:#96562d;color:#fdfaf5;font-family:DM Sans;font-weight:900;font-size:16px;padding:9px 20px;border-radius:999px;box-shadow:0 10px 22px rgba(150,86,45,.4)">Delivered &#10003; 07:00</div></div></div>
       {cap("not a blank cursor. briefs, drafts and scores stacked by morning, for cents.","#8a745a")}</div>'''
 
-# 6. GAUGE (IVORY) - semicircular cost gauge, needle parked in the cents zone.
+# 6. GAUGE (IVORY) - semicircular cost gauge (polyline arcs, robust), needle parked in cents zone.
 def gauge():
-    cx,cy,R=310,300,208
+    cx,cy,R=310,265,205
     def pt(A,rr):
         a=math.radians(A); return cx+rr*math.cos(a), cy-rr*math.sin(a)
-    bx0,by0=pt(180,R); bx1,by1=pt(0,R)
-    zx0,zy0=pt(180,R); zx1,zy1=pt(150,R)
-    ndeg=160; nx,ny=pt(ndeg,R-26)
+    def poly(a0,a1):
+        n=48; pts=[pt(a0+(a1-a0)*i/n,R) for i in range(n+1)]
+        return "M"+" L".join(f"{x:.1f} {y:.1f}" for x,y in pts)
+    ndeg=162; nx,ny=pt(ndeg,R-30)
     labels=""
-    for A,txt,c in [(174,"cents","#96562d"),(90,"$","#8a745a"),(8,"$$$","#8a745a")]:
-        lx,ly=pt(A,R+22); labels+=f'<text x="{lx:.0f}" y="{ly:.0f}" text-anchor="middle" font-family="DM Mono" font-size="15" fill="{c}">{txt}</text>'
+    for A,txt,c in [(176,"cents","#96562d"),(90,"$","#8a745a"),(4,"$$$","#8a745a")]:
+        lx,ly=pt(A,R+24); labels+=f'<text x="{lx:.0f}" y="{ly+4:.0f}" text-anchor="middle" font-family="DM Mono" font-size="16" fill="{c}">{txt}</text>'
     return f'''<div style="width:900px;{CARDIV};padding:34px 42px 30px">
       {htitle("A night of work, for cents","PAY PER TOKEN","#2a2016","#96562d")}
-      <svg width="620" height="360" viewBox="0 0 620 360" style="display:block;margin:0 auto">
-        <path d="M{bx0:.0f} {by0:.0f} A{R} {R} 0 0 0 {bx1:.0f} {by1:.0f}" fill="none" stroke="rgba(150,90,45,.18)" stroke-width="26" stroke-linecap="round"/>
-        <path d="M{zx0:.0f} {zy0:.0f} A{R} {R} 0 0 0 {zx1:.0f} {zy1:.0f}" fill="none" stroke="#96562d" stroke-width="26" stroke-linecap="round"/>
+      <svg width="620" height="330" viewBox="0 0 620 330" style="display:block;margin:0 auto">
+        <path d="{poly(180,0)}" fill="none" stroke="rgba(150,90,45,.18)" stroke-width="26" stroke-linecap="round"/>
+        <path d="{poly(180,152)}" fill="none" stroke="#96562d" stroke-width="26" stroke-linecap="round"/>
         {labels}
         <line x1="{cx}" y1="{cy}" x2="{nx:.0f}" y2="{ny:.0f}" stroke="#2a2016" stroke-width="8" stroke-linecap="round"/>
         <circle cx="{cx}" cy="{cy}" r="16" fill="#2a2016"/>
-        <text x="{cx}" y="{cy-58}" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="72" fill="#2a2016">0.11c</text>
-        <text x="{cx}" y="{cy-24}" text-anchor="middle" font-family="DM Mono" font-size="15" fill="#96562d" letter-spacing=".08em">PER OVERNIGHT RUN</text>
+        <text x="{cx}" y="{cy-56}" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="72" fill="#2a2016">0.11c</text>
+        <text x="{cx}" y="{cy-22}" text-anchor="middle" font-family="DM Mono" font-size="15" fill="#96562d" letter-spacing=".08em">PER OVERNIGHT RUN</text>
       </svg>
       {cap("pay per token, not per seat. the tools it replaces bill hundreds a month.","#8a745a")}</div>'''
 

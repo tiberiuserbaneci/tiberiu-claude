@@ -78,13 +78,14 @@ def memory():
     lines=""; nodes=""
     for nm,a in agents:
         x=cx+152*math.cos(math.radians(a)); y=cy+152*math.sin(math.radians(a))
-        lines+=f'<line x1="{cx}" y1="{cy}" x2="{x:.0f}" y2="{y:.0f}" stroke="rgba(150,90,45,.5)" stroke-width="3"/>'
-        nodes+=(f'<circle cx="{x:.0f}" cy="{y:.0f}" r="31" fill="#fbf6ec" stroke="rgba(150,90,45,.4)" stroke-width="2"/>'
-          f'<text x="{x:.0f}" y="{y+4:.0f}" text-anchor="middle" font-family="DM Mono" font-size="10.5" letter-spacing=".04em" fill="#7a5230">{nm}</text>')
+        lines+=f'<line x1="{cx}" y1="{cy}" x2="{x:.0f}" y2="{y:.0f}" stroke="rgba(150,90,45,.55)" stroke-width="3"/>'
+        nodes+=(f'<g filter="url(#ndf)"><circle cx="{x:.0f}" cy="{y:.0f}" r="33" fill="#efe3cd" stroke="#96562d" stroke-width="3"/></g>'
+          f'<text x="{x:.0f}" y="{y+4:.0f}" text-anchor="middle" font-family="DM Mono" font-weight="500" font-size="11" letter-spacing=".04em" fill="#6d3c1e">{nm}</text>')
     return f'''<div style="width:900px;{CARDIV};padding:34px 42px 34px;display:flex;align-items:center;gap:20px">
       <svg width="420" height="420" viewBox="0 0 420 420">
         <defs><radialGradient id="mc" cx="42%" cy="34%"><stop offset="0%" stop-color="#c98a56"/><stop offset="60%" stop-color="#96562d"/><stop offset="100%" stop-color="#6d3c1e"/></radialGradient>
-        <filter id="mg" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="6" stdDeviation="16" flood-color="rgba(150,90,45,.45)"/></filter></defs>
+        <filter id="mg" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="6" stdDeviation="16" flood-color="rgba(150,90,45,.45)"/></filter>
+        <filter id="ndf" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="rgba(120,95,60,.4)"/></filter></defs>
         {lines}
         <g filter="url(#mg)"><circle cx="{cx}" cy="{cy}" r="58" fill="url(#mc)"/></g>
         <text x="{cx}" y="{cy-2}" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="19" fill="#fdf6ec">MEMORY</text>

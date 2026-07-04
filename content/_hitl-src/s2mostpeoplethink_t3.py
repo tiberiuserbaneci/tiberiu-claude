@@ -142,7 +142,7 @@ def gauge():
     tx0,ty0=pt(180,R); tx1,ty1=pt(0,R)
     # warm cheap arc segment (right third, 0..60deg)
     ax0,ay0=pt(60,R); ax1,ay1=pt(0,R)
-    needa=18; nx,ny=pt(needa,R-22)
+    needa=15; nx,ny=pt(needa,R-30)
     ticks=""
     for a in range(0,181,30):
         p1=pt(a,R); p2=pt(a,R-16)
@@ -150,19 +150,20 @@ def gauge():
     return f'''<div style="width:900px;{CARDIV};padding:34px 40px 30px">
       {htiv("Priced in cents, not salaries","COST GAUGE")}
       <div style="display:block;margin:0 auto;width:560px;position:relative">
-        <svg width="560" height="300" viewBox="0 0 560 300" style="display:block;margin:0 auto">
+        <svg width="560" height="216" viewBox="0 64 560 216" style="display:block;margin:0 auto">
           <path d="M{tx0:.0f} {ty0:.0f} A{R} {R} 0 0 1 {tx1:.0f} {ty1:.0f}" fill="none" stroke="rgba(150,90,45,.20)" stroke-width="18" stroke-linecap="round"/>
           <path d="M{ax0:.0f} {ay0:.0f} A{R} {R} 0 0 1 {ax1:.0f} {ay1:.0f}" fill="none" stroke="#96562d" stroke-width="18" stroke-linecap="round"/>
           {ticks}
-          <text x="{pt(174,R+24)[0]:.0f}" y="{pt(174,R+24)[1]:.0f}" text-anchor="start" font-family="DM Mono" font-size="14" fill="rgb(200,70,35)">$$$</text>
-          <text x="{pt(6,R+24)[0]:.0f}" y="{pt(6,R+24)[1]:.0f}" text-anchor="end" font-family="DM Mono" font-size="14" fill="#96562d">cents</text>
+          <text x="{pt(180,R+2)[0]+8:.0f}" y="{cy+16:.0f}" text-anchor="start" font-family="DM Mono" font-size="14" fill="rgb(200,70,35)">$$$</text>
+          <text x="{pt(0,R+2)[0]-8:.0f}" y="{cy+16:.0f}" text-anchor="end" font-family="DM Mono" font-size="14" fill="#96562d">cents</text>
           <line x1="{cx}" y1="{cy}" x2="{nx:.0f}" y2="{ny:.0f}" stroke="#2a2016" stroke-width="6" stroke-linecap="round"/>
           <circle cx="{cx}" cy="{cy}" r="13" fill="#2a2016"/>
-          <text x="{cx}" y="{cy-46}" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="58" fill="#2a2016">0.4c</text>
-          <text x="{cx}" y="{cy-18}" text-anchor="middle" font-family="DM Mono" font-size="14" fill="#96562d">per outbound action</text>
         </svg>
       </div>
-      <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-top:2px">
+      <div style="text-align:center;margin-top:6px">
+        <span style="font-family:'DM Sans';font-weight:900;font-size:52px;color:#2a2016">0.4c</span>
+        <span style="font-family:'DM Mono';font-size:15px;color:#96562d;margin-left:12px">per outbound action</span></div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-top:12px">
         <span style="font-family:'DM Sans';font-size:18px;color:#8a745a;text-decoration:line-through;text-decoration-color:rgba(200,70,35,.7)">an SDR + tools: $4,000 / mo</span>
         <span style="font-family:'DM Mono';font-size:13px;letter-spacing:.06em;color:rgb(200,70,35)">replaced</span></div>
       {cap("pay per token. a full outbound week costs less than one coffee.","#8a745a")}</div>'''

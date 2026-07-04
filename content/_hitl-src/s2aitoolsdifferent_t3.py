@@ -44,7 +44,7 @@ def toolzoo():
 
 # 2. ROUTER (DARK) - node graph: 4 jobs -> ROUTER hub -> the right agent + model tier, one lit
 def router():
-    hubx,hy=150,236
+    hubx,hy=350,236
     jobs=[("research a company",96),("write cold emails",190),("qualify a deal",282),("draft a post",374)]
     lanes=[("CORTEX","DEEP · 0.40c","research",96,False),
            ("SPECTER","SMART · 0.11c","outbound",190,True),
@@ -52,7 +52,7 @@ def router():
            ("PULSE","LITE · 0.02c","content",374,False)]
     edges=""
     for nm,y in jobs:
-        edges+=f'<path d="M232 {y} C300 {y},300 {hy},{hubx-56} {hy}" fill="none" stroke="rgba(212,162,127,.28)" stroke-width="2"/>'
+        edges+=f'<path d="M232 {y} C296 {y},{hubx-56} {y},{hubx-56} {hy}" fill="none" stroke="rgba(212,162,127,.28)" stroke-width="2"/>'
     # left job chips as HTML, right agent cards as HTML, hub in svg
     jobchips=""
     for nm,y in jobs:
@@ -124,16 +124,16 @@ def stack():
           ("PULSE","content in your voice","LITE")]
     cards=""
     for i,(a,b,tier) in enumerate(rows):
-        y=i*128
-        cards+=(f'<div style="position:absolute;left:0;top:{y}px;width:560px;background:linear-gradient(160deg,#403a35,#2b2723);border:1.5px solid rgba(255,255,255,.14);border-radius:18px;padding:20px 24px;box-shadow:0 30px 44px rgba(0,0,0,.55), inset 0 2px 2px rgba(255,255,255,.1);display:flex;align-items:center;gap:20px">'
-          f'<div style="flex-shrink:0;width:50px;height:50px;border-radius:14px;background:rgba(212,162,127,.14);border:1px solid rgba(212,162,127,.34);display:flex;align-items:center;justify-content:center;font-family:\'DM Sans\';font-weight:900;font-size:20px;color:rgb({ACC})">{a[0]}</div>'
+        y=i*112
+        cards+=(f'<div style="position:absolute;left:0;top:{y}px;width:560px;background:linear-gradient(160deg,#403a35,#2b2723);border:1.5px solid rgba(255,255,255,.14);border-radius:18px;padding:17px 24px;box-shadow:0 30px 44px rgba(0,0,0,.55), inset 0 2px 2px rgba(255,255,255,.1);display:flex;align-items:center;gap:20px">'
+          f'<div style="flex-shrink:0;width:48px;height:48px;border-radius:14px;background:rgba(212,162,127,.14);border:1px solid rgba(212,162,127,.34);display:flex;align-items:center;justify-content:center;font-family:\'DM Sans\';font-weight:900;font-size:20px;color:rgb({ACC})">{a[0]}</div>'
           f'<div style="flex:1"><div style="font-family:\'DM Mono\';font-size:14px;letter-spacing:.12em;color:rgb({ACC})">{a}</div><div style="font-family:\'DM Sans\';font-weight:700;font-size:19px;color:#FAFAF7">{b}</div></div>'
           f'<div style="flex-shrink:0;font-family:\'DM Mono\';font-size:12px;letter-spacing:.1em;color:#8f8f85;background:rgba(250,250,247,.05);border:1px solid rgba(255,255,255,.09);border-radius:10px;padding:6px 12px">{tier}</div></div>')
     return f'''<div style="width:900px;{CARD};padding:34px 44px 34px">
       {htitle("One roster, not ten logins","SEVEN AGENTS")}
-      <div style="perspective:1900px;height:470px;display:flex;align-items:center;justify-content:center">
-        <div style="transform-style:preserve-3d;transform:rotateX(20deg) rotateZ(-8deg);width:560px;height:440px;position:relative">{cards}
-          <div style="position:absolute;left:150px;top:404px;background:rgb({ACC});color:#1a0f0a;font-family:\'DM Sans\';font-weight:900;font-size:16px;padding:9px 20px;border-radius:999px;box-shadow:0 10px 22px rgba(212,162,127,.4)">+3 more, one bill</div></div></div>
+      <div style="perspective:2100px;height:560px;display:flex;align-items:center;justify-content:center">
+        <div style="transform-style:preserve-3d;transform:rotateX(17deg) rotateZ(-7deg);width:560px;height:520px;position:relative">{cards}
+          <div style="position:absolute;left:170px;top:452px;background:rgb({ACC});color:#1a0f0a;font-family:\'DM Sans\';font-weight:900;font-size:16px;padding:9px 20px;border-radius:999px;box-shadow:0 10px 22px rgba(212,162,127,.4)">+3 more, one bill</div></div></div>
       {cap("CORTEX, SPECTER, STRIKER, PULSE and the rest - one roof, one subscription.")}</div>'''
 
 # 5. GAUGE (IVORY) - the whole zoo for cents vs the expensive stack it replaces
