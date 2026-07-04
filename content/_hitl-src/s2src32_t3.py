@@ -133,7 +133,7 @@ def memory():
         <text x="{cx}" y="{cy+5}" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="14" fill="#2a160c">CORE</text>
       </svg>
       <div style="flex:1">
-        {htitle("One memory, every agent","SHARED CORE")}
+        {htitle("One shared memory","ALL SEVEN")}
         <div style="font-family:'DM Sans';font-size:19px;color:#c9c3b8;line-height:1.45;margin-bottom:16px">ICP, pipeline, pricing and docs live once. All seven agents read the same core, so nothing forgets you.</div>
         <div style="display:flex;flex-wrap:wrap;gap:8px">{tags}</div>
         {cap("remembered once, used by all seven - no re-briefing, ever.")}

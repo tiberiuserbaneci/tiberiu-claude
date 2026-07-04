@@ -123,7 +123,7 @@ def gate():
 
 # 5. SENT - timezone dial, each region's outreach fired at local 9am
 def sent():
-    cx,cy,R=210,215,175
+    cx,cy,R=210,238,168
     ticks=""
     for i in range(12):
         a=math.radians(i*30-90); x1=cx+(R-14)*math.cos(a); y1=cy+(R-14)*math.sin(a); x2=cx+R*math.cos(a); y2=cy+R*math.sin(a)
@@ -132,7 +132,7 @@ def sent():
     spokes=""
     for nm,deg,t in marks:
         a=math.radians(deg); x=cx+(R-22)*math.cos(a); y=cy+(R-22)*math.sin(a)
-        lx=cx+(R+30)*math.cos(a); ly=cy+(R+30)*math.sin(a)
+        lx=cx+(R+28)*math.cos(a); ly=cy+(R+28)*math.sin(a)
         spokes+=(f'<line x1="{cx}" y1="{cy}" x2="{x:.0f}" y2="{y:.0f}" stroke="rgb({ACC})" stroke-width="4" filter="url(#gl)"/>'
           f'<circle cx="{x:.0f}" cy="{y:.0f}" r="10" fill="rgb({ACC})" filter="url(#gl)"/>'
           f'<text x="{lx:.0f}" y="{ly-2:.0f}" text-anchor="middle" font-family="DM Sans" font-weight="800" font-size="16" fill="#FAFAF7">{nm}</text>')

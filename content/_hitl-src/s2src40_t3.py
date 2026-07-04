@@ -187,7 +187,7 @@ def memory():
         <ellipse cx="{cx}" cy="{cy+16}" rx="30" ry="9" fill="none" stroke="#2a160c" stroke-width="3"/>
         {nodes}</svg>
       <div style="flex:1">
-        {htitle("It remembered every no","SHARED CORE")}
+        {htitle("It forgets nothing","SHARED CORE")}
         <div style="font-family:DM Sans;font-size:19px;color:#c9c3b8;line-height:1.45">ICP, pipeline, pricing, past replies - every agent draws from one memory. Nothing you said in week one is lost by week ten.</div>
         {cap("one core feeds them all. nothing forgets you.")}</div></div>'''
 
@@ -249,7 +249,7 @@ if __name__=="__main__":
         b=pw.chromium.launch(executable_path="/opt/pw-browsers/chromium",args=["--no-sandbox","--no-proxy-server"])
         pg=b.new_page(viewport={"width":960,"height":900},device_scale_factor=2)
         for name,html in PANELS.items():
-            full=f"<!DOCTYPE html><html><head><meta charset='utf-8'><style>{Lm.css(ACC)}</style></head><body style='padding:30px'>{html}</body></html>"
+            full=f"<!DOCTYPE html><html><head><meta charset='utf-8'><style>{Lm.css(ACC)}</style></head><body style='padding:70px'>{html}</body></html>"
             pg.set_content(full); pg.wait_for_timeout(400)
             pg.screenshot(path=f"{outd}/{name}.png",omit_background=True,full_page=True)
             print("rendered",name)
