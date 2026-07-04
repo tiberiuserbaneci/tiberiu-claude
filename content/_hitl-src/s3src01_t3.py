@@ -205,10 +205,10 @@ def router():
 # 8. CLIMB - ascending staircase of the 5 surfaces to a lit summit, all rungs on
 def climb():
     names=["CHAT","PROJECTS","COWORK","SKILLS","CODE"]
-    x0=40; bw=138; gap=14; baseY=418
+    x0=40; bw=138; gap=14; baseY=432
     blocks=""; tops=[]
     for i,nm in enumerate(names):
-        h=110+i*66; x=x0+i*(bw+gap); y=baseY-h; lit=i==4
+        h=96+i*54; x=x0+i*(bw+gap); y=baseY-h; lit=i==4
         top=f"rgb({ACC})" if lit else f"rgba(212,162,127,{0.4+i*0.13:.2f})"
         blocks+=(f'<rect x="{x}" y="{y}" width="{bw}" height="{h}" rx="12" fill="#221f1b" stroke="rgba(255,255,255,.08)"/>'
           f'<rect x="{x}" y="{y}" width="{bw}" height="12" rx="6" fill="{top}"/>'
@@ -224,8 +224,8 @@ def climb():
         <filter id="sg" x="-120%" y="-120%" width="340%" height="340%"><feDropShadow dx="0" dy="0" stdDeviation="18" flood-color="rgb({ACC})" flood-opacity="0.55"/></filter></defs>
         <path d="{path}" fill="none" stroke="rgba(212,162,127,.55)" stroke-width="2.5" stroke-dasharray="4 7"/>
         {blocks}
-        <g filter="url(#sg)"><circle cx="{lx:.0f}" cy="{ly-46:.0f}" r="30" fill="url(#sum)"/></g>
-        <text x="{lx:.0f}" y="{ly-41:.0f}" text-anchor="middle" font-family="DM Mono" font-size="11" fill="#1a0f0a">YOU</text></svg>
+        <g filter="url(#sg)"><circle cx="{lx:.0f}" cy="{ly-40:.0f}" r="28" fill="url(#sum)"/></g>
+        <text x="{lx:.0f}" y="{ly-35:.0f}" text-anchor="middle" font-family="DM Mono" font-size="11" fill="#1a0f0a">YOU</text></svg>
       {cap("chat, projects, cowork, skills, code. each rung compounds the one below it.")}</div>'''
 
 PANELS={"floor":floor(),"chat":chat(),"projects":projects(),"cowork":cowork(),
