@@ -4,7 +4,7 @@
 # one-line mono caption, NO generic stat-chip strip, NO clip-path cuts, NO extruded walls.
 # Warm palette: accent rgb(212,162,127), ivory-accent #96562d, muted red rgb(200,70,35) for
 # dead/bounced states only. Cost zero. Overwrites models_clay/ghosted/*.png.
-import importlib.util, os, math
+import importlib.util, os, math, random
 from playwright.sync_api import sync_playwright
 ROOT="/home/user/tiberiu-claude"
 L=importlib.util.spec_from_file_location("L",f"{ROOT}/content/_hitl-src/clay3d_v4.py")
@@ -166,9 +166,7 @@ def spike():
 # (dot field = distinct)
 def catchall():
     cols,rows=20,12; total=cols*rows
-    reds=set(); s=17
-    while len(reds)<47:
-        s=(s*29+13)%total; reds.add(s)
+    reds=set(random.Random(7).sample(range(total),47))
     cell,gap=20,8
     dots=""
     for i in range(total):
