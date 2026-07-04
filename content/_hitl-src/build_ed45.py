@@ -419,8 +419,14 @@ def place_prem(base,objpath,light,ytop=None):
         # occupies the whole mid band, no dead space. It is shifted LEFT (cx=470) and capped on the
         # right at x=812 so the wide panel clears the IG/TikTok like-comment icon rail (~x850);
         # left has no rail so it stays big. Pair with the taller clay rows (dense panels).
+        # 3D ELEMENT RULES (operator 2026-07-03, saved in engine):
+        #  1. SAFE ZONE is HARD: x in [70, 840] (right edge <=840 clears the IG icon rail ~857),
+        #     so max element width = 770. NEVER exceed.
+        #  2. TOP-anchored right under the sub-hook (no dead gap above).
+        #  3. The element FILLS this working band; wide-short panels can only do that if the Tier-3
+        #     panels are drawn tall (aspect ~1.2) in the _t3.py sources (redesign, do not stretch).
         zy0=max(500,(ytop or 500))
-        T2.place_in_zone(base,im0,(110,zy0,846,1210),fill=1.0,cx=492)
+        T2.place_in_zone(base,im0,(70,zy0,840,1180),fill=1.0,cx=455,valign="top")
         return
     im=im0.convert("RGB")
     a=np.asarray(im).astype(int); h,w=a.shape[:2]; area=h*w
