@@ -1,155 +1,209 @@
 #!/usr/bin/env python3
-# TIER 3 - I CHECKED THE LISTS. NON-RECTANGULAR silhouettes, dense, TALL (fills the band), mixed dark/ivory.
-# stems: flood / test / fakes / keepers / safest / curated / rule / desk
-import importlib.util
-t=importlib.util.spec_from_file_location("B","/home/user/tiberiu-claude/content/_hitl-src/t3base.py")
-B=importlib.util.module_from_spec(t); t.loader.exec_module(B)
-CARD=B.CARD; INK=B.INK; MUT=B.MUT; DIM=B.DIM; shape=B.shape; circle=B.circle
-ACC="200,70,35"; IV_ACC="190,70,40"
-def head(tt,tag,ink="#FAFAF7",mut=MUT,acc=ACC): return (f'<div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:20px">'
-    f'<span style="font-family:\'DM Sans\';font-weight:800;font-size:30px;color:{ink}">{tt}</span>'
-    f'<span style="font-family:\'DM Mono\';font-size:14px;letter-spacing:.14em;color:rgb({acc})">{tag}</span></div>')
-def foot(items,ink="#FAFAF7",mut=MUT,bg="#191614",bd="rgba(255,255,255,.06)",acc=ACC):
-    chips="".join(f'<div style="flex:1;text-align:center;padding:22px 8px;background:{bg};border:1px solid {bd};border-radius:15px"><div style="font-family:DM Sans;font-weight:900;font-size:32px;color:rgb({acc});line-height:1">{b}</div><div style="font-family:DM Mono;font-size:12.5px;letter-spacing:.08em;color:{mut};margin-top:9px">{s}</div></div>' for b,s in items)
-    return f'<div style="display:flex;gap:13px;margin-top:24px">{chips}</div>'
+# TIER 3 - I CHECKED THE LISTS, built to the WIRE-ITS-EYES bar: each panel a UNIQUE hand-built
+# coded scene filling a clean rounded card, title + one-line caption, NO generic stat-chip strips.
+import importlib.util, os, math
+from playwright.sync_api import sync_playwright
+ROOT="/home/user/tiberiu-claude"
+L=importlib.util.spec_from_file_location("L",f"{ROOT}/content/_hitl-src/clay3d_v4.py")
+Lm=importlib.util.module_from_spec(L); L.loader.exec_module(Lm)
+ACC="212,162,127"
+CARD='background:linear-gradient(165deg,#2b2b28,#1d1d1b);border:1px solid rgba(255,255,255,.07);border-radius:34px;box-shadow:0 42px 80px rgba(0,0,0,.55),0 16px 34px rgba(0,0,0,.44), inset 0 2.5px 3px rgba(255,255,255,.12), inset 0 -14px 30px rgba(0,0,0,.45)'
+CARDIV='background:linear-gradient(160deg,#fdfbf6,#efe6d5 62%,#e6dac4);border:1px solid rgba(120,95,60,.16);border-radius:34px;box-shadow:0 40px 70px rgba(120,95,60,.20),0 14px 28px rgba(120,95,60,.14), inset 0 2px 3px rgba(255,255,255,.95), inset 0 -16px 34px rgba(150,120,80,.12)'
+def htitle(t,tag,ink="#FAFAF7",tagc=f"rgb({ACC})"): return (f'<div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px">'
+    f'<span style="font-family:\'DM Sans\';font-weight:800;font-size:26px;color:{ink}">{t}</span>'
+    f'<span style="font-family:\'DM Mono\';font-size:13px;letter-spacing:.14em;color:{tagc}">{tag}</span></div>')
+def cap(t,c="#8f8f85"): return f'<div style="font-family:\'DM Mono\';font-size:14px;color:{c};margin-top:16px">{t}</div>'
 
-W=760   # content flows to its natural height; design each panel dense enough to be ~1.19 aspect (fills the zone)
-def box(inner): return f'<div style="width:{W}px">{inner}</div>'
-
-# 1. flood - a WALL of 90 skill chips, mostly unverified, "0 receipts". Shape: slantL
+# 1. FLOOD - a fanned hand of IDENTICAL repost cards pinned at the bottom (the same recycled list,
+# on repeat), the front card stamped "0 RECEIPTS" in muted red. No verification anywhere.
 def flood():
-    cells=""
-    for i in range(90):
-        dead=(i%3!=0)
-        cells+=(f'<div style="height:38px;border-radius:6px;background:{"#262320" if dead else "rgba(200,70,35,.30)"};'
-          f'border:1px solid {"rgba(255,255,255,.05)" if dead else "rgba(200,70,35,.55)"}"></div>')
-    inner=(f'{head("Fifty skills a list, no proof","THE FLOOD")}'
-      f'<div style="display:flex;align-items:center;gap:18px;margin-bottom:16px">'
-      f'<div style="display:flex;align-items:center;gap:8px"><span style="width:14px;height:14px;border-radius:4px;background:rgba(200,70,35,.30);border:1px solid rgba(200,70,35,.55)"></span><span style="font-family:DM Mono;font-size:13px;color:{MUT}">has a receipt</span></div>'
-      f'<div style="display:flex;align-items:center;gap:8px"><span style="width:14px;height:14px;border-radius:4px;background:#262320;border:1px solid rgba(255,255,255,.05)"></span><span style="font-family:DM Mono;font-size:13px;color:{MUT}">unverified</span></div></div>'
-      f'<div style="display:grid;grid-template-columns:repeat(10,1fr);gap:8px;margin-bottom:20px">{cells}</div>'
-      f'<div style="display:flex;align-items:center;gap:14px">'
-      f'<div style="font-family:DM Mono;font-size:14px;color:{MUT}">the same recycled lists, reposted daily</div>'
-      f'<div style="margin-left:auto;font-family:DM Mono;font-size:14px;letter-spacing:.14em;color:rgb({ACC});border:1.5px solid rgb({ACC});border-radius:8px;padding:8px 15px;transform:rotate(-3deg)">0 RECEIPTS</div></div>'
-      f'{foot([("50","PER LIST"),("0","VERIFIED"),("daily","REPOSTED")])}')
-    return shape(box(inner),"slantL")
-
-# 2. test - a full week log: bars + per-day run counts + job checklist. Shape: bevel
-def test():
-    runs=[7,8,6,9,7,8,5]
-    days="".join(f'<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:100%;height:{40+n*14}px;background:linear-gradient(180deg,rgb({ACC}),rgba(200,70,35,.35));border-radius:7px 7px 0 0"></div><div style="font-family:DM Sans;font-weight:800;font-size:16px;color:#e9e3d7">{n}</div><div style="font-family:DM Mono;font-size:11px;color:{MUT}">D{i+1}</div></div>' for i,n in enumerate(runs))
-    jobs="".join(f'<div style="display:flex;align-items:center;gap:11px;background:#211e1b;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:15px 18px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgb({ACC})" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg><span style="font-family:DM Sans;font-weight:600;font-size:17px;color:#d7d1c6">{j}</span></div>' for j in ["briefs","drafts","builds","audits"])
-    logs=[("MON 08:14","voice-draft","wrote 6 replies in my tone"),("WED 11:40","account-brief","one page, every source cited"),("FRI 16:05","carousel","10 slides, on brand tokens")]
-    log="".join(f'<div style="display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06)"><span style="font-family:DM Mono;font-size:12px;color:{MUT};width:100px">{ts}</span><span style="font-family:DM Sans;font-weight:700;font-size:16px;color:rgb({ACC});width:130px">{sk}</span><span style="flex:1;font-family:DM Sans;font-size:15px;color:#cfc9bd">{r}</span></div>' for ts,sk,r in logs)
-    inner=(f'{head("One week on real work","THE TEST")}'
-      f'<div style="display:flex;align-items:flex-end;gap:12px;height:180px;margin-bottom:20px">{days}</div>'
-      f'<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px">{jobs}</div>'
-      f'<div style="font-family:DM Mono;font-size:13px;letter-spacing:.1em;color:{MUT};margin-bottom:6px">SAMPLE RUNS</div>{log}'
-      f'{foot([("7","DAYS"),("50","SKILLS RUN"),("0","DEMOS")])}')
-    return shape(box(inner),"bevel")
-
-# 3. fakes - strikethrough list + a big kept/cut split bar. Shape: arrow
-def fakes():
-    rows=""
-    for lbl,ex in [("dead links","the repo is gone"),("renamed duplicates","same skill, new name"),("answers, never executes","a chatbot in a trench coat")]:
-        rows+=(f'<div style="display:flex;align-items:center;gap:15px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.06)">'
-          f'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgb({ACC})" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12"/></svg>'
-          f'<div style="flex:1"><div style="font-family:DM Sans;font-size:19px;color:#9a9488;text-decoration:line-through;text-decoration-color:rgba(200,70,35,.7)">{lbl}</div>'
-          f'<div style="font-family:DM Mono;font-size:12px;color:{DIM};margin-top:3px">{ex}</div></div>'
-          f'<span style="font-family:DM Mono;font-size:12px;color:{DIM}">cut</span></div>')
-    bar=('<div style="display:flex;height:52px;border-radius:11px;overflow:hidden;margin-top:22px">'
-      f'<div style="flex:33;background:repeating-linear-gradient(45deg,#2a2420,#2a2420 8px,#211d19 8px,#211d19 16px);display:flex;align-items:center;justify-content:center;font-family:DM Sans;font-weight:900;font-size:18px;color:#9a9488">17 fake</div>'
-      f'<div style="flex:66;background:linear-gradient(160deg,rgb({ACC}),rgba(200,70,35,.55));display:flex;align-items:center;justify-content:center;font-family:DM Sans;font-weight:900;font-size:18px;color:#1a0f0a">33 real</div></div>')
-    topband=(f'<div style="display:flex;align-items:center;gap:14px;background:#211e1b;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:16px 20px;margin-bottom:18px">'
-      f'<span style="font-family:DM Sans;font-weight:900;font-size:26px;color:#FAFAF7">50 installed</span>'
-      f'<span style="font-family:DM Sans;font-size:16px;color:#cfc9bd">then run once each. three ways a skill turned out fake:</span></div>')
-    inner=(f'{head("A third were made up","THE FAKES")}{topband}{rows}'
-      f'<div style="display:flex;align-items:center;gap:16px;margin-top:22px">'
-      f'<div style="font-family:DM Sans;font-weight:900;font-size:56px;color:rgb({ACC});line-height:1">17<span style="font-size:26px;color:{MUT}"> / 50</span></div>'
-      f'<div style="font-family:DM Mono;font-size:14px;color:{MUT}">removed without mercy before anything shipped</div></div>{bar}'
-      f'{foot([("17","FAKE"),("34%","OF THE LIST"),("0","MERCY")])}')
-    return shape(box(inner),"arrow")
-
-# 4. keepers - 4 job groups, each a card with the named skills inside. Shape: tag
-def keepers():
-    grp=[("WRITING",["voice drafts","reply triage","captions"]),("RESEARCH",["account briefs","market scans","citations"]),
-         ("DESIGN",["carousels","brand tokens"]),("BUILD",["landing pages","data pulls","fixes","tests"])]
+    reposts=[("@ai_daily","2d"),("@toolstack","3d"),("@promptclub","0d"),("@skillfeed","4d"),("@growth_x","5d")]
+    n=len(reposts); mid=(n-1)/2
     cards=""
-    for nm,items in grp:
-        lis="".join(f'<div style="display:flex;align-items:center;gap:8px;margin-top:8px"><span style="width:5px;height:5px;border-radius:50%;background:rgb({ACC})"></span><span style="font-family:DM Sans;font-size:15px;color:#cfc9bd">{x}</span></div>' for x in items)
-        cards+=(f'<div style="background:#211e1b;border:1px solid rgba(200,70,35,.22);border-radius:16px;padding:18px 20px">'
-          f'<div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:6px"><span style="font-family:DM Mono;font-size:12px;letter-spacing:.12em;color:rgb({ACC})">{nm}</span><span style="font-family:DM Sans;font-weight:900;font-size:28px;color:#FAFAF7;line-height:1">{len(items)}</span></div>{lis}</div>')
-    inner=(f'{head("What survived earns its slot","THE KEEPERS")}'
-      f'<div style="font-family:DM Mono;font-size:13px;letter-spacing:.1em;color:{MUT};margin-bottom:14px">TWELVE SKILLS, GROUPED BY THE JOB THEY FINISH</div>'
-      f'<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px">{cards}</div>'
-      f'<div style="display:flex;align-items:center;gap:14px;background:linear-gradient(160deg,rgba(200,70,35,.14),rgba(200,70,35,.04));border:1px solid rgba(200,70,35,.34);border-radius:15px;padding:18px 22px;margin-top:16px">'
-      f'<span style="font-family:DM Sans;font-weight:900;font-size:28px;color:#FAFAF7">38 tried</span>'
-      f'<svg width="46" height="24" viewBox="0 0 46 24" style="flex-shrink:0"><path d="M2 12 H36 M28 5 L44 12 L28 19" fill="none" stroke="rgb({ACC})" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>'
-      f'<span style="font-family:DM Sans;font-weight:900;font-size:28px;color:rgb({ACC})">12 kept</span>'
-      f'<span style="margin-left:auto;font-family:DM Mono;font-size:13px;color:{MUT}">the rest were advice, not tools</span></div>'
-      f'{foot([("12","KEPT"),("4","JOB GROUPS"),("100%","EXECUTE")])}')
-    return shape(box(inner),"tag",pad="34px 48px")
+    for i,(acct,ago) in enumerate(reposts):
+        rot=(i-mid)*11; front=(i==int(mid))
+        bg="linear-gradient(160deg,#35312c,#221f1b)" if front else "linear-gradient(160deg,#2a2723,#1c1a17)"
+        op=1 if front else .82
+        cards+=(f'<div style="position:absolute;left:50%;bottom:0;width:430px;margin-left:-215px;'
+          f'transform-origin:bottom center;transform:rotate({rot}deg);opacity:{op};'
+          f'background:{bg};border:1px solid rgba(255,255,255,.10);border-radius:18px;padding:20px 22px;'
+          f'box-shadow:0 26px 40px rgba(0,0,0,.5), inset 0 2px 2px rgba(255,255,255,.08)">'
+          f'<div style="font-family:DM Sans;font-weight:900;font-size:22px;color:#e9e3d6">TOP 50 AI SKILLS</div>'
+          f'<div style="font-family:DM Mono;font-size:12px;color:#8f8f85;margin-top:4px">copy-paste list &middot; {acct} &middot; {ago}</div>'
+          + "".join(f'<div style="height:7px;border-radius:4px;background:rgba(250,250,247,.08);margin-top:9px;width:{w}%"></div>' for w in (94,80,88))
+          + '<div style="font-family:DM Mono;font-size:11px;letter-spacing:.14em;color:#7a746a;margin-top:12px">REPOSTED &middot; NO SOURCE</div>'
+          + (f'<div style="position:absolute;top:72px;left:26px;font-family:DM Sans;font-weight:900;font-size:32px;letter-spacing:.06em;color:rgba(200,70,35,.9);transform:rotate(-11deg);border:3px solid rgba(200,70,35,.75);border-radius:10px;padding:4px 14px">0 RECEIPTS</div>' if front else '')
+          + '</div>')
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 34px">
+      {htitle("The same list, on repeat","RECYCLED FEED")}
+      <div style="position:relative;height:470px">{cards}</div>
+      {cap("fifty skills per card, reposted daily. nobody installs them, nobody verifies them.")}</div>'''
 
-# 5. safest - install-order dial (round element, fills naturally). circle
+# 2. TEST - a 7-day timeline, every skill run on real work (briefs, drafts, builds, audits)
+def test():
+    days=[("MON","brief","cortex"),("TUE","draft","specter"),("WED","build","sentinel"),
+          ("THU","audit","striker"),("FRI","draft","pulse"),("SAT","build","sentinel"),("SUN","audit","counsel")]
+    W,H=820,430; x0=20; lane=(W-x0*2)/7
+    lines=f'<line x1="{x0}" y1="70" x2="{W-x0}" y2="70" stroke="rgba(212,162,127,.35)" stroke-width="2"/>'
+    cells=""
+    for i,(d,job,who) in enumerate(days):
+        cx=x0+lane*i+lane/2
+        lines+=f'<circle cx="{cx:.0f}" cy="70" r="7" fill="rgb({ACC})"/><line x1="{cx:.0f}" y1="77" x2="{cx:.0f}" y2="118" stroke="rgba(212,162,127,.3)" stroke-width="2"/>'
+        lines+=f'<text x="{cx:.0f}" y="46" text-anchor="middle" font-family="DM Mono" font-size="14" letter-spacing=".1em" fill="#c9c3b8">{d}</text>'
+        cells+=(f'<foreignObject x="{cx-lane/2+8:.0f}" y="120" width="{lane-16:.0f}" height="250">'
+          f'<div xmlns="http://www.w3.org/1999/xhtml" style="background:linear-gradient(160deg,#37322c,#221f1b);border:1px solid rgba(255,255,255,.10);border-radius:14px;padding:14px 8px;height:100%;box-shadow:0 16px 28px rgba(0,0,0,.45), inset 0 2px 2px rgba(255,255,255,.07);display:flex;flex-direction:column;align-items:center;text-align:center">'
+          f'<div style="width:36px;height:36px;border-radius:10px;background:rgba(212,162,127,.16);border:1px solid rgba(212,162,127,.34);display:flex;align-items:center;justify-content:center;font-family:DM Sans;font-weight:900;font-size:17px;color:rgb({ACC})">{job[0].upper()}</div>'
+          f'<div style="font-family:DM Sans;font-weight:800;font-size:18px;color:#FAFAF7;margin-top:12px">{job}</div>'
+          f'<div style="font-family:DM Mono;font-size:11px;color:#8f8f85;margin-top:4px">{who}</div>'
+          f'<div style="margin-top:auto;font-family:DM Mono;font-size:11px;letter-spacing:.08em;color:rgb({ACC})">RAN</div></div></foreignObject>')
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 34px">
+      {htitle("Every skill, on real work","7 DAYS")}
+      <svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" style="display:block;margin:0 auto">{lines}{cells}</svg>
+      {cap("one week, each skill run on a live task: briefs, drafts, builds, audits.")}</div>'''
+
+# 3. FAKES - a ring gauge, one third severed in muted red, three failure reasons beside it
+def fakes():
+    r=104; circ=2*math.pi*r; fake=circ/3
+    reasons=[("Dead links","point at nothing"),("Renamed duplicates","one skill, five names"),("Answers, no action","talks instead of runs")]
+    rows=""
+    for t,s in reasons:
+        rows+=(f'<div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:18px">'
+          f'<svg width="26" height="26" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px"><circle cx="12" cy="12" r="11" fill="rgba(200,70,35,.14)"/><path d="M8 8l8 8M16 8l-8 8" stroke="rgb(200,70,35)" stroke-width="2.4" stroke-linecap="round"/></svg>'
+          f'<div><div style="font-family:DM Sans;font-weight:800;font-size:19px;color:#FAFAF7">{t}</div>'
+          f'<div style="font-family:DM Sans;font-size:15px;color:#8f8f85;margin-top:1px">{s}</div></div></div>')
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 34px;display:flex;align-items:center;gap:40px">
+      <div style="flex-shrink:0;position:relative;width:250px;height:250px">
+        <svg width="250" height="250" viewBox="0 0 250 250">
+          <circle cx="125" cy="125" r="{r}" fill="none" stroke="rgb({ACC})" stroke-width="26"/>
+          <circle cx="125" cy="125" r="{r}" fill="none" stroke="rgb(200,70,35)" stroke-width="26" stroke-linecap="butt" stroke-dasharray="{fake:.0f} {circ:.0f}" transform="rotate(-90 125 125)"/></svg>
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
+          <span style="font-family:DM Sans;font-weight:900;font-size:54px;color:#FAFAF7;line-height:1">17</span>
+          <span style="font-family:DM Mono;font-size:13px;letter-spacing:.1em;color:rgb(200,70,35)">OF 50 FAKE</span></div></div>
+      <div style="flex:1">
+        {htitle("A third were made up","FAILED CHECK")}
+        {rows}
+        {cap("dead links, renamed duplicates, skills that answer instead of execute.")}</div></div>'''
+
+# 4. KEEPERS - IVORY isometric stack of the four survivor categories, each with a count
+def keepers():
+    steps=[("WRITING","posts, emails, replies","4"),("RESEARCH","icp, accounts, markets","3"),
+           ("DESIGN","pages, decks, assets","3"),("BUILD","features, fixes, audits","2")]
+    cards=""
+    for i,(nm,sub,c) in enumerate(steps):
+        y=i*118
+        cards+=(f'<div style="position:absolute;left:0;top:{y}px;width:560px;background:linear-gradient(160deg,#fffdf9,#efe4d1);border:1.5px solid rgba(120,95,60,.22);border-radius:18px;padding:18px 22px;box-shadow:0 28px 42px rgba(120,95,60,.28), inset 0 2px 2px rgba(255,255,255,.9);display:flex;align-items:center;gap:20px">'
+          f'<div style="flex-shrink:0;width:52px;height:52px;border-radius:14px;background:#96562d;display:flex;align-items:center;justify-content:center;font-family:DM Sans;font-weight:900;font-size:24px;color:#fdf6ec;box-shadow:0 8px 16px rgba(150,86,45,.4)">{c}</div>'
+          f'<div style="flex:1"><div style="font-family:DM Mono;font-size:13px;letter-spacing:.14em;color:#96562d">{nm}</div><div style="font-family:DM Sans;font-weight:700;font-size:20px;color:#2a2016;margin-top:2px">{sub}</div></div>'
+          f'<svg width="26" height="26" viewBox="0 0 24 24" style="flex-shrink:0"><path d="M6 12.5l3.5 3.5L18 7.5" fill="none" stroke="#96562d" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>')
+    return f'''<div style="width:900px;{CARDIV};padding:34px 42px 34px">
+      {htitle("What survived earns its slot","SHORTLIST",ink="#2a2016",tagc="#96562d")}
+      <div style="perspective:1900px;height:470px;display:flex;align-items:center;justify-content:center">
+        <div style="transform-style:preserve-3d;transform:rotateX(19deg) rotateZ(-8deg);width:560px;height:420px;position:relative">{cards}</div></div>
+      {cap("writing, research, design, build: the twelve that actually finish work.","#8a745a")}</div>'''
+
+# 5. SAFEST - radial trust order: an Anthropic first-party core, a verified community ring around it
 def safest():
-    steps=[("1","First-party","the two built by Anthropic"),("2","Verified layer","community, but tested"),("3","Your desk","only what survives")]
-    rows="".join(f'<div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;width:440px"><div style="flex-shrink:0;width:46px;height:46px;border-radius:50%;background:rgb({ACC});color:#1a0f0a;font-family:DM Sans;font-weight:900;font-size:22px;display:flex;align-items:center;justify-content:center">{n}</div><div><div style="font-family:DM Sans;font-weight:800;font-size:21px;color:#FAFAF7">{a}</div><div style="font-family:DM Mono;font-size:13px;color:{MUT}">{b}</div></div></div>' for n,a,b in steps)
-    inner=(f'<div style="font-family:DM Mono;font-size:14px;letter-spacing:.16em;color:rgb({ACC});margin-bottom:8px;text-align:center">THE ORDER</div>'
-      f'<div style="font-family:DM Sans;font-weight:900;font-size:30px;color:#FAFAF7;margin-bottom:26px;text-align:center;line-height:1.12">The safe<br>install order</div>{rows}')
-    return circle(inner,size=760)
+    cx,cy=306,225; R=158
+    comm=["templates","review","summarize","extract","classify","convert"]
+    nodes=""; lines=""
+    for i,nm in enumerate(comm):
+        a=-90+i*60
+        x=cx+R*math.cos(math.radians(a)); y=cy+R*math.sin(math.radians(a))
+        lines+=f'<line x1="{cx}" y1="{cy}" x2="{x:.0f}" y2="{y:.0f}" stroke="rgba(212,162,127,.28)" stroke-width="2"/>'
+        nodes+=(f'<circle cx="{x:.0f}" cy="{y:.0f}" r="42" fill="#221f1b" stroke="rgba(212,162,127,.4)" stroke-width="1.6"/>'
+          f'<text x="{x:.0f}" y="{y+4:.0f}" text-anchor="middle" font-family="DM Mono" font-size="12.5" fill="#cfc9bd">{nm}</text>')
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 34px">
+      {htitle("First-party core, then the rest","TRUST ORDER")}
+      <svg width="612" height="470" viewBox="0 0 612 470" style="display:block;margin:0 auto">
+        <defs><radialGradient id="core" cx="38%" cy="32%"><stop offset="0%" stop-color="#f0c49e"/><stop offset="55%" stop-color="rgb({ACC})"/><stop offset="100%" stop-color="#7a4326"/></radialGradient>
+        <filter id="cg" x="-120%" y="-120%" width="340%" height="340%"><feDropShadow dx="0" dy="0" stdDeviation="18" flood-color="rgb({ACC})" flood-opacity="0.5"/></filter></defs>
+        <circle cx="{cx}" cy="{cy}" r="{R}" fill="none" stroke="rgba(212,162,127,.12)" stroke-dasharray="4 9"/>
+        {lines}{nodes}
+        <g filter="url(#cg)"><circle cx="{cx}" cy="{cy}" r="78" fill="url(#core)"/></g>
+        <text x="{cx}" y="{cy-6}" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="30" fill="#2a160c">2</text>
+        <text x="{cx}" y="{cy+22}" text-anchor="middle" font-family="DM Mono" font-size="12.5" letter-spacing=".1em" fill="#3a2010">ANTHROPIC</text>
+      </svg>
+      {cap("start with the two built by anthropic, then the verified community layer.")}</div>'''
 
-# 6. curated - Ultron techniques library, IVORY panel, 6 tested items + badge. Shape: notch2
+# 6. CURATED - a verify pipeline: raw skills in, a VERIFY gate, out to the Ultron techniques shelf
 def curated():
-    ivink="#2a2016"; ivmut="#8a745a"
-    items="".join(f'<div style="display:flex;align-items:center;gap:12px;padding:16px 0;border-bottom:1px solid rgba(120,95,60,.16)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgb({IV_ACC})" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg><span style="flex:1;font-family:DM Sans;font-weight:600;font-size:18px;color:{ivink}">{a}</span><span style="font-family:DM Mono;font-size:12px;letter-spacing:.06em;color:rgb({IV_ACC})">v{v} · TESTED</span></div>' for a,v in [("research briefs","2.1"),("outbound sequences","3.0"),("proposal decks","1.4"),("content carousels","2.2"),("legal redlines","1.1"),("deal scorecards","1.0")])
-    badge=(f'<div style="display:flex;align-items:center;gap:16px;background:linear-gradient(160deg,rgba(190,70,40,.12),rgba(190,70,40,.03));border:1px solid rgba(190,70,40,.3);border-radius:16px;padding:18px 22px;margin-bottom:16px">'
-      f'<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgb({IV_ACC})" stroke-width="1.8"><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5z"/><path d="M9 12l2 2 4-4"/></svg>'
-      f'<div style="flex:1"><div style="font-family:DM Sans;font-weight:900;font-size:22px;color:{ivink}">Every skill has a receipt</div><div style="font-family:DM Mono;font-size:13px;color:{ivmut}">version-pinned, run on real work, before your desk sees it</div></div>'
-      f'<div style="font-family:DM Sans;font-weight:900;font-size:34px;color:rgb({IV_ACC})">6/6</div></div>')
-    inner=(f'{head("Ultron ships them pre-verified","CURATED",ink=ivink,mut=ivmut,acc=IV_ACC)}{badge}'
-      f'<div style="background:rgba(255,255,255,.55);border:1px solid rgba(120,95,60,.16);border-radius:16px;padding:8px 22px">{items}</div>'
-      f'<div style="font-family:DM Mono;font-size:14px;color:{ivmut};margin-top:16px">the techniques library, curated and tested before it reaches your desk</div>'
-      f'{foot([("100%","PRE-TESTED"),("0","DEAD LINKS"),("1","LIBRARY")],ink=ivink,mut=ivmut,bg="rgba(255,255,255,.6)",bd="rgba(120,95,60,.16)",acc=IV_ACC)}')
-    return shape(box(inner),"notch2",iv=True)
+    W,H=820,430
+    raw=[("random-skill",96),("dead-link",210),("dupe-v3",324)]
+    inp=""; edges=""
+    for nm,y in raw:
+        edges+=f'<path d="M196 {y} C300 {y},300 215,368 215" fill="none" stroke="rgba(212,162,127,.35)" stroke-width="2.2"/>'
+        inp+=(f'<rect x="24" y="{y-26}" width="172" height="52" rx="13" fill="#2a2724" stroke="rgba(255,255,255,.09)"/>'
+          f'<text x="110" y="{y+5}" text-anchor="middle" font-family="DM Mono" font-size="14" fill="#9a9488">{nm}</text>')
+    shelf=[("cold-email","tested"),("icp-research","tested"),("landing-page","tested")]
+    rows=""
+    for i,(nm,st) in enumerate(shelf):
+        y=118+i*70
+        rows+=(f'<rect x="590" y="{y}" width="206" height="54" rx="13" fill="#241f1a" stroke="rgba(212,162,127,.3)"/>'
+          f'<text x="606" y="{y+34}" font-family="DM Sans" font-weight="700" font-size="17" fill="#FAFAF7">{nm}</text>'
+          f'<circle cx="770" cy="{y+27}" r="6" fill="rgb({ACC})"/>')
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 34px">
+      {htitle("Curated before your desk","PRE-VERIFIED")}
+      <svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" style="display:block;margin:0 auto">
+        <defs><linearGradient id="gate" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#403a33"/><stop offset="100%" stop-color="#211e1a"/></linearGradient>
+        <filter id="gg" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="0" stdDeviation="12" flood-color="rgb({ACC})" flood-opacity="0.35"/></filter></defs>
+        {edges}{inp}
+        <g filter="url(#gg)"><rect x="368" y="120" width="150" height="190" rx="26" fill="url(#gate)" stroke="rgb({ACC})" stroke-width="2.5"/></g>
+        <g transform="translate(420,178)"><path d="M9 20l7 7 15 -18" fill="none" stroke="rgb({ACC})" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></g>
+        <text x="443" y="252" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="24" fill="#FAFAF7">VERIFY</text>
+        <text x="443" y="280" text-anchor="middle" font-family="DM Mono" font-size="12" fill="rgb({ACC})">run + check</text>
+        <rect x="518" y="211" width="52" height="8" rx="4" fill="rgb({ACC})" opacity="0.85"/>
+        <text x="590" y="102" font-family="DM Mono" font-size="13" letter-spacing=".14em" fill="rgb({ACC})">ULTRON TECHNIQUES</text>
+        {rows}
+      </svg>
+      {cap("the techniques library is curated and tested before it reaches your desk.")}</div>'''
 
-# 7. rule - execute vs advice split, each column with bullets. Shape: slantR
+# 7. RULE - IVORY split verdict: returns advice (a bookmark, dropped) vs finishes work (kept)
 def rule():
-    def col(lbl,big,sub,items,on):
-        bg="linear-gradient(160deg,rgba(200,70,35,.16),rgba(200,70,35,.05))" if on else "#211d19"
-        bd="rgba(200,70,35,.4)" if on else "rgba(255,255,255,.14)"
-        lc=f"rgb({ACC})" if on else MUT; big_c="#FAFAF7"
-        lis="".join(f'<div style="display:flex;align-items:center;gap:10px;margin-top:15px"><span style="flex-shrink:0;width:7px;height:7px;border-radius:50%;background:{lc}"></span><span style="font-family:DM Sans;font-size:16px;color:{"#d7d1c6" if on else DIM}">{x}</span></div>' for x in items)
-        sh="box-shadow:0 0 40px rgba(200,70,35,.12)" if on else ""
-        return (f'<div style="flex:1;background:{bg};border:1px {"solid" if on else "dashed"} {bd};border-radius:18px;padding:26px 24px">'
-          f'<div style="font-family:DM Mono;font-size:12px;letter-spacing:.12em;color:{lc};margin-bottom:12px">{lbl}</div>'
-          f'<div style="font-family:DM Sans;font-weight:900;font-size:26px;color:{big_c}">{big}</div>'
-          f'<div style="font-family:DM Sans;font-size:15px;color:{lc};margin-top:6px;padding-bottom:16px;border-bottom:1px solid {bd}">{sub}</div>{lis}</div>')
-    band=(f'<div style="display:flex;align-items:center;gap:14px;background:#211e1b;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:16px 20px;margin-bottom:16px">'
-      f'<span style="font-family:DM Sans;font-weight:900;font-size:26px;color:rgb({ACC})">1 test</span>'
-      f'<span style="font-family:DM Sans;font-size:16px;color:#cfc9bd">did the skill hand back a finished artifact, or just talk about one?</span></div>')
-    inner=(f'{head("Execute, or it does not count","THE RULE")}{band}'
-      f'<div style="display:flex;gap:16px;margin-top:2px">'
-      f'{col("ADVICE","a bookmark","returns words, finishes nothing",["saved, never opened","no file, no draft","you still do the work","looks smart, ships zero","another tab to forget"],False)}'
-      f'{col("EXECUTION","a finished job","hands back the artifact",["the draft, written","the deck, built","the audit, delivered","the email, queued","the PR, opened"],True)}</div>'
-      f'<div style="display:flex;align-items:center;gap:12px;margin-top:16px;background:linear-gradient(160deg,rgba(200,70,35,.14),rgba(200,70,35,.04));border:1px solid rgba(200,70,35,.34);border-radius:14px;padding:16px 22px">'
-      f'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgb({ACC})" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>'
-      f'<span style="font-family:DM Sans;font-weight:800;font-size:18px;color:#FAFAF7">Keep the right column. Delete the left.</span></div>'
-      f'{foot([("execute","OR NOTHING"),("0","BOOKMARKS"),("1","RULE")])}')
-    return shape(box(inner),"slantR")
+    def col(head,line,foot,ok):
+        ic=('<svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#96562d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12.5l3.5 3.5L18 7.5"/></svg>' if ok
+            else '<svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="rgb(200,70,35)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-6-4-6 4z"/></svg>')
+        tag=("KEEP" if ok else "DROP"); tagc=("#96562d" if ok else "rgb(200,70,35)")
+        bg=("rgba(150,86,45,.10)" if ok else "rgba(200,70,35,.08)")
+        bd=("rgba(150,86,45,.34)" if ok else "rgba(200,70,35,.32)")
+        return (f'<div style="flex:1;background:{bg};border:1.5px solid {bd};border-radius:20px;padding:26px 24px;display:flex;flex-direction:column;align-items:flex-start">'
+          f'<div style="display:flex;align-items:center;justify-content:space-between;width:100%">{ic}'
+          f'<span style="font-family:DM Mono;font-size:13px;letter-spacing:.16em;color:{tagc}">{tag}</span></div>'
+          f'<div style="font-family:DM Sans;font-weight:900;font-size:26px;color:#2a2016;margin-top:20px;line-height:1.15">{head}</div>'
+          f'<div style="font-family:DM Sans;font-size:18px;color:#5a4634;margin-top:8px;line-height:1.4">{line}</div>'
+          f'<div style="font-family:DM Mono;font-size:13px;letter-spacing:.08em;color:{tagc};margin-top:18px">{foot}</div></div>')
+    return f'''<div style="width:900px;{CARDIV};padding:34px 42px 34px">
+      {htitle("Advice is just a bookmark","EXECUTE TEST",ink="#2a2016",tagc="#96562d")}
+      <div style="display:flex;align-items:stretch;gap:22px;height:410px">
+        {col("Returns advice","It answers your question and stops. You still have to do the work.","0 work done",False)}
+        {col("Finishes the work","It ships the draft, the page, the audit. The task is closed.","task closed",True)}
+      </div>
+      {cap("a skill that returns advice is a bookmark. keep the ones that finish work.","#8a745a")}</div>'''
 
-# 8. desk - 12 survivor skills grid + a daily-uptime strip. Shape: notch
+# 8. DESK - a 12-tile survivor dashboard, every kept skill lit and named, running daily
 def desk():
-    names=["voice","triage","briefs","scans","carousel","tokens","pages","pulls","fixes","tests","redlines","scores"]
-    tiles="".join(f'<div style="height:140px;border-radius:16px;background:linear-gradient(160deg,#302c27,#211d19);border:1px solid rgba(200,70,35,.2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px"><div style="width:12px;height:12px;border-radius:50%;background:rgb({ACC});box-shadow:0 0 14px rgba(200,70,35,.7)"></div><div style="font-family:DM Sans;font-weight:700;font-size:16px;color:#e9e3d7">{n}</div><div style="font-family:DM Mono;font-size:10px;color:{MUT}">live</div></div>' for n in names)
-    strip="".join(f'<div style="flex:1;height:16px;border-radius:4px;background:rgb({ACC});opacity:{0.4+0.05*(i%4)}"></div>' for i in range(14))
-    inner=(f'{head("My desk runs on survivors","THE DESK")}'
-      f'<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:13px">{tiles}</div>'
-      f'<div style="font-family:DM Mono;font-size:13px;letter-spacing:.1em;color:{MUT};margin:22px 0 12px">TWO WEEKS OF DAILY RUNS, EACH TESTED ON MY OWN PIPELINE</div>'
-      f'<div style="display:flex;gap:6px">{strip}</div>'
-      f'{foot([("12","SURVIVORS"),("daily","RUNNING"),("quality","OVER COUNT")])}')
-    return shape(box(inner),"notch")
+    skills=["cold-email","icp-research","deal-notes","landing-page","post-draft","doc-audit",
+            "pricing-calc","seq-builder","brief-gen","pr-review","objections","close-plan"]
+    tiles=""
+    for nm in skills:
+        tiles+=(f'<div style="background:linear-gradient(160deg,#37322c,#221f1b);border:1px solid rgba(212,162,127,.26);border-radius:16px;padding:16px 16px;display:flex;align-items:center;gap:12px;box-shadow:0 16px 28px rgba(0,0,0,.42), inset 0 2px 2px rgba(255,255,255,.07)">'
+          f'<span style="flex-shrink:0;width:12px;height:12px;border-radius:50%;background:rgb({ACC});box-shadow:0 0 12px rgba({ACC},.8)"></span>'
+          f'<span style="font-family:DM Mono;font-size:15px;color:#eae4d8">{nm}</span></div>')
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 34px">
+      {htitle("My desk runs on survivors","12 LIVE")}
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:8px 0 6px">{tiles}</div>
+      {cap("twelve skills, each tested on my own pipeline, running daily.")}</div>'''
 
 PANELS={"flood":flood(),"test":test(),"fakes":fakes(),"keepers":keepers(),
         "safest":safest(),"curated":curated(),"rule":rule(),"desk":desk()}
 if __name__=="__main__":
-    print("verified t3:"); B.render("verified",PANELS)
+    outd=f"{ROOT}/content/_hitl-src/models_clay/verified"; os.makedirs(outd,exist_ok=True)
+    with sync_playwright() as pw:
+        b=pw.chromium.launch(executable_path="/opt/pw-browsers/chromium",args=["--no-sandbox","--no-proxy-server"])
+        pg=b.new_page(viewport={"width":960,"height":900},device_scale_factor=2)
+        for name,html in PANELS.items():
+            full=f"<!DOCTYPE html><html><head><meta charset='utf-8'><style>{Lm.css(ACC)}</style></head><body style='padding:30px'>{html}</body></html>"
+            pg.set_content(full); pg.wait_for_timeout(400)
+            pg.screenshot(path=f"{outd}/{name}.png",omit_background=True,full_page=True)
+            print("rendered",name)
+        b.close()
+    print("done")
