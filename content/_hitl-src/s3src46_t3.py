@@ -189,7 +189,7 @@ def frontdesk():
         <path d="M{cx} {cy} L{cx} {cy-R} A{R} {R} 0 0 1 {cx+R*math.sin(math.radians(64)):.0f} {cy-R*math.cos(math.radians(64)):.0f} Z" fill="url(#sw)"/>
         {bl}<circle cx="{cx}" cy="{cy}" r="7" fill="rgb({ACC})"/></svg>
       <div style="flex:1">
-        {htitle("It answers the call you miss","ALWAYS ON")}
+        {htitle("It answers missed calls","ALWAYS ON")}
         {lead}
         {cap("the front desk for every trade that still misses the phone.")}
       </div></div>'''

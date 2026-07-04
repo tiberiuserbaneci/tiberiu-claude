@@ -193,7 +193,7 @@ def mrr():
         fill=f"url(#litbar)" if lit else "url(#bar)"
         svg+=(f'<rect x="{x}" y="{y:.0f}" width="{bw}" height="{h:.0f}" rx="12" fill="{fill}" stroke="{"rgb("+ACC+")" if lit else "rgba(212,162,127,.22)"}" stroke-width="{2 if lit else 1}"/>'
           +("" if lit else f'<text x="{x+bw/2}" y="{y-14:.0f}" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="17" fill="#d9d5cc">${v:,}</text>')
-          f'<text x="{x+bw/2}" y="{base+26}" text-anchor="middle" font-family="DM Mono" font-size="13" fill="#8f8f85">{nm}</text>'
+          +f'<text x="{x+bw/2}" y="{base+26}" text-anchor="middle" font-family="DM Mono" font-size="13" fill="#8f8f85">{nm}</text>'
           f'<text x="{x+bw/2}" y="{base+46}" text-anchor="middle" font-family="DM Mono" font-size="12" fill="rgb({ACC})">{add} client</text>')
         x+=bw+gap
     return f'''<div style="width:900px;{CARD};padding:34px 40px 30px">

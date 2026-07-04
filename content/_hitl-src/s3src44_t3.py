@@ -127,7 +127,6 @@ def roster():
         <defs><filter id="og" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="0" stdDeviation="22" flood-color="rgb({ACC})" flood-opacity="0.4"/></filter></defs>
         {spokes}{nodes}
         <g filter="url(#og)"><circle cx="{cx}" cy="{cy}" r="72" fill="#0c0e14"/></g>{orb}
-        <text x="{cx}" y="{cy+112}" text-anchor="middle" font-family="DM Mono" font-size="13" letter-spacing=".12em" fill="#8f8f85">ULTRON &#183; runs the labor</text>
       </svg>
       {cap("each services line has an owner. one operator runs the whole desk.")}</div>'''
 

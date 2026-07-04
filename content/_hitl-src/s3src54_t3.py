@@ -134,20 +134,25 @@ def pulse():
 
 # 5. STRIKER - deals 2h: a downward funnel of deal stages narrowing to a close
 def striker():
-    stages=[("DISCOVERY","questions drafted",760,150),("QUALIFY","budget + timeline",600,220),
-            ("PROPOSAL","priced + sent",440,290),("CLOSE","signed",280,360)]
-    W,H=820,430; cx=410; segs=""
-    for nm,sub,w,y in stages:
-        segs+=(f'<g><rect x="{cx-w/2:.0f}" y="{y-28}" width="{w}" height="56" rx="12" fill="url(#fn)" stroke="rgba(212,162,127,.35)"/>'
-          f'<text x="{cx-w/2+22:.0f}" y="{y-2}" font-family="DM Mono" font-size="15" letter-spacing=".08em" fill="rgb({ACC})">{nm}</text>'
-          f'<text x="{cx-w/2+22:.0f}" y="{y+18}" font-family="DM Sans" font-size="15" fill="#a8a296">{sub}</text></g>')
+    stages=[("DISCOVERY","questions drafted",788,80,.30),("QUALIFY","budget + timeline",624,196,.48),
+            ("PROPOSAL","priced + sent",460,312,.68),("CLOSE","signed",300,428,1.0)]
+    W,H=820,470; cx=410; segs=""; conns=""
+    prev=None
+    for nm,sub,w,y,op in stages:
+        if prev is not None:
+            py,pw=prev
+            conns+=(f'<path d="M{cx-pw/2+40:.0f} {py+46} L{cx-w/2+34:.0f} {y-46}" stroke="rgba(212,162,127,.28)" stroke-width="2"/>'
+                    f'<path d="M{cx+pw/2-40:.0f} {py+46} L{cx+w/2-34:.0f} {y-46}" stroke="rgba(212,162,127,.28)" stroke-width="2"/>')
+        segs+=(f'<g><rect x="{cx-w/2:.0f}" y="{y-46}" width="{w}" height="92" rx="16" fill="rgba(212,162,127,{op*0.14:.3f})" stroke="rgba(212,162,127,{0.28+op*0.4:.3f})" stroke-width="1.5"/>'
+          f'<text x="{cx-w/2+26:.0f}" y="{y-8}" font-family="DM Mono" font-size="18" letter-spacing=".08em" fill="rgb({ACC})">{nm}</text>'
+          f'<text x="{cx-w/2+26:.0f}" y="{y+22}" font-family="DM Sans" font-size="17" fill="#c9c3b8">{sub}</text>'
+          f'<circle cx="{cx+w/2-34:.0f}" cy="{y}" r="12" fill="none" stroke="rgb({ACC})" stroke-width="2.4"/>'
+          f'<path d="M{cx+w/2-40:.0f} {y} l4 5 l8 -10" fill="none" stroke="rgb({ACC})" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>')
+        prev=(y,w)
     return f'''<div style="width:900px;{CARD};padding:34px 40px 34px">
       {htitle("Discovery prep, handled","STRIKER &middot; 2 HRS")}
-      <svg width="{W}" height="{H}" viewBox="0 0 {W} {H}">
-        <defs><linearGradient id="fn" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3a342d"/><stop offset="100%" stop-color="#241f1a"/></linearGradient>
-        <filter id="cg" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="0" stdDeviation="14" flood-color="rgb({ACC})" flood-opacity="0.4"/></filter></defs>
-        {segs}
-        <g filter="url(#cg)"><circle cx="{cx}" cy="360" r="30" fill="none"/></g>
+      <svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" style="display:block;margin:0 auto">
+        {conns}{segs}
       </svg>
       {cap("qualification, objections and the proposal drafted for you, two hours off every deal.")}</div>'''
 
