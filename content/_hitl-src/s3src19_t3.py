@@ -41,6 +41,7 @@ def departments():
         <g filter="url(#hgd)"><circle cx="{cx}" cy="{cy}" r="60" fill="url(#hubd)"/></g>
         <text x="{cx}" y="{cy-3}" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="21" fill="#2a160c">OPS</text>
         <text x="{cx}" y="{cy+17}" text-anchor="middle" font-family="DM Mono" font-size="10.5" fill="#3a2010">one core</text>
+        {nodes}
       </svg>
       {cap("research, outbound, deals, content, code, publishing, legal - all staffed.")}</div>'''
 
