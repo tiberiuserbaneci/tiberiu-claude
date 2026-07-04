@@ -24,14 +24,14 @@ def speed():
         x=x0+span*m/6
         ticks+=f'<line x1="{x:.0f}" y1="70" x2="{x:.0f}" y2="360" stroke="rgba(250,250,247,.06)" stroke-width="1"/>'
         ticks+=f'<text x="{x:.0f}" y="52" text-anchor="middle" font-family="DM Mono" font-size="12" fill="#6f6a60">m{m}</text>'
-    oldy=150; newy=290; bh=58
+    oldy=142; newy=298; bh=58
     newlen=span*0.16
     ms=[("validate",0.0),("build",0.5),("paid",1.0)]
     mt=""
     for nm,f in ms:
         mx=x0+newlen*f
         mt+=f'<circle cx="{mx:.0f}" cy="{newy+bh/2:.0f}" r="7" fill="#1d1d1b" stroke="#FAFAF7" stroke-width="2.5"/>'
-        mt+=f'<text x="{mx:.0f}" y="{newy-14:.0f}" text-anchor="middle" font-family="DM Mono" font-size="12" fill="#d9d5cc">{nm}</text>'
+        mt+=f'<text x="{mx:.0f}" y="{newy+bh+26:.0f}" text-anchor="middle" font-family="DM Mono" font-size="12" fill="#d9d5cc">{nm}</text>'
     return f'''<div style="width:900px;{CARD};padding:34px 40px 34px">
       {htitle("Six months, or nine days","SPEED TO REVENUE")}
       <svg width="{W}" height="{H}" viewBox="0 0 {W} {H}">
@@ -178,7 +178,7 @@ def orchestrate():
       <svg width="540" height="470" viewBox="0 0 600 470" style="flex-shrink:0">
         <defs><radialGradient id="ro" cx="36%" cy="30%"><stop offset="0%" stop-color="rgb({ACC})"/><stop offset="100%" stop-color="#7a4326"/></radialGradient>
         <filter id="rg" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="0" stdDeviation="18" flood-color="rgb({ACC})" flood-opacity="0.45"/></filter></defs>
-        {spokes}
+        {spokes}{nodes}
         <g filter="url(#rg)"><circle cx="{cx}" cy="{cy}" r="70" fill="url(#ro)"/></g>
         <text x="{cx}" y="{cy-4}" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="20" fill="#1a0f0a">ROUTER</text>
         <text x="{cx}" y="{cy+18}" text-anchor="middle" font-family="DM Mono" font-size="11" fill="#3a2010">picks per step</text>
