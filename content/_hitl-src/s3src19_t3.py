@@ -143,7 +143,7 @@ def structure():
         body+=(f'<div style="display:flex;align-items:center;gap:11px;padding:8px 0 8px {pad}px;border-bottom:1px solid rgba(120,95,60,.12)">'
           f'{elbow}{fico("#96562d" if hot else "#8a6a45")}'
           f'<span style="font-family:\'DM Sans\';font-weight:{fw};font-size:{fs}px;color:{namecol}">{nm}</span>'
-          f'<span style="font-family:\'DM Sans\';font-size:15px;color:#8a745a">&#8212; {desc}</span></div>')
+          f'<span style="font-family:\'DM Sans\';font-size:15px;color:#8a745a">- {desc}</span></div>')
     return f'''<div style="width:900px;{CARDIV};padding:36px 42px 32px">
       {hiv("The org chart is folders","ONE VAULT")}
       <div>{body}</div>
@@ -249,7 +249,7 @@ def operator():
       <svg width="820" height="450" viewBox="0 0 820 450" style="display:block;margin:0 auto">
         <defs><linearGradient id="scr" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#403a33"/><stop offset="100%" stop-color="#211e1a"/></linearGradient>
         <filter id="scg" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0" dy="0" stdDeviation="20" flood-color="rgb({ACC})" flood-opacity="0.34"/></filter></defs>
-        {traces}
+        {traces}{nodes}
         <g filter="url(#scg)"><rect x="{tx}" y="{ty-118}" width="248" height="236" rx="26" fill="url(#scr)" stroke="rgb({ACC})" stroke-width="2.5"/></g>
         <rect x="{tx}" y="{ty-118}" width="248" height="42" rx="26" fill="rgba(0,0,0,.22)"/>
         <circle cx="{tx+26}" cy="{ty-97}" r="6" fill="rgb({ACC})"/><circle cx="{tx+46}" cy="{ty-97}" r="6" fill="rgba(212,162,127,.4)"/><circle cx="{tx+66}" cy="{ty-97}" r="6" fill="rgba(212,162,127,.4)"/>
