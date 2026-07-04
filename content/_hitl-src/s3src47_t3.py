@@ -192,7 +192,7 @@ def mrr():
         h=H*v/maxv; y=base-h; lit=(nm=="M6")
         fill=f"url(#litbar)" if lit else "url(#bar)"
         svg+=(f'<rect x="{x}" y="{y:.0f}" width="{bw}" height="{h:.0f}" rx="12" fill="{fill}" stroke="{"rgb("+ACC+")" if lit else "rgba(212,162,127,.22)"}" stroke-width="{2 if lit else 1}"/>'
-          f'<text x="{x+bw/2}" y="{y-14:.0f}" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="{20 if lit else 17}" fill="{"rgb("+ACC+")" if lit else "#d9d5cc"}">${v:,}</text>'
+          +("" if lit else f'<text x="{x+bw/2}" y="{y-14:.0f}" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="17" fill="#d9d5cc">${v:,}</text>')
           f'<text x="{x+bw/2}" y="{base+26}" text-anchor="middle" font-family="DM Mono" font-size="13" fill="#8f8f85">{nm}</text>'
           f'<text x="{x+bw/2}" y="{base+46}" text-anchor="middle" font-family="DM Mono" font-size="12" fill="rgb({ACC})">{add} client</text>')
         x+=bw+gap
