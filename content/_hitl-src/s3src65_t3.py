@@ -62,7 +62,7 @@ def workspace():
 
 # 3. SPECTER (DARK) - Mailchimp -> outbound drip sequence as a bezier node/flow graph
 def specter():
-    steps=[("SEND","cold email, your domain",90),("WAIT 2d","no reply yet",230),("FOLLOW-UP","new angle, auto-written",370),("REPLY","meeting booked",510)]
+    steps=[("SEND","your domain",92),("WAIT 2d","no reply yet",232),("FOLLOW-UP","auto-written",372),("REPLY","meeting booked",512)]
     nodes=""; edges=""
     ys=[120,236,120,236]
     prev=None
@@ -72,12 +72,12 @@ def specter():
             px,py=prev
             mx=(px+x)/2
             col=f"rgb({ACC})" if on else "rgba(212,162,127,.45)"
-            edges+=f'<path d="M{px+58} {py} C{mx} {py},{mx} {y},{x-58} {y}" fill="none" stroke="{col}" stroke-width="{4 if on else 2.6}"/>'
+            edges+=f'<path d="M{px+66} {py} C{mx} {py},{mx} {y},{x-66} {y}" fill="none" stroke="{col}" stroke-width="{4 if on else 2.6}"/>'
         prev=(x,y)
         fill="url(#send)" if on else "#26221d"
         bd=f"rgb({ACC})" if on else "rgba(255,255,255,.12)"
         tcol="#1a0f0a" if on else "#FAFAF7"
-        nodes+=(f'<g><rect x="{x-58}" y="{y-40}" width="116" height="80" rx="18" fill="{fill}" stroke="{bd}" stroke-width="{2.4 if on else 1.6}"/>'
+        nodes+=(f'<g><rect x="{x-66}" y="{y-40}" width="132" height="80" rx="18" fill="{fill}" stroke="{bd}" stroke-width="{2.4 if on else 1.6}"/>'
           f'<text x="{x}" y="{y-6}" text-anchor="middle" font-family="DM Mono" font-size="13" letter-spacing=".08em" fill="{tcol}">{nm}</text>'
           f'<text x="{x}" y="{y+18}" text-anchor="middle" font-family="DM Sans" font-size="11.5" fill="{"#3a2010" if on else "#8f8f85"}">{sub}</text></g>')
     return f'''<div style="width:900px;{CARD};padding:34px 40px 34px">
@@ -116,7 +116,7 @@ def amplify():
 
 # 5. STRIKER (IVORY) - Pipedrive -> deal pipeline funnel stages, one deal advancing to WON
 def striker():
-    stages=[("NEW",18,0.0),("QUALIFIED",11,0.24),("PROPOSAL",6,0.48),("WON",3,0.74)]
+    stages=[("NEW",18,0.0),("QUALIFIED",11,0.18),("PROPOSAL",6,0.36),("WON",3,0.54)]
     W=560; bars=""
     for i,(nm,n,inset) in enumerate(stages):
         y=i*92
