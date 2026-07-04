@@ -61,12 +61,13 @@ def books():
             booked=(ci==3 and ri==1)
             if booked: continue
             grid+=f'<rect x="{colX[ci]}" y="{rowsY[ri]}" width="{cw}" height="46" rx="10" fill="rgba(150,120,80,.06)" stroke="rgba(150,120,80,.20)"/>'
-    # booked cell (THU 10:30)
-    bx,by=colX[3],rowsY[1]
-    booked=(f'<rect x="{bx}" y="{by}" width="{cw}" height="46" rx="10" fill="#96562d" filter="url(#bk)"/>'
-      f'<text x="{bx+16}" y="{by+29}" font-family="DM Sans" font-weight="800" font-size="15" fill="#fdfbf6">Discovery call</text>'
-      f'<circle cx="{bx+cw-22}" cy="{by+23}" r="13" fill="#fdfbf6"/>'
-      f'<path d="M{bx+cw-28} {by+23} l4 4 l8 -9" fill="none" stroke="#96562d" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>')
+    # booked event - a wider floating chip anchored on THU 10:30 so label + check breathe
+    ew=196; bx=colX[3]+cw-ew+12; by=rowsY[1]-3; eh=52
+    booked=(f'<rect x="{bx}" y="{by}" width="{ew}" height="{eh}" rx="12" fill="#96562d" filter="url(#bk)"/>'
+      f'<text x="{bx+18}" y="{by+eh/2-4}" font-family="DM Sans" font-weight="800" font-size="15" fill="#fdfbf6">Discovery call</text>'
+      f'<text x="{bx+18}" y="{by+eh/2+15}" font-family="DM Mono" font-size="11" letter-spacing=".06em" fill="rgba(253,251,246,.8)">confirmed</text>'
+      f'<circle cx="{bx+ew-26}" cy="{by+eh/2}" r="14" fill="#fdfbf6"/>'
+      f'<path d="M{bx+ew-33} {by+eh/2} l5 5 l9 -10" fill="none" stroke="#96562d" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>')
     return f'''<div style="width:900px;{CARDIV};padding:36px 42px 34px">
       {htitle("The meeting, booked","LIVE CALENDAR","#2a2016")}
       <svg width="740" height="330" viewBox="0 0 740 330" style="display:block;margin:0 auto">
