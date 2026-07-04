@@ -40,7 +40,7 @@ def mythos():
           <radialGradient id="core" cx="36%" cy="30%"><stop offset="0%" stop-color="#f0c49e"/><stop offset="55%" stop-color="rgb({ACC})"/><stop offset="100%" stop-color="#7a4326"/></radialGradient>
           <linearGradient id="chip" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#33302c"/><stop offset="100%" stop-color="#201d1a"/></linearGradient>
           <filter id="cg" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="0" stdDeviation="20" flood-color="rgb({ACC})" flood-opacity="0.45"/></filter></defs>
-        {edges}
+        {edges}{chips}
         <g filter="url(#cg)"><circle cx="{hx}" cy="{hy}" r="74" fill="url(#core)"/></g>
         <text x="{hx}" y="{hy-6}" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="19" fill="#2a160c">ONE</text>
         <text x="{hx}" y="{hy+18}" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="19" fill="#2a160c">SKILL</text>
@@ -206,7 +206,7 @@ def order5():
       <svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" style="display:block;margin:0 auto">
         <line x1="{x0-46}" y1="{base}" x2="{x0+4*step+46}" y2="{base}" stroke="rgba(255,255,255,.10)" stroke-width="1.5"/>
         {bars}{flow}
-        <text x="{x0+4*step+46}" y="{base+57}" text-anchor="end" font-family="DM Mono" font-size="12" fill="#8f8f85">$19,100 / mo</text>
+        <text x="{x0+4*step+46}" y="96" text-anchor="end" font-family="DM Mono" font-size="14" fill="#c9a583">$19,100 / mo total</text>
       </svg>
       {cap("cash from shape one funds the rest - each shape feeds the next.")}</div>'''
 

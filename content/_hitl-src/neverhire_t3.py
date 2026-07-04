@@ -95,9 +95,15 @@ def content():
     guide=f'<line x1="{x0-14}" y1="{baseline}" x2="{x0+6*dx+14}" y2="{baseline}" stroke="rgba(150,90,45,.30)" stroke-width="2"/>'
     clock=(f'<g transform="translate({x0+6*dx-4},64)"><rect x="-58" y="-20" width="116" height="34" rx="17" fill="{IVACC}"/>'
       f'<text x="0" y="3" text-anchor="middle" font-family="DM Mono" font-size="14" letter-spacing=".08em" fill="#fdfbf6">10:00 LOCAL</text></g>')
+    inputbar=(f'<div style="display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.5);border:1px solid rgba(150,90,45,.22);border-radius:14px;padding:14px 18px;margin-bottom:6px">'
+      f'<span style="font-family:DM Mono;font-size:12px;letter-spacing:.14em;color:{IVACC};flex-shrink:0">ONE LINE</span>'
+      f'<span style="flex:1;font-family:DM Sans;font-size:18px;color:#2a2016">"plan launch week for the pricing update"</span>'
+      f'<div style="flex-shrink:0;width:38px;height:38px;border-radius:10px;background:{IVACC};display:flex;align-items:center;justify-content:center">'
+      f'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fdfbf6" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>')
     return f'''<div style="width:900px;{CARDIV};padding:36px 42px 34px">
       {htitle_iv("Fourteen slots from one line","CONTENT OPS")}
-      <svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" style="display:block;margin:6px auto 0">
+      {inputbar}
+      <svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" style="display:block;margin:2px auto 0">
         {labels}{guide}{dots}{clock}
       </svg>
       {cap("one line in, a full week of drafts in your voice, queued at 10:00 every day.","#8a745a")}</div>'''
@@ -195,30 +201,30 @@ def math_panel():
 
 # 7. LINE - org chart: every job splits into PEOPLE (judgement) and FLOWS (repetition)
 def line():
-    W,H=800,440
+    W,H=800,470
     people=["taste","relationships","the hard calls"]
     flows=["sourcing","triage","follow-ups","reviews","content"]
-    def col(items,x0,label,accent,glow):
+    def col(items,x0):
         chips=""
         for i,it in enumerate(items):
-            y=196+i*54
-            chips+=(f'<rect x="{x0}" y="{y}" width="230" height="42" rx="11" fill="{glow}" stroke="{accent}" stroke-width="1.5"/>'
-              f'<text x="{x0+22}" y="{y+27}" font-family="DM Sans" font-weight="700" font-size="18" fill="#e6e0d5">{it}</text>')
+            y=200+i*52
+            chips+=(f'<rect x="{x0}" y="{y}" width="250" height="40" rx="11" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.10)" stroke-width="1.5"/>'
+              f'<text x="{x0+22}" y="{y+26}" font-family="DM Sans" font-weight="700" font-size="18" fill="#e6e0d5">{it}</text>')
         return chips
-    peo=col(people,60,"PEOPLE","rgba(200,70,35,.5)","rgba(200,70,35,.08)")
-    flo=col(flows,510,"FLOWS",f"rgba(212,162,127,.5)","rgba(212,162,127,.08)")
+    peo=col(people,60)
+    flo=col(flows,470)
     return f'''<div style="width:900px;{CARD};padding:34px 40px 34px">
       {htitle("Freeze repetition. Hire judgement.","THE LINE")}
       <svg width="{W}" height="{H}" viewBox="0 0 {W} {H}">
-        <rect x="308" y="40" width="184" height="60" rx="15" fill="#2a2724" stroke="rgba(255,255,255,.12)"/>
-        <text x="400" y="70" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="20" fill="#FAFAF7">EVERY JOB</text>
-        <text x="400" y="90" text-anchor="middle" font-family="DM Mono" font-size="11" fill="#8f8f85">sort before you post it</text>
-        <path d="M400 100 V132 H175 V158" fill="none" stroke="rgba(200,70,35,.55)" stroke-width="2.4"/>
-        <path d="M400 100 V132 H625 V158" fill="none" stroke="rgba(212,162,127,.55)" stroke-width="2.4"/>
-        <rect x="60" y="150" width="230" height="42" rx="11" fill="rgba(200,70,35,.16)" stroke="rgba(200,70,35,.5)" stroke-width="1.5"/>
-        <text x="175" y="177" text-anchor="middle" font-family="DM Mono" font-size="15" letter-spacing=".14em" fill="#f0b8a8">PEOPLE &middot; HIRE</text>
-        <rect x="510" y="150" width="230" height="42" rx="11" fill="rgba(212,162,127,.16)" stroke="rgba(212,162,127,.5)" stroke-width="1.5"/>
-        <text x="625" y="177" text-anchor="middle" font-family="DM Mono" font-size="15" letter-spacing=".14em" fill="rgb({ACC})">FLOWS &middot; FREEZE</text>
+        <rect x="308" y="38" width="184" height="60" rx="15" fill="#2a2724" stroke="rgba(255,255,255,.12)"/>
+        <text x="400" y="68" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="20" fill="#FAFAF7">EVERY JOB</text>
+        <text x="400" y="88" text-anchor="middle" font-family="DM Mono" font-size="11" fill="#8f8f85">sort before you post it</text>
+        <path d="M400 98 V126 H185 V150" fill="none" stroke="rgba(200,70,35,.55)" stroke-width="2.4"/>
+        <path d="M400 98 V126 H595 V150" fill="none" stroke="rgba(212,162,127,.55)" stroke-width="2.4"/>
+        <rect x="60" y="150" width="250" height="42" rx="11" fill="rgba(200,70,35,.16)" stroke="rgba(200,70,35,.5)" stroke-width="1.5"/>
+        <text x="185" y="177" text-anchor="middle" font-family="DM Mono" font-size="15" letter-spacing=".14em" fill="#f0b8a8">PEOPLE &middot; HIRE</text>
+        <rect x="470" y="150" width="250" height="42" rx="11" fill="rgba(212,162,127,.16)" stroke="rgba(212,162,127,.5)" stroke-width="1.5"/>
+        <text x="595" y="177" text-anchor="middle" font-family="DM Mono" font-size="15" letter-spacing=".14em" fill="rgb({ACC})">FLOWS &middot; FREEZE</text>
         {peo}{flo}
       </svg>
       {cap("people for taste, relationships and the calls; flows for everything that repeats.")}</div>'''

@@ -236,23 +236,22 @@ def rule7():
           <filter id="hg" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="0" stdDeviation="20" flood-color="rgb({ACC})" flood-opacity="0.4"/></filter>
         </defs>
         <!-- spokes -->
-        <path d="M262 215 C380 130,430 92,520 92" fill="none" stroke="rgba(200,70,35,.5)" stroke-width="4"/>
-        <path d="M262 215 C380 300,430 338,520 338" fill="none" stroke="rgba(212,162,127,.6)" stroke-width="4"/>
+        <path d="M292 215 C400 138,438 106,478 106" fill="none" stroke="rgba(200,70,35,.5)" stroke-width="4"/>
+        <path d="M292 215 C400 292,438 324,478 324" fill="none" stroke="rgba(212,162,127,.6)" stroke-width="4"/>
         <!-- hub -->
-        <g filter="url(#hg)"><circle cx="180" cy="215" r="102" fill="url(#hub)"/></g>
-        <text x="180" y="204" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="30" fill="#2a160c">THE</text>
-        <text x="180" y="240" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="30" fill="#2a160c">RULE</text>
+        <g filter="url(#hg)"><circle cx="188" cy="215" r="104" fill="url(#hub)"/></g>
+        <text x="188" y="204" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="30" fill="#2a160c">THE</text>
+        <text x="188" y="240" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="30" fill="#2a160c">RULE</text>
         <!-- BAD verdict: shows code -->
-        <rect x="520" y="42" width="278" height="100" rx="20" fill="#221d1a" stroke="rgba(200,70,35,.5)" stroke-width="1.5"/>
-        <g transform="translate(548,72)"><circle cx="20" cy="20" r="20" fill="rgba(200,70,35,.16)"/><path d="M12 12l16 16M28 12l-16 16" stroke="rgb({RED})" stroke-width="3" stroke-linecap="round"/></g>
-        <text x="606" y="86" font-family="DM Sans" font-weight="800" font-size="22" fill="#e2dccf">Page shows code</text>
-        <text x="606" y="116" font-family="DM Mono" font-size="14" letter-spacing=".06em" fill="#c86a52">wrong aisle &middot; walk on</text>
+        <rect x="478" y="54" width="316" height="104" rx="20" fill="#221d1a" stroke="rgba(200,70,35,.5)" stroke-width="1.5"/>
+        <g transform="translate(506,84)"><circle cx="20" cy="20" r="20" fill="rgba(200,70,35,.16)"/><path d="M12 12l16 16M28 12l-16 16" stroke="rgb({RED})" stroke-width="3" stroke-linecap="round"/></g>
+        <text x="564" y="98" font-family="DM Sans" font-weight="800" font-size="23" fill="#e2dccf">Shows code</text>
+        <text x="564" y="128" font-family="DM Mono" font-size="14" letter-spacing=".05em" fill="#c86a52">wrong aisle &middot; walk on</text>
         <!-- GOOD verdict: shows pipeline -->
-        <rect x="520" y="288" width="278" height="100" rx="20" fill="linear-gradient(160deg,#403a33,#241f1a)" stroke="rgb({ACC})" stroke-width="2"/>
-        <rect x="520" y="288" width="278" height="100" rx="20" fill="#2a2620" stroke="rgb({ACC})" stroke-width="2"/>
-        <g transform="translate(548,318)"><circle cx="20" cy="20" r="20" fill="rgba(212,162,127,.18)"/><path d="M11 21l6 6 12 -14" fill="none" stroke="rgb({ACC})" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></g>
-        <text x="606" y="332" font-family="DM Sans" font-weight="800" font-size="22" fill="#FAFAF7">Page shows pipeline</text>
-        <text x="606" y="362" font-family="DM Mono" font-size="14" letter-spacing=".06em" fill="rgb({ACC})">right desk &middot; install</text>
+        <rect x="478" y="272" width="316" height="104" rx="20" fill="#2a2620" stroke="rgb({ACC})" stroke-width="2"/>
+        <g transform="translate(506,302)"><circle cx="20" cy="20" r="20" fill="rgba(212,162,127,.18)"/><path d="M11 21l6 6 12 -14" fill="none" stroke="rgb({ACC})" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+        <text x="564" y="316" font-family="DM Sans" font-weight="800" font-size="23" fill="#FAFAF7">Shows pipeline</text>
+        <text x="564" y="346" font-family="DM Mono" font-size="14" letter-spacing=".05em" fill="rgb({ACC})">right desk &middot; install</text>
       </svg>
       {cap("if the plugin page shows code, you are in the wrong aisle. if it shows pipeline, install.")}</div>'''
 
