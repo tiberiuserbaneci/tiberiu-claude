@@ -139,25 +139,25 @@ def cost():
       </div>
       {cap("cents per run, not a retainer. the meter only moves when it produces.","#8a745a")}</div>'''
 
-# 6. CONTENT - fanned stack of 3 draft post cards in your voice + match badge
+# 6. CONTENT - downward cascade of 3 draft post cards in your voice + match badge
 def content():
-    cards=[("-7deg","30px","64px",".82","Most founders automate the wrong half of the funnel."),
-           ("5deg","330px","36px",".9","Nine tools died last month. The survivor had no chat box."),
-           ("-2deg","170px","0px","1","Your cold emails do not have a copy problem.")]
+    cards=[("-4deg","36px","2px","1","Most founders automate the wrong half of the funnel."),
+           ("3deg","330px","150px",".97","Nine tools died last month. The survivor had no chat box."),
+           ("-2deg","96px","294px","1","Your cold emails do not have a copy problem.")]
     stack=""
     for rot,left,top,op,txt in cards:
-        stack+=f'''<div style="position:absolute;left:{left};top:{top};width:430px;transform:rotate({rot});opacity:{op};
-          background:linear-gradient(160deg,#413b35,#2b2723);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:20px 22px;box-shadow:0 26px 44px rgba(0,0,0,.5)">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+        stack+=f'''<div style="position:absolute;left:{left};top:{top};width:452px;transform:rotate({rot});opacity:{op};
+          background:linear-gradient(160deg,#413b35,#2b2723);border:1px solid rgba(255,255,255,.13);border-radius:18px;padding:19px 22px;box-shadow:0 28px 46px rgba(0,0,0,.55)">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:11px">
             <div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(160deg,#e6b48f,rgb({ACC}))"></div>
             <div><div style="font-family:'DM Sans';font-weight:700;font-size:14px;color:#FAFAF7">Tibi Serbaneci</div>
-            <div style="font-family:'DM Mono';font-size:11px;color:#8f8f85">draft &middot; in your voice</div></div></div>
-          <div style="font-family:'DM Sans';font-weight:800;font-size:21px;color:#FAFAF7;line-height:1.32">{txt}</div>
+            <div style="font-family:'DM Mono';font-size:11px;color:#a08d76">draft &middot; in your voice</div></div></div>
+          <div style="font-family:'DM Sans';font-weight:800;font-size:21px;color:#FAFAF7;line-height:1.3">{txt}</div>
         </div>'''
     return f'''<div style="width:900px;{CARD};padding:34px 40px 30px">
       {htitle("Three posts, your voice","PULSE · CONTENT")}
-      <div style="position:relative;height:400px">{stack}
-        <div style="position:absolute;right:14px;bottom:2px;background:rgb({ACC});color:#1a0f0a;font-family:'DM Sans';font-weight:900;font-size:16px;padding:9px 18px;border-radius:999px;box-shadow:0 10px 22px rgba(212,162,127,.4)">98% your voice</div>
+      <div style="position:relative;height:452px">{stack}
+        <div style="position:absolute;right:8px;top:64px;background:rgb({ACC});color:#1a0f0a;font-family:'DM Sans';font-weight:900;font-size:16px;padding:9px 18px;border-radius:999px;box-shadow:0 10px 22px rgba(212,162,127,.4);z-index:5">98% your voice</div>
       </div>
       {cap("sampled from your real posts. your cadence, your banned words, your takes.")}</div>'''
 
