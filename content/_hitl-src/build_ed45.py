@@ -34,7 +34,7 @@ def ghost(base,num):
 def progress(d,page,n):
     # symmetric inset sized for the LARGER TikTok action-icon rail so ONE deck works on both TikTok + IG
     # (operator: TikTok icons are bigger; one standard, no per-channel slides). right end ~880.
-    pm=200; x0,x1=pm,W-pm; yb=H-56; d.rounded_rectangle([x0,yb,x1,yb+7],radius=4,fill=TRACK)
+    x0,x1=MX,840; yb=H-56; d.rounded_rectangle([x0,yb,x1,yb+7],radius=4,fill=TRACK)  # start aligned with text/element (MX), end at safe right
     d.rounded_rectangle([x0,yb,x0+int((x1-x0)*page/n),yb+7],radius=4,fill=ACC)
 def footer(base):
     d=ImageDraw.Draw(base); y=H-70
@@ -425,10 +425,10 @@ def place_prem(base,objpath,light,ytop=None):
         #  2. TOP-anchored right under the sub-hook (no dead gap above).
         #  3. The element FILLS this working band; wide-short panels can only do that if the Tier-3
         #     panels are drawn tall (aspect ~1.2) in the _t3.py sources (redesign, do not stretch).
-        # CENTERED in the frame (operator: "centreaza elementul"), fills the working band top->bottom.
-        # Carousels do not overlay the icon rail, so the element can be wide + centred.
+        # LEFT-aligned with the text (left edge = MX 112) and kept inside the safe zone (right <= 840,
+        # clears the icon rail). Top-anchored, fills the band. cx=470 -> panel spans ~[112,828].
         zy0=max(500,(ytop or 500))
-        T2.place_in_zone(base,im0,(96,zy0,984,1200),fill=1.0,valign="top")
+        T2.place_in_zone(base,im0,(112,zy0,840,1200),fill=1.0,cx=470,valign="top")
         return
     im=im0.convert("RGB")
     a=np.asarray(im).astype(int); h,w=a.shape[:2]; area=h*w

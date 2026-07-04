@@ -4,7 +4,7 @@
 import importlib.util
 t=importlib.util.spec_from_file_location("B","/home/user/tiberiu-claude/content/_hitl-src/t3base.py")
 B=importlib.util.module_from_spec(t); t.loader.exec_module(B)
-MUT=B.MUT; DIM=B.DIM; A="204,120,92"
+MUT=B.MUT; DIM=B.DIM; CARD=B.CARD; A="204,120,92"
 
 # a real, dense "signal lead" panel: 4 detected signals (left, each a row with source+value+bar),
 # a 2-lane race (you-vs-VC) with milestones, and a head-start stat block. Every zone carries content.
@@ -24,7 +24,12 @@ rows="".join(
   for n,d,v in SIGNALS)
 
 def model():
-    return f'''<div style="width:900px;background:linear-gradient(160deg,#26221f,#191614);border:1px solid rgba(255,255,255,.08);border-radius:26px;padding:34px 38px;box-shadow:0 40px 80px rgba(0,0,0,.5)">
+    tl="".join(
+      f'<div style="flex:1;text-align:center"><div style="width:10px;height:10px;border-radius:50%;'
+      f'background:{"rgb("+A+")" if on else "#3a352f"};margin:0 auto 8px;{"box-shadow:0 0 12px rgb("+A+")" if on else ""}"></div>'
+      f'<div style="font-family:DM Mono;font-size:12px;color:{"rgb("+A+")" if on else DIM}">{d}</div></div>'
+      for d,on in [("Mon",1),("Tue",1),("Wed",1),("Thu",1),("Fri",1),("Sat",1),("Sun",1)])
+    return f'''<div style="width:900px;{CARD};padding:34px 38px">
       <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:22px">
         <span style="font-family:DM Sans;font-weight:800;font-size:27px;color:#FAFAF7">It saw the round first</span>
         <span style="font-family:DM Mono;font-size:13px;letter-spacing:.14em;color:rgb({A})">SIGNAL LEAD</span></div>
@@ -47,7 +52,10 @@ def model():
             <div style="font-family:DM Sans;font-weight:900;font-size:58px;color:rgb({A});line-height:1">3 days</div>
             <div style="font-family:DM Sans;font-size:17px;color:{MUT}">of head start, every round</div></div>
         </div>
-      </div></div>'''
+      </div>
+      <div style="margin-top:26px;padding-top:22px;border-top:1px solid rgba(255,255,255,.08)">
+        <div style="font-family:DM Mono;font-size:12px;letter-spacing:.14em;color:{DIM};margin-bottom:14px">IT SCANNED, EVERY NIGHT THIS WEEK</div>
+        <div style="display:flex;gap:8px">{tl}</div></div></div>'''
 
 if __name__=="__main__":
     B.render("_model",{"model":model()})
