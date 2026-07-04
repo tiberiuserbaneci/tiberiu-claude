@@ -6,7 +6,7 @@ T2=importlib.util.module_from_spec(spec); spec.loader.exec_module(T2)
 wo=lambda s:(s,T2.WHITE); co=lambda s:(s,T2.CORAL); mu=lambda s:(s,T2.MUTED)
 M="/home/user/tiberiu-claude/content/_hitl-src/models_clay/s2src50"; LIB=T2.LIB
 PREMIUM=1
-TITLE="THE ASSEMBLY LINE"
+TITLE="THE CONTENT FACTORY"
 T2.ACCENT=(212, 162, 127); T2.CORAL=T2.ACCENT
 T2.OBJ_THR=30
 T2.COVER=dict(head=[[wo('One brief in.')],[co('A week of work ships.')]])

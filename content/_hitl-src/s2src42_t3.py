@@ -63,10 +63,10 @@ def intake():
     return f'''<div style="width:900px;{CARD};padding:34px 40px 34px">
       {htitle("One link in, a full dossier out","EXTRACT")}
       <svg width="{W}" height="{H}" viewBox="0 0 {W} {H}" style="display:block;margin:0 auto">
-        <defs><linearGradient id="tile" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#33302c"/><stop offset="100%" stop-color="#201d1a"/></linearGradient>
+        <defs><linearGradient id="tile" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#423b34"/><stop offset="100%" stop-color="#252119"/></linearGradient>
         <filter id="ug" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="0" stdDeviation="12" flood-color="rgb({ACC})" flood-opacity="0.4"/></filter></defs>
-        {edges}
-        <g filter="url(#ug)"><rect x="{ux-170}" y="{uy-32}" width="340" height="64" rx="32" fill="linear" style="fill:#2a2724" stroke="rgb({ACC})" stroke-width="2"/></g>
+        {edges}{tiles}
+        <g filter="url(#ug)"><rect x="{ux-170}" y="{uy-32}" width="340" height="64" rx="32" fill="#2a2724" stroke="rgb({ACC})" stroke-width="2"/></g>
         <circle cx="{ux-118}" cy="{uy}" r="15" fill="none" stroke="rgb({ACC})" stroke-width="2.4"/><line x1="{ux-133}" y1="{uy}" x2="{ux-103}" y2="{uy}" stroke="rgb({ACC})" stroke-width="2"/><ellipse cx="{ux-118}" cy="{uy}" rx="7" ry="15" fill="none" stroke="rgb({ACC})" stroke-width="2"/>
         <text x="{ux-88}" y="{uy+7}" font-family="DM Mono" font-size="20" fill="#FAFAF7">competitor.com</text>
       </svg>

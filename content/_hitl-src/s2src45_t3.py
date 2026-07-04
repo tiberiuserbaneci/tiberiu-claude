@@ -190,7 +190,7 @@ def memory():
       <svg width="420" height="420" viewBox="0 0 420 420">
         <defs><radialGradient id="mc" cx="50%" cy="45%"><stop offset="0%" stop-color="rgb({ACC})"/><stop offset="100%" stop-color="#7a4a2c"/></radialGradient>
         <filter id="mg" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="0" stdDeviation="18" flood-color="rgb({ACC})" flood-opacity="0.5"/></filter></defs>
-        {lines}<g filter="url(#mg)"><circle cx="{cx}" cy="{cy}" r="56" fill="url(#mc)"/></g>
+        {lines}{nodes}<g filter="url(#mg)"><circle cx="{cx}" cy="{cy}" r="56" fill="url(#mc)"/></g>
         <text x="{cx}" y="{cy-2}" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="18" fill="#2a160c">CORE</text>
         <text x="{cx}" y="{cy+18}" text-anchor="middle" font-family="DM Mono" font-size="11" fill="#3a2010">shared</text></svg>
       <div style="flex:1">
