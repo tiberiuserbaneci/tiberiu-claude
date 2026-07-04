@@ -19,6 +19,6 @@ T2.CONTENT=[
  ('THE RULE', [[wo('If it cannot execute,')],[co('it does not count.')]], 'A skill that returns advice is a bookmark. Keep the ones that finish work.', [co('Execution or nothing.')], f"{M}/rule.png", 1.0),
  ('THE DESK', [[wo('My desk runs')],[co('on survivors.')]], 'Twelve skills, each tested on my own pipeline, running daily.', [co('Quality beats quantity.')], f"{M}/desk.png", 1.0),
 ]
-T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], f"{LIB}/cta3d-operator.png", 0.92)
+T2.CTA=("SAVE THIS", [[wo('Want the playbook?')],[co('comment OPERATOR.')]], "/home/user/tiberiu-claude/content/_hitl-src/_templates/cta/cta-operator.png", 0.82)
 T2.CLOSE=dict(l1='Save the shortlist,',l2='skip the flood.',q='Which list burned you last?')
 MARK2="claude"

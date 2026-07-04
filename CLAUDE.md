@@ -1184,8 +1184,24 @@ into `analysis/virality-principles.md`. Metrics priority stays: reach+impression
    Use ALL the capacity to design. FORBIDDEN: sparse black plate with a headline and one thin line;
    `justify-content:space-between` used to STRETCH thin content across empty height (that is dead space,
    not fill — §27.9). Fill by ADDING real content, not by stretching.
-2. **NEVER repeat the same shape within a material.** The 8 panels of one deck each use a DIFFERENT
-   form/treatment/layout — not all the same dark plate. Vary the shape per panel (§27.10 / §30).
+   **FILL-ASPECT RECIPE (operator, 2026-07-04 — validated on `verified_t3.py`):** the editorial zone is
+   ~760×640 (aspect ≈ **1.19**). `place_in_zone` fits the panel's solid-alpha bbox by the LIMITING side,
+   so a WIDE-SHORT panel fits the width and leaves a vertical GAP below (the "gol" reject). Every panel
+   must therefore be drawn ~**1.19 aspect or TALLER** (≤ ~1.27). Verify per panel:
+   `Image.open(png).split()[3].point(lambda v:255 if v>140 else 0).getbbox()` → w/h ≤ 1.27. Achieve it
+   with MORE REAL CONTENT (extra rows, a header band, a sample-log, a summary bar), never with
+   `min-height`+`margin-top:auto` (that pins the foot to the bottom and opens an internal dead-band above
+   it — same reject). `foot()` flows with `margin-top:24px`, not `auto`. A circle panel is ~1.0 and fills
+   naturally. Reference recipe + the `foot()`/`box()` helpers + the 8-silhouette set live in
+   `content/_hitl-src/verified_t3.py` and the `shape()`/`circle()` helpers in `t3base.py`.
+2. **NEVER repeat the same shape within a material — AND DO NOT KEEP THE RECTANGULAR SILHOUETTE
+   (operator, 2026-07-04 — repeated, HARD).** The 8 panels of one deck each use a DIFFERENT
+   form/treatment/layout — not all the same rounded-rectangle plate. Vary the OUTER SILHOUETTE per
+   panel, not just the inner content: break the rectangle with `clip-path` (angled/notched/chamfered
+   cuts, arrows, ribbons), circular / orbital / radial frames, hex/diamond tiles, device or window
+   silhouettes, stepped/stacked forms, diagonal splits. The `omit_background` render keeps the alpha,
+   so a non-rectangular container renders as a true non-rectangular element on the slide. A deck where
+   every panel is a plain rounded rectangle is a REJECT, however dense. (§27.10 / §30.)
 3. **Panel colour is white OR dark, independent of the background** — all four combos are allowed and
    should be mixed across a deck: dark-bg/dark-panel (`B.CARD`), dark-bg/white-panel (`CARDIV`),
    light-bg/dark-panel, light-bg/white-panel. The editorial slide bg already alternates light/dark.
