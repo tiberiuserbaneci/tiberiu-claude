@@ -82,11 +82,10 @@ def hooks():
       {htitle("It stops itself before it sends","HOOKS")}
       <svg width="820" height="356" viewBox="0 0 820 356" style="display:block;margin:8px auto 0">
         <defs>
-          <linearGradient id="trk" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="rgba(212,162,127,.55)"/><stop offset="72%" stop-color="rgba(212,162,127,.55)"/><stop offset="100%" stop-color="rgba(200,70,35,.4)"/></linearGradient>
           <radialGradient id="lk" cx="38%" cy="30%"><stop offset="0%" stop-color="#f0c49e"/><stop offset="55%" stop-color="rgb({ACC})"/><stop offset="100%" stop-color="#7a4326"/></radialGradient>
           <filter id="lg2" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="0" stdDeviation="16" flood-color="rgb({ACC})" flood-opacity="0.4"/></filter>
         </defs>
-        <line x1="90" y1="168" x2="560" y2="168" stroke="url(#trk)" stroke-width="10" stroke-linecap="round"/>
+        <line x1="90" y1="168" x2="560" y2="168" stroke="rgba(212,162,127,.55)" stroke-width="10" stroke-linecap="round"/>
         <line x1="620" y1="168" x2="762" y2="168" stroke="rgba(200,70,35,.4)" stroke-width="10" stroke-linecap="round" stroke-dasharray="3 15"/>
         <circle cx="90" cy="168" r="16" fill="#2a2724" stroke="rgba(255,255,255,.14)"/><text x="90" y="210" text-anchor="middle" font-family="DM Mono" font-size="13" fill="#c9c3b8">draft</text>
         <circle cx="300" cy="168" r="16" fill="#2a2724" stroke="rgba(255,255,255,.14)"/><text x="300" y="210" text-anchor="middle" font-family="DM Mono" font-size="13" fill="#c9c3b8">queue</text>
