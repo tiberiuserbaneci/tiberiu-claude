@@ -160,13 +160,13 @@ def memory():
         x=cx+152*math.cos(math.radians(a)); y=cy+152*math.sin(math.radians(a)); cut=(i==5)
         col=f"rgb({BAD})" if cut else "rgba(212,162,127,.5)"; dash='stroke-dasharray="4 8"' if cut else ""
         lines+=f'<line x1="{cx}" y1="{cy}" x2="{x:.0f}" y2="{y:.0f}" stroke="{col}" stroke-width="3" {dash}/>'
-        nodes+=(f'<circle cx="{x:.0f}" cy="{y:.0f}" r="30" fill="#241f1a" stroke="{f"rgba({BAD},.6)" if cut else "rgba(255,255,255,.14)"}" stroke-width="2"/>'
-          f'<text x="{x:.0f}" y="{y+4:.0f}" text-anchor="middle" font-family="DM Mono" font-size="10.5" fill="{"#6f6a60" if cut else "#cfc9bd"}">{nm}</text>')
+        nodes+=(f'<circle cx="{x:.0f}" cy="{y:.0f}" r="31" fill="{f"rgba({BAD},.10)" if cut else "#37312a"}" stroke="{f"rgba({BAD},.7)" if cut else "rgba(212,162,127,.45)"}" stroke-width="2"/>'
+          f'<text x="{x:.0f}" y="{y+4:.0f}" text-anchor="middle" font-family="DM Mono" font-size="11" fill="{"#7a7268" if cut else "#e2dccf"}">{nm}</text>')
     return f'''<div style="width:900px;{CARD};padding:34px 40px 34px;display:flex;align-items:center;gap:20px">
       <svg width="420" height="420" viewBox="0 0 420 420">
         <defs><radialGradient id="hb" cx="50%" cy="45%"><stop offset="0%" stop-color="rgb({ACC})"/><stop offset="100%" stop-color="#7a4a2c"/></radialGradient>
         <filter id="hg" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="0" stdDeviation="18" flood-color="rgb({ACC})" flood-opacity="0.5"/></filter></defs>
-        {lines}<g filter="url(#hg)"><circle cx="{cx}" cy="{cy}" r="54" fill="url(#hb)"/></g>
+        {lines}{nodes}<g filter="url(#hg)"><circle cx="{cx}" cy="{cy}" r="54" fill="url(#hb)"/></g>
         <text x="{cx}" y="{cy-2}" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="16" fill="#2a160c">MEMORY</text>
         <text x="{cx}" y="{cy+18}" text-anchor="middle" font-family="DM Mono" font-size="10" fill="#3a2010">one core</text></svg>
       <div style="flex:1">

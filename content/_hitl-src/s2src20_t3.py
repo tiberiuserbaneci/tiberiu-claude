@@ -199,11 +199,11 @@ def channels():
           f'<div style="flex-shrink:0;width:46px;height:46px;border-radius:13px;background:rgba(212,162,127,.14);border:1px solid rgba(212,162,127,.34);display:flex;align-items:center;justify-content:center"><span style="font-family:DM Sans;font-weight:900;font-size:20px;color:rgb({ACC})">{nm[0]}</span></div>'
           f'<div style="flex:1"><div style="font-family:DM Mono;font-size:13px;letter-spacing:.12em;color:rgb({ACC})">{nm}</div>'
           f'<div style="font-family:DM Sans;font-weight:700;font-size:18px;color:#FAFAF7">{sub}</div></div>'
-          f'<div style="flex-shrink:0;font-family:DM Mono;font-size:12px;color:#8f8f85">{fmt}</div></div>')
+          f'<div style="flex-shrink:0;font-family:DM Mono;font-size:12px;color:#c9c3b8;background:rgba(212,162,127,.12);border:1px solid rgba(212,162,127,.28);border-radius:9px;padding:6px 12px">{fmt}</div></div>')
     return f'''<div style="width:900px;{CARD};padding:34px 44px 34px">
       {htitle("One piece, cut for each channel","NATIVE")}
-      <div style="perspective:2000px;height:470px;display:flex;align-items:center;justify-content:center">
-        <div style="transform-style:preserve-3d;transform:rotateX(21deg) rotateZ(-9deg);width:580px;height:432px;position:relative">{cards}</div></div>
+      <div style="perspective:2200px;height:470px;display:flex;align-items:center;justify-content:center">
+        <div style="transform-style:preserve-3d;transform:rotateX(15deg) rotateZ(-5deg);width:580px;height:432px;position:relative">{cards}</div></div>
       {cap("the same master idea reshaped for every feed - written once, formatted many ways.")}</div>'''
 
 # 8. GATE - the ready-to-post queue held on the operator's reins, one lock = your tap
