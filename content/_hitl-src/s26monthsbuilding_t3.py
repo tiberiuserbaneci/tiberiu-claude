@@ -86,7 +86,7 @@ def memory():
         <defs><radialGradient id="mc" cx="42%" cy="34%"><stop offset="0%" stop-color="#c98a56"/><stop offset="60%" stop-color="#96562d"/><stop offset="100%" stop-color="#6d3c1e"/></radialGradient>
         <filter id="mg" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="6" stdDeviation="16" flood-color="rgba(150,90,45,.45)"/></filter>
         <filter id="ndf" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="rgba(120,95,60,.4)"/></filter></defs>
-        {lines}
+        {lines}{nodes}
         <g filter="url(#mg)"><circle cx="{cx}" cy="{cy}" r="58" fill="url(#mc)"/></g>
         <text x="{cx}" y="{cy-2}" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="19" fill="#fdf6ec">MEMORY</text>
         <text x="{cx}" y="{cy+18}" text-anchor="middle" font-family="DM Mono" font-size="10.5" fill="#f0d9c2">one core</text>
