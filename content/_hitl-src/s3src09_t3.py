@@ -166,7 +166,7 @@ def generated():
           f'<span style="flex:1;font-family:DM Sans;font-weight:700;font-size:19px;color:#2a2016">{txt}</span>'
           f'<span style="font-family:DM Mono;font-size:13px;color:#96562d">{who}</span></div>')
     return f'''<div style="width:900px;{CARDIV};padding:36px 42px 34px">
-      {htitle("The finished file lands here","GENERATED")}
+      {htitle("The finished file lands here","GENERATED","#2a2016")}
       <div style="background:rgba(255,255,255,.55);border:1.5px solid rgba(150,120,80,.22);border-radius:20px;padding:22px 26px">
         <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px">
           <span style="font-family:DM Mono;font-size:15px;letter-spacing:.06em;color:#2a2016">08 / GENERATED</span>
