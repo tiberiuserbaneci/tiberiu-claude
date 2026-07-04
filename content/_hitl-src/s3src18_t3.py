@@ -56,7 +56,7 @@ def keywords():
           ("sales workflow software",1800,15)]
     mx=12000; bars=""
     for kw,vol,kd in rows:
-        w=110+(vol/mx)*590
+        w=90+(vol/mx)*300
         kdcol="rgb("+ACC+")" if kd<=25 else "#c99a6e"
         bars+=(f'<div style="display:flex;align-items:center;gap:16px;margin-bottom:13px">'
           f'<div style="flex-shrink:0;width:300px;text-align:right;font-family:DM Sans;font-weight:600;font-size:18px;color:#e2dccf">{kw}</div>'
