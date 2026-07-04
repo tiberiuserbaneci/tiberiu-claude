@@ -73,34 +73,37 @@ def skills():
         col="#FAFAF7" if on else "#b0aa9e"
         glow="box-shadow:0 0 20px rgba(212,162,127,.35);" if on else ""
         chips+=f'''<div style="{glow}background:{bg};border:1.5px solid {bd};border-radius:11px;padding:11px 15px;font-family:'DM Mono';font-size:16px;color:{col}">{c}</div>'''
-    steps=[("find",190),("enrich",352),("rank",514)]
+    steps=[("find","search the web",190),("enrich","add signals",352),("rank","score fit",514)]
     stepsvg=""
-    for nm,x in steps:
-        stepsvg+=(f'<rect x="{x}" y="90" width="140" height="56" rx="14" fill="linear-gradient(160deg,#3a352f,#241f1a)"/>'
-          f'<rect x="{x}" y="90" width="140" height="56" rx="14" fill="#2b2723" stroke="rgba(255,255,255,.10)"/>'
-          f'<text x="{x+70}" y="124" text-anchor="middle" font-family="DM Sans" font-weight="700" font-size="19" fill="#e6e0d4">{nm}</text>')
+    for nm,sub,x in steps:
+        stepsvg+=(f'<rect x="{x}" y="132" width="140" height="88" rx="16" fill="#2b2723" stroke="rgba(255,255,255,.10)"/>'
+          f'<text x="{x+70}" y="172" text-anchor="middle" font-family="DM Sans" font-weight="700" font-size="20" fill="#e6e0d4">{nm}</text>'
+          f'<text x="{x+70}" y="197" text-anchor="middle" font-family="DM Mono" font-size="12" fill="#8f8f85">{sub}</text>')
     arrows=""
     for ax in (166,328,490,652):
-        arrows+=f'<path d="M{ax} 118 h20" stroke="rgb({ACC})" stroke-width="3" stroke-linecap="round"/><path d="M{ax+15} 111 l7 7 -7 7" fill="none" stroke="rgb({ACC})" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>'
+        arrows+=f'<path d="M{ax} 176 h20" stroke="rgb({ACC})" stroke-width="3" stroke-linecap="round"/><path d="M{ax+15} 169 l7 7 -7 7" fill="none" stroke="rgb({ACC})" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>'
     return f'''<div style="width:900px;{CARD};padding:36px 40px 34px">
       {htitle("One word runs the recipe","8 SKILLS")}
-      <div style="display:flex;flex-wrap:wrap;gap:11px;margin-bottom:26px">{chips}</div>
-      <svg width="820" height="236" viewBox="0 0 820 236">
+      <div style="display:flex;flex-wrap:wrap;gap:11px;margin-bottom:12px">{chips}</div>
+      <svg width="820" height="252" viewBox="0 0 820 252">
         <defs><radialGradient id="out3" cx="36%" cy="30%"><stop offset="0%" stop-color="#f0c49e"/><stop offset="55%" stop-color="rgb({ACC})"/><stop offset="100%" stop-color="#7a4326"/></radialGradient>
         <filter id="og3" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="0" stdDeviation="16" flood-color="rgb({ACC})" flood-opacity="0.4"/></filter></defs>
-        <rect x="10" y="88" width="146" height="60" rx="15" fill="rgba(212,162,127,.14)" stroke="rgb({ACC})" stroke-width="1.8"/>
-        <text x="83" y="115" text-anchor="middle" font-family="DM Mono" font-size="18" fill="#FAFAF7">/brief</text>
-        <text x="83" y="136" text-anchor="middle" font-family="DM Mono" font-size="11.5" fill="rgb({ACC})">1 command</text>
+        <path d="M83 8 C83 48,83 60,83 96" fill="none" stroke="rgba(212,162,127,.5)" stroke-width="2.4" stroke-dasharray="3 7"/>
+        <path d="M76 88 l7 10 7 -10" fill="none" stroke="rgb({ACC})" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="150" y="52" font-family="DM Mono" font-size="13" letter-spacing=".08em" fill="#8f8f85">the lit shortcut unfolds into a run</text>
+        <rect x="13" y="132" width="140" height="88" rx="16" fill="rgba(212,162,127,.14)" stroke="rgb({ACC})" stroke-width="1.8"/>
+        <text x="83" y="172" text-anchor="middle" font-family="DM Mono" font-size="19" fill="#FAFAF7">/brief</text>
+        <text x="83" y="197" text-anchor="middle" font-family="DM Mono" font-size="12" fill="rgb({ACC})">1 command</text>
         {stepsvg}{arrows}
-        <g filter="url(#og3)"><circle cx="734" cy="118" r="58" fill="url(#out3)"/></g>
-        <text x="734" y="113" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="18" fill="#2a160c">brief</text>
-        <text x="734" y="134" text-anchor="middle" font-family="DM Mono" font-size="11" fill="#3a2010">1 page</text>
+        <g filter="url(#og3)"><circle cx="734" cy="176" r="62" fill="url(#out3)"/></g>
+        <text x="734" y="171" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="19" fill="#2a160c">brief</text>
+        <text x="734" y="193" text-anchor="middle" font-family="DM Mono" font-size="11" fill="#3a2010">1 page</text>
       </svg>
       {cap("/brief becomes find, enrich, rank, write. a workflow behind each shortcut.")}</div>'''
 
 # 4. PLUGINS - radial burst: one install (gstack) explodes into a whole crew of member tools
 def plugins():
-    cx,cy=306,236; rx,ry=196,158
+    cx,cy=268,236; rx,ry=176,158
     members=["deploy","test","review","migrate","lint","docs","api","ui","auth","db"]
     spokes=""; nodes=""
     n=len(members)
@@ -110,8 +113,8 @@ def plugins():
         spokes+=f'<line x1="{cx}" y1="{cy}" x2="{x:.0f}" y2="{y:.0f}" stroke="rgba(212,162,127,.34)" stroke-width="2"/>'
         nodes+=(f'<circle cx="{x:.0f}" cy="{y:.0f}" r="30" fill="#241f1a" stroke="rgba(255,255,255,.14)" stroke-width="1.6"/>'
           f'<text x="{x:.0f}" y="{y+4:.0f}" text-anchor="middle" font-family="DM Mono" font-size="12" fill="#cfc9bd">{m}</text>')
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 34px;display:flex;align-items:center;gap:8px">
-      <svg width="612" height="472" viewBox="0 0 612 472">
+    return f'''<div style="width:900px;{CARD};padding:34px 36px 34px;display:flex;align-items:center;gap:14px">
+      <svg width="536" height="472" viewBox="0 0 536 472" style="flex-shrink:0">
         <defs><radialGradient id="hubp" cx="36%" cy="30%"><stop offset="0%" stop-color="#f0c49e"/><stop offset="55%" stop-color="rgb({ACC})"/><stop offset="100%" stop-color="#7a4326"/></radialGradient>
         <filter id="hgp" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="0" stdDeviation="18" flood-color="rgb({ACC})" flood-opacity="0.45"/></filter></defs>
         {spokes}
@@ -119,8 +122,9 @@ def plugins():
         <text x="{cx}" y="{cy-4}" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="20" fill="#2a160c">gstack</text>
         <text x="{cx}" y="{cy+18}" text-anchor="middle" font-family="DM Mono" font-size="12" fill="#3a2010">1 install</text>
         {nodes}</svg>
-      <div style="flex:1;padding-right:6px">
-        {htitle("One install, a crew","8 PLUG-INS")}
+      <div style="flex:1;padding-right:4px">
+        <div style="font-family:'DM Mono';font-size:13px;letter-spacing:.14em;color:rgb({ACC});margin-bottom:8px">8 PLUG-INS</div>
+        <div style="font-family:'DM Sans';font-weight:800;font-size:26px;color:#FAFAF7;line-height:1.1;margin-bottom:14px">One install, a crew</div>
         <div style="font-family:'DM Sans';font-size:19px;color:#c9c3b8;line-height:1.45">A plug-in is a bundle. gstack drops 20+ specialist tools. marketingskills drops 44. One command, a whole team.</div>
         {cap("install the team, not the tool.")}</div></div>'''
 
