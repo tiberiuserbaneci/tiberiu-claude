@@ -116,13 +116,13 @@ def loop():
     center=(f'<circle cx="{cx}" cy="{cy}" r="60" fill="#211d18" stroke="rgba(212,162,127,.3)" stroke-width="1.5"/>'
       f'<text x="{cx}" y="{cy-6}" text-anchor="middle" font-family="DM Sans" font-weight="900" font-size="30" fill="rgb({ACC})">14</text>'
       f'<text x="{cx}" y="{cy+16}" text-anchor="middle" font-family="DM Mono" font-size="11" fill="#8f8f85">retries, 0 asks</text>')
-    return f'''<div style="width:900px;{CARD};padding:34px 40px 34px;display:flex;align-items:center;gap:24px">
-      <svg width="560" height="454" viewBox="0 0 560 454">
+    return f'''<div style="width:900px;{CARD};padding:34px 40px 34px;display:flex;align-items:center;gap:20px">
+      <svg width="450" height="420" viewBox="0 0 560 454" style="flex-shrink:0">
         {ring}{center}{nodes}
-        <text x="{cx+R+2:.0f}" y="{cy-58:.0f}" font-family="DM Mono" font-size="11" fill="rgb({RED})">error found</text>
+        <text x="{cx+R+2:.0f}" y="{cy-58:.0f}" font-family="DM Mono" font-size="12" fill="rgb({RED})">error found</text>
       </svg>
-      <div style="flex:1">
-        {htitle("It fixes its own mistakes","THE LOOP")}
+      <div style="flex:1;min-width:0">
+        {htitle("Fixes its own mistakes","THE LOOP")}
         <div style="font-family:DM Sans;font-size:19px;color:#c9c3b8;line-height:1.45">It runs the work, catches its own error, and retries. No stall, no ping asking you what to do next.</div>
         {cap("it keeps iterating for hours until the outcome is actually done.")}
       </div></div>'''
