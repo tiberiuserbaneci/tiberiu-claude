@@ -126,8 +126,11 @@ def auth():
 # 5. CONTENT - IVORY email paper with trigger words flagged red, next to a climbing spam-score meter
 def content():
     lines=[('Subject: ',[('FREE',1),(' demo, no ',0),('GUARANTEE',1),(' needed',0)]),
+           ('',[('Re: Re: FWD',1),(' about your ',0),('ACCOUNT',1)]),
            ('',[('ACT NOW',1),(' before this ',0),('$$$',1),(' offer expires',0)]),
-           ('',[('Click here',1),(' + 4 more links, 3 images attached',0)])]
+           ('',[('100% RISK-FREE',1),(', ',0),('CLICK HERE',1),(' to claim',0)]),
+           ('',[('Click here',1),(' + 4 more links, 3 images attached',0)]),
+           ('',[('Unsubscribe? ',0),('Reply STOP',1),(' to opt out',0)])]
     body=""
     for pre,parts in lines:
         seg=f'<span style="color:#5a4634">{pre}</span>' if pre else ''
