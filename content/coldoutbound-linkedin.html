@@ -5,74 +5,96 @@
 <title>coldoutbound - LinkedIn 1080x1450</title>
 <style>
 @import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
-/* coldoutbound - The 7-step Claude Code cold outbound system (Miro -> Apollo/Ocean/AI Ark/RB2B/
-   Jungler/Fibbler -> Clay -> Instantly/HeyReach). Dominant = a 7-stage numbered pipeline, each
-   stage its own treatment (chip row / two-column split / tier badges) so no two rows read alike.
-   BUDGET: 1450 = pad(30+22) + mast(38) + hero(150) + stats(78) + pipe(1030, 7x~132+gaps) + cta(78)
-   + footer(44), gaps absorbed in margins. Dark Ultron. */
-:root{--slate:#191919;--slate2:#232322;--slate3:#1c1c1b;--ivory:#FAFAF7;
+/* coldoutbound v2 - rebuilt as an actual flowchart (operator: reference workflow diagram),
+   Dark Ultron. Vertical org-chart tree: Miro strategy -> 4 planning nodes -> splits into
+   Cold ICP / Signals sourcing -> enrichment -> dense segmentation panels -> converges into a
+   Claude Code hub -> tiering -> copywriting -> splits into Instantly / HeyReach launch.
+   Connector lines are pure CSS (::before bars + stub lines), no images. */
+:root{--slate:#191919;--slate2:#232322;--slate3:#1e1e1d;--ivory:#FAFAF7;
 --ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);
---ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);
+--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.12);--line:rgba(250,250,247,.20);
 --book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--deep:#A93914;--cloud:#919180;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
-.frame{width:1080px;height:1450px;background:var(--slate);padding:30px 42px 22px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;}
-.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.055) 1.3px,transparent 1.4px);background-size:28px 28px;}
-.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 56% 20% at 92% -2%,rgba(204,120,92,.18) 0%,transparent 60%),radial-gradient(ellipse 44% 26% at 4% 100%,rgba(212,162,127,.09) 0%,transparent 60%);}
+.frame{width:1080px;height:1450px;background:var(--slate);padding:28px 40px 20px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;}
+.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.05) 1.3px,transparent 1.4px);background-size:28px 28px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 56% 18% at 92% -2%,rgba(204,120,92,.16) 0%,transparent 60%),radial-gradient(ellipse 44% 22% at 4% 100%,rgba(212,162,127,.08) 0%,transparent 60%);}
 .frame>*{position:relative;z-index:2;}
-.mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding-bottom:11px;border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.17em;text-transform:uppercase;}
+.mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding-bottom:9px;border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;}
 .mast .ml{color:var(--ink46);}.mast .ml em{color:var(--book);font-style:normal;}
 .mast .mr{color:var(--ink70);}.mast .mr em{color:var(--book);font-style:normal;}
-.hero{flex-shrink:0;margin-top:13px;position:relative;padding-right:96px;}
-.eye{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--kraft);}
-.hook{margin-top:7px;font-weight:900;font-size:38px;line-height:1.03;letter-spacing:-1.3px;}
+.hero{flex-shrink:0;margin-top:14px;position:relative;padding-right:92px;}
+.eye{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.19em;text-transform:uppercase;color:var(--kraft);}
+.hook{margin-top:6px;font-weight:900;font-size:36px;line-height:1.04;letter-spacing:-1.2px;}
 .hook em{color:var(--book);font-style:normal;}
-.sub{margin-top:8px;font-size:16.5px;font-weight:500;line-height:1.32;color:var(--ink70);max-width:960px;}
+.sub{margin-top:7px;font-size:15.5px;font-weight:500;line-height:1.3;color:var(--ink70);max-width:940px;}
 .sub b{color:var(--ivory);font-weight:700;}
-.hero-claude{position:absolute;top:2px;right:0;width:74px;height:74px;filter:drop-shadow(0 0 20px rgba(204,120,92,.4));}
-.stats{flex-shrink:0;margin-top:12px;display:flex;border:1px solid var(--rule);border-radius:12px;overflow:hidden;}
-.stat{flex:1;padding:9px 10px;text-align:center;}.stat+.stat{border-left:1px solid var(--rule);}
-.stat b{display:block;font-weight:900;font-size:24px;line-height:.85;letter-spacing:-.8px;}
+.hero-claude{position:absolute;top:0;right:0;width:70px;height:70px;filter:drop-shadow(0 0 20px rgba(204,120,92,.4));}
+/* stats */
+.stats{flex-shrink:0;margin-top:14px;display:flex;border:1px solid var(--rule);border-radius:12px;overflow:hidden;}
+.stat{flex:1;padding:10px 10px;text-align:center;}.stat+.stat{border-left:1px solid var(--rule);}
+.stat b{display:block;font-weight:900;font-size:25px;line-height:.85;letter-spacing:-.8px;}
 .stat.a b{color:var(--book);}.stat.b b{color:var(--kraft);}.stat.c b{color:var(--ivory);}.stat.d b{color:var(--book);}
-.stat span{font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink46);margin-top:5px;display:block;}
-/* pipeline (dominant) */
-.pipe{flex:1;min-height:0;margin-top:12px;display:flex;flex-direction:column;gap:7px;}
-.stage{position:relative;flex:1;min-height:0;display:flex;align-items:stretch;gap:0;border:1px solid var(--rule);border-radius:12px;background:var(--slate2);overflow:hidden;}
-.snum{align-self:stretch;width:52px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:24px;letter-spacing:-.8px;color:var(--ivory);background:var(--book-d);}
-.stage.k .snum{background:var(--kraft);color:#221a12;}.stage.d .snum{background:var(--deep);color:var(--ivory);}
-.sbody{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:5px;padding:9px 16px;}
-.st{font-size:16.5px;font-weight:800;color:var(--ivory);letter-spacing:-.3px;line-height:1.05;}
-.st em{color:var(--book);font-style:normal;}
-.sv{font-size:12.5px;font-weight:500;color:var(--ink70);line-height:1.28;}
-.sv b{color:var(--ivory);font-weight:700;}
-/* chip rows */
-.chiprow{display:flex;flex-wrap:wrap;gap:5px;}
-.chip{font-family:'DM Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.02em;color:var(--book);background:rgba(204,120,92,.10);border:1px solid rgba(204,120,92,.30);border-radius:6px;padding:3.5px 8px;white-space:nowrap;}
-.chip.k{color:var(--kraft);background:rgba(212,162,127,.10);border-color:rgba(212,162,127,.30);}
-.chip.i{color:var(--ink70);background:rgba(250,250,247,.05);border-color:var(--rule);}
-/* two-column split stages */
-.split2{flex:1;min-width:0;display:flex;gap:0;}
-.spcol{flex:1;min-width:0;padding:9px 14px;display:flex;flex-direction:column;justify-content:center;gap:5px;}
-.spcol+.spcol{border-left:1px solid var(--rule);}
-.spl{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--kraft);}
-.spl.b{color:var(--book);}
-.spt{font-size:11.5px;font-weight:500;color:var(--ink70);line-height:1.25;}
-/* tier badges (stage 5) */
-.tiers{flex:1;min-width:0;display:flex;gap:0;}
-.tier{flex:1;padding:9px 14px;display:flex;flex-direction:column;justify-content:center;gap:4px;}
-.tier+.tier{border-left:1px solid var(--rule);}
-.tn{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--book);}
-.tt{font-size:12.5px;font-weight:700;color:var(--ivory);line-height:1.2;}
-.tt span{display:block;font-size:11px;font-weight:500;color:var(--ink46);margin-top:1px;}
+.stat span{font-family:'DM Mono',monospace;font-size:9.3px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink46);margin-top:5px;display:block;}
+/* tool strip */
+.tools{flex-shrink:0;margin-top:11px;display:flex;gap:8px;}
+.tico{flex:1;display:flex;align-items:center;gap:8px;background:var(--slate2);border:1px solid var(--rule);border-radius:9px;padding:9px 10px;}
+.tico i{flex-shrink:0;width:25px;height:25px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:9.5px;font-weight:700;color:#1a0f0a;}
+.tico span{font-size:11px;font-weight:600;color:var(--ink70);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+/* ===== flowchart ===== */
+.flow{flex:1;min-height:0;margin-top:18px;display:flex;flex-direction:column;}
+.single{display:flex;justify-content:center;}
+.node{border:1px solid var(--rule);border-radius:10px;background:var(--slate2);padding:13px 20px;text-align:center;}
+.node.hl{border-color:rgba(204,120,92,.4);background:linear-gradient(180deg,rgba(204,120,92,.12),var(--slate2) 70%);box-shadow:0 0 26px rgba(204,120,92,.16);}
+.node.hub{display:flex;align-items:center;gap:14px;padding:16px 28px;}
+.node.hub svg{width:40px;height:40px;flex-shrink:0;filter:drop-shadow(0 0 10px rgba(204,120,92,.5));}
+.node.hub .hubt{text-align:left;}
+.nt{font-size:15.5px;font-weight:800;color:var(--ivory);letter-spacing:-.25px;line-height:1.1;white-space:nowrap;}
+.ns{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--kraft);margin-top:4px;white-space:nowrap;}
+.node.hl .ns{color:var(--book);}
+.chiprow2{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;justify-content:center;}
+.tag{font-family:'DM Mono',monospace;font-size:9.8px;font-weight:500;color:var(--book);background:rgba(204,120,92,.10);border:1px solid rgba(204,120,92,.28);border-radius:6px;padding:4px 9px;white-space:nowrap;}
+.tag.k{color:var(--kraft);background:rgba(212,162,127,.10);border-color:rgba(212,162,127,.28);}
+.tag.i{color:var(--ink70);background:rgba(250,250,247,.05);border-color:var(--rule);}
+/* connectors */
+.stub{width:2px;height:22px;background:var(--line);margin:0 auto;}
+.bw{position:relative;padding-top:22px;}
+.bw::before{content:'';position:absolute;top:0;left:var(--half);right:var(--half);height:2px;background:var(--line);}
+.bw .row{display:flex;}
+.bw .row.g{gap:22px;}
+.bw .slot{flex:1;position:relative;padding:0 5px;}
+.bw .slot::before{content:'';position:absolute;top:-22px;left:50%;width:2px;height:22px;background:var(--line);transform:translateX(-50%);}
+.stubrow{display:flex;gap:22px;height:22px;}
+.stubrow .s{flex:1;display:flex;justify-content:center;}
+.stubrow .s i{width:2px;height:22px;background:var(--line);}
+.row2{display:flex;gap:22px;}
+.row2>.node{flex:1;}
+.conv{position:relative;height:40px;}
+.conv i.top{position:absolute;top:0;width:2px;height:20px;background:var(--line);transform:translateX(-50%);}
+.conv::before{content:'';position:absolute;top:20px;left:var(--half);right:var(--half);height:2px;background:var(--line);}
+.conv i.bottom{position:absolute;top:20px;left:50%;width:2px;height:20px;background:var(--line);transform:translateX(-50%);}
+/* dense panel (segmentation) */
+.panel{flex:1;text-align:left;}
+.panel .ph{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:11px;}
+.panel .pt{font-size:14.5px;font-weight:800;color:var(--ivory);}
+.panel .pk{font-family:'DM Mono',monospace;font-size:9.2px;color:var(--kraft);letter-spacing:.04em;}
+.subcols{display:flex;gap:14px;}
+.subcol{flex:1;min-width:0;}
+.subcol .sl{font-family:'DM Mono',monospace;font-size:9.2px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink46);margin-bottom:8px;}
+.subrows{display:flex;flex-direction:column;gap:9px;}
+.subr{display:flex;align-items:baseline;justify-content:space-between;gap:10px;border-top:1px solid var(--rule);padding-top:8px;}
+.subr .sn{font-family:'DM Mono',monospace;font-size:9.2px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink46);white-space:nowrap;}
+.subr .sv{font-size:12px;font-weight:600;color:var(--ink70);text-align:right;}
+.subr .sv b{color:var(--ivory);}
 /* cta */
-.cta{flex-shrink:0;margin-top:13px;display:flex;align-items:center;gap:16px;border:1.5px solid var(--book);border-radius:16px;background:rgba(204,120,92,.08);padding:12px 12px 12px 24px;box-shadow:0 0 40px rgba(204,120,92,.2);}
-.cta .ph{flex:1;font-size:19px;font-weight:600;color:var(--ink70);line-height:1.2;}.cta .ph b{color:var(--book);font-weight:900;}
+.cta{flex-shrink:0;margin-top:16px;display:flex;align-items:center;gap:16px;border:1.5px solid var(--book);border-radius:16px;background:rgba(204,120,92,.08);padding:13px 13px 13px 26px;box-shadow:0 0 40px rgba(204,120,92,.2);}
+.cta .ph2{flex:1;font-size:19px;font-weight:600;color:var(--ink70);line-height:1.2;}.cta .ph2 b{color:var(--book);font-weight:900;}
 .cta .send{width:50px;height:50px;border-radius:50%;background:var(--book);flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 0 26px rgba(204,120,92,.45);}
 .cta .send svg{width:24px;height:24px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-.ftr{flex-shrink:0;margin-top:12px;padding-top:11px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:16px;}
-.fl2{display:flex;align-items:center;gap:11px;min-width:0;}.flogo{width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0;}
-.ftx{font-family:'DM Mono',monospace;font-size:10.5px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--ink70);white-space:nowrap;}.ftx b{color:var(--ivory);font-weight:500;}
-.furl{font-weight:900;font-size:19px;letter-spacing:-.5px;color:var(--ivory);}.furl em{color:var(--book);font-style:normal;}
+.ftr{flex-shrink:0;margin-top:13px;padding-top:12px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.fl2{display:flex;align-items:center;gap:11px;min-width:0;}.flogo{width:29px;height:29px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.ftx{font-family:'DM Mono',monospace;font-size:11px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--ink70);white-space:nowrap;}.ftx b{color:var(--ivory);font-weight:500;}
+.furl{font-weight:900;font-size:20px;letter-spacing:-.5px;color:var(--ivory);}.furl em{color:var(--book);font-style:normal;}
 </style>
 </head>
 <body>
@@ -83,9 +105,9 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
   <div class="mast"><span class="ml">COLD OUTBOUND <em>&middot;</em> CLAUDE CODE <em>&middot;</em> GTM SYSTEM</span><span class="mr">ULTRON <em>&middot;</em> <em>7</em>-STEP SYSTEM</span></div>
   <div class="hero">
     <svg class="hero-claude" viewBox="0 0 1200 1200"><use href="#claude-logo"/></svg>
-    <div class="eye">The outbound system</div>
+    <div class="eye">The outbound system, mapped</div>
     <div class="hook">I gave <em>Claude Code</em> 7 steps. It ran my whole outbound campaign.</div>
-    <div class="sub">Strategy in Miro, lists from Apollo, Ocean and RB2B, enrichment and tiering inside Claude Code, sends through Instantly and HeyReach.</div>
+    <div class="sub">The full tree, strategy to launch: Miro, Apollo, Ocean, RB2B, Jungler, Fibbler, Clay, <b>Claude Code</b>, Instantly and HeyReach, one system.</div>
   </div>
   <div class="stats">
     <div class="stat a"><b>7</b><span>steps, one system</span></div>
@@ -93,67 +115,103 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
     <div class="stat c"><b>3</b><span>account tiers</span></div>
     <div class="stat d"><b>2</b><span>send platforms</span></div>
   </div>
+  <div class="tools">
+    <div class="tico"><i style="background:var(--book)">MI</i><span>Miro</span></div>
+    <div class="tico"><i style="background:var(--kraft)">AP</i><span>Apollo</span></div>
+    <div class="tico"><i style="background:var(--book-d);color:#FAFAF7">RB</i><span>RB2B</span></div>
+    <div class="tico"><i style="background:var(--kraft)">CL</i><span>Clay</span></div>
+    <div class="tico"><i style="background:var(--book)">CC</i><span>Claude Code</span></div>
+    <div class="tico"><i style="background:var(--book-d);color:#FAFAF7">IN</i><span>Instantly</span></div>
+    <div class="tico"><i style="background:var(--kraft)">HR</i><span>HeyReach</span></div>
+  </div>
 
-  <div class="pipe">
-    <div class="stage">
-      <div class="snum">1</div>
-      <div class="sbody">
-        <div class="st">Map the strategy in <em>Miro</em></div>
-        <div class="chiprow"><span class="chip">ACCOUNT TIERING</span><span class="chip">BUYING COMMITTEE</span><span class="chip">ANGLES</span><span class="chip">OFFERS</span></div>
+  <div class="flow">
+    <div class="single"><div class="node hl" style="width:270px"><div class="nt">Outbound Strategy</div><div class="ns">Miro &middot; share board</div></div></div>
+    <div class="stub"></div>
+
+    <div class="bw" style="--half:12.5%">
+      <div class="row g">
+        <div class="slot"><div class="node"><div class="nt" style="font-size:12px">Account Tiering</div></div></div>
+        <div class="slot"><div class="node"><div class="nt" style="font-size:12px">Buying Committee</div></div></div>
+        <div class="slot"><div class="node"><div class="nt" style="font-size:12px">Angles</div></div></div>
+        <div class="slot"><div class="node"><div class="nt" style="font-size:12px">Offers</div></div></div>
+      </div>
+    </div>
+    <div class="stub"></div>
+
+    <div class="bw" style="--half:25%">
+      <div class="row g">
+        <div class="slot"><div class="node" style="text-align:left">
+          <div class="nt">Cold ICP sources</div><div class="ns">broad filter</div>
+          <div class="chiprow2" style="justify-content:flex-start"><span class="tag">Apollo.io &middot; volume</span><span class="tag">Ocean.io &middot; lookalikes</span><span class="tag">AI Ark &middot; keywords</span></div>
+        </div></div>
+        <div class="slot"><div class="node" style="text-align:left">
+          <div class="nt">Signals</div><div class="ns">intent capture</div>
+          <div class="chiprow2" style="justify-content:flex-start"><span class="tag k">RB2B &middot; site visits</span><span class="tag k">Jungler.ai &middot; LinkedIn</span><span class="tag k">Fibbler &middot; ads</span></div>
+        </div></div>
       </div>
     </div>
 
-    <div class="stage k">
-      <div class="snum">2</div>
-      <div class="split2">
-        <div class="spcol"><div class="spl b">Cold ICP &middot; broad filter</div><div class="spt"><b>Apollo.io</b> volume, <b>Ocean.io</b> lookalikes, <b>AI Ark</b> keyword filtering</div></div>
-        <div class="spcol"><div class="spl">Signals &middot; intent capture</div><div class="spt"><b>RB2B</b> site visitors, <b>Jungler.ai</b> LinkedIn engagement, <b>Fibbler</b> ad engagement</div></div>
+    <div class="stubrow"><div class="s"><i></i></div><div class="s"><i></i></div></div>
+    <div class="row2">
+      <div class="node"><div class="nt" style="font-size:12.5px">Data Enrichment</div><div class="ns">Clay + Claude Code</div></div>
+      <div class="node"><div class="nt" style="font-size:12.5px">Data Enrichment</div><div class="ns">Clay + Claude Code</div></div>
+    </div>
+
+    <div class="stubrow"><div class="s"><i></i></div><div class="s"><i></i></div></div>
+    <div class="row2" style="align-items:stretch">
+      <div class="node panel">
+        <div class="ph"><span class="pt">Cold ICP</span><span class="pk">by segment</span></div>
+        <div class="subcols">
+          <div class="subcol"><div class="sl">Companies</div><div class="subrows">
+            <div class="subr"><span class="sn">Segment 1</span><span class="sv"><b>SaaS</b></span></div>
+            <div class="subr"><span class="sn">Segment 2</span><span class="sv"><b>Agencies</b></span></div>
+          </div></div>
+          <div class="subcol"><div class="sl">Contacts</div><div class="subrows">
+            <div class="subr"><span class="sn">Role</span><span class="sv"><b>Decision Makers</b></span></div>
+            <div class="subr"><span class="sn">Role</span><span class="sv"><b>Champions</b></span></div>
+            <div class="subr"><span class="sn">Role</span><span class="sv"><b>Users</b></span></div>
+          </div></div>
+        </div>
+      </div>
+      <div class="node panel">
+        <div class="ph"><span class="pt">Signals</span><span class="pk">by source</span></div>
+        <div class="subrows">
+          <div class="subr"><span class="sn">Website Visitors</span><span class="sv">DM &middot; Champions &middot; <b>Users</b></span></div>
+          <div class="subr"><span class="sn">LinkedIn Engagement</span><span class="sv">DM &middot; Champions &middot; <b>Users</b></span></div>
+          <div class="subr"><span class="sn">Ads Engagement</span><span class="sv">DM &middot; Champions &middot; <b>Users</b></span></div>
+        </div>
       </div>
     </div>
 
-    <div class="stage d">
-      <div class="snum">3</div>
-      <div class="sbody">
-        <div class="st">Data enrichment, <em>Claude Code</em> into Clay</div>
-        <div class="sv">Adds firmographics, technographics and account-fit signals, then a <b>QA pass in Clay</b> before segmentation.</div>
+    <div class="conv" style="--half:25%"><i class="top" style="left:25%"></i><i class="top" style="left:75%"></i><i class="bottom"></i></div>
+    <div class="single"><div class="node hl hub" style="width:340px">
+      <svg viewBox="0 0 1200 1200"><use href="#claude-logo"/></svg>
+      <div class="hubt"><div class="nt">Claude Code</div><div class="ns">tiering &middot; copywriting &middot; sends</div></div>
+    </div></div>
+    <div class="stub"></div>
+
+    <div class="bw" style="--half:16.667%">
+      <div class="row g">
+        <div class="slot"><div class="node"><div class="nt" style="font-size:12px">Tier 1</div><div class="ns">email + DM + call</div></div></div>
+        <div class="slot"><div class="node"><div class="nt" style="font-size:12px">Tier 2</div><div class="ns">email + DM</div></div></div>
+        <div class="slot"><div class="node"><div class="nt" style="font-size:12px">Tier 3</div><div class="ns">email only</div></div></div>
       </div>
     </div>
+    <div class="conv" style="--half:16.667%"><i class="top" style="left:16.667%"></i><i class="top" style="left:50%"></i><i class="top" style="left:83.333%"></i><i class="bottom"></i></div>
 
-    <div class="stage">
-      <div class="snum">4</div>
-      <div class="split2">
-        <div class="spcol"><div class="spl b">Cold ICP &middot; by segment</div><div class="spt">Companies split by segment (<b>SaaS, agencies</b>), one <b>Clay workbook</b> per segment, contacts in the same table</div></div>
-        <div class="spcol"><div class="spl">Signals &middot; by type</div><div class="spt">One <b>Clay folder</b>, a separate workbook per signal: <b>site visits, LinkedIn, ads</b></div></div>
-      </div>
-    </div>
+    <div class="single"><div class="node hl" style="width:300px"><div class="nt">Copywriting</div><div class="ns">5 angles &middot; 1 baseline &middot; per-account variants</div></div></div>
+    <div class="stub"></div>
 
-    <div class="stage k">
-      <div class="snum">5</div>
-      <div class="tiers">
-        <div class="tier"><div class="tn">Tier 1</div><div class="tt">Cold email<span>+ LinkedIn DM + cold call</span></div></div>
-        <div class="tier"><div class="tn">Tier 2</div><div class="tt">Cold email<span>+ LinkedIn DM</span></div></div>
-        <div class="tier"><div class="tn">Tier 3</div><div class="tt">Cold email<span>only</span></div></div>
-      </div>
-    </div>
-
-    <div class="stage d">
-      <div class="snum">6</div>
-      <div class="sbody">
-        <div class="st">Copywriting, one baseline into <em>Claude Code</em></div>
-        <div class="sv">5 angles, <b>one hand-written baseline</b> email, then the example plus a per-row company summary generates a <b>tailored variant for every account.</b></div>
-      </div>
-    </div>
-
-    <div class="stage">
-      <div class="snum">7</div>
-      <div class="sbody">
-        <div class="st">Campaign setup and launch</div>
-        <div class="chiprow"><span class="chip">CLAUDE CODE BUILDS THE CAMPAIGNS</span><span class="chip k">EMAIL &rarr; INSTANTLY</span><span class="chip k">LINKEDIN &rarr; HEYREACH</span></div>
+    <div class="bw" style="--half:25%">
+      <div class="row g">
+        <div class="slot"><div class="node hl"><div class="nt">Instantly</div><div class="ns">email sequences</div></div></div>
+        <div class="slot"><div class="node hl"><div class="nt">HeyReach</div><div class="ns">LinkedIn sequences</div></div></div>
       </div>
     </div>
   </div>
 
-  <div class="cta"><span class="ph">Comment <b>OUTBOUND</b> for the full Claude Code cold outbound system</span><span class="send"><svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div>
+  <div class="cta"><span class="ph2">Comment <b>OUTBOUND</b> for the full Claude Code cold outbound system</span><span class="send"><svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div>
   <div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span></div><div class="furl">51ultron<em>.</em>com</div></div>
 </div>
 </body>
