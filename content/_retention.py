@@ -104,6 +104,15 @@ def measure(html: pathlib.Path, to: float, step: float) -> dict:
             caps = m.build_captions(meta, words, hook_end,
                                     cta_at=marks[5] if len(marks) > 5 else None, marks=marks)
 
+    seam = None
+    if built and meta.get("hook"):
+        cache = html.with_name(html.stem + "-vo.align.json")
+        if cache.exists():
+            w2 = m.words_from(json.loads(cache.read_text())["alignment"])
+            hk = [x for x in w2 if x[1] < hook_end]
+            if hk:
+                seam = hk[-1][2] + float(meta.get("hook_hold", .15))
+
     rows, prev = [], None
     with sync_playwright() as pw:
         b, pg, loc = m._open_stage(pw, html, meta, marks, caps)
@@ -115,7 +124,7 @@ def measure(html: pathlib.Path, to: float, step: float) -> dict:
             rows.append({"t": round(t, 2), "ink": ink, "motion": mot})
             prev, t = g, t + step
         b.close()
-    return {"film": html.name, "rows": rows}
+    return {"film": html.name, "rows": rows, "seam": seam}
 
 
 def report(res: dict) -> bool:
@@ -129,14 +138,17 @@ def report(res: dict) -> bool:
             for i in range(1, len(rows) - win + 1)]
     worst_mot = min(runs) if runs else (0, 0)
 
-    peak = max(r["ink"] for r in rows)
-    peak_t = next(r["t"] for r in rows if r["ink"] == peak)
+    # the hook's own coverage, measured before the incoming sheet can add to it
+    seam = res.get("seam")
+    hookrows = [r for r in rows if seam is None or r["t"] <= seam - 0.5] or rows
+    peak = max(r["ink"] for r in hookrows)
+    peak_t = next(r["t"] for r in hookrows if r["ink"] == peak)
 
     for r in rows:
         flag = ""
         if r["t"] > 0 and r["ink"] < INK_FLOOR:
             flag += " EMPTY"
-        if r["t"] > 0 and r["motion"] < MOTION_FLOOR:
+        if r["t"] >= peak_t and r["motion"] < MOTION_FLOOR:
             flag += " STILL"
         if r["t"] > peak_t and r["ink"] < peak * INK_CLIFF:
             flag += " CLIFF"
@@ -148,7 +160,8 @@ def report(res: dict) -> bool:
           f"({worst_ink['ink'] / peak:.0%} of peak, floor {INK_FLOOR})")
     print(f"  stillest 0.5s {worst_mot[0]:.5f} from t={worst_mot[1]:.2f}s "
           f"(floor {MOTION_FLOOR})")
-    bad = [r for r in rows if r["t"] > 0 and (r["ink"] < INK_FLOOR or r["motion"] < MOTION_FLOOR
+    bad = [r for r in rows if r["t"] > 0 and (r["ink"] < INK_FLOOR
+                                              or (r["t"] >= peak_t and r["motion"] < MOTION_FLOOR)
                                               or (r["t"] > peak_t and r["ink"] < peak * INK_CLIFF))]
     if bad:
         print(f"  FAIL {len(bad)} of {len(rows) - 1} samples in the opening are empty, still, "

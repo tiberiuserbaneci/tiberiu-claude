@@ -261,6 +261,57 @@ picture confirming the narration; landing ahead of it reads as a mistake.
 The renderer calls `_scrub.py` last, which strips MP4 metadata and stamps operator
 authorship (CLAUDE.md 28). Never ship a freshly rendered file that skipped it.
 
+## Retention is measurable, so measure it
+
+Episode 01 posted, held over half its traffic through second three, and fell to 10-12% from
+second four at an 80%+ skip rate. Two hypotheses were live, weak graphic or weak sentence.
+`content/_retention.py` settles that class of argument by reading the frames:
+
+```bash
+python3 content/_retention.py content/<film>.html --to 8 --step 0.2
+```
+
+It reports **ink**, the share of the frame carrying an edge, and **motion**, the change in the
+busiest tile since the last sample. Both had to be defined carefully to be worth anything:
+
+- ink is edge energy, never brightness. These films run cream on cream and ivory on graphite,
+  so any absolute threshold measures the background and calls a blank canvas full.
+- motion is the busiest **tile**, never the frame mean. A question mark popping in is 0.05% of
+  the pixels and averages to nothing while the eye goes straight to it. The global version
+  called all three finished films dead in a window where two of them were fine.
+- the cliff reference is the hook measured **before the sheet joins it**. A film that overlaps
+  its hook with the incoming scene, which every film should, briefly double exposes and posts
+  a peak that never exists as a state. Comparing against that inflated peak fails good work.
+
+What it found in episode 01: coverage collapsed from 0.0685 to 0.0206 in 0.15s when the hook
+left, and the scenes never recovered past 71% of it. The operator's first hypothesis was
+right, and it is now a number.
+
+### Two rules that came out of it
+
+**Full bleed, not a centred card.** A card with margins cannot carry the visual mass the hook
+just had. Episode 04's sheet fills the safe band edge to edge and measures 0.093 to 0.132
+against a 0.076 hook: 122% to 173%, where episode 01 ran 43% to 71%. The frame gets fuller as
+the film runs instead of emptier.
+
+**Never fade content to grey to retire it.** Episode 04's first cut dimmed its dead pilots to
+`opacity:.34` with a grayscale filter, which is the obvious way to say "this one died" and
+measurably empties the frame: ink fell from 0.088 to 0.043 exactly as the tiles died. Dead
+things now go **black on cream**, the same tone as the failed share of every run column. It
+raises coverage and reads harder at the same time, which is the rare change that costs
+nothing.
+
+A full bleed sheet has no free half to give the caption, so it reserves one: 330px off the
+edge that beat's zone claims, against a 300px caption band. The extra 30px is not a fudge, it
+absorbs the sheet's own slow push, which scales it 2.2% and puts content outside a box that
+padding alone cannot see. Verified by asserting zero caption/content rectangle overlap across
+the whole film, not by looking at a still.
+
+**Furnish a state before you animate it.** A bar chart whose bars start at zero height is an
+empty frame wearing a headline. Hairline tracks do not fix it either: a 1px border averages
+away at viewing size, and the guard is right to ignore it. Draw the thing the bars are
+eating into.
+
 ## Performance
 
 PNG frame encoding costs 863ms at 1080x1920 against 113ms for JPEG, measured. Frames are

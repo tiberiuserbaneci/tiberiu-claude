@@ -1134,6 +1134,16 @@ into `analysis/virality-principles.md`. Metrics priority stays: reach+impression
 7. **Dead band** - no single empty band > 120px (egregious airiness).
 8. **Footer** - Ultron + 51ultron.com present.
 
+**RETENTION GUARD (films only, added 2026-08-04 after episode 01's posted curve).** Run
+`python3 content/_retention.py content/<film>.html` before any film render. Episode 01 held
+50%+ through second three and fell to 10-12% from second four; the frames showed coverage
+collapsing 70% the moment the hook left, and scenes never recovering past 71% of it. The
+guard fails a film whose opening goes empty, goes still for half a second, or drops below
+45% of the hook's own coverage. Design rules that follow from it, both binding: **full-bleed
+sheet, never a centred card**, and **never retire content by fading it to grey** - dead
+things go black on the light ground, which raises coverage instead of destroying it. Not
+wired into the Stop hook because it costs a browser pass per film; run it by hand, every time.
+
 **Surfaced every run (judgement, printed not auto-blocked):** empty-row % + largest dead band (a product mockup runs ~60% empty by design, so a blind gate would false-positive on approved work - PACK the dominant block if it reads airy; never `flex:1`/`space-between` to stretch sparse rows), and a `space-between`/`flex:1` code-smell count.
 
 **Process guards (operator rules - do NOT deviate):**
