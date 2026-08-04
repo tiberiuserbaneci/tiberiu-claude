@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>coldoutbound - LinkedIn 1080x1450</title>
+<style>
+@import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap';
+/* coldoutbound - The 7-step Claude Code cold outbound system (Miro -> Apollo/Ocean/AI Ark/RB2B/
+   Jungler/Fibbler -> Clay -> Instantly/HeyReach). Dominant = a 7-stage numbered pipeline, each
+   stage its own treatment (chip row / two-column split / tier badges) so no two rows read alike.
+   BUDGET: 1450 = pad(30+22) + mast(38) + hero(150) + stats(78) + pipe(1030, 7x~132+gaps) + cta(78)
+   + footer(44), gaps absorbed in margins. Dark Ultron. */
+:root{--slate:#191919;--slate2:#232322;--slate3:#1c1c1b;--ivory:#FAFAF7;
+--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);
+--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);
+--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--deep:#A93914;--cloud:#919180;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.frame{width:1080px;height:1450px;background:var(--slate);padding:30px 42px 22px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;}
+.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.055) 1.3px,transparent 1.4px);background-size:28px 28px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 56% 20% at 92% -2%,rgba(204,120,92,.18) 0%,transparent 60%),radial-gradient(ellipse 44% 26% at 4% 100%,rgba(212,162,127,.09) 0%,transparent 60%);}
+.frame>*{position:relative;z-index:2;}
+.mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding-bottom:11px;border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.17em;text-transform:uppercase;}
+.mast .ml{color:var(--ink46);}.mast .ml em{color:var(--book);font-style:normal;}
+.mast .mr{color:var(--ink70);}.mast .mr em{color:var(--book);font-style:normal;}
+.hero{flex-shrink:0;margin-top:13px;position:relative;padding-right:96px;}
+.eye{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--kraft);}
+.hook{margin-top:7px;font-weight:900;font-size:38px;line-height:1.03;letter-spacing:-1.3px;}
+.hook em{color:var(--book);font-style:normal;}
+.sub{margin-top:8px;font-size:16.5px;font-weight:500;line-height:1.32;color:var(--ink70);max-width:960px;}
+.sub b{color:var(--ivory);font-weight:700;}
+.hero-claude{position:absolute;top:2px;right:0;width:74px;height:74px;filter:drop-shadow(0 0 20px rgba(204,120,92,.4));}
+.stats{flex-shrink:0;margin-top:12px;display:flex;border:1px solid var(--rule);border-radius:12px;overflow:hidden;}
+.stat{flex:1;padding:9px 10px;text-align:center;}.stat+.stat{border-left:1px solid var(--rule);}
+.stat b{display:block;font-weight:900;font-size:24px;line-height:.85;letter-spacing:-.8px;}
+.stat.a b{color:var(--book);}.stat.b b{color:var(--kraft);}.stat.c b{color:var(--ivory);}.stat.d b{color:var(--book);}
+.stat span{font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink46);margin-top:5px;display:block;}
+/* pipeline (dominant) */
+.pipe{flex:1;min-height:0;margin-top:12px;display:flex;flex-direction:column;gap:7px;}
+.stage{position:relative;flex:1;min-height:0;display:flex;align-items:stretch;gap:0;border:1px solid var(--rule);border-radius:12px;background:var(--slate2);overflow:hidden;}
+.snum{align-self:stretch;width:52px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:24px;letter-spacing:-.8px;color:var(--ivory);background:var(--book-d);}
+.stage.k .snum{background:var(--kraft);color:#221a12;}.stage.d .snum{background:var(--deep);color:var(--ivory);}
+.sbody{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:5px;padding:9px 16px;}
+.st{font-size:16.5px;font-weight:800;color:var(--ivory);letter-spacing:-.3px;line-height:1.05;}
+.st em{color:var(--book);font-style:normal;}
+.sv{font-size:12.5px;font-weight:500;color:var(--ink70);line-height:1.28;}
+.sv b{color:var(--ivory);font-weight:700;}
+/* chip rows */
+.chiprow{display:flex;flex-wrap:wrap;gap:5px;}
+.chip{font-family:'DM Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.02em;color:var(--book);background:rgba(204,120,92,.10);border:1px solid rgba(204,120,92,.30);border-radius:6px;padding:3.5px 8px;white-space:nowrap;}
+.chip.k{color:var(--kraft);background:rgba(212,162,127,.10);border-color:rgba(212,162,127,.30);}
+.chip.i{color:var(--ink70);background:rgba(250,250,247,.05);border-color:var(--rule);}
+/* two-column split stages */
+.split2{flex:1;min-width:0;display:flex;gap:0;}
+.spcol{flex:1;min-width:0;padding:9px 14px;display:flex;flex-direction:column;justify-content:center;gap:5px;}
+.spcol+.spcol{border-left:1px solid var(--rule);}
+.spl{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--kraft);}
+.spl.b{color:var(--book);}
+.spt{font-size:11.5px;font-weight:500;color:var(--ink70);line-height:1.25;}
+/* tier badges (stage 5) */
+.tiers{flex:1;min-width:0;display:flex;gap:0;}
+.tier{flex:1;padding:9px 14px;display:flex;flex-direction:column;justify-content:center;gap:4px;}
+.tier+.tier{border-left:1px solid var(--rule);}
+.tn{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--book);}
+.tt{font-size:12.5px;font-weight:700;color:var(--ivory);line-height:1.2;}
+.tt span{display:block;font-size:11px;font-weight:500;color:var(--ink46);margin-top:1px;}
+/* cta */
+.cta{flex-shrink:0;margin-top:13px;display:flex;align-items:center;gap:16px;border:1.5px solid var(--book);border-radius:16px;background:rgba(204,120,92,.08);padding:12px 12px 12px 24px;box-shadow:0 0 40px rgba(204,120,92,.2);}
+.cta .ph{flex:1;font-size:19px;font-weight:600;color:var(--ink70);line-height:1.2;}.cta .ph b{color:var(--book);font-weight:900;}
+.cta .send{width:50px;height:50px;border-radius:50%;background:var(--book);flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 0 26px rgba(204,120,92,.45);}
+.cta .send svg{width:24px;height:24px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ftr{flex-shrink:0;margin-top:12px;padding-top:11px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.fl2{display:flex;align-items:center;gap:11px;min-width:0;}.flogo{width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.ftx{font-family:'DM Mono',monospace;font-size:10.5px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--ink70);white-space:nowrap;}.ftx b{color:var(--ivory);font-weight:500;}
+.furl{font-weight:900;font-size:19px;letter-spacing:-.5px;color:var(--ivory);}.furl em{color:var(--book);font-style:normal;}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="claude-logo" viewBox="0 0 1200 1200"><path fill="#CC785C" d="M 233.96 800.21 L 468.64 668.54 L 472.59 657.10 L 468.64 650.74 L 457.21 650.74 L 417.99 648.32 L 283.89 644.70 L 167.60 639.87 L 54.93 633.83 L 26.58 627.79 L 0 592.75 L 2.74 575.28 L 26.58 559.25 L 60.72 562.23 L 136.19 567.38 L 249.42 575.19 L 331.57 580.03 L 453.26 592.67 L 472.59 592.67 L 475.33 584.86 L 468.72 580.03 L 463.57 575.19 L 346.39 495.79 L 219.54 411.87 L 153.10 363.54 L 117.18 339.06 L 99.06 316.11 L 91.25 266.01 L 123.87 230.09 L 167.68 233.07 L 178.87 236.05 L 223.25 270.20 L 318.04 343.57 L 441.83 434.74 L 459.95 449.80 L 467.19 444.64 L 468.08 441.02 L 459.95 427.41 L 392.62 305.72 L 320.78 181.93 L 288.81 130.63 L 280.35 99.87 C 277.37 87.22 275.19 76.59 275.19 63.62 L 312.32 13.21 L 332.86 6.60 L 382.39 13.21 L 403.25 31.33 L 434.01 101.72 L 483.87 212.54 L 561.18 363.22 L 583.81 407.92 L 595.89 449.32 L 600.40 461.96 L 608.21 461.96 L 608.21 454.71 L 614.58 369.83 L 626.34 265.61 L 637.77 131.52 L 641.72 93.75 L 660.40 48.48 L 697.53 24.00 L 726.52 37.85 L 750.36 72 L 747.06 94.07 L 732.89 186.20 L 705.10 330.52 L 686.98 427.17 L 697.53 427.17 L 709.61 415.09 L 758.50 350.17 L 840.64 247.49 L 876.89 206.74 L 919.17 161.72 L 946.31 140.30 L 997.61 140.30 L 1035.38 196.43 L 1018.47 254.42 L 965.64 321.42 L 921.83 378.20 L 859.01 462.77 L 819.79 530.42 L 823.41 535.81 L 832.75 534.93 L 974.66 504.72 L 1051.33 490.87 L 1142.82 475.17 L 1184.21 494.50 L 1188.72 514.15 L 1172.46 554.34 L 1074.60 578.50 L 959.84 601.45 L 788.94 641.88 L 786.85 643.41 L 789.26 646.39 L 866.26 653.64 L 899.19 655.41 L 979.81 655.41 L 1129.93 666.60 L 1169.15 692.54 L 1192.67 724.27 L 1188.72 748.43 L 1128.32 779.19 L 1046.82 759.87 L 856.59 714.60 L 791.36 698.34 L 782.34 698.34 L 782.34 703.73 L 836.70 756.89 L 936.32 846.85 L 1061.07 962.82 L 1067.44 991.49 L 1051.41 1014.12 L 1034.50 1011.70 L 924.89 929.23 L 882.60 892.11 L 786.85 811.49 L 780.48 811.49 L 780.48 819.95 L 802.55 852.24 L 919.09 1027.41 L 925.13 1081.13 L 916.67 1098.60 L 886.47 1109.15 L 853.29 1103.11 L 785.07 1007.36 L 714.68 899.52 L 657.91 802.87 L 650.98 806.82 L 617.48 1167.70 L 601.77 1186.15 L 565.53 1200 L 535.33 1177.05 L 519.30 1139.92 L 535.33 1066.55 L 554.66 970.79 L 570.36 894.68 L 584.54 800.13 L 592.99 768.72 L 592.43 766.63 L 585.50 767.52 L 514.23 865.37 L 405.83 1011.87 L 320.05 1103.68 L 299.52 1111.81 L 263.92 1093.37 L 267.22 1060.43 L 287.11 1031.11 L 405.83 880.11 L 477.42 786.52 L 523.65 732.48 L 523.33 724.67 L 520.59 724.67 L 205.29 929.40 L 149.15 936.64 L 124.99 914.01 L 127.97 876.89 L 139.41 864.81 L 234.20 799.57 Z"/></symbol>
+</defs></svg>
+<div class="frame" id="artifact"><div class="atm"></div>
+  <div class="mast"><span class="ml">COLD OUTBOUND <em>&middot;</em> CLAUDE CODE <em>&middot;</em> GTM SYSTEM</span><span class="mr">ULTRON <em>&middot;</em> <em>7</em>-STEP SYSTEM</span></div>
+  <div class="hero">
+    <svg class="hero-claude" viewBox="0 0 1200 1200"><use href="#claude-logo"/></svg>
+    <div class="eye">The outbound system</div>
+    <div class="hook">I gave <em>Claude Code</em> 7 steps. It ran my whole outbound campaign.</div>
+    <div class="sub">Strategy in Miro, lists from Apollo, Ocean and RB2B, enrichment and tiering inside Claude Code, sends through Instantly and HeyReach.</div>
+  </div>
+  <div class="stats">
+    <div class="stat a"><b>7</b><span>steps, one system</span></div>
+    <div class="stat b"><b>6</b><span>list &amp; signal sources</span></div>
+    <div class="stat c"><b>3</b><span>account tiers</span></div>
+    <div class="stat d"><b>2</b><span>send platforms</span></div>
+  </div>
+
+  <div class="pipe">
+    <div class="stage">
+      <div class="snum">1</div>
+      <div class="sbody">
+        <div class="st">Map the strategy in <em>Miro</em></div>
+        <div class="chiprow"><span class="chip">ACCOUNT TIERING</span><span class="chip">BUYING COMMITTEE</span><span class="chip">ANGLES</span><span class="chip">OFFERS</span></div>
+      </div>
+    </div>
+
+    <div class="stage k">
+      <div class="snum">2</div>
+      <div class="split2">
+        <div class="spcol"><div class="spl b">Cold ICP &middot; broad filter</div><div class="spt"><b>Apollo.io</b> volume, <b>Ocean.io</b> lookalikes, <b>AI Ark</b> keyword filtering</div></div>
+        <div class="spcol"><div class="spl">Signals &middot; intent capture</div><div class="spt"><b>RB2B</b> site visitors, <b>Jungler.ai</b> LinkedIn engagement, <b>Fibbler</b> ad engagement</div></div>
+      </div>
+    </div>
+
+    <div class="stage d">
+      <div class="snum">3</div>
+      <div class="sbody">
+        <div class="st">Data enrichment, <em>Claude Code</em> into Clay</div>
+        <div class="sv">Adds firmographics, technographics and account-fit signals, then a <b>QA pass in Clay</b> before segmentation.</div>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="snum">4</div>
+      <div class="split2">
+        <div class="spcol"><div class="spl b">Cold ICP &middot; by segment</div><div class="spt">Companies split by segment (<b>SaaS, agencies</b>), one <b>Clay workbook</b> per segment, contacts in the same table</div></div>
+        <div class="spcol"><div class="spl">Signals &middot; by type</div><div class="spt">One <b>Clay folder</b>, a separate workbook per signal: <b>site visits, LinkedIn, ads</b></div></div>
+      </div>
+    </div>
+
+    <div class="stage k">
+      <div class="snum">5</div>
+      <div class="tiers">
+        <div class="tier"><div class="tn">Tier 1</div><div class="tt">Cold email<span>+ LinkedIn DM + cold call</span></div></div>
+        <div class="tier"><div class="tn">Tier 2</div><div class="tt">Cold email<span>+ LinkedIn DM</span></div></div>
+        <div class="tier"><div class="tn">Tier 3</div><div class="tt">Cold email<span>only</span></div></div>
+      </div>
+    </div>
+
+    <div class="stage d">
+      <div class="snum">6</div>
+      <div class="sbody">
+        <div class="st">Copywriting, one baseline into <em>Claude Code</em></div>
+        <div class="sv">5 angles, <b>one hand-written baseline</b> email, then the example plus a per-row company summary generates a <b>tailored variant for every account.</b></div>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="snum">7</div>
+      <div class="sbody">
+        <div class="st">Campaign setup and launch</div>
+        <div class="chiprow"><span class="chip">CLAUDE CODE BUILDS THE CAMPAIGNS</span><span class="chip k">EMAIL &rarr; INSTANTLY</span><span class="chip k">LINKEDIN &rarr; HEYREACH</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta"><span class="ph">Comment <b>OUTBOUND</b> for the full Claude Code cold outbound system</span><span class="send"><svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div>
+  <div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><span class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</span></div><div class="furl">51ultron<em>.</em>com</div></div>
+</div>
+</body>
+</html>
