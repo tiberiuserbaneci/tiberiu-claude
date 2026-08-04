@@ -312,6 +312,38 @@ empty frame wearing a headline. Hairline tracks do not fix it either: a 1px bord
 away at viewing size, and the guard is right to ignore it. Draw the thing the bars are
 eating into.
 
+This is the single most repeated mistake in the format, so state it as a rule: **animate the
+contents, never the container.** Every card, row and panel exists at full opacity the moment
+its state arrives; what fades in is the text inside it. Episode 04 shipped this defect four
+separate times (the cohort tally, the blockers, the vendor notes, the three survival rules,
+and again in its own end card) because `opacity:0` on the wrapper is the obvious way to write
+it. The pattern that works:
+
+```css
+.rule{...}            /* present on entry, no opacity animation */
+.rule>*{opacity:0;}   /* the contents wait */
+.r1>*{animation:rise .55s var(--e) both calc(var(--b5) + 2.05s);}
+```
+
+**Two dark tones are not two tones.** Dark Ultron cards (`#262625`) on Dark Ultron ground
+(`#191919`) measured as an empty frame at the turn, because at viewing size that is one
+colour with a 1px line on it. Cards on the dark half need a real tonal step and a 2px edge.
+
+**A hook that overlaps the incoming scene needs its own field.** Closing the empty seam means
+the sheet is already there when the hook leaves, which on a light ground puts black display
+type straight onto the picture. A full-frame scrim at the ground colour, sitting between the
+sheet and the hook and fading with it, gives the type a clean page while the picture waits
+behind it. Legibility and coverage stop being a trade.
+
+**Measure the whole film, not the opening.** The first version of `_retention.py` stopped at
+8 seconds because retention is decided there. The operator then caught a two second void at
+the turn, 25 seconds in, that the guard had never looked at. It now defaults to the measured
+take length. Two matching corrections came out of that run: the floors start at the hook's
+peak, because a hook assembling one word per spoken word is legitimately sparse until it
+lands, and stillness is judged over a rolling half second rather than per sample, because
+the format lands an object every 1 to 2 seconds by design and flagging each gap would demand
+motion nobody wants to watch.
+
 ## Performance
 
 PNG frame encoding costs 863ms at 1080x1920 against 113ms for JPEG, measured. Frames are

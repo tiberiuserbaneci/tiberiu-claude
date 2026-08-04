@@ -40,7 +40,11 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 INK_FLOOR = 0.012      # fraction of pixels carrying an edge
 MOTION_FLOOR = 0.010   # busiest-tile change between samples, see tile_motion
 INK_CLIFF = 0.45       # a scene may not drop below this share of the hook's peak coverage
-OPENING = 8.0          # seconds that decide retention
+OPENING = 0.0          # 0 means the whole film: an empty frame at the turn costs as much
+                       # as one at second three, and measuring only the opening missed a two
+                       # second void in episode 04's fifth beat that the operator caught by
+                       # eye. Retention is decided in the opening; the film is watched all
+                       # the way down.
 
 
 def _film():
@@ -113,6 +117,9 @@ def measure(html: pathlib.Path, to: float, step: float) -> dict:
             if hk:
                 seam = hk[-1][2] + float(meta.get("hook_hold", .15))
 
+    if to <= 0:
+        to = (built[2] if built else meta.get("duration", 30)) + .4
+
     rows, prev = [], None
     with sync_playwright() as pw:
         b, pg, loc = m._open_stage(pw, html, meta, marks, caps)
@@ -143,12 +150,17 @@ def report(res: dict) -> bool:
     hookrows = [r for r in rows if seam is None or r["t"] <= seam - 0.5] or rows
     peak = max(r["ink"] for r in hookrows)
     peak_t = next(r["t"] for r in hookrows if r["ink"] == peak)
+    end = rows[-1]["t"] - 1.5                     # the closing hold is not a swipe risk
+    roll = {}
+    for i in range(len(rows)):
+        seg = rows[i:i + win]
+        roll[rows[i]["t"]] = sum(r["motion"] for r in seg) / len(seg)
 
     for r in rows:
         flag = ""
-        if r["t"] > 0 and r["ink"] < INK_FLOOR:
+        if r["t"] >= peak_t and r["ink"] < INK_FLOOR:
             flag += " EMPTY"
-        if r["t"] >= peak_t and r["motion"] < MOTION_FLOOR:
+        if peak_t <= r["t"] <= end and roll[r["t"]] < MOTION_FLOOR:
             flag += " STILL"
         if r["t"] > peak_t and r["ink"] < peak * INK_CLIFF:
             flag += " CLIFF"
@@ -160,8 +172,8 @@ def report(res: dict) -> bool:
           f"({worst_ink['ink'] / peak:.0%} of peak, floor {INK_FLOOR})")
     print(f"  stillest 0.5s {worst_mot[0]:.5f} from t={worst_mot[1]:.2f}s "
           f"(floor {MOTION_FLOOR})")
-    bad = [r for r in rows if r["t"] > 0 and (r["ink"] < INK_FLOOR
-                                              or (r["t"] >= peak_t and r["motion"] < MOTION_FLOOR)
+    bad = [r for r in rows if r["t"] >= peak_t and (r["ink"] < INK_FLOOR
+                                              or (peak_t <= r["t"] <= end and roll[r["t"]] < MOTION_FLOOR)
                                               or (r["t"] > peak_t and r["ink"] < peak * INK_CLIFF))]
     if bad:
         print(f"  FAIL {len(bad)} of {len(rows) - 1} samples in the opening are empty, still, "
@@ -175,7 +187,7 @@ def report(res: dict) -> bool:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("films", nargs="+")
-    ap.add_argument("--to", type=float, default=OPENING)
+    ap.add_argument("--to", type=float, default=OPENING)  # 0 -> measured take length
     ap.add_argument("--step", type=float, default=0.1)
     a = ap.parse_args()
     ok = True

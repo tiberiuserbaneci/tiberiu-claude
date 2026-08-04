@@ -217,11 +217,11 @@ body{background:#0C0C0B;display:flex;justify-content:center;align-items:flex-sta
 
 /* ---------- the wall clock: every delay is beat relative, _film.py rewrites --b1..--b6
    from the measured take so each cut lands on the word that motivates it ---------- */
-.s1{animation:scin .5s both calc(var(--hookout) - 0.30s),scout .45s ease-in forwards calc(var(--b2) - 0.2s);}
-.s2{animation:scin .5s both calc(var(--b2) + 0.2s),scout .45s ease-in forwards calc(var(--b3) - 0.2s);}
-.s3{animation:scin .5s both calc(var(--b3) + 0.2s),scout .45s ease-in forwards calc(var(--b4) - 0.2s);}
-.s4{animation:scin .5s both calc(var(--b4) + 0.2s),scout .45s ease-in forwards calc(var(--b5) - 0.2s);}
-.s5{animation:scin .5s both calc(var(--b5) + 0.2s),scout .45s ease-in forwards calc(var(--b6) - 0.2s);}
+.s1{animation:scin .5s both calc(var(--hookout) - 0.30s),scout .40s ease-in forwards calc(var(--b2) + 0.06s);}
+.s2{animation:scin .40s both calc(var(--b2) - 0.10s),scout .40s ease-in forwards calc(var(--b3) + 0.06s);}
+.s3{animation:scin .40s both calc(var(--b3) - 0.10s),scout .40s ease-in forwards calc(var(--b4) + 0.06s);}
+.s4{animation:scin .40s both calc(var(--b4) - 0.10s),scout .40s ease-in forwards calc(var(--b5) + 0.06s);}
+.s5{animation:scin .40s both calc(var(--b5) - 0.10s),scout .40s ease-in forwards calc(var(--b6) + 0.06s);}
 .s6{animation:scin .5s both calc(var(--b6) + 0.15s);}
 
 /* night passes in the mast, one reading per phase */

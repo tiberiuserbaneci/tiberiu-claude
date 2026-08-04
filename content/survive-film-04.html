@@ -80,13 +80,15 @@ body{background:#0D0C0B;display:flex;justify-content:center;align-items:flex-sta
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
 @keyframes breathe{0%{opacity:.5}50%{opacity:1}100%{opacity:.5}}
 .amb{position:absolute;inset:-8%;
-  background:radial-gradient(ellipse 38% 22% at 50% 34%,rgba(200,70,35,.10) 0%,transparent 68%);
-  animation:breathe 11s ease-in-out infinite;}
+  background:radial-gradient(ellipse 38% 22% at 50% 34%,rgba(200,70,35,.16) 0%,transparent 68%);
+  animation:breathe 7s ease-in-out infinite;}
 @keyframes flipout{from{opacity:1}to{opacity:0}}
 @keyframes inkflip{from{color:var(--ink38)}to{color:var(--iv40)}}
 @keyframes inkflipA{from{color:var(--book)}to{color:var(--kraft)}}
 .lightbg{position:absolute;inset:0;}
 
+.hkscrim{position:absolute;inset:0;z-index:8;background:var(--bone);opacity:.88;
+  animation:fadeout .42s ease-in forwards var(--hookout);}
 .safe{position:absolute;top:300px;left:104px;right:152px;bottom:330px;z-index:6;
   display:flex;flex-direction:column;}
 .mast{flex-shrink:0;display:flex;justify-content:space-between;align-items:center;
@@ -236,15 +238,24 @@ body{background:#0D0C0B;display:flex;justify-content:center;align-items:flex-sta
 
 /* 3. the blockers */
 .blk{flex:1;min-height:0;display:flex;flex-direction:column;}
+.blknote{flex-shrink:0;display:flex;align-items:center;gap:16px;margin-top:18px;
+  padding:20px 24px;border-radius:14px;background:var(--booklo);
+  border:2px solid var(--bookbd);}
+.blknote>*{opacity:0;}
+.blknote .l{font-family:'DM Mono',monospace;font-size:19px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--book);}
+.blknote .r{margin-left:auto;font-size:27px;font-weight:500;color:var(--ink62);letter-spacing:-.4px;}
+.blknote .r b{color:var(--ink);font-weight:900;}
 .br{flex:1;display:flex;flex-direction:column;justify-content:center;gap:12px;
-  border-bottom:1px solid var(--hair);opacity:0;}
+  border-bottom:1px solid var(--hair);}
+.br .top>*{opacity:0;}
 .br:last-child{border-bottom:none;}
 .br .top{display:flex;align-items:baseline;gap:16px;}
 .br .n{font-size:34px;font-weight:900;color:var(--ink);letter-spacing:-.9px;}
 .br .p{margin-left:auto;font-family:'Anton',sans-serif;font-size:60px;color:var(--book);
   line-height:1;}
 .br .sub{font-family:'DM Mono',monospace;font-size:18px;letter-spacing:.10em;color:var(--ink38);}
-.br .track{height:16px;border-radius:8px;background:var(--ink16);overflow:hidden;}
+.br .track{height:16px;border-radius:8px;background:#23211E;overflow:hidden;}
 .br .track i{display:block;height:100%;width:0;border-radius:8px;
   background:linear-gradient(90deg,#D98A6E,var(--book));}
 
@@ -257,7 +268,8 @@ body{background:#0D0C0B;display:flex;justify-content:center;align-items:flex-sta
 .gh.real{background:var(--book);box-shadow:0 0 12px rgba(200,70,35,.7);}
 .washnote{flex-shrink:0;display:flex;gap:14px;}
 .washnote div{flex:1;border-radius:12px;padding:18px 20px;background:var(--card);
-  border:1px solid var(--hair);opacity:0;}
+  border:1px solid var(--hair);}
+.washnote div>*{opacity:0;}
 .washnote u{display:block;font-family:'DM Mono',monospace;font-size:17px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--ink38);text-decoration:none;}
 .washnote s{display:block;font-size:34px;font-weight:900;color:var(--book);
@@ -273,7 +285,8 @@ body{background:#0D0C0B;display:flex;justify-content:center;align-items:flex-sta
 .st.dark .hd .cap i{color:var(--iv40);}
 .rules{flex:1;min-height:0;display:flex;flex-direction:column;gap:16px;}
 .rule{flex:1;display:flex;align-items:center;gap:24px;border-radius:16px;
-  background:var(--slate2);border:1px solid var(--iv16);padding:0 26px;opacity:0;}
+  background:#2B2B29;border:2px solid rgba(250,250,247,.13);padding:0 26px;}
+.rule>*{opacity:0;}
 .rule .no{font-family:'Anton',sans-serif;font-size:66px;color:var(--bookd);line-height:1;
   width:74px;flex-shrink:0;}
 .rule .tx b{display:block;font-size:36px;font-weight:900;color:var(--ivory);letter-spacing:-1px;}
@@ -284,7 +297,8 @@ body{background:#0D0C0B;display:flex;justify-content:center;align-items:flex-sta
   padding:9px 14px;border-radius:8px;background:rgba(204,120,92,.12);
   border:1px solid rgba(204,120,92,.32);}
 .gate{flex-shrink:0;display:flex;align-items:center;gap:16px;padding:20px 24px;border-radius:14px;
-  background:rgba(204,120,92,.10);border:1px solid rgba(204,120,92,.30);opacity:0;}
+  background:rgba(204,120,92,.13);border:2px solid rgba(204,120,92,.38);}
+.gate>*{opacity:0;}
 .gate .l{font-family:'DM Mono',monospace;font-size:19px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--bookd);}
 .gate .r{margin-left:auto;font-size:26px;font-weight:900;color:var(--ivory);}
@@ -294,10 +308,19 @@ body{background:#0D0C0B;display:flex;justify-content:center;align-items:flex-sta
   justify-content:center;align-items:flex-start;opacity:0;}
 .cta .k{font-family:'DM Mono',monospace;font-size:34px;font-weight:500;letter-spacing:.28em;
   color:var(--iv40);opacity:0;}
-.cta .w{font-family:'Anton',sans-serif;font-size:186px;letter-spacing:-3px;color:var(--bookd);
+.cta .w{font-family:'Anton',sans-serif;font-size:150px;letter-spacing:-3px;color:var(--bookd);
   line-height:.94;margin-top:12px;opacity:0;text-shadow:0 20px 60px rgba(204,120,92,.42);}
-.cta .s{margin-top:26px;font-family:'DM Mono',monospace;font-size:26px;letter-spacing:.05em;
+.cta .s{margin-top:22px;font-family:'DM Mono',monospace;font-size:26px;letter-spacing:.05em;
   color:var(--iv40);opacity:0;}
+.cta .recap{width:100%;margin-top:40px;display:flex;flex-direction:column;gap:12px;}
+.cta .recap div{display:flex;align-items:center;gap:20px;padding:20px 24px;border-radius:14px;
+  background:#2B2B29;border:2px solid rgba(250,250,247,.13);}
+.cta .recap div>*{opacity:0;}
+.cta .recap u{font-family:'Anton',sans-serif;font-size:40px;color:var(--bookd);
+  text-decoration:none;line-height:1;width:56px;flex-shrink:0;}
+.cta .recap b{font-size:30px;font-weight:800;color:var(--ivory);letter-spacing:-.7px;}
+.cta .src{margin-top:26px;font-family:'DM Mono',monospace;font-size:19px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--iv16);opacity:0;}
 
 /* ---------- the clock ---------- */
 /* Every state opens against --hookout, the seam the renderer measures from the take, so the
@@ -309,8 +332,8 @@ body{background:#0D0C0B;display:flex;justify-content:center;align-items:flex-sta
 .st2{animation:scin .30s both calc(var(--b2) + 0.02s),fadeout .24s forwards calc(var(--b3) + 0.06s);}
 .st3{animation:scin .30s both calc(var(--b3) + 0.02s),fadeout .24s forwards calc(var(--b4) + 0.06s);}
 .st4{animation:scin .30s both calc(var(--b4) + 0.02s),fadeout .24s forwards calc(var(--b5) + 0.04s);}
-.st5{animation:scin .34s both calc(var(--b5) + 0.02s),fadeout .28s forwards calc(var(--b6) - 0.12s);}
-.cta{animation:scin .5s both calc(var(--b6) + 0.05s);}
+.st5{animation:scin .34s both calc(var(--b5) + 0.02s),fadeout .28s forwards calc(var(--b6) + 0.06s);}
+.cta{animation:scin .40s both calc(var(--b6) - 0.18s);}
 
 /* the brand flip: the cream ground leaves, the mast and footer follow it */
 .lightbg{animation:flipout .55s var(--eStd) forwards calc(var(--b5) - 0.05s);}
@@ -320,38 +343,45 @@ body{background:#0D0C0B;display:flex;justify-content:center;align-items:flex-sta
 
 /* 1. the cohort dies in a wave: 29 tiles, one every 90ms, which is the busiest motion in
    the film and lands exactly where episode 01 went still */
-.tally{opacity:0;animation:rise .5s var(--e) both calc(var(--b1) + 5.60s);}
+.tally>*{opacity:0;animation:rise .5s var(--e) both calc(var(--b1) + 5.60s);}
 
 /* 2. eight bars, one per run, growing across the beat */
 .runnote{opacity:0;animation:rise .5s var(--e) both calc(var(--b2) + 5.15s);}
 
 /* 3. three blockers */
-.br1{animation:rise .5s var(--e) both calc(var(--b3) + 2.35s);}
+.br1 .top>*{animation:rise .5s var(--e) both calc(var(--b3) + 2.35s);}
 .br1 i{--w:64%;animation:growW .75s var(--eEmph) both calc(var(--b3) + 2.60s);}
-.br2{animation:rise .5s var(--e) both calc(var(--b3) + 4.25s);}
+.br2 .top>*{animation:rise .5s var(--e) both calc(var(--b3) + 4.25s);}
 .br2 i{--w:57%;animation:growW .75s var(--eEmph) both calc(var(--b3) + 4.50s);}
-.br3{animation:rise .5s var(--e) both calc(var(--b3) + 5.55s);}
+.br3 .top>*{animation:rise .5s var(--e) both calc(var(--b3) + 5.55s);}
+.blknote>*{animation:rise .5s var(--e) both calc(var(--b3) + 6.05s);}
 .br3 i{--w:51%;animation:growW .75s var(--eEmph) both calc(var(--b3) + 5.80s);}
 
 /* 4. the field of ghosts, then the two notes */
-.wn1{animation:rise .5s var(--e) both calc(var(--b4) + 1.30s);}
-.wn2{animation:rise .5s var(--e) both calc(var(--b4) + 4.60s);}
+.wn1>*{animation:rise .5s var(--e) both calc(var(--b4) + 1.30s);}
+.wn2>*{animation:rise .5s var(--e) both calc(var(--b4) + 4.60s);}
 
 /* 5. three rules and the gate */
-.r1{animation:rise .55s var(--e) both calc(var(--b5) + 2.05s);}
-.r2{animation:rise .55s var(--e) both calc(var(--b5) + 3.75s);}
-.r3{animation:rise .55s var(--e) both calc(var(--b5) + 5.25s);}
-.gate{animation:rise .55s var(--e) both calc(var(--b5) + 6.55s);}
+.r1>*{animation:rise .55s var(--e) both calc(var(--b5) + 2.05s);}
+.r2>*{animation:rise .55s var(--e) both calc(var(--b5) + 3.75s);}
+.r3>*{animation:rise .55s var(--e) both calc(var(--b5) + 5.25s);}
+.gate>*{animation:rise .55s var(--e) both calc(var(--b5) + 6.55s);}
 
-.cta .k{animation:rise .5s var(--e) both calc(var(--b6) + 0.30s);}
-.cta .w{animation:pop .6s var(--eEmph) both calc(var(--b6) + 0.60s);}
-.cta .s{animation:rise .5s var(--e) both calc(var(--b6) + 1.45s);}
+.cta .k{animation:rise .5s var(--e) both calc(var(--b6) + 0.08s);}
+.cta .w{animation:pop .6s var(--eEmph) both calc(var(--b6) + 0.22s);}
+.cta .s{animation:rise .5s var(--e) both calc(var(--b6) + 1.30s);}
+.cta .recap div:nth-child(1)>*{animation:rise .5s var(--e) both calc(var(--b6) + 1.05s);}
+.cta .recap div:nth-child(2)>*{animation:rise .5s var(--e) both calc(var(--b6) + 1.22s);}
+.cta .recap div:nth-child(3)>*{animation:rise .5s var(--e) both calc(var(--b6) + 1.39s);}
+.cta .src{animation:scin .5s var(--e) both calc(var(--b6) + 1.70s);}
 </style></head><body>
 <div id="film">
   <div class="bg">
     <div class="gd"></div><div class="amb"></div>
     <div class="lightbg"><div class="gl"></div><div class="gridl"></div><div class="noise"></div></div>
   </div>
+
+  <div class="hkscrim"></div>
 
   <div class="safe">
     <div class="mast"><span>ULTRON STACK &middot; 04</span><span class="tag">SURVIVE</span></div>
@@ -403,6 +433,8 @@ body{background:#0D0C0B;display:flex;justify-content:center;align-items:flex-sta
               <div class="sub">one model for every job</div><div class="p">51%</div></div>
               <div class="track"><i></i></div></div>
           </div>
+          <div class="blknote"><span class="l">read it again</span>
+            <span class="r">two of the three are <b>not model problems</b></span></div>
         </div>
 
         <!-- 4. agent washing -->
@@ -449,6 +481,12 @@ body{background:#0D0C0B;display:flex;justify-content:center;align-items:flex-sta
         <div class="k">COMMENT</div>
         <div class="w">SURVIVE</div>
         <div class="s">the exact setup &rarr; your DMs</div>
+        <div class="recap">
+          <div><u>01</u><b>ships to a real address</b></div>
+          <div><u>02</u><b>checks its own work</b></div>
+          <div><u>03</u><b>a human approves the send</b></div>
+        </div>
+        <div class="src">IDC 2026 &middot; Forrester and Anaconda 2026 &middot; Gartner</div>
       </div>
     </div>
 
