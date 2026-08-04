@@ -334,8 +334,13 @@ def build_captions(meta: dict, words: list, hook_end: float,
         dom.append(f'<div class="ck ck{ci}">')
         rows = layout_lines(chunk, accents)
         for li, row in enumerate(rows):
-            # every line takes its own anchor, so no two stack flush on the same margin
-            dom.append(f'<div class="cl {"LIR"[(ci + li) % 3]}">')
+            # A new idea always starts at the left margin, then steps right as it continues:
+            # left, indented, right. Cycling the anchor by chunk index instead was throwing
+            # the opening words of a phrase ("the", "All of it") small and to the right, so
+            # the reader had to hunt for where the sentence began. Variety comes from the
+            # type weights and from how many lines a phrase takes, never from moving its
+            # first word off the left.
+            dom.append(f'<div class="cl {"LIR"[min(li, 2)]}">')
             # depth through speed: the line carrying the weight is foreground and lands
             # fastest, the supporting lines sit back and drift
             lead = any(c in ("hero", "key") for _, c in row)

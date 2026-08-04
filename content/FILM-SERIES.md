@@ -116,8 +116,9 @@ of voice mid-sentence, which one family at four sizes can never give you.
 
 The single-family rule was lifted by the operator on 2026-08-04 and CLAUDE.md 7 now permits
 any font. `_preflight.py` reports the families a material loads rather than rejecting them,
-and flags anything past three. Keep to that ceiling and give each family a distinct job:
-two faces that are nearly the same look worse than one used well.
+and flags anything past four registers: display, body, glue and meta, the last being DM Mono
+on the UI chrome. Give each family a distinct job; two faces that are nearly the same look
+worse than one used well.
 
 Declare the episode's hero words in FILM-META as `"accent":[...]`. Everything else is decided
 by `weigh()` in `_film.py`, so a new episode gets the treatment for free.
@@ -131,14 +132,19 @@ wrapping them:
 
 - a **hero word gets its own line**, so nothing competes with it
 - everything else groups into runs of up to 3 words or 18 characters
-- **each line takes its own anchor** (left, indented, right), cycled by chunk plus line index
-  so no two lines stack flush on the same margin
+- **a new idea always starts at the left margin**, then steps right as it continues: left,
+  indented, right. This is not decoration, it is reading order. Cycling the anchor by chunk
+  index instead threw the opening words of a phrase ("the", "All of it") small and to the
+  right, and the reader had to hunt for where the sentence began. Variety comes from the type
+  weights and from how many lines a phrase takes, **never** from moving its first word off
+  the left.
 
 ```
-nothing else, and          So you   stop            All of it
-      CORTEX                        opening            ranked
+nothing else, and       So you stop        All of it
+      CORTEX                 opening            RANKED
 reads the company first,                          into one page,
 ```
+Left, then indented, then right. Every phrase begins flush left, no exceptions.
 
 **Depth through speed** (choreography rules): the line carrying a hero or key word is
 foreground and lands at full speed; supporting lines sit back and take 1.2x as long. Combined
