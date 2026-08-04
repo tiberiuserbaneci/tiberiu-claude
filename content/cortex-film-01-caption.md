@@ -25,6 +25,26 @@ Comment CORTEX and I will send you the exact Claude workflow I run it with.
 
 ---
 
+## INSTAGRAM REELS CAPTION (short)
+
+Cover frame: `cortex-film-01-cover.png` (grabbed at 2.30s, the full hook on screen).
+In the IG composer: Reel > Edit cover > Add from camera roll.
+
+Four browser tabs per prospect. Claude had the brief before I closed them.
+
+Now I paste one domain and CORTEX does the reading.
+
+Sector, size, region, the signals that say they are buying now. Then the one person who
+actually signs, what they own, what they posted this month.
+
+One ranked page, before the coffee goes cold.
+
+Comment CORTEX and I will send you the exact Claude workflow.
+
+#claude #ai #founder #startup #buildinpublic
+
+---
+
 ## LINKEDIN CAPTION
 
 (CLAUDE.md 15.1: 5 blocks, 400-470 words, hook differs from the visual hook)
