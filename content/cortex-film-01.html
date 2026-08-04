@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
 <title>ULTRON STACK 01 - CORTEX</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&family=Anton&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
 /* FILM-META {"duration":26,"w":1080,"h":1920,"fps":30,
   "hook":"Research *eats*|the first *hour*|of every deal.","hook_hold":0.45,
@@ -118,13 +118,18 @@ body{background:#2A2724;display:flex;justify-content:center;align-items:flex-sta
 /* Kinetic type scale. A line is not one size: connectives stay small and quiet so the
    words that carry meaning can be huge, which is what reads as cinematic rather than as a
    subtitle track. The same four classes drive the hook and the lower band. */
+/* Two typefaces, not one at four sizes. Glue words drop to DM Mono, which reads as a
+   different voice entirely next to DM Sans 900, and the weight steps are wide enough to be
+   read as a decision rather than as a wobble. DM Sans + DM Mono are the only families the
+   brand allows (CLAUDE.md 7) and the guard enforces it, so the contrast is built from the
+   two of them plus real weight distance. */
 .hw{position:relative;display:inline-block;opacity:0;color:var(--ink);
   letter-spacing:-6px;text-transform:uppercase;font-weight:900;font-size:150px;}
-.hw.fn{font-size:74px;font-weight:500;letter-spacing:-1px;color:rgba(58,54,46,.50);
-  text-transform:lowercase;}
-.hw.mid{font-size:132px;font-weight:800;letter-spacing:-5px;}
-.hw.key{font-size:168px;}
-.hw.hero{font-size:186px;letter-spacing:-8px;}
+.hw.fn{font-family:'Instrument Serif',serif;font-style:italic;font-size:86px;font-weight:400;
+  letter-spacing:-1px;color:rgba(58,54,46,.46);text-transform:lowercase;}
+.hw.mid{font-size:124px;font-weight:700;letter-spacing:-4px;}
+.hw.key{font-size:170px;font-weight:900;letter-spacing:-7px;}
+.hw.hero{font-family:'Anton',sans-serif;font-size:210px;font-weight:400;letter-spacing:-2px;}
 /* Highlighter wipe painted as the element's own background rather than a z-index:-1
    pseudo element, which sank behind the stacking context and left cream type on cream. */
 .hw.a{color:#FFF3EA;padding:0 20px;border-radius:10px;
@@ -147,11 +152,13 @@ body{background:#2A2724;display:flex;justify-content:center;align-items:flex-sta
 .cl.R{justify-content:flex-end;}
 .cl.I{justify-content:flex-start;padding-left:132px;}
 .sw{position:relative;display:inline-block;opacity:0;color:var(--ink);
-  font-weight:800;font-size:58px;letter-spacing:-1.8px;}
-.sw.fn{font-size:34px;font-weight:500;letter-spacing:-.4px;color:rgba(58,54,46,.48);}
-.sw.mid{font-size:58px;}
-.sw.key{font-size:78px;font-weight:900;letter-spacing:-2.6px;}
-.sw.hero{font-size:96px;font-weight:900;letter-spacing:-3.6px;color:var(--book);}
+  font-weight:800;font-size:56px;letter-spacing:-1.8px;}
+.sw.fn{font-family:'Instrument Serif',serif;font-style:italic;font-size:46px;font-weight:400;
+  letter-spacing:-.5px;color:rgba(58,54,46,.46);}
+.sw.mid{font-size:56px;font-weight:700;letter-spacing:-1.4px;}
+.sw.key{font-size:82px;font-weight:900;letter-spacing:-2.8px;}
+.sw.hero{font-family:'Anton',sans-serif;font-size:118px;font-weight:400;letter-spacing:-1px;
+  text-transform:uppercase;color:var(--book);}
 /* entrances, picked per word class: quiet words drift, heavy words arrive */
 @keyframes kRise {from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
 @keyframes kDrop {from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:none}}

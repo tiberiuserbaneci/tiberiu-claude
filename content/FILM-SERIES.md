@@ -103,12 +103,21 @@ The narration is part of the film, not an overlay on it, so no line is set at on
 word is weighed and typeset accordingly, which is the whole difference between a subtitle and
 a title sequence:
 
-| Weight | What earns it | Hook / band size | Entrance |
-|---|---|---|---|
-| `fn` | glue words (the, of, and, is) | 74 / 38px, muted, lowercase | drift up, 0.22s |
-| `mid` | ordinary content words | 132 / 64px | rise, or in from left or right, 0.34s |
-| `key` | long words, caps, numbers | 168 / 86px | drop or pop, 0.48s |
-| `hero` | the episode's `accent` list | 186 / 104px, book orange | blur in, 0.72s |
+| Weight | What earns it | Typeface | Hook / band size | Entrance |
+|---|---|---|---|---|
+| `fn` | glue words (the, of, and, is) | **Instrument Serif italic**, muted | 86 / 46px | drift up, 0.22s |
+| `mid` | ordinary content words | **DM Sans 700** | 124 / 56px | rise, or in from left or right, 0.34s |
+| `key` | long words, caps, numbers | **DM Sans 900** | 170 / 82px | drop or pop, 0.48s |
+| `hero` | the episode's `accent` list | **Anton**, uppercase, book orange | 210 / 118px | blur in, 0.72s |
+
+**Three typefaces, each with a different job.** An italic serif for the glue, a grotesque for
+the body of the line, a heavy condensed face for the words that land. That is a real change
+of voice mid-sentence, which one family at four sizes can never give you.
+
+The single-family rule was lifted by the operator on 2026-08-04 and CLAUDE.md 7 now permits
+any font. `_preflight.py` reports the families a material loads rather than rejecting them,
+and flags anything past three. Keep to that ceiling and give each family a distinct job:
+two faces that are nearly the same look worse than one used well.
 
 Declare the episode's hero words in FILM-META as `"accent":[...]`. Everything else is decided
 by `weigh()` in `_film.py`, so a new episode gets the treatment for free.

@@ -9,7 +9,7 @@ Usage:
 Exit code 0 = all PASS. Non-zero = at least one FAIL (the offending material must be fixed).
 Checks (the operator's recurring rejections, made mechanical):
   1 charscan   no em/en dash, ellipsis char, curly quotes
-  2 fonts      DM Sans / DM Mono only; forbidden families rejected
+  2 fonts      reported, not gated (operator lifted the single-family rule 2026-08-04)
   3 palette    no forbidden hex (neon orange/green/red/peach/purple/blue)
   4 dims       #artifact == 1080x1450 (LinkedIn) or .slide == 1080x1920 (TikTok/IG), exact
   5 safezone   vertical slides: top content >= 300px (TikTok/IG UI inset)
@@ -24,7 +24,9 @@ CONTENT = ROOT / "content"
 LOGO = CONTENT / "ultron-logo.png"
 
 CURLY = {"—":"em-dash","–":"en-dash","…":"ellipsis-char","‘":"curly-quote","’":"curly-quote","“":"curly-quote","”":"curly-quote"}
-FORBIDDEN_FONTS = ["Inter","Fraunces","Instrument Serif","Bricolage","JetBrains","Space Grotesk","Caveat","Kalam","Arial","Roboto","Helvetica","Poppins","Montserrat","Georgia","Times"]
+# Fonts are no longer gated (operator lifted the single-family rule 2026-08-04). The guard
+# now only surfaces which families a material loads, so a fourth one that crept in is
+# visible without blocking a deliberate pairing.
 FORBIDDEN_HEX = ["#ff801f","#ed7f4a","#4ade80","#76d39a","#c0392b","#ffe0c2","#ff8c50","#22c55e","#16a34a","#3b82f6","#2563eb","#8b5cf6","#a855f7"]
 # brand-frame classes shared by every poster - excluded from the repetition signature so we
 # compare the BODY layout (the part that must change), not the consistent brand chrome.
@@ -104,9 +106,10 @@ def static_checks(path):
     fails, warns = [], []
     hits = [(v,text.count(k)) for k,v in CURLY.items() if k in text]
     if hits: fails.append(f"charscan: found {hits} (use plain - . ' \")")
-    ff = [f for f in FORBIDDEN_FONTS if re.search(r'\b'+re.escape(f)+r'\b', text)]
-    if ff: fails.append(f"fonts: forbidden family present {ff}")
-    if "DM Sans" not in text: warns.append("fonts: DM Sans import not found")
+    fams = sorted(set(re.findall(r"font-family:\s*'([^']+)'", text)))
+    if fams: warns.append(f"fonts: {len(fams)} families {fams}")
+    if len(fams) > 4: warns.append("fonts: over 4 registers (display/body/glue/meta), "
+                                   "confirm each family has a distinct job")
     fh = [h for h in FORBIDDEN_HEX if h.lower() in text.lower()]
     if fh: fails.append(f"palette: forbidden hex {fh}")
     if "51ultron" not in text: warns.append("footer: 51ultron.com not found")

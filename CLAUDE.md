@@ -24,9 +24,10 @@ These meta-rules sit above everything else in this file:
 5. **`content/tokens.css` is LEGACY**, not the binding palette. It uses Inter/JetBrains/Fraunces +
    `#D97757` + a 1450 reference, which conflicts with Dark Ultron. The binding tokens are the
    Dark Ultron CSS variables in §7. Do not import `tokens.css` into new posters.
-6. **The 72 uploaded materials predate this config.** They use forbidden fonts (Inter/Fraunces/
-   JetBrains/Bricolage/etc.), `#D97757`, and were built at 1450px. Treat them as **rebuild
-   candidates** to the Dark Ultron standard (keeping 1450px), not as the brand reference.
+6. **The 72 uploaded materials predate this config.** They use off-palette `#D97757` and were
+   built at 1450px. Treat them as **rebuild candidates** to the Dark Ultron standard (keeping
+   1450px), not as the brand reference. Their fonts are no longer a reason to rebuild, since
+   the single-family rule was lifted (see 7).
 
 ---
 
@@ -234,15 +235,34 @@ The system for LinkedIn posts, Instagram highlights/stories, and docs visuals.
 **FORBIDDEN in Dark Ultron:** orange neon (#ff801f, #ed7f4a), green (#4ade80, #76d39a), saturated red (#c0392b), peach (#ffe0c2), purple, blue (exception: the Ultron logo, which has blue in the sphere).
 
 ### Typography
-**Only accepted family:**
-```
-@import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap'
-```
+**ANY font is permitted (operator, 2026-08-04 - supersedes the single-family rule).**
+The old "DM Sans and DM Mono only, everything else forbidden" rule is dead. It was costing
+more in creative range than it bought in consistency, and it made every material read as one
+typeface at four sizes. There is no forbidden list any more.
 
-- **DM Sans 400/500/700/800/900** — all text (hooks, body, labels, numbers)
-- **DM Mono 400/500** — mast/footer labels, monospace meta, tags
+- **DM Sans 400/500/700/800/900** stays the *default* spine for body, labels and numbers,
+  because 124 existing materials use it and the back catalogue should still look related.
+- **DM Mono 400/500** stays the default for mast/footer labels, monospace meta and tags.
+- **Beyond that, pick whatever the material needs.** Display serifs, heavy condensed faces,
+  italics: all fair game, chosen for the job rather than from a list.
 
-**FORBIDDEN:** Fraunces, Inter, Inter Tight, Instrument Serif, Bricolage Grotesque, JetBrains Mono, Space Grotesk, Caveat, Kalam, Arial, Roboto, Helvetica.
+**Pairing discipline (guidance, not a gate).** Contrast is the point, so make it deliberate.
+Give every family a job and a real weight and size gap from its neighbours, so the change of
+face reads as a decision. Four registers is the working ceiling:
+
+| Register | Job | Example |
+|---|---|---|
+| display | the words that land | Anton, heavy condensed |
+| body | the run of the sentence | DM Sans 700/900 |
+| glue | connectives, deliberately quiet | Instrument Serif italic |
+| meta | UI chrome, labels, terminals, mast | DM Mono |
+
+Mixing two faces that are nearly the same is worse than using one well.
+
+Load exactly the weights used, e.g.
+```
+@import 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,700;9..40,900&family=DM+Mono:wght@400;500&family=Anton&family=Instrument+Serif:ital@0;1&display=swap'
+```
 
 ### Background textures
 ```css
@@ -307,7 +327,7 @@ Light system for lead-magnet PDFs and PDF carousels. Coexists with Dark Ultron, 
 - Background alternatives: `#EFEBE0` / `#FAF9F7` (lightest)
 
 ### Typography
-- **DM Sans** for editorial
+- **DM Sans** for editorial (default, not a restriction - see 7)
 - **DM Mono / JetBrains Mono** for REALNUMBERS asset meta
 
 ### Components
@@ -920,7 +940,7 @@ Before any push to LinkedIn / IG / repo:
 **Visual checklist:**
 - [ ] Canvas exactly 1080×1450 (LinkedIn) or 1080×1920 (IG)
 - [ ] Dark Ultron palette (or REALNUMBERS for lead magnets)
-- [ ] DM Sans + DM Mono only
+- [ ] Typography deliberate: max 4 registers (display / body / glue / meta), real weight gaps
 - [ ] Ultron logo embedded base64 in footer
 - [ ] Claude logo embedded SVG if Claude is mentioned
 - [ ] Zero em/en dashes, zero curly quotes
@@ -1077,7 +1097,8 @@ into `analysis/virality-principles.md`. Metrics priority stays: reach+impression
 **Hard-fail checks (block delivery):**
 1. **Dimensions exact** - `#artifact` = 1080x1450 (LinkedIn), every `.slide` = 1080x1920 (TikTok/IG).
 2. **Charscan** - zero em/en dash, ellipsis char, curly quotes.
-3. **Fonts** - DM Sans / DM Mono only; forbidden families rejected.
+3. **Fonts** - no family is rejected (operator lifted the restriction 2026-08-04); the guard
+   only reports which families a material loads, so an accidental fourth one is visible.
 4. **Palette** - no forbidden hex (neon orange, green, saturated red, peach, purple, blue).
 5. **Safe-zone** - vertical slides: top content >= 300px.
 6. **No repetition** - body-class layout must differ from the previous material of the same channel (Jaccard <= 62%). Reusing a prior template = FAIL. (The docs-12-reused-docs-11 mistake is now blocked at the door.)
