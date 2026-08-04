@@ -247,10 +247,21 @@ body{background:#151311;display:flex;justify-content:center;align-items:flex-sta
   align-items:flex-start;opacity:0;}
 .cta .k{font-family:'DM Mono',monospace;font-size:34px;font-weight:500;letter-spacing:.28em;
   color:var(--iv32);opacity:0;}
-.cta .w{font-family:'Anton',sans-serif;font-size:196px;letter-spacing:-3px;color:var(--book);
+.cta .w{font-family:'Anton',sans-serif;font-size:146px;letter-spacing:-3px;color:var(--book);
   line-height:.94;margin-top:12px;opacity:0;text-shadow:0 20px 60px rgba(200,70,35,.45);}
-.cta .s{margin-top:26px;font-family:'DM Mono',monospace;font-size:26px;letter-spacing:.05em;
+.cta .s{margin-top:22px;font-family:'DM Mono',monospace;font-size:26px;letter-spacing:.05em;
   color:var(--iv32);opacity:0;}
+.cta .recap{width:100%;margin-top:36px;display:flex;flex-direction:column;gap:11px;}
+.cta .recap div{display:flex;align-items:baseline;gap:18px;padding:17px 22px;border-radius:13px;
+  background:#3D3730;border:2px solid rgba(250,247,242,.17);}
+.cta .recap div>*{opacity:0;}
+.cta .recap u{font-family:'DM Mono',monospace;font-size:18px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--iv32);text-decoration:none;width:112px;flex-shrink:0;}
+.cta .recap b{font-size:31px;font-weight:900;color:var(--ivory);letter-spacing:-.9px;}
+.cta .recap i{font-family:'DM Mono',monospace;font-size:19px;font-style:normal;
+  letter-spacing:.10em;text-transform:uppercase;color:var(--kraft);}
+.cta .recap s{margin-left:auto;font-size:28px;font-weight:900;color:var(--book);
+  text-decoration:none;letter-spacing:-.6px;}
 
 /* ---------- the clock: one panel, five states, no cuts ---------- */
 /* panelUp must fill FORWARDS, never both: a both-filled later animation back-fills its
@@ -258,13 +269,13 @@ body{background:#151311;display:flex;justify-content:center;align-items:flex-sta
 .pwrap{animation:scin .6s var(--e) both calc(var(--hookout) - 0.35s),
   panelDown .85s var(--eStd) both calc(var(--b3) - 0.15s),
   panelUp .85s var(--eStd) forwards calc(var(--b5) - 0.15s),
-  fadeout .45s var(--eExit) forwards calc(var(--b6) - 0.15s);}
-.st1{animation:scin .45s both calc(var(--b1) + 3.00s),fadeout .35s forwards calc(var(--b2) + 0.10s);}
-.st2{animation:scin .45s both calc(var(--b2) + 0.30s),fadeout .35s forwards calc(var(--b3) + 0.10s);}
-.st3{animation:scin .45s both calc(var(--b3) + 0.30s),fadeout .35s forwards calc(var(--b4) + 0.10s);}
-.st4{animation:scin .45s both calc(var(--b4) + 0.30s),fadeout .35s forwards calc(var(--b5) + 0.10s);}
-.st5{animation:scin .45s both calc(var(--b5) + 0.30s),fadeout .35s forwards calc(var(--b6) - 0.20s);}
-.cta{animation:scin .5s both calc(var(--b6) + 0.10s);}
+  fadeout .40s var(--eExit) forwards calc(var(--b6) + 0.08s);}
+.st1{animation:scin .45s both calc(var(--b1) + 3.00s),fadeout .26s forwards calc(var(--b2) + 0.10s);}
+.st2{animation:scin .32s both calc(var(--b2) + 0.06s),fadeout .26s forwards calc(var(--b3) + 0.10s);}
+.st3{animation:scin .32s both calc(var(--b3) + 0.06s),fadeout .26s forwards calc(var(--b4) + 0.10s);}
+.st4{animation:scin .32s both calc(var(--b4) + 0.06s),fadeout .26s forwards calc(var(--b5) + 0.10s);}
+.st5{animation:scin .32s both calc(var(--b5) + 0.06s),fadeout .30s forwards calc(var(--b6) + 0.02s);}
+.cta{animation:scin .40s both calc(var(--b6) - 0.20s);}
 
 .q1{animation:pop .5s var(--e) both calc(var(--b1) + 3.30s);}
 .q2{animation:pop .5s var(--e) both calc(var(--b1) + 3.65s);}
@@ -310,9 +321,13 @@ body{background:#151311;display:flex;justify-content:center;align-items:flex-sta
 .pc2{animation:rise .5s var(--e) both calc(var(--b5) + 2.10s);}
 .pn{animation:rise .5s var(--e) both calc(var(--b5) + 4.20s);}
 
-.cta .k{animation:rise .5s var(--e) both calc(var(--b6) + 0.30s);}
-.cta .w{animation:pop .6s var(--eEmph) both calc(var(--b6) + 0.62s);}
-.cta .s{animation:rise .5s var(--e) both calc(var(--b6) + 1.45s);}
+.cta .k{animation:rise .5s var(--e) both calc(var(--b6) + 0.06s);}
+.cta .w{animation:pop .6s var(--eEmph) both calc(var(--b6) + 0.20s);}
+.cta .s{animation:rise .5s var(--e) both calc(var(--b6) + 0.86s);}
+.cta .recap div:nth-child(1)>*{animation:rise .45s var(--e) both calc(var(--b6) + 0.34s);}
+.cta .recap div:nth-child(2)>*{animation:rise .45s var(--e) both calc(var(--b6) + 0.46s);}
+.cta .recap div:nth-child(3)>*{animation:rise .45s var(--e) both calc(var(--b6) + 0.58s);}
+.cta .recap div:nth-child(4)>*{animation:rise .45s var(--e) both calc(var(--b6) + 0.70s);}
 </style></head><body>
 <div id="film">
   <div class="bg">
@@ -409,6 +424,12 @@ body{background:#151311;display:flex;justify-content:center;align-items:flex-sta
         <div class="k">COMMENT</div>
         <div class="w">ROUTER</div>
         <div class="s">the exact setup &rarr; your DMs</div>
+        <div class="recap">
+          <div><u>Lite</u><b>Haiku 4.5</b><i>low</i><s>1x</s></div>
+          <div><u>Smart</u><b>Sonnet 5</b><i>high</i><s>3x</s></div>
+          <div><u>Deep</u><b>Opus 5</b><i>xhigh</i><s>5x</s></div>
+          <div><u>Frontier</u><b>Fable 5</b><i>max</i><s>10x</s></div>
+        </div>
       </div>
     </div>
 

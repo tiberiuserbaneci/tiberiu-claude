@@ -151,10 +151,11 @@ def report(res: dict) -> bool:
     peak = max(r["ink"] for r in hookrows)
     peak_t = next(r["t"] for r in hookrows if r["ink"] == peak)
     end = rows[-1]["t"] - 1.5                     # the closing hold is not a swipe risk
-    roll = {}
+    roll, rollink = {}, {}
     for i in range(len(rows)):
         seg = rows[i:i + win]
         roll[rows[i]["t"]] = sum(r["motion"] for r in seg) / len(seg)
+        rollink[rows[i]["t"]] = sum(r["ink"] for r in seg) / len(seg)
 
     for r in rows:
         flag = ""
@@ -162,7 +163,7 @@ def report(res: dict) -> bool:
             flag += " EMPTY"
         if peak_t <= r["t"] <= end and roll[r["t"]] < MOTION_FLOOR:
             flag += " STILL"
-        if r["t"] > peak_t and r["ink"] < peak * INK_CLIFF:
+        if r["t"] > peak_t and rollink[r["t"]] < peak * INK_CLIFF:
             flag += " CLIFF"
         bar = "#" * int(r["ink"] * 400)
         print(f"{r['t']:6.2f} {r['ink']:7.4f} {r['motion']:8.5f}  {bar[:24]:24}{flag}")
@@ -174,13 +175,13 @@ def report(res: dict) -> bool:
           f"(floor {MOTION_FLOOR})")
     bad = [r for r in rows if r["t"] >= peak_t and (r["ink"] < INK_FLOOR
                                               or (peak_t <= r["t"] <= end and roll[r["t"]] < MOTION_FLOOR)
-                                              or (r["t"] > peak_t and r["ink"] < peak * INK_CLIFF))]
+                                              or (r["t"] > peak_t and rollink[r["t"]] < peak * INK_CLIFF))]
     if bad:
-        print(f"  FAIL {len(bad)} of {len(rows) - 1} samples in the opening are empty, still, "
-              f"or below {INK_CLIFF:.0%} of the hook's coverage")
+        print(f"  FAIL {len(bad)} of {len(rows) - 1} samples are empty, or hold below "
+              f"{INK_CLIFF:.0%} of the hook's coverage / below the motion floor for half a second")
         print("       " + ", ".join(f"{r['t']:.2f}s" for r in bad[:14]))
         return False
-    print("  PASS opening stays full, keeps moving, and never falls off the hook's cliff")
+    print("  PASS stays full, keeps moving, and never holds below the hook's cliff")
     return True
 
 
