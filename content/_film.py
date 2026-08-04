@@ -61,6 +61,9 @@ def read_meta(html: pathlib.Path) -> dict:
     m = re.search(r"/\*\s*FILM-META\s*(\{.*?\})\s*\*/", html.read_text(), re.S)
     if not m:
         sys.exit(f"{html.name}: no FILM-META block found")
+    if "*/" in m.group(1):
+        sys.exit(f"{html.name}: FILM-META contains '*/', which closes the CSS comment early "
+                 f"and silently drops the whole :root block. Use | as a separator.")
     meta = json.loads(m.group(1))
     meta.setdefault("w", 1080)
     meta.setdefault("h", 1920)
@@ -150,6 +153,124 @@ def build_vo(meta: dict, out_mp3: pathlib.Path) -> tuple[pathlib.Path, list[floa
 
 # ---------------------------------------------------------------- frame capture
 
+def words_from(alignment: dict) -> list[tuple[str, float, float]]:
+    """Character timings -> (word, start, end). The voice is the only clock that matters."""
+    chars = alignment.get("characters") or []
+    st = alignment.get("character_start_times_seconds") or []
+    en = alignment.get("character_end_times_seconds") or []
+    out, cur, start, last = [], "", None, 0.0
+    for c, cs, ce in zip(chars, st, en):
+        if c.isspace():
+            if cur:
+                out.append((cur, start, last))
+            cur, start = "", None
+        else:
+            if not cur:
+                start = cs
+            cur += c
+            last = ce
+    if cur:
+        out.append((cur, start, last))
+    return out
+
+
+def chunk_words(words, max_words=4, max_chars=26):
+    """Group spoken words into caption-sized phrases.
+
+    Breaking after clause punctuation keeps a chunk from straddling a pause, which is what
+    makes an auto-caption feel machine made.
+    """
+    chunks, cur = [], []
+    for w in words:
+        cur.append(w)
+        text = " ".join(x[0] for x in cur)
+        ends_clause = w[0][-1] in ".,:;"
+        if len(cur) >= max_words or len(text) >= max_chars or ends_clause:
+            chunks.append(cur)
+            cur = []
+    if cur:
+        chunks.append(cur)
+    return chunks
+
+
+def build_captions(meta: dict, words: list, hook_end: float,
+                   cta_at: float | None = None) -> tuple[str, str]:
+    """Return (DOM html, CSS) for the full-screen hook and the word-synced subtitles.
+
+    Two jobs the reference clip splits. The opening sentence is the whole frame, because the
+    first three seconds decide whether anyone sees the rest. Everything after it drops into
+    the lower band and reveals word by word on the voice, replacing the static headline that
+    used to sit there restating what the narration had just said.
+    """
+    esc = lambda s: s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    css, dom = [], []
+
+    # ---- hook: the opening sentence, filling the safe band, one word at a time ----
+    spec = meta.get("hook") or ""
+    hook_words = [w for w in words if w[1] < hook_end]
+    hold = float(meta.get("hook_hold", 0.15))
+    out_at = (hook_words[-1][2] + hold) if hook_words else hook_end
+
+    lines, i = [], 0
+    for raw_line in spec.split("|"):
+        toks = [t for t in raw_line.strip().split(" ") if t]
+        row = []
+        for tok in toks:
+            if i < len(hook_words):
+                row.append((hook_words[i], tok.startswith("*")))
+                i += 1
+        if row:
+            lines.append(row)
+
+    dom.append(f'<div id="hook" class="hk"><div class="hk-in">')
+    n = 0
+    for row in lines:
+        dom.append('<div class="hk-l">')
+        for (word, ws, _we), accent in row:
+            n += 1
+            cls = "hw a" if accent else "hw"
+            dom.append(f'<span class="{cls} hw{n}">{esc(word)}</span>')
+            css.append(f".hw{n}{{animation:hkw .34s var(--e) both {ws:.2f}s"
+                       + (f",hkbar .24s var(--e) both {ws:.2f}s}}" if accent else "}"))
+        dom.append("</div>")
+    dom.append("</div></div>")
+    # push-in across the hook, then clear the frame for the visuals
+    css.append(f".hk-in{{animation:hkpush {max(out_at, .1):.2f}s linear both 0s}}")
+    css.append(f".hk{{animation:hkout .38s ease-in forwards {out_at:.2f}s}}")
+
+    # ---- subtitles: everything after the hook, in the lower band ----
+    # The hook covers the caption band too, so nothing may appear underneath it until the
+    # push-out has finished, and nothing may run under the CTA card, whose own type already
+    # says the words being spoken.
+    hook_clear = out_at + .40
+    rest = [w for w in words if w[1] >= hook_end]
+    if cta_at:
+        rest = [w for w in rest if w[1] < cta_at]
+    dom.append('<div id="subs" class="sb">')
+    for ci, chunk in enumerate(chunk_words(rest), start=1):
+        c_in = max(chunk[0][1] - .10, hook_clear if ci == 1 else 0)
+        nxt = None
+        flat = [w for w in rest if w[1] > chunk[-1][1]]
+        if flat:
+            nxt = flat[0][1]
+        # clear the frame a fade before the next chunk arrives, or two are legible at once
+        c_out = min(nxt - .26, chunk[-1][2] + .40) if nxt else chunk[-1][2] + .40
+        c_out = max(c_out, c_in + .30)
+        css.append(f".ck{ci}{{animation:scin .16s both {c_in:.2f}s,"
+                   f"ckout .16s forwards {c_out:.2f}s}}")
+        dom.append(f'<div class="ck ck{ci}">')
+        for wi, (word, ws, _we) in enumerate(chunk, start=1):
+            n += 1
+            dom.append(f'<span class="sw sw{n}">{esc(word)}</span>')
+            # Land in book orange as it is spoken, settle to ink just after: the read-along
+            # highlight, without needing to track which word is current.
+            css.append(f".sw{n}{{animation:sbw .20s var(--e) both {ws:.2f}s,"
+                       f"sbs .26s linear forwards {ws + .22:.2f}s}}")
+        dom.append("</div>")
+    dom.append("</div>")
+    return "".join(dom), "".join(css)
+
+
 def chromium_path() -> str | None:
     """Locate a preinstalled Chromium. Returns None to let Playwright use its own.
 
@@ -167,7 +288,8 @@ def chromium_path() -> str | None:
     return None
 
 
-def _open_stage(p, html: pathlib.Path, meta: dict, marks: list[float] | None = None):
+def _open_stage(p, html: pathlib.Path, meta: dict, marks: list[float] | None = None,
+                captions: tuple[str, str] | None = None):
     """Launch a browser on the film and return (browser, page, #film locator).
 
     `marks` overwrites the page's --b1..--bN beat clock with times measured from the
@@ -182,6 +304,21 @@ def _open_stage(p, html: pathlib.Path, meta: dict, marks: list[float] | None = N
     pg = b.new_page(viewport={"width": meta["w"], "height": meta["h"]},
                     device_scale_factor=1)
     pg.goto(html.resolve().as_uri())
+    if captions:
+        dom, css = captions
+        pg.evaluate("""({dom, css}) => {
+            const band = document.getElementById('capband');
+            const wrap = document.createElement('div');
+            wrap.innerHTML = dom;
+            // the hook overlays the whole frame, the subtitles live in the lower band
+            const hook = wrap.querySelector('#hook');
+            if (hook) document.getElementById('film').appendChild(hook);
+            const subs = wrap.querySelector('#subs');
+            if (subs && band) band.appendChild(subs);
+            const s = document.createElement('style');
+            s.textContent = css;
+            document.head.appendChild(s);
+        }""", {"dom": dom, "css": css})
     if marks:
         pg.evaluate("""ms => {
             const r = document.documentElement;
@@ -211,7 +348,8 @@ def grab_still(html: pathlib.Path, meta: dict, t_s: float, png: pathlib.Path) ->
 
 def render(html: pathlib.Path, meta: dict, fps: int, out: pathlib.Path,
            audio: pathlib.Path | None, lossless: bool = False,
-           marks: list[float] | None = None) -> None:
+           marks: list[float] | None = None,
+           captions: tuple[str, str] | None = None) -> None:
     from playwright.sync_api import sync_playwright
 
     # PNG encoding dominates the render (863ms vs 113ms per frame measured at 1080x1920),
@@ -234,7 +372,7 @@ def render(html: pathlib.Path, meta: dict, fps: int, out: pathlib.Path,
                             stderr=subprocess.PIPE)
     import time
     with sync_playwright() as p:
-        b, pg, stage = _open_stage(p, html, meta, marks)
+        b, pg, stage = _open_stage(p, html, meta, marks, captions)
         got = pg.evaluate("document.getAnimations().length")
         if not got:
             print("  WARN   page declares no animations - output will be a still")
@@ -289,7 +427,7 @@ def main() -> None:
         print(f"  vo     {'written' if built else 'not built'}")
         return
 
-    vo = marks = None
+    vo = marks = captions = None
     if built:
         # The take, not the storyboard, sets the length: run to the last word plus a beat
         # to let the CTA land, so the film never outlives the narration or clips it.
@@ -297,10 +435,23 @@ def main() -> None:
         meta = dict(meta, duration=round(spoken + 0.7, 2))
         print(f"  length {meta['duration']}s (spoken {spoken}s + 0.7s tail)")
 
+        cache = html.with_name(html.stem + "-vo.align.json")
+        if meta.get("hook") and cache.exists():
+            words = words_from(json.loads(cache.read_text()).get("alignment") or {})
+            # The hook runs to the end of the opening sentence: it is the one line that has
+            # to land, so it owns the frame until it is finished being said.
+            hook_end = next((w[2] for w in words if w[0].endswith(".")), 2.5) + 0.05
+            # the CTA beat draws its own COMMENT CORTEX, so captions stop there
+            captions = build_captions(meta, words, hook_end,
+                                      cta_at=marks[-1] if marks else None)
+            n_hook = sum(1 for w in words if w[1] < hook_end)
+            print(f"  caps   hook {n_hook} words to {hook_end:.2f}s, "
+                  f"{len(words) - n_hook} words captioned after")
+
     if a.to:
         meta = dict(meta, duration=min(a.to, meta["duration"]))
         print(f"  probe  rendering first {meta['duration']}s only")
-    render(html, meta, a.fps, out, vo, lossless=a.png, marks=marks)
+    render(html, meta, a.fps, out, vo, lossless=a.png, marks=marks, captions=captions)
     if SCRUB.exists():                      # CLAUDE.md 28: never ship an unscrubbed export
         subprocess.run([sys.executable, str(SCRUB), str(out)], capture_output=True)
     mb = out.stat().st_size / 1e6

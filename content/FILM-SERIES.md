@@ -143,6 +143,28 @@ on all 780 frames. That element also clips them: a rotated box contributes its *
 bounding box to scrollable overflow, which silently pushed the canvas to 2020px and failed
 the dimension guard until it was clipped.
 
+## Design skills installed for this series
+
+In `.claude/skills/`, curated from five upstream repos rather than installed wholesale:
+
+| Skill | Why it earns its place here |
+|---|---|
+| `design-dna` | Reverse engineers layout, type and palette from a reference. This is the manual work that produced episode 01 from the reference clip. |
+| `genjutsu/_jutsu/css-native` | Zero-dependency CSS animation, which is exactly this pipeline. |
+| `genjutsu/_jutsu/motion-principles` | Timing, easing, enter and exit patterns. |
+| `genjutsu/_jutsu/ui-ux-pro-max` | 84 styles, 192 palettes, 74 font pairings. Feeds the bespoke-per-material rule. |
+| `genjutsu/_jutsu/design-audit` | Motion gaps and consistency checklist before a render. |
+| `genjutsu/_jutsu/canvas-generative` | Particles, flow fields, noise, for backgrounds beyond the CSS paper. |
+| `genjutsu/cast`, `genjutsu/paint` | The orchestrators over the above. |
+| `gsap-core`, `gsap-timeline`, `gsap-utils`, `gsap-performance` | `timeline.seek(t)` is a deterministic clock like the one here, but with far more expressive sequencing. The upgrade path when CSS delays stop being enough. |
+| `motion-design` | Lottie and keyframe workflow. |
+
+**Deliberately not installed.** All eleven `threejs-*` skills: this format is flat editorial on
+paper, and 3D would break both the brand and the frame-stepped capture. `gsap-react`,
+`gsap-frameworks` and `gsap-scrolltrigger`: there is no framework and no scroll here. The
+genjutsu `compose-*`, `swiftui-*`, `mobile-principles` and `desktop-principles` skills are
+native app UX, not video. Adding them would only make the right skill harder to trigger.
+
 ## Gotcha that will bite you
 
 Two animations on one element, both with `fill-mode: both`, do not behave the way they
@@ -153,3 +175,18 @@ of it. **Out animations take `forwards`, not `both`:**
 ```css
 .h1{animation:rise .7s var(--e) both .95s, scout .4s ease-in forwards 6.30s;}
 ```
+
+## The other gotcha, which is worse because it looks like nothing
+
+FILM-META lives inside a CSS comment, so **any `*/` inside it closes that comment early.**
+Everything after it becomes garbage CSS, error recovery swallows the whole `:root` block, and
+every custom property in the film silently becomes empty. The page still renders, just
+unstyled and unanimated, and Python parses the JSON perfectly the whole time, so nothing
+warns you.
+
+An accent-marker syntax of `*word*` with `/` as a line separator produced exactly that, via
+`*eats*/`. Line separators are `|` now, and `read_meta` refuses to load a meta block
+containing `*/`.
+
+The symptom to recognise: rules using `var()` compute to `animation: none` while rules
+without it still work.
