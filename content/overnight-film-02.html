@@ -217,7 +217,7 @@ body{background:#0C0C0B;display:flex;justify-content:center;align-items:flex-sta
 
 /* ---------- the wall clock: every delay is beat relative, _film.py rewrites --b1..--b6
    from the measured take so each cut lands on the word that motivates it ---------- */
-.s1{animation:scin .5s both calc(var(--b1) + 2.90s),scout .45s ease-in forwards calc(var(--b2) - 0.2s);}
+.s1{animation:scin .5s both calc(var(--hookout) - 0.30s),scout .45s ease-in forwards calc(var(--b2) - 0.2s);}
 .s2{animation:scin .5s both calc(var(--b2) + 0.2s),scout .45s ease-in forwards calc(var(--b3) - 0.2s);}
 .s3{animation:scin .5s both calc(var(--b3) + 0.2s),scout .45s ease-in forwards calc(var(--b4) - 0.2s);}
 .s4{animation:scin .5s both calc(var(--b4) + 0.2s),scout .45s ease-in forwards calc(var(--b5) - 0.2s);}
@@ -227,12 +227,12 @@ body{background:#0C0C0B;display:flex;justify-content:center;align-items:flex-sta
 /* night passes in the mast, one reading per phase */
 .clockchip{position:relative;display:inline-block;min-width:132px;height:28px;}
 .clockchip i{position:absolute;right:0;top:0;font-style:normal;opacity:0;white-space:nowrap;}
-.cl1{animation:scin .4s both calc(var(--b1) + 2.9s),ckout .3s forwards calc(var(--b3) - 0.1s);}
+.cl1{animation:scin .4s both calc(var(--hookout) - 0.30s),ckout .3s forwards calc(var(--b3) - 0.1s);}
 .cl2{animation:scin .4s both calc(var(--b3) + 0.2s),ckout .3s forwards calc(var(--b4) - 0.1s);}
 .cl3{animation:scin .4s both calc(var(--b4) + 0.2s),ckout .3s forwards calc(var(--b5) - 0.1s);}
 .cl4{animation:scin .4s both calc(var(--b5) + 0.2s);color:var(--kraft);}
 
-#c1{animation:blink .92s steps(1) infinite calc(var(--b1) + 2.95s);}
+#c1{animation:blink .92s steps(1) infinite calc(var(--hookout) - 0.25s);}
 #t2{animation:type 1.25s steps(29,end) both calc(var(--b2) + 0.45s);}
 #c2{animation:blink .92s steps(1) infinite calc(var(--b2) + 0.45s);}
 #st2{opacity:0;animation:rise .5s var(--e) both calc(var(--b2) + 2.05s);}

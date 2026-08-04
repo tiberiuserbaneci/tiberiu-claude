@@ -323,6 +323,13 @@ def build_captions(meta: dict, words: list, hook_end: float,
     # push-in across the hook, then clear the frame for the visuals
     css.append(f".hk-in{{animation:hkpush {max(out_at, .1):.2f}s linear both 0s}}")
     css.append(f".hk{{animation:hkout .38s ease-in forwards {out_at:.2f}s}}")
+    # Publish the handoff moment so a page can key its first scene to the measured take
+    # instead of to a hand guessed constant. Episode 01 opened its first scene at a written
+    # 2.90s while the hook actually left at 3.05s, so for a fifth of a second the frame held
+    # a leaving hook and nothing else: coverage fell to 15% of peak and never came back, and
+    # the posted retention fell off a cliff in the same second. Every film now reads
+    # --hookout, so the seam moves with the voice and cannot drift again.
+    css.append(f":root{{--hookout:{out_at:.2f}s;--hookgone:{out_at + .38:.2f}s}}")
 
     # ---- subtitles: everything after the hook, in the lower band ----
     # The hook covers the caption band too, so nothing may appear underneath it until the

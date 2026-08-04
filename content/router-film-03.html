@@ -255,7 +255,7 @@ body{background:#151311;display:flex;justify-content:center;align-items:flex-sta
 /* ---------- the clock: one panel, five states, no cuts ---------- */
 /* panelUp must fill FORWARDS, never both: a both-filled later animation back-fills its
    from-keyframe to t=0 and wins, which would park the panel low for the whole opening. */
-.pwrap{animation:scin .6s var(--e) both calc(var(--b1) + 2.85s),
+.pwrap{animation:scin .6s var(--e) both calc(var(--hookout) - 0.35s),
   panelDown .85s var(--eStd) both calc(var(--b3) - 0.15s),
   panelUp .85s var(--eStd) forwards calc(var(--b5) - 0.15s),
   fadeout .45s var(--eExit) forwards calc(var(--b6) - 0.15s);}
