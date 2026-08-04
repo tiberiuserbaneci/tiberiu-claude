@@ -49,8 +49,13 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
 .node.hub{display:flex;align-items:center;gap:14px;padding:16px 28px;}
 .node.hub svg{width:40px;height:40px;flex-shrink:0;filter:drop-shadow(0 0 10px rgba(204,120,92,.5));}
 .node.hub .hubt{text-align:left;}
+.node.launch{display:flex;align-items:center;gap:14px;padding:18px 24px;justify-content:center;}
+.node.launch .li{flex-shrink:0;width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:15px;font-weight:700;color:#1a0f0a;}
+.node.launch .lt{text-align:left;}
+.node.launch .lt .nt{font-size:19px;}
+.node.launch .lt .ns{font-size:11px;margin-top:5px;}
 .nt{font-size:15.5px;font-weight:800;color:var(--ivory);letter-spacing:-.25px;line-height:1.1;white-space:nowrap;}
-.ns{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--kraft);margin-top:4px;white-space:nowrap;}
+.ns{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--kraft);margin-top:4px;white-space:normal;}
 .node.hl .ns{color:var(--book);}
 .chiprow2{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;justify-content:center;}
 .tag{font-family:'DM Mono',monospace;font-size:9.8px;font-weight:500;color:var(--book);background:rgba(204,120,92,.10);border:1px solid rgba(204,120,92,.28);border-radius:6px;padding:4px 9px;white-space:nowrap;}
@@ -200,13 +205,13 @@ body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-
     </div>
     <div class="conv" style="--half:16.667%"><i class="top" style="left:16.667%"></i><i class="top" style="left:50%"></i><i class="top" style="left:83.333%"></i><i class="bottom"></i></div>
 
-    <div class="single"><div class="node hl" style="width:300px"><div class="nt">Copywriting</div><div class="ns">5 angles &middot; 1 baseline &middot; per-account variants</div></div></div>
+    <div class="single"><div class="node hl" style="width:360px"><div class="nt">Copywriting</div><div class="ns">5 angles &middot; 1 baseline &middot; per-account variants</div></div></div>
     <div class="stub"></div>
 
     <div class="bw" style="--half:25%">
       <div class="row g">
-        <div class="slot"><div class="node hl"><div class="nt">Instantly</div><div class="ns">email sequences</div></div></div>
-        <div class="slot"><div class="node hl"><div class="nt">HeyReach</div><div class="ns">LinkedIn sequences</div></div></div>
+        <div class="slot"><div class="node hl launch"><span class="li" style="background:var(--book)">IN</span><div class="lt"><div class="nt">Instantly</div><div class="ns">email sequences, live</div></div></div></div>
+        <div class="slot"><div class="node hl launch"><span class="li" style="background:var(--kraft)">HR</span><div class="lt"><div class="nt">HeyReach</div><div class="ns">LinkedIn sequences, live</div></div></div></div>
       </div>
     </div>
   </div>
