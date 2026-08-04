@@ -184,6 +184,19 @@ GLUE = {
     "up", "out", "if", "by", "my", "we", "our", "he", "she", "who", "already", "just",
 }
 
+# Anton advances about 0.76em per character, measured off a render rather than guessed. A
+# long hero word at a fixed size walks straight out of the frame, so hero type is sized to
+# the word and the indent of the line it sits on.
+ANTON_EM = 0.76
+BAND_W = 824          # safe box width at the 104/152 insets
+LINE_INDENT = {"L": 0, "I": 104, "R": 208}
+
+
+def hero_size(word: str, anchor: str, cap: float) -> float:
+    room = BAND_W - LINE_INDENT.get(anchor, 0) - 12
+    return round(min(cap, room / max(1, len(word)) / ANTON_EM), 1)
+
+
 # Premium motion identity (motion-design skill): elegant, controlled, zero overshoot.
 # Heavier words get longer, more emphasized entrances; glue drifts in and gets out of the way.
 # duration, easing var, entrance keyframes to cycle through
@@ -336,7 +349,7 @@ def build_captions(meta: dict, words: list, hook_end: float,
         c_in = max(chunk[0][1] - .10, hook_clear if ci == 1 else 0)
         nxt = plan[ci][1][0][1] if ci < len(plan) else None
         # clear the frame a fade before the next chunk arrives, or two are legible at once
-        c_out = min(nxt - .26, chunk[-1][2] + .40) if nxt else chunk[-1][2] + .40
+        c_out = min(nxt - .08, chunk[-1][2] + .40) if nxt else chunk[-1][2] + .40
         c_out = max(c_out, c_in + .30)
         # exits accelerate away and run shorter than entrances: what arrives matters more
         css.append(f".ck{ci}{{animation:scin .22s var(--eStd) both {c_in:.2f}s,"
@@ -351,7 +364,8 @@ def build_captions(meta: dict, words: list, hook_end: float,
             # the reader had to hunt for where the sentence began. Variety comes from the
             # type weights and from how many lines a phrase takes, never from moving its
             # first word off the left.
-            dom.append(f'<div class="cl {"LIR"[min(li, 2)]}">')
+            anchor = "LIR"[min(li, 2)]
+            dom.append(f'<div class="cl {anchor}">')
             # depth through speed: the line carrying the weight is foreground and lands
             # fastest, the supporting lines sit back and drift
             lead = any(c in ("hero", "key") for _, c in row)
@@ -361,6 +375,8 @@ def build_captions(meta: dict, words: list, hook_end: float,
                 dur *= 1.0 if lead else 1.20
                 kf = entrances[n % len(entrances)]
                 dom.append(f'<span class="sw {w} sw{n}">{esc(word)}</span>')
+                if w == "hero":
+                    css.append(f".sw.sw{n}{{font-size:{hero_size(word, anchor, 118):g}px}}")
                 anim = [f"{kf} {dur:.2f}s {ease} both {ws:.2f}s"]
                 if w in ("key", "mid"):
                     # read-along highlight: arrives in book orange, settles to ink behind

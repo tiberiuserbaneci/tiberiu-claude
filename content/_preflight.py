@@ -38,6 +38,10 @@ BRAND_FRAME = {"frame","slide","atm","hero","eye","eyebrow","hook","sub","title"
 # approved work, so empty% is surfaced as guidance and only an egregious DEAD BAND hard-fails.
 DENSITY_AIRY_PCT     = 58.0    # above this empty-row share = print an 'airy, review' warning
 DENSITY_MAX_BAND_PX  = 120     # a single contiguous empty band taller than this = hard FAIL (dead space)
+# A film is composed in two halves - the visual in one, the caption band in the other - and the
+# gap between them is the format, not dead space. Judging it by the poster budget would force
+# the two to touch. The poster gate stays at 120px; a film gets the caption band plus a margin.
+DENSITY_MAX_BAND_FILM = 460
 REPEAT_MAX_JACCARD   = 0.62    # body-class overlap above this = same template reused = hard FAIL
 
 def html_for_render(p):
@@ -129,18 +133,22 @@ def static_checks(path):
 
 # ---------- rendered checks (browser + pixels) ----------
 def density_metrics(img):
-    """Empty-row pct and largest empty band (logical px) using real ink (bright pixels),
-    so a flat card fill with no text still reads as empty."""
+    """Empty-row pct and largest empty band (logical px), measured as local CONTRAST.
+
+    This used to count bright pixels as ink, which only ever measured background colour: a
+    cream material scored 0% empty whatever was on it, and a dark one scored ~97% empty even
+    when full. Edges are what content actually makes, so a row is empty when no two adjacent
+    samples differ - flat fill or a smooth gradient - and busy when something breaks it.
+    """
     g = img.convert("L"); W, H = g.size
     px = g.load()
     step = max(1, W // 360)                  # sample columns for speed
+    xs = list(range(0, W, step))
     rows_empty = []
     for y in range(H):
-        ink = 0; n = 0
-        for x in range(0, W, step):
-            n += 1
-            if px[x, y] > 100: ink += 1       # ink = bright pixel (text / accent), not dark fill
-        rows_empty.append((ink / n) < 0.012)
+        vals = [px[x, y] for x in xs]
+        edge = max((abs(vals[i + 1] - vals[i]) for i in range(len(vals) - 1)), default=0)
+        rows_empty.append(edge < 12)
     # restrict to the content band (drop leading/trailing empty margin)
     top = next((i for i,e in enumerate(rows_empty) if not e), 0)
     bot = next((i for i,e in enumerate(reversed(rows_empty)) if not e), 0)
@@ -164,6 +172,11 @@ def render_checks(path):
         b = p.chromium.launch(executable_path=chromium_path())
         pg = b.new_page(viewport={"width":1080,"height":target}, device_scale_factor=1)
         pg.goto(tmp.as_uri()); pg.wait_for_timeout(350); pg.evaluate("document.fonts.ready"); pg.wait_for_timeout(1200)
+        if sel == "#film":
+            m = re.search(r"/\*\s*FILM-META\s*(\{.*?\})\s*\*/", html, re.S)
+            dur = (json.loads(m.group(1)).get("duration", 26) if m else 26)
+            pg.evaluate("t => document.getAnimations().forEach(a => {a.pause(); a.currentTime = t;})",
+                        dur * 1000 * 0.46)
         els = pg.query_selector_all(sel if multi else (sel if sel.startswith((".","#")) else sel))
         if not els:
             els = pg.query_selector_all("#artifact") or pg.query_selector_all(".slide") or pg.query_selector_all(".frame")
@@ -180,7 +193,15 @@ def render_checks(path):
             shot = pathlib.Path(tempfile.mkdtemp()) / "s.png"; el.screenshot(path=str(shot))
             empty_pct, band = density_metrics(Image.open(shot))
             msg = f"density[{tag}]: {empty_pct:.0f}% empty rows, largest dead band {band:.0f}px"
-            if band > DENSITY_MAX_BAND_PX and target == 1350:
+            if sel == "#film":
+                # a film composes in two halves and the gap between them is the format, so it
+                # gets its own budget instead of the poster one, and skips the poster branches
+                if band > DENSITY_MAX_BAND_FILM:
+                    fails.append(msg + f"  -> DEAD BAND > {DENSITY_MAX_BAND_FILM}px even for a "
+                                       f"film. The visual is too small for its half; pack it.")
+                else:
+                    warns.append(msg + " (ok for a film)")
+            elif band > DENSITY_MAX_BAND_PX and target == 1350:
                 # editorial 4:5 (operator 2026-06-12): intentional air + dark-on-dark scene elements
                 # sit below the ink threshold, so the band gate false-positives. Surface, don't block.
                 warns.append(msg + "  -> 45 format: air is part of the reference design - review by eye")
