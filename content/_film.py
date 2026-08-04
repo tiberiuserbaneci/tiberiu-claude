@@ -437,6 +437,27 @@ def _open_stage(p, html: pathlib.Path, meta: dict, marks: list[float] | None = N
             const s = document.createElement('style');
             s.textContent = css;
             document.head.appendChild(s);
+            // Auto-fit the hook. Display faces vary enormously in advance width, so a size
+            // that frames one episode's opening line walks the next one out of the frame.
+            // Measure the real lines once and scale every hook word by the worst case.
+            const box = document.getElementById('hook');
+            if (box) {
+                const room = box.clientWidth;
+                let worst = 0;
+                box.querySelectorAll('.hk-l').forEach(l => {
+                    const pad = parseFloat(getComputedStyle(l).paddingLeft) || 0;
+                    let w = pad;
+                    l.querySelectorAll('.hw').forEach(x => { w += x.getBoundingClientRect().width; });
+                    w += 26 * Math.max(0, l.querySelectorAll('.hw').length - 1);
+                    worst = Math.max(worst, w);
+                });
+                if (worst > room) {
+                    const fit = room / worst;
+                    box.querySelectorAll('.hw').forEach(x => {
+                        x.style.fontSize = (parseFloat(getComputedStyle(x).fontSize) * fit) + 'px';
+                    });
+                }
+            }
         }""", {"dom": dom, "css": css})
     if marks:
         pg.evaluate("""ms => {
