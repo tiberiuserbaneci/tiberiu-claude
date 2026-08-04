@@ -7,8 +7,8 @@ The system holds together end to end, and every step has a name, a tool and an o
 → Step 1 maps the whole strategy in Miro first: account tiering, buying committee, angles and offers, before a single list gets built or a single email gets written.
 → Step 2 builds two lists in parallel: a cold ICP sourced broad across Apollo.io, Ocean.io and AI Ark, and intent signals captured from RB2B, Jungler.ai and Fibbler.
 → Step 3 runs enrichment through Claude Code straight into Clay: firmographics, technographics and account-fit signals, QA'd in Clay before anything moves forward to segmentation.
-→ Step 5 has Claude Code assign every account a tier with the output landing directly in Clay: Tier 1 gets email, LinkedIn DM and a cold call, Tier 3 gets email only.
-→ Step 6 feeds one hand-written baseline email plus a per-row company summary into Claude Code, which writes a tailored variant for every single account across 5 angles, split across both motions.
+→ Step 4 has Claude Code assign every account a tier with the output landing directly in Clay: Tier 1 gets email, LinkedIn DM and a cold call, Tier 3 gets email only.
+→ Step 5 feeds one hand-written baseline email plus a per-row company summary into Claude Code, which writes a tailored variant for every single account across 5 angles, split across both motions.
 
 The unlock is not a smarter prompt or a bigger list. It is refusing to let any step live outside the system, so segmentation, tiering and copy all inherit the same data instead of drifting apart the way they do when five people each own one tool and nobody owns the handoffs. Once Claude Code owns the repetitive middle of the funnel, the only manual work left is picking the angles and approving what actually gets sent.
 
@@ -21,6 +21,6 @@ Dark editorial flowchart on slate background. The hook reads 'I gave Claude Code
 FIRST COMMENT:
 Seven steps, one Claude Code system, zero manual list building by the time it reaches Instantly and HeyReach.
 
-The part people miss is step 5: tiering runs inside Claude Code too, so Tier 1 accounts get email, LinkedIn DM and a cold call, not just another mail merge.
+The part people miss is step 4: tiering runs inside Claude Code too, so Tier 1 accounts get email, LinkedIn DM and a cold call, not just another mail merge.
 
 Drop OUTBOUND below and I will send you the exact Claude Code cold outbound system, I read every comment.
