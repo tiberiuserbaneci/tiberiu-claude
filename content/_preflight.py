@@ -17,7 +17,7 @@ Checks (the operator's recurring rejections, made mechanical):
   7 repeat     body layout must differ from the previous material (no template reuse)
   8 footer     Ultron footer + 51ultron.com present
 """
-import sys, re, pathlib, base64, tempfile, json, subprocess, glob
+import sys, os, re, pathlib, base64, tempfile, json, subprocess, glob
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
@@ -45,8 +45,26 @@ def html_for_render(p):
         t = t.replace("__LOGO_URI__", uri)
     return t
 
+def chromium_path():
+    """Locate a preinstalled Chromium, or None to let Playwright use its own.
+
+    A sandbox ships one browser build and blocks re-downloads, so a Playwright pinned to a
+    different revision cannot launch. Without this the render checks below fall into the
+    'skipped' warning and the guard silently passes material it never actually measured.
+    """
+    if os.environ.get("PW_CHROMIUM"): return os.environ["PW_CHROMIUM"]
+    for pat in ("/opt/pw-browsers/chromium-*/chrome-linux/chrome",
+                "/opt/pw-browsers/chromium_headless_shell-*/chrome-linux/chrome-headless-shell"):
+        hits = sorted(glob.glob(pat))
+        if hits: return hits[-1]
+    return None
+
 def target_of(name):
     n = name.lower()
+    # narrated film (ULTRON STACK series): one 1080x1920 stage animated on a wall clock and
+    # captured frame-by-frame by _film.py. Same 9:16 canvas as a TikTok slide, so the safe
+    # zone still applies; dims are checked on the canvas box because scenes are absolute.
+    if "-film-" in n: return ("#film", 1920, True)
     # editorial 4:5 photo-carousel (operator 2026-06-12): canvas 1080x1350, bleed allowed,
     # so dims are checked on the canvas box (offsetHeight), not scrollHeight. No 300px inset.
     if "-45-" in n or "editorial45" in n: return (".slide", 1350, True)
@@ -140,7 +158,7 @@ def render_checks(path):
     tmp = pathlib.Path(tempfile.mkdtemp()) / "x.html"; tmp.write_text(html)
     fails, warns = [], []
     with sync_playwright() as p:
-        b = p.chromium.launch()
+        b = p.chromium.launch(executable_path=chromium_path())
         pg = b.new_page(viewport={"width":1080,"height":target}, device_scale_factor=1)
         pg.goto(tmp.as_uri()); pg.wait_for_timeout(350); pg.evaluate("document.fonts.ready"); pg.wait_for_timeout(1200)
         els = pg.query_selector_all(sel if multi else (sel if sel.startswith((".","#")) else sel))

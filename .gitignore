@@ -5,3 +5,7 @@ __pycache__/
 # Portal runtime artifacts
 content/portal/manifest.json.tmp
 *.log
+
+# Film voiceover cache: per-beat ElevenLabs clips, kept locally so re-rendering a film
+# does not re-spend API credits. The muxed <film>-vo.mp3 is the committed artifact.
+content/_vo_parts/
