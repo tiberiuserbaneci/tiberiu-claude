@@ -257,8 +257,21 @@ def layout_lines(chunk, accents, max_lines=3):
     return lines
 
 
+def zone_for(t: float, marks: list[float] | None, zones: list[str]) -> str:
+    """Which half of the frame this moment's caption takes.
+
+    Declared per beat so the type occupies whatever half the visual is not using. Alternating
+    it works the whole screen without ever letting a line land on a card.
+    """
+    if not (marks and zones):
+        return "bot"
+    idx = max(i for i, m in enumerate(marks) if t >= m) if t >= marks[0] else 0
+    return zones[min(idx, len(zones) - 1)]
+
+
 def build_captions(meta: dict, words: list, hook_end: float,
-                   cta_at: float | None = None) -> tuple[str, str]:
+                   cta_at: float | None = None,
+                   marks: list[float] | None = None) -> tuple[str, str]:
     """Return (DOM html, CSS) for the full-screen hook and the word-synced subtitles.
 
     Two jobs the reference clip splits. The opening sentence is the whole frame, because the
@@ -331,7 +344,8 @@ def build_captions(meta: dict, words: list, hook_end: float,
         # exits accelerate away and run shorter than entrances: what arrives matters more
         css.append(f".ck{ci}{{animation:scin .22s var(--eStd) both {c_in:.2f}s,"
                    f"ckout .14s var(--eExit) forwards {c_out:.2f}s}}")
-        dom.append(f'<div class="ck ck{ci}">')
+        zone = zone_for(chunk[0][1], marks, meta.get("zones") or [])
+        dom.append(f'<div class="ck {zone} ck{ci}">')
         rows = layout_lines(chunk, accents)
         for li, row in enumerate(rows):
             # A new idea always starts at the left margin, then steps right as it continues:
@@ -535,7 +549,7 @@ def main() -> None:
             hook_end = next((w[2] for w in words if w[0].endswith(".")), 2.5) + 0.05
             # the CTA beat draws its own COMMENT CORTEX, so captions stop there
             captions = build_captions(meta, words, hook_end,
-                                      cta_at=marks[-1] if marks else None)
+                                      cta_at=marks[-1] if marks else None, marks=marks)
             n_hook = sum(1 for w in words if w[1] < hook_end)
             print(f"  caps   hook {n_hook} words to {hook_end:.2f}s, "
                   f"{len(words) - n_hook} words captioned after")

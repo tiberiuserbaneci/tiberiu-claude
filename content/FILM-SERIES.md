@@ -140,11 +140,30 @@ wrapping them:
   the left.
 
 ```
-nothing else, and       So you stop        All of it
-      CORTEX                 opening            RANKED
-reads the company first,                          into one page,
+All of it            Then the one
+    RANKED               person who
+        into one page,       SIGNS,
 ```
-Left, then indented, then right. Every phrase begins flush left, no exceptions.
+Left, then indented 104px, then 208px. Every phrase begins flush left, no exceptions.
+
+**The step is a bounded indent, not `flex-end`.** Right-aligning the last line threw a short
+closing word ("already", "posted.", "cold.") to the far margin, and it stopped reading as part
+of the sentence it belongs to. A fixed indent keeps the staircase while keeping the word near
+its phrase.
+
+### The caption takes the half the visual is not using
+
+Declare it per beat in FILM-META, `"zones":["bot","top","bot","top","bot"]`, and give each
+scene the matching `capbot` or `captop` class so it keeps clear of that half. Alternating it
+works the type across the whole frame, which is what the good creators do, without ever
+letting a line land on a card. Random placement would collide; placement tied to the beat
+cannot.
+
+### Margins
+
+The safe box is inset **104px left / 152px right**, not the 70/130 minimum from CLAUDE.md 9.
+At 70px a 118px display word looks clipped to the edge of a phone screen. Verified by
+measuring the leftmost glyph in the browser rather than by eye.
 
 **Depth through speed** (choreography rules): the line carrying a hero or key word is
 foreground and lands at full speed; supporting lines sit back and take 1.2x as long. Combined
