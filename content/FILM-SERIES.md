@@ -154,7 +154,13 @@ its phrase.
 ### The caption takes the half the visual is not using
 
 Declare it per beat in FILM-META, `"zones":["bot","top","bot","top","bot"]`, and give each
-scene the matching `capbot` or `captop` class so it keeps clear of that half. Alternating it
+scene the matching `capbot` or `captop` class so it keeps clear of that half.
+
+**Phrases are chunked within a beat, never across one.** This is what makes zones safe rather
+than a source of collisions. A phrase that straddles a cut keeps the zone of the beat it
+started in while the picture has already moved on, so the caption and the incoming card both
+claim the same half and overlap. Chunking per beat segment makes that impossible by
+construction instead of guarding against it after the fact. Alternating it
 works the type across the whole frame, which is what the good creators do, without ever
 letting a line land on a card. Random placement would collide; placement tied to the beat
 cannot.

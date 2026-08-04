@@ -257,18 +257,6 @@ def layout_lines(chunk, accents, max_lines=3):
     return lines
 
 
-def zone_for(t: float, marks: list[float] | None, zones: list[str]) -> str:
-    """Which half of the frame this moment's caption takes.
-
-    Declared per beat so the type occupies whatever half the visual is not using. Alternating
-    it works the whole screen without ever letting a line land on a card.
-    """
-    if not (marks and zones):
-        return "bot"
-    idx = max(i for i, m in enumerate(marks) if t >= m) if t >= marks[0] else 0
-    return zones[min(idx, len(zones) - 1)]
-
-
 def build_captions(meta: dict, words: list, hook_end: float,
                    cta_at: float | None = None,
                    marks: list[float] | None = None) -> tuple[str, str]:
@@ -331,20 +319,29 @@ def build_captions(meta: dict, words: list, hook_end: float,
     rest = [w for w in words if w[1] >= hook_end]
     if cta_at:
         rest = [w for w in rest if w[1] < cta_at]
+
+    # Chunk WITHIN each beat, never across one. A phrase that straddles a cut keeps the zone
+    # of the beat it started in while the picture has already moved to the next scene, so the
+    # caption and the incoming card both claim the same half of the frame and collide.
+    bounds = (list(marks) + [cta_at or 1e9]) if marks else [0.0, 1e9]
+    plan = []
+    for bi in range(len(bounds) - 1):
+        seg = [w for w in rest if bounds[bi] <= w[1] < bounds[bi + 1]]
+        for c in chunk_words(seg):
+            plan.append((bi, c))
+
+    zones = meta.get("zones") or []
     dom.append('<div id="subs" class="sb">')
-    for ci, chunk in enumerate(chunk_words(rest), start=1):
+    for ci, (beat_i, chunk) in enumerate(plan, start=1):
         c_in = max(chunk[0][1] - .10, hook_clear if ci == 1 else 0)
-        nxt = None
-        flat = [w for w in rest if w[1] > chunk[-1][1]]
-        if flat:
-            nxt = flat[0][1]
+        nxt = plan[ci][1][0][1] if ci < len(plan) else None
         # clear the frame a fade before the next chunk arrives, or two are legible at once
         c_out = min(nxt - .26, chunk[-1][2] + .40) if nxt else chunk[-1][2] + .40
         c_out = max(c_out, c_in + .30)
         # exits accelerate away and run shorter than entrances: what arrives matters more
         css.append(f".ck{ci}{{animation:scin .22s var(--eStd) both {c_in:.2f}s,"
                    f"ckout .14s var(--eExit) forwards {c_out:.2f}s}}")
-        zone = zone_for(chunk[0][1], marks, meta.get("zones") or [])
+        zone = zones[min(beat_i, len(zones) - 1)] if zones else "bot"
         dom.append(f'<div class="ck {zone} ck{ci}">')
         rows = layout_lines(chunk, accents)
         for li, row in enumerate(rows):
