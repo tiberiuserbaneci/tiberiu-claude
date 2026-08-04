@@ -174,6 +174,39 @@ def words_from(alignment: dict) -> list[tuple[str, float, float]]:
     return out
 
 
+# Words that only glue a sentence together. They stay small and quiet so the words that
+# carry the meaning can be enormous, which is the whole difference between a caption track
+# and kinetic typography.
+GLUE = {
+    "the", "a", "an", "and", "or", "of", "to", "in", "on", "at", "for", "with", "is", "are",
+    "was", "it", "its", "you", "your", "they", "their", "them", "that", "this", "what", "so",
+    "then", "all", "i", "will", "be", "do", "does", "into", "from", "as", "but", "not", "no",
+    "up", "out", "if", "by", "my", "we", "our", "he", "she", "who", "already", "just",
+}
+
+# Premium motion identity (motion-design skill): elegant, controlled, zero overshoot.
+# Heavier words get longer, more emphasized entrances; glue drifts in and gets out of the way.
+# duration, easing var, entrance keyframes to cycle through
+WEIGHT = {
+    "fn":   (0.22, "var(--eStd)",  ("kRise",)),
+    "mid":  (0.34, "var(--eStd)",  ("kRise", "kLeft", "kRight")),
+    "key":  (0.48, "var(--eEmph)", ("kDrop", "kPop")),
+    "hero": (0.72, "var(--eEmph)", ("kBlur",)),          # dramatic reveal territory
+}
+
+
+def weigh(word: str, accents: set[str]) -> str:
+    """How much visual weight this word has earned in the line."""
+    bare = word.strip(".,:;!?'\"").lower()
+    if bare in accents:
+        return "hero"
+    if bare in GLUE or len(bare) <= 2:
+        return "fn"
+    if word.strip(".,:;").isupper() or len(bare) >= 8 or any(c.isdigit() for c in bare):
+        return "key"
+    return "mid"
+
+
 def chunk_words(words, max_words=4, max_chars=26):
     """Group spoken words into caption-sized phrases.
 
@@ -222,16 +255,24 @@ def build_captions(meta: dict, words: list, hook_end: float,
         if row:
             lines.append(row)
 
-    dom.append(f'<div id="hook" class="hk"><div class="hk-in">')
+    accents = {a.strip(".,:;!?").lower() for a in (meta.get("accent") or [])}
+    dom.append('<div id="hook" class="hk"><div class="hk-in">')
     n = 0
-    for row in lines:
-        dom.append('<div class="hk-l">')
+    for li, row in enumerate(lines):
+        dom.append(f'<div class="hk-l {("", "I", "R")[li % 3]}">')
         for (word, ws, _we), accent in row:
             n += 1
-            cls = "hw a" if accent else "hw"
-            dom.append(f'<span class="{cls} hw{n}">{esc(word)}</span>')
-            css.append(f".hw{n}{{animation:hkw .34s var(--e) both {ws:.2f}s"
-                       + (f",hkbar .24s var(--e) both {ws:.2f}s}}" if accent else "}"))
+            w = "hero" if accent else weigh(word, accents)
+            dur, ease, entrances = WEIGHT[w]
+            kf = entrances[n % len(entrances)]
+            dom.append(f'<span class="hw {w}{" a" if accent else ""} hw{n}">{esc(word)}</span>')
+            anim = [f"{kf} {dur:.2f}s {ease} both {ws:.2f}s"]
+            if accent:
+                # secondary motion: the highlighter chases the word in rather than arriving
+                # with it, and the tracking settles after it lands
+                anim.append(f"hkbar .28s var(--eStd) both {ws + .07:.2f}s")
+                anim.append(f"kTrack .55s var(--eStd) both {ws:.2f}s")
+            css.append(f".hw{n}{{animation:{','.join(anim)}}}")
         dom.append("</div>")
     dom.append("</div></div>")
     # push-in across the hook, then clear the frame for the visuals
@@ -256,16 +297,24 @@ def build_captions(meta: dict, words: list, hook_end: float,
         # clear the frame a fade before the next chunk arrives, or two are legible at once
         c_out = min(nxt - .26, chunk[-1][2] + .40) if nxt else chunk[-1][2] + .40
         c_out = max(c_out, c_in + .30)
-        css.append(f".ck{ci}{{animation:scin .16s both {c_in:.2f}s,"
-                   f"ckout .16s forwards {c_out:.2f}s}}")
-        dom.append(f'<div class="ck ck{ci}">')
-        for wi, (word, ws, _we) in enumerate(chunk, start=1):
+        # exits accelerate away and run shorter than entrances: what arrives matters more
+        css.append(f".ck{ci}{{animation:scin .22s var(--eStd) both {c_in:.2f}s,"
+                   f"ckout .14s var(--eExit) forwards {c_out:.2f}s}}")
+        # anchor cycles so the eye is not pinned to one margin for 25 seconds
+        dom.append(f'<div class="ck {"LIRC"[ci % 4]} ck{ci}">')
+        for word, ws, _we in chunk:
             n += 1
-            dom.append(f'<span class="sw sw{n}">{esc(word)}</span>')
-            # Land in book orange as it is spoken, settle to ink just after: the read-along
-            # highlight, without needing to track which word is current.
-            css.append(f".sw{n}{{animation:sbw .20s var(--e) both {ws:.2f}s,"
-                       f"sbs .26s linear forwards {ws + .22:.2f}s}}")
+            w = weigh(word, accents)
+            dur, ease, entrances = WEIGHT[w]
+            kf = entrances[n % len(entrances)]
+            dom.append(f'<span class="sw {w} sw{n}">{esc(word)}</span>')
+            anim = [f"{kf} {dur:.2f}s {ease} both {ws:.2f}s"]
+            if w in ("key", "mid"):
+                # read-along highlight: lands in book orange as it is spoken, settles to ink
+                anim.append(f"sbs .30s linear forwards {ws + dur:.2f}s")
+                css.append(f".sw{n}{{color:var(--book);animation:{','.join(anim)}}}")
+            else:
+                css.append(f".sw{n}{{animation:{','.join(anim)}}}")
         dom.append("</div>")
     dom.append("</div>")
     return "".join(dom), "".join(css)

@@ -97,6 +97,41 @@ A line that runs long moves its own cut with it. The visual for a sentence can n
 before the sentence is spoken, and the film's length is set by the take (last word plus a
 0.7s tail), so it never outlives the narration or clips it.
 
+## Kinetic type, not a caption track
+
+The narration is part of the film, not an overlay on it, so no line is set at one size. Every
+word is weighed and typeset accordingly, which is the whole difference between a subtitle and
+a title sequence:
+
+| Weight | What earns it | Hook / band size | Entrance |
+|---|---|---|---|
+| `fn` | glue words (the, of, and, is) | 74 / 38px, muted, lowercase | drift up, 0.22s |
+| `mid` | ordinary content words | 132 / 64px | rise, or in from left or right, 0.34s |
+| `key` | long words, caps, numbers | 168 / 86px | drop or pop, 0.48s |
+| `hero` | the episode's `accent` list | 186 / 104px, book orange | blur in, 0.72s |
+
+Declare the episode's hero words in FILM-META as `"accent":[...]`. Everything else is decided
+by `weigh()` in `_film.py`, so a new episode gets the treatment for free.
+
+Chunks cycle their anchor (left, indented, right, centre) so the eye is not pinned to one
+margin for the length of the film, and the hook's lines do the same.
+
+**Motion identity: Premium** (from the `motion-design` skill). One signature curve
+`cubic-bezier(.4,0,.2,1)` for most moves, `cubic-bezier(.05,.7,.1,1)` for entrances that must
+be noticed, and **zero overshoot** anywhere. Bouncy easing reads as playful, which is the
+opposite of the suspense this format wants.
+
+**All three motion layers must be present**, or the result reads flat no matter how good the
+timing is:
+- *Primary*: the word arriving.
+- *Secondary*: the highlighter chasing a hero word in 70ms behind it, and its tracking
+  settling from `.06em` to `-.03em` after it lands.
+- *Ambient*: a slow warm breath under the whole frame on an 11s loop, so a held word is never
+  a frozen frame.
+
+Exits accelerate and run shorter than entrances (0.14s against 0.22s). What arrives matters
+more than what leaves.
+
 ## Word budget
 
 **Measure the voice before writing the script.** The Tibi voice runs about **3.3 words per
