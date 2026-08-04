@@ -2,25 +2,28 @@
 <title>ULTRON STACK 03 - ROUTER</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&family=Anton&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
-/* FILM-META {"duration":34,"w":1080,"h":1920,"fps":30,
-  "hook":"Every *AI* tool|makes you|*pick*|the model.","hook_hold":0.45,
-  "accent":["router","haiku","sonnet","opus","tier","judgement","lookup","english"],
+/* FILM-META {"duration":42,"w":1080,"h":1920,"fps":30,
+  "hook":"*Claude* has|four models|and you never|*pick* one.","hook_hold":0.45,
+  "accent":["router","haiku","sonnet","opus","fable","effort","judgement","lookups","english","half"],
   "zones":["bot","bot","top","top","bot"],
   "beats":[
-  {"t":0.0,  "vo":"Every AI tool makes you pick the model first. So you guess. And most days you pay deep tier prices for questions a small model answers."},
+  {"t":0.0,  "vo":"Claude has four models and you never pick one. Every other tool opens with that question, and you pay top tier prices for work a small model finishes."},
   {"t":7.5,  "vo":"So you stop choosing. You write what you want in plain English, and nothing else."},
   {"t":12.0, "vo":"The router reads the job before it answers. How big it is. How deep it goes. What it costs to be wrong."},
-  {"t":18.5, "vo":"Then it picks the tier. Haiku for the lookups. Sonnet for the standing work. Opus when the judgement is hard."},
-  {"t":24.5, "vo":"You never choose a model again. And you never pay Opus for a lookup you could have run for a third."},
-  {"t":30.0, "vo":"Comment ROUTER and I will send you the exact setup."}]} */
+  {"t":18.5, "vo":"Then it picks the model and the effort. Haiku on low for the lookups, Sonnet on high for the standing work, Opus on extra high when the judgement is hard, and Fable on max when being wrong is expensive."},
+  {"t":29.0, "vo":"You never choose again, and you rarely need Fable, because Opus takes the same hard judgement at half the price."},
+  {"t":34.5, "vo":"Comment ROUTER and I will send you the exact setup."}]} */
 
 /* ULTRON STACK 03 - ROUTER. Warm graphite with an ivory panel: distinct from episode 01's
    cream paper and episode 02's near black console, so no two read as one template.
    The step up in craft is CONTINUITY. Instead of six scenes hard cutting, ONE panel lives
    for the whole film and its contents cross fade inside it, on a slow push. The subject
    never leaves the screen, which is what separates a film from a slideshow.
-   Content is the documented routing table (CLAUDE.md 1 and 20), not invented tiers.
-   BEATS 0 constraint | 6.5 action | 10 read | 15 pick | 21 payoff | 25 cta */
+   Content is the documented routing table (CLAUDE.md 1 and 20), not invented tiers. The
+   four models and their list prices are real: Haiku 4.5 $1/$5, Sonnet 5 $3/$15, Opus 5
+   $5/$25, Fable 5 $10/$50, which is exactly 1x 3x 5x 10x on both input and output. The
+   effort ladder is the real one: low, medium, high, xhigh, max.
+   BEATS 0 constraint | 7.5 action | 12 read | 18.5 pick | 29 payoff | 34.5 cta */
 :root{
   --bg:#2E2A26; --bg2:#242119; --panel:#F7F3EC; --panel2:#EDE7DC;
   --ink:#1E1B18; --ink60:rgba(30,27,24,.60); --ink34:rgba(30,27,24,.34);
@@ -28,7 +31,7 @@
   --book:#C84623; --bookl:#D26446; --kraft:#D4A27F; --rule:rgba(30,27,24,.12);
   --e:cubic-bezier(.2,.85,.25,1);
   --eStd:cubic-bezier(.4,0,.2,1); --eEmph:cubic-bezier(.05,.7,.1,1); --eExit:cubic-bezier(.3,0,1,1);
-  --b1:0s; --b2:7.5s; --b3:12s; --b4:18.5s; --b5:24.5s; --b6:30s;
+  --b1:0s; --b2:7.5s; --b3:12s; --b4:18.5s; --b5:29s; --b6:34.5s;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:#151311;display:flex;justify-content:center;align-items:flex-start;
@@ -78,6 +81,12 @@ body{background:#151311;display:flex;justify-content:center;align-items:flex-sta
 @keyframes blink{0%,48%{opacity:1}49%,100%{opacity:0}}
 @keyframes grow {from{width:0}to{width:var(--w)}}
 @keyframes fadeout{from{opacity:1}to{opacity:0}}
+@keyframes lift {from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes liftd{from{opacity:0;transform:translateY(22px)}to{opacity:.34;transform:none}}
+@keyframes named{0%{opacity:.34}26%{opacity:.95}100%{opacity:.34}}
+@keyframes glow {0%{box-shadow:0 18px 40px -14px rgba(200,70,35,.45)}
+                 38%{box-shadow:0 24px 66px -10px rgba(200,70,35,.88)}
+                 100%{box-shadow:0 18px 40px -14px rgba(200,70,35,.45)}}
 /* the panel drifts closer across the whole film: a camera, not a cut */
 @keyframes push{from{transform:scale(1) translateY(6px)}to{transform:scale(1.05) translateY(-6px)}}
 
@@ -93,7 +102,11 @@ body{background:#151311;display:flex;justify-content:center;align-items:flex-sta
   letter-spacing:-1px;color:var(--iv32);text-transform:lowercase;}
 .hw.mid{font-size:98px;font-weight:700;letter-spacing:-3px;}
 .hw.key{font-size:140px;font-weight:900;letter-spacing:-5px;}
-.hw.hero{font-family:'Anton',sans-serif;font-size:152px;font-weight:400;letter-spacing:-3px;}
+/* CLAUDE is the widest word any hook in this series has carried. Anton advances about
+   .76em per glyph, so 6 characters at 152px would eat 733px of an 824px band on its own and
+   force the auto-fit to shrink every other line to match. 128px keeps line 1 at ~745px with
+   its companion word and leaves the fitter dormant. */
+.hw.hero{font-family:'Anton',sans-serif;font-size:128px;font-weight:400;letter-spacing:-3px;}
 .hw.a{color:#FFF3EA;padding:0 20px;border-radius:10px;
   background-image:linear-gradient(var(--book),var(--book));
   background-repeat:no-repeat;background-position:left center;background-size:0% 84%;
@@ -135,13 +148,13 @@ body{background:#151311;display:flex;justify-content:center;align-items:flex-sta
    panel takes the other, so when the caption moves up the panel slides down. Two moves
    across the film, not four: a camera move reads as intent, a restless one reads as noise. */
 .pwrap{position:absolute;left:0;right:0;top:34px;display:flex;justify-content:center;opacity:0;}
-@keyframes panelDown{from{transform:translateY(0)}to{transform:translateY(566px)}}
-@keyframes panelUp  {from{transform:translateY(566px)}to{transform:translateY(0)}}
+@keyframes panelDown{from{transform:translateY(0)}to{transform:translateY(659px)}}
+@keyframes panelUp  {from{transform:translateY(659px)}to{transform:translateY(0)}}
 .panel{width:100%;max-width:824px;border-radius:24px;background:var(--panel);
   border:1px solid rgba(255,255,255,.5);color:var(--ink);overflow:hidden;
   box-shadow:0 44px 96px -30px rgba(0,0,0,.72),0 0 0 1px rgba(30,27,24,.08),
              0 0 120px -40px rgba(212,162,127,.5);
-  transform-origin:center;animation:push 34s linear both;}
+  transform-origin:center;animation:push 42s linear both;}
 .p-hd{display:flex;align-items:center;gap:14px;padding:24px 30px;background:var(--panel2);
   border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:23px;}
 .p-hd .app{color:var(--ink34);letter-spacing:.06em;}
@@ -150,24 +163,44 @@ body{background:#151311;display:flex;justify-content:center;align-items:flex-sta
 .p-hd .badge{margin-left:auto;font-size:18px;letter-spacing:.16em;text-transform:uppercase;
   padding:7px 14px;border-radius:8px;color:var(--book);background:rgba(200,70,35,.10);
   border:1px solid rgba(200,70,35,.28);}
-.p-body{position:relative;min-height:512px;}
+.p-body{position:relative;min-height:420px;}
 /* every state stacks in the same box and cross fades: the panel never jumps */
-.st{position:absolute;inset:0;padding:30px;display:flex;flex-direction:column;
-  justify-content:center;gap:20px;opacity:0;}
+.st{position:absolute;inset:0;padding:22px;display:flex;flex-direction:column;
+  justify-content:center;gap:18px;opacity:0;}
 
-/* tier row, the recurring motif */
-.tiers{display:flex;gap:16px;}
-.tier{flex:1;border-radius:16px;padding:24px 20px;background:#FFFDF9;
-  border:1px solid var(--rule);display:flex;flex-direction:column;gap:8px;position:relative;}
-.tier .n{font-family:'DM Mono',monospace;font-size:19px;letter-spacing:.16em;
+/* tier row, the recurring motif. Four columns in an 824px panel leaves 152px of usable
+   width per card, so the model name splits into name + version and the meta rows stack
+   rather than sitting side by side. Cost is the real list ratio, not a made up index. */
+.tiers{display:flex;gap:14px;}
+.tier{flex:1;min-width:0;border-radius:16px;padding:20px 16px;background:#FFFDF9;
+  border:1px solid var(--rule);display:flex;flex-direction:column;gap:7px;position:relative;}
+.tier .n{font-family:'DM Mono',monospace;font-size:18px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--ink34);}
-.tier .m{font-size:38px;font-weight:900;letter-spacing:-1.2px;color:var(--ink);}
-.tier .u{font-size:22px;font-weight:500;color:var(--ink60);line-height:1.25;}
+.tier .m{font-size:30px;font-weight:900;letter-spacing:-1px;color:var(--ink);
+  display:flex;align-items:baseline;gap:6px;white-space:nowrap;}
+.tier .m b{font-size:20px;font-weight:800;letter-spacing:-.2px;color:var(--book);}
+.tier .eff{font-family:'DM Mono',monospace;font-size:16px;letter-spacing:.10em;
+  text-transform:uppercase;color:var(--ink60);align-self:flex-start;
+  padding:5px 10px;border-radius:7px;background:rgba(30,27,24,.06);
+  border:1px solid var(--rule);white-space:nowrap;}
+.tier .cost{display:flex;align-items:baseline;gap:6px;}
+.tier .cost u{font-size:26px;font-weight:900;letter-spacing:-.8px;color:var(--ink);
+  text-decoration:none;}
+.tier .cost em{font-family:'DM Mono',monospace;font-size:15px;letter-spacing:.10em;
+  text-transform:uppercase;color:var(--ink34);font-style:normal;}
+.tier .u{font-size:18px;font-weight:500;color:var(--ink60);line-height:1.25;margin-top:1px;}
 .tier.on{background:linear-gradient(180deg,#FFF4EE,#FFE9E0);border-color:rgba(200,70,35,.45);
   box-shadow:0 18px 40px -14px rgba(200,70,35,.45);}
-.tier.on .m{color:var(--book);}
+.tier.on .m,.tier.on .cost u{color:var(--book);}
+.tier.on .eff{color:var(--book);background:rgba(200,70,35,.10);border-color:rgba(200,70,35,.30);}
 .tier.dim{opacity:.34;}
-.tier .q{position:absolute;top:16px;right:18px;font-size:30px;font-weight:900;color:var(--ink34);}
+.tier .q{position:absolute;top:14px;right:14px;font-size:26px;font-weight:900;color:var(--ink34);}
+/* the line that names the problem the four doors create */
+.ask{display:flex;align-items:center;gap:12px;padding:18px 20px;border-radius:12px;
+  background:rgba(30,27,24,.04);border:1px solid var(--rule);opacity:0;}
+.ask .l{font-family:'DM Mono',monospace;font-size:19px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--book);flex-shrink:0;}
+.ask .r{font-size:23px;font-weight:500;color:var(--ink60);letter-spacing:-.2px;}
 
 /* the prompt line */
 .prompt{display:flex;align-items:center;gap:14px;padding:26px 24px;border-radius:14px;
@@ -234,8 +267,10 @@ body{background:#151311;display:flex;justify-content:center;align-items:flex-sta
 .cta{animation:scin .5s both calc(var(--b6) + 0.10s);}
 
 .q1{animation:pop .5s var(--e) both calc(var(--b1) + 3.30s);}
-.q2{animation:pop .5s var(--e) both calc(var(--b1) + 3.75s);}
-.q3{animation:pop .5s var(--e) both calc(var(--b1) + 4.20s);}
+.q2{animation:pop .5s var(--e) both calc(var(--b1) + 3.65s);}
+.q3{animation:pop .5s var(--e) both calc(var(--b1) + 4.00s);}
+.q4{animation:pop .5s var(--e) both calc(var(--b1) + 4.35s);}
+.ask{animation:rise .5s var(--e) both calc(var(--b1) + 4.90s);}
 #pt{animation:type 1.5s steps(34,end) both calc(var(--b2) + 0.55s);}
 #pc{animation:blink .92s steps(1) infinite calc(var(--b2) + 0.55s);}
 .n1{opacity:0;animation:rise .45s var(--e) both calc(var(--b2) + 1.95s);}
@@ -254,14 +289,26 @@ body{background:#151311;display:flex;justify-content:center;align-items:flex-sta
 .rr4{animation:rise .5s var(--e) both calc(var(--b3) + 3.25s);}
 .rr4 s{--w:55%;animation:grow .7s var(--e) both calc(var(--b3) + 3.55s);}
 
-.t1{opacity:0;animation:rise .5s var(--e) both calc(var(--b4) + 0.75s);}
-.t2{opacity:0;animation:rise .5s var(--e) both calc(var(--b4) + 2.05s);}
-.t3{opacity:0;animation:rise .5s var(--e) both calc(var(--b4) + 3.35s);}
-.tnote{opacity:0;animation:rise .5s var(--e) both calc(var(--b4) + 4.55s);}
+/* Four cards, not three, so the row can no longer be revealed one card per spoken clause:
+   at 152px a column, three empty slots for two seconds reads as a half built table. The row
+   lands as a SET in a 120ms micro cascade, and the voice sync moves to the selection instead.
+   Haiku is lit from the start (the pick is the state of the panel), then each tier pulses
+   as the narration names what it is for. Second animation on a dim card must fill FORWARDS:
+   a both-filled later animation back-fills its 0% keyframe to t=0 and shows the card at
+   frame 0, the same trap that once parked every scene visible on the opening frame. */
+.t1{animation:lift .5s var(--e) both calc(var(--b4) + 0.30s),
+    glow .95s var(--eStd) forwards calc(var(--b4) + 2.10s);}
+.t2{animation:liftd .5s var(--e) both calc(var(--b4) + 0.42s),
+    named .90s var(--eStd) forwards calc(var(--b4) + 4.00s);}
+.t3{animation:liftd .5s var(--e) both calc(var(--b4) + 0.54s),
+    named .90s var(--eStd) forwards calc(var(--b4) + 6.00s);}
+.t4{animation:liftd .5s var(--e) both calc(var(--b4) + 0.66s),
+    named .90s var(--eStd) forwards calc(var(--b4) + 8.45s);}
+.tnote{opacity:0;animation:rise .5s var(--e) both calc(var(--b4) + 2.85s);}
 
-.pc1{animation:rise .5s var(--e) both calc(var(--b5) + 0.55s);}
-.pc2{animation:rise .5s var(--e) both calc(var(--b5) + 1.20s);}
-.pn{animation:rise .5s var(--e) both calc(var(--b5) + 2.10s);}
+.pc1{animation:rise .5s var(--e) both calc(var(--b5) + 0.60s);}
+.pc2{animation:rise .5s var(--e) both calc(var(--b5) + 2.10s);}
+.pn{animation:rise .5s var(--e) both calc(var(--b5) + 4.20s);}
 
 .cta .k{animation:rise .5s var(--e) both calc(var(--b6) + 0.30s);}
 .cta .w{animation:pop .6s var(--eEmph) both calc(var(--b6) + 0.62s);}
@@ -285,13 +332,24 @@ body{background:#151311;display:flex;justify-content:center;align-items:flex-sta
             <span class="doc">router</span><span class="badge">model tiers</span></div>
           <div class="p-body">
 
-            <!-- 1. the constraint: three doors, no way to know which -->
+            <!-- 1. the constraint: four doors, no way to know which -->
             <div class="st st1">
               <div class="tiers">
-                <div class="tier"><span class="q q1">?</span><div class="n">Lite</div><div class="m">Haiku</div><div class="u">cheapest</div></div>
-                <div class="tier"><span class="q q2">?</span><div class="n">Smart</div><div class="m">Sonnet</div><div class="u">middle</div></div>
-                <div class="tier"><span class="q q3">?</span><div class="n">Deep</div><div class="m">Opus</div><div class="u">most expensive</div></div>
+                <div class="tier"><span class="q q1">?</span><div class="n">Lite</div>
+                  <div class="m">Haiku <b>4.5</b></div><div class="eff">effort low</div>
+                  <div class="cost"><u>1x</u><em>cost</em></div><div class="u">cheapest</div></div>
+                <div class="tier"><span class="q q2">?</span><div class="n">Smart</div>
+                  <div class="m">Sonnet <b>5</b></div><div class="eff">effort high</div>
+                  <div class="cost"><u>3x</u><em>cost</em></div><div class="u">middle</div></div>
+                <div class="tier"><span class="q q3">?</span><div class="n">Deep</div>
+                  <div class="m">Opus <b>5</b></div><div class="eff">effort xhigh</div>
+                  <div class="cost"><u>5x</u><em>cost</em></div><div class="u">expensive</div></div>
+                <div class="tier"><span class="q q4">?</span><div class="n">Frontier</div>
+                  <div class="m">Fable <b>5</b></div><div class="eff">effort max</div>
+                  <div class="cost"><u>10x</u><em>cost</em></div><div class="u">most expensive</div></div>
               </div>
+              <div class="ask"><span class="l">the question</span>
+                <span class="r">which one, before you see a single word of output</span></div>
             </div>
 
             <!-- 2. the action: plain English, and three choices you stop making -->
@@ -312,25 +370,34 @@ body{background:#151311;display:flex;justify-content:center;align-items:flex-sta
               </div>
             </div>
 
-            <!-- 4. the pick, with the documented mapping -->
+            <!-- 4. the pick: model AND effort, on the documented mapping -->
             <div class="st st4">
               <div class="tiers">
-                <div class="tier on t1"><div class="n">Lite</div><div class="m">Haiku</div><div class="u">lookups, classifying, high volume</div></div>
-                <div class="tier dim t2"><div class="n">Smart</div><div class="m">Sonnet</div><div class="u">the standing default</div></div>
-                <div class="tier dim t3"><div class="n">Deep</div><div class="m">Opus</div><div class="u">hard judgement, strategy</div></div>
+                <div class="tier on t1"><div class="n">Lite</div>
+                  <div class="m">Haiku <b>4.5</b></div><div class="eff">effort low</div>
+                  <div class="cost"><u>1x</u><em>cost</em></div><div class="u">lookups, classifying, high volume</div></div>
+                <div class="tier dim t2"><div class="n">Smart</div>
+                  <div class="m">Sonnet <b>5</b></div><div class="eff">effort high</div>
+                  <div class="cost"><u>3x</u><em>cost</em></div><div class="u">the standing default</div></div>
+                <div class="tier dim t3"><div class="n">Deep</div>
+                  <div class="m">Opus <b>5</b></div><div class="eff">effort xhigh</div>
+                  <div class="cost"><u>5x</u><em>cost</em></div><div class="u">hard judgement, strategy</div></div>
+                <div class="tier dim t4"><div class="n">Frontier</div>
+                  <div class="m">Fable <b>5</b></div><div class="eff">effort max</div>
+                  <div class="cost"><u>10x</u><em>cost</em></div><div class="u">long horizon, cannot be wrong</div></div>
               </div>
-              <div class="paynote tnote"><span class="l">routed</span><span class="r">Lite &middot; Haiku</span></div>
+              <div class="paynote tnote"><span class="l">routed</span><span class="r">Haiku 4.5 &middot; effort low</span></div>
             </div>
 
-            <!-- 5. the payoff -->
+            <!-- 5. the payoff, including the tier you almost never need -->
             <div class="st st5">
               <div class="pay">
                 <div class="c pc1"><div class="n">You pick</div><div class="big">nothing</div>
-                  <div class="sub">the job decides the tier, per turn</div></div>
-                <div class="c pc2"><div class="n">Lite vs Smart</div><div class="big">3x</div>
-                  <div class="sub">cheaper on the work that never needed more</div></div>
+                  <div class="sub">the job decides model and effort, per turn</div></div>
+                <div class="c pc2"><div class="n">Opus 5 vs Fable 5</div><div class="big">half</div>
+                  <div class="sub">the price, and it still takes the hard judgement</div></div>
               </div>
-              <div class="paynote pn"><span class="l">never again</span><span class="r">Opus for a lookup</span></div>
+              <div class="paynote pn"><span class="l">so</span><span class="r">Fable stays rare, Opus 5 does the work</span></div>
             </div>
 
           </div>

@@ -192,6 +192,25 @@ timing is:
 Exits accelerate and run shorter than entrances (0.14s against 0.22s). What arrives matters
 more than what leaves.
 
+### Reveal a row of four as a set, then move the selection
+
+Three cards can be revealed one per spoken clause. Four cannot: at 152px of usable width per
+column, three empty slots for two seconds reads as a half built table, which is exactly the
+airiness CLAUDE.md 27.9 rejects. Episode 03 lands all four in a **120ms micro cascade** and
+moves the voice sync onto the *selection* instead, so the row is complete at every frame and
+each card brightens as the narration names it.
+
+The second animation on a card must fill **forwards**. A later `both` filled animation
+back-fills its `0%` keyframe to t=0 and wins, which shows every card on the opening frame.
+Same trap as the scene fills, and it looks like a rendering bug rather than a CSS mistake.
+
+**Size the panel to its tallest state.** Episode 03's body was 513px against states of 152
+to 351px, leaving 59 to 158px of empty panel above and below every one of them. Measure the
+content height of each `.st` in the browser, set `min-height` to the tallest plus padding,
+then push the panel's travel distance out by however much it shrank so it still lands in the
+same place. 513 to 420 took the worst dead band from 158px to 41px, and the guard's own
+reading from a passing but soft number to 36px.
+
 ## Word budget
 
 **Measure the voice before writing the script.** The Tibi voice runs about **3.3 words per
@@ -221,6 +240,23 @@ Anything approaching a second is a hole. Aim for 90%+ speech coverage.
 runs long gets a longer window, and its objects can finish early and leave the frame static.
 Beat 3 of episode 01 stretched to 7.2s while its card finished building in 3.6s, so its rows
 were respread to land across the whole window.
+
+The same lever measured again on the episode 03 rewrite: a beat listing four models as four
+sentences ran the whole take at **195 wpm over 41.2s**; joining them into one sentence with
+commas took it to **219 wpm over 36.8s** with identical wording. Four full stops cost 4.4
+seconds. Write lists as one comma sentence unless the pause is doing real work.
+
+**Sync the picture to the measured word, not to a guess.** Dump the word timings out of the
+alignment cache and read the offsets straight off it:
+
+```python
+words = words_from(json.load(open("content/<film>-vo.align.json"))["alignment"])
+[(w, round(s - b4, 2)) for w, s, _ in words if w.strip(".,").lower() in NAMES]
+```
+
+Episode 03's four tier cards pulse at b4+2.10 / +4.00 / +6.00 / +8.45 against spoken
+Haiku 2.00 / Sonnet 3.93 / Opus 5.91 / Fable 8.18. Landing 0.1s behind the word reads as the
+picture confirming the narration; landing ahead of it reads as a mistake.
 
 The renderer calls `_scrub.py` last, which strips MP4 metadata and stamps operator
 authorship (CLAUDE.md 28). Never ship a freshly rendered file that skipped it.
