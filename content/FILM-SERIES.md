@@ -113,8 +113,28 @@ a title sequence:
 Declare the episode's hero words in FILM-META as `"accent":[...]`. Everything else is decided
 by `weigh()` in `_film.py`, so a new episode gets the treatment for free.
 
-Chunks cycle their anchor (left, indented, right, centre) so the eye is not pinned to one
-margin for the length of the film, and the hook's lines do the same.
+### The band composes on three lines
+
+The caption band is 404px, which is three lines, and using one of them is what makes a
+subtitle rail. Phrases are chunked long enough to fill the band (up to 8 words, breaking at a
+clause only once there are 4), then `layout_lines()` breaks them with a rhythm rather than
+wrapping them:
+
+- a **hero word gets its own line**, so nothing competes with it
+- everything else groups into runs of up to 3 words or 18 characters
+- **each line takes its own anchor** (left, indented, right), cycled by chunk plus line index
+  so no two lines stack flush on the same margin
+
+```
+nothing else, and          So you   stop            All of it
+      CORTEX                        opening            ranked
+reads the company first,                          into one page,
+```
+
+**Depth through speed** (choreography rules): the line carrying a hero or key word is
+foreground and lands at full speed; supporting lines sit back and take 1.2x as long. Combined
+with the **1/3 elements rule**, only one line is ever in active motion, because the words
+arrive on the voice.
 
 **Motion identity: Premium** (from the `motion-design` skill). One signature curve
 `cubic-bezier(.4,0,.2,1)` for most moves, `cubic-bezier(.05,.7,.1,1)` for entrances that must

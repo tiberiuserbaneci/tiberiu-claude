@@ -86,7 +86,7 @@ body{background:#2A2724;display:flex;justify-content:center;align-items:flex-sta
   text-transform:uppercase;color:rgba(58,54,46,.52);}
 .mast i{color:var(--book);font-style:normal;}
 .stage{flex:1;min-height:0;position:relative;}
-.head{flex-shrink:0;height:340px;position:relative;}
+.head{flex-shrink:0;height:404px;position:relative;}
 .foot{flex-shrink:0;display:flex;align-items:center;gap:14px;}
 .foot img{width:34px;height:34px;border-radius:50%;object-fit:cover;}
 .foot span{font-family:'DM Mono',monospace;font-size:21px;font-weight:500;
@@ -138,18 +138,20 @@ body{background:#2A2724;display:flex;justify-content:center;align-items:flex-sta
 
 .sb{position:absolute;inset:0;}
 /* Chunks alternate their anchor so the eye is not pinned to one margin for 25 seconds. */
-.ck{position:absolute;inset:0;opacity:0;display:flex;flex-wrap:wrap;
-  align-items:baseline;align-content:center;gap:0 20px;line-height:1.02;}
-.ck.L{justify-content:flex-start;}
-.ck.C{justify-content:center;}
-.ck.R{justify-content:flex-end;}
-.ck.I{justify-content:flex-start;padding-left:150px;}
+.ck{position:absolute;inset:0;opacity:0;display:flex;flex-direction:column;
+  justify-content:center;gap:2px;}
+/* Each LINE takes its own anchor. Stacking every line flush left is what made the band
+   read as a subtitle rail instead of a composition. */
+.cl{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 18px;line-height:.96;}
+.cl.L{justify-content:flex-start;}
+.cl.R{justify-content:flex-end;}
+.cl.I{justify-content:flex-start;padding-left:132px;}
 .sw{position:relative;display:inline-block;opacity:0;color:var(--ink);
-  font-weight:800;font-size:64px;letter-spacing:-2px;}
-.sw.fn{font-size:38px;font-weight:500;letter-spacing:-.4px;color:rgba(58,54,46,.48);}
-.sw.mid{font-size:64px;}
-.sw.key{font-size:86px;font-weight:900;letter-spacing:-3px;}
-.sw.hero{font-size:104px;font-weight:900;letter-spacing:-3.6px;color:var(--book);}
+  font-weight:800;font-size:58px;letter-spacing:-1.8px;}
+.sw.fn{font-size:34px;font-weight:500;letter-spacing:-.4px;color:rgba(58,54,46,.48);}
+.sw.mid{font-size:58px;}
+.sw.key{font-size:78px;font-weight:900;letter-spacing:-2.6px;}
+.sw.hero{font-size:96px;font-weight:900;letter-spacing:-3.6px;color:var(--book);}
 /* entrances, picked per word class: quiet words drift, heavy words arrive */
 @keyframes kRise {from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
 @keyframes kDrop {from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:none}}

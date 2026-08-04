@@ -207,23 +207,54 @@ def weigh(word: str, accents: set[str]) -> str:
     return "mid"
 
 
-def chunk_words(words, max_words=4, max_chars=26):
+def chunk_words(words, max_words=8, max_chars=62, min_words=4):
     """Group spoken words into caption-sized phrases.
 
-    Breaking after clause punctuation keeps a chunk from straddling a pause, which is what
-    makes an auto-caption feel machine made.
+    Chunks are deliberately long enough to fill three lines. Breaking at every comma gave
+    one-word captions that sat on a single row all film, which throws away the band.
+    A clause break only lands once the chunk has enough words to compose with.
     """
     chunks, cur = [], []
     for w in words:
         cur.append(w)
         text = " ".join(x[0] for x in cur)
         ends_clause = w[0][-1] in ".,:;"
-        if len(cur) >= max_words or len(text) >= max_chars or ends_clause:
+        if (len(cur) >= max_words or len(text) >= max_chars
+                or (ends_clause and len(cur) >= min_words)):
             chunks.append(cur)
             cur = []
     if cur:
         chunks.append(cur)
     return chunks
+
+
+def layout_lines(chunk, accents, max_lines=3):
+    """Break a phrase across the band's three lines with a deliberate rhythm.
+
+    A hero word is given its own line so nothing competes with it. Everything else groups
+    into short runs, which produces the uneven short/long/short shape that reads as composed
+    rather than as wrapped text.
+    """
+    lines, cur = [], []
+    for w in chunk:
+        cls = weigh(w[0], accents)
+        if cls == "hero":
+            if cur:
+                lines.append(cur)
+            lines.append([(w, cls)])
+            cur = []
+            continue
+        cur.append((w, cls))
+        if len(cur) >= 3 or sum(len(x[0][0]) for x in cur) >= 18:
+            lines.append(cur)
+            cur = []
+    if cur:
+        lines.append(cur)
+    # fold any overflow back into the last line rather than spilling out of the band
+    while len(lines) > max_lines:
+        lines[-2] = lines[-2] + lines[-1]
+        lines.pop()
+    return lines
 
 
 def build_captions(meta: dict, words: list, hook_end: float,
@@ -300,21 +331,28 @@ def build_captions(meta: dict, words: list, hook_end: float,
         # exits accelerate away and run shorter than entrances: what arrives matters more
         css.append(f".ck{ci}{{animation:scin .22s var(--eStd) both {c_in:.2f}s,"
                    f"ckout .14s var(--eExit) forwards {c_out:.2f}s}}")
-        # anchor cycles so the eye is not pinned to one margin for 25 seconds
-        dom.append(f'<div class="ck {"LIRC"[ci % 4]} ck{ci}">')
-        for word, ws, _we in chunk:
-            n += 1
-            w = weigh(word, accents)
-            dur, ease, entrances = WEIGHT[w]
-            kf = entrances[n % len(entrances)]
-            dom.append(f'<span class="sw {w} sw{n}">{esc(word)}</span>')
-            anim = [f"{kf} {dur:.2f}s {ease} both {ws:.2f}s"]
-            if w in ("key", "mid"):
-                # read-along highlight: lands in book orange as it is spoken, settles to ink
-                anim.append(f"sbs .30s linear forwards {ws + dur:.2f}s")
-                css.append(f".sw{n}{{color:var(--book);animation:{','.join(anim)}}}")
-            else:
-                css.append(f".sw{n}{{animation:{','.join(anim)}}}")
+        dom.append(f'<div class="ck ck{ci}">')
+        rows = layout_lines(chunk, accents)
+        for li, row in enumerate(rows):
+            # every line takes its own anchor, so no two stack flush on the same margin
+            dom.append(f'<div class="cl {"LIR"[(ci + li) % 3]}">')
+            # depth through speed: the line carrying the weight is foreground and lands
+            # fastest, the supporting lines sit back and drift
+            lead = any(c in ("hero", "key") for _, c in row)
+            for (word, ws, _we), w in row:
+                n += 1
+                dur, ease, entrances = WEIGHT[w]
+                dur *= 1.0 if lead else 1.20
+                kf = entrances[n % len(entrances)]
+                dom.append(f'<span class="sw {w} sw{n}">{esc(word)}</span>')
+                anim = [f"{kf} {dur:.2f}s {ease} both {ws:.2f}s"]
+                if w in ("key", "mid"):
+                    # read-along highlight: arrives in book orange, settles to ink behind
+                    anim.append(f"sbs .30s linear forwards {ws + dur:.2f}s")
+                    css.append(f".sw{n}{{color:var(--book);animation:{','.join(anim)}}}")
+                else:
+                    css.append(f".sw{n}{{animation:{','.join(anim)}}}")
+            dom.append("</div>")
         dom.append("</div>")
     dom.append("</div>")
     return "".join(dom), "".join(css)
