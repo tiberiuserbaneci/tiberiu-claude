@@ -30,12 +30,15 @@ apart. Roughly 50 spoken words across 26 seconds.
 
 | Beat | Window | Job | Episode 01 |
 |------|--------|-----|-----------|
-| 1 | 0.0 - 6.5s | The constraint everyone lives with | Research eats the first hour |
-| 2 | 6.5 - 10.0s | The one action that changes it | You paste one domain |
-| 3 | 10.0 - 15.5s | Mechanism A, shown not claimed | CORTEX reads the company |
-| 4 | 15.5 - 19.0s | Mechanism B, going deeper | And the person who signs |
-| 5 | 19.0 - 23.0s | The payoff, named and granular | One ranked brief |
-| 6 | 23.0 - 26.0s | CTA | COMMENT CORTEX |
+| 1 | 0.0 - 5.6s | The constraint everyone lives with | Research eats the first hour |
+| 2 | 5.6 - 9.8s | The one action that changes it | You paste one domain |
+| 3 | 9.8 - 15.3s | Mechanism A, shown not claimed | CORTEX reads the company |
+| 4 | 15.3 - 19.0s | Mechanism B, going deeper | And the person who signs |
+| 5 | 19.0 - 22.5s | The payoff, named and granular | One ranked brief |
+| 6 | 22.5 - 25.5s | CTA | COMMENT CORTEX |
+
+Those windows are measured off episode 01's take, not chosen. Write the script first, let
+the recording place the cuts.
 
 Rules that carry the format:
 
@@ -72,9 +75,57 @@ python3 content/_film.py <file>.html            # narrated mp4 next to the html
 ```
 
 Voiceover needs `ELEVENLABS_API_KEY` and `ELEVEN_VOICE_ID` in the environment. **Never
-commit them.** Without them the film still renders, silent, with beat timings unchanged.
-Each beat is a separate request laid onto a silent bed at its declared mark, so picture and
-voice stay locked: a sentence that runs long never pushes the visuals.
+commit them.** Without them the film still renders, silent, on the authored beat marks.
+
+## The voice drives the picture
+
+The narration is **one unbroken take**, not six clips stitched together. Stitched clips each
+carry their own lead-in and tail silence, roughly a second of dead air across six cuts, and
+the seams are audible. One take also lets the voice carry prosody across sentence
+boundaries.
+
+So the picture follows the voice rather than the other way round. ElevenLabs returns
+character-level timestamps, `_film.py` reads off when each beat's sentence actually starts,
+and writes those into the page's `--b1..--b6` beat clock. Every animation delay is expressed
+against that clock:
+
+```css
+.h3{animation:rise .7s var(--e) both calc(var(--b3) + .55s), ...}
+```
+
+A line that runs long moves its own cut with it. The visual for a sentence can never appear
+before the sentence is spoken, and the film's length is set by the take (last word plus a
+0.7s tail), so it never outlives the narration or clips it.
+
+## Word budget
+
+**Measure the voice before writing the script.** The Tibi voice runs about **3.3 words per
+second, 200 wpm**, so a film needs roughly **3.3 words for every second** you want covered.
+Episode 01 is 92 words over 28 seconds.
+
+Coming in under budget is the failure mode. 43 words left the first cut of episode 01 at 45%
+speech and it read as unfinished; 92 words puts it at 94%. Run `--vo-only` and check the
+reported w/s before committing to a render.
+
+**Punctuation sets the pauses, not word count.** ElevenLabs takes a long breath at a full
+stop, so a period between two beats is worth roughly a second of dead air. Episode 01 had a
+0.96s hole at one beat boundary that no amount of extra words would close. Ending that beat
+on a comma and opening the next with `and` cut it to 0.17s.
+
+Check the result rather than assuming:
+
+```bash
+ffmpeg -i content/<film>-vo.mp3 -af silencedetect=noise=-40dB:d=0.35 -f null - 2>&1 \
+  | grep silence_duration
+```
+
+Pauses of 0.3 to 0.5s are rhythm and worth keeping, especially the one before the CTA.
+Anything approaching a second is a hole. Aim for 90%+ speech coverage.
+
+**Re-check the beat windows after recording.** The take decides them, so a beat whose line
+runs long gets a longer window, and its objects can finish early and leave the frame static.
+Beat 3 of episode 01 stretched to 7.2s while its card finished building in 3.6s, so its rows
+were respread to land across the whole window.
 
 The renderer calls `_scrub.py` last, which strips MP4 metadata and stamps operator
 authorship (CLAUDE.md 28). Never ship a freshly rendered file that skipped it.

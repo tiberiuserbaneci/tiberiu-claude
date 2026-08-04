@@ -3,17 +3,21 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* FILM-META {"duration":26,"w":1080,"h":1920,"fps":30,"beats":[
-  {"t":0.4,  "vo":"Research eats the first hour of every deal."},
-  {"t":6.9,  "vo":"You paste one domain."},
-  {"t":10.4, "vo":"CORTEX reads the company. Sector, size, and the signals that matter."},
-  {"t":15.9, "vo":"And the person who signs."},
-  {"t":19.4, "vo":"One ranked brief. Before your coffee is cold."},
-  {"t":23.2, "vo":"Comment CORTEX for the exact Claude workflow."}]} */
+  {"t":0.0,  "vo":"Research eats the first hour of every deal. LinkedIn for the person, the company site for the pitch, the news for timing."},
+  {"t":6.5,  "vo":"So you stop opening tabs, and you paste one domain instead, nothing else,"},
+  {"t":10.0, "vo":"and CORTEX reads the company first, sector, size, region, the stack they already pay for, and the signals that matter."},
+  {"t":15.5, "vo":"Then the one person who signs, what they own, and what they posted."},
+  {"t":19.0, "vo":"All of it ranked into one page, sitting there before your coffee goes cold."},
+  {"t":23.0, "vo":"Comment CORTEX and I will send you the exact workflow."}]} */
 
 /* ULTRON STACK 01 - CORTEX. REALNUMBERS light system (CLAUDE.md 8).
    Every element rides its own animation-delay on one wall clock, so _film.py can seek
    document.getAnimations().currentTime to any moment and get that exact frame back.
    BEATS 0.0 constraint | 6.5 action | 10.0 company | 15.5 person | 19.0 brief | 23.0 cta
+   The narration is one unbroken take: 92 words at this voice's measured 3.3 w/s covers 94%
+   of the film, and the beat boundaries lean on commas rather than full stops because a
+   period there costs a full second of breath. The marks above are only the standalone
+   fallback: _film.py overwrites --b1..--b6 with times measured from the recording itself.
    SAFE  top 300 / right 130 / bottom 330 / left 70 (CLAUDE.md 9) -> band 880x1290 */
 :root{
   --paper:#F5ECE3; --paper2:#EFEBE0; --white:#FAF9F7;
@@ -21,6 +25,9 @@
   --book:#C84623; --edit:#D26446; --deep:#BE4628;
   --term:#13191E; --term2:#1B2229;
   --e:cubic-bezier(.2,.85,.25,1);
+  /* Beat clock. _film.py overwrites these from the measured voiceover so every cut
+     lands on the word that motivates it; these defaults keep the page playable alone. */
+  --b1:0s; --b2:6.5s; --b3:10s; --b4:15.5s; --b5:19s; --b6:23s;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:#2A2724;display:flex;justify-content:center;align-items:flex-start;
@@ -94,17 +101,17 @@ body{background:#2A2724;display:flex;justify-content:center;align-items:flex-sta
 .hl.sm{font-size:74px;letter-spacing:-2.2px;}
 
 /* scene in/out */
-.s1{animation:scin .5s both .25s, scout .45s ease-in forwards 6.30s;}
-.s2{animation:scin .5s both 6.70s,scout .45s ease-in forwards 9.80s;}
-.s3{animation:scin .5s both 10.20s,scout .45s ease-in forwards 15.30s;}
-.s4{animation:scin .5s both 15.70s,scout .45s ease-in forwards 18.80s;}
-.s5{animation:scin .5s both 19.20s,scout .45s ease-in forwards 22.80s;}
-.s6{animation:scin .5s both 23.15s;}
-.h1{animation:rise .7s var(--e) both .95s, scout .4s ease-in forwards 6.30s;}
-.h2{animation:rise .7s var(--e) both 7.05s,scout .4s ease-in forwards 9.80s;}
-.h3{animation:rise .7s var(--e) both 10.55s,scout .4s ease-in forwards 15.30s;}
-.h4{animation:rise .7s var(--e) both 15.95s,scout .4s ease-in forwards 18.80s;}
-.h5{animation:rise .7s var(--e) both 19.45s,scout .4s ease-in forwards 22.80s;}
+.s1{animation:scin .5s both calc(var(--b1) + 0.25s), scout .45s ease-in forwards calc(var(--b2) - 0.2s);}
+.s2{animation:scin .5s both calc(var(--b2) + 0.2s),scout .45s ease-in forwards calc(var(--b3) - 0.2s);}
+.s3{animation:scin .5s both calc(var(--b3) + 0.2s),scout .45s ease-in forwards calc(var(--b4) - 0.2s);}
+.s4{animation:scin .5s both calc(var(--b4) + 0.2s),scout .45s ease-in forwards calc(var(--b5) - 0.2s);}
+.s5{animation:scin .5s both calc(var(--b5) + 0.2s),scout .45s ease-in forwards calc(var(--b6) - 0.2s);}
+.s6{animation:scin .5s both calc(var(--b6) + 0.15s);}
+.h1{animation:rise .7s var(--e) both calc(var(--b1) + 0.95s), scout .4s ease-in forwards calc(var(--b2) - 0.2s);}
+.h2{animation:rise .7s var(--e) both calc(var(--b2) + 0.55s),scout .4s ease-in forwards calc(var(--b3) - 0.2s);}
+.h3{animation:rise .7s var(--e) both calc(var(--b3) + 0.55s),scout .4s ease-in forwards calc(var(--b4) - 0.2s);}
+.h4{animation:rise .7s var(--e) both calc(var(--b4) + 0.45s),scout .4s ease-in forwards calc(var(--b5) - 0.2s);}
+.h5{animation:rise .7s var(--e) both calc(var(--b5) + 0.45s),scout .4s ease-in forwards calc(var(--b6) - 0.2s);}
 
 /* ---------- S1 the constraint: research tabs piling onto one prospect ---------- */
 .fan{position:relative;width:880px;height:470px;}
@@ -120,16 +127,16 @@ body{background:#2A2724;display:flex;justify-content:center;align-items:flex-sta
 .tab .u b{color:var(--book);font-weight:500;}
 .tab .l{height:11px;margin:0 18px 16px;border-radius:6px;background:rgba(17,17,17,.075);}
 .tab .l.s{width:52%;}
-.t1{--r:-7deg;top:0;left:6px;   animation:riseR .75s var(--e) both .40s;}
-.t2{--r:-2.5deg;top:96px;left:118px;animation:riseR .75s var(--e) both 1.15s;}
-.t3{--r:3deg;  top:194px;left:250px;animation:riseR .75s var(--e) both 1.90s;}
-.t4{--r:7.5deg;top:292px;left:382px;animation:riseR .75s var(--e) both 2.65s;}
+.t1{--r:-7deg;top:0;left:6px;   animation:riseR .75s var(--e) both calc(var(--b1) + 0.4s);}
+.t2{--r:-2.5deg;top:96px;left:118px;animation:riseR .75s var(--e) both calc(var(--b1) + 1.15s);}
+.t3{--r:3deg;  top:194px;left:250px;animation:riseR .75s var(--e) both calc(var(--b1) + 1.9s);}
+.t4{--r:7.5deg;top:292px;left:382px;animation:riseR .75s var(--e) both calc(var(--b1) + 2.65s);}
 .cap{margin-top:34px;font-family:'DM Mono',monospace;font-size:25px;letter-spacing:.05em;
-  color:rgba(58,54,46,.60);opacity:0;animation:rise .6s var(--e) both 3.70s;}
+  color:rgba(58,54,46,.60);opacity:0;animation:rise .6s var(--e) both calc(var(--b1) + 3.7s);}
 .cap b{color:var(--book);font-weight:500;}
 .clock{position:absolute;top:20px;right:0;display:flex;align-items:center;gap:13px;
   padding:12px 22px;border-radius:999px;background:rgba(200,70,35,.10);
-  border:1px solid rgba(200,70,35,.30);opacity:0;animation:pop .55s var(--e) both 4.60s;}
+  border:1px solid rgba(200,70,35,.30);opacity:0;animation:pop .55s var(--e) both calc(var(--b1) + 4.6s);}
 .clock s{width:15px;height:15px;border-radius:50%;background:var(--book);text-decoration:none;}
 .clock span{font-family:'DM Mono',monospace;font-size:24px;font-weight:500;color:var(--deep);
   letter-spacing:.06em;}
@@ -138,17 +145,17 @@ body{background:#2A2724;display:flex;justify-content:center;align-items:flex-sta
 .field{width:800px;display:flex;align-items:stretch;border-radius:18px;background:var(--white);
   border:1.5px solid rgba(17,17,17,.14);overflow:hidden;opacity:0;
   box-shadow:0 26px 52px -20px rgba(74,54,34,.40);
-  animation:rise .7s var(--e) both 6.80s;}
+  animation:rise .7s var(--e) both calc(var(--b2) + 0.3s);}
 .field .px{flex:1;display:flex;align-items:center;gap:4px;padding:0 30px;height:126px;}
 .field .pre{font-family:'DM Mono',monospace;font-size:30px;color:rgba(58,54,46,.40);}
 .field .typed{font-family:'DM Mono',monospace;font-size:34px;font-weight:500;color:var(--ink);
   overflow:hidden;white-space:nowrap;--ch:7ch;width:0;
-  animation:type .95s steps(7,end) both 7.05s;}
+  animation:type .95s steps(7,end) both calc(var(--b2) + 0.55s);}
 .field .car{width:3px;height:38px;background:var(--book);flex-shrink:0;
-  animation:blink .92s steps(1) infinite 7.05s;}
+  animation:blink .92s steps(1) infinite calc(var(--b2) + 0.55s);}
 .field .run{flex-shrink:0;display:flex;align-items:center;gap:11px;padding:0 34px;
   background:var(--book);color:#FFF6F1;font-size:24px;font-weight:900;letter-spacing:.10em;
-  opacity:0;animation:scin .4s both 8.10s;}
+  opacity:0;animation:scin .4s both calc(var(--b2) + 1.6s);}
 .field .run svg{width:20px;height:20px;stroke:#FFF6F1;stroke-width:2.8;fill:none;
   stroke-linecap:round;stroke-linejoin:round;}
 /* The beat is about what you STOP doing, so the skipped steps carry the frame instead of
@@ -156,16 +163,16 @@ body{background:#2A2724;display:flex;justify-content:center;align-items:flex-sta
 .skip{margin-top:44px;display:flex;flex-direction:column;align-items:center;gap:18px;}
 .skip .lb{font-family:'DM Mono',monospace;font-size:21px;letter-spacing:.20em;
   text-transform:uppercase;color:rgba(58,54,46,.42);opacity:0;
-  animation:rise .5s var(--e) both 8.35s;}
+  animation:rise .5s var(--e) both calc(var(--b2) + 1.85s);}
 .skip .rw{display:flex;gap:14px;}
 .skip .rw span{position:relative;padding:14px 24px;border-radius:12px;font-size:24px;
   font-weight:600;color:rgba(58,54,46,.46);background:rgba(17,17,17,.045);
   border:1px solid rgba(17,17,17,.09);white-space:nowrap;opacity:0;}
 .skip .rw span::after{content:'';position:absolute;left:16px;top:50%;height:2.5px;--w:calc(100% - 32px);
   width:0;background:var(--book);border-radius:2px;}
-.k1{animation:rise .5s var(--e) both 8.55s;} .k1::after{animation:grow .32s var(--e) both 8.72s;}
-.k2{animation:rise .5s var(--e) both 8.72s;} .k2::after{animation:grow .32s var(--e) both 8.89s;}
-.k3{animation:rise .5s var(--e) both 8.89s;} .k3::after{animation:grow .32s var(--e) both 9.06s;}
+.k1{animation:rise .5s var(--e) both calc(var(--b2) + 2.05s);} .k1::after{animation:grow .32s var(--e) both calc(var(--b2) + 2.22s);}
+.k2{animation:rise .5s var(--e) both calc(var(--b2) + 2.22s);} .k2::after{animation:grow .32s var(--e) both calc(var(--b2) + 2.39s);}
+.k3{animation:rise .5s var(--e) both calc(var(--b2) + 2.39s);} .k3::after{animation:grow .32s var(--e) both calc(var(--b2) + 2.56s);}
 
 /* ---------- S3 + S4 shared card shell ---------- */
 .card{width:850px;border-radius:20px;background:var(--white);
@@ -184,23 +191,23 @@ body{background:#2A2724;display:flex;justify-content:center;align-items:flex-sta
   text-transform:uppercase;color:var(--book);width:126px;flex-shrink:0;}
 .row .v{font-size:27px;font-weight:700;color:var(--ink);letter-spacing:-.3px;line-height:1.2;}
 .row .v i{color:rgba(58,54,46,.52);font-style:normal;font-weight:500;}
-.r1{animation:rise .6s var(--e) both 10.40s;} .r2{animation:rise .6s var(--e) both 10.88s;}
-.r3{animation:rise .6s var(--e) both 11.36s;} .r4{animation:rise .6s var(--e) both 11.84s;}
-.r5{animation:rise .6s var(--e) both 12.32s;border-bottom:none;}
+.r1{animation:rise .6s var(--e) both calc(var(--b3) + 0.9s);} .r2{animation:rise .6s var(--e) both calc(var(--b3) + 1.7s);}
+.r3{animation:rise .6s var(--e) both calc(var(--b3) + 2.5s);} .r4{animation:rise .6s var(--e) both calc(var(--b3) + 3.3s);}
+.r5{animation:rise .6s var(--e) both calc(var(--b3) + 4.1s);border-bottom:none;}
 .fitbar{display:flex;align-items:center;gap:18px;padding:20px 26px;background:rgba(200,70,35,.07);
-  border-top:1px solid rgba(200,70,35,.20);opacity:0;animation:rise .6s var(--e) both 13.30s;}
+  border-top:1px solid rgba(200,70,35,.20);opacity:0;animation:rise .6s var(--e) both calc(var(--b3) + 5.2s);}
 .fitbar .t{font-family:'DM Mono',monospace;font-size:20px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--deep);}
 .fitbar .track{flex:1;height:12px;border-radius:6px;background:rgba(200,70,35,.16);overflow:hidden;}
 .fitbar .track s{display:block;height:100%;border-radius:6px;--w:84%;width:0;
   background:linear-gradient(90deg,var(--edit),var(--book));text-decoration:none;
-  animation:grow .9s var(--e) both 13.60s;}
+  animation:grow .9s var(--e) both calc(var(--b3) + 5.5s);}
 .fitbar .n{font-size:29px;font-weight:900;color:var(--deep);letter-spacing:-.5px;}
 
 /* S4 person */
 .who{display:flex;align-items:center;gap:22px;padding:24px 26px;
   border-bottom:1px solid rgba(17,17,17,.08);opacity:0;
-  animation:rise .6s var(--e) both 15.85s;}
+  animation:rise .6s var(--e) both calc(var(--b4) + 0.35s);}
 .who .av{width:76px;height:76px;border-radius:50%;flex-shrink:0;display:flex;
   align-items:center;justify-content:center;font-size:29px;font-weight:900;color:#FFF6F1;
   background:linear-gradient(150deg,var(--edit),var(--deep));letter-spacing:-.5px;
@@ -211,8 +218,8 @@ body{background:#2A2724;display:flex;justify-content:center;align-items:flex-sta
 .who .sig{margin-left:auto;padding:9px 18px;border-radius:999px;font-family:'DM Mono',monospace;
   font-size:18px;letter-spacing:.12em;text-transform:uppercase;color:var(--deep);
   background:rgba(200,70,35,.11);border:1px solid rgba(200,70,35,.28);}
-.p1{animation:rise .6s var(--e) both 16.30s;} .p2{animation:rise .6s var(--e) both 16.80s;}
-.p3{animation:rise .6s var(--e) both 17.30s;border-bottom:none;}
+.p1{animation:rise .6s var(--e) both calc(var(--b4) + 0.8s);} .p2{animation:rise .6s var(--e) both calc(var(--b4) + 1.3s);}
+.p3{animation:rise .6s var(--e) both calc(var(--b4) + 1.8s);border-bottom:none;}
 
 /* ---------- S5 the brief (dark, the one inversion in the film) ---------- */
 .term{width:850px;border-radius:20px;background:var(--term);overflow:hidden;
@@ -232,11 +239,11 @@ body{background:#2A2724;display:flex;justify-content:center;align-items:flex-sta
   line-height:1.16;}
 .brow .x span{display:block;font-family:'DM Mono',monospace;font-size:20px;
   color:rgba(250,249,247,.46);margin-top:6px;line-height:1.3;}
-.q1{animation:rise .6s var(--e) both 19.70s;} .q2{animation:rise .6s var(--e) both 20.22s;}
-.q3{animation:rise .6s var(--e) both 20.74s;border-bottom:none;}
+.q1{animation:rise .6s var(--e) both calc(var(--b5) + 0.7s);} .q2{animation:rise .6s var(--e) both calc(var(--b5) + 1.22s);}
+.q3{animation:rise .6s var(--e) both calc(var(--b5) + 1.74s);border-bottom:none;}
 .stamp{display:flex;align-items:center;justify-content:space-between;padding:20px 30px;
   background:rgba(200,70,35,.14);border-top:1px solid rgba(210,100,70,.28);opacity:0;
-  animation:rise .6s var(--e) both 21.55s;}
+  animation:rise .6s var(--e) both calc(var(--b5) + 2.55s);}
 .stamp .l{font-family:'DM Mono',monospace;font-size:20px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--edit);}
 .stamp .r{font-size:26px;font-weight:900;color:#FAF9F7;letter-spacing:-.4px;}
@@ -244,15 +251,15 @@ body{background:#2A2724;display:flex;justify-content:center;align-items:flex-sta
 /* ---------- S6 CTA ---------- */
 .cta{display:flex;flex-direction:column;align-items:center;}
 .cta .k{font-size:44px;font-weight:900;letter-spacing:.20em;color:var(--ink2);opacity:0;
-  animation:rise .6s var(--e) both 23.30s;}
+  animation:rise .6s var(--e) both calc(var(--b6) + 0.3s);}
 .cta .w{font-size:158px;font-weight:900;letter-spacing:-5px;color:var(--book);line-height:1;
   margin-top:8px;opacity:0;text-shadow:0 14px 34px rgba(200,70,35,.26);
-  animation:pop .65s var(--e) both 23.62s;}
+  animation:pop .65s var(--e) both calc(var(--b6) + 0.62s);}
 .cta svg{width:64px;height:64px;margin-top:32px;stroke:var(--edit);stroke-width:2.4;fill:none;
   stroke-linecap:round;stroke-linejoin:round;opacity:0;
-  animation:pop .55s var(--e) both 24.22s;}
+  animation:pop .55s var(--e) both calc(var(--b6) + 1.22s);}
 .cta .s{margin-top:24px;font-family:'DM Mono',monospace;font-size:27px;letter-spacing:.05em;
-  color:rgba(58,54,46,.66);opacity:0;animation:rise .6s var(--e) both 24.62s;}
+  color:rgba(58,54,46,.66);opacity:0;animation:rise .6s var(--e) both calc(var(--b6) + 1.62s);}
 </style></head><body>
 <div id="film">
   <div class="bg">

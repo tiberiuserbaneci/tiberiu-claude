@@ -70,13 +70,18 @@ def read_meta(html: pathlib.Path) -> dict:
 
 # ---------------------------------------------------------------- voiceover
 
-def build_vo(meta: dict, out_mp3: pathlib.Path) -> pathlib.Path | None:
-    """Generate the narration with ElevenLabs. Returns None when unconfigured.
+def build_vo(meta: dict, out_mp3: pathlib.Path) -> tuple[pathlib.Path, list[float], float] | None:
+    """Narrate the film as one unbroken take. Returns (mp3, beat marks, duration).
 
-    Each beat is spoken as its own request so the audio can be laid down on the exact
-    beat mark the page declares. That keeps picture and voice locked together: the
-    visual never waits on a sentence that ran long, and a re-timed beat only needs a
-    re-render, not a re-record.
+    The beats are spoken in a single request rather than one clip per beat. Stitched clips
+    each carry their own lead-in and tail silence, which adds up to roughly a second of dead
+    air across six cuts and makes the narration sound assembled. One take also lets the voice
+    carry its own prosody across sentence boundaries.
+
+    The picture then follows the voice instead of the other way round: character-level
+    timestamps say when each beat's sentence actually begins, and those become the beat marks
+    the page animates on. A sentence that runs long moves its cut with it, so the visual for a
+    line can never appear before the line is spoken.
     """
     key = os.environ.get("ELEVENLABS_API_KEY")
     voice = os.environ.get("ELEVEN_VOICE_ID")
@@ -88,48 +93,59 @@ def build_vo(meta: dict, out_mp3: pathlib.Path) -> pathlib.Path | None:
         print("  vo     SKIP (no narrated beats)")
         return None
 
-    model = os.environ.get("ELEVEN_MODEL", "eleven_multilingual_v2")
-    tmp = out_mp3.parent / "_vo_parts"
-    tmp.mkdir(exist_ok=True)
-    parts = []
-    for i, b in enumerate(beats):
-        part = tmp / f"b{i:02d}.mp3"
-        if not part.exists():
-            req = urllib.request.Request(
-                f"https://api.elevenlabs.io/v1/text-to-speech/{voice}",
-                data=json.dumps({
-                    "text": b["vo"],
-                    "model_id": model,
-                    "voice_settings": {"stability": 0.5, "similarity_boost": 0.75,
-                                       "style": 0.0, "use_speaker_boost": True},
-                }).encode(),
-                headers={"xi-api-key": key, "Content-Type": "application/json"},
-            )
-            try:
-                with urllib.request.urlopen(req, timeout=120) as r:
-                    part.write_bytes(r.read())
-            except urllib.error.HTTPError as e:
-                print(f"  vo     FAIL beat {i}: HTTP {e.code} {e.read()[:200]!r} -> silent film")
-                return None
-        parts.append((b["t"], part))
-        print(f"  vo     beat {i} @ {b['t']:>5.1f}s  {b['vo'][:52]}")
+    # Character offset where each beat's line starts inside the joined script.
+    script, starts = "", []
+    for b in beats:
+        starts.append(len(script))
+        script += b["vo"] + " "
+    script = script.strip()
+    words = len(script.split())
 
-    # Lay every clip onto one silent bed at its beat mark.
-    ff = ffmpeg_bin()
-    cmd = [ff, "-y", "-f", "lavfi", "-t", str(meta["duration"]),
-           "-i", "anullsrc=channel_layout=stereo:sample_rate=44100"]
-    for _, p in parts:
-        cmd += ["-i", str(p)]
-    chains, mixes = [], ["[0:a]"]
-    for i, (t, _) in enumerate(parts, start=1):
-        chains.append(f"[{i}:a]adelay={int(t*1000)}|{int(t*1000)}[d{i}]")
-        mixes.append(f"[d{i}]")
-    filt = ";".join(chains) + ";" + "".join(mixes) + \
-        f"amix=inputs={len(parts)+1}:normalize=0:duration=first[a]"
-    cmd += ["-filter_complex", filt, "-map", "[a]", "-c:a", "libmp3lame",
-            "-b:a", "192k", str(out_mp3)]
-    subprocess.run(cmd, capture_output=True, check=True)
-    return out_mp3
+    model = os.environ.get("ELEVEN_MODEL", "eleven_multilingual_v2")
+    cache = out_mp3.with_suffix(".align.json")
+    if cache.exists():
+        payload = json.loads(cache.read_text())
+        if payload.get("script") != script:
+            payload = None                       # script edited, re-record
+    else:
+        payload = None
+
+    if payload is None:
+        req = urllib.request.Request(
+            f"https://api.elevenlabs.io/v1/text-to-speech/{voice}/with-timestamps",
+            data=json.dumps({
+                "text": script,
+                "model_id": model,
+                "voice_settings": {"stability": 0.5, "similarity_boost": 0.75,
+                                   "style": 0.0, "use_speaker_boost": True},
+            }).encode(),
+            headers={"xi-api-key": key, "Content-Type": "application/json"},
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=180) as r:
+                payload = json.loads(r.read())
+        except urllib.error.HTTPError as e:
+            print(f"  vo     FAIL HTTP {e.code} {e.read()[:200]!r} -> silent film")
+            return None
+        payload["script"] = script
+        cache.write_text(json.dumps(payload))
+
+    out_mp3.write_bytes(base64.b64decode(payload["audio_base64"]))
+    al = payload.get("alignment") or {}
+    cstart = al.get("character_start_times_seconds") or []
+    cend = al.get("character_end_times_seconds") or []
+    if not cstart:
+        print("  vo     WARN no alignment returned, keeping authored beat marks")
+        return out_mp3, [b["t"] for b in beats], meta["duration"]
+
+    marks = [round(cstart[min(i, len(cstart) - 1)], 2) for i in starts]
+    spoken = round(cend[-1], 2)
+    print(f"  vo     one take, {words} words in {spoken:.1f}s "
+          f"({words/spoken:.2f} w/s, {words/spoken*60:.0f} wpm)")
+    for i, (m, b) in enumerate(zip(marks, beats)):
+        gap = m - round(cend[max(0, starts[i] - 2)], 2) if i else 0.0
+        print(f"         beat {i+1} @ {m:>5.2f}s  (gap {gap:+.2f}s)  {b['vo'][:46]}")
+    return out_mp3, marks, spoken
 
 
 # ---------------------------------------------------------------- frame capture
@@ -151,8 +167,12 @@ def chromium_path() -> str | None:
     return None
 
 
-def _open_stage(p, html: pathlib.Path, meta: dict):
-    """Launch a browser on the film and return (browser, page, #film locator)."""
+def _open_stage(p, html: pathlib.Path, meta: dict, marks: list[float] | None = None):
+    """Launch a browser on the film and return (browser, page, #film locator).
+
+    `marks` overwrites the page's --b1..--bN beat clock with times measured from the
+    voiceover, so every cut lands on the word that motivates it.
+    """
     exe = chromium_path()
     if exe:
         print(f"  chrome {exe}")
@@ -162,6 +182,12 @@ def _open_stage(p, html: pathlib.Path, meta: dict):
     pg = b.new_page(viewport={"width": meta["w"], "height": meta["h"]},
                     device_scale_factor=1)
     pg.goto(html.resolve().as_uri())
+    if marks:
+        pg.evaluate("""ms => {
+            const r = document.documentElement;
+            ms.forEach((t, i) => r.style.setProperty(`--b${i+1}`, `${t}s`));
+        }""", marks)
+        print("  clock  " + "  ".join(f"b{i+1}={t:g}s" for i, t in enumerate(marks)))
     pg.wait_for_timeout(1200)              # webfonts
     pg.evaluate("document.fonts.ready")
     return b, pg, pg.locator("#film")
@@ -184,7 +210,8 @@ def grab_still(html: pathlib.Path, meta: dict, t_s: float, png: pathlib.Path) ->
 
 
 def render(html: pathlib.Path, meta: dict, fps: int, out: pathlib.Path,
-           audio: pathlib.Path | None, lossless: bool = False) -> None:
+           audio: pathlib.Path | None, lossless: bool = False,
+           marks: list[float] | None = None) -> None:
     from playwright.sync_api import sync_playwright
 
     # PNG encoding dominates the render (863ms vs 113ms per frame measured at 1080x1920),
@@ -207,7 +234,7 @@ def render(html: pathlib.Path, meta: dict, fps: int, out: pathlib.Path,
                             stderr=subprocess.PIPE)
     import time
     with sync_playwright() as p:
-        b, pg, stage = _open_stage(p, html, meta)
+        b, pg, stage = _open_stage(p, html, meta, marks)
         got = pg.evaluate("document.getAnimations().length")
         if not got:
             print("  WARN   page declares no animations - output will be a still")
@@ -257,15 +284,23 @@ def main() -> None:
         print(f"  OK     {png}")
         return
 
-    vo = None if a.no_audio else build_vo(meta, html.with_name(html.stem + "-vo.mp3"))
+    built = None if a.no_audio else build_vo(meta, html.with_name(html.stem + "-vo.mp3"))
     if a.vo_only:
-        print(f"  vo     {'written' if vo else 'not built'}")
+        print(f"  vo     {'written' if built else 'not built'}")
         return
+
+    vo = marks = None
+    if built:
+        # The take, not the storyboard, sets the length: run to the last word plus a beat
+        # to let the CTA land, so the film never outlives the narration or clips it.
+        vo, marks, spoken = built
+        meta = dict(meta, duration=round(spoken + 0.7, 2))
+        print(f"  length {meta['duration']}s (spoken {spoken}s + 0.7s tail)")
 
     if a.to:
         meta = dict(meta, duration=min(a.to, meta["duration"]))
         print(f"  probe  rendering first {meta['duration']}s only")
-    render(html, meta, a.fps, out, vo, lossless=a.png)
+    render(html, meta, a.fps, out, vo, lossless=a.png, marks=marks)
     if SCRUB.exists():                      # CLAUDE.md 28: never ship an unscrubbed export
         subprocess.run([sys.executable, str(SCRUB), str(out)], capture_output=True)
     mb = out.stat().st_size / 1e6

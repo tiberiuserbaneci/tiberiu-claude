@@ -6,6 +6,7 @@ __pycache__/
 content/portal/manifest.json.tmp
 *.log
 
-# Film voiceover cache: per-beat ElevenLabs clips, kept locally so re-rendering a film
-# does not re-spend API credits. The muxed <film>-vo.mp3 is the committed artifact.
-content/_vo_parts/
+# Film voiceover cache: the ElevenLabs take plus its character timestamps, kept locally so
+# re-rendering does not re-spend API credits. It embeds the same audio as base64, so the
+# committed artifact is <film>-vo.mp3 and this stays out of the repo.
+content/*-vo.align.json
