@@ -810,8 +810,37 @@ with sync_playwright() as p:
 ### Multi-page PDF carousel
 Loop over every `class="slide"`, render each, append into the PDF.
 
-### Sandbox constraints
-- Logo PNG / images: **base64 inline mandatory** (external URLs return 403)
+### Sourcing imagery (operator, 2026-08-04)
+
+**Pulling images from the internet is allowed.** Search, fetch, and use them. What follows is
+not a permission rule, it is how the machine behaves.
+
+**The renderer cannot load an external URL. This is not policy, it is the sandbox.**
+`curl` reaches the internet through the agent proxy, but headless Chromium cannot: every
+external image fails `ERR_CONNECTION_RESET`, verified against four proxy configurations
+(no proxy, Playwright `proxy=`, `--proxy-server`, `--proxy-bypass-list=<-loopback>`). The
+proxy README says to report a blocked host rather than route around it, so do not keep trying.
+
+So the working flow is always **fetch, verify, inline**:
+```bash
+python3 content/_img.py "<url>" content/assets/name.jpg     # fetch + verify + report
+```
+then base64 the local file into the HTML before rendering. `content/_img.py` does the fetch
+and prints the data URI. Not every host is reachable: Unsplash returns 200, Wikimedia returns
+400. Check before designing around an image.
+
+**Source order, best first:**
+1. **Operator captures and screen recordings.** The real product. Episode 02's console came
+   from a recording and no stock image could have replaced it.
+2. **Texture and atmosphere** (paper, desk, warm light), heavily blurred, as background only.
+   This is what the reference clip does: its keyboard photo is blurred to pure texture.
+3. Anything else, with the cautions below.
+
+**Do not use without the operator saying so explicitly:** screenshots of other companies'
+products (trademark exposure, and it misrepresents what Ultron does, against 30); third party
+brand logos in a commercial piece, which is different from naming them in copy; stock photos
+of identifiable people, since a real face beside a claim carries the same problem 21 already
+bans for fabricated quotes. Prefer sources that are free for commercial use.
 - Verify `scrollHeight === 1450` for LinkedIn (exact — not more, not less)
 - Padding budget respected: zero dead space at the bottom
 
