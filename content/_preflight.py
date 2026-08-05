@@ -74,6 +74,7 @@ def target_of(name):
     # editorial 4:5 photo-carousel (operator 2026-06-12): canvas 1080x1350, bleed allowed,
     # so dims are checked on the canvas box (offsetHeight), not scrollHeight. No 300px inset.
     if "-45-" in n or "editorial45" in n: return (".slide", 1350, True)
+    if n.startswith("paper-"): return (".slide", 1920, True)
     if "carousel" in n: return ("slide", 1920, True)
     if any(k in n for k in ("tiktok","-ig-","story","highlight","instagram")): return (".slide", 1920, False)
     return ("#artifact", 1450, False)
