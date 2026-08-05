@@ -18,6 +18,8 @@ mapping that is rhetoric rather than product, and a subject that collides with a
 | 02 24H | overnight autonomous work | agents working while you sleep, self-verification as a *demo* |
 | 03 ROUTER | model and effort routing | model tiers, price per token, which-model-for-which-job |
 | 04 SURVIVE | why agent pilots die | pilot failure rates, agent washing, **governance and HUMAN GATE as the punchline** |
+| 06 ENGINEER | GTM engineering as a role | postings growth, 54% adoption, one-person-does-five, the four moves |
+| 07 SETUP | how founders use Claude wrong | context written once, finished-not-draft, brief-and-leave |
 
 Episode 03 spent the whole "which AI model" reach lane (`virality-principles.md` 26) and 04
 spent governance. A new film must not land on either as its payoff.
@@ -107,6 +109,13 @@ COUNSEL appear together without it being a feature list.
 has a name now, and it is the one role you cannot hire for at your size."
 **Keyword.** ENGINEER.
 **Collision.** Clean, but it must not become a roster tour. Needs one concrete workflow.
+
+> **SPENT 2026-08-05** as episode 06 and deck 09. Chosen because the operator's own TikTok
+> research put side income at 6.2M and 7.9M posts, and this is the only way into that demand
+> whose numbers are all published: postings ~1,400 mid-2025 to 3,000+ by January 2026, 205%
+> across 2025, 54% of the fastest growing B2B SaaS have one (Clay and The Signal), band $132K
+> to $241K. The genre's standard peak is an invented earnings figure, which 21 forbids. It did
+> not become a roster tour: the concrete workflow is the four moves, Monday to Thursday.
 
 ---
 

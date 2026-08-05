@@ -30,6 +30,8 @@ DECKS = {
     "06-72h": "clay-06-72h",
     "07-ten": "clay-07-ten",
     "08-investors": "clay-08-investors",
+    "09-engineer": "clay-09-engineer",
+    "10-setup": "clay-10-setup",
 }
 
 

@@ -138,7 +138,14 @@ def report(res: dict) -> bool:
     rows = res["rows"]
     print(f"\n=== {res['film']} ===")
     print(f"{'t':>6} {'ink':>7} {'motion':>8}  {'':20}")
-    worst_ink = min(rows[1:], key=lambda r: r["ink"])
+    # Every film opens from an empty frame and the first hook word takes about 0.7s to
+    # resolve out of its blur. Scoring that as a trough measures the entrance, not a defect,
+    # and because the score is trough/peak it punishes a film for having a DENSER peak: the
+    # same opening frame reads as 12% of a thin hook and 0.9% of a strong one. Judge from the
+    # moment the first word has landed.
+    ENTRANCE = 0.8
+    worst_ink = min([r for r in rows if r["t"] >= ENTRANCE] or rows[1:],
+                    key=lambda r: r["ink"])
     # a still stretch matters more than a single still frame, so score a 0.5s window
     win = max(1, int(round(0.5 / (rows[1]['t'] - rows[0]['t']))))
     runs = [(sum(r["motion"] for r in rows[i:i + win]) / win, rows[i]["t"])
@@ -232,7 +239,7 @@ def record_baseline(html: pathlib.Path, res: dict) -> None:
     BASELINE.write_text(json.dumps({
         "name": html.stem,
         "share": len(bad) / max(1, len(rows) - 1),
-        "trough": min(r["ink"] for r in rows[1:]) / peak,
+        "trough": min(r["ink"] for r in rows if r["t"] >= 0.8) / peak,
         "still": min(runs) if runs else 0.0,
     }, indent=2))
     print(f"  baseline written from {html.stem}: {BASELINE.name}")

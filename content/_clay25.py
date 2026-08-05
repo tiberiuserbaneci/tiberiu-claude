@@ -177,8 +177,8 @@ def scene_tower(rows, foot_l, foot_r):
 def scene_desk(panel_title, chip, rows, note):
     """A tilted product panel: the thing itself, big enough to read across a room."""
     r = "".join(
-        f'<div style="display:flex;align-items:center;gap:22px;padding:22px 30px;'
-        f'border-radius:16px;margin-bottom:14px;'
+        f'<div style="flex:1;min-height:0;display:flex;align-items:center;gap:22px;'
+        f'padding:0 26px;border-radius:16px;margin-bottom:12px;overflow:hidden;'
         + ("background:linear-gradient(168deg,var(--accl),var(--acc) 60%);color:#fff;"
            f"box-shadow:{extrude(9,'var(--accd)')}, 12px 16px 26px rgba(169,58,32,.28);"
            if x.get("acc") else
@@ -190,9 +190,9 @@ def scene_desk(panel_title, chip, rows, note):
         + f'display:flex;align-items:center;justify-content:center;font-size:26px;'
         f'font-weight:900;{"color:#fff" if x.get("acc") else "color:var(--acc)"};">'
         f'{k+1}</div>'
-        f'<div style="flex:1;min-width:0;"><div style="font-size:33px;font-weight:800;'
-        f'line-height:1.1;">{x["b"]}</div>'
-        f'<div style="font-size:24px;font-weight:600;margin-top:5px;'
+        f'<div style="flex:1;min-width:0;"><div style="font-size:30px;font-weight:800;'
+        f'line-height:1.08;">{x["b"]}</div>'
+        f'<div style="font-size:22px;font-weight:600;margin-top:3px;line-height:1.14;'
         + ("color:rgba(255,255,255,.84);" if x.get("acc") else "color:var(--muted);")
         + f'">{x["i"]}</div></div>'
         f'<div style="font-family:\'DM Mono\',monospace;font-size:21px;letter-spacing:.14em;'
@@ -211,7 +211,7 @@ def scene_desk(panel_title, chip, rows, note):
             f'<span style="font-family:\'DM Mono\',monospace;font-size:21px;letter-spacing:.16em;'
             f'text-transform:uppercase;color:#fff;background:var(--acc);padding:9px 16px;'
             f'border-radius:8px;box-shadow:{extrude(5,"var(--accd)")};">{chip}</span></div>'
-            f'<div style="flex:1;min-height:0;">{r}</div>'
+            f'<div style="flex:1;min-height:0;display:flex;flex-direction:column;">{r}</div>'
             f'<div style="font-family:\'DM Mono\',monospace;font-size:22px;'
             f'letter-spacing:.10em;color:var(--faint);text-transform:uppercase;">{note}</div>'
             f'</div></div>')

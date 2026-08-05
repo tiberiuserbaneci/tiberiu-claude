@@ -460,6 +460,125 @@ D("clay-08-investors", "THEY CALL BACK", "INVESTORS", [
 ])
 
 
+# ---------------------------------------------------------------- 09 THE NEW JOB
+# Rides the side-income demand the operator measured (#sidehustle 6.2M, #workfromhome 7.9M)
+# without the genre's invented earnings claims. Every number here is published and dated:
+# GTM engineering postings roughly doubled from ~1,400 mid-2025 to 3,000+ by January 2026,
+# 205% year on year growth through 2025, 54% of the fastest growing B2B SaaS companies have
+# one (Clay and The Signal), and the reported band is $132K to $241K. The backlog logged this
+# as candidate 4 and marked it clean against every shipped episode.
+D("clay-09-engineer", "THE NEW JOB", "ENGINEER", [
+  S("A JOB TITLE FROM 2025", "THE JOB THAT<br>DID NOT EXIST<br>TWO <em>YEARS AGO.</em>",
+    "Postings roughly doubled in six months. <b>Most founders are already doing it unpaid.</b>",
+    scene_pillars([dict(b="Mid 2025", v="1.4k", p=42),
+                   dict(b="Jan 2026", v="3k+", p=100, acc=True),
+                   dict(b="Growth", v="205%", p=70, acc=True)],
+                  "GTM ENGINEER POSTINGS, YEAR ON YEAR"),
+    ("THE POINT", "You have been doing this job at 2am without the title.")),
+  S("WHAT IT REPLACES", "ONE PERSON<br>SHIPS WHAT TOOK<br><em>FIVE.</em>",
+    "Not a smaller team. <b>A different shape of one.</b>",
+    scene_gantt([dict(b="A five person revenue team", v="5", p=100),
+                 dict(b="One operator with AI running it", v="1", p=22, acc=True)],
+                "WHAT USED TO NEED A DEPARTMENT"),
+    ("THE SHIFT", "The work did not shrink. The number of people running it did.")),
+  S("WHAT THE JOB IS", "FOUR THINGS,<br>ALL OF THEM<br><em>YOURS</em> ALREADY.",
+    "Nothing here is new to you. <b>Only the fact that it has a name now.</b>",
+    scene_board("THE ACTUAL DUTIES",
+                [dict(b="Find who to talk to", i="and why this week", acc=True),
+                 dict(b="Write what gets sent", i="in a voice that is yours"),
+                 dict(b="Build the thing they open", i="a page, a demo, a doc", acc=True),
+                 dict(b="Know what happened", i="numbers, not a feeling")],
+                "54% OF THE FASTEST GROWING SAAS COMPANIES HIRE FOR THIS"),
+    ("THE CATCH", "At two to fifty people you cannot hire it. You run it.")),
+  S("HOW YOU START", "YOU CAN RUN IT<br>BY <em>FRIDAY.</em>",
+    "No new hire, no new tool to learn. <b>Four moves.</b>",
+    scene_arch([dict(b="Name forty accounts", i="with a reason each, not a scrape"),
+                dict(b="Write to them like a person", i="one trigger, one question"),
+                dict(b="Give them something to open", i="live before they reply", acc=True),
+                dict(b="Read what actually happened", i="and change one thing")],
+               "THE WHOLE JOB, IN FOUR MOVES"),
+    ("BY FRIDAY", "One week is enough to run it once properly.")),
+  S("WHAT IT RUNS ON", "ONE OPERATOR.<br>ELEVEN JOBS.<br>ONE <em>SCREEN.</em>",
+    "The reason one person can hold it now.",
+    scene_screen("app.51ultron.com", "THE DESK",
+                 [dict(b="Accounts researched and ranked", t="RUNNING", acc=True),
+                  dict(b="Outreach written, held for you", t="WAITING"),
+                  dict(b="The page they will open", t="LIVE", acc=True),
+                  dict(b="Contracts read and flagged", t="DONE"),
+                  dict(b="What worked, in numbers", t="READ")],
+                 "ONE CONTEXT ACROSS ALL OF IT"),
+    ("THE DIFFERENCE", "A stack of tools makes you the integration.")),
+  S("WHAT ACTUALLY CHANGED", "THE TITLE<br>CAUGHT UP<br>TO THE <em>WORK.</em>",
+    "Reported band for the role: <b>$132K to $241K.</b>",
+    scene_split(dict(u="TWO YEARS AGO", b="NO NAME", i="you did it after hours and called it admin"),
+                dict(u="NOW", b="A ROLE", i="postings doubled in six months"))),
+  S("THE ASK", "TAKE THE<br>ONE WEEK<br><em>RUN.</em>",
+    "The four moves, and what to run on which day.",
+    scene_key("ENGINEER", "and I will send you the one week run.", "ALL ACCESS")),
+])
+
+# ---------------------------------------------------------------- 10 THE SETUP
+# Rides the "Claude tips" demand (#aihacks, #claudeai) the operator measured. The researched
+# outline invents a `/ghost` command; nothing here is invented. These are three real habits,
+# and the fix for each is behaviour this repo has already filmed, so the product answer is a
+# feature rather than a claim.
+D("clay-10-setup", "THREE THINGS", "SETUP", [
+  S("MOST PEOPLE", "YOU ARE USING<br><em>CLAUDE</em> LIKE<br>A SEARCH BOX.",
+    "It answers well. <b>Then you close the tab and it forgets you.</b>",
+    scene_thread([dict(t="here is my company, here is what we sell, here is my ICP..."),
+                  dict(t="great, what would you like help with?", you=True),
+                  dict(t="...and tomorrow you type all of it again")],
+                 "THE LOOP MOST FOUNDERS NEVER LEAVE"),
+    ("MISTAKE 1", "You re-explain your company every single morning.")),
+  S("MISTAKE ONE", "YOU START<br>FROM <em>ZERO</em><br>EVERY TIME.",
+    "Your context is the most valuable thing you own. <b>Type it once.</b>",
+    scene_stack([dict(u="WHAT YOU SELL", b="written once, read every time"),
+                 dict(u="WHO BUYS IT", b="the ICP, not a description of it", acc=True),
+                 dict(u="HOW YOU WRITE", b="read from your posts, not imitated"),
+                 dict(u="WHAT YOU DECIDED", b="and why, so it stops re-asking", acc=True)],
+                "CONTEXT HELD, NOT RETYPED"),
+    ("THE FIX", "Written once. Applied to everything after it.")),
+  S("MISTAKE TWO", "YOU ASK FOR A<br><em>DRAFT.</em> YOU GET<br>HOMEWORK.",
+    "A draft moves the work back to you. <b>Ask for the finished thing.</b>",
+    scene_desk("WHAT YOU ASKED FOR", "COMPARE", [
+        dict(b="write me a draft email", i="you now edit it for twenty minutes", t="DRAFT"),
+        dict(b="write it, check the facts, and hold it", i="you approve or you do not",
+             t="FINISHED", acc=True),
+        dict(b="give me some ideas", i="you now do the choosing", t="DRAFT"),
+        dict(b="pick one and tell me why", i="a decision you can argue with",
+             t="FINISHED", acc=True)],
+        "THE WORDING IS THE WHOLE DIFFERENCE"),
+    ("THE FIX", "Ask for the thing, the check, and the hold.")),
+  S("MISTAKE THREE", "YOU SIT AND<br><em>WATCH</em> IT<br>WORK.",
+    "If you have to be there, it is not finished. <b>It is supervised.</b>",
+    scene_grid([dict(n="1", t="you type"), dict(n="2", t="you wait"),
+                dict(n="3", t="you read", acc=True), dict(n="4", t="you correct"),
+                dict(n="5", t="you wait", acc=True), dict(n="6", t="you read"),
+                dict(n="7", t="you paste"), dict(n="8", t="you send", acc=True),
+                dict(n="0", t="hours it saved")],
+               "SUPERVISED WORK IS STILL YOUR WORK"),
+    ("THE FIX", "Brief it, leave, and come back to a result.")),
+  S("THE ORDER", "THREE FIXES.<br>ABOUT <em>TWENTY</em><br>MINUTES.",
+    "You do this once and never think about it again.",
+    scene_ladder([dict(k="MINUTE 1", b="Write your context down once"),
+                  dict(k="MINUTE 6", b="Ask for finished things, not drafts"),
+                  dict(k="MINUTE 12", b="Brief a job and walk away"),
+                  dict(k="MINUTE 20", b="Read what came back and approve", acc=True)],
+                 "ONCE, NOT EVERY MORNING"),
+    ("TWENTY MINUTES", "The setup most people never do is the whole difference.")),
+  S("WHAT ACTUALLY CHANGED", "IT STOPPED<br>BEING A <em>CHAT.</em><br>IT STARTED WORKING.",
+    "Same model. Same day. <b>A different relationship with it.</b>",
+    scene_meter(84, "0", "TIMES YOU EXPLAIN YOURSELF AGAIN",
+                [dict(b="Context you retype each morning", v="none", p=6),
+                 dict(b="Work that comes back finished", v="most", p=84),
+                 dict(b="Jobs that need you in the room", v="few", p=18)],
+                "THE MODEL WAS NEVER THE PROBLEM")),
+  S("THE ASK", "TAKE THE<br>TWENTY MINUTE<br><em>SETUP.</em>",
+    "The three fixes, in the order that makes each one stick.",
+    scene_seal("SETUP", "and I will send you the twenty minute setup.", "ALL ACCESS")),
+])
+
+
 def main():
     fail, seen, openers, used = [], {}, {}, set()
     for d in DECKS:

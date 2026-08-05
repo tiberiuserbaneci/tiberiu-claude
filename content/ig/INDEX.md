@@ -15,11 +15,15 @@ Captions follow CLAUDE.md 15.6: one beat per paragraph, exactly five hashtags.
 | `06-72h` | IDEA MONDAY. REVENUE THURSDAY. | 72H | 7 |
 | `07-ten` | WORK FOUR HOURS. SHIP LIKE A TEAM OF TEN. | TEN | 7 |
 | `08-investors` | BECOME THE FOUNDER INVESTORS CALL BACK | INVESTORS | 7 |
+| `09-engineer` | THE JOB THAT DID NOT EXIST TWO YEARS AGO | ENGINEER | 7 |
+| `10-setup` | THREE THINGS MAKE CLAUDE FEEL SMARTER | SETUP | 7 |
 
 ## Reels
 
 | Folder | Post | Keyword | Note |
 |---|---|---|---|
+| `film-07-setup` | THREE THINGS MAKE CLAUDE FEEL SMARTER | SETUP | ready |
+| `film-06-engineer` | THE JOB THAT DID NOT EXIST TWO YEARS AGO | ENGINEER | ready, light ground |
 | `film-05-48h` | YOUR FIRST PAYING CUSTOMER IN 48 HOURS | 48H | ready |
 | `film-04-survive` | 88% OF AI AGENTS NEVER LEAVE THE DEMO | SURVIVE | Names two internal terms on screen (SENTINEL, HUMAN GATE). Strip before posting. |
 | `film-03-price` | TEN TIMES THE PRICE FOR WORK THE SMALL MODEL FINISHES | PRICE | rebuilt, ready |
