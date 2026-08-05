@@ -41,6 +41,73 @@ def render(html: pathlib.Path, out_dir: pathlib.Path, check_only=False, w=1080, 
         if n == 0:
             sys.exit(f"{html.name}: no .slide elements")
 
+        # Fit pass. The header block is variable height, so a tall object squeezes into a
+        # short stage and runs under the copy. Scale the object to the room it actually has
+        # rather than tuning every slide by hand, then assert the two never overlap.
+        #
+        # The origin has to be the stage's centre, not the object's top. `.stage` centres its
+        # child, so an oversized object already hangs off BOTH edges before any scaling: the
+        # phone on 01-ceo slide 05 is 640px in a 595px stage and starts 23px above the stage,
+        # under the body copy. Scaling from `center top` pins that overflowed top in place and
+        # the text stays covered however small the object gets. From the centre, both overflows
+        # close together, which is what the operator saw as text running under the element.
+        # A clay object is bigger than its box. The signature shadow is 22px offset with 44px
+        # of blur, so the halo reaches ~66px past every edge and the last line of body copy
+        # lands in it while the rectangles still read as clear. That is the "text under the
+        # element" the operator saw on 01-ceo: legally no overlap, visibly washed out. Both
+        # the fit and the assertion use the halo, and the copy keeps a real gap from it.
+        pg.add_script_tag(content="""
+            window.__halo = el => {
+              const r = el.getBoundingClientRect();
+              let up = 0, dn = 0;
+              const scan = n => {
+                const sh = getComputedStyle(n).boxShadow;
+                if (!sh || sh === 'none') return;
+                const nr = n.getBoundingClientRect();
+                for (const m of sh.matchAll(/(-?[\\d.]+)px\\s+(-?[\\d.]+)px\\s+([\\d.]+)px(?:\\s+(-?[\\d.]+)px)?/g)) {
+                  const oy = +m[2], bl = +m[3], sp = +(m[4] || 0);
+                  up = Math.max(up, (r.top - nr.top) - oy + bl + sp);
+                  dn = Math.max(dn, (nr.bottom - r.bottom) + oy + bl + sp);
+                }
+              };
+              scan(el); el.querySelectorAll('*').forEach(scan);
+              return {top: r.top - Math.max(up, 0), bottom: r.bottom + Math.max(dn, 0)};
+            };
+        """)
+        pg.evaluate("""() => {
+            const GAP = 16;  // clear air the copy keeps from the halo
+            document.querySelectorAll('.slide').forEach(s => {
+              const st = s.querySelector('.stage'); if (!st) return;
+              const o = st.firstElementChild; if (!o) return;
+              o.style.transform = ''; o.style.transformOrigin = 'center center';
+              const r = o.getBoundingClientRect(), h = window.__halo(o);
+              const bleed = (r.top - h.top) + (h.bottom - r.bottom);
+              const avail = st.clientHeight - 8 - GAP * 2;
+              const need = r.height + bleed;
+              if (need > avail && need > 0)
+                o.style.transform = 'scale(' + (avail / need).toFixed(3) + ')';
+            });
+        }""")
+        pg.wait_for_timeout(120)
+        overlap = pg.evaluate("""() => {
+            const out = [];
+            document.querySelectorAll('.slide').forEach((s, i) => {
+              const st = s.querySelector('.stage'); if (!st) return;
+              const o = st.firstElementChild; if (!o) return;
+              const ob = window.__halo(o);
+              ['.eyebrow', '.h', '.sub', '.body'].forEach(sel => {
+                const e = s.querySelector(sel); if (!e) return;
+                const b = e.getBoundingClientRect();
+                const ov = Math.min(b.bottom, ob.bottom) - Math.max(b.top, ob.top);
+                if (ov > 2) out.push({slide: i+1, el: sel, px: Math.round(ov)});
+              });
+            });
+            return out.slice(0, 8);
+        }""")
+        if overlap:
+            for o in overlap:
+                print(f"  TEXT slide {o['slide']:02d} {o['el']} overlaps the object by {o['px']}px")
+
         bad = pg.evaluate("""([w,h]) => [...document.querySelectorAll('.slide')]
             .map((s,i)=>({i:i+1, w:Math.round(s.scrollWidth), h:Math.round(s.scrollHeight)}))
             .filter(s=>s.w!==w||s.h!==h)""", [w, h])
@@ -50,14 +117,31 @@ def render(html: pathlib.Path, out_dir: pathlib.Path, check_only=False, w=1080, 
             b.close()
             sys.exit(f"{html.name}: {len(bad)} slide(s) off canvas")
 
-        # anything painted outside the safe box will be cropped by the app UI
+        # Anything painted outside the safe box will be cropped by the app UI. Judge the
+        # PAINTED rect, not the layout rect: a gauge draws a 500px circle inside a 300px box
+        # with `overflow:hidden`, so its layout rect hangs 200px below something the viewer
+        # never sees. Intersect with every clipping ancestor first, or the guard cries wolf on
+        # correct work and gets ignored on the day it is right.
         spill = pg.evaluate("""() => {
+            const painted = e => {
+              let b = e.getBoundingClientRect();
+              let t = b.top, bo = b.bottom, l = b.left, r = b.right;
+              for (let p = e.parentElement; p; p = p.parentElement) {
+                const cs = getComputedStyle(p);
+                if (cs.overflow === 'visible' && cs.overflowX === 'visible'
+                    && cs.overflowY === 'visible') continue;
+                const c = p.getBoundingClientRect();
+                t = Math.max(t, c.top); bo = Math.min(bo, c.bottom);
+                l = Math.max(l, c.left); r = Math.min(r, c.right);
+              }
+              return {top:t, bottom:bo, left:l, right:r, w:r-l, h:bo-t};
+            };
             const out=[];
             document.querySelectorAll('.slide').forEach((s,i)=>{
               const r=s.getBoundingClientRect();
               s.querySelectorAll('.safe *').forEach(e=>{
-                const b=e.getBoundingClientRect();
-                if(!b.width||!b.height) return;
+                const b=painted(e);
+                if(b.w<=0||b.h<=0) return;   // fully clipped: nothing reaches the frame
                 const top=b.top-r.top, bot=r.bottom-b.bottom,
                       left=b.left-r.left, right=r.right-b.right;
                 if(top<299||bot<329||left<69||right<129)

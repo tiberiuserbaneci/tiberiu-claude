@@ -25,7 +25,7 @@ Changed on purpose, all mechanical:
     brand system. Closest documented match to the reference's warmth.
   - fonts embedded; the reference links a CDN the renderer cannot reach, so it exports blank
 """
-import base64, pathlib
+import base64, functools, pathlib, re
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
@@ -178,6 +178,147 @@ body{background:#CFC8BA;display:flex;flex-direction:column;align-items:center;ga
   line-height:1.26;}
 .grid2 .cell.acc u,.grid2 .cell.acc b{color:#fff;}
 .grid2 .cell.acc i{color:rgba(255,255,255,.86);}
+
+/* ---------- expanded object library (CLAUDE.md 30, graphic variety) ----------
+   Six forms across eight decks meant every cover was the same dial and every middle slide
+   the same list. Twenty forms means a deck never repeats itself and no two decks open alike. */
+
+.bars{width:700px;display:flex;flex-direction:column;gap:22px;}
+.bars .b{display:flex;align-items:center;gap:20px;}
+.bars .b u{width:190px;flex-shrink:0;text-align:left;font-size:24px;font-weight:800;
+  text-decoration:none;letter-spacing:-.3px;}
+.bars .b .tr{flex:1;height:52px;border-radius:26px;display:flex;align-items:center;}
+.bars .b .tr i{height:100%;border-radius:26px;display:flex;align-items:center;
+  justify-content:flex-end;padding-right:22px;font-size:22px;font-weight:800;color:#fff;}
+.bars .b.acc .tr i{background:linear-gradient(158deg,var(--accl),var(--accd));}
+.bars .b .tr i.mut{background:var(--deep);color:var(--muted);}
+
+.timeline{width:720px;position:relative;padding:44px 0 0;}
+.timeline .line{height:8px;border-radius:4px;margin:0 40px;}
+.timeline .row{display:flex;justify-content:space-between;margin-top:-30px;padding:0 22px;}
+.timeline .n{width:78px;display:flex;flex-direction:column;align-items:center;gap:14px;}
+.timeline .dot{width:44px;height:44px;border-radius:50%;background:var(--deep);}
+.timeline .n.on .dot{background:linear-gradient(158deg,var(--accl),var(--accd));
+  box-shadow:0 0 0 8px rgba(210,100,70,.14);}
+.timeline .n b{font-size:20px;font-weight:800;letter-spacing:.12em;color:var(--muted);}
+.timeline .n.on b{color:var(--acc);}
+
+.orbit{width:520px;height:460px;position:relative;display:flex;align-items:center;
+  justify-content:center;}
+.orbit .ring{position:absolute;width:430px;height:430px;border-radius:50%;
+  border:3px dashed rgba(138,133,125,.30);}
+.orbit .mid{width:210px;height:210px;border-radius:50%;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:6px;}
+.orbit .mid b{font-family:'Oswald',sans-serif;font-size:56px;font-weight:600;color:var(--acc);
+  line-height:1;}
+.orbit .mid u{font-size:18px;font-weight:800;letter-spacing:.20em;color:var(--muted);
+  text-decoration:none;}
+.orbit .s{position:absolute;width:118px;height:118px;border-radius:50%;display:flex;
+  align-items:center;justify-content:center;text-align:center;font-size:19px;font-weight:800;
+  line-height:1.1;padding:8px;}
+.orbit .s.acc{color:#fff;}
+
+.slip{width:600px;border-radius:28px;padding:36px 38px;}
+.slip .t{display:flex;justify-content:space-between;font-size:20px;font-weight:800;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--muted);}
+.slip .r{display:flex;justify-content:space-between;align-items:baseline;
+  padding:20px 0;border-bottom:2px dashed rgba(138,133,125,.28);font-size:25px;font-weight:700;}
+.slip .r span:last-child{font-weight:800;}
+.slip .tot{display:flex;justify-content:space-between;align-items:baseline;padding-top:24px;}
+.slip .tot span:first-child{font-size:21px;font-weight:800;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);}
+.slip .tot span:last-child{font-family:'Oswald',sans-serif;font-size:58px;font-weight:600;
+  color:var(--acc);line-height:1;}
+
+.cal{width:640px;border-radius:30px;padding:34px;}
+.cal .hd{display:flex;justify-content:space-between;font-size:20px;font-weight:800;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:24px;}
+.cal .g{display:grid;grid-template-columns:repeat(6,1fr);gap:13px;}
+.cal .d{aspect-ratio:1;border-radius:12px;background:var(--deep);}
+.cal .d.on{background:linear-gradient(158deg,var(--accl),var(--accd));}
+
+.funnel{width:660px;display:flex;flex-direction:column;align-items:center;gap:18px;}
+.funnel .s{border-radius:22px;padding:24px 30px;display:flex;align-items:center;
+  justify-content:space-between;}
+.funnel .s b{font-size:26px;font-weight:800;}
+.funnel .s u{font-family:'Oswald',sans-serif;font-size:34px;font-weight:600;color:var(--acc);
+  text-decoration:none;}
+.funnel .s.acc b,.funnel .s.acc u{color:#fff;}
+
+.chat{width:660px;display:flex;flex-direction:column;gap:20px;}
+.chat .m{max-width:78%;border-radius:26px;padding:24px 28px;font-size:25px;font-weight:600;
+  line-height:1.3;text-align:left;}
+.chat .m.you{align-self:flex-end;color:#fff;border-bottom-right-radius:8px;}
+.chat .m.them{align-self:flex-start;border-bottom-left-radius:8px;}
+
+.meter{width:520px;height:300px;position:relative;display:flex;align-items:flex-end;
+  justify-content:center;overflow:hidden;}
+.meter .arc{position:absolute;top:0;width:500px;height:500px;border-radius:50%;
+  border:44px solid var(--deep);}
+.meter .fill{position:absolute;top:0;width:500px;height:500px;border-radius:50%;
+  border:44px solid var(--acc);border-right-color:transparent;border-bottom-color:transparent;
+  transform:rotate(var(--rot,-45deg));}
+.meter .v{position:relative;z-index:2;text-align:center;padding-bottom:14px;}
+.meter .v b{display:block;font-family:'Oswald',sans-serif;font-size:104px;font-weight:600;
+  color:var(--acc);line-height:1;}
+.meter .v u{display:block;font-size:20px;font-weight:800;letter-spacing:.20em;
+  color:var(--muted);text-decoration:none;margin-top:8px;}
+
+.stamp{width:400px;height:400px;border-radius:50%;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:10px;transform:rotate(-7deg);}
+.stamp b{font-family:'Oswald',sans-serif;font-size:74px;font-weight:600;line-height:.96;
+  color:#fff;text-transform:uppercase;text-align:center;padding:0 30px;}
+.stamp u{font-size:20px;font-weight:800;letter-spacing:.24em;color:rgba(255,255,255,.82);
+  text-decoration:none;}
+.stamp .edge{position:absolute;width:344px;height:344px;border-radius:50%;
+  border:4px solid rgba(255,255,255,.32);}
+
+.versus{width:700px;display:flex;align-items:stretch;gap:18px;position:relative;}
+.versus>div{flex:1;border-radius:28px;padding:34px 26px;display:flex;flex-direction:column;
+  gap:14px;justify-content:center;}
+.versus u{font-size:19px;font-weight:800;letter-spacing:.20em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;}
+.versus b{font-family:'Oswald',sans-serif;font-size:66px;font-weight:600;line-height:.98;}
+.versus i{font-size:21px;font-style:normal;color:var(--muted);line-height:1.26;}
+.versus .new u,.versus .new i{color:rgba(255,255,255,.84);}
+.versus .new b{color:#fff;}
+
+.stepper{width:700px;display:flex;align-items:center;}
+.stepper .st{display:flex;flex-direction:column;align-items:center;gap:14px;width:110px;}
+.stepper .st .c{width:76px;height:76px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-family:'Oswald',sans-serif;font-size:34px;font-weight:600;
+  color:var(--muted);}
+.stepper .st.on .c{color:#fff;}
+.stepper .st b{font-size:19px;font-weight:800;letter-spacing:.10em;text-transform:uppercase;
+  color:var(--muted);}
+.stepper .st.on b{color:var(--acc);}
+.stepper .ln{flex:1;height:6px;border-radius:3px;background:var(--deep);}
+
+.chips{width:700px;display:flex;flex-wrap:wrap;justify-content:center;gap:16px;}
+.chips span{border-radius:40px;padding:20px 30px;font-size:25px;font-weight:800;
+  letter-spacing:-.2px;}
+.chips span.acc{color:#fff;}
+.chips span.off{color:var(--muted);text-decoration:line-through;}
+
+.inbox{width:680px;display:flex;flex-direction:column;gap:14px;}
+.inbox .m{border-radius:22px;padding:22px 26px;display:flex;align-items:center;gap:20px;
+  text-align:left;}
+.inbox .av{width:56px;height:56px;border-radius:50%;flex-shrink:0;background:var(--deep);}
+.inbox .m.acc .av{background:rgba(255,255,255,.28);}
+.inbox .tx{flex:1;}
+.inbox .tx b{display:block;font-size:24px;font-weight:800;}
+.inbox .tx i{display:block;font-size:20px;font-style:normal;color:var(--muted);margin-top:4px;}
+.inbox .m.acc .tx b{color:#fff;} .inbox .m.acc .tx i{color:rgba(255,255,255,.80);}
+.inbox .tag{font-size:18px;font-weight:800;letter-spacing:.14em;color:var(--acc);}
+.inbox .m.acc .tag{color:#fff;}
+
+.counter{width:600px;border-radius:32px;padding:48px 40px;text-align:center;}
+.counter u{display:block;font-size:21px;font-weight:800;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--muted);text-decoration:none;}
+.counter b{display:block;font-family:'Oswald',sans-serif;font-size:150px;font-weight:600;
+  line-height:.92;color:var(--acc);margin-top:14px;}
+.counter i{display:inline-block;font-style:normal;margin-top:20px;border-radius:30px;
+  padding:12px 24px;font-size:22px;font-weight:800;color:#fff;}
 """
 
 
@@ -259,3 +400,129 @@ def build(slug: str, title: str, slides: list) -> pathlib.Path:
     p = CONTENT / f"{slug}.html"
     p.write_text("".join(out))
     return p
+
+# ---- expanded library: fourteen more forms, so a deck never repeats itself ----
+
+def bars(items):
+    b = "".join(
+        f'<div class="b {"acc" if i.get("acc") else ""}"><u>{i["k"]}</u>'
+        f'<div class="tr clay-in"><i class="{"" if i.get("acc") else "mut"}" '
+        f'style="width:{i["p"]}%">{i["v"]}</i></div></div>' for i in items)
+    return f'<div class="bars">{b}</div>'
+
+
+def timeline(nodes, active):
+    n = "".join(f'<div class="n {"on" if k == active else ""}">'
+                f'<div class="dot"></div><b>{v}</b></div>' for k, v in enumerate(nodes))
+    return f'<div class="timeline"><div class="line clay-in"></div><div class="row">{n}</div></div>'
+
+
+def orbit(center, label, sats):
+    POS = [("top:0;left:50%;margin-left:-59px", 0), ("top:50%;right:0;margin-top:-59px", 1),
+           ("bottom:0;left:50%;margin-left:-59px", 2), ("top:50%;left:0;margin-top:-59px", 3)]
+    s = "".join(f'<div class="s {"clay-acc acc" if x.get("acc") else "clay"}" '
+                f'style="{POS[k][0]}">{x["t"]}</div>' for k, x in enumerate(sats[:4]))
+    return (f'<div class="orbit"><div class="ring"></div>'
+            f'<div class="mid clay"><b>{center}</b><u>{label}</u></div>{s}</div>')
+
+
+def slip(head, rows, total_label, total):
+    r = "".join(f'<div class="r"><span>{a}</span><span>{b}</span></div>' for a, b in rows)
+    return (f'<div class="slip clay"><div class="t"><span>{head[0]}</span>'
+            f'<span>{head[1]}</span></div>{r}'
+            f'<div class="tot"><span>{total_label}</span><span>{total}</span></div></div>')
+
+
+def calendar(head, filled, total=30):
+    d = "".join(f'<div class="d {"on" if i < filled else ""}"></div>' for i in range(total))
+    return (f'<div class="cal clay"><div class="hd"><span>{head[0]}</span>'
+            f'<span>{head[1]}</span></div><div class="g">{d}</div></div>')
+
+
+def funnel(stages):
+    w = [100, 78, 56]
+    s = "".join(f'<div class="s {"clay-acc acc" if i == len(stages)-1 else "clay"}" '
+                f'style="width:{w[min(i,2)]}%"><b>{x["b"]}</b><u>{x["v"]}</u></div>'
+                for i, x in enumerate(stages))
+    return f'<div class="funnel">{s}</div>'
+
+
+def chat(msgs):
+    m = "".join(f'<div class="m {"you clay-acc" if x.get("you") else "them clay"}">{x["t"]}</div>'
+                for x in msgs)
+    return f'<div class="chat">{m}</div>'
+
+
+def meter(pct, big, label):
+    rot = -45 + (pct / 100) * 180
+    return (f'<div class="meter"><div class="arc clay-in"></div>'
+            f'<div class="fill" style="--rot:{rot:.0f}deg"></div>'
+            f'<div class="v"><b>{big}</b><u>{label}</u></div></div>')
+
+
+def stamp(word, sub):
+    return f'<div class="stamp clay-acc"><div class="edge"></div><b>{word}</b><u>{sub}</u></div>'
+
+
+def versus(old, new):
+    return (f'<div class="versus"><div class="old clay-in"><u>{old["u"]}</u>'
+            f'<b>{old["b"]}</b><i>{old["i"]}</i></div>'
+            f'<div class="new clay-acc"><u>{new["u"]}</u><b>{new["b"]}</b>'
+            f'<i>{new["i"]}</i></div></div>')
+
+
+def stepper(steps, active):
+    out = []
+    for i, s in enumerate(steps):
+        on = "on" if i <= active else ""
+        cls = "clay-acc" if i <= active else "clay-in"
+        out.append(f'<div class="st {on}"><div class="c {cls}">{i+1}</div><b>{s}</b></div>')
+        if i < len(steps) - 1:
+            out.append('<div class="ln"></div>')
+    return f'<div class="stepper">{"".join(out)}</div>'
+
+
+def chips(items):
+    c = "".join(f'<span class="{"clay-acc acc" if x.get("acc") else ("clay off" if x.get("off") else "clay")}">'
+                f'{x["t"]}</span>' for x in items)
+    return f'<div class="chips">{c}</div>'
+
+
+def inbox(rows):
+    m = "".join(f'<div class="m {"clay-acc acc" if x.get("acc") else "clay"}">'
+                f'<div class="av"></div><div class="tx"><b>{x["b"]}</b><i>{x["i"]}</i></div>'
+                f'<div class="tag">{x["t"]}</div></div>' for x in rows)
+    return f'<div class="inbox">{m}</div>'
+
+
+def counter(label, big, delta):
+    return (f'<div class="counter clay"><u>{label}</u><b>{big}</b>'
+            f'<i class="clay-acc">{delta}</i></div>')
+
+
+# ---- object identity travels with the markup ----
+# The graphic-variety rule (CLAUDE.md 30) is only enforceable if the guard can see what a
+# slide actually renders. It used to read a hand-typed `run=` string next to the deck, which
+# went stale the moment the objects were swapped: every run still claimed to open on `dial`
+# while the built pages opened on eight different forms, so the uniqueness assertion passed
+# against fiction. Each object now stamps its own name on its root node, and the run is read
+# back off the slides.
+
+OBJECTS = ("dial cards badge stack3 phone grid2 bars timeline orbit slip calendar funnel "
+           "chat meter stamp versus stepper chips inbox counter").split()
+
+
+def _tag(name, fn):
+    @functools.wraps(fn)
+    def wrapped(*a, **k):
+        return fn(*a, **k).replace("<div ", f'<div data-ob="{name}" ', 1)
+    return wrapped
+
+
+for _name in OBJECTS:
+    globals()[_name] = _tag(_name, globals()[_name])
+
+
+def obj_name(html: str) -> str:
+    m = re.search(r'data-ob="([a-z0-9]+)"', html)
+    return m.group(1) if m else "?"

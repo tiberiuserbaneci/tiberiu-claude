@@ -1146,6 +1146,34 @@ wired into the Stop hook because it costs a browser pass per film; run it by han
 
 **Surfaced every run (judgement, printed not auto-blocked):** empty-row % + largest dead band (a product mockup runs ~60% empty by design, so a blind gate would false-positive on approved work - PACK the dominant block if it reads airy; never `flex:1`/`space-between` to stretch sparse rows), and a `space-between`/`flex:1` code-smell count.
 
+**GRAPHIC VARIETY (operator HARD rule, 2026-08-05):** the visual element must CHANGE every
+3 to 4 slides, and **no two materials in a set may open on the same object**. Scrolling a
+series where every cover is the same dial, every middle slide is the same menu list and every
+slide carries the same simplistic pill produces audience saturation, which kills a set faster
+than a weak hook does. Concretely: within one deck no object form repeats; across a set the
+slot-1 object is different in every deck; a set of 8 decks needs a library of **20+ distinct
+object forms**, not 6 reused. If the library is too small to satisfy that, the fix is to build
+more objects, never to re-run the same one with different words in it. Same rule applies to
+films: the object carrying beat 2 may not be the object carrying beat 4.
+
+*Enforced, not just written down.* Every object stamps `data-ob="<form>"` on its own root, so
+`content/_clay_decks.py` reads the run back off the built slides and checks it against the
+declared MATRIX before rendering: swapping an object without declaring it fails the build, as
+does a repeat inside a deck, a duplicate run, or two decks opening on the same form. The rule
+previously lived in a hand-typed `run=` string that went stale the moment the objects changed,
+so the guard passed against fiction while every deck still opened on the same dial.
+
+**HALO, NOT BOX (2026-08-05).** A clay object is visually bigger than its rectangle: the
+signature shadow is 22px offset with 44px blur, so the glow reaches ~66px past every edge.
+Copy that clears the box by 20px still lands in the halo and washes out, which is the "text
+under the element" rejection. `_carousel.py` measures the painted extent for both the fit
+pass and the collision assertion, and scales the object from the STAGE CENTRE, never from its
+own top: `.stage` centres its child, so an oversized object overhangs both edges before any
+scaling, and a top origin pins the overhanging top exactly where the text is. The same pass
+intersects each element with its clipping ancestors before judging the safe box, so a gauge
+that draws a 500px circle inside a 300px `overflow:hidden` box no longer reports a spill it
+never paints. A guard that cries wolf on correct work gets ignored on the day it is right.
+
 **Process guards (operator rules - do NOT deviate):**
 - **SHOW every render** with SendUserFile - never describe a material without attaching it (operator: "nu mi l-ai aratat").
 - **Propose before executing; fix ONE element at a time.**
