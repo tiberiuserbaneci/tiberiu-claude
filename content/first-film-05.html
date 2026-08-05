@@ -189,37 +189,38 @@
    film got right and it is kept.
    BEATS 0 promise | 7 find | 14 reach | 21 show | 28 close | 35 cta */
 :root{
-  --base:#F4F1EC; --deep:#E2DCD0; --ink:#2D2A26; --muted:#8A857D;
-  --acc:#D26446; --accd:#B2492C; --accl:#E8845F;
-  --lo:#DAD5CC; --hi:#FFFFFF;
+  --base:#1E1E1D; --deep:#2B2B29; --ink:#FAFAF7; --muted:rgba(250,250,247,.50);
+  --acc:#CC785C; --accd:#A8512F; --accl:#E0916F;
+  --lo:#131312; --hi:#2C2C2A;
   --e:cubic-bezier(.2,.85,.25,1);
   --eStd:cubic-bezier(.4,0,.2,1); --eEmph:cubic-bezier(.05,.7,.1,1); --eExit:cubic-bezier(.3,0,1,1);
   --b1:0s; --b2:7s; --b3:14s; --b4:21s; --b5:28s; --b6:35s;
   --hookout:3s; --hookgone:3.4s;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-body{background:#CFC8BA;display:flex;justify-content:center;align-items:flex-start;
+body{background:#0C0C0B;display:flex;justify-content:center;align-items:flex-start;
   font-family:'Plus Jakarta Sans',sans-serif;-webkit-font-smoothing:antialiased;}
 #film{width:1080px;height:1920px;position:relative;overflow:hidden;background:var(--base);
   color:var(--ink);}
 .bg{position:absolute;inset:0;z-index:0;overflow:hidden;contain:paint;}
 .amb{position:absolute;inset:0;
-  background:radial-gradient(ellipse 74% 40% at 50% 4%,#FDFBF8 0%,transparent 62%),
-    radial-gradient(ellipse 60% 34% at 50% 100%,rgba(210,100,70,.08) 0%,transparent 60%);}
+  background:radial-gradient(ellipse 70% 36% at 50% 2%,rgba(204,120,92,.14) 0%,transparent 64%),
+    radial-gradient(ellipse 56% 30% at 50% 100%,rgba(212,162,127,.07) 0%,transparent 60%),
+    linear-gradient(178deg,#232322 0%,#1E1E1D 46%,#151514 100%);}
 @keyframes breathe{0%{opacity:.55}50%{opacity:1}100%{opacity:.55}}
 .glow{position:absolute;inset:-8%;
-  background:radial-gradient(ellipse 34% 20% at 50% 34%,rgba(210,100,70,.13) 0%,transparent 68%);
+  background:radial-gradient(ellipse 34% 20% at 50% 34%,rgba(204,120,92,.16) 0%,transparent 68%);
   animation:breathe 7s ease-in-out infinite;}
 
 .clay{background:var(--base);border-radius:30px;
   box-shadow:18px 18px 36px var(--lo),-18px -18px 36px var(--hi);
-  border:1px solid rgba(255,255,255,.72);}
+  border:1px solid rgba(250,250,247,.07);}
 .clay-in{background:var(--base);border-radius:26px;
   box-shadow:inset 12px 12px 24px var(--lo),inset -12px -12px 24px var(--hi);}
 .clay-acc{background:linear-gradient(158deg,var(--accl),var(--acc) 52%,var(--accd));
   border-radius:26px;color:#fff;
-  box-shadow:14px 14px 28px rgba(178,73,44,.30),-12px -12px 24px var(--hi),
-             inset 0 2px 0 rgba(255,255,255,.34);}
+  box-shadow:14px 14px 30px rgba(0,0,0,.55),-10px -10px 22px rgba(250,250,247,.05),
+             inset 0 2px 0 rgba(255,255,255,.20);}
 
 .safe{position:absolute;top:300px;left:104px;right:152px;bottom:330px;z-index:6;
   display:flex;flex-direction:column;}
@@ -244,14 +245,14 @@ body{background:#CFC8BA;display:flex;justify-content:center;align-items:flex-sta
 @keyframes glowtx{0%{text-shadow:0 0 0 rgba(210,100,70,0)}
                   45%{text-shadow:0 14px 44px rgba(210,100,70,.55)}
                   100%{text-shadow:0 0 0 rgba(210,100,70,0)}}
-@keyframes lift{0%{box-shadow:14px 14px 28px rgba(178,73,44,.30),-12px -12px 24px var(--hi)}
-                42%{box-shadow:16px 16px 42px rgba(178,73,44,.60),-12px -12px 24px var(--hi)}
-                100%{box-shadow:14px 14px 28px rgba(178,73,44,.30),-12px -12px 24px var(--hi)}}
+@keyframes lift{0%{box-shadow:14px 14px 30px rgba(0,0,0,.55)}
+                42%{box-shadow:0 0 60px rgba(204,120,92,.55),14px 14px 30px rgba(0,0,0,.55)}
+                100%{box-shadow:14px 14px 30px rgba(0,0,0,.55)}}
 
 /* ---------- captions ---------- */
 .hk{position:absolute;top:300px;left:104px;right:152px;bottom:330px;z-index:9;
   display:flex;align-items:center;justify-content:flex-start;}
-.hkscrim{position:absolute;inset:0;z-index:8;background:var(--base);opacity:.90;
+.hkscrim{position:absolute;inset:0;z-index:8;background:var(--base);opacity:.92;
   animation:fadeout .42s ease-in forwards var(--hookout);}
 .hk-in{width:100%;transform-origin:left center;}
 .hk-l{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 26px;line-height:.98;}
@@ -267,14 +268,14 @@ body{background:#CFC8BA;display:flex;justify-content:center;align-items:flex-sta
 .hw.a{color:#FFF3EA;padding:0 20px;border-radius:14px;
   background-image:linear-gradient(158deg,var(--accl),var(--accd));
   background-repeat:no-repeat;background-position:left center;background-size:0% 86%;
-  box-shadow:10px 10px 26px rgba(178,73,44,.28);}
+  box-shadow:0 18px 46px rgba(0,0,0,.5);}
 @keyframes hkw{from{opacity:0;transform:translateY(44px) scale(.88)}to{opacity:1;transform:none}}
 @keyframes hkbar{from{background-size:0% 86%}to{background-size:100% 86%}}
 @keyframes hkpush{from{transform:scale(1)}to{transform:scale(1.026)}}
 @keyframes hkout{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(1.05)}}
 @keyframes kTrack{from{letter-spacing:.05em}to{letter-spacing:-.02em}}
 .sb{position:absolute;inset:0;z-index:8;
-  text-shadow:0 2px 20px rgba(244,241,236,.96),0 0 44px rgba(244,241,236,.9);}
+  text-shadow:0 2px 20px rgba(12,12,11,.96),0 0 44px rgba(12,12,11,.92);}
 .ck{position:absolute;left:0;right:0;height:300px;opacity:0;display:flex;
   flex-direction:column;justify-content:center;gap:2px;}
 .ck.top{top:0;} .ck.bot{bottom:0;}
@@ -304,28 +305,28 @@ body{background:#CFC8BA;display:flex;justify-content:center;align-items:flex-sta
 .hd{flex-shrink:0;display:flex;align-items:center;gap:24px;}
 .dial{width:180px;height:180px;border-radius:50%;position:relative;flex-shrink:0;
   display:flex;align-items:center;justify-content:center;}
-.dial .ring{position:absolute;inset:12px;border-radius:50%;border:16px solid var(--deep);}
+.dial .ring{position:absolute;inset:12px;border-radius:50%;border:16px solid #302F2C;}
 .dial .arcw{position:absolute;inset:12px;border-radius:50%;
   border:16px solid var(--acc);border-right-color:transparent;border-bottom-color:transparent;
   transform:rotate(-135deg);}
 .dial .core{width:112px;height:112px;border-radius:50%;display:flex;align-items:center;
   justify-content:center;font-family:'Oswald',sans-serif;font-size:52px;font-weight:600;
   color:var(--acc);}
-.hd .cap b{display:block;font-family:'Oswald',sans-serif;font-size:60px;font-weight:600;
+.hd .cap b{display:block;font-family:'Oswald',sans-serif;font-size:55px;font-weight:600;
   line-height:1.02;text-transform:uppercase;}
 .hd .cap b em{color:var(--acc);font-style:normal;}
 .hd .cap i{display:block;font-size:22px;font-style:normal;font-weight:700;letter-spacing:.16em;
   text-transform:uppercase;color:var(--muted);margin-top:8px;}
 
 .board{flex:1;min-height:0;display:flex;flex-direction:column;gap:16px;}
-.ph{flex:1;border-radius:26px;padding:0 30px;display:flex;align-items:center;gap:26px;
+.ph{flex:1;border-radius:26px;padding:0 26px;display:flex;align-items:center;gap:22px;
   position:relative;overflow:hidden;}
-.ph .hr{font-family:'Oswald',sans-serif;font-size:34px;font-weight:600;color:var(--muted);
-  width:132px;flex-shrink:0;line-height:1.05;}
+.ph .hr{font-family:'Oswald',sans-serif;font-size:31px;font-weight:600;color:var(--muted);
+  width:118px;flex-shrink:0;line-height:1.05;}
 .ph .tx{flex:1;}
-.ph .tx b{display:block;font-size:36px;font-weight:800;letter-spacing:-.7px;line-height:1.06;}
-.ph .tx i{display:block;font-size:24px;font-style:normal;color:var(--muted);margin-top:7px;
-  line-height:1.22;}
+.ph .tx b{display:block;font-size:33px;font-weight:800;letter-spacing:-.6px;line-height:1.06;}
+.ph .tx i{display:block;font-size:22px;font-style:normal;color:var(--muted);margin-top:6px;
+  line-height:1.2;}
 .ph .res{margin-left:auto;flex-shrink:0;text-align:right;opacity:0;}
 .ph .res b{display:block;font-family:'Oswald',sans-serif;font-size:46px;font-weight:600;
   color:var(--acc);line-height:1;}
@@ -345,15 +346,17 @@ body{background:#CFC8BA;display:flex;justify-content:center;align-items:flex-sta
 .ph.on .tx,.ph.on .hr{opacity:1;}
 .ph.on .hr{color:var(--acc);}
 
-.pay{flex-shrink:0;border-radius:26px;padding:24px 30px;display:flex;align-items:center;gap:18px;}
+.pay{flex-shrink:0;min-height:108px;border-radius:26px;padding:18px 28px;display:flex;
+  align-items:center;gap:18px;}
 .pay>*{opacity:0;}
 .pay .l{font-size:21px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
-  color:rgba(255,255,255,.82);}
-.pay .r{margin-left:auto;font-family:'Oswald',sans-serif;font-size:52px;font-weight:600;}
+  color:rgba(255,255,255,.82);line-height:1;white-space:nowrap;}
+.pay .r{margin-left:auto;font-family:'Oswald',sans-serif;font-size:42px;font-weight:600;
+  white-space:nowrap;line-height:1;}
 
 .cta{position:absolute;left:0;right:0;bottom:0;height:640px;z-index:7;opacity:0;
   display:flex;flex-direction:column;justify-content:flex-end;gap:14px;
-  background:linear-gradient(180deg,rgba(244,241,236,0) 0%,rgba(244,241,236,.92) 26%,var(--base) 54%);}
+  background:linear-gradient(180deg,rgba(30,30,29,0) 0%,rgba(30,30,29,.92) 26%,var(--base) 54%);}
 .cta .k{font-size:30px;font-weight:800;letter-spacing:.30em;color:var(--acc);opacity:0;}
 .cta .w{font-family:'Oswald',sans-serif;font-size:168px;font-weight:600;letter-spacing:-3px;
   color:var(--ink);line-height:.92;opacity:0;}
@@ -421,17 +424,17 @@ body{background:#CFC8BA;display:flex;justify-content:center;align-items:flex-sta
         <div class="board">
           <div class="ph clay p1"><div class="hr">HOUR<br>1 - 4</div>
             <div class="tx"><b>It finds who would buy</b>
-              <i>forty companies, and the one person at each who signs</i></div>
+              <i>forty companies, and the one who signs at each</i></div>
             <div class="res r1"><b>40</b><i>named</i></div></div>
 
           <div class="ph clay p2"><div class="hr">HOUR<br>5 - 12</div>
-            <div class="tx"><b>It writes the first message</b>
-              <i>from something they posted, held until you approve it</i></div>
+            <div class="tx"><b>It writes the message</b>
+              <i>from something they actually posted</i></div>
             <div class="res r2"><b>40</b><i>approved by you</i></div></div>
 
           <div class="ph clay p3"><div class="hr">HOUR<br>13 - 30</div>
             <div class="tx"><b>The page builds itself</b>
-              <i>live on a real address, then it checks that it works</i></div>
+              <i>live on a real address, then it checks it works</i></div>
             <div class="res r3"><b>LIVE</b><i>verified</i></div></div>
 
           <div class="ph clay p4"><div class="hr">HOUR<br>31 - 48</div>
