@@ -22,6 +22,6 @@ Captions follow CLAUDE.md 15.6: one beat per paragraph, exactly five hashtags.
 |---|---|---|---|
 | `film-05-48h` | YOUR FIRST PAYING CUSTOMER IN 48 HOURS | 48H | ready |
 | `film-04-survive` | 88% OF AI AGENTS NEVER LEAVE THE DEMO | SURVIVE | Names two internal terms on screen (SENTINEL, HUMAN GATE). Strip before posting. |
-| `film-03-router` | CLAUDE HAS FOUR MODELS AND YOU NEVER PICK ONE | ROUTER | Headline is an internal term (ROUTER). Rename before posting. |
+| `film-03-price` | TEN TIMES THE PRICE FOR WORK THE SMALL MODEL FINISHES | PRICE | rebuilt, ready |
 | `film-02-overnight` | YOUR STARTUP SLEEPS WHEN YOU DO | 24H | ready |
 | `film-01-research` | RESEARCH EATS THE FIRST HOUR OF EVERY DEAL | CORTEX | POSTED AND UNDERPERFORMED. Names an internal term on screen. Kept for reference only. |

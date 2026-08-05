@@ -414,6 +414,33 @@ def chromium_path() -> str | None:
     return None
 
 
+def check_keyframes(html: pathlib.Path, css: str) -> None:
+    """A page must define every keyframe the injected caption CSS calls by name.
+
+    build_captions() emits `animation:kBlur ...` per word but ships no keyframes, so a film
+    whose stylesheet lacks them renders every hook and subtitle word stuck at opacity 0. It
+    does not error - it just produces a silent, total caption failure that looks like a blank
+    opening. Episode 03 shipped that way and the defect was only visible by pulling frames out
+    of the MP4. Fail loudly instead.
+    """
+    page = html.read_text()
+    have = set(re.findall(r"@keyframes\s+([\w-]+)", page))
+    want = set()
+    for decl in re.findall(r"animation:([^;}]+)", css):
+        for part in decl.split(","):
+            for tok in part.strip().split():
+                if re.fullmatch(r"[A-Za-z][\w-]*", tok) and not tok.startswith(
+                        ("ease", "linear", "step", "cubic", "var", "both", "forwards",
+                         "backwards", "normal", "reverse", "alternate", "infinite",
+                         "running", "paused", "none")):
+                    want.add(tok)
+                    break
+    missing = sorted(want - have)
+    if missing:
+        sys.exit(f"{html.name}: stylesheet is missing @keyframes {', '.join(missing)} - "
+                 f"the captions would render invisible")
+
+
 def _open_stage(p, html: pathlib.Path, meta: dict, marks: list[float] | None = None,
                 captions: tuple[str, str] | None = None):
     """Launch a browser on the film and return (browser, page, #film locator).
@@ -609,6 +636,7 @@ def main() -> None:
             # the CTA beat draws its own COMMENT CORTEX, so captions stop there
             captions = build_captions(meta, words, hook_end,
                                       cta_at=marks[-1] if marks else None, marks=marks)
+            check_keyframes(html, captions[1])
             n_hook = sum(1 for w in words if w[1] < hook_end)
             print(f"  caps   hook {n_hook} words to {hook_end:.2f}s, "
                   f"{len(words) - n_hook} words captioned after")
