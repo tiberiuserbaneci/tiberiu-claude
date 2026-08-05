@@ -87,7 +87,7 @@
 /* FILM-META {"duration":46,"w":1080,"h":1920,"fps":30,
   "hook":"Most *AI*|forgets you|between *chats*.","hook_hold":0.45,
   "accent":["brain","profile","facts","signals","three","blank","writes","keeps"],
-  "zones":["bot","bot","top","top","bot"],
+  "zones":["bot","bot","bot","bot","bot"],
   "beats":[
   {"t":0.0,  "vo":"Most AI forgets you between chats. You paste who you are, what you are building and last week's notes into every new window."},
   {"t":8.0,  "vo":"So it stops asking. The first time you tell it something, it keeps it."},
@@ -230,47 +230,58 @@ body{background:#0C0C0B;display:flex;justify-content:center;align-items:flex-sta
 @keyframes ckout{from{opacity:1}to{opacity:0}}
 
 /* ---------- THE LEDGER: one object, only ever added to ---------- */
-.sheet{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;gap:20px;
-  padding-bottom:330px;animation:drift 46s linear both;}
-.hd{flex-shrink:0;display:flex;align-items:flex-end;gap:22px;
-  border-bottom:2px solid var(--iv14);padding-bottom:16px;}
-.hd .cnt{font-family:'Anton',sans-serif;font-size:128px;line-height:.82;color:var(--book);
-  letter-spacing:-3px;position:relative;width:220px;flex-shrink:0;}
+.sheet{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;gap:15px;
+  padding-bottom:358px;animation:drift 46s linear both;}
+.hd{flex-shrink:0;display:flex;align-items:flex-end;gap:20px;
+  border-bottom:2px solid var(--iv14);padding-bottom:12px;}
+.hd .cnt{font-family:'Anton',sans-serif;font-size:96px;line-height:.82;color:var(--book);
+  letter-spacing:-2px;position:relative;width:160px;flex-shrink:0;}
 .hd .cnt span{position:absolute;left:0;bottom:0;opacity:0;}
 .hd .cnt span:first-child{opacity:1;}
 .hd .cap{padding-bottom:6px;}
-.hd .cap b{display:block;font-size:32px;font-weight:900;letter-spacing:-.8px;line-height:1.1;}
+.hd .cap b{display:block;font-size:29px;font-weight:900;letter-spacing:-.7px;line-height:1.1;}
 .hd .cap i{display:block;font-family:'DM Mono',monospace;font-size:19px;font-style:normal;
   letter-spacing:.15em;text-transform:uppercase;color:var(--iv46);margin-top:7px;}
 
 .ledger{flex:1;min-height:0;display:grid;grid-template-columns:repeat(3,1fr);
-  grid-auto-rows:1fr;gap:13px;}
+  grid-auto-rows:1fr;gap:13px;position:relative;}
+.scan{position:absolute;inset:-6px;pointer-events:none;z-index:3;border-radius:16px;opacity:0;
+  background:linear-gradient(90deg,transparent 0%,rgba(204,120,92,.10) 38%,
+    rgba(204,120,92,.30) 50%,rgba(204,120,92,.10) 62%,transparent 100%);
+  background-size:55% 100%;background-repeat:no-repeat;background-position:-60% 0;}
+@keyframes sweep{0%{background-position:-60% 0;opacity:0}
+                 14%{opacity:1} 86%{opacity:1}
+                 100%{background-position:160% 0;opacity:0}}
+@keyframes pull{0%{box-shadow:0 0 0 0 rgba(204,120,92,0);border-color:var(--iv14)}
+                38%{box-shadow:0 0 0 6px rgba(204,120,92,.42);border-color:var(--book)}
+                100%{box-shadow:0 0 0 0 rgba(204,120,92,0);border-color:var(--iv14)}}
 /* every slot exists on the first frame. Empty is a state, not an absence. */
 .slot{border-radius:14px;border:2px dashed var(--line);background:transparent;
-  padding:18px 20px;display:flex;flex-direction:column;justify-content:center;gap:6px;
+  padding:13px 17px;display:flex;flex-direction:column;justify-content:center;gap:6px;
   position:relative;overflow:hidden;}
-.slot u{font-family:'DM Mono',monospace;font-size:17px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--iv26);text-decoration:none;}
+.slot u{font-family:'DM Mono',monospace;font-size:15px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--iv26);text-decoration:none;
+  display:flex;justify-content:space-between;gap:8px;}
 .slot .in{opacity:0;}
-.slot .in b{display:block;font-size:27px;font-weight:900;letter-spacing:-.6px;line-height:1.08;
-  color:var(--ivory);}
-.slot .in i{display:block;font-size:19px;font-style:normal;color:var(--iv70);margin-top:5px;
-  line-height:1.24;}
-.slot .in em{display:block;font-family:'DM Mono',monospace;font-size:16px;font-style:normal;
-  letter-spacing:.12em;text-transform:uppercase;color:var(--book);margin-top:7px;}
+.slot .in b{display:block;font-size:25px;font-weight:900;letter-spacing:-.6px;line-height:1.05;
+  color:var(--ivory);margin-top:5px;}
+.slot .in i{display:block;font-size:18px;font-style:normal;color:var(--iv70);margin-top:4px;
+  line-height:1.2;}
+.slot .in em{font-family:'DM Mono',monospace;font-size:15px;font-style:normal;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--book);flex-shrink:0;}
 .slot .blank{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
   font-family:'DM Mono',monospace;font-size:40px;color:var(--line);}
 
 .rail{flex-shrink:0;display:flex;gap:13px;}
 .sig{flex:1;border-radius:14px;background:var(--slate2);border:2px solid var(--iv14);
-  padding:18px 20px;display:flex;flex-direction:column;gap:9px;}
+  padding:14px 18px;display:flex;flex-direction:column;gap:7px;}
 .sig u{font-family:'DM Mono',monospace;font-size:17px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--iv26);text-decoration:none;}
 .sig b{font-size:26px;font-weight:900;letter-spacing:-.6px;line-height:1.06;opacity:0;}
 .sig .tr{height:13px;border-radius:7px;background:#141413;overflow:hidden;}
 .sig .tr i{display:block;height:100%;width:0;border-radius:7px;
   background:linear-gradient(90deg,var(--kraft),var(--book));}
-.note{flex-shrink:0;display:flex;align-items:center;gap:16px;padding:20px 24px;
+.note{flex-shrink:0;display:flex;align-items:center;gap:16px;padding:15px 22px;
   border-radius:14px;background:var(--booklo);border:2px solid var(--bookbd);}
 .note>*{opacity:0;}
 .note .l{font-family:'DM Mono',monospace;font-size:19px;letter-spacing:.14em;
@@ -310,6 +321,11 @@ body{background:#0C0C0B;display:flex;justify-content:center;align-items:flex-sta
 .s3 b{animation:rise .45s var(--e) both calc(var(--b4) + 4.40s);}
 .s3 i{--w:100%;animation:grow .7s var(--eEmph) both calc(var(--b4) + 4.55s);}
 .note>*{animation:rise .5s var(--e) both calc(var(--b5) + 3.00s);}
+/* one sweep per signal named in beat 4, then a write-back pass in beat 5 */
+.sc1{animation:sweep 1.35s var(--eStd) forwards calc(var(--b4) + 1.35s);}
+.sc2{animation:sweep 1.35s var(--eStd) forwards calc(var(--b4) + 2.85s);}
+.sc3{animation:sweep 1.35s var(--eStd) forwards calc(var(--b4) + 4.35s);}
+.sc4{animation:sweep 1.60s var(--eStd) forwards calc(var(--b5) + 1.55s);}
 
 .cta{animation:scin .45s both calc(var(--b6) - 0.20s);}
 .cta .k{animation:rise .5s var(--e) both calc(var(--b6) + 0.06s);}
@@ -337,7 +353,7 @@ body{background:#0C0C0B;display:flex;justify-content:center;align-items:flex-sta
             <i>the brain &middot; docs</i></div>
         </div>
 
-        <div class="ledger" id="ledger"></div>
+        <div class="ledger" id="ledger"><div class="scan sc1"></div><div class="scan sc2"></div><div class="scan sc3"></div><div class="scan sc4"></div></div>
 
         <div class="rail">
           <div class="sig s1"><u>signal 01</u><b>Semantic match</b><div class="tr"><i></i></div></div>
@@ -370,39 +386,45 @@ body{background:#0C0C0B;display:flex;justify-content:center;align-items:flex-sta
 (function () {
   const FACTS = [
     // wave 1, b2: the first things you say once
-    {w:1, u:"PROFILE",    b:"Who you are",       i:"founder, 8 people, IT services",      e:"told once"},
-    {w:1, u:"PROFILE",    b:"What you sell",     i:"GTM software, seat plus credits",     e:"told once"},
-    {w:1, u:"PROFILE",    b:"Who you sell to",   i:"founders at 2 to 50, US and UK",      e:"told once"},
+    {w:1, u:"PROFILE",    b:"Who you are",       i:"founder, 8 people",      e:"told once"},
+    {w:1, u:"PROFILE",    b:"What you sell",     i:"GTM software",     e:"told once"},
+    {w:1, u:"PROFILE",    b:"Who you sell to",   i:"founders, 2 to 50",      e:"told once"},
     // wave 2, b3: saved facts
-    {w:2, u:"SAVED FACT", b:"Your pricing",      i:"Starter free, Max 19, Enterprise 297", e:"kept"},
-    {w:2, u:"SAVED FACT", b:"Your voice",        i:"blunt, no hedging, numbers first",     e:"kept"},
-    {w:2, u:"SAVED FACT", b:"Your stack",        i:"Next.js, Supabase, Vercel, Claude",    e:"kept"},
+    {w:2, u:"SAVED FACT", b:"Your pricing",      i:"free, 19, 297", e:"kept"},
+    {w:2, u:"SAVED FACT", b:"Your voice",        i:"blunt, numbers first",     e:"kept"},
+    {w:2, u:"SAVED FACT", b:"Your stack",        i:"Next.js, Supabase, Claude",    e:"kept"},
     // wave 3, b4: open work
-    {w:3, u:"OPEN WORK",  b:"The deal at 40",    i:"waiting on their security review",     e:"unfinished"},
+    {w:3, u:"OPEN WORK",  b:"The deal at 40",    i:"waiting on security",     e:"unfinished"},
     {w:3, u:"OPEN WORK",  b:"The launch post",   i:"drafted, not scheduled",               e:"unfinished"},
-    {w:3, u:"OPEN WORK",  b:"The pricing page",  i:"two versions, no decision yet",        e:"unfinished"},
+    {w:3, u:"OPEN WORK",  b:"The pricing page",  i:"two versions, no call",        e:"unfinished"},
     // wave 4, b5: the thread itself
-    {w:4, u:"SESSION",    b:"Monday's thread",   i:"the objection you have not answered",  e:"resumable"},
-    {w:4, u:"SESSION",    b:"The fork",          i:"both pricing models, side by side",    e:"resumable"},
-    {w:4, u:"SESSION",    b:"What you decided",  i:"searchable, months later",             e:"resumable"},
+    {w:4, u:"SESSION",    b:"Monday's thread",   i:"the open objection",  e:"resumable"},
+    {w:4, u:"SESSION",    b:"The fork",          i:"both pricing models",    e:"resumable"},
+    {w:4, u:"SESSION",    b:"What you decided",  i:"searchable, months on",             e:"resumable"},
   ];
   const AT = {1:"var(--b2) + 1.30s", 2:"var(--b3) + 1.10s", 3:"var(--b3) + 2.90s",
               4:"var(--b5) + 0.60s"};
   const led = document.getElementById('ledger');
-  const css = [];
+  const css = [], ANIM = {};
   FACTS.forEach((f, n) => {
     const d = document.createElement('div');
     d.className = 'slot sl' + n;
-    d.innerHTML = `<span class="blank">&mdash;</span><div class="in"><u>${f.u}</u>` +
-                  `<b>${f.b}</b><i>${f.i}</i><em>${f.e}</em></div>`;
+    d.innerHTML = `<span class="blank">&mdash;</span><div class="in">` +
+                  `<u>${f.u}<em>${f.e}</em></u><b>${f.b}</b><i>${f.i}</i></div>`;
     led.appendChild(d);
     // stagger inside the wave so the fill reads as a cascade, not a flash
     const k = n % 3, base = AT[f.w], off = (k * 0.22).toFixed(2);
-    css.push(`.sl${n}{animation:solid .45s var(--eStd) both calc(${base} + ${off}s),` +
-             `pulse .8s var(--eStd) forwards calc(${base} + ${off}s)}`);
+    ANIM[n] = `solid .45s var(--eStd) both calc(${base} + ${off}s),` +
+              `pulse .8s var(--eStd) forwards calc(${base} + ${off}s)`;
     css.push(`.sl${n} .in{animation:fill .45s var(--e) both calc(${base} + ${off}s + .10s)}`);
     css.push(`.sl${n} .blank{animation:fadeout .3s forwards calc(${base} + ${off}s)}`);
   });
+  // semantic match pulls a profile card, recency pulls the open work, explicit saves pull a
+  // saved fact: the three signals, each lighting the slot it would return
+  [[1,"var(--b4) + 1.75s"],[7,"var(--b4) + 3.25s"],[4,"var(--b4) + 4.75s"],
+   [11,"var(--b5) + 2.05s"],[2,"var(--b5) + 2.35s"],[8,"var(--b5) + 2.65s"]]
+    .forEach(([n,at]) => { ANIM[n] += `,pull .95s var(--eStd) forwards calc(${at})`; });
+  Object.keys(ANIM).forEach(n => css.push(`.sl${n}{animation:${ANIM[n]}}`));
   const s = document.createElement('style');
   s.textContent = css.join('');
   document.head.appendChild(s);

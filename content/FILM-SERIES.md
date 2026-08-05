@@ -356,6 +356,23 @@ There is no crossfade to dip and no container that arrives empty, so coverage ri
 **monotonically by construction**. It measured 0.110 against a 0.038 hook, 289%, and passed the
 retention guard on the first run rather than after five rounds of patching.
 
+**An accumulating film cannot alternate its caption zones.** A film that swaps states can pad
+each one away from whichever half that beat's caption claims. A film that never swaps has one
+sheet, so it can only reserve one edge, and a `top` zone caption lands straight on the picture:
+episode 05 measured **46,814px2** of caption over ledger through beats 3 and 4 before this was
+caught. With accumulation, set every zone to the same edge and reserve it once.
+
+**Adding a second rule for the same element replaces its animation, it does not extend it.**
+Six ledger slots never filled because a later `.slN{animation:pull ...}` rule overwrote the
+whole `animation` declaration that was running their fill. Build one animation list per element
+and emit it once. This looks exactly like a timing bug and is not one.
+
+**Accumulation still has to move between waves.** Filling in four waves over 29 seconds leaves
+long holds, and the operator's note was that the graphic read static. Retrieval is now shown
+rather than described: a highlight sweeps the ledger on each of the three signals and the slot
+that signal would return lights under it. The motion is on message, which is the only kind
+worth adding.
+
 It only works when the subject supports it. A film about memory whose picture keeps forgetting
 the previous scene would be arguing the opposite of its own script, and a film about a linear
 process still needs to cut. Reach for it when the story is cumulative.
