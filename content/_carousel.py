@@ -82,8 +82,23 @@ def render(html: pathlib.Path, out_dir: pathlib.Path, check_only=False, w=1080, 
         pg.evaluate("""() => {
             document.querySelectorAll('.hd').forEach(hd => {
               const h = hd.querySelector('.h'); if (!h) return;
-              let size = parseFloat(getComputedStyle(h).fontSize);
-              for (let i = 0; i < 40 && hd.scrollHeight > hd.clientHeight; i++) {
+              // Run the title out to the full measure and set it as large as the header
+              // budget allows, rather than leaving short lines floating at half the column.
+              // Each authored line becomes a block whose inner span reports the real text
+              // width, so the fit can grow the type as well as shrink it.
+              if (!h.dataset.split) {
+                h.innerHTML = h.innerHTML.split(/<br\s*\/?>/i)
+                  .map(s => '<span style="display:block"><i style="font-style:normal;' +
+                            'display:inline-block">' + s + '</i></span>').join('');
+                h.dataset.split = '1';
+              }
+              const room = h.clientWidth;
+              const widest = () => Math.max(...[...h.querySelectorAll('span > i')]
+                                    .map(e => e.getBoundingClientRect().width), 0);
+              let size = 210;
+              h.style.fontSize = size + 'px';
+              for (let k = 0; k < 90; k++) {
+                if (widest() <= room && hd.scrollHeight <= hd.clientHeight) break;
                 size -= 3; h.style.fontSize = size + 'px';
               }
             });
@@ -150,6 +165,71 @@ def render(html: pathlib.Path, out_dir: pathlib.Path, check_only=False, w=1080, 
         for x in thin:
             print(f"  THIN slide {x['slide']:02d} fills {x['w']}% wide {x['h']}% tall "
                   f"(floor {int(fill_w*100)}/{int(fill_h*100)})")
+
+        # Two defects the operator caught by eye, now caught by number on every render.
+        # "textul iasa din pila" - a solid that does not contain its own words - and
+        # "alb pe crem nu se vede" - light type on the light ground, which is invisible
+        # rather than merely ugly. Both shipped once because nothing was measuring them.
+        leak = pg.evaluate("""() => {
+            const out = [];
+            const lum = c => {
+              const m = c.match(/[\d.]+/g); if (!m) return null;
+              if (m.length > 3 && parseFloat(m[3]) < 0.35) return null;
+              const [r,g,b] = m.slice(0,3).map(Number);
+              return (0.2126*r + 0.7152*g + 0.0722*b) / 255;
+            };
+            const bgOf = el => {
+              for (let n = el; n; n = n.parentElement) {
+                const cs = getComputedStyle(n);
+                if (cs.backgroundImage && cs.backgroundImage !== 'none') {
+                  const m = cs.backgroundImage.match(/rgba?\([^)]+\)/);
+                  if (m) { const L = lum(m[0]); if (L !== null) return L; }
+                }
+                const L = lum(cs.backgroundColor); if (L !== null) return L;
+              }
+              return 1;
+            };
+            const words = e => [...e.childNodes].filter(n => n.nodeType === 3)
+                                 .map(n => n.textContent.trim()).join('');
+            document.querySelectorAll('.slide').forEach((s, i) => {
+              s.querySelectorAll('.slab').forEach(sl => {
+                const r = sl.getBoundingClientRect();
+                sl.querySelectorAll('*').forEach(e => {
+                  if (!words(e)) return;
+                  const q = e.getBoundingClientRect();
+                  if (q.width < 3 || q.height < 3) return;
+                  const over = Math.max(r.top - q.top, q.bottom - r.bottom,
+                                        r.left - q.left, q.right - r.right);
+                  if (over > 3)
+                    out.push({slide: i+1, why: 'escapes its solid',
+                              txt: words(e).slice(0,22), px: Math.round(over)});
+                });
+              });
+              // any clipping box, not just a solid: the docket hid its last row inside an
+              // inner overflow:hidden div and the .slab-only check never saw it
+              s.querySelectorAll('*').forEach(e => {
+                const cs = getComputedStyle(e);
+                if (cs.overflow === 'visible' && cs.overflowY === 'visible') return;
+                if (e.scrollHeight > e.clientHeight + 3 && e.clientHeight > 30)
+                  out.push({slide: i+1, why: 'box clips its own content', txt: '',
+                            px: e.scrollHeight - e.clientHeight});
+              });
+              s.querySelectorAll('*').forEach(e => {
+                const w = words(e); if (!w) return;
+                const q = e.getBoundingClientRect();
+                if (q.width < 4 || q.height < 4) return;
+                const fg = lum(getComputedStyle(e).color); if (fg === null) return;
+                if (fg > 0.72 && bgOf(e) > 0.72)
+                  out.push({slide: i+1, why: 'light type on light ground',
+                            txt: w.slice(0,22), px: 0});
+              });
+            });
+            return out.slice(0, 8);
+        }""")
+        for x in leak:
+            print(f"  LEAK slide {x['slide']:02d} {x['why']}"
+                  + (f' "{x["txt"]}"' if x["txt"] else "")
+                  + (f" by {x['px']}px" if x["px"] else ""))
 
         bad = pg.evaluate("""([w,h]) => [...document.querySelectorAll('.slide')]
             .map((s,i)=>({i:i+1, w:Math.round(s.scrollWidth), h:Math.round(s.scrollHeight)}))
