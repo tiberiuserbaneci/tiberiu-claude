@@ -252,8 +252,8 @@ body{background:#0C0C0B;display:flex;justify-content:center;align-items:flex-sta
 /* ---------- captions ---------- */
 .hk{position:absolute;top:300px;left:104px;right:152px;bottom:330px;z-index:9;
   display:flex;align-items:center;justify-content:flex-start;}
-.hkscrim{position:absolute;inset:0;z-index:8;background:var(--base);opacity:.92;
-  animation:fadeout .42s ease-in forwards var(--hookout);}
+.hkscrim{position:absolute;inset:0;z-index:8;background:var(--base);opacity:1;
+  animation:fadeout .46s ease-in forwards calc(var(--hookout) + 0.26s);}
 .hk-in{width:100%;transform-origin:left center;}
 .hk-l{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 26px;line-height:.98;}
 .hk-l.I{padding-left:104px;} .hk-l.R{padding-left:186px;}
@@ -301,7 +301,7 @@ body{background:#0C0C0B;display:flex;justify-content:center;align-items:flex-sta
 
 /* ---------- THE RUN BOARD: four rows, only ever added to ---------- */
 .sheet{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;gap:18px;
-  padding-bottom:358px;animation:drift 42s linear both;}
+  padding-bottom:358px;}
 .hd{flex-shrink:0;display:flex;align-items:center;gap:24px;}
 .dial{width:180px;height:180px;border-radius:50%;position:relative;flex-shrink:0;
   display:flex;align-items:center;justify-content:center;}
@@ -342,6 +342,7 @@ body{background:#0C0C0B;display:flex;justify-content:center;align-items:flex-sta
 .ph::after{content:'';position:absolute;left:0;bottom:0;height:9px;width:0;
   background:linear-gradient(90deg,var(--accl),var(--acc));border-radius:0 4px 4px 0;}
 @keyframes runbar{from{width:0}to{width:100%}}
+@keyframes drawrule{from{width:0}to{width:100%}}
 .ph .tx,.ph .hr{opacity:.34;}
 .ph.on .tx,.ph.on .hr{opacity:1;}
 .ph.on .hr{color:var(--acc);}
@@ -354,13 +355,18 @@ body{background:#0C0C0B;display:flex;justify-content:center;align-items:flex-sta
 .pay .r{margin-left:auto;font-family:'Oswald',sans-serif;font-size:42px;font-weight:600;
   white-space:nowrap;line-height:1;}
 
-.cta{position:absolute;left:0;right:0;bottom:0;height:640px;z-index:7;opacity:0;
-  display:flex;flex-direction:column;justify-content:flex-end;gap:14px;
-  background:linear-gradient(180deg,rgba(30,30,29,0) 0%,rgba(30,30,29,.92) 26%,var(--base) 54%);}
-.cta .k{font-size:30px;font-weight:800;letter-spacing:.30em;color:var(--acc);opacity:0;}
-.cta .w{font-family:'Oswald',sans-serif;font-size:168px;font-weight:600;letter-spacing:-3px;
-  color:var(--ink);line-height:.92;opacity:0;}
-.cta .s{font-size:27px;font-weight:700;color:var(--muted);opacity:0;}
+.cta{position:absolute;inset:0;z-index:7;opacity:0;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;text-align:center;gap:0;background:var(--base);}
+.cta .k{font-size:28px;font-weight:800;letter-spacing:.32em;color:var(--acc);opacity:0;}
+.cta .card{margin-top:26px;width:100%;max-width:760px;border-radius:34px;padding:52px 44px;
+  opacity:0;}
+.cta .w{font-family:'Oswald',sans-serif;font-size:176px;font-weight:600;letter-spacing:-4px;
+  color:#fff;line-height:.9;}
+.cta .rule{height:3px;border-radius:2px;background:rgba(255,255,255,.30);margin:32px 0 26px;
+  width:0;}
+.cta .s{font-size:29px;font-weight:700;color:rgba(255,255,255,.88);}
+.cta .foot2{margin-top:34px;font-size:23px;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--muted);opacity:0;}
 
 /* ---------- the clock ---------- */
 /* Nothing ever leaves, so there is no crossfade to dip. The board is furnished with four
@@ -397,11 +403,16 @@ body{background:#0C0C0B;display:flex;justify-content:center;align-items:flex-sta
 .pay>*{animation:rise .5s var(--e) both calc(var(--b5) + 4.90s);}
 .pay{animation:scin .45s var(--eStd) both calc(var(--hookout) - 0.40s),
      lift 1.1s var(--eStd) forwards calc(var(--b5) + 4.90s);}
-.cta{animation:scin .42s both calc(var(--b6) - 0.20s);}
-.cta .k{animation:rise .5s var(--e) both calc(var(--b6) + 0.06s);}
-.cta .w{animation:pop .55s var(--eEmph) both calc(var(--b6) + 0.22s),
-        glowtx 1.3s var(--eStd) forwards calc(var(--b6) + 0.80s);}
-.cta .s{animation:rise .5s var(--e) both calc(var(--b6) + 0.90s);}
+/* the board leaves before the card arrives, overlapping just enough that the frame is never
+   empty between them */
+.sheet{animation:drift 42s linear both,
+       fadeout .46s var(--eExit) forwards calc(var(--b6) - 0.34s);}
+.cta{animation:scin .42s var(--eStd) both calc(var(--b6) - 0.22s);}
+.cta .k{animation:rise .5s var(--e) both calc(var(--b6) + 0.10s);}
+.cta .card{animation:pop .55s var(--eEmph) both calc(var(--b6) + 0.26s),
+           lift 1.4s var(--eStd) forwards calc(var(--b6) + 0.98s);}
+.cta .rule{animation:drawrule .52s var(--eEmph) both calc(var(--b6) + 0.92s);}
+.cta .foot2{animation:rise .55s var(--e) both calc(var(--b6) + 1.44s);}
 </style></head><body>
 <div id="film">
   <div class="bg"><div class="amb"></div><div class="glow"></div></div>
@@ -448,8 +459,12 @@ body{background:#0C0C0B;display:flex;justify-content:center;align-items:flex-sta
 
       <div class="cta">
         <div class="k">COMMENT</div>
-        <div class="w">48H</div>
-        <div class="s">the exact run &rarr; your DMs</div>
+        <div class="card clay-acc">
+          <div class="w">48H</div>
+          <div class="rule"></div>
+          <div class="s">and I will send you the exact run</div>
+        </div>
+        <div class="foot2">51ultron.com</div>
       </div>
     </div>
 

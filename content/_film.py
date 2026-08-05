@@ -444,6 +444,24 @@ def _open_stage(p, html: pathlib.Path, meta: dict, marks: list[float] | None = N
             const s = document.createElement('style');
             s.textContent = css;
             document.head.appendChild(s);
+            // A film brings its scene in early so the frame is never empty at the seam, which
+            // means display type would otherwise land straight on the picture for the length
+            // of the hook's fade. An opaque scrim in the film's own ground colour keeps the
+            // type on a clean field, then clears once the hook has gone.
+            const filmEl = document.getElementById('film');
+            if (filmEl && !document.querySelector('.hkscrim')) {
+                const sc = document.createElement('div');
+                sc.className = 'hkscrim';
+                sc.style.cssText = 'position:absolute;inset:0;z-index:8;background:' +
+                    getComputedStyle(filmEl).backgroundColor + ';';
+                const hk = document.getElementById('hook');
+                filmEl.insertBefore(sc, hk || null);
+                const s2 = document.createElement('style');
+                s2.textContent = '@keyframes __hkscrimout{from{opacity:1}to{opacity:0}}' +
+                    '.hkscrim{animation:__hkscrimout .46s ease-in forwards ' +
+                    'calc(var(--hookout) + 0.26s)}';
+                document.head.appendChild(s2);
+            }
             // Auto-fit the hook. Display faces vary enormously in advance width, so a size
             // that frames one episode's opening line walks the next one out of the frame.
             // Measure the real lines once and scale every hook word by the worst case.

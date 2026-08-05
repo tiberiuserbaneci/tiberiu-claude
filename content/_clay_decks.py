@@ -322,6 +322,49 @@ D("clay-07-ten", "TEAM OF TEN", "TEN", [
       "The eleven jobs, and how to start them all at once.", "THE FOUR HOUR DAY"),
 ], run="dial,cards,grid2,stack3,badge,phone,badge")
 
+# ---------------------------------------------------------------- 08 INVESTORS
+R8 = ["NUMBERS", "STORY", "ROOM", "REPLY"]
+D("clay-08-investors", "THEY CALL BACK", "INVESTORS", [
+  dict(eyebrow="48 HOURS", h="BECOME THE<br>FOUNDER THEY<br><em>CALL BACK.</em>",
+       sub="Nobody passes because the deck was ugly.",
+       body="They pass because the answer to the second question was not ready.",
+       obj=dial("48", "HOURS")),
+  dict(eyebrow="HOUR 1 - 6", h="YOUR OWN<br><em>NUMBERS</em><br>FIRST.",
+       sub="Pulled from what actually happened, not from a memory of it.",
+       body="Growth, retention, what a customer costs you and what they are worth.",
+       obj=grid2([dict(u="GROWTH", b="Monthly", i="the real curve, not the good months"),
+                  dict(u="RETENTION", b="By cohort", i="where they leave, and when", acc=True),
+                  dict(u="COST", b="To acquire", i="all in, not just ad spend"),
+                  dict(u="VALUE", b="Per customer", i="over the life, not the first month")]),
+       rail=rail(R8, 0)),
+  dict(eyebrow="HOUR 7 - 20", h="THE <em>STORY</em><br>THOSE NUMBERS<br>TELL.",
+       sub="Not the story you wish they told.",
+       body="Where you are early, where you are strong, and what the money buys.",
+       obj=stack3([dict(b="WHAT IS WORKING", u="with the number under it"),
+                   dict(b="WHAT IS NOT YET", u="said before they find it", acc=True),
+                   dict(b="WHAT THE ROUND BUYS", u="one specific thing", inset=True)]),
+       rail=rail(R8, 1)),
+  dict(eyebrow="HOUR 21 - 36", h="THE ROOM<br>THEY <em>ASK</em><br>FOR NEXT.",
+       sub="The one you scramble to build after the first good call.",
+       body="Financials, cohorts, contracts, cap table. Assembled while the call is still warm.",
+       obj=grid2([dict(u="THE MODEL", b="Defensible", i="assumptions you can stand behind"),
+                  dict(u="THE COHORTS", b="Charted", i="the one they always request", acc=True),
+                  dict(u="THE PAPER", b="In order", i="contracts and cap table"),
+                  dict(u="THE ASK", b="Specific", i="what the money actually buys")]),
+       rail=rail(R8, 2)),
+  dict(eyebrow="HOUR 37 - 48", h="THE <em>QUESTION</em><br>BEFORE THEY<br>ASK IT.",
+       sub="Twenty objections, answered in writing, before the second call.",
+       body="The one that kills the round is never the one you rehearsed.",
+       obj=badge("THE PREP", "20 OBJECTIONS<br>ANSWERED", "REHEARSED: ALL", "SURPRISED: NONE"),
+       rail=rail(R8, 3)),
+  dict(eyebrow="WHAT ACTUALLY CHANGED", h="YOU STOPPED<br>SOUNDING<br><em>EARLY.</em>",
+       sub="Same company. Same numbers. A different conversation.",
+       body="Being prepared reads as being further along, because it usually is.",
+       obj=phone([(20,0),(42,0),(66,1),(94,1)], "SECOND CALLS", "+3x")),
+  cta("INVESTORS", "and I will send you the 48 hour prep.",
+      "The numbers to pull, and the twenty questions.", "THE 48 HOUR PREP"),
+], run="dial,grid2,stack3,grid2,badge,phone,badge")
+
 
 def main():
     seen = {}
