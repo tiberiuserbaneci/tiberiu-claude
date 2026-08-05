@@ -28,7 +28,8 @@ def chromium_path():
     return None
 
 
-def render(html: pathlib.Path, out_dir: pathlib.Path, check_only=False, w=1080, h=1920):
+def render(html: pathlib.Path, out_dir: pathlib.Path, check_only=False, w=1080, h=1920,
+           fill_w=0.0, fill_h=0.0):
     from playwright.sync_api import sync_playwright
     exe = chromium_path()
     with sync_playwright() as p:
@@ -74,6 +75,19 @@ def render(html: pathlib.Path, out_dir: pathlib.Path, check_only=False, w=1080, 
               return {top: r.top - Math.max(up, 0), bottom: r.bottom + Math.max(dn, 0)};
             };
         """)
+        # Header fit. The stage is a declared constant, so the header cannot be allowed to
+        # grow into it - but a three line hook plus a two line subhook overflows the budget
+        # and the last line is simply cut, which is what clipped "You do not have the job."
+        # Shrink the display type until the block fits instead of losing a sentence.
+        pg.evaluate("""() => {
+            document.querySelectorAll('.hd').forEach(hd => {
+              const h = hd.querySelector('.h'); if (!h) return;
+              let size = parseFloat(getComputedStyle(h).fontSize);
+              for (let i = 0; i < 40 && hd.scrollHeight > hd.clientHeight; i++) {
+                size -= 3; h.style.fontSize = size + 'px';
+              }
+            });
+        }""")
         pg.evaluate("""() => {
             const GAP = 16;  // clear air the copy keeps from the halo
             document.querySelectorAll('.slide').forEach(s => {
@@ -107,6 +121,35 @@ def render(html: pathlib.Path, out_dir: pathlib.Path, check_only=False, w=1080, 
         if overlap:
             for o in overlap:
                 print(f"  TEXT slide {o['slide']:02d} {o['el']} overlaps the object by {o['px']}px")
+
+        # Fill. The operator's rejection was "elementele 2.5D ... ffffff mici in comparatie cu
+        # layoutul slide ului", and the number behind it was a median 50% of stage HEIGHT with
+        # a worst case of 15%: a 720x105 strip alone in an 880x701 box. The workspace is
+        # declared, so an object that does not fill it is a defect the same way a wrong canvas
+        # size is. Reported for every deck, so a thin scene is visible before it is posted.
+        thin = pg.evaluate("""([fw, fh]) => {
+            const out = [];
+            document.querySelectorAll('.slide').forEach((s, i) => {
+              const st = s.querySelector('.stage'); if (!st) return;
+              const a = st.getBoundingClientRect();
+              let t = 1e9, bo = -1e9, l = 1e9, r = -1e9, seen = false;
+              st.querySelectorAll('*').forEach(e => {
+                const q = e.getBoundingClientRect();
+                if (q.width < 8 || q.height < 8) return;
+                seen = true;
+                t = Math.min(t, q.top); bo = Math.max(bo, q.bottom);
+                l = Math.min(l, q.left); r = Math.max(r, q.right);
+              });
+              if (!seen) return;
+              const w = (r - l) / a.width, h = (bo - t) / a.height;
+              if (w < fw || h < fh)
+                out.push({slide: i+1, w: Math.round(w*100), h: Math.round(h*100)});
+            });
+            return out.slice(0, 8);
+        }""", [fill_w, fill_h])
+        for x in thin:
+            print(f"  THIN slide {x['slide']:02d} fills {x['w']}% wide {x['h']}% tall "
+                  f"(floor {int(fill_w*100)}/{int(fill_h*100)})")
 
         bad = pg.evaluate("""([w,h]) => [...document.querySelectorAll('.slide')]
             .map((s,i)=>({i:i+1, w:Math.round(s.scrollWidth), h:Math.round(s.scrollHeight)}))
@@ -185,11 +228,16 @@ def main():
     ap.add_argument("decks", nargs="+")
     ap.add_argument("--check", action="store_true")
     ap.add_argument("--out", default=str(CONTENT / "paper"))
+    ap.add_argument("--fill-w", type=float, default=0.0, dest="fill_w",
+                    help="minimum share of stage width a scene must cover")
+    ap.add_argument("--fill-h", type=float, default=0.0, dest="fill_h",
+                    help="minimum share of stage height a scene must cover")
     a = ap.parse_args()
     out_dir = pathlib.Path(a.out)
     for d in a.decks:
         html = pathlib.Path(d)
-        pngs = render(html, out_dir, check_only=a.check)
+        pngs = render(html, out_dir, check_only=a.check,
+                      fill_w=a.fill_w, fill_h=a.fill_h)
         if a.check or not pngs:
             continue
         pdf = to_pdf(pngs, out_dir / f"{html.stem}.pdf")

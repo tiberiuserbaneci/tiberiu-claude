@@ -1174,6 +1174,38 @@ intersects each element with its clipping ancestors before judging the safe box,
 that draws a 500px circle inside a 300px `overflow:hidden` box no longer reports a spill it
 never paints. A guard that cries wolf on correct work gets ignored on the day it is right.
 
+**THE SLIDE WORKING MODEL (operator, 2026-08-05 - binding for every vertical carousel).**
+The operator's standing rejection was that the visual elements are "slabe, repetitive, ffffff
+mici in comparatie cu layoutul slide ului". Measured across three decks: the object filled a
+median 75% of stage width and **50% of stage height**, worst case a 720x105 timeline alone in
+an 880x701 box - 15% of its own workspace. So the workspace is now declared in pixels and the
+element is built to fill it, never sized to its own taste and centred in the leftovers.
+
+```
+1080 x 1920                     safe insets 300 top / 70 left / 130 right / 330 bottom
+  column 880 wide, band 1290 tall
+  ├ HEADER   412px   eyebrow 25 + hook (Anton, auto-fits) + subhook 34
+  ├ gap       22px
+  ├ STAGE    880 x 745px   <- THE WORKSPACE, fixed, never eaten by the copy
+  ├ gap       22px
+  ├ CAPTION   74px   accent chip + one action line
+  ├ gap       22px
+  └ FOOTER    58px   logo + 51ultron.com
+```
+- **Fill floor: >= 90% of stage width and >= 86% of stage height.** `_carousel.py --fill-w
+  0.90 --fill-h 0.86` prints `THIN slide NN` for anything under it. Not negotiable: a scene
+  that does not fill the workspace is as much a defect as a wrong canvas size.
+- **The header auto-fits.** A three-line hook plus a two-line subhook used to clip a sentence;
+  the display size now steps down until the block fits its budget.
+- **Depth is real, not a blur.** `_clay25.extrude()` stacks hairline shadows into a solid side
+  wall; every face gets a contact shadow and a lit top edge. Shallow `rotateX` only - heavy
+  isometric rotation reads as design and destroys legibility, and the operator's test is
+  "trebuie sa ma convinga dintr o privire", which is legibility before style.
+- **Every composition is a scene, not a widget**: a ground, a dominant mass, labelled parts
+  carrying real words. A small widget scaled up just gets blurry and stays thin.
+- **Every page title is a hook.** Not a section label.
+- **The ask is the biggest thing on the CTA slide.** COMMENT is display type, not an eyebrow.
+
 **Process guards (operator rules - do NOT deviate):**
 - **SHOW every render** with SendUserFile - never describe a material without attaching it (operator: "nu mi l-ai aratat").
 - **Propose before executing; fix ONE element at a time.**
