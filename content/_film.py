@@ -347,7 +347,13 @@ def build_captions(meta: dict, words: list, hook_end: float,
     plan = []
     for bi in range(len(bounds) - 1):
         seg = [w for w in rest if bounds[bi] <= w[1] < bounds[bi + 1]]
-        for c in chunk_words(seg):
+        # A chunk that does not fit its 300px band gets scaled down at render time, which
+        # costs exactly the size the operator asked these to have. Shorter chunks fit at full
+        # size instead, so a film can trade words-per-card for type size in its own META.
+        ck = meta.get("chunk") or {}
+        for c in chunk_words(seg, max_words=ck.get("max_words", 8),
+                             max_chars=ck.get("max_chars", 62),
+                             min_words=ck.get("min_words", 4)):
             plan.append((bi, c))
 
     zones = meta.get("zones") or []
@@ -471,6 +477,7 @@ def _open_stage(p, html: pathlib.Path, meta: dict, marks: list[float] | None = N
             const s = document.createElement('style');
             s.textContent = css;
             document.head.appendChild(s);
+            // (caption chunks are fitted to their band after webfonts land, see below)
             // A film brings its scene in early so the frame is never empty at the seam, which
             // means display type would otherwise land straight on the picture for the length
             // of the hook's fade. An opaque scrim in the film's own ground colour keeps the
@@ -519,6 +526,54 @@ def _open_stage(p, html: pathlib.Path, meta: dict, marks: list[float] | None = N
         print("  clock  " + "  ".join(f"b{i+1}={t:g}s" for i, t in enumerate(marks)))
     pg.wait_for_timeout(1200)              # webfonts
     pg.evaluate("document.fonts.ready")
+
+    # Fit each caption chunk to its band. A chunk is given 300px and the scene reserves 330
+    # against it, but nothing enforced that: three lines of display type measure ~350px, and
+    # because .ck centres its children it overflowed BOTH ways, printing over the mast on a
+    # top-zone chunk and over the scene's closing line on a bottom-zone one. Every drift the
+    # operator caught in episode 03 was this one bug.
+    #
+    # Two things make the measurement honest, and both were wrong in the first attempt:
+    # webfonts must have landed (a fallback face measures a different width), and the word
+    # animations must be neutralised, because every .sw sits in its from-state at load with a
+    # translate or a 1.16 scale on it. Measure the resting layout, scale, then put it back.
+    pg.evaluate("""() => {
+        const saved = [];
+        document.querySelectorAll('.ck .sw').forEach(w => {
+            saved.push([w, w.getAttribute('style') || '']);
+            w.style.animation = 'none'; w.style.opacity = '1'; w.style.transform = 'none';
+        });
+        const sb = document.querySelector('.sb');
+        if (sb) {
+            const band = sb.getBoundingClientRect();
+            document.querySelectorAll('.ck').forEach(ck => {
+                // Measure against the band as LAID OUT, never against the .ck rect: once a
+                // transform is on the element its own getBoundingClientRect shrinks with its
+                // children, so the ratio looks unchanged however far it is scaled and a
+                // single-shot correction silently under-shoots. Converge instead.
+                const h = ck.offsetHeight || 300;
+                const top = ck.classList.contains('top') ? band.top : band.bottom - h;
+                const bot = top + h;
+                let scale = 1;
+                for (let pass = 0; pass < 8; pass++) {
+                    let a = Infinity, z = -Infinity;
+                    ck.querySelectorAll('.sw').forEach(e => {
+                        const q = e.getBoundingClientRect();
+                        if (q.height < 4) return;
+                        a = Math.min(a, q.top); z = Math.max(z, q.bottom);
+                    });
+                    if (!isFinite(a)) break;
+                    const over = Math.max(top + 20 - a, z - (bot - 20));   // headroom for entry travel
+                    if (over <= 0) break;
+                    const span = Math.max(1, z - a);
+                    scale *= Math.max(0.55, (span - over * 2.05) / span);
+                    ck.style.transformOrigin = 'left center';
+                    ck.style.transform = 'scale(' + scale.toFixed(4) + ')';
+                }
+            });
+        }
+        saved.forEach(([w, css]) => w.setAttribute('style', css));
+    }""")
     return b, pg, pg.locator("#film")
 
 
