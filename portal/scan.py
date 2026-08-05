@@ -34,6 +34,10 @@ def channel_of(name):
 
 def material_id(name):
     """Group key: carousels by slide, linkedin/single by trailing variant/version."""
+    # deck slide sets: clay-01-ceo-03 / paper-02-agents-05 -> the deck
+    m = re.fullmatch(r"((?:clay|paper)-\d{2}-[a-z0-9]+)-\d{2}", name)
+    if m:
+        return m.group(1)
     if "carousel" in name:
         # channel lives in the filename: '<x>-carousel' = LinkedIn, '<x>-tiktok-carousel' = TikTok.
         # Keep that suffix as-is instead of forcing every carousel to read 'tiktok'.
@@ -150,13 +154,17 @@ def fmt_dims(wh):
 # ---- gather generated materials (docs-*, ref-*) from PNGs ----
 mats = {}
 pngs = [p for p in CONTENT.glob("*.png") if p.name != "ultron-logo.png" and not p.name.startswith("script-")]
+# Slide sets render into their own folders (content/clay, content/paper). Without these the
+# portal shows nothing the deck builders produce, which is most of what gets posted.
+for sub in ("clay", "paper"):
+    pngs += sorted((CONTENT / sub).glob("*.png"))
 for p in sorted(pngs):
     name = p.stem
     mid = material_id(name)
     ch = channel_of(name)
-    typ = "carousel" if "carousel" in name else "single"
+    typ = "carousel" if ("carousel" in name or p.parent.name in ("clay", "paper")) else "single"
     m = mats.setdefault(mid, {"id": mid, "channel": ch, "type": typ, "files": [], "source":"generated"})
-    m["files"].append("content/"+p.name)
+    m["files"].append(p.relative_to(ROOT).as_posix())
 
 materials = []
 for mid, m in mats.items():
@@ -166,10 +174,10 @@ for mid, m in mats.items():
         slides = files
         preview = slides[0]
         nslides = len(slides)
-        pdf = CONTENT / (mid + ".pdf")
+        pdf = (ROOT / files[0]).parent / (mid + ".pdf")
         if pdf.exists():
             # LinkedIn carousels ship as a single PDF (the posting format) - hand that over, not a zip of PNGs
-            download = "content/" + pdf.name
+            download = pdf.relative_to(ROOT).as_posix()
         else:
             zpath = ZIPS / (mid + ".zip")
             write_zip(zpath, mid, slides)
