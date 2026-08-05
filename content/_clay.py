@@ -103,8 +103,6 @@ body{background:#CFC8BA;display:flex;flex-direction:column;align-items:center;ga
 .foot span{font-size:20px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
   color:var(--muted);}
 .foot span em{color:var(--acc);font-style:normal;}
-.foot .pg{position:absolute;right:0;font-size:20px;font-weight:700;letter-spacing:.14em;
-  color:var(--muted);opacity:.6;}
 
 /* ---------- slide objects ---------- */
 /* one per slide, centred, nothing competing with it */
@@ -245,8 +243,7 @@ def slide(eyebrow, h, sub, body, obj, rail_html, i, n, uri):
             + (f'<div class="body">{body}</div>' if body else '')
             + f'<div class="stage">{obj}</div>{rail_html}</div>'
             f'<div class="foot"><img src="{uri}" alt="">'
-            f'<span>ULTRON <em>&middot;</em> 51ULTRON<em>.</em>COM</span>'
-            f'<span class="pg">{i:02d}/{n:02d}</span></div></div>')
+            f'<span>ULTRON <em>&middot;</em> 51ULTRON<em>.</em>COM</span></div></div>')
 
 
 def build(slug: str, title: str, slides: list) -> pathlib.Path:
