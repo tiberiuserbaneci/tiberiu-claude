@@ -26,9 +26,13 @@ OUT = ASSETS / "fonts.css"
 
 UA = ("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) "
       "Chrome/120.0.0.0 Safari/537.36")
+# Oswald and Plus Jakarta Sans are the reference deck's own faces (operator, 2026-08-05):
+# the clay carousels match it rather than approximate it.
 SPEC = ("https://fonts.googleapis.com/css2?"
         "family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900"
         "&family=DM+Mono:wght@400;500&family=Anton&family=Instrument+Serif:ital@0;1"
+        "&family=Oswald:wght@400;500;600;700"
+        "&family=Plus+Jakarta+Sans:wght@400;500;600;700;800"
         "&display=swap")
 
 
