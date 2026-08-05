@@ -468,12 +468,12 @@ D("clay-08-investors", "THEY CALL BACK", "INVESTORS", [
 # one (Clay and The Signal), and the reported band is $132K to $241K. The backlog logged this
 # as candidate 4 and marked it clean against every shipped episode.
 D("clay-09-engineer", "THE NEW JOB", "ENGINEER", [
-  S("A JOB TITLE FROM 2025", "THE JOB THAT<br>DID NOT EXIST<br>TWO <em>YEARS AGO.</em>",
+  S("A ROLE FROM 2025", "THE JOB THAT<br>DID NOT EXIST<br>TWO <em>YEARS AGO.</em>",
     "Postings roughly doubled in six months. <b>Most founders are already doing it unpaid.</b>",
     scene_pillars([dict(b="Mid 2025", v="1.4k", p=42),
                    dict(b="Jan 2026", v="3k+", p=100, acc=True),
                    dict(b="Growth", v="205%", p=70, acc=True)],
-                  "GTM ENGINEER POSTINGS, YEAR ON YEAR"),
+                  "ONE PERSON REVENUE ROLES &middot; POSTINGS YEAR ON YEAR"),
     ("THE POINT", "You have been doing this job at 2am without the title.")),
   S("WHAT IT REPLACES", "ONE PERSON<br>SHIPS WHAT TOOK<br><em>FIVE.</em>",
     "Not a smaller team. <b>A different shape of one.</b>",
@@ -488,7 +488,7 @@ D("clay-09-engineer", "THE NEW JOB", "ENGINEER", [
                  dict(b="Write what gets sent", i="in a voice that is yours"),
                  dict(b="Build the thing they open", i="a page, a demo, a doc", acc=True),
                  dict(b="Know what happened", i="numbers, not a feeling")],
-                "54% OF THE FASTEST GROWING SAAS COMPANIES HIRE FOR THIS"),
+                "54% OF THE FASTEST GROWING SOFTWARE COMPANIES HIRE FOR THIS"),
     ("THE CATCH", "At two to fifty people you cannot hire it. You run it.")),
   S("HOW YOU START", "YOU CAN RUN IT<br>BY <em>FRIDAY.</em>",
     "No new hire, no new tool to learn. <b>Four moves.</b>",
@@ -509,7 +509,7 @@ D("clay-09-engineer", "THE NEW JOB", "ENGINEER", [
                  "ONE CONTEXT ACROSS ALL OF IT"),
     ("THE DIFFERENCE", "A stack of tools makes you the integration.")),
   S("WHAT ACTUALLY CHANGED", "THE TITLE<br>CAUGHT UP<br>TO THE <em>WORK.</em>",
-    "Reported band for the role: <b>$132K to $241K.</b>",
+    "Listed as go to market engineer. <b>Reported band $132K to $241K.</b>",
     scene_split(dict(u="TWO YEARS AGO", b="NO NAME", i="you did it after hours and called it admin"),
                 dict(u="NOW", b="A ROLE", i="postings doubled in six months"))),
   S("THE ASK", "TAKE THE<br>ONE WEEK<br><em>RUN.</em>",

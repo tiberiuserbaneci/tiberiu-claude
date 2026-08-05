@@ -3,7 +3,8 @@
 **Format** Carousel - 7 slides - 1080x1920 PNG
 **Keyword** ENGINEER
 
-Sources on the slides: GTM engineer postings roughly doubled from about 1,400 in mid 2025 to
+Sources on the slides (the role is listed as go to market engineer, which is the
+term to search, not the term to lead with): postings roughly doubled from about 1,400 in mid 2025 to
 over 3,000 by January 2026, 205% growth across 2025, 54% of the fastest growing B2B SaaS
 companies have one (Clay and The Signal), reported band $132K to $241K.
 
@@ -18,7 +19,7 @@ Three thousand job posts for a role that did not exist two years ago.
 
 Now I know the thing I have been doing at 2am has a name and a salary band.
 
-It is called GTM engineering, and the posts roughly doubled in six months:
+It is a one person revenue team, and the posts roughly doubled in six months:
 
 Fourteen hundred in mid 2025, over three thousand by January, 205% growth across the year. Fifty four percent of the fastest growing software companies now have one on the team. The job is four things and you already do all four: find who to talk to and why this week, write what actually gets sent, build the thing they open when they reply, and know what happened in numbers rather than in a feeling. At fifty people you hire it. At two to fifty there is nobody to give it to, so you run it, and the only reason one person can hold it is that the eleven jobs share one context instead of eleven browser tabs.
 

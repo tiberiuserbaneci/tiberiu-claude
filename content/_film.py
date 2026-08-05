@@ -286,8 +286,25 @@ def build_captions(meta: dict, words: list, hook_end: float,
     # ---- hook: the opening sentence, filling the safe band, one word at a time ----
     spec = meta.get("hook") or ""
     hook_words = [w for w in words if w[1] < hook_end]
+    # hook_end is a timestamp, and a narrator running one sentence into the next lets the
+    # following word start before that boundary: episode 06 pulled "It" from sentence two into
+    # the hook window. The hook is a sentence, so cut it at the sentence, not at a time.
+    for k, w in enumerate(hook_words):
+        if w[0].endswith((".", "!", "?")):
+            hook_words = hook_words[:k + 1]
+            break
     hold = float(meta.get("hook_hold", 0.15))
     out_at = (hook_words[-1][2] + hold) if hook_words else hook_end
+
+    # The spec is zipped positionally against the spoken words, so a spec with fewer slots
+    # than the take silently drops the words at the end: episode 07 said "and none of them are
+    # prompts" against a spec that had no slot for "and", and "prompts" never appeared on
+    # screen at all. Nothing failed, nothing warned - it was only visible by reading frames.
+    slots = sum(len([x for x in ln.strip().split(" ") if x]) for ln in spec.split("|"))
+    if spec and slots < len(hook_words):
+        missed = " ".join(w[0] for w in hook_words[slots:])
+        sys.exit(f"hook spec has {slots} slots for {len(hook_words)} spoken words; "
+                 f"these would never appear on screen: {missed}")
 
     lines, i = [], 0
     for raw_line in spec.split("|"):
@@ -491,9 +508,14 @@ def _open_stage(p, html: pathlib.Path, meta: dict, marks: list[float] | None = N
                 const hk = document.getElementById('hook');
                 filmEl.insertBefore(sc, hk || null);
                 const s2 = document.createElement('style');
+                // Clear the scrim as the hook leaves, not a quarter second after it. The
+                // hook's own exit runs .38s from --hookout, so a scrim that waits until
+                // +0.26s leaves a window with the hook already gone and the scene still
+                // hidden behind an opaque sheet. On episode 07 that window WAS the trough:
+                // closing it moved coverage there from 13% of the hook's peak to 30%.
                 s2.textContent = '@keyframes __hkscrimout{from{opacity:1}to{opacity:0}}' +
-                    '.hkscrim{animation:__hkscrimout .46s ease-in forwards ' +
-                    'calc(var(--hookout) + 0.26s)}';
+                    '.hkscrim{animation:__hkscrimout .40s ease-in forwards ' +
+                    'calc(var(--hookout) + 0.02s)}';
                 document.head.appendChild(s2);
             }
             // Auto-fit the hook. Display faces vary enormously in advance width, so a size

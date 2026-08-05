@@ -3,7 +3,7 @@
 <title>ULTRON STACK 07 - SETUP</title>
 <style>
 /* FILM-META {"duration":34,"w":1080,"h":1920,"fps":30,
-  "hook":"*Three* things make|*Claude* feel smarter.|None of them|are *prompts*.","hook_hold":0.40,
+  "hook":"*Three* things make|*Claude* feel smarter,|and none of them|are *prompts*.","hook_hold":0.40,
   "chunk":{"max_words":6,"max_chars":44,"min_words":3},
   "accent":["context","once","finished","draft","homework","twenty","zero","brief","result","setup"],
   "zones":["bot","top","bot","top","bot"],
@@ -50,6 +50,9 @@ body{background:#000;display:flex;justify-content:center;align-items:flex-start;
   background-image:radial-gradient(rgba(210,100,63,.10) 1.3px,transparent 1.4px);
   background-size:30px 30px;}
 
+.hkscrim{position:absolute;inset:0;z-index:8;background:var(--slate);
+  animation:scrimgo .38s var(--eExit) forwards calc(var(--hookout) + 0.02s);}
+@keyframes scrimgo{to{opacity:0}}
 .safe{position:absolute;top:300px;left:70px;right:130px;bottom:330px;z-index:3;
   display:flex;flex-direction:column;}
 .mast{display:flex;justify-content:space-between;align-items:center;flex:0 0 auto;
@@ -126,7 +129,7 @@ body{background:#000;display:flex;justify-content:center;align-items:flex-start;
 .st5 .big{animation:bigin .70s var(--eEmph) backwards calc(var(--b5) + 0.16s);}
 @keyframes msgin{from{opacity:0;transform:translateY(22px) scale(.96)}to{opacity:1;transform:none}}
 .st1 .msg{animation:msgin .46s var(--eEmph) backwards;}
-.st1 .msg:nth-child(1){animation-delay:calc(var(--hookout) - 0.22s);}
+.st1 .msg:nth-child(1){animation-delay:calc(var(--hookout) - 0.30s);}
 .st1 .msg:nth-child(2){animation-delay:calc(var(--hookout) - 0.04s);}
 .st1 .msg:nth-child(3){animation-delay:calc(var(--hookout) + 0.14s);}
 .st2 .msg{animation:msgin .46s var(--eEmph) backwards;}
@@ -217,6 +220,7 @@ body{background:#000;display:flex;justify-content:center;align-items:flex-start;
 <body>
 <div id="film">
   <div class="bg"><div class="gd"></div><div class="grid"></div></div>
+  <div class="hkscrim"></div>
   <div class="safe">
     <div class="mast"><span>ULTRON STACK &middot; 07</span><span class="tag">SETUP</span></div>
     <div class="stage">
@@ -232,6 +236,8 @@ body{background:#000;display:flex;justify-content:center;align-items:flex-start;
             <div class="msg them"><u>habit two</u>Asking for a draft</div>
             <div class="msg them"><u>habit three</u>Sitting there watching it work</div>
           </div>
+          <div class="note"><span class="l">all three</span>
+            <span class="r">take about <i>twenty minutes</i> to fix, once</span></div>
         </div>
 
         <div class="st st2 captop">
