@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-08-05T04:33:46",
+  "generated_at": "2026-08-05T04:41:30",
   "counts": {
-    "total": 90,
-    "generated": 46,
+    "total": 91,
+    "generated": 47,
     "reference": 44,
     "crosspost": 0
   },
@@ -654,6 +654,33 @@
     }
   ],
   "materials": [
+    {
+      "id": "brain-film-05-cover",
+      "title": "Brain Film 05 Cover",
+      "channel": "linkedin",
+      "type": "single",
+      "slides": 1,
+      "dims": "1080x1920",
+      "preview": "content/brain-film-05-cover.png",
+      "download": "content/brain-film-05-cover.png",
+      "files": [
+        "content/brain-film-05-cover.png"
+      ],
+      "variants": [
+        ""
+      ],
+      "caption": "## INSTAGRAM REELS CAPTION (short)\n\nCover frame: `brain-film-05-cover.png`.\n\nMost AI forgets you between chats, and you pay for it in retyping.\n\nWho you are. What you are building. Last week's notes. Pasted into every new window, forever.\n\nI stopped doing that. Profile, saved facts and open work sit underneath every turn now, pulled\non three signals rather than one, stitched in before the answer starts.\n\nTwelve things it knows without being told again. I never open on a blank page.\n\nComment BRAIN and I will send you the exact setup.\n\n#claude #ai #founder #startup #buildinpublic",
+      "alt": "",
+      "first_comment": "The tell that your AI has no memory is not a bad answer. It is that you have a notes file you\npaste from, and you have stopped noticing you do it.\n\nProfile, saved facts and open work, pulled on three signals and stitched in before the answer.\nTwelve things it knows without being told twice.\n\nDrop BRAIN below and I will send you the exact setup.",
+      "generated_date": "2026-08-05",
+      "added": 1785904856,
+      "source": "generated",
+      "status": "ready",
+      "posted": false,
+      "posted_date": null,
+      "analytics": null,
+      "crossposts": []
+    },
     {
       "id": "chat-habits-45-carousel",
       "title": "Chat Habits 45",

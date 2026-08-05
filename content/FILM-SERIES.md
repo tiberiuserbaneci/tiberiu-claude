@@ -344,6 +344,35 @@ lands, and stillness is judged over a rolling half second rather than per sample
 the format lands an object every 1 to 2 seconds by design and flagging each gap would demand
 motion nobody wants to watch.
 
+### Accumulate instead of crossfading
+
+Episodes 01 to 04 dissolve between states, and every one of those seams had to be measured and
+closed by hand: during a dissolve the frame briefly holds neither state, which is the defect
+that cost episode 01 its audience and that the operator caught again at episode 04's turn.
+
+Episode 05 removes the class of bug rather than the instances. Its twelve ledger slots are on
+screen, empty, from the first frame, and each beat fills some of them. Nothing is ever removed.
+There is no crossfade to dip and no container that arrives empty, so coverage rises
+**monotonically by construction**. It measured 0.110 against a 0.038 hook, 289%, and passed the
+retention guard on the first run rather than after five rounds of patching.
+
+It only works when the subject supports it. A film about memory whose picture keeps forgetting
+the previous scene would be arguing the opposite of its own script, and a film about a linear
+process still needs to cut. Reach for it when the story is cumulative.
+
+### Fonts were never loading, in any material
+
+`document.fonts` comes back **empty** in the renderer: it has no network, and every material
+links Google Fonts with a `<link>`. Anton, DM Sans, DM Mono and Instrument Serif were all
+falling back to one default grotesque, so the four-register type system has been shipping as
+one face at four sizes. Measured: "ONE BOX" at 100px sets at 456px in the fallback and 308px in
+real Anton.
+
+`content/_fonts.py` bakes them in (curl reaches the proxy even though the renderer does not),
+producing `content/assets/fonts.css`. **Embed that stylesheet in every new material**, and
+re-render the old ones. `_preflight.py` reported "fonts: 4 families" throughout, because it was
+reading the `@import` line rather than what arrived.
+
 ## Performance
 
 PNG frame encoding costs 863ms at 1080x1920 against 113ms for JPEG, measured. Frames are
