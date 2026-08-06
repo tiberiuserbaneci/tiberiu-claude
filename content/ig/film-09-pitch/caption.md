@@ -4,8 +4,10 @@
 **Keyword** PITCH
 
 New look: photographic ground with frosted glass, not the clay solids. Adapted from the
-reference clip the operator sent. No presenter, no third-party product on screen, and the
-photograph is blurred to atmosphere so nothing in it is legible.
+reference clip the operator sent. Five shots cut from one night-desk plate - the room, the
+window, the monitor, the lamp, the desk top - crossfading a shot per beat with a slow push,
+so the picture is visible from the first frame instead of sitting behind a black card. No
+presenter and nothing legible on any screen in shot.
 
 **Files**
 - `reel.mp4`

@@ -1146,6 +1146,28 @@ wired into the Stop hook because it costs a browser pass per film; run it by han
 
 **Surfaced every run (judgement, printed not auto-blocked):** empty-row % + largest dead band (a product mockup runs ~60% empty by design, so a blind gate would false-positive on approved work - PACK the dominant block if it reads airy; never `flex:1`/`space-between` to stretch sparse rows), and a `space-between`/`flex:1` code-smell count.
 
+**PHOTOGRAPHY IN FILMS (operator, 2026-08-06 - "am vrut niste imagini pe movie").** A film that
+carries photography carries **visible shots**, not one plate blurred into a backdrop. Cut them
+with `content/_plate.py`, which owns the whole chain and enforces the three things that went
+wrong on episode 09 v1:
+- **Cut at the frame's aspect.** `background-size:cover` upscales a short crop to fill 1080x1920,
+  so a 1080x537 cut is blown up 3.6x and every trace of the picture dies before the blur touches
+  it. That, not the grade, is what made a beat render as a black frame. Crops are taken at 9:16
+  and only ever scaled DOWN.
+- **One distinct shot per beat.** v1 had five layers carrying four pictures, so beat 4 repeated
+  beat 2 - 30 GRAPHIC VARIETY, which names films explicitly. `_plate.py` refuses to inline a run
+  with a duplicate.
+- **Exposure is solved, not guessed, and lives in one file.** Each shot declares a target mean
+  luminance and the script measures its way there. No `filter:brightness()` in the page fighting
+  a baked multiplier in the asset - and no per-frame filter pass over five stacked full-frame
+  photographs, which is what pushed the render past 260ms/frame.
+
+**The hook veil is a veil, never a wall.** An opaque scrim over the hook puts a black card over
+the scroll-stop and hides everything the photography was cut for. It has two jobs: hold the
+caption legible over the picture (a graded translucency, ~.30 to .46) and keep the deck chrome
+out of the hook (the chrome fades itself in at `--hookout`). Solid slate does both by destroying
+coverage, which is exactly the failure the retention guard exists to catch.
+
 **GRAPHIC VARIETY (operator HARD rule, 2026-08-05):** the visual element must CHANGE every
 3 to 4 slides, and **no two materials in a set may open on the same object**. Scrolling a
 series where every cover is the same dial, every middle slide is the same menu list and every
