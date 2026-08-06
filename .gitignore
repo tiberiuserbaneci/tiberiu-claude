@@ -1,0 +1,17 @@
+node_modules/
+.next/
+.open-next/
+.wrangler/
+.vercel/
+dist/
+build/
+out/
+.cache/
+*.log
+__pycache__/
+.venv/
+venv/
+target/
+.turbo/
+.parcel-cache/
+coverage/
