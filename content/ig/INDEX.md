@@ -26,6 +26,7 @@ Captions follow CLAUDE.md 15.6: one beat per paragraph, exactly five hashtags.
 
 | Folder | Post | Keyword | Note |
 |---|---|---|---|
+| `film-12-contract` | FOURTEEN PAGES. THREE PROBLEMS. | CONTRACT | ready, run-board model |
 | `film-11-inbound` | THREE CAME IN. ONE WAS REAL. | INBOUND | ready, run-board model |
 | `film-10-maybe` | ONE STALLED DEAL. ONE YES. | MAYBE | ready, run-board model |
 | `film-09-pitch` | YOU BUILT SOMETHING GOOD | PITCH | ready, slate ground |
@@ -50,6 +51,7 @@ than 15.6. Cut a new one with:
 
 | Folder | Post | Keyword |
 |---|---|---|
+| `li/film-12-contract` | FOURTEEN PAGES. THREE PROBLEMS. | CONTRACT |
 | `li/film-11-inbound` | THREE CAME IN. ONE WAS REAL. | INBOUND |
 | `li/film-10-maybe` | ONE STALLED DEAL. ONE YES. | MAYBE |
 | `li/film-09-pitch` | YOU BUILT SOMETHING GOOD | PITCH |
