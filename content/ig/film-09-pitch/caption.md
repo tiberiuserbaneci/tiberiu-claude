@@ -3,11 +3,10 @@
 **Format** Reel - 1080x1920 MP4 - 41s
 **Keyword** PITCH
 
-New look: photographic ground with frosted glass, not the clay solids. Adapted from the
-reference clip the operator sent. Five shots cut from one night-desk plate - the room, the
-window, the monitor, the lamp, the desk top - crossfading a shot per beat with a slow push,
-so the picture is visible from the first frame instead of sitting behind a black card. No
-presenter and nothing legible on any screen in shot.
+Built on the established ground, same as episodes 06 to 08: drifting slate sheet, solid
+cards, no photography. The photographic version was rejected as a fake backdrop, and its
+per-beat crossfades were landing on top of the hook handoff, which is what made second four
+change without explanation.
 
 **Files**
 - `reel.mp4`
