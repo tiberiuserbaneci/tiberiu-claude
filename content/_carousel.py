@@ -29,7 +29,7 @@ def chromium_path():
 
 
 def render(html: pathlib.Path, out_dir: pathlib.Path, check_only=False, w=1080, h=1920,
-           fill_w=0.0, fill_h=0.0):
+           safe=(300, 130, 330, 70), fill_w=0.0, fill_h=0.0):
     from playwright.sync_api import sync_playwright
     exe = chromium_path()
     with sync_playwright() as p:
@@ -245,7 +245,7 @@ def render(html: pathlib.Path, out_dir: pathlib.Path, check_only=False, w=1080, 
         # with `overflow:hidden`, so its layout rect hangs 200px below something the viewer
         # never sees. Intersect with every clipping ancestor first, or the guard cries wolf on
         # correct work and gets ignored on the day it is right.
-        spill = pg.evaluate("""() => {
+        spill = pg.evaluate("""([sT, sR, sB, sL]) => {
             const painted = e => {
               let b = e.getBoundingClientRect();
               let t = b.top, bo = b.bottom, l = b.left, r = b.right;
@@ -267,14 +267,14 @@ def render(html: pathlib.Path, out_dir: pathlib.Path, check_only=False, w=1080, 
                 if(b.w<=0||b.h<=0) return;   // fully clipped: nothing reaches the frame
                 const top=b.top-r.top, bot=r.bottom-b.bottom,
                       left=b.left-r.left, right=r.right-b.right;
-                if(top<299||bot<329||left<69||right<129)
+                if(top<sT-1||bot<sB-1||left<sL-1||right<sR-1)
                   out.push({i:i+1, cls:(e.className||'').toString().slice(0,24),
                             top:Math.round(top), bot:Math.round(bot),
                             left:Math.round(left), right:Math.round(right)});
               });
             });
             return out.slice(0,6);
-        }""")
+        }""", list(safe))
         if spill:
             for s in spill:
                 print(f"  SAFE slide {s['i']:02d} .{s['cls']} t{s['top']} b{s['bot']} "
@@ -316,7 +316,13 @@ def main():
     out_dir = pathlib.Path(a.out)
     for d in a.decks:
         html = pathlib.Path(d)
+        # CLAUDE.md 9: a filename carrying -45 is TikTok's 4:5 photo carousel, which is a
+        # different canvas AND a different safe geometry - photo mode paints no feed UI over
+        # the top of the frame, so the 9:16 insets would fail correct work.
+        four_five = "-45" in html.stem or "editorial45" in html.stem
         pngs = render(html, out_dir, check_only=a.check,
+                      w=1080, h=1350 if four_five else 1920,
+                      safe=(96, 90, 110, 90) if four_five else (300, 130, 330, 70),
                       fill_w=a.fill_w, fill_h=a.fill_h)
         if a.check or not pngs:
             continue

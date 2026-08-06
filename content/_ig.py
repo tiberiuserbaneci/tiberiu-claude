@@ -18,6 +18,7 @@ print = functools.partial(print, flush=True)  # noqa: A001
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CLAY = ROOT / "content" / "clay"
+CLAY45 = ROOT / "content" / "clay45"
 IG = ROOT / "content" / "ig"
 
 # post folder -> deck stem
@@ -32,12 +33,19 @@ DECKS = {
     "08-investors": "clay-08-investors",
     "09-engineer": "clay-09-engineer",
     "10-setup": "clay-10-setup",
+    "11-sender": "clay-11-sender",
 }
 
 
 def sync(check=False):
     changed = missing = 0
     for folder, stem in DECKS.items():
+        # TikTok's 4:5 photo carousel lives beside the 9:16 upload, same post, same caption
+        for src45 in sorted(CLAY45.glob(f"{stem}-45-*.png")):
+            d45 = IG / folder / "tiktok-4x5" / f"{src45.stem.split('-')[-1]}.png"
+            d45.parent.mkdir(parents=True, exist_ok=True)
+            if not (d45.exists() and filecmp.cmp(src45, d45, shallow=False)) and not check:
+                shutil.copy2(src45, d45)
         src = sorted(CLAY.glob(f"{stem}-*.png"))
         if not src:
             print(f"  MISSING  {stem}: no render in content/clay")
@@ -54,7 +62,7 @@ def sync(check=False):
             if not check:
                 shutil.copy2(s, d)
         # a deck that shrank leaves orphans behind, and the operator would upload them
-        for extra in sorted(dest_dir.glob("*.png")):
+        for extra in sorted(dest_dir.glob("[0-9][0-9].png")):
             if int(extra.stem) > len(src):
                 moved.append(f"-{extra.name}")
                 if not check:

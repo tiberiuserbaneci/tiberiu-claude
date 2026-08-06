@@ -32,6 +32,40 @@ import pathlib, re
 CONTENT = pathlib.Path(__file__).resolve().parent
 
 # ---------------------------------------------------------------- the workspace
+# Two formats, one system. 9:16 is the Instagram/TikTok upload frame, where the app paints its
+# own UI over every edge, so the safe insets in CLAUDE.md 9 are binding. 4:5 is TikTok's photo
+# carousel, the format the operator logged as the top performer (2026-06-12): photo mode has no
+# 300px top inset, so the reserve drops to a print-style margin and the working band gets it
+# back. Everything below is derived, so a scene written once is correct in both.
+FORMAT = "9x16"
+
+_SPEC = {
+    #        w     h    top   right  bottom  left   stage
+    "9x16": (1080, 1920, 300,  130,   330,    70,   640),
+    "4x5":  (1080, 1350,  96,   90,   110,    90,   560),
+}
+
+
+def set_format(name: str) -> None:
+    """Switch the module to a canvas. Call before importing decks, then rebuild."""
+    global FORMAT, CANVAS_W, CANVAS_H, SAFE_T, SAFE_R, SAFE_B, SAFE_L
+    global COL_W, BAND_H, STAGE_W, STAGE_H, HEADER_H, CSS
+    if name not in _SPEC:
+        raise ValueError(f"unknown format {name}; have {sorted(_SPEC)}")
+    FORMAT = name
+    (CANVAS_W, CANVAS_H, SAFE_T, SAFE_R, SAFE_B, SAFE_L, STAGE_H) = _SPEC[name]
+    _derive()
+
+
+def _derive() -> None:
+    global COL_W, BAND_H, STAGE_W, HEADER_H, CSS
+    COL_W = CANVAS_W - SAFE_L - SAFE_R
+    BAND_H = CANVAS_H - SAFE_T - SAFE_B
+    STAGE_W = COL_W
+    HEADER_H = BAND_H - (GAP + STAGE_H + GAP + CAP_H + GAP + FOOT_H)
+    CSS = _css()
+
+
 CANVAS_W, CANVAS_H = 1080, 1920
 SAFE_T, SAFE_R, SAFE_B, SAFE_L = 300, 130, 330, 70          # CLAUDE.md 9, binding
 COL_W = CANVAS_W - SAFE_L - SAFE_R                          # 880
@@ -63,76 +97,80 @@ def extrude(depth: int, color: str, dx: int = 1, dy: int = 1) -> str:
     return ", ".join(f"{i*dx}px {i*dy}px 0 {color}" for i in range(1, depth + 1))
 
 
-CSS = f"""
-:root{{
-  --base:#F4F1EC; --deep:#E2DCD0; --sink:#EAE4D9;
-  --ink:#2D2A26; --muted:#8A857D; --faint:#B8B2A8;
-  --acc:#D26446; --accd:#A93A20; --accl:#E4805F;
-  --side:#D5CEC1; --sidedk:#C2B9AA;
-  --lit:rgba(255,255,255,.92);
-}}
-*{{margin:0;padding:0;box-sizing:border-box;}}
-body{{background:#0b0b0b;}}
-.slide{{
-  width:{CANVAS_W}px;height:{CANVAS_H}px;position:relative;overflow:hidden;
-  background:var(--base);font-family:'Plus Jakarta Sans',sans-serif;
-}}
-.amb{{position:absolute;inset:0;pointer-events:none;
-  background:
-    radial-gradient(ellipse 70% 40% at 50% 0%,rgba(255,255,255,.85) 0%,transparent 62%),
-    radial-gradient(ellipse 60% 34% at 82% 100%,rgba(210,100,70,.07) 0%,transparent 66%);}}
-.safe{{position:absolute;top:{SAFE_T}px;left:{SAFE_L}px;
-  width:{COL_W}px;height:{BAND_H}px;display:flex;flex-direction:column;}}
+def _css():
+    return f"""
+    :root{{
+      --base:#F4F1EC; --deep:#E2DCD0; --sink:#EAE4D9;
+      --ink:#2D2A26; --muted:#8A857D; --faint:#B8B2A8;
+      --acc:#D26446; --accd:#A93A20; --accl:#E4805F;
+      --side:#D5CEC1; --sidedk:#C2B9AA;
+      --lit:rgba(255,255,255,.92);
+    }}
+    *{{margin:0;padding:0;box-sizing:border-box;}}
+    body{{background:#0b0b0b;}}
+    .slide{{
+      width:{CANVAS_W}px;height:{CANVAS_H}px;position:relative;overflow:hidden;
+      background:var(--base);font-family:'Plus Jakarta Sans',sans-serif;
+    }}
+    .amb{{position:absolute;inset:0;pointer-events:none;
+      background:
+        radial-gradient(ellipse 70% 40% at 50% 0%,rgba(255,255,255,.85) 0%,transparent 62%),
+        radial-gradient(ellipse 60% 34% at 82% 100%,rgba(210,100,70,.07) 0%,transparent 66%);}}
+    .safe{{position:absolute;top:{SAFE_T}px;left:{SAFE_L}px;
+      width:{COL_W}px;height:{BAND_H}px;display:flex;flex-direction:column;}}
 
-/* ---- header: fixed budget, so the stage never gets eaten ---- */
-.hd{{height:{HEADER_H}px;flex:0 0 {HEADER_H}px;display:flex;flex-direction:column;
-  justify-content:flex-start;overflow:hidden;}}
-.eyebrow{{font-family:'DM Mono',monospace;font-size:25px;font-weight:500;letter-spacing:.30em;
-  text-transform:uppercase;color:var(--acc);margin-bottom:12px;}}
-.h{{font-family:'Anton',sans-serif;font-size:104px;line-height:.92;letter-spacing:-.015em;
-  text-transform:uppercase;color:var(--ink);}}
-.h em{{font-style:normal;color:var(--acc);}}
-.sub{{font-size:32px;line-height:1.30;font-weight:600;color:var(--muted);margin-top:14px;
-  max-width:820px;}}
-.sub b{{color:var(--ink);font-weight:800;}}
+    /* ---- header: fixed budget, so the stage never gets eaten ---- */
+    .hd{{height:{HEADER_H}px;flex:0 0 {HEADER_H}px;display:flex;flex-direction:column;
+      justify-content:flex-start;overflow:hidden;}}
+    .eyebrow{{font-family:'DM Mono',monospace;font-size:25px;font-weight:500;letter-spacing:.30em;
+      text-transform:uppercase;color:var(--acc);margin-bottom:12px;}}
+    .h{{font-family:'Anton',sans-serif;font-size:104px;line-height:.92;letter-spacing:-.015em;
+      text-transform:uppercase;color:var(--ink);}}
+    .h em{{font-style:normal;color:var(--acc);}}
+    .sub{{font-size:32px;line-height:1.30;font-weight:600;color:var(--muted);margin-top:14px;
+      max-width:820px;}}
+    .sub b{{color:var(--ink);font-weight:800;}}
 
-/* ---- the workspace ---- */
-.stage{{height:{STAGE_H}px;flex:0 0 {STAGE_H}px;margin-top:{GAP}px;
-  position:relative;perspective:1700px;perspective-origin:50% 42%;}}
-.scene{{position:absolute;inset:0;transform-style:preserve-3d;}}
+    /* ---- the workspace ---- */
+    .stage{{height:{STAGE_H}px;flex:0 0 {STAGE_H}px;margin-top:{GAP}px;
+      position:relative;perspective:1700px;perspective-origin:50% 42%;}}
+    .scene{{position:absolute;inset:0;transform-style:preserve-3d;}}
 
-/* ---- caption strip: the action line under the scene ---- */
-.cap{{height:{CAP_H}px;flex:0 0 {CAP_H}px;margin-top:{GAP}px;display:flex;align-items:center;
-  gap:18px;}}
-.cap i{{font-style:normal;flex:0 0 auto;background:var(--acc);color:#fff;font-size:21px;
-  font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:12px 20px;
-  border-radius:9px;box-shadow:{extrude(6,'var(--accd)')}, 8px 14px 24px rgba(169,58,32,.30);}}
-.cap span{{font-size:30px;font-weight:700;color:var(--ink);line-height:1.22;}}
+    /* ---- caption strip: the action line under the scene ---- */
+    .cap{{height:{CAP_H}px;flex:0 0 {CAP_H}px;margin-top:{GAP}px;display:flex;align-items:center;
+      gap:18px;}}
+    .cap i{{font-style:normal;flex:0 0 auto;background:var(--acc);color:#fff;font-size:21px;
+      font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:12px 20px;
+      border-radius:9px;box-shadow:{extrude(6,'var(--accd)')}, 8px 14px 24px rgba(169,58,32,.30);}}
+    .cap span{{font-size:30px;font-weight:700;color:var(--ink);line-height:1.22;}}
 
-.foot{{height:{FOOT_H}px;flex:0 0 {FOOT_H}px;margin-top:{GAP}px;display:flex;align-items:center;
-  gap:14px;}}
-.foot img{{width:38px;height:38px;border-radius:50%;}}
-.foot span{{font-family:'DM Mono',monospace;font-size:22px;letter-spacing:.20em;
-  color:var(--faint);text-transform:uppercase;}}
-.foot em{{font-style:normal;color:var(--acc);}}
+    .foot{{height:{FOOT_H}px;flex:0 0 {FOOT_H}px;margin-top:{GAP}px;display:flex;align-items:center;
+      gap:14px;}}
+    .foot img{{width:38px;height:38px;border-radius:50%;}}
+    .foot span{{font-family:'DM Mono',monospace;font-size:22px;letter-spacing:.20em;
+      color:var(--faint);text-transform:uppercase;}}
+    .foot em{{font-style:normal;color:var(--acc);}}
 
-/* ================= 2.5D primitives ================= */
+    /* ================= 2.5D primitives ================= */
 
-/* a solid slab: extruded body, lit top edge, contact shadow on the ground */
-.slab{{position:relative;border-radius:20px;background:var(--base);
-  box-shadow:{extrude(22,'var(--side)')}, 16px 20px 26px rgba(45,42,38,.20),
-             inset 0 2px 0 var(--lit);}}
-.slab.acc{{background:linear-gradient(168deg,var(--accl),var(--acc) 62%);color:#fff;
-  box-shadow:{extrude(22,'var(--accd)')}, 16px 20px 26px rgba(169,58,32,.34),
-             inset 0 2px 0 rgba(255,255,255,.44);}}
-.slab.sink{{background:var(--sink);
-  box-shadow:inset 5px 6px 12px rgba(45,42,38,.16), inset -3px -3px 8px var(--lit);}}
+    /* a solid slab: extruded body, lit top edge, contact shadow on the ground */
+    .slab{{position:relative;border-radius:20px;background:var(--base);
+      box-shadow:{extrude(22,'var(--side)')}, 16px 20px 26px rgba(45,42,38,.20),
+                 inset 0 2px 0 var(--lit);}}
+    .slab.acc{{background:linear-gradient(168deg,var(--accl),var(--acc) 62%);color:#fff;
+      box-shadow:{extrude(22,'var(--accd)')}, 16px 20px 26px rgba(169,58,32,.34),
+                 inset 0 2px 0 rgba(255,255,255,.44);}}
+    .slab.sink{{background:var(--sink);
+      box-shadow:inset 5px 6px 12px rgba(45,42,38,.16), inset -3px -3px 8px var(--lit);}}
 
-/* the ground the scene stands on */
-.ground{{position:absolute;left:0;right:0;bottom:0;height:170px;border-radius:26px;
-  background:linear-gradient(180deg,rgba(226,220,208,0),rgba(226,220,208,.72));
-  transform:rotateX(58deg) translateZ(-40px);transform-origin:50% 100%;}}
+    /* the ground the scene stands on */
+    .ground{{position:absolute;left:0;right:0;bottom:0;height:170px;border-radius:26px;
+      background:linear-gradient(180deg,rgba(226,220,208,0),rgba(226,220,208,.72));
+      transform:rotateX(58deg) translateZ(-40px);transform-origin:50% 100%;}}
 """
+
+
+CSS = _css()
 
 
 # ------------------------------------------------------------------ scenes
@@ -562,8 +600,8 @@ def scene_gantt(bars, cap):
 def scene_screen(url, title, rows, cap):
     """The product, as a tilted window with real rows in it."""
     r = "".join(
-        f'<div style="display:flex;align-items:center;gap:20px;padding:14px 0;'
-        f'border-bottom:2px solid var(--sink);">'
+        f'<div style="flex:1;min-height:0;display:flex;align-items:center;gap:20px;'
+        f'border-bottom:2px solid var(--sink);overflow:hidden;">'
         f'<div style="width:12px;height:12px;border-radius:50%;flex:0 0 12px;'
         f'background:{"var(--acc)" if x.get("acc") else "var(--faint)"};"></div>'
         f'<span style="flex:1;font-size:31px;font-weight:700;color:var(--ink);">{x["b"]}</span>'

@@ -1,6 +1,8 @@
 # Instagram - ready to post
 
 One folder per post. Open it, upload the files, paste the caption.
+Every carousel ships twice: `01.png` to `07.png` is the 1080x1920 upload, and
+`tiktok-4x5/` is the same deck at 1080x1350 for TikTok's photo carousel.
 Captions follow CLAUDE.md 15.6: one beat per paragraph, exactly five hashtags.
 
 ## Carousels
@@ -17,11 +19,13 @@ Captions follow CLAUDE.md 15.6: one beat per paragraph, exactly five hashtags.
 | `08-investors` | BECOME THE FOUNDER INVESTORS CALL BACK | INVESTORS | 7 |
 | `09-engineer` | THE JOB THAT DID NOT EXIST TWO YEARS AGO | ENGINEER | 7 |
 | `10-setup` | THREE THINGS MAKE CLAUDE FEEL SMARTER | SETUP | 7 |
+| `11-sender` | YOUR AI NOW HAS TO SAY IT IS AN AI | SENDER | 7 |
 
 ## Reels
 
 | Folder | Post | Keyword | Note |
 |---|---|---|---|
+| `film-08-sender` | YOUR AI NOW HAS TO SAY IT IS AN AI | SENDER | ready |
 | `film-07-setup` | THREE THINGS MAKE CLAUDE FEEL SMARTER | SETUP | ready |
 | `film-06-engineer` | THE JOB THAT DID NOT EXIST TWO YEARS AGO | ENGINEER | ready, light ground |
 | `film-05-48h` | YOUR FIRST PAYING CUSTOMER IN 48 HOURS | 48H | ready |
