@@ -917,7 +917,14 @@ OpenRouter middleware for per-user credit provisioning. BYOK removed from docume
 - Operator voice: "I sent", "I tested", "I killed", "I built", "I let Claude"
 - Open counter-intuitive statements ("This had nothing to do with X")
 - Self-citation of your own real results only
-- Tool names: Claude, CORTEX, SPECTER, STRIKER, PULSE, SENTINEL, AMPLIFY, COUNSEL
+- Tool names: **Claude, AI, Ultron - and nothing else** (operator, 2026-08-06, supersedes the
+  agent roster that used to sit on this line). CORTEX / SPECTER / STRIKER / PULSE / SENTINEL /
+  AMPLIFY / COUNSEL are internal vocabulary: they mean nothing to a founder scrolling, and a
+  name the audience has to decode is a name that costs a second of attention it never earns
+  back. Say what it does, not which agent does it. The films already had this right - every
+  beat in episodes 05 and 09 says "it", and the product line is "This is the Ultron platform,
+  one input and a team that runs behind it." That is the pattern. The roster stays in 1 as
+  product documentation and stays out of every material.
 - Brand terminology: "lead magnet", "workflow", "audit prompt", "founder GTM"
 - Concrete actions: "Drop [KEYWORD]", "Comment below", "DM me"
 - ICP filter language: "If you are a founder running GTM alone…"

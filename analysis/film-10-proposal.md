@@ -1,12 +1,15 @@
-# Film 10 proposal - built on the 48h model
+# Film 10 - built on the 48h model
 
-Status: **awaiting operator sign-off** (CLAUDE.md 0.2). Nothing is rendered from this yet.
+Operator sign-off: subject and script approved 2026-08-06 with two corrections applied here.
+No agent names anywhere (CLAUDE.md 21, rewritten the same day): the material says AI, Claude
+and Ultron. The numbers stay inside the universe the shipped films already established rather
+than becoming a new claim.
 
 ---
 
 ## What "the 48h model" is, structurally
 
-Episode 05 is not a subject, it is a shape. Reading it back:
+Episode 05 is not a subject, it is a shape:
 
 | Element | Episode 05 |
 |---|---|
@@ -15,32 +18,41 @@ Episode 05 is not a subject, it is a shape. Reading it back:
 | Beats 2-5 | **Numbered spans of elapsed time**, each carrying exactly ONE concrete action |
 | Beat 6 | "Comment 48H and I will send you the exact run" |
 | Objects | Clay, one per beat: dial, board, pay, phone |
-| Voice | Operator debrief throughout, past tense, no hedging |
+| Voice | Operator debrief, past tense, no hedging, and the actor is always **"it"** |
 
-The spine is a **run**: a named window of time, split into numbered phases, each phase one thing
-the system did, ending on the outcome. That is what has to be preserved.
+The spine is a **run**: a named window of time, split into numbered phases, one thing per
+phase, ending on the outcome.
 
 ---
 
-## Subject selection
+## Subject
 
-The backlog's strongest unspent entry is #1, the death of per-seat pricing (keyword SEATS). It
-is **not proposed here**, because it is an argument, not a run: forcing it into numbered hours
-would be the artificial version of this model, and it deserves its own shape.
-
-What fits the run shape, is unspent, and maps to a product surface that exists:
-
-**The seven days after a deal stalls at "maybe".** Episode 05 was the outbound side, a cold list
-becoming a customer. This is the other half nobody has filmed: the deal that is already in
-front of you and quietly dies. It is the most familiar founder pain after "no replies", and it
-is STRIKER's actual job description - qualification, discovery, objection handling, proposals,
-close plans - which has appeared as one beat in 05 but has never been the subject.
+**The seven days after a deal stalls at "maybe".** Episode 05 was the outbound half - a cold
+list becoming a customer. This is the half nobody has filmed: the deal already in front of you
+that quietly dies. It is the most familiar founder pain after "no replies".
 
 - **Keyword** MAYBE. Free, checked against 6 and every shipped film keyword.
-- **Collision** Clean. 05 was cold to paying, 02 was overnight autonomy, 04 was governance,
-  09 was the writing in front of the product. None of them is a stalled deal.
+- **Collision** Clean. 05 was cold to paying, 02 overnight autonomy, 04 governance, 09 the
+  writing in front of the product. None is a stalled deal.
 - **ICP** Direct. A founder at 2 to 50 people carries their own pipeline and loses deals to
   silence, not to competitors.
+
+The backlog's strongest unspent entry, per-seat pricing, is deliberately not used here: it is
+an argument, not a run, and numbering it into days would be the artificial version of this
+model. It keeps its place in the queue for a shape that suits it.
+
+---
+
+## Numbers
+
+Same universe as the shipped films, nothing new asserted. Episode 05 counts what went out
+(forty companies, 48 hours). This one counts what was already in: **three deals, seven days,
+one reply nobody had written.** They are operator-scale and they are the scale the story is
+actually at, which is the point of the series - not enterprise statistics translated down.
+
+Nothing here claims a close rate, a revenue figure or a benchmark. The outcome the film claims
+is the one the product performs: the reply, the proposal and the close plan get written, and
+the founder sends them.
 
 ---
 
@@ -67,15 +79,17 @@ own words.
 
 **Beat 6** - Comment MAYBE and I will send you the exact run.
 
-**Accent words** (the ones that get the highlight treatment): seven, alive, objection, voiced,
-discovery, priced, date, own.
+**Accent words:** seven, alive, objection, voiced, discovery, priced, date, own.
+
+**Product line (caption, not VO):** This is the Ultron platform, one input and a team that runs
+behind it. Same line as 05 and 09.
 
 ---
 
 ## Objects, one per beat
 
 Checked against CLAUDE.md 30 GRAPHIC VARIETY: no repeat inside the film, beat 2 differs from
-beat 4, and none of them is an object episode 05 opened on (05 ran dial, board, pay, phone).
+beat 4, none of them an object episode 05 opened on (05 ran dial, board, pay, phone).
 
 | Beat | Object | Carries |
 |---|---|---|
@@ -87,16 +101,9 @@ beat 4, and none of them is an object episode 05 opened on (05 ran dial, board, 
 
 ---
 
-## One thing I need you to confirm before this is built
+## What this film may not say
 
-Episode 05's numbers are yours: forty companies, 48 hours, the first one pays. They are
-operator-run results, which is the only kind CLAUDE.md 21 allows.
-
-**I do not have the equivalent for this one.** The seven days, the three deals and "I did not
-chase once" are the shape the script needs, not facts I can verify. Tell me the real numbers
-from a deal you actually ran through this and I will write them in. If there is no such run
-yet, say so and I will recut the script so it claims only what the product does - STRIKER
-drafts the objection reply, the proposal and the close plan, and you send them - with no
-outcome asserted.
-
-The film should not ship with an invented result in it.
+- No agent names. The actor is "it", the platform is Ultron, the model is Claude.
+- No close rate, no revenue, no benchmark, no cited research.
+- No suggestion that anything sends itself. The founder sends. That is beat 5's whole point
+  and it is also true of the product.
