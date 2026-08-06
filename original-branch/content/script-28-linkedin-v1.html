@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 28 · Competitor Hijack · v1</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* BUDGET 1450 */
+  body{background:#f4ede0;margin:0;padding:24px 0}
+  .scaler{display:flex;justify-content:center;align-items:flex-start}
+  .scaler>.poster{transform-origin:top center;transform:scale(calc(min(100vw / 1130, (100vh - 48px) / 1510)))}
+  .poster{width:1080px;height:1450px;background:var(--ink-cream-50);position:relative;overflow:hidden;box-sizing:border-box}
+  .mono{font-family:'JetBrains Mono',monospace}
+  .fraunces{font-family:'Fraunces',Georgia,serif;font-feature-settings:'ss01' on}
+  .accent{color:var(--accent-dark)}
+
+  .rival-card{
+    background:#FFFFFF;border:1px solid var(--ink-cream-200);border-radius:10px;
+    padding:14px 16px;box-sizing:border-box;
+  }
+  .signal-tag{
+    display:inline-flex;align-items:center;gap:5px;
+    padding:3px 8px;border-radius:4px;
+    background:rgba(199,93,53,0.10);color:var(--accent-dark);
+    font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:800;letter-spacing:.10em;text-transform:uppercase;
+  }
+  .lead-row{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:8px 12px;border-radius:6px;
+    background:rgba(199,93,53,0.05);border-left:3px solid var(--accent-dark);
+  }
+  .arrow{
+    font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:800;color:var(--accent-dark);
+  }
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="poster">
+
+  <!-- HEADER -->
+  <div style="position:absolute;top:0;left:40px;right:40px;height:44px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--ink-cream-200)">
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(0,0,0,0.4)">FOUNDER GTM · COMPETITOR INTEL · LEAD HIJACK · ULTRON OS</span>
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(0,0,0,0.3)">NO. 28 · 3 RIVALS · 30 DAYS</span>
+  </div>
+
+  <!-- HERO -->
+  <div style="position:absolute;top:60px;left:40px;right:40px">
+    <div class="mono accent" style="font-size:11px;font-weight:800;letter-spacing:.20em;margin-bottom:14px">30-DAY TEST · 3 COMPETITORS · 1 AI WATCHER</div>
+    <div class="fraunces" style="font-weight:900;font-size:74px;line-height:0.90;letter-spacing:-2.4px;color:var(--ink-black);margin-bottom:14px"><span class="accent" style="font-style:italic">Claude</span> watches my 3 rivals every morning.</div>
+    <div class="fraunces" style="font-size:26px;font-weight:700;line-height:1.08;letter-spacing:-0.5px;color:var(--ink-gray-600)">It surfaces their warm leads before they reply. I get there first.</div>
+  </div>
+
+  <!-- BIGSTAT BAR -->
+  <div style="position:absolute;top:296px;left:40px;right:40px;height:68px;background:#FFFFFF;border:1px solid var(--ink-cream-200);border-radius:var(--radius-md);display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden">
+    <div style="padding:10px 18px;display:flex;flex-direction:column;gap:2px;border-right:1px solid var(--ink-cream-200)">
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--ink-gray-500);text-transform:uppercase">RIVALS WATCHED</div>
+      <div class="fraunces" style="font-size:26px;font-weight:900;line-height:1;letter-spacing:-0.8px;color:var(--ink-black)">3</div>
+    </div>
+    <div style="padding:10px 18px;display:flex;flex-direction:column;gap:2px;border-right:1px solid var(--ink-cream-200)">
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--ink-gray-500);text-transform:uppercase">SIGNALS / DAY</div>
+      <div class="fraunces" style="font-size:26px;font-weight:900;line-height:1;letter-spacing:-0.8px;color:var(--ink-black)">47</div>
+    </div>
+    <div style="padding:10px 18px;display:flex;flex-direction:column;gap:2px;border-right:1px solid var(--ink-cream-200)">
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--accent-dark);text-transform:uppercase">HIJACKED</div>
+      <div class="fraunces accent" style="font-size:26px;font-weight:900;line-height:1;letter-spacing:-0.8px">22</div>
+    </div>
+    <div style="padding:10px 18px;display:flex;flex-direction:column;gap:2px">
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--ink-gray-500);text-transform:uppercase">BOOKED</div>
+      <div class="fraunces" style="font-size:26px;font-weight:900;line-height:1;letter-spacing:-0.8px;color:var(--ink-black)">7</div>
+    </div>
+  </div>
+
+  <!-- FIG LABEL -->
+  <div style="position:absolute;top:380px;left:40px;right:40px;display:flex;align-items:center;justify-content:space-between">
+    <div>
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.18em;color:var(--ink-gray-500);margin-bottom:3px">FIG.01 · WHAT CLAUDE SEES BEFORE I OPEN LAPTOP</div>
+      <div class="fraunces" style="font-size:22px;font-weight:900;letter-spacing:-0.5px;color:var(--ink-black)">3 rivals. 47 daily signals. 1 morning brief.</div>
+    </div>
+    <div class="signal-tag" style="font-size:9px;padding:5px 10px">SPECTER · LIVE</div>
+  </div>
+
+  <!-- THREE RIVAL CARDS -->
+  <div style="position:absolute;top:448px;left:40px;right:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+
+    <!-- RIVAL 1 -->
+    <div class="rival-card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+        <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:900;letter-spacing:-0.3px;color:var(--ink-black)">RIVAL A</div>
+        <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">21 SIG/DAY</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div class="signal-tag">PRICING PAGE HIT</div>
+        <div class="signal-tag">DEMO REQUEST</div>
+        <div class="signal-tag">PRICING COMPLAINT</div>
+        <div class="signal-tag">CHURN POST</div>
+      </div>
+      <div style="margin-top:10px;padding-top:8px;border-top:1px dashed var(--ink-cream-200)">
+        <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.12em;color:var(--ink-gray-500);margin-bottom:3px">HIJACK RATE</div>
+        <div class="fraunces accent" style="font-size:22px;font-weight:900;line-height:1;letter-spacing:-0.4px">48%</div>
+      </div>
+    </div>
+
+    <!-- RIVAL 2 -->
+    <div class="rival-card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+        <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:900;letter-spacing:-0.3px;color:var(--ink-black)">RIVAL B</div>
+        <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">17 SIG/DAY</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div class="signal-tag">CONTRACT END SOON</div>
+        <div class="signal-tag">SUPPORT TICKET</div>
+        <div class="signal-tag">FEATURE REQUEST</div>
+        <div class="signal-tag">SLOW DEMO</div>
+      </div>
+      <div style="margin-top:10px;padding-top:8px;border-top:1px dashed var(--ink-cream-200)">
+        <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.12em;color:var(--ink-gray-500);margin-bottom:3px">HIJACK RATE</div>
+        <div class="fraunces accent" style="font-size:22px;font-weight:900;line-height:1;letter-spacing:-0.4px">52%</div>
+      </div>
+    </div>
+
+    <!-- RIVAL 3 -->
+    <div class="rival-card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+        <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:900;letter-spacing:-0.3px;color:var(--ink-black)">RIVAL C</div>
+        <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">9 SIG/DAY</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div class="signal-tag">FUNDING DROP</div>
+        <div class="signal-tag">LAYOFFS</div>
+        <div class="signal-tag">CTO LEFT</div>
+        <div class="signal-tag">G2 1-STAR</div>
+      </div>
+      <div style="margin-top:10px;padding-top:8px;border-top:1px dashed var(--ink-cream-200)">
+        <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.12em;color:var(--ink-gray-500);margin-bottom:3px">HIJACK RATE</div>
+        <div class="fraunces accent" style="font-size:22px;font-weight:900;line-height:1;letter-spacing:-0.4px">61%</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- HIJACK FLOW -->
+  <div style="position:absolute;top:720px;left:40px;right:40px;background:#FFFFFF;border:1px solid var(--ink-cream-200);border-radius:10px;padding:20px 24px">
+    <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.18em;color:var(--ink-gray-500);margin-bottom:6px">FIG.02 · THE HIJACK FLOW · 6-MIN AVERAGE FROM SIGNAL TO OUTBOUND</div>
+    <div class="fraunces" style="font-size:20px;font-weight:900;letter-spacing:-0.4px;color:var(--ink-black);margin-bottom:18px">Signal in. Personal message out. Before the rival logs in.</div>
+
+    <div style="display:grid;grid-template-columns:1fr 24px 1fr 24px 1fr 24px 1fr;gap:0;align-items:stretch">
+      <!-- STEP 1 -->
+      <div style="background:var(--ink-cream-100);border-radius:8px;padding:12px 14px;text-align:center">
+        <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500);margin-bottom:6px">T+0s</div>
+        <div style="font-family:'Inter',sans-serif;font-size:12px;font-weight:800;color:var(--ink-black);letter-spacing:-0.2px;margin-bottom:3px">Signal Detected</div>
+        <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:600;color:var(--ink-gray-500);line-height:1.3">SPECTER spots demo request on rival site</div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center"><div class="arrow">→</div></div>
+
+      <!-- STEP 2 -->
+      <div style="background:var(--ink-cream-100);border-radius:8px;padding:12px 14px;text-align:center">
+        <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500);margin-bottom:6px">T+90s</div>
+        <div style="font-family:'Inter',sans-serif;font-size:12px;font-weight:800;color:var(--ink-black);letter-spacing:-0.2px;margin-bottom:3px">Prospect Enriched</div>
+        <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:600;color:var(--ink-gray-500);line-height:1.3">CORTEX pulls role, stack, recent posts</div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center"><div class="arrow">→</div></div>
+
+      <!-- STEP 3 -->
+      <div style="background:var(--ink-cream-100);border-radius:8px;padding:12px 14px;text-align:center">
+        <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500);margin-bottom:6px">T+4m</div>
+        <div style="font-family:'Inter',sans-serif;font-size:12px;font-weight:800;color:var(--ink-black);letter-spacing:-0.2px;margin-bottom:3px">Message Drafted</div>
+        <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:600;color:var(--ink-gray-500);line-height:1.3">STRIKER writes contrarian alt-angle</div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center"><div class="arrow">→</div></div>
+
+      <!-- STEP 4 -->
+      <div style="background:rgba(199,93,53,0.10);border:1px solid rgba(199,93,53,0.30);border-radius:8px;padding:12px 14px;text-align:center">
+        <div class="mono accent" style="font-size:8px;font-weight:700;letter-spacing:.14em;margin-bottom:6px">T+6m</div>
+        <div style="font-family:'Inter',sans-serif;font-size:12px;font-weight:800;color:var(--ink-black);letter-spacing:-0.2px;margin-bottom:3px">Sent (Gated)</div>
+        <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:600;color:var(--ink-gray-500);line-height:1.3">HUMAN GATE approves, message lands</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HIJACKED LEADS LIST -->
+  <div style="position:absolute;top:920px;left:40px;right:40px;background:#FFFFFF;border:1px solid var(--ink-cream-200);border-radius:10px;padding:18px 22px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.18em;color:var(--ink-gray-500)">FIG.03 · 22 HIJACKED LEADS · 30-DAY WINDOW</div>
+      <div class="mono accent" style="font-size:9px;font-weight:800;letter-spacing:.14em">7 BOOKED · $238K PIPE</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div class="lead-row">
+        <div style="display:flex;align-items:center;gap:10px">
+          <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.12em;color:var(--ink-gray-500);width:38px">#01</span>
+          <span style="font-family:'Inter',sans-serif;font-size:12px;font-weight:700;color:var(--ink-black)">VP Sales, SaaS Series B</span>
+          <span class="signal-tag" style="font-size:8px">RIVAL A · DEMO</span>
+        </div>
+        <span class="fraunces accent" style="font-size:14px;font-weight:900;letter-spacing:-0.3px">$42K</span>
+      </div>
+      <div class="lead-row">
+        <div style="display:flex;align-items:center;gap:10px">
+          <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.12em;color:var(--ink-gray-500);width:38px">#02</span>
+          <span style="font-family:'Inter',sans-serif;font-size:12px;font-weight:700;color:var(--ink-black)">CRO, Series A fintech</span>
+          <span class="signal-tag" style="font-size:8px">RIVAL B · CONTRACT END</span>
+        </div>
+        <span class="fraunces accent" style="font-size:14px;font-weight:900;letter-spacing:-0.3px">$58K</span>
+      </div>
+      <div class="lead-row">
+        <div style="display:flex;align-items:center;gap:10px">
+          <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.12em;color:var(--ink-gray-500);width:38px">#03</span>
+          <span style="font-family:'Inter',sans-serif;font-size:12px;font-weight:700;color:var(--ink-black)">Founder, dev tools 12-FTE</span>
+          <span class="signal-tag" style="font-size:8px">RIVAL C · G2 1-STAR</span>
+        </div>
+        <span class="fraunces accent" style="font-size:14px;font-weight:900;letter-spacing:-0.3px">$34K</span>
+      </div>
+      <div class="lead-row">
+        <div style="display:flex;align-items:center;gap:10px">
+          <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.12em;color:var(--ink-gray-500);width:38px">#04</span>
+          <span style="font-family:'Inter',sans-serif;font-size:12px;font-weight:700;color:var(--ink-black)">RevOps Lead, vertical SaaS</span>
+          <span class="signal-tag" style="font-size:8px">RIVAL A · PRICING HIT</span>
+        </div>
+        <span class="fraunces accent" style="font-size:14px;font-weight:900;letter-spacing:-0.3px">$28K</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSIGHT -->
+  <div style="position:absolute;top:1148px;left:40px;right:40px;background:rgba(199,93,53,0.06);border:1px solid rgba(199,93,53,0.20);border-radius:10px;padding:14px 20px">
+    <div class="fraunces" style="font-size:22px;font-weight:900;line-height:1.05;letter-spacing:-0.5px;color:var(--ink-black)">Your rival's worst week is your <span class="accent" style="font-style:italic">best inbox</span>.</div>
+    <div style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;color:var(--ink-gray-600);margin-top:4px">Every churn post, every G2 1-star, every "anyone tried X?" tweet is a warm lead. Most founders never see them. Claude does, every morning at 7AM.</div>
+  </div>
+
+  <!-- CTA -->
+  <div style="position:absolute;top:1240px;left:40px;right:40px;background:#FFFFFF;border:1px solid var(--accent-border);border-radius:12px;padding:18px 24px">
+    <div class="mono accent" style="font-size:9px;font-weight:800;letter-spacing:.20em;margin-bottom:8px">WANT THE HIJACK STACK?</div>
+    <div class="fraunces" style="font-size:28px;font-weight:900;line-height:0.95;letter-spacing:-0.9px;color:var(--ink-black);margin-bottom:10px">Get the <span class="accent" style="font-style:italic">Claude workflow</span> that watches 3 rivals for me daily.</div>
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <div style="background:var(--accent-dark);color:#fff;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:800;letter-spacing:.18em;padding:8px 16px;border-radius:6px">COMMENT HIJACK</div>
+      <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;color:var(--ink-gray-500)">and I will send you the exact Claude workflow I used.</div>
+    </div>
+  </div>
+
+  <!-- MICRO STAT BAND -->
+  <div style="position:absolute;top:1362px;left:40px;right:40px;height:30px;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:22px">
+      <div style="display:flex;align-items:center;gap:6px">
+        <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">PIPE BUILT</span>
+        <span class="fraunces accent" style="font-size:13px;font-weight:900;letter-spacing:-0.3px">$238K</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px">
+        <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">BRIEF SENT</span>
+        <span class="fraunces" style="font-size:13px;font-weight:900;color:var(--ink-black);letter-spacing:-0.3px">7AM DAILY</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px">
+        <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">WIN RATE</span>
+        <span class="fraunces accent" style="font-size:13px;font-weight:900;letter-spacing:-0.3px">32%</span>
+      </div>
+    </div>
+    <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.12em;color:var(--ink-gray-400)">ULTRON OS · SCRIPT 28</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="position:absolute;top:1396px;left:40px;right:40px;border-top:1px dashed rgba(199,93,53,0.3);padding-top:10px;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img src="ultron-logo.png" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0"
+        onerror="this.style.cssText='width:28px;height:28px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 72% 22%,rgba(255,140,80,.95) 0%,rgba(220,80,30,.3) 22%,transparent 36%),radial-gradient(circle at 22% 76%,rgba(55,170,255,.95) 0%,rgba(30,130,220,.3) 22%,transparent 38%),radial-gradient(circle at 38% 38%,rgba(30,30,50,1) 0%,#060810 55%,#000 100%)'">
+      <div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#1a1a1a;text-transform:uppercase;letter-spacing:0.06em"><strong>ULTRON OS</strong> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure</span>
+        <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.12em;color:var(--ink-gray-500)">AI GTM OPERATOR</div>
+      </div>
+    </div>
+    <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:800;color:#1a1a1a;letter-spacing:-0.5px">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

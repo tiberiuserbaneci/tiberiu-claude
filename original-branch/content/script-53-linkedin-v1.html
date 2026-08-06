@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 53 · 100 Founders · v1</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* BUDGET 1450 */
+  body{background:#070a10;margin:0;padding:24px 0}
+  .scaler{display:flex;justify-content:center;align-items:flex-start}
+  .scaler>.poster{transform-origin:top center;transform:scale(calc(min(100vw / 1130, (100vh - 48px) / 1510)))}
+  .poster{width:1080px;height:1450px;background:#18130b;display:flex;flex-direction:column;padding:28px 40px 20px;overflow:hidden;color:#e8e0d0}
+  .mono{font-family:'JetBrains Mono',monospace}
+  .fraunces{font-family:'Fraunces',Georgia,serif;font-feature-settings:'ss01' on}
+  .accent{color:#ed7f4a}
+  .gc{height:42px;border-radius:3px;background:rgba(232,224,208,0.07);border:1px solid rgba(232,224,208,0.05)}
+  .gc.won{background:#4ade80;border-color:#4ade80;box-shadow:0 0 8px rgba(74,222,128,0.30)}
+  .gc.ok{background:#ed7f4a;border-color:#ed7f4a}
+  .gc.brk{background:#c0392b;border-color:#c0392b;box-shadow:0 0 6px rgba(192,57,43,0.30)}
+  .gc.aban{background:rgba(232,224,208,0.18);border-color:rgba(232,224,208,0.20)}
+  .anno-chip{background:#ed7f4a;color:#18130b;border-radius:4px;padding:5px 10px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:800;letter-spacing:.12em;transform:rotate(-1.5deg);box-shadow:0 4px 12px rgba(237,127,74,0.25);white-space:nowrap}
+  .fail-card{padding:12px 14px;background:rgba(192,57,43,0.05);border:1px solid rgba(192,57,43,0.18);border-left:3px solid #c0392b;border-radius:5px}
+  .succ-card{padding:12px 14px;background:rgba(74,222,128,0.05);border:1px solid rgba(74,222,128,0.18);border-left:3px solid #4ade80;border-radius:5px}
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="poster">
+
+  <div style="flex-shrink:0;height:44px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:12px">
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(232,224,208,0.35)">FOUNDER GTM · AI COHORT POSTMORTEM · 100 RUNS · ULTRON OS</span>
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(232,224,208,0.28)">NO. 53 · COHORT 5 · 30D</span>
+  </div>
+
+  <div style="flex-shrink:0;margin-bottom:16px">
+    <div class="mono accent" style="font-size:10px;font-weight:800;letter-spacing:.22em;margin-bottom:12px">100 FOUNDERS · 30-DAY RUN · 3 FAILURE MODES SURFACED</div>
+    <div class="fraunces" style="font-weight:900;font-size:60px;line-height:0.92;letter-spacing:-1.8px;color:#f4ede0;margin-bottom:12px">100 founders ran<br>my <span class="accent" style="font-style:italic">AI</span> workflow.<br>Here is what broke.</div>
+    <div style="font-family:'Inter',sans-serif;font-size:18px;font-weight:600;line-height:1.18;letter-spacing:-0.2px;color:rgba(232,224,208,0.55)">41 won. 28 plateaued. 19 broke. 12 abandoned by day 9. The breakage was almost never the AI.</div>
+  </div>
+
+  <div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+    <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.18em;color:rgba(232,224,208,0.42)">EXHIBIT A · 100 RUNS · ONE SQUARE PER FOUNDER · 30D</div>
+    <div style="display:flex;align-items:center;gap:6px"><div style="width:6px;height:6px;border-radius:50%;background:#4ade80"></div><span class="mono" style="font-size:8px;font-weight:800;letter-spacing:.14em;color:rgba(232,224,208,0.55)">41 WON · 19 BROKE</span></div>
+  </div>
+
+  <div style="flex-shrink:0;min-height:792px;position:relative;background:#10141c;border:1px solid rgba(255,255,255,0.06);border-radius:10px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.45)">
+
+    <div style="height:38px;background:#0a0d14;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;padding:0 14px;gap:10px">
+      <div style="display:flex;gap:5px"><div style="width:9px;height:9px;border-radius:50%;background:rgba(232,224,208,0.18)"></div><div style="width:9px;height:9px;border-radius:50%;background:rgba(232,224,208,0.18)"></div><div style="width:9px;height:9px;border-radius:50%;background:rgba(232,224,208,0.18)"></div></div>
+      <div style="flex:1;background:#070a10;border:1px solid rgba(255,255,255,0.06);border-radius:5px;padding:5px 10px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:600;color:rgba(232,224,208,0.55);text-align:center">cohort.ultron.com / 5 / postmortem · 100 runs · 30d</div>
+      <span class="mono accent" style="font-size:8px;font-weight:800;letter-spacing:.14em">N=100</span>
+    </div>
+
+    <!-- Top: legend + grid -->
+    <div style="padding:16px 22px 10px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+        <div class="mono" style="font-size:9px;font-weight:800;letter-spacing:.18em;color:rgba(232,224,208,0.62)">FIG.01 · COHORT OUTCOME GRID</div>
+        <div style="display:flex;align-items:center;gap:14px">
+          <div style="display:flex;align-items:center;gap:5px"><span style="width:9px;height:9px;border-radius:2px;background:#4ade80;display:inline-block"></span><span class="mono" style="font-size:8px;font-weight:700;color:rgba(232,224,208,0.62);letter-spacing:.10em">41 WON</span></div>
+          <div style="display:flex;align-items:center;gap:5px"><span style="width:9px;height:9px;border-radius:2px;background:#ed7f4a;display:inline-block"></span><span class="mono" style="font-size:8px;font-weight:700;color:rgba(232,224,208,0.62);letter-spacing:.10em">28 OK</span></div>
+          <div style="display:flex;align-items:center;gap:5px"><span style="width:9px;height:9px;border-radius:2px;background:#c0392b;display:inline-block"></span><span class="mono" style="font-size:8px;font-weight:700;color:rgba(232,224,208,0.62);letter-spacing:.10em">19 BROKE</span></div>
+          <div style="display:flex;align-items:center;gap:5px"><span style="width:9px;height:9px;border-radius:2px;background:rgba(232,224,208,0.30);display:inline-block"></span><span class="mono" style="font-size:8px;font-weight:700;color:rgba(232,224,208,0.62);letter-spacing:.10em">12 ABAN</span></div>
+        </div>
+      </div>
+
+      <!-- 10×10 grid: 41 won, 28 ok, 19 broke, 12 aban -->
+      <div style="display:grid;grid-template-columns:repeat(20,1fr);gap:5px">
+        <!-- Row 1: 20 cells - 12 won, 6 ok, 2 brk -->
+        <div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc ok"></div><div class="gc ok"></div><div class="gc ok"></div><div class="gc ok"></div><div class="gc ok"></div><div class="gc ok"></div><div class="gc brk"></div><div class="gc brk"></div>
+        <!-- Row 2: 20 cells - 12 won, 5 ok, 2 brk, 1 aban -->
+        <div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc ok"></div><div class="gc ok"></div><div class="gc ok"></div><div class="gc ok"></div><div class="gc ok"></div><div class="gc brk"></div><div class="gc brk"></div><div class="gc aban"></div>
+        <!-- Row 3: 20 - 10 won, 5 ok, 4 brk, 1 aban -->
+        <div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc ok"></div><div class="gc ok"></div><div class="gc ok"></div><div class="gc ok"></div><div class="gc ok"></div><div class="gc brk"></div><div class="gc brk"></div><div class="gc brk"></div><div class="gc brk"></div><div class="gc aban"></div>
+        <!-- Row 4: 20 - 5 won, 7 ok, 5 brk, 3 aban -->
+        <div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc won"></div><div class="gc ok"></div><div class="gc ok"></div><div class="gc ok"></div><div class="gc ok"></div><div class="gc ok"></div><div class="gc ok"></div><div class="gc ok"></div><div class="gc brk"></div><div class="gc brk"></div><div class="gc brk"></div><div class="gc brk"></div><div class="gc brk"></div><div class="gc aban"></div><div class="gc aban"></div><div class="gc aban"></div>
+        <!-- Row 5: 20 - 2 won, 5 ok, 6 brk, 7 aban -->
+        <div class="gc won"></div><div class="gc won"></div><div class="gc ok"></div><div class="gc ok"></div><div class="gc ok"></div><div class="gc ok"></div><div class="gc ok"></div><div class="gc brk"></div><div class="gc brk"></div><div class="gc brk"></div><div class="gc brk"></div><div class="gc brk"></div><div class="gc brk"></div><div class="gc aban"></div><div class="gc aban"></div><div class="gc aban"></div><div class="gc aban"></div><div class="gc aban"></div><div class="gc aban"></div><div class="gc aban"></div>
+      </div>
+    </div>
+
+    <!-- 3 failure modes + 1 success pattern -->
+    <div style="padding:14px 22px 0">
+      <div class="mono" style="font-size:9px;font-weight:800;letter-spacing:.18em;color:rgba(232,224,208,0.62);margin-bottom:10px">FIG.02 · WHAT BROKE (19 RUNS) · WHAT HELD (41 RUNS)</div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px">
+        <div class="fail-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span class="mono" style="font-size:8px;font-weight:800;letter-spacing:.14em;color:#c0392b">BREAK #1 · 8 OF 19</span>
+            <span class="fraunces" style="font-size:16px;font-weight:900;color:#c0392b;line-height:1">42%</span>
+          </div>
+          <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:#f4ede0;line-height:1.4">Skipped voice tuning. Used Claude's default tone. Reply rates collapsed to ~1.5% across the board.</div>
+        </div>
+        <div class="succ-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span class="mono" style="font-size:8px;font-weight:800;letter-spacing:.14em;color:#4ade80">HELD #1 · 38 OF 41</span>
+            <span class="fraunces" style="font-size:16px;font-weight:900;color:#4ade80;line-height:1">93%</span>
+          </div>
+          <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:#f4ede0;line-height:1.4">Fed Claude 80+ real sent emails as voice examples in first 48h. Reply rate stabilized above 6% by day 7.</div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px">
+        <div class="fail-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span class="mono" style="font-size:8px;font-weight:800;letter-spacing:.14em;color:#c0392b">BREAK #2 · 6 OF 19</span>
+            <span class="fraunces" style="font-size:16px;font-weight:900;color:#c0392b;line-height:1">31%</span>
+          </div>
+          <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:#f4ede0;line-height:1.4">Turned off the human gate. Auto-approved every draft. Reply rates rose for 4 days, then platforms flagged sender as spam.</div>
+        </div>
+        <div class="succ-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span class="mono" style="font-size:8px;font-weight:800;letter-spacing:.14em;color:#4ade80">HELD #2 · 41 OF 41</span>
+            <span class="fraunces" style="font-size:16px;font-weight:900;color:#4ade80;line-height:1">100%</span>
+          </div>
+          <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:#f4ede0;line-height:1.4">Kept gate active. Approved &lt;60% of drafts. Sender reputation held. Deliverability stayed above 97%.</div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div class="fail-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span class="mono" style="font-size:8px;font-weight:800;letter-spacing:.14em;color:#c0392b">BREAK #3 · 5 OF 19</span>
+            <span class="fraunces" style="font-size:16px;font-weight:900;color:#c0392b;line-height:1">26%</span>
+          </div>
+          <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:#f4ede0;line-height:1.4">Pointed Claude at a list, not a signal feed. No real-time intent data. Looked like a faster cold-email blast.</div>
+        </div>
+        <div class="succ-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span class="mono" style="font-size:8px;font-weight:800;letter-spacing:.14em;color:#4ade80">HELD #3 · 35 OF 41</span>
+            <span class="fraunces" style="font-size:16px;font-weight:900;color:#4ade80;line-height:1">85%</span>
+          </div>
+          <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:#f4ede0;line-height:1.4">Wired SPECTER to 8+ live signal sources (G2, hires, posts, news). Every message cited one fresh event.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position:absolute;left:0;right:0;bottom:0;height:40px;background:#0a0d14;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;padding:0 16px">
+      <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(232,224,208,0.45)">100 RUNS · 41 WON · 19 BROKE · 0 AI-CAUSED FAILURES</span>
+      <span class="mono accent" style="font-size:8px;font-weight:800;letter-spacing:.14em">SENTINEL · COHORT POSTMORTEM</span>
+    </div>
+
+    <svg style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none" viewBox="0 0 1000 792">
+      <path d="M 16,394 L 8,394 L 8,500 L 16,500" stroke="#c0392b" stroke-width="1.5" fill="none" stroke-dasharray="5 4" opacity="0.70"/>
+    </svg>
+
+    <div style="position:absolute;top:430px;left:-22px"><div class="anno-chip" style="transform:rotate(-90deg);transform-origin:center;background:#c0392b;color:#fff">19 BROKE · NOT AI</div></div>
+  </div>
+
+  <div style="flex-shrink:0;margin-bottom:14px">
+    <div class="fraunces" style="font-size:18px;font-weight:700;line-height:1.18;letter-spacing:-0.3px;color:rgba(232,224,208,0.62);font-style:italic">The AI never failed once. The humans skipped voice. Disabled the gate. Fed it a list, not a signal. The system is fine. The discipline is the variable.</div>
+  </div>
+
+  <!-- CTA -->
+  <div style="flex-shrink:0;margin-top:auto;background:#ed7f4a;border-radius:10px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 32px;margin-bottom:12px">
+    <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:#18130b;line-height:1.55">Follow for one AI outbound system every day.<br>Comment <strong>PROOF</strong> and I will send you the exact Claude workflow we used.</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:800;color:#ed7f4a;background:#18130b;border-radius:6px;padding:14px 22px;letter-spacing:.08em;white-space:nowrap;flex-shrink:0">PROOF</div>
+  </div>
+
+  <div style="flex-shrink:0;height:30px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.08)">
+    <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(232,224,208,0.32)">ULTRON · AI GTM OPERATOR · 51ULTRON.COM</span>
+    <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(232,224,208,0.32)">100 RUNS · 41 WON · 19 BROKE</span>
+  </div>
+
+  <div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img src="ultron-logo.png" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0" onerror="this.style.cssText='width:28px;height:28px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 72% 22%,rgba(255,140,80,.95) 0%,rgba(220,80,30,.3) 22%,transparent 36%),radial-gradient(circle at 22% 76%,rgba(55,170,255,.95) 0%,rgba(30,130,220,.3) 22%,transparent 38%),radial-gradient(circle at 38% 38%,rgba(30,30,50,1) 0%,#060810 55%,#000 100%)'">
+      <strong style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#f4ecd6;text-transform:uppercase;letter-spacing:0.06em">ULTRON OS</strong><span style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:rgba(232,224,208,0.60);letter-spacing:0.06em;text-transform:uppercase"> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure</span>
+    </div>
+    <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:800;color:#f4ecd6;letter-spacing:-0.5px">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Script 23 · CHURN · Ultron</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet">
+<!--
+VERTICAL BUDGET (canvas 1450px, pad 28t+20b = 48px, content = 1402px)
+  header      50px
+  hook       152px  (2-line display + sub + 16px gap)
+  hero        96px  (80px + 16px gap)
+  signals    308px  (9px label + 8px + 4x cards auto height + 14px gap)
+  risk-tier  116px  (9px label + 8px + 3-row table + 14px gap)
+  timeline   140px  (9px label + 8px + dots+text + 14px gap)
+  compare    140px  (9px label + 8px + cards + 14px gap)
+  kpi-row     70px  (56px + 14px gap)
+  cta         70px  (56px + 14px gap)
+  footer      48px
+  flex-gap    ~212px distributed as margin-bottom on sections via flex-grow
+-->
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #18130b;
+  margin: 0;
+  padding: 0;
+}
+.scaler {
+  display: flex;
+  justify-content: center;
+}
+
+/* ── CANVAS ── */
+.canvas {
+  width: 1080px; height: 1450px;
+  background: #18130b;
+  background-image: radial-gradient(rgba(237,127,74,.13) 1px, transparent 1px);
+  background-size: 24px 24px;
+  padding: 28px 40px 20px;
+  display: flex; flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  color: #e8dfd4; overflow: hidden;
+}
+
+/* ── HEADER ── */
+.header {
+  display: flex; justify-content: space-between; align-items: center;
+  height: 32px; flex-shrink: 0; margin-bottom: 12px;
+}
+.hd { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; }
+.hd-l { color: rgba(232,223,212,.42); }
+.hd-r { color: rgba(232,223,212,.28); }
+
+/* ── HOOK ── */
+.hook { flex-shrink: 0; margin-bottom: 14px; }
+.hook-d {
+  font-family: 'Inter', sans-serif;
+  font-size: 56px; font-weight: 900; line-height: 0.94; letter-spacing: -1.5px;
+  color: #ffffff;
+}
+.hook-d .ac { color: #ed7f4a; }
+.hook-d .sm { font-size: 44px; color: rgba(232,223,212,.6); }
+.hook-sub {
+  margin-top: 9px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(232,223,212,.42);
+}
+
+/* ── HERO STRIP ── */
+.hero {
+  flex-shrink: 0; height: 82px; background: #ed7f4a; border-radius: 6px;
+  display: flex; align-items: center; justify-content: space-evenly;
+  margin-bottom: 14px;
+}
+.h-stat { text-align: center; }
+.h-num { font-family: 'Inter', sans-serif; font-size: 32px; font-weight: 900; color: #18130b; line-height: 1; letter-spacing: -0.8px; }
+.h-lbl { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(12,16,24,.6); margin-top: 4px; }
+.h-div { width: 1px; height: 56px; background: rgba(12,16,24,.2); }
+
+/* ── SECTION LABEL ── */
+.sec {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  color: #ed7f4a; flex-shrink: 0; margin-bottom: 8px;
+}
+
+/* ── SIGNALS GRID (fixed height, no flex:1) ── */
+.signals-wrap { flex-shrink: 0; margin-bottom: 14px; }
+.signals-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.sig-card {
+  background: rgba(237,127,74,.06);
+  border: 1px solid rgba(237,127,74,.2);
+  border-radius: 5px; padding: 12px 14px;
+}
+.sig-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px; }
+.sig-name { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800; color: #e8dfd4; text-transform: uppercase; letter-spacing: 0.05em; }
+.sig-num { font-family: 'Inter', sans-serif; font-size: 28px; font-weight: 900; color: #ed7f4a; line-height: 1; letter-spacing: -0.6px; }
+.sig-desc { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; color: rgba(232,223,212,.52); line-height: 1.4; margin-bottom: 8px; }
+.sig-rows { border-top: 1px dotted rgba(237,127,74,.22); padding-top: 6px; display: flex; flex-direction: column; gap: 3px; }
+.sig-row { display: flex; justify-content: space-between; align-items: baseline; }
+.sig-rk { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(232,223,212,.4); }
+.sig-rv { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700; color: #e8dfd4; text-align: right; }
+.sig-rv .ac { color: #ed7f4a; }
+.sig-bar-bg { height: 3px; background: rgba(237,127,74,.14); border-radius: 2px; margin-top: 8px; }
+.sig-bar-fill { height: 3px; border-radius: 2px; background: #ed7f4a; }
+
+/* ── RISK TIER TABLE ── */
+.risk-wrap { flex-shrink: 0; margin-bottom: 14px; }
+.risk-table { display: flex; flex-direction: column; gap: 8px; }
+.risk-row {
+  display: grid; grid-template-columns: 120px 80px 72px 1fr;
+  align-items: center; gap: 0;
+  background: rgba(232,223,212,.04);
+  border: 1px solid rgba(232,223,212,.1);
+  border-radius: 4px; padding: 9px 14px;
+}
+.risk-row.crit { border-color: rgba(192,57,43,.35); background: rgba(192,57,43,.08); }
+.risk-row.warn { border-color: rgba(255,176,77,.3); background: rgba(255,176,77,.06); }
+.risk-row.watch { border-color: rgba(255,176,77,.18); background: rgba(255,176,77,.03); }
+.risk-row.healthy { border-color: rgba(42,170,106,.25); background: rgba(42,170,106,.05); }
+.risk-tier-name { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; }
+.risk-row.crit .risk-tier-name { color: #e57373; }
+.risk-row.warn .risk-tier-name { color: #ffb04d; }
+.risk-row.watch .risk-tier-name { color: #ffb04d; }
+.risk-row.healthy .risk-tier-name { color: #2aaa6a; }
+.risk-cnt { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700; color: rgba(232,223,212,.7); }
+.risk-arr { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; color: rgba(232,223,212,.7); }
+.risk-action { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; color: rgba(232,223,212,.45); text-align: right; }
+
+/* ── TIMELINE ── */
+.tl-wrap { flex-shrink: 0; margin-bottom: 14px; }
+.tl-track { display: flex; align-items: flex-start; margin-bottom: 0; }
+.tl-node { display: flex; flex-direction: column; align-items: center; flex: 1; }
+.tl-dot {
+  width: 30px; height: 30px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 800;
+  color: #18130b; flex-shrink: 0;
+}
+.tl-lbl { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800; color: #e8dfd4; text-align: center; margin-top: 7px; text-transform: uppercase; letter-spacing: 0.04em; }
+.tl-day { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; color: rgba(232,223,212,.38); text-align: center; margin-top: 2px; }
+.tl-note { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 600; color: rgba(232,223,212,.42); text-align: center; margin-top: 5px; line-height: 1.4; padding: 0 4px; }
+.tl-conn { flex: 0.4; height: 2px; margin-top: 14px; flex-shrink: 0; border-radius: 1px; }
+
+/* ── COMPARE ── */
+.cmp-wrap { flex-shrink: 0; margin-bottom: 14px; }
+.cmp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.cmp-card { border-radius: 5px; padding: 12px 14px; }
+.cmp-card.bad { background: rgba(192,57,43,.1); border: 1px solid rgba(192,57,43,.28); }
+.cmp-card.good { background: rgba(42,170,106,.08); border: 1px solid rgba(42,170,106,.22); }
+.cmp-head { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 7px; }
+.cmp-head.red { color: #e57373; }
+.cmp-head.grn { color: #2aaa6a; }
+.cmp-row { display: flex; align-items: flex-start; gap: 6px; margin-bottom: 5px; }
+.cmp-dot { width: 4px; height: 4px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+.cmp-row.bad .cmp-dot { background: #e57373; }
+.cmp-row.good .cmp-dot { background: #2aaa6a; }
+.cmp-txt { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; color: rgba(232,223,212,.65); line-height: 1.4; }
+
+/* ── KPI ROW ── */
+.kpi-row { flex-shrink: 0; display: flex; gap: 10px; margin-bottom: 14px; }
+.kpi-cell { flex: 1; background: rgba(232,223,212,.04); border: 1px solid rgba(232,223,212,.1); border-radius: 5px; padding: 9px 0; text-align: center; }
+.kpi-val { font-family: 'Inter', sans-serif; font-size: 28px; font-weight: 900; color: #ed7f4a; line-height: 1; letter-spacing: -0.6px; }
+.kpi-key { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; color: rgba(232,223,212,.38); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 5px; }
+
+/* ── FLEX SPACER ── */
+.grow { flex: 1; min-height: 4px; }
+
+/* ── CTA ── */
+.cta-block {
+  flex: 1; background: #ed7f4a; border-radius: 6px;
+  padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  margin-bottom: 24px;
+}
+.cta-copy { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; color: #18130b; line-height: 1.5; }
+.cta-badge {
+  font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 800;
+  color: #18130b; background: rgba(12,16,24,.16); border-radius: 4px;
+  padding: 12px 20px; letter-spacing: 0.06em; white-space: nowrap; flex-shrink: 0;
+}
+
+/* ── FOOTER ── */
+.footer {
+  flex-shrink: 0; border-top: 1px solid rgba(237,127,74,.18);
+  padding-top: 10px; height: 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: auto;
+}
+.ft-logo { display: flex; align-items: center; gap: 8px; }
+.ft-name { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 800; color: rgba(232,223,212,.55); letter-spacing: 0.15em; text-transform: uppercase; }
+.ft-tags { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; color: rgba(232,223,212,.25); letter-spacing: 0.1em; text-transform: uppercase; text-align: right; }
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="canvas">
+
+  <!-- HEADER -->
+  <div class="header">
+    <span class="hd hd-l">FOUNDER GTM · CHURN PREVENTION · CLAUDE AGENTS · REVENUE RETENTION · CUSTOMER SUCCESS · ULTRON OS</span>
+  </div>
+
+  <!-- HOOK -->
+  <div class="hook">
+    <div class="hook-d">
+      <span class="ac">CLAUDE</span> FLAGGED 23 ACCOUNTS<br>
+      <span class="sm">BEFORE THEY CHURNED.</span>
+    </div>
+    <div class="hook-sub">SENTINEL · decay detected 11 days before contract end · $284K at risk · $197K retained</div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="h-stat"><div class="h-num">23</div><div class="h-lbl">ACCOUNTS FLAGGED</div></div>
+    <div class="h-div"></div>
+    <div class="h-stat"><div class="h-num">11</div><div class="h-lbl">DAYS EARLY</div></div>
+    <div class="h-div"></div>
+    <div class="h-stat"><div class="h-num">$197K</div><div class="h-lbl">REVENUE SAVED</div></div>
+    <div class="h-div"></div>
+    <div class="h-stat"><div class="h-num">69%</div><div class="h-lbl">SAVE RATE</div></div>
+  </div>
+
+  <!-- SIGNALS GRID -->
+  <div class="signals-wrap">
+    <div class="sec">THE 4 SIGNALS AI CAUGHT FIRST</div>
+    <div class="signals-grid">
+
+      <div class="sig-card">
+        <div class="sig-top">
+          <div class="sig-name">LOGIN DECAY</div>
+          <div class="sig-num">-71%</div>
+        </div>
+        <div class="sig-desc">Weekly logins fell below 2x threshold. Champion disengaged 18 days before flag. No human noticed.</div>
+        <div class="sig-rows">
+          <div class="sig-row"><span class="sig-rk">BASELINE</span><span class="sig-rv">4.8 / week</span></div>
+          <div class="sig-row"><span class="sig-rk">OBSERVED</span><span class="sig-rv">1.4 / week</span></div>
+          <div class="sig-row"><span class="sig-rk">TRIGGER</span><span class="sig-rv"><span class="ac">3 wks below 2x</span></span></div>
+          <div class="sig-row"><span class="sig-rk">AT RISK</span><span class="sig-rv">$52K ARR</span></div>
+        </div>
+        <div class="sig-bar-bg"><div class="sig-bar-fill" style="width:71%"></div></div>
+      </div>
+
+      <div class="sig-card">
+        <div class="sig-top">
+          <div class="sig-name">TICKET SPIKE</div>
+          <div class="sig-num">+340%</div>
+        </div>
+        <div class="sig-desc">Support volume tripled in 3 weeks. NLP frustration score exceeded threshold across 8 tickets.</div>
+        <div class="sig-rows">
+          <div class="sig-row"><span class="sig-rk">BASELINE</span><span class="sig-rv">1.2 / week</span></div>
+          <div class="sig-row"><span class="sig-rk">OBSERVED</span><span class="sig-rv">5.3 / week</span></div>
+          <div class="sig-row"><span class="sig-rk">TRIGGER</span><span class="sig-rv"><span class="ac">NLP anger &gt; 0.7</span></span></div>
+          <div class="sig-row"><span class="sig-rk">AT RISK</span><span class="sig-rv">$71K ARR</span></div>
+        </div>
+        <div class="sig-bar-bg"><div class="sig-bar-fill" style="width:86%"></div></div>
+      </div>
+
+      <div class="sig-card">
+        <div class="sig-top">
+          <div class="sig-name">SEAT DECAY</div>
+          <div class="sig-num">-4 SEATS</div>
+        </div>
+        <div class="sig-desc">Active seats dropped during the renewal window. Silent offboarding pattern. Zero tickets opened.</div>
+        <div class="sig-rows">
+          <div class="sig-row"><span class="sig-rk">LICENSED</span><span class="sig-rv">18 seats</span></div>
+          <div class="sig-row"><span class="sig-rk">ACTIVE</span><span class="sig-rv">11 seats</span></div>
+          <div class="sig-row"><span class="sig-rk">TRIGGER</span><span class="sig-rv"><span class="ac">active &lt; 80% licensed</span></span></div>
+          <div class="sig-row"><span class="sig-rk">AT RISK</span><span class="sig-rv">$43K ARR</span></div>
+        </div>
+        <div class="sig-bar-bg"><div class="sig-bar-fill" style="width:54%"></div></div>
+      </div>
+
+      <div class="sig-card">
+        <div class="sig-top">
+          <div class="sig-name">NPS DRIFT</div>
+          <div class="sig-num">8 to 4</div>
+        </div>
+        <div class="sig-desc">Promoter to passive slide 6 weeks pre-renewal. No QBR scheduled. No outreach at all.</div>
+        <div class="sig-rows">
+          <div class="sig-row"><span class="sig-rk">LAST SCORE</span><span class="sig-rv">8 (promoter)</span></div>
+          <div class="sig-row"><span class="sig-rk">CURRENT</span><span class="sig-rv">4 (passive)</span></div>
+          <div class="sig-row"><span class="sig-rk">TRIGGER</span><span class="sig-rv"><span class="ac">drop &gt; 3 + renewal &lt; 90d</span></span></div>
+          <div class="sig-row"><span class="sig-rk">AT RISK</span><span class="sig-rv">$118K ARR</span></div>
+        </div>
+        <div class="sig-bar-bg"><div class="sig-bar-fill" style="width:62%"></div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RISK TIER TABLE -->
+  <div class="risk-wrap">
+    <div class="sec">CHURN RISK TIERS · 23 ACCOUNTS SCORED</div>
+    <div class="risk-table">
+      <div class="risk-row crit">
+        <div class="risk-tier-name">CRITICAL</div>
+        <div class="risk-cnt">7 accounts</div>
+        <div class="risk-arr">$184K ARR</div>
+        <div class="risk-action">Score &lt; 30 · auto-escalate to CSM lead</div>
+      </div>
+      <div class="risk-row warn">
+        <div class="risk-tier-name">AT RISK</div>
+        <div class="risk-cnt">11 accounts</div>
+        <div class="risk-arr">$71K ARR</div>
+        <div class="risk-action">Score 30-60 · save sequence triggered</div>
+      </div>
+      <div class="risk-row watch">
+        <div class="risk-tier-name">WATCH</div>
+        <div class="risk-cnt">5 accounts</div>
+        <div class="risk-arr">$29K ARR</div>
+        <div class="risk-action">Score 60-80 · QBR auto-scheduled</div>
+      </div>
+      <div class="risk-row healthy">
+        <div class="risk-tier-name">HEALTHY</div>
+        <div class="risk-cnt">142 accounts</div>
+        <div class="risk-arr">$3.4M ARR</div>
+        <div class="risk-action">Score 80-100 · monitoring continues</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="tl-wrap">
+    <div class="sec">WHAT SENTINEL DID IN 11 DAYS</div>
+    <div class="tl-track">
+      <div class="tl-node">
+        <div class="tl-dot" style="background:#ed7f4a">01</div>
+        <div class="tl-lbl">DETECT</div>
+        <div class="tl-day">DAY 0</div>
+        <div class="tl-note">Cross-signal pattern match</div>
+      </div>
+      <div class="tl-conn" style="background:#ed7f4a"></div>
+      <div class="tl-node">
+        <div class="tl-dot" style="background:#ed7f4a">02</div>
+        <div class="tl-lbl">SCORE</div>
+        <div class="tl-day">DAY 1</div>
+        <div class="tl-note">Health 0-100 computed</div>
+      </div>
+      <div class="tl-conn" style="background:#ed7f4a"></div>
+      <div class="tl-node">
+        <div class="tl-dot" style="background:#ffb04d">03</div>
+        <div class="tl-lbl">ALERT</div>
+        <div class="tl-day">DAY 2</div>
+        <div class="tl-note">Slack + email to CSM</div>
+      </div>
+      <div class="tl-conn" style="background:#ffb04d"></div>
+      <div class="tl-node">
+        <div class="tl-dot" style="background:#ffb04d">04</div>
+        <div class="tl-lbl">PLAYBOOK</div>
+        <div class="tl-day">DAY 3</div>
+        <div class="tl-note">AI drafts save sequence</div>
+      </div>
+      <div class="tl-conn" style="background:#2aaa6a"></div>
+      <div class="tl-node">
+        <div class="tl-dot" style="background:#2aaa6a">05</div>
+        <div class="tl-lbl">ENGAGE</div>
+        <div class="tl-day">DAY 5</div>
+        <div class="tl-note">CSM call booked</div>
+      </div>
+      <div class="tl-conn" style="background:#2aaa6a"></div>
+      <div class="tl-node">
+        <div class="tl-dot" style="background:#2aaa6a">06</div>
+        <div class="tl-lbl">RETAIN</div>
+        <div class="tl-day">DAY 11</div>
+        <div class="tl-note">Contract renewed</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPARISON -->
+  <div class="cmp-wrap">
+    <div class="sec">WITH AI VS. WITHOUT</div>
+    <div class="cmp-grid">
+      <div class="cmp-card bad">
+        <div class="cmp-head red">WITHOUT AI</div>
+        <div class="cmp-row bad"><div class="cmp-dot"></div><div class="cmp-txt">Churn spotted at renewal call</div></div>
+        <div class="cmp-row bad"><div class="cmp-dot"></div><div class="cmp-txt">0 days to course correct</div></div>
+        <div class="cmp-row bad"><div class="cmp-dot"></div><div class="cmp-txt">$87K average contract lost</div></div>
+        <div class="cmp-row bad"><div class="cmp-dot"></div><div class="cmp-txt">Manual tracking, quarterly lag</div></div>
+      </div>
+      <div class="cmp-card good">
+        <div class="cmp-head grn">WITH SENTINEL</div>
+        <div class="cmp-row good"><div class="cmp-dot"></div><div class="cmp-txt">Signal detected 11 days early</div></div>
+        <div class="cmp-row good"><div class="cmp-dot"></div><div class="cmp-txt">Playbook auto-triggered Day 1</div></div>
+        <div class="cmp-row good"><div class="cmp-dot"></div><div class="cmp-txt">69% of at-risk accounts saved</div></div>
+        <div class="cmp-row good"><div class="cmp-dot"></div><div class="cmp-txt">$197K retained this quarter</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KPI ROW -->
+  <div class="kpi-row">
+    <div class="kpi-cell"><div class="kpi-val">4</div><div class="kpi-key">SIGNALS</div></div>
+    <div class="kpi-cell"><div class="kpi-val">11</div><div class="kpi-key">DAYS EARLY</div></div>
+    <div class="kpi-cell"><div class="kpi-val">69%</div><div class="kpi-key">SAVE RATE</div></div>
+    <div class="kpi-cell"><div class="kpi-val">$8.6K</div><div class="kpi-key">AVG SAVED</div></div>
+    <div class="kpi-cell"><div class="kpi-val">2.1h</div><div class="kpi-key">CSM / WEEK</div></div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div class="cta-copy">
+      Running blind on renewals? SENTINEL monitors every account health signal in real time<br>
+      and alerts your CSM before the window closes. Built into the Ultron AI stack.
+    </div>
+    <div class="cta-badge">COMMENT "CHURN"</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer" style="border-top: 1px dashed rgba(237,127,74,0.3); padding-top: 16px; display: flex; align-items: center; justify-content: space-between;">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; color: #666; text-transform: uppercase; display: flex; align-items: center; gap: 10px;">
+        <img src="https://app.51ultron.com/favicon.ico" alt="Ultron" style="width: 24px; height: 24px; object-fit: contain;">
+        <strong style="color: #fff;">ULTRON OS</strong> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure
+    </div>
+    <div style="font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 800; color: #fff; letter-spacing: -0.5px;">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

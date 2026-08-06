@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 09 · AI Outbound Levels · v6</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* BUDGET 1450
+     header   0 -  48
+     hero    56 - 290   (234)
+     section 312 - 360   ( 48)   "THE 5 LEVELS" eyebrow row
+     levels  368 -1078  (710)    5 cards stacked
+     before/after 1098 -1190 (92)
+     cta    1210 -1266  ( 56)
+     footer 1290 -1410 (120)
+  */
+  body{background:#f4ede0;margin:0;padding:0}
+  .scaler{display:flex;justify-content:center}
+  .poster{width:1080px;height:1450px;background:var(--ink-cream-50);position:relative;overflow:hidden;box-sizing:border-box}
+  .mono{font-family:var(--font-mono)}
+  .fraunces{font-family:var(--font-serif);font-feature-settings:'ss01' on}
+  .accent{color:var(--accent-dark)}
+  .micro{font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;font-family:var(--font-mono)}
+  .pulse{display:inline-block;width:8px;height:8px;border-radius:var(--radius-full);background:var(--accent-dark);box-shadow:0 0 8px rgba(217,119,87,0.4)}
+  .lvl-card{background:#FFFFFF;border:1px solid var(--ink-cream-200);border-radius:var(--radius-lg);padding:18px 22px;display:grid;grid-template-columns:88px 1fr 220px;gap:24px;align-items:center;box-sizing:border-box}
+  .lvl-card.hot{background:linear-gradient(135deg,#FFFFFF,rgba(217,119,87,0.06));border:1.5px solid var(--accent-border);box-shadow:0 8px 24px rgba(217,119,87,0.08)}
+  .lvl-num{font-family:var(--font-serif);font-weight:900;font-size:62px;line-height:0.9;color:var(--ink-cream-300);letter-spacing:-2px}
+  .lvl-card.hot .lvl-num{color:var(--accent-dark)}
+  .kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 10px}
+  .kpi{display:flex;flex-direction:column;gap:1px}
+  .kpi-k{font-family:var(--font-mono);font-size:8.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-gray-500)}
+  .kpi-v{font-size:14px;font-weight:800;color:var(--ink-black);font-variant-numeric:tabular-nums}
+  .lvl-card.hot .kpi-v{color:var(--accent-dark)}
+  .tag{display:inline-flex;align-items:center;gap:4px;font-family:var(--font-mono);font-size:9px;font-weight:700;letter-spacing:.1em;padding:3px 7px;border-radius:var(--radius-xs);background:var(--ink-cream-100);color:var(--ink-gray-600);border:1px solid var(--ink-cream-200)}
+  .tag-ai{background:rgba(217,119,87,0.10);color:var(--accent-dark);border-color:var(--accent-border)}
+  .tag-bad{background:rgba(181,51,51,0.08);color:var(--danger);border-color:rgba(181,51,51,0.25)}
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="poster">
+
+  <!-- HEADER 0-48 -->
+  <div style="position:absolute;top:0;left:40px;right:40px;height:48px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--ink-cream-200)">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(0,0,0,0.5)">FOUNDER GTM · AI OUTBOUND LEVELS · MATURITY CURVE · AGENT ROUTING · ULTRON OS</span>
+  </div>
+
+  <!-- HERO 56-290 -->
+  <div style="position:absolute;top:64px;left:40px;right:40px">
+    <div class="micro" style="margin-bottom:14px;color:var(--accent-dark)">AI IN OUTBOUND · MATURITY CURVE · 2026 PLAYBOOK</div>
+    <div class="fraunces" style="font-weight:900;font-size:78px;line-height:0.92;letter-spacing:-2px;color:var(--ink-black);margin-bottom:8px">5 levels of <span class="accent" style="font-style:italic">AI outbound.</span></div>
+    <div class="fraunces" style="font-weight:700;font-size:42px;line-height:0.95;letter-spacing:-1.2px;color:var(--ink-gray-600);margin-bottom:16px">Most founders are stuck at <span style="color:var(--ink-black);font-weight:900">level 1.</span></div>
+    <div style="font-size:15px;line-height:1.5;color:var(--ink-gray-600);max-width:880px">I mapped them after 6 months operating + 2,400 sends across 3 AI stacks. Each level eats the one below. <span style="color:var(--ink-black);font-weight:600">Level 4 is where the deals live.</span></div>
+  </div>
+
+  <!-- SECTION LABEL 312-360 -->
+  <div style="position:absolute;top:312px;left:40px;right:40px;display:flex;align-items:baseline;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid var(--ink-cream-200)">
+    <div>
+      <span class="mono" style="font-size:11px;font-weight:700;letter-spacing:.22em;color:var(--ink-black)">THE 5 LEVELS</span>
+      <span class="mono" style="font-size:11px;font-weight:600;letter-spacing:.18em;color:var(--ink-gray-500);margin-left:12px">MANUAL → DRAFT → SCORE → AGENTS → MEMORY</span>
+    </div>
+    <span class="mono" style="font-size:10px;font-weight:700;letter-spacing:.16em;color:var(--ink-gray-500)">SOURCE · 2,400 SENDS / 6 MO</span>
+  </div>
+
+  <!-- LEVELS STACK 368-1078  ·  5 cards · ~138 each + 4 gaps 12 = 690+48 = 738 -->
+
+  <!-- LEVEL 01 -->
+  <div class="lvl-card" style="position:absolute;top:368px;left:40px;right:40px;height:128px">
+    <div class="lvl-num">01</div>
+    <div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <span style="font-size:17px;font-weight:800;color:var(--ink-black)">Manual prospecting</span>
+        <span class="tag tag-bad">NO AI</span>
+      </div>
+      <div style="font-size:12.5px;line-height:1.45;color:var(--ink-gray-600);max-width:520px">Apollo lists, copy-paste in Outlook, generic template. SDR at the wheel. Reply rate is a coin flip.</div>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="kpi-k">CONTACTS / DAY</div><div class="kpi-v">~40</div></div>
+      <div class="kpi"><div class="kpi-k">REPLY RATE</div><div class="kpi-v">0.8%</div></div>
+      <div class="kpi"><div class="kpi-k">TIME / DRAFT</div><div class="kpi-v">8 min</div></div>
+      <div class="kpi"><div class="kpi-k">STACK</div><div class="kpi-v" style="font-size:11px">Apollo + Outlook</div></div>
+    </div>
+  </div>
+
+  <!-- LEVEL 02 -->
+  <div class="lvl-card" style="position:absolute;top:506px;left:40px;right:40px;height:128px">
+    <div class="lvl-num">02</div>
+    <div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <span style="font-size:17px;font-weight:800;color:var(--ink-black)">AI as a draft tool</span>
+        <span class="tag tag-ai">CHATGPT</span>
+      </div>
+      <div style="font-size:12.5px;line-height:1.45;color:var(--ink-gray-600);max-width:520px">Same list, ChatGPT writes the cold email. Tone improves. Volume rises. Targeting still blind.</div>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="kpi-k">CONTACTS / DAY</div><div class="kpi-v">~80</div></div>
+      <div class="kpi"><div class="kpi-k">REPLY RATE</div><div class="kpi-v">1.6%</div></div>
+      <div class="kpi"><div class="kpi-k">TIME / DRAFT</div><div class="kpi-v">3 min</div></div>
+      <div class="kpi"><div class="kpi-k">STACK</div><div class="kpi-v" style="font-size:11px">Apollo + ChatGPT</div></div>
+    </div>
+  </div>
+
+  <!-- LEVEL 03 -->
+  <div class="lvl-card" style="position:absolute;top:644px;left:40px;right:40px;height:128px">
+    <div class="lvl-num">03</div>
+    <div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <span style="font-size:17px;font-weight:800;color:var(--ink-black)">AI scoring + AI draft</span>
+        <span class="tag tag-ai">GEMINI + CLAUDE</span>
+      </div>
+      <div style="font-size:12.5px;line-height:1.45;color:var(--ink-gray-600);max-width:520px">Gemini scores ICP fit, Claude writes the message. Two models, two jobs. The list gets sharper. The send is still bulk.</div>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="kpi-k">CONTACTS / DAY</div><div class="kpi-v">~140</div></div>
+      <div class="kpi"><div class="kpi-k">REPLY RATE</div><div class="kpi-v">3.4%</div></div>
+      <div class="kpi"><div class="kpi-k">TIME / DRAFT</div><div class="kpi-v">90 s</div></div>
+      <div class="kpi"><div class="kpi-k">STACK</div><div class="kpi-v" style="font-size:11px">Clay + Claude</div></div>
+    </div>
+  </div>
+
+  <!-- LEVEL 04  ·  HIGHLIGHTED -->
+  <div class="lvl-card hot" style="position:absolute;top:782px;left:40px;right:40px;height:128px">
+    <div class="lvl-num">04</div>
+    <div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <span style="font-size:17px;font-weight:900;color:var(--ink-black)">5 AI agents + human gate</span>
+        <span class="tag tag-ai" style="background:var(--accent-dark);color:#fff;border-color:var(--accent-dark)">DEALS LIVE HERE</span>
+      </div>
+      <div style="font-size:12.5px;line-height:1.45;color:var(--ink-gray-600);max-width:520px">SPECTER scans signals. CORTEX researches. STRIKER drafts. HUMAN_GATE approves in 90s. PULSE times follow-up. One pass on the wire.</div>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="kpi-k">CONTACTS / DAY</div><div class="kpi-v">~200</div></div>
+      <div class="kpi"><div class="kpi-k">REPLY RATE</div><div class="kpi-v">7.8%</div></div>
+      <div class="kpi"><div class="kpi-k">TIME / DRAFT</div><div class="kpi-v">90 s</div></div>
+      <div class="kpi"><div class="kpi-k">STACK</div><div class="kpi-v" style="font-size:11px">Ultron routing</div></div>
+    </div>
+  </div>
+
+  <!-- LEVEL 05 -->
+  <div class="lvl-card" style="position:absolute;top:920px;left:40px;right:40px;height:128px">
+    <div class="lvl-num">05</div>
+    <div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <span style="font-size:17px;font-weight:800;color:var(--ink-black)">AI agents with memory</span>
+        <span class="tag tag-ai">MEMORY LOOP</span>
+      </div>
+      <div style="font-size:12.5px;line-height:1.45;color:var(--ink-gray-600);max-width:520px">Every verdict feeds the next draft. The system learns your voice, your wins, your objections. Compounds weekly. Most founders never get here.</div>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="kpi-k">CONTACTS / DAY</div><div class="kpi-v">~200</div></div>
+      <div class="kpi"><div class="kpi-k">REPLY RATE</div><div class="kpi-v">11.4%</div></div>
+      <div class="kpi"><div class="kpi-k">TIME / DRAFT</div><div class="kpi-v">60 s</div></div>
+      <div class="kpi"><div class="kpi-k">STACK</div><div class="kpi-v" style="font-size:11px">Ultron + memory</div></div>
+    </div>
+  </div>
+
+  <!-- BEFORE/AFTER STAT 1098-1190 -->
+  <div style="position:absolute;top:1080px;left:40px;right:40px;height:96px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;background:#FFFFFF;border:1px solid var(--ink-cream-200);border-radius:var(--radius-lg);overflow:hidden">
+    <div style="padding:18px 28px;border-right:1px solid var(--ink-cream-200)">
+      <div class="mono" style="font-size:9px;letter-spacing:.18em;color:var(--ink-gray-500);font-weight:700;margin-bottom:4px">LEVEL 1 · NO AI</div>
+      <div style="display:flex;align-items:baseline;gap:10px">
+        <span class="fraunces" style="font-size:48px;font-weight:900;line-height:1;color:var(--ink-gray-600);letter-spacing:-1.5px">0.8%</span>
+        <span style="font-size:13px;color:var(--ink-gray-500);font-weight:600">reply · 40/day</span>
+      </div>
+    </div>
+    <div style="padding:0 24px"><svg width="32" height="20" viewBox="0 0 32 20" fill="none"><path d="M2 10h24M21 4l8 6-8 6" stroke="#D97757" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div style="padding:18px 28px">
+      <div class="mono" style="font-size:9px;letter-spacing:.18em;color:var(--accent-dark);font-weight:700;margin-bottom:4px">LEVEL 4 · 5 AI AGENTS</div>
+      <div style="display:flex;align-items:baseline;gap:10px">
+        <span class="fraunces accent" style="font-size:48px;font-weight:900;line-height:1;letter-spacing:-1.5px">7.8%</span>
+        <span style="font-size:13px;color:var(--ink-gray-500);font-weight:600">reply · 200/day</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA 1196-1252 -->
+  <div style="position:absolute;top:1196px;left:40px;right:40px;height:56px;display:flex;align-items:center;justify-content:space-between;border:1.5px solid var(--accent-border);border-radius:var(--radius-md);padding:0 28px;background:rgba(217,119,87,0.05);flex:1">
+    <div style="font-size:14px;font-weight:700;color:var(--ink-gray-700)">Want to map your level + jump 2 up with AI agents?</div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="mono" style="font-size:12px;font-weight:700;color:var(--ink-gray-500);letter-spacing:.1em">COMMENT</div>
+      <div class="mono" style="padding:8px 20px;background:var(--accent-dark);color:#fff;border-radius:var(--radius-sm);font-size:14px;font-weight:900;letter-spacing:.08em">LEVELS</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer" style="position:absolute;top:1290px;left:40px;right:40px;border-top: 1px dashed rgba(199,93,53,0.3); padding-top: 16px; display: flex; align-items: center; justify-content: space-between;">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; color: rgba(0,0,0,0.5); text-transform: uppercase; display: flex; align-items: center; gap: 10px;">
+      <img src="https://app.51ultron.com/favicon.ico" alt="Ultron" style="width: 24px; height: 24px; object-fit: contain;">
+      <strong style="color: #1a1a1a;">ULTRON OS</strong> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure
+    </div>
+    <div style="font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 800; color: #1a1a1a; letter-spacing: -0.5px;">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

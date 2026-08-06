@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Script 25 - SCORE - Ultron</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Fraunces:opsz,wght@9..144,700;9..144,900&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet">
+<!--
+VERTICAL BUDGET (canvas 1450, pad 28t+20b = 48px, content 1402px)
+  header        44px
+  hook         152px
+  hero          96px
+  breakdown   560px   (label 25 + 12 rows variable heights + gaps + 13mb)
+  counters    228px   (label 25 + 3 cards 180 + 13mb + 10mb gap)
+  kpi-row       72px
+  cta          ~110px (flex:1 absorbs slack)
+  footer        50px
+  TOTAL      ~1312px  (margin-top:auto footer absorbs ~90px)
+-->
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { background: #f4ede0; margin: 0; padding: 0; }
+.scaler { display: flex; justify-content: center; }
+
+.canvas {
+  width: 1080px; height: 1450px;
+  background: #f4ede0;
+  padding: 28px 40px 20px;
+  display: flex; flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  color: #1a1a1a; overflow: hidden;
+  position: relative;
+}
+.canvas::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(199,93,53,.10) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+.canvas > * { position: relative; z-index: 1; }
+
+/* HEADER */
+.header {
+  display: flex; align-items: center;
+  height: 32px; flex-shrink: 0; margin-bottom: 12px;
+}
+.hd {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(0,0,0,.55);
+}
+
+/* HOOK */
+.hook { flex-shrink: 0; margin-bottom: 10px; padding-top: 4px; }
+.hook-d {
+  font-family: 'Fraunces', serif;
+  font-size: 64px; font-weight: 900;
+  line-height: 0.96; letter-spacing: -1.8px; color: #1a1a1a;
+}
+.hook-d .ac { color: #c75d35; }
+.hook-d .sm { font-size: 50px; color: rgba(0,0,0,.6); font-weight: 700; }
+.hook-sub {
+  margin-top: 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 18px; font-weight: 700;
+  line-height: 1.35; letter-spacing: -0.2px; color: rgba(0,0,0,.52);
+}
+
+/* HERO STAT RIBBON */
+.hero {
+  flex-shrink: 0; height: 82px;
+  border-top: 1px solid rgba(0,0,0,.14);
+  border-bottom: 1px solid rgba(0,0,0,.14);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 28px; margin-bottom: 14px;
+}
+.h-stat { display: flex; flex-direction: column; }
+.h-num {
+  font-family: 'Fraunces', serif; font-weight: 900;
+  font-size: 36px; line-height: 1; letter-spacing: -1px; color: #c75d35;
+}
+.h-lbl {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(0,0,0,.4); margin-top: 6px;
+}
+.h-div { width: 1px; height: 48px; background: rgba(0,0,0,.12); }
+
+/* SECTION LABEL */
+.sec {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: #c75d35; flex-shrink: 0; margin-bottom: 10px;
+  display: flex; justify-content: space-between; align-items: baseline;
+}
+.sec-meta {
+  color: rgba(0,0,0,.32); font-weight: 600; letter-spacing: 0.12em;
+}
+
+/* ── PATTERN BREAKDOWN (height-encoded bars) ── */
+.pb-wrap { flex-shrink: 0; margin-bottom: 13px; }
+.pb-grid { display: flex; flex-direction: column; gap: 3px; }
+.pb-row {
+  display: flex; align-items: center; gap: 14px;
+  padding: 0 18px 0 12px;
+  border-radius: 5px; flex-shrink: 0;
+  position: relative; overflow: hidden;
+}
+.pb-row::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 6px;
+}
+
+/* Rank-tier styling (color intensity = importance) */
+.pb-row.tier1 { background: #c75d35; }
+.pb-row.tier1::before { background: rgba(0,0,0,.18); }
+.pb-row.tier1 .pb-name,
+.pb-row.tier1 .pb-pct,
+.pb-row.tier1 .pb-arr,
+.pb-row.tier1 .pb-tag-text { color: #f4ede0; }
+.pb-row.tier1 .pb-rank { background: rgba(0,0,0,.22); color: #f4ede0; }
+
+.pb-row.tier2 { background: rgba(199,93,53,.78); }
+.pb-row.tier2::before { background: rgba(0,0,0,.15); }
+.pb-row.tier2 .pb-name,
+.pb-row.tier2 .pb-pct,
+.pb-row.tier2 .pb-arr,
+.pb-row.tier2 .pb-tag-text { color: #f4ede0; }
+.pb-row.tier2 .pb-rank { background: rgba(0,0,0,.2); color: #f4ede0; }
+
+.pb-row.tier3 { background: rgba(199,93,53,.48); }
+.pb-row.tier3::before { background: #c75d35; }
+.pb-row.tier3 .pb-name { color: #1a1a1a; }
+.pb-row.tier3 .pb-pct { color: #1a1a1a; }
+.pb-row.tier3 .pb-arr { color: rgba(0,0,0,.6); }
+.pb-row.tier3 .pb-rank { background: #c75d35; color: #f4ede0; }
+.pb-row.tier3 .pb-tag-text { color: #2a8c50; }
+
+.pb-row.tier4 { background: rgba(199,93,53,.16); }
+.pb-row.tier4::before { background: rgba(199,93,53,.55); }
+.pb-row.tier4 .pb-name { color: rgba(0,0,0,.82); }
+.pb-row.tier4 .pb-pct { color: #1a1a1a; }
+.pb-row.tier4 .pb-arr { color: rgba(0,0,0,.45); }
+.pb-row.tier4 .pb-rank { background: rgba(199,93,53,.4); color: #f4ede0; }
+
+.pb-row.tier5 { background: rgba(0,0,0,.06); }
+.pb-row.tier5::before { background: rgba(0,0,0,.18); }
+.pb-row.tier5 .pb-name { color: rgba(0,0,0,.62); }
+.pb-row.tier5 .pb-pct { color: rgba(0,0,0,.55); }
+.pb-row.tier5 .pb-arr { color: rgba(0,0,0,.32); }
+.pb-row.tier5 .pb-rank { background: rgba(0,0,0,.15); color: rgba(0,0,0,.55); }
+
+.pb-rank {
+  width: 22px; height: 22px; border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; font-weight: 800; flex-shrink: 0;
+}
+.pb-name {
+  flex: 1;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px; font-weight: 800;
+  letter-spacing: -0.2px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.pb-row.tier1 .pb-name { font-size: 17px; }
+.pb-row.tier2 .pb-name { font-size: 15px; }
+.pb-row.tier3 .pb-name { font-size: 14px; }
+.pb-row.tier5 .pb-name { font-size: 12px; font-weight: 700; }
+
+.pb-pct {
+  font-family: 'Fraunces', serif; font-weight: 900;
+  font-size: 24px; line-height: 1; letter-spacing: -0.5px;
+  text-align: right; flex-shrink: 0;
+  min-width: 56px;
+}
+.pb-row.tier1 .pb-pct { font-size: 38px; }
+.pb-row.tier2 .pb-pct { font-size: 32px; }
+.pb-row.tier3 .pb-pct { font-size: 26px; }
+.pb-row.tier5 .pb-pct { font-size: 18px; }
+
+.pb-arr {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; font-weight: 800;
+  letter-spacing: 0.04em;
+  text-align: right; flex-shrink: 0;
+  min-width: 64px;
+}
+.pb-row.tier1 .pb-arr { font-size: 13px; }
+.pb-row.tier2 .pb-arr { font-size: 12px; }
+.pb-row.tier5 .pb-arr { font-size: 9px; }
+
+.pb-tag-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; font-weight: 800;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  flex-shrink: 0;
+  min-width: 120px; text-align: right;
+}
+
+/* ── COUNTER CARDS (rich, 180px tall) ── */
+.ctrs-wrap { flex-shrink: 0; margin-bottom: 13px; }
+.ctrs {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;
+  height: 180px;
+}
+.ctr {
+  background: rgba(255,255,255,.65);
+  border: 1px solid rgba(0,0,0,.12);
+  border-top: 4px solid #c75d35;
+  border-radius: 5px;
+  padding: 12px 16px 14px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  position: relative;
+}
+.ctr-head { display: flex; align-items: center; gap: 8px; }
+.ctr-badge {
+  background: #c75d35; color: #f4ede0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; font-weight: 800; letter-spacing: 0.1em;
+  padding: 3px 7px; border-radius: 3px;
+}
+.ctr-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; font-weight: 800;
+  letter-spacing: 0.14em; color: #c75d35;
+  text-transform: uppercase;
+}
+.ctr-obj {
+  font-family: 'Fraunces', serif;
+  font-style: italic; font-weight: 700;
+  font-size: 14px; line-height: 1.32;
+  color: rgba(0,0,0,.85);
+  margin-top: 10px;
+}
+.ctr-arrow {
+  display: flex; align-items: center; gap: 8px;
+  margin: 8px 0 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; font-weight: 800;
+  letter-spacing: 0.14em; text-transform: uppercase;
+}
+.ctr-arrow-line { flex: 1; height: 1px; background: rgba(0,0,0,.15); }
+.ctr-arrow-text { color: #2a8c50; }
+.ctr-reply {
+  font-family: 'Fraunces', serif;
+  font-style: italic; font-weight: 700;
+  font-size: 11.5px; line-height: 1.32;
+  color: rgba(0,0,0,.62);
+}
+.ctr-foot {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-top: 8px; padding-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,.18);
+}
+.ctr-frame {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; font-weight: 800;
+  letter-spacing: 0.12em; color: rgba(0,0,0,.6);
+  text-transform: uppercase;
+}
+.ctr-uplift {
+  font-family: 'Fraunces', serif;
+  font-size: 24px; font-weight: 900; color: #2a8c50;
+  line-height: 1; letter-spacing: -0.5px;
+}
+
+/* ── KPI ROW ── */
+.kpi-row { flex-shrink: 0; display: flex; gap: 10px; margin-bottom: 14px; }
+.kpi-cell {
+  flex: 1; background: rgba(255,255,255,.55);
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: 5px; padding: 10px 0; text-align: center;
+}
+.kpi-val {
+  font-family: 'Fraunces', serif;
+  font-size: 30px; font-weight: 900;
+  color: #c75d35; line-height: 1; letter-spacing: -0.6px;
+}
+.kpi-key {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; font-weight: 700;
+  color: rgba(0,0,0,.45);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  margin-top: 6px;
+}
+
+/* ── CTA ── */
+.cta-block {
+  flex-shrink: 0; background: #c75d35; border-radius: 8px;
+  padding: 24px 32px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  margin-bottom: 10px;
+}
+.cta-copy {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px; font-weight: 700; color: #f4ede0;
+  line-height: 1.55;
+}
+.cta-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px; font-weight: 800;
+  color: #c75d35; background: #f4ede0;
+  border-radius: 6px; padding: 14px 22px;
+  letter-spacing: 0.08em; white-space: nowrap; flex-shrink: 0;
+}
+
+/* ── FOOTER ── */
+.footer {
+  flex-shrink: 0; padding-top: 16px;
+  border-top: 1px dashed rgba(199,93,53,0.3);
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: auto;
+}
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="canvas">
+
+  <!-- HEADER -->
+  <div class="header">
+    <span class="hd">AI OBJECTION HANDLING · LOSS REASON MINING · WIN COUNTERS · STRIKER · ULTRON OS</span>
+  </div>
+
+  <!-- HOOK -->
+  <div class="hook">
+    <div class="hook-d">
+      <span class="ac">23%</span> of lost deals died on price.<br>
+      <span class="sm">Claude found 12 patterns for the other 77%.</span>
+    </div>
+    <div class="hook-sub">I fed Claude 847 closed-lost transcripts. 30 minutes later, every objection was ranked by ARR and the top 4 had a counter ready for the playbook.</div>
+  </div>
+
+  <!-- HERO STAT RIBBON -->
+  <div class="hero">
+    <div class="h-stat"><div class="h-num">847</div><div class="h-lbl">DEALS MINED</div></div>
+    <div class="h-div"></div>
+    <div class="h-stat"><div class="h-num">2,140</div><div class="h-lbl">OBJECTIONS</div></div>
+    <div class="h-div"></div>
+    <div class="h-stat"><div class="h-num">12</div><div class="h-lbl">PATTERNS</div></div>
+    <div class="h-div"></div>
+    <div class="h-stat"><div class="h-num">$1.5M</div><div class="h-lbl">LOST ARR MAPPED</div></div>
+    <div class="h-div"></div>
+    <div class="h-stat"><div class="h-num">$1.4M</div><div class="h-lbl">FLIPPED LIVE</div></div>
+  </div>
+
+  <!-- PATTERN BREAKDOWN - HERO VISUAL (variable heights) -->
+  <div class="pb-wrap">
+    <div class="sec">
+      <span>LOST ARR ANATOMY &middot; 12 PATTERNS &middot; HEIGHT &amp; COLOR = LOSS WEIGHT</span>
+      <span class="sec-meta">SOURCE: 18MO TRANSCRIPTS + CRM</span>
+    </div>
+    <div class="pb-grid">
+
+      <div class="pb-row tier1" style="height:78px">
+        <div class="pb-rank">01</div>
+        <div class="pb-name">PRICE VS INTERNAL BUILD</div>
+        <div class="pb-pct">23%</div>
+        <div class="pb-arr">$342K</div>
+        <div class="pb-tag-text">ROI REFRAME</div>
+      </div>
+
+      <div class="pb-row tier2" style="height:66px">
+        <div class="pb-rank">02</div>
+        <div class="pb-name">BUDGET FROZEN THIS QUARTER</div>
+        <div class="pb-pct">18%</div>
+        <div class="pb-arr">$270K</div>
+        <div class="pb-tag-text">COST OF DELAY</div>
+      </div>
+
+      <div class="pb-row tier3" style="height:54px">
+        <div class="pb-rank">03</div>
+        <div class="pb-name">NO BUYER AUTHORITY / CFO GATE</div>
+        <div class="pb-pct">11%</div>
+        <div class="pb-arr">$164K</div>
+        <div class="pb-tag-text">EXEC ONE-PAGER</div>
+      </div>
+
+      <div class="pb-row tier4" style="height:46px">
+        <div class="pb-rank">04</div>
+        <div class="pb-name">COMPETITOR LOCK-IN</div>
+        <div class="pb-pct">9%</div>
+        <div class="pb-arr">$134K</div>
+        <div class="pb-tag-text"></div>
+      </div>
+
+      <div class="pb-row tier4" style="height:44px">
+        <div class="pb-rank">05</div>
+        <div class="pb-name">TEAM TOO SMALL TO ABSORB</div>
+        <div class="pb-pct">7%</div>
+        <div class="pb-arr">$104K</div>
+        <div class="pb-tag-text"></div>
+      </div>
+
+      <div class="pb-row tier4" style="height:40px">
+        <div class="pb-rank">06</div>
+        <div class="pb-name">NO ROI PROOF IN INDUSTRY</div>
+        <div class="pb-pct">5%</div>
+        <div class="pb-arr">$75K</div>
+        <div class="pb-tag-text"></div>
+      </div>
+
+      <div class="pb-row tier4" style="height:40px">
+        <div class="pb-rank">07</div>
+        <div class="pb-name">STACK INTEGRATION UNCLEAR</div>
+        <div class="pb-pct">5%</div>
+        <div class="pb-arr">$74K</div>
+        <div class="pb-tag-text"></div>
+      </div>
+
+      <div class="pb-row tier5" style="height:34px">
+        <div class="pb-rank">08</div>
+        <div class="pb-name">PILOT REQUIRED FIRST</div>
+        <div class="pb-pct">4%</div>
+        <div class="pb-arr">$60K</div>
+        <div class="pb-tag-text"></div>
+      </div>
+
+      <div class="pb-row tier5" style="height:34px">
+        <div class="pb-rank">09</div>
+        <div class="pb-name">SECURITY REVIEW BLOCKS</div>
+        <div class="pb-pct">4%</div>
+        <div class="pb-arr">$59K</div>
+        <div class="pb-tag-text"></div>
+      </div>
+
+      <div class="pb-row tier5" style="height:30px">
+        <div class="pb-rank">10</div>
+        <div class="pb-name">NO BANDWIDTH TO ONBOARD</div>
+        <div class="pb-pct">3%</div>
+        <div class="pb-arr">$45K</div>
+        <div class="pb-tag-text"></div>
+      </div>
+
+      <div class="pb-row tier5" style="height:30px">
+        <div class="pb-rank">11</div>
+        <div class="pb-name">CONTRACT LENGTH TOO LONG</div>
+        <div class="pb-pct">3%</div>
+        <div class="pb-arr">$44K</div>
+        <div class="pb-tag-text"></div>
+      </div>
+
+      <div class="pb-row tier5" style="height:28px">
+        <div class="pb-rank">12</div>
+        <div class="pb-name">FOUNDER TOO BUSY TO EVAL</div>
+        <div class="pb-pct">2%</div>
+        <div class="pb-arr">$29K</div>
+        <div class="pb-tag-text"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- COUNTER CARDS - rich, 180px tall -->
+  <div class="ctrs-wrap">
+    <div class="sec">
+      <span>TOP 3 COUNTERS CLAUDE WROTE &middot; LIVE IN STRIKER PLAYBOOK</span>
+      <span class="sec-meta">TESTED 60 DAYS &middot; N=212</span>
+    </div>
+    <div class="ctrs">
+
+      <div class="ctr">
+        <div>
+          <div class="ctr-head">
+            <div class="ctr-badge">01</div>
+            <div class="ctr-tag">PRICE OBJECTION</div>
+          </div>
+          <div class="ctr-obj">"Too expensive. We can build this internally."</div>
+          <div class="ctr-arrow">
+            <span class="ctr-arrow-text">CLAUDE COUNTER &rarr;</span>
+            <div class="ctr-arrow-line"></div>
+          </div>
+          <div class="ctr-reply">"Internal build runs $180K eng + 4mo. We deploy in 2 weeks at $14K."</div>
+        </div>
+        <div class="ctr-foot">
+          <div class="ctr-frame">ROI REFRAME</div>
+          <div class="ctr-uplift">+38%</div>
+        </div>
+      </div>
+
+      <div class="ctr">
+        <div>
+          <div class="ctr-head">
+            <div class="ctr-badge">02</div>
+            <div class="ctr-tag">TIMING OBJECTION</div>
+          </div>
+          <div class="ctr-obj">"Not this quarter. Budget frozen until Q3."</div>
+          <div class="ctr-arrow">
+            <span class="ctr-arrow-text">CLAUDE COUNTER &rarr;</span>
+            <div class="ctr-arrow-line"></div>
+          </div>
+          <div class="ctr-reply">"Every week of delay costs you 14 qualified leads. $47K in lost pipeline by Q3."</div>
+        </div>
+        <div class="ctr-foot">
+          <div class="ctr-frame">COST OF DELAY</div>
+          <div class="ctr-uplift">+29%</div>
+        </div>
+      </div>
+
+      <div class="ctr">
+        <div>
+          <div class="ctr-head">
+            <div class="ctr-badge">03</div>
+            <div class="ctr-tag">AUTHORITY OBJECTION</div>
+          </div>
+          <div class="ctr-obj">"I need CFO sign-off before we can move forward."</div>
+          <div class="ctr-arrow">
+            <span class="ctr-arrow-text">CLAUDE COUNTER &rarr;</span>
+            <div class="ctr-arrow-line"></div>
+          </div>
+          <div class="ctr-reply">"I'll send a 1-page CFO brief with ROI math your finance team can sign."</div>
+        </div>
+        <div class="ctr-foot">
+          <div class="ctr-frame">EXEC ONE-PAGER</div>
+          <div class="ctr-uplift">+22%</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- KPI ROW -->
+  <div class="kpi-row">
+    <div class="kpi-cell"><div class="kpi-val">81%</div><div class="kpi-key">ARR COVERED</div></div>
+    <div class="kpi-cell"><div class="kpi-val">30min</div><div class="kpi-key">RUNTIME</div></div>
+    <div class="kpi-cell"><div class="kpi-val">3.2x</div><div class="kpi-key">FLIP RATE</div></div>
+    <div class="kpi-cell"><div class="kpi-val">$1.4M</div><div class="kpi-key">REVIVED</div></div>
+    <div class="kpi-cell"><div class="kpi-val">$0</div><div class="kpi-key">EXTRA TOOLS</div></div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block" style="flex:1">
+    <div class="cta-copy">
+      Your CRM blames price on every lost deal. Claude mines 18 months of transcripts in 30 minutes,<br>
+      ranks every objection by ARR burned, and ships the winning counters straight into STRIKER.
+    </div>
+    <div class="cta-badge">COMMENT "SCORE"</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;color:rgba(0,0,0,0.5);text-transform:uppercase;display:flex;align-items:center;gap:10px;">
+      <img src="ultron-logo.png" style="width:32px;height:32px;border-radius:50%;object-fit:cover;flex-shrink:0"
+        onerror="this.style.cssText='width:32px;height:32px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 72% 22%,rgba(255,140,80,.95) 0%,rgba(220,80,30,.3) 22%,transparent 36%),radial-gradient(circle at 22% 76%,rgba(55,170,255,.95) 0%,rgba(30,130,220,.3) 22%,transparent 38%),radial-gradient(circle at 38% 38%,rgba(30,30,50,1) 0%,#060810 55%,#000 100%)'">
+      <strong style="color:#1a1a1a;">ULTRON OS</strong> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure
+    </div>
+    <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:800;color:#1a1a1a;letter-spacing:-0.5px;">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

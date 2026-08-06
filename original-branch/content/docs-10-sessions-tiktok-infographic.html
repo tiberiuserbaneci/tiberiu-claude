@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+:root{--slate:#191919;--slate2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--cloud:#919180;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;display:flex;justify-content:center;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.slide{width:1080px;height:1920px;background:var(--slate);position:relative;overflow:hidden;color:var(--ivory);}
+.slide::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.5px,transparent 1.6px);background-size:34px 34px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 60% 22% at 84% 3%,rgba(204,120,92,.22) 0%,transparent 60%),radial-gradient(ellipse 54% 18% at 8% 94%,rgba(212,162,127,.12) 0%,transparent 60%);}
+.safe{position:absolute;top:300px;left:70px;right:130px;bottom:330px;z-index:2;display:flex;flex-direction:column;}
+.mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--rule);padding-bottom:18px;font-family:'DM Mono',monospace;font-size:20px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;}
+.mast .ml{color:var(--book);}.mast .mr{color:var(--ink46);}
+.hook{flex-shrink:0;margin-top:26px;font-weight:900;font-size:54px;line-height:1.02;letter-spacing:-1.9px;color:var(--ivory);}.hook em{color:var(--book);font-style:normal;}
+.sub{flex-shrink:0;margin-top:16px;font-size:27px;font-weight:500;line-height:1.32;color:var(--ink70);}.sub b{color:var(--ivory);font-weight:700;}
+/* ---- chat session mockup ---- */
+.chat{flex:1;min-height:0;margin-top:26px;display:flex;flex-direction:column;border:1px solid var(--ink14);border-radius:26px;overflow:hidden;background:#1e1e1d;box-shadow:0 36px 90px rgba(0,0,0,.5);}
+.chd{flex-shrink:0;display:flex;align-items:center;gap:15px;padding:22px 26px;border-bottom:1px solid var(--rule);background:#151514;}
+.chd .av{width:46px;height:46px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.chd .ct b{display:block;font-size:23px;font-weight:800;color:var(--ivory);letter-spacing:-.3px;line-height:1;}
+.chd .ct span{font-family:'DM Mono',monospace;font-size:14px;color:var(--ink46);letter-spacing:.05em;}
+.chd .rz{margin-left:auto;display:flex;align-items:center;gap:9px;font-family:'DM Mono',monospace;font-size:14px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--book);background:rgba(204,120,92,.12);border:1px solid var(--book-bd,rgba(204,120,92,.34));padding:8px 15px;border-radius:30px;}
+.chd .rz i{width:9px;height:9px;border-radius:50%;background:var(--book);box-shadow:0 0 10px var(--book);}
+.cbody{flex:1;min-height:0;padding:26px;display:flex;flex-direction:column;gap:18px;justify-content:center;}
+.msg{max-width:80%;padding:18px 22px;border-radius:20px;font-size:24px;font-weight:500;line-height:1.32;}
+.msg.u{align-self:flex-end;background:rgba(204,120,92,.14);border:1px solid rgba(204,120,92,.28);color:var(--ivory);border-bottom-right-radius:7px;}
+.msg.a{align-self:flex-start;background:var(--slate2);border:1px solid var(--rule);color:var(--ink70);border-bottom-left-radius:7px;}
+.msg.old{opacity:.42;}
+.msg.live{align-self:flex-start;background:rgba(204,120,92,.1);border:1px solid var(--book);color:var(--ivory);border-bottom-left-radius:7px;box-shadow:0 0 34px rgba(204,120,92,.28);}
+.msg.live b{color:var(--book);font-weight:800;}
+.gap{display:flex;align-items:center;gap:16px;margin:4px 0;}
+.gap .ln{flex:1;border-top:1px dashed var(--ink30);}
+.gap .gl{display:flex;align-items:center;gap:10px;font-family:'DM Mono',monospace;font-size:15px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink46);white-space:nowrap;}
+.gap .gl svg{width:18px;height:18px;stroke:var(--cloud);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.cfoot{flex-shrink:0;padding:18px 24px;border-top:1px solid var(--rule);background:#151514;}
+.cfoot .fl{font-family:'DM Mono',monospace;font-size:14px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink46);margin-bottom:12px;display:flex;align-items:center;gap:9px;}
+.cfoot .fl em{color:var(--book);font-style:normal;}
+.cfoot .pills{display:flex;flex-wrap:wrap;gap:9px;}
+.pl{font-family:'DM Sans';font-size:16px;font-weight:700;color:rgba(250,250,247,.92);background:rgba(250,250,247,.06);border:1px solid var(--ink14);border-radius:9px;padding:7px 14px;line-height:1;display:flex;align-items:center;gap:8px;}
+.pl i{width:8px;height:8px;border-radius:50%;background:var(--kraft);}
+.pl.c i{background:var(--book);box-shadow:0 0 9px var(--book);}
+/* ---- stat strip ---- */
+.stat{flex-shrink:0;margin-top:22px;display:flex;align-items:stretch;border:1px solid var(--rule);border-radius:16px;overflow:hidden;}
+.stat .s{flex:1;padding:18px 14px;text-align:center;}.stat .s+.s{border-left:1px solid var(--rule);}
+.stat .s b{display:block;font-weight:900;font-size:46px;line-height:.8;}.stat .s.a b{color:var(--book);}.stat .s.b b{color:var(--kraft);}.stat .s.c b{color:var(--ivory);}
+.stat .s span{font-family:'DM Mono',monospace;font-size:13.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink46);margin-top:9px;display:block;}
+.ctawrap{flex-shrink:0;margin-top:22px;}
+.savel{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink46);margin-bottom:11px;padding-left:8px;}
+.cta{display:flex;align-items:center;gap:18px;border:1.5px solid var(--book);border-radius:24px;background:rgba(204,120,92,.08);padding:15px 15px 15px 28px;box-shadow:0 0 50px rgba(204,120,92,.18);}
+.cta .ph{flex:1;font-size:27px;font-weight:600;color:var(--ink70);line-height:1.2;}.cta .ph b{color:var(--book);font-weight:900;letter-spacing:.02em;}
+.cta .send{width:68px;height:68px;border-radius:50%;background:var(--book);flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 0 32px rgba(204,120,92,.45);}
+.cta .send svg{width:31px;height:31px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ftr{flex-shrink:0;margin-top:20px;display:flex;align-items:center;justify-content:space-between;gap:18px;border-top:1px solid var(--rule);padding-top:20px;}
+.fl2{display:flex;align-items:center;gap:16px;}.flogo{width:52px;height:52px;border-radius:50%;object-fit:cover;}
+.ftx{font-family:'DM Mono',monospace;font-size:18px;font-weight:400;letter-spacing:.11em;text-transform:uppercase;color:var(--ink70);}.ftx b{color:var(--ivory);font-weight:500;}
+.furl{font-weight:900;font-size:30px;letter-spacing:-.7px;color:var(--ivory);}.furl em{color:var(--book);font-style:normal;}
+</style></head><body>
+<div class="slide"><div class="atm"></div><div class="safe">
+  <div class="mast"><span class="ml">Session Memory</span><span class="mr">Resume, never restart</span></div>
+  <div class="hook">Most AI forgets between chats.<br><em>Claude resumes where I stopped.</em></div>
+  <div class="sub">Close it for two days. Reopen and it is <b>still mid-task</b>, full context reloaded.</div>
+  <div class="chat">
+    <div class="chd"><img class="av" src="__LOGO_URI__" alt="Ultron"><div class="ct"><b>Ultron session</b><span>#1842 &middot; outbound build</span></div><div class="rz"><i></i>Resumed</div></div>
+    <div class="cbody">
+      <div class="msg u old">Build my Q3 outbound sequence.</div>
+      <div class="msg a old">Drafted 4 steps. Paused on your ICP.</div>
+      <div class="gap"><span class="ln"></span><span class="gl"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>You close Ultron &middot; two days pass</span><span class="ln"></span></div>
+      <div class="msg u">continue</div>
+      <div class="msg live">Resuming at <b>step 4</b>. Your ICP, voice and pipeline are already loaded, nothing to re-explain.</div>
+    </div>
+    <div class="cfoot"><div class="fl"><em>&#9679;</em> Context reloaded in 5 layers, then auto-compressed</div><div class="pills"><span class="pl c"><i></i>Static</span><span class="pl"><i></i>Profile</span><span class="pl"><i></i>Integrations</span><span class="pl"><i></i>Memories</span><span class="pl"><i></i>Date</span></div></div>
+  </div>
+  <div class="stat"><div class="s a"><b>5</b><span>context layers</span></div><div class="s b"><b>3</b><span>compress tiers</span></div><div class="s c"><b>0</b><span>manual restarts</span></div></div>
+  <div class="ctawrap"><div class="savel">Save this, then</div><div class="cta"><span class="ph">Comment <b>CONTEXT</b> for the full session architecture</span><span class="send"><svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div></div>
+  <div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</div></div><div class="furl">51ultron<em>.</em>com</div></div>
+</div></div>
+</body></html>

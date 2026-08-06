@@ -1,0 +1,103 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--slate:#191919;--slate2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;}
+*{box-sizing:border-box;margin:0;padding:0;}body{background:#0d0d0d;font-family:'DM Sans',sans-serif;}
+.canvas{width:1080px;height:1450px;background:var(--slate);padding:30px 40px 22px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;}
+.canvas::before{content:'';position:absolute;inset:0;z-index:0;background-image:radial-gradient(rgba(204,120,92,.05) 1.2px,transparent 1.3px);background-size:26px 26px;}
+.atm{position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse 54% 22% at 50% 26%,rgba(204,120,92,.13) 0%,transparent 60%),radial-gradient(ellipse 50% 24% at 4% 102%,rgba(212,162,127,.07) 0%,transparent 60%);}
+.canvas>*{position:relative;z-index:2;}.ig svg{width:100%;height:100%;display:block;}
+.hero{flex-shrink:0;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;padding-bottom:11px;border-bottom:1px solid var(--rule);}
+.eye{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--book);margin-bottom:9px;}
+.hook{font-weight:900;font-size:44px;line-height:1.0;letter-spacing:-1.5px;}.hook em{color:var(--book);font-style:normal;}
+.hero-r{flex-shrink:0;text-align:right;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink46);line-height:1.7;}.hero-r b{color:var(--ivory);font-weight:500;}
+.statline{flex-shrink:0;display:flex;justify-content:center;margin:9px 0 2px;font-family:'DM Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink46);}
+.statline span{padding:0 15px;border-right:1px solid var(--rule);}.statline span:last-child{border-right:none;}.statline b{color:var(--book);font-weight:500;}
+.radarwrap{flex-shrink:0;position:relative;height:418px;}#chart{width:100%;height:100%;}
+.vchip{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:3px;width:104px;text-align:center;pointer-events:none;z-index:3;}
+.vic{width:33px;height:33px;border-radius:9px;background:color-mix(in srgb,var(--c) 18%,var(--slate));border:1px solid color-mix(in srgb,var(--c) 38%,var(--slate2));display:flex;align-items:center;justify-content:center;box-shadow:0 6px 14px rgba(0,0,0,.4);}.vic .ig{width:18px;height:18px;}
+.vd{font-weight:800;font-size:12px;letter-spacing:.03em;color:var(--ivory);text-transform:uppercase;line-height:1;}
+.vs{font-family:'DM Mono',monospace;font-size:9.5px;font-weight:500;color:var(--c);}
+.router{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:4px;pointer-events:none;z-index:4;}
+.router img{width:42px;height:42px;border-radius:50%;box-shadow:0 0 0 4px var(--slate),0 0 22px rgba(204,120,92,.5);}
+.router span{font-family:'DM Mono',monospace;font-size:8.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--book);background:var(--slate);padding:2px 7px;border-radius:20px;border:1px solid var(--rule);}
+.grid{flex:1;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:1fr 1fr;gap:10px;min-height:0;margin-top:8px;}
+.sec{background:var(--slate2);border:1px solid var(--ink14);border-top:3px solid var(--c);border-radius:12px;padding:13px 14px;display:flex;flex-direction:column;position:relative;overflow:hidden;}
+.sh{display:flex;align-items:center;gap:9px;margin-bottom:9px;}
+.cic{width:34px;height:34px;border-radius:9px;background:color-mix(in srgb,var(--c) 16%,var(--slate2));display:flex;align-items:center;justify-content:center;flex-shrink:0;}.cic .ig{width:19px;height:19px;}
+.st{font-weight:800;font-size:18px;letter-spacing:-.4px;color:var(--ivory);line-height:1;}
+.slash{font-family:'DM Mono',monospace;font-size:10.5px;font-weight:500;color:var(--c);margin-left:auto;}
+.dm{font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--c);margin-bottom:10px;}
+.kv{font-size:12.5px;font-weight:500;color:var(--ink70);line-height:1.38;margin-bottom:7px;}
+.kv:last-child{margin-bottom:0;}
+.kv .k{display:block;font-family:'DM Mono',monospace;font-size:8.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink46);margin-bottom:2px;}
+.kv.ret{color:var(--ivory);font-weight:600;margin-top:auto;}
+.sec.rt{background:color-mix(in srgb,var(--book) 7%,var(--slate2));border-color:color-mix(in srgb,var(--book) 26%,var(--slate2));}
+.ftr{flex-shrink:0;margin-top:11px;display:flex;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid var(--rule);padding-top:12px;}
+.fl{display:flex;align-items:center;gap:11px;}.flogo{width:30px;height:30px;border-radius:50%;}
+.ftx{font-family:'DM Mono',monospace;font-size:9.5px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--ink70);}.ftx b{color:var(--ivory);font-weight:500;}
+.fr{display:flex;align-items:center;gap:16px;}.furl{font-weight:900;font-size:15px;letter-spacing:-.4px;color:var(--ivory);}.furl em{color:var(--book);font-style:normal;}
+.cta{display:flex;align-items:center;gap:9px;background:var(--book);color:#1a0f0a;font-weight:900;font-size:14px;letter-spacing:.05em;text-transform:uppercase;padding:11px 22px;border-radius:6px;box-shadow:0 0 30px rgba(204,120,92,.35);}.cta svg{width:16px;height:16px;stroke:#1a0f0a;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+</style></head><body>
+<div class="canvas" id="artifact"><div class="atm"></div>
+<div class="hero"><div><div class="eye">THE ULTRON WORKFORCE &middot; PLATFORM / WORKFORCE</div>
+<div class="hook">Seven AI agents.<br><em>One router, zero gaps</em>.</div></div>
+<div class="hero-r"><b>7 agents</b><br>7 domains<br><span style="color:var(--book)">save this</span></div></div>
+<div class="statline"><span><b>7</b> agents</span><span><b>7</b> domains</span><span><b>3</b> tiers</span><span><b>1</b> router</span><span>agents <b>compose</b></span></div>
+<div class="radarwrap"><div id="chart"></div><div class="vchip" style="--c:var(--book);left:50.00%;top:7.62%">
+      <span class="vic"><span class="ig"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="#CC785C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m10.065 12.493l-6.18 1.318a.934.934 0 0 1-1.108-.702l-.537-2.15a1.07 1.07 0 0 1 .691-1.265l13.504-4.44m-2.875 6.493l4.332-.924M16 21l-3.105-6.21"/><path d="M16.485 5.94a2 2 0 0 1 1.455-2.425l1.09-.272a1 1 0 0 1 1.212.727l1.515 6.06a1 1 0 0 1-.727 1.213l-1.09.272a2 2 0 0 1-2.425-1.455zM6.158 8.633l1.114 4.456M8 21l3.105-6.21"/><circle cx="12" cy="13" r="2"/></g></svg></span></span><span class="vd">Research</span><span class="vs">/cortex</span></div><div class="vchip" style="--c:var(--kraft);left:36.08%;top:23.58%">
+      <span class="vic"><span class="ig"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="#CC785C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11zm7.318-19.539l-10.94 10.939"/></svg></span></span><span class="vd">Outbound</span><span class="vs">/specter</span></div><div class="vchip" style="--c:var(--book-d);left:32.65%;top:59.43%">
+      <span class="vic"><span class="ig"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="#CC785C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></g></svg></span></span><span class="vd">Deals</span><span class="vs">/striker</span></div><div class="vchip" style="--c:var(--book);left:42.28%;top:88.18%">
+      <span class="vic"><span class="ig"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="#CC785C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15.707 21.293a1 1 0 0 1-1.414 0l-1.586-1.586a1 1 0 0 1 0-1.414l5.586-5.586a1 1 0 0 1 1.414 0l1.586 1.586a1 1 0 0 1 0 1.414z"/><path d="m18 13l-1.375-6.874a1 1 0 0 0-.746-.776L3.235 2.028a1 1 0 0 0-1.207 1.207L5.35 15.879a1 1 0 0 0 .776.746L13 18M2.3 2.3l7.286 7.286"/><circle cx="11" cy="11" r="2"/></g></svg></span></span><span class="vd">Content</span><span class="vs">/pulse</span></div><div class="vchip" style="--c:var(--kraft);left:57.72%;top:88.18%">
+      <span class="vic"><span class="ig"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="#CC785C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19h8M4 17l6-6l-6-6"/></svg></span></span><span class="vd">Code</span><span class="vs">/sentinel</span></div><div class="vchip" style="--c:var(--book-d);left:67.35%;top:59.43%">
+      <span class="vic"><span class="ig"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="#CC785C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M11 6a13 13 0 0 0 8.4-2.8A1 1 0 0 1 21 4v12a1 1 0 0 1-1.6.8A13 13 0 0 0 11 14H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/><path d="M6 14a12 12 0 0 0 2.4 7.2a2 2 0 0 0 3.2-2.4A8 8 0 0 1 10 14M8 6v8"/></g></svg></span></span><span class="vd">Publishing</span><span class="vs">/amplify</span></div><div class="vchip" style="--c:var(--book);left:63.92%;top:23.58%">
+      <span class="vic"><span class="ig"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="#CC785C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 3v18m7-13l3 8a5 5 0 0 1-6 0zV7"/><path d="M3 7h1a17 17 0 0 0 8-2a17 17 0 0 0 8 2h1M5 8l3 8a5 5 0 0 1-6 0zV7m2 14h10"/></g></svg></span></span><span class="vd">Legal</span><span class="vs">/counsel</span></div><div class="router"><img src="__LOGO_URI__"><span>Router</span></div></div>
+<div class="grid"><div class="sec" style="--c:var(--book)">
+      <div class="sh"><span class="cic"><span class="ig"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="#CC785C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m10.065 12.493l-6.18 1.318a.934.934 0 0 1-1.108-.702l-.537-2.15a1.07 1.07 0 0 1 .691-1.265l13.504-4.44m-2.875 6.493l4.332-.924M16 21l-3.105-6.21"/><path d="M16.485 5.94a2 2 0 0 1 1.455-2.425l1.09-.272a1 1 0 0 1 1.212.727l1.515 6.06a1 1 0 0 1-.727 1.213l-1.09.272a2 2 0 0 1-2.425-1.455zM6.158 8.633l1.114 4.456M8 21l3.105-6.21"/><circle cx="12" cy="13" r="2"/></g></svg></span></span><span class="st">Cortex</span><span class="slash">/cortex</span></div>
+      <div class="dm">Research</div>
+      <div class="kv"><span class="k">Covers</span>profiles people, companies, markets</div>
+      <div class="kv ret"><span class="k">Returns</span>a brief with cited facts</div></div><div class="sec" style="--c:var(--kraft)">
+      <div class="sh"><span class="cic"><span class="ig"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="#CC785C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11zm7.318-19.539l-10.94 10.939"/></svg></span></span><span class="st">Specter</span><span class="slash">/specter</span></div>
+      <div class="dm">Outbound</div>
+      <div class="kv"><span class="k">Covers</span>cold emails, follow-ups, sequences</div>
+      <div class="kv ret"><span class="k">Returns</span>subject plus a hooked body</div></div><div class="sec" style="--c:var(--book-d)">
+      <div class="sh"><span class="cic"><span class="ig"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="#CC785C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></g></svg></span></span><span class="st">Striker</span><span class="slash">/striker</span></div>
+      <div class="dm">Deals</div>
+      <div class="kv"><span class="k">Covers</span>qualify, discovery, proposals, close</div>
+      <div class="kv ret"><span class="k">Returns</span>pre-call brief, deal record</div></div><div class="sec" style="--c:var(--book)">
+      <div class="sh"><span class="cic"><span class="ig"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="#CC785C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15.707 21.293a1 1 0 0 1-1.414 0l-1.586-1.586a1 1 0 0 1 0-1.414l5.586-5.586a1 1 0 0 1 1.414 0l1.586 1.586a1 1 0 0 1 0 1.414z"/><path d="m18 13l-1.375-6.874a1 1 0 0 0-.746-.776L3.235 2.028a1 1 0 0 0-1.207 1.207L5.35 15.879a1 1 0 0 0 .776.746L13 18M2.3 2.3l7.286 7.286"/><circle cx="11" cy="11" r="2"/></g></svg></span></span><span class="st">Pulse</span><span class="slash">/pulse</span></div>
+      <div class="dm">Content</div>
+      <div class="kv"><span class="k">Covers</span>posts, launches, newsletters</div>
+      <div class="kv ret"><span class="k">Returns</span>a full draft plus variations</div></div><div class="sec" style="--c:var(--kraft)">
+      <div class="sh"><span class="cic"><span class="ig"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="#CC785C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19h8M4 17l6-6l-6-6"/></svg></span></span><span class="st">Sentinel</span><span class="slash">/sentinel</span></div>
+      <div class="dm">Code</div>
+      <div class="kv"><span class="k">Covers</span>read, write, test, ship code</div>
+      <div class="kv ret"><span class="k">Returns</span>a working patch plus tests</div></div><div class="sec" style="--c:var(--book-d)">
+      <div class="sh"><span class="cic"><span class="ig"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="#CC785C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M11 6a13 13 0 0 0 8.4-2.8A1 1 0 0 1 21 4v12a1 1 0 0 1-1.6.8A13 13 0 0 0 11 14H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/><path d="M6 14a12 12 0 0 0 2.4 7.2a2 2 0 0 0 3.2-2.4A8 8 0 0 1 10 14M8 6v8"/></g></svg></span></span><span class="st">Amplify</span><span class="slash">/amplify</span></div>
+      <div class="dm">Publishing</div>
+      <div class="kv"><span class="k">Covers</span>format, schedule per channel</div>
+      <div class="kv ret"><span class="k">Returns</span>sized posts, scheduled</div></div><div class="sec" style="--c:var(--book)">
+      <div class="sh"><span class="cic"><span class="ig"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="#CC785C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 3v18m7-13l3 8a5 5 0 0 1-6 0zV7"/><path d="M3 7h1a17 17 0 0 0 8-2a17 17 0 0 0 8 2h1M5 8l3 8a5 5 0 0 1-6 0zV7m2 14h10"/></g></svg></span></span><span class="st">Counsel</span><span class="slash">/counsel</span></div>
+      <div class="dm">Legal</div>
+      <div class="kv"><span class="k">Covers</span>NDAs, contracts, term reviews</div>
+      <div class="kv ret"><span class="k">Returns</span>a signable draft, risks flagged</div></div><div class="sec rt" style="--c:var(--book)">
+      <div class="sh"><span class="cic"><span class="ig"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="#CC785C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></g></svg></span></span><span class="st">Router</span></div>
+      <div class="dm">Auto</div>
+      <div class="kv"><span class="k">Plain</span>routes to the right agent for you</div>
+      <div class="kv ret"><span class="k">Slash</span>type a name only to be explicit</div></div></div>
+<div class="ftr"><div class="fl"><img class="flogo" src="__LOGO_URI__"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS &middot; WORKFORCE</div></div>
+<div class="fr"><div class="furl">51ultron<em>.</em>com</div><div class="cta">COMMENT AGENTS <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<script>
+const c=echarts.init(document.getElementById('chart'),null,{renderer:'svg'});
+c.setOption({backgroundColor:'transparent',
+ radar:{shape:'polygon',center:['50%','50%'],radius:142,startAngle:90,
+  indicator:[{name:"Research",max:100},{name:"Outbound",max:100},{name:"Deals",max:100},{name:"Content",max:100},{name:"Code",max:100},{name:"Publishing",max:100},{name:"Legal",max:100}],splitNumber:4,axisName:{show:false},
+  splitLine:{lineStyle:{color:'rgba(250,250,247,.10)'}},
+  splitArea:{areaStyle:{color:['rgba(204,120,92,.03)','rgba(204,120,92,.06)']}},
+  axisLine:{lineStyle:{color:'rgba(250,250,247,.10)'}}},
+ series:[{type:'radar',symbol:'circle',symbolSize:7,
+  data:[{value:[97,94,91,95,93,89,90],lineStyle:{color:'#CC785C',width:2.5},itemStyle:{color:'#CC785C',borderColor:'#1a0f0a',borderWidth:2},areaStyle:{color:'rgba(204,120,92,.28)'}}]}]});
+window.__ready=true;
+</script></body></html>

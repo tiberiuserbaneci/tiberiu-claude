@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 02 · GTM Gap · Variant B (Visual Capitalist style)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  /* BUDGET 1450 */
+  body { background:#18130b; margin:0; padding:0; }
+  .scaler { display: flex; justify-content: center; }
+  .poster {
+    width:1080px; height:1450px;
+    background:#18130b;
+    position:relative; overflow:hidden;
+    display:flex; flex-direction:column;
+    box-sizing:border-box;
+  }
+  .accent { color:#ed7f4a; }
+  .accent-bg { background:#ed7f4a; color:#18130b; }
+  .card { background:#161b22; border:1px solid rgba(255,255,255,0.06); border-radius:14px; }
+  .card-accent { background:linear-gradient(180deg,#1c1814,#161513); border:1px solid rgba(237,127,74,0.4); border-radius:14px; }
+  .num { font-variant-numeric: tabular-nums; }
+  .ultron-sphere {
+    width:30px; height:30px; border-radius:50%; flex-shrink:0;
+    background:
+      radial-gradient(circle at 72% 22%, rgba(255,140,80,0.95) 0%, rgba(220,80,30,0.3) 22%, transparent 36%),
+      radial-gradient(circle at 22% 76%, rgba(55,170,255,0.95) 0%, rgba(30,130,220,0.3) 24%, transparent 40%),
+      radial-gradient(circle at 38% 38%, rgba(30,30,50,1) 0%, #060810 55%, #000 100%);
+  }
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="poster">
+
+  <div class="flex flex-col h-full px-10">
+
+    <!-- HEADER -->
+    <div class="flex items-center justify-between py-4 border-b border-white/8">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(232,223,212,.42)">FOUNDER GTM · GTM ARCHITECTURE · SIGNAL STACK · PIPELINE VELOCITY · ULTRON OS</span>
+    </div>
+
+    <!-- HERO -->
+    <div class="pt-6 pb-5 grid grid-cols-[1fr_auto] gap-8 items-end">
+      <div>
+        <div class="text-[11px] tracking-[.22em] uppercase accent font-extrabold mb-3">// The GTM Gap</div>
+        <h1 class="font-black text-[58px] leading-[0.95] tracking-tight">
+          The <span class="accent">$11,000/month</span> leak<br>
+          hiding in every founder's<br>
+          outbound architecture.
+        </h1>
+      </div>
+      <div class="card p-4 w-[220px]">
+        <div class="text-[10px] uppercase tracking-widest text-white/50 mb-1">Compound deficit</div>
+        <div class="font-black text-[44px] num leading-none accent">−74%</div>
+        <div class="text-[11px] text-white/60 mt-1">pipeline by Q4 vs<br>signal-based peers</div>
+      </div>
+    </div>
+
+    <!-- CHART + SIDE STATS -->
+    <div class="grid grid-cols-[1fr_300px] gap-4 mb-5">
+      <div class="card p-5">
+        <div class="flex items-baseline justify-between mb-1">
+          <div>
+            <div class="text-[10px] tracking-[.18em] uppercase font-bold text-white/55">Figure 01</div>
+            <div class="text-[18px] font-bold leading-tight mt-0.5">Pipeline velocity, trailing 12 months</div>
+          </div>
+          <div class="flex items-center gap-4 text-[11px]">
+            <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full" style="background:#5b6675"></span><span class="text-white/60">Sequences</span></div>
+            <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full accent-bg"></span><span class="text-white font-semibold">Signal OS</span></div>
+          </div>
+        </div>
+        <div style="height:240px"><canvas id="velocityChart"></canvas></div>
+      </div>
+
+      <div class="grid grid-rows-3 gap-3">
+        <div class="card p-3.5">
+          <div class="text-[9px] uppercase tracking-widest text-white/45 mb-1">Reply rate · sequences</div>
+          <div class="font-black text-[32px] num leading-none" style="color:#9ca3af">0.4%</div>
+          <div class="text-[10px] text-white/45 mt-1">benchmark: 2022 stack</div>
+        </div>
+        <div class="card-accent p-3.5">
+          <div class="text-[9px] uppercase tracking-widest accent font-bold mb-1">Reply rate · signal</div>
+          <div class="font-black text-[32px] num leading-none accent">12.4%</div>
+          <div class="text-[10px] text-white/55 mt-1">31× lift over baseline</div>
+        </div>
+        <div class="card p-3.5">
+          <div class="text-[9px] uppercase tracking-widest text-white/45 mb-1">Time to first touch</div>
+          <div class="flex items-baseline gap-2">
+            <div class="font-black text-[26px] num leading-none" style="color:#9ca3af">14d</div>
+            <span class="text-white/35 text-[14px]">→</span>
+            <div class="font-black text-[26px] num leading-none accent">&lt;60s</div>
+          </div>
+          <div class="text-[10px] text-white/45 mt-1">from signal fire to dispatch</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARCHITECTURE COMPARISON -->
+    <div class="mb-5">
+      <div class="text-[10px] tracking-[.18em] uppercase font-bold text-white/55 mb-2.5">Figure 02 · Architecture diff</div>
+      <div class="grid grid-cols-2 gap-3">
+        <div class="card p-4">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-[10px] uppercase tracking-widest text-white/45 font-bold">Legacy · 2022</span>
+            <span class="text-[9px] uppercase tracking-widest px-2 py-0.5 rounded border border-white/15 text-white/50">deprecated</span>
+          </div>
+          <div class="text-[18px] font-bold mb-2">The Sequence Trap</div>
+          <div class="grid grid-cols-[80px_1fr] gap-y-1.5 gap-x-3 text-[12px] text-white/65">
+            <div class="text-white/40 uppercase text-[10px] tracking-widest pt-0.5">Trigger</div><div>Calendar (Day 1 / 3 / 7 / 14)</div>
+            <div class="text-white/40 uppercase text-[10px] tracking-widest pt-0.5">Data</div><div>Static CSV · stale Apollo</div>
+            <div class="text-white/40 uppercase text-[10px] tracking-widest pt-0.5">Mode</div><div>Spray & pray volume</div>
+            <div class="text-white/40 uppercase text-[10px] tracking-widest pt-0.5">Context</div><div>{firstName} + industry token</div>
+          </div>
+        </div>
+        <div class="card-accent p-4">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-[10px] uppercase tracking-widest accent font-bold">Ultron · 2026</span>
+            <span class="text-[9px] uppercase tracking-widest px-2 py-0.5 rounded accent-bg font-bold">live</span>
+          </div>
+          <div class="text-[18px] font-bold mb-2">Signal Architecture</div>
+          <div class="grid grid-cols-[80px_1fr] gap-y-1.5 gap-x-3 text-[12px] text-white/80">
+            <div class="text-white/50 uppercase text-[10px] tracking-widest pt-0.5">Trigger</div><div>Live signal fires the touch</div>
+            <div class="text-white/50 uppercase text-[10px] tracking-widest pt-0.5">Data</div><div>Real-time API · 14 sources</div>
+            <div class="text-white/50 uppercase text-[10px] tracking-widest pt-0.5">Mode</div><div>Cross-agent chain + human gate</div>
+            <div class="text-white/50 uppercase text-[10px] tracking-widest pt-0.5">Context</div><div>800 tokens per send</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIGNAL TAXONOMY -->
+    <div class="mb-5">
+      <div class="flex items-baseline justify-between mb-2.5">
+        <div class="text-[10px] tracking-[.18em] uppercase font-bold text-white/55">Figure 03 · Four trigger classes that replace sequences</div>
+        <div class="text-[10px] text-white/40 uppercase tracking-widest">All fire &lt; 60s</div>
+      </div>
+      <div class="grid grid-cols-4 gap-3">
+        <div class="card p-3.5">
+          <div class="text-[10px] uppercase tracking-widest accent font-bold mb-1">Class A</div>
+          <div class="text-[15px] font-bold mb-1">Job Change</div>
+          <div class="text-[11px] text-white/55 leading-snug">New VP in target account. Budget resets. Stack re-evaluated.</div>
+        </div>
+        <div class="card p-3.5">
+          <div class="text-[10px] uppercase tracking-widest accent font-bold mb-1">Class B</div>
+          <div class="text-[15px] font-bold mb-1">Funding Round</div>
+          <div class="text-[11px] text-white/55 leading-snug">Series A to C closes. 90-day spend window opens.</div>
+        </div>
+        <div class="card p-3.5">
+          <div class="text-[10px] uppercase tracking-widest accent font-bold mb-1">Class C</div>
+          <div class="text-[15px] font-bold mb-1">Tech Install</div>
+          <div class="text-[11px] text-white/55 leading-snug">Adds Snowflake, Segment or adjacent stack. Intent confirmed.</div>
+        </div>
+        <div class="card p-3.5">
+          <div class="text-[10px] uppercase tracking-widest accent font-bold mb-1">Class D</div>
+          <div class="text-[15px] font-bold mb-1">Hiring Signal</div>
+          <div class="text-[11px] text-white/55 leading-snug">Posts 4 SDR roles. Scaling manually. Your window.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PIPELINE FLOW -->
+    <div class="mb-4">
+      <div class="text-[10px] tracking-[.18em] uppercase font-bold text-white/55 mb-2.5">Figure 04 · Signal → revenue pipeline</div>
+      <div class="card p-4">
+        <div class="flex items-center gap-0">
+          <div class="flex-1 text-center">
+            <div class="text-[9px] uppercase tracking-widest text-white/40 mb-1">01</div>
+            <div class="text-[13px] font-bold accent">SPECTER</div>
+            <div class="text-[10px] text-white/55 mt-0.5">Signal detection</div>
+          </div>
+          <div class="text-white/25 px-2">→</div>
+          <div class="flex-1 text-center">
+            <div class="text-[9px] uppercase tracking-widest text-white/40 mb-1">02</div>
+            <div class="text-[13px] font-bold accent">CORTEX</div>
+            <div class="text-[10px] text-white/55 mt-0.5">Score ≥ 8 · research 40s</div>
+          </div>
+          <div class="text-white/25 px-2">→</div>
+          <div class="flex-1 text-center">
+            <div class="text-[9px] uppercase tracking-widest text-white/40 mb-1">03</div>
+            <div class="text-[13px] font-bold accent">STRIKER</div>
+            <div class="text-[10px] text-white/55 mt-0.5">800-token draft</div>
+          </div>
+          <div class="text-white/25 px-2">→</div>
+          <div class="flex-1 text-center">
+            <div class="text-[9px] uppercase tracking-widest text-white/40 mb-1">04</div>
+            <div class="text-[13px] font-bold accent">PULSE</div>
+            <div class="text-[10px] text-white/55 mt-0.5">Follow-up queued</div>
+          </div>
+          <div class="text-white/25 px-2">→</div>
+          <div class="flex-1 text-center border-l border-white/10 pl-3">
+            <div class="text-[9px] uppercase tracking-widest accent mb-1">GATE</div>
+            <div class="text-[13px] font-bold">HUMAN</div>
+            <div class="text-[10px] text-white/55 mt-0.5">One approval · dispatch</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAYOFF + CTA + FOOTER -->
+    <div class="mt-auto">
+      <div class="text-center pt-3 pb-3 border-t border-white/8">
+        <div class="text-[26px] font-black leading-tight">Cold outbound isn't dead. <span class="accent">Cold sequences are.</span></div>
+        <div class="text-[12px] text-white/55 mt-1">Your ICP moved. Your stack didn't.</div>
+      </div>
+
+      <div class="flex items-center justify-between rounded-xl px-5 py-3.5 mb-3 accent-bg" style="flex:1">
+        <div>
+          <div class="text-[15px] font-extrabold tracking-tight">Comment "SIGNAL"</div>
+          <div class="text-[10px] uppercase tracking-widest opacity-80 mt-0.5">I'll send you the full signal architecture playbook</div>
+        </div>
+        <div class="text-[22px] font-black">→</div>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="footer" style="border-top: 1px dashed rgba(237,127,74,0.3); padding-top: 16px; display: flex; align-items: center; justify-content: space-between; margin-top: auto;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; color: #666; text-transform: uppercase; display: flex; align-items: center; gap: 10px;">
+          <img src="https://app.51ultron.com/favicon.ico" alt="Ultron" style="width: 24px; height: 24px; object-fit: contain;">
+          <strong style="color: #fff;">ULTRON OS</strong> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure
+        </div>
+        <div style="font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 800; color: #fff; letter-spacing: -0.5px;">51ultron.com</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<script>
+const ctx = document.getElementById('velocityChart').getContext('2d');
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['Q1','Q2','Q3','Q4'],
+    datasets: [
+      { label:'Sequences', data:[100,62,31,14], borderColor:'#5b6675', backgroundColor:'rgba(91,102,117,0.10)', borderWidth:2, pointRadius:4, pointBackgroundColor:'#5b6675', tension:0.35, fill:true },
+      { label:'Signal Architecture', data:[22,58,128,218], borderColor:'#ed7f4a', backgroundColor:'rgba(237,127,74,0.12)', borderWidth:3, pointRadius:5, pointBackgroundColor:'#ed7f4a', tension:0.35, fill:true }
+    ]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{display:false}, tooltip:{enabled:false} },
+    scales:{
+      x:{ grid:{color:'rgba(255,255,255,0.05)'}, ticks:{color:'rgba(255,255,255,0.5)', font:{family:'Inter', size:11, weight:'600'}} },
+      y:{ grid:{color:'rgba(255,255,255,0.05)'}, ticks:{color:'rgba(255,255,255,0.5)', font:{family:'Inter', size:11, weight:'600'}} }
+    }
+  }
+});
+</script>
+</body>
+</html>

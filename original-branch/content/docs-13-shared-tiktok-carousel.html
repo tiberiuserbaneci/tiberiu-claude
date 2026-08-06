@@ -1,0 +1,235 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+:root{--slate:#191919;--slate2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--cloud:#919180;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;display:flex;flex-direction:column;align-items:center;gap:30px;padding:30px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.slide{width:1080px;height:1920px;background:var(--slate);position:relative;overflow:hidden;color:var(--ivory);}
+.slide::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.5px,transparent 1.6px);background-size:34px 34px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 60% 22% at 84% 3%,rgba(204,120,92,.2) 0%,transparent 60%),radial-gradient(ellipse 54% 18% at 8% 95%,rgba(212,162,127,.1) 0%,transparent 60%);}
+.safe{position:absolute;top:300px;left:70px;right:130px;bottom:330px;z-index:2;display:flex;flex-direction:column;}
+.mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--rule);padding-bottom:18px;font-family:'DM Mono',monospace;font-size:19px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;}
+.mast .ml{color:var(--book);}.mast .mr{color:var(--ink46);}
+.kick{flex-shrink:0;font-family:'DM Mono',monospace;font-size:18px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--kraft);}
+.title{flex-shrink:0;margin-top:14px;font-weight:900;font-size:60px;line-height:1.0;letter-spacing:-2px;color:var(--ivory);}.title em{color:var(--book);font-style:normal;}
+.title.sm{font-size:50px;}
+.lead{flex-shrink:0;margin-top:16px;font-size:25px;font-weight:500;line-height:1.34;color:var(--ink70);}.lead b{color:var(--ivory);font-weight:700;}
+.ftr{flex-shrink:0;margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:18px;border-top:1px solid var(--rule);padding-top:22px;}
+.fl2{display:flex;align-items:center;gap:15px;}.flogo{width:48px;height:48px;border-radius:50%;object-fit:cover;}
+.ftx{font-family:'DM Mono',monospace;font-size:16px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--ink70);}.ftx b{color:var(--ivory);font-weight:500;}
+.furl{font-weight:900;font-size:27px;letter-spacing:-.6px;color:var(--ivory);}.furl em{color:var(--book);font-style:normal;}
+.swipe{font-family:'DM Mono',monospace;font-size:17px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--book);display:flex;align-items:center;gap:10px;}
+.swipe svg{width:22px;height:22px;stroke:var(--book);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+/* 01 cover - stat figures (3 distributed zones) */
+.figs{flex:1;min-height:0;margin-top:24px;display:flex;flex-direction:column;gap:16px;}
+.fig{flex:1;display:flex;flex-direction:column;justify-content:space-between;border:1px solid var(--rule);border-left:5px solid var(--book);border-radius:18px;padding:22px 30px;background:rgba(250,250,247,.03);}
+.fig.b{border-left-color:var(--kraft);}.fig.c{border-left-color:var(--ivory);}
+.fig .fn{font-weight:900;font-size:62px;line-height:.78;letter-spacing:-3px;color:var(--book);}.fig.b .fn{color:var(--kraft);}.fig.c .fn{color:var(--ivory);}
+.fig .fl{font-size:30px;font-weight:800;color:var(--ivory);letter-spacing:-.5px;}
+.fig .fo{font-size:21px;color:var(--ink46);line-height:1.25;}
+/* 02 + versus (two columns of mini rows) */
+.vs{flex:1;min-height:0;margin-top:24px;display:flex;gap:18px;}
+.vcol{flex:1;display:flex;flex-direction:column;border:1px solid var(--rule);border-radius:18px;overflow:hidden;background:var(--slate2);}
+.vcol.good{border-color:rgba(204,120,92,.4);background:rgba(204,120,92,.06);}
+.vhd{flex-shrink:0;display:flex;align-items:center;gap:12px;padding:20px 24px;border-bottom:1px solid var(--rule);font-weight:900;font-size:30px;letter-spacing:-.5px;color:var(--ivory);}
+.vhd .bd{font-family:'DM Mono',monospace;font-size:14px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink46);margin-left:auto;}
+.vcol.good .vhd .bd{color:var(--book);}
+.vlist{flex:1;display:flex;flex-direction:column;padding:6px 24px;}
+.vrow{flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:11px 0;border-top:1px solid var(--rule);}
+.vrow:first-child{border-top:none;}
+.vrow b{font-size:23px;font-weight:700;color:var(--ink70);line-height:1.1;}.vcol.good .vrow b{color:var(--ivory);}
+.vrow span{font-size:18px;color:var(--ink46);line-height:1.2;}
+/* 03 carry - icon rows (3 zones) */
+.carry{flex:1;min-height:0;margin-top:24px;display:flex;flex-direction:column;gap:14px;}
+.crow{flex:1;display:flex;flex-direction:column;justify-content:space-between;border:1px solid var(--rule);border-left:5px solid var(--kraft);border-radius:18px;padding:20px 30px;background:rgba(212,162,127,.05);}
+.crow .ct{display:flex;align-items:center;gap:16px;}
+.crow .ci{width:46px;height:46px;border-radius:12px;background:rgba(212,162,127,.14);border:1px solid rgba(212,162,127,.34);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--kraft);font-weight:900;font-size:22px;}
+.crow .ct b{font-size:31px;font-weight:800;color:var(--ivory);letter-spacing:-.5px;}
+.crow .ct .cn{margin-left:auto;font-family:'DM Mono',monospace;font-size:20px;font-weight:600;color:var(--kraft);}
+.crow .cd{font-size:21px;color:var(--ink46);line-height:1.25;}
+.crow .ce{font-family:'DM Mono',monospace;font-size:16px;letter-spacing:.04em;text-transform:uppercase;color:var(--kraft);}
+/* 04 permission - single list with check / cross */
+.perm{flex:1;min-height:0;margin-top:24px;display:flex;flex-direction:column;gap:12px;}
+.prow{flex:1;display:flex;align-items:stretch;gap:22px;border:1px solid var(--rule);border-radius:15px;padding:18px 28px;background:var(--slate2);}
+.prow.yes{border-left:5px solid var(--book);background:rgba(204,120,92,.06);}
+.prow.no{border-left:5px solid var(--ink14);}
+.prow .mk{width:50px;height:50px;border-radius:50%;flex-shrink:0;align-self:center;display:flex;align-items:center;justify-content:center;}
+.prow.yes .mk{background:rgba(204,120,92,.16);border:1px solid var(--book);}
+.prow.no .mk{background:rgba(250,250,247,.05);border:1px solid var(--rule);}
+.prow .mk svg{width:24px;height:24px;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.prow.yes .mk svg{stroke:var(--book);}.prow.no .mk svg{stroke:var(--cloud);}
+.prow .pt{flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:5px 0;}
+.prow .pt b{display:block;font-size:28px;font-weight:800;color:var(--ivory);letter-spacing:-.4px;line-height:1.08;}
+.prow .pt span{display:block;font-size:19px;color:var(--ink46);}
+/* 05 controls - rows (3 zones: label / desc / state) */
+.ctrls{flex:1;min-height:0;margin-top:24px;display:flex;flex-direction:column;gap:14px;}
+.ctrow{flex:1;display:flex;flex-direction:column;justify-content:space-between;border:1px solid var(--rule);border-radius:18px;padding:20px 30px;background:var(--slate2);}
+.ctrow .cth{display:flex;align-items:center;gap:16px;}
+.ctrow .cth b{font-size:31px;font-weight:800;color:var(--ivory);letter-spacing:-.5px;}
+.ctrow .cth .stt{margin-left:auto;font-family:'DM Mono',monospace;font-size:18px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--book);border:1px solid var(--book-bd,rgba(204,120,92,.32));border-radius:10px;padding:8px 15px;}
+.ctrow .ctd{font-size:21px;color:var(--ink46);line-height:1.25;}
+.ctrow .cte{font-family:'DM Mono',monospace;font-size:16px;letter-spacing:.04em;text-transform:uppercase;color:var(--kraft);}
+/* 06 fork - branch cards with left rail */
+.fork{flex:1;min-height:0;margin-top:24px;display:flex;flex-direction:column;gap:16px;position:relative;}
+.fnode{flex:1;display:flex;flex-direction:column;justify-content:space-between;border:1px solid var(--rule);border-radius:18px;padding:22px 30px;background:var(--slate2);}
+.fnode.trunk{border-left:5px solid var(--ivory);}
+.fnode.a{border-left:5px solid var(--book);margin-left:40px;background:rgba(204,120,92,.06);}
+.fnode.b{border-left:5px solid var(--kraft);margin-left:40px;background:rgba(212,162,127,.06);}
+.fnode .fh{display:flex;align-items:center;gap:14px;}
+.fnode .fbadge{font-family:'DM Mono',monospace;font-size:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink46);}
+.fnode.trunk .fbadge{color:var(--ivory);}.fnode.a .fbadge{color:var(--book);}.fnode.b .fbadge{color:var(--kraft);}
+.fnode .fh b{font-size:30px;font-weight:800;color:var(--ivory);letter-spacing:-.5px;}
+.fnode .fm{font-family:'DM Mono',monospace;font-size:16px;letter-spacing:.04em;text-transform:uppercase;color:var(--kraft);}
+.fnode .fd{font-size:21px;color:var(--ink46);line-height:1.25;}
+/* 07 loop - flow stages with loopback */
+.loop{flex:1;min-height:0;margin-top:24px;display:flex;flex-direction:column;gap:14px;}
+.lstage{flex:1;display:flex;flex-direction:column;justify-content:space-between;border:1px solid var(--rule);border-radius:16px;padding:18px 30px;background:var(--slate2);}
+.lstage.back{border-color:rgba(204,120,92,.4);background:rgba(204,120,92,.08);}
+.lstage .lh{display:flex;align-items:center;gap:20px;}
+.lstage .ln{font-family:'DM Mono',monospace;font-size:22px;font-weight:600;color:var(--book);width:48px;flex-shrink:0;}
+.lstage .lh b{font-size:30px;font-weight:800;color:var(--ivory);letter-spacing:-.5px;}
+.lstage .lh .actor{margin-left:auto;font-family:'DM Mono',monospace;font-size:16px;letter-spacing:.06em;text-transform:uppercase;color:var(--kraft);}
+.lstage .ld{font-size:20px;color:var(--ink46);line-height:1.25;padding-left:68px;}
+.lstage .lk{font-family:'DM Mono',monospace;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--kraft);padding-left:68px;}
+/* 08 recap */
+.rcp{flex:1;min-height:0;margin-top:24px;display:flex;flex-direction:column;gap:13px;}
+.rchip{flex:1;display:flex;align-items:stretch;gap:24px;border:1px solid var(--rule);border-radius:16px;padding:18px 30px;background:var(--slate2);}
+.rchip.last{border-color:rgba(204,120,92,.4);background:rgba(204,120,92,.08);}
+.rchip .rn{font-family:'DM Mono',monospace;font-size:23px;font-weight:600;color:var(--book);width:50px;flex-shrink:0;display:flex;align-items:center;}
+.rchip .rx{flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:3px 0;}
+.rchip .rx b{font-size:30px;font-weight:800;color:var(--ivory);letter-spacing:-.4px;line-height:1.06;}
+.rchip .rx span{font-size:20px;color:var(--ink46);}
+.ctawrap{flex-shrink:0;margin-top:24px;}
+.savel{font-family:'DM Mono',monospace;font-size:17px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink46);margin-bottom:14px;padding-left:8px;}
+.cta{display:flex;align-items:center;gap:18px;border:1.5px solid var(--book);border-radius:24px;background:rgba(204,120,92,.08);padding:16px 16px 16px 32px;box-shadow:0 0 50px rgba(204,120,92,.18);}
+.cta .ph{flex:1;font-size:29px;font-weight:600;color:var(--ink70);line-height:1.2;}.cta .ph b{color:var(--book);font-weight:900;}
+.cta .send{width:74px;height:74px;border-radius:50%;background:var(--book);flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 0 32px rgba(204,120,92,.45);}
+.cta .send svg{width:34px;height:34px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+</style></head><body>
+
+<!-- 01 COVER -->
+<div class="slide"><div class="atm"></div><div class="safe">
+<div class="mast"><span class="ml">Shared Sessions</span><span class="mr">01 / 08</span></div>
+<div class="kick" style="margin-top:30px">Share and fork</div>
+<div class="title" style="margin-top:14px">A screenshot shows the answer. <em>A link shows the work.</em></div>
+<div class="lead">Turn any Claude session into a <b>read-only link</b>. The other side sees every turn and artifact, and can clone it to keep going.</div>
+<div class="figs">
+<div class="fig a"><div class="fn">0</div><div class="fl">logins to view</div><div class="fo">anyone with the link opens it, no account needed</div></div>
+<div class="fig b"><div class="fn">100%</div><div class="fl">read-only by default</div><div class="fo">they read every turn, they cannot send or edit</div></div>
+<div class="fig c"><div class="fn">1</div><div class="fl">click to clone</div><div class="fo">they copy it into their own Ultron and continue</div></div>
+</div>
+<div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR</div></div><div class="swipe">Swipe <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+</div></div>
+
+<!-- 02 SCREENSHOT VS LINK -->
+<div class="slide"><div class="atm"></div><div class="safe">
+<div class="mast"><span class="ml">Shared Sessions</span><span class="mr">02 / 08</span></div>
+<div class="kick" style="margin-top:30px">The problem</div>
+<div class="title sm" style="margin-top:14px">A screenshot is a <em>dead end</em></div>
+<div class="vs">
+<div class="vcol"><div class="vhd">Screenshot<span class="bd">static</span></div><div class="vlist">
+<div class="vrow"><b>One frame</b><span>the rest of the thread is gone</span></div>
+<div class="vrow"><b>No sources</b><span>the cited links are flattened to pixels</span></div>
+<div class="vrow"><b>No artifacts</b><span>the table or draft is just an image</span></div>
+<div class="vrow"><b>No context</b><span>which agent, which tier, all lost</span></div>
+<div class="vrow"><b>Not searchable</b><span>a dead image in someone's downloads</span></div>
+<div class="vrow"><b>Dead end</b><span>nobody can pick it up and continue</span></div>
+</div></div>
+<div class="vcol good"><div class="vhd">Shared link<span class="bd">live</span></div><div class="vlist">
+<div class="vrow"><b>Every turn</b><span>the whole conversation, in order</span></div>
+<div class="vrow"><b>Sources intact</b><span>each cited link still clicks through</span></div>
+<div class="vrow"><b>Live artifacts</b><span>the canvas table opens as itself</span></div>
+<div class="vrow"><b>Full context</b><span>the agent, the tier and the tools show</span></div>
+<div class="vrow"><b>Always live</b><span>updates if you keep working the thread</span></div>
+<div class="vrow"><b>Cloneable</b><span>they fork it and keep working</span></div>
+</div></div>
+</div>
+<div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR</div></div><div class="swipe">Swipe <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+</div></div>
+
+<!-- 03 WHAT THE LINK CARRIES -->
+<div class="slide"><div class="atm"></div><div class="safe">
+<div class="mast"><span class="ml">Shared Sessions</span><span class="mr">03 / 08</span></div>
+<div class="kick" style="margin-top:30px">What travels with the link</div>
+<div class="title sm" style="margin-top:14px">The link carries the <em>whole session</em></div>
+<div class="carry">
+<div class="crow"><div class="ct"><span class="ci">1</span><b>The conversation</b><span class="cn">32 turns</span></div><div class="cd">every message in order, both sides, nothing trimmed</div><div class="ce">user + agent &middot; full thread</div></div>
+<div class="crow"><div class="ct"><span class="ci">2</span><b>The agents that ran</b><span class="cn">3 agents</span></div><div class="cd">which agent answered, on which tier, with which tools</div><div class="ce">cortex &middot; specter &middot; striker</div></div>
+<div class="crow"><div class="ct"><span class="ci">3</span><b>The artifacts</b><span class="cn">1 canvas</span></div><div class="cd">tables, drafts and docs open as themselves, not screenshots</div><div class="ce">live &middot; not a screenshot</div></div>
+<div class="crow"><div class="ct"><span class="ci">4</span><b>The sources</b><span class="cn">9 links</span></div><div class="cd">every cited link still clicks through to the original</div><div class="ce">clickable &middot; verifiable</div></div>
+</div>
+<div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR</div></div><div class="swipe">Swipe <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+</div></div>
+
+<!-- 04 READ-ONLY -->
+<div class="slide"><div class="atm"></div><div class="safe">
+<div class="mast"><span class="ml">Shared Sessions</span><span class="mr">04 / 08</span></div>
+<div class="kick" style="margin-top:30px">Read-only by default</div>
+<div class="title sm" style="margin-top:14px">What a viewer <em>can and cannot</em> do</div>
+<div class="perm">
+<div class="prow yes"><span class="mk"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span><div class="pt"><b>Read every turn</b><span>the full thread, in order, top to bottom</span></div></div>
+<div class="prow yes"><span class="mk"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span><div class="pt"><b>Open the artifacts</b><span>click into the canvas tables and drafts</span></div></div>
+<div class="prow yes"><span class="mk"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span><div class="pt"><b>Clone it to their Ultron</b><span>if you leave cloning on</span></div></div>
+<div class="prow no"><span class="mk"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></span><div class="pt"><b>Send messages in your session</b><span>the original stays yours, untouched</span></div></div>
+<div class="prow no"><span class="mk"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></span><div class="pt"><b>See your account or other chats</b><span>the link is scoped to this session only</span></div></div>
+<div class="prow no"><span class="mk"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></span><div class="pt"><b>Revoke or change the link</b><span>only you hold the controls, they just view</span></div></div>
+</div>
+<div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR</div></div><div class="swipe">Swipe <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+</div></div>
+
+<!-- 05 CONTROLS -->
+<div class="slide"><div class="atm"></div><div class="safe">
+<div class="mast"><span class="ml">Shared Sessions</span><span class="mr">05 / 08</span></div>
+<div class="kick" style="margin-top:30px">You stay in control</div>
+<div class="title sm" style="margin-top:14px">Four switches on <em>every link</em></div>
+<div class="ctrls">
+<div class="ctrow"><div class="cth"><b>Revoke</b><span class="stt">anytime</span></div><div class="ctd">kill the link in one click and it dies instantly, everywhere</div><div class="cte">one click &middot; takes effect now</div></div>
+<div class="ctrow"><div class="cth"><b>Expiry</b><span class="stt">7 days</span></div><div class="ctd">set a window and the link auto-revokes when it closes</div><div class="cte">1 hour to 30 days</div></div>
+<div class="ctrow"><div class="cth"><b>Password</b><span class="stt">optional</span></div><div class="ctd">gate sensitive sessions behind a passphrase</div><div class="cte">off by default</div></div>
+<div class="ctrow"><div class="cth"><b>Scope</b><span class="stt">one session</span></div><div class="ctd">the link only ever exposes this chat, never your workspace</div><div class="cte">never your account</div></div>
+</div>
+<div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR</div></div><div class="swipe">Swipe <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+</div></div>
+
+<!-- 06 FORK -->
+<div class="slide"><div class="atm"></div><div class="safe">
+<div class="mast"><span class="ml">Shared Sessions</span><span class="mr">06 / 08</span></div>
+<div class="kick" style="margin-top:30px">Branch without losing the thread</div>
+<div class="title sm" style="margin-top:14px">Fork one session <em>into two</em></div>
+<div class="fork">
+<div class="fnode trunk"><div class="fh"><span class="fbadge">trunk</span><b>One session, 18 turns deep</b></div><div class="fm">the shared history both branches inherit</div><div class="fd">a full research thread you do not want to risk breaking</div></div>
+<div class="fnode a"><div class="fh"><span class="fbadge">branch A</span><b>Keep the original</b></div><div class="fm">forks at turn 18, untouched</div><div class="fd">the proven thread stays exactly as it was, still yours</div></div>
+<div class="fnode b"><div class="fh"><span class="fbadge">branch B</span><b>Try a riskier angle</b></div><div class="fm">forks at turn 18, independent</div><div class="fd">explore a tangent in a copy, switch between them anytime</div></div>
+</div>
+<div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR</div></div><div class="swipe">Swipe <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+</div></div>
+
+<!-- 07 CLONE LOOP -->
+<div class="slide"><div class="atm"></div><div class="safe">
+<div class="mast"><span class="ml">Shared Sessions</span><span class="mr">07 / 08</span></div>
+<div class="kick" style="margin-top:30px">Why sharing compounds</div>
+<div class="title sm" style="margin-top:14px">Every link is a <em>front door</em></div>
+<div class="loop">
+<div class="lstage"><div class="lh"><span class="ln">01</span><b>You share a session</b><span class="actor">you</span></div><div class="ld">a prospect, a teammate or your audience gets the link</div><div class="lk">read-only, no login</div></div>
+<div class="lstage"><div class="lh"><span class="ln">02</span><b>They open it read-only</b><span class="actor">viewer</span></div><div class="ld">no login wall, they land straight in the work</div><div class="lk">sees the real output</div></div>
+<div class="lstage"><div class="lh"><span class="ln">03</span><b>They clone it</b><span class="actor">viewer</span></div><div class="ld">one click copies it into a fresh Ultron account</div><div class="lk">clone &rarr; sign up</div></div>
+<div class="lstage back"><div class="lh"><span class="ln">04</span><b>They continue as a user</b><span class="actor">new user</span></div><div class="ld">your shared link just became someone else's first session</div><div class="lk">the loop closes</div></div>
+</div>
+<div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR</div></div><div class="swipe">Swipe <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+</div></div>
+
+<!-- 08 CTA -->
+<div class="slide"><div class="atm"></div><div class="safe">
+<div class="mast"><span class="ml">Shared Sessions</span><span class="mr">08 / 08</span></div>
+<div class="kick" style="margin-top:30px">Share, fork, clone</div>
+<div class="title sm" style="margin-top:14px">Stop screenshotting, <em>start linking</em></div>
+<div class="rcp">
+<div class="rchip"><span class="rn">01</span><div class="rx"><b>Turn a session into a link</b><span>read-only, no login needed to view</span></div></div>
+<div class="rchip"><span class="rn">02</span><div class="rx"><b>It carries the whole session</b><span>turns, agents, artifacts and sources</span></div></div>
+<div class="rchip"><span class="rn">03</span><div class="rx"><b>You keep the controls</b><span>revoke, expiry, password, scope</span></div></div>
+<div class="rchip"><span class="rn">04</span><div class="rx"><b>Fork to branch, not break</b><span>two threads from one, switch anytime</span></div></div>
+<div class="rchip last"><span class="rn">05</span><div class="rx"><b>They clone it and continue</b><span>every share is a new front door</span></div></div>
+</div>
+<div class="ctawrap"><div class="savel">Save this, then</div><div class="cta"><span class="ph">Comment <b>SHARE</b> for the full shared-sessions breakdown</span><span class="send"><svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div></div>
+<div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</div></div><div class="furl">51ultron<em>.</em>com</div></div>
+</div></div>
+
+</body></html>

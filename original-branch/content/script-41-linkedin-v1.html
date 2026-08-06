@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 41 · SEVEN · AI Cold Email Signal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:     #0b0907;
+  --bg-card:#0f0c08;
+  --ink:    #ffe0c2;
+  --accent: #ff801f;
+  --acc-hi: #ffa057;
+  --acc-lo: rgba(255,128,31,.12);
+  --acc-bd: rgba(255,128,31,.28);
+  --ink-60: rgba(255,224,194,.60);
+  --ink-42: rgba(255,224,194,.42);
+  --ink-24: rgba(255,224,194,.24);
+  --ink-10: rgba(255,224,194,.10);
+  --ink-05: rgba(255,224,194,.05);
+  --moon:   #9bb5d8;
+  --rule:   rgba(255,224,194,.09);
+  --dot:    rgba(255,128,31,.05);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  background:#030201;
+  font-family:'Bricolage Grotesque',sans-serif;
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  padding:24px 0;
+}
+.scaler{display:flex;justify-content:center;align-items:flex-start;}
+.scaler>.canvas{transform-origin:top center;transform:scale(calc(min(100vw / 1130,(100vh - 48px) / 1510)));}
+
+/* CANVAS */
+.canvas{
+  width:1080px;height:1450px;
+  background:var(--bg);
+  padding:28px 40px 20px 40px;
+  display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+}
+/* Dot texture */
+.canvas::before{
+  content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:radial-gradient(var(--dot) 1.3px,transparent 1.4px);
+  background-size:24px 24px;
+}
+/* Grain */
+.canvas::after{
+  content:'';position:absolute;inset:0;pointer-events:none;z-index:10;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity:.15;mix-blend-mode:overlay;
+}
+/* Atmosphere */
+.atm{
+  position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:
+    radial-gradient(ellipse 55% 38% at 95% 3%,rgba(255,128,31,.13) 0%,transparent 68%),
+    radial-gradient(ellipse 42% 32% at 5% 97%,rgba(90,130,190,.10) 0%,transparent 65%),
+    radial-gradient(ellipse 60% 50% at 50% 50%,rgba(255,128,31,.025) 0%,transparent 70%);
+}
+.mast,.hero,.dot-section,.patterns,.stat-strip,.cta-block,.ftr{position:relative;z-index:2;}
+
+/* MAST · LinkedIn keyword indexing strip (script-29 standard) */
+.mast{
+  flex-shrink:0;display:flex;align-items:center;justify-content:space-between;
+  padding-bottom:10px;border-bottom:1px solid var(--rule);
+}
+.mast-kw{
+  font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;
+  letter-spacing:.20em;text-transform:uppercase;
+  color:var(--ink-42);white-space:nowrap;overflow:hidden;line-height:1;
+}
+.mast-kw .sep{color:var(--accent);opacity:.75;margin:0 7px;}
+.mast-r{
+  font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--ink-60);
+  white-space:nowrap;flex-shrink:0;padding-left:18px;
+}
+.mast-r em{color:var(--accent);font-style:normal;}
+
+/* HERO */
+.hero{flex-shrink:0;margin-top:22px;}
+.hero-main{display:flex;align-items:flex-end;gap:0;}
+.hero-7{
+  font-family:'Instrument Serif',serif;font-style:italic;
+  font-size:226px;line-height:.84;
+  color:var(--accent);letter-spacing:-6px;
+  flex-shrink:0;
+  text-shadow:0 0 80px rgba(255,128,31,.25);
+}
+.hero-denom{
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding-bottom:10px;padding-left:16px;
+  gap:4px;
+}
+.hero-slash{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink-42);
+}
+.hero-200{
+  font-family:'Instrument Serif',serif;font-style:italic;
+  font-size:60px;line-height:.9;
+  color:var(--ink-24);letter-spacing:-2px;
+}
+.hero-200-lbl{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink-42);margin-top:4px;
+}
+.hero-sub{
+  font-family:'Instrument Serif',serif;
+  font-size:30px;font-weight:400;letter-spacing:-.01em;
+  color:var(--ink);margin-top:18px;line-height:1.18;
+}
+.hero-sub em{color:var(--accent);font-style:italic;font-weight:400;}
+
+/* DOT MATRIX */
+.dot-section{flex-shrink:0;margin-top:18px;}
+.dot-hdr{margin-bottom:9px;}
+.dot-lbl{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink-42);
+}
+.dot-grid{
+  display:grid;
+  grid-template-columns:repeat(25,1fr);
+  gap:5px;
+  padding:14px;
+  background:rgba(255,224,194,.022);
+  border:1px solid var(--rule);
+  border-radius:3px;
+  position:relative;
+}
+.win-svg{
+  position:absolute;inset:0;width:100%;height:100%;
+  pointer-events:none;z-index:2;
+}
+.d{
+  aspect-ratio:1;border-radius:50%;background:rgba(255,224,194,.09);
+  position:relative;z-index:1;
+}
+.d.win{
+  background:var(--accent);
+  box-shadow:0 0 12px rgba(255,128,31,.85),0 0 4px rgba(255,128,31,1);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;font-weight:700;color:#0b0907;
+  z-index:3;
+}
+.dot-legend{display:flex;gap:18px;margin-top:7px;align-items:center;}
+.leg{
+  display:flex;align-items:center;gap:6px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-42);
+}
+.leg-d{width:9px;height:9px;border-radius:50%;}
+.leg-d.win{background:var(--accent);}
+.leg-d.fail{background:rgba(255,224,194,.09);}
+.leg-d.timing{background:rgba(155,181,216,.5);}
+
+/* PATTERNS */
+.patterns{flex-grow:1;display:flex;flex-direction:column;margin-top:14px;}
+.sec-hdr{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink-42);margin-bottom:8px;flex-shrink:0;
+}
+.pat-list{flex:1;display:flex;flex-direction:column;justify-content:space-between;}
+
+.pat{
+  flex:1;
+  display:flex;align-items:stretch;
+  border:1px solid var(--rule);
+  border-radius:2px;
+  overflow:hidden;
+  background:var(--bg-card);
+}
+.pat-num-col{
+  flex-shrink:0;width:56px;
+  background:rgba(255,128,31,.04);
+  border-right:1px solid var(--rule);
+  display:flex;align-items:center;justify-content:center;
+}
+.pat-n{
+  font-family:'JetBrains Mono',monospace;
+  font-size:22px;font-weight:700;color:var(--accent);
+  line-height:1;
+}
+.pat-body{
+  flex:1;padding:12px 16px;
+  display:flex;flex-direction:column;justify-content:center;gap:6px;
+}
+.pat-title{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:13px;font-weight:800;color:var(--ink);
+  text-transform:uppercase;letter-spacing:.04em;line-height:1.15;
+}
+.pat-copy{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:11.5px;font-weight:400;color:var(--ink-60);
+  line-height:1.5;
+}
+.pat-tags{display:flex;gap:7px;flex-wrap:wrap;}
+.tag{
+  font-family:'JetBrains Mono',monospace;
+  font-size:8.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:3px 8px;border-radius:2px;border:1px solid;
+  white-space:nowrap;
+}
+.tag.acc{color:var(--accent);border-color:var(--acc-bd);background:var(--acc-lo);}
+.tag.mute{color:var(--ink-42);border-color:rgba(255,224,194,.14);background:rgba(255,224,194,.04);}
+.pat-stat-col{
+  flex-shrink:0;width:136px;
+  border-left:1px solid var(--rule);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:6px;padding:12px;
+}
+.pat-big{
+  font-family:'Instrument Serif',serif;font-style:italic;
+  font-size:44px;line-height:.9;
+  color:var(--acc-hi);letter-spacing:-1px;text-align:center;
+}
+.pat-big.vs{color:var(--ink-24);}
+.pat-vs-lbl{
+  font-family:'JetBrains Mono',monospace;
+  font-size:7.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-42);text-align:center;line-height:1.4;
+}
+
+/* STAT STRIP */
+.stat-strip{
+  flex-shrink:0;margin-top:10px;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border:1px solid var(--rule);border-radius:2px;overflow:hidden;
+}
+.sc{padding:9px 12px;display:flex;flex-direction:column;gap:3px;}
+.sc+.sc{border-left:1px solid var(--rule);}
+.sv{
+  font-family:'JetBrains Mono',monospace;
+  font-size:19px;font-weight:700;color:var(--accent);
+  letter-spacing:-.5px;line-height:1;
+}
+.sv.moon{color:var(--moon);}
+.sl{
+  font-family:'JetBrains Mono',monospace;
+  font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-42);line-height:1.3;
+}
+
+/* CTA */
+.cta-block{
+  flex-shrink:0;margin-top:9px;
+  display:flex;align-items:stretch;
+  border:1px solid var(--acc-bd);border-radius:2px;
+  overflow:hidden;
+}
+.cta-txt{
+  flex:1;padding:11px 16px;
+  display:flex;flex-direction:column;justify-content:center;gap:4px;
+  background:rgba(255,128,31,.04);
+}
+.cta-l{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:12px;font-weight:600;color:var(--ink-60);line-height:1.35;
+}
+.cta-chip{
+  flex-shrink:0;padding:0 18px;
+  background:var(--accent);
+  display:flex;align-items:center;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:#0b0907;
+}
+
+/* FOOTER · script-29 standard */
+.ftr{
+  flex-shrink:0;margin-top:10px;padding-top:10px;
+  border-top:1px solid var(--rule);
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.ftr-l{display:flex;align-items:center;gap:10px;min-width:0;}
+.ftr-logo{width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.ftr-txt{
+  font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink-60);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.ftr-txt strong{color:var(--ink);font-weight:700;}
+.ftr-url{
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:800;
+  font-size:14px;letter-spacing:-.4px;color:var(--ink);flex-shrink:0;
+}
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="canvas">
+  <div class="atm"></div>
+
+  <!-- MAST -->
+  <div class="mast">
+    <div class="mast-kw">AI OUTBOUND<span class="sep">·</span>FOUNDER GTM<span class="sep">·</span>AI CONTENT OPS<span class="sep">·</span>LINKEDIN GROWTH<span class="sep">·</span>AI AGENTS<span class="sep">·</span>PIPELINE<span class="sep">·</span>SIGNAL<span class="sep">·</span>WORKFLOWS<span class="sep">·</span>ULTRON OS</div>
+    <div class="mast-r"><em>AI</em> COLD EMAIL AUDIT · N=200</div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-main">
+      <div class="hero-7">7</div>
+      <div class="hero-denom">
+        <div class="hero-slash">OUT OF</div>
+        <div class="hero-200">200</div>
+        <div class="hero-200-lbl">AI COLD EMAILS CONVERTED</div>
+      </div>
+    </div>
+    <div class="hero-sub">The pattern is never in the <em>193 failures.</em><br>It is always in the <em>7 that worked.</em></div>
+  </div>
+
+  <!-- DOT MATRIX -->
+  <div class="dot-section">
+    <div class="dot-hdr">
+      <div class="dot-lbl">200 AI-WRITTEN EMAILS · 90 DAYS · 7 CONVERTED TO MEETINGS</div>
+    </div>
+    <div class="dot-grid" id="dot-grid">
+      <svg class="win-svg" id="win-svg" preserveAspectRatio="none"></svg>
+    </div>
+    <div class="dot-legend">
+      <div class="leg"><div class="leg-d win"></div>7 converted</div>
+      <div class="leg"><div class="leg-d fail"></div>193 no meeting</div>
+      <div class="leg" style="margin-left:auto;color:rgba(155,181,216,.7)">
+        <div class="leg-d timing"></div>31 wrong timing
+      </div>
+    </div>
+  </div>
+
+  <!-- PATTERNS -->
+  <div class="patterns">
+    <div class="sec-hdr">3 STRUCTURAL PATTERNS · PRESENT IN ALL 7 WINNERS · ABSENT FROM ALL 193 FAILURES</div>
+    <div class="pat-list">
+
+      <!-- Pattern 1 -->
+      <div class="pat">
+        <div class="pat-num-col"><div class="pat-n">01</div></div>
+        <div class="pat-body">
+          <div class="pat-title">One specific trigger, named in line 1</div>
+          <div class="pat-copy">Every winner opened with a verifiable event: "You posted about scaling to a second market on May 3." The 193 failures opened with a claim about pain. The 7 opened with proof of attention.</div>
+          <div class="pat-tags">
+            <div class="tag acc">7/7 WINNERS</div>
+            <div class="tag mute">0/193 FAILURES</div>
+          </div>
+        </div>
+        <div class="pat-stat-col">
+          <div class="pat-big">7</div>
+          <div class="pat-vs-lbl">of 7 had<br>named trigger</div>
+        </div>
+      </div>
+
+      <!-- Pattern 2 -->
+      <div class="pat">
+        <div class="pat-num-col"><div class="pat-n" style="color:var(--ink-24)">02</div></div>
+        <div class="pat-body">
+          <div class="pat-title">The ask is a question, not a CTA</div>
+          <div class="pat-copy">None of the 7 ended with "book a call." They ended with a question about the prospect's current state. Signals the email was written for one person. Lowers commitment to reply.</div>
+          <div class="pat-tags">
+            <div class="tag acc">7/7 WINNERS</div>
+            <div class="tag mute">0/193 FAILURES</div>
+          </div>
+        </div>
+        <div class="pat-stat-col">
+          <div class="pat-big">0</div>
+          <div class="pat-vs-lbl">winners ended<br>with "book a call"</div>
+        </div>
+      </div>
+
+      <!-- Pattern 3 -->
+      <div class="pat">
+        <div class="pat-num-col"><div class="pat-n" style="color:var(--ink-24)">03</div></div>
+        <div class="pat-body">
+          <div class="pat-title">Fewer than 62 words in the body</div>
+          <div class="pat-copy">Winners averaged 58 words. Failures averaged 104. Shorter did not mean less context. It meant one choice, said clearly. The 104-word emails tried to cover every objection before the reply.</div>
+          <div class="pat-tags">
+            <div class="tag acc">58 WORDS AVG</div>
+            <div class="tag mute">104 WORDS AVG</div>
+          </div>
+        </div>
+        <div class="pat-stat-col">
+          <div class="pat-big">58</div>
+          <div class="pat-vs-lbl">words avg<br>winners</div>
+          <div style="width:100%;height:1px;background:var(--rule);"></div>
+          <div class="pat-big vs">104</div>
+          <div class="pat-vs-lbl">words avg<br>failures</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- STAT STRIP -->
+  <div class="stat-strip">
+    <div class="sc">
+      <div class="sv">3.5%</div>
+      <div class="sl">Convert rate</div>
+    </div>
+    <div class="sc">
+      <div class="sv">11 min</div>
+      <div class="sl">Claude audit</div>
+    </div>
+    <div class="sc">
+      <div class="sv moon">31</div>
+      <div class="sl">Wrong moment sent</div>
+    </div>
+    <div class="sc">
+      <div class="sv">90</div>
+      <div class="sl">Day experiment</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div class="cta-txt">
+      <div class="cta-l">Follow for one AI outbound system every day.</div>
+      <div class="cta-l">Comment SEVEN and I will send you the exact Claude workflow we used.</div>
+    </div>
+    <div class="cta-chip">COMMENT SEVEN</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="ftr">
+    <div class="ftr-l">
+      <img class="ftr-logo" src="ultron-logo.png" alt="Ultron"
+        onerror="this.style.cssText='width:28px;height:28px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 72% 22%,rgba(255,140,80,.95) 0%,rgba(220,80,30,.3) 22%,transparent 36%),radial-gradient(circle at 22% 76%,rgba(55,170,255,.95) 0%,rgba(30,130,220,.3) 22%,transparent 38%),radial-gradient(circle at 38% 38%,rgba(30,30,50,1) 0%,#060810 55%,#000 100%)'">
+      <div class="ftr-txt"><strong>ULTRON OS</strong> · founder · gtm · agent infrastructure</div>
+    </div>
+    <div class="ftr-url">51ultron.com</div>
+  </div>
+
+</div><!-- .canvas -->
+</div><!-- .scaler -->
+
+<script>
+// Generate 200 dots: 7 winners scattered across 25-col x 8-row grid
+const winOrder = [14, 31, 58, 80, 116, 144, 173];
+const wins = new Map(winOrder.map((idx, i) => [idx, i + 1]));
+const grid = document.getElementById('dot-grid');
+const svg = document.getElementById('win-svg');
+const winEls = [];
+for (let i = 1; i <= 200; i++) {
+  const d = document.createElement('div');
+  if (wins.has(i)) {
+    d.className = 'd win';
+    d.textContent = wins.get(i);
+    winEls[wins.get(i) - 1] = d;
+  } else {
+    d.className = 'd';
+  }
+  grid.appendChild(d);
+}
+
+// Draw connecting polyline between winners in order
+function drawWinLine() {
+  const gridRect = grid.getBoundingClientRect();
+  svg.setAttribute('viewBox', `0 0 ${gridRect.width} ${gridRect.height}`);
+  const pts = winEls.map(el => {
+    const r = el.getBoundingClientRect();
+    return [r.left - gridRect.left + r.width/2, r.top - gridRect.top + r.height/2];
+  });
+  // Dashed connecting line
+  const poly = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+  poly.setAttribute('points', pts.map(p => p.join(',')).join(' '));
+  poly.setAttribute('fill', 'none');
+  poly.setAttribute('stroke', '#ff801f');
+  poly.setAttribute('stroke-width', '1.6');
+  poly.setAttribute('stroke-dasharray', '5 4');
+  poly.setAttribute('stroke-linecap', 'round');
+  poly.setAttribute('opacity', '0.78');
+  svg.appendChild(poly);
+}
+window.addEventListener('load', drawWinLine);
+window.addEventListener('resize', () => { svg.innerHTML = ''; drawWinLine(); });
+</script>
+</body>
+</html>

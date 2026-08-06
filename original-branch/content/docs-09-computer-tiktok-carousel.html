@@ -1,0 +1,115 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+:root{--slate:#191919;--slate2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--cloud:#919180;--book-lo:rgba(204,120,92,.10);--book-bd:rgba(204,120,92,.32);}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;display:flex;flex-direction:column;align-items:center;gap:30px;padding:30px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.slide{width:1080px;height:1920px;background:var(--slate);position:relative;overflow:hidden;color:var(--ivory);}
+.slide::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.6px,transparent 1.7px);background-size:36px 36px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 58% 22% at 86% 4%,rgba(204,120,92,.2) 0%,transparent 60%),radial-gradient(ellipse 52% 18% at 6% 88%,rgba(212,162,127,.1) 0%,transparent 60%);}
+.safe{position:absolute;top:250px;left:70px;right:130px;bottom:330px;z-index:2;display:flex;flex-direction:column;}
+.mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--rule);padding-bottom:24px;font-family:'DM Mono',monospace;font-size:23px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;margin-bottom:40px;}
+.mast .ml{color:var(--book);}.mast .mr{color:var(--ink46);}
+.cont{flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0;}
+.cont2{flex:1;display:flex;flex-direction:column;min-height:0;}
+.eye{font-family:'DM Mono',monospace;font-size:25px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--book);margin-bottom:34px;}
+.hook{font-weight:900;font-size:94px;line-height:.98;letter-spacing:-3.2px;color:var(--ivory);}.hook em{color:var(--book);font-style:normal;}
+.hsub{margin-top:42px;font-size:42px;font-weight:500;line-height:1.4;color:var(--ink70);}.hsub b{color:var(--ivory);font-weight:700;}
+.htitle{font-weight:900;font-size:84px;line-height:.98;letter-spacing:-2.8px;color:var(--ivory);min-height:172px;margin-bottom:40px;flex-shrink:0;display:flex;flex-direction:column;justify-content:flex-end;}.htitle em{color:var(--book);font-style:normal;}
+.swipe{flex-shrink:0;margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:18px;background:var(--book);color:#1a0f0a;font-family:'DM Mono',monospace;font-weight:500;font-size:29px;letter-spacing:.16em;text-transform:uppercase;padding:22px 50px;border-radius:50px;box-shadow:0 0 50px rgba(204,120,92,.4);}
+.note{flex-shrink:0;margin-top:32px;font-size:38px;font-weight:500;line-height:1.34;color:var(--ink70);}.note b{color:var(--ivory);font-weight:700;}
+/* steps / rows */
+.trc{flex:1;display:flex;flex-direction:column;gap:26px;}
+.trow{flex:1;display:flex;align-items:center;gap:34px;background:var(--slate2);border:1px solid var(--ink14);border-left:12px solid var(--book);border-radius:28px;padding:34px 44px;box-shadow:0 20px 48px rgba(0,0,0,.3);}
+.tic{width:118px;height:118px;border-radius:26px;background:var(--book-lo);border:1px solid var(--book-bd);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'DM Mono',monospace;font-weight:700;font-size:60px;color:var(--book);}
+.tic svg{width:58px;height:58px;stroke:var(--book);stroke-width:1.9;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ttx{flex:1;min-width:0;}.tnm{font-weight:800;font-size:60px;letter-spacing:-1.8px;color:var(--ivory);line-height:1;}
+.twh{font-size:36px;font-weight:500;color:var(--ink70);line-height:1.28;margin-top:14px;}
+/* window card */
+.wcard{flex:1;min-height:0;display:flex;flex-direction:column;border:1px solid var(--ink14);border-radius:24px;overflow:hidden;background:#1e1e1d;box-shadow:0 34px 80px rgba(0,0,0,.5);}
+.winbar{flex-shrink:0;display:flex;align-items:center;gap:18px;padding:22px 28px;border-bottom:1px solid var(--rule);background:#151514;}
+.d3{display:flex;gap:13px;}.d3 i{width:18px;height:18px;border-radius:50%;display:block;}
+.wintab{font-family:'DM Mono',monospace;font-size:22px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ivory);background:var(--book-lo);border:1px solid var(--book-bd);padding:9px 22px;border-radius:9px;}
+.winurl{margin-left:auto;font-family:'DM Mono',monospace;font-size:20px;color:var(--ink46);letter-spacing:.05em;}
+.wpane{flex:1;min-height:0;display:flex;flex-direction:column;}
+.panehd{flex-shrink:0;font-family:'DM Mono',monospace;font-size:22px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink46);padding:22px 30px;border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.012);}
+.panehd .n{width:13px;height:13px;border-radius:50%;background:var(--book);box-shadow:0 0 11px var(--book);}
+.panebd{flex:1;min-height:0;padding:34px 36px;overflow:hidden;}
+.sh{font-family:'DM Mono',monospace;font-size:38px;line-height:1.95;}
+.sh div{white-space:nowrap;}.sh .cmd{color:var(--ivory);}.sh .pr{color:var(--book);font-weight:500;}
+.sh .out{color:var(--cloud);}.sh .out b{color:var(--kraft);font-weight:500;}.sh .ok{color:var(--book);font-weight:500;}
+.cur{display:inline-block;width:22px;height:40px;background:var(--book);vertical-align:-6px;margin-left:5px;box-shadow:0 0 14px var(--book);}
+.tree{font-family:'DM Mono',monospace;font-size:40px;line-height:1.95;color:var(--ink70);}
+.tree .dir{color:var(--ink46);}.tree .row{display:flex;align-items:center;}.tree .ind{padding-left:44px;}
+.tree .fdot{width:20px;height:20px;border-radius:50%;margin-left:auto;background:var(--c);box-shadow:0 0 11px var(--c);}
+.tree .new{--c:var(--book);}.tree .mod{--c:var(--kraft);}.tree .del{color:var(--ink30);text-decoration:line-through;}
+.tleg{margin-top:14px;display:flex;gap:36px;font-family:'DM Mono',monospace;font-size:24px;color:var(--ink46);letter-spacing:.04em;}
+.tleg span{display:flex;align-items:center;gap:12px;}.tleg i{width:16px;height:16px;border-radius:50%;}
+.prev{height:100%;border-radius:18px;border:1px solid var(--rule);background:var(--slate);overflow:hidden;display:flex;flex-direction:column;box-shadow:inset 0 0 50px rgba(0,0,0,.3);}
+.prevbar{flex-shrink:0;display:flex;align-items:center;gap:13px;padding:20px 24px;border-bottom:1px solid var(--rule);background:#151514;}
+.prevbar i{width:16px;height:16px;border-radius:50%;background:var(--ink30);}
+.prevurl{margin-left:12px;font-family:'DM Mono',monospace;font-size:22px;color:var(--ink46);}
+.prevbody{flex:1;padding:42px;display:flex;flex-direction:column;gap:28px;justify-content:center;}
+.pvh{height:30px;border-radius:11px;background:var(--book);width:58%;box-shadow:0 0 26px rgba(204,120,92,.4);}
+.pvl{height:20px;border-radius:9px;background:var(--ink14);}.pvl.s{width:86%;}.pvl.t{width:66%;}
+.pvbtn{margin-top:14px;align-self:flex-start;font-family:'DM Sans';font-weight:800;font-size:34px;color:#1a0f0a;background:var(--book);padding:18px 44px;border-radius:13px;}
+.pvtag{margin-top:auto;font-family:'DM Mono',monospace;font-size:22px;letter-spacing:.14em;text-transform:uppercase;color:var(--book);}
+.cta-pill{align-self:flex-start;font-family:'DM Mono',monospace;font-size:28px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#1a0f0a;background:var(--book);padding:16px 36px;border-radius:50px;margin-bottom:50px;}
+.cta-big{font-weight:900;font-size:122px;line-height:.95;letter-spacing:-4px;color:var(--ivory);margin-bottom:40px;}.cta-big em{color:var(--book);font-style:normal;}
+.cta-sub{font-size:42px;font-weight:500;color:var(--ink70);line-height:1.4;margin-bottom:58px;}.cta-sub b{color:var(--ivory);font-weight:700;}
+.cta-badge{align-self:flex-start;font-weight:900;font-size:90px;letter-spacing:.02em;color:#1a0f0a;background:var(--book);padding:30px 68px;border-radius:24px;box-shadow:0 0 70px rgba(204,120,92,.4);}
+.ftr{flex-shrink:0;margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid var(--rule);padding-top:34px;}
+.fl{display:flex;align-items:center;gap:18px;min-width:0;}.flogo{width:58px;height:58px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.ftx{font-family:'DM Mono',monospace;font-size:20px;font-weight:400;letter-spacing:.11em;text-transform:uppercase;color:var(--ink70);}.ftx b{color:var(--ivory);font-weight:500;}
+.furl{font-weight:900;font-size:33px;letter-spacing:-.8px;color:var(--ivory);flex-shrink:0;}.furl em{color:var(--book);font-style:normal;}
+</style></head><body>
+
+<div class="slide"><div class="atm"></div><div class="safe"><div class="mast"><span class="ml">The Computer</span><span class="mr">Live execution</span></div><div class="cont"><div class="eye">Save this</div><div class="hook">Most AI describes the fix. Claude <em>runs</em> it. Live.</div><div class="hsub"><b>Shell, files, preview.</b> You watch every command and grab the keyboard.</div></div><div class="swipe">Swipe &rarr;</div></div></div>
+
+<div class="slide"><div class="atm"></div><div class="safe"><div class="mast"><span class="ml">The shift</span><span class="mr">The Computer</span></div><div class="cont2"><div class="htitle">It stops <em>describing.</em> It starts doing.</div><div class="trc">
+  <div class="trow"><div class="tic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8"/></svg></div><div class="ttx"><div class="tnm">A real environment</div><div class="twh">Not a chat window. A machine that runs.</div></div></div>
+  <div class="trow"><div class="tic"><svg viewBox="0 0 24 24"><path d="M8 6l-5 6 5 6M16 6l5 6-5 6"/></svg></div><div class="ttx"><div class="tnm">Code, commands, builds</div><div class="twh">Files, servers, browsers - actually executed.</div></div></div>
+  <div class="trow"><div class="tic"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></div><div class="ttx"><div class="tnm">Isolated from you</div><div class="twh">It never touches your laptop.</div></div></div>
+</div></div></div></div>
+
+<div class="slide"><div class="atm"></div><div class="safe"><div class="mast"><span class="ml">Pane one</span><span class="mr">The Computer</span></div><div class="cont2"><div class="htitle">The <em>shell.</em></div><div class="wcard"><div class="winbar"><span class="d3"><i style="background:var(--cloud)"></i><i style="background:var(--kraft)"></i><i style="background:var(--book)"></i></span><span class="wintab">Computer</span><span class="winurl">shell</span></div><div class="wpane"><div class="panehd"><span class="n"></span>Shell</div><div class="panebd"><div class="sh">
+  <div class="cmd"><span class="pr">&rsaquo;</span> claude fix the login bug</div>
+  <div class="out">read  src/auth.ts</div>
+  <div class="out">edit  src/auth.ts  <b>+12 -4</b></div>
+  <div class="cmd"><span class="pr">&rsaquo;</span> npm test</div>
+  <div class="out">running 24 tests ...</div>
+  <div class="ok">24 passing   0 failing</div>
+  <div class="cmd"><span class="pr">&rsaquo;</span> npm run dev</div>
+  <div class="out">ready on :3000</div>
+  <div class="cmd"><span class="pr">&rsaquo;</span> <span class="cur"></span></div>
+</div></div></div></div><div class="note"><b>Every command and its output,</b> streaming live as it runs.</div></div></div></div>
+
+<div class="slide"><div class="atm"></div><div class="safe"><div class="mast"><span class="ml">Pane two</span><span class="mr">The Computer</span></div><div class="cont2"><div class="htitle">The <em>files.</em></div><div class="wcard"><div class="winbar"><span class="d3"><i style="background:var(--cloud)"></i><i style="background:var(--kraft)"></i><i style="background:var(--book)"></i></span><span class="wintab">Computer</span><span class="winurl">files</span></div><div class="wpane"><div class="panehd"><span class="n"></span>Files</div><div class="panebd"><div class="tree">
+  <div class="row dir">src/</div>
+  <div class="row ind new"><span>auth.ts</span><span class="fdot"></span></div>
+  <div class="row ind mod"><span>login.tsx</span><span class="fdot"></span></div>
+  <div class="row ind new"><span>api.ts</span><span class="fdot"></span></div>
+  <div class="row ind new"><span>db.ts</span><span class="fdot"></span></div>
+  <div class="row dir">tests/</div>
+  <div class="row ind new"><span>auth.test.ts</span><span class="fdot"></span></div>
+  <div class="row del">old-auth.ts</div>
+</div><div class="tleg"><span><i style="background:var(--book)"></i>created</span><span><i style="background:var(--kraft)"></i>modified</span><span><i style="background:var(--ink30)"></i>deleted</span></div></div></div></div><div class="note"><b>Created, modified, deleted</b> - and you can edit any file yourself.</div></div></div></div>
+
+<div class="slide"><div class="atm"></div><div class="safe"><div class="mast"><span class="ml">Pane three</span><span class="mr">The Computer</span></div><div class="cont2"><div class="htitle">Live <em>preview.</em></div><div class="wcard"><div class="winbar"><span class="d3"><i style="background:var(--cloud)"></i><i style="background:var(--kraft)"></i><i style="background:var(--book)"></i></span><span class="wintab">Computer</span><span class="winurl">preview</span></div><div class="wpane"><div class="panehd"><span class="n"></span>Live preview</div><div class="panebd"><div class="prev">
+  <div class="prevbar"><i></i><i></i><i></i><span class="prevurl">localhost:3000</span></div>
+  <div class="prevbody"><div class="pvh"></div><div class="pvl s"></div><div class="pvl t"></div><div class="pvbtn">Log in</div><div class="pvtag">reloads on save</div></div>
+</div></div></div></div><div class="note"><b>A server, image or video</b> - it reloads the moment a file changes.</div></div></div></div>
+
+<div class="slide"><div class="atm"></div><div class="safe"><div class="mast"><span class="ml">You are in control</span><span class="mr">The Computer</span></div><div class="cont2"><div class="htitle">Take the <em>keyboard.</em></div><div class="trc">
+  <div class="trow"><div class="tic">1</div><div class="ttx"><div class="tnm">Stop it</div><div class="twh">Interrupt any running command.</div></div></div>
+  <div class="trow"><div class="tic">2</div><div class="ttx"><div class="tnm">Make your change</div><div class="twh">Edit a file or run a command yourself.</div></div></div>
+  <div class="trow"><div class="tic">3</div><div class="ttx"><div class="tnm">Hand back</div><div class="twh">Say what you did. It continues from there.</div></div></div>
+</div></div></div></div>
+
+<div class="slide"><div class="atm"></div><div class="safe"><div class="mast"><span class="ml">It stays</span><span class="mr">The Computer</span></div><div class="cont2"><div class="htitle">It <em>persists.</em></div><div class="trc">
+  <div class="trow"><div class="tic"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg></div><div class="ttx"><div class="tnm">Across every turn</div><div class="twh">Files and state survive the whole session.</div></div></div>
+  <div class="trow"><div class="tic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div class="ttx"><div class="tnm">A stable preview URL</div><div class="twh">Same link for the life of the session.</div></div></div>
+  <div class="trow"><div class="tic"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 4v5h5"/></svg></div><div class="ttx"><div class="tnm">One-click restart</div><div class="twh">Reset to a clean machine anytime.</div></div></div>
+</div></div></div></div>
+
+<div class="slide"><div class="atm"></div><div class="safe"><div class="mast"><span class="ml">Get the walkthrough</span><span class="mr">The Computer</span></div><div class="cont"><div class="cta-pill">Where does your AI stop?</div><div class="cta-big">Comment <em>COMPUTER.</em></div><div class="cta-sub">I will send you the exact Claude <b>build workflow</b> we run in the Computer.</div><div class="cta-badge">COMPUTER</div></div><div class="ftr"><div class="fl"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</div></div><div class="furl">51ultron<em>.</em>com</div></div></div></div>
+
+</body></html>

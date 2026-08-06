@@ -1,0 +1,111 @@
+/* ULTRON DESIGN TOKENS — Anthropic-aligned palette
+   Source: Anthropic MCP Apps Community Figma file (May 2026)
+   Use as :root vars in every poster going forward. */
+
+:root {
+  /* ───── NEUTRALS · warm grays (Anthropic signature) ───── */
+  --ink-cream-50:  #FAF9F5;   /* bg light primary */
+  --ink-cream-100: #F0EEE6;   /* bg light secondary / surface */
+  --ink-cream-200: #DEDCD1;   /* border / divider light */
+  --ink-cream-300: #C2C0B6;   /* text muted on light */
+  --ink-gray-400:  #9C9A92;   /* text secondary */
+  --ink-gray-500:  #73726C;   /* text tertiary / caption */
+  --ink-gray-600:  #4D4C48;   /* text dark on light */
+  --ink-gray-700:  #3D3D3A;   /* surface dark mid */
+  --ink-gray-800:  #30302E;   /* surface dark */
+  --ink-gray-850:  #262624;   /* bg dark */
+  --ink-gray-900:  #1F1E1D;   /* ink primary on dark */
+  --ink-black:     #141413;   /* bg darkest */
+
+  /* ───── ACCENT · Claude orange (official) ───── */
+  --accent:        #D97757;   /* Claude primary */
+  --accent-dark:   #C6613F;   /* Claude darker / hover */
+  --accent-soft:   rgba(217, 119, 87, 0.10);
+  --accent-border: rgba(217, 119, 87, 0.35);
+
+  /* ───── FUNCTIONAL ───── */
+  --danger:        #B53333;
+  --danger-soft:   #E56057;
+  --link:          #4682D5;
+  --link-alt:      #2C84DB;
+  --indigo:        #6366F1;
+  --violet:        #835EEE;
+  --pink:          #DA5597;
+  --lavender:      #CBCADB;
+  --ok:            #16a34a;
+  --ok-light:      #4ade80;
+
+  /* ───── BORDER RADIUS scale (Anthropic) ───── */
+  --radius-xs:   4px;
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   14px;
+  --radius-xl:   20px;
+  --radius-full: 9999px;
+
+  /* ───── BORDER WIDTH ───── */
+  --border-w:    1px;
+  --border-w-2:  1.5px;
+
+  /* ───── TYPOGRAPHY ───── */
+  --font-sans: 'Inter', 'Anthropic Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Anthropic Mono', monospace;
+  --font-serif: 'Fraunces', Georgia, serif;
+
+  /* Weights */
+  --fw-normal:   400;
+  --fw-medium:   500;
+  --fw-semibold: 600;
+  --fw-bold:     700;
+  --fw-black:    900;
+
+  /* Heading scale (1080x1450 poster) */
+  --h-3xl: 72px;
+  --h-2xl: 56px;
+  --h-xl:  44px;
+  --h-lg:  32px;
+  --h-md:  24px;
+  --h-sm:  18px;
+  --h-xs:  14px;
+
+  /* Text scale */
+  --t-lg: 16px;
+  --t-md: 14px;
+  --t-sm: 12px;
+  --t-xs: 10px;
+
+  /* Line heights */
+  --lh-display: 0.92;
+  --lh-tight:   1.1;
+  --lh-snug:    1.35;
+  --lh-body:    1.5;
+
+  /* Letter spacing */
+  --ls-display: -1.2px;
+  --ls-tight:   -0.5px;
+  --ls-mono:    0.16em;
+}
+
+/* ───── DARK THEME (Family A) ───── */
+.theme-dark {
+  --bg:        var(--ink-black);
+  --bg-soft:   var(--ink-gray-900);
+  --bg-card:   rgba(255, 255, 255, 0.04);
+  --border:    rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --text:      #FFFFFF;
+  --text-dim:  rgba(255, 255, 255, 0.65);
+  --text-mute: rgba(255, 255, 255, 0.45);
+}
+
+/* ───── LIGHT THEME (Family B) ───── */
+.theme-light {
+  --bg:        var(--ink-cream-50);
+  --bg-soft:   var(--ink-cream-100);
+  --bg-card:   #FFFFFF;
+  --border:    var(--ink-cream-200);
+  --border-strong: var(--ink-cream-300);
+  --text:      var(--ink-black);
+  --text-dim:  var(--ink-gray-600);
+  --text-mute: var(--ink-gray-500);
+}

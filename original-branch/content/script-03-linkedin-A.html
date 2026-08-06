@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 03 · We Fired The Agency · Variant A (360 Brew style)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:wght@700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* BUDGET 1450 */
+  body { background:#f4ede0; margin:0; padding:0; }
+  .scaler { display: flex; justify-content: center; }
+  .poster {
+    width:1080px; height:1450px;
+    background:#f4ede0;
+    position:relative; overflow:hidden;
+    display:flex; flex-direction:column;
+    box-sizing:border-box;
+    color:#1a1a1a;
+  }
+  .serif { font-family:'Fraunces',Georgia,serif; }
+  .mono { font-family:'JetBrains Mono',monospace; }
+  .divider { border:none; border-top:1px solid rgba(20,20,20,0.12); margin:0; }
+  .dot-divider { border:none; border-top:1.5px dotted rgba(20,20,20,0.22); margin:0; }
+  .accent { color:#c75d35; }
+  .accent-bg { background:#c75d35; color:#fff; }
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="poster">
+
+  <div class="flex flex-col h-full px-12">
+
+    <!-- HEADER -->
+    <div class="flex items-center justify-between py-3.5 border-b border-black/15">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(0,0,0,0.5)">FOUNDER GTM · AGENCY REPLACEMENT · COST REDUCTION · AI AGENT STACK · ULTRON OS</span>
+    </div>
+
+    <!-- HERO -->
+    <div class="pt-4 pb-3">
+      <div class="text-[11px] tracking-[.25em] uppercase accent font-bold mb-2">The Agency Replacement</div>
+      <h1 class="serif font-black text-[68px] leading-[0.95] tracking-tight">
+        We fired the agency.<br>
+        <span class="accent">Kept the output.</span>
+      </h1>
+      <p class="text-[16px] text-black/70 leading-snug mt-2 max-w-[820px]">
+        One upfront-plus-success-fee contract replaced by one agent stack. 30 days. 47 booked calls. $680 in compute. Here's the math.
+      </p>
+    </div>
+
+    <hr class="divider mb-3">
+
+    <!-- FIGURE 01  ·  TWO LEDGERS -->
+    <div class="mb-3">
+      <div class="text-[11px] tracking-[.18em] uppercase font-bold text-black/55 mb-2">Figure 01 · 30-day ledger comparison</div>
+      <div class="grid grid-cols-2 gap-3">
+
+        <!-- AGENCY LEDGER -->
+        <div class="border border-black/15 rounded-xl p-4 bg-white/40">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-[10px] tracking-widest uppercase font-bold text-black/45">Agency model · 2025</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full border border-black/20 text-black/55">deprecated</span>
+          </div>
+          <div class="serif text-[19px] font-bold leading-tight mb-3">Upfront + success fee</div>
+          <div class="mono text-[12px] text-black/75 space-y-1.5">
+            <div class="flex justify-between"><span>Upfront retainer</span><span class="font-bold">$9,000</span></div>
+            <div class="flex justify-between"><span>Success fee per call</span><span class="font-bold">$400</span></div>
+            <div class="flex justify-between"><span>Calls booked (30d)</span><span class="font-bold">23</span></div>
+            <div class="border-t border-black/15 my-1.5"></div>
+            <div class="flex justify-between"><span class="text-black/55 uppercase tracking-wider text-[10px]">Total burn</span><span class="serif text-[26px] font-black leading-none">$18,200</span></div>
+          </div>
+          <div class="mt-3 pt-2 border-t border-black/10 flex items-center justify-between">
+            <span class="text-[10px] uppercase tracking-widest text-black/45">Cost per call</span>
+            <span class="serif text-[20px] font-black">$791</span>
+          </div>
+        </div>
+
+        <!-- ULTRON LEDGER -->
+        <div class="border-2 rounded-xl p-4" style="border-color:#c75d35;background:#fbf3eb">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-[10px] tracking-widest uppercase font-bold accent">Ultron stack · 2026</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full accent-bg">live</span>
+          </div>
+          <div class="serif text-[19px] font-bold leading-tight mb-3">Compute + API only</div>
+          <div class="mono text-[12px] text-black/80 space-y-1.5">
+            <div class="flex justify-between"><span>Compute (30d)</span><span class="font-bold">$410</span></div>
+            <div class="flex justify-between"><span>API calls</span><span class="font-bold">$270</span></div>
+            <div class="flex justify-between"><span>Calls booked (30d)</span><span class="font-bold accent">47</span></div>
+            <div class="border-t border-black/15 my-1.5"></div>
+            <div class="flex justify-between"><span class="text-black/55 uppercase tracking-wider text-[10px]">Total cost</span><span class="serif text-[26px] font-black accent leading-none">$680</span></div>
+          </div>
+          <div class="mt-3 pt-2 border-t border-black/15 flex items-center justify-between">
+            <span class="text-[10px] uppercase tracking-widest text-black/55">Cost per call</span>
+            <span class="serif text-[20px] font-black accent">$14.47</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <hr class="dot-divider mb-3">
+
+    <!-- FIGURE 02  ·  DELTA METRICS -->
+    <div class="mb-3">
+      <div class="text-[11px] tracking-[.18em] uppercase font-bold text-black/55 mb-2">Figure 02 · The three deltas</div>
+      <div class="grid grid-cols-3 gap-3">
+        <div class="bg-white/55 border border-black/12 rounded-xl p-3">
+          <div class="text-[10px] uppercase tracking-widest text-black/50 font-bold mb-1">Cost reduction</div>
+          <div class="serif text-[32px] font-black accent leading-none">26.7x</div>
+          <div class="text-[11px] text-black/60 mt-1">cheaper than the agency model</div>
+        </div>
+        <div class="bg-white/55 border border-black/12 rounded-xl p-3">
+          <div class="text-[10px] uppercase tracking-widest text-black/50 font-bold mb-1">Output lift</div>
+          <div class="serif text-[32px] font-black accent leading-none">2.04x</div>
+          <div class="text-[11px] text-black/60 mt-1">more booked calls in the same window</div>
+        </div>
+        <div class="bg-white/55 border border-black/12 rounded-xl p-3">
+          <div class="text-[10px] uppercase tracking-widest text-black/50 font-bold mb-1">Cash saved (30d)</div>
+          <div class="serif text-[32px] font-black accent leading-none">$17,520</div>
+          <div class="text-[11px] text-black/60 mt-1">redirected to product + R&amp;D</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="dot-divider mb-3">
+
+    <!-- FIGURE 03  ·  AGENT STACK -->
+    <div class="mb-3">
+      <div class="text-[11px] tracking-[.18em] uppercase font-bold text-black/55 mb-2">Figure 03 · The agent stack that replaced them</div>
+      <div class="border border-black/12 bg-white/40 rounded-xl px-3 py-3">
+        <div class="flex items-stretch gap-0">
+          <div class="flex-1 text-center px-1.5">
+            <div class="text-[9px] uppercase tracking-widest text-black/40 font-bold mb-0.5">01</div>
+            <div class="text-[13px] font-extrabold accent">SPECTER</div>
+            <div class="text-[10px] text-black/55 mt-0.5 leading-tight">prospects</div>
+          </div>
+          <div class="flex items-center text-black/25 text-[14px] font-bold">→</div>
+          <div class="flex-1 text-center px-1.5">
+            <div class="text-[9px] uppercase tracking-widest text-black/40 font-bold mb-0.5">02</div>
+            <div class="text-[13px] font-extrabold accent">CORTEX</div>
+            <div class="text-[10px] text-black/55 mt-0.5 leading-tight">researches</div>
+          </div>
+          <div class="flex items-center text-black/25 text-[14px] font-bold">→</div>
+          <div class="flex-1 text-center px-1.5">
+            <div class="text-[9px] uppercase tracking-widest text-black/40 font-bold mb-0.5">03</div>
+            <div class="text-[13px] font-extrabold accent">STRIKER</div>
+            <div class="text-[10px] text-black/55 mt-0.5 leading-tight">writes</div>
+          </div>
+          <div class="flex items-center text-black/25 text-[14px] font-bold">→</div>
+          <div class="flex-1 text-center px-1.5">
+            <div class="text-[9px] uppercase tracking-widest text-black/40 font-bold mb-0.5">04</div>
+            <div class="text-[13px] font-extrabold accent">PULSE</div>
+            <div class="text-[10px] text-black/55 mt-0.5 leading-tight">follows up</div>
+          </div>
+          <div class="flex items-center text-black/25 text-[14px] font-bold">→</div>
+          <div class="flex-1 text-center px-1.5">
+            <div class="text-[9px] uppercase tracking-widest text-black/40 font-bold mb-0.5">05</div>
+            <div class="text-[13px] font-extrabold accent">SENTINEL</div>
+            <div class="text-[10px] text-black/55 mt-0.5 leading-tight">monitors</div>
+          </div>
+          <div class="flex items-center text-black/25 text-[14px] font-bold">+</div>
+          <div class="flex-1 text-center px-1.5 border-l border-black/10 ml-1">
+            <div class="text-[9px] uppercase tracking-widest font-bold mb-0.5" style="color:#c75d35">GATE</div>
+            <div class="text-[13px] font-extrabold text-black">HUMAN</div>
+            <div class="text-[10px] text-black/55 mt-0.5 leading-tight">approves each send</div>
+          </div>
+        </div>
+        <div class="text-center text-[10px] text-black/45 mt-2 uppercase tracking-widest">+ task-specific sub-agents per workflow</div>
+      </div>
+    </div>
+
+    <!-- PAYOFF -->
+    <div class="mt-auto">
+      <div class="border-t border-black/15 pt-4 pb-3 text-center">
+        <div class="serif text-[32px] font-black leading-tight">We didn't fire the agency.</div>
+        <div class="serif text-[32px] font-black leading-tight accent">We outgrew the model.</div>
+        <div class="text-[13px] text-black/60 mt-1.5 max-w-[620px] mx-auto">The contract wasn't the problem. The architecture was. One operator now runs what five people used to.</div>
+      </div>
+
+      <!-- CTA -->
+      <div class="flex items-center justify-between rounded-xl px-5 py-3.5 mb-3" style="background:#c75d35;flex:1">
+        <div>
+          <div class="text-[15px] font-extrabold text-white tracking-tight">Comment "STACK"</div>
+          <div class="text-[11px] uppercase tracking-widest text-white/80 mt-0.5">I'll send you the full agent architecture</div>
+        </div>
+        <div class="text-white text-[22px]">→</div>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="footer" style="border-top: 1px dashed rgba(199,93,53,0.3); padding-top: 16px; display: flex; align-items: center; justify-content: space-between; margin-top: auto;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; color: rgba(0,0,0,0.5); text-transform: uppercase; display: flex; align-items: center; gap: 10px;">
+          <img src="https://app.51ultron.com/favicon.ico" alt="Ultron" style="width: 24px; height: 24px; object-fit: contain;">
+          <strong style="color: #1a1a1a;">ULTRON OS</strong> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure
+        </div>
+        <div style="font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 800; color: #1a1a1a; letter-spacing: -0.5px;">51ultron.com</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+</body>
+</html>

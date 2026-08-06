@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 44 · Target Not Write · v1</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* BUDGET 1450 */
+  body{background:#f4ede0;margin:0;padding:24px 0}
+  .scaler{display:flex;justify-content:center;align-items:flex-start}
+  .scaler>.poster{transform-origin:top center;transform:scale(calc(min(100vw / 1130, (100vh - 48px) / 1510)))}
+  .poster{width:1080px;height:1450px;background:var(--ink-cream-50);display:flex;flex-direction:column;padding:28px 40px 20px;overflow:hidden}
+  .mono{font-family:'JetBrains Mono',monospace}
+  .fraunces{font-family:'Fraunces',Georgia,serif;font-feature-settings:'ss01' on}
+  .accent{color:var(--accent-dark)}
+  .diff-line{display:flex;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;line-height:1.7}
+  .ln{width:34px;flex-shrink:0;text-align:right;padding-right:10px;color:rgba(0,0,0,0.32);font-size:9px}
+  .mk{width:14px;flex-shrink:0;text-align:center;font-weight:700}
+  .body{flex:1;padding-left:6px;color:rgba(0,0,0,0.78)}
+  .rm{background:rgba(192,57,43,0.07)}.rm .mk{color:#c0392b}
+  .ad{background:rgba(22,163,74,0.07)}.ad .mk{color:#16a34a}
+  .kw{color:#7c3aed;font-weight:700}
+  .st{color:#0c7a4c}
+  .nm-fn{color:#1e6bd2;font-weight:700}
+  .com{color:rgba(0,0,0,0.40);font-style:italic}
+  .anno-chip{background:#FFFFFF;border:1px solid var(--accent-dark);border-radius:4px;padding:4px 9px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:800;letter-spacing:.12em;color:var(--accent-dark);transform:rotate(-1.5deg);box-shadow:0 2px 6px rgba(199,93,53,0.18);white-space:nowrap}
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="poster">
+
+  <!-- HEADER -->
+  <div style="flex-shrink:0;height:44px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(0,0,0,0.08);margin-bottom:12px">
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(0,0,0,0.40)">FOUNDER GTM · AI SELECTION &gt; AI WRITING · ULTRON OS</span>
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(0,0,0,0.30)">NO. 44 · DIFF: v2 → v3</span>
+  </div>
+
+  <!-- HERO -->
+  <div style="flex-shrink:0;margin-bottom:16px">
+    <div class="mono accent" style="font-size:10px;font-weight:800;letter-spacing:.22em;margin-bottom:12px">SAME MODEL · DIFFERENT JOB · 4X CONVERSION</div>
+    <div class="fraunces" style="font-weight:900;font-size:60px;line-height:0.92;letter-spacing:-1.8px;color:var(--ink-black);margin-bottom:12px">Your team uses<br><span class="accent" style="font-style:italic">AI</span> to write. Mine uses<br>AI to decide who.</div>
+    <div style="font-family:'Inter',sans-serif;font-size:18px;font-weight:600;line-height:1.18;letter-spacing:-0.2px;color:rgba(0,0,0,0.55)">Writing is commodity. Selection is leverage. The diff is one function call.</div>
+  </div>
+
+  <!-- EYEBROW -->
+  <div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+    <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.18em;color:rgba(0,0,0,0.42)">EXHIBIT A · DIFF · outbound.py · v2 (most teams) → v3 (Ultron)</div>
+    <div style="display:flex;align-items:center;gap:6px"><div style="width:6px;height:6px;border-radius:50%;background:#16a34a"></div><span class="mono" style="font-size:8px;font-weight:800;letter-spacing:.14em;color:rgba(0,0,0,0.50)">+18 -14</span></div>
+  </div>
+
+  <!-- ARTIFACT PANEL -->
+  <div style="flex-shrink:0;min-height:792px;position:relative;background:#FFFFFF;border:1px solid rgba(0,0,0,0.10);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,0.05);overflow:hidden;margin-bottom:14px">
+
+    <!-- Chrome -->
+    <div style="height:36px;background:#F4F2EE;border-bottom:1px solid rgba(0,0,0,0.08);display:flex;align-items:center;padding:0 14px;gap:10px">
+      <div style="display:flex;gap:5px">
+        <div style="width:9px;height:9px;border-radius:50%;background:#E66B5A"></div>
+        <div style="width:9px;height:9px;border-radius:50%;background:#E8B341"></div>
+        <div style="width:9px;height:9px;border-radius:50%;background:#5BB964"></div>
+      </div>
+      <div style="flex:1;background:#FFFFFF;border:1px solid rgba(0,0,0,0.08);border-radius:5px;padding:4px 10px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:600;color:rgba(0,0,0,0.55);text-align:center">github.com / ultron / outbound · compare: v2…v3</div>
+      <span class="mono accent" style="font-size:8px;font-weight:800;letter-spacing:.14em">+18 -14</span>
+    </div>
+
+    <!-- Diff file header -->
+    <div style="padding:10px 16px;background:rgba(0,0,0,0.025);border-bottom:1px solid rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="mono" style="font-size:11px;font-weight:800;color:var(--ink-black)">outbound.py</span>
+        <span class="mono" style="font-size:9px;font-weight:600;color:rgba(0,0,0,0.45)">· 1 function · 32 lines</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px">
+        <span style="background:rgba(192,57,43,0.10);color:#c0392b;padding:2px 7px;border-radius:3px;font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:800;letter-spacing:.10em">-14 WRITING</span>
+        <span style="background:rgba(22,163,74,0.10);color:#16a34a;padding:2px 7px;border-radius:3px;font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:800;letter-spacing:.10em">+18 SELECTING</span>
+      </div>
+    </div>
+
+    <!-- Two-column diff body -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;height:calc(100% - 36px - 49px - 90px - 40px)">
+
+      <!-- LEFT: v2 (most teams) -->
+      <div style="border-right:1px solid rgba(0,0,0,0.08);overflow:hidden">
+        <div style="padding:8px 14px;background:rgba(192,57,43,0.04);border-bottom:1px solid rgba(0,0,0,0.05);display:flex;align-items:center;justify-content:space-between">
+          <span class="mono" style="font-size:9px;font-weight:800;letter-spacing:.16em;color:#c0392b">- v2 · MOST TEAMS</span>
+          <span class="mono" style="font-size:8px;font-weight:700;color:rgba(0,0,0,0.40);letter-spacing:.10em">"USE AI TO WRITE"</span>
+        </div>
+        <div style="padding:10px 6px">
+          <div class="diff-line rm"><span class="ln">01</span><span class="mk">-</span><span class="body"><span class="com"># goal: more output, faster</span></span></div>
+          <div class="diff-line rm"><span class="ln">02</span><span class="mk">-</span><span class="body"><span class="kw">def</span> <span class="nm-fn">run_outbound</span>(prospects):</span></div>
+          <div class="diff-line rm"><span class="ln">03</span><span class="mk">-</span><span class="body">  <span class="com"># take whatever list marketing gave you</span></span></div>
+          <div class="diff-line rm"><span class="ln">04</span><span class="mk">-</span><span class="body">  <span class="kw">for</span> p <span class="kw">in</span> prospects:</span></div>
+          <div class="diff-line rm"><span class="ln">05</span><span class="mk">-</span><span class="body">    msg = ai.<span class="nm-fn">write_email</span>(</span></div>
+          <div class="diff-line rm"><span class="ln">06</span><span class="mk">-</span><span class="body">      tone=<span class="st">"professional"</span>,</span></div>
+          <div class="diff-line rm"><span class="ln">07</span><span class="mk">-</span><span class="body">      length=<span class="st">"medium"</span>,</span></div>
+          <div class="diff-line rm"><span class="ln">08</span><span class="mk">-</span><span class="body">      cta=<span class="st">"book a demo"</span></span></div>
+          <div class="diff-line rm"><span class="ln">09</span><span class="mk">-</span><span class="body">    )</span></div>
+          <div class="diff-line rm"><span class="ln">10</span><span class="mk">-</span><span class="body">    ai.<span class="nm-fn">spin_subject</span>(msg, variants=<span class="st">5</span>)</span></div>
+          <div class="diff-line rm"><span class="ln">11</span><span class="mk">-</span><span class="body">    ai.<span class="nm-fn">personalize</span>(msg, name=p.name)</span></div>
+          <div class="diff-line rm"><span class="ln">12</span><span class="mk">-</span><span class="body">    ai.<span class="nm-fn">grammar_check</span>(msg)</span></div>
+          <div class="diff-line rm"><span class="ln">13</span><span class="mk">-</span><span class="body">    send(p, msg)</span></div>
+          <div class="diff-line rm"><span class="ln">14</span><span class="mk">-</span><span class="body">  <span class="kw">return</span> <span class="nm-fn">count_sent</span>()  <span class="com"># vanity metric</span></span></div>
+        </div>
+      </div>
+
+      <!-- RIGHT: v3 (Ultron) -->
+      <div style="overflow:hidden">
+        <div style="padding:8px 14px;background:rgba(22,163,74,0.05);border-bottom:1px solid rgba(0,0,0,0.05);display:flex;align-items:center;justify-content:space-between">
+          <span class="mono" style="font-size:9px;font-weight:800;letter-spacing:.16em;color:#16a34a">+ v3 · ULTRON</span>
+          <span class="mono" style="font-size:8px;font-weight:700;color:rgba(0,0,0,0.40);letter-spacing:.10em">"USE AI TO DECIDE"</span>
+        </div>
+        <div style="padding:10px 6px">
+          <div class="diff-line ad"><span class="ln">01</span><span class="mk">+</span><span class="body"><span class="com"># goal: fewer sends, more replies</span></span></div>
+          <div class="diff-line ad"><span class="ln">02</span><span class="mk">+</span><span class="body"><span class="kw">def</span> <span class="nm-fn">run_outbound</span>(universe):</span></div>
+          <div class="diff-line ad"><span class="ln">03</span><span class="mk">+</span><span class="body">  signals = ai.<span class="nm-fn">scan</span>(universe, lookback=<span class="st">"24h"</span>)</span></div>
+          <div class="diff-line ad"><span class="ln">04</span><span class="mk">+</span><span class="body">  ranked  = ai.<span class="nm-fn">rank</span>(signals, by=<span class="st">"intent×fit"</span>)</span></div>
+          <div class="diff-line ad"><span class="ln">05</span><span class="mk">+</span><span class="body">  picks   = ai.<span class="nm-fn">select</span>(ranked, score_min=<span class="st">75</span>)</span></div>
+          <div class="diff-line ad"><span class="ln">06</span><span class="mk">+</span><span class="body">  <span class="com"># 9 of 10 prospects get dropped HERE</span></span></div>
+          <div class="diff-line ad"><span class="ln">07</span><span class="mk">+</span><span class="body">  <span class="kw">for</span> p <span class="kw">in</span> picks:</span></div>
+          <div class="diff-line ad"><span class="ln">08</span><span class="mk">+</span><span class="body">    dossier = ai.<span class="nm-fn">enrich</span>(p, depth=<span class="st">"evidence"</span>)</span></div>
+          <div class="diff-line ad"><span class="ln">09</span><span class="mk">+</span><span class="body">    msg = ai.<span class="nm-fn">draft</span>(dossier, cap=<span class="st">70</span>)</span></div>
+          <div class="diff-line ad"><span class="ln">10</span><span class="mk">+</span><span class="body">    <span class="kw">if not</span> human.<span class="nm-fn">approve</span>(msg):</span></div>
+          <div class="diff-line ad"><span class="ln">11</span><span class="mk">+</span><span class="body">      <span class="kw">continue</span>  <span class="com"># gate kills most drafts</span></span></div>
+          <div class="diff-line ad"><span class="ln">12</span><span class="mk">+</span><span class="body">    send(p, msg)</span></div>
+          <div class="diff-line ad"><span class="ln">13</span><span class="mk">+</span><span class="body">  <span class="kw">return</span> <span class="nm-fn">count_replies</span>()  <span class="com"># real metric</span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Outcome comparison bar -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(0,0,0,0.08);background:rgba(0,0,0,0.015)">
+      <div style="padding:14px 18px;border-right:1px solid rgba(0,0,0,0.08)">
+        <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.16em;color:rgba(0,0,0,0.45);text-transform:uppercase">v2 RESULT · 30-DAY</div>
+        <div style="display:flex;align-items:baseline;gap:10px;margin-top:3px">
+          <span class="fraunces" style="font-size:22px;font-weight:900;line-height:1;color:rgba(0,0,0,0.65);letter-spacing:-0.6px">2,400 sent · 19 booked</span>
+        </div>
+        <div class="mono" style="font-size:9px;font-weight:700;color:rgba(0,0,0,0.50);letter-spacing:.10em;margin-top:3px">0.8% REPLY · $312K PIPE</div>
+      </div>
+      <div style="padding:14px 18px">
+        <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.16em;color:var(--accent-dark);text-transform:uppercase">v3 RESULT · 30-DAY</div>
+        <div style="display:flex;align-items:baseline;gap:10px;margin-top:3px">
+          <span class="fraunces accent" style="font-size:22px;font-weight:900;line-height:1;letter-spacing:-0.6px">94 sent · 31 booked</span>
+        </div>
+        <div class="mono accent" style="font-size:9px;font-weight:800;letter-spacing:.10em;margin-top:3px">33% REPLY · $1.04M PIPE · 4.1X</div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div style="position:absolute;left:0;right:0;bottom:0;height:40px;background:#FAF9F5;border-top:1px solid rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:space-between;padding:0 16px">
+      <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(0,0,0,0.45)">DIFF +18 -14 · 25X FEWER SENDS · 3.3X MORE BOOKED · 3.3X PIPE</span>
+      <span class="mono accent" style="font-size:8px;font-weight:800;letter-spacing:.14em">MERGED · MAIN · LIVE</span>
+    </div>
+
+    <!-- ANNOTATIONS -->
+    <svg style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none" viewBox="0 0 1000 792">
+      <!-- Arrow to LEFT "write_email" line -->
+      <path d="M 150,150 Q 170,180 200,232" stroke="#C6613F" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <polygon points="194,228 200,238 207,228" fill="#C6613F"/>
+      <!-- Arrow to RIGHT "select" line -->
+      <path d="M 870,150 Q 840,170 800,222" stroke="#C6613F" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <polygon points="804,216 798,224 808,228" fill="#C6613F"/>
+    </svg>
+
+    <!-- Annotation chips -->
+    <div style="position:absolute;top:120px;left:30px"><div class="anno-chip" style="transform:rotate(-2deg)">WRITING = COMMODITY</div></div>
+    <div style="position:absolute;top:120px;right:30px"><div class="anno-chip" style="transform:rotate(2deg)">SELECTION = LEVERAGE</div></div>
+  </div>
+
+  <!-- BRIDGE -->
+  <div style="flex-shrink:0;margin-bottom:14px">
+    <div class="fraunces" style="font-size:18px;font-weight:700;line-height:1.18;letter-spacing:-0.3px;color:rgba(0,0,0,0.58);font-style:italic">Anyone can write 2,400 emails. Almost nobody can pick the 94 that should exist.</div>
+  </div>
+
+  <!-- CTA -->
+  <div style="flex-shrink:0;margin-top:auto;background:#c75d35;border-radius:10px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 32px;margin-bottom:12px">
+    <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:#f4ede0;line-height:1.55">Follow for one AI outbound system every day.<br>Comment <strong>TARGET</strong> and I will send you the exact Claude workflow we used.</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:800;color:#c75d35;background:#f4ede0;border-radius:6px;padding:14px 22px;letter-spacing:.08em;white-space:nowrap;flex-shrink:0">TARGET</div>
+  </div>
+
+  <!-- MICRO STAT -->
+  <div style="flex-shrink:0;height:30px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(0,0,0,0.08)">
+    <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(0,0,0,0.32)">ULTRON · AI GTM OPERATOR · 51ULTRON.COM</span>
+    <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(0,0,0,0.32)">94 SENT · 31 BOOKED · 4.1X RATE</span>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img src="ultron-logo.png" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0"
+        onerror="this.style.cssText='width:28px;height:28px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 72% 22%,rgba(255,140,80,.95) 0%,rgba(220,80,30,.3) 22%,transparent 36%),radial-gradient(circle at 22% 76%,rgba(55,170,255,.95) 0%,rgba(30,130,220,.3) 22%,transparent 38%),radial-gradient(circle at 38% 38%,rgba(30,30,50,1) 0%,#060810 55%,#000 100%)'">
+      <strong style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#f4ecd6;text-transform:uppercase;letter-spacing:0.06em">ULTRON OS</strong><span style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:rgba(232,224,208,0.60);letter-spacing:0.06em;text-transform:uppercase"> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure</span>
+    </div>
+    <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:800;color:#f4ecd6;letter-spacing:-0.5px">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

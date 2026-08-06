@@ -1,0 +1,55 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+:root{--slate:#191919;--slate2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--cloud:#919180;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;}
+.frame{width:1080px;height:1450px;background:var(--slate);padding:42px 46px 28px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;}
+.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.4px,transparent 1.5px);background-size:30px 30px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 56% 28% at 88% -1%,rgba(204,120,92,.2) 0%,transparent 60%),radial-gradient(ellipse 50% 24% at 4% 101%,rgba(212,162,127,.1) 0%,transparent 60%);}
+.frame>*{position:relative;z-index:2;}
+.hero{flex-shrink:0;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding-bottom:18px;border-bottom:1px solid var(--rule);}
+.eye{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--book);margin-bottom:11px;}
+.hook{font-weight:900;font-size:55px;line-height:.95;letter-spacing:-1.8px;color:var(--ivory);}.hook em{color:var(--book);font-style:normal;}
+.sub{margin-top:12px;font-size:19px;font-weight:500;line-height:1.38;color:var(--ink70);max-width:640px;}.sub b{color:var(--ivory);font-weight:700;}
+.donut-w{flex-shrink:0;position:relative;width:138px;height:138px;display:flex;align-items:center;justify-content:center;}
+.donut{width:138px;height:138px;transform:rotate(-90deg);filter:drop-shadow(0 0 18px rgba(204,120,92,.45));}
+.donut .trk{fill:none;stroke:var(--ink14);stroke-width:9;}.donut .arc{fill:none;stroke:var(--book);stroke-width:9;stroke-linecap:round;}
+.donut-c{position:absolute;display:flex;flex-direction:column;align-items:center;}
+.donut-n{font-weight:900;font-size:40px;color:var(--book);line-height:.8;}.donut-l{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--ink46);margin-top:5px;}
+.sec{font-family:'DM Mono',monospace;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--book);flex-shrink:0;margin:15px 0 10px;display:flex;justify-content:space-between;}
+.sec .sx{color:var(--ink30);}
+.pl{flex:1;display:flex;flex-direction:column;gap:9px;min-height:0;}
+.pc{flex:1;display:grid;grid-template-columns:96px 1fr 220px;align-items:center;gap:16px;background:rgba(255,255,255,.03);border:1px solid var(--rule);border-left:4px solid var(--c);border-radius:14px;padding:0 20px;}
+.pc.run{background:rgba(204,120,92,.1);border-color:var(--book);box-shadow:0 0 26px rgba(204,120,92,.14);}
+.pcl{display:flex;flex-direction:column;gap:7px;}
+.pnum{font-weight:900;font-size:30px;line-height:.8;color:var(--c);}
+.pkind{font-family:'DM Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.07em;color:var(--ink70);background:rgba(250,250,247,.05);border:1px solid var(--rule);padding:4px 0;border-radius:5px;text-align:center;}
+.ptt{font-size:24px;font-weight:800;letter-spacing:-.4px;color:var(--ivory);line-height:1.04;}
+.pds{font-size:14px;font-weight:500;color:var(--ink46);line-height:1.3;margin-top:4px;}
+.pchips{display:flex;gap:8px;margin-top:10px;}
+.pchip{display:flex;gap:6px;align-items:baseline;font-family:'DM Mono',monospace;font-size:11px;background:rgba(250,250,247,.04);border:1px solid var(--rule);border-radius:6px;padding:5px 9px;}
+.pchip .k{color:var(--ink46);font-weight:500;letter-spacing:.04em;}.pchip .v{color:var(--ivory);font-weight:700;}
+.pcr{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:9px;}
+.pbig{font-weight:900;font-size:46px;line-height:.8;color:var(--c);}.pbig span{font-family:'DM Mono',monospace;font-size:13px;font-weight:600;color:var(--ink46);text-transform:uppercase;margin-left:6px;letter-spacing:.06em;}
+.ptag{font-family:'DM Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--c);border:1px solid var(--rule);padding:6px 14px;border-radius:30px;}
+.cta{flex-shrink:0;margin-top:14px;display:flex;align-items:stretch;border:1px solid var(--book);border-radius:13px;overflow:hidden;box-shadow:0 0 44px rgba(204,120,92,.18);}
+.cta-l{flex:1;padding:18px 26px;display:flex;flex-direction:column;justify-content:center;gap:5px;background:rgba(204,120,92,.07);}
+.cta-k{font-family:'DM Mono',monospace;font-size:14px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink46);}
+.cta-t{font-size:23px;font-weight:700;color:var(--ivory);line-height:1.2;}.cta-t b{color:var(--book);font-weight:900;}
+.cta-chip{flex-shrink:0;padding:0 32px;gap:12px;background:var(--book);display:flex;align-items:center;font-size:26px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#1a0f0a;}
+.cta-chip svg{width:26px;height:26px;stroke:#1a0f0a;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ftr{flex-shrink:0;margin-top:13px;display:flex;align-items:center;justify-content:space-between;gap:18px;border-top:1px solid var(--rule);padding-top:15px;}
+.fl{display:flex;align-items:center;gap:14px;min-width:0;}.flogo{width:40px;height:40px;border-radius:50%;object-fit:cover;}
+.ftx{font-family:'DM Mono',monospace;font-size:14px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--ink70);}.ftx b{color:var(--ivory);font-weight:500;}
+.furl{font-weight:900;font-size:23px;letter-spacing:-.6px;color:var(--ivory);}.furl em{color:var(--book);font-style:normal;}
+</style></head><body><div class="frame" id="artifact"><div class="atm"></div>
+<div class="hero"><div><div class="eye">Ultron Platform &middot; Builder</div><div class="hook">I stopped reading<br>walls of text. <em>Claude<br>builds the canvas.</em></div><div class="sub">When an answer has structure, Claude renders it as an <b>editable canvas</b>. The chat reply stays one line.</div></div><div class="donut-w"><svg class="donut" viewBox="0 0 100 100"><circle class="trk" cx="50" cy="50" r="42"/><circle class="arc" cx="50" cy="50" r="42" stroke-dasharray="232.2 263.9"/></svg><div class="donut-c"><div class="donut-n">88%</div><div class="donut-l">On canvas</div></div></div></div>
+<div class="sec"><span>Four kinds of canvas</span><span class="sx">the agent picks the fit</span></div>
+<div class="pl">
+<div class="pc run" style="--c:var(--book)"><div class="pcl"><div class="pnum">01</div><div class="pkind">TABLE</div></div><div><div class="ptt">Comparison table</div><div class="pds">Options versus criteria, side by side.</div><div class="pchips"><span class="pchip"><span class="k">ROWS</span><span class="v">80</span></span><span class="pchip"><span class="k">COLS</span><span class="v">9</span></span><span class="pchip"><span class="k">SORT</span><span class="v">live</span></span></div></div><div class="pcr"><div class="pbig">9<span>cols</span></div><div class="ptag">most common</div></div></div>
+<div class="pc" style="--c:var(--kraft)"><div class="pcl"><div class="pnum">02</div><div class="pkind">SCORE</div></div><div><div class="ptt">Score card</div><div class="pds">Weighted, with a total and a rank.</div><div class="pchips"><span class="pchip"><span class="k">CRITERIA</span><span class="v">5</span></span><span class="pchip"><span class="k">WEIGHTS</span><span class="v">yes</span></span><span class="pchip"><span class="k">RANK</span><span class="v">auto</span></span></div></div><div class="pcr"><div class="pbig">100<span>max</span></div><div class="ptag">ranked</div></div></div>
+<div class="pc" style="--c:var(--book-d)"><div class="pcl"><div class="pnum">03</div><div class="pkind">SEQUENCE</div></div><div><div class="ptt">Sequence</div><div class="pds">Steps over time, each with an owner.</div><div class="pchips"><span class="pchip"><span class="k">STEPS</span><span class="v">7</span></span><span class="pchip"><span class="k">OWNER</span><span class="v">each</span></span><span class="pchip"><span class="k">DUE</span><span class="v">date</span></span></div></div><div class="pcr"><div class="pbig">7<span>steps</span></div><div class="ptag">timed</div></div></div>
+<div class="pc" style="--c:var(--cloud)"><div class="pcl"><div class="pnum">04</div><div class="pkind">BLUEPRINT</div></div><div><div class="ptt">Blueprint</div><div class="pds">Named prose sections you can edit.</div><div class="pchips"><span class="pchip"><span class="k">SECTIONS</span><span class="v">6</span></span><span class="pchip"><span class="k">FORMAT</span><span class="v">md</span></span><span class="pchip"><span class="k">EDIT</span><span class="v">inline</span></span></div></div><div class="pcr"><div class="pbig">6<span>sections</span></div><div class="ptag">doc</div></div></div>
+</div>
+<div class="cta"><div class="cta-l"><div class="cta-k">Save this. Then</div><div class="cta-t">Comment <b>BUILDER</b> for the full canvas playbook.</div></div><div class="cta-chip">BUILDER <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+<div class="ftr"><div class="fl"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS &middot; PLATFORM</div></div><div class="furl">51ultron<em>.</em>com</div></div>
+</div></body></html>

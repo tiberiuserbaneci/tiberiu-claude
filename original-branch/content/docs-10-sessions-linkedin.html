@@ -1,0 +1,108 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+:root{--slate:#191919;--slate2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--cloud:#919180;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.frame{width:1080px;height:1450px;background:var(--slate);padding:38px 44px 24px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;}
+.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.4px,transparent 1.5px);background-size:30px 30px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 54% 24% at 90% -2%,rgba(204,120,92,.22) 0%,transparent 60%),radial-gradient(ellipse 48% 26% at 2% 102%,rgba(212,162,127,.12) 0%,transparent 60%);}
+.frame>*{position:relative;z-index:2;}
+.hero{flex-shrink:0;display:flex;align-items:flex-start;justify-content:space-between;gap:22px;padding-bottom:15px;border-bottom:1px solid var(--rule);}
+.eye{font-family:'DM Mono',monospace;font-size:14px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--book);margin-bottom:9px;}
+.hook{font-weight:900;font-size:40px;line-height:1.0;letter-spacing:-1.3px;color:var(--ivory);}.hook em{color:var(--book);font-style:normal;}
+.sub{margin-top:11px;font-size:17px;font-weight:500;line-height:1.34;color:var(--ink70);max-width:560px;}.sub b{color:var(--ivory);font-weight:700;}
+.statile{flex-shrink:0;display:flex;border:1px solid var(--rule);border-radius:16px;overflow:hidden;box-shadow:0 0 40px rgba(204,120,92,.14);}
+.st{padding:20px 30px 18px;text-align:center;}.st+.st{border-left:1px solid var(--rule);}
+.st .sn{font-weight:900;font-size:58px;line-height:.76;}.st.a .sn{color:var(--book);}.st.b .sn{color:var(--kraft);}.st.c .sn{color:var(--ivory);}
+.st.a{background:rgba(204,120,92,.1);}.st.b{background:rgba(212,162,127,.08);}.st.c{background:rgba(250,250,247,.03);}
+.st .sl{font-family:'DM Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink46);margin-top:11px;line-height:1.25;}
+.sec{flex-shrink:0;display:flex;align-items:center;gap:10px;margin:13px 0 9px;}
+.sec .sq{width:15px;height:15px;border-radius:4px;flex-shrink:0;}
+.sec .sl{font-family:'DM Mono',monospace;font-size:12.5px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;}
+.sec .sx{margin-left:auto;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink30);}
+.sec.s1 .sq{background:var(--book);}.sec.s1 .sl{color:var(--book);}
+.sec.s2 .sq{background:var(--book-d);}.sec.s2 .sl{color:var(--book-d);}
+.sec.s3 .sq{background:var(--kraft);}.sec.s3 .sl{color:var(--kraft);}
+/* ---- context table: name + prominent carry chips ---- */
+.tbl{display:flex;flex-direction:column;min-height:0;border:1px solid var(--rule);border-radius:12px;overflow:hidden;}
+.tbl.t1{flex:1.55;}
+.thead{flex-shrink:0;display:grid;align-items:center;background:rgba(204,120,92,.1);border-bottom:1px solid var(--rule);}
+.thead>div{font-family:'DM Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;padding:9px 18px;white-space:nowrap;color:var(--book);}
+.trow{flex:1;min-height:0;display:grid;align-items:center;}
+.trow+.trow{border-top:1px solid var(--rule);}
+.trow:nth-child(odd){background:rgba(250,250,247,.022);}
+.trow.hi{background:rgba(204,120,92,.1);box-shadow:inset 4px 0 0 var(--book);}
+.trow>div{padding:10px 18px;min-width:0;}
+.t1 .thead,.t1 .trow{grid-template-columns:48px 1fr 112px 112px;}
+.c-n{font-family:'DM Mono',monospace;font-weight:700;color:var(--book);font-size:18px;}
+.lay{display:flex;flex-direction:column;gap:9px;}
+.lay .nm{font-weight:800;font-size:20px;color:var(--ivory);letter-spacing:-.35px;line-height:1;}
+.lay .chips{display:flex;flex-wrap:wrap;gap:6px;}
+.ch{font-size:13px;font-weight:600;color:rgba(250,250,247,.9);background:rgba(250,250,247,.06);border:1px solid var(--ink14);border-radius:6px;padding:5px 11px;line-height:1;}
+.ch.k{color:var(--book);background:rgba(204,120,92,.14);border-color:rgba(204,120,92,.36);font-weight:800;}
+.tag2{font-family:'DM Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;padding:4px 9px;border-radius:5px;display:inline-block;white-space:nowrap;}
+.tg-stat{color:var(--book);border:1px solid var(--book);background:rgba(204,120,92,.12);}
+.tg-dyn{color:var(--kraft);border:1px solid var(--kraft);background:rgba(212,162,127,.08);}
+.tg-cache{color:#1a0f0a;background:var(--book);border:1px solid var(--book);}
+.tg-fresh{color:var(--ink46);border:1px solid var(--rule);background:rgba(250,250,247,.04);}
+/* ---- compression pipeline: big text fills the body ---- */
+.pipe{flex:1;min-height:0;display:grid;grid-template-columns:1fr 36px 1fr 36px 1fr;align-items:stretch;}
+.stg{display:flex;flex-direction:column;border:1px solid var(--rule);border-top:4px solid var(--book);border-radius:14px;padding:18px 20px;background:rgba(204,120,92,.05);}
+.stg.cost{border-top-color:var(--book-d);background:rgba(200,70,35,.07);}
+.stg .se{font-family:'DM Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink46);}
+.stg .snum{font-weight:900;font-size:78px;line-height:.78;color:var(--book);margin:8px 0 0;}.stg.cost .snum{color:var(--book-d);}
+.stg .snum span{font-size:15px;font-family:'DM Mono',monospace;font-weight:600;color:var(--ink46);margin-left:8px;letter-spacing:.02em;}
+.stg .sname{font-weight:900;font-size:29px;letter-spacing:-.6px;color:var(--ivory);margin-top:16px;line-height:1;}
+.stg .sd{font-size:17px;font-weight:500;color:var(--ink70);line-height:1.32;margin-top:10px;}
+.stg .sw{margin-top:auto;}
+.cbar{height:7px;border-radius:4px;background:var(--ink14);overflow:hidden;margin:13px 0 11px;}.cbar i{display:block;height:100%;background:var(--book);}.stg.cost .cbar i{background:var(--book-d);}
+.parrow{display:flex;align-items:center;justify-content:center;}
+.parrow svg{width:28px;height:28px;stroke:var(--book);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.parrow.last svg{stroke:var(--book-d);}
+/* ---- persistence: kraft icon-led cards (distinct from the table) ---- */
+.kcards{flex-shrink:0;display:grid;grid-template-columns:repeat(3,1fr);gap:13px;}
+.kc{display:flex;align-items:flex-start;gap:13px;background:rgba(212,162,127,.06);border:1px solid var(--rule);border-left:4px solid var(--kraft);border-radius:12px;padding:15px 16px;}
+.kc .ic{width:40px;height:40px;border-radius:11px;background:rgba(212,162,127,.1);border:1px solid rgba(212,162,127,.32);flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.kc .ic svg{width:21px;height:21px;stroke:var(--kraft);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.kc .cc{min-width:0;}
+.kc .cc b{display:block;font-size:18px;font-weight:800;color:var(--ivory);letter-spacing:-.3px;line-height:1.05;}
+.kc .cc span{display:block;font-size:13px;color:var(--ink70);line-height:1.3;margin-top:5px;}
+.kc .cc em{display:block;font-style:normal;font-family:'DM Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--kraft);margin-top:8px;}
+.cta{flex-shrink:0;margin-top:13px;display:flex;align-items:stretch;border:1px solid var(--book);border-radius:12px;overflow:hidden;box-shadow:0 0 44px rgba(204,120,92,.18);}
+.cta-l{flex:1;padding:13px 24px;display:flex;flex-direction:column;justify-content:center;gap:3px;background:rgba(204,120,92,.07);}
+.cta-k{font-family:'DM Mono',monospace;font-size:12.5px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink46);}
+.cta-t{font-size:20px;font-weight:700;color:var(--ivory);line-height:1.18;}.cta-t b{color:var(--book);font-weight:900;}
+.cta-chip{flex-shrink:0;padding:0 26px;gap:11px;background:var(--book);display:flex;align-items:center;font-size:23px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#1a0f0a;}
+.cta-chip svg{width:23px;height:23px;stroke:#1a0f0a;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ftr{flex-shrink:0;margin-top:11px;display:flex;align-items:center;justify-content:space-between;gap:18px;border-top:1px solid var(--rule);padding-top:11px;}
+.fl{display:flex;align-items:center;gap:13px;min-width:0;}.flogo{width:36px;height:36px;border-radius:50%;object-fit:cover;}
+.ftx{font-family:'DM Mono',monospace;font-size:13px;font-weight:400;letter-spacing:.11em;text-transform:uppercase;color:var(--ink70);}.ftx b{color:var(--ivory);font-weight:500;}
+.furl{font-weight:900;font-size:21px;letter-spacing:-.6px;color:var(--ivory);}.furl em{color:var(--book);font-style:normal;}
+</style></head><body><div class="frame" id="artifact"><div class="atm"></div>
+<div class="hero"><div><div class="eye">Ultron &middot; Session Memory</div><div class="hook">Most AI forgets between chats.<br><em>Claude resumes where I stopped.</em></div><div class="sub">Every session is persisted turn by turn and <b>auto-compresses as it grows</b> - it never resets, so I never re-explain my business.</div></div>
+<div class="statile"><div class="st a"><div class="sn">5</div><div class="sl">context<br>layers</div></div><div class="st b"><div class="sn">3</div><div class="sl">compress<br>tiers</div></div><div class="st c"><div class="sn">0</div><div class="sl">manual<br>restarts</div></div></div></div>
+<div class="sec s1"><span class="sq"></span><span class="sl">Context assembly at start</span><span class="sx">loaded in this order</span></div>
+<div class="tbl t1">
+<div class="thead"><div>#</div><div>Layer &amp; what it carries</div><div>Type</div><div>Cache</div></div>
+<div class="trow hi"><div class="c-n">1</div><div class="lay"><div class="nm">Static instructions</div><div class="chips"><span class="ch">behavior rules</span><span class="ch">tool-use guidelines</span><span class="ch">quality gates</span><span class="ch">model tiers</span></div></div><div><span class="tag2 tg-stat">Static</span></div><div><span class="tag2 tg-cache">Cached</span></div></div>
+<div class="trow"><div class="c-n">2</div><div class="lay"><div class="nm">Business profile</div><div class="chips"><span class="ch">ICP</span><span class="ch">voice &amp; tone</span><span class="ch">competitors</span><span class="ch">pricing</span><span class="ch">case studies</span><span class="ch">platforms</span></div></div><div><span class="tag2 tg-dyn">Dynamic</span></div><div><span class="tag2 tg-fresh">Fresh</span></div></div>
+<div class="trow"><div class="c-n">3</div><div class="lay"><div class="nm">Integrations</div><div class="chips"><span class="ch">Google Workspace</span><span class="ch">Stripe</span><span class="ch">HubSpot</span><span class="ch">Apollo</span><span class="ch">Notion</span><span class="ch">Composio</span><span class="ch">MCP servers</span></div></div><div><span class="tag2 tg-dyn">Dynamic</span></div><div><span class="tag2 tg-fresh">Fresh</span></div></div>
+<div class="trow"><div class="c-n">4</div><div class="lay"><div class="nm">Relevant memories</div><div class="chips"><span class="ch k">top 5 entries</span><span class="ch">ranked by recall</span><span class="ch">facts</span><span class="ch">lessons</span><span class="ch">preferences</span></div></div><div><span class="tag2 tg-dyn">Dynamic</span></div><div><span class="tag2 tg-fresh">Fresh</span></div></div>
+<div class="trow"><div class="c-n">5</div><div class="lay"><div class="nm">Today's date</div><div class="chips"><span class="ch">current date</span><span class="ch">system reminder</span><span class="ch">loaded last</span><span class="ch">every turn</span></div></div><div><span class="tag2 tg-dyn">Dynamic</span></div><div><span class="tag2 tg-fresh">Fresh</span></div></div>
+</div>
+<div class="sec s2"><span class="sq"></span><span class="sl">Auto-compression as it grows</span><span class="sx">2 of 3 passes are free</span></div>
+<div class="pipe">
+<div class="stg"><div class="se">Pass 1</div><div class="snum">0<span>API calls</span></div><div class="sname">MicroCompact</div><div class="sd">Drops stale tool output from the oldest turns first</div><div class="sw"><div class="cbar"><i style="width:4%"></i></div><span class="tag2 tg-stat">Fires first</span></div></div>
+<div class="parrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+<div class="stg"><div class="se">Pass 2</div><div class="snum">0<span>API calls</span></div><div class="sname">Memory Compact</div><div class="sd">Uses your stored memories as the new baseline</div><div class="sw"><div class="cbar"><i style="width:4%"></i></div><span class="tag2 tg-stat">Then</span></div></div>
+<div class="parrow last"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+<div class="stg cost"><div class="se">Pass 3</div><div class="snum">1<span>fast model</span></div><div class="sname">API Digest</div><div class="sd">Full LLM summary of the session, only when needed</div><div class="sw"><div class="cbar"><i style="width:100%"></i></div><span class="tag2" style="color:var(--book-d);border:1px solid var(--book-d);background:rgba(200,70,35,.1)">Last resort</span></div></div>
+</div>
+<div class="sec s3"><span class="sq"></span><span class="sl">Persisted &amp; tracked</span><span class="sx">every turn, fully resumable</span></div>
+<div class="kcards">
+<div class="kc"><span class="ic"><svg viewBox="0 0 24 24"><path d="M6 2h9l4 4v16H6z"/><path d="M14 2v5h5"/></svg></span><div class="cc"><b>Transcript</b><span>JSONL, one object per message turn</span><em>per turn</em></div></div>
+<div class="kc"><span class="ic"><svg viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg></span><div class="cc"><b>Each turn logged</b><span>message, tool calls, results, tokens, timestamps</span><em>lossless</em></div></div>
+<div class="kc"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5a2.5 2 0 0 0-2.5-1.5c-1.5 0-2.5.8-2.5 2s1 1.8 2.5 2 2.5.8 2.5 2-1 2-2.5 2a2.5 2 0 0 1-2.5-1.5M12 6.5v11"/></svg></span><div class="cc"><b>Cost tracked</b><span>input + output tokens, model per call, per turn and session</span><em>in Usage</em></div></div>
+</div>
+<div class="cta"><div class="cta-l"><div class="cta-k">Save this. Then</div><div class="cta-t">Comment <b>CONTEXT</b> for the full Ultron session architecture.</div></div><div class="cta-chip">CONTEXT <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+<div class="ftr"><div class="fl"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS &middot; SESSION MEMORY</div></div><div class="furl">51ultron<em>.</em>com</div></div>
+</div></body></html>

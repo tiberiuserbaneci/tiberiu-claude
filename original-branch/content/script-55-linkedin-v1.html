@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 55 · Voice Library · v1</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* BUDGET 1450 */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body{background:#070a10;margin:0;padding:24px 0}
+  .scaler{display:flex;justify-content:center;align-items:flex-start}
+  .scaler>.poster{transform-origin:top center;transform:scale(calc(min(100vw / 1130, (100vh - 48px) / 1510)))}
+  .poster{
+    width:1080px;height:1450px;background:#18130b;
+    padding:28px 40px 20px;
+    display:flex;flex-direction:column;
+    overflow:hidden;color:#e8e0d0;
+    font-family:'Inter',sans-serif;
+  }
+  .mono{font-family:'JetBrains Mono',monospace}
+  .fraunces{font-family:'Fraunces',Georgia,serif;font-feature-settings:'ss01' on}
+  .accent{color:#ed7f4a}
+
+  /* Header */
+  .hdr{flex-shrink:0;height:32px;display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+  .hdr .l{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(232,224,208,0.35)}
+  .hdr .r{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(232,224,208,0.28)}
+
+  /* Hook */
+  .hook{flex-shrink:0;margin-bottom:14px}
+  .hook .eb{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:800;letter-spacing:.22em;color:#ed7f4a;margin-bottom:10px}
+  .hook .ti{font-family:'Fraunces',serif;font-weight:900;font-size:58px;line-height:0.94;letter-spacing:-1.6px;color:#f4ede0}
+  .hook .ti .ac{color:#ed7f4a;font-style:italic}
+  .hook .sub{margin-top:12px;font-size:17px;font-weight:600;line-height:1.28;letter-spacing:-0.2px;color:rgba(232,224,208,0.58)}
+
+  /* Section eyebrow */
+  .sec-eb{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+  .sec-eb .lt{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.18em;color:rgba(232,224,208,0.42)}
+  .sec-eb .rt{display:flex;align-items:center;gap:6px}
+  .sec-eb .rt .dot{width:6px;height:6px;border-radius:50%;background:#4ade80}
+  .sec-eb .rt .tx{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:800;letter-spacing:.14em;color:rgba(232,224,208,0.55)}
+
+  /* Artifact panel */
+  .panel{flex-shrink:0;position:relative;background:#10141c;border:1px solid rgba(255,255,255,0.06);border-radius:10px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.45);margin-bottom:14px}
+  .chrome{height:34px;background:#0a0d14;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;padding:0 14px;gap:10px}
+  .chrome .dots{display:flex;gap:5px}
+  .chrome .dots span{width:9px;height:9px;border-radius:50%;background:rgba(232,224,208,0.18)}
+  .chrome .url{flex:1;background:#070a10;border:1px solid rgba(255,255,255,0.06);border-radius:5px;padding:4px 10px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:600;color:rgba(232,224,208,0.55);text-align:center}
+  .chrome .badge{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:800;letter-spacing:.14em;color:#ed7f4a}
+
+  /* Ingestion bar */
+  .ing{padding:14px 22px;border-bottom:1px solid rgba(255,255,255,0.06)}
+  .ing .row{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px}
+  .ing .row .l{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:800;letter-spacing:.18em;color:rgba(232,224,208,0.60)}
+  .ing .row .r{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:800;letter-spacing:.10em;color:#ed7f4a}
+  .ing .bar{height:7px;background:rgba(255,255,255,0.04);border-radius:4px;overflow:hidden}
+  .ing .bar>div{width:100%;height:100%;background:linear-gradient(to right,#ed7f4a,#4ade80);border-radius:4px}
+  .ing .meta{display:flex;align-items:center;justify-content:space-between;margin-top:7px}
+  .ing .meta span{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.10em;color:rgba(232,224,208,0.45)}
+
+  /* Patterns grid */
+  .pats{padding:14px 22px;display:grid;grid-template-columns:1fr 1fr;gap:11px}
+  .pat-card{background:rgba(255,255,255,0.025);border:1px solid rgba(237,127,74,0.14);border-radius:6px;padding:11px 14px;display:flex;flex-direction:column;gap:5px}
+  .pat-card .h{display:flex;align-items:center;justify-content:space-between}
+  .pat-card .lbl{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:800;letter-spacing:.16em;color:#ed7f4a}
+  .pat-card .ct{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.10em;color:rgba(232,224,208,0.45)}
+  .pat-card .tt{font-family:'Inter',sans-serif;font-size:11px;font-weight:800;color:#f4ede0;letter-spacing:-0.1px;line-height:1.25}
+  .pat-card .ex{font-family:'Inter',sans-serif;font-size:10px;font-weight:600;color:rgba(232,224,208,0.78);line-height:1.4;font-style:italic;border-left:2px solid rgba(237,127,74,0.30);padding-left:8px}
+
+  /* Result row */
+  .res{margin:0 22px 12px;padding:12px 16px;background:rgba(237,127,74,0.08);border:1px solid rgba(237,127,74,0.25);border-radius:6px}
+  .res .lbl{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:800;letter-spacing:.18em;color:#ed7f4a;margin-bottom:7px}
+  .res .grid{display:grid;grid-template-columns:1fr 1px 1fr;gap:16px}
+  .res .cell .k{font-family:'JetBrains Mono',monospace;font-size:7px;font-weight:700;letter-spacing:.14em;color:rgba(232,224,208,0.55)}
+  .res .cell .v{display:flex;align-items:baseline;gap:9px;margin-top:3px}
+  .res .cell .v .n{font-family:'Fraunces',serif;font-size:22px;font-weight:900;line-height:1;letter-spacing:-0.5px;color:rgba(232,224,208,0.75)}
+  .res .cell .v .lab{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.10em;color:rgba(232,224,208,0.55)}
+  .res .cell .p{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;color:rgba(232,224,208,0.45);letter-spacing:.06em;margin-top:3px}
+  .res .cell.aft .k,.res .cell.aft .v .n,.res .cell.aft .v .lab,.res .cell.aft .p{color:#ed7f4a}
+  .res .cell.aft .v .n{font-weight:900}
+  .res .cell.aft .v .lab{font-weight:800}
+  .res .cell.aft .p{font-weight:800}
+  .res .div{background:rgba(255,255,255,0.10)}
+
+  /* Voice diff comparison */
+  .vc{margin:0 22px 12px;padding:14px 16px;background:rgba(255,255,255,0.018);border:1px solid rgba(255,255,255,0.07);border-radius:6px}
+  .vc-lbl{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:800;letter-spacing:.18em;color:rgba(232,224,208,0.38);margin-bottom:10px}
+  .vc-cols{display:grid;grid-template-columns:1fr 1px 1fr;gap:14px}
+  .vc-div{background:rgba(255,255,255,0.07)}
+  .vc-hd{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:800;letter-spacing:.14em;color:rgba(232,224,208,0.35);margin-bottom:7px;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,0.05)}
+  .vc-col.aft .vc-hd{color:#ed7f4a}
+  .vc-msg{font-family:'Inter',sans-serif;font-size:10px;font-weight:500;color:rgba(232,224,208,0.30);line-height:1.6}
+  .vc-col.aft .vc-msg{color:rgba(232,224,208,0.88)}
+  .vc-msg em{font-style:normal;color:rgba(232,224,208,0.45)}
+
+  /* Insight strip */
+  .ins{margin:0 22px 12px;padding:10px 14px;background:rgba(74,222,128,0.05);border:1px solid rgba(74,222,128,0.20);border-radius:6px}
+  .ins .l{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:800;letter-spacing:.18em;color:#4ade80;margin-bottom:3px}
+  .ins .t{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:#f4ede0;line-height:1.4}
+
+  /* Panel bottom bar */
+  .pbot{height:34px;background:#0a0d14;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;padding:0 16px}
+  .pbot span{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(232,224,208,0.45)}
+  .pbot .acc{color:#ed7f4a;font-weight:800}
+
+  /* Annotation chips */
+  .anno-chip{background:#ed7f4a;color:#18130b;border-radius:4px;padding:5px 10px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:800;letter-spacing:.12em;transform:rotate(-1.5deg);box-shadow:0 4px 12px rgba(237,127,74,0.25);white-space:nowrap}
+
+  /* KPI strip */
+  .kpi{flex-shrink:0;display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:14px}
+  .kpi .c{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:6px;padding:18px 0;text-align:center}
+  .kpi .v{font-family:'Fraunces',serif;font-size:28px;font-weight:900;color:#ed7f4a;line-height:1;letter-spacing:-0.6px;display:block}
+  .kpi .k{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;color:rgba(232,224,208,0.50);letter-spacing:.10em;margin-top:6px;display:block;text-transform:uppercase}
+
+  /* Bridge */
+  .bridge{flex-shrink:0;margin-bottom:12px;font-family:'Fraunces',serif;font-size:17px;font-weight:700;line-height:1.22;letter-spacing:-0.3px;color:rgba(232,224,208,0.65);font-style:italic}
+
+  /* CTA */
+  .cta{flex-shrink:0;margin-top:auto;background:#ed7f4a;border-radius:10px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 32px;margin-bottom:12px}
+  .cta .copy{font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:#18130b;line-height:1.55}
+  .cta .badge{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:800;color:#ed7f4a;background:#18130b;border-radius:6px;padding:13px 22px;letter-spacing:.08em;white-space:nowrap;flex-shrink:0}
+
+  /* Footer */
+  .ft{flex-shrink:0;padding-top:14px;border-top:1px dashed rgba(237,127,74,0.30);display:flex;align-items:center;justify-content:space-between}
+  .ft .l{display:flex;align-items:center;gap:10px}
+  .ft .l .n{font-family:'Inter',sans-serif;font-size:13px;font-weight:800;color:#f4ede0;letter-spacing:-0.2px}
+  .ft .l .t{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.12em;color:rgba(232,224,208,0.42)}
+  .ft .r{font-family:'Inter',sans-serif;font-size:13px;font-weight:800;color:#f4ede0;letter-spacing:-0.4px}
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="poster">
+
+  <div class="hdr">
+    <span class="l">FOUNDER GTM · AI VOICE LIBRARY · 800 EMAILS INGESTED · ULTRON OS</span>
+    <span class="r">NO. 55 · 800 SAMPLES · 4.0X</span>
+  </div>
+
+  <div class="hook">
+    <div class="eb">800 SENT EMAILS · 1 AI INGESTOR · 4.0X REPLY RATE</div>
+    <div class="ti">I gave <span class="ac">Claude</span><br>800 of my sent emails.<br>Reply rate 4x.</div>
+    <div class="sub">3 years of my sent folder. Claude extracted 4 patterns I never noticed I used. Reply rate: 2.1% to 8.4%.</div>
+  </div>
+
+  <div class="sec-eb">
+    <span class="lt">EXHIBIT A · VOICE INGESTION · 800/800 · 4 PATTERNS EXTRACTED</span>
+    <span class="rt"><span class="dot"></span><span class="tx">2.1% &rarr; 8.4%</span></span>
+  </div>
+
+  <div class="panel">
+    <div class="chrome">
+      <div class="dots"><span></span><span></span><span></span></div>
+      <div class="url">voice.ultron.com / ingest / sent-folder-3yr &middot; ready</div>
+      <div class="badge">v1.0 &middot; LIVE</div>
+    </div>
+
+    <div class="ing">
+      <div class="row"><div class="l">VOICE INGESTION</div><div class="r">800 / 800 &middot; 100%</div></div>
+      <div class="bar"><div></div></div>
+      <div class="meta"><span>SOURCE: GMAIL SENT &middot; 2023-01 &rarr; 2025-11</span><span>INGEST TIME: 11 MIN</span></div>
+    </div>
+
+    <div class="pats">
+      <div class="pat-card">
+        <div class="h"><span class="lbl">PATTERN #1</span><span class="ct">SEEN 412&times;</span></div>
+        <div class="tt">You start with the observation, not the ask.</div>
+        <div class="ex">"Saw Mercer closed Series C 8 days ago and you're hiring 14 GTM roles..."</div>
+      </div>
+      <div class="pat-card">
+        <div class="h"><span class="lbl">PATTERN #2</span><span class="ct">SEEN 308&times;</span></div>
+        <div class="tt">You never use "I" before line 3.</div>
+        <div class="ex">"They'll each show up with a different stack..." (not "I noticed...", "I think...")</div>
+      </div>
+      <div class="pat-card">
+        <div class="h"><span class="lbl">PATTERN #3</span><span class="ct">SEEN 247&times;</span></div>
+        <div class="tt">You close with a question that costs them nothing.</div>
+        <div class="ex">"Want the list?" / "Want to compare notes?" (not "Open to a call?")</div>
+      </div>
+      <div class="pat-card">
+        <div class="h"><span class="lbl">PATTERN #4</span><span class="ct">SEEN 193&times;</span></div>
+        <div class="tt">You sign off with first name only. No title. No link.</div>
+        <div class="ex">"- Tiberiu" (not "- Tiberiu Erbaneci, Founder @ Ultron")</div>
+      </div>
+      <div class="pat-card">
+        <div class="h"><span class="lbl">PATTERN #5</span><span class="ct">SEEN 156&times;</span></div>
+        <div class="tt">You put a real number in line 1. Not a claim. A count.</div>
+        <div class="ex">"14 GTM roles" / "31% churn signal" / "Series C, day 8."</div>
+      </div>
+      <div class="pat-card">
+        <div class="h"><span class="lbl">PATTERN #6</span><span class="ct">SEEN 84&times;</span></div>
+        <div class="tt">You never explain what Ultron does unless asked.</div>
+        <div class="ex">"Saw the announcement..." not "I run an AI GTM tool that helps teams..."</div>
+      </div>
+    </div>
+
+    <div class="vc">
+      <div class="vc-lbl">VOICE DIFF &middot; EMAIL #482 &middot; SAME PROSPECT &middot; SAME SIGNAL</div>
+      <div class="vc-cols">
+        <div class="vc-col bef">
+          <div class="vc-hd">BEFORE &middot; DEFAULT VOICE</div>
+          <div class="vc-msg">Hi Sarah,<br><br>I wanted to reach out about how Ultron could help your team with outbound. We help companies like yours improve pipeline quality with AI-powered tools...<br><br>Would you be open to a 30-minute call next week?<br><br><em>Best, Tiberiu Erbaneci / Founder @ Ultron</em></div>
+        </div>
+        <div class="vc-div"></div>
+        <div class="vc-col aft">
+          <div class="vc-hd">AFTER &middot; 800-EMAIL VOICE</div>
+          <div class="vc-msg">Noticed you posted about pipeline quality last week.<br><br>They're usually hiring before they fix it. That window is 6 weeks. After that procurement owns the decision.<br><br>Want the playbook?<br><br>- Tiberiu</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="res">
+      <div class="lbl">RESULT &middot; NEXT 30 DAYS &middot; SAME PROSPECTS &middot; SAME SIGNALS</div>
+      <div class="grid">
+        <div class="cell">
+          <div class="k">BEFORE &middot; DEFAULT VOICE</div>
+          <div class="v"><span class="n">2.1%</span><span class="lab">REPLY &middot; 5 BOOKED</span></div>
+          <div class="p">PIPE: $164K &middot; 240 SENT</div>
+        </div>
+        <div class="div"></div>
+        <div class="cell aft">
+          <div class="k">AFTER &middot; 800-EMAIL VOICE</div>
+          <div class="v"><span class="n">8.4%</span><span class="lab">REPLY &middot; 20 BOOKED &middot; 4.0X</span></div>
+          <div class="p">PIPE: $612K &middot; 238 SENT</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ins">
+      <div class="l">WHAT THE LIBRARY ACTUALLY DID</div>
+      <div class="t">Claude stopped writing in "Claude's voice" and started writing in mine. <strong>Same model. Same prompts. Reader trust changed because the voice became consistent with my other touchpoints.</strong></div>
+    </div>
+
+    <div class="pbot">
+      <span>800 EMAILS &middot; 4 PATTERNS &middot; 2.1% &rarr; 8.4% &middot; 4.0X &middot; PIPE $612K</span>
+      <span class="acc">STRIKER &middot; /persona/v1.0</span>
+    </div>
+  </div>
+
+  <div class="kpi">
+    <div class="c"><span class="v">800</span><span class="k">Emails</span></div>
+    <div class="c"><span class="v">4</span><span class="k">Patterns</span></div>
+    <div class="c"><span class="v">4.0x</span><span class="k">Reply lift</span></div>
+    <div class="c"><span class="v">$612K</span><span class="k">Pipe</span></div>
+    <div class="c"><span class="v">11min</span><span class="k">Ingest</span></div>
+  </div>
+
+  <div class="bridge">Most teams hunt for a better prompt. The better prompt is sitting in your sent folder, waiting to be read. 3 years. 800 emails. 4 patterns. Claude found them in 11 minutes.</div>
+
+  <div class="cta">
+    <div class="copy">Follow for one AI outbound system every day.<br>Comment <strong>LIBRARY</strong> and I will send you the exact Claude workflow we used.</div>
+    <div class="badge">LIBRARY</div>
+  </div>
+
+  <div class="ft">
+    <div class="l">
+      <img src="ultron-logo.png" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0"
+        onerror="this.style.cssText='width:28px;height:28px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 72% 22%,rgba(255,140,80,.95) 0%,rgba(220,80,30,.3) 22%,transparent 36%),radial-gradient(circle at 22% 76%,rgba(55,170,255,.95) 0%,rgba(30,130,220,.3) 22%,transparent 38%),radial-gradient(circle at 38% 38%,rgba(30,30,50,1) 0%,#060810 55%,#000 100%)'">
+      <div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:rgba(255,255,255,0.80);text-transform:uppercase;letter-spacing:0.06em"><strong>ULTRON OS</strong> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure</span>
+        <div class="t">AI GTM OPERATOR &middot; 800 EMAILS &middot; 4X REPLY</div>
+      </div>
+    </div>
+    <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:800;color:rgba(255,255,255,0.80);letter-spacing:-0.5px">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

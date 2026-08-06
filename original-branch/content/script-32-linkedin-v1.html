@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 32 · Demo Pitch Breakdown · v1</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* BUDGET 1450 */
+  body{background:#f4ede0;margin:0;padding:24px 0}
+  .scaler{display:flex;justify-content:center;align-items:flex-start}
+  .scaler>.poster{transform-origin:top center;transform:scale(calc(min(100vw / 1130, (100vh - 48px) / 1510)))}
+  .poster{width:1080px;height:1450px;background:var(--ink-cream-50);position:relative;overflow:hidden;box-sizing:border-box}
+  .mono{font-family:'JetBrains Mono',monospace}
+  .fraunces{font-family:'Fraunces',Georgia,serif;font-feature-settings:'ss01' on}
+  .accent{color:var(--accent-dark)}
+
+  .minute-card{
+    background:#FFFFFF;border:1px solid var(--ink-cream-200);border-radius:10px;
+    padding:14px 16px;box-sizing:border-box;
+  }
+  .killer-row{
+    display:flex;align-items:center;gap:10px;padding:8px 12px;
+    background:rgba(192,57,49,0.06);border-left:3px solid #c0392b;border-radius:4px;
+  }
+  .fixer-row{
+    display:flex;align-items:center;gap:10px;padding:8px 12px;
+    background:rgba(22,163,74,0.06);border-left:3px solid #16a34a;border-radius:4px;
+  }
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="poster">
+
+  <!-- HEADER -->
+  <div style="position:absolute;top:0;left:40px;right:40px;height:44px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--ink-cream-200)">
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(0,0,0,0.4)">FOUNDER GTM · DEMO INTEL · PITCH BREAKDOWN · ULTRON OS</span>
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(0,0,0,0.3)">NO. 32 · 22 CALLS · 88 HOURS</span>
+  </div>
+
+  <!-- HERO -->
+  <div style="position:absolute;top:60px;left:40px;right:40px">
+    <div class="mono accent" style="font-size:11px;font-weight:800;letter-spacing:.20em;margin-bottom:14px">22 DEMO CALLS · 88 HOURS OF TAPE · 1 AI ANALYST</div>
+    <div class="fraunces" style="font-weight:900;font-size:74px;line-height:0.90;letter-spacing:-2.4px;color:var(--ink-black);margin-bottom:14px"><span class="accent" style="font-style:italic">Claude</span> analyzed 22 demos. The deal dies at minute 4.</div>
+    <div class="fraunces" style="font-size:26px;font-weight:700;line-height:1.08;letter-spacing:-0.5px;color:var(--ink-gray-600)">Not minute 30. Not the pricing slide. Minute 4. Here is what happens.</div>
+  </div>
+
+  <!-- BIGSTAT -->
+  <div style="position:absolute;top:296px;left:40px;right:40px;height:68px;background:#FFFFFF;border:1px solid var(--ink-cream-200);border-radius:var(--radius-md);display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden">
+    <div style="padding:10px 18px;display:flex;flex-direction:column;gap:2px;border-right:1px solid var(--ink-cream-200)">
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--ink-gray-500);text-transform:uppercase">DEMOS REVIEWED</div>
+      <div class="fraunces" style="font-size:26px;font-weight:900;line-height:1;letter-spacing:-0.8px;color:var(--ink-black)">22</div>
+    </div>
+    <div style="padding:10px 18px;display:flex;flex-direction:column;gap:2px;border-right:1px solid var(--ink-cream-200)">
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--ink-gray-500);text-transform:uppercase">CLOSE TIME</div>
+      <div class="fraunces accent" style="font-size:26px;font-weight:900;line-height:1;letter-spacing:-0.8px">Min 4</div>
+    </div>
+    <div style="padding:10px 18px;display:flex;flex-direction:column;gap:2px;border-right:1px solid var(--ink-cream-200)">
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--ink-gray-500);text-transform:uppercase">WIN GAP</div>
+      <div class="fraunces" style="font-size:26px;font-weight:900;line-height:1;letter-spacing:-0.8px;color:var(--ink-black)">3.2x</div>
+    </div>
+    <div style="padding:10px 18px;display:flex;flex-direction:column;gap:2px">
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--ink-gray-500);text-transform:uppercase">AI READ TIME</div>
+      <div class="fraunces accent" style="font-size:26px;font-weight:900;line-height:1;letter-spacing:-0.8px">14 min</div>
+    </div>
+  </div>
+
+  <!-- TIMELINE LABEL -->
+  <div style="position:absolute;top:386px;left:40px;right:40px">
+    <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.18em;color:var(--ink-gray-500);margin-bottom:3px">FIG.01 · WHAT HAPPENS IN THE FIRST 8 MINUTES</div>
+    <div class="fraunces" style="font-size:22px;font-weight:900;letter-spacing:-0.5px;color:var(--ink-black)">The deal is won or lost before you share screen.</div>
+  </div>
+
+  <!-- 4 MINUTE CARDS -->
+  <div style="position:absolute;top:448px;left:40px;right:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+
+    <!-- M1 -->
+    <div class="minute-card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+        <div class="mono accent" style="font-size:9px;font-weight:800;letter-spacing:.14em">MIN 0 to 1</div>
+        <div style="font-family:'Inter',sans-serif;font-size:9px;font-weight:800;color:#16a34a">OPEN</div>
+      </div>
+      <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:800;color:var(--ink-black);letter-spacing:-0.2px;margin-bottom:6px;line-height:1.2">Hook + Pain restate</div>
+      <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:600;color:var(--ink-gray-600);line-height:1.4">Winners restate the prospect's pain in their words. Losers open with "thanks for joining".</div>
+    </div>
+
+    <!-- M2 -->
+    <div class="minute-card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+        <div class="mono accent" style="font-size:9px;font-weight:800;letter-spacing:.14em">MIN 1 to 3</div>
+        <div style="font-family:'Inter',sans-serif;font-size:9px;font-weight:800;color:#16a34a">VERIFY</div>
+      </div>
+      <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:800;color:var(--ink-black);letter-spacing:-0.2px;margin-bottom:6px;line-height:1.2">3 sharp questions</div>
+      <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:600;color:var(--ink-gray-600);line-height:1.4">Winners ask 3 cost questions. Losers ask 1 "tell me about your stack" and start demo.</div>
+    </div>
+
+    <!-- M3 - CRITICAL -->
+    <div class="minute-card" style="background:rgba(192,57,49,0.06);border:1px solid #c0392b">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+        <div class="mono" style="font-size:9px;font-weight:800;letter-spacing:.14em;color:#c0392b">MIN 3 to 4</div>
+        <div style="font-family:'Inter',sans-serif;font-size:9px;font-weight:800;color:#c0392b">KILL ZONE</div>
+      </div>
+      <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:800;color:var(--ink-black);letter-spacing:-0.2px;margin-bottom:6px;line-height:1.2">Champion check</div>
+      <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:600;color:var(--ink-gray-600);line-height:1.4">If you skip "who else needs to see this?" here, the deal will stall in week 3. Always.</div>
+    </div>
+
+    <!-- M4 -->
+    <div class="minute-card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+        <div class="mono accent" style="font-size:9px;font-weight:800;letter-spacing:.14em">MIN 4 to 8</div>
+        <div style="font-family:'Inter',sans-serif;font-size:9px;font-weight:800;color:#16a34a">SHOW</div>
+      </div>
+      <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:800;color:var(--ink-black);letter-spacing:-0.2px;margin-bottom:6px;line-height:1.2">Targeted demo</div>
+      <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:600;color:var(--ink-gray-600);line-height:1.4">Winners show 2 features tied to the named pain. Losers run a 30-min product tour.</div>
+    </div>
+  </div>
+
+  <!-- KILLERS VS FIXERS -->
+  <div style="position:absolute;top:678px;left:40px;right:40px;background:#FFFFFF;border:1px solid var(--ink-cream-200);border-radius:10px;padding:18px 22px">
+
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.18em;color:var(--ink-gray-500)">FIG.02 · THE 5 THINGS THAT KILL THE DEMO · WHAT TO REPLACE THEM WITH</div>
+      <div class="mono" style="font-size:8px;font-weight:800;letter-spacing:.14em;color:var(--accent-dark)">CLAUDE-TAGGED</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 28px 1fr;gap:0;column-gap:14px;row-gap:10px">
+
+      <div class="killer-row">
+        <span style="color:#c0392b;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:900">X</span>
+        <span style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--ink-black)">"Let me walk you through the platform"</span>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;color:var(--accent-dark);font-weight:800;font-size:13px">→</div>
+      <div class="fixer-row">
+        <span style="color:#16a34a;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:900">+</span>
+        <span style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--ink-black)">"You mentioned X. I will show 2 things"</span>
+      </div>
+
+      <div class="killer-row">
+        <span style="color:#c0392b;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:900">X</span>
+        <span style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--ink-black)">"How are you doing today?"</span>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;color:var(--accent-dark);font-weight:800;font-size:13px">→</div>
+      <div class="fixer-row">
+        <span style="color:#16a34a;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:900">+</span>
+        <span style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--ink-black)">"You said X is costing 4 hours per rep"</span>
+      </div>
+
+      <div class="killer-row">
+        <span style="color:#c0392b;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:900">X</span>
+        <span style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--ink-black)">"Tell me about your tech stack"</span>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;color:var(--accent-dark);font-weight:800;font-size:13px">→</div>
+      <div class="fixer-row">
+        <span style="color:#16a34a;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:900">+</span>
+        <span style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--ink-black)">"Who else sees this report each week?"</span>
+      </div>
+
+      <div class="killer-row">
+        <span style="color:#c0392b;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:900">X</span>
+        <span style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--ink-black)">Showing 6 features in 12 minutes</span>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;color:var(--accent-dark);font-weight:800;font-size:13px">→</div>
+      <div class="fixer-row">
+        <span style="color:#16a34a;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:900">+</span>
+        <span style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--ink-black)">Showing 2 features tied to one pain</span>
+      </div>
+
+      <div class="killer-row">
+        <span style="color:#c0392b;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:900">X</span>
+        <span style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--ink-black)">Closing with "any questions?"</span>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;color:var(--accent-dark);font-weight:800;font-size:13px">→</div>
+      <div class="fixer-row">
+        <span style="color:#16a34a;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:900">+</span>
+        <span style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--ink-black)">Closing with a written mutual plan</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- INSIGHT -->
+  <div style="position:absolute;top:1024px;left:40px;right:40px;background:rgba(199,93,53,0.06);border:1px solid rgba(199,93,53,0.20);border-radius:10px;padding:16px 22px">
+    <div class="fraunces" style="font-size:24px;font-weight:900;line-height:1.05;letter-spacing:-0.6px;color:var(--ink-black);margin-bottom:6px">The demo is not a <span class="accent" style="font-style:italic">tour</span>. It is a <span class="accent" style="font-style:italic">trial close</span>.</div>
+    <div style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;color:var(--ink-gray-600);line-height:1.45">Most founders treat the demo like a product walkthrough. Winners treat it like a 30-minute close attempt that starts at minute zero. Claude tags every demo against this.</div>
+  </div>
+
+  <!-- OUTCOME -->
+  <div style="position:absolute;top:1162px;left:40px;right:40px;height:56px;background:#FFFFFF;border:1px solid var(--ink-cream-200);border-radius:8px;display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden">
+    <div style="padding:0 16px;display:flex;flex-direction:column;justify-content:center;gap:2px;border-right:1px solid var(--ink-cream-200)">
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">WINNERS</div>
+      <div class="fraunces accent" style="font-size:22px;font-weight:900;line-height:1;letter-spacing:-0.5px">68%</div>
+    </div>
+    <div style="padding:0 16px;display:flex;flex-direction:column;justify-content:center;gap:2px;border-right:1px solid var(--ink-cream-200)">
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">LOSERS</div>
+      <div class="fraunces" style="font-size:22px;font-weight:900;line-height:1;letter-spacing:-0.5px;color:var(--ink-gray-600)">21%</div>
+    </div>
+    <div style="padding:0 16px;display:flex;flex-direction:column;justify-content:center;gap:2px;border-right:1px solid var(--ink-cream-200)">
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">GAP</div>
+      <div class="fraunces" style="font-size:22px;font-weight:900;line-height:1;letter-spacing:-0.5px;color:var(--ink-black)">3.2x</div>
+    </div>
+    <div style="padding:0 16px;display:flex;flex-direction:column;justify-content:center;gap:2px">
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">DECISION AT</div>
+      <div class="fraunces accent" style="font-size:22px;font-weight:900;line-height:1;letter-spacing:-0.5px">MIN 4</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="position:absolute;top:1232px;left:40px;right:40px;background:#FFFFFF;border:1px solid var(--accent-border);border-radius:12px;padding:18px 24px;box-sizing:border-box">
+    <div class="mono accent" style="font-size:9px;font-weight:800;letter-spacing:.20em;margin-bottom:8px">WANT THE DEMO TAGGER?</div>
+    <div class="fraunces" style="font-size:30px;font-weight:900;line-height:0.95;letter-spacing:-1px;color:var(--ink-black);margin-bottom:10px">Get the <span class="accent" style="font-style:italic">Claude workflow</span> that grades your demos in 14 minutes.</div>
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <div style="background:var(--accent-dark);color:#fff;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:800;letter-spacing:.18em;padding:8px 16px;border-radius:6px">COMMENT PITCH</div>
+      <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;color:var(--ink-gray-500)">and I will send you the exact Claude workflow I used.</div>
+    </div>
+  </div>
+
+  <!-- MICRO -->
+  <div style="position:absolute;top:1362px;left:40px;right:40px;height:30px;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:22px">
+      <div style="display:flex;align-items:center;gap:6px"><span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">CALLS GRADED</span><span class="fraunces accent" style="font-size:13px;font-weight:900;letter-spacing:-0.3px">22</span></div>
+      <div style="display:flex;align-items:center;gap:6px"><span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">WIN UPLIFT</span><span class="fraunces" style="font-size:13px;font-weight:900;color:var(--ink-black);letter-spacing:-0.3px">+47%</span></div>
+      <div style="display:flex;align-items:center;gap:6px"><span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">CUT POINT</span><span class="fraunces accent" style="font-size:13px;font-weight:900;letter-spacing:-0.3px">MIN 4</span></div>
+    </div>
+    <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.12em;color:var(--ink-gray-400)">ULTRON OS · SCRIPT 32</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="position:absolute;top:1396px;left:40px;right:40px;border-top:1px dashed rgba(199,93,53,0.3);padding-top:10px;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img src="ultron-logo.png" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0"
+        onerror="this.style.cssText='width:28px;height:28px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 72% 22%,rgba(255,140,80,.95) 0%,rgba(220,80,30,.3) 22%,transparent 36%),radial-gradient(circle at 22% 76%,rgba(55,170,255,.95) 0%,rgba(30,130,220,.3) 22%,transparent 38%),radial-gradient(circle at 38% 38%,rgba(30,30,50,1) 0%,#060810 55%,#000 100%)'">
+      <div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#1a1a1a;text-transform:uppercase;letter-spacing:0.06em"><strong>ULTRON OS</strong> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure</span>
+        <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.12em;color:var(--ink-gray-500)">AI GTM OPERATOR</div>
+      </div>
+    </div>
+    <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:800;color:#1a1a1a;letter-spacing:-0.5px">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

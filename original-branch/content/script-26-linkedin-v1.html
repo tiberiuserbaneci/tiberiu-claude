@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 26 · Sales Cycle Compression · v7</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* BUDGET 1450 */
+  body{background:#f4ede0;margin:0;padding:24px 0}
+  .scaler{display:flex;justify-content:center;align-items:flex-start}
+  .scaler>.poster{transform-origin:top center;transform:scale(calc(min(100vw / 1130, (100vh - 48px) / 1510)));}
+  .poster{width:1080px;height:1450px;background:var(--ink-cream-50);position:relative;overflow:hidden;box-sizing:border-box}
+  .mono{font-family:var(--font-mono)}
+  .fraunces{font-family:var(--font-serif);font-feature-settings:'ss01' on}
+  .accent{color:var(--accent-dark)}
+
+  /* Day cells */
+  .cell{
+    width:16px;height:38px;border-radius:2px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-sans);font-size:10px;font-weight:800;line-height:1;
+  }
+  .cell-kept{background:var(--accent-dark);color:#fff;box-shadow:0 1px 4px rgba(199,93,53,0.35)}
+  .cell-cut{background:rgba(0,0,0,0.05);border:1px solid rgba(0,0,0,0.10);color:rgba(0,0,0,0.28)}
+  .cell-after{width:26px;height:48px;border-radius:4px;background:var(--accent-dark);
+    box-shadow:0 3px 8px rgba(199,93,53,0.35);flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-family:var(--font-sans);font-size:13px;font-weight:900}
+  .stage-block{display:flex;gap:2px}
+  .agent-chip{
+    font-family:var(--font-mono);font-size:8px;font-weight:800;letter-spacing:.12em;
+    padding:2px 6px;border-radius:4px;text-transform:uppercase;
+    background:rgba(199,93,53,0.10);color:var(--accent-dark);display:inline-block;
+  }
+  .stage-bracket{
+    position:relative;text-align:center;padding-top:8px;
+    font-family:var(--font-mono);font-size:8px;font-weight:800;letter-spacing:.08em;
+    color:var(--ink-gray-400);text-transform:uppercase;overflow:hidden;
+  }
+  .stage-bracket::before{
+    content:'';position:absolute;top:0;left:4px;right:4px;height:5px;
+    border:1.5px solid var(--ink-cream-300);border-bottom:none;border-radius:3px 3px 0 0;
+  }
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="poster">
+
+  <!-- HEADER -->
+  <div style="position:absolute;top:0;left:40px;right:40px;height:44px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--ink-cream-200)">
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(0,0,0,0.4)">FOUNDER GTM · AI SALES OPS · CYCLE COMPRESSION · ULTRON OS</span>
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(0,0,0,0.3)">NO. 26 · $34K ACV · 22 DEALS</span>
+  </div>
+
+  <!-- HERO -->
+  <div style="position:absolute;top:60px;left:40px;right:40px">
+    <div class="mono accent" style="font-size:11px;font-weight:800;letter-spacing:.20em;margin-bottom:14px">14-DAY TEST · 22 DEALS · SAME SEGMENT · SAME ACV</div>
+    <div class="fraunces" style="font-weight:900;font-size:78px;line-height:0.90;letter-spacing:-2.6px;color:var(--ink-black);margin-bottom:14px"><span class="accent" style="font-style:italic">Claude</span> killed 36 days from my sales cycle.</div>
+    <div class="fraunces" style="font-size:28px;font-weight:700;line-height:1.05;letter-spacing:-0.6px;color:var(--ink-gray-600)">My cycle was <span style="color:var(--ink-gray-400);text-decoration:line-through;text-decoration-thickness:2.5px">47 days</span>. Now it is <span class="accent" style="font-weight:900">11.</span> Same ACV. Same segment.</div>
+  </div>
+
+  <!-- BIGSTAT · 5 cells -->
+  <div style="position:absolute;top:296px;left:40px;right:40px;height:68px;background:#FFFFFF;border:1px solid var(--ink-cream-200);border-radius:var(--radius-md);display:grid;grid-template-columns:repeat(5,1fr);overflow:hidden">
+    <div style="padding:10px 18px;display:flex;flex-direction:column;gap:2px;border-right:1px solid var(--ink-cream-200)">
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--ink-gray-500);text-transform:uppercase">BEFORE</div>
+      <div class="fraunces" style="font-size:26px;font-weight:900;line-height:1;letter-spacing:-0.8px;color:var(--ink-gray-500);text-decoration:line-through">47d</div>
+    </div>
+    <div style="padding:10px 18px;display:flex;flex-direction:column;gap:2px;border-right:1px solid var(--ink-cream-200)">
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--accent-dark);text-transform:uppercase">AFTER</div>
+      <div class="fraunces accent" style="font-size:26px;font-weight:900;line-height:1;letter-spacing:-0.8px">11d</div>
+    </div>
+    <div style="padding:10px 18px;display:flex;flex-direction:column;gap:2px;border-right:1px solid var(--ink-cream-200)">
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--ink-gray-500);text-transform:uppercase">REMOVED</div>
+      <div class="fraunces" style="font-size:26px;font-weight:900;line-height:1;letter-spacing:-0.8px;color:var(--ink-black)">36d</div>
+    </div>
+    <div style="padding:10px 18px;display:flex;flex-direction:column;gap:2px;border-right:1px solid var(--ink-cream-200)">
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--ink-gray-500);text-transform:uppercase">ACV</div>
+      <div class="fraunces" style="font-size:26px;font-weight:900;line-height:1;letter-spacing:-0.8px;color:var(--ink-black)">$34K</div>
+    </div>
+    <div style="padding:10px 18px;display:flex;flex-direction:column;gap:2px">
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--ink-gray-500);text-transform:uppercase">AGENTS</div>
+      <div class="fraunces" style="font-size:26px;font-weight:900;line-height:1;letter-spacing:-0.8px;color:var(--ink-black)">4</div>
+    </div>
+  </div>
+
+  <!-- DAY-BY-DAY CALENDAR VIZ · AUTO HEIGHT - fills to content -->
+  <div style="position:absolute;top:380px;left:40px;right:40px;background:#FFFFFF;border:1px solid var(--ink-cream-200);border-radius:var(--radius-lg);padding:24px 30px 28px;box-sizing:border-box">
+
+    <!-- title row -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+      <div>
+        <div class="mono" style="font-size:10px;font-weight:700;letter-spacing:.18em;color:var(--ink-gray-500);margin-bottom:4px">FIG.01 · EVERY DAY OF THE CYCLE · 22 DEALS · 14-DAY TEST</div>
+        <div class="fraunces" style="font-size:22px;font-weight:900;letter-spacing:-0.5px;color:var(--ink-black)">Every day Claude kept. Every day Claude killed.</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px">
+        <div style="display:flex;align-items:center;gap:6px">
+          <div style="width:14px;height:14px;background:var(--accent-dark);border-radius:2px"></div>
+          <span class="mono accent" style="font-size:8px;font-weight:800;letter-spacing:.10em">KEPT</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px">
+          <div style="width:14px;height:14px;background:rgba(0,0,0,0.05);border:1px solid rgba(0,0,0,0.10);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:rgba(0,0,0,0.28)">×</div>
+          <span class="mono" style="font-size:8px;font-weight:800;letter-spacing:.10em;color:var(--ink-gray-500)">CUT</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE BRACKETS above BEFORE strip -->
+    <div style="display:flex;gap:6px;padding-left:82px">
+      <div class="stage-bracket" style="width:calc(16 * 16px + 15 * 2px)">DETECT · SPECTER · 16d</div>
+      <div class="stage-bracket" style="width:calc(11 * 16px + 10 * 2px)">ENGAGE · STRIKER · 11d</div>
+      <div class="stage-bracket" style="width:calc(5 * 16px + 4 * 2px)">DEMO·5d</div>
+      <div class="stage-bracket" style="width:calc(9 * 16px + 8 * 2px)">FOLLOW · PULSE · 9d</div>
+      <div class="stage-bracket" style="width:calc(6 * 16px + 5 * 2px)">CLOSE · 6d</div>
+    </div>
+
+    <!-- BEFORE strip: 47 day cells -->
+    <div style="display:flex;align-items:center;gap:16px;margin-top:8px;margin-bottom:8px">
+      <div style="width:66px;text-align:right;flex-shrink:0">
+        <div class="mono" style="font-size:9px;font-weight:800;letter-spacing:.12em;color:var(--ink-gray-400)">BEFORE</div>
+        <div class="fraunces" style="font-size:28px;font-weight:900;color:var(--ink-gray-500);line-height:1;text-decoration:line-through;text-decoration-thickness:2.5px;text-decoration-color:var(--ink-gray-400)">47d</div>
+      </div>
+      <div style="display:flex;gap:6px">
+        <div class="stage-block">
+          <div class="cell cell-kept">1</div><div class="cell cell-kept">2</div><div class="cell cell-kept">3</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div>
+        </div>
+        <div class="stage-block">
+          <div class="cell cell-kept">1</div><div class="cell cell-kept">2</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div>
+        </div>
+        <div class="stage-block">
+          <div class="cell cell-kept">1</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div>
+        </div>
+        <div class="stage-block">
+          <div class="cell cell-kept">1</div><div class="cell cell-kept">2</div><div class="cell cell-kept">3</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div>
+        </div>
+        <div class="stage-block">
+          <div class="cell cell-kept">1</div><div class="cell cell-kept">2</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div><div class="cell cell-cut">×</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPRESSION ARROW BAND -->
+    <div style="display:flex;align-items:center;gap:14px;margin:20px 0;padding-left:82px">
+      <div style="height:1.5px;background:var(--ink-cream-200);flex:1"></div>
+      <div style="background:var(--accent-dark);color:#fff;padding:10px 28px;border-radius:8px;display:flex;align-items:center;gap:12px;box-shadow:0 6px 20px rgba(199,93,53,0.30)">
+        <span style="font-family:var(--font-sans);font-size:22px;font-weight:900">↓</span>
+        <span class="fraunces" style="font-size:28px;font-weight:900;line-height:1;letter-spacing:-0.5px">−36 DAYS CUT</span>
+      </div>
+      <div style="height:1.5px;background:var(--ink-cream-200);flex:1"></div>
+    </div>
+
+    <!-- AFTER strip: 11 chunky cells -->
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:10px">
+      <div style="width:66px;text-align:right;flex-shrink:0">
+        <div class="mono accent" style="font-size:9px;font-weight:800;letter-spacing:.12em">AFTER</div>
+        <div class="fraunces accent" style="font-size:36px;font-weight:900;line-height:1;letter-spacing:-1.5px">11d</div>
+      </div>
+      <div style="display:flex;gap:16px">
+        <div style="display:flex;gap:4px"><div class="cell-after">1</div><div class="cell-after">2</div><div class="cell-after">3</div></div>
+        <div style="display:flex;gap:4px"><div class="cell-after">1</div><div class="cell-after">2</div></div>
+        <div style="display:flex;gap:4px"><div class="cell-after">1</div></div>
+        <div style="display:flex;gap:4px"><div class="cell-after">1</div><div class="cell-after">2</div><div class="cell-after">3</div></div>
+        <div style="display:flex;gap:4px"><div class="cell-after">1</div><div class="cell-after">2</div></div>
+      </div>
+    </div>
+
+    <!-- Stage labels under AFTER strip -->
+    <div style="display:flex;align-items:center;gap:16px;padding-left:82px;margin-bottom:20px">
+      <div class="mono" style="font-size:8px;font-weight:800;letter-spacing:.08em;color:var(--ink-gray-400);width:calc(3*26px+2*4px);text-align:center">DETECT</div>
+      <div class="mono" style="font-size:8px;font-weight:800;letter-spacing:.08em;color:var(--ink-gray-400);width:calc(2*26px+1*4px);text-align:center">ENGAGE</div>
+      <div class="mono" style="font-size:8px;font-weight:800;letter-spacing:.08em;color:var(--ink-gray-400);width:26px;text-align:center">DEMO</div>
+      <div class="mono" style="font-size:8px;font-weight:800;letter-spacing:.08em;color:var(--ink-gray-400);width:calc(3*26px+2*4px);text-align:center">FOLLOW</div>
+      <div class="mono" style="font-size:8px;font-weight:800;letter-spacing:.08em;color:var(--ink-gray-400);width:calc(2*26px+1*4px);text-align:center">CLOSE</div>
+    </div>
+
+    <!-- Per-stage delta cards -->
+    <div style="border-top:1px solid var(--ink-cream-200);padding-top:16px;display:grid;grid-template-columns:repeat(5,1fr);gap:10px">
+      <div style="padding:12px 14px;background:var(--ink-cream-50);border-radius:var(--radius-sm);border:1px solid var(--ink-cream-200)">
+        <div style="font-size:12px;font-weight:900;color:var(--ink-black);line-height:1;margin-bottom:5px">DETECT</div>
+        <div class="agent-chip">SPECTER</div>
+        <div class="fraunces" style="margin-top:10px;font-size:16px;font-weight:900;color:var(--ink-black);line-height:1"><span style="color:var(--ink-gray-400);text-decoration:line-through">16d</span><span class="accent" style="margin-left:5px">3d</span></div>
+        <div class="mono accent" style="margin-top:5px;font-size:12px;font-weight:900">−81%</div>
+      </div>
+      <div style="padding:12px 14px;background:var(--ink-cream-50);border-radius:var(--radius-sm);border:1px solid var(--ink-cream-200)">
+        <div style="font-size:12px;font-weight:900;color:var(--ink-black);line-height:1;margin-bottom:5px">ENGAGE</div>
+        <div class="agent-chip">STRIKER</div>
+        <div class="fraunces" style="margin-top:10px;font-size:16px;font-weight:900;color:var(--ink-black);line-height:1"><span style="color:var(--ink-gray-400);text-decoration:line-through">11d</span><span class="accent" style="margin-left:5px">2d</span></div>
+        <div class="mono accent" style="margin-top:5px;font-size:12px;font-weight:900">−82%</div>
+      </div>
+      <div style="padding:12px 14px;background:var(--ink-cream-50);border-radius:var(--radius-sm);border:1px solid var(--ink-cream-200)">
+        <div style="font-size:12px;font-weight:900;color:var(--ink-black);line-height:1;margin-bottom:5px">DEMO</div>
+        <div class="agent-chip">CORTEX</div>
+        <div class="fraunces" style="margin-top:10px;font-size:16px;font-weight:900;color:var(--ink-black);line-height:1"><span style="color:var(--ink-gray-400);text-decoration:line-through">5d</span><span class="accent" style="margin-left:5px">1d</span></div>
+        <div class="mono accent" style="margin-top:5px;font-size:12px;font-weight:900">−80%</div>
+      </div>
+      <div style="padding:12px 14px;background:var(--ink-cream-50);border-radius:var(--radius-sm);border:1px solid var(--ink-cream-200)">
+        <div style="font-size:12px;font-weight:900;color:var(--ink-black);line-height:1;margin-bottom:5px">FOLLOW</div>
+        <div class="agent-chip">PULSE</div>
+        <div class="fraunces" style="margin-top:10px;font-size:16px;font-weight:900;color:var(--ink-black);line-height:1"><span style="color:var(--ink-gray-400);text-decoration:line-through">9d</span><span class="accent" style="margin-left:5px">3d</span></div>
+        <div class="mono accent" style="margin-top:5px;font-size:12px;font-weight:900">−67%</div>
+      </div>
+      <div style="padding:12px 14px;background:var(--ink-cream-50);border-radius:var(--radius-sm);border:1px solid var(--ink-cream-200)">
+        <div style="font-size:12px;font-weight:900;color:var(--ink-black);line-height:1;margin-bottom:5px">CLOSE</div>
+        <div class="agent-chip">HUMAN GATE</div>
+        <div class="fraunces" style="margin-top:10px;font-size:16px;font-weight:900;color:var(--ink-black);line-height:1"><span style="color:var(--ink-gray-400);text-decoration:line-through">6d</span><span class="accent" style="margin-left:5px">2d</span></div>
+        <div class="mono accent" style="margin-top:5px;font-size:12px;font-weight:900">−67%</div>
+      </div>
+    </div>
+  </div>
+  <!-- END calendar viz container - auto-height -->
+
+  <!-- INSIGHT · top:860 -->
+  <div style="position:absolute;top:860px;left:40px;right:40px;background:#FFFFFF;border:1px solid var(--ink-cream-200);border-left:3px solid var(--accent-dark);border-radius:var(--radius-md);padding:16px 24px;box-sizing:border-box">
+    <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.18em;color:var(--accent-dark);margin-bottom:5px">THE REAL INSIGHT</div>
+    <div class="fraunces" style="font-size:19px;font-weight:700;line-height:1.25;color:var(--ink-black);letter-spacing:-0.3px">The cycle was not slow because deals were hard. It was slow because no one moved between stages. <span class="accent">Claude moves at 3am.</span></div>
+  </div>
+
+  <!-- STAT STRIP · top:976 -->
+  <div style="position:absolute;top:976px;left:40px;right:40px;height:56px;background:#FFFFFF;border:1px solid var(--ink-cream-200);border-radius:var(--radius-md);display:grid;grid-template-columns:repeat(5,1fr);align-items:center;overflow:hidden">
+    <div style="padding:0 16px;border-right:1px solid var(--ink-cream-200)">
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">CYCLE</div>
+      <div style="font-size:14px;font-weight:900;color:var(--accent-dark)">47 to 11d</div>
+    </div>
+    <div style="padding:0 16px;border-right:1px solid var(--ink-cream-200)">
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">TOUCHES</div>
+      <div style="font-size:14px;font-weight:900;color:var(--ink-black)">18 to 7</div>
+    </div>
+    <div style="padding:0 16px;border-right:1px solid var(--ink-cream-200)">
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">ACV HELD</div>
+      <div style="font-size:14px;font-weight:900;color:var(--ink-black)">$34K</div>
+    </div>
+    <div style="padding:0 16px;border-right:1px solid var(--ink-cream-200)">
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">AGENTS</div>
+      <div style="font-size:14px;font-weight:900;color:var(--ink-black)">4 AI</div>
+    </div>
+    <div style="padding:0 16px">
+      <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500)">SAMPLE</div>
+      <div style="font-size:14px;font-weight:900;color:var(--ink-black)">22 deals</div>
+    </div>
+  </div>
+
+  <!-- CTA · top:1048 -->
+  <div style="position:absolute;top:1048px;left:40px;right:40px;height:232px;display:flex;align-items:center;justify-content:space-between;border:2px solid var(--accent-border);border-radius:var(--radius-lg);padding:0 40px;background:linear-gradient(135deg,rgba(199,93,53,0.10),rgba(199,93,53,0.03));box-shadow:0 8px 32px rgba(199,93,53,0.10)">
+    <div style="display:flex;flex-direction:column;gap:10px;max-width:640px">
+      <div class="mono accent" style="font-size:11px;font-weight:800;letter-spacing:.22em">WANT THE SYSTEM?</div>
+      <div class="fraunces" style="font-size:30px;font-weight:900;line-height:1.12;letter-spacing:-0.6px;color:var(--ink-black)">Comment <span class="accent">CYCLE</span> and I'll send you the exact Claude workflow that compressed mine.</div>
+      <div class="mono" style="font-size:10px;color:var(--ink-gray-500);letter-spacing:.06em">Every agent. Every prompt. Step by step.</div>
+    </div>
+    <div class="mono" style="padding:28px 42px;background:var(--accent-dark);color:#fff;border-radius:var(--radius-md);font-size:28px;font-weight:900;letter-spacing:.10em;box-shadow:0 8px 24px rgba(199,93,53,0.40);white-space:nowrap;flex-shrink:0">CYCLE</div>
+  </div>
+
+  <!-- MICRO STAT BAND · top:1304 - extended to fill 1304-1400 -->
+  <div style="position:absolute;top:1304px;left:40px;right:40px;height:96px;background:#FFFFFF;border:1px solid var(--ink-cream-200);border-radius:var(--radius-md);display:grid;grid-template-columns:repeat(4,1fr);align-items:center;overflow:hidden">
+    <div style="padding:14px 20px;border-right:1px solid var(--ink-cream-200);display:flex;align-items:center;gap:14px">
+      <div class="fraunces accent" style="font-size:34px;font-weight:900;line-height:1;letter-spacing:-1px">77%</div>
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500);line-height:1.35;text-transform:uppercase">Cycle<br>killed</div>
+    </div>
+    <div style="padding:14px 20px;border-right:1px solid var(--ink-cream-200);display:flex;align-items:center;gap:14px">
+      <div class="fraunces" style="font-size:34px;font-weight:900;line-height:1;letter-spacing:-1px;color:var(--ink-black)">3am</div>
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500);line-height:1.35;text-transform:uppercase">When<br>Claude runs</div>
+    </div>
+    <div style="padding:14px 20px;border-right:1px solid var(--ink-cream-200);display:flex;align-items:center;gap:14px">
+      <div class="fraunces" style="font-size:34px;font-weight:900;line-height:1;letter-spacing:-1px;color:var(--ink-black)">6min</div>
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500);line-height:1.35;text-transform:uppercase">Signal to<br>first message</div>
+    </div>
+    <div style="padding:14px 20px;display:flex;align-items:center;gap:14px">
+      <div class="fraunces" style="font-size:34px;font-weight:900;line-height:1;letter-spacing:-1px;color:var(--ink-black)">$34K</div>
+      <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.14em;color:var(--ink-gray-500);line-height:1.35;text-transform:uppercase">ACV not<br>touched</div>
+    </div>
+  </div>
+
+  <!-- FOOTER · top:1412 - sits flush near poster bottom -->
+  <div style="position:absolute;top:1412px;left:40px;right:40px;border-top:1px dashed rgba(199,93,53,0.3);padding-top:14px;display:flex;align-items:center;justify-content:space-between">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:rgba(0,0,0,0.45);text-transform:uppercase;display:flex;align-items:center;gap:10px">
+      <img src="ultron-logo.png" style="width:24px;height:24px;border-radius:50%;object-fit:cover;flex-shrink:0" onerror="this.style.cssText='width:24px;height:24px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 72% 22%,rgba(255,140,80,.95) 0%,rgba(220,80,30,.3) 22%,transparent 36%),radial-gradient(circle at 22% 76%,rgba(55,170,255,.95) 0%,rgba(30,130,220,.3) 22%,transparent 38%),radial-gradient(circle at 38% 38%,rgba(30,30,50,1) 0%,#060810 55%,#000 100%)'">
+      <strong style="color:#1a1a1a">ULTRON OS</strong> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure
+    </div>
+    <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:800;color:#1a1a1a;letter-spacing:-0.5px">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

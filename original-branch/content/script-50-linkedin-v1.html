@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 50 · Morning Ritual · v1</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* BUDGET 1450 */
+  body{background:#f4ede0;margin:0;padding:24px 0}
+  .scaler{display:flex;justify-content:center;align-items:flex-start}
+  .scaler>.poster{transform-origin:top center;transform:scale(calc(min(100vw / 1130, (100vh - 48px) / 1510)))}
+  .poster{width:1080px;height:1450px;background:var(--ink-cream-50);display:flex;flex-direction:column;padding:28px 40px 20px;overflow:hidden}
+  .mono{font-family:'JetBrains Mono',monospace}
+  .fraunces{font-family:'Fraunces',Georgia,serif;font-feature-settings:'ss01' on}
+  .accent{color:var(--accent-dark)}
+  .step{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;border-bottom:1px solid rgba(0,0,0,0.05)}
+  .step .box{width:22px;height:22px;border-radius:4px;border:1.5px solid rgba(0,0,0,0.20);flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px;background:#fff}
+  .step.done .box{background:var(--accent-dark);border-color:var(--accent-dark)}
+  .step.done .box::after{content:"✓";color:#fff;font-size:13px;font-weight:900;line-height:1}
+  .step .b{flex:1;min-width:0}
+  .step .t{font-family:'Inter',sans-serif;font-size:13px;font-weight:800;color:var(--ink-black);letter-spacing:-0.2px}
+  .step.done .t{text-decoration:line-through;text-decoration-color:rgba(0,0,0,0.30);text-decoration-thickness:1.5px}
+  .step .d{font-family:'Inter',sans-serif;font-size:10px;font-weight:500;color:rgba(0,0,0,0.55);line-height:1.4;margin-top:3px}
+  .step .m{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;color:rgba(0,0,0,0.45);letter-spacing:.10em;margin-top:5px}
+  .step .right{display:flex;flex-direction:column;align-items:flex-end;gap:3px;flex-shrink:0}
+  .step .dur{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:800;color:var(--accent-dark);letter-spacing:.06em}
+  .step .by{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;color:rgba(0,0,0,0.40);letter-spacing:.10em}
+  .anno-chip{background:#FFFFFF;border:1px solid var(--accent-dark);border-radius:4px;padding:4px 9px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:800;letter-spacing:.12em;color:var(--accent-dark);transform:rotate(-1.5deg);box-shadow:0 2px 6px rgba(199,93,53,0.18);white-space:nowrap}
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="poster">
+
+  <div style="flex-shrink:0;height:44px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(0,0,0,0.08);margin-bottom:12px">
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(0,0,0,0.40)">FOUNDER GTM · 1 AI RITUAL · 6 STEPS · ULTRON OS</span>
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(0,0,0,0.30)">NO. 50 · DAILY · 08:00-08:14</span>
+  </div>
+
+  <div style="flex-shrink:0;margin-bottom:16px">
+    <div class="mono accent" style="font-size:10px;font-weight:800;letter-spacing:.22em;margin-bottom:12px">1 AI RITUAL · 6 STEPS · 14 MINUTES · DAILY</div>
+    <div class="fraunces" style="font-weight:900;font-size:60px;line-height:0.92;letter-spacing:-1.8px;color:var(--ink-black);margin-bottom:12px">1 <span class="accent" style="font-style:italic">AI</span> ritual<br>each morning.<br>Pipeline runs itself.</div>
+    <div style="font-family:'Inter',sans-serif;font-size:18px;font-weight:600;line-height:1.18;letter-spacing:-0.2px;color:rgba(0,0,0,0.55)">I do not work on outbound. I review it. 14 minutes between coffee and standup. The system did the work overnight.</div>
+  </div>
+
+  <div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+    <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.18em;color:rgba(0,0,0,0.42)">EXHIBIT A · MORNING_RITUAL.md · TUE NOV 19 · 08:00 - 08:14</div>
+    <div style="display:flex;align-items:center;gap:6px"><div style="width:6px;height:6px;border-radius:50%;background:#16a34a"></div><span class="mono" style="font-size:8px;font-weight:800;letter-spacing:.14em;color:rgba(0,0,0,0.50)">6/6 DONE</span></div>
+  </div>
+
+  <div style="flex-shrink:0;min-height:792px;position:relative;background:#FFFFFF;border:1px solid rgba(0,0,0,0.10);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,0.05);overflow:hidden;margin-bottom:14px">
+
+    <div style="height:36px;background:#F4F2EE;border-bottom:1px solid rgba(0,0,0,0.08);display:flex;align-items:center;padding:0 14px;gap:10px">
+      <div style="display:flex;gap:5px"><div style="width:9px;height:9px;border-radius:50%;background:#E66B5A"></div><div style="width:9px;height:9px;border-radius:50%;background:#E8B341"></div><div style="width:9px;height:9px;border-radius:50%;background:#5BB964"></div></div>
+      <div style="flex:1;background:#FFFFFF;border:1px solid rgba(0,0,0,0.08);border-radius:5px;padding:4px 10px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:600;color:rgba(0,0,0,0.55);text-align:center">notion.ultron.com / ritual / morning · streak: 87 days</div>
+      <span class="mono accent" style="font-size:8px;font-weight:800;letter-spacing:.14em">14 MIN ETA</span>
+    </div>
+
+    <div style="padding:14px 22px;background:rgba(199,93,53,0.04);border-bottom:1px solid rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:space-between">
+      <div>
+        <div class="fraunces" style="font-size:20px;font-weight:900;color:var(--ink-black);letter-spacing:-0.4px">Tuesday Morning Ritual</div>
+        <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;color:rgba(0,0,0,0.55);margin-top:1px">87-day streak · last skip: 2025-08-22 (flight delay)</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(0,0,0,0.45)">PROGRESS</span>
+        <div style="width:160px;height:6px;background:rgba(0,0,0,0.06);border-radius:3px;overflow:hidden"><div style="width:100%;height:100%;background:var(--accent-dark)"></div></div>
+        <span class="mono accent" style="font-size:10px;font-weight:800;letter-spacing:.06em">100%</span>
+      </div>
+    </div>
+
+    <!-- 6 steps -->
+    <div class="step done">
+      <div class="box"></div>
+      <div class="b">
+        <div class="t">01 · Open SENTINEL briefing</div>
+        <div class="d">10 alerts surfaced overnight. 3 red, 5 amber, 2 green. Read top to bottom. No reordering.</div>
+        <div class="m">DONE 08:01 · 2 MIN</div>
+      </div>
+      <div class="right"><span class="dur">2 min</span><span class="by">AI · SENTINEL</span></div>
+    </div>
+
+    <div class="step done">
+      <div class="box"></div>
+      <div class="b">
+        <div class="t">02 · Approve / edit / reject draft queue</div>
+        <div class="d">7 drafts in HUMAN GATE. Approve 5. Edit 2 (softened close). Reject 0. The gate stays sharp.</div>
+        <div class="m">DONE 08:05 · 4 MIN · 7 DRAFTS</div>
+      </div>
+      <div class="right"><span class="dur">4 min</span><span class="by">ME · GATE</span></div>
+    </div>
+
+    <div class="step done">
+      <div class="box"></div>
+      <div class="b">
+        <div class="t">03 · Scan SPECTER's 3 hottest signals</div>
+        <div class="d">Harbor CRM (funding+hiring), Mercer (champion change), Forge (job-post). Same rank as yesterday's. Skip the rest.</div>
+        <div class="m">DONE 08:07 · 2 MIN · TOP 3 ONLY</div>
+      </div>
+      <div class="right"><span class="dur">2 min</span><span class="by">AI · SPECTER</span></div>
+    </div>
+
+    <div class="step done">
+      <div class="box"></div>
+      <div class="b">
+        <div class="t">04 · Read PULSE's follow-up triggers</div>
+        <div class="d">21 open threads watched. 4 triggered today (Pyre CFO gone, Atlas budget unlocked, Beacon seed, Outpost churn signal). Approve all 4.</div>
+        <div class="m">DONE 08:10 · 3 MIN · 4 TRIGGERED</div>
+      </div>
+      <div class="right"><span class="dur">3 min</span><span class="by">AI · PULSE</span></div>
+    </div>
+
+    <div class="step done">
+      <div class="box"></div>
+      <div class="b">
+        <div class="t">05 · Block 2 PM as the only live-meeting hour</div>
+        <div class="d">Calendar auto-blocks 14:00-15:00 for any prospect reply that needs same-day. Outside that window: schedule, do not interrupt.</div>
+        <div class="m">DONE 08:12 · 1 MIN · 1 BLOCK</div>
+      </div>
+      <div class="right"><span class="dur">1 min</span><span class="by">ME · RULE</span></div>
+    </div>
+
+    <div class="step done" style="border-bottom:none">
+      <div class="box"></div>
+      <div class="b">
+        <div class="t">06 · Close laptop until 14:00</div>
+        <div class="d">No checking. No re-opening. The system runs without me. If something is on fire, SENTINEL paged my phone with one SMS, not 14 notifications.</div>
+        <div class="m">DONE 08:14 · 2 MIN · LAPTOP SHUT</div>
+      </div>
+      <div class="right"><span class="dur">2 min</span><span class="by">ME · RULE</span></div>
+    </div>
+
+    <!-- Outcome -->
+    <div style="margin:14px 22px 0;padding:14px 18px;background:rgba(199,93,53,0.07);border:1px solid rgba(199,93,53,0.22);border-radius:6px;display:flex;align-items:center;justify-content:space-between">
+      <div>
+        <div class="mono" style="font-size:8px;font-weight:800;letter-spacing:.18em;color:var(--accent-dark);margin-bottom:3px">END OF RITUAL · 08:14 LOCAL</div>
+        <div style="font-family:'Inter',sans-serif;font-size:12px;font-weight:700;color:var(--ink-black);line-height:1.4">5 messages out. 4 follow-ups queued. 1 calendar slot held. <strong>4h 46min of focused product work ahead.</strong></div>
+      </div>
+      <div class="fraunces accent" style="font-size:26px;font-weight:900;letter-spacing:-0.8px;line-height:1">14 min</div>
+    </div>
+
+    <div style="position:absolute;left:0;right:0;bottom:0;height:40px;background:#FAF9F5;border-top:1px solid rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:space-between;padding:0 16px">
+      <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(0,0,0,0.45)">6 STEPS · 14 MIN · 87-DAY STREAK · 0 EVENING OUTBOUND</span>
+      <span class="mono accent" style="font-size:8px;font-weight:800;letter-spacing:.14em">DAILY @ 08:00 LOCAL</span>
+    </div>
+
+    <svg style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none" viewBox="0 0 1000 792">
+      <path d="M 990,720 Q 1000,706 970,694" stroke="#C6613F" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <polygon points="976,700 968,692 974,704" fill="#C6613F"/>
+    </svg>
+
+    <div style="position:absolute;top:670px;right:24px"><div class="anno-chip" style="transform:rotate(2deg)">14 MIN · NOT 14 HOURS</div></div>
+    <div style="position:absolute;top:280px;left:40px"><div class="anno-chip" style="transform:rotate(-2deg)">3 AI STEPS · 3 HUMAN STEPS</div></div>
+  </div>
+
+  <div style="flex-shrink:0;margin-bottom:14px">
+    <div class="fraunces" style="font-size:18px;font-weight:700;line-height:1.18;letter-spacing:-0.3px;color:rgba(0,0,0,0.58);font-style:italic">A ritual is not a system. A ritual is the proof the system runs without you. 14 minutes is the cost. The other 9h 46m is the return.</div>
+  </div>
+
+  <!-- CTA -->
+  <div style="flex-shrink:0;margin-top:auto;background:#c75d35;border-radius:10px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 32px;margin-bottom:12px">
+    <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:#f4ede0;line-height:1.55">Follow for one AI outbound system every day.<br>Comment <strong>RITUAL</strong> and I will send you the exact Claude workflow we used.</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:800;color:#c75d35;background:#f4ede0;border-radius:6px;padding:14px 22px;letter-spacing:.08em;white-space:nowrap;flex-shrink:0">RITUAL</div>
+  </div>
+
+  <div style="flex-shrink:0;height:30px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(0,0,0,0.08)">
+    <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(0,0,0,0.32)">ULTRON · AI GTM OPERATOR · 51ULTRON.COM</span>
+    <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(0,0,0,0.32)">6 STEPS · 14 MIN · 87-DAY STREAK</span>
+  </div>
+
+  <div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img src="ultron-logo.png" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0" onerror="this.style.cssText='width:28px;height:28px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 72% 22%,rgba(255,140,80,.95) 0%,rgba(220,80,30,.3) 22%,transparent 36%),radial-gradient(circle at 22% 76%,rgba(55,170,255,.95) 0%,rgba(30,130,220,.3) 22%,transparent 38%),radial-gradient(circle at 38% 38%,rgba(30,30,50,1) 0%,#060810 55%,#000 100%)'">
+      <strong style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#f4ecd6;text-transform:uppercase;letter-spacing:0.06em">ULTRON OS</strong><span style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:rgba(232,224,208,0.60);letter-spacing:0.06em;text-transform:uppercase"> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure</span>
+    </div>
+    <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:800;color:#f4ecd6;letter-spacing:-0.5px">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

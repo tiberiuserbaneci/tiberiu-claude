@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 38 · Three Prompts · v1</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* BUDGET 1450 */
+  body{background:#f4ede0;margin:0;padding:24px 0}
+  .scaler{display:flex;justify-content:center;align-items:flex-start}
+  .scaler>.poster{transform-origin:top center;transform:scale(calc(min(100vw / 1130, (100vh - 48px) / 1510)))}
+  .poster{width:1080px;height:1450px;background:var(--ink-cream-50);display:flex;flex-direction:column;padding:28px 40px 20px;overflow:hidden}
+  .mono{font-family:'JetBrains Mono',monospace}
+  .fraunces{font-family:'Fraunces',Georgia,serif;font-feature-settings:'ss01' on}
+  .accent{color:var(--accent-dark)}
+  .anno-chip{background:#FFFFFF;border:1px solid var(--accent-dark);border-radius:4px;padding:4px 9px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:800;letter-spacing:.12em;color:var(--accent-dark);transform:rotate(-1.5deg);box-shadow:0 2px 6px rgba(199,93,53,0.18);white-space:nowrap}
+  .prompt-card{background:#FAF9F5;border:1px solid rgba(0,0,0,0.08);border-radius:8px;padding:18px 22px;position:relative}
+  .code-block{background:#FFFFFF;border:1px solid rgba(0,0,0,0.08);border-radius:5px;padding:10px 14px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;color:rgba(0,0,0,0.72);line-height:1.55;margin-top:10px}
+  .code-block .key{color:var(--accent-dark);font-weight:700}
+  .code-block .com{color:rgba(0,0,0,0.40);font-style:italic}
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="poster">
+
+  <!-- HEADER -->
+  <div style="flex-shrink:0;height:44px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(0,0,0,0.08);margin-bottom:12px">
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(0,0,0,0.40)">FOUNDER GTM · AI PROMPT LIBRARY · 3 FUNCTIONS · ULTRON OS</span>
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(0,0,0,0.30)">NO. 38 · 90-DAY TEST · 3 PROMPTS</span>
+  </div>
+
+  <!-- HERO -->
+  <div style="flex-shrink:0;margin-bottom:16px">
+    <div class="mono accent" style="font-size:10px;font-weight:800;letter-spacing:.22em;margin-bottom:12px">3 PROMPTS · 1 AI · 90 DAYS OF OUTBOUND</div>
+    <div class="fraunces" style="font-weight:900;font-size:60px;line-height:0.92;letter-spacing:-1.8px;color:var(--ink-black);margin-bottom:12px">3 prompts.<br>1 <span class="accent" style="font-style:italic">AI</span>. 90 days<br>of outbound, gone.</div>
+    <div style="font-family:'Inter',sans-serif;font-size:18px;font-weight:600;line-height:1.18;letter-spacing:-0.2px;color:rgba(0,0,0,0.55)">No SDR. No agency. No 17-tool stack. Three text files and a human gate.</div>
+  </div>
+
+  <!-- EYEBROW -->
+  <div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+    <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.18em;color:rgba(0,0,0,0.42)">EXHIBIT A · PROMPT LIBRARY · OUTBOUND_v3.md · ULTRON REPO</div>
+    <div style="display:flex;align-items:center;gap:6px"><div style="width:6px;height:6px;border-radius:50%;background:#16a34a"></div><span class="mono" style="font-size:8px;font-weight:800;letter-spacing:.14em;color:rgba(0,0,0,0.50)">COMMITTED · MAIN</span></div>
+  </div>
+
+  <!-- ARTIFACT PANEL -->
+  <div style="flex-shrink:0;min-height:792px;position:relative;background:#FFFFFF;border:1px solid rgba(0,0,0,0.10);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,0.05);overflow:hidden;margin-bottom:14px">
+
+    <!-- Editor chrome -->
+    <div style="height:36px;background:#F4F2EE;border-bottom:1px solid rgba(0,0,0,0.08);display:flex;align-items:center;padding:0 14px;gap:10px">
+      <div style="display:flex;gap:5px">
+        <div style="width:9px;height:9px;border-radius:50%;background:#E66B5A"></div>
+        <div style="width:9px;height:9px;border-radius:50%;background:#E8B341"></div>
+        <div style="width:9px;height:9px;border-radius:50%;background:#5BB964"></div>
+      </div>
+      <div style="display:flex;gap:6px;align-items:center">
+        <div style="background:#FFFFFF;border:1px solid rgba(0,0,0,0.10);border-top-left-radius:5px;border-top-right-radius:5px;padding:5px 14px;border-bottom:none;margin-bottom:-1px"><span class="mono" style="font-size:9px;font-weight:700;color:var(--ink-black)">outbound_v3.md</span></div>
+        <span class="mono" style="font-size:9px;font-weight:600;color:rgba(0,0,0,0.35);padding:5px 10px">README.md</span>
+        <span class="mono" style="font-size:9px;font-weight:600;color:rgba(0,0,0,0.35);padding:5px 10px">agents.json</span>
+      </div>
+      <div style="flex:1"></div>
+      <span class="mono accent" style="font-size:8px;font-weight:800;letter-spacing:.14em">3 OF 3</span>
+    </div>
+
+    <!-- Content area -->
+    <div style="padding:20px 24px 60px;height:calc(100% - 36px);box-sizing:border-box;position:relative">
+
+      <!-- Prompt 1 -->
+      <div class="prompt-card" style="margin-bottom:12px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <div style="display:flex;align-items:center;gap:14px">
+            <span class="fraunces accent" style="font-size:32px;font-weight:900;line-height:1;letter-spacing:-1px">01</span>
+            <div>
+              <div class="mono" style="font-size:13px;font-weight:800;letter-spacing:.10em;color:var(--ink-black)">SPECTER_SIGNAL</div>
+              <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;color:rgba(0,0,0,0.55);margin-top:2px">Watches 12 signal sources. Scores 0-100. Returns ranked prospects.</div>
+            </div>
+          </div>
+          <div style="text-align:right">
+            <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(0,0,0,0.40)">RUNS</div>
+            <div class="mono accent" style="font-size:11px;font-weight:800;letter-spacing:.04em">06:00 UTC · daily</div>
+          </div>
+        </div>
+        <div class="code-block"><span class="com"># role: prospect signal scout</span><br><span class="key">scan</span>(sources=12, icp="${ICP}", lookback="24h") <span class="com">→</span> <span class="key">rank</span>(by="freshness × intent × fit")</div>
+        <div style="display:flex;align-items:center;gap:8px;margin-top:10px">
+          <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(0,0,0,0.50)">REPLACES</span>
+          <span style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--ink-black)">2h/day of SDR signal review</span>
+          <span style="flex:1;height:1px;background:rgba(0,0,0,0.08)"></span>
+          <span class="mono accent" style="font-size:10px;font-weight:800;letter-spacing:.10em">- 14h/week</span>
+        </div>
+      </div>
+
+      <!-- Prompt 2 -->
+      <div class="prompt-card" style="margin-bottom:12px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <div style="display:flex;align-items:center;gap:14px">
+            <span class="fraunces accent" style="font-size:32px;font-weight:900;line-height:1;letter-spacing:-1px">02</span>
+            <div>
+              <div class="mono" style="font-size:13px;font-weight:800;letter-spacing:.10em;color:var(--ink-black)">CORTEX_ENRICH</div>
+              <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;color:rgba(0,0,0,0.55);margin-top:2px">Pulls role, stack, posts, hiring. Writes a one-paragraph dossier per prospect.</div>
+            </div>
+          </div>
+          <div style="text-align:right">
+            <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(0,0,0,0.40)">RUNS</div>
+            <div class="mono accent" style="font-size:11px;font-weight:800;letter-spacing:.04em">per signal · 90s</div>
+          </div>
+        </div>
+        <div class="code-block"><span class="com"># role: prospect research analyst</span><br><span class="key">enrich</span>(prospect_id, depth="role+stack+posts+hiring") <span class="com">→</span> <span class="key">dossier</span>("1 paragraph, evidence-first")</div>
+        <div style="display:flex;align-items:center;gap:8px;margin-top:10px">
+          <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(0,0,0,0.50)">REPLACES</span>
+          <span style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--ink-black)">Clay + LinkedIn + Apollo + a research VA</span>
+          <span style="flex:1;height:1px;background:rgba(0,0,0,0.08)"></span>
+          <span class="mono accent" style="font-size:10px;font-weight:800;letter-spacing:.10em">- $1.4K/mo</span>
+        </div>
+      </div>
+
+      <!-- Prompt 3 -->
+      <div class="prompt-card">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <div style="display:flex;align-items:center;gap:14px">
+            <span class="fraunces accent" style="font-size:32px;font-weight:900;line-height:1;letter-spacing:-1px">03</span>
+            <div>
+              <div class="mono" style="font-size:13px;font-weight:800;letter-spacing:.10em;color:var(--ink-black)">STRIKER_DRAFT</div>
+              <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;color:rgba(0,0,0,0.55);margin-top:2px">Writes one message. Contrarian angle. 70 words max. Cites one dossier line.</div>
+            </div>
+          </div>
+          <div style="text-align:right">
+            <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(0,0,0,0.40)">RUNS</div>
+            <div class="mono accent" style="font-size:11px;font-weight:800;letter-spacing:.04em">per dossier · 4m</div>
+          </div>
+        </div>
+        <div class="code-block"><span class="com"># role: 1-of-1 message writer</span><br><span class="key">write</span>(dossier, angle="contrarian", cap=70, voice="founder", cite=1) <span class="com">→</span> <span class="key">gate</span>(approve | edit | reject)</div>
+        <div style="display:flex;align-items:center;gap:8px;margin-top:10px">
+          <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(0,0,0,0.50)">REPLACES</span>
+          <span style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--ink-black)">$8K/mo SDR + $2K/mo email tool</span>
+          <span style="flex:1;height:1px;background:rgba(0,0,0,0.08)"></span>
+          <span class="mono accent" style="font-size:10px;font-weight:800;letter-spacing:.10em">- $10K/mo</span>
+        </div>
+      </div>
+
+      <!-- ANNOTATION OVERLAYS -->
+      <svg style="position:absolute;inset:0;pointer-events:none;width:100%;height:100%" viewBox="0 0 1000 696">
+        <!-- Arrow to Prompt 1's "REPLACES" line -->
+        <path d="M 945,158 Q 950,180 920,193" stroke="#C6613F" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <polygon points="924,187 916,196 925,200" fill="#C6613F"/>
+        <!-- Arrow to Prompt 3's "REPLACES" line -->
+        <path d="M 60,640 Q 80,628 100,615" stroke="#C6613F" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <polygon points="98,620 102,610 108,619" fill="#C6613F"/>
+        <!-- Bracket around all 3 cards on the right -->
+        <path d="M 990,30 L 998,30 L 998,672 L 990,672" stroke="#C6613F" stroke-width="1.5" fill="none" stroke-dasharray="5 4" opacity="0.85"/>
+      </svg>
+
+      <!-- Annotation chips -->
+      <div style="position:absolute;top:124px;right:30px"><div class="anno-chip">DAY 1-30 · SIGNAL</div></div>
+      <div style="position:absolute;top:618px;left:34px"><div class="anno-chip" style="transform:rotate(1deg)">DAY 61-90 · SEND</div></div>
+      <div style="position:absolute;top:340px;right:-2px"><div class="anno-chip" style="transform:rotate(2deg)">3 FILES · NOT A STACK</div></div>
+
+    </div>
+
+    <!-- Footer bar -->
+    <div style="position:absolute;left:0;right:0;bottom:0;height:40px;background:#FAF9F5;border-top:1px solid rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:space-between;padding:0 16px">
+      <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(0,0,0,0.45)">3 PROMPTS · 90 DAYS · 47 BOOKED · 0 SDR · $1.2M PIPE</span>
+      <span class="mono accent" style="font-size:8px;font-weight:800;letter-spacing:.14em">GIT: ultron/outbound_v3 · MAIN</span>
+    </div>
+  </div>
+
+  <!-- BRIDGE -->
+  <div style="flex-shrink:0;margin-bottom:14px">
+    <div class="fraunces" style="font-size:18px;font-weight:700;line-height:1.18;letter-spacing:-0.3px;color:rgba(0,0,0,0.58);font-style:italic">Most teams buy 17 tools. I write 3 prompts and a gate. Same job. Less burn.</div>
+  </div>
+
+  <!-- CTA -->
+  <div style="flex-shrink:0;margin-top:auto;background:#c75d35;border-radius:10px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 32px;margin-bottom:12px">
+    <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:#f4ede0;line-height:1.55">Follow for one AI outbound system every day.<br>Comment <strong>PROMPTS</strong> and I will send you the exact Claude workflow we used.</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:800;color:#c75d35;background:#f4ede0;border-radius:6px;padding:14px 22px;letter-spacing:.08em;white-space:nowrap;flex-shrink:0">PROMPTS</div>
+  </div>
+
+  <!-- MICRO STAT -->
+  <div style="flex-shrink:0;height:30px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(0,0,0,0.08)">
+    <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(0,0,0,0.32)">ULTRON · AI GTM OPERATOR · 51ULTRON.COM</span>
+    <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(0,0,0,0.32)">3 PROMPTS · 90 DAYS · 47 BOOKED</span>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img src="ultron-logo.png" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0"
+        onerror="this.style.cssText='width:28px;height:28px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 72% 22%,rgba(255,140,80,.95) 0%,rgba(220,80,30,.3) 22%,transparent 36%),radial-gradient(circle at 22% 76%,rgba(55,170,255,.95) 0%,rgba(30,130,220,.3) 22%,transparent 38%),radial-gradient(circle at 38% 38%,rgba(30,30,50,1) 0%,#060810 55%,#000 100%)'">
+      <strong style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#f4ecd6;text-transform:uppercase;letter-spacing:0.06em">ULTRON OS</strong><span style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:rgba(232,224,208,0.60);letter-spacing:0.06em;text-transform:uppercase"> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure</span>
+    </div>
+    <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:800;color:#f4ecd6;letter-spacing:-0.5px">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

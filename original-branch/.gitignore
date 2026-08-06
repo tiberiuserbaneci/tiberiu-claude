@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Portal runtime artifacts
+content/portal/manifest.json.tmp
+*.log
+
+# Film voiceover cache: the ElevenLabs take plus its character timestamps, kept locally so
+# re-rendering does not re-spend API credits. It embeds the same audio as base64, so the
+# committed artifact is <film>-vo.mp3 and this stays out of the repo.
+content/*-vo.align.json

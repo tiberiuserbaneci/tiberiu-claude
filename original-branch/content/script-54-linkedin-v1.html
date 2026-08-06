@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 54 · Kill and Recover · v1</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* BUDGET 1450 */
+  body{background:#f4ede0;margin:0;padding:24px 0}
+  .scaler{display:flex;justify-content:center;align-items:flex-start}
+  .scaler>.poster{transform-origin:top center;transform:scale(calc(min(100vw / 1130, (100vh - 48px) / 1510)))}
+  .poster{width:1080px;height:1450px;background:var(--ink-cream-50);display:flex;flex-direction:column;padding:28px 40px 20px;overflow:hidden}
+  .mono{font-family:'JetBrains Mono',monospace}
+  .fraunces{font-family:'Fraunces',Georgia,serif;font-feature-settings:'ss01' on}
+  .accent{color:var(--accent-dark)}
+  .mail{padding:14px 18px;border-bottom:1px solid rgba(0,0,0,0.06)}
+  .mail.bad{background:rgba(192,57,43,0.05);border-left:3px solid #c0392b}
+  .mail.good{background:rgba(22,163,74,0.05);border-left:3px solid #16a34a}
+  .mail .from{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px}
+  .mail .who{font-family:'Inter',sans-serif;font-size:11px;font-weight:800;color:var(--ink-black)}
+  .mail .who .tag{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:800;letter-spacing:.10em;padding:1px 6px;border-radius:3px;margin-left:6px}
+  .mail .who .tag.ai{background:rgba(199,93,53,0.12);color:var(--accent-dark)}
+  .mail .who .tag.them{background:rgba(0,0,0,0.06);color:rgba(0,0,0,0.55)}
+  .mail .when{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;color:rgba(0,0,0,0.42);letter-spacing:.10em}
+  .mail .sub{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--ink-black);margin-bottom:6px}
+  .mail .body{font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:rgba(0,0,0,0.78);line-height:1.5}
+  .mail.bad .body em{background:rgba(192,57,43,0.10);font-style:normal;color:#c0392b;padding:0 3px;border-radius:2px;font-weight:700}
+  .mail.good .body em{background:rgba(22,163,74,0.10);font-style:normal;color:#16a34a;padding:0 3px;border-radius:2px;font-weight:700}
+  .anno-chip{background:#FFFFFF;border:1px solid var(--accent-dark);border-radius:4px;padding:4px 9px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:800;letter-spacing:.12em;color:var(--accent-dark);transform:rotate(-1.5deg);box-shadow:0 2px 6px rgba(199,93,53,0.18);white-space:nowrap}
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="poster">
+
+  <div style="flex-shrink:0;height:44px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(0,0,0,0.08);margin-bottom:12px">
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(0,0,0,0.40)">FOUNDER GTM · AI FAILURE + RECOVERY · ULTRON OS</span>
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(0,0,0,0.30)">NO. 54 · 1 THREAD · 12 DAYS</span>
+  </div>
+
+  <div style="flex-shrink:0;margin-bottom:16px">
+    <div class="mono accent" style="font-size:10px;font-weight:800;letter-spacing:.22em;margin-bottom:12px">$200K DEAL · 1 BAD AI MESSAGE · 1 AI RECOVERY · CLOSED</div>
+    <div class="fraunces" style="font-weight:900;font-size:60px;line-height:0.92;letter-spacing:-1.8px;color:var(--ink-black);margin-bottom:12px"><span class="accent" style="font-style:italic">AI</span> sent 1 message<br>that killed $200K.<br>Then it fixed it.</div>
+    <div style="font-family:'Inter',sans-serif;font-size:18px;font-weight:600;line-height:1.18;letter-spacing:-0.2px;color:rgba(0,0,0,0.55)">SENTINEL flagged the rejection in 4 hours. CORTEX wrote the apology. STRIKER drafted the recovery. The deal closed 11 days later.</div>
+  </div>
+
+  <div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+    <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.18em;color:rgba(0,0,0,0.42)">EXHIBIT A · THREAD · MERCER ENTERPRISE · 4 MESSAGES · 12D</div>
+    <div style="display:flex;align-items:center;gap:6px"><div style="width:6px;height:6px;border-radius:50%;background:#16a34a"></div><span class="mono" style="font-size:8px;font-weight:800;letter-spacing:.14em;color:rgba(0,0,0,0.50)">CLOSED · $204K</span></div>
+  </div>
+
+  <div style="flex-shrink:0;min-height:792px;position:relative;background:#FFFFFF;border:1px solid rgba(0,0,0,0.10);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,0.05);overflow:hidden;margin-bottom:14px">
+
+    <div style="height:36px;background:#F4F2EE;border-bottom:1px solid rgba(0,0,0,0.08);display:flex;align-items:center;padding:0 14px;gap:10px">
+      <div style="display:flex;gap:5px"><div style="width:9px;height:9px;border-radius:50%;background:#E66B5A"></div><div style="width:9px;height:9px;border-radius:50%;background:#E8B341"></div><div style="width:9px;height:9px;border-radius:50%;background:#5BB964"></div></div>
+      <div style="flex:1;background:#FFFFFF;border:1px solid rgba(0,0,0,0.08);border-radius:5px;padding:4px 10px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:600;color:rgba(0,0,0,0.55);text-align:center">mail.ultron.com / thread / mercer-enterprise · 4 messages</div>
+      <span class="mono accent" style="font-size:8px;font-weight:800;letter-spacing:.14em">RECOVERED</span>
+    </div>
+
+    <!-- Thread summary -->
+    <div style="padding:14px 18px;border-bottom:1px solid rgba(0,0,0,0.06);background:rgba(199,93,53,0.04);display:flex;align-items:center;justify-content:space-between">
+      <div>
+        <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:900;color:var(--ink-black);letter-spacing:-0.3px">Mercer Enterprise · CRO David Lin</div>
+        <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;color:rgba(0,0,0,0.55);margin-top:1px">Cold thread · started Nov 7 · 4 msgs · last reply 11d after recovery</div>
+      </div>
+      <div style="text-align:right">
+        <div class="mono accent" style="font-size:8px;font-weight:800;letter-spacing:.14em">DEAL VALUE</div>
+        <div class="fraunces accent" style="font-size:22px;font-weight:900;line-height:1;letter-spacing:-0.6px">$204K</div>
+      </div>
+    </div>
+
+    <!-- Message 1: bad cold from AI -->
+    <div class="mail bad">
+      <div class="from">
+        <div class="who">Tiberiu <span class="tag ai">AI · STRIKER</span></div>
+        <div class="when">NOV 7 · 09:14</div>
+      </div>
+      <div class="sub">Subject: Quick question on Mercer outbound</div>
+      <div class="body">David - saw your team is <em>scaling outbound</em> and thought I'd <em>reach out</em>. We help GTM teams <em>leverage AI</em> for better pipeline. Open to a quick 15-min sometime this week?</div>
+    </div>
+
+    <!-- Message 2: prospect cold reject -->
+    <div class="mail">
+      <div class="from">
+        <div class="who">David Lin <span class="tag them">CRO · MERCER</span></div>
+        <div class="when">NOV 7 · 13:42</div>
+      </div>
+      <div class="sub">Re: Quick question on Mercer outbound</div>
+      <div class="body">This is the third AI-written cold email I've gotten this week with "leverage AI" in it. No.</div>
+    </div>
+
+    <!-- Sentinel detection banner -->
+    <div style="padding:10px 18px;background:rgba(192,57,43,0.08);border-bottom:1px solid rgba(192,57,43,0.18);display:flex;align-items:center;gap:12px">
+      <div style="width:18px;height:18px;border-radius:50%;background:#c0392b;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:900">!</div>
+      <div style="flex:1">
+        <div class="mono" style="font-size:8px;font-weight:800;letter-spacing:.16em;color:#c0392b">SENTINEL · DETECTED · NOV 7 · 13:46</div>
+        <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--ink-black);line-height:1.4">Rejection pattern matched. Deal value $200K at risk. CORTEX dispatched to research recovery angle. STRIKER paused other Mercer threads.</div>
+      </div>
+      <span class="mono accent" style="font-size:8px;font-weight:800;letter-spacing:.10em">4 MIN</span>
+    </div>
+
+    <!-- Message 3: recovery from AI (with human gate approval) -->
+    <div class="mail good">
+      <div class="from">
+        <div class="who">Tiberiu <span class="tag ai">AI · STRIKER (HUMAN APPROVED)</span></div>
+        <div class="when">NOV 7 · 16:08</div>
+      </div>
+      <div class="sub">Subject: You were right. One short follow-up.</div>
+      <div class="body">David - fair. The message I sent was AI-written and it showed. I'm sending this one myself.<br><br>Real reason I reached out: <em>your podcast on attribution from May</em>. The point about <em>14 stacks hitting the inbox</em> matched something we just shipped. If you ever want to compare notes, no pitch, I'd buy the coffee.<br><br>- Tiberiu</div>
+    </div>
+
+    <!-- Message 4: prospect warm reply -->
+    <div class="mail" style="background:rgba(22,163,74,0.05);border-bottom:none">
+      <div class="from">
+        <div class="who">David Lin <span class="tag them">CRO · MERCER</span></div>
+        <div class="when">NOV 18 · 11:23</div>
+      </div>
+      <div class="sub">Re: You were right. One short follow-up.</div>
+      <div class="body">OK. That's a different email. Tuesday 3pm? I'll bring the questions, you bring whatever you shipped.</div>
+      <div style="margin-top:10px;padding-top:8px;border-top:1px dashed rgba(0,0,0,0.10);display:flex;align-items:center;justify-content:space-between">
+        <span class="mono" style="font-size:8px;font-weight:800;letter-spacing:.14em;color:#16a34a">CALENDAR HOLD · TUE 15:00</span>
+        <span class="mono accent" style="font-size:8px;font-weight:800;letter-spacing:.10em">DEAL CLOSED 14D LATER · $204K</span>
+      </div>
+    </div>
+
+    <div style="position:absolute;left:0;right:0;bottom:0;height:40px;background:#FAF9F5;border-top:1px solid rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:space-between;padding:0 16px">
+      <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(0,0,0,0.45)">1 BAD MSG · 4H DETECT · 1 HUMAN-APPROVED RECOVERY · $204K CLOSED</span>
+      <span class="mono accent" style="font-size:8px;font-weight:800;letter-spacing:.14em">SENTINEL + GATE</span>
+    </div>
+
+    <svg style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none" viewBox="0 0 1000 792">
+      <path d="M 170,272 Q 200,290 240,308" stroke="#C6613F" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <polygon points="234,314 244,308 235,302" fill="#C6613F"/>
+      <path d="M 980,510 Q 990,540 950,558" stroke="#C6613F" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <polygon points="956,552 948,560 958,564" fill="#C6613F"/>
+    </svg>
+
+    <div style="position:absolute;top:240px;left:30px"><div class="anno-chip" style="transform:rotate(-2deg);border-color:#c0392b;color:#c0392b">"LEVERAGE AI" = INSTANT REJECT</div></div>
+    <div style="position:absolute;top:478px;right:30px"><div class="anno-chip" style="transform:rotate(2deg)">HUMAN VOICE · NAMED THE ERROR</div></div>
+  </div>
+
+  <div style="flex-shrink:0;margin-bottom:14px">
+    <div class="fraunces" style="font-size:18px;font-weight:700;line-height:1.18;letter-spacing:-0.3px;color:rgba(0,0,0,0.58);font-style:italic">AI will fail. Sometimes loudly, on a $200K thread. The system that wins is the one that watches its own send folder.</div>
+  </div>
+
+  <!-- CTA -->
+  <div style="flex-shrink:0;margin-top:auto;background:#c75d35;border-radius:10px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 32px;margin-bottom:12px">
+    <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:#f4ede0;line-height:1.55">Follow for one AI outbound system every day.<br>Comment <strong>KILL</strong> and I will send you the exact Claude workflow we used.</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:800;color:#c75d35;background:#f4ede0;border-radius:6px;padding:14px 22px;letter-spacing:.08em;white-space:nowrap;flex-shrink:0">KILL</div>
+  </div>
+
+  <div style="flex-shrink:0;height:30px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(0,0,0,0.08)">
+    <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(0,0,0,0.32)">ULTRON · AI GTM OPERATOR · 51ULTRON.COM</span>
+    <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(0,0,0,0.32)">1 BAD MSG · 1 RECOVERY · $204K</span>
+  </div>
+
+  <div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img src="ultron-logo.png" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0" onerror="this.style.cssText='width:28px;height:28px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 72% 22%,rgba(255,140,80,.95) 0%,rgba(220,80,30,.3) 22%,transparent 36%),radial-gradient(circle at 22% 76%,rgba(55,170,255,.95) 0%,rgba(30,130,220,.3) 22%,transparent 38%),radial-gradient(circle at 38% 38%,rgba(30,30,50,1) 0%,#060810 55%,#000 100%)'">
+      <strong style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#f4ecd6;text-transform:uppercase;letter-spacing:0.06em">ULTRON OS</strong><span style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:rgba(232,224,208,0.60);letter-spacing:0.06em;text-transform:uppercase"> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure</span>
+    </div>
+    <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:800;color:#f4ecd6;letter-spacing:-0.5px">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

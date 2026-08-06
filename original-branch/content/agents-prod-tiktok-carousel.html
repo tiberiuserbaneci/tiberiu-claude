@@ -1,0 +1,266 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+:root{--slate:#191919;--card:#222120;--card2:#1d1c1b;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);--book:#CC785C;--bookd:#C84623;--kraft:#D4A27F;--cloud:#919180;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;display:flex;flex-direction:column;align-items:center;gap:30px;padding:30px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.slide{width:1080px;height:1920px;background:var(--slate);position:relative;overflow:hidden;color:var(--ivory);}
+.safe{position:absolute;top:300px;left:70px;right:130px;bottom:330px;display:flex;flex-direction:column;}
+.slide::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.05) 1.3px,transparent 1.4px);background-size:30px 30px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 56% 26% at 90% -3%,rgba(204,120,92,.18) 0%,transparent 62%),radial-gradient(ellipse 46% 24% at 4% 103%,rgba(212,162,127,.09) 0%,transparent 60%);}
+.slide>*{position:relative;z-index:2;}
+/* header / footer */
+.hd2{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;font-family:'DM Mono',monospace;font-size:17px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;}
+.hd2 .pg2{color:var(--book);}
+.hd2 .br{color:var(--ink46);}
+.ft2{flex-shrink:0;margin-top:auto;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--rule);padding-top:18px;}
+.ft2 .lf{display:flex;align-items:center;gap:12px;}
+.ft2 .lg{width:34px;height:34px;border-radius:50%;object-fit:cover;}
+.ft2 .nm{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink70);}
+.ft2 .nm b{color:var(--ivory);font-weight:500;}
+.ft2 .sw{font-family:'DM Mono',monospace;font-size:15px;letter-spacing:.1em;text-transform:uppercase;color:var(--book);}
+/* shared blocks */
+.pill{align-self:flex-start;font-family:'DM Mono',monospace;font-size:14.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#1a0f0a;background:var(--book);padding:8px 14px;border-radius:6px;}
+.tt{font-weight:900;letter-spacing:-2.4px;line-height:.96;color:var(--ivory);}
+.tt em{color:var(--book);font-style:normal;}
+.sub{font-size:23px;font-weight:500;line-height:1.42;color:var(--ink70);}
+.sub b{color:var(--ivory);font-weight:700;}
+.sub em{color:var(--book);font-style:normal;font-weight:700;}
+/* s1 cover */
+.s1 .mid{flex:1;display:flex;flex-direction:column;justify-content:center;gap:22px;}
+.s1 .tt{font-size:96px;}
+.s1 .sub{max-width:760px;}
+/* s2 demo vs prod */
+.s2 .tt{font-size:72px;margin-top:20px;}
+.s2 .sub{margin-top:18px;}
+.vs2{flex:1;min-height:0;margin-top:24px;display:flex;gap:16px;}
+.vbox{flex:1;border-radius:16px;padding:22px 24px;display:flex;flex-direction:column;}
+.vbox .vh{font-family:'DM Mono',monospace;font-size:14px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px;}
+.vbox ul{list-style:none;flex:1;display:flex;flex-direction:column;justify-content:space-between;}
+.vbox li{font-size:21px;font-weight:600;line-height:1.25;padding-left:26px;position:relative;}
+.vbox li::before{position:absolute;left:0;font-weight:800;}
+.vbox.demo{background:var(--card);border:1px solid var(--rule);}
+.vbox.demo .vh{color:var(--ink46);}
+.vbox.demo li{color:var(--ink46);}
+.vbox.demo li::before{content:'-';color:var(--ink30);}
+.vbox.prod{background:rgba(204,120,92,.09);border:1.5px solid var(--book);box-shadow:0 0 40px rgba(204,120,92,.16);}
+.vbox.prod .vh{color:var(--book);}
+.vbox.prod li{color:var(--ivory);}
+.vbox.prod li::before{content:'+';color:var(--book);}
+/* s3 checklist */
+.s3 .tt{font-size:70px;margin-top:20px;}
+.s3 .sub{margin-top:14px;}
+.ck{flex:1;min-height:0;margin-top:20px;display:flex;flex-direction:column;gap:11px;}
+.ckr{flex:1;display:flex;gap:18px;align-items:center;border:1px solid var(--rule);border-radius:13px;background:var(--card);padding:14px 20px;}
+.ckr .n{width:46px;height:46px;border-radius:11px;background:rgba(204,120,92,.14);border:1px solid rgba(204,120,92,.35);color:var(--book);font-weight:900;font-size:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ckr .tx b{display:block;font-size:23px;font-weight:800;color:var(--ivory);letter-spacing:-.3px;line-height:1.05;}
+.ckr .tx span{display:block;font-size:17.5px;color:var(--ink46);margin-top:4px;line-height:1.3;}
+/* step slides shared */
+.stp .tt{font-size:60px;margin-top:20px;}
+.stp .sub{margin-top:14px;}
+.bx{border:1px solid var(--rule);border-radius:14px;background:var(--card);padding:18px 22px;display:flex;gap:16px;}
+.bx .ic{width:40px;height:40px;border-radius:10px;background:rgba(204,120,92,.14);border:1px solid rgba(204,120,92,.35);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--book);font-weight:900;font-size:19px;}
+.bx .tx b{display:block;font-size:23px;font-weight:800;color:var(--ivory);letter-spacing:-.3px;line-height:1.1;}
+.bx .tx span{display:block;font-size:18px;color:var(--ink70);margin-top:6px;line-height:1.35;}
+.bx .tx span b{display:inline;font-size:inherit;color:var(--ivory);font-weight:700;}
+.strip{border-left:4px solid var(--book);border-radius:0 12px 12px 0;background:rgba(204,120,92,.08);padding:16px 22px;font-size:18px;line-height:1.35;color:var(--ink70);}
+.strip b{color:var(--ivory);font-weight:700;}
+.strip .tg{font-family:'DM Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--book);margin-right:10px;}
+.code{font-family:'DM Mono',monospace;font-size:16px;line-height:1.55;background:#131211;border:1px solid var(--ink14);border-radius:13px;padding:18px 22px;color:var(--ink70);overflow:hidden;}
+.code .ch{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--book);margin-bottom:10px;font-weight:600;}
+.code .k{color:var(--book);}
+.code .s{color:var(--kraft);}
+.code .c{color:var(--ink30);}
+.code .f{color:var(--ivory);}
+.cols{flex:1;min-height:0;margin-top:18px;display:flex;flex-direction:column;gap:13px;}
+.row2{display:flex;gap:13px;}
+.row2 .bx{flex:1;}
+/* s6 memory grid */
+.mg{flex:1;min-height:0;margin-top:20px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:14px;}
+.mc{border:1px solid var(--rule);border-radius:15px;background:var(--card);padding:20px 22px;display:flex;flex-direction:column;}
+.mc .tg2{font-family:'DM Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--kraft);}
+.mc b{display:block;font-size:27px;font-weight:800;color:var(--ivory);letter-spacing:-.4px;margin-top:8px;}
+.mc span{display:block;font-size:18px;color:var(--ink70);margin-top:9px;line-height:1.38;}
+.mc span b{display:inline;font-size:inherit;color:var(--ivory);font-weight:700;}
+.mc.hot{background:rgba(204,120,92,.09);border:1.5px solid var(--book);}
+.mc.hot .tg2{color:var(--book);}
+/* s10 cta */
+.s10{text-align:center;}
+.s10 .mid{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:22px;}
+.s10 .eyebrow{font-family:'DM Mono',monospace;font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--kraft);}
+.s10 .tt{font-size:108px;}
+.s10 .sub{max-width:700px;}
+.s10 .chip{display:flex;align-items:center;gap:12px;background:var(--book);color:#1a0f0a;font-size:23px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;padding:20px 38px;border-radius:14px;box-shadow:0 0 50px rgba(204,120,92,.45);margin-top:10px;}
+.s10 .chip svg{width:24px;height:24px;stroke:#1a0f0a;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.s10 .lg2{width:64px;height:64px;border-radius:50%;object-fit:cover;margin-top:18px;box-shadow:0 0 34px rgba(204,120,92,.4);}
+.s10 .url{font-weight:900;font-size:25px;letter-spacing:-.5px;color:var(--ivory);}
+.s10 .url em{color:var(--book);font-style:normal;}
+</style></head><body>
+
+<!-- 01 COVER -->
+<div class="slide s1"><div class="atm"></div><div class="safe">
+<div class="hd2"><span class="pg2">01 / 10</span><span class="br">51ultron.com</span></div>
+<div class="mid">
+<span class="pill">Founder's guide</span>
+<div class="tt">BUILD<br>PRODUCTION<br>READY<br><em>AI AGENTS.</em></div>
+<div class="sub">Your agent works in a demo. That is not enough. Here is everything it needs to survive when real users hit it.</div>
+</div>
+<div class="ft2"><div class="lf"><img class="lg" src="__LOGO_URI__" alt=""><span class="nm"><b>ULTRON</b> &middot; AI AGENTS FOR FOUNDERS</span></div><span class="sw">Swipe to Start &rarr;</span></div>
+</div></div>
+
+<!-- 02 DEMO VS PROD -->
+<div class="slide s2"><div class="atm"></div><div class="safe">
+<div class="hd2"><span class="pg2">02 / 10</span><span class="br">51ultron.com</span></div>
+<span class="pill" style="margin-top:20px">The real difference</span>
+<div class="tt">DEMO WORKS ONCE.<br><em>PROD WORKS ALWAYS.</em></div>
+<div class="sub">A demo agent impresses in a controlled setting. A production agent survives real users, bad inputs, API outages and unexpected tool failures, without breaking.</div>
+<div class="vs2">
+<div class="vbox demo"><div class="vh">Demo agent</div><ul>
+<li>Happy path only</li><li>No error handling</li><li>No logging or tracing</li><li>No memory across sessions</li><li>No guardrails</li><li>Crashes on bad input</li>
+</ul></div>
+<div class="vbox prod"><div class="vh">Production agent</div><ul>
+<li>Handles edge cases</li><li>Retries + fallbacks</li><li>Full trace on every run</li><li>Persistent memory</li><li>Guardrails on every action</li><li>Gracefully degrades</li>
+</ul></div>
+</div>
+<div class="ft2"><div class="lf"><img class="lg" src="__LOGO_URI__" alt=""><span class="nm"><b>ULTRON</b> &middot; AI AGENTS FOR FOUNDERS</span></div><span class="sw">Swipe &rarr;</span></div>
+</div></div>
+
+<!-- 03 CHECKLIST -->
+<div class="slide s3"><div class="atm"></div><div class="safe">
+<div class="hd2"><span class="pg2">03 / 10</span><span class="br">51ultron.com</span></div>
+<span class="pill" style="margin-top:20px">The checklist</span>
+<div class="tt">6 THINGS THAT<br>MUST <em>BE TRUE.</em></div>
+<div class="sub">Before you call an agent "production-ready", it needs to pass all six. Not five. Six.</div>
+<div class="ck">
+<div class="ckr"><span class="n">1</span><div class="tx"><b>It handles tool failures gracefully</b><span>APIs go down. Networks time out. Your agent must retry, fall back, or report, never crash silently.</span></div></div>
+<div class="ckr"><span class="n">2</span><div class="tx"><b>Every run is observable</b><span>You can see exactly what the agent did, which tools fired, and what the model returned, on any past session.</span></div></div>
+<div class="ckr"><span class="n">3</span><div class="tx"><b>Memory persists across sessions</b><span>The agent remembers what it did last time. Users do not re-explain context on every new conversation.</span></div></div>
+<div class="ckr"><span class="n">4</span><div class="tx"><b>Guardrails block dangerous actions</b><span>High-risk tools, delete, send, charge, need human approval before they fire. Not optional.</span></div></div>
+<div class="ckr"><span class="n">5</span><div class="tx"><b>It stays within token limits</b><span>Long sessions eat context. The agent compresses history intelligently instead of cramming the window.</span></div></div>
+<div class="ckr"><span class="n">6</span><div class="tx"><b>You can evaluate it systematically</b><span>You have a test suite. You know if a change made the agent better or worse before it ships.</span></div></div>
+</div>
+<div class="ft2"><div class="lf"><img class="lg" src="__LOGO_URI__" alt=""><span class="nm"><b>ULTRON</b> &middot; AI AGENTS FOR FOUNDERS</span></div><span class="sw">Swipe &rarr;</span></div>
+</div></div>
+
+<!-- 04 STEP 1 FOUNDATION -->
+<div class="slide stp"><div class="atm"></div><div class="safe">
+<div class="hd2"><span class="pg2">04 / 10</span><span class="br">51ultron.com</span></div>
+<span class="pill" style="margin-top:20px">Step 1 &middot; The foundation</span>
+<div class="tt">PICK THE RIGHT <em>MODEL.</em><br>WRITE THE RIGHT <em>PROMPT.</em></div>
+<div class="sub">The model and the system prompt are the brain of your agent. Get these wrong and no amount of tooling will save you.</div>
+<div class="cols">
+<div class="bx"><span class="ic">1</span><div class="tx"><b>Do not default to the biggest model</b><span>Match model to task. <b>Claude Haiku</b> is fast and cheap for simple routing. <b>Sonnet</b> for nuanced reasoning. <b>Opus</b> for the hardest tasks. Stay model-agnostic.</span></div></div>
+<div class="bx"><span class="ic">2</span><div class="tx"><b>The system prompt is load-bearing</b><span>Define the agent's role, constraints, tone and tool rules in a clear system prompt. Vague prompts produce vague agents. <b>Specific prompts produce predictable agents.</b></span></div></div>
+<div class="bx"><span class="ic">3</span><div class="tx"><b>Use a context file the agent reads every session</b><span>Project context, conventions, team preferences, business rules, loaded on every run. The agent stops asking what it already knows.</span></div></div>
+<div class="strip"><span class="tg">Rule of thumb</span>Start with a small model + a great prompt. Upgrade the model only when the prompt ceiling is genuinely hit. <b>Most failures are prompt failures, not model failures.</b></div>
+</div>
+<div class="ft2"><div class="lf"><img class="lg" src="__LOGO_URI__" alt=""><span class="nm"><b>ULTRON</b> &middot; AI AGENTS FOR FOUNDERS</span></div><span class="sw">Swipe &rarr;</span></div>
+</div></div>
+
+<!-- 05 STEP 2 TOOLS -->
+<div class="slide stp"><div class="atm"></div><div class="safe">
+<div class="hd2"><span class="pg2">05 / 10</span><span class="br">51ultron.com</span></div>
+<span class="pill" style="margin-top:20px">Step 2 &middot; Tools</span>
+<div class="tt">TOOLS FAIL.<br><em>PLAN FOR IT.</em></div>
+<div class="sub">Every tool call in production will eventually fail. Wrap every single one with <b>retry logic, a timeout and a fallback</b> before your agent ships.</div>
+<div class="cols">
+<div class="code"><div class="ch">Wrap every tool call &middot; retry pattern</div>
+<span class="k">from</span> tenacity <span class="k">import</span> retry, stop_after_attempt, wait_exponential<br>
+<br>
+<span class="c"># every call gets retries, a timeout and a fallback</span><br>
+<span class="k">@retry</span>(stop=stop_after_attempt(<span class="s">3</span>), wait=wait_exponential(multiplier=<span class="s">1</span>, max=<span class="s">10</span>))<br>
+<span class="k">def</span> <span class="f">search_web</span>(query: <span class="k">str</span>) -&gt; <span class="k">str</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">try</span>: <span class="k">return</span> tavily.search(query)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">except</span> Exception <span class="k">as</span> e:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">return</span> <span class="s">"Search unavailable. Try a different approach."</span><br>
+<span class="c"># the agent sees the error as text and works around it, never crashes</span></div>
+<div class="row2">
+<div class="bx"><span class="ic">+</span><div class="tx"><b>Keep tools focused</b><span>One tool, one job. <b>Fewer than 8 tools per agent.</b> Vague tools mean the wrong tool gets chosen. Clear descriptions, reliable routing.</span></div></div>
+<div class="bx"><span class="ic">!</span><div class="tx"><b>Never retry on 4xx errors</b><span>Retry on 5xx and network failures only. Retrying a 400 Bad Request just <b>burns tokens faster</b>.</span></div></div>
+</div>
+</div>
+<div class="ft2"><div class="lf"><img class="lg" src="__LOGO_URI__" alt=""><span class="nm"><b>ULTRON</b> &middot; AI AGENTS FOR FOUNDERS</span></div><span class="sw">Swipe &rarr;</span></div>
+</div></div>
+
+<!-- 06 STEP 3 MEMORY -->
+<div class="slide stp"><div class="atm"></div><div class="safe">
+<div class="hd2"><span class="pg2">06 / 10</span><span class="br">51ultron.com</span></div>
+<span class="pill" style="margin-top:20px">Step 3 &middot; Memory</span>
+<div class="tt">AGENTS WITHOUT<br>MEMORY <em>START OVER.</em></div>
+<div class="sub">An agent that forgets every session is not useful in production. Memory is what turns a one-shot tool into a system users trust.</div>
+<div class="mg">
+<div class="mc"><span class="tg2">Short-term</span><b>Working Memory</b><span>The active conversation window. <b>Compress it before it overflows</b>, checkpoint the thread, never lose the live context.</span></div>
+<div class="mc"><span class="tg2">Semantic</span><b>Vector Memory</b><span>Documents and knowledge searched by meaning, the foundation of RAG. <b>Pinecone, pgvector, Weaviate.</b></span></div>
+<div class="mc hot"><span class="tg2">Long-term</span><b>Persistent Memory</b><span>Survives across sessions. Preferences, project rules, past decisions. <b>Mem0, LangGraph Store, Zep.</b></span></div>
+<div class="mc"><span class="tg2">Skill</span><b>Learned Conventions</b><span>User corrections, patterns and team rules stored in a context file, <b>loaded every session</b>.</span></div>
+</div>
+<div class="ft2"><div class="lf"><img class="lg" src="__LOGO_URI__" alt=""><span class="nm"><b>ULTRON</b> &middot; AI AGENTS FOR FOUNDERS</span></div><span class="sw">Swipe &rarr;</span></div>
+</div></div>
+
+<!-- 07 STEP 4 OBSERVABILITY -->
+<div class="slide stp"><div class="atm"></div><div class="safe">
+<div class="hd2"><span class="pg2">07 / 10</span><span class="br">51ultron.com</span></div>
+<span class="pill" style="margin-top:20px">Step 4 &middot; Observability</span>
+<div class="tt">IF YOU CAN'T SEE IT<br><em>YOU CAN'T FIX IT.</em></div>
+<div class="sub">Every agent decision in production must be traceable. Without logs and traces, debugging a silent failure means guessing.</div>
+<div class="cols">
+<div class="code"><div class="ch">Enable tracing &middot; 2 lines</div>
+<span class="k">import</span> os<br>
+os.environ[<span class="s">"TRACING_V2"</span>] = <span class="s">"true"</span><br>
+os.environ[<span class="s">"TRACING_API_KEY"</span>] = <span class="s">"your key"</span><br>
+<span class="c"># every agent run is now auto-traced: every tool call, every token, every decision</span><br>
+<br>
+<span class="k">import</span> logfire<br>
+logfire.<span class="f">configure</span>()<br>
+<span class="c"># one logfire line for structured logs on top</span></div>
+<div class="row2">
+<div class="bx"><span class="ic">+</span><div class="tx"><b>What to track</b><span><b>Latency per step, tokens used, tool success rate, answer quality.</b> The four numbers that explain every failure.</span></div></div>
+<div class="bx"><span class="ic">+</span><div class="tx"><b>Tools that do it</b><span><b>LangSmith, Logfire, Arize.</b> All integrate in 2 lines. Full trace trees, structured search over every run.</span></div></div>
+</div>
+</div>
+<div class="ft2"><div class="lf"><img class="lg" src="__LOGO_URI__" alt=""><span class="nm"><b>ULTRON</b> &middot; AI AGENTS FOR FOUNDERS</span></div><span class="sw">Swipe &rarr;</span></div>
+</div></div>
+
+<!-- 08 STEP 5 SAFETY -->
+<div class="slide stp"><div class="atm"></div><div class="safe">
+<div class="hd2"><span class="pg2">08 / 10</span><span class="br">51ultron.com</span></div>
+<span class="pill" style="margin-top:20px">Step 5 &middot; Safety</span>
+<div class="tt">THE AGENT DECIDES <em>WHAT.</em><br>YOU DECIDE <em>WHAT'S SAFE.</em></div>
+<div class="sub">The model picks the action. Your guardrails decide if it is allowed. These are architecturally separate, and they must be.</div>
+<div class="cols">
+<div class="bx"><span class="ic">1</span><div class="tx"><b>Input guardrails</b><span>Validate user requests before the agent acts. Block harmful, out-of-scope or malformed inputs <b>at the front door</b>.</span></div></div>
+<div class="bx"><span class="ic">2</span><div class="tx"><b>Human-in-the-loop &middot; pause before the action</b><span>High-risk tools (send email, delete file, charge card) <b>pause the agent and wait for human approval</b>. The agent resumes with full context, exactly where it stopped.</span></div></div>
+<div class="bx"><span class="ic">3</span><div class="tx"><b>Output guardrails</b><span>Final check before the result reaches the user. Catch hallucinations, policy violations or incomplete answers, <b>before they ship</b>.</span></div></div>
+<div class="strip"><span class="tg">Start here</span>Default to <b>supervised</b>: the agent acts, a human approves the high-risk steps. <b>Earn full autonomy by proving reliability over time.</b></div>
+</div>
+<div class="ft2"><div class="lf"><img class="lg" src="__LOGO_URI__" alt=""><span class="nm"><b>ULTRON</b> &middot; AI AGENTS FOR FOUNDERS</span></div><span class="sw">Swipe &rarr;</span></div>
+</div></div>
+
+<!-- 09 STEP 6 EVALS -->
+<div class="slide stp"><div class="atm"></div><div class="safe">
+<div class="hd2"><span class="pg2">09 / 10</span><span class="br">51ultron.com</span></div>
+<span class="pill" style="margin-top:20px">Step 6 &middot; Evals</span>
+<div class="tt">TEST YOUR AGENT<br>LIKE <em>SOFTWARE.</em></div>
+<div class="sub">You would not ship code without tests. Do not ship agents without evals. Evals tell you if a change made the agent better or worse, <b>before your users find out</b>.</div>
+<div class="cols">
+<div class="bx"><span class="ic">1</span><div class="tx"><b>Build a golden dataset</b><span><b>50-100 real inputs with expected outputs.</b> Every change to the agent runs against this. Green means ship. Red means fix.</span></div></div>
+<div class="bx"><span class="ic">2</span><div class="tx"><b>Test failure modes specifically</b><span>Bad inputs, API timeouts, ambiguous queries, very long sessions. <b>If it can happen in production, test it before production.</b></span></div></div>
+<div class="bx"><span class="ic">3</span><div class="tx"><b>Use LLM-as-judge for quality</b><span>For open-ended answers, a second model scores accuracy, completeness and relevance. <b>Scales to thousands of evals per run.</b></span></div></div>
+<div class="strip"><span class="tg">Tools</span><b>LangSmith Evaluations &middot; Braintrust &middot; OpenEvals &middot; Ragas (for RAG)</b> &middot; pytest with LLM assertions</div>
+</div>
+<div class="ft2"><div class="lf"><img class="lg" src="__LOGO_URI__" alt=""><span class="nm"><b>ULTRON</b> &middot; AI AGENTS FOR FOUNDERS</span></div><span class="sw">Swipe &rarr;</span></div>
+</div></div>
+
+<!-- 10 CTA -->
+<div class="slide s10"><div class="atm"></div><div class="safe">
+<div class="hd2"><span class="pg2">10 / 10</span><span class="br">51ultron.com</span></div>
+<div class="mid">
+<div class="eyebrow">That's a wrap &middot; production-ready AI agents</div>
+<div class="tt">COMMENT<br><em>AGENTS.</em></div>
+<div class="sub">Comment <b>AGENTS</b> and I will send you the full production-agents breakdown, all six steps in one piece.</div>
+<div class="chip">COMMENT AGENTS<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+<img class="lg2" src="__LOGO_URI__" alt="">
+<div class="url">51ultron<em>.</em>com</div>
+</div>
+<div class="ft2"><div class="lf"><img class="lg" src="__LOGO_URI__" alt=""><span class="nm"><b>ULTRON</b> &middot; AI AGENTS FOR FOUNDERS</span></div><span class="sw">Slide 10 / 10</span></div>
+</div></div>
+
+</body></html>

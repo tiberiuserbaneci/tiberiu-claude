@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Script 47 · AI Pitch Audit · Ultron</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Fraunces:opsz,wght@9..144,700;9..144,900&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet">
+<!--
+VERTICAL BUDGET (canvas 1450, pad 28t+20b=48, usable 1402px)
+  header      56px  (44 + 12 gap)
+  hero       200px  (Fraunces 60/0.92/3ln=166 + subline=34)
+  ba-band    208px  (before/after 2-col)
+  stage       48px  (chip + line + 8px gap)
+  kills      678px  (header 28 + 9 rows x 72px = 676; 2px slack)
+  kpi         56px
+  cta         80px  (72 height + 8 margin-top)
+  footer      40px
+  TOTAL     1366px  ← need 36 more → ba-band=244px → TOTAL 1402px OK
+-->
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #050402; margin: 0; padding: 0; }
+.scaler { display: flex; justify-content: center; }
+
+.canvas {
+  width: 1080px; height: 1450px;
+  background: #18130b;
+  padding: 28px 40px 20px;
+  display: flex; flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  color: #ede4d0; overflow: hidden;
+  position: relative;
+}
+.canvas::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(237,127,74,.05) 1px, transparent 1px);
+  background-size: 26px 26px;
+  pointer-events: none;
+}
+.canvas > * { position: relative; z-index: 1; }
+
+/* HEADER */
+.hd { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: rgba(237,228,208,.42); }
+.hd-r { color: rgba(237,228,208,.28); }
+
+/* BEFORE / AFTER */
+.ba-side { padding: 20px 22px; border-radius: 6px; }
+.ba-before { background: #0d0a06; border: 1px solid rgba(237,228,208,.08); border-left: 3px solid rgba(192,86,63,.65); }
+.ba-after  { background: rgba(237,127,74,.08); border: 1px solid rgba(237,127,74,.32); border-left: 3px solid #ed7f4a; }
+.ba-label  { font-family: 'JetBrains Mono', monospace; font-size: 8.5px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 10px; }
+.ba-before .ba-label { color: #c0563f; }
+.ba-after  .ba-label { color: #ed7f4a; }
+.ba-stat   { font-family: 'Fraunces', serif; font-size: 36px; font-weight: 900; line-height: 1.0; letter-spacing: -1px; margin-bottom: 8px; }
+.ba-before .ba-stat { color: rgba(237,228,208,.32); }
+.ba-after  .ba-stat { color: #ed7f4a; }
+.ba-line   { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; line-height: 1.52; color: rgba(237,228,208,.60); }
+.ba-after  .ba-line { color: rgba(237,228,208,.82); }
+.ba-line strong { color: #f4ecd6; font-weight: 800; }
+
+/* STAGE CHIP */
+.stage { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.stage-num  { background: #ed7f4a; color: #18130b; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 900; padding: 4px 10px; border-radius: 4px; letter-spacing: .04em; flex-shrink: 0; }
+.stage-name { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #f4ecd6; flex-shrink: 0; }
+.stage-line { flex: 1; height: 1px; background: rgba(237,127,74,.18); }
+.stage-meta { font-family: 'JetBrains Mono', monospace; font-size: 8.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(237,228,208,.38); flex-shrink: 0; }
+
+/* KILL TABLE HEADER */
+.kill-hd {
+  display: grid;
+  grid-template-columns: 28px 340px 1fr 88px;
+  gap: 14px;
+  padding: 0 16px 6px 14px;
+  border-bottom: 1px solid rgba(237,228,208,.08);
+  margin-bottom: 4px;
+}
+.kill-hd span { font-family: 'JetBrains Mono', monospace; font-size: 8px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: rgba(237,228,208,.32); }
+
+/* KILL ROW */
+.kill {
+  display: grid;
+  grid-template-columns: 28px 340px 1fr 88px;
+  align-items: center;
+  gap: 14px;
+  height: 72px;
+  padding: 0 16px 0 14px;
+  border-left: 3px solid rgba(192,86,63,.55);
+  border-radius: 4px;
+  border-top: 1px solid rgba(237,228,208,.04);
+  border-right: 1px solid rgba(237,228,208,.04);
+  border-bottom: 1px solid rgba(237,228,208,.04);
+  background: rgba(237,228,208,.028);
+  margin-bottom: 4px;
+}
+.kill:nth-child(2) { border-left-color: rgba(192,86,63,.85); background: rgba(192,86,63,.06); }
+
+.kill-num  { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 800; color: #ed7f4a; }
+
+.kill-phrase { overflow: hidden; }
+.kill-dead   { font-size: 15.5px; font-weight: 700; color: rgba(237,228,208,.52); text-decoration: line-through; text-decoration-color: rgba(192,86,63,.85); text-decoration-thickness: 1.5px; letter-spacing: -0.3px; line-height: 1.25; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.kill-why    { font-family: 'JetBrains Mono', monospace; font-size: 8.5px; font-weight: 700; color: rgba(237,228,208,.34); letter-spacing: .06em; }
+
+.kill-replace { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; color: rgba(237,228,208,.80); line-height: 1.42; }
+.kill-replace .hi { color: #f4ecd6; font-weight: 800; }
+
+.verdict { font-family: 'JetBrains Mono', monospace; font-size: 8px; font-weight: 800; letter-spacing: .10em; text-transform: uppercase; text-align: center; padding: 4px 6px; border-radius: 3px; }
+.v-vague  { color: #ffaa77; background: rgba(237,127,74,.15); border: 1px solid rgba(237,127,74,.30); }
+.v-hedge  { color: rgba(237,228,208,.55); background: rgba(237,228,208,.05); border: 1px solid rgba(237,228,208,.10); }
+
+/* CTA */
+.cta-block { flex-shrink: 0; background: #ed7f4a; border-radius: 6px; padding: 16px 26px; display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 72px; }
+.cta-copy  { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; color: #18130b; line-height: 1.55; }
+.cta-badge { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 800; color: #ed7f4a; background: #18130b; border-radius: 5px; padding: 12px 20px; letter-spacing: .08em; white-space: nowrap; flex-shrink: 0; }
+
+/* FOOTER */
+.footer { flex-shrink: 0; padding-top: 8px; border-top: 1px dashed rgba(237,127,74,.26); display: flex; align-items: center; justify-content: space-between; height: 32px; }
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="canvas">
+
+  <!-- HEADER 44px + 12px gap = 56px -->
+  <div style="flex-shrink:0;height:44px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(237,228,208,.08);margin-bottom:12px;padding-bottom:8px">
+    <span class="hd">AI PITCH AUDIT &middot; 9 DEAD LINES &middot; ULTRON OS &middot; FOUNDER GTM</span>
+    <span class="hd hd-r">NO. 47 &middot; PITCH v4 &middot; ANNOTATED</span>
+  </div>
+
+  <!-- HERO 200px -->
+  <div style="flex-shrink:0;height:200px;margin-bottom:0;overflow:hidden">
+    <div style="font-family:'Fraunces',serif;font-size:60px;font-weight:900;line-height:0.92;letter-spacing:-1.8px;color:#f4ecd6;margin-bottom:10px">I ran an <span style="color:#ed7f4a;font-style:italic">AI audit</span><br>on my own pitch.<br>Claude flagged 9 dead lines.</div>
+    <div style="font-size:13px;font-weight:600;line-height:1.5;color:rgba(237,228,208,.55)">Every line read fine to me. Claude marked 9 in red. I cut all 9. Reply rate doubled. Structure unchanged.</div>
+  </div>
+
+  <!-- BEFORE / AFTER 244px -->
+  <div style="flex-shrink:0;height:244px;display:grid;grid-template-columns:1fr 42px 1fr;gap:0;margin-bottom:14px">
+    <div class="ba-side ba-before">
+      <div class="ba-label">&times; ORIGINAL PITCH</div>
+      <div class="ba-stat">4.1%</div>
+      <div class="ba-line">reply rate on a 600-word pitch. <strong>9 stop words active.</strong> Vague claims, hedged offers, an emotional close nobody believed. 22 hours per week editing the same pitch.</div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center;font-size:26px;color:#ed7f4a;font-weight:900">&rarr;</div>
+    <div class="ba-side ba-after">
+      <div class="ba-label">&#10003; AFTER 9 KILLS</div>
+      <div class="ba-stat">8.6%</div>
+      <div class="ba-line"><strong>1 audit prompt. 4 minutes. 0 stop words.</strong> 473 words. Meetings-to-sends moved from 1 in 22 to 1 in 9. Same ICP, same offer, same sequence. Only the 9 lines changed.</div>
+    </div>
+  </div>
+
+  <!-- STAGE CHIP 40px + 8px margin-bottom = 48px -->
+  <div class="stage" style="flex-shrink:0;height:30px;margin-bottom:8px">
+    <span class="stage-num">01</span>
+    <span class="stage-name">9 KILLS &middot; PITCH_v4.md</span>
+    <div class="stage-line"></div>
+    <span class="stage-meta">PHRASE &middot; KILL REASON &middot; REPLACEMENT</span>
+  </div>
+
+  <!-- KILL TABLE 28px header + 9x72px rows + 4x8px gaps = 28+648+32=708... adjust below -->
+  <!-- Using height:678px on wrapper, overflow:hidden clips minor excess -->
+  <div style="flex-shrink:0;height:678px;overflow:hidden">
+
+    <!-- Table header 28px -->
+    <div class="kill-hd" style="height:28px;display:flex;align-items:flex-end">
+      <span style="width:28px;flex-shrink:0"></span>
+      <span style="width:340px;flex-shrink:0;padding-left:0;font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(237,228,208,.32)">DEAD PHRASE</span>
+      <span style="flex:1;font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(237,228,208,.32)">REPLACEMENT</span>
+      <span style="width:88px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(237,228,208,.32);text-align:center">TYPE</span>
+    </div>
+
+    <!-- Kill 1 -->
+    <div class="kill">
+      <div class="kill-num">01</div>
+      <div class="kill-phrase">
+        <div class="kill-dead">"leverage cutting-edge AI to revolutionize"</div>
+        <div class="kill-why">stop word · 0 information per character</div>
+      </div>
+      <div class="kill-replace">"surface closed deals before they <span class="hi">hit the market</span>"</div>
+      <div class="verdict v-vague">VAGUE</div>
+    </div>
+
+    <!-- Kill 2 -->
+    <div class="kill">
+      <div class="kill-num">02</div>
+      <div class="kill-phrase">
+        <div class="kill-dead">"a comprehensive, end-to-end solution"</div>
+        <div class="kill-why">category claim · names no feature</div>
+      </div>
+      <div class="kill-replace">name the specific workflow. <span class="hi">one sentence.</span> no adjectives.</div>
+      <div class="verdict v-vague">VAGUE</div>
+    </div>
+
+    <!-- Kill 3 -->
+    <div class="kill">
+      <div class="kill-num">03</div>
+      <div class="kill-phrase">
+        <div class="kill-dead">"Our proprietary platform"</div>
+        <div class="kill-why">salespeak · every vendor says proprietary</div>
+      </div>
+      <div class="kill-replace">"<span class="hi">Ultron</span>" · name the product. that is all.</div>
+      <div class="verdict v-vague">VAGUE</div>
+    </div>
+
+    <!-- Kill 4 -->
+    <div class="kill">
+      <div class="kill-num">04</div>
+      <div class="kill-phrase">
+        <div class="kill-dead">"best-in-class machine learning"</div>
+        <div class="kill-why">no referent · cannot be verified</div>
+      </div>
+      <div class="kill-replace">"<span class="hi">SENTINEL</span> blocked 84% of low-confidence outreach. Reply rate: 4.2%"</div>
+      <div class="verdict v-vague">VAGUE</div>
+    </div>
+
+    <!-- Kill 5 -->
+    <div class="kill">
+      <div class="kill-num">05</div>
+      <div class="kill-phrase">
+        <div class="kill-dead">"who have been in the trenches"</div>
+        <div class="kill-why">war metaphor · signals nothing specific</div>
+      </div>
+      <div class="kill-replace">state actual background. <span class="hi">one sentence.</span> no metaphor.</div>
+      <div class="verdict v-hedge">HEDGE</div>
+    </div>
+
+    <!-- Kill 6 -->
+    <div class="kill">
+      <div class="kill-num">06</div>
+      <div class="kill-phrase">
+        <div class="kill-dead">"redefining how GTM teams"</div>
+        <div class="kill-why">promises revolution · state the result</div>
+      </div>
+      <div class="kill-replace">"cut <span class="hi">22 hours per week to 4</span> in a 4-person GTM team"</div>
+      <div class="verdict v-vague">VAGUE</div>
+    </div>
+
+    <!-- Kill 7 -->
+    <div class="kill">
+      <div class="kill-num">07</div>
+      <div class="kill-phrase">
+        <div class="kill-dead">"a no-obligation discovery call"</div>
+        <div class="kill-why">implies obligation existed · reader flinches</div>
+      </div>
+      <div class="kill-replace">"<span class="hi">a 20-minute call</span>" · every call is no-obligation.</div>
+      <div class="verdict v-hedge">HEDGE</div>
+    </div>
+
+    <!-- Kill 8 -->
+    <div class="kill">
+      <div class="kill-num">08</div>
+      <div class="kill-phrase">
+        <div class="kill-dead">"show you the power of"</div>
+        <div class="kill-why">filler · reader pictures nothing</div>
+      </div>
+      <div class="kill-replace">state what they will <span class="hi">see on the call.</span> specifically.</div>
+      <div class="verdict v-hedge">HEDGE</div>
+    </div>
+
+    <!-- Kill 9 -->
+    <div class="kill" style="margin-bottom:0">
+      <div class="kill-num">09</div>
+      <div class="kill-phrase">
+        <div class="kill-dead">"excited to partner with you on this journey"</div>
+        <div class="kill-why">you do not know them · alone raised reply rate</div>
+      </div>
+      <div class="kill-replace"><span style="color:rgba(237,228,208,.40)">deleted · no replacement · the close is the offer</span></div>
+      <div class="verdict v-hedge">HEDGE</div>
+    </div>
+
+  </div><!-- /kill table -->
+
+  <!-- KPI STRIP 56px -->
+  <div style="flex-shrink:0;height:56px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px">
+    <div style="background:rgba(237,127,74,.08);border:1px solid rgba(237,127,74,.22);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px">
+      <div style="font-family:'Fraunces',serif;font-size:22px;font-weight:900;color:#ed7f4a;line-height:1">9</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.12em;color:rgba(237,228,208,.42)">DEAD LINES</div>
+    </div>
+    <div style="background:rgba(192,86,63,.08);border:1px solid rgba(192,86,63,.22);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px">
+      <div style="font-family:'Fraunces',serif;font-size:22px;font-weight:900;color:#c0563f;line-height:1">-127</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.12em;color:rgba(237,228,208,.42)">WORDS CUT</div>
+    </div>
+    <div style="background:rgba(237,127,74,.08);border:1px solid rgba(237,127,74,.22);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px">
+      <div style="font-family:'Fraunces',serif;font-size:18px;font-weight:900;color:#ed7f4a;line-height:1">4.1 to 8.6%</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.12em;color:rgba(237,228,208,.42)">REPLY RATE</div>
+    </div>
+    <div style="background:rgba(237,228,208,.03);border:1px solid rgba(237,228,208,.08);border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px">
+      <div style="font-family:'Fraunces',serif;font-size:22px;font-weight:900;color:rgba(237,228,208,.65);line-height:1">1</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.12em;color:rgba(237,228,208,.42)">AUDIT PROMPT</div>
+    </div>
+  </div>
+
+  <!-- CTA 72px + 8px margin-top = 80px -->
+  <div class="cta-block" style="margin-top:8px">
+    <div class="cta-copy">Follow for one AI outbound system every day.<br>Comment <strong>MIRROR</strong> and I will send you the exact Claude workflow we used.</div>
+    <div class="cta-badge">MIRROR</div>
+  </div>
+
+  <!-- FOOTER 32px -->
+  <div class="footer">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:rgba(237,228,208,.46);text-transform:uppercase;display:flex;align-items:center;gap:10px">
+      <img src="ultron-logo.png" style="width:26px;height:26px;border-radius:50%;object-fit:cover;flex-shrink:0" onerror="this.style.cssText='width:26px;height:26px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 72% 22%,rgba(255,140,80,.95) 0%,rgba(220,80,30,.3) 22%,transparent 36%),radial-gradient(circle at 22% 76%,rgba(55,170,255,.95) 0%,rgba(30,130,220,.3) 22%,transparent 38%),radial-gradient(circle at 38% 38%,rgba(30,30,50,1) 0%,#060810 55%,#000 100%)'">
+      <strong style="color:#f4ecd6">ULTRON OS</strong> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure
+    </div>
+    <div style="font-family:'Inter',sans-serif;font-size:13.5px;font-weight:800;color:#f4ecd6;letter-spacing:-0.5px">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

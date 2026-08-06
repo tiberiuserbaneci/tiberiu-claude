@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 52 · Four Languages · v1</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=Noto+Sans+JP:wght@500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* BUDGET 1450 */
+  body{background:#f4ede0;margin:0;padding:24px 0}
+  .scaler{display:flex;justify-content:center;align-items:flex-start}
+  .scaler>.poster{transform-origin:top center;transform:scale(calc(min(100vw / 1130, (100vh - 48px) / 1510)))}
+  .poster{width:1080px;height:1450px;background:var(--ink-cream-50);display:flex;flex-direction:column;padding:28px 40px 20px;overflow:hidden}
+  .mono{font-family:'JetBrains Mono',monospace}
+  .fraunces{font-family:'Fraunces',Georgia,serif;font-feature-settings:'ss01' on}
+  .accent{color:var(--accent-dark)}
+  .lang{display:flex;flex-direction:column;border-right:1px solid rgba(0,0,0,0.06)}
+  .lang:last-child{border-right:none}
+  .lang-head{padding:12px 14px;border-bottom:1px solid rgba(0,0,0,0.06);background:rgba(0,0,0,0.02);display:flex;align-items:center;justify-content:space-between}
+  .lang-flag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:800;letter-spacing:.16em;color:var(--ink-black)}
+  .lang-market{font-family:'JetBrains Mono',monospace;font-size:7px;font-weight:700;letter-spacing:.10em;color:rgba(0,0,0,0.50)}
+  .lang-body{padding:14px;flex:1;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:rgba(0,0,0,0.78);line-height:1.45}
+  .lang-body.jp{font-family:'Noto Sans JP',sans-serif;font-size:11px}
+  .lang-foot{padding:9px 14px;border-top:1px dashed rgba(0,0,0,0.10);background:rgba(199,93,53,0.04)}
+  .lang-foot-key{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.10em;color:rgba(0,0,0,0.42)}
+  .lang-foot-val{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:800;letter-spacing:.04em;color:var(--accent-dark)}
+  .anno-chip{background:#FFFFFF;border:1px solid var(--accent-dark);border-radius:4px;padding:4px 9px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:800;letter-spacing:.12em;color:var(--accent-dark);transform:rotate(-1.5deg);box-shadow:0 2px 6px rgba(199,93,53,0.18);white-space:nowrap}
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="poster">
+
+  <div style="flex-shrink:0;height:44px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(0,0,0,0.08);margin-bottom:12px">
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(0,0,0,0.40)">FOUNDER GTM · AI LOCALIZATION · 4 MARKETS · ULTRON OS</span>
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(0,0,0,0.30)">NO. 52 · 30D · EN · ES · DE · JA</span>
+  </div>
+
+  <div style="flex-shrink:0;margin-bottom:16px">
+    <div class="mono accent" style="font-size:10px;font-weight:800;letter-spacing:.22em;margin-bottom:12px">SAME PROSPECT TYPE · 4 LANGUAGES · 2.0X PIPELINE</div>
+    <div class="fraunces" style="font-weight:900;font-size:60px;line-height:0.92;letter-spacing:-1.8px;color:var(--ink-black);margin-bottom:12px"><span class="accent" style="font-style:italic">Claude</span> writes outbound<br>in 4 languages.<br>Pipeline doubled.</div>
+    <div style="font-family:'Inter',sans-serif;font-size:18px;font-weight:600;line-height:1.18;letter-spacing:-0.2px;color:rgba(0,0,0,0.55)">English-only had 47% of the world locked out. 4 languages, 1 prompt template, same gate. Pipeline went from $238K to $487K.</div>
+  </div>
+
+  <div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+    <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.18em;color:rgba(0,0,0,0.42)">EXHIBIT A · SAME MESSAGE · 4 LOCALES · STRIKER OUTPUT</div>
+    <div style="display:flex;align-items:center;gap:6px"><div style="width:6px;height:6px;border-radius:50%;background:#16a34a"></div><span class="mono" style="font-size:8px;font-weight:800;letter-spacing:.14em;color:rgba(0,0,0,0.50)">+ $249K PIPE</span></div>
+  </div>
+
+  <div style="flex-shrink:0;min-height:792px;position:relative;background:#FFFFFF;border:1px solid rgba(0,0,0,0.10);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,0.05);overflow:hidden;margin-bottom:14px">
+
+    <div style="height:36px;background:#F4F2EE;border-bottom:1px solid rgba(0,0,0,0.08);display:flex;align-items:center;padding:0 14px;gap:10px">
+      <div style="display:flex;gap:5px"><div style="width:9px;height:9px;border-radius:50%;background:#E66B5A"></div><div style="width:9px;height:9px;border-radius:50%;background:#E8B341"></div><div style="width:9px;height:9px;border-radius:50%;background:#5BB964"></div></div>
+      <div style="flex:1;background:#FFFFFF;border:1px solid rgba(0,0,0,0.08);border-radius:5px;padding:4px 10px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:600;color:rgba(0,0,0,0.55);text-align:center">striker.ultron.com / templates / harbor_crm_winrate · 4 locales</div>
+      <span class="mono accent" style="font-size:8px;font-weight:800;letter-spacing:.14em">v3 · LOCALE</span>
+    </div>
+
+    <!-- Subject row -->
+    <div style="padding:14px 18px;border-bottom:1px solid rgba(0,0,0,0.06);background:rgba(199,93,53,0.04)">
+      <div class="mono" style="font-size:8px;font-weight:800;letter-spacing:.18em;color:var(--accent-dark);margin-bottom:5px">SAME SOURCE PROMPT · OUTPUT BELOW PER LOCALE</div>
+      <div style="font-family:'Inter',sans-serif;font-size:12px;font-weight:700;color:var(--ink-black);line-height:1.4">"Write 1 message to a CRO at Harbor CRM. Cite: Series C funding 8d ago + 14 GTM hires. Cap 70w. Voice: founder, direct, no pitch."</div>
+    </div>
+
+    <!-- 4 language columns -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);height:calc(100% - 36px - 64px - 110px - 40px)">
+
+      <div class="lang">
+        <div class="lang-head"><span class="lang-flag">EN · US/UK</span><span class="lang-market">62% TAM</span></div>
+        <div class="lang-body">
+          <p style="margin:0 0 8px"><strong>Subject:</strong> 14 hires, 14 stacks</p>
+          <p style="margin:0">Saw Harbor closed Series C 8 days ago and you're hiring 14 GTM roles. They'll each show up with a different outbound stack on day 1.</p>
+          <p style="margin:6px 0 0">We picked the 50 prospects you'd send to first. Want the list?</p>
+        </div>
+        <div class="lang-foot">
+          <div style="display:flex;justify-content:space-between;align-items:baseline"><span class="lang-foot-key">REPLY</span><span class="lang-foot-val">8.6%</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:3px"><span class="lang-foot-key">PIPE 30D</span><span class="lang-foot-val">$182K</span></div>
+        </div>
+      </div>
+
+      <div class="lang">
+        <div class="lang-head"><span class="lang-flag">ES · ES/LATAM</span><span class="lang-market">18% TAM</span></div>
+        <div class="lang-body">
+          <p style="margin:0 0 8px"><strong>Asunto:</strong> 14 fichajes, 14 stacks</p>
+          <p style="margin:0">Vi que Harbor cerró Serie C hace 8 días y estáis contratando 14 perfiles GTM. Cada uno llegará con un stack distinto el primer día.</p>
+          <p style="margin:6px 0 0">Ya elegimos los 50 contactos a los que escribir primero. ¿Te paso la lista?</p>
+        </div>
+        <div class="lang-foot">
+          <div style="display:flex;justify-content:space-between;align-items:baseline"><span class="lang-foot-key">REPLY</span><span class="lang-foot-val">9.1%</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:3px"><span class="lang-foot-key">PIPE 30D</span><span class="lang-foot-val">$104K</span></div>
+        </div>
+      </div>
+
+      <div class="lang">
+        <div class="lang-head"><span class="lang-flag">DE · DACH</span><span class="lang-market">12% TAM</span></div>
+        <div class="lang-body">
+          <p style="margin:0 0 8px"><strong>Betreff:</strong> 14 Hires, 14 Stacks</p>
+          <p style="margin:0">Harbor hat vor 8 Tagen die Series C abgeschlossen und stellt 14 GTM-Rollen ein. Jeder bringt am ersten Tag einen anderen Outbound-Stack mit.</p>
+          <p style="margin:6px 0 0">Wir haben die 50 Kontakte ausgewählt, die zuerst angeschrieben werden sollten. Soll ich die Liste schicken?</p>
+        </div>
+        <div class="lang-foot">
+          <div style="display:flex;justify-content:space-between;align-items:baseline"><span class="lang-foot-key">REPLY</span><span class="lang-foot-val">7.4%</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:3px"><span class="lang-foot-key">PIPE 30D</span><span class="lang-foot-val">$118K</span></div>
+        </div>
+      </div>
+
+      <div class="lang" style="border-right:none">
+        <div class="lang-head"><span class="lang-flag">JA · JP</span><span class="lang-market">8% TAM</span></div>
+        <div class="lang-body jp">
+          <p style="margin:0 0 8px"><strong>件名:</strong> 14名の採用、14のスタック</p>
+          <p style="margin:0">8日前にHarborがSeries Cをクローズし、14名のGTM職を採用中と拝見しました。初日には全員が異なる送信スタックを持ち込むはずです。</p>
+          <p style="margin:6px 0 0">最初にアプローチすべき50社を選定済みです。リストをお送りしてもよろしいですか。</p>
+        </div>
+        <div class="lang-foot">
+          <div style="display:flex;justify-content:space-between;align-items:baseline"><span class="lang-foot-key">REPLY</span><span class="lang-foot-val">5.2%</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:3px"><span class="lang-foot-key">PIPE 30D</span><span class="lang-foot-val">$83K</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Outcome bar -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(0,0,0,0.08);background:rgba(0,0,0,0.015)">
+      <div style="padding:14px 22px;border-right:1px solid rgba(0,0,0,0.08)">
+        <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.16em;color:rgba(0,0,0,0.45);text-transform:uppercase">BEFORE · EN ONLY · 30D</div>
+        <div style="display:flex;align-items:baseline;gap:10px;margin-top:3px">
+          <span class="fraunces" style="font-size:22px;font-weight:900;line-height:1;color:rgba(0,0,0,0.62);letter-spacing:-0.6px">$238K pipe</span>
+          <span class="mono" style="font-size:9px;font-weight:700;color:rgba(0,0,0,0.50);letter-spacing:.10em">7 BOOKED</span>
+        </div>
+      </div>
+      <div style="padding:14px 22px">
+        <div class="mono" style="font-size:8px;font-weight:700;letter-spacing:.16em;color:var(--accent-dark);text-transform:uppercase">AFTER · 4 LOCALES · 30D</div>
+        <div style="display:flex;align-items:baseline;gap:10px;margin-top:3px">
+          <span class="fraunces accent" style="font-size:22px;font-weight:900;line-height:1;letter-spacing:-0.6px">$487K pipe</span>
+          <span class="mono accent" style="font-size:9px;font-weight:800;letter-spacing:.10em">17 BOOKED · 2.0X</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Insight -->
+    <div style="padding:14px 22px;background:rgba(199,93,53,0.06);border-top:1px solid rgba(199,93,53,0.18)">
+      <div class="mono" style="font-size:8px;font-weight:800;letter-spacing:.18em;color:var(--accent-dark);margin-bottom:3px">WHAT CLAUDE GETS RIGHT</div>
+      <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--ink-black);line-height:1.4">ES uses "vosotros" for ES, "ustedes" for LATAM. JA opens with the dated event (Japanese readers expect time anchor first). DE drops the question mark on a soft ask. <strong>Locale, not translation.</strong></div>
+    </div>
+
+    <div style="position:absolute;left:0;right:0;bottom:0;height:40px;background:#FAF9F5;border-top:1px solid rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:space-between;padding:0 16px">
+      <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(0,0,0,0.45)">4 LOCALES · 1 PROMPT · $238K → $487K · 2.0X · 30 DAYS</span>
+      <span class="mono accent" style="font-size:8px;font-weight:800;letter-spacing:.14em">STRIKER · LOCALE MODE</span>
+    </div>
+
+    <svg style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none" viewBox="0 0 1000 792">
+      <path d="M 980,476 Q 990,494 956,506" stroke="#C6613F" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <polygon points="962,500 954,508 964,512" fill="#C6613F"/>
+    </svg>
+
+    <div style="position:absolute;top:438px;right:20px"><div class="anno-chip" style="transform:rotate(2deg)">2.0X PIPE · SAME GATE</div></div>
+  </div>
+
+  <div style="flex-shrink:0;margin-bottom:14px">
+    <div class="fraunces" style="font-size:18px;font-weight:700;line-height:1.18;letter-spacing:-0.3px;color:rgba(0,0,0,0.58);font-style:italic">Translation is a checkbox. Locale is a posture. The reader can feel which one wrote the message in their first 2 lines.</div>
+  </div>
+
+  <!-- CTA -->
+  <div style="flex-shrink:0;margin-top:auto;background:#c75d35;border-radius:10px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 32px;margin-bottom:12px">
+    <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:#f4ede0;line-height:1.55">Follow for one AI outbound system every day.<br>Comment <strong>TRANSLATE</strong> and I will send you the exact Claude workflow we used.</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:800;color:#c75d35;background:#f4ede0;border-radius:6px;padding:14px 22px;letter-spacing:.08em;white-space:nowrap;flex-shrink:0">TRANSLATE</div>
+  </div>
+
+  <div style="flex-shrink:0;height:30px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(0,0,0,0.08)">
+    <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(0,0,0,0.32)">ULTRON · AI GTM OPERATOR · 51ULTRON.COM</span>
+    <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(0,0,0,0.32)">4 LOCALES · 2X PIPE · $487K</span>
+  </div>
+
+  <div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img src="ultron-logo.png" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0" onerror="this.style.cssText='width:28px;height:28px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 72% 22%,rgba(255,140,80,.95) 0%,rgba(220,80,30,.3) 22%,transparent 36%),radial-gradient(circle at 22% 76%,rgba(55,170,255,.95) 0%,rgba(30,130,220,.3) 22%,transparent 38%),radial-gradient(circle at 38% 38%,rgba(30,30,50,1) 0%,#060810 55%,#000 100%)'">
+      <strong style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#f4ecd6;text-transform:uppercase;letter-spacing:0.06em">ULTRON OS</strong><span style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:rgba(232,224,208,0.60);letter-spacing:0.06em;text-transform:uppercase"> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure</span>
+    </div>
+    <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:800;color:#f4ecd6;letter-spacing:-0.5px">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

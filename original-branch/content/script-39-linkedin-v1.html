@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 39 · Restraint Inbox · v1</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* BUDGET 1450 */
+  body{background:#070a10;margin:0;padding:24px 0}
+  .scaler{display:flex;justify-content:center;align-items:flex-start}
+  .scaler>.poster{transform-origin:top center;transform:scale(calc(min(100vw / 1130, (100vh - 48px) / 1510)))}
+  .poster{width:1080px;height:1450px;background:#18130b;display:flex;flex-direction:column;padding:28px 40px 20px;overflow:hidden;color:#e8e0d0}
+  .mono{font-family:'JetBrains Mono',monospace}
+  .fraunces{font-family:'Fraunces',Georgia,serif;font-feature-settings:'ss01' on}
+  .accent{color:#ed7f4a}
+  .skip-row{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.04);opacity:0.55}
+  .send-row{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-bottom:1px solid rgba(237,127,74,0.18);background:rgba(237,127,74,0.08);border-left:3px solid #ed7f4a}
+  .reply-row{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,0.04)}
+  .reply-row.unread{background:rgba(74,222,128,0.06);border-left:3px solid #4ade80;padding-left:11px}
+  .anno-chip{background:#ed7f4a;color:#18130b;border-radius:4px;padding:5px 10px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:800;letter-spacing:.12em;transform:rotate(-1.5deg);box-shadow:0 4px 12px rgba(237,127,74,0.25);white-space:nowrap}
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="poster">
+
+  <!-- HEADER -->
+  <div style="flex-shrink:0;height:44px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:12px">
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(232,224,208,0.35)">FOUNDER GTM · AI OUTBOUND DISCIPLINE · ULTRON OS</span>
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(232,224,208,0.28)">NO. 39 · 1 DAY · 12 DRAFTS · 0 SENT</span>
+  </div>
+
+  <!-- HERO -->
+  <div style="flex-shrink:0;margin-bottom:16px">
+    <div class="mono accent" style="font-size:10px;font-weight:800;letter-spacing:.22em;margin-bottom:12px">1-DAY LOG · 12 DRAFTS · 0 SENT · 3 REPLIES</div>
+    <div class="fraunces" style="font-weight:900;font-size:60px;line-height:0.92;letter-spacing:-1.8px;color:#f4ede0;margin-bottom:12px">Your <span class="accent" style="font-style:italic">AI</span> sends<br>1 email. Mine sends<br>0 and books more.</div>
+    <div style="font-family:'Inter',sans-serif;font-size:18px;font-weight:600;line-height:1.18;letter-spacing:-0.2px;color:rgba(232,224,208,0.55)">The gate killed every draft today. The prospects from last week replied anyway.</div>
+  </div>
+
+  <!-- EYEBROW -->
+  <div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+    <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.18em;color:rgba(232,224,208,0.42)">EXHIBIT A · INBOX · TUE 14:22 · GATE LOG + REPLY LOG</div>
+    <div style="display:flex;align-items:center;gap:6px"><div style="width:6px;height:6px;border-radius:50%;background:#4ade80"></div><span class="mono" style="font-size:8px;font-weight:800;letter-spacing:.14em;color:rgba(232,224,208,0.55)">LIVE</span></div>
+  </div>
+
+  <!-- ARTIFACT PANEL -->
+  <div style="flex-shrink:0;min-height:792px;position:relative;background:#10141c;border:1px solid rgba(255,255,255,0.06);border-radius:10px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.45)">
+
+    <!-- Inbox chrome -->
+    <div style="height:38px;background:#0a0d14;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;padding:0 14px;gap:10px">
+      <div style="display:flex;gap:5px">
+        <div style="width:9px;height:9px;border-radius:50%;background:rgba(232,224,208,0.18)"></div>
+        <div style="width:9px;height:9px;border-radius:50%;background:rgba(232,224,208,0.18)"></div>
+        <div style="width:9px;height:9px;border-radius:50%;background:rgba(232,224,208,0.18)"></div>
+      </div>
+      <div style="flex:1;background:#070a10;border:1px solid rgba(255,255,255,0.06);border-radius:5px;padding:5px 10px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:600;color:rgba(232,224,208,0.55);text-align:center">mail.ultron.com / outbound-gate · today (tue, nov 19)</div>
+      <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(232,224,208,0.40)">14:22 UTC</span>
+    </div>
+
+    <!-- Two columns: Drafts (left), Replies (right) -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;height:calc(100% - 38px - 40px)">
+
+      <!-- LEFT: DRAFTS / SENT -->
+      <div style="border-right:1px solid rgba(255,255,255,0.06)">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02)">
+          <span class="mono" style="font-size:9px;font-weight:800;letter-spacing:.18em;color:#ed7f4a">DRAFTS · GATE QUEUE</span>
+          <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.12em;color:rgba(232,224,208,0.50)">12 TOTAL · 11 SKIP · 1 SEND</span>
+        </div>
+
+        <!-- 11 skipped drafts -->
+        <div class="skip-row">
+          <span class="mono" style="font-size:9px;font-weight:700;color:#c0392b;width:42px;flex-shrink:0">SKIP</span>
+          <div style="flex:1;min-width:0">
+            <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;color:#e8e0d0">VP Sales · Vortex Labs</div>
+            <div class="mono" style="font-size:8px;font-weight:600;color:rgba(232,224,208,0.40);margin-top:2px">stale signal · 11d old</div>
+          </div>
+        </div>
+        <div class="skip-row">
+          <span class="mono" style="font-size:9px;font-weight:700;color:#c0392b;width:42px;flex-shrink:0">SKIP</span>
+          <div style="flex:1;min-width:0">
+            <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;color:#e8e0d0">CRO · Driftwave</div>
+            <div class="mono" style="font-size:8px;font-weight:600;color:rgba(232,224,208,0.40);margin-top:2px">already messaged 14d ago</div>
+          </div>
+        </div>
+        <div class="skip-row">
+          <span class="mono" style="font-size:9px;font-weight:700;color:#c0392b;width:42px;flex-shrink:0">SKIP</span>
+          <div style="flex:1;min-width:0">
+            <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;color:#e8e0d0">Head of GTM · Mercer</div>
+            <div class="mono" style="font-size:8px;font-weight:600;color:rgba(232,224,208,0.40);margin-top:2px">weak angle · no real hook</div>
+          </div>
+        </div>
+        <div class="skip-row">
+          <span class="mono" style="font-size:9px;font-weight:700;color:#c0392b;width:42px;flex-shrink:0">SKIP</span>
+          <div style="flex:1;min-width:0">
+            <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;color:#e8e0d0">Founder · Outpost SaaS</div>
+            <div class="mono" style="font-size:8px;font-weight:600;color:rgba(232,224,208,0.40);margin-top:2px">company &lt; 20 employees · off-ICP</div>
+          </div>
+        </div>
+        <div class="skip-row">
+          <span class="mono" style="font-size:9px;font-weight:700;color:#c0392b;width:42px;flex-shrink:0">SKIP</span>
+          <div style="flex:1;min-width:0">
+            <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;color:#e8e0d0">VP Marketing · Forge.ai</div>
+            <div class="mono" style="font-size:8px;font-weight:600;color:rgba(232,224,208,0.40);margin-top:2px">posted layoffs yesterday</div>
+          </div>
+        </div>
+        <div class="skip-row">
+          <span class="mono" style="font-size:9px;font-weight:700;color:#c0392b;width:42px;flex-shrink:0">SKIP</span>
+          <div style="flex:1;min-width:0">
+            <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;color:#e8e0d0">CEO · Sable Tech</div>
+            <div class="mono" style="font-size:8px;font-weight:600;color:rgba(232,224,208,0.40);margin-top:2px">prospect OOO this week</div>
+          </div>
+        </div>
+        <div class="skip-row">
+          <span class="mono" style="font-size:9px;font-weight:700;color:#c0392b;width:42px;flex-shrink:0">SKIP</span>
+          <div style="flex:1;min-width:0">
+            <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;color:#e8e0d0">RevOps · Atlas</div>
+            <div class="mono" style="font-size:8px;font-weight:600;color:rgba(232,224,208,0.40);margin-top:2px">dossier thin · need 1 more signal</div>
+          </div>
+        </div>
+
+        <!-- 1 SEND -->
+        <div class="send-row">
+          <span class="mono" style="font-size:9px;font-weight:800;color:#ed7f4a;width:42px;flex-shrink:0">SEND</span>
+          <div style="flex:1;min-width:0">
+            <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:800;color:#f4ede0">CRO · Harbor CRM <span style="color:#ed7f4a">· Series C</span></div>
+            <div class="mono" style="font-size:8px;font-weight:600;color:rgba(232,224,208,0.62);margin-top:2px">funding closed · hiring 14 GTM</div>
+          </div>
+        </div>
+
+        <!-- More skipped -->
+        <div class="skip-row">
+          <span class="mono" style="font-size:9px;font-weight:700;color:#c0392b;width:42px;flex-shrink:0">SKIP</span>
+          <div style="flex:1;min-width:0">
+            <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;color:#e8e0d0">VP Sales · Pyre</div>
+            <div class="mono" style="font-size:8px;font-weight:600;color:rgba(232,224,208,0.40);margin-top:2px">just received their NPS survey</div>
+          </div>
+        </div>
+        <div class="skip-row">
+          <span class="mono" style="font-size:9px;font-weight:700;color:#c0392b;width:42px;flex-shrink:0">SKIP</span>
+          <div style="flex:1;min-width:0">
+            <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;color:#e8e0d0">Head of Sales · Northstack</div>
+            <div class="mono" style="font-size:8px;font-weight:600;color:rgba(232,224,208,0.40);margin-top:2px">2 of my drafts open in their inbox</div>
+          </div>
+        </div>
+        <div class="skip-row">
+          <span class="mono" style="font-size:9px;font-weight:700;color:#c0392b;width:42px;flex-shrink:0">SKIP</span>
+          <div style="flex:1;min-width:0">
+            <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;color:#e8e0d0">CTO · Hyperlane</div>
+            <div class="mono" style="font-size:8px;font-weight:600;color:rgba(232,224,208,0.40);margin-top:2px">wrong persona · he doesn't buy</div>
+          </div>
+        </div>
+        <div class="skip-row" style="border-bottom:none">
+          <span class="mono" style="font-size:9px;font-weight:700;color:#c0392b;width:42px;flex-shrink:0">SKIP</span>
+          <div style="flex:1;min-width:0">
+            <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;color:#e8e0d0">VP Eng · Pivot Cloud</div>
+            <div class="mono" style="font-size:8px;font-weight:600;color:rgba(232,224,208,0.40);margin-top:2px">message reads like 9 others I saw</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: REPLIES -->
+      <div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02)">
+          <span class="mono" style="font-size:9px;font-weight:800;letter-spacing:.18em;color:#4ade80">REPLIES · TODAY</span>
+          <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.12em;color:rgba(232,224,208,0.50)">3 UNREAD · ALL FROM PRIOR SENDS</span>
+        </div>
+
+        <div class="reply-row unread">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span style="font-family:'Inter',sans-serif;font-size:11px;font-weight:800;color:#f4ede0">Sarah K. · VP Sales · Mercer</span>
+            <span class="mono" style="font-size:8px;font-weight:600;color:rgba(232,224,208,0.45)">14:08</span>
+          </div>
+          <div class="mono" style="font-size:9px;font-weight:700;color:#4ade80;letter-spacing:.04em;margin-bottom:6px">RE: contrarian take on attribution</div>
+          <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:500;color:rgba(232,224,208,0.78);line-height:1.4;font-style:italic">"This is the only cold message I've actually replied to this quarter. Pulling up the calendar now. Wednesday at 3?"</div>
+          <div style="display:flex;align-items:center;gap:8px;margin-top:8px">
+            <span class="mono" style="font-size:8px;font-weight:800;color:#ed7f4a;letter-spacing:.10em">SENT 12 DAYS AGO</span>
+            <span style="color:rgba(232,224,208,0.30)">|</span>
+            <span class="mono" style="font-size:8px;font-weight:700;color:rgba(232,224,208,0.60);letter-spacing:.10em">DEAL: $108K</span>
+          </div>
+        </div>
+
+        <div class="reply-row unread">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span style="font-family:'Inter',sans-serif;font-size:11px;font-weight:800;color:#f4ede0">Diego R. · Founder · Beacon</span>
+            <span class="mono" style="font-size:8px;font-weight:600;color:rgba(232,224,208,0.45)">11:43</span>
+          </div>
+          <div class="mono" style="font-size:9px;font-weight:700;color:#4ade80;letter-spacing:.04em;margin-bottom:6px">RE: the 6-minute claim</div>
+          <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:500;color:rgba(232,224,208,0.78);line-height:1.4;font-style:italic">"Bookmarked you weeks ago. We just finished our seed. Time to talk. Send me 3 slots."</div>
+          <div style="display:flex;align-items:center;gap:8px;margin-top:8px">
+            <span class="mono" style="font-size:8px;font-weight:800;color:#ed7f4a;letter-spacing:.10em">SENT 23 DAYS AGO</span>
+            <span style="color:rgba(232,224,208,0.30)">|</span>
+            <span class="mono" style="font-size:8px;font-weight:700;color:rgba(232,224,208,0.60);letter-spacing:.10em">DEAL: $54K</span>
+          </div>
+        </div>
+
+        <div class="reply-row unread">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span style="font-family:'Inter',sans-serif;font-size:11px;font-weight:800;color:#f4ede0">Annika T. · CRO · Forge.ai</span>
+            <span class="mono" style="font-size:8px;font-weight:600;color:rgba(232,224,208,0.45)">09:17</span>
+          </div>
+          <div class="mono" style="font-size:9px;font-weight:700;color:#4ade80;letter-spacing:.04em;margin-bottom:6px">RE: your AE hire post</div>
+          <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:500;color:rgba(232,224,208,0.78);line-height:1.4;font-style:italic">"You were right. We're hiring against the wrong stack. Can we get on a call this week?"</div>
+          <div style="display:flex;align-items:center;gap:8px;margin-top:8px">
+            <span class="mono" style="font-size:8px;font-weight:800;color:#ed7f4a;letter-spacing:.10em">SENT 8 DAYS AGO</span>
+            <span style="color:rgba(232,224,208,0.30)">|</span>
+            <span class="mono" style="font-size:8px;font-weight:700;color:rgba(232,224,208,0.60);letter-spacing:.10em">DEAL: $66K</span>
+          </div>
+        </div>
+
+        <!-- Silent space showing "nothing else" -->
+        <div style="padding:20px 14px;text-align:center">
+          <div class="mono" style="font-size:9px;font-weight:700;letter-spacing:.14em;color:rgba(232,224,208,0.32)">- NO OTHER ACTIVITY -</div>
+          <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:500;color:rgba(232,224,208,0.40);margin-top:6px;font-style:italic">Restraint compounds. Today's silence is next week's reply.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FIG.02 divider -->
+    <div style="padding:10px 16px 8px;background:rgba(237,127,74,0.06);border-top:1px solid rgba(237,127,74,0.16);border-bottom:1px solid rgba(237,127,74,0.10)">
+      <span class="mono" style="font-size:8px;font-weight:800;letter-spacing:.18em;color:rgba(232,224,208,0.55)">FIG.02 · THE 6 GATE RULES · IF ANY RULE FIRES, DRAFT IS SKIPPED</span>
+    </div>
+
+    <!-- 6 gate rules in 3x2 grid -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;padding-bottom:42px">
+
+      <div style="padding:8px 12px;border-right:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04)">
+        <div class="mono" style="font-size:8px;font-weight:800;letter-spacing:.12em;color:#ed7f4a;margin-bottom:4px">01 · SIGNAL AGE</div>
+        <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:600;color:rgba(232,224,208,0.65);line-height:1.4">Signal older than 7 days. The moment passed. A stale trigger gets a dead reply.</div>
+      </div>
+
+      <div style="padding:8px 12px;border-right:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04)">
+        <div class="mono" style="font-size:8px;font-weight:800;letter-spacing:.12em;color:#ed7f4a;margin-bottom:4px">02 · CONTACT WINDOW</div>
+        <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:600;color:rgba(232,224,208,0.65);line-height:1.4">Already in their inbox in the last 21 days. Wait for reply. A second message before a first reply is noise.</div>
+      </div>
+
+      <div style="padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.04)">
+        <div class="mono" style="font-size:8px;font-weight:800;letter-spacing:.12em;color:#ed7f4a;margin-bottom:4px">03 · ICP FIT</div>
+        <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:600;color:rgba(232,224,208,0.65);line-height:1.4">Wrong headcount, wrong persona, wrong role. If they can't buy, they can't buy. Skip and protect your domain.</div>
+      </div>
+
+      <div style="padding:8px 12px;border-right:1px solid rgba(255,255,255,0.04)">
+        <div class="mono" style="font-size:8px;font-weight:800;letter-spacing:.12em;color:#ed7f4a;margin-bottom:4px">04 · MESSAGE ANGLE</div>
+        <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:600;color:rgba(232,224,208,0.65);line-height:1.4">Weak hook. No citation from dossier. Sounds like every other AI cold email. If it could go to anyone, it goes to no one.</div>
+      </div>
+
+      <div style="padding:8px 12px;border-right:1px solid rgba(255,255,255,0.04)">
+        <div class="mono" style="font-size:8px;font-weight:800;letter-spacing:.12em;color:#ed7f4a;margin-bottom:4px">05 · TIMING</div>
+        <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:600;color:rgba(232,224,208,0.65);line-height:1.4">Layoffs posted. OOO flagged. Survey just sent. Renewal survey in flight. Reach out in noise = ignored. Wait.</div>
+      </div>
+
+      <div style="padding:8px 12px">
+        <div class="mono" style="font-size:8px;font-weight:800;letter-spacing:.12em;color:#ed7f4a;margin-bottom:4px">06 · DOSSIER DEPTH</div>
+        <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:600;color:rgba(232,224,208,0.65);line-height:1.4">CORTEX found no quote, no post, no specific angle to cite. Can't personalize = can't send. Needs 1 more signal.</div>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div style="position:absolute;left:0;right:0;bottom:0;height:40px;background:#0a0d14;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;padding:0 16px">
+      <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(232,224,208,0.45)">12 DRAFTS · 11 SKIPPED · 1 SENT · 3 REPLIES · $228K · 6 GATE RULES</span>
+      <span class="mono accent" style="font-size:8px;font-weight:800;letter-spacing:.14em">HUMAN GATE · CLAUDE-AUDITED</span>
+    </div>
+
+    <!-- ANNOTATIONS -->
+    <svg style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none" viewBox="0 0 1000 792">
+      <path d="M 290,440 Q 320,450 348,455" stroke="#ed7f4a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <polygon points="342,461 352,453 343,449" fill="#ed7f4a"/>
+      <path d="M 730,232 Q 700,212 660,202" stroke="#ed7f4a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <polygon points="668,196 656,200 662,210" fill="#ed7f4a"/>
+    </svg>
+
+    <!-- Annotation chips -->
+    <div style="position:absolute;top:412px;left:178px"><div class="anno-chip" style="transform:rotate(-1deg)">1 OF 12 PASSED</div></div>
+    <div style="position:absolute;top:140px;right:34px"><div class="anno-chip" style="transform:rotate(1.5deg)">REPLIED · NOT SPAMMED</div></div>
+  </div>
+
+  <!-- BRIDGE -->
+  <div style="flex-shrink:0;margin-bottom:14px">
+    <div class="fraunces" style="font-size:18px;font-weight:700;line-height:1.18;letter-spacing:-0.3px;color:rgba(232,224,208,0.62);font-style:italic">Most AI tools optimize for send rate. Mine optimizes for reply rate. The math gets weird in your favor.</div>
+  </div>
+
+  <!-- CTA -->
+  <div style="flex-shrink:0;margin-top:auto;background:#ed7f4a;border-radius:10px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 32px;margin-bottom:12px">
+    <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:#18130b;line-height:1.55">Follow for one AI outbound system every day.<br>Comment <strong>RESTRAINT</strong> and I will send you the exact Claude workflow we used.</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:800;color:#ed7f4a;background:#18130b;border-radius:6px;padding:14px 22px;letter-spacing:.08em;white-space:nowrap;flex-shrink:0">RESTRAINT</div>
+  </div>
+
+  <!-- MICRO STAT -->
+  <div style="flex-shrink:0;height:30px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.08)">
+    <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(232,224,208,0.32)">ULTRON · AI GTM OPERATOR · 51ULTRON.COM</span>
+    <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(232,224,208,0.32)">12 DRAFTS · 1 SENT · 3 REPLIES</span>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img src="ultron-logo.png" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0"
+        onerror="this.style.cssText='width:28px;height:28px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 72% 22%,rgba(255,140,80,.95) 0%,rgba(220,80,30,.3) 22%,transparent 36%),radial-gradient(circle at 22% 76%,rgba(55,170,255,.95) 0%,rgba(30,130,220,.3) 22%,transparent 38%),radial-gradient(circle at 38% 38%,rgba(30,30,50,1) 0%,#060810 55%,#000 100%)'">
+      <strong style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#f4ecd6;text-transform:uppercase;letter-spacing:0.06em">ULTRON OS</strong><span style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:rgba(232,224,208,0.60);letter-spacing:0.06em;text-transform:uppercase"> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure</span>
+    </div>
+    <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:800;color:#f4ecd6;letter-spacing:-0.5px">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

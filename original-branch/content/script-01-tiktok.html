@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 01 · AI Wrong · TikTok</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+  body { background:#000; margin:0; min-height:100vh; display:flex; justify-content:center; align-items:center; font-family:'JetBrains Mono', monospace; color:#f4eadb; overflow-x:hidden; }
+  .preview-scaler { transform-origin: top center; transform: scale(calc(min(100vw / 1150, 100vh / 1970))); margin: 2vh 0; }
+  .cover {
+    width:1080px; height:1920px;
+    background-color:#090909;
+    background-image:
+      radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+      radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size:24px 24px, 96px 96px;
+    border:1px solid rgba(255,255,255,0.08);
+    position:relative; overflow:hidden;
+    display:flex; flex-direction:column;
+    padding:60px 50px; box-sizing:border-box;
+  }
+  .bg-glow { position:absolute; inset:0; background: radial-gradient(circle at 50% 40%, rgba(212,109,66,0.18) 0%, transparent 65%); z-index:0; pointer-events:none; }
+  .scanline { position:absolute; top:600px; left:0; width:100%; height:200px; z-index:1; pointer-events:none; background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(212,109,66,0.04) 50%, rgba(0,0,0,0) 100%); }
+  .glow-text { text-shadow: 0 0 40px rgba(212,109,66,0.6), 0 0 80px rgba(212,109,66,0.3); }
+  .dashed-divider { border-top:1px dashed rgba(255,255,255,0.12); }
+  .cta-banner { background: linear-gradient(90deg, rgba(212,109,66,.18), rgba(212,109,66,.02)); border:1px solid #d46d42; border-radius:99px; padding:18px 32px; display:flex; justify-content:center; align-items:center; gap:18px; }
+</style>
+</head>
+<body>
+<div class="preview-scaler">
+<div class="cover font-mono">
+  <div class="bg-glow"></div>
+  <div class="scanline"></div>
+  <div class="relative z-10 flex flex-col h-full justify-between">
+
+    <!-- TOP CHIP -->
+    <div class="flex justify-center pt-4">
+      <div class="text-[#d46d42] text-[16px] tracking-widest uppercase font-bold border border-[#d46d42]/40 bg-[#d46d42]/10 px-4 py-1.5 rounded">
+        &gt; AI_USAGE_AUDIT
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="flex flex-col items-start text-left">
+      <h1 class="text-[140px] font-black leading-[0.88] tracking-tighter text-white uppercase mb-0">
+        You're
+      </h1>
+      <h1 class="text-[140px] font-black leading-[0.88] tracking-tighter text-white uppercase">
+        using AI
+      </h1>
+      <h1 class="text-[140px] font-black leading-[0.88] tracking-tighter text-[#d46d42] glow-text uppercase">
+        wrong.
+      </h1>
+    </div>
+
+    <!-- MID COMPARISON -->
+    <div class="flex flex-col gap-4">
+      <div class="border border-[#e74b43]/40 bg-[#14100f]/80 rounded-lg p-5 backdrop-blur">
+        <div class="text-[14px] uppercase tracking-widest text-[#e74b43] font-bold mb-1">// What you do</div>
+        <div class="text-[34px] text-zinc-400 font-bold leading-tight">Faster email drafts.</div>
+      </div>
+      <div class="border border-[#d46d42]/60 bg-[#181513]/80 rounded-lg p-5 backdrop-blur shadow-[0_0_40px_rgba(212,109,66,0.15)]">
+        <div class="text-[14px] uppercase tracking-widest text-[#d46d42] font-bold mb-1">// What $30k/mo founders do</div>
+        <div class="text-[34px] text-white font-bold leading-tight">Run the entire operation.</div>
+      </div>
+    </div>
+
+    <!-- METRIC -->
+    <div class="text-center">
+      <div class="text-[180px] font-black text-[#d46d42] leading-none glow-text">04:00</div>
+      <div class="text-[18px] uppercase tracking-widest text-zinc-400 font-bold mt-2">Hours to set up. Then it runs itself.</div>
+    </div>
+
+    <!-- PAYOFF -->
+    <div class="text-left">
+      <h2 class="text-[44px] font-black text-white leading-[1.05] tracking-tight uppercase mb-2">
+        It's the system
+      </h2>
+      <h2 class="text-[44px] font-black text-[#d46d42] leading-[1.05] tracking-tight uppercase">
+        they built.
+      </h2>
+    </div>
+
+    <!-- CTA + FOOTER -->
+    <div class="flex flex-col gap-4">
+      <div class="cta-banner">
+        <div class="text-[22px] font-black text-white tracking-tight uppercase">COMMENT <span class="text-[#d46d42]">DEMO</span></div>
+      </div>
+      <div class="flex items-center justify-between text-[14px] text-zinc-500 pt-3 dashed-divider border-t tracking-tight">
+        <div class="flex items-center gap-2.5">
+          <div class="w-7 h-7 rounded bg-[#d46d42] flex items-center justify-center text-black font-black text-sm">U</div>
+          <strong class="text-[#d46d42] font-bold">ULTRON</strong>
+        </div>
+        <div class="text-[#d46d42] font-bold">51ultron.com</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+</body>
+</html>

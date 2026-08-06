@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+:root{--slate:#191919;--slate2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--cloud:#919180;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.frame{width:1080px;height:1450px;background:var(--slate);padding:36px 44px 22px;position:relative;overflow:hidden;color:var(--ivory);display:flex;flex-direction:column;}
+.frame::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.4px,transparent 1.5px);background-size:30px 30px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 54% 24% at 90% -2%,rgba(204,120,92,.22) 0%,transparent 60%),radial-gradient(ellipse 48% 26% at 2% 102%,rgba(212,162,127,.12) 0%,transparent 60%);}
+.frame>*{position:relative;z-index:2;}
+.hero{flex-shrink:0;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding-bottom:13px;border-bottom:1px solid var(--rule);}
+.eye{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--book);margin-bottom:8px;}
+.hook{font-weight:900;font-size:48px;line-height:.96;letter-spacing:-1.7px;color:var(--ivory);}.hook em{color:var(--book);font-style:normal;}
+.sub{margin-top:10px;font-size:16px;font-weight:500;line-height:1.33;color:var(--ink70);max-width:600px;}.sub b{color:var(--ivory);font-weight:700;}
+.statile{flex-shrink:0;display:flex;border:1px solid var(--rule);border-radius:13px;overflow:hidden;}
+.st{padding:16px 28px 14px;text-align:center;}.st+.st{border-left:1px solid var(--rule);}
+.st .sn{font-weight:900;font-size:42px;line-height:.78;}.st.a .sn{color:var(--book);}.st.b .sn{color:var(--kraft);}.st.c .sn{color:var(--ivory);}
+.st.a{background:rgba(204,120,92,.1);}.st.b{background:rgba(212,162,127,.08);}.st.c{background:rgba(250,250,247,.03);}
+.st .sl{font-family:'DM Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink46);margin-top:8px;line-height:1.2;}
+/* app window: a dimmed paused chat with the approval MODAL over it */
+.win{flex:1;min-height:0;margin-top:13px;position:relative;border:1px solid var(--ink14);border-radius:20px;overflow:hidden;background:#1b1b1a;box-shadow:0 26px 66px rgba(0,0,0,.5);}
+.bchat{position:absolute;inset:0;display:flex;flex-direction:column;opacity:.9;}
+.bchd{flex-shrink:0;display:flex;align-items:center;gap:12px;padding:15px 22px;border-bottom:1px solid var(--rule);background:#151514;}
+.bchd .av{width:38px;height:38px;border-radius:50%;object-fit:cover;}
+.bchd b{font-size:18px;font-weight:800;color:var(--ivory);letter-spacing:-.3px;}
+.bchd span{font-family:'DM Mono',monospace;font-size:11.5px;color:var(--ink46);}
+.bchd .pz{margin-left:auto;display:flex;align-items:center;gap:7px;font-family:'DM Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--book);background:rgba(204,120,92,.12);border:1px solid rgba(204,120,92,.34);padding:6px 12px;border-radius:30px;}
+.bchd .pz i{width:7px;height:7px;border-radius:50%;background:var(--book);box-shadow:0 0 9px var(--book);}
+.bbody{flex:1;min-height:0;padding:18px 22px;display:flex;flex-direction:column;justify-content:space-between;}
+.bgrp{display:flex;flex-direction:column;gap:11px;}
+.bmsg{max-width:72%;padding:13px 17px;border-radius:15px;font-size:16.5px;font-weight:500;line-height:1.3;}
+.bmsg.u{align-self:flex-end;background:rgba(204,120,92,.16);border:1px solid rgba(204,120,92,.3);color:var(--ivory);border-bottom-right-radius:6px;}
+.bmsg.a{align-self:flex-start;background:var(--slate2);border:1px solid var(--rule);color:var(--ink70);border-bottom-left-radius:6px;}
+.btool{align-self:flex-start;font-family:'DM Mono',monospace;font-size:14px;color:var(--book);border:1px solid var(--rule);border-left:3px solid var(--book);border-radius:11px;padding:11px 16px;background:#151514;}
+.btool b{color:var(--ivory);}
+.binput{flex-shrink:0;display:flex;align-items:center;gap:12px;padding:15px 20px;border-top:1px solid var(--rule);background:#151514;}
+.binput .box{flex:1;border:1px solid var(--rule);border-radius:12px;padding:13px 16px;color:var(--ink70);font-size:15px;background:rgba(250,250,247,.04);}
+.binput .snd{width:42px;height:42px;border-radius:11px;background:var(--book);flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.binput .snd svg{width:19px;height:19px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.scrim{position:absolute;inset:0;background:rgba(8,6,5,.3);}
+.modal{position:absolute;left:50%;top:51.5%;transform:translate(-50%,-50%);width:700px;border:1px solid var(--book);border-radius:18px;background:#221f1d;overflow:hidden;box-shadow:0 42px 110px rgba(0,0,0,.72),0 0 70px rgba(204,120,92,.22);}
+.mdec{padding:7px 22px 11px;display:flex;flex-direction:column;gap:8px;}
+.mdec .dr{display:flex;align-items:center;gap:10px;font-size:14.5px;color:var(--ink46);}
+.mdec .dr b{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--book);width:64px;flex-shrink:0;}
+.mdec .dr.no b{color:var(--ink46);}
+.mhead{display:flex;align-items:center;gap:14px;padding:18px 22px;border-bottom:1px solid var(--rule);background:rgba(204,120,92,.1);}
+.mhead .ic{width:46px;height:46px;border-radius:13px;background:rgba(204,120,92,.16);border:1px solid rgba(204,120,92,.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.mhead .ic svg{width:24px;height:24px;fill:var(--book);}
+.mhead .ht .k{font-family:'DM Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--book);}
+.mhead .ht .t{font-size:23px;font-weight:800;color:var(--ivory);letter-spacing:-.4px;margin-top:3px;}
+.mhead .risk{margin-left:auto;font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--book);border:1px solid rgba(204,120,92,.45);border-radius:20px;padding:6px 13px;white-space:nowrap;}
+.msum{padding:16px 22px 4px;font-size:16.5px;line-height:1.35;color:var(--ink70);}.msum b{color:var(--ivory);font-weight:700;}
+.mrows{padding:8px 22px 6px;}
+.mrow{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-top:1px solid var(--rule);font-size:15.5px;}
+.mrow:first-child{border-top:none;}
+.mrow span{color:var(--ink46);}.mrow b{color:var(--ivory);font-weight:600;font-family:'DM Mono',monospace;font-size:15px;}
+.macts{display:flex;gap:11px;padding:16px 22px;border-top:1px solid var(--rule);}
+.macts .b{flex:1;text-align:center;font-size:15.5px;font-weight:800;padding:14px;border-radius:11px;}
+.macts .b.rej,.macts .b.edit{border:1px solid var(--rule);color:var(--ink70);}
+.macts .b.appr{background:var(--book);color:#1a0f0a;box-shadow:0 0 24px rgba(204,120,92,.45);}
+.mfoot{display:flex;align-items:center;gap:9px;padding:13px 22px;border-top:1px solid var(--rule);background:rgba(0,0,0,.22);font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink46);}
+.mfoot em{color:var(--book);font-style:normal;}
+.cta{display:flex;align-items:center;gap:16px;border:1.5px solid var(--book);border-radius:20px;background:rgba(204,120,92,.08);padding:13px 13px 13px 26px;box-shadow:0 0 50px rgba(204,120,92,.18);}
+.ctawrap{flex-shrink:0;margin-top:13px;}
+.savel{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink46);margin-bottom:9px;padding-left:6px;}
+.cta .ph{flex:1;font-size:21px;font-weight:600;color:var(--ink70);line-height:1.2;}.cta .ph b{color:var(--book);font-weight:900;letter-spacing:.02em;}
+.cta .send{width:58px;height:58px;border-radius:50%;background:var(--book);flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(204,120,92,.45);}
+.cta .send svg{width:27px;height:27px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ftr{flex-shrink:0;margin-top:11px;display:flex;align-items:center;justify-content:space-between;gap:18px;border-top:1px solid var(--rule);padding-top:11px;}
+.fl2{display:flex;align-items:center;gap:13px;min-width:0;}.flogo{width:34px;height:34px;border-radius:50%;object-fit:cover;}
+.ftx{font-family:'DM Mono',monospace;font-size:12.5px;font-weight:400;letter-spacing:.11em;text-transform:uppercase;color:var(--ink70);}.ftx b{color:var(--ivory);font-weight:500;}
+.furl{font-weight:900;font-size:21px;letter-spacing:-.6px;color:var(--ivory);}.furl em{color:var(--book);font-style:normal;}
+</style></head><body><div class="frame" id="artifact"><div class="atm"></div>
+<div class="hero"><div><div class="eye">Ultron &middot; Human in the Loop</div><div class="hook">Most AI acts, then apologizes. <em>Claude pauses and waits for you.</em></div><div class="sub">Before a high-stakes action runs, the turn halts and Claude shows you a card to approve, edit or reject, then picks up exactly where it paused.</div></div>
+<div class="statile"><div class="st a"><div class="sn">0</div><div class="sl">surprise<br>actions</div></div><div class="st b"><div class="sn">3</div><div class="sl">risk<br>levels</div></div><div class="st c"><div class="sn">1</div><div class="sl">tap to<br>decide</div></div></div></div>
+<div class="win">
+<div class="bchat">
+<div class="bchd"><img class="av" src="__LOGO_URI__" alt="Ultron"><div><b>Ultron session</b><br><span>#a17c &middot; specter.outbound</span></div><div class="pz"><i></i>Paused</div></div>
+<div class="bbody">
+<div class="bgrp">
+<div class="bmsg u">Email the new SDR sequence to all 240 leads.</div>
+<div class="bmsg a">Routing to SPECTER. CORTEX enriched the 240 leads, all US and UK founders.</div>
+<div class="bmsg a">Drafted a 3-email sequence over 6 days, capped at 25 a day.</div>
+<div class="btool">tool_use &middot; <b>wait_for_approval</b></div>
+</div>
+<div class="bgrp">
+<div class="bmsg a">Paused. Nothing leaves until you approve, and I resume right here.</div>
+<div class="bmsg u">ok, reviewing the recipients now</div>
+</div>
+</div>
+<div class="binput"><div class="box">Message Ultron ... holding for your approval</div><div class="snd"><svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></div></div>
+</div>
+<div class="scrim"></div>
+<div class="modal">
+<div class="mhead"><div class="ic"><svg viewBox="0 0 24 24"><rect x="7.5" y="6" width="3.4" height="12" rx="1.2"/><rect x="13.1" y="6" width="3.4" height="12" rx="1.2"/></svg></div><div class="ht"><div class="k">Approval needed</div><div class="t">Send outbound sequence</div></div><div class="risk">risk: medium</div></div>
+<div class="msum">SPECTER wants to send a <b>3-email sequence</b> to 240 leads before it continues. Approve, edit the payload, or reject.</div>
+<div class="mrows">
+<div class="mrow"><span>recipients</span><b>240 leads</b></div>
+<div class="mrow"><span>segment</span><b>US / UK founders</b></div>
+<div class="mrow"><span>sequence</span><b>3 emails / 6 days</b></div>
+<div class="mrow"><span>daily cap</span><b>25 / day</b></div>
+<div class="mrow"><span>first send</span><b>08:00 RO time</b></div>
+<div class="mrow"><span>agent</span><b>SPECTER</b></div>
+</div>
+<div class="mdec"><div class="dr"><b>Approve</b>it runs and the turn resumes right here</div><div class="dr no"><b>Reject</b>it stops, nothing is sent</div></div>
+<div class="macts"><span class="b rej">Reject</span><span class="b edit">Edit</span><span class="b appr">Approve</span></div>
+<div class="mfoot"><em>&#9679;</em> Approve and the turn resumes exactly where it paused</div>
+</div>
+</div>
+<div class="ctawrap"><div class="savel">Save this, then</div><div class="cta"><span class="ph">Comment <b>RESUME</b> for the full approvals breakdown</span><span class="send"><svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div></div>
+<div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS &middot; HUMAN IN THE LOOP</div></div><div class="furl">51ultron<em>.</em>com</div></div>
+</div></body></html>

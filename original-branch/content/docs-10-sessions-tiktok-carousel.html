@@ -1,0 +1,211 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+:root{--slate:#191919;--slate2:#262625;--ivory:#FAFAF7;--ink70:rgba(250,250,247,.72);--ink46:rgba(250,250,247,.46);--ink30:rgba(250,250,247,.30);--ink14:rgba(250,250,247,.14);--rule:rgba(250,250,247,.10);--book:#CC785C;--book-d:#C84623;--kraft:#D4A27F;--cloud:#919180;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;display:flex;flex-direction:column;align-items:center;gap:30px;padding:30px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.slide{width:1080px;height:1920px;background:var(--slate);position:relative;overflow:hidden;color:var(--ivory);}
+.slide::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(204,120,92,.06) 1.5px,transparent 1.6px);background-size:34px 34px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 60% 22% at 84% 3%,rgba(204,120,92,.22) 0%,transparent 60%),radial-gradient(ellipse 54% 18% at 8% 94%,rgba(212,162,127,.12) 0%,transparent 60%);}
+.safe{position:absolute;top:300px;left:70px;right:130px;bottom:330px;z-index:2;display:flex;flex-direction:column;}
+.mast{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--rule);padding-bottom:20px;font-family:'DM Mono',monospace;font-size:20px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;}
+.mast .ml{color:var(--book);}.mast .mr{color:var(--ink46);}
+.eyebrow{flex-shrink:0;font-family:'DM Mono',monospace;font-size:23px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--book);margin-top:38px;}
+.hook{flex-shrink:0;margin-top:30px;font-weight:900;font-size:88px;line-height:.96;letter-spacing:-3px;color:var(--ivory);}.hook em{color:var(--book);font-style:normal;}
+.htitle{flex-shrink:0;margin-top:34px;font-weight:900;font-size:70px;line-height:.98;letter-spacing:-2.4px;color:var(--ivory);}.htitle em{color:var(--book);font-style:normal;}
+.htitle.d em{color:var(--book-d);}
+.sub{flex-shrink:0;margin-top:24px;font-size:33px;font-weight:500;line-height:1.34;color:var(--ink70);}.sub b{color:var(--ivory);font-weight:700;}
+.note{flex-shrink:0;margin-top:26px;font-size:30px;font-weight:500;line-height:1.36;color:var(--ink70);}.note b{color:var(--book);font-weight:800;}
+.swipe{flex-shrink:0;margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:16px;background:var(--book);color:#1a0f0a;font-family:'DM Mono',monospace;font-weight:500;font-size:27px;letter-spacing:.14em;text-transform:uppercase;padding:20px 46px;border-radius:50px;box-shadow:0 0 50px rgba(204,120,92,.4);}
+.fill{flex:1;min-height:0;}
+/* chat mockup */
+.chat{flex:1;min-height:0;margin-top:30px;display:flex;flex-direction:column;border:1px solid var(--ink14);border-radius:26px;overflow:hidden;background:#1e1e1d;box-shadow:0 36px 90px rgba(0,0,0,.5);}
+.chd{flex-shrink:0;display:flex;align-items:center;gap:15px;padding:22px 26px;border-bottom:1px solid var(--rule);background:#151514;}
+.chd .av{width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.chd .ct b{display:block;font-size:24px;font-weight:800;color:var(--ivory);letter-spacing:-.3px;line-height:1;}
+.chd .ct span{font-family:'DM Mono',monospace;font-size:15px;color:var(--ink46);letter-spacing:.05em;}
+.chd .rz{margin-left:auto;display:flex;align-items:center;gap:9px;font-family:'DM Mono',monospace;font-size:15px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--book);background:rgba(204,120,92,.12);border:1px solid rgba(204,120,92,.34);padding:8px 16px;border-radius:30px;}
+.chd .rz i{width:10px;height:10px;border-radius:50%;background:var(--book);box-shadow:0 0 10px var(--book);}
+.chd .rz.dead{color:var(--cloud);background:rgba(145,145,128,.1);border-color:rgba(145,145,128,.3);}.chd .rz.dead i{background:var(--cloud);box-shadow:none;}
+.cbody{flex:1;min-height:0;padding:30px;display:flex;flex-direction:column;gap:20px;justify-content:center;}
+.msg{max-width:82%;padding:20px 24px;border-radius:22px;font-size:26px;font-weight:500;line-height:1.3;}
+.msg.u{align-self:flex-end;background:rgba(204,120,92,.14);border:1px solid rgba(204,120,92,.28);color:var(--ivory);border-bottom-right-radius:8px;}
+.msg.a{align-self:flex-start;background:var(--slate2);border:1px solid var(--rule);color:var(--ink70);border-bottom-left-radius:8px;}
+.msg.old{opacity:.42;}
+.msg.live{align-self:flex-start;background:rgba(204,120,92,.1);border:1px solid var(--book);color:var(--ivory);border-bottom-left-radius:8px;box-shadow:0 0 36px rgba(204,120,92,.3);}
+.msg.live b{color:var(--book);font-weight:800;}
+.msg.lost{align-self:flex-start;background:var(--slate2);border:1px dashed var(--cloud);color:var(--cloud);border-bottom-left-radius:8px;}
+.gap{display:flex;align-items:center;gap:16px;margin:6px 0;}
+.gap .ln{flex:1;border-top:1px dashed var(--ink30);}
+.gap .gl{display:flex;align-items:center;gap:11px;font-family:'DM Mono',monospace;font-size:16px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink46);white-space:nowrap;}
+.gap .gl svg{width:19px;height:19px;stroke:var(--cloud);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.cfoot{flex-shrink:0;padding:20px 26px;border-top:1px solid var(--rule);background:#151514;}
+.cfoot .fl{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink46);margin-bottom:13px;display:flex;align-items:center;gap:9px;}.cfoot .fl em{color:var(--book);font-style:normal;}
+.cfoot.dead .fl{color:var(--cloud);}.cfoot.dead .fl em{color:var(--cloud);}
+.pills{display:flex;flex-wrap:wrap;gap:10px;}
+.pl{font-family:'DM Sans';font-size:17px;font-weight:700;color:rgba(250,250,247,.92);background:rgba(250,250,247,.06);border:1px solid var(--ink14);border-radius:9px;padding:8px 15px;line-height:1;display:flex;align-items:center;gap:9px;}
+.pl i{width:9px;height:9px;border-radius:50%;background:var(--kraft);}.pl.c i{background:var(--book);box-shadow:0 0 9px var(--book);}
+.pl.off{color:var(--ink30);}.pl.off i{background:var(--ink30);}
+/* context stack (slide 4) */
+.stack{flex:1;min-height:0;margin-top:28px;display:flex;flex-direction:column;gap:13px;}
+.lcard{flex:1;display:flex;align-items:center;gap:20px;background:rgba(250,250,247,.045);border:1px solid var(--rule);border-left:5px solid var(--ink14);border-radius:16px;padding:18px 26px;}
+.lcard.cache{border-color:var(--book);border-left-color:var(--book);background:rgba(204,120,92,.1);box-shadow:0 0 30px rgba(204,120,92,.16);}
+.lcard .n{width:52px;height:52px;border-radius:13px;background:rgba(204,120,92,.12);border:1px solid rgba(204,120,92,.32);color:var(--book);font-weight:900;font-size:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.lcard .bd{flex:1;min-width:0;}
+.lcard .nm{font-weight:800;font-size:32px;letter-spacing:-.5px;color:var(--ivory);line-height:1;}
+.lcard .ds{font-size:20px;font-weight:500;color:var(--ink46);margin-top:8px;}
+.lcard .tg{flex-shrink:0;font-family:'DM Mono',monospace;font-size:15px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:8px 16px;border-radius:9px;}
+.tg-c{color:#1a0f0a;background:var(--book);}.tg-f{color:var(--ink46);border:1px solid var(--rule);}
+/* compression (slide 5) */
+.comp{flex:1;min-height:0;margin-top:28px;display:flex;flex-direction:column;gap:16px;}
+.cstage{flex:1;display:flex;align-items:center;gap:24px;border:1px solid var(--rule);border-top:5px solid var(--book);border-radius:18px;padding:22px 28px;background:rgba(204,120,92,.05);}
+.cstage.cost{border-top-color:var(--book-d);background:rgba(200,70,35,.07);}
+.cstage .bn{font-weight:900;font-size:74px;line-height:.78;color:var(--book);flex-shrink:0;min-width:96px;}.cstage.cost .bn{color:var(--book-d);}
+.cstage .bn span{display:block;font-family:'DM Mono',monospace;font-size:15px;font-weight:600;color:var(--ink46);letter-spacing:.04em;margin-top:6px;}
+.cstage .cm{flex:1;min-width:0;}
+.cstage .ce{font-weight:800;font-size:30px;letter-spacing:-.5px;color:var(--ivory);line-height:1;}
+.cstage .cd{font-size:21px;font-weight:500;color:var(--ink70);margin-top:9px;line-height:1.25;}
+.cstage .wbar{height:14px;border-radius:8px;background:var(--ink14);overflow:hidden;margin-top:14px;}.cstage .wbar i{display:block;height:100%;background:var(--book);border-radius:8px;}.cstage.cost .wbar i{background:var(--book-d);}
+.cstage .wlab{flex-shrink:0;font-family:'DM Mono',monospace;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink46);white-space:nowrap;}
+/* transcript (slide 6) */
+.trans{flex:1;min-height:0;margin-top:28px;display:flex;flex-direction:column;border:1px solid var(--ink14);border-radius:20px;overflow:hidden;background:#151514;}
+.trans .th{flex-shrink:0;display:flex;align-items:center;gap:13px;padding:20px 26px;border-bottom:1px solid var(--rule);font-family:'DM Mono',monospace;font-size:18px;letter-spacing:.1em;text-transform:uppercase;color:var(--kraft);}
+.trans .th .d{margin-left:auto;color:var(--ink46);font-size:15px;}
+.trans .tb{flex:1;min-height:0;padding:18px 26px;display:flex;flex-direction:column;justify-content:center;gap:0;font-family:'DM Mono',monospace;}
+.tline{flex:1;display:flex;align-items:center;gap:16px;border-bottom:1px solid var(--rule);font-size:21px;color:var(--ink70);}
+.tline:last-child{border-bottom:none;}
+.tline .k{color:var(--kraft);font-weight:500;}.tline .v{color:var(--ink46);}.tline .b{margin-left:auto;color:var(--book);font-size:14px;letter-spacing:.1em;text-transform:uppercase;}
+/* stat hero (slide 7) */
+.sh{flex:1;min-height:0;margin-top:30px;display:flex;flex-direction:column;gap:18px;}
+.shbig{flex:1.4;display:flex;align-items:center;gap:34px;background:rgba(204,120,92,.08);border:1px solid var(--book);border-radius:24px;padding:40px 46px;box-shadow:0 0 50px rgba(204,120,92,.16);}
+.shbig .bn{font-weight:900;font-size:230px;line-height:.74;color:var(--book);}
+.shbig .bx b{display:block;font-weight:900;font-size:46px;letter-spacing:-1px;color:var(--ivory);line-height:1.02;}
+.shbig .bx span{font-size:26px;font-weight:500;color:var(--ink70);margin-top:10px;display:block;line-height:1.3;}
+.shrow{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.shc{display:flex;align-items:center;gap:22px;border:1px solid var(--rule);border-radius:20px;padding:26px 30px;}
+.shc.b{background:rgba(212,162,127,.07);border-top:4px solid var(--kraft);}.shc.c{background:rgba(250,250,247,.03);border-top:4px solid var(--ink30);}
+.shc .bn{font-weight:900;font-size:80px;line-height:.78;}.shc.b .bn{color:var(--kraft);}.shc.c .bn{color:var(--ivory);}
+.shc .bx{font-size:25px;font-weight:700;color:var(--ivory);line-height:1.12;}.shc .bx span{display:block;font-size:19px;font-weight:500;color:var(--ink46);margin-top:5px;}
+/* composer cta */
+.ctawrap{flex-shrink:0;margin-top:24px;}
+.savel{font-family:'DM Mono',monospace;font-size:16px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink46);margin-bottom:12px;padding-left:8px;}
+.cta{display:flex;align-items:center;gap:18px;border:1.5px solid var(--book);border-radius:26px;background:rgba(204,120,92,.08);padding:16px 16px 16px 30px;box-shadow:0 0 50px rgba(204,120,92,.18);}
+.cta .ph{flex:1;font-size:30px;font-weight:600;color:var(--ink70);line-height:1.2;}.cta .ph b{color:var(--book);font-weight:900;}
+.cta .send{width:74px;height:74px;border-radius:50%;background:var(--book);flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 0 32px rgba(204,120,92,.45);}
+.cta .send svg{width:34px;height:34px;stroke:#1a0f0a;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ctabig{flex-shrink:0;font-weight:900;font-size:128px;line-height:.9;letter-spacing:-4px;color:var(--ivory);margin-top:8px;}.ctabig em{color:var(--book);font-style:normal;}
+.ftr{flex-shrink:0;margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:18px;border-top:1px solid var(--rule);padding-top:24px;}
+.fl2{display:flex;align-items:center;gap:16px;}.flogo{width:54px;height:54px;border-radius:50%;object-fit:cover;}
+.ftx{font-family:'DM Mono',monospace;font-size:18px;font-weight:400;letter-spacing:.11em;text-transform:uppercase;color:var(--ink70);}.ftx b{color:var(--ivory);font-weight:500;}
+.furl{font-weight:900;font-size:30px;letter-spacing:-.7px;color:var(--ivory);}.furl em{color:var(--book);font-style:normal;}
+</style></head><body>
+
+<!-- 1 COVER -->
+<div class="slide"><div class="atm"></div><div class="safe">
+  <div class="mast"><span class="ml">Session Memory</span><span class="mr">01 / 08</span></div>
+  <div class="eyebrow">Save this</div>
+  <div class="hook">Most AI forgets between chats.<br><em>Claude resumes where I stopped.</em></div>
+  <div class="sub">Close it for two days. Reopen and it is <b>still mid-task</b>, full context reloaded. Here is how.</div>
+  <div class="swipe">Swipe &rarr;</div>
+</div></div>
+
+<!-- 2 PROBLEM -->
+<div class="slide"><div class="atm"></div><div class="safe">
+  <div class="mast"><span class="ml">The problem</span><span class="mr">02 / 08</span></div>
+  <div class="htitle d">Every other AI <em>starts from zero.</em></div>
+  <div class="chat">
+    <div class="chd"><img class="av" src="__LOGO_URI__" alt=""><div class="ct"><b>Generic chatbot</b><span>new session</span></div><div class="rz dead"><i></i>Reset</div></div>
+    <div class="cbody">
+      <div class="msg u">continue the outbound build</div>
+      <div class="msg lost">Which build? Remind me your product, your ICP, your tone and who your competitors are.</div>
+      <div class="msg u">...again?</div>
+    </div>
+    <div class="cfoot dead"><div class="fl"><em>&#9679;</em> Context on start: empty</div><div class="pills"><span class="pl off"><i></i>Static</span><span class="pl off"><i></i>Profile</span><span class="pl off"><i></i>Integrations</span><span class="pl off"><i></i>Memories</span></div></div>
+  </div>
+  <div class="note">Re-explaining your whole business, <b>every single time</b>.</div>
+</div></div>
+
+<!-- 3 RESUME -->
+<div class="slide"><div class="atm"></div><div class="safe">
+  <div class="mast"><span class="ml">The shift</span><span class="mr">03 / 08</span></div>
+  <div class="htitle">Ultron <em>resumes</em> where you stopped.</div>
+  <div class="chat">
+    <div class="chd"><img class="av" src="__LOGO_URI__" alt=""><div class="ct"><b>Ultron session</b><span>#1842 &middot; outbound build</span></div><div class="rz"><i></i>Resumed</div></div>
+    <div class="cbody">
+      <div class="msg u old">Build my Q3 outbound sequence.</div>
+      <div class="msg a old">Drafted 4 steps. Paused on your ICP.</div>
+      <div class="gap"><span class="ln"></span><span class="gl"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>You close Ultron &middot; two days pass</span><span class="ln"></span></div>
+      <div class="msg u">continue</div>
+      <div class="msg live">Resuming at <b>step 4</b>. Your ICP, voice and pipeline are already loaded, nothing to re-explain.</div>
+    </div>
+    <div class="cfoot"><div class="fl"><em>&#9679;</em> Context reloaded in 5 layers, then auto-compressed</div><div class="pills"><span class="pl c"><i></i>Static</span><span class="pl"><i></i>Profile</span><span class="pl"><i></i>Integrations</span><span class="pl"><i></i>Memories</span><span class="pl"><i></i>Date</span></div></div>
+  </div>
+</div></div>
+
+<!-- 4 CONTEXT STACK -->
+<div class="slide"><div class="atm"></div><div class="safe">
+  <div class="mast"><span class="ml">Pane one</span><span class="mr">04 / 08</span></div>
+  <div class="htitle">Every session starts <em>fully loaded.</em></div>
+  <div class="stack">
+    <div class="lcard cache"><div class="n">1</div><div class="bd"><div class="nm">Static instructions</div><div class="ds">behavior rules, tool-use, quality gates, model tiers</div></div><div class="tg tg-c">Cached</div></div>
+    <div class="lcard"><div class="n">2</div><div class="bd"><div class="nm">Business profile</div><div class="ds">ICP, voice &amp; tone, competitors, pricing</div></div><div class="tg tg-f">Fresh</div></div>
+    <div class="lcard"><div class="n">3</div><div class="bd"><div class="nm">Connected integrations</div><div class="ds">Google Workspace, Stripe, HubSpot, Apollo</div></div><div class="tg tg-f">Fresh</div></div>
+    <div class="lcard"><div class="n">4</div><div class="bd"><div class="nm">Relevant memories</div><div class="ds">top 5, ranked by Sonnet recall</div></div><div class="tg tg-f">Fresh</div></div>
+    <div class="lcard"><div class="n">5</div><div class="bd"><div class="nm">Today's date</div><div class="ds">injected last as a system reminder</div></div><div class="tg tg-f">Fresh</div></div>
+  </div>
+  <div class="note">Static sits on top so it is <b>cached across sessions</b>. The rest loads fresh.</div>
+</div></div>
+
+<!-- 5 COMPRESSION -->
+<div class="slide"><div class="atm"></div><div class="safe">
+  <div class="mast"><span class="ml">As it grows</span><span class="mr">05 / 08</span></div>
+  <div class="htitle">It never <em>bloats.</em></div>
+  <div class="comp">
+    <div class="cstage"><div class="bn">0<span>API calls</span></div><div class="cm"><div class="ce">MicroCompact</div><div class="cd">Drops stale tool output from the oldest turns</div><div class="wbar"><i style="width:74%"></i></div></div><div class="wlab">trims</div></div>
+    <div class="cstage"><div class="bn">0<span>API calls</span></div><div class="cm"><div class="ce">Memory Compact</div><div class="cd">Uses your stored memories as the baseline</div><div class="wbar"><i style="width:46%"></i></div></div><div class="wlab">shrinks</div></div>
+    <div class="cstage cost"><div class="bn">1<span>fast model</span></div><div class="cm"><div class="ce">API Digest</div><div class="cd">Full summary, only when the first two are not enough</div><div class="wbar"><i style="width:22%"></i></div></div><div class="wlab">last resort</div></div>
+  </div>
+  <div class="note"><b>2 of the 3 passes cost zero API calls</b> and no manual restart, ever.</div>
+</div></div>
+
+<!-- 6 PERSISTENCE -->
+<div class="slide"><div class="atm"></div><div class="safe">
+  <div class="mast"><span class="ml">It stays</span><span class="mr">06 / 08</span></div>
+  <div class="htitle">Saved <em>turn by turn.</em></div>
+  <div class="trans">
+    <div class="th"><span>session-1842.jsonl</span><span class="d">resumable</span></div>
+    <div class="tb">
+      <div class="tline"><span class="k">turn 12</span><span class="v">message + tool calls</span><span class="b">saved</span></div>
+      <div class="tline"><span class="k">turn 13</span><span class="v">tool results + token counts</span><span class="b">saved</span></div>
+      <div class="tline"><span class="k">turn 14</span><span class="v">message + timestamps</span><span class="b">saved</span></div>
+      <div class="tline"><span class="k">resume</span><span class="v">context rebuilt from the transcript</span><span class="b">lossless</span></div>
+      <div class="tline"><span class="k">cost</span><span class="v">tokens + model, per turn and session</span><span class="b">in usage</span></div>
+    </div>
+  </div>
+  <div class="note">One JSON object per turn. <b>Reopen anytime</b> and it rebuilds exactly.</div>
+</div></div>
+
+<!-- 7 PAYOFF -->
+<div class="slide"><div class="atm"></div><div class="safe">
+  <div class="mast"><span class="ml">The payoff</span><span class="mr">07 / 08</span></div>
+  <div class="htitle">So you <em>never re-explain</em> your business.</div>
+  <div class="sh">
+    <div class="shbig"><div class="bn">0</div><div class="bx"><b>manual restarts</b><span>it auto-compresses instead of resetting, so the thread never breaks</span></div></div>
+    <div class="shrow">
+      <div class="shc b"><div class="bn">5</div><div class="bx">context layers<span>loaded every start</span></div></div>
+      <div class="shc c"><div class="bn">3</div><div class="bx">compression tiers<span>2 of them free</span></div></div>
+    </div>
+  </div>
+  <div class="note">Less re-explaining, lower cost, the same Claude that <b>remembers you</b>.</div>
+</div></div>
+
+<!-- 8 CTA -->
+<div class="slide"><div class="atm"></div><div class="safe">
+  <div class="mast"><span class="ml">Get the system</span><span class="mr">08 / 08</span></div>
+  <div class="eyebrow">Save this, then</div>
+  <div class="ctabig">Comment<br><em>CONTEXT</em></div>
+  <div class="sub">I will send you the exact Claude <b>session architecture</b> we run in Ultron, so your AI never resets again.</div>
+  <div class="fill"></div>
+  <div class="ctawrap"><div class="savel">drop it in a comment</div><div class="cta"><span class="ph">Comment <b>CONTEXT</b> and I will send it over</span><span class="send"><svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></span></div></div>
+  <div class="ftr"><div class="fl2"><img class="flogo" src="__LOGO_URI__" alt="Ultron"><div class="ftx"><b>ULTRON</b> &middot; AI OPERATOR FOR FOUNDERS</div></div><div class="furl">51ultron<em>.</em>com</div></div>
+</div></div>
+
+</body></html>

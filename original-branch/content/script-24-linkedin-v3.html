@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Script 24 - TERRITORY - Ultron</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Fraunces:opsz,wght@9..144,700;9..144,900&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet">
+<!--
+VERTICAL BUDGET (canvas 1450px, pad 28t+20b = 48px, content = 1402px)
+  header      44px  (32 + 12mb)
+  hook       148px  (display 2-line + sub + 14mb)
+  hero        96px  (82 + 14mb)
+  funnel     348px  (label 17 + 4 bands 60 + 3 gaps 30 + 14mb)
+  zones      150px  (label 17 + 3 cards + 14mb)
+  timeline   124px  (label 17 + nodes ~93 + 14mb)
+  compare    140px  (label 17 + cards + 14mb)
+  kpi-row     70px  (56 + 14mb)
+  cta         70px  (56 + 14mb)
+  footer      48px
+  TOTAL    ~1238px  (footer margin-top:auto absorbs slack)
+-->
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #f4ede0;
+  margin: 0; padding: 0;
+}
+.scaler {
+  display: flex; justify-content: center;
+}
+
+/* CANVAS */
+.canvas {
+  width: 1080px; height: 1450px;
+  background: #f4ede0;
+  background-image: radial-gradient(rgba(199,93,53,.10) 1px, transparent 1px);
+  background-size: 24px 24px;
+  padding: 28px 40px 20px;
+  display: flex; flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  color: #1a1a1a; overflow: hidden;
+}
+
+/* HEADER */
+.header {
+  display: flex; justify-content: space-between; align-items: center;
+  height: 32px; flex-shrink: 0; margin-bottom: 12px;
+}
+.hd { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; }
+.hd-l { color: rgba(0,0,0,.55); }
+.hd-r { color: rgba(0,0,0,.35); }
+
+/* HOOK */
+.hook { flex-shrink: 0; margin-bottom: 14px; padding-top: 8px; }
+.hook-d {
+  font-family: 'Fraunces', serif;
+  font-size: 80px; font-weight: 900; line-height: 0.94; letter-spacing: -2px;
+  color: #1a1a1a;
+}
+.hook-d .ac { color: #c75d35; }
+.hook-sub {
+  margin-top: 16px;
+  font-family: 'Inter', sans-serif;
+  font-size: 40px; font-weight: 700; line-height: 1.15; letter-spacing: -0.5px;
+  color: rgba(0,0,0,.52);
+}
+
+/* HERO STRIP */
+.hero {
+  flex-shrink: 0; height: 82px; background: #c75d35; border-radius: 6px;
+  display: flex; align-items: center; justify-content: space-evenly;
+  margin-bottom: 14px;
+}
+.h-stat { text-align: center; }
+.h-num { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 900; color: #f4ede0; line-height: 1; letter-spacing: -0.8px; }
+.h-lbl { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(244,237,224,.7); margin-top: 5px; }
+.h-div { width: 1px; height: 56px; background: rgba(244,237,224,.25); }
+
+/* SECTION LABEL */
+.sec {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  color: #c75d35; flex-shrink: 0; margin-bottom: 9px;
+}
+
+/* FUNNEL (real visual funnel - descending widths) */
+.funnel-wrap { flex-shrink: 0; margin-bottom: 14px; }
+.funnel-stack { display: flex; flex-direction: column; align-items: center; gap: 0; }
+
+.f-band {
+  height: 56px;
+  background: rgba(199,93,53,.08);
+  border: 1.5px solid rgba(199,93,53,.32);
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: 0 20px;
+  position: relative;
+}
+.f-band.tam     { width: 100%; background: rgba(0,0,0,.04); border-color: rgba(0,0,0,.18); }
+.f-band.lvl1    { width: 80%;  background: rgba(199,93,53,.10); }
+.f-band.lvl2    { width: 58%;  background: rgba(199,93,53,.14); }
+.f-band.lvl3    { width: 38%;  background: #c75d35; border-color: #c75d35; }
+
+.f-band-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.f-band-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(0,0,0,.55);
+}
+.f-band.lvl3 .f-band-tag { color: rgba(244,237,224,.8); }
+.f-band-desc { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; color: rgba(0,0,0,.5); }
+.f-band.lvl3 .f-band-desc { color: rgba(244,237,224,.7); }
+
+.f-band-count { display: flex; align-items: baseline; gap: 6px; }
+.f-band-num {
+  font-family: 'Fraunces', serif;
+  font-size: 30px; font-weight: 900; line-height: 1; letter-spacing: -0.6px;
+  color: #1a1a1a;
+}
+.f-band.lvl3 .f-band-num { color: #f4ede0; font-size: 34px; }
+.f-band-unit {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(0,0,0,.42);
+}
+.f-band.lvl3 .f-band-unit { color: rgba(244,237,224,.7); }
+
+/* Filter gap (between bands) */
+.f-gap {
+  height: 30px;
+  width: 80%;
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 0 8px;
+  position: relative;
+}
+.f-gap-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; font-weight: 800; letter-spacing: 0.1em;
+  color: #c75d35;
+  background: #f4ede0;
+  border: 1.5px solid #c75d35;
+  border-radius: 4px;
+  width: 28px; height: 18px;
+  display: flex; align-items: center; justify-content: center;
+}
+.f-gap-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase;
+  color: #1a1a1a;
+}
+.f-gap-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px; font-weight: 600;
+  color: rgba(0,0,0,.5);
+  text-align: right;
+}
+/* Arrows */
+.f-gap::before {
+  content: '';
+  position: absolute;
+  left: 50%; top: 0;
+  width: 2px; height: 100%;
+  background: repeating-linear-gradient(to bottom, rgba(199,93,53,.4) 0 4px, transparent 4px 8px);
+  transform: translateX(-1px);
+  z-index: -1;
+}
+
+/* ZONES */
+.zones-wrap { flex-shrink: 0; margin-bottom: 14px; }
+.zones-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+.zone-card {
+  background: rgba(255,255,255,.55);
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: 5px;
+  padding: 11px 14px 12px;
+  border-top: 3px solid;
+}
+.zone-card.prime  { border-top-color: #c75d35; }
+.zone-card.active { border-top-color: rgba(199,93,53,.5); }
+.zone-card.watch  { border-top-color: rgba(0,0,0,.25); }
+
+.z-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+.z-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase;
+}
+.zone-card.prime  .z-tag { color: #c75d35; }
+.zone-card.active .z-tag { color: rgba(199,93,53,.7); }
+.zone-card.watch  .z-tag { color: rgba(0,0,0,.5); }
+
+.z-cnt {
+  font-family: 'Fraunces', serif;
+  font-size: 30px; font-weight: 900; line-height: 1; letter-spacing: -0.6px;
+  color: #1a1a1a;
+}
+.z-sub { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; color: rgba(0,0,0,.5); margin-bottom: 8px; }
+.z-rows { border-top: 1px dotted rgba(0,0,0,.18); padding-top: 6px; display: flex; flex-direction: column; gap: 3px; }
+.z-row { display: flex; justify-content: space-between; align-items: baseline; }
+.z-rk { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(0,0,0,.4); }
+.z-rv { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700; color: #1a1a1a; text-align: right; }
+.z-rv .ac { color: #c75d35; }
+
+/* TIMELINE */
+.tl-wrap { flex-shrink: 0; margin-bottom: 14px; }
+.tl-track { display: flex; align-items: flex-start; }
+.tl-node { display: flex; flex-direction: column; align-items: center; flex: 1; }
+.tl-dot {
+  width: 30px; height: 30px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 800;
+  color: #f4ede0; flex-shrink: 0;
+}
+.tl-lbl { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800; color: #1a1a1a; text-align: center; margin-top: 7px; text-transform: uppercase; letter-spacing: 0.04em; }
+.tl-day { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; color: rgba(0,0,0,.42); text-align: center; margin-top: 2px; }
+.tl-note { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 600; color: rgba(0,0,0,.5); text-align: center; margin-top: 5px; line-height: 1.4; padding: 0 4px; }
+.tl-conn { flex: 0.4; height: 2px; margin-top: 14px; flex-shrink: 0; border-radius: 1px; }
+
+/* COMPARE */
+.cmp-wrap { flex-shrink: 0; margin-bottom: 14px; }
+.cmp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.cmp-card { border-radius: 5px; padding: 12px 14px; }
+.cmp-card.bad { background: rgba(192,57,43,.06); border: 1px solid rgba(192,57,43,.22); }
+.cmp-card.good { background: rgba(42,140,80,.07); border: 1px solid rgba(42,140,80,.22); }
+.cmp-head { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 7px; }
+.cmp-head.red { color: #c0392b; }
+.cmp-head.grn { color: #2a8c50; }
+.cmp-row { display: flex; align-items: flex-start; gap: 6px; margin-bottom: 5px; }
+.cmp-dot { width: 4px; height: 4px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+.cmp-row.bad .cmp-dot { background: #c0392b; }
+.cmp-row.good .cmp-dot { background: #2a8c50; }
+.cmp-txt { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; color: rgba(0,0,0,.65); line-height: 1.4; }
+
+/* KPI ROW */
+.kpi-row { flex-shrink: 0; display: flex; gap: 10px; margin-bottom: 14px; }
+.kpi-cell { flex: 1; background: rgba(255,255,255,.55); border: 1px solid rgba(0,0,0,.1); border-radius: 5px; padding: 9px 0; text-align: center; }
+.kpi-val { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 900; color: #c75d35; line-height: 1; letter-spacing: -0.6px; }
+.kpi-key { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; color: rgba(0,0,0,.45); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 5px; }
+
+/* CTA */
+.cta-block {
+  flex-shrink: 0; background: #c75d35; border-radius: 6px;
+  padding: 14px 22px; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  margin-bottom: 10px;
+}
+.cta-copy { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700; color: #f4ede0; line-height: 1.5; }
+.cta-badge {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 800;
+  color: #c75d35; background: #f4ede0; border-radius: 4px;
+  padding: 8px 14px; letter-spacing: 0.06em; white-space: nowrap; flex-shrink: 0;
+}
+
+/* FOOTER */
+.footer {
+  flex-shrink: 0; border-top: 1px solid rgba(199,93,53,.2);
+  padding-top: 10px; height: 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: auto;
+}
+.ft-logo { display: flex; align-items: center; gap: 8px; }
+.ft-tags { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; color: rgba(0,0,0,.35); letter-spacing: 0.1em; text-transform: uppercase; }
+.ft-domain { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 800; color: #c75d35; letter-spacing: 0.12em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="canvas">
+
+  <!-- HEADER -->
+  <div class="header">
+    <span class="hd hd-l">FOUNDER GTM · ICP FIT · INTENT SIGNAL · PIPELINE MAPPING · SPECTER · ULTRON OS</span>
+  </div>
+
+  <!-- HOOK -->
+  <div class="hook">
+    <div class="hook-d">
+      I gave <span class="ac">Claude</span> 12,400 accounts.<br>
+      It picked <span class="ac">847</span>.
+    </div>
+    <div class="hook-sub">3 AI filters. 40 minutes.<br>$4.79M pipeline mapped.</div>
+  </div>
+
+  <!-- HERO STRIP -->
+  <div class="hero">
+    <div class="h-stat"><div class="h-num">12,400</div><div class="h-lbl">TAM SCANNED</div></div>
+    <div class="h-div"></div>
+    <div class="h-stat"><div class="h-num">847</div><div class="h-lbl">TERRITORY</div></div>
+    <div class="h-div"></div>
+    <div class="h-stat"><div class="h-num">40min</div><div class="h-lbl">CLAUDE RUN</div></div>
+    <div class="h-div"></div>
+    <div class="h-stat"><div class="h-num">$4.79M</div><div class="h-lbl">PIPELINE</div></div>
+  </div>
+
+  <!-- FUNNEL -->
+  <div class="funnel-wrap">
+    <div class="sec">THE 3-FILTER FUNNEL CLAUDE RAN</div>
+    <div class="funnel-stack">
+
+      <!-- TAM -->
+      <div class="f-band tam">
+        <div class="f-band-info">
+          <div class="f-band-tag">TOTAL ADDRESSABLE MARKET</div>
+          <div class="f-band-desc">B2B SaaS · 50 to 500 employees · US + EU · Series A through C</div>
+        </div>
+        <div class="f-band-count">
+          <div class="f-band-num">12,400</div>
+          <div class="f-band-unit">accounts</div>
+        </div>
+      </div>
+
+      <!-- Filter 01 -->
+      <div class="f-gap">
+        <div class="f-gap-num">01</div>
+        <div class="f-gap-name">ICP FIT</div>
+        <div class="f-gap-desc">Revenue model · headcount velocity · tech stack · buyer titles</div>
+      </div>
+
+      <!-- After ICP -->
+      <div class="f-band lvl1">
+        <div class="f-band-info">
+          <div class="f-band-tag">ICP-MATCHED</div>
+          <div class="f-band-desc">Score &ge; 70 · pattern extracted from your 10 best closed-won deals</div>
+        </div>
+        <div class="f-band-count">
+          <div class="f-band-num">2,100</div>
+          <div class="f-band-unit">passed</div>
+        </div>
+      </div>
+
+      <!-- Filter 02 -->
+      <div class="f-gap">
+        <div class="f-gap-num">02</div>
+        <div class="f-gap-name">INTENT SIGNAL</div>
+        <div class="f-gap-desc">Hiring GTM roles · content engagement · competitor searches · job posts</div>
+      </div>
+
+      <!-- After Intent -->
+      <div class="f-band lvl2">
+        <div class="f-band-info">
+          <div class="f-band-tag">INTENT-ACTIVE</div>
+          <div class="f-band-desc">Score &ge; 50 · live signal in last 30 days · multi-source confirmed</div>
+        </div>
+        <div class="f-band-count">
+          <div class="f-band-num">940</div>
+          <div class="f-band-unit">passed</div>
+        </div>
+      </div>
+
+      <!-- Filter 03 -->
+      <div class="f-gap">
+        <div class="f-gap-num">03</div>
+        <div class="f-gap-name">TIMING TRIGGER</div>
+        <div class="f-gap-desc">Funding · leadership change · contract window · expansion event</div>
+      </div>
+
+      <!-- Territory -->
+      <div class="f-band lvl3">
+        <div class="f-band-info">
+          <div class="f-band-tag">TERRITORY · SPECTER WATCHING</div>
+          <div class="f-band-desc">Triggered in last 14 days · ready for STRIKER outreach now</div>
+        </div>
+        <div class="f-band-count">
+          <div class="f-band-num">847</div>
+          <div class="f-band-unit">territory</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ZONES -->
+  <div class="zones-wrap">
+    <div class="sec">TERRITORY SPLIT · 847 ACCOUNTS · $4.79M PIPELINE</div>
+    <div class="zones-grid">
+      <div class="zone-card prime">
+        <div class="z-top"><span class="z-tag">PRIME</span><span class="z-cnt">214</span></div>
+        <div class="z-sub">Top priority · call this week</div>
+        <div class="z-rows">
+          <div class="z-row"><span class="z-rk">ICP SCORE</span><span class="z-rv">90 to 100</span></div>
+          <div class="z-row"><span class="z-rk">TIMING</span><span class="z-rv"><span class="ac">funding &lt; 60d</span></span></div>
+          <div class="z-row"><span class="z-rk">PIPELINE</span><span class="z-rv">$2.10M ARR</span></div>
+        </div>
+      </div>
+      <div class="zone-card active">
+        <div class="z-top"><span class="z-tag">ACTIVE</span><span class="z-cnt">389</span></div>
+        <div class="z-sub">Nurture · sequence this week</div>
+        <div class="z-rows">
+          <div class="z-row"><span class="z-rk">ICP SCORE</span><span class="z-rv">75 to 89</span></div>
+          <div class="z-row"><span class="z-rk">TIMING</span><span class="z-rv"><span class="ac">hiring + engagement</span></span></div>
+          <div class="z-row"><span class="z-rk">PIPELINE</span><span class="z-rv">$1.80M ARR</span></div>
+        </div>
+      </div>
+      <div class="zone-card watch">
+        <div class="z-top"><span class="z-tag">WATCH</span><span class="z-cnt">244</span></div>
+        <div class="z-sub">Hold · SPECTER monitors 24/7</div>
+        <div class="z-rows">
+          <div class="z-row"><span class="z-rk">ICP SCORE</span><span class="z-rv">70 to 74</span></div>
+          <div class="z-row"><span class="z-rk">TIMING</span><span class="z-rv"><span class="ac">trigger pending</span></span></div>
+          <div class="z-row"><span class="z-rk">PIPELINE</span><span class="z-rv">$890K ARR</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="tl-wrap">
+    <div class="sec">WHAT CLAUDE DID IN 40 MINUTES</div>
+    <div class="tl-track">
+      <div class="tl-node">
+        <div class="tl-dot" style="background:#c75d35">01</div>
+        <div class="tl-lbl">FEED</div>
+        <div class="tl-day">MIN 0</div>
+        <div class="tl-note">10 best customers in</div>
+      </div>
+      <div class="tl-conn" style="background:#c75d35"></div>
+      <div class="tl-node">
+        <div class="tl-dot" style="background:#c75d35">02</div>
+        <div class="tl-lbl">EXTRACT</div>
+        <div class="tl-day">MIN 4</div>
+        <div class="tl-note">ICP pattern derived</div>
+      </div>
+      <div class="tl-conn" style="background:#c75d35"></div>
+      <div class="tl-node">
+        <div class="tl-dot" style="background:#c75d35">03</div>
+        <div class="tl-lbl">SCAN</div>
+        <div class="tl-day">MIN 11</div>
+        <div class="tl-note">12,400 accounts scored</div>
+      </div>
+      <div class="tl-conn" style="background:#c75d35"></div>
+      <div class="tl-node">
+        <div class="tl-dot" style="background:#c75d35">04</div>
+        <div class="tl-lbl">LAYER</div>
+        <div class="tl-day">MIN 26</div>
+        <div class="tl-note">Intent + Timing stacked</div>
+      </div>
+      <div class="tl-conn" style="background:#c75d35"></div>
+      <div class="tl-node">
+        <div class="tl-dot" style="background:#c75d35">05</div>
+        <div class="tl-lbl">RANK</div>
+        <div class="tl-day">MIN 34</div>
+        <div class="tl-note">847 territory tiered</div>
+      </div>
+      <div class="tl-conn" style="background:#c75d35"></div>
+      <div class="tl-node">
+        <div class="tl-dot" style="background:#1a1a1a">06</div>
+        <div class="tl-lbl">HAND OFF</div>
+        <div class="tl-day">MIN 40</div>
+        <div class="tl-note">SPECTER takes over</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPARE -->
+  <div class="cmp-wrap">
+    <div class="sec">MANUAL ICP VS. CLAUDE + SPECTER</div>
+    <div class="cmp-grid">
+      <div class="cmp-card bad">
+        <div class="cmp-head red">MANUAL (SDR + SPREADSHEET)</div>
+        <div class="cmp-row bad"><div class="cmp-dot"></div><div class="cmp-txt">5 to 7 days to build account list</div></div>
+        <div class="cmp-row bad"><div class="cmp-dot"></div><div class="cmp-txt">No intent layer · cold guesses</div></div>
+        <div class="cmp-row bad"><div class="cmp-dot"></div><div class="cmp-txt">73% of SDR time wasted outside ICP</div></div>
+        <div class="cmp-row bad"><div class="cmp-dot"></div><div class="cmp-txt">Static list · decays in 2 weeks</div></div>
+      </div>
+      <div class="cmp-card good">
+        <div class="cmp-head grn">CLAUDE + SPECTER</div>
+        <div class="cmp-row good"><div class="cmp-dot"></div><div class="cmp-txt">40 minutes to live territory</div></div>
+        <div class="cmp-row good"><div class="cmp-dot"></div><div class="cmp-txt">3 stacked filters · 93% ICP accuracy</div></div>
+        <div class="cmp-row good"><div class="cmp-dot"></div><div class="cmp-txt">4.2x higher close on timing triggers</div></div>
+        <div class="cmp-row good"><div class="cmp-dot"></div><div class="cmp-txt">Continuous · re-scored every 24h</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KPI ROW -->
+  <div class="kpi-row">
+    <div class="kpi-cell"><div class="kpi-val">3</div><div class="kpi-key">FILTERS</div></div>
+    <div class="kpi-cell"><div class="kpi-val">40min</div><div class="kpi-key">RUNTIME</div></div>
+    <div class="kpi-cell"><div class="kpi-val">93%</div><div class="kpi-key">ICP ACCURACY</div></div>
+    <div class="kpi-cell"><div class="kpi-val">6.8x</div><div class="kpi-key">VS MANUAL</div></div>
+    <div class="kpi-cell"><div class="kpi-val">$0</div><div class="kpi-key">EXTRA TOOLS</div></div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block" style="flex:1">
+    <div class="cta-copy">
+      Still building target lists by hand? Claude maps your territory in 40 minutes<br>
+      with 3 stacked filters. SPECTER then monitors every account 24/7 for triggers.
+    </div>
+    <div class="cta-badge">COMMENT "TERRITORY"</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer" style="border-top: 1px dashed rgba(199,93,53,0.3); padding-top: 16px; display: flex; align-items: center; justify-content: space-between;">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; color: rgba(0,0,0,0.5); text-transform: uppercase; display: flex; align-items: center; gap: 10px;">
+      <img src="https://app.51ultron.com/favicon.ico" alt="Ultron" style="width: 24px; height: 24px; object-fit: contain;">
+      <strong style="color: #1a1a1a;">ULTRON OS</strong> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure
+    </div>
+    <div style="font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 800; color: #1a1a1a; letter-spacing: -0.5px;">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

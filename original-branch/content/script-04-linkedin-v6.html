@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 04 · TOOL_STACK · v6</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* BUDGET 1450
+     header   0 -  48
+     hero    56 - 268   (212)
+     bigstat 280 - 376   ( 96)  EYE-STOPPER
+     pipeline 384 - 640  (256)  AI FLOW DIAGRAM
+     table   648 - 904   (256)  VERDICT LOG
+     panels  912 -1176   (264)
+     metric 1184 -1256   ( 72)
+     cta    1264 -1320   ( 56)
+     footer 1334 -1410   ( 76)  KEYWORDS
+  */
+  body{background:#18130b;margin:0;padding:0}
+  .scaler{display:flex;justify-content:center}
+  .poster{width:1080px;height:1450px;background:#18130b;position:relative;overflow:hidden;box-sizing:border-box;color:#fff}
+  .mono{font-family:'JetBrains Mono','Courier New',monospace}
+  .accent{color:#ed7f4a}
+  .micro{font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;font-family:'JetBrains Mono',monospace}
+  .stamp{display:inline-flex;align-items:center;padding:3px 8px;border-radius:4px;font-size:10px;font-weight:800;font-family:'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;border:1px solid;white-space:nowrap}
+  .stamp-ok{color:#4ade80;border-color:rgba(22,163,74,0.45);background:rgba(22,163,74,0.1)}
+  .stamp-edit{color:#ed7f4a;border-color:rgba(237,127,74,0.45);background:rgba(237,127,74,0.1)}
+  .stamp-rej{color:#e35a4a;border-color:rgba(192,57,43,0.45);background:rgba(192,57,43,0.1)}
+  .model{display:inline-flex;align-items:center;justify-content:center;gap:5px;font-size:10px;font-weight:700;font-family:'JetBrains Mono',monospace;padding:4px 9px;border-radius:4px;letter-spacing:.06em}
+  .model-gem{background:rgba(66,133,244,0.1);border:1px solid rgba(66,133,244,0.35);color:#8ab4ff}
+  .model-cla{background:rgba(217,119,87,0.12);border:1px solid rgba(217,119,87,0.4);color:#ed7f4a}
+  .model-gpt{background:rgba(16,163,127,0.1);border:1px solid rgba(16,163,127,0.4);color:#3ecf94}
+  .model-you{background:rgba(237,127,74,0.22);border:1px solid rgba(237,127,74,0.7);color:#fff;font-weight:800}
+  .pulse{display:inline-block;width:8px;height:8px;border-radius:50%;background:#ed7f4a;box-shadow:0 0 8px #ed7f4a}
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="poster">
+
+  <!-- HEADER 0-48 -->
+  <div style="position:absolute;top:0;left:40px;right:40px;height:48px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(237,127,74,0.18)">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(232,223,212,.42)">FOUNDER GTM · TOOL CONSOLIDATION · AI STACK · COST REDUCTION · ULTRON OS</span>
+  </div>
+
+  <!-- HERO 56-268 -->
+  <div style="position:absolute;top:56px;left:40px;width:640px">
+    <div class="micro" style="margin-bottom:12px;color:rgba(255,255,255,0.5)">AI STACK · TOOL CONSOLIDATION · FOUNDER GTM</div>
+    <div style="font-weight:900;font-size:50px;line-height:1.02;letter-spacing:-1.2px">I burned <span class="accent">$4,800/mo</span></div>
+    <div style="font-weight:900;font-size:50px;line-height:1.02;letter-spacing:-1.2px;margin-bottom:16px">on <span class="accent">6 tools.</span> Killed them.</div>
+    <div style="font-size:14px;line-height:1.5;color:rgba(255,255,255,0.65);max-width:580px">12 months. $57,600 spent. 0 pipeline closed. The stack was never the system. The routing layer was.<br><span style="color:#fff;font-weight:600">Replaced 6 SaaS seats with 3 AI models + Ultron. New burn: $19/mo.</span></div>
+  </div>
+
+  <!-- RULE BOX right -->
+  <div style="position:absolute;top:56px;right:40px;width:340px;padding:18px 20px;border:1px solid rgba(237,127,74,0.35);border-radius:8px;background:rgba(237,127,74,0.05);box-sizing:border-box">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="#ed7f4a" stroke-width="1.4"/><circle cx="8" cy="8" r="2.2" fill="#ed7f4a"/><path d="M8 0v3M8 13v3M0 8h3M13 8h3" stroke="#ed7f4a" stroke-width="1.4"/></svg>
+      <span class="mono" style="font-size:11px;font-weight:700;letter-spacing:.18em;color:#ed7f4a">THE RULE</span>
+    </div>
+    <div style="font-size:16px;font-weight:700;line-height:1.3;margin-bottom:10px">Do not stack the tools.</div>
+    <div style="font-size:12px;line-height:1.5;color:rgba(255,255,255,0.7);margin-bottom:14px">Stack the <span style="color:#fff;font-weight:600">workflow.</span> Route to the model that wins the step. Kill the seat.</div>
+    <div style="padding-top:10px;border-top:1px solid rgba(237,127,74,0.18);font-size:10px;line-height:1.6;color:rgba(255,255,255,0.55);font-family:'JetBrains Mono',monospace">
+      <div>TOOL_STACK = routing layer</div>
+      <div>Ultron = single source of truth</div>
+    </div>
+  </div>
+
+  <!-- BIG STAT EYE-STOPPER 280-376 -->
+  <div style="position:absolute;top:280px;left:40px;right:40px;height:96px;display:grid;grid-template-columns:1fr 56px 1fr;align-items:center;background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.1);border-radius:8px;overflow:hidden">
+    <!-- left: before -->
+    <div style="padding:16px 24px;border-right:1px solid rgba(255,255,255,0.08);position:relative">
+      <div class="mono" style="font-size:9px;letter-spacing:.2em;color:rgba(255,255,255,0.45);font-weight:700;margin-bottom:4px">OLD STACK · 6 TOOLS · 0 PIPELINE</div>
+      <div style="display:flex;align-items:baseline;gap:8px">
+        <span style="font-size:50px;font-weight:900;line-height:1;color:rgba(227,90,74,0.9);letter-spacing:-2px">$4,800</span>
+        <span style="font-size:13px;color:rgba(255,255,255,0.5);font-weight:600">/mo</span>
+      </div>
+      <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(192,57,43,0.4)"></div>
+    </div>
+    <!-- arrow -->
+    <div style="display:flex;align-items:center;justify-content:center">
+      <svg width="28" height="18" viewBox="0 0 28 18" fill="none"><path d="M2 9h20M17 3l8 6-8 6" stroke="#ed7f4a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <!-- right: after -->
+    <div style="padding:16px 24px;border-left:1px solid rgba(255,255,255,0.08);position:relative;background:rgba(237,127,74,0.04)">
+      <div class="mono" style="font-size:9px;letter-spacing:.2em;color:rgba(255,255,255,0.45);font-weight:700;margin-bottom:4px">ULTRON ROUTING · 14 MEETINGS</div>
+      <div style="display:flex;align-items:baseline;gap:8px">
+        <span style="font-size:52px;font-weight:900;line-height:1;color:#ed7f4a;letter-spacing:-2px">$19</span>
+        <span style="font-size:13px;color:rgba(255,255,255,0.5);font-weight:600">/mo</span>
+      </div>
+      <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(237,127,74,0.5)"></div>
+    </div>
+  </div>
+
+  <!-- AI PIPELINE FLOW 384-640 -->
+  <div style="position:absolute;top:384px;left:40px;right:40px">
+    <div style="margin-bottom:10px;display:flex;align-items:center;justify-content:space-between">
+      <span class="micro" style="color:rgba(255,255,255,0.5)">5 AGENTS REPLACE 6 SAAS SEATS</span>
+      <span class="mono" style="font-size:9px;color:rgba(255,255,255,0.35);letter-spacing:.12em">$4,800/MO → $19/MO · 252x DROP</span>
+    </div>
+
+    <!-- 5-step pipeline nodes -->
+    <div style="display:grid;grid-template-columns:1fr 20px 1fr 20px 1fr 20px 1fr 20px 1fr;align-items:center;gap:0">
+
+      <!-- 1: SPECTER -->
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:14px 12px;text-align:center">
+        <div class="mono" style="font-size:9px;color:rgba(255,255,255,0.4);font-weight:700;margin-bottom:6px">STEP 1</div>
+        <div style="font-size:13px;font-weight:800;margin-bottom:6px">SPECTER</div>
+        <div class="model model-gem"><svg width="11" height="11" viewBox="0 0 16 16"><path d="M8 1 L9.4 6.6 L15 8 L9.4 9.4 L8 15 L6.6 9.4 L1 8 L6.6 6.6 Z" fill="#4285F4"/></svg>Gemini</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.5);margin-top:6px;line-height:1.3">Replaces<br>Apollo $499</div>
+      </div>
+
+      <!-- arrow -->
+      <div style="display:flex;justify-content:center"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h10M8 2l4 3-4 3" stroke="rgba(255,255,255,0.25)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+      <!-- 2: CORTEX -->
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:14px 12px;text-align:center">
+        <div class="mono" style="font-size:9px;color:rgba(255,255,255,0.4);font-weight:700;margin-bottom:6px">STEP 2</div>
+        <div style="font-size:13px;font-weight:800;margin-bottom:6px">CORTEX</div>
+        <div class="model model-cla"><svg width="11" height="11" viewBox="0 0 16 16"><g stroke="#D97757" stroke-width="1.6" stroke-linecap="round" fill="none"><path d="M8 1 L8 15 M1 8 L15 8 M3 3 L13 13 M13 3 L3 13"/></g><circle cx="8" cy="8" r="1.6" fill="#D97757"/></svg>Claude</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.5);margin-top:6px;line-height:1.3">Replaces<br>ZoomInfo $2,400</div>
+      </div>
+
+      <!-- arrow -->
+      <div style="display:flex;justify-content:center"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h10M8 2l4 3-4 3" stroke="rgba(255,255,255,0.25)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+      <!-- 3: STRIKER -->
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:14px 12px;text-align:center">
+        <div class="mono" style="font-size:9px;color:rgba(255,255,255,0.4);font-weight:700;margin-bottom:6px">STEP 3</div>
+        <div style="font-size:13px;font-weight:800;margin-bottom:6px">STRIKER</div>
+        <div class="model model-cla"><svg width="11" height="11" viewBox="0 0 16 16"><g stroke="#D97757" stroke-width="1.6" stroke-linecap="round" fill="none"><path d="M8 1 L8 15 M1 8 L15 8 M3 3 L13 13 M13 3 L3 13"/></g><circle cx="8" cy="8" r="1.6" fill="#D97757"/></svg>Claude</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.5);margin-top:6px;line-height:1.3">Replaces<br>Lavender $99</div>
+      </div>
+
+      <!-- arrow -->
+      <div style="display:flex;justify-content:center"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h10M8 2l4 3-4 3" stroke="#ed7f4a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+      <!-- 4: HUMAN_GATE - highlighted -->
+      <div style="background:rgba(237,127,74,0.1);border:2px solid rgba(237,127,74,0.7);border-radius:8px;padding:14px 12px;text-align:center;position:relative;box-shadow:0 0 24px rgba(237,127,74,0.15)">
+        <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#ed7f4a;color:#18130b;font-size:8px;font-weight:900;font-family:'JetBrains Mono',monospace;padding:2px 8px;border-radius:3px;letter-spacing:.12em;white-space:nowrap">ROUTING LAYER</div>
+        <div class="mono" style="font-size:9px;color:#ed7f4a;font-weight:700;margin-bottom:6px">STEP 4</div>
+        <div style="font-size:13px;font-weight:900;margin-bottom:6px;color:#ed7f4a">ULTRON</div>
+        <div class="model model-you"><svg width="11" height="11" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" stroke="#fff" stroke-width="1.4" fill="none"/><circle cx="8" cy="8" r="2" fill="#fff"/></svg>ROUTER</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.65);margin-top:6px;line-height:1.3">Replaces<br>Clay $799</div>
+      </div>
+
+      <!-- arrow -->
+      <div style="display:flex;justify-content:center"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h10M8 2l4 3-4 3" stroke="rgba(255,255,255,0.25)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+      <!-- 5: PULSE -->
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:14px 12px;text-align:center">
+        <div class="mono" style="font-size:9px;color:rgba(255,255,255,0.4);font-weight:700;margin-bottom:6px">STEP 5</div>
+        <div style="font-size:13px;font-weight:800;margin-bottom:6px">PULSE</div>
+        <div class="model model-gpt"><svg width="12" height="12" viewBox="0 0 24 24" fill="#10A37F"><path d="M22.28 9.82a5.99 5.99 0 0 0-.52-4.91 6.05 6.05 0 0 0-6.51-2.9A6.07 6.07 0 0 0 4.98 4.18a5.99 5.99 0 0 0-4 2.9 6.05 6.05 0 0 0 .74 7.1 5.98 5.98 0 0 0 .51 4.91 6.05 6.05 0 0 0 6.52 2.9A5.98 5.98 0 0 0 13.26 24a6.05 6.05 0 0 0 5.77-4.21 5.99 5.99 0 0 0 4-2.9 6.05 6.05 0 0 0-.75-7.07zM13.26 22.43a4.48 4.48 0 0 1-2.88-1.04l.14-.08 4.78-2.76a.78.78 0 0 0 .4-.68v-6.74l2.02 1.17c.02 0 .03.03.04.05v5.58a4.5 4.5 0 0 1-4.5 4.5zM3.6 18.3a4.48 4.48 0 0 1-.53-3l.14.08 4.78 2.76a.77.77 0 0 0 .78 0l5.84-3.37v2.33c0 .02 0 .04-.03.06l-4.83 2.79a4.5 4.5 0 0 1-6.15-1.65zM2.34 7.9a4.48 4.48 0 0 1 2.35-1.97v5.68c0 .27.15.53.4.66l5.81 3.36-2.02 1.16a.07.07 0 0 1-.06 0l-4.83-2.8a4.5 4.5 0 0 1-1.65-6.13zm16.55 3.85L13.05 8.38l2.02-1.16a.07.07 0 0 1 .06 0l4.83 2.79a4.5 4.5 0 0 1-.68 8.1V12.4a.78.78 0 0 0-.4-.65zm2.01-3.02l-.14-.08-4.78-2.76a.78.78 0 0 0-.78 0L9.36 9.26V6.93c0-.02 0-.04.03-.05l4.83-2.79a4.5 4.5 0 0 1 6.68 4.65zM8.26 12.85L6.24 11.7a.07.07 0 0 1-.04-.05V6.07a4.5 4.5 0 0 1 7.38-3.46l-.14.08-4.78 2.76a.78.78 0 0 0-.4.68v6.72zm1.1-2.37L11.96 9l2.6 1.5v3l-2.6 1.5-2.6-1.5z"/></svg>ChatGPT</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.5);margin-top:6px;line-height:1.3">Replaces<br>Outreach $390</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VERDICT TABLE 552-900 -->
+  <div style="position:absolute;top:552px;left:40px;right:40px">
+    <div style="height:30px;display:flex;align-items:center;gap:8px;padding:0 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(237,127,74,0.2);border-radius:6px 6px 0 0;border-bottom:none">
+      <span class="accent mono" style="font-size:13px;font-weight:700">&gt;_</span>
+      <span class="mono" style="font-size:11px;font-weight:600;letter-spacing:.12em;color:rgba(255,255,255,0.78)">ultron_sys / tool_audit / kill_list.csv</span>
+    </div>
+    <div style="border:1px solid rgba(255,255,255,0.1);border-radius:0 0 6px 6px;overflow:hidden">
+      <div style="display:grid;grid-template-columns:64px 1.5fr 1fr 1.3fr 1.2fr;background:rgba(255,255,255,0.03);padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);font-size:10px;font-weight:700;letter-spacing:.16em;color:rgba(255,255,255,0.5);font-family:'JetBrains Mono',monospace">
+        <div>TOOL</div><div>CATEGORY</div><div>MONTHLY</div><div>VERDICT</div><div>REPLACED BY</div>
+      </div>
+      <div style="display:grid;grid-template-columns:64px 1.5fr 1fr 1.3fr 1.2fr;padding:13px 16px;align-items:center;border-bottom:1px solid rgba(255,255,255,0.06);font-size:12.5px">
+        <div class="mono" style="color:rgba(255,255,255,0.45);font-weight:600">#01</div>
+        <div style="font-weight:700">ZoomInfo</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.6)">Database / contacts</div>
+        <div><span class="stamp stamp-rej">KILLED</span></div>
+        <div class="mono accent" style="font-weight:700">$2,400/mo</div>
+      </div>
+      <div style="display:grid;grid-template-columns:64px 1.5fr 1fr 1.3fr 1.2fr;padding:13px 16px;align-items:center;border-bottom:1px solid rgba(255,255,255,0.06);font-size:12.5px">
+        <div class="mono" style="color:rgba(255,255,255,0.45);font-weight:600">#02</div>
+        <div style="font-weight:700">Clay</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.6)">Enrichment workflow</div>
+        <div><span class="stamp stamp-rej">KILLED</span></div>
+        <div class="mono accent" style="font-weight:700">$799/mo</div>
+      </div>
+      <div style="display:grid;grid-template-columns:64px 1.5fr 1fr 1.3fr 1.2fr;padding:13px 16px;align-items:center;border-bottom:1px solid rgba(255,255,255,0.06);font-size:12.5px">
+        <div class="mono" style="color:rgba(255,255,255,0.45);font-weight:600">#03</div>
+        <div style="font-weight:700">Apollo.io</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.6)">Data + sequencer</div>
+        <div><span class="stamp stamp-rej">KILLED</span></div>
+        <div class="mono accent" style="font-weight:700">$499/mo</div>
+      </div>
+      <div style="display:grid;grid-template-columns:64px 1.5fr 1fr 1.3fr 1.2fr;padding:13px 16px;align-items:center;border-bottom:1px solid rgba(255,255,255,0.06);font-size:12.5px">
+        <div class="mono" style="color:rgba(255,255,255,0.45);font-weight:600">#04</div>
+        <div style="font-weight:700">Outreach</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.6)">Sequencer (3 seats)</div>
+        <div><span class="stamp stamp-rej">KILLED</span></div>
+        <div class="mono accent" style="font-weight:700">$390/mo</div>
+      </div>
+      <div style="display:grid;grid-template-columns:64px 1.5fr 1fr 1.3fr 1.2fr;padding:13px 16px;align-items:center;border-bottom:1px solid rgba(255,255,255,0.06);font-size:12.5px">
+        <div class="mono" style="color:rgba(255,255,255,0.45);font-weight:600">#05</div>
+        <div style="font-weight:700">Lavender</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.6)">Email AI copywriter</div>
+        <div><span class="stamp stamp-rej">KILLED</span></div>
+        <div class="mono accent" style="font-weight:700">$99/mo</div>
+      </div>
+      <div style="display:grid;grid-template-columns:64px 1.5fr 1fr 1.3fr 1.2fr;padding:13px 16px;align-items:center;font-size:12.5px">
+        <div class="mono" style="color:rgba(255,255,255,0.45);font-weight:600">#06</div>
+        <div style="font-weight:700">Smartlead</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.6)">Inbox warmup</div>
+        <div><span class="stamp stamp-ok">KEPT</span></div>
+        <div class="mono accent" style="font-weight:700">$97/mo</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VERDICT FUNNEL (no more table feel) -->
+  <div style="position:absolute;top:912px;left:40px;width:480px;height:256px;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:18px 22px;box-sizing:border-box;background:linear-gradient(135deg,rgba(237,127,74,0.04),rgba(255,255,255,0.01))">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:6px">
+      <div class="micro" style="color:rgba(255,255,255,0.5)">12-MONTH STACK AUDIT</div>
+      <div style="display:flex;align-items:baseline;gap:6px">
+        <span style="font-size:36px;font-weight:900;line-height:1;color:#fff;letter-spacing:-1px">$57.6k</span>
+        <span style="font-size:11px;color:rgba(255,255,255,0.55);font-weight:600">spent</span>
+      </div>
+    </div>
+
+    <!-- Bar 1: KILLED -->
+    <div style="margin-top:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+        <span class="mono" style="font-size:10px;font-weight:800;letter-spacing:.1em;color:#e35a4a">KILLED</span>
+        <span class="mono" style="font-size:11px;color:rgba(255,255,255,0.65);font-weight:600">5 / 6 tools</span>
+      </div>
+      <div style="height:18px;background:rgba(255,255,255,0.04);border-radius:3px;overflow:hidden;position:relative">
+        <div style="width:83%;height:100%;background:linear-gradient(90deg,rgba(192,57,43,0.7),rgba(227,90,74,0.8));border-radius:3px"></div>
+        <span style="position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:10px;font-weight:800;color:#fff;font-family:'JetBrains Mono',monospace">83%</span>
+      </div>
+    </div>
+
+    <!-- Bar 2: ROUTED -->
+    <div style="margin-top:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+        <span class="mono" style="font-size:10px;font-weight:800;letter-spacing:.1em;color:#ed7f4a">ROUTED TO AI</span>
+        <span class="mono" style="font-size:11px;color:rgba(255,255,255,0.65);font-weight:600">5 workflows</span>
+      </div>
+      <div style="height:18px;background:rgba(255,255,255,0.04);border-radius:3px;overflow:hidden;position:relative">
+        <div style="width:71%;height:100%;background:linear-gradient(90deg,rgba(217,119,87,0.7),rgba(237,127,74,0.8));border-radius:3px"></div>
+        <span style="position:absolute;left:calc(71% + 8px);top:50%;transform:translateY(-50%);font-size:10px;font-weight:800;color:#ed7f4a;font-family:'JetBrains Mono',monospace">Gemini · Claude · GPT</span>
+      </div>
+    </div>
+
+    <!-- Bar 3: KEPT -->
+    <div style="margin-top:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+        <span class="mono" style="font-size:10px;font-weight:800;letter-spacing:.1em;color:#4ade80">KEPT</span>
+        <span class="mono" style="font-size:11px;color:rgba(255,255,255,0.65);font-weight:600">1 / 6 tools</span>
+      </div>
+      <div style="height:18px;background:rgba(255,255,255,0.04);border-radius:3px;overflow:hidden;position:relative">
+        <div style="width:17%;height:100%;background:linear-gradient(90deg,rgba(22,163,74,0.6),rgba(74,222,128,0.7));border-radius:3px"></div>
+        <span style="position:absolute;left:calc(17% + 8px);top:50%;transform:translateY(-50%);font-size:10px;font-weight:800;color:#4ade80;font-family:'JetBrains Mono',monospace">Smartlead $97</span>
+      </div>
+    </div>
+
+    <!-- Footer math line -->
+    <div style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center;gap:12px">
+      <div style="display:flex;align-items:baseline;gap:8px">
+        <span class="mono" style="font-size:9px;letter-spacing:.16em;color:rgba(255,255,255,0.45);font-weight:700">BURN · OLD STACK</span>
+        <span style="font-size:18px;font-weight:900;color:#e35a4a;line-height:1">$4,800</span>
+      </div>
+      <svg width="18" height="12" viewBox="0 0 20 14" fill="none" style="opacity:0.55;flex-shrink:0"><path d="M2 7h14M11 2l5 5-5 5" stroke="#ed7f4a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="display:flex;align-items:baseline;gap:8px">
+        <span class="mono" style="font-size:9px;letter-spacing:.16em;color:rgba(255,255,255,0.45);font-weight:700">SAVED · 12 MONTHS</span>
+        <span style="font-size:18px;font-weight:900;color:#4ade80;line-height:1">$57,432</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:absolute;top:912px;right:40px;width:480px;height:256px">
+    <div style="margin-bottom:12px;padding:14px 16px;border:1px solid rgba(192,57,43,0.3);border-radius:6px;background:rgba(192,57,43,0.05);box-sizing:border-box">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+        <span style="width:18px;height:18px;border-radius:50%;background:#c0392b;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900">&#10005;</span>
+        <span class="mono" style="font-size:10px;font-weight:700;letter-spacing:.18em;color:#e35a4a">WHAT FOUNDERS GET WRONG</span>
+      </div>
+      <div style="font-size:12.5px;line-height:1.55;color:rgba(255,255,255,0.78)">Stack more tools. Buy more seats. Trust the dashboard.
+        <span style="display:block;color:rgba(255,255,255,0.5);margin-top:4px">5 of 6 SaaS subs replicate work an AI does in one prompt.</span>
+      </div>
+    </div>
+    <div style="padding:14px 16px;border:1px solid rgba(22,163,74,0.3);border-radius:6px;background:rgba(22,163,74,0.05);box-sizing:border-box">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+        <span style="width:18px;height:18px;border-radius:50%;background:#16a34a;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900">&#10003;</span>
+        <span class="mono" style="font-size:10px;font-weight:700;letter-spacing:.18em;color:#4ade80">WHAT ROUTING LAYER DOES</span>
+      </div>
+      <div style="font-size:12.5px;line-height:1.7;color:rgba(255,255,255,0.86)">
+        <div>&rarr; Route each workflow to the model that wins it</div>
+        <div>&rarr; Kill the seat, keep the output</div>
+        <div>&rarr; One memory across Gemini, Claude, ChatGPT</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- METRIC STRIP 1184-1256 -->
+  <div style="position:absolute;top:1184px;left:40px;right:40px;height:72px;display:grid;grid-template-columns:repeat(5,1fr);border:1px solid rgba(237,127,74,0.18);border-radius:6px;background:rgba(237,127,74,0.03)">
+    <div style="padding:12px 16px;border-right:1px solid rgba(255,255,255,0.06)">
+      <div class="mono" style="font-size:9px;letter-spacing:.18em;color:rgba(255,255,255,0.45);font-weight:700">COST DROP</div>
+      <div style="font-size:24px;font-weight:900;margin-top:2px"><span class="accent">252x</span></div>
+    </div>
+    <div style="padding:12px 16px;border-right:1px solid rgba(255,255,255,0.06)">
+      <div class="mono" style="font-size:9px;letter-spacing:.18em;color:rgba(255,255,255,0.45);font-weight:700">TOOLS KILLED</div>
+      <div style="font-size:24px;font-weight:900;margin-top:2px">5 of 6</div>
+    </div>
+    <div style="padding:12px 16px;border-right:1px solid rgba(255,255,255,0.06)">
+      <div class="mono" style="font-size:9px;letter-spacing:.18em;color:rgba(255,255,255,0.45);font-weight:700">WORKFLOWS ROUTED</div>
+      <div style="font-size:24px;font-weight:900;margin-top:2px">5<span style="font-size:13px;color:rgba(255,255,255,0.45);font-weight:600"> live</span></div>
+    </div>
+    <div style="padding:12px 16px;border-right:1px solid rgba(255,255,255,0.06)">
+      <div class="mono" style="font-size:9px;letter-spacing:.18em;color:rgba(255,255,255,0.45);font-weight:700">SETUP TIME</div>
+      <div style="font-size:24px;font-weight:900;margin-top:2px">~4h<span style="font-size:13px;color:rgba(255,255,255,0.45);font-weight:600"> once</span></div>
+    </div>
+    <div style="padding:12px 16px">
+      <div class="mono" style="font-size:9px;letter-spacing:.18em;color:rgba(255,255,255,0.45);font-weight:700">SAVED · YR</div>
+      <div style="font-size:24px;font-weight:900;margin-top:2px"><span class="accent">$57.4k</span></div>
+    </div>
+  </div>
+
+  <!-- CTA 1264-1320 -->
+  <div style="position:absolute;top:1264px;left:40px;right:40px;height:56px;display:flex;align-items:center;justify-content:center;gap:14px;border:1px solid rgba(237,127,74,0.3);border-radius:6px;background:rgba(237,127,74,0.06);flex:1">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 4h12v8H7l-4 3V4z" stroke="#ed7f4a" stroke-width="1.5" fill="rgba(237,127,74,0.1)"/></svg>
+    <div style="font-size:14px;color:rgba(255,255,255,0.86)">Comment <span class="mono accent" style="font-weight:700;letter-spacing:.06em">"TOOLS"</span> for the full 6-tool kill list and the routing-layer config.</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer" style="position:absolute;top:1340px;left:40px;right:40px;border-top: 1px dashed rgba(237,127,74,0.3); padding-top: 16px; display: flex; align-items: center; justify-content: space-between;">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; color: #666; text-transform: uppercase; display: flex; align-items: center; gap: 10px;">
+      <img src="https://app.51ultron.com/favicon.ico" alt="Ultron" style="width: 24px; height: 24px; object-fit: contain;">
+      <strong style="color: #fff;">ULTRON OS</strong> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure
+    </div>
+    <div style="font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 800; color: #fff; letter-spacing: -0.5px;">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

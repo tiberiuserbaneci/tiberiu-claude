@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultron · Script 40 · SDR Replaced · v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* BUDGET 1450px · padding:28px top / 40px sides / 20px bottom · content:1402px
+   header       0  -  52     52px  (h:44 + mb:8)
+   overline    52  -  80     28px  (10px mono + mb:18)
+   h1          80  - 258    178px  (3 lines × 60px × 0.92lh + mb:12)
+   subline    258  - 291     33px  (1 line × 18px × 1.25lh + mb:12)
+   eyebrow    291  - 313     22px  (9px mono + mb:12)
+   panel      313  - 1023   710px  (fixed, content overflows → clipped → full look)
+   kpi-table 1023  - 1275   252px  (before/after 2-col, 6 rows × 38px + header 36px + mb:12)
+   cta       1275  - 1351    76px  (h:64 + mb:12)
+   footer    1351  - 1402    51px  (h:36 + gap)
+   TOTAL: 52+28+178+33+22+710+252+76+51 = 1402 ✓
+*/
+  body { background:#f4ede0; margin:0; padding:24px 0 }
+  .scaler { display:flex; justify-content:center; align-items:flex-start }
+  .scaler > .poster { transform-origin:top center; transform:scale(calc(min(100vw / 1130, (100vh - 48px) / 1510))) }
+  .poster { width:1080px; height:1450px; background:#f4ede0; display:flex; flex-direction:column; padding:28px 40px 20px; overflow:hidden; box-sizing:border-box }
+  .mono { font-family:'JetBrains Mono',monospace }
+  .fraunces { font-family:'Fraunces',Georgia,serif; font-feature-settings:'ss01' on }
+  .accent { color:#c75d35 }
+  .msg { display:flex; gap:12px; padding:9px 18px; border-bottom:1px solid rgba(0,0,0,0.045) }
+  .avatar { width:34px; height:34px; border-radius:6px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-family:'Inter',sans-serif; font-size:12px; font-weight:800; color:#fff }
+  .msg-body { flex:1; min-width:0 }
+  .msg-head { display:flex; align-items:baseline; gap:7px; margin-bottom:2px }
+  .uname { font-family:'Inter',sans-serif; font-size:11.5px; font-weight:800; color:#1a1a1a }
+  .bot-tag { font-family:'Inter',sans-serif; font-size:7.5px; font-weight:800; letter-spacing:.09em; background:rgba(199,93,53,0.11); color:#c75d35; padding:1px 5px; border-radius:3px }
+  .ts { font-family:'JetBrains Mono',monospace; font-size:8px; font-weight:600; letter-spacing:.09em; color:rgba(0,0,0,0.40) }
+  .msg-text { font-family:'Inter',sans-serif; font-size:11px; font-weight:500; color:rgba(0,0,0,0.76); line-height:1.45 }
+  .anno { background:#fff; border:1px solid #c75d35; border-radius:4px; padding:4px 9px; font-family:'JetBrains Mono',monospace; font-size:8.5px; font-weight:800; letter-spacing:.11em; color:#c75d35; box-shadow:0 2px 6px rgba(199,93,53,0.17); white-space:nowrap }
+  .kpi-row { display:grid; grid-template-columns:160px 1fr 1fr; align-items:center; border-bottom:1px solid rgba(0,0,0,0.07); height:38px }
+  .kpi-row.head { height:36px; border-bottom:1.5px solid rgba(0,0,0,0.14); background:rgba(0,0,0,0.025) }
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="poster">
+
+  <!-- HEADER 52px -->
+  <div style="flex-shrink:0;height:44px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(0,0,0,0.09);margin-bottom:8px">
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(0,0,0,0.40)">FOUNDER GTM · AI REPLACES SDR ROLE · COST: $0 · ULTRON OS</span>
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.16em;color:rgba(0,0,0,0.30)">NO.40 · 1 CHANNEL · TUE NOV 19</span>
+  </div>
+
+  <!-- OVERLINE 28px -->
+  <div style="flex-shrink:0;margin-bottom:18px">
+    <span class="mono accent" style="font-size:10px;font-weight:800;letter-spacing:.22em">$8K/MO SDR · REPLACED BY 3 AI AGENTS · 4 MIN HUMAN INPUT · DAY 1</span>
+  </div>
+
+  <!-- H1 178px -->
+  <div style="flex-shrink:0;margin-bottom:12px">
+    <div class="fraunces" style="font-weight:900;font-size:60px;line-height:0.92;letter-spacing:-1.8px;color:#1a1a1a">I fired my SDR.<br><span class="accent" style="font-style:italic">Claude</span> does the job<br>in 4 minutes a day.</div>
+  </div>
+
+  <!-- SUBLINE 33px -->
+  <div style="flex-shrink:0;margin-bottom:12px">
+    <div style="font-family:'Inter',sans-serif;font-size:18px;font-weight:600;line-height:1.25;letter-spacing:-0.2px;color:rgba(0,0,0,0.52)">Same channel. Same standup. Different operator. The queue lands before I open email.</div>
+  </div>
+
+  <!-- EYEBROW 22px -->
+  <div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+    <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.17em;color:rgba(0,0,0,0.42)">EXHIBIT A · #sdr-queue · TUE NOV 19 · 06:00 TO 17:02</span>
+    <span style="display:flex;align-items:center;gap:5px"><span style="width:6px;height:6px;border-radius:50%;background:#16a34a;display:inline-block"></span><span class="mono" style="font-size:8px;font-weight:800;letter-spacing:.13em;color:rgba(0,0,0,0.48)">LIVE CHANNEL</span></span>
+  </div>
+
+  <!-- PANEL 710px -->
+  <div style="flex-shrink:0;height:710px;position:relative;background:#FFFFFF;border:1px solid rgba(0,0,0,0.10);border-radius:10px;overflow:hidden;box-shadow:0 6px 28px rgba(0,0,0,0.06);margin-bottom:10px">
+
+    <!-- Slack chrome 38px -->
+    <div style="height:38px;background:#F4F2EE;border-bottom:1px solid rgba(0,0,0,0.08);display:flex;align-items:center;padding:0 14px;gap:10px;flex-shrink:0">
+      <div style="display:flex;gap:5px">
+        <div style="width:9px;height:9px;border-radius:50%;background:#E66B5A"></div>
+        <div style="width:9px;height:9px;border-radius:50%;background:#E8B341"></div>
+        <div style="width:9px;height:9px;border-radius:50%;background:#5BB964"></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;flex:1">
+        <span style="font-family:'Inter',sans-serif;font-size:13px;font-weight:800;color:#1a1a1a">#sdr-queue</span>
+        <span class="mono" style="font-size:8.5px;font-weight:600;color:rgba(0,0,0,0.42)">· 2 members · automated · replaces Sarah (left Sept 14)</span>
+      </div>
+      <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.12em;color:rgba(0,0,0,0.38)">slack.ultron.com</span>
+    </div>
+
+    <!-- Channel banner 62px -->
+    <div style="padding:12px 18px;background:rgba(199,93,53,0.04);border-bottom:1px solid rgba(0,0,0,0.06);flex-shrink:0">
+      <div style="font-family:'Inter',sans-serif;font-size:13.5px;font-weight:900;color:#1a1a1a;letter-spacing:-0.3px"># sdr-queue</div>
+      <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:600;color:rgba(0,0,0,0.52);margin-top:3px">Daily outbound. Formerly Sarah's. Now run by <span class="accent" style="font-weight:800">@claude-bot</span> (SPECTER + CORTEX + STRIKER). Human gate: Tiberiu.</div>
+    </div>
+
+    <!-- Messages: content ~570px in 572px visible, natural full look -->
+    <div style="height:572px;overflow:hidden">
+
+      <!-- 06:00 SPECTER -->
+      <div class="msg">
+        <div class="avatar" style="background:linear-gradient(135deg,#c75d35,#b84e29)">C</div>
+        <div class="msg-body">
+          <div class="msg-head"><span class="uname">claude-bot</span><span class="bot-tag">SPECTER</span><span class="ts">06:00</span></div>
+          <div class="msg-text">Overnight scan complete. <strong>23 signals</strong> across LinkedIn, Crunchbase, G2, news. Top 3 scored above 80:<br>
+            <span class="mono" style="font-size:9.5px;font-weight:700;background:rgba(0,0,0,0.04);padding:1px 5px;border-radius:3px;color:rgba(0,0,0,0.65)">harbor crm</span> closed Series C
+            &nbsp;·&nbsp;<span class="mono" style="font-size:9.5px;font-weight:700;background:rgba(0,0,0,0.04);padding:1px 5px;border-radius:3px;color:rgba(0,0,0,0.65)">mercer gtm</span> CRO hiring 14 GTM
+            &nbsp;·&nbsp;<span class="mono" style="font-size:9.5px;font-weight:700;background:rgba(0,0,0,0.04);padding:1px 5px;border-radius:3px;color:rgba(0,0,0,0.65)">forge.ai</span> shipped to our exact ICP</div>
+        </div>
+      </div>
+
+      <!-- 06:01 CORTEX -->
+      <div class="msg">
+        <div class="avatar" style="background:linear-gradient(135deg,#c75d35,#b84e29)">C</div>
+        <div class="msg-body">
+          <div class="msg-head"><span class="uname">claude-bot</span><span class="bot-tag">CORTEX</span><span class="ts">06:01</span></div>
+          <div class="msg-text">Enrichment done. 23 signals scored on ICP-fit × intent × freshness. <strong>7 score above 80.</strong> Dossiers in thread: headcount, stack, pain triggers, last outreach history, champion seniority.</div>
+        </div>
+      </div>
+
+      <!-- 06:04 STRIKER -->
+      <div class="msg">
+        <div class="avatar" style="background:linear-gradient(135deg,#c75d35,#b84e29)">C</div>
+        <div class="msg-body">
+          <div class="msg-head"><span class="uname">claude-bot</span><span class="bot-tag">STRIKER</span><span class="ts">06:04</span></div>
+          <div class="msg-text"><strong>7 drafts ready.</strong> Each under 70 words. Contrarian angle. One dossier citation per message. Queued for human gate. Waiting.</div>
+          <div style="margin-top:7px;display:flex;gap:5px;flex-wrap:wrap">
+            <span style="background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.08);border-radius:4px;padding:2px 8px;font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;color:rgba(0,0,0,0.55);letter-spacing:.09em">draft_harbor.md</span>
+            <span style="background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.08);border-radius:4px;padding:2px 8px;font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;color:rgba(0,0,0,0.55);letter-spacing:.09em">draft_mercer.md</span>
+            <span style="background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.08);border-radius:4px;padding:2px 8px;font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;color:rgba(0,0,0,0.55);letter-spacing:.09em">draft_forge.md</span>
+            <span style="background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.08);border-radius:4px;padding:2px 8px;font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;color:rgba(0,0,0,0.55);letter-spacing:.09em">+4 more</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 09:47 Tiberiu -->
+      <div class="msg" style="background:rgba(22,163,74,0.04)">
+        <div class="avatar" style="background:#1a1a1a">T</div>
+        <div class="msg-body">
+          <div class="msg-head"><span class="uname">tiberiu (founder)</span><span class="ts">09:47</span></div>
+          <div class="msg-text">Approved 5. Edited 2 (softened close on harbor + mercer). Rejected 0. <strong>4 minutes total.</strong> Send them.</div>
+        </div>
+      </div>
+
+      <!-- 09:51 SENTINEL sent -->
+      <div class="msg">
+        <div class="avatar" style="background:linear-gradient(135deg,#c75d35,#b84e29)">C</div>
+        <div class="msg-body">
+          <div class="msg-head"><span class="uname">claude-bot</span><span class="bot-tag">SENTINEL</span><span class="ts">09:51</span></div>
+          <div class="msg-text"><strong>7 sent.</strong> De-duped vs. last 60 days. Zero repeats. Tracking opens, clicks, replies. EOD report at 17:00.</div>
+        </div>
+      </div>
+
+      <!-- 12:14 harbor reply -->
+      <div class="msg" style="background:rgba(199,93,53,0.05)">
+        <div class="avatar" style="background:linear-gradient(135deg,#c75d35,#b84e29)">C</div>
+        <div class="msg-body">
+          <div class="msg-head"><span class="uname">claude-bot</span><span class="bot-tag">SENTINEL</span><span class="ts">12:14</span></div>
+          <div class="msg-text">Reply: <strong>harbor crm</strong> · CRO booked Thu 4pm. <span class="accent" style="font-weight:800">$71,500 pipeline.</span> PULSE queued with pre-meeting brief for Wed night.</div>
+        </div>
+      </div>
+
+      <!-- 14:33 mercer reply -->
+      <div class="msg" style="background:rgba(199,93,53,0.05)">
+        <div class="avatar" style="background:linear-gradient(135deg,#c75d35,#b84e29)">C</div>
+        <div class="msg-body">
+          <div class="msg-head"><span class="uname">claude-bot</span><span class="bot-tag">SENTINEL</span><span class="ts">14:33</span></div>
+          <div class="msg-text">Reply: <strong>mercer gtm</strong> · "send me slots." <span class="accent" style="font-weight:800">$108,000 pipeline.</span> PULSE drafting 3-slot Calendly message, queued for your gate.</div>
+        </div>
+      </div>
+
+      <!-- 15:12 forge reply -->
+      <div class="msg" style="background:rgba(199,93,53,0.05)">
+        <div class="avatar" style="background:linear-gradient(135deg,#c75d35,#b84e29)">C</div>
+        <div class="msg-body">
+          <div class="msg-head"><span class="uname">claude-bot</span><span class="bot-tag">SENTINEL</span><span class="ts">15:12</span></div>
+          <div class="msg-text">Reply: <strong>forge.ai</strong> · "this is relevant, can we talk this week?" <span class="accent" style="font-weight:800">$44,000 pipeline.</span></div>
+        </div>
+      </div>
+
+      <!-- 17:02 EOD report -->
+      <div class="msg">
+        <div class="avatar" style="background:linear-gradient(135deg,#c75d35,#b84e29)">C</div>
+        <div class="msg-body">
+          <div class="msg-head"><span class="uname">claude-bot</span><span class="bot-tag">SENTINEL · EOD</span><span class="ts">17:02</span></div>
+          <div class="msg-text" style="margin-bottom:8px"><strong>Day 1 summary:</strong> 7 sent, 3 replies, 3 booked or in negotiation. 0 unsubscribes. 4 min human input total.</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px">
+            <div style="background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.07);border-radius:5px;padding:7px 10px">
+              <div class="mono" style="font-size:7.5px;font-weight:800;letter-spacing:.10em;color:rgba(0,0,0,0.40);margin-bottom:3px">SENT</div>
+              <div style="font-family:'Fraunces',serif;font-size:22px;font-weight:900;color:#1a1a1a;letter-spacing:-1px;line-height:1">7</div>
+            </div>
+            <div style="background:rgba(199,93,53,0.06);border:1px solid rgba(199,93,53,0.18);border-radius:5px;padding:7px 10px">
+              <div class="mono" style="font-size:7.5px;font-weight:800;letter-spacing:.10em;color:#c75d35;margin-bottom:3px">REPLIES</div>
+              <div style="font-family:'Fraunces',serif;font-size:22px;font-weight:900;color:#c75d35;letter-spacing:-1px;line-height:1">3</div>
+            </div>
+            <div style="background:rgba(22,163,74,0.06);border:1px solid rgba(22,163,74,0.20);border-radius:5px;padding:7px 10px">
+              <div class="mono" style="font-size:7.5px;font-weight:800;letter-spacing:.10em;color:#16a34a;margin-bottom:3px">BOOKED</div>
+              <div style="font-family:'Fraunces',serif;font-size:22px;font-weight:900;color:#16a34a;letter-spacing:-1px;line-height:1">2</div>
+            </div>
+            <div style="background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.07);border-radius:5px;padding:7px 10px">
+              <div class="mono" style="font-size:7.5px;font-weight:800;letter-spacing:.10em;color:rgba(0,0,0,0.40);margin-bottom:3px">PIPELINE</div>
+              <div style="font-family:'Fraunces',serif;font-size:18px;font-weight:900;color:#1a1a1a;letter-spacing:-0.8px;line-height:1">$223K</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Panel bottom bar 38px -->
+    <div style="position:absolute;left:0;right:0;bottom:0;height:38px;background:#FAF9F5;border-top:1px solid rgba(0,0,0,0.07);display:flex;align-items:center;justify-content:space-between;padding:0 16px">
+      <span class="mono" style="font-size:8px;font-weight:700;letter-spacing:.12em;color:rgba(0,0,0,0.42)">7 SENT · 3 REPLIES · 4 MIN HUMAN TIME · $223K PIPELINE</span>
+      <span class="mono accent" style="font-size:8px;font-weight:800;letter-spacing:.12em">REPLACED $8K/MO ROLE</span>
+    </div>
+
+    <!-- Anno chips -->
+    <div style="position:absolute;top:148px;left:218px"><div class="anno" style="transform:rotate(-1.5deg)">THIS WAS SARAH'S JOB</div></div>
+    <div style="position:absolute;top:426px;right:210px"><div class="anno" style="transform:rotate(1deg)">4 MIN · NOT 4 HOURS</div></div>
+    <div style="position:absolute;bottom:96px;right:10px"><div class="anno" style="transform:rotate(2deg)">$223K BY 17:00</div></div>
+
+    <!-- SVG arrows -->
+    <svg style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none" viewBox="0 0 1000 710">
+      <path d="M 215,168 Q 185,182 72,206" stroke="#c75d35" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+      <polygon points="80,200 68,208 80,214" fill="#c75d35"/>
+      <path d="M 775,448 Q 788,462 775,476" stroke="#c75d35" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+      <polygon points="770,470 775,480 781,470" fill="#c75d35"/>
+    </svg>
+  </div>
+
+  <!-- KPI TABLE 252px -->
+  <div style="flex-shrink:0;border:1px solid rgba(0,0,0,0.10);border-radius:8px;overflow:hidden;margin-bottom:12px">
+    <!-- Table header -->
+    <div class="kpi-row head">
+      <div style="padding:0 16px;font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:800;letter-spacing:.16em;color:rgba(0,0,0,0.40)">METRIC</div>
+      <div style="padding:0 16px;font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:800;letter-spacing:.16em;color:rgba(0,0,0,0.40)">SDR · SARAH · $8K/MO</div>
+      <div style="padding:0 16px;font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:800;letter-spacing:.16em;color:#c75d35">ULTRON OPERATOR · $0/MO</div>
+    </div>
+    <!-- Row 1 -->
+    <div class="kpi-row" style="background:#fff">
+      <div style="padding:0 16px;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:rgba(0,0,0,0.60)">Daily contacts</div>
+      <div style="padding:0 16px;font-family:'Inter',sans-serif;font-size:12px;font-weight:500;color:rgba(0,0,0,0.55)">50 generic emails</div>
+      <div style="padding:0 16px;font-family:'Inter',sans-serif;font-size:12px;font-weight:700;color:#c75d35">7 signal-triggered messages</div>
+    </div>
+    <!-- Row 2 -->
+    <div class="kpi-row" style="background:rgba(0,0,0,0.015)">
+      <div style="padding:0 16px;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:rgba(0,0,0,0.60)">Reply rate</div>
+      <div style="padding:0 16px;font-family:'Inter',sans-serif;font-size:12px;font-weight:500;color:rgba(0,0,0,0.55)">2.8%</div>
+      <div style="padding:0 16px;font-family:'Inter',sans-serif;font-size:12px;font-weight:700;color:#c75d35">8.6% · week 1</div>
+    </div>
+    <!-- Row 3 -->
+    <div class="kpi-row" style="background:#fff">
+      <div style="padding:0 16px;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:rgba(0,0,0,0.60)">Human time / day</div>
+      <div style="padding:0 16px;font-family:'Inter',sans-serif;font-size:12px;font-weight:500;color:rgba(0,0,0,0.55)">4 to 6 hours</div>
+      <div style="padding:0 16px;font-family:'Inter',sans-serif;font-size:12px;font-weight:700;color:#c75d35">4 minutes (approval gate)</div>
+    </div>
+    <!-- Row 4 -->
+    <div class="kpi-row" style="background:rgba(0,0,0,0.015)">
+      <div style="padding:0 16px;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:rgba(0,0,0,0.60)">Signal source</div>
+      <div style="padding:0 16px;font-family:'Inter',sans-serif;font-size:12px;font-weight:500;color:rgba(0,0,0,0.55)">Manual LinkedIn scrape</div>
+      <div style="padding:0 16px;font-family:'Inter',sans-serif;font-size:12px;font-weight:700;color:#c75d35">LinkedIn · Crunchbase · G2 · News</div>
+    </div>
+    <!-- Row 5 -->
+    <div class="kpi-row" style="background:#fff">
+      <div style="padding:0 16px;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:rgba(0,0,0,0.60)">Pipeline / week</div>
+      <div style="padding:0 16px;font-family:'Inter',sans-serif;font-size:12px;font-weight:500;color:rgba(0,0,0,0.55)">$32K average</div>
+      <div style="padding:0 16px;font-family:'Inter',sans-serif;font-size:12px;font-weight:700;color:#c75d35">$223K · day 1</div>
+    </div>
+    <!-- Row 6 -->
+    <div class="kpi-row" style="background:rgba(0,0,0,0.015);border-bottom:none">
+      <div style="padding:0 16px;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:rgba(0,0,0,0.60)">Memory</div>
+      <div style="padding:0 16px;font-family:'Inter',sans-serif;font-size:12px;font-weight:500;color:rgba(0,0,0,0.55)">Forgot after 1 quarter</div>
+      <div style="padding:0 16px;font-family:'Inter',sans-serif;font-size:12px;font-weight:700;color:#c75d35">Every touch logged · compounds</div>
+    </div>
+  </div>
+
+  <!-- CTA 76px -->
+  <div style="flex-shrink:0;height:64px;background:#c75d35;border-radius:10px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;margin-bottom:12px">
+    <div style="font-family:'Inter',sans-serif;font-size:13.5px;font-weight:700;color:#f4ede0;line-height:1.5">Follow for one AI outbound system every day.<br>Comment <span style="font-family:'JetBrains Mono',monospace;font-weight:800;letter-spacing:.06em;background:rgba(255,255,255,0.18);padding:1px 6px;border-radius:3px">REPLACE</span> and I will send you the exact Claude workflow we used.</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:800;color:#c75d35;background:#f4ede0;border-radius:6px;padding:12px 20px;letter-spacing:.08em;white-space:nowrap;flex-shrink:0">REPLACE</div>
+  </div>
+
+  <!-- FOOTER 51px -->
+  <div style="flex-shrink:0;height:40px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(0,0,0,0.10);padding-top:11px">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img src="ultron-logo.png" style="width:24px;height:24px;border-radius:50%;object-fit:cover;flex-shrink:0"
+        onerror="this.style.cssText='width:24px;height:24px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 72% 22%,rgba(255,140,80,.95) 0%,rgba(220,80,30,.3) 22%,transparent 36%),radial-gradient(circle at 22% 76%,rgba(55,170,255,.95) 0%,rgba(30,130,220,.3) 22%,transparent 38%),radial-gradient(circle at 38% 38%,rgba(30,30,50,1) 0%,#060810 55%,#000 100%)'">
+      <span class="mono" style="font-size:9px;font-weight:700;letter-spacing:.09em;color:rgba(0,0,0,0.50)"><strong style="color:#1a1a1a">ULTRON OS</strong> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure</span>
+    </div>
+    <span style="font-family:'Inter',sans-serif;font-size:12px;font-weight:800;color:#1a1a1a;letter-spacing:-0.4px">51ultron.com</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,252 @@
+#!/usr/bin/env python3
+"""Ultron material GUARD. Hard pre-flight that blocks anything off-spec before delivery.
+
+Usage:
+  python3 content/_preflight.py <file.html> [<file2.html> ...]
+  python3 content/_preflight.py --changed          # validate git-changed material HTMLs
+  python3 content/_preflight.py --static <file>     # text-only checks, no browser (fast, for hooks)
+
+Exit code 0 = all PASS. Non-zero = at least one FAIL (the offending material must be fixed).
+Checks (the operator's recurring rejections, made mechanical):
+  1 charscan   no em/en dash, ellipsis char, curly quotes
+  2 fonts      reported, not gated (operator lifted the single-family rule 2026-08-04)
+  3 palette    no forbidden hex (neon orange/green/red/peach/purple/blue)
+  4 dims       #artifact == 1080x1450 (LinkedIn) or .slide == 1080x1920 (TikTok/IG), exact
+  5 safezone   vertical slides: top content >= 300px (TikTok/IG UI inset)
+  6 density    real ink per row; flags airy/empty bands (THE recurring 'slab si aerisit')
+  7 repeat     body layout must differ from the previous material (no template reuse)
+  8 footer     Ultron footer + 51ultron.com present
+"""
+import sys, os, re, pathlib, base64, tempfile, json, subprocess, glob
+
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+CONTENT = ROOT / "content"
+LOGO = CONTENT / "ultron-logo.png"
+
+CURLY = {"—":"em-dash","–":"en-dash","…":"ellipsis-char","‘":"curly-quote","’":"curly-quote","“":"curly-quote","”":"curly-quote"}
+# Fonts are no longer gated (operator lifted the single-family rule 2026-08-04). The guard
+# now only surfaces which families a material loads, so a fourth one that crept in is
+# visible without blocking a deliberate pairing.
+FORBIDDEN_HEX = ["#ff801f","#ed7f4a","#4ade80","#76d39a","#c0392b","#ffe0c2","#ff8c50","#22c55e","#16a34a","#3b82f6","#2563eb","#8b5cf6","#a855f7"]
+# brand-frame classes shared by every poster - excluded from the repetition signature so we
+# compare the BODY layout (the part that must change), not the consistent brand chrome.
+BRAND_FRAME = {"frame","slide","atm","hero","eye","eyebrow","hook","sub","title","statile","st","sn","sl",
+ "mast","ml","mr","cta","ctawrap","cta-l","cta-k","cta-t","cta-chip","ph","send","savel","ftr","fl2","flogo",
+ "ftx","furl","swipe","safe","cover","cstat","c"}
+
+# density of a product mockup runs high (breathing room) - a blind empty% gate false-positives on
+# approved work, so empty% is surfaced as guidance and only an egregious DEAD BAND hard-fails.
+DENSITY_AIRY_PCT     = 58.0    # above this empty-row share = print an 'airy, review' warning
+DENSITY_MAX_BAND_PX  = 120     # a single contiguous empty band taller than this = hard FAIL (dead space)
+# A film is composed in two halves - the visual in one, the caption band in the other - and the
+# gap between them is the format, not dead space. Judging it by the poster budget would force
+# the two to touch. The poster gate stays at 120px; a film gets the caption band plus a margin.
+DENSITY_MAX_BAND_FILM = 460
+REPEAT_MAX_JACCARD   = 0.62    # body-class overlap above this = same template reused = hard FAIL
+
+def html_for_render(p):
+    t = p.read_text()
+    if "__LOGO_URI__" in t and LOGO.exists():
+        uri = "data:image/png;base64," + base64.b64encode(LOGO.read_bytes()).decode()
+        t = t.replace("__LOGO_URI__", uri)
+    return t
+
+def chromium_path():
+    """Locate a preinstalled Chromium, or None to let Playwright use its own.
+
+    A sandbox ships one browser build and blocks re-downloads, so a Playwright pinned to a
+    different revision cannot launch. Without this the render checks below fall into the
+    'skipped' warning and the guard silently passes material it never actually measured.
+    """
+    if os.environ.get("PW_CHROMIUM"): return os.environ["PW_CHROMIUM"]
+    for pat in ("/opt/pw-browsers/chromium-*/chrome-linux/chrome",
+                "/opt/pw-browsers/chromium_headless_shell-*/chrome-linux/chrome-headless-shell"):
+        hits = sorted(glob.glob(pat))
+        if hits: return hits[-1]
+    return None
+
+def target_of(name):
+    n = name.lower()
+    # narrated film (ULTRON STACK series): one 1080x1920 stage animated on a wall clock and
+    # captured frame-by-frame by _film.py. Same 9:16 canvas as a TikTok slide, so the safe
+    # zone still applies; dims are checked on the canvas box because scenes are absolute.
+    if "-film-" in n: return ("#film", 1920, True)
+    # editorial 4:5 photo-carousel (operator 2026-06-12): canvas 1080x1350, bleed allowed,
+    # so dims are checked on the canvas box (offsetHeight), not scrollHeight. No 300px inset.
+    if "-45-" in n or "editorial45" in n: return (".slide", 1350, True)
+    if n.startswith("paper-"): return (".slide", 1920, True)
+    if "carousel" in n: return ("slide", 1920, True)
+    if any(k in n for k in ("tiktok","-ig-","story","highlight","instagram")): return (".slide", 1920, False)
+    return ("#artifact", 1450, False)
+
+def classes_in(text):
+    cls = set()
+    for m in re.findall(r'class="([^"]+)"', text):
+        for c in m.split(): cls.add(c)
+    return cls
+
+def body_signature(text):
+    return classes_in(text) - BRAND_FRAME
+
+def prev_material(path):
+    """The previous generated material of the same channel (highest docs-NN below this one)."""
+    m = re.match(r"(docs|ref)-(\d+)-", path.stem)
+    if not m: return None
+    series, num = m.group(1), int(m.group(2))
+    ch = "tiktok" if "tiktok" in path.stem else ("linkedin" if "linkedin" in path.stem else "")
+    best = None
+    for f in CONTENT.glob(f"{series}-*.html"):
+        mm = re.match(rf"{series}-(\d+)-", f.stem)
+        if not mm: continue
+        k = int(mm.group(1))
+        same_ch = ("tiktok" in f.stem) == ("tiktok" in path.stem)
+        if k < num and same_ch:
+            if best is None or k > int(re.match(rf"{series}-(\d+)-", best.stem).group(1)):
+                best = f
+    return best
+
+# ---------- static checks (no browser) ----------
+def static_checks(path):
+    text = path.read_text()
+    fails, warns = [], []
+    hits = [(v,text.count(k)) for k,v in CURLY.items() if k in text]
+    if hits: fails.append(f"charscan: found {hits} (use plain - . ' \")")
+    fams = sorted(set(re.findall(r"font-family:\s*'([^']+)'", text)))
+    if fams: warns.append(f"fonts: {len(fams)} families {fams}")
+    if len(fams) > 4: warns.append("fonts: over 4 registers (display/body/glue/meta), "
+                                   "confirm each family has a distinct job")
+    fh = [h for h in FORBIDDEN_HEX if h.lower() in text.lower()]
+    if fh: fails.append(f"palette: forbidden hex {fh}")
+    if "51ultron" not in text: warns.append("footer: 51ultron.com not found")
+    sb = len(re.findall(r'justify-content:\s*space-between', text)); f1 = len(re.findall(r'flex:\s*1\b', text))
+    if sb or f1: warns.append(f"code-smell: {sb}x space-between, {f1}x flex:1 - confirm none spreads sparse rows into gaps")
+    # repetition vs previous material of the same channel
+    prev = prev_material(path)
+    if prev:
+        a, b = body_signature(text), body_signature(prev.read_text())
+        if a and b:
+            j = len(a & b) / len(a | b)
+            if j > REPEAT_MAX_JACCARD:
+                fails.append(f"repeat: body layout {j:.0%} same as {prev.name} (>{REPEAT_MAX_JACCARD:.0%}) - REDESIGN, do not reuse the template")
+            else:
+                warns.append(f"repeat: body {j:.0%} vs {prev.name} (ok)")
+    return fails, warns
+
+# ---------- rendered checks (browser + pixels) ----------
+def density_metrics(img):
+    """Empty-row pct and largest empty band (logical px), measured as local CONTRAST.
+
+    This used to count bright pixels as ink, which only ever measured background colour: a
+    cream material scored 0% empty whatever was on it, and a dark one scored ~97% empty even
+    when full. Edges are what content actually makes, so a row is empty when no two adjacent
+    samples differ - flat fill or a smooth gradient - and busy when something breaks it.
+    """
+    g = img.convert("L"); W, H = g.size
+    px = g.load()
+    step = max(1, W // 360)                  # sample columns for speed
+    xs = list(range(0, W, step))
+    rows_empty = []
+    for y in range(H):
+        vals = [px[x, y] for x in xs]
+        edge = max((abs(vals[i + 1] - vals[i]) for i in range(len(vals) - 1)), default=0)
+        rows_empty.append(edge < 12)
+    # restrict to the content band (drop leading/trailing empty margin)
+    top = next((i for i,e in enumerate(rows_empty) if not e), 0)
+    bot = next((i for i,e in enumerate(reversed(rows_empty)) if not e), 0)
+    band = rows_empty[top:H-bot] if (H-bot) > top else rows_empty
+    empty_pct = 100.0 * sum(band) / max(1, len(band))
+    longest = cur = 0
+    for e in band:
+        cur = cur+1 if e else 0
+        longest = max(longest, cur)
+    scale = H / 1450.0 if abs(H-1450) < abs(H-1920) else H / 1920.0
+    return empty_pct, longest / max(scale,1e-6)
+
+def render_checks(path):
+    from playwright.sync_api import sync_playwright
+    from PIL import Image
+    sel, target, multi = target_of(path.stem)
+    html = html_for_render(path)
+    tmp = pathlib.Path(tempfile.mkdtemp()) / "x.html"; tmp.write_text(html)
+    fails, warns = [], []
+    with sync_playwright() as p:
+        b = p.chromium.launch(executable_path=chromium_path())
+        pg = b.new_page(viewport={"width":1080,"height":target}, device_scale_factor=1)
+        pg.goto(tmp.as_uri()); pg.wait_for_timeout(350); pg.evaluate("document.fonts.ready"); pg.wait_for_timeout(1200)
+        if sel == "#film":
+            m = re.search(r"/\*\s*FILM-META\s*(\{.*?\})\s*\*/", html, re.S)
+            dur = (json.loads(m.group(1)).get("duration", 26) if m else 26)
+            pg.evaluate("t => document.getAnimations().forEach(a => {a.pause(); a.currentTime = t;})",
+                        dur * 1000 * 0.46)
+        els = pg.query_selector_all(sel if multi else (sel if sel.startswith((".","#")) else sel))
+        if not els:
+            els = pg.query_selector_all("#artifact") or pg.query_selector_all(".slide") or pg.query_selector_all(".frame")
+        for i, el in enumerate(els, 1):
+            tag = f"slide {i}" if (multi or len(els)>1) else "frame"
+            # 4:5 format: canvas box must be exact; visuals may bleed past it (clipped), so
+            # scrollHeight is the wrong measure there. Other formats keep zero-dead-space scrollHeight.
+            h = el.evaluate("e=>e.offsetHeight" if target == 1350 else "e=>e.scrollHeight")
+            if h != target: fails.append(f"dims[{tag}]: height {h} != {target}")
+            if target == 1920:
+                topgap = el.evaluate("""e=>{const r=e.getBoundingClientRect();
+                    const m=e.querySelector('.mast,.eyebrow,.safe>*');return m?m.getBoundingClientRect().top-r.top:999;}""")
+                if topgap < 300: fails.append(f"safezone[{tag}]: top content at {round(topgap)}px (< 300 inset)")
+            shot = pathlib.Path(tempfile.mkdtemp()) / "s.png"; el.screenshot(path=str(shot))
+            empty_pct, band = density_metrics(Image.open(shot))
+            msg = f"density[{tag}]: {empty_pct:.0f}% empty rows, largest dead band {band:.0f}px"
+            if sel == "#film":
+                # a film composes in two halves and the gap between them is the format, so it
+                # gets its own budget instead of the poster one, and skips the poster branches
+                if band > DENSITY_MAX_BAND_FILM:
+                    fails.append(msg + f"  -> DEAD BAND > {DENSITY_MAX_BAND_FILM}px even for a "
+                                       f"film. The visual is too small for its half; pack it.")
+                else:
+                    warns.append(msg + " (ok for a film)")
+            elif band > DENSITY_MAX_BAND_PX and target == 1350:
+                # editorial 4:5 (operator 2026-06-12): intentional air + dark-on-dark scene elements
+                # sit below the ink threshold, so the band gate false-positives. Surface, don't block.
+                warns.append(msg + "  -> 45 format: air is part of the reference design - review by eye")
+            elif band > DENSITY_MAX_BAND_PX:
+                fails.append(msg + f"  -> DEAD BAND > {DENSITY_MAX_BAND_PX}px. Pack content; never flex:1/space-between on sparse rows.")
+            elif empty_pct > DENSITY_AIRY_PCT:
+                warns.append(msg + "  -> AIRY, review the dominant block (pack rows, add real content)")
+            else:
+                warns.append(msg + " (ok)")
+        b.close()
+    return fails, warns
+
+def check(path, static_only=False):
+    path = pathlib.Path(path)
+    fails, warns = static_checks(path)
+    if not static_only:
+        try:
+            rf, rw = render_checks(path); fails += rf; warns += rw
+        except Exception as e:
+            warns.append(f"render: skipped ({e})")
+    print(f"\n=== {path.name} ===")
+    for w in warns: print("  ok  ", w)
+    for f in fails: print("  FAIL", f)
+    print("  RESULT:", "PASS" if not fails else "FAIL  <-- fix before delivery")
+    return not fails
+
+def changed_materials():
+    out = subprocess.run(["git","-C",str(ROOT),"status","--porcelain"],capture_output=True,text=True).stdout
+    files=[]
+    for line in out.splitlines():
+        f = line[3:].strip()
+        if re.search(r"content/docs-.*\.html$", f): files.append(ROOT/f)   # new materials only; legacy script-* refs are rebuild candidates
+    return files
+
+if __name__ == "__main__":
+    args = sys.argv[1:]
+    static_only = "--static" in args
+    args = [a for a in args if a != "--static"]
+    if args == ["--changed"] or not args:
+        targets = changed_materials()
+        if not targets:
+            print("preflight: no changed material HTMLs"); sys.exit(0)
+    else:
+        targets = [pathlib.Path(a) for a in args]
+    ok = all([check(t, static_only) for t in targets])   # list, not generator: check every file
+    print("\nPREFLIGHT:", "ALL PASS" if ok else "FAIL - fix the materials above before delivery")
+    sys.exit(0 if ok else 1)

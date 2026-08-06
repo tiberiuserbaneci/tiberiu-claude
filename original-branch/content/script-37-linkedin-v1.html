@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Script 37 · AI Dead-Deal Revival · Ultron</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Fraunces:opsz,wght@9..144,700;9..144,900&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet">
+<!--
+VERTICAL BUDGET (canvas 1450px, padding 28t + 20b = 48px, usable = 1402px)
+  header       52px  (44h + 8mb)
+  hero        188px  (dominant stat 160px + hook text beside, overflow:hidden)
+  ba-band     220px  (212h + 8mb, dramatic Before/After)
+  fig01       246px  (5x46h rows + 4x4px gaps = 246)
+  stage02      38px  (30h + 8mb)
+  fig02       224px  (2-col config grid, overflow:hidden)
+  stage03      38px  (30h + 8mb)
+  fig03       228px  (header 22 + 5x38h + 4x4px gaps = 228)
+  cta          80px  (72h + 8mt)
+  footer       48px  (40h + 8mt)
+  ───────────────────────────────────────────
+  SUM:       1400px  (2px slack for exact footer fit)
+  PALETTE: LIGHT (cream #f4ede0, ink #1a1a1a, accent #c75d35)
+  HOOK STAT: 73% (not $1.2M - avoids duplication with BA Before row)
+-->
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #e8dfd0; margin: 0; padding: 0; }
+.scaler { display: flex; justify-content: center; }
+
+.canvas {
+  width: 1080px; height: 1450px;
+  background: radial-gradient(rgba(199,93,53,.10) 1.5px, transparent 1.5px) 0 0 / 24px 24px, #f4ede0;
+  padding: 28px 40px 20px;
+  display: flex; flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  color: #1a1a1a; overflow: hidden;
+  position: relative;
+}
+
+/* --- HEADER --- */
+.hd {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; font-weight: 700;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: rgba(0,0,0,.42);
+}
+.hd-r { color: rgba(0,0,0,.30); }
+
+/* --- DOMINANT STAT BLOCK --- */
+.stat-anchor {
+  flex-shrink: 0;
+  width: 160px; height: 160px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  background: rgba(199,93,53,.08);
+  border: 1.5px solid rgba(199,93,53,.25);
+  border-radius: 12px;
+  box-shadow: 0 0 40px rgba(199,93,53,.06), 0 0 80px rgba(199,93,53,.03);
+}
+.stat-anchor-num {
+  font-family: 'Fraunces', serif;
+  font-size: 72px; font-weight: 900;
+  color: #c75d35; line-height: 0.85;
+  letter-spacing: -3px;
+}
+.stat-anchor-unit {
+  font-family: 'Fraunces', serif;
+  font-size: 32px; font-weight: 900;
+  color: #c75d35; line-height: 1;
+  margin-left: 2px;
+}
+.stat-anchor-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; font-weight: 800;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: rgba(0,0,0,.42);
+  margin-top: 8px;
+}
+
+/* --- HOOK --- */
+.hook-d {
+  font-family: 'Fraunces', serif;
+  font-size: 44px; font-weight: 900;
+  line-height: 1.02; letter-spacing: -1.2px; color: #1a1a1a;
+}
+.hook-d .ac { color: #c75d35; font-style: italic; }
+.hook-sub {
+  margin-top: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px; font-weight: 600;
+  line-height: 1.5; color: rgba(0,0,0,.50);
+}
+
+/* --- BEFORE / AFTER --- */
+.ba-side { padding: 14px 22px; border-radius: 8px; }
+.ba-before {
+  background: rgba(0,0,0,.04);
+  border: 1px solid rgba(0,0,0,.10);
+  border-left: 3px solid rgba(192,57,43,.50);
+}
+.ba-after {
+  background: rgba(199,93,53,.07);
+  border: 1.5px solid rgba(199,93,53,.30);
+  border-left: 3px solid #c75d35;
+  box-shadow: 0 0 28px rgba(199,93,53,.08), 0 0 60px rgba(199,93,53,.04);
+}
+.ba-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8.5px; font-weight: 800;
+  letter-spacing: .18em; text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.ba-before .ba-label { color: rgba(192,57,43,.70); }
+.ba-after  .ba-label { color: #c75d35; }
+.ba-stat {
+  font-family: 'Fraunces', serif;
+  font-weight: 900; line-height: 1.0;
+  letter-spacing: -1px; margin-bottom: 10px;
+}
+.ba-before .ba-stat {
+  font-size: 44px;
+  color: rgba(0,0,0,.22);
+  text-decoration: line-through;
+  text-decoration-color: rgba(192,57,43,.50);
+  text-decoration-thickness: 2.5px;
+}
+.ba-after .ba-stat {
+  font-size: 48px;
+  color: #c75d35;
+}
+.ba-line {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px; font-weight: 600;
+  line-height: 1.52;
+}
+.ba-before .ba-line { color: rgba(0,0,0,.42); }
+.ba-after  .ba-line { color: rgba(0,0,0,.68); }
+.ba-line strong { font-weight: 800; }
+.ba-before .ba-line strong { color: rgba(0,0,0,.55); }
+.ba-after  .ba-line strong { color: #1a1a1a; }
+
+/* --- STAGE CHIP --- */
+.stage {
+  display: flex; align-items: center; gap: 10px;
+  flex-shrink: 0; height: 30px; margin-bottom: 8px;
+}
+.stage-num {
+  background: #c75d35; color: #f4ede0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; font-weight: 900;
+  padding: 4px 10px; border-radius: 4px;
+  letter-spacing: .04em; flex-shrink: 0;
+}
+.stage-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px; font-weight: 800;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: #1a1a1a; flex-shrink: 0;
+}
+.stage-line { flex: 1; height: 1px; background: rgba(199,93,53,.22); }
+.stage-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8.5px; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: rgba(0,0,0,.38); flex-shrink: 0;
+}
+
+/* --- FIG.01 INTEGRATIONS TABLE --- */
+.conn {
+  display: grid;
+  grid-template-columns: 26px 170px 88px 1fr 90px;
+  align-items: center; gap: 14px;
+  height: 46px; padding: 0 16px 0 12px;
+  background: rgba(255,255,255,.55);
+  border-left: 3px solid rgba(199,93,53,.40);
+  border-radius: 4px;
+  border: 1px solid rgba(0,0,0,.08);
+  border-left: 3px solid rgba(199,93,53,.40);
+  margin-bottom: 4px;
+}
+.conn:nth-child(1) {
+  border-left-color: #c75d35;
+  background: rgba(199,93,53,.08);
+}
+.conn:nth-child(2) {
+  border-left-color: rgba(199,93,53,.70);
+  background: rgba(199,93,53,.05);
+}
+.conn-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; font-weight: 800; color: #c75d35;
+}
+.conn-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px; font-weight: 800; letter-spacing: -0.3px;
+  color: #1a1a1a;
+}
+.conn-name .sub {
+  display: block; font-size: 9px; font-weight: 600;
+  color: rgba(0,0,0,.38); margin-top: 2px;
+  letter-spacing: .04em;
+}
+.conn-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8.5px; font-weight: 800; letter-spacing: .12em;
+  text-transform: uppercase; color: rgba(0,0,0,.55);
+  background: rgba(0,0,0,.05);
+  padding: 4px 8px; border-radius: 3px; text-align: center;
+  border: 1px solid rgba(0,0,0,.10);
+}
+.conn-what {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; font-weight: 600;
+  color: rgba(0,0,0,.62); line-height: 1.38;
+}
+.conn-what .hi { color: #c75d35; font-weight: 800; }
+.conn-setup {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; font-weight: 700;
+  color: rgba(0,0,0,.35); text-align: right;
+  letter-spacing: .08em;
+}
+
+/* --- FIG.02 CONFIG PANELS --- */
+.cfg-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.cfg-panel {
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 6px;
+  padding: 16px 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.04);
+}
+.cfg-panel.hot {
+  background: #1a1a1a;
+  border: 1px solid #000;
+  box-shadow: 0 12px 32px rgba(199,93,53,.15);
+  border-top: 3px solid #c75d35;
+}
+.cfg-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; font-weight: 800; letter-spacing: .18em;
+  text-transform: uppercase; color: #1a1a1a;
+  margin-bottom: 12px; padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0,0,0,.10);
+}
+.cfg-panel.hot .cfg-title {
+  color: #c75d35;
+  border-bottom-color: rgba(199,93,53,.3);
+}
+.cfg-row {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 6px; gap: 8px;
+}
+.cfg-panel.hot .cfg-row {
+  border-bottom: 1px dotted rgba(255,255,255,.12);
+  padding-bottom: 6px; margin-bottom: 8px;
+}
+.cfg-panel.hot .cfg-row:last-child { border-bottom: none; margin-bottom: 0; }
+.cfg-key {
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600;
+  color: rgba(0,0,0,.55); flex-shrink: 0;
+}
+.cfg-panel.hot .cfg-key { color: rgba(255,255,255,.65); }
+.cfg-val {
+  font-family: 'JetBrains Mono', monospace; font-size: 10.5px; font-weight: 800;
+  color: #1a1a1a; text-align: right;
+}
+.cfg-val .ac { color: #c75d35; }
+.cfg-panel.hot .cfg-val .ac {
+  background: #c75d35; color: #fff;
+  padding: 2px 5px; border-radius: 3px;
+}
+.cfg-val .dim { color: rgba(0,0,0,.38); font-weight: 600; font-size: 10px; }
+.cfg-panel.hot .cfg-val .dim { color: rgba(255,255,255,.35); }
+
+/* --- AGENT CHIP ROW --- */
+.agent-row {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 8px; padding-bottom: 6px;
+  border-bottom: 1px solid rgba(0,0,0,.05);
+}
+.agent-row:last-child { margin-bottom: 0; border-bottom: none; }
+.agent-step {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; font-weight: 800; color: rgba(0,0,0,.3);
+  width: 14px; flex-shrink: 0; letter-spacing: 0;
+}
+.agent-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8.5px; font-weight: 800; letter-spacing: .08em;
+  text-transform: uppercase; color: #1a1a1a;
+  background: rgba(0,0,0,.04);
+  border: 1px solid rgba(0,0,0,.15);
+  padding: 3px 6px; border-radius: 3px;
+  width: 76px; text-align: center; flex-shrink: 0;
+}
+.agent-do {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; font-weight: 600;
+  color: rgba(0,0,0,.65); line-height: 1.32; letter-spacing: -0.1px;
+}
+
+/* --- FIG.03 SIGNAL TABLE --- */
+.sig-header {
+  display: grid;
+  grid-template-columns: 26px 170px 84px 1fr 64px 80px;
+  gap: 14px;
+  padding: 0 16px 6px 12px;
+  border-bottom: 1px solid rgba(0,0,0,.10);
+  margin-bottom: 4px;
+}
+.sig-header span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px; font-weight: 800; letter-spacing: .16em;
+  text-transform: uppercase; color: rgba(0,0,0,.32);
+}
+.sig {
+  display: grid;
+  grid-template-columns: 26px 170px 84px 1fr 64px 80px;
+  align-items: center; gap: 14px;
+  height: 38px; padding: 0 16px 0 12px;
+  background: rgba(255,255,255,.50);
+  border-left: 3px solid rgba(199,93,53,.35);
+  border-radius: 4px;
+  border: 1px solid rgba(0,0,0,.06);
+  border-left: 3px solid rgba(199,93,53,.35);
+  margin-bottom: 4px;
+}
+.sig:nth-child(1) {
+  border-left-color: #c75d35;
+  background: rgba(199,93,53,.08);
+}
+.sig:nth-child(2) {
+  border-left-color: rgba(199,93,53,.65);
+  background: rgba(199,93,53,.05);
+}
+.sig-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; font-weight: 800; color: #c75d35;
+}
+.sig-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px; font-weight: 800; letter-spacing: -0.2px;
+  color: #1a1a1a;
+}
+.sig-src {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8.5px; font-weight: 800; letter-spacing: .12em;
+  text-transform: uppercase; color: rgba(0,0,0,.50);
+  background: rgba(0,0,0,.05);
+  padding: 3px 8px; border-radius: 3px; text-align: center;
+  border: 1px solid rgba(0,0,0,.10);
+}
+.sig-query {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px; font-weight: 700;
+  color: rgba(0,0,0,.55); line-height: 1.3;
+}
+.sig-query .kw { color: #c75d35; }
+.sig-pts {
+  font-family: 'Fraunces', serif;
+  font-size: 20px; font-weight: 900;
+  color: #c75d35; line-height: 1.0; text-align: center;
+}
+.sig-pts .of {
+  font-size: 10px; font-family: 'JetBrains Mono', monospace;
+  color: rgba(0,0,0,.30); font-weight: 700;
+}
+.sig-verdict {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px; font-weight: 800; letter-spacing: .10em;
+  text-transform: uppercase; text-align: center;
+  padding: 4px 6px; border-radius: 3px;
+}
+.v-hot { color: #c75d35; background: rgba(199,93,53,.12); border: 1px solid rgba(199,93,53,.28); }
+.v-warm { color: rgba(199,93,53,.75); background: rgba(199,93,53,.07); border: 1px solid rgba(199,93,53,.18); }
+.v-cool { color: rgba(0,0,0,.42); background: rgba(0,0,0,.04); border: 1px solid rgba(0,0,0,.08); }
+
+/* --- CTA --- */
+.cta-block {
+  flex-shrink: 0;
+  background: #c75d35; border-radius: 6px;
+  padding: 16px 26px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 20px; height: 72px;
+}
+.cta-copy {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px; font-weight: 700;
+  color: #f4ede0; line-height: 1.55;
+}
+.cta-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; font-weight: 800;
+  color: #c75d35; background: #f4ede0;
+  border-radius: 5px; padding: 12px 20px;
+  letter-spacing: .08em; white-space: nowrap; flex-shrink: 0;
+}
+
+/* --- FOOTER --- */
+.footer {
+  flex-shrink: 0;
+  height: 40px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(0,0,0,.10);
+  display: flex; align-items: center; justify-content: space-between;
+}
+</style>
+</head>
+<body>
+<div class="scaler">
+<div class="canvas">
+
+  <!-- HEADER 44px + 8mb = 52px -->
+  <div style="flex-shrink:0;height:44px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(0,0,0,.09);margin-bottom:8px;padding-bottom:8px">
+    <span class="hd">AI DEAD-DEAL REVIVAL &middot; ULTRON OS &middot; CORTEX AGENT</span>
+    <span class="hd hd-r">NO. 37 &middot; SAVE THIS &middot; WIRE ONCE</span>
+  </div>
+
+  <!-- HERO 176px: dominant stat anchor + hook text -->
+  <div style="flex-shrink:0;height:176px;display:flex;gap:28px;align-items:flex-start;overflow:hidden">
+    <!-- DOMINANT ELEMENT: 73% parked (Regula 1 + Regula 3: number in 300ms) -->
+    <div class="stat-anchor">
+      <div style="display:flex;align-items:baseline">
+        <div class="stat-anchor-num">73</div>
+        <div class="stat-anchor-unit">%</div>
+      </div>
+      <div class="stat-anchor-label">REVENUE PARKED</div>
+    </div>
+    <!-- Hook text -->
+    <div style="flex:1;padding-top:4px">
+      <div class="hook-d">Most CRMs treat closed-lost as dead.<br><span class="ac">AI</span> treats it as a signal queue.</div>
+      <div class="hook-sub">73% of B2B revenue gets parked in closed-lost and never touched again. ULTRON scores it continuously across 5 signals. STRIKER drafts the revival message. You approve in 1 tap inside Slack. Below is the exact stack and config.</div>
+    </div>
+  </div>
+
+  <!-- BEFORE / AFTER -->
+  <div style="flex-shrink:0;min-height:212px;display:grid;grid-template-columns:1fr 56px 1fr;gap:0;margin-bottom:8px">
+    <!-- BEFORE: muted, dead, struck through -->
+    <div class="ba-side ba-before">
+      <div class="ba-label">&times; WITHOUT THIS</div>
+      <div class="ba-stat">$1.2M</div>
+      <div class="ba-desc">parked in closed-lost across the average mid-market book. <strong>0 revival touchpoints in 90 days.</strong> No signal monitoring on accounts you already paid CAC to acquire.</div>
+      <div style="margin-top:4px;opacity:0.6">
+        <svg width="240" height="40" viewBox="0 0 240 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 20 L40 20 L45 10 L55 30 L60 20 L120 20 L130 35 L240 35" stroke="rgba(0,0,0,.3)" stroke-width="2" stroke-linejoin="round"/>
+          <circle cx="236" cy="35" r="3" fill="rgba(0,0,0,.3)"/>
+        </svg>
+      </div>
+    </div>
+    <!-- Arrow in accent circle -->
+    <div style="display:flex;align-items:center;justify-content:center">
+      <div style="width:40px;height:40px;border-radius:50%;background:rgba(199,93,53,.10);border:1.5px solid rgba(199,93,53,.30);display:flex;align-items:center;justify-content:center;font-size:20px;color:#c75d35;font-weight:900">&rarr;</div>
+    </div>
+    <!-- AFTER: alive, glowing, warm -->
+    <div class="ba-side ba-after">
+      <div class="ba-label">&check; WITH ULTRON</div>
+      <div class="ba-stat">3 / wk</div>
+      <div class="ba-desc"><strong>CORTEX scans your CRM continuously.</strong> The moment a signal fires, a 60-word message lands in your Slack. Approve, skip, or edit in 1 tap.</div>
+      <div style="margin-top:4px">
+        <svg width="240" height="40" viewBox="0 0 240 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 28 L60 28 L65 20 L75 38 L85 6 L95 26 L100 20 L240 20" stroke="#c75d35" stroke-width="2" stroke-linejoin="round"/>
+          <circle cx="236" cy="20" r="4" fill="#c75d35" filter="drop-shadow(0 0 4px rgba(199,93,53,1))"/>
+          <path d="M0 38 L240 38" stroke="rgba(199,93,53,.2)" stroke-width="1" stroke-dasharray="4 4"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- STAGE 01 - 30px + 8mb = 38px -->
+  <div class="stage">
+    <span class="stage-num">01</span>
+    <span class="stage-name">ULTRON STACK</span>
+    <div class="stage-line"></div>
+    <span class="stage-meta">5 NATIVE INTEGRATIONS &middot; WIRE ONCE</span>
+  </div>
+
+  <!-- FIG.01 INTEGRATIONS - 246px -->
+  <div style="flex-shrink:0;height:246px;overflow:hidden">
+
+    <div class="conn">
+      <div class="conn-num">01</div>
+      <div class="conn-name">Salesforce <span class="sub">or HubSpot, Pipedrive, Close</span></div>
+      <div class="conn-badge">CRM</div>
+      <div class="conn-what">pulls <span class="hi">closed-lost deals</span> &middot; filter ACV &gt;$10K &middot; lost 30 to 180 days ago</div>
+      <div class="conn-setup"><span style="color:#2a8c50">&blacktriangle; 99%</span> <span style="opacity:0.5;margin-left:4px">~2 min</span></div>
+    </div>
+
+    <div class="conn">
+      <div class="conn-num">02</div>
+      <div class="conn-name">LinkedIn <span class="sub">contact + company graph</span></div>
+      <div class="conn-badge">SOCIAL</div>
+      <div class="conn-what">detects <span class="hi">job change, promotion, public post</span> on every contact from a lost deal</div>
+      <div class="conn-setup"><span style="color:#2a8c50">&blacktriangle; 98%</span> <span style="opacity:0.5;margin-left:4px">~2 min</span></div>
+    </div>
+
+    <div class="conn">
+      <div class="conn-num">03</div>
+      <div class="conn-name">Crunchbase <span class="sub">firmographics + hiring</span></div>
+      <div class="conn-badge">INTEL</div>
+      <div class="conn-what">detects <span class="hi">funding round, exec hire, hiring spike</span> at 3x baseline rate</div>
+      <div class="conn-setup"><span style="color:#2a8c50">&blacktriangle; 94%</span> <span style="opacity:0.5;margin-left:4px">~2 min</span></div>
+    </div>
+
+    <div class="conn">
+      <div class="conn-num">04</div>
+      <div class="conn-name">Gmail <span class="sub">or Outlook, Apollo, Smartlead</span></div>
+      <div class="conn-badge">SEND</div>
+      <div class="conn-what">sends the revival message &middot; tracks <span class="hi">open, click, reply</span> back into CRM</div>
+      <div class="conn-setup"><span style="color:#2a8c50">&blacktriangle; 99%</span> <span style="opacity:0.5;margin-left:4px">~1 min</span></div>
+    </div>
+
+    <div class="conn">
+      <div class="conn-num">05</div>
+      <div class="conn-name">Slack <span class="sub">HUMAN GATE channel</span></div>
+      <div class="conn-badge">GATE</div>
+      <div class="conn-what">posts each revival draft for <span class="hi">approve, skip, or edit</span> in 1 tap before send</div>
+      <div class="conn-setup"><span style="color:#2a8c50">&blacktriangle; 95%</span> <span style="opacity:0.5;margin-left:4px">~1 min</span></div>
+    </div>
+
+  </div>
+
+  <!-- STAGE 02 - 30px + 8mb = 38px -->
+  <div class="stage">
+    <span class="stage-num">02</span>
+    <span class="stage-name">CORTEX CONFIG &amp; AGENT CHAIN</span>
+    <div class="stage-line"></div>
+    <span class="stage-meta">SET ONCE &middot; ULTRON HANDLES THE REST</span>
+  </div>
+
+  <!-- FIG.02 CONFIG - 224px -->
+  <div style="flex-shrink:0;height:224px;overflow:hidden">
+    <div class="cfg-grid" style="height:100%">
+
+      <div class="cfg-panel hot">
+        <div class="cfg-title">DEAL FILTER &middot; what CORTEX scans</div>
+        <div class="cfg-row">
+          <span class="cfg-key">Closed ago</span>
+          <span class="cfg-val"><span class="ac">30</span> <span class="dim">to</span> <span class="ac">180</span> <span class="dim">days</span></span>
+        </div>
+        <div class="cfg-row">
+          <span class="cfg-key">Min ACV</span>
+          <span class="cfg-val"><span class="ac">$10,000</span></span>
+        </div>
+        <div class="cfg-row">
+          <span class="cfg-key">Lost at stage</span>
+          <span class="cfg-val"><span class="dim">Demo, Proposal, Negotiation</span></span>
+        </div>
+        <div class="cfg-row">
+          <span class="cfg-key">Score trigger</span>
+          <span class="cfg-val"><span class="ac">&ge;70</span> <span class="dim">of 100 fires draft</span></span>
+        </div>
+        <div class="cfg-row">
+          <span class="cfg-key">Re-engage cap</span>
+          <span class="cfg-val"><span class="ac">1</span> <span class="dim">touch per deal per 60d</span></span>
+        </div>
+        <div class="cfg-row">
+          <span class="cfg-key">Cadence</span>
+          <span class="cfg-val"><span class="ac">event-driven</span> <span class="dim">(no calendar)</span></span>
+        </div>
+      </div>
+
+      <div class="cfg-panel">
+        <div class="cfg-title">AGENT CHAIN &middot; what runs on each signal</div>
+        <div class="agent-row">
+          <span class="agent-step">01</span>
+          <span class="agent-tag">CORTEX</span>
+          <span class="agent-do">pulls + scores deal across 5 signals</span>
+        </div>
+        <div class="agent-row">
+          <span class="agent-step">02</span>
+          <span class="agent-tag">SPECTER</span>
+          <span class="agent-do">verifies signal in LinkedIn + Crunchbase</span>
+        </div>
+        <div class="agent-row">
+          <span class="agent-step">03</span>
+          <span class="agent-tag">STRIKER</span>
+          <span class="agent-do">writes 60-word revival message, 1 citation</span>
+        </div>
+        <div class="agent-row">
+          <span class="agent-step">04</span>
+          <span class="agent-tag">SENTINEL</span>
+          <span class="agent-do">de-dupes vs last 60d, checks tone + claim</span>
+        </div>
+        <div class="agent-row">
+          <span class="agent-step">05</span>
+          <span class="agent-tag">HUMAN&nbsp;GATE</span>
+          <span class="agent-do">Slack alert &middot; approve / skip / edit in 1 tap</span>
+        </div>
+        <div class="agent-row">
+          <span class="agent-step">06</span>
+          <span class="agent-tag">PULSE</span>
+          <span class="agent-do">sends, logs reply, schedules follow-up</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- STAGE 03 - 30px + 8mb = 38px -->
+  <div class="stage">
+    <span class="stage-num">03</span>
+    <span class="stage-name">SIGNAL SCORING REFERENCE</span>
+    <div class="stage-line"></div>
+    <span class="stage-meta">MAX 100 PTS &middot; THE TABLE WORTH SAVING</span>
+  </div>
+
+  <!-- FIG.03 SIGNAL TABLE - 228px -->
+  <div style="flex-shrink:0;height:228px;overflow:hidden">
+    <div class="sig-header" style="height:22px">
+      <span></span>
+      <span>SIGNAL</span>
+      <span>SOURCE</span>
+      <span>WHAT CORTEX LOOKS FOR</span>
+      <span style="text-align:center">WEIGHT</span>
+      <span style="text-align:center">VERDICT</span>
+    </div>
+
+    <div class="sig">
+      <div class="sig-num">01</div>
+      <div class="sig-name">CHAMPION EVENT</div>
+      <div class="sig-src">LINKEDIN</div>
+      <div class="sig-query"><span class="kw">promoted to</span> or <span class="kw">joined</span> + contact within 90d</div>
+      <div class="sig-pts">25<span class="of">/100</span></div>
+      <div class="sig-verdict v-hot">HOT</div>
+    </div>
+
+    <div class="sig">
+      <div class="sig-num">02</div>
+      <div class="sig-name">BLOCKER REMOVED</div>
+      <div class="sig-src">LINKEDIN</div>
+      <div class="sig-query">exec-level <span class="kw">left [company]</span> who was on the closed deal</div>
+      <div class="sig-pts">20<span class="of">/100</span></div>
+      <div class="sig-verdict v-hot">HOT</div>
+    </div>
+
+    <div class="sig">
+      <div class="sig-num">03</div>
+      <div class="sig-name">FUNDING / GROWTH</div>
+      <div class="sig-src">CRUNCHBASE</div>
+      <div class="sig-query">new round + <span class="kw">hiring &gt;3x baseline</span> in GTM / AE roles</div>
+      <div class="sig-pts">20<span class="of">/100</span></div>
+      <div class="sig-verdict v-warm">WARM</div>
+    </div>
+
+    <div class="sig">
+      <div class="sig-num">04</div>
+      <div class="sig-name">COMPETITOR PAIN</div>
+      <div class="sig-src">G2</div>
+      <div class="sig-query">competitor <span class="kw">1-2 star reviews</span> from same ICP in last 60d</div>
+      <div class="sig-pts">20<span class="of">/100</span></div>
+      <div class="sig-verdict v-warm">WARM</div>
+    </div>
+
+    <div class="sig">
+      <div class="sig-num">05</div>
+      <div class="sig-name">INTENT SPIKE</div>
+      <div class="sig-src">WEB</div>
+      <div class="sig-query">contact <span class="kw">named your pain</span> in podcast, post, or talk in 30d</div>
+      <div class="sig-pts">15<span class="of">/100</span></div>
+      <div class="sig-verdict v-cool">COOL</div>
+    </div>
+
+  </div>
+
+  <!-- CTA 72px + 8mt = 80px -->
+  <div class="cta-block" style="margin-top:8px">
+    <div class="cta-copy">Follow for one AI outbound system every day.<br>Comment <strong>GHOSTS</strong> and I will send you the exact Claude workflow we used.</div>
+    <div class="cta-badge">GHOSTS</div>
+  </div>
+
+  <!-- FOOTER 40px + 8mt = 48px -->
+  <div class="footer" style="margin-top:8px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:rgba(0,0,0,.42);text-transform:uppercase;display:flex;align-items:center;gap:10px">
+      <img src="logo.png" style="width:26px;height:26px;border-radius:50%;object-fit:cover;flex-shrink:0" alt="Ultron Logo">
+      <strong style="color:#1a1a1a">ULTRON OS</strong> &middot; Founder &middot; GTM &middot; Workflows &middot; Agent Infrastructure
+    </div>
+    <div style="font-family:'Inter',sans-serif;font-size:13.5px;font-weight:800;color:#1a1a1a;letter-spacing:-0.5px">51ultron.com</div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>
