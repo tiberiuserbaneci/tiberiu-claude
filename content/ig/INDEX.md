@@ -26,7 +26,8 @@ Captions follow CLAUDE.md 15.6: one beat per paragraph, exactly five hashtags.
 
 | Folder | Post | Keyword | Note |
 |---|---|---|---|
-| `film-09-pitch` | YOU BUILT SOMETHING GOOD | PITCH | ready, photographic |
+| `film-10-maybe` | ONE STALLED DEAL. ONE YES. | MAYBE | ready, 05's run-board model |
+| `film-09-pitch` | YOU BUILT SOMETHING GOOD | PITCH | ready, slate ground |
 | `film-08-sender` | YOUR AI NOW HAS TO SAY IT IS AN AI | SENDER | ready |
 | `film-07-setup` | THREE THINGS MAKE CLAUDE FEEL SMARTER | SETUP | ready |
 | `film-06-engineer` | THE JOB THAT DID NOT EXIST TWO YEARS AGO | ENGINEER | ready, light ground |
@@ -35,3 +36,19 @@ Captions follow CLAUDE.md 15.6: one beat per paragraph, exactly five hashtags.
 | `film-03-price` | TEN TIMES THE PRICE FOR WORK THE SMALL MODEL FINISHES | PRICE | rebuilt, ready |
 | `film-02-overnight` | YOUR STARTUP SLEEPS WHEN YOU DO | 24H | ready |
 | `film-01-research` | RESEARCH EATS THE FIRST HOUR OF EVERY DEAL | CORTEX | POSTED AND UNDERPERFORMED. Names an internal term on screen. Kept for reference only. |
+
+## LinkedIn
+
+Reels do not go to LinkedIn as they are. The 9:16 master reserves 632px for the TikTok and
+Instagram overlays and LinkedIn paints nothing there, so a third of the post is reserve
+protecting nothing while the feed still scales the frame to the column width. `content/li/`
+holds the 4:5 recut, its thumbnail and a long-form caption written to CLAUDE.md 15 rather
+than 15.6. Cut a new one with:
+
+    python3 content/_licut.py content/ig/<folder>/reel.mp4 content/li/<folder>/ --thumb <sec>
+
+| Folder | Post | Keyword |
+|---|---|---|
+| `li/film-10-maybe` | ONE STALLED DEAL. ONE YES. | MAYBE |
+| `li/film-09-pitch` | YOU BUILT SOMETHING GOOD | PITCH |
+| `li/film-08-sender` | YOUR AI NOW HAS TO SAY IT IS AN AI | SENDER |
