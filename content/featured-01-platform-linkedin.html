@@ -1,0 +1,127 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<title>Featured 01 - The AI workforce</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* LINKEDIN FEATURED 1200x627 - card 01 of 03 - accent BOOK
+   BUDGET: 567px vertical (627 - 34 top - 26 bottom)
+   = mast 32 + gap 26 + body 441 + gap 26 + footer 42 = 567 */
+:root{
+  --slate-dark:#191919; --slate-med:#262625; --ivory-light:#FAFAF7;
+  --book:#CC785C; --book-dark:#C84623; --kraft:#D4A27F; --cloud-med:#919180;
+  --app-cream:#ece4cb;
+  --book-lo:rgba(204,120,92,.10); --book-bd:rgba(204,120,92,.32);
+  --ink-70:rgba(250,250,247,.72); --ink-46:rgba(250,250,247,.46);
+  --ink-30:rgba(250,250,247,.30); --ink-14:rgba(250,250,247,.14);
+  --rule:rgba(250,250,247,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.scaler>.canvas{transform-origin:top center;transform:scale(calc(min(100vw / 1250, (100vh - 48px) / 680)));}
+.canvas{
+  width:1200px;height:627px;background:var(--slate-dark);
+  padding:34px 46px 26px 46px;display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+}
+.canvas::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:radial-gradient(rgba(204,120,92,.05) 1.2px,transparent 1.3px);background-size:26px 26px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:
+    radial-gradient(ellipse 52% 58% at 96% 4%,rgba(204,120,92,.18) 0%,transparent 64%),
+    radial-gradient(ellipse 40% 44% at 4% 98%,rgba(212,162,127,.08) 0%,transparent 62%);}
+.canvas>*:not(.atm){position:relative;z-index:2;}
+
+/* ---- mast ---- */
+.mast{flex-shrink:0;height:32px;display:flex;align-items:center;justify-content:space-between;
+  padding-bottom:11px;border-bottom:1px solid var(--rule);}
+.mast-kw{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--ink-46);white-space:nowrap;line-height:1;}
+.mast-kw .sep{color:var(--book);margin:0 8px;}
+.mast-r{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink-70);white-space:nowrap;flex-shrink:0;padding-left:20px;}
+.mast-r em{color:var(--book);font-style:normal;font-weight:600;}
+
+/* ---- body ---- */
+.body{flex-grow:1;min-height:0;margin-top:26px;display:flex;gap:34px;}
+
+/* left column: the headline read */
+.lead{flex:1;min-width:0;display:flex;flex-direction:column;}
+.eyebrow{flex-shrink:0;display:flex;align-items:center;gap:10px;margin-bottom:15px;}
+.eyebrow .bar{width:26px;height:3px;background:var(--book);border-radius:2px;}
+.eyebrow .tx{font-family:'DM Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--book);}
+h1{flex-shrink:0;font-size:60px;font-weight:900;line-height:1.02;letter-spacing:-2.1px;
+  color:var(--ivory-light);}
+h1 em{font-style:normal;color:var(--book);}
+.sub{flex-shrink:0;margin-top:17px;font-size:20px;font-weight:500;line-height:1.4;color:var(--ink-70);max-width:640px;}
+.sub strong{color:var(--ivory-light);font-weight:700;}
+.stack{margin-top:auto;flex-shrink:0;padding-top:15px;border-top:1px solid var(--rule);}
+.stack .lb{font-family:'DM Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--book);}
+.stack .tools{margin-top:10px;font-size:16px;font-weight:600;line-height:1.55;color:var(--ink-70);}
+.stack .tools i{color:var(--ink-30);font-style:normal;margin:0 7px;}
+.roster{flex-shrink:0;margin-top:15px;padding-top:15px;border-top:1px solid var(--rule);
+  display:flex;flex-wrap:wrap;gap:7px;}
+.roster span{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-70);background:var(--book-lo);
+  border:1px solid var(--book-bd);border-radius:4px;padding:5px 9px;line-height:1;}
+
+/* right column: proof 2x2 */
+.proof{flex-shrink:0;width:398px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;}
+.pc{background:var(--slate-med);border:1px solid var(--ink-14);border-left:3px solid var(--book);
+  border-radius:6px;padding:16px 16px 14px;display:flex;flex-direction:column;justify-content:center;}
+.pc .n{font-size:52px;font-weight:900;letter-spacing:-2px;line-height:1;color:var(--ivory-light);}
+.pc:nth-child(1) .n{color:var(--book);}
+.pc .l{margin-top:11px;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-46);line-height:1.5;}
+
+/* ---- footer ---- */
+.ftr{flex-shrink:0;height:42px;margin-top:26px;padding-top:12px;border-top:1px solid var(--rule);
+  display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.ftr-l{display:flex;align-items:center;gap:12px;min-width:0;}
+.ftr-logo{width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.ftr-txt{font-family:'DM Mono',monospace;font-size:11px;font-weight:400;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--ink-70);white-space:nowrap;}
+.ftr-txt strong{color:var(--ivory-light);font-weight:500;}
+.ftr-url{font-family:'DM Sans',sans-serif;font-weight:900;font-size:18px;letter-spacing:-.5px;
+  color:var(--ivory-light);flex-shrink:0;}
+.ftr-url em{color:var(--book);font-style:normal;}
+</style></head><body><div class="scaler"><div class="canvas" id="artifact">
+<div class="atm"></div>
+
+<div class="mast">
+  <div class="mast-kw">AI WORKFORCE<span class="sep">&middot;</span>FOUNDER GTM<span class="sep">&middot;</span>BACKGROUND JOBS</div>
+  <div class="mast-r"><em>01</em> / 03</div>
+</div>
+
+<div class="body">
+  <div class="lead">
+    <div class="eyebrow"><span class="bar"></span><span class="tx">The platform</span></div>
+    <h1>Replace headcount with an <em>infinite</em> AI workforce.</h1>
+    <div class="sub">Seven named agents run sales, marketing and engineering as background jobs, inside <strong>one operating system your startup lives on</strong>.</div>
+    <div class="stack">
+      <div class="lb">Plugs into the stack you already run</div>
+      <div class="tools">HubSpot<i>/</i>Salesforce<i>/</i>Apollo<i>/</i>Gmail<i>/</i>Outlook<i>/</i>Slack<i>/</i>Calendly<br>Notion<i>/</i>Intercom<i>/</i>GitHub<i>/</i>Vercel<i>/</i>Supabase<i>/</i>Stripe<i>/</i>PostHog</div>
+    </div>
+    <div class="roster">
+      <span>Cortex</span><span>Specter</span><span>Striker</span><span>Pulse</span>
+      <span>Sentinel</span><span>Amplify</span><span>Counsel</span>
+    </div>
+  </div>
+
+  <div class="proof">
+    <div class="pc"><div class="n">9,000+</div><div class="l">Founders running their company on it</div></div>
+    <div class="pc"><div class="n">100K+</div><div class="l">Tasks finished, no human touching them</div></div>
+    <div class="pc"><div class="n">30K+</div><div class="l">Hours of real work handed off</div></div>
+    <div class="pc"><div class="n">$800K+</div><div class="l">In salaries never paid out</div></div>
+  </div>
+</div>
+
+<div class="ftr">
+  <div class="ftr-l">
+    <img class="ftr-logo" src="__LOGO_URI__" alt="Ultron">
+    <div class="ftr-txt"><strong>ULTRON</strong> &middot; AI OPERATOR FOR FOUNDERS &middot; THE PLATFORM</div>
+  </div>
+  <div class="ftr-url">app.51ultron<em>.</em>com</div>
+</div>
+
+</div></div></body></html>

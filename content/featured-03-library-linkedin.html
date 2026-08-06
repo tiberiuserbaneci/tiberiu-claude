@@ -1,0 +1,141 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<title>Featured 03 - The library</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* LINKEDIN FEATURED 1200x627 - card 03 of 03 - accent BOOK-DARK
+   BUDGET: 567px vertical (627 - 34 top - 26 bottom)
+   = mast 32 + gap 26 + body 441 + gap 26 + footer 42 = 567
+   body 441 = head 130 + gap 14 + shelfbar 18 + gap 10 + index 269 */
+:root{
+  --slate-dark:#191919; --slate-med:#262625; --ivory-light:#FAFAF7;
+  --book:#CC785C; --book-dark:#C84623; --kraft:#D4A27F; --cloud-med:#919180;
+  --bd-lo:rgba(200,70,35,.12); --bd-bd:rgba(200,70,35,.42);
+  --ink-70:rgba(250,250,247,.72); --ink-46:rgba(250,250,247,.46);
+  --ink-30:rgba(250,250,247,.30); --ink-14:rgba(250,250,247,.14);
+  --rule:rgba(250,250,247,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0d0d0d;display:flex;justify-content:center;padding:24px 0;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+.scaler>.canvas{transform-origin:top center;transform:scale(calc(min(100vw / 1250, (100vh - 48px) / 680)));}
+.canvas{
+  width:1200px;height:627px;background:var(--slate-dark);
+  padding:34px 46px 26px 46px;display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+}
+.canvas::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(rgba(250,250,247,.022) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(250,250,247,.022) 1px,transparent 1px);
+  background-size:60px 60px;}
+.atm{position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:
+    radial-gradient(ellipse 58% 46% at 50% 0%,rgba(200,70,35,.17) 0%,transparent 66%),
+    radial-gradient(ellipse 40% 34% at 6% 98%,rgba(212,162,127,.07) 0%,transparent 62%);}
+.canvas>*:not(.atm){position:relative;z-index:2;}
+
+/* ---- mast ---- */
+.mast{flex-shrink:0;height:32px;display:flex;align-items:center;justify-content:space-between;
+  padding-bottom:11px;border-bottom:1px solid var(--rule);}
+.mast-kw{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--ink-46);white-space:nowrap;line-height:1;}
+.mast-kw .sep{color:var(--book-dark);margin:0 8px;}
+.mast-r{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink-70);white-space:nowrap;flex-shrink:0;padding-left:20px;}
+.mast-r em{color:var(--book-dark);font-style:normal;font-weight:600;}
+
+/* ---- body ---- */
+.body{flex-grow:1;min-height:0;margin-top:26px;display:flex;flex-direction:column;}
+
+/* head */
+.head{flex-shrink:0;height:130px;display:flex;align-items:flex-start;gap:30px;}
+.head-l{flex:1;min-width:0;}
+.eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.eyebrow .bar{width:26px;height:3px;background:var(--book-dark);border-radius:2px;}
+.eyebrow .tx{font-family:'DM Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--book-dark);}
+h1{font-size:46px;font-weight:900;line-height:1.03;letter-spacing:-1.6px;color:var(--ivory-light);}
+h1 em{font-style:normal;color:var(--book-dark);}
+.claim{flex-shrink:0;width:286px;background:var(--bd-lo);border:1px solid var(--bd-bd);
+  border-radius:6px;padding:15px 17px;display:flex;flex-direction:column;gap:7px;}
+.claim .big{font-size:25px;font-weight:900;letter-spacing:-.8px;line-height:1.12;color:var(--ivory-light);}
+.claim .big em{font-style:normal;color:var(--book-dark);}
+.claim .sm{font-family:'DM Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--ink-70);line-height:1.5;}
+
+/* shelf bar */
+.shelfbar{flex-shrink:0;height:18px;margin-top:14px;display:flex;align-items:center;gap:14px;}
+.shelfbar .t{font-family:'DM Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-46);white-space:nowrap;}
+.shelfbar .line{flex:1;height:1px;background:var(--rule);}
+
+/* index */
+.index{flex-grow:1;min-height:0;margin-top:10px;display:grid;
+  grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,1fr);gap:8px;}
+.cat{background:var(--slate-med);border:1px solid var(--ink-14);border-radius:5px;
+  padding:0 14px;display:flex;align-items:center;gap:13px;overflow:hidden;}
+.cat .n{font-size:32px;font-weight:900;letter-spacing:-1.1px;color:var(--book-dark);
+  min-width:46px;text-align:right;line-height:1;flex-shrink:0;}
+.cat .t{font-size:16.5px;font-weight:700;letter-spacing:-.25px;color:var(--ivory-light);line-height:1.15;}
+.cat.lead{background:var(--bd-lo);border-color:var(--bd-bd);}
+.cat.lead .n{font-size:37px;}
+
+/* ---- footer ---- */
+.ftr{flex-shrink:0;height:42px;margin-top:26px;padding-top:12px;border-top:1px solid var(--rule);
+  display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.ftr-l{display:flex;align-items:center;gap:12px;min-width:0;}
+.ftr-logo{width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.ftr-txt{font-family:'DM Mono',monospace;font-size:11px;font-weight:400;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--ink-70);white-space:nowrap;}
+.ftr-txt strong{color:var(--ivory-light);font-weight:500;}
+.ftr-url{font-family:'DM Sans',sans-serif;font-weight:900;font-size:18px;letter-spacing:-.5px;
+  color:var(--ivory-light);flex-shrink:0;}
+.ftr-url em{color:var(--book-dark);font-style:normal;}
+</style></head><body><div class="scaler"><div class="canvas" id="artifact">
+<div class="atm"></div>
+
+<div class="mast">
+  <div class="mast-kw">PLAYBOOKS<span class="sep">&middot;</span>AGENT BLUEPRINTS<span class="sep">&middot;</span>FOUNDER GTM</div>
+  <div class="mast-r"><em>03</em> / 03</div>
+</div>
+
+<div class="body">
+  <div class="head">
+    <div class="head-l">
+      <div class="eyebrow"><span class="bar"></span><span class="tx">The library</span></div>
+      <h1><em>163</em> playbooks, guides and deployable agent blueprints.</h1>
+    </div>
+    <div class="claim">
+      <div class="big">Free to read.<br><em>Built to run.</em></div>
+      <div class="sm">No signup wall<br>Every blueprint deploys</div>
+    </div>
+  </div>
+
+  <div class="shelfbar">
+    <div class="t">The complete shelf, grouped by what you are trying to do</div>
+    <div class="line"></div>
+  </div>
+
+  <div class="index">
+    <div class="cat lead"><div class="n">43</div><div class="t">Agents</div></div>
+    <div class="cat"><div class="n">20</div><div class="t">Building</div></div>
+    <div class="cat"><div class="n">17</div><div class="t">Marketing and sales</div></div>
+    <div class="cat"><div class="n">16</div><div class="t">Productivity</div></div>
+    <div class="cat"><div class="n">15</div><div class="t">Strategy</div></div>
+    <div class="cat"><div class="n">10</div><div class="t">Career</div></div>
+    <div class="cat"><div class="n">9</div><div class="t">Operations</div></div>
+    <div class="cat"><div class="n">8</div><div class="t">Power workflows</div></div>
+    <div class="cat"><div class="n">8</div><div class="t">Design</div></div>
+    <div class="cat"><div class="n">6</div><div class="t">Getting started</div></div>
+    <div class="cat"><div class="n">6</div><div class="t">Life</div></div>
+    <div class="cat"><div class="n">5</div><div class="t">Content</div></div>
+  </div>
+</div>
+
+<div class="ftr">
+  <div class="ftr-l">
+    <img class="ftr-logo" src="__LOGO_URI__" alt="Ultron">
+    <div class="ftr-txt"><strong>ULTRON</strong> &middot; AI OPERATOR FOR FOUNDERS &middot; THE LIBRARY</div>
+  </div>
+  <div class="ftr-url">app.51ultron.com<em>/</em>resources</div>
+</div>
+
+</div></div></body></html>
