@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dark Cyber Carousel</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap');
+  :root {
+    --bg: #0a0a0f;
+    --bg-panel: #111118;
+    --accent: #ff6b00;
+    --accent-dim: #cc5500;
+    --text: #e8e8ec;
+    --text-dim: #888899;
+    --border: #22222c;
+    --badge-pro: #ff6b00;
+    --badge-new: #00d4aa;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.5;
+    padding: 40px;
+    min-height: 100vh;
+  }
+  .carousel-container { max-width: 1080px; margin: 0 auto; }
+  .slide {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 48px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .slide::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+  .slide > * { position: relative; z-index: 1; }
+  .section-flare {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent-dim);
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 24px;
+  }
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 3px;
+    margin-right: 8px;
+  }
+  .badge-pro { background: var(--badge-pro); color: #fff; }
+  .badge-new { background: var(--badge-new); color: #000; }
+  h1, h2, h3 { font-weight: 800; line-height: 1.2; }
+  h1 { font-size: 48px; margin-bottom: 16px; }
+  h2 { font-size: 36px; margin-bottom: 16px; }
+  h3 { font-size: 22px; margin-bottom: 8px; color: var(--accent); }
+  p { font-size: 16px; color: var(--text-dim); margin-bottom: 16px; max-width: 720px; }
+  .columns-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 32px;
+  }
+  .col {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+  }
+  .col-number {
+    font-size: 14px;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .col-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+  .col-body { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 32px 0;
+  }
+  .cta-line {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    margin-top: 24px;
+  }
+  .accent { color: var(--accent); }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  .slide-cover { text-align: center; padding: 80px 48px; }
+  .slide-cover h1 { font-size: 64px; letter-spacing: -0.02em; }
+  .slide-cover .subtitle { font-size: 20px; color: var(--text-dim); margin-top: 16px; }
+  .slide-footer {
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: #555;
+    display: flex;
+    justify-content: space-between;
+  }
+  @media print {
+    body { padding: 0; background: #fff; }
+    .slide { page-break-after: always; margin-bottom: 0; border-radius: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="carousel-container">
+
+  <!-- SLIDE 1: HOOK -->
+  <div class="slide slide-cover">
+    <div class="section-flare">ULTRON.OPUS TEMPLATE</div>
+    <h1>Most founders are still asking <span class="accent">the wrong question.</span></h1>
+    <p class="subtitle">How we built a dark-cyber carousel system from one viral Reel.</p>
+  </div>
+
+  <!-- SLIDE 2: CONTEXT / CREDIBILITY -->
+  <div class="slide">
+    <div class="section-flare">CONTEXT.SIGNAL</div>
+    <span class="badge badge-pro">PRO</span><span class="badge badge-new">NEW</span>
+    <h2>The $1.3B signal most SaaS founders are ignoring.</h2>
+    <p>Higgsfield.ai hit a $1.3 billion valuation. $400M in annualized revenue. 25 million users. The product aggregates 30+ AI video models into one platform.</p>
+    <p>But that is not the interesting part.</p>
+  </div>
+
+  <!-- SLIDE 3: THE PROBLEM -->
+  <div class="slide">
+    <div class="section-flare">PROBLEM.ANALYSIS</div>
+    <h2>Individual AI tools are commoditizing. The edge is in the chain.</h2>
+    <p>Most founders are still asking "which AI tool should I use?" That is the wrong question. The real question is: which combinations create an unfair advantage?</p>
+    <p>The conversation is shifting from tool selection to protocol architecture.</p>
+  </div>
+
+  <!-- SLIDE 4: THE MECHANISM -->
+  <div class="slide">
+    <div class="section-flare">MECHANISM.PROTOCOL</div>
+    <h2>Claude handles the brief. Higgsfield handles the video.</h2>
+    <p>30+ models. One pipeline. No humans in the middle. The protocol layer (MCP) is what makes this possible — not the individual tools.</p>
+    <p>Chain > Stack > Single Tool.</p>
+  </div>
+
+  <!-- SLIDE 5: USE CASES / 3-COLUMN -->
+  <div class="slide">
+    <div class="section-flare">USE_CASES.DEPLOY</div>
+    <h2>Where this combo actually wins.</h2>
+    <div class="columns-3">
+      <div class="col">
+        <div class="col-number">01</div>
+        <div class="col-title">Film Production</div>
+        <div class="col-body">Script-to-storyboard in minutes. Iterate 30 model variations without leaving the interface. Cut production time from weeks to hours.</div>
+      </div>
+      <div class="col">
+        <div class="col-number">02</div>
+        <div class="col-title">Education</div>
+        <div class="col-body">Turn dry course material into explainers. One prompt generates 5 visual teaching styles. A/B test instantly.</div>
+      </div>
+      <div class="col">
+        <div class="col-number">03</div>
+        <div class="col-title">Creators</div>
+        <div class="col-body">Batch 30 platform-native assets in one run. TikTok 9:16, YouTube 16:9, LinkedIn 1:1 — all from the same brief.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: CTA (NO PRICING) -->
+  <div class="slide">
+    <div class="section-flare">ENGAGE.BELOW</div>
+    <h2>Comment <span class="accent">PROTOCOL</span> if you want the build breakdown.</h2>
+    <p class="cta-line">ULTRON <span class="accent">+</span> 51ultron.com</p>
+    <div class="slide-footer">
+      <span>ULTRON // AI GTM OPERATING SYSTEM</span>
+      <span>51ultron.com</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
