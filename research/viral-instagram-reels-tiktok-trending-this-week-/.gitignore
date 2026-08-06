@@ -1,0 +1,7 @@
+# Harvested third-party content — local to this pod, never delivered.
+sources/
+plan.json
+
+# findings.md and MANIFEST.md are the deliverable and DO ship.
+!findings.md
+!MANIFEST.md
