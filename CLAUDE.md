@@ -1175,6 +1175,26 @@ caption legible over the picture (a graded translucency, ~.30 to .46) and keep t
 out of the hook (the chrome fades itself in at `--hookout`). Solid slate does both by destroying
 coverage, which is exactly the failure the retention guard exists to catch.
 
+**A WALL MAY NEVER OUTLIVE ITS HOOK (2026-08-06, after it cost two episodes).** Where a film does
+use an opaque `.hkscrim` - correct on a flat ground, where the wall is the same colour as the
+frame - it must finish clearing no later than `--hookgone`. Episodes 06 to 08 start the scrim
+fade 0.26s after the hook begins leaving and run it 0.46s, so it outlives the hook by a third of
+a second: a black card over a frame with nothing left to hide. On a long-hook film that is
+invisible. On episode 10, whose hook is nine words, it landed exactly on the measured trough.
+**The tell is diagnostic: three structural fixes behind the wall moved the number by not one
+digit.** Nothing behind a wall is measurable, so an unchanged metric after a real change means
+you are fixing the wrong side of it - go and look at what is on top before touching anything
+else. Both episodes were fixed the same way: clear the wall with the hook (`forwards
+var(--hookout)` at the hook's own duration), never after it.
+
+Two more from the same episode, both from inheriting a 42s film's timings into a 30s one, and
+both worth checking on any film built from an older one: **every delay measured from a late beat
+has to be re-derived** - 05's payoff reveal at `b5+4.90s` landed 0.05s before the sheet faded, so
+the payoff line appeared and vanished - and **a film may not end on a held frame**, because the
+last motion finishing before the last frame measures as dead. Give the closing container its own
+slow drift; do not add a second transform animation to an element that already has one, since
+the later declaration replaces it rather than adding to it.
+
 **GRAPHIC VARIETY (operator HARD rule, 2026-08-05):** the visual element must CHANGE every
 3 to 4 slides, and **no two materials in a set may open on the same object**. Scrolling a
 series where every cover is the same dial, every middle slide is the same menu list and every

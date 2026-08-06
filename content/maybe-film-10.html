@@ -285,8 +285,13 @@ body{background:#0C0C0B;display:flex;justify-content:center;align-items:flex-sta
 /* ---------- captions ---------- */
 .hk{position:absolute;top:300px;left:104px;right:152px;bottom:330px;z-index:9;
   display:flex;align-items:center;justify-content:flex-start;}
+/* The wall clears WITH the hook, not after it. 05's rule starts the fade 0.26s after the hook
+   begins leaving and runs 0.46s, so it outlives the hook by 0.34s - a third of a second of
+   black card over a frame that has nothing left to hide. On a 42s film with a long hook that
+   is invisible; here it landed exactly on the measured trough, and three structural fixes
+   behind it moved the number by nothing at all, because nothing behind a wall is measurable. */
 .hkscrim{position:absolute;inset:0;z-index:8;background:var(--base);opacity:1;
-  animation:fadeout .46s ease-in forwards calc(var(--hookout) + 0.26s);}
+  animation:fadeout .38s ease-in forwards var(--hookout);}
 .hk-in{width:100%;transform-origin:left center;}
 .hk-l{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 26px;line-height:.98;}
 .hk-l.I{padding-left:104px;} .hk-l.R{padding-left:186px;}
@@ -427,10 +432,26 @@ body{background:#0C0C0B;display:flex;justify-content:center;align-items:flex-sta
    seconds of empty frame straight after the scroll-stop - measured at 11% of peak ink, under
    the retention floor. Empty clay cards carry their own edges and shadows through that gap. */
 .p1,.p2,.p3,.p4{animation:scin .45s var(--eStd) both calc(var(--hookout) - 0.30s);}
-.p1 .hr,.p1 .tx{animation:rise .45s var(--e) both calc(var(--b2) + 0.35s);}
-.p2 .hr,.p2 .tx{animation:rise .45s var(--e) both calc(var(--b3) + 0.35s);}
-.p3 .hr,.p3 .tx{animation:rise .45s var(--e) both calc(var(--b4) + 0.35s);}
-.p4 .hr,.p4 .tx{animation:rise .45s var(--e) both calc(var(--b5) + 0.35s);}
+/* Furnishing the empty cards was not enough: an unfilled clay card differs from the ground by
+   a few levels and carries almost no edge energy, so the measured trough did not move at all.
+   05 already had the right answer sitting unused - `.ph .tx{opacity:.34}` with an `.on` state
+   nothing ever applies. So the whole board is legible from the seam at .34 and each row
+   brightens to full on its span. The frame is furnished with real words instead of empty
+   slabs, and the reveal survives, because the result column still lands on the beat. */
+@keyframes rowon{to{opacity:1}}
+@keyframes hron{to{color:var(--acc)}}
+.p1 .hr,.p1 .tx{animation:rowon .45s var(--eStd) both calc(var(--b2) + 0.35s);}
+.p2 .hr,.p2 .tx{animation:rowon .45s var(--eStd) both calc(var(--b3) + 0.35s);}
+.p3 .hr,.p3 .tx{animation:rowon .45s var(--eStd) both calc(var(--b4) + 0.35s);}
+.p4 .hr,.p4 .tx{animation:rowon .45s var(--eStd) both calc(var(--b5) + 0.35s);}
+.p1 .hr{animation:rowon .45s var(--eStd) both calc(var(--b2) + 0.35s),
+                 hron .45s var(--eStd) both calc(var(--b2) + 0.35s);}
+.p2 .hr{animation:rowon .45s var(--eStd) both calc(var(--b3) + 0.35s),
+                 hron .45s var(--eStd) both calc(var(--b3) + 0.35s);}
+.p3 .hr{animation:rowon .45s var(--eStd) both calc(var(--b4) + 0.35s),
+                 hron .45s var(--eStd) both calc(var(--b4) + 0.35s);}
+.p4 .hr{animation:rowon .45s var(--eStd) both calc(var(--b5) + 0.35s),
+                 hron .45s var(--eStd) both calc(var(--b5) + 0.35s);}
 .p1::after{animation:runbar 4.0s var(--eStd) both calc(var(--b2) + 0.30s);}
 .p1::before{animation:sweep 1.7s var(--eStd) forwards calc(var(--b2) + 0.50s),
             sweep 1.7s var(--eStd) forwards calc(var(--b2) + 2.30s);}
