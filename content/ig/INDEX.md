@@ -26,7 +26,8 @@ Captions follow CLAUDE.md 15.6: one beat per paragraph, exactly five hashtags.
 
 | Folder | Post | Keyword | Note |
 |---|---|---|---|
-| `film-10-maybe` | ONE STALLED DEAL. ONE YES. | MAYBE | ready, 05's run-board model |
+| `film-11-inbound` | THREE CAME IN. ONE WAS REAL. | INBOUND | ready, run-board model |
+| `film-10-maybe` | ONE STALLED DEAL. ONE YES. | MAYBE | ready, run-board model |
 | `film-09-pitch` | YOU BUILT SOMETHING GOOD | PITCH | ready, slate ground |
 | `film-08-sender` | YOUR AI NOW HAS TO SAY IT IS AN AI | SENDER | ready |
 | `film-07-setup` | THREE THINGS MAKE CLAUDE FEEL SMARTER | SETUP | ready |
@@ -49,6 +50,7 @@ than 15.6. Cut a new one with:
 
 | Folder | Post | Keyword |
 |---|---|---|
+| `li/film-11-inbound` | THREE CAME IN. ONE WAS REAL. | INBOUND |
 | `li/film-10-maybe` | ONE STALLED DEAL. ONE YES. | MAYBE |
 | `li/film-09-pitch` | YOU BUILT SOMETHING GOOD | PITCH |
 | `li/film-08-sender` | YOUR AI NOW HAS TO SAY IT IS AN AI | SENDER |
