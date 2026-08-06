@@ -20,11 +20,13 @@ Captions follow CLAUDE.md 15.6: one beat per paragraph, exactly five hashtags.
 | `09-engineer` | THE JOB THAT DID NOT EXIST TWO YEARS AGO | ENGINEER | 7 |
 | `10-setup` | THREE THINGS MAKE CLAUDE FEEL SMARTER | SETUP | 7 |
 | `11-sender` | YOUR AI NOW HAS TO SAY IT IS AN AI | SENDER | 7 |
+| `12-pitch` | YOU BUILT SOMETHING GOOD | PITCH | 7, photographic |
 
 ## Reels
 
 | Folder | Post | Keyword | Note |
 |---|---|---|---|
+| `film-09-pitch` | YOU BUILT SOMETHING GOOD | PITCH | ready, photographic |
 | `film-08-sender` | YOUR AI NOW HAS TO SAY IT IS AN AI | SENDER | ready |
 | `film-07-setup` | THREE THINGS MAKE CLAUDE FEEL SMARTER | SETUP | ready |
 | `film-06-engineer` | THE JOB THAT DID NOT EXIST TWO YEARS AGO | ENGINEER | ready, light ground |

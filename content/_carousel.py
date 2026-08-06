@@ -210,9 +210,14 @@ def render(html: pathlib.Path, out_dir: pathlib.Path, check_only=False, w=1080, 
               s.querySelectorAll('*').forEach(e => {
                 const cs = getComputedStyle(e);
                 if (cs.overflow === 'visible' && cs.overflowY === 'visible') return;
-                if (e.scrollHeight > e.clientHeight + 3 && e.clientHeight > 30)
-                  out.push({slide: i+1, why: 'box clips its own content', txt: '',
-                            px: e.scrollHeight - e.clientHeight});
+                if (e.scrollHeight <= e.clientHeight + 3 || e.clientHeight <= 30) return;
+                // Only a box that clips WORDS is a defect. A deliberate clip around a
+                // decorative ground - a blurred photograph scaled past the frame so its blur
+                // has something to chew on - is the technique, not a bug, and flagging it
+                // trains the operator to ignore the guard.
+                if (!e.textContent.trim()) return;
+                out.push({slide: i+1, why: 'box clips its own content', txt: '',
+                          px: e.scrollHeight - e.clientHeight});
               });
               s.querySelectorAll('*').forEach(e => {
                 const w = words(e); if (!w) return;
