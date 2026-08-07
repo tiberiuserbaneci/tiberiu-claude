@@ -75,3 +75,41 @@ Sources:
 - https://www.dataslayer.ai/blog/instagram-algorithm-2025-complete-guide-for-marketers
 - https://www.yansmedia.com/blog/kinetic-typography-marketing-videos
 - https://reelwords.ai/blog/animated-captions
+
+---
+
+## 6. R3: the operator's reference was a motion model, not a style
+
+The note on R2 was "doar aici ai facut ceva interesant, in rest dupa hook doar doua cuvinte nu
+ma tin", and the Google clip sent alongside it shows why. That clip has no slides at all. It is
+one dimensional scene - type with real shadows, tiles with wires, a numbered list - and the
+CAMERA travels through it. Nothing ever enters or leaves.
+
+That breaks the trade-off the previous three builds could not:
+
+- a moving camera changes **every pixel**, so motion is high
+- the scene never leaves, so **ink stays high**
+- there are no slides, so there is nothing for it to be a slideshow of
+
+R1 and R2 were both stuck on the wrong side of that because both used a static camera and moved
+the content. Either the frame was dense and inert, or it changed and was empty.
+
+R3 builds the run board ONCE, taller than the frame, on the light editorial ground episode 06
+uses. Rows carry real extrusion and sit at different depths, so the camera parallaxes them. The
+camera is one interpolated transform through nine stops: pushed in on the header, travelling
+down the rows as each value lands, pulling back at the end onto the whole board with the stamp.
+
+| after the plate | reference | R1 | R2 | **R3** |
+|---|---|---|---|---|
+| ink mean | 0.089 | 0.080 | 0.042 | **0.147** |
+| motion mean | 0.130 | 0.034 | 0.112 | **0.159** |
+| dead samples | 57% | 0% | 4% | **0%** |
+
+R3 is the first build that beats the reference on all three at once: 65% denser, 22% more
+motion, and none of the dead frames.
+
+**Geometry, since it is the thing that broke first.** At `perspective:1500px`, a `translateZ(z)`
+scales the plane by `1500/(1500-z)`. The first pass flew a 940px scene at z=320, which is 1.27x
+= 1195px, so it clipped both edges of a 1080 frame, and the Y travel scrolled clean past the
+content. The scene is 880 wide and z caps at 170 - 1.13x = 996px, which fits with margin. Any
+camera path has to be checked against that formula rather than eyeballed.
