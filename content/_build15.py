@@ -117,6 +117,8 @@ SCENE = f"""
     const t3 = OB.slab(13, 30, 5, 16, {PALE_B:#08x}, 0.42);
     t3.position.set(Math.cos(a) * 198, Math.sin(a) * 198, 34);
     t3.rotation.z = a + Math.PI / 2;
+    // 41 objects 13px wide contribute no readable shadow and cost a full pass each
+    t3.castShadow = false;
     ring.add(t3); ticks.push(t3);
   }}
 
