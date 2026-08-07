@@ -655,8 +655,19 @@ def render(html: pathlib.Path, meta: dict, fps: int, out: pathlib.Path,
         vcmd += ["-c:a", "aac", "-b:a", "192k", "-shortest"]
     vcmd.append(str(out))
 
+    # ffmpeg's stderr goes to a FILE, never a pipe.
+    #
+    # With stderr=PIPE nobody drains it during the frame loop, so ffmpeg blocks in
+    # anon_pipe_write the moment its output passes the 64KB pipe buffer, while this process
+    # sits in do_wait expecting ffmpeg to exit. Neither can move. Film 15 deadlocked there
+    # twice at byte-identical output sizes, 45 minutes lost, and it was invisible: the frame
+    # loop had already printed its last progress line, so it looked like a slow render rather
+    # than a stuck one. Shorter films only escaped it by staying under 64KB of x264 chatter.
+    #
+    # A file never blocks a writer, and the failure path can still read the whole thing.
+    errf = tempfile.NamedTemporaryFile(prefix="ffmpeg-", suffix=".log", delete=False)
     proc = subprocess.Popen(vcmd, stdin=subprocess.PIPE, stdout=subprocess.DEVNULL,
-                            stderr=subprocess.PIPE)
+                            stderr=errf)
     import time
     with sync_playwright() as p:
         b, pg, stage = _open_stage(p, html, meta, marks, captions)
@@ -676,8 +687,12 @@ def render(html: pathlib.Path, meta: dict, fps: int, out: pathlib.Path,
         b.close()
 
     proc.stdin.close()
-    if proc.wait() != 0:
-        sys.exit(f"ffmpeg failed:\n{proc.stderr.read().decode()[-2000:]}")
+    rc = proc.wait()
+    errf.close()
+    err = pathlib.Path(errf.name).read_text(errors="replace")
+    pathlib.Path(errf.name).unlink(missing_ok=True)
+    if rc != 0:
+        sys.exit(f"ffmpeg failed:\n{err[-2000:]}")
 
 
 def main() -> None:
