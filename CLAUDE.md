@@ -1195,6 +1195,17 @@ last motion finishing before the last frame measures as dead. Give the closing c
 slow drift; do not add a second transform animation to an element that already has one, since
 the later declaration replaces it rather than adding to it.
 
+**THE ELAPSED TIME MUST BE THE HUMAN'S, NEVER THE MACHINE'S (operator, 2026-08-07, on episode
+12).** "40 min pe un contract e prea mult." The run-board films name a window of time, and that
+window has to be time the FOUNDER would otherwise have spent, not time the machine takes. 48
+hours of outbound is real because replies take days. Seven days on a stalled deal is real
+because people answer when they answer. One hour of inbound is real because the founder was in
+a meeting. Forty minutes to read a contract is not: the machine does it in seconds, so the
+number reads as the product being slow and quietly undersells the whole thing. Before naming
+any duration, ask whose clock it is. If the answer is "the machine's", the number is wrong -
+either count what the founder got back, or do not put a clock on it at all. Episode 12 ships as
+rendered (not re-cut, to spend no voice or credits); this binds everything after it.
+
 **GRAPHIC VARIETY (operator HARD rule, 2026-08-05):** the visual element must CHANGE every
 3 to 4 slides, and **no two materials in a set may open on the same object**. Scrolling a
 series where every cover is the same dial, every middle slide is the same menu list and every
