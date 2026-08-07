@@ -98,3 +98,38 @@ CTA over the same ground with the counter landing on its final number.
 - `content/_reelscan.py` runs on the output before delivery, same as `_retention.py` does for
   the films. The bar to clear is the reference's own live plate: **under 20% dead samples across
   the whole piece**, and zero samples at exactly 0.0000.
+
+---
+
+## 6. Built and measured, 2026-08-07
+
+The plate the operator supplied is 2.87s and only **2.1s of it is live** - the last 0.8s is a
+fade to black baked into the source, ink exactly 0.0000 for three straight samples. So LIVE
+GROUND as specified above cannot be built from this asset: it needs ~14s of footage to keep
+playing underneath. The plate is the hook instead, and the board is everything after it.
+
+That is defensible on the measurement rather than as a fallback. The slideshow died because a
+static slide has exactly zero motion between swipes. The board is never static.
+
+First build still measured 22% dead after the plate - the gaps were the ~0.7s inside each span
+where no row was entering, and the drift alone did not clear the floor. The fix was the thing
+this document already specified and the first build did not implement: **a continuously running
+counter**. An odometer ticking 01 to 48 across the whole segment, plus a progress rule under the
+mast, put motion in every sample regardless of entrances.
+
+| | reference | `reaction-r1.mp4` |
+|---|---|---|
+| plate, dead samples | 3/15 (20%) | 1/10 (10%) |
+| **after the plate** | **23/40 (57%)** | **0/46 (0%)** |
+| whole clip | 26/55 (47%) | 1/56 (2%) |
+| black frames at cuts | 3 | 0 |
+| words after the plate | ~120 | 34 |
+
+Tools: `content/_reelscan.py` measures, `content/_reaction.py` joins. The join trims the plate
+to its measured live end rather than its duration, crossfades instead of cutting, and rides the
+hook card across the seam so one element carries the eye over it.
+
+**Open:** the segment's motion mean is 0.034 against the reference's 0.130. That is not a
+defect - the reference's figure is inflated by full-frame swipe spikes of 0.85 between dead
+stretches, and continuous low-amplitude motion is what holds a viewer. But it is untested on
+this audience, and it is the number to watch if the format underperforms.
