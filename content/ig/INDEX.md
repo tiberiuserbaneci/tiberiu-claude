@@ -26,6 +26,12 @@ Captions follow CLAUDE.md 15.6: one beat per paragraph, exactly five hashtags.
 
 | Folder | Post | Keyword | Note |
 |---|---|---|---|
+| `film-13-week` | CLAUDE TRACKED THE CUSTOMER I HAD ALREADY FORGOTTEN. | WEEK | structural, awaiting VO |
+| `film-14-seats` | CLAUDE SHOWED ME WHY PER-SEAT PRICING COSTS MORE THAN THE SEATS. | SEATS | structural, awaiting VO |
+| `film-15-field` | CLAUDE TRACKED THE COMPETITOR I ONLY FOUND BECAUSE A CUSTOMER NAMED THEM. | FIELD | structural, awaiting VO |
+| `film-16-pipeline` | CLAUDE SHOWED ME THE DEAL THAT WAS GOING BACKWARD BEFORE I NOTICED. | PIPELINE | structural, awaiting VO |
+| `film-17-draft` | CLAUDE FINISHED THE POST I HAD BEEN WRITING FOR THREE WEEKS. | DRAFT | structural, awaiting VO |
+| `film-18-nudge` | CLAUDE SENT THE NUDGE I KEPT PROMISING I WOULD SEND. | NUDGE | structural, awaiting VO |
 | `film-12-contract` | FOURTEEN PAGES. THREE PROBLEMS. | CONTRACT | ready, run-board model |
 | `film-11-inbound` | THREE CAME IN. ONE WAS REAL. | INBOUND | ready, run-board model |
 | `film-10-maybe` | ONE STALLED DEAL. ONE YES. | MAYBE | ready, run-board model |

@@ -1,40 +1,27 @@
-# Film 14 - built on the run-board model
+# Film 14 - built as an argument
 
 Operator sign-off: subject and script approved 2026-08-07. No agent names anywhere
 (CLAUDE.md 21): the material says AI, Claude and Ultron. The numbers stay inside the
 universe the shipped films already established rather than becoming a new claim.
 
-This is the sixth on the run-board model, built from episode 13 so the whole chain of
-fixes carries.
+The previous proposal built this as a run-board with hour labels. Film 10's proposal
+explicitly notes that per-seat pricing is an argument, not a run, and numbering it into
+hours would be the artificial version of the model. This version corrects that.
 
----
-
-## What "the run-board model" is, structurally
-
-Episodes 05, 10, 11, 12 and 13 share one shape:
-
-| Element | Episode 05 |
-|---|---|
-| Hook | `*Claude* turned\|a cold list\|into a *paying*\|customer.` - Claude named, one concrete transformation, four lines, no statistic |
-| Beat 1 | Hook sentence, then the proof clause: "It took 48 hours and I never wrote an email" |
-| Beats 2-5 | **Numbered spans of elapsed time**, each carrying exactly ONE concrete action |
-| Beat 6 | "Comment 48H and I will send you the exact run" |
-| Objects | Clay, one per beat: dial, board, pay, phone |
-| Voice | Operator debrief, past tense, no hedging, and the actor is always **"it"** |
-
-The spine is a **run**: a named window of time, split into numbered phases, one thing per
-phase, ending on the outcome.
+The shape is **argument**: thesis, evidence, mechanism, consequence, resolution, CTA.
+No clock. The elapsed time is the founder's accumulation of frustration, not a numbered
+window.
 
 ---
 
 ## Subject
 
 **Per-seat pricing is a tax on hiring.** A founder pays more every time they add a team
-member, even though the software does not work harder. The real cost is not the dollars; it
-is the hesitation before every hire, the spreadsheet check before every approval, the moment
-a growing company starts optimizing its headcount around its software bill.
+member, even though the software does not work harder. The real cost is not the dollars.
+It is the hesitation before every hire, the spreadsheet check before every approval, the
+moment a growing company starts optimizing its headcount around its software bill.
 
-- **Keyword** SEATS. Free, checked against every shipped film keyword.
+- **Keyword** SEATS. Free, checked against every shipped film keyword and CLAUDE.md 6.
 - **Collision** Clean. No shipped film covers pricing models.
 - **ICP** Direct. A founder at 2 to 10 people is one hire away from a software bill that
 doubles. They do not have a CFO to absorb this; they feel it personally.
@@ -46,8 +33,8 @@ about hiring, and nobody warns you until the invoice arrives."
 
 ## Numbers
 
-Same universe as the shipped films. One team, one hire, one invoice that grew without
-warning.
+Same universe as the shipped films. One hire, three bills that went up, and the founder
+questioning whether they could afford the next one.
 
 Nothing here claims a specific dollar amount for any competitor. The outcome the film claims
 is the one the product performs: one flat price, no seat count, no invoice surprise.
@@ -56,24 +43,24 @@ is the one the product performs: one flat price, no seat count, no invoice surpr
 
 ## Script
 
-**Hook** (four lines, the run shape)
+**Hook** (four lines, the argument shape)
 
     *Claude* showed me|why per-seat|pricing costs more|than the *seats*.
 
 **Beat 1** - Claude showed me why per-seat pricing costs more than the seats. It took one
 hire and the bill went up before the email address was even set up.
 
-**Beat 2** - Hour one. The invoice arrives and the line item says seats, not use. You are
-not paying for what the software does. You are paying for who sits near it.
+**Beat 2** - The invoice arrives and the line item says seats, not use. You are not paying
+for what the software does. You are paying for who sits near it.
 
-**Beat 3** - Hour three. The founder starts a spreadsheet titled "who actually needs a
-license" and realises the question itself is the cost.
+**Beat 3** - The spreadsheet starts. Someone has to decide who actually needs a license,
+and every seat feels like a vote on whether a team member is essential.
 
-**Beat 4** - Hour six. The team lead says they want to try one more tool, and the founder
-hears the multiplied number before hearing the idea.
+**Beat 4** - One more tool request, and the founder hears the multiplied number before
+the idea. The conversation is already about seats before it is about value.
 
-**Beat 5** - Hour twelve. The flat-price alternative exists, and the only thing keeping the
-per-seat bill alive is the migration nobody has time for.
+**Beat 5** - The flat-price alternative exists, and the only thing keeping the per-seat bill
+alive is the migration nobody has time for.
 
 **Beat 6** - Comment SEATS and I will send you the exact run.
 

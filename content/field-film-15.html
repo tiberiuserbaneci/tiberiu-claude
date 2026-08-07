@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
-<title>ULTRON STACK 14 - SEATS</title>
+<title>ULTRON STACK 15 - FIELD</title>
 <link rel="stylesheet" href="assets/fonts.css">
 <style>
 /* FILM-META {
@@ -7,38 +7,39 @@
  "w": 1080,
  "h": 1920,
  "fps": 30,
- "hook": "*Claude* showed me|why per-seat|pricing costs more|than the *seats*.",
+ "hook": "*Claude* tracked|the competitor|I only found|because a *customer* named them.",
  "hook_hold": 0.45,
  "accent": [
-  "per-seat",
-  "hire",
-  "invoice",
-  "seats",
-  "spreadsheet",
-  "multiplied",
-  "migration",
-  "flat"
+  "customer",
+  "competitor",
+  "feature",
+  "research",
+  "word",
+  "flags",
+  "response",
+  "line"
  ],
  "beats": [
-  {"t":0,"vo":"Claude showed me why per-seat pricing costs more than the seats. It took one hire and the bill went up before the email address was even set up."},
-  {"t":6,"vo":"The invoice arrives and the line item says seats, not use. You are not paying for what the software does. You are paying for who sits near it."},
-  {"t":12,"vo":"The spreadsheet starts. Someone has to decide who actually needs a license, and every seat feels like a vote on whether a team member is essential."},
-  {"t":18,"vo":"One more tool request, and the founder hears the multiplied number before the idea. The conversation is already about seats before it is about value."},
-  {"t":24,"vo":"The flat-price alternative exists, and the only thing keeping the per-seat bill alive is the migration nobody has time for."},
-  {"t":30,"vo":"Comment SEATS and I will send you the exact run."}
+  {"t":0,"vo":"Claude tracked the competitor I only found because a customer named them. One call and my entire competitive map changed."},
+  {"t":6,"vo":"What the customer described: a feature I had never seen, because I had been building what I thought they wanted."},
+  {"t":12,"vo":"My research never found them because they do not market. They win by word of mouth, which is the exact signal that never shows up on a search."},
+  {"t":18,"vo":"The system flags these mentions from every customer conversation, before they become the reason you lose the next deal."},
+  {"t":24,"vo":"It drafts the response in my own words: what we do, what they do, and where the line is."},
+  {"t":30,"vo":"Comment FIELD and I will send you the exact run."}
  ]
 } */
 
-/* ULTRON STACK 14 - SEATS. Sixth on the argument model, built from episode 10 so the
-   shape matches what an argument looks like: a single scene where evidence accumulates,
-   rather than a run-board with rows that brighten.
+/* ULTRON STACK 15 - FIELD. Seventh on the argument model, built from episode 14 so the
+   shape carries. Opens on two overlapping message bubbles: the customer's message in
+   accent, naming the competitor. 05 opens on dial, 10 on stack, 11 on fan, 12 on doc,
+   13 on profile, 14 on invoice. CLAUDE.md 30 forbids a seventh opening on any of them.
 
-   The film opens on the invoice itself: a paper rectangle with a seat line item.
-   05 opens on dial, 10 on stack, 11 on fan, 12 on doc, 13 on profile.
-   CLAUDE.md 30 forbids a sixth opening on any of them.
+   The story is competitive intelligence from customer conversations. The competitor that
+   wins by word of mouth is the one Google search never surfaces. The film is about the
+   signal the founder would miss without the system watching.
 
-   HONESTY: it does not claim flat pricing is always better. It is better for teams under
-ten, which is the ICP. */
+   HONESTY: it does not track every competitor in the market. It flags mentions from
+customer conversations and drafts the response. The founder reviews and uses it. */
 
 :root{
   --base:#1E1E1D; --deep:#2B2B29; --ink:#FAFAF7; --muted:rgba(250,250,247,.50);
@@ -90,7 +91,6 @@ body{background:#0C0C0B;display:flex;justify-content:center;align-items:flex-sta
 @keyframes fadeout{from{opacity:1}to{opacity:0}}
 @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @keyframes pop{from{opacity:0;transform:scale(.64)}to{opacity:1;transform:scale(1)}}
-@keyframes fill{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
 @keyframes drift{from{transform:scale(1) translateY(4px)}to{transform:scale(1.018) translateY(-4px)}}
 @keyframes glowtx{0%{text-shadow:0 0 0 rgba(210,100,70,0)}
                   45%{text-shadow:0 14px 44px rgba(210,100,70,.55)}
@@ -99,7 +99,6 @@ body{background:#0C0C0B;display:flex;justify-content:center;align-items:flex-sta
                 42%{box-shadow:0 0 60px rgba(204,120,92,.55),14px 14px 30px rgba(0,0,0,.55)}
                 100%{box-shadow:14px 14px 30px rgba(0,0,0,.55)}}
 
-/* ---------- captions ---------- */
 .hk{position:absolute;top:300px;left:104px;right:152px;bottom:330px;z-index:9;
   display:flex;align-items:center;justify-content:flex-start;}
 .hkscrim{position:absolute;inset:0;z-index:8;background:var(--base);opacity:1;
@@ -107,15 +106,12 @@ body{background:#0C0C0B;display:flex;justify-content:center;align-items:flex-sta
 
 .hk-in{width:100%;transform-origin:left center;}
 .hk-l{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 26px;line-height:.98;}
-.hk-l.I{padding-left:104px;} .hk-l.R{padding-left:186px;}
 .hw{position:relative;display:inline-block;opacity:0;color:var(--ink);
   letter-spacing:-3px;text-transform:uppercase;font-weight:800;font-size:120px;
   font-family:'Oswald',sans-serif;}
 .hw.fn{font-family:'Plus Jakarta Sans',sans-serif;font-style:normal;font-size:70px;
   font-weight:600;letter-spacing:-1px;color:var(--muted);text-transform:lowercase;}
-.hw.mid{font-size:98px;font-weight:600;letter-spacing:-1.5px;}
 .hw.key{font-size:134px;font-weight:700;letter-spacing:-2px;}
-.hw.hero{font-size:134px;font-weight:700;letter-spacing:-2px;}
 .hw.a{color:#FFF3EA;padding:0 20px;border-radius:14px;
   background-image:linear-gradient(158deg,var(--accl),var(--accd));
   background-repeat:no-repeat;background-position:left center;background-size:0% 86%;
@@ -123,72 +119,55 @@ body{background:#0C0C0B;display:flex;justify-content:center;align-items:flex-sta
 @keyframes hkw{from{opacity:0;transform:translateY(44px) scale(.88)}to{opacity:1;transform:none}}
 @keyframes hkbar{from{background-size:0% 86%}to{background-size:100% 86%}}
 @keyframes hkpush{from{transform:scale(1)}to{transform:scale(1.026)}}
-@keyframes hkout{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(1.05)}}
 
 .sb{position:absolute;inset:0;z-index:8;
   text-shadow:0 2px 20px rgba(12,12,11,.96),0 0 44px rgba(12,12,11,.92);}
-.ck{position:absolute;left:0;right:0;height:300px;opacity:0;display:flex;
-  flex-direction:column;justify-content:center;gap:2px;}
-.ck.top{top:0;} .ck.bot{bottom:0;}
-.cl{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 18px;line-height:.96;}
-.cl.L{padding-left:0;} .cl.I{padding-left:104px;} .cl.R{padding-left:208px;}
-.sw{position:relative;display:inline-block;opacity:0;color:var(--ink);
-  font-weight:800;font-size:56px;letter-spacing:-1.4px;}
-.sw.fn{font-size:46px;font-weight:600;letter-spacing:-.5px;color:var(--muted);}
-.sw.mid{font-size:56px;font-weight:700;letter-spacing:-1.2px;}
-.sw.key{font-size:80px;font-weight:800;letter-spacing:-2px;}
-.sw.hero{font-family:'Oswald',sans-serif;font-size:112px;font-weight:600;letter-spacing:-1px;
-  text-transform:uppercase;color:var(--acc);}
-@keyframes kRise{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:none}}
-@keyframes sbw{from{opacity:0;transform:translateY(18px) scale(.93)}to{opacity:1;transform:none}}
 
-/* ---------- THE STAGE: evidence accumulates ---------- */
+/* ---------- THE STAGE ---------- */
 .scene{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;gap:22px;
   padding-bottom:358px;}
 
-/* The invoice, the head object */
-.invoice{flex-shrink:0;border-radius:26px;padding:28px 34px;position:relative;
-  background:#302F2C;box-shadow:0 18px 44px rgba(0,0,0,.52);
-  display:flex;flex-direction:column;gap:12px;opacity:0;}
-.invoice .hdr{display:flex;justify-content:space-between;align-items:baseline;}
-.invoice .hdr b{font-size:26px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--muted);}
-.invoice .hdr .tot{font-family:'Oswald',sans-serif;font-size:46px;font-weight:600;color:var(--acc);}
-.invoice .ln{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;
-  border-bottom:1px solid rgba(250,250,247,.10);}
-.invoice .ln b{font-size:22px;font-weight:700;color:var(--ink);}
-.invoice .ln i{font-size:19px;font-style:normal;color:var(--muted);}
-.invoice .seat-line{display:flex;justify-content:space-between;align-items:baseline;
-  padding:14px 0;border-bottom:2px solid var(--acc);}
-.invoice .seat-line b{font-size:28px;font-weight:800;color:var(--ink);}
-.invoice .seat-line em{font-family:'Oswald',sans-serif;font-size:42px;font-weight:600;
-  font-style:normal;color:var(--acc);}
+/* Head object: two overlapping message bubbles */
+.bubbles{flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:10px;
+  opacity:0;position:relative;padding-right:20px;}
+.bubbles .mine{align-self:flex-start;border-radius:18px 18px 18px 4px;padding:16px 22px;
+  background:var(--deep);max-width:78%;font-size:21px;font-weight:600;color:var(--ink);
+  line-height:1.35;}
+.bubbles .theirs{align-self:flex-end;border-radius:18px 18px 4px 18px;padding:16px 22px;
+  background:linear-gradient(158deg,var(--accl),var(--accd));max-width:78%;
+  font-size:21px;font-weight:700;color:#fff;line-height:1.35;
+  box-shadow:0 12px 30px rgba(168,81,47,.35);}
+.bubbles .theirs b{font-weight:800;}
 
-/* The board: names and checkboxes */
-.board{flex:1;min-height:0;border-radius:26px;padding:22px 30px;display:flex;
+/* The gap: what they have that we do not */
+.gap{flex-shrink:0;border-radius:26px;padding:28px 34px;display:flex;align-items:center;
+  gap:24px;opacity:0;background:#302F2C;box-shadow:0 18px 44px rgba(0,0,0,.52);}
+.gap .icon{width:56px;height:56px;border-radius:14px;background:linear-gradient(158deg,var(--accl),var(--accd));
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.gap .icon svg{width:28px;height:28px;}
+.gap .txt{flex:1;}
+.gap .txt b{display:block;font-size:26px;font-weight:800;color:var(--ink);line-height:1.1;}
+.gap .txt i{display:block;font-size:19px;font-style:normal;color:var(--muted);margin-top:6px;}
+
+/* The signal: flags from conversation */
+.signal{flex:1;min-height:0;border-radius:26px;padding:22px 30px;display:flex;
   flex-direction:column;gap:14px;opacity:0;position:relative;overflow:hidden;}
-.board .hdr{font-size:22px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
+.signal .hdr{font-size:22px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
   color:var(--muted);padding-bottom:6px;border-bottom:1px solid rgba(250,250,247,.10);}
-.board .row{display:flex;align-items:center;gap:14px;opacity:0;}
-.board .row .chk{width:28px;height:28px;border-radius:8px;border:2px solid var(--muted);
-  flex-shrink:0;}
-.board .row .chk.on{background:var(--acc);border-color:var(--acc);
-  box-shadow:0 0 12px rgba(204,120,92,.4);}
-.board .row .name{font-size:24px;font-weight:700;color:var(--ink);}
-.board .row .tag{margin-left:auto;font-size:17px;font-weight:700;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--muted);}
+.signal .row{display:flex;align-items:center;gap:14px;opacity:0;}
+.signal .row .flag{width:12px;height:12px;border-radius:50%;background:var(--acc);
+  flex-shrink:0;box-shadow:0 0 8px rgba(204,120,92,.5);}
+.signal .row .txt{font-size:22px;font-weight:700;color:var(--ink);}
 
-/* The calc: multiplied number */
-.calc{flex-shrink:0;border-radius:26px;padding:28px 34px;display:flex;align-items:center;
-  gap:26px;opacity:0;}
-.calc .lab{font-size:22px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
+/* The response: drafted positioning */
+.response{flex-shrink:0;border-radius:26px;padding:28px 34px;display:flex;
+  flex-direction:column;gap:12px;opacity:0;}
+.response .hdr{font-size:19px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
   color:var(--muted);}
-.calc .nums{display:flex;align-items:baseline;gap:12px;margin-left:auto;}
-.calc .nums b{font-family:'Oswald',sans-serif;font-size:52px;font-weight:600;color:var(--muted);}
-.calc .nums b.on{color:var(--acc);}
-.calc .nums i{font-size:28px;font-style:normal;color:var(--muted);}
+.response .ln{font-size:24px;font-weight:700;color:var(--ink);line-height:1.3;}
+.response .ln b{color:var(--acc);}
 
-/* The bridge: flat vs per-seat */
+/* The bridge */
 .bridge{flex-shrink:0;min-height:96px;border-radius:26px;padding:18px 28px;display:flex;
   align-items:center;gap:18px;opacity:0;}
 .bridge>*{opacity:0;}
@@ -211,26 +190,23 @@ body{background:#0C0C0B;display:flex;justify-content:center;align-items:flex-sta
   text-transform:uppercase;color:var(--muted);opacity:0;}
 
 /* ---------- the clock ---------- */
-.invoice{animation:pop .55s var(--eEmph) both calc(var(--b2) - 0.55s);}
-.invoice .seat-line b{animation:glowtx 1.0s ease-in-out both calc(var(--b2) + 1.0s);}
-.invoice .seat-line em{animation:glowtx 1.0s ease-in-out both calc(var(--b2) + 1.2s);}
+.bubbles{animation:pop .55s var(--eEmph) both calc(var(--b2) - 0.55s);}
 
-.board{animation:rise .55s var(--eEmph) both calc(var(--b3) - 0.55s);}
-.board .r1{animation:rise .5s var(--e) both calc(var(--b3) + 0.35s);}
-.board .r2{animation:rise .5s var(--e) both calc(var(--b3) + 0.75s);}
-.board .r3{animation:rise .5s var(--e) both calc(var(--b3) + 1.15s);}
-.board .r4{animation:rise .5s var(--e) both calc(var(--b3) + 1.55s);}
+.gap{animation:rise .55s var(--eEmph) both calc(var(--b3) - 0.55s);}
+.gap .icon{animation:pop .45s var(--eEmph) both calc(var(--b3) + 0.40s);}
 
-.calc{animation:rise .55s var(--eEmph) both calc(var(--b4) - 0.55s);}
-.calc .n1{animation:pop .45s var(--eEmph) both calc(var(--b4) + 0.40s);}
-.calc .n2{animation:pop .45s var(--eEmph) both calc(var(--b4) + 1.10s);}
-.calc .n3{animation:pop .45s var(--eEmph) both calc(var(--b4) + 1.80s);}
+.signal{animation:rise .55s var(--eEmph) both calc(var(--b4) - 0.55s);}
+.signal .r1{animation:rise .5s var(--e) both calc(var(--b4) + 0.35s);}
+.signal .r2{animation:rise .5s var(--e) both calc(var(--b4) + 0.75s);}
+.signal .r3{animation:rise .5s var(--e) both calc(var(--b4) + 1.15s);}
+
+.response{animation:rise .55s var(--eEmph) both calc(var(--b5) - 0.55s);}
+.response .ln{animation:pop .45s var(--eEmph) both calc(var(--b5) + 0.40s);}
 
 .bridge{animation:scin .45s var(--eStd) both calc(var(--hookout) - 0.40s),
      lift 1.1s var(--eStd) forwards calc(var(--b5) + 2.50s);}
 .bridge>*{animation:rise .5s var(--e) both calc(var(--b5) + 2.50s);}
 
-/* the scene leaves before the end card arrives */
 .scene{animation:drift 42s linear both,
        fadeout .46s var(--eExit) forwards calc(var(--b6) - 0.34s);}
 
@@ -249,40 +225,43 @@ body{background:#0C0C0B;display:flex;justify-content:center;align-items:flex-sta
   <div class="hkscrim"></div>
 
   <div class="safe">
-    <div class="mast"><span>ULTRON STACK &middot; 14</span><span class="tag">PER SEAT</span></div>
+    <div class="mast"><span>ULTRON STACK &middot; 15</span><span class="tag">FIELD</span></div>
 
     <div class="stage">
       <div class="sb" id="capband"></div>
 
       <div class="scene">
-        <div class="invoice">
-          <div class="hdr"><b>Invoice</b><span class="tot">PER SEAT</span></div>
-          <div class="ln"><b>Usage</b><i>unmetered</i></div>
-          <div class="seat-line"><b>SEATS</b><em>3 <span style="font-size:28px;">&rarr;</span> 4</em></div>
+        <div class="bubbles">
+          <div class="mine">Have you compared us to anyone else?</div>
+          <div class="theirs">We are also looking at <b>THEM</b>. They do something with <b>AUTO-ROUTING</b> we have not seen here.</div>
         </div>
 
-        <div class="board clay-in">
-          <div class="hdr">Who needs a license</div>
-          <div class="row r1"><div class="chk on"></div><span class="name">Designer</span><span class="tag">essential</span></div>
-          <div class="row r2"><div class="chk"></div><span class="name">Growth</span><span class="tag">maybe</span></div>
-          <div class="row r3"><div class="chk"></div><span class="name">Ops</span><span class="tag">maybe</span></div>
-          <div class="row r4"><div class="chk"></div><span class="name">Intern</span><span class="tag">no</span></div>
-        </div>
-
-        <div class="calc clay-in">
-          <span class="lab">New tool request</span>
-          <div class="nums">
-            <b class="n1">x3</b><i>&rarr;</i><b class="n2">x5</b><i>&rarr;</i><b class="n3 on">x8</b>
+        <div class="gap">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
           </div>
+          <div class="txt"><b>A feature I had never seen</b><i>because I had been building what I thought they wanted</i></div>
         </div>
 
-        <div class="bridge clay-acc"><span class="ln">The alternative</span><span class="val">FLAT &middot; NOT PER SEAT</span></div>
+        <div class="signal clay-in">
+          <div class="hdr">Conversation flags</div>
+          <div class="row r1"><div class="flag"></div><span class="txt">Customer named competitor</span></div>
+          <div class="row r2"><div class="flag"></div><span class="txt">Feature gap mentioned</span></div>
+          <div class="row r3"><div class="flag"></div><span class="txt">Positioning risk flagged</span></div>
+        </div>
+
+        <div class="response clay-in">
+          <div class="hdr">Drafted response</div>
+          <div class="ln">We handle the routing <b>differently</b> through intent, not rules.</div>
+        </div>
+
+        <div class="bridge clay-acc"><span class="ln">One call</span><span class="val">MAP CHANGED</span></div>
       </div>
 
       <div class="cta">
         <div class="k">COMMENT</div>
         <div class="card clay-acc">
-          <div class="w">SEATS</div>
+          <div class="w">FIELD</div>
           <div class="rule"></div>
           <div class="s">and I will send you the exact run</div>
         </div>
