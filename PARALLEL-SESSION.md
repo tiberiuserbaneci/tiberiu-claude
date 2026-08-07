@@ -62,8 +62,8 @@ painful because both sessions read it as memory.
 
 ## 3. GIT
 
-Ask the operator to confirm your branch name before your first push. Suggested:
-`claude/parallel-films-2` off the same base as `claude/educational-materials-voice-gml260`.
+**Your branch is `claude/parallel-films-2`** - authorised by the operator 2026-08-07. Cut it
+off the same base as `claude/educational-materials-voice-gml260`. Push only there.
 
 - Never push to the other session's branch.
 - Never `git add -A` from the repo root. Stage **your own paths explicitly**, or you will
