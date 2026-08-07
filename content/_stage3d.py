@@ -99,6 +99,27 @@ window.addEventListener('three-ready', () => {
   key.shadow.bias = -0.0012;
   scene.add(key); scene.add(key.target);
 
+  // ---- the object library. Every form is real geometry, so it takes the same light and
+  // casts the same shadow; none of them is a shadow trick.
+  function mat(color, rough) {
+    return new T.MeshStandardMaterial({color: color, roughness: rough, metalness: 0.02});
+  }
+  function mesh(g, color, rough) {
+    const m = new T.Mesh(g, mat(color, rough));
+    m.castShadow = true; m.receiveShadow = true; return m;
+  }
+  const OB = {
+    slab:   (w, h, r, d, c, ro) => slab(w, h, r, d, c, ro),
+    ring:   (R, tube, c, ro) => mesh(new T.TorusGeometry(R, tube, 24, 96), c, ro),
+    disc:   (R, d, c, ro) => mesh(new T.CylinderGeometry(R, R, d, 72), c, ro),
+    ball:   (R, c, ro) => mesh(new T.SphereGeometry(R, 48, 32), c, ro),
+    pill:   (R, len, c, ro) => mesh(new T.CapsuleGeometry(R, len, 16, 32), c, ro),
+    prism:  (R, d, sides, c, ro) => mesh(new T.CylinderGeometry(R, R, d, sides), c, ro),
+    cone:   (R, hgt, c, ro) => mesh(new T.ConeGeometry(R, hgt, 48), c, ro),
+    torusK: (R, tube, c, ro) => mesh(new T.TorusKnotGeometry(R, tube, 160, 20), c, ro),
+  };
+  window.__OB = OB; window.__T = T; window.__scene = scene;
+
   const cards = [];
   %(CARDS)s
 
