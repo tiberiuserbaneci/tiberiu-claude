@@ -615,6 +615,11 @@ def seek(pg, t_s: float) -> None:
             gsap.globalTimeline.pause();
             gsap.globalTimeline.time(t / 1000, false);
         }
+        // A WebGL scene has no clock of its own to pause - it only draws when told to. A page
+        // using three.js exposes window.__seek3d(seconds), which places its lights and camera
+        // for that moment and calls renderer.render() once. Without this the canvas holds
+        // whatever frame it last drew while the CSS and GSAP layers move underneath it.
+        if (typeof window.__seek3d === 'function') window.__seek3d(t / 1000);
     }""", t_s * 1000.0)
 
 
