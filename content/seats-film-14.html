@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
-<title>ULTRON STACK 13 - WEEK</title>
+<title>ULTRON STACK 14 - SEATS</title>
 <link rel="stylesheet" href="assets/fonts.css">
 <style>
 /* FILM-META {
@@ -7,45 +7,41 @@
  "w": 1080,
  "h": 1920,
  "fps": 30,
- "hook": "*Claude* tracked|the customer|I had already|*forgotten*.",
+ "hook": "*Claude* showed me|why per-seat|pricing costs more|than the *seats*.",
  "hook_hold": 0.45,
  "accent": [
-  "seven",
-  "forgotten",
-  "checklist",
-  "behind",
-  "signal",
-  "noticed",
-  "healthy",
-  "send"
+  "per-seat",
+  "hire",
+  "invoice",
+  "seats",
+  "spreadsheet",
+  "multiplied",
+  "migration",
+  "flat"
  ],
  "beats": [
-  {"t":0,"vo":"Claude tracked the customer I had already forgotten. It took seven days and I did not open the dashboard once."},
-  {"t":6,"vo":"Day one. It turns the deal notes into an onboarding checklist, so nothing I promised gets dropped."},
-  {"t":12,"vo":"Days two and three. It watches engagement against that checklist, and flags the one account that is already behind."},
-  {"t":18,"vo":"Days four and five. It drafts the check-in from the signal, in my own words, so I sound like I noticed."},
-  {"t":24,"vo":"Days six and seven. The week-end summary arrives with who is healthy, who is not, and what I send next."},
-  {"t":30,"vo":"Comment WEEK and I will send you the exact run."}
+  {"t":0,"vo":"Claude showed me why per-seat pricing costs more than the seats. It took one hire and the bill went up before the email address was even set up."},
+  {"t":6,"vo":"Hour one. The invoice arrives and the line item says seats, not use. You are not paying for what the software does. You are paying for who sits near it."},
+  {"t":12,"vo":"Hour three. The founder starts a spreadsheet titled who actually needs a license and realises the question itself is the cost."},
+  {"t":18,"vo":"Hour six. The team lead says they want to try one more tool, and the founder hears the multiplied number before hearing the idea."},
+  {"t":24,"vo":"Hour twelve. The flat-price alternative exists, and the only thing keeping the per-seat bill alive is the migration nobody has time for."},
+  {"t":30,"vo":"Comment SEATS and I will send you the exact run."}
  ]
 } */
 
-/* ULTRON STACK 13 - WEEK. Fifth on the run-board model, built from episode 12 so the
-   whole chain of fixes carries. Opens on the customer profile itself: a card with a
-   silhouette, a name line, and a week badge. 05 opens on a dial, 10 a stack, 11 a fan,
-   12 a document; CLAUDE.md 30 forbids a fifth opening on any of them.
+/* ULTRON STACK 14 - SEATS. Sixth on the run-board model, built from episode 13 so the
+   whole chain of fixes carries. Opens on the receipt itself: a paper strip with line items
+   and a seat count. 05 opens on a dial, 10 a stack, 11 a fan, 12 a document, 13 a profile;
+   CLAUDE.md 30 forbids a sixth opening on any of them.
 
-   The run is a week split into four spans, one per beat. The story is post-sale: the
-   deal is closed and the founder has already moved on. The film is about what happens
-   to that customer in the seven days after they pay, and what the founder would miss
-   without the system watching.
+   The run is a twelve hour window split into four phases, one per beat. The story is pricing:
+   the hidden cost of per-seat billing is not the dollars but the hesitation before every hire.
 
-   Head object: an avatar card, not a document or dial. The board is four spans with
-   DAY labels instead of MIN, and each span carries a different result shape so the
-   frame does not repeat its own grammar.
+   Head object: a receipt, not a dial, stack, fan, document or profile. The board is four
+   hour spans with numbered labels instead of DAY, and each span carries a different cost.
 
-   HONESTY: it builds the checklist, watches engagement, flags the drift, drafts the
-   check-in, and reports the summary. The founder sends. It does not replace the
-   founder's judgement and it does not handle onboarding for the customer. */
+   HONESTY: it does not claim flat pricing is always better. It is better for teams under
+ten, which is the ICP. */
 
 :root{
   --base:#1E1E1D; --deep:#2B2B29; --ink:#FAFAF7; --muted:rgba(250,250,247,.50);
@@ -156,20 +152,19 @@ body{background:#0C0C0B;display:flex;justify-content:center;align-items:flex-sta
 @keyframes sbs{from{color:var(--acc)}to{color:var(--ink)}}
 @keyframes ckout{from{opacity:1}to{opacity:0}}
 
-/* ---------- THE TRACK: four day spans, furnished from the seam ---------- */
+/* ---------- THE TRACK: four hour spans, furnished from the seam ---------- */
 .sheet{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;gap:18px;
   padding-bottom:358px;}
 .header{flex-shrink:0;display:flex;align-items:center;gap:24px;}
-/* Head object: the customer card. Not a dial, stack, fan or document. */
-.avatar{flex-shrink:0;position:relative;width:170px;height:170px;border-radius:22px;
+/* Head object: the receipt. Not a dial, stack, fan, doc or profile. */
+.receipt{flex-shrink:0;position:relative;width:170px;height:170px;border-radius:22px;
   background:#302F2C;box-shadow:0 16px 38px rgba(0,0,0,.46);
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;}
-.avatar .sil{width:64px;height:64px;border-radius:50%;
-  background:linear-gradient(158deg,var(--accl),var(--accd));}
-.avatar .name{font-size:18px;font-weight:700;color:var(--muted);text-transform:uppercase;
-  letter-spacing:.14em;}
-.avatar .wk{font-family:'Oswald',sans-serif;font-size:28px;font-weight:600;color:var(--acc);}
-.avatar .badge{position:absolute;right:-8px;bottom:-8px;width:58px;height:58px;border-radius:16px;
+.receipt .tot{font-family:'Oswald',sans-serif;font-size:38px;font-weight:600;color:var(--acc);}
+.receipt .ln{font-size:17px;font-weight:700;color:var(--muted);text-transform:uppercase;
+  letter-spacing:.12em;}
+.receipt .seat{font-family:'Oswald',sans-serif;font-size:22px;font-weight:600;color:var(--ink);}
+.receipt .badge{position:absolute;right:-8px;bottom:-8px;width:58px;height:58px;border-radius:16px;
   background:linear-gradient(158deg,var(--accl),var(--accd));
   box-shadow:0 12px 30px rgba(168,81,47,.5);
   display:flex;align-items:center;justify-content:center;
@@ -180,33 +175,33 @@ body{background:#0C0C0B;display:flex;justify-content:center;align-items:flex-sta
 .topic i{display:block;font-size:22px;font-style:normal;font-weight:700;letter-spacing:.16em;
   text-transform:uppercase;color:var(--muted);margin-top:8px;}
 
-.week{flex:1;min-height:0;display:flex;flex-direction:column;gap:16px;}
-.day{flex:1;border-radius:26px;padding:0 26px;display:flex;align-items:center;gap:22px;
+.hours{flex:1;min-height:0;display:flex;flex-direction:column;gap:16px;}
+.hour{flex:1;border-radius:26px;padding:0 26px;display:flex;align-items:center;gap:22px;
   position:relative;overflow:hidden;}
-.day .span{font-family:'Oswald',sans-serif;font-size:31px;font-weight:600;color:var(--muted);
+.hour .span{font-family:'Oswald',sans-serif;font-size:31px;font-weight:600;color:var(--muted);
   width:130px;flex-shrink:0;line-height:1.05;}
-.day .task{flex:1;}
-.day .task b{display:block;font-size:33px;font-weight:800;letter-spacing:-.6px;line-height:1.06;}
-.day .task i{display:block;font-size:22px;font-style:normal;color:var(--muted);margin-top:6px;
+.hour .task{flex:1;}
+.hour .task b{display:block;font-size:33px;font-weight:800;letter-spacing:-.6px;line-height:1.06;}
+.hour .task i{display:block;font-size:22px;font-style:normal;color:var(--muted);margin-top:6px;
   line-height:1.2;}
-.day .tally{margin-left:auto;flex-shrink:0;text-align:right;opacity:0;}
-.day .tally b{display:block;font-family:'Oswald',sans-serif;font-size:46px;font-weight:600;
+.hour .cost{margin-left:auto;flex-shrink:0;text-align:right;opacity:0;}
+.hour .cost b{display:block;font-family:'Oswald',sans-serif;font-size:46px;font-weight:600;
   color:var(--acc);line-height:1;}
-.day .tally i{display:block;font-size:19px;font-style:normal;font-weight:700;letter-spacing:.14em;
+.hour .cost i{display:block;font-size:19px;font-style:normal;font-weight:700;letter-spacing:.14em;
   text-transform:uppercase;color:var(--muted);margin-top:5px;}
-.day::before{content:'';position:absolute;inset:0;pointer-events:none;border-radius:26px;
+.hour::before{content:'';position:absolute;inset:0;pointer-events:none;border-radius:26px;
   opacity:0;background:linear-gradient(90deg,transparent 0%,rgba(210,100,70,.10) 40%,
     rgba(210,100,70,.22) 50%,rgba(210,100,70,.10) 60%,transparent 100%);
   background-size:52% 100%;background-repeat:no-repeat;background-position:-56% 0;}
 @keyframes sweep{0%{background-position:-56% 0;opacity:0}
                  16%{opacity:1} 84%{opacity:1}
                  100%{background-position:156% 0;opacity:0}}
-.day::after{content:'';position:absolute;left:0;bottom:0;height:9px;width:0;
+.hour::after{content:'';position:absolute;left:0;bottom:0;height:9px;width:0;
   background:linear-gradient(90deg,var(--accl),var(--acc));border-radius:0 4px 4px 0;}
 @keyframes runline{from{width:0}to{width:100%}}
-.day .task,.day .span{opacity:.34;}
-.day.on .task,.day.on .span{opacity:1;}
-.day.on .span{color:var(--acc);}
+.hour .task,.hour .span{opacity:.34;}
+.hour.on .task,.hour.on .span{opacity:1;}
+.hour.on .span{color:var(--acc);}
 
 .end{flex-shrink:0;min-height:108px;border-radius:26px;padding:18px 28px;display:flex;
   align-items:center;gap:18px;}
@@ -230,38 +225,38 @@ body{background:#0C0C0B;display:flex;justify-content:center;align-items:flex-sta
   text-transform:uppercase;color:var(--muted);opacity:0;}
 
 /* ---------- the clock ---------- */
-.header,.week,.end{opacity:0;animation:scin .45s var(--eStd) both calc(var(--hookout) - 0.40s);}
-@keyframes avin{from{opacity:0;transform:translateY(24px)}}
-.avatar{animation:avin .55s var(--eEmph) both calc(var(--hookout) - 0.30s);}
-.avatar .badge{animation:avin .5s var(--eEmph) both calc(var(--b3) + 0.95s);}
+.header,.hours,.end{opacity:0;animation:scin .45s var(--eStd) both calc(var(--hookout) - 0.40s);}
+@keyframes rcin{from{opacity:0;transform:translateY(24px)}}
+.receipt{animation:rcin .55s var(--eEmph) both calc(var(--hookout) - 0.30s);}
+.receipt .badge{animation:rcin .5s var(--eEmph) both calc(var(--b3) + 0.95s);}
 
 @keyframes rowon{to{opacity:1}}
 @keyframes spanon{to{color:var(--acc)}}
-.d1 .span,.d1 .task{animation:rowon .45s var(--eStd) both calc(var(--b2) + 0.35s);}
-.d2 .span,.d2 .task{animation:rowon .45s var(--eStd) both calc(var(--b3) + 0.35s);}
-.d3 .span,.d3 .task{animation:rowon .45s var(--eStd) both calc(var(--b4) + 0.35s);}
-.d4 .span,.d4 .task{animation:rowon .45s var(--eStd) both calc(var(--b5) + 0.35s);}
-.d1 .span{animation:rowon .45s var(--eStd) both calc(var(--b2) + 0.35s),
+.h1 .span,.h1 .task{animation:rowon .45s var(--eStd) both calc(var(--b2) + 0.35s);}
+.h2 .span,.h2 .task{animation:rowon .45s var(--eStd) both calc(var(--b3) + 0.35s);}
+.h3 .span,.h3 .task{animation:rowon .45s var(--eStd) both calc(var(--b4) + 0.35s);}
+.h4 .span,.h4 .task{animation:rowon .45s var(--eStd) both calc(var(--b5) + 0.35s);}
+.h1 .span{animation:rowon .45s var(--eStd) both calc(var(--b2) + 0.35s),
                   spanon .45s var(--eStd) both calc(var(--b2) + 0.35s);}
-.d2 .span{animation:rowon .45s var(--eStd) both calc(var(--b3) + 0.35s),
+.h2 .span{animation:rowon .45s var(--eStd) both calc(var(--b3) + 0.35s),
                   spanon .45s var(--eStd) both calc(var(--b3) + 0.35s);}
-.d3 .span{animation:rowon .45s var(--eStd) both calc(var(--b4) + 0.35s),
+.h3 .span{animation:rowon .45s var(--eStd) both calc(var(--b4) + 0.35s),
                   spanon .45s var(--eStd) both calc(var(--b4) + 0.35s);}
-.d4 .span{animation:rowon .45s var(--eStd) both calc(var(--b5) + 0.35s),
+.h4 .span{animation:rowon .45s var(--eStd) both calc(var(--b5) + 0.35s),
                   spanon .45s var(--eStd) both calc(var(--b5) + 0.35s);}
 
-.d1::after{animation:runline 4.0s var(--eStd) both calc(var(--b2) + 0.30s);}
-.d2::after{animation:runline 4.7s var(--eStd) both calc(var(--b3) + 0.30s);}
-.d3::after{animation:runline 4.3s var(--eStd) both calc(var(--b4) + 0.30s);}
-.d4::after{animation:runline 2.60s var(--eStd) both calc(var(--b5) + 0.30s);}
+.h1::after{animation:runline 4.0s var(--eStd) both calc(var(--b2) + 0.30s);}
+.h2::after{animation:runline 4.7s var(--eStd) both calc(var(--b3) + 0.30s);}
+.h3::after{animation:runline 4.3s var(--eStd) both calc(var(--b4) + 0.30s);}
+.h4::after{animation:runline 2.60s var(--eStd) both calc(var(--b5) + 0.30s);}
 
-.d1::before{animation:sweep 1.7s var(--eStd) forwards calc(var(--b2) + 0.50s),
+.h1::before{animation:sweep 1.7s var(--eStd) forwards calc(var(--b2) + 0.50s),
             sweep 1.7s var(--eStd) forwards calc(var(--b2) + 2.30s);}
-.d2::before{animation:sweep 1.7s var(--eStd) forwards calc(var(--b3) + 0.50s),
+.h2::before{animation:sweep 1.7s var(--eStd) forwards calc(var(--b3) + 0.50s),
             sweep 1.7s var(--eStd) forwards calc(var(--b3) + 2.40s);}
-.d3::before{animation:sweep 1.7s var(--eStd) forwards calc(var(--b4) + 0.50s),
+.h3::before{animation:sweep 1.7s var(--eStd) forwards calc(var(--b4) + 0.50s),
             sweep 1.7s var(--eStd) forwards calc(var(--b4) + 2.20s);}
-.d4::before{animation:sweep 1.7s var(--eStd) forwards calc(var(--b5) + 0.50s),
+.h4::before{animation:sweep 1.7s var(--eStd) forwards calc(var(--b5) + 0.50s),
             sweep 1.7s var(--eStd) forwards calc(var(--b5) + 2.20s);}
 
 .n1{animation:fill .5s var(--e) both calc(var(--b2) + 3.60s);}
@@ -292,53 +287,53 @@ body{background:#0C0C0B;display:flex;justify-content:center;align-items:flex-sta
   <div class="hkscrim"></div>
 
   <div class="safe">
-    <div class="mast"><span>ULTRON STACK &middot; 13</span><span class="tag">SEVEN DAYS</span></div>
+    <div class="mast"><span>ULTRON STACK &middot; 14</span><span class="tag">TWELVE HOURS</span></div>
 
     <div class="stage">
       <div class="sb" id="capband"></div>
 
       <div class="sheet">
         <div class="header">
-          <div class="avatar">
-            <div class="sil"></div>
-            <div class="name">One Customer</div>
-            <div class="wk">WEEK 1</div>
+          <div class="receipt">
+            <div class="tot">PER SEAT</div>
+            <div class="ln">Invoice Item</div>
+            <div class="seat">1 seat</div>
             <div class="badge">1</div>
           </div>
-          <div class="topic"><b>PAID ON MONDAY.<br>FORGOTTEN BY <em>TUESDAY.</em></b>
-            <i>seven days &middot; and I nearly lost them</i></div>
+          <div class="topic"><b>ONE HIRE.<br>ONE BILL THAT *DOUBLED*.</b>
+            <i>twelve hours &middot; and I never saw it coming</i></div>
         </div>
 
-        <div class="week">
+        <div class="hours">
 
-          <div class="day clay d1"><div class="span">MON</div>
-            <div class="task"><b>It builds the checklist</b>
-              <i>from deal notes, so nothing promised gets dropped</i></div>
-            <div class="tally n1"><b>1</b><i>checklist</i></div></div>
+          <div class="hour clay h1"><div class="span">HR 1</div>
+            <div class="task"><b>The invoice arrives</b>
+              <i>line item says seats, not use. you pay for who sits near it</i></div>
+            <div class="cost n1"><b>1</b><i>seat</i></div></div>
 
-          <div class="day clay d2"><div class="span">TUE - WED</div>
-            <div class="task"><b>It flags the drift</b>
-              <i>watches engagement, and names the account already behind</i></div>
-            <div class="tally n2"><b>1</b><i>flagged</i></div></div>
+          <div class="hour clay h2"><div class="span">HR 3</div>
+            <div class="task"><b>The spreadsheet starts</b>
+              <i>who actually needs a license, and the question is the cost</i></div>
+            <div class="cost n2"><b>1</b><i>question</i></div></div>
 
-          <div class="day clay d3"><div class="span">THU - FRI</div>
-            <div class="task"><b>It drafts the check-in</b>
-              <i>in my own words, so I sound like I noticed</i></div>
-            <div class="tally n3"><b>1</b><i>message</i></div></div>
+          <div class="hour clay h3"><div class="span">HR 6</div>
+            <div class="task"><b>The number multiplies</b>
+              <i>one more tool request, and the founder hears the price first</i></div>
+            <div class="cost n3"><b>1</b><i>hesitation</i></div></div>
 
-          <div class="day clay d4"><div class="span">SAT - SUN</div>
-            <div class="task"><b>The week-end summary</b>
-              <i>who is healthy, who is not, and what I send next</i></div>
-            <div class="tally n4"><b>7</b><i>days tracked</i></div></div>
+          <div class="hour clay h4"><div class="span">HR 12</div>
+            <div class="task"><b>The migration waits</b>
+              <i>flat price exists, and the only blocker is time nobody has</i></div>
+            <div class="cost n4"><b>1</b><i>day lost</i></div></div>
 
         </div>
-        <div class="end clay-acc"><span class="ln">Day 7</span><span class="val">TRACKED &middot; NOT LOST</span></div>
+        <div class="end clay-acc"><span class="ln">Hr 12</span><span class="val">FLAT &middot; NOT PER SEAT</span></div>
       </div>
 
       <div class="cta">
         <div class="k">COMMENT</div>
         <div class="card clay-acc">
-          <div class="w">WEEK</div>
+          <div class="w">SEATS</div>
           <div class="rule"></div>
           <div class="s">and I will send you the exact run</div>
         </div>
