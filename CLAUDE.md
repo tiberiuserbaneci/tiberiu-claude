@@ -1206,6 +1206,27 @@ any duration, ask whose clock it is. If the answer is "the machine's", the numbe
 either count what the founder got back, or do not put a clock on it at all. Episode 12 ships as
 rendered (not re-cut, to spend no voice or credits); this binds everything after it.
 
+**A 3D BASE COLOUR IS SOLVED, NEVER TYPED (operator, 2026-08-07: "nu mi place rosul ...
+foloseste culorile anthropic ca referinta").** Typing `#CC785C` into a `MeshPhysicalMaterial`
+does not put Book Cloth on screen. The studio environment adds light, the clearcoat adds a
+specular layer and the tone curve rolls the top off, so the rendered surface lands somewhere
+else: on film 15's first pass a base of `#CC785C` rendered as `#964321`, a rust that reads as
+RED, and a hand-picked `#B03A17` that is not a 7 token at all had been used before that. The
+tokens in 7 are a contract about what the VIEWER sees, and a base colour is only an input to
+the thing that decides it.
+
+So: `content/_palette3d.py` renders, measures the lit mid-tone per surface, corrects in
+LINEAR light (where the shader multiplies; correcting in sRGB stalls because the same ratio
+means different things at each end of the gamma curve) and repeats until every surface is
+within 3/255 of its token. The mid-tone is a MEDIAN with the highlight and the terminator cut
+at the 28th and 72nd percentiles, because a mean is dragged by the specular pixel, which is
+the one pixel guaranteed not to be the colour of the object. A base that saturates at 255
+cannot go brighter; that is reported as `clamped`, not looped on.
+
+**And the palette is the 7 tokens, on 3D as much as on CSS.** Book Cloth `#CC785C` is the
+accent primary and it is a dusty clay. Anything redder or more saturated is off-brand, and
+"it looked right in the viewport" is not a defence: measure it.
+
 **GRAPHIC VARIETY (operator HARD rule, 2026-08-05):** the visual element must CHANGE every
 3 to 4 slides, and **no two materials in a set may open on the same object**. Scrolling a
 series where every cover is the same dial, every middle slide is the same menu list and every
