@@ -600,9 +600,22 @@ def _open_stage(p, html: pathlib.Path, meta: dict, marks: list[float] | None = N
 
 
 def seek(pg, t_s: float) -> None:
-    """Park every animation on the page at the same wall-clock moment."""
-    pg.evaluate("t => document.getAnimations().forEach(a => { a.pause(); a.currentTime = t; })",
-                t_s * 1000.0)
+    """Park every animation on the page at the same wall-clock moment.
+
+    Two clocks, because a page may use either. CSS animations are seeked through the Web
+    Animations API; GSAP runs its own ticker and is invisible to `document.getAnimations()`,
+    so its global timeline is seeked separately. GSAP is built to be paused and scrubbed - it
+    is why it is the default runtime for headless HTML-to-video - but only if you actually
+    drive its playhead instead of letting it tick in real time.
+    """
+    pg.evaluate("""t => {
+        document.getAnimations().forEach(a => { a.pause(); a.currentTime = t; });
+        if (window.gsap) {
+            gsap.ticker.sleep();
+            gsap.globalTimeline.pause();
+            gsap.globalTimeline.time(t / 1000, false);
+        }
+    }""", t_s * 1000.0)
 
 
 def grab_still(html: pathlib.Path, meta: dict, t_s: float, png: pathlib.Path) -> None:
