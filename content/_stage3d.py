@@ -118,8 +118,14 @@ window.addEventListener('three-ready', () => {
 
   // The shadow is WARM, not grey. A neutral shadow on a cream ground is the single clearest
   // tell of a cheap render: real light bouncing off a warm surface tints what it fills.
+  //
+  // And it is tinted toward the OBJECT's own hue, not to a generic brown. There is no global
+  // illumination here, so nothing bounces the clay into the shadow by itself; a taupe 6b4b34
+  // measured as genuinely warm (blue attenuated .830 against red .891) and still read GREY on
+  // the frame, because beside a saturated clay object a dull brown IS grey by contrast. The
+  // eye judges a shadow against what casts it, never against the ground.
   const ground = new T.Mesh(new T.PlaneGeometry(W * 2, H * 2),
-                            new T.ShadowMaterial({opacity: 0.19, color: 0x6b4b34}));
+                            new T.ShadowMaterial({opacity: 0.21, color: 0x8a4326}));
   ground.position.z = -34; ground.receiveShadow = true;
   scene.add(ground);
 
@@ -175,7 +181,11 @@ window.addEventListener('three-ready', () => {
     // the bevels and the cast shadows change because the LIGHT moved, not because a
     // box-shadow was re-declared
     const a = Math.sin(t * 0.42) * 0.55;
-    key.position.set(-260 + a * 300, 1500, 1500);   // high, so the shadow stays a contact
+    // A CONTACT shadow, not a wall shadow. The cast offset is depth * (dir.y / dir.z), and at
+    // y 1500 / z 1500 that ratio is 1.08 - so an object whose front face is 118 units off the
+    // catch plane threw its shadow 127px clear of itself and read as a separate grey smear
+    // sitting under the frame. At 1020 / 2050 the ratio is 0.55 and the shadow grips the base.
+    key.position.set(-260 + a * 300, 1020, 2050);
     key.target.position.set(a * 80, -120, 0);
     key.target.updateMatrixWorld();
     %(SEEK)s

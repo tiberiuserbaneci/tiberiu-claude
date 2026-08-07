@@ -51,9 +51,9 @@ SLATE      = "191919"   # type
 CLOUD      = "919180"   # muted
 
 # solved so the RENDERED lit mid-tone lands on Book Cloth, not the base colour
-RING_BASE  = 0xE5917A
+RING_BASE  = 0xDD8C76
 FACE_BASE  = 0xFFFFE8
-WELL_BASE  = 0xEBBEA0
+WELL_BASE  = 0xE5B89B
 PIP_BASE   = 0x191919
 
 W, H = 1080, 1920
