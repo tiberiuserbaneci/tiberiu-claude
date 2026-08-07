@@ -71,6 +71,8 @@ SCENE = f"""
   const well = OB.disc(168, 66, {WELL_BASE:#08x}, 0.54); well.rotation.x = Math.PI/2;
   well.position.z = 16; ring.add(well);
   const pip = OB.ring(252, 17, {PIP_BASE:#08x}, 0.46); pip.position.z = -46; ring.add(pip);
+  // the readout is printed ON the recessed face, so it takes the face's plane, not the frame's
+  window.__follow(document.querySelector('.rd-in'), ring);
 """
 
 SEEK = """
@@ -121,10 +123,14 @@ body{{background:#0C0C0B;display:flex;justify-content:center;align-items:flex-st
   text-transform:uppercase;color:var(--cloud)}}
 .foot span em{{color:var(--book);font-style:normal}}
 
-/* the readout rides the recessed face. Orthographic: the group origin projects to its own
-   screen position, so this y is solved, not eyeballed. */
+/* The readout rides the recessed face. Two things make it sit ON the face rather than over
+   it: the group origin projects to its own screen position under an orthographic camera, so
+   this y is solved rather than eyeballed; and .rd-in takes the ring's own rotation each
+   frame (see __follow in _stage3d.py), so the type shares the tilted plane it is printed on
+   instead of lying flat on the frame. */
 .rd{{position:absolute;left:0;right:0;top:{RING_CY}px;z-index:8;text-align:center;
   transform:translateY(-50%)}}
+.rd-in{{transform-origin:center center;will-change:transform}}
 .rd b{{display:block;font-family:'Anton',sans-serif;font-size:124px;line-height:.86;
   color:var(--slate)}}
 .rd i{{display:block;font-family:'DM Mono',monospace;font-style:normal;font-size:20px;
@@ -135,7 +141,7 @@ body{{background:#0C0C0B;display:flex;justify-content:center;align-items:flex-st
 <div id="film">
   <div class="amb"></div>
   <canvas id="gl" width="{W}" height="{H}"></canvas>
-  <div class="rd"><b>41</b><i>open deals</i></div>
+  <div class="rd"><div class="rd-in"><b>41</b><i>open deals</i></div></div>
   <div class="safe">
     <div class="mast"><span>FILM 15 <span class="tag">/</span> PIPELINE</span><span>BEAT 1</span></div>
     <div class="hk">Claude read my whole<br>pipeline and told me<br><em>nine</em> were real.</div>

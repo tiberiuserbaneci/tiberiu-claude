@@ -172,6 +172,29 @@ window.addEventListener('three-ready', () => {
   };
   window.__OB = OB; window.__T = T; window.__scene = scene;
 
+  // ---- HTML type that lies IN an object's plane instead of flat on the frame.
+  //
+  // The pixel-alignment trick at the top of this file - orthographic camera, one unit per
+  // CSS pixel, so real type sits in HTML on top - holds only while the object is square to
+  // the camera. The moment it tilts, screen-flat type stops sharing the surface it is
+  // supposed to be printed on and reads as pasted on. The operator's word for it: the type
+  // does not have the same planeitate as the material under it.
+  //
+  // The fix transfers the object's own rotation to the element. CSS 3D with no `perspective`
+  // declared IS an orthographic projection, the same one the camera uses, so the rotation
+  // carries across exactly - no fitting, no fudge factor. The only correction is the basis
+  // flip between three's y-up world and CSS's y-down page, which conjugates the matrix:
+  // R_css = S R S with S = diag(1,-1,1), i.e. a sign flip wherever exactly one index is y.
+  window.__followers = [];
+  function cssPlane(obj) {
+    obj.updateMatrixWorld(true);
+    const e = obj.matrixWorld.elements;          // column-major, R[i][j] = e[j*4+i]
+    return `matrix3d(${e[0]},${-e[1]},${e[2]},0,` +
+                   `${-e[4]},${e[5]},${-e[6]},0,` +
+                   `${e[8]},${-e[9]},${e[10]},0,0,0,0,1)`;
+  }
+  window.__follow = (el, obj) => { if (el) window.__followers.push([el, obj]); };
+
   const cards = [];
   %(CARDS)s
 
@@ -189,6 +212,8 @@ window.addEventListener('three-ready', () => {
     key.target.position.set(a * 80, -120, 0);
     key.target.updateMatrixWorld();
     %(SEEK)s
+    // type follows its object's plane, every frame, so it never drifts off the surface
+    for (const [el, obj] of window.__followers) el.style.transform = cssPlane(obj);
     renderer.render(scene, cam);
   };
   window.__seek3d(0);
