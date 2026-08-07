@@ -51,7 +51,11 @@ window.addEventListener('three-ready', () => {
   renderer.setSize(W, H, false);
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = T.PCFSoftShadowMap;
-  renderer.toneMapping = T.NoToneMapping;   // brand colour must survive the render
+  // Khronos PBR Neutral: the curve built for product visualisation. It rolls the highlights
+  // off without touching hue or saturation, which is the whole requirement here - AgX is a
+  // FILM curve and desaturates by design, so it turned deep terracotta into pale salmon.
+  renderer.toneMapping = T.NeutralToneMapping;
+  renderer.toneMappingExposure = 1.02;
   renderer.outputColorSpace = T.SRGBColorSpace;
 
   const scene = new T.Scene();
@@ -75,22 +79,54 @@ window.addEventListener('three-ready', () => {
       bevelSegments: 4, curveSegments: 16,
     });
     g.translate(0, 0, -depth / 2);
-    const m = new T.MeshStandardMaterial({color: color, roughness: rough, metalness: 0.02});
+    const m = new T.MeshPhysicalMaterial({
+      color: color, roughness: rough, metalness: 0.0,
+      clearcoat: 0.55, clearcoatRoughness: 0.28,   // a finished surface, not raw plastic
+      sheen: 0.35, sheenColor: new T.Color(0xffe9d8), sheenRoughness: 0.6,
+      envMapIntensity: 0.55,
+    });
     const mesh = new T.Mesh(g, m);
     mesh.castShadow = true; mesh.receiveShadow = true;
     return mesh;
   }
 
   // the ground the cards sit on and cast onto - the same cream as the page
+  // A STUDIO, not three bare lights. This is the difference between "3D" and "expensive":
+  // emissive panels in a box, prefiltered into an environment map, so every curved surface
+  // carries a real reflection gradient instead of a single flat highlight. It is what a
+  // product render has and a CSS gradient can never fake.
+  function studio() {
+    const s = new T.Scene();
+    const box = new T.BoxGeometry(1, 1, 1);
+    box.deleteAttribute('uv');
+    const lit = (c, i) => new T.MeshBasicMaterial({color: c, side: T.BackSide});
+    const room = new T.Mesh(box, lit(0xf0e9df));
+    room.scale.setScalar(14); s.add(room);
+    const panel = (col, x, y, z, sx, sy, sz) => {
+      const m = new T.Mesh(box, new T.MeshBasicMaterial({color: col}));
+      m.position.set(x, y, z); m.scale.set(sx, sy, sz); s.add(m);
+    };
+    panel(0xffffff, -3.4,  4.2,  2.2, 5.0, 0.2, 4.0);   // key softbox, above left
+    panel(0xfff1e2,  4.4,  2.0,  2.6, 0.2, 4.0, 4.0);   // warm bounce, right
+    panel(0xdfe6ef, -4.6, -1.0, -1.4, 0.2, 3.0, 4.0);   // cool rim, back left
+    panel(0xffffff,  0.0, -4.4,  1.0, 6.0, 0.2, 3.0);   // floor bounce
+    return s;
+  }
+  const pmrem = new T.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(studio(), 0.04).texture;
+  scene.environmentIntensity = 0.34;
+
+  // The shadow is WARM, not grey. A neutral shadow on a cream ground is the single clearest
+  // tell of a cheap render: real light bouncing off a warm surface tints what it fills.
   const ground = new T.Mesh(new T.PlaneGeometry(W * 2, H * 2),
-                            new T.ShadowMaterial({opacity: 0.13}));
+                            new T.ShadowMaterial({opacity: 0.19, color: 0x6b4b34}));
   ground.position.z = -34; ground.receiveShadow = true;
   scene.add(ground);
 
-  scene.add(new T.AmbientLight(0xffffff, 2.55));
-  const hemi = new T.HemisphereLight(0xffffff, 0xe8e0d4, 0.55);
+  scene.add(new T.AmbientLight(0xfff6ec, 0.42));
+  const hemi = new T.HemisphereLight(0xfff4e8, 0xd9c9b6, 0.35);
   scene.add(hemi);
-  const key = new T.DirectionalLight(0xfff6ee, 0.95);
+  const key = new T.DirectionalLight(0xfff2e4, 1.35);
   key.castShadow = true;
   key.shadow.mapSize.set(2048, 2048);
   key.shadow.camera.left = -W; key.shadow.camera.right = W;
@@ -98,11 +134,21 @@ window.addEventListener('three-ready', () => {
   key.shadow.camera.near = 1; key.shadow.camera.far = 3000;
   key.shadow.bias = -0.0012;
   scene.add(key); scene.add(key.target);
+  // a cool rim from behind separates the object from the ground - the second thing every
+  // product render has and a flat scene does not
+  const rim = new T.DirectionalLight(0xcfe0f2, 0.85);
+  rim.position.set(720, -420, -560);
+  scene.add(rim);
 
   // ---- the object library. Every form is real geometry, so it takes the same light and
   // casts the same shadow; none of them is a shadow trick.
   function mat(color, rough) {
-    return new T.MeshStandardMaterial({color: color, roughness: rough, metalness: 0.02});
+    return new T.MeshPhysicalMaterial({
+      color: color, roughness: rough, metalness: 0.0,
+      clearcoat: 0.55, clearcoatRoughness: 0.28,
+      sheen: 0.35, sheenColor: new T.Color(0xffe9d8), sheenRoughness: 0.6,
+      envMapIntensity: 0.55,
+    });
   }
   function mesh(g, color, rough) {
     const m = new T.Mesh(g, mat(color, rough));
