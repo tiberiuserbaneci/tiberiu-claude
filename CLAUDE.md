@@ -1206,6 +1206,36 @@ any duration, ask whose clock it is. If the answer is "the machine's", the numbe
 either count what the founder got back, or do not put a clock on it at all. Episode 12 ships as
 rendered (not re-cut, to spend no voice or credits); this binds everything after it.
 
+**THE AUDIENCE MUST NEVER ANTICIPATE THE NEXT MATERIAL (operator, 2026-08-08, binding).**
+"NU REPETI TEMELE LA INFINIT PENTRU CA OBOSESTI AUDIENTA ... AUDIENTA NU TREBUIE SA TI
+ANTICIPEZE URMATORUL MATERIAL." At a hundred reels this cannot live in anybody's head, so
+`content/_deckguard.py` records every shipped deck and refuses the next one if it would make
+the feed predictable: design may not repeat the previous deck's or appear 3 times in the
+last 5; theme alternates; the subject FAMILY may not recur inside 4 decks unless the deck
+declares an explicit twist naming what is different ("same subject, new numbers" is not a
+twist); and at least one deck in every four must be a **break** - a simple 2D glassmorphism
+graphic piece that interrupts the series. Consistency is what makes a set recognisable and
+it is also what makes it skippable; the break slot exists so the eye cannot settle.
+
+**SUBJECTS ARE FOUND, NOT ASSIGNED, AND THEY ARE FOUNDER-LED (operator, 2026-08-08).** The
+operator does not hand over topics: go and find what is actually travelling on the audience's
+own themes - founder led, operator, work hack, first founder, wanna-be founder, tips for
+growth - and adapt it to Ultron. **A news item is never the subject.** Making AMD's investment
+and Anthropic's IPO the subject of a deck turned the profile into a news channel, which is
+not what anybody follows an operator account for; the measured winners in that lane are a
+personal admission, a countable list, a life decision or a keyword CTA, never an industry
+update. News may appear as a peg inside one line. The 30-day freshness rule still binds, but
+on FACTS INSIDE the copy - prices, model names, any claim - not on the choice of topic.
+
+**THE REACTION OPENER IS THREE FIELDS, NOT ONE.** Every reel opens on the operator's own
+filmed reaction. `reaction_text` is what the viewer READS in the first second, eight words at
+most, a fragment, because it has to land while he is still inhaling. `reaction_say` is what
+he SAYS over it, longer, because the ear takes more than the eye. `reaction_kick` is the
+small label above. None of them may be the slide 1 hook: repeating that line spends the
+second where attention is highest saying the same thing twice. It ships as an asset -
+`reaction.md`, a transparent `reaction-overlay.png` that drops onto his footage, and a
+`reaction-preview.png` - because a line that lives only in a spec dict is not a deliverable.
+
 **A 3D BASE COLOUR IS SOLVED, NEVER TYPED (operator, 2026-08-07: "nu mi place rosul ...
 foloseste culorile anthropic ca referinta").** Typing `#CC785C` into a `MeshPhysicalMaterial`
 does not put Book Cloth on screen. The studio environment adds light, the clearcoat adds a

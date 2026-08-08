@@ -1,0 +1,31 @@
+{
+  "decks": [
+    {
+      "id": "deck-a-year",
+      "design": "verdict",
+      "theme": "black",
+      "family": "regret",
+      "keyword": "YEAR",
+      "break": false,
+      "twist": ""
+    },
+    {
+      "id": "deck-b-bill",
+      "design": "receipt",
+      "theme": "white",
+      "family": "money",
+      "keyword": "BILL",
+      "break": false,
+      "twist": ""
+    },
+    {
+      "id": "deck-c-dayone",
+      "design": "trace",
+      "theme": "black",
+      "family": "speedrun",
+      "keyword": "DAYONE",
+      "break": false,
+      "twist": ""
+    }
+  ]
+}

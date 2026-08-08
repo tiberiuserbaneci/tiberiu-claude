@@ -25,9 +25,12 @@ The 30-day rule still binds, but on FACTS INSIDE the copy rather than on topics:
 model names and any claim have to be current. Opus 5, Sonnet 5 and Haiku 4.5 at published
 list price. A deck naming Opus 4.x in August reads as somebody else's repost.
 
-Each spec carries `reaction` - the line over the operator's own face before slide 1 - and it
-is deliberately NOT the slide 1 hook. Repeating it spends the second where attention is
-highest saying the same thing twice.
+THE REACTION OPENER is three fields, not one, because on-screen and spoken are different
+jobs. `reaction_text` is what the viewer READS in the first second - eight words at most,
+a fragment, because it has to land while he is still inhaling. `reaction_say` is what he
+SAYS over it, longer, because the ear takes more than the eye. `reaction_kick` is the small
+label above. None of them is the slide 1 hook: repeating that line would spend the second
+where attention is highest saying the same thing twice.
 """
 import importlib.util, pathlib
 
@@ -46,9 +49,11 @@ CSS = load("_deck_css").CSS
 # --------------------------------------------- deck A: verdict / black / first-founder regret
 A = {
     "id": "deck-a-year", "design": "verdict", "theme": "black", "keyword": "YEAR",
+    "family": "regret",
     "mast": "ULTRON <em>/</em> AI FOR FOUNDERS",
-    "reaction": "Office ends at five. Mine ended at eleven. For a year. "
-                "And almost none of it was the work that mattered.",
+    "reaction_text": "Office ends at 5.<br>Mine ended at <em>11</em>.",
+    "reaction_say": 'For a year. And almost none of it was the work that mattered.',
+    "reaction_kick": 'Founder, year one',
     "eyebrow": "Year one, eleven at night, every night. Here is what I was actually doing.",
     "hook": "7 things<br>that cost me<br><em>a year</em>",
     "badge": "7", "badge_l": "mistakes I made in year one, and what I would do instead",
@@ -112,9 +117,11 @@ A = {
 # --------------------------------------------- deck B: receipt / white / the money
 B = {
     "id": "deck-b-bill", "design": "receipt", "theme": "white", "keyword": "BILL",
+    "family": "money",
     "mast": "ULTRON <em>/</em> AI FOR FOUNDERS",
-    "reaction": "Stop paying for AI like it is a Netflix subscription. "
-                "This is what it actually costs.",
+    "reaction_text": "Stop paying for AI<br>like it is <em>Netflix</em>.",
+    "reaction_say": 'I checked what I was actually paying for. Most of it was one decision I never made.',
+    "reaction_kick": 'The bill nobody opens',
     "eyebrow": "I checked what I was actually paying for. "
                "Most of it was one decision I never made.",
     "hook": "Where the<br>money actually<br><em>goes</em>",
@@ -158,9 +165,11 @@ B = {
 # --------------------------------------------- deck C: trace / black / the 24 hour build
 C = {
     "id": "deck-c-dayone", "design": "trace", "theme": "black", "keyword": "DAYONE",
+    "family": "speedrun",
     "mast": "ULTRON <em>/</em> AI FOR FOUNDERS",
-    "reaction": "Stop spending six months building a startup. "
-                "This is day one, hour by hour.",
+    "reaction_text": "Stop spending 6 months<br>building a <em>startup</em>.",
+    "reaction_say": 'This is day one, hour by hour, from idea to a person answering you.',
+    "reaction_kick": 'Day one, hour by hour',
     "eyebrow": "Not the version where you quit your job first. "
                "The version that fits in one day.",
     "hook": "Day one.<br>Start to first<br><em>real reply</em>",
@@ -201,9 +210,28 @@ C = {
 }
 
 if __name__ == "__main__":
-    for spec in (A, B, C):
-        html = DK.build(spec, CSS, FONTS)
-        out = REPO / f"content/{spec['id']}.html"
-        out.write_text(html)
-        print(f"{spec['id']:16} {spec['design']:8} {spec['theme']:6} -> {out.name}")
-        print(f"                 REACTION: {spec['reaction']}")
+    import re, subprocess
+    RC = load("_reactioncard")
+    SPECS = (A, B, C)
+    GD = load("_deckguard")
+    run = []
+    for spec in SPECS:
+        run = GD.register(spec, run)
+    for spec in SPECS:
+        (REPO / f"content/{spec['id']}.html").write_text(DK.build(spec, CSS, FONTS))
+        # the reaction as a readable asset, not a line buried in a dict
+        plain = re.sub(r"<[^>]+>", " ", spec["reaction_text"]).replace("  ", " ").strip()
+        d = REPO / f"content/decks/{spec['id']}"; d.mkdir(parents=True, exist_ok=True)
+        (d / "reaction.md").write_text(
+            f"# Reaction opener - {spec['id']}\n\n"
+            f"**Kicker (small, above)**  {spec['reaction_kick']}\n\n"
+            f"**ON SCREEN** (what they read, keep it short)\n\n> {plain}\n\n"
+            f"**YOU SAY** (over the same shot)\n\n> {spec['reaction_say']}\n\n"
+            f"**Then** slide 1, which does NOT repeat this line.\n\n"
+            f"**Keyword** {spec['keyword']}\n\n"
+            f"Files: `reaction-overlay.png` drops straight over your footage "
+            f"(transparent), `reaction-preview.png` is how it reads.\n")
+        print(f"{spec['id']:16} {spec['design']:8} {spec['theme']:6}  ON SCREEN: {plain}")
+    for mode in ("preview", "alpha"):
+        (REPO / f"content/reactions-{mode}.html").write_text(RC.page(SPECS, FONTS, mode))
+    print("reaction pages written")
