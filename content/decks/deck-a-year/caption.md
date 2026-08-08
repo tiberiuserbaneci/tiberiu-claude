@@ -79,6 +79,83 @@ Drop YEAR below and I will send you all seven, with the exact thing that replace
 
 ---
 
+## DM  (no intermediate asset: the message IS the lead magnet)
+
+There is no PDF in this funnel, on purpose. An intermediate asset is a place to lose people,
+and a gated one is a place to lose them twice. So the DM delivers the seven in full, with no
+reply-first gate, and the route to the product is ITEM FIVE rather than a pitch stapled to the
+end. Five is the only one of the seven that finishes tonight, and finishing it is the first
+screen in Ultron. That is the whole mechanism: he is not selling, he is handing over item five.
+Swap the bridge to item 1 or 4 and it stops working, because those take a quarter, not an
+evening.
+
+Send within the hour. A keyword comment decays fast and a reply two days later reads as a
+mailing list.
+
+### DM 1, on the comment
+
+YEAR, as promised. The seven, and what replaced each one.
+
+1. Built for 9 months before I sold anything. Now: 40 companies with a reason to care this
+quarter, and the person who signs at each, before a line gets built.
+
+2. Did all of it myself, badly. Now: only the judgement and the relationships. Everything
+upstream of those runs without me in the room.
+
+3. Waited until it was ready. Now: one person waiting by Friday. The deadline stops being mine
+and the polish stops being infinite.
+
+4. Worked all 41 open deals. Now: ranked by who can sign and who moved in the last two weeks.
+Nine of the 41 were real.
+
+5. Opened a blank page every morning. Now: who I sell to, how I sound and what I already
+tried, written down once.
+
+6. Worked 60 hour weeks. Now: the thing that worked runs again next week without me being
+awake for it.
+
+7. Nearly let a tool send in my name. Now: it drafts, I read it once, I press send. Nothing
+leaves unread.
+
+Five is the only one you can finish tonight, and it is the one that makes the other six
+possible. It is also the first thing you do in Ultron: you write who you sell to and how you
+sound, once, and every run after that starts from it instead of from a blank page.
+
+app.51ultron.com
+
+The Starter tier is free.
+
+Which of the seven did you recognise? I read every reply.
+
+### DM 2, only if they answer. Match the item they named.
+
+If they said 4, the pipeline one:
+Then start there. Paste your open deals in and ask which ones a person could actually point to
+as having moved this week. Mine went from 41 to 9 in about a minute, and the 9 were the only
+real work in the list. That is the first run most founders keep.
+
+If they said 1, still building:
+Then do it in the other order. Ask for 40 companies with a reason to care this quarter and the
+person who signs at each, before you build the next thing. If you cannot name the reason, the
+feature is not evidence yet.
+
+If they said 6, the hours:
+Then pick the one thing you did last week that worked and make it repeat. Not the whole week.
+One thing. The hours only stop scaling when something else starts.
+
+Every one of those is one input on the same screen. If you want, tell me the buyer in a
+sentence and I will show you what the first run gives back.
+
+### Public reply under their comment
+
+Sent. Number five is the one I would do tonight if I were you.
+
+### If the DM will not send (first degree restriction)
+
+DM failed. Let's connect and I'll send it over.
+
+---
+
 ## REEL CAPTION  (Instagram / TikTok, over the reaction opener)
 
 Year one ended at eleven at night, every night, and almost none of it was the work that
