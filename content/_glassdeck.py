@@ -25,9 +25,11 @@ THE DESIGNS. Five mechanics, each with a real graphic element, none of them 3D:
   receipt   an itemised bill with a perforated edge and one heavy TOTAL
   trace     a timestamped spine, one event per slide, for what-happened-when stories
   score     a dense scorecard grid, for which-thing-for-which-job
-  stamp     THE BREAK. One struck line per slide and a single glass mark. Almost no text,
-            read in half a second. It exists because three dense decks in a row is a rhythm,
-            and a rhythm is the thing an audience learns to skip. Marked break=True.
+  console   THE BREAK, and the AI moment. A glass product window: what the founder types on
+            one line, and what comes back. Replaces `stamp`, which broke the rhythm by being
+            thin and therefore did not stop the scroll at all - a break has to be the most
+            ARRESTING slide in the set, not the emptiest. Marked break=True.
+  stamp     retired. Kept only so old manifests still resolve.
 
 CANVAS. 1080x1920 with the reel safe band (300 top / 130 right / 330 bottom / 70 left), so
 the operator can drop the slides straight into a reel without the platform UI eating them.
@@ -64,6 +66,20 @@ def _foot(logo):
             f"<span>51ULTRON<em>.</em>COM</span></div>")
 
 
+def _ai(spec, logo):
+    """The AI signal, on every cover.
+
+    Operator, 2026-08-08: "nu imi dau seama din materialele facute de tine ca este vorba de AI
+    intr un punct." Correct and serious. CLAUDE.md 21 says to say what the thing DOES rather
+    than name an agent, and I took that so far that the copy said "it" for nine slides running
+    and never once said Claude. Saying what it does only works when the reader already knows
+    what "it" is. So the cover names it, in the frame, every time.
+    """
+    return (f"<div class='g aichip'><img src='data:image/png;base64,{logo}'>"
+            f"<span class='aichip-t'>{spec.get('ai_line', 'Claude, running as Ultron')}</span>"
+            f"</div>")
+
+
 def _slide(spec, n, inner, logo, extra_cls=""):
     return f"""<div class="slide {extra_cls}">
   <div class="field"><i class="f1"></i><i class="f2"></i><i class="f3"></i></div>
@@ -96,6 +112,7 @@ def d_ledger(spec, logo):
     <div class="cv-eye mono">{spec['eyebrow']}</div>
     <div class="cv-h disp">{spec['hook']}</div>
     <div class="cv-sl">{slivers}</div>
+    {_ai(spec, logo)}
   </div>""", logo))
     for k, r in enumerate(rows):
         body = "".join(
@@ -118,6 +135,7 @@ def d_verdict(spec, logo):
     <div class="cv-h disp">{spec['hook']}</div>
     <div class="g vd-tot"><span class="vd-tot-n disp">{spec['badge']}</span>
       <span class="vd-tot-l">{spec['badge_l']}</span></div>
+    {_ai(spec, logo)}
   </div>""", logo)]
     for k, r in enumerate(rows):
         # The two panels are sized to their content, never stretched - a card whose copy fills
@@ -147,6 +165,7 @@ def d_receipt(spec, logo):
     <div class="cv-h disp">{spec['hook']}</div>
     <div class="g rc-tot"><span class="rc-tot-l mono">{spec['badge_l']}</span>
       <span class="rc-tot-n disp">{spec['badge']}</span></div>
+    {_ai(spec, logo)}
   </div>""", logo)]
     for k, r in enumerate(rows):
         lines = "".join(
@@ -169,6 +188,7 @@ def d_trace(spec, logo):
     <div class="cv-h disp">{spec['hook']}</div>
     <div class="g tr-tot"><span class="tr-tot-n disp">{spec['badge']}</span>
       <span class="tr-tot-l">{spec['badge_l']}</span></div>
+    {_ai(spec, logo)}
   </div>""", logo)]
     for k, r in enumerate(rows):
         ev = "".join(
@@ -192,6 +212,7 @@ def d_score(spec, logo):
     <div class="cv-h disp">{spec['hook']}</div>
     <div class="g sc-tot"><span class="sc-tot-n disp">{spec['badge']}</span>
       <span class="sc-tot-l">{spec['badge_l']}</span></div>
+    {_ai(spec, logo)}
   </div>""", logo)]
     for k, r in enumerate(rows):
         body = "".join(
@@ -201,6 +222,40 @@ def d_score(spec, logo):
         out.append(_slide(spec, k + 2, f"""<div class="sc-h disp">{r['h']}</div>
     <div class="g sc"><div class="sc-hd"><span class="sc-ch mono">{spec['col0']}</span>{head}</div>
       {body}<div class="sc-note">{r['b']}</div></div>""", logo))
+    return out
+
+
+def d_console(spec, logo):
+    """THE BREAK, and the AI moment: a glass product window, one input, what comes back.
+
+    Two problems, one fix. The break was a thin slide, which broke the rhythm without
+    stopping anybody - an audience skips empty as fast as it skips repetitive. And no deck
+    was showing the AI at all, so the value read as generic advice. A recognisable product
+    window solves both: it is the most arresting frame in the set AND it is unmistakably a
+    machine doing the work.
+
+    Founder-facing UI only, per CLAUDE.md 30. What he types, and what he gets. Never code.
+    """
+    rows = spec["items"]
+    out = [_slide(spec, 1, f"""<div class="cv">
+    <div class="cv-eye mono">{spec['eyebrow']}</div>
+    <div class="cv-h disp">{spec['hook']}</div>
+    {_ai(spec, logo)}
+  </div>""", logo)]
+    for k, r in enumerate(rows):
+        pills = "".join(f"<span class='cn-pill{' on' if i == k else ''}'>{x['t']}</span>"
+                        for i, x in enumerate(rows))
+        outs = "".join(f"<div class='cn-o'><span class='cn-ok'>&#10003;</span>"
+                       f"<span>{line}</span></div>" for line in r["out"])
+        out.append(_slide(spec, k + 2, f"""<div class="cn-h disp">{r['h']}</div>
+    <div class="g cn">
+      <div class="cn-bar"><span class="cn-d"></span><span class="cn-d"></span>
+        <span class="cn-d"></span><span class="cn-title mono">{spec['window']}</span></div>
+      <div class="cn-in"><span class="cn-p mono">You</span><span class="cn-q">{r['in']}</span></div>
+      <div class="cn-out"><span class="cn-p mono">Claude</span><div class="cn-lines">{outs}</div></div>
+      <div class="cn-foot mono">{r['note']}</div>
+    </div>
+    <div class="cn-pills">{pills}</div>""", logo))
     return out
 
 
@@ -230,7 +285,7 @@ def d_stamp(spec, logo):
 
 
 DESIGNS = {"ledger": d_ledger, "verdict": d_verdict, "receipt": d_receipt,
-           "trace": d_trace, "score": d_score, "stamp": d_stamp}
+           "trace": d_trace, "score": d_score, "console": d_console, "stamp": d_stamp}
 
 
 def build(spec, css_extra: str, fonts: str) -> str:

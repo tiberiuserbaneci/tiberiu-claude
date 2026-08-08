@@ -28,11 +28,11 @@
       "twist": ""
     },
     {
-      "id": "deck-d-stopped",
-      "design": "stamp",
+      "id": "deck-d-typed",
+      "design": "console",
       "theme": "white",
-      "family": "stopped",
-      "keyword": "STOPPED",
+      "family": "whatItypes",
+      "keyword": "TYPED",
       "break": true,
       "twist": ""
     },

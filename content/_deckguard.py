@@ -40,6 +40,12 @@ def save(decks: list) -> None:
     MANIFEST.write_text(json.dumps({"decks": decks}, indent=2) + "\n")
 
 
+def _row(spec: dict) -> dict:
+    return {"id": spec["id"], "design": spec["design"], "theme": spec["theme"],
+            "family": spec.get("family", "unset"), "keyword": spec["keyword"],
+            "break": bool(spec.get("break")), "twist": spec.get("twist", "")}
+
+
 def check(spec: dict, run: list) -> list[str]:
     """Everything wrong with shipping `spec` next, given the decks already shipped."""
     bad = []
@@ -68,15 +74,29 @@ def check(spec: dict, run: list) -> list[str]:
 
 
 def register(spec: dict, run: list | None = None) -> list:
-    """Check, then record. Raises rather than letting a predictable deck through."""
+    """Check, then record. Raises rather than letting a predictable deck through.
+
+    Re-registering an existing deck REPLACES its entry rather than appending, and is checked
+    against the run as it stood before that deck shipped. Rebuilding a deck is the normal
+    case - copy gets fixed, a design gets replaced - and the first version of this refused it
+    by comparing the deck against itself, which made every rebuild look like a repeat.
+    """
     run = load() if run is None else run
+    at = next((i for i, d in enumerate(run) if d["id"] == spec["id"]), None)
+    if at is not None:
+        prior, tail = run[:at], run[at + 1:]
+        bad = check(spec, prior)
+        if bad:
+            raise ValueError(f"{spec['id']} would make the feed predictable:\n  - "
+                             + "\n  - ".join(bad))
+        run = prior + [_row(spec)] + tail
+        save(run)
+        return run
     bad = check(spec, run)
     if bad:
         raise ValueError(f"{spec['id']} would make the feed predictable:\n  - "
                          + "\n  - ".join(bad))
-    run.append({"id": spec["id"], "design": spec["design"], "theme": spec["theme"],
-                "family": spec.get("family", "unset"), "keyword": spec["keyword"],
-                "break": bool(spec.get("break")), "twist": spec.get("twist", "")})
+    run.append(_row(spec))
     save(run)
     return run
 

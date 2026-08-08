@@ -39,9 +39,9 @@ CSS = f"""
 .rc-tot-l{{font-size:22px;color:var(--ink70);letter-spacing:.2em}}
 
 /* ---------- every content slide gets a display hook of its own ---------- */
-.lg-h,.vd-h,.rc-h,.tr-h,.sc-h{{flex-shrink:0;font-size:62px;color:var(--ink);
+.lg-h,.vd-h,.rc-h,.tr-h,.sc-h,.cn-h{{flex-shrink:0;font-size:62px;color:var(--ink);
   margin:26px 0 24px}}
-.lg-h em,.vd-h em,.rc-h em,.tr-h em,.sc-h em{{color:var(--acc);font-style:normal}}
+.lg-h em,.vd-h em,.rc-h em,.tr-h em,.sc-h em,.cn-h em{{color:var(--acc);font-style:normal}}
 
 /* ---------- LEDGER ---------- */
 .lg{{flex:1;min-height:0;display:flex;flex-direction:column;gap:12px}}
@@ -140,6 +140,41 @@ CSS = f"""
 .sc-r.on .sc-c{{font-size:46px}}
 .sc-note{{flex-shrink:0;padding:24px 0 28px;font-size:27px;font-weight:600;color:var(--ink);
   line-height:1.36}}
+
+/* ---------- the AI signal, on every cover ---------- */
+.aichip{{display:flex;align-items:center;gap:16px;padding:18px 26px;border-radius:20px;
+  align-self:flex-start}}
+.aichip img{{width:34px;height:34px;border-radius:50%;object-fit:cover}}
+.aichip-t{{font-size:25px;font-weight:700;color:var(--ink)}}
+
+/* ---------- CONSOLE, the break and the AI moment ---------- */
+.cn{{flex:1;min-height:0;display:flex;flex-direction:column;border-radius:30px;
+  padding:0 0 26px}}
+.cn-bar{{flex-shrink:0;display:flex;align-items:center;gap:11px;padding:22px 28px;
+  border-bottom:1px solid var(--rim2)}}
+.cn-d{{width:15px;height:15px;border-radius:50%;background:var(--rim2)}}
+.cn-d:first-child{{background:var(--acc)}}
+.cn-title{{margin-left:16px;font-size:19px;color:var(--ink45)}}
+.cn-in{{flex-shrink:0;display:grid;grid-template-columns:112px 1fr;align-items:baseline;
+  padding:30px 28px 24px}}
+.cn-p{{font-size:19px;color:var(--ink45);letter-spacing:.2em}}
+.cn-q{{font-size:40px;font-weight:800;color:var(--ink);line-height:1.2;
+  letter-spacing:-.5px}}
+.cn-out{{flex:1;min-height:0;display:grid;grid-template-columns:112px 1fr;
+  align-items:start;padding:26px 28px 0;border-top:1px solid var(--rim2)}}
+.cn-out .cn-p{{color:var(--acc)}}
+.cn-lines{{display:flex;flex-direction:column;justify-content:center;gap:16px;height:100%}}
+.cn-o{{display:grid;grid-template-columns:38px 1fr;align-items:baseline;
+  font-size:28px;font-weight:600;color:var(--ink70);line-height:1.34}}
+.cn-ok{{color:var(--acc);font-size:24px}}
+.cn-foot{{flex-shrink:0;margin:22px 28px 0;padding-top:18px;border-top:1px solid var(--rim2);
+  font-size:19px;letter-spacing:.14em;color:var(--acc)}}
+.cn-pills{{flex-shrink:0;display:flex;gap:8px;padding-top:20px}}
+.cn-pill{{flex:1;text-align:center;padding:13px 6px;border-radius:13px;
+  font-size:18px;font-weight:600;white-space:nowrap;overflow:hidden;
+  text-overflow:ellipsis;color:var(--ink45);background:var(--glass2);
+  box-shadow:inset 0 1px 0 var(--rim)}}
+.cn-pill.on{{color:var(--ink);background:var(--acc);box-shadow:none}}
 
 /* ---------- STAMP, the break ---------- */
 .stm{{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;gap:34px}}

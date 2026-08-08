@@ -6,7 +6,7 @@ guard required the next deck to be white, a design that is not trace, a family n
 the last four, and - because none of the first three were - a BREAK. That is D. E and F then
 follow the same alternation and take the two designs that had never shipped.
 
-  D  STOPPED  stamp   white  break     the thin one, read in half a second
+  D  TYPED    console white  break     the product window: what he types, what returns
   E  RULES    ledger  black            list-and-argue, invites the correction out loud
   F  HIRE     score   white            the scorecard, roles against what already covers them
 
@@ -28,43 +28,66 @@ FONTS = load("_fonts").embedded_css()
 DK = load("_glassdeck")
 CSS = load("_deck_css").CSS
 
-# ------------------------------------------------- D: stamp / white / THE BREAK
+# ------------------------------------------------- D: console / white / THE BREAK + THE AI
 D = {
-    "id": "deck-d-stopped", "design": "stamp", "theme": "white", "keyword": "STOPPED",
-    "family": "stopped", "break": True,
+    "id": "deck-d-typed", "design": "console", "theme": "white", "keyword": "TYPED",
+    "family": "whatItypes", "break": True,
     "mast": "ULTRON <em>/</em> AI FOR FOUNDERS",
-    "reaction_pattern": "anticlimax",
-    "reaction_text": "I got faster by<br>doing <em>less</em>.",
-    "reaction_say": "Seven things I stopped doing completely. That is really it. "
-                    "No new tool, no new system.",
-    "reaction_kick": "Seven things, gone",
-    "eyebrow": "No new tool. No new system. Seven things I stopped doing.",
-    "hook": "7 things<br>I do not do<br><em>any more</em>",
-    "cta_eye": "All seven, and what I replaced each one with",
-    "cta_line": "I will send you the seven, and the one thing that replaced each.",
+    "ai_line": "Claude, running as Ultron",
+    "window": "ULTRON  ·  ONE INPUT, A TEAM BEHIND IT",
+    "reaction_pattern": "imperative",
+    "reaction_text": "This is what I<br>type into <em>Claude</em><br>on a Monday.",
+    "reaction_say": "Seven inputs. Not prompts, not tricks. The seven things I actually type, "
+                    "and exactly what comes back.",
+    "reaction_kick": "Seven real inputs",
+    "eyebrow": "Not prompt tricks. The seven things I actually type, and what comes back.",
+    "hook": "What I type<br>into <em>Claude</em>,<br>and what returns",
+    "cta_eye": "All seven inputs, word for word, ready to paste",
+    "cta_line": "I will send you the seven inputs exactly as I type them.",
     "cta_sub": "no link in the caption  <span>-></span>  it comes to your DMs",
     "items": [
-        {"t": "Checking email first", "mark": "&times;",
-         "b": "The inbox is somebody else's list. Mine now starts with the one thing "
-              "only I can do that day."},
-        {"t": "Rewriting what it drafted", "mark": "&times;",
-         "b": "If I am rewriting it, the brief was wrong. I fix the brief once instead "
-              "of the output every time."},
-        {"t": "Chasing every reply", "mark": "&times;",
-         "b": "A reply is not a deal. Nine of my forty one were real and the other "
-              "thirty two were a list I was carrying."},
-        {"t": "Starting from a blank chat", "mark": "&times;",
-         "b": "The context is written down once. It stops guessing and I stop "
-              "explaining my own company every morning."},
-        {"t": "Working past ten", "mark": "&times;",
-         "b": "Eleven at night was never commitment. It was the absence of anything "
-              "that ran without me."},
-        {"t": "Paying top tier for lookups", "mark": "&times;",
-         "b": "One routing decision I never made was most of the bill. Same answers, "
-              "a fifth of the cost."},
-        {"t": "Letting anything send itself", "mark": "&times;",
-         "b": "It drafts, ranks and queues. I read it once and press send. That gate "
-              "is not a limitation, it is the whole reason my name still works."},
+        {"t": "Who buys", "h": "Monday, <em>9am</em>",
+         "in": "Who has this problem this quarter, and who signs?",
+         "out": ["40 companies, ranked by why now, not alphabetically",
+                 "The person who signs at each, and what changed for them",
+                 "Sources attached so I can check any line in one click"],
+         "note": "one page  <span>-></span>  instead of nine tabs and an afternoon"},
+        {"t": "First line", "h": "The opener is <em>public</em>",
+         "in": "Write the first line from something they actually posted.",
+         "out": ["One real trigger per company, quoted",
+                 "Under sixty words, and the ask is a question",
+                 "Forty different openings, not one template with a name in it"],
+         "note": "a draft I would have sent  <span>-></span>  not a draft I have to rewrite"},
+        {"t": "The reply", "h": "The <em>polite</em> one is the objection",
+         "in": "They said interesting but we already have something. What is that?",
+         "out": ["It is not a no and it is not interest, it is a question",
+                 "What they are actually protecting, in one line",
+                 "The reply, written the way I would say it"],
+         "note": "the answer  <span>-></span>  and what it costs me to get it wrong"},
+        {"t": "The contract", "h": "Fourteen pages, <em>Friday</em>",
+         "in": "Read this and tell me what is not standard.",
+         "out": ["Three clauses that are not market, and why each matters to me",
+                 "The redline drafted in my own words, not boilerplate",
+                 "What I am agreeing to if I sign it as it is"],
+         "note": "I sign, it does not  <span>-></span>  and it is not legal advice"},
+        {"t": "The week", "h": "One input, <em>the week</em>",
+         "in": "Turn this week's result into the posts.",
+         "out": ["Written in my voice, off my own numbers",
+                 "Formatted per channel, scheduled per time zone",
+                 "Queued and waiting on me, never sent by itself"],
+         "note": "I read once and press send  <span>-></span>  that gate is the whole thing"},
+        {"t": "The tier", "h": "Which model, <em>per job</em>",
+         "in": "Does this job need the expensive model?",
+         "out": ["Lookup, one right answer, Haiku 4.5 at $1 and $5",
+                 "Judgement, real stakes, Opus 5 at $5 and $25",
+                 "It decides per turn, so I stop paying five times for a lookup"],
+         "note": "same answer  <span>-></span>  a fifth of the bill"},
+        {"t": "The pipeline", "h": "Which of these are <em>real</em>",
+         "in": "Of my 41 open deals, which would you still work on Monday?",
+         "out": ["22 have not moved in a month and nobody said no",
+                 "10 are a person who likes me and cannot sign",
+                 "9 are real, and one is closer than everything above it"],
+         "note": "it ranks, I decide  <span>-></span>  it closes nothing and forecasts nothing"},
     ],
 }
 

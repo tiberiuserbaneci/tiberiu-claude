@@ -26,6 +26,6 @@ an audience learns to skip.
 | `deck-a-year` | verdict | black | regret | YEAR | |
 | `deck-b-bill` | receipt | white | money | BILL | |
 | `deck-c-dayone` | trace | black | speedrun | DAYONE | |
-| `deck-d-stopped` | stamp | white | stopped | STOPPED | **BREAK** |
+| `deck-d-typed` | console | white | whatItypes | TYPED | **BREAK** |
 | `deck-e-rules` | ledger | black | rules | RULES | |
 | `deck-f-hire` | score | white | hiring | HIRE | |
