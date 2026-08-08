@@ -12,8 +12,6 @@ W, H = 1080, 1920
 SAFE_T, SAFE_R, SAFE_B, SAFE_L = 300, 130, 330, 70
 
 CSS = f"""
-.slide{{width:{W}px;height:{H}px}}
-.safe{{padding:{SAFE_T}px {SAFE_R}px {SAFE_B}px {SAFE_L}px}}
 .mast{{font-size:22px}}
 .foot{{padding-top:26px}}
 .foot span{{font-size:21px}}
@@ -142,10 +140,11 @@ CSS = f"""
   line-height:1.36}}
 
 /* ---------- the AI signal, on every cover ---------- */
-.aichip{{display:flex;align-items:center;gap:16px;padding:18px 26px;border-radius:20px;
+.aichip{{display:flex;align-items:center;gap:14px;padding:16px 26px;border-radius:18px;
   align-self:flex-start}}
-.aichip img{{width:34px;height:34px;border-radius:50%;object-fit:cover}}
-.aichip-t{{font-size:25px;font-weight:700;color:var(--ink)}}
+.aichip-t{{font-family:'DM Mono',monospace;font-size:22px;font-weight:500;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--ink70)}}
+.aichip-a{{font-size:26px;color:var(--acc);line-height:1}}
 
 /* ---------- CONSOLE, the break and the AI moment ---------- */
 .cn{{flex:1;min-height:0;display:flex;flex-direction:column;border-radius:30px;

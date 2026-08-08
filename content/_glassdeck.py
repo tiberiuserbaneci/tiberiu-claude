@@ -31,9 +31,19 @@ THE DESIGNS. Five mechanics, each with a real graphic element, none of them 3D:
             ARRESTING slide in the set, not the emptiest. Marked break=True.
   stamp     retired. Kept only so old manifests still resolve.
 
-CANVAS. 1080x1920 with the reel safe band (300 top / 130 right / 330 bottom / 70 left), so
-the operator can drop the slides straight into a reel without the platform UI eating them.
-The 4:5 crop for a carousel post is derived from the same render, centred on the band.
+TWO VARIANTS, NOT ONE RENDER CROPPED (operator, 2026-08-08). They stopped being the same
+picture the moment the chrome differed, so each is built at its own size:
+
+  reel      1080x1920, safe band 300/130/330/70. NO mast, NO footer, no badge. The operator
+            edits these in Edits over his own footage, so my header and footer are somebody
+            else's furniture inside his cut. Slide 1 carries a large centred Claude mark
+            instead, which says what this is without a sentence claiming it.
+  carousel  1080x1350, even 76px margins because a carousel post has no platform UI over it.
+            Keeps the mast and footer, and the badge slot becomes a plain "Swipe" cue.
+
+The badge used to read "Claude, running as Ultron". The operator: it looks like a cheap ad.
+He is right - a chip asserting a partnership is advertising, whereas the mark simply being
+there is identification. Show the thing, do not caption it.
 """
 import base64, importlib.util, pathlib
 
@@ -51,17 +61,54 @@ SAFE_T, SAFE_R, SAFE_B, SAFE_L = 300, 130, 330, 70
 CROP45_TOP = (SAFE_T + (H - SAFE_B)) // 2 - 1350 // 2      # 4:5 centred on the content band
 
 
+CM = _load("_claudemark")
+
+
 def logo_b64() -> str:
     return base64.b64encode((REPO / "content" / "ultron-logo.png").read_bytes()).decode()
 
 
+def _mark() -> str:
+    """The Claude mark, large and centred, on the reel's first slide only.
+
+    It replaces a chip that read "Claude, running as Ultron" and looked, correctly, like a
+    cheap ad. A sentence asserting a partnership is advertising; the mark simply being on
+    the frame is identification. Behind the type, at low opacity, so it registers without
+    competing with the hook.
+    """
+    return f'<div class="markwrap">{CM.svg()}</div>'
+
+
+_VARIANT_CSS = {
+    # the reel keeps the platform safe band and loses every piece of my chrome
+    "reel": """
+.slide{width:1080px;height:1920px}
+.safe{padding:300px 130px 330px 70px}
+/* the mark is an ELEMENT, not a watermark. Ghosting it behind the hook made it a texture,
+   and a texture identifies nothing. Full strength, centred, on slide 1 only. */
+.markrow{flex-shrink:0;display:flex;justify-content:center;padding-top:18px}
+.markrow svg{width:300px;height:300px}
+""",
+    # a carousel post has no platform UI over it, so the margins are even and the chrome stays
+    "carousel": """
+.slide{width:1080px;height:1350px}
+.safe{padding:76px}
+.markrow{display:none}
+""",
+}
+
+
 # --------------------------------------------------------------------- chrome
 def _mast(spec, n):
+    if spec.get("_variant") == "reel":
+        return ""                      # his cut, his chrome
     return (f"<div class='mast'><span class='mono'>{spec['mast']}</span>"
             f"<span class='mono'>{n:02d} <em>/</em> 09</span></div>")
 
 
-def _foot(logo):
+def _foot(logo, spec=None):
+    if spec is not None and spec.get("_variant") == "reel":
+        return ""
     return (f"<div class='foot'><img src='data:image/png;base64,{logo}'>"
             f"<span>51ULTRON<em>.</em>COM</span></div>")
 
@@ -75,16 +122,17 @@ def _ai(spec, logo):
     and never once said Claude. Saying what it does only works when the reader already knows
     what "it" is. So the cover names it, in the frame, every time.
     """
-    return (f"<div class='g aichip'><img src='data:image/png;base64,{logo}'>"
-            f"<span class='aichip-t'>{spec.get('ai_line', 'Claude, running as Ultron')}</span>"
-            f"</div>")
+    if spec.get("_variant") == "reel":
+        return f'<div class="markrow">{CM.svg()}</div>'
+    return ("<div class='g aichip'><span class='aichip-t'>Swipe</span>"
+            "<span class='aichip-a'>&rarr;</span></div>")
 
 
 def _slide(spec, n, inner, logo, extra_cls=""):
     return f"""<div class="slide {extra_cls}">
   <div class="field"><i class="f1"></i><i class="f2"></i><i class="f3"></i></div>
   <div class="grain"></div>
-  <div class="safe">{_mast(spec, n)}{inner}{_foot(logo)}</div>
+  <div class="safe">{_mast(spec, n)}{inner}{_foot(logo, spec)}</div>
 </div>"""
 
 
@@ -288,8 +336,9 @@ DESIGNS = {"ledger": d_ledger, "verdict": d_verdict, "receipt": d_receipt,
            "trace": d_trace, "score": d_score, "console": d_console, "stamp": d_stamp}
 
 
-def build(spec, css_extra: str, fonts: str) -> str:
-    """Nine slides: cover, seven content, the ask."""
+def build(spec, css_extra: str, fonts: str, variant: str = "reel") -> str:
+    """Nine slides: cover, seven content, the ask. `variant` is reel or carousel."""
+    spec = dict(spec, _variant=variant)
     logo = logo_b64()
     slides = DESIGNS[spec["design"]](spec, logo)
     if len(slides) != 8:
@@ -297,7 +346,7 @@ def build(spec, css_extra: str, fonts: str) -> str:
                          f"needs 8 (cover + 7). Give the spec exactly 7 items.")
     slides.append(_cta(spec, logo))
     html = GL.shell(spec["theme"], fonts, "\n".join(slides), spec["id"])
-    return html.replace("</style>", css_extra + "\n</style>")
+    return html.replace("</style>", css_extra + f"\n{_VARIANT_CSS[variant]}\n</style>")
 
 
 if __name__ == "__main__":
