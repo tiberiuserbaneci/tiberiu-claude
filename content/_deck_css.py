@@ -37,9 +37,10 @@ CSS = f"""
 .rc-tot-l{{font-size:22px;color:var(--ink70);letter-spacing:.2em}}
 
 /* ---------- every content slide gets a display hook of its own ---------- */
-.lg-h,.vd-h,.rc-h,.tr-h,.sc-h,.cn-h{{flex-shrink:0;font-size:62px;color:var(--ink);
+.lg-h,.vd-h,.rc-h,.tr-h,.sc-h,.cn-h,.mt-h{{flex-shrink:0;font-size:62px;color:var(--ink);
   margin:26px 0 24px}}
-.lg-h em,.vd-h em,.rc-h em,.tr-h em,.sc-h em,.cn-h em{{color:var(--acc);font-style:normal}}
+.lg-h em,.vd-h em,.rc-h em,.tr-h em,.sc-h em,.cn-h em,.mt-h em{{color:var(--acc);
+  font-style:normal}}
 
 /* ---------- LEDGER ---------- */
 .lg{{flex:1;min-height:0;display:flex;flex-direction:column;gap:12px}}
@@ -174,6 +175,49 @@ CSS = f"""
   text-overflow:ellipsis;color:var(--ink45);background:var(--glass2);
   box-shadow:inset 0 1px 0 var(--rim)}}
 .cn-pill.on{{color:var(--ink);background:var(--acc);box-shadow:none}}
+
+/* ---------- METER, the break: a proportional bar chart and nothing else ----------
+
+   The break has to be SIMPLE to read and HEAVY to look at. `stamp` got the first half and
+   failed the second - an audience skips empty as fast as it skips repetitive. A chart is one
+   idea, taken in at a glance, and it fills the block with real mass.
+
+   The row is a two-row grid whose SECOND row is `1fr`, so the bar absorbs whatever height the
+   row was given. That is what makes dead space structurally impossible here: there is nothing
+   left over to be empty, because the graphic grows into it. */
+.mt-mini{{padding:24px 28px;display:flex;flex-direction:column;gap:13px;border-radius:26px}}
+.mt-m{{display:grid;grid-template-columns:1fr 280px 52px;align-items:center;column-gap:18px}}
+.mt-ml{{font-size:23px;font-weight:600;color:var(--ink70);white-space:nowrap;overflow:hidden;
+  text-overflow:ellipsis}}
+.mt-mb{{height:15px;border-radius:8px;background:var(--rim2);overflow:hidden;
+  box-shadow:inset 0 1px 0 var(--rim)}}
+.mt-mb i{{display:block;height:100%;border-radius:8px;background:var(--acc)}}
+.mt-mv{{font-size:20px;color:var(--acc);text-align:right}}
+
+.mt{{flex:1;min-height:0;display:flex;flex-direction:column;padding:28px 32px 0;
+  border-radius:28px}}
+.mt-hd{{flex-shrink:0;display:flex;justify-content:space-between;font-size:19px;
+  color:var(--ink45);padding-bottom:16px;border-bottom:1px solid var(--rim2)}}
+.mt-body{{flex:1;min-height:0;display:flex;flex-direction:column;gap:6px;padding:12px 0}}
+.mt-r{{flex:1;min-height:0;display:grid;grid-template-columns:1fr auto;
+  grid-template-rows:auto 1fr;row-gap:10px;column-gap:22px;padding:7px 0}}
+.mt-l{{font-size:25px;font-weight:600;color:var(--ink70);line-height:1.18;align-self:center}}
+.mt-v{{font-size:30px;color:var(--ink45);justify-self:end;align-self:center;line-height:1}}
+.mt-t{{grid-column:1/3;align-self:stretch;min-height:20px;border-radius:12px;
+  background:var(--rim2);overflow:hidden;box-shadow:inset 0 1px 0 var(--rim)}}
+.mt-t i{{display:block;height:100%;border-radius:12px;background:var(--ink45);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.28),inset 0 -4px 10px rgba(0,0,0,.16)}}
+.mt-r.on{{flex:1.55}}
+.mt-r.on .mt-l{{font-size:40px;font-weight:800;color:var(--ink);letter-spacing:-.4px;
+  line-height:1.08}}
+.mt-r.on .mt-v{{font-size:68px;color:var(--acc)}}
+.mt-r.on .mt-t i{{background:var(--acc)}}
+.mt-note{{flex-shrink:0;padding:22px 0 26px;font-size:28px;font-weight:600;color:var(--ink);
+  line-height:1.36}}
+.mt-a{{display:block;margin-top:16px;padding-top:15px;border-top:1px solid var(--rim2);
+  font-size:19px;letter-spacing:.13em;color:var(--acc)}}
+.mt-h{{flex-shrink:0;font-size:62px;color:var(--ink);margin:26px 0 24px}}
+.mt-h em{{color:var(--acc);font-style:normal}}
 
 /* ---------- STAMP, the break ---------- */
 .stm{{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;gap:34px}}
