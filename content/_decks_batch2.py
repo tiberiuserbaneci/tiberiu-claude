@@ -35,10 +35,14 @@ D = {
     "mast": "ULTRON <em>/</em> AI FOR FOUNDERS",
     "ai_line": "Claude, running as Ultron",
     "window": "ULTRON  ·  ONE INPUT, A TEAM BEHIND IT",
+    # The first version of this line WAS the slide 1 hook with a different tail, which is the
+    # one thing 30 forbids: the reaction spends the second where attention is highest, and
+    # spending it on a sentence the deck is about to repeat spends it twice. Caught by
+    # measuring the overlap between the four hooks rather than by reading them.
     "reaction_pattern": "imperative",
-    "reaction_text": "This is what I<br>type into <em>Claude</em><br>on a Monday.",
-    "reaction_say": "Seven inputs. Not prompts, not tricks. The seven things I actually type, "
-                    "and exactly what comes back.",
+    "reaction_text": "Stop writing<br><em>prompts</em>.<br>Type the question.",
+    "reaction_say": "Seven sentences, boring on purpose, written the way I would say them to a "
+                    "person. Not one of them needs a technique.",
     "reaction_kick": "Seven real inputs",
     "eyebrow": "Not prompt tricks. The seven things I actually type, and what comes back.",
     "hook": "What I type<br>into <em>Claude</em>,<br>and what returns",
@@ -96,10 +100,12 @@ E = {
     "id": "deck-e-rules", "design": "ledger", "theme": "black", "keyword": "RULES",
     "family": "rules",
     "mast": "ULTRON <em>/</em> AI FOR FOUNDERS",
+    # This one was WORD FOR WORD the slide 1 hook. The invitation to argue survives, but it
+    # now arrives through the two rules that failed rather than by restating the deck's title.
     "reaction_pattern": "list-and-argue",
-    "reaction_text": "7 rules I run<br>my week on.<br><em>Tell me one is wrong.</em>",
-    "reaction_say": "I mean it. If one of these is wrong for your business, "
-                    "say which one and why.",
+    "reaction_text": "Two of them<br>were <em>wrong</em>.<br>I dropped both.",
+    "reaction_say": "Seven left, and I want the argument. If one of these is wrong for your "
+                    "business, say which one and why.",
     "reaction_kick": "Founder operating rules",
     "eyebrow": "Not advice. The seven I actually run on, and I want the argument.",
     "hook": "7 rules<br>I run my<br><em>week</em> on",

@@ -7,17 +7,17 @@ the seventh question, the FIRST COMMENT leads with the price one.
 
 ## LINKEDIN CAPTION  (carousel 1080x1350)
 
-The questions worth asking at two in the morning are the ones you would not ask a person.
-Claude got all seven of mine, and the seventh was whether to stop.
+Being answered is not the useful part. Being argued with is, and that is the one thing Claude
+will do at two in the morning that nobody who loves you will.
 
 - - -
 
-There is no framework here and no course. Month eleven, 02:14, everyone I could have asked
-either works for me, invested in me, or is married to me, and none of those three people can
-give you an unflattering answer at two in the morning. So I typed the questions instead. What
-I did not expect was that the useful part is not being answered, it is being argued with, and
-the reason a machine can do it is exactly that it has nothing invested in me feeling better
-about myself when I close the laptop.
+There is no framework here and no course. Month eleven, 02:14, and everyone I could have asked
+either works for me, invested in me, or is married to me. None of those three people give you
+an unflattering answer at that hour, and they should not have to. So I typed the questions
+instead, and the thing I did not expect was how much of the value was in the pushback rather
+than the reply. It has nothing invested in how I feel when I close the laptop, which turns out
+to be the whole qualification for the job.
 
 - - -
 

@@ -7,8 +7,8 @@ enforced and three broken, the FIRST COMMENT leads with rule 3 and the dead deal
 
 ## LINKEDIN CAPTION  (carousel 1080x1350)
 
-Four of the seven rules I run my week on are enforced by Claude. The three that are mine are
-the three I break, which tells you something about rules.
+A rule that depends on you remembering it at 6pm on a Thursday is not a rule. It is an
+intention, and Claude is the only reason four of mine survived a whole year.
 
 - - -
 
@@ -40,10 +40,11 @@ rather than once months ago, is most of the difference on the bill.
 The seventh one took longest to learn. A good result that lives in a chat window nobody
 reopens did not happen. If something worked, it has to become a thing that runs again next
 week without me awake for it, or it was a nice afternoon and nothing else. Most of what
-founders call leverage is a good afternoon they never repeated. That is also why the four
-Claude enforces hold and the three that are mine do not: a rule that depends on me
-remembering it at 6pm on a Thursday is not a rule, it is an intention with a strong opinion
-of itself. The ones that survived a year are the ones where something else keeps score.
+founders call leverage is a good afternoon they never repeated. Split them and the pattern is
+uncomfortable: the four that hold are the four where something other than my memory keeps
+score, and the three that are purely mine are the three I break, usually on the day I most
+needed them. That is not a discipline problem. It is what happens to anything stored only in
+a tired person.
 
 - - -
 

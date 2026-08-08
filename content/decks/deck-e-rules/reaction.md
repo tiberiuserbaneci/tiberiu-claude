@@ -4,11 +4,11 @@
 
 **ON SCREEN** (what they read, keep it short)
 
-> 7 rules I run my week on. Tell me one is wrong.
+> Two of them were wrong. I dropped both.
 
 **YOU SAY** (over the same shot)
 
-> I mean it. If one of these is wrong for your business, say which one and why.
+> Seven left, and I want the argument. If one of these is wrong for your business, say which one and why.
 
 **Then** slide 1, which does NOT repeat this line.
 

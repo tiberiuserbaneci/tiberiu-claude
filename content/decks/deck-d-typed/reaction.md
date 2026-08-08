@@ -4,11 +4,11 @@
 
 **ON SCREEN** (what they read, keep it short)
 
-> This is what I type into Claude on a Monday.
+> Stop writing prompts. Type the question.
 
 **YOU SAY** (over the same shot)
 
-> Seven inputs. Not prompts, not tricks. The seven things I actually type, and exactly what comes back.
+> Seven sentences, boring on purpose, written the way I would say them to a person. Not one of them needs a technique.
 
 **Then** slide 1, which does NOT repeat this line.
 
