@@ -29,3 +29,6 @@ an audience learns to skip.
 | `deck-d-typed` | console | white | whatItypes | TYPED | **BREAK** |
 | `deck-e-rules` | ledger | black | rules | RULES | |
 | `deck-f-hire` | score | white | hiring | HIRE | |
+| `deck-g-turned` | verdict | black | sayingno | TURNED | |
+| `deck-h-2am` | console | white | worry | 2AM | **BREAK** |
+| `deck-i-monday` | ledger | black | dashboard | MONDAY | |

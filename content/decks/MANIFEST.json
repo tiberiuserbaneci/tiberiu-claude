@@ -53,6 +53,33 @@
       "keyword": "HIRE",
       "break": false,
       "twist": ""
+    },
+    {
+      "id": "deck-g-turned",
+      "design": "verdict",
+      "theme": "black",
+      "family": "sayingno",
+      "keyword": "TURNED",
+      "break": false,
+      "twist": ""
+    },
+    {
+      "id": "deck-h-2am",
+      "design": "console",
+      "theme": "white",
+      "family": "worry",
+      "keyword": "2AM",
+      "break": true,
+      "twist": ""
+    },
+    {
+      "id": "deck-i-monday",
+      "design": "ledger",
+      "theme": "black",
+      "family": "dashboard",
+      "keyword": "MONDAY",
+      "break": false,
+      "twist": ""
     }
   ]
 }
