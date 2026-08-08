@@ -80,6 +80,33 @@
       "keyword": "MONDAY",
       "break": false,
       "twist": ""
+    },
+    {
+      "id": "deck-j-first10",
+      "design": "meter",
+      "theme": "white",
+      "family": "firstcustomers",
+      "keyword": "TEN",
+      "break": true,
+      "twist": ""
+    },
+    {
+      "id": "deck-k-launchweek",
+      "design": "trace",
+      "theme": "black",
+      "family": "launchweek",
+      "keyword": "LAUNCH",
+      "break": false,
+      "twist": ""
+    },
+    {
+      "id": "deck-l-unpaid",
+      "design": "receipt",
+      "theme": "white",
+      "family": "unpaidwork",
+      "keyword": "HOURS",
+      "break": false,
+      "twist": "same receipt shape as deck B's tool bill, but the unit is hours and the payer is the founder, so the total is a week of his life rather than a card charge"
     }
   ]
 }

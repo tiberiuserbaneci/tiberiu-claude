@@ -50,6 +50,9 @@ THEMES = {
         "ink70":   "rgba(255,255,255,.72)",
         "ink45":   "rgba(255,255,255,.46)",
         "acc":     "#E08B68",
+        # unlit data bars. Neutral grey on a warm ground is the grey-plastic failure all over
+        # again, so the quiet bars stay in the accent family and only lose weight.
+        "bar":     "rgba(224,139,104,.34)",
         "shadow":  "rgba(0,0,0,.55)",
     },
     "white": {
@@ -66,6 +69,7 @@ THEMES = {
         "ink70":   "rgba(14,14,18,.72)",
         "ink45":   "rgba(14,14,18,.48)",
         "acc":     "#B4522E",
+        "bar":     "rgba(180,82,46,.30)",
         "shadow":  "rgba(60,40,30,.16)",
     },
 }

@@ -130,6 +130,7 @@ B = {
                "Most of it was one decision I never made.",
     "hook": "Where the<br>money actually<br><em>goes</em>",
     "badge": "5x", "badge_l": "PRICE GAP, TOP TIER TO BOTTOM",
+    "total": "5x", "total_l": "top to bottom, same question",
     "receipt_head": "PUBLISHED LIST PRICE  ·  PER MILLION TOKENS  ·  AUGUST 2026",
     "cta_eye": "The routing table, per job, with the tier each one needs",
     "cta_line": "I will send you the table I use to decide which tier gets which job.",

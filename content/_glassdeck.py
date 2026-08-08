@@ -220,9 +220,14 @@ def d_receipt(spec, logo):
             f"<div class='rc-li{' on' if i == k else ''}'>"
             f"<span class='rc-d'>{x['t']}</span><span class='rc-dot'></span>"
             f"<span class='rc-v mono'>{x['v']}</span></div>" for i, x in enumerate(rows))
+        # A bill without a total is a table. The total is the line the whole design exists
+        # to arrive at, so it sits inside the body, above the perforation.
+        total = (f"<div class='rc-tl'><span class='rc-tl-l'>{spec['total_l']}</span>"
+                 f"<span class='rc-tl-n'>{spec['total']}</span></div>"
+                 if spec.get("total") else "")
         out.append(_slide(spec, k + 2, f"""<div class="rc-h disp">{r['h']}</div>
     <div class="g rc"><div class="rc-top mono">{spec['receipt_head']}</div>
-      <div class="rc-body">{lines}</div>
+      <div class="rc-body">{lines}</div>{total}
       <div class="rc-perf"></div>
       <div class="rc-note">{r['b']}</div></div>""", logo))
     return out
@@ -307,6 +312,51 @@ def d_console(spec, logo):
     return out
 
 
+def d_meter(spec, logo):
+    """THE BREAK, second form: a proportional bar chart and nothing else.
+
+    `console` was the only break in the set, which made the break itself predictable - after
+    two of them the audience knows the interrupt is a product window. So the break slot now
+    has two shapes and they alternate.
+
+    A chart is the right second shape because it is SIMPLE to read and HEAVY to look at, which
+    is the pair `stamp` failed. One idea, taken in at a glance, filling the block with real
+    mass. And the bar lengths carry the argument on their own: the row that is longest is the
+    one the founder cannot repeat, and you see that before you read a word.
+
+    A zero bar still draws a stub. A row rendering as nothing reads as a bug, and the zeros
+    are usually the punchline.
+    """
+    rows = spec["items"]
+    top = max(r["v"] for r in rows) or 1
+    pct = lambda v: max(3.0, v / top * 100.0)
+
+    mini = "".join(
+        f"<div class='mt-m'><span class='mt-ml'>{r['t']}</span>"
+        f"<span class='mt-mb'><i style='width:{pct(r['v']):.1f}%'></i></span>"
+        f"<span class='mt-mv mono'>{r['d']}</span></div>" for r in rows)
+    out = [_slide(spec, 1, f"""<div class="cv">
+    <div class="cv-eye mono">{spec['eyebrow']}</div>
+    <div class="cv-h disp">{spec['hook']}</div>
+    <div class="g mt-mini">{mini}</div>
+    {_ai(spec, logo)}
+  </div>""", logo)]
+    for k, r in enumerate(rows):
+        bars = "".join(
+            f"<div class='mt-r{' on' if i == k else ''}'>"
+            f"<span class='mt-l'>{x['t']}</span>"
+            f"<span class='mt-v disp'>{x['d']}</span>"
+            f"<span class='mt-t'><i style='width:{pct(x['v']):.1f}%'></i></span></div>"
+            for i, x in enumerate(rows))
+        out.append(_slide(spec, k + 2, f"""<div class="mt-h disp">{r['h']}</div>
+    <div class="g mt">
+      <div class="mt-hd mono"><span>{spec['axis']}</span><span>{spec['unit']}</span></div>
+      <div class="mt-body">{bars}</div>
+      <div class="mt-note">{r['b']}<span class="mt-a mono">{r['a']}</span></div>
+    </div>""", logo))
+    return out
+
+
 def d_stamp(spec, logo):
     """THE BREAK. One line, one mark, nothing else. Deliberately the thinnest deck in the set.
 
@@ -333,7 +383,8 @@ def d_stamp(spec, logo):
 
 
 DESIGNS = {"ledger": d_ledger, "verdict": d_verdict, "receipt": d_receipt,
-           "trace": d_trace, "score": d_score, "console": d_console, "stamp": d_stamp}
+           "trace": d_trace, "score": d_score, "console": d_console, "meter": d_meter,
+           "stamp": d_stamp}
 
 
 def build(spec, css_extra: str, fonts: str, variant: str = "reel") -> str:

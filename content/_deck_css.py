@@ -86,13 +86,31 @@ CSS = f"""
   border-radius:28px}}
 .rc-top{{flex-shrink:0;font-size:21px;color:var(--ink45);padding-bottom:18px;
   border-bottom:2px dashed var(--rim2)}}
-.rc-body{{flex:1;min-height:0;display:flex;flex-direction:column;padding:8px 0}}
-.rc-li{{flex:1;display:flex;align-items:center;gap:16px}}
-.rc-d{{font-size:29px;font-weight:600;color:var(--ink70);white-space:nowrap}}
-.rc-dot{{flex:1;border-bottom:2px dotted var(--rim2);transform:translateY(-6px)}}
-.rc-v{{font-size:27px;color:var(--ink70);letter-spacing:.08em;white-space:nowrap}}
-.rc-li.on .rc-d{{font-size:38px;font-weight:800;color:var(--ink)}}
-.rc-li.on .rc-v{{font-size:34px;color:var(--acc)}}
+/* Rows are `flex:1`, so each one is handed roughly a seventh of a tall block. At 29px type
+   that filled about a quarter of the row and the bill read as seven lines floating in air -
+   the operator's standing rejection. The fix is not to stop distributing, it is to make the
+   type worth the height it was already given, and to end the bill on a TOTAL, which is the
+   one line a receipt is actually for. */
+.rc-body{{flex:1;min-height:0;display:flex;flex-direction:column;padding:4px 0}}
+.rc-li{{flex:1;display:flex;align-items:center;gap:16px;
+  border-bottom:1px solid var(--rim2)}}
+.rc-li:last-child{{border-bottom:0}}
+.rc-d{{font-size:37px;font-weight:600;color:var(--ink70);white-space:nowrap}}
+.rc-dot{{flex:1;border-bottom:2px dotted var(--rim2);transform:translateY(-8px)}}
+.rc-v{{font-size:35px;color:var(--ink70);letter-spacing:.06em;white-space:nowrap}}
+/* The lit row is the only one that can outgrow the column: a long description at 48px plus a
+   long value at 46px, both nowrap, overran deck B's last slide by 217px. The value stays on
+   one line because a price broken across two lines stops being a price; the description is
+   allowed to wrap instead. */
+.rc-li.on .rc-d{{font-size:48px;font-weight:800;color:var(--ink);letter-spacing:-.5px;
+  white-space:normal;line-height:1.06;min-width:0}}
+.rc-li.on .rc-v{{font-size:42px;color:var(--acc);align-self:center}}
+.rc-tl{{flex-shrink:0;display:flex;align-items:baseline;justify-content:space-between;
+  gap:18px;margin-top:14px;padding-top:20px;border-top:2px solid var(--rim2)}}
+.rc-tl-l{{font-family:'DM Mono',monospace;font-weight:500;font-size:21px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--ink45)}}
+.rc-tl-n{{font-family:'Anton',sans-serif;text-transform:uppercase;letter-spacing:-1px;
+  font-size:74px;line-height:.9;color:var(--acc)}}
 /* the perforation: the one graphic element that makes it read as a bill, not a table */
 .rc-perf{{flex-shrink:0;height:0;border-top:3px dashed var(--rim2);margin:6px -34px 0;
   position:relative}}
@@ -112,7 +130,7 @@ CSS = f"""
 .tr-t{{font-size:22px;color:var(--ink45);text-align:right}}
 .tr-dot{{width:16px;height:16px;border-radius:50%;background:var(--rim2);justify-self:center;
   z-index:2}}
-.tr-x{{font-size:28px;font-weight:700;color:var(--ink70);line-height:1.22}}
+.tr-x{{font-size:33px;font-weight:700;color:var(--ink70);line-height:1.2}}
 .tr-e.on{{flex:3.1;align-content:center}}
 .tr-e.on .tr-t{{font-size:26px;color:var(--acc)}}
 .tr-e.on .tr-dot{{width:26px;height:26px;background:var(--acc);
@@ -205,8 +223,8 @@ CSS = f"""
 .mt-v{{font-size:30px;color:var(--ink45);justify-self:end;align-self:center;line-height:1}}
 .mt-t{{grid-column:1/3;align-self:stretch;min-height:20px;border-radius:12px;
   background:var(--rim2);overflow:hidden;box-shadow:inset 0 1px 0 var(--rim)}}
-.mt-t i{{display:block;height:100%;border-radius:12px;background:var(--ink45);
-  box-shadow:inset 0 2px 0 rgba(255,255,255,.28),inset 0 -4px 10px rgba(0,0,0,.16)}}
+.mt-t i{{display:block;height:100%;border-radius:12px;background:var(--bar);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.28),inset 0 -4px 10px rgba(0,0,0,.10)}}
 .mt-r.on{{flex:1.55}}
 .mt-r.on .mt-l{{font-size:40px;font-weight:800;color:var(--ink);letter-spacing:-.4px;
   line-height:1.08}}
