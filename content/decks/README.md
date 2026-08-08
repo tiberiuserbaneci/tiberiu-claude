@@ -4,7 +4,8 @@ One folder per deck. Each contains:
 
 - `01.png` to `09.png` - 1080x1920, drop straight into Edits at 1 second each
 - `carousel-4x5/` - the same nine at 1080x1350 for a carousel post
-- `reaction-overlay.png` - TRANSPARENT, goes over your filmed reaction. Not a slide.
+- `reaction-overlay.png` - RGBA with a real alpha channel, goes over your filmed
+  reaction. Not a slide. Verify with any viewer: the top of the frame is see-through.
 - `reaction-preview.png` - how the reaction reads, against a stand-in plate
 - `reaction.md` - the on-screen line, what you say, and the viral pattern it came from
 

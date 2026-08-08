@@ -47,7 +47,12 @@ body{background:#101014;display:flex;flex-direction:column;align-items:center;ga
 .card.preview::after{content:'FOOTAGE';position:absolute;top:44%;left:0;right:0;
   text-align:center;font-family:'DM Mono',monospace;font-size:26px;letter-spacing:.5em;
   color:rgba(255,255,255,.13)}
+/* omit_background only removes the DEFAULT white page background. An explicitly declared
+   body colour still paints, which silently flattened every overlay to RGB - they were
+   shipped as "transparent" and were not. The alpha page therefore has no background at all,
+   on the body OR the card. */
 .card.alpha{background:transparent}
+body:has(.card.alpha){background:transparent}
 
 /* A graded scrim, never a solid card. The words have to be readable over any frame without
    putting a black box on his face - the same rule the films learned the hard way. */
