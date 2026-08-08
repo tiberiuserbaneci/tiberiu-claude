@@ -51,9 +51,11 @@ A = {
     "id": "deck-a-year", "design": "verdict", "theme": "black", "keyword": "YEAR",
     "family": "regret",
     "mast": "ULTRON <em>/</em> AI FOR FOUNDERS",
-    "reaction_text": "Office ends at 5.<br>Mine ended at <em>11</em>.",
-    "reaction_say": 'For a year. And almost none of it was the work that mattered.',
-    "reaction_kick": 'Founder, year one',
+    "reaction_pattern": "cautionary",
+    "reaction_text": "What a year of<br><em>11pm</em> nights buys you.",
+    "reaction_say": "I found out the hard way. Almost none of it was the work that mattered, "
+                    "and I can name all seven.",
+    "reaction_kick": "Founder, year one",
     "eyebrow": "Year one, eleven at night, every night. Here is what I was actually doing.",
     "hook": "7 things<br>that cost me<br><em>a year</em>",
     "badge": "7", "badge_l": "mistakes I made in year one, and what I would do instead",
@@ -119,9 +121,11 @@ B = {
     "id": "deck-b-bill", "design": "receipt", "theme": "white", "keyword": "BILL",
     "family": "money",
     "mast": "ULTRON <em>/</em> AI FOR FOUNDERS",
-    "reaction_text": "Stop paying for AI<br>like it is <em>Netflix</em>.",
-    "reaction_say": 'I checked what I was actually paying for. Most of it was one decision I never made.',
-    "reaction_kick": 'The bill nobody opens',
+    "reaction_pattern": "ignorance-reveal",
+    "reaction_text": "Most founders have no idea<br>what they are <em>actually</em> paying for.",
+    "reaction_say": "I opened mine. Most of it came down to one decision I made months ago "
+                    "and never looked at again.",
+    "reaction_kick": "The bill nobody opens",
     "eyebrow": "I checked what I was actually paying for. "
                "Most of it was one decision I never made.",
     "hook": "Where the<br>money actually<br><em>goes</em>",
@@ -167,9 +171,11 @@ C = {
     "id": "deck-c-dayone", "design": "trace", "theme": "black", "keyword": "DAYONE",
     "family": "speedrun",
     "mast": "ULTRON <em>/</em> AI FOR FOUNDERS",
-    "reaction_text": "Stop spending 6 months<br>building a <em>startup</em>.",
-    "reaction_say": 'This is day one, hour by hour, from idea to a person answering you.',
-    "reaction_kick": 'Day one, hour by hour',
+    "reaction_pattern": "qualifying-question",
+    "reaction_text": "Still think a startup<br>takes <em>six months</em>?",
+    "reaction_say": "This is day one, hour by hour, from an idea to a person actually "
+                    "answering you.",
+    "reaction_kick": "Day one, hour by hour",
     "eyebrow": "Not the version where you quit your job first. "
                "The version that fits in one day.",
     "hook": "Day one.<br>Start to first<br><em>real reply</em>",
@@ -212,6 +218,7 @@ C = {
 if __name__ == "__main__":
     import re, subprocess
     RC = load("_reactioncard")
+    RX = load("_reactions")
     SPECS = (A, B, C)
     GD = load("_deckguard")
     run = []
@@ -228,6 +235,9 @@ if __name__ == "__main__":
             f"**ON SCREEN** (what they read, keep it short)\n\n> {plain}\n\n"
             f"**YOU SAY** (over the same shot)\n\n> {spec['reaction_say']}\n\n"
             f"**Then** slide 1, which does NOT repeat this line.\n\n"
+            f"**Pattern** {RX.cite(spec['reaction_pattern'])}\n\n"
+            f"> {RX.BY_ID[spec['reaction_pattern']]['src']}\n\n"
+            f"{RX.BY_ID[spec['reaction_pattern']]['why']}\n\n"
             f"**Keyword** {spec['keyword']}\n\n"
             f"Files: `reaction-overlay.png` drops straight over your footage "
             f"(transparent), `reaction-preview.png` is how it reads.\n")
