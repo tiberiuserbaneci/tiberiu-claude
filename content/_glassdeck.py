@@ -25,6 +25,9 @@ THE DESIGNS. Five mechanics, each with a real graphic element, none of them 3D:
   receipt   an itemised bill with a perforated edge and one heavy TOTAL
   trace     a timestamped spine, one event per slide, for what-happened-when stories
   score     a dense scorecard grid, for which-thing-for-which-job
+  stamp     THE BREAK. One struck line per slide and a single glass mark. Almost no text,
+            read in half a second. It exists because three dense decks in a row is a rhythm,
+            and a rhythm is the thing an audience learns to skip. Marked break=True.
 
 CANVAS. 1080x1920 with the reel safe band (300 top / 130 right / 330 bottom / 70 left), so
 the operator can drop the slides straight into a reel without the platform UI eating them.
@@ -201,8 +204,33 @@ def d_score(spec, logo):
     return out
 
 
+def d_stamp(spec, logo):
+    """THE BREAK. One line, one mark, nothing else. Deliberately the thinnest deck in the set.
+
+    Every other design is dense because density is what earns a save. This one is not, and
+    that is the whole point: after three list decks the eye has learned the shape and starts
+    skipping. A slide read in half a second resets that. Density is a rule about the dominant
+    block, never a rule that every slide must be busy.
+    """
+    rows = spec["items"]
+    chips = "".join(f"<span class='stm-chip g flat'>{r['t']}</span>" for r in rows)
+    out = [_slide(spec, 1, f"""<div class="cv">
+    <div class="cv-eye mono">{spec['eyebrow']}</div>
+    <div class="cv-h disp">{spec['hook']}</div>
+    <div class="stm-chips">{chips}</div>
+  </div>""", logo)]
+    for k, r in enumerate(rows):
+        out.append(_slide(spec, k + 2, f"""<div class="stm">
+      <div class="stm-n mono">{k+1:02d} <em>/</em> {len(rows)}</div>
+      <div class="g stm-mark"><span class="stm-x">{r.get('mark', '&times;')}</span></div>
+      <div class="stm-l disp">{r['t']}</div>
+      <div class="stm-b">{r['b']}</div>
+    </div>""", logo))
+    return out
+
+
 DESIGNS = {"ledger": d_ledger, "verdict": d_verdict, "receipt": d_receipt,
-           "trace": d_trace, "score": d_score}
+           "trace": d_trace, "score": d_score, "stamp": d_stamp}
 
 
 def build(spec, css_extra: str, fonts: str) -> str:

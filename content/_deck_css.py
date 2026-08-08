@@ -141,6 +141,21 @@ CSS = f"""
 .sc-note{{flex-shrink:0;padding:24px 0 28px;font-size:27px;font-weight:600;color:var(--ink);
   line-height:1.36}}
 
+/* ---------- STAMP, the break ---------- */
+.stm{{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;gap:34px}}
+.stm-n{{font-size:22px;color:var(--ink45);letter-spacing:.24em}}
+.stm-n em{{color:var(--acc);font-style:normal}}
+/* one simple glass mark. The only graphic on the slide, and it carries the verdict. */
+.stm-mark{{width:172px;height:172px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;flex-shrink:0}}
+.stm-x{{font-family:'Anton',sans-serif;font-size:96px;line-height:1;color:var(--acc)}}
+.stm-l{{font-size:104px;color:var(--ink)}}
+.stm-l em{{color:var(--acc);font-style:normal}}
+.stm-b{{font-size:32px;font-weight:600;color:var(--ink70);line-height:1.36}}
+.stm-chips{{display:flex;flex-wrap:wrap;gap:11px}}
+.stm-chip{{padding:15px 22px;border-radius:16px;font-size:24px;font-weight:600;
+  color:var(--ink70)}}
+
 /* ---------- the ask ---------- */
 .cta{{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;gap:30px}}
 .cta-eye{{font-size:24px;color:var(--ink70);letter-spacing:.13em;line-height:1.4}}

@@ -26,6 +26,33 @@
       "keyword": "DAYONE",
       "break": false,
       "twist": ""
+    },
+    {
+      "id": "deck-d-stopped",
+      "design": "stamp",
+      "theme": "white",
+      "family": "stopped",
+      "keyword": "STOPPED",
+      "break": true,
+      "twist": ""
+    },
+    {
+      "id": "deck-e-rules",
+      "design": "ledger",
+      "theme": "black",
+      "family": "rules",
+      "keyword": "RULES",
+      "break": false,
+      "twist": ""
+    },
+    {
+      "id": "deck-f-hire",
+      "design": "score",
+      "theme": "white",
+      "family": "hiring",
+      "keyword": "HIRE",
+      "break": false,
+      "twist": ""
     }
   ]
 }
