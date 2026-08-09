@@ -460,11 +460,22 @@ Every vertical carousel slide and story uses these insets. Pre-flight: verify th
 ```
 
 **Footer rules:**
-- Single row: Ultron logo left + brand text + URL `51ultron.com` right
-- URL syntax: `51ultron<em>.</em>com` (dot in book color)
+- Single row: Ultron logo left + brand text
+- **NO DOMAIN ANYWHERE ON A SLIDE (operator, 2026-08-09 — binding, supersedes the URL rule
+  that used to sit on this line).** "am sesizat ca toti algoritmii ma penalizeaza pentru link
+  ul asta. si linkedin si ig si tiktok." A domain rendered into the image is OCR'd by all
+  three platforms and scored as off-platform traffic, so `51ultron.com` in the footer was a
+  reach penalty paid on every single slide, for a URL nobody types off a phone screen. The
+  brand name is not a link: `51ULTRON.COM` is a destination, `ULTRON` is an identity, and the
+  identity is the only thing the footer was ever doing useful work for. Wordmark only, at
+  .34em tracking so it reads as a mark rather than as a caption that lost its URL.
+- **Where the link lives instead:** the first comment and the DM, which is where §15.3 already
+  put it. Nothing changes about those - they are 1:1 or below the post, and neither is scored
+  as an in-image link.
 - NEVER a keyword strip in the footer
 - NEVER two rows
 - Brand text format: `<strong>ULTRON</strong> · AI OPERATOR FOR FOUNDERS · [CONTEXT]`
+  (the long form is for the 1450px posters; the glass decks carry the wordmark alone)
 
 ---
 

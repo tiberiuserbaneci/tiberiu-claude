@@ -227,7 +227,9 @@ body{background:#000;display:flex;flex-direction:column;align-items:center;gap:2
 
 .mast{font-size:22px}
 .foot{padding-top:26px}
-.foot span{font-size:21px}
+/* with the domain gone the wordmark is alone down there, so it gets the tracking and the
+   weight of a mark rather than the faintness of a caption trailing a URL */
+.foot span{font-size:21px;letter-spacing:.34em;color:var(--ink70)}
 
 /* ---------- cover, shared by every design ---------- */
 .cv{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;gap:30px}
@@ -365,7 +367,9 @@ body{background:#000;display:flex;flex-direction:column;align-items:center;gap:2
 .sc-n{font-size:27px;font-weight:600;color:var(--ink70);line-height:1.2}
 .sc-c{font-family:'Anton',sans-serif;font-size:34px;text-align:center;color:var(--ink45)}
 .sc-c.yes{color:var(--acc)}
-.sc-r.on{flex:1.9}
+/* 1.35, not 1.9. The lit row is already marked by weight, size and colour; the extra
+   height was empty and read as a hole punched in the middle of the matrix. */
+.sc-r.on{flex:1.35}
 .sc-r.on .sc-n{font-size:38px;font-weight:800;color:var(--ink);letter-spacing:-.4px}
 .sc-r.on .sc-c{font-size:46px}
 .sc-note{flex-shrink:0;padding:24px 0 28px;font-size:27px;font-weight:600;color:var(--ink);

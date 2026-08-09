@@ -107,10 +107,21 @@ def _mast(spec, n):
 
 
 def _foot(logo, spec=None):
+    """Logo and the brand name. NO DOMAIN (operator, 2026-08-09).
+
+    "am sesizat ca toti algoritmii ma penalizeaza pentru link ul asta. si linkedin si ig si
+    tiktok." A domain rendered into the image is read by OCR on all three platforms and
+    scored as off-platform traffic, which is a reach penalty paid on every single slide for a
+    URL nobody was going to type off a phone screen anyway.
+
+    The brand name is not a link. `51ULTRON.COM` is a destination, `ULTRON` is an identity,
+    and the identity is the only part the footer was ever doing useful work for. The link
+    lives where it costs nothing: the first comment and the DM.
+    """
     if spec is not None and spec.get("_variant") == "reel":
         return ""
     return (f"<div class='foot'><img src='data:image/png;base64,{logo}'>"
-            f"<span>51ULTRON<em>.</em>COM</span></div>")
+            f"<span>ULTRON</span></div>")
 
 
 def _ai(spec, logo):
