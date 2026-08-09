@@ -37,9 +37,9 @@ CSS = f"""
 .rc-tot-l{{font-size:22px;color:var(--ink70);letter-spacing:.2em}}
 
 /* ---------- every content slide gets a display hook of its own ---------- */
-.lg-h,.vd-h,.rc-h,.tr-h,.sc-h,.cn-h,.mt-h{{flex-shrink:0;font-size:62px;color:var(--ink);
+.lg-h,.vd-h,.rc-h,.tr-h,.sc-h,.cn-h,.mt-h,.gr-h{{flex-shrink:0;font-size:62px;color:var(--ink);
   margin:26px 0 24px}}
-.lg-h em,.vd-h em,.rc-h em,.tr-h em,.sc-h em,.cn-h em,.mt-h em{{color:var(--acc);
+.lg-h em,.vd-h em,.rc-h em,.tr-h em,.sc-h em,.cn-h em,.mt-h em,.gr-h em{{color:var(--acc);
   font-style:normal}}
 
 /* ---------- LEDGER ---------- */
@@ -152,7 +152,9 @@ CSS = f"""
 .sc-n{{font-size:27px;font-weight:600;color:var(--ink70);line-height:1.2}}
 .sc-c{{font-family:'Anton',sans-serif;font-size:34px;text-align:center;color:var(--ink45)}}
 .sc-c.yes{{color:var(--acc)}}
-.sc-r.on{{flex:1.9}}
+/* 1.35, not 1.9. The lit row is already marked by weight, size and colour; the extra
+   height was empty and read as a hole punched in the middle of the matrix. */
+.sc-r.on{{flex:1.35}}
 .sc-r.on .sc-n{{font-size:38px;font-weight:800;color:var(--ink);letter-spacing:-.4px}}
 .sc-r.on .sc-c{{font-size:46px}}
 .sc-note{{flex-shrink:0;padding:24px 0 28px;font-size:27px;font-weight:600;color:var(--ink);
@@ -236,6 +238,43 @@ CSS = f"""
   font-size:19px;letter-spacing:.13em;color:var(--acc)}}
 .mt-h{{flex-shrink:0;font-size:62px;color:var(--ink);margin:26px 0 24px}}
 .mt-h em{{color:var(--acc);font-style:normal}}
+
+/* ---------- GRID, the third break: a field of cells, counted ----------
+
+   Break shape number three. Two shapes alternating is still a pattern the eye learns, and the
+   break slot exists precisely so the eye cannot settle. This one reads proportion by COUNTING
+   rather than by length, which is a different mechanic from the chart and a different object
+   from the product window: the whole set is on screen at once and the argument is how few of
+   the cells are lit.
+
+   Cells are painted blocks, so the density is structural - they tile the area or they do not.
+   That is why the row-fill guard does not measure this one; there are no text rows to be thin. */
+.gr{{flex:1;min-height:0;display:flex;flex-direction:column;padding:28px 30px 0;
+  border-radius:28px}}
+.gr-hd{{flex-shrink:0;display:flex;justify-content:space-between;font-size:19px;
+  color:var(--ink45);padding-bottom:18px;border-bottom:1px solid var(--rim2)}}
+/* `align-content:center` floated three rows of cells in the middle of a tall panel and left
+   about 280px dead above and 250px below. `grid-auto-rows:1fr` makes the cells absorb the
+   block instead - 18 cells is exactly 6 by 3, so they tile it with no orphan row. */
+.gr-f{{flex:1;min-height:0;display:grid;grid-template-columns:repeat(6,1fr);
+  grid-auto-rows:1fr;gap:14px;padding:22px 0}}
+.gr-c{{border-radius:18px;background:var(--glass2);box-shadow:inset 0 1px 0 var(--rim);
+  display:flex;align-items:center;justify-content:center;min-height:0;
+  font-family:'DM Mono',monospace;font-size:24px;font-weight:500;color:var(--ink45)}}
+/* the lit colour is the theme's own ground, so the label stays legible whichever way round
+   the accent sits: dark type on a light accent, light type on a dark one */
+.gr-c.on{{background:var(--acc);color:var(--bg);box-shadow:none;font-weight:700;font-size:27px}}
+.gr-c.win{{background:transparent;box-shadow:inset 0 0 0 3px var(--acc);color:var(--acc);
+  font-weight:700;font-size:24px}}
+.gr-note{{flex-shrink:0;padding:22px 0 26px;font-size:28px;font-weight:600;color:var(--ink);
+  line-height:1.36}}
+.gr-a{{display:block;margin-top:16px;padding-top:15px;border-top:1px solid var(--rim2);
+  font-size:19px;letter-spacing:.13em;color:var(--acc)}}
+.gr-mini{{padding:26px 28px;border-radius:26px;display:grid;
+  grid-template-columns:repeat(9,1fr);gap:9px}}
+.gr-mini .gr-c{{min-height:54px;font-size:15px;border-radius:11px}}
+.gr-mini .gr-c.on{{font-size:17px}}
+.gr-mini .gr-c.win{{font-size:15px;box-shadow:inset 0 0 0 2px var(--acc)}}
 
 /* ---------- STAMP, the break ---------- */
 .stm{{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;gap:34px}}

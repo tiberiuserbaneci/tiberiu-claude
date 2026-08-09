@@ -107,6 +107,33 @@
       "keyword": "HOURS",
       "break": false,
       "twist": "same receipt shape as deck B's tool bill, but the unit is hours and the payer is the founder, so the total is a week of his life rather than a card charge"
+    },
+    {
+      "id": "deck-m-price",
+      "design": "verdict",
+      "theme": "black",
+      "family": "pricing",
+      "keyword": "PRICE",
+      "break": false,
+      "twist": ""
+    },
+    {
+      "id": "deck-n-seventeen",
+      "design": "grid",
+      "theme": "white",
+      "family": "rejection",
+      "keyword": "SEVENTEEN",
+      "break": true,
+      "twist": ""
+    },
+    {
+      "id": "deck-o-split",
+      "design": "score",
+      "theme": "black",
+      "family": "whodoeswhat",
+      "keyword": "SPLIT",
+      "break": false,
+      "twist": ""
     }
   ]
 }

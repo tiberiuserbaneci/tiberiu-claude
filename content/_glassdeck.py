@@ -357,6 +357,45 @@ def d_meter(spec, logo):
     return out
 
 
+def d_grid(spec, logo):
+    """THE BREAK, third form: a field of cells, and the argument is how few are lit.
+
+    Two break shapes alternating is still a pattern, and the break slot exists so the eye
+    cannot settle. This one reads proportion by COUNTING rather than by bar length, so the
+    whole set sits on screen at once and the rare thing is rare on sight.
+
+    One cell is the outcome and carries `win` rather than a category, so the field always
+    shows what all the others were for.
+    """
+    rows = spec["items"]
+    total = sum(r["n"] for r in rows)
+
+    def cells(lit=-1):
+        out, i = [], 0
+        for k, r in enumerate(rows):
+            for _ in range(r["n"]):
+                i += 1
+                out.append(f"<span class='gr-c{' on' if k == lit else ''}'>{i:02d}</span>")
+        out.append(f"<span class='gr-c win'>{spec['win']}</span>")
+        return "".join(out)
+
+    out = [_slide(spec, 1, f"""<div class="cv">
+    <div class="cv-eye mono">{spec['eyebrow']}</div>
+    <div class="cv-h disp">{spec['hook']}</div>
+    <div class="g gr-mini">{cells()}</div>
+    {_ai(spec, logo)}
+  </div>""", logo)]
+    for k, r in enumerate(rows):
+        out.append(_slide(spec, k + 2, f"""<div class="gr-h disp">{r['h']}</div>
+    <div class="g gr">
+      <div class="gr-hd mono"><span>{r['t']}</span>
+        <span>{r['n']} of {total} {spec['unit']}</span></div>
+      <div class="gr-f">{cells(k)}</div>
+      <div class="gr-note">{r['b']}<span class="gr-a mono">{r['a']}</span></div>
+    </div>""", logo))
+    return out
+
+
 def d_stamp(spec, logo):
     """THE BREAK. One line, one mark, nothing else. Deliberately the thinnest deck in the set.
 
@@ -384,7 +423,7 @@ def d_stamp(spec, logo):
 
 DESIGNS = {"ledger": d_ledger, "verdict": d_verdict, "receipt": d_receipt,
            "trace": d_trace, "score": d_score, "console": d_console, "meter": d_meter,
-           "stamp": d_stamp}
+           "grid": d_grid, "stamp": d_stamp}
 
 
 def build(spec, css_extra: str, fonts: str, variant: str = "reel") -> str:
