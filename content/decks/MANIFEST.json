@@ -161,6 +161,33 @@
       "keyword": "MORNING",
       "break": false,
       "twist": ""
+    },
+    {
+      "id": "deck-s-quick",
+      "design": "receipt",
+      "theme": "black",
+      "family": "featurecost",
+      "keyword": "QUICK",
+      "break": false,
+      "twist": ""
+    },
+    {
+      "id": "deck-t-follow",
+      "design": "verdict",
+      "theme": "white",
+      "family": "followup",
+      "keyword": "FOLLOW",
+      "break": false,
+      "twist": ""
+    },
+    {
+      "id": "deck-u-opens",
+      "design": "meter",
+      "theme": "black",
+      "family": "toolaudit",
+      "keyword": "OPENS",
+      "break": true,
+      "twist": ""
     }
   ]
 }
