@@ -49,7 +49,7 @@ CSS = f"""
 .row{{flex:1;display:grid;grid-template-columns:76px 1fr;column-gap:8px;align-items:center;
   align-content:center;padding:16px 28px;border-radius:24px}}
 .row .rn{{font-size:22px;color:var(--ink45)}}
-.row .rt{{font-size:28px;font-weight:700;color:var(--ink70);line-height:1.22}}
+.row .rt{{font-size:32px;font-weight:700;color:var(--ink70);line-height:1.2}}
 .row.on{{flex:3.2;padding:32px 30px}}
 .row.on .rn{{font-size:26px;color:var(--acc)}}
 .row.on .rt{{font-size:44px;font-weight:800;color:var(--ink);letter-spacing:-.5px;

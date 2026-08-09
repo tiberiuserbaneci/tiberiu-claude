@@ -91,10 +91,21 @@ def render(deck_id: str, variants=("reel", "carousel")) -> list[str]:
                 fill = s.evaluate("""el => {
                   const list = el.querySelector('.rc-body, .mt-body, .lg, .tr, .sc, .cn-lines');
                   if (!list) return null;
+                  // A row that paints its OWN surface is not measured. On the ledger and the
+                  // grid the row is a glass card, so the card is the ink and the block is
+                  // tiled by construction; on the receipt the row was bare text over the
+                  // panel, so its ink really was just the glyphs. Judging both by glyph
+                  // height flags a tiled block as airy, which is the guard crying wolf.
+                  const painted = n => {
+                    const cs = getComputedStyle(n);
+                    return cs.boxShadow !== 'none' ||
+                      !(cs.backgroundColor === 'transparent' ||
+                        cs.backgroundColor === 'rgba(0, 0, 0, 0)');
+                  };
                   let worst = 100;
                   for (const row of list.children) {
                     const rb = row.getBoundingClientRect();
-                    if (rb.height < 8) continue;
+                    if (rb.height < 8 || painted(row)) continue;
                     let top = Infinity, bot = -Infinity;
                     const walk = n => {
                       for (const c of n.children) {

@@ -134,6 +134,33 @@
       "keyword": "SPLIT",
       "break": false,
       "twist": ""
+    },
+    {
+      "id": "deck-p-call",
+      "design": "ledger",
+      "theme": "white",
+      "family": "discovery",
+      "keyword": "CALL",
+      "break": false,
+      "twist": ""
+    },
+    {
+      "id": "deck-q-lost",
+      "design": "console",
+      "theme": "black",
+      "family": "churn",
+      "keyword": "LOST",
+      "break": true,
+      "twist": ""
+    },
+    {
+      "id": "deck-r-morning",
+      "design": "trace",
+      "theme": "white",
+      "family": "morning",
+      "keyword": "MORNING",
+      "break": false,
+      "twist": ""
     }
   ]
 }
