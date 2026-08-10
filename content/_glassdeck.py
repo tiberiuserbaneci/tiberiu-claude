@@ -62,6 +62,7 @@ CROP45_TOP = (SAFE_T + (H - SAFE_B)) // 2 - 1350 // 2      # 4:5 centred on the 
 
 
 CM = _load("_claudemark")
+OB = _load("_objects")
 
 
 def logo_b64() -> str:
@@ -89,6 +90,13 @@ _VARIANT_CSS = {
 .markrow{flex-shrink:0;display:flex;justify-content:center;padding-top:18px}
 .markrow svg{width:300px;height:300px}
 """,
+    # same safe band as the reel, plus the object system. Content differs, geometry does not.
+    "reelx": """
+.slide{width:1080px;height:1920px}
+.safe{padding:300px 130px 330px 70px}
+.markrow{flex-shrink:0;display:flex;justify-content:center;padding-top:18px}
+.markrow svg{width:300px;height:300px}
+""" + OB.CSS,
     # a carousel post has no platform UI over it, so the margins are even and the chrome stays
     "carousel": """
 .slide{width:1080px;height:1350px}
@@ -100,7 +108,7 @@ _VARIANT_CSS = {
 
 # --------------------------------------------------------------------- chrome
 def _mast(spec, n):
-    if spec.get("_variant") == "reel":
+    if str(spec.get("_variant")).startswith("reel"):
         return ""                      # his cut, his chrome
     return (f"<div class='mast'><span class='mono'>{spec['mast']}</span>"
             f"<span class='mono'>{n:02d} <em>/</em> 09</span></div>")
@@ -118,7 +126,7 @@ def _foot(logo, spec=None):
     and the identity is the only part the footer was ever doing useful work for. The link
     lives where it costs nothing: the first comment and the DM.
     """
-    if spec is not None and spec.get("_variant") == "reel":
+    if spec is not None and str(spec.get("_variant")).startswith("reel"):
         return ""
     return (f"<div class='foot'><img src='data:image/png;base64,{logo}'>"
             f"<span>ULTRON</span></div>")
@@ -133,7 +141,7 @@ def _ai(spec, logo):
     and never once said Claude. Saying what it does only works when the reader already knows
     what "it" is. So the cover names it, in the frame, every time.
     """
-    if spec.get("_variant") == "reel":
+    if str(spec.get("_variant")).startswith("reel"):
         return f'<div class="markrow">{CM.svg()}</div>'
     return ("<div class='g aichip'><span class='aichip-t'>Swipe</span>"
             "<span class='aichip-a'>&rarr;</span></div>")
@@ -407,6 +415,40 @@ def d_grid(spec, logo):
     return out
 
 
+
+
+def d_reelx(spec, logo):
+    """THE ONE SECOND REEL. Hook, object, one line - and nothing else on the slide.
+
+    Operator, after posting A and B: "e prea mult text si nu retine audienta ... ne trebuie
+    totusi si un element grafic sugestiv pe fiecare slide."
+
+    Measured first: the old reel slides carried a mean of 75 words each, at one second per
+    slide. That is roughly ten times what anybody takes in. The cause was structural - the
+    same content was serving a reader-paced carousel and a platform-paced reel, and density
+    is right for one and fatal for the other.
+
+    So this is not the carousel with a smaller font. It is different content: about twenty
+    words, and an object that carries the number so the sentence does not have to. Seven
+    distinct forms per deck, checked, because the same shape seven times is one object with
+    new words in it.
+    """
+    rows = spec["reel"]
+    OB.check_run(spec["id"], [r["obj"]["form"] for r in rows])
+    out = [_slide(spec, 1, f"""<div class="cv">
+    <div class="cv-eye mono">{spec['eyebrow']}</div>
+    <div class="cv-h disp">{spec['hook']}</div>
+    {_ai(spec, logo)}
+  </div>""", logo)]
+    for k, r in enumerate(rows):
+        out.append(_slide(spec, k + 2, f"""<div class="rx">
+      <div class="rx-h">{r['h']}</div>
+      <div class="rx-stage">{OB.render(r['obj'])}</div>
+      <div class="rx-l">{r['line']}</div>
+    </div>""", logo))
+    return out
+
+
 def d_stamp(spec, logo):
     """THE BREAK. One line, one mark, nothing else. Deliberately the thinnest deck in the set.
 
@@ -441,7 +483,8 @@ def build(spec, css_extra: str, fonts: str, variant: str = "reel") -> str:
     """Nine slides: cover, seven content, the ask. `variant` is reel or carousel."""
     spec = dict(spec, _variant=variant)
     logo = logo_b64()
-    slides = DESIGNS[spec["design"]](spec, logo)
+    slides = (d_reelx(spec, logo) if variant == "reelx"
+              else DESIGNS[spec["design"]](spec, logo))
     if len(slides) != 8:
         raise ValueError(f"{spec['id']}: design produced {len(slides)} slides before the CTA, "
                          f"needs 8 (cover + 7). Give the spec exactly 7 items.")
