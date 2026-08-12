@@ -44,8 +44,10 @@ def load(n):
 # cells, so you find yourself rounding nine months into a year.
 DECK_A_REEL = [
     {"h": "Nine months<br>before one<br><em>sale</em>",
-     "obj": {"form": "calendar", "cols": 4, "rows": 3, "lit": 9,
-             "k": "months building", "v": "9"},
+     # The flag is on month ten, which is where the story turns. Without it the tile grid is
+     # a texture of nine identical blocks and the eye has nowhere to enter.
+     "obj": {"form": "calendar", "cols": 4, "lit": 9,
+             "flag": {"i": 9, "t": "first sale"}},
      "line": "Every feature felt like progress. None of it was <em>evidence</em>."},
 
     {"h": "Every job<br>came back<br>to <em>me</em>",
@@ -72,7 +74,13 @@ DECK_A_REEL = [
      "line": "The hours were the only thing that ever went <em>up</em>."},
 
     {"h": "One bad line,<br>a <em>hundred</em><br>times",
-     "obj": {"form": "doc", "lit": 3, "k": "line, your name on it", "v": "1"},
+     # The line is readable on purpose. An unresolved merge tag is the failure everybody has
+     # received and nobody has to have explained, and reading it is the reason to stay on the
+     # slide. Illustration, not a statistic: the deck's only claim here is one line, a hundred
+     # sends, and that is what the stamp says.
+     "obj": {"form": "doc", "n": 8, "at": 4,
+             "hot": "Hi {FirstName}, saw you are scaling {Company} fast.",
+             "stamp": "sent 100 times"},
      "line": "Volume is easy. Getting your name back is <em>not</em>."},
 ]
 

@@ -18,6 +18,27 @@ which is what lets the slide survive being seen rather than read.
 
 Drawn as inline SVG on the glass palette: structure in the muted ink, the data in Book Cloth,
 strokes heavy enough to hold at arm's length on a phone. One object fills the 880 x 700 stage.
+
+SECOND PASS: A PICTOGRAM IS NOT ENOUGH, IT HAS TO BE A SCENE. Operator on the first render:
+"pictogramele sunt prea basic ... si nu fac scroll stop". Correct, and CLAUDE.md 30 already
+had the words for it: every composition is a scene, not a widget - a ground, a dominant mass,
+labelled parts carrying real words. What shipped was a widget. Three things were missing and
+each one is worth stating, because they are the difference between an icon and a picture:
+
+  1  NO REAL WORDS. A calendar with nine coloured cells is a diagram of nine. A calendar with
+     JAN to DEC set in it, nine of them solid, is a YEAR - and the viewer reads a year without
+     being told. Every scene carries the words the thing itself would carry.
+  2  NO MASS. Line art is a 3px stroke: at phone size it is nearly nothing, whatever the
+     coverage metric says. The mass has to be TYPE and filled surface, which is also what the
+     lane that travels is made of (see the reference posts in _glass.py: in every one of them
+     the text IS the visual).
+  3  NO FOCAL BREAK. Nine identical lit cells have no point of entry. One element must break
+     the pattern - the tenth month flagged, the one line that is readable - because that break
+     is the thing the eye lands on and the reason it stays.
+
+So the scene forms are HTML and type rather than SVG line art, and they drop the glass card:
+a panel behind a wall of solid colour only dulls it. SVG stays for the forms that genuinely
+are diagrams.
 """
 
 VB = "0 0 200 150"
@@ -50,27 +71,30 @@ def _cells(x0, y0, cols, rows, w, h, gap, lit, r=3):
 
 # --------------------------------------------------------------------------- objects
 def calendar(o):
-    """A grid with the time actually filled in. Days by default, or any period you give it.
+    """A SCENE: the periods themselves, named, the spent ones solid. Not a grid of dots.
 
-    The grid is declared rather than fixed at a month. Nine months drawn as nine of
-    twenty eight days is a wrong number wearing the right shape, and the whole premise of
-    this set is that the quantity is the drawing. Pass `cols` and `rows` and the cells
-    resize to fill the same body, so a year is twelve big cells and a month is
-    twenty eight small ones.
+    The icon version drew a calendar frame with coloured squares in it, which is a diagram of
+    a quantity wearing a calendar costume. This draws the thing: twelve tiles carrying JAN to
+    DEC, nine of them solid Book Cloth, and a flag on the one where the story turns. Nobody
+    has to be told it is a year, and the tile that breaks the pattern is where the eye lands.
+
+    `labels` are the periods in order, `lit` how many are spent, `flag` an optional
+    {"i": index, "t": text} marking the one that matters.
     """
-    cols, rows, gap = o.get("cols", 7), o.get("rows", 4), 5.5
-    w = (164 - gap * (cols - 1)) / cols
-    h = w * .86
-    # The BODY grows to its grid rather than the cells shrinking to a fixed body. Twelve
-    # months in a box built for twenty eight days leaves half the calendar empty, and an
-    # object that is half empty is the one thing this set may not be.
-    body = 30 + rows * (h + gap) - gap + 8
-    grid = _cells(18, 52, cols, rows, w, h, gap, o["lit"], r=min(4, w / 5))
-    return _svg(
-        f"<rect class='ps' x='10' y='22' width='180' height='{body:.0f}' rx='12'/>"
-        f"<path class='ps' d='M10 46 H190'/>"
-        f"<path class='ps' d='M46 12 V32 M154 12 V32'/>"
-        f"{grid}", "calendar", f"6 8 188 {body + 22:.0f}")
+    labels = o.get("labels") or ["JAN", "FEB", "MAR", "APR", "MAY", "JUN",
+                                 "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
+    cols = o.get("cols", 4)
+    flag = o.get("flag") or {}
+    tiles = []
+    for i, lab in enumerate(labels):
+        on = " on" if i < o["lit"] else ""
+        f = (f"<span class='sc-flag'>{flag['t']}</span>"
+             if flag.get("i") == i else "")
+        tiles.append(f"<div class='sc-m{on}'>{f}"
+                     f"<span class='sc-m-i'>{i + 1:02d}</span>"
+                     f"<span class='sc-m-l'>{lab}</span></div>")
+    return (f"<div class='sc sc-year' data-ob='calendar' "
+            f"style='grid-template-columns:repeat({cols},1fr)'>{''.join(tiles)}</div>")
 
 
 def inbox(o):
@@ -124,17 +148,26 @@ def pipeline(o):
 
 
 def doc(o):
-    """A page with a folded corner and one clause lit. For contracts, specs, pages."""
-    lines = []
-    for i in range(7):
-        w = 74 if i % 3 else 52
-        cls = "pf" if i == o.get("lit", -1) else "pd"
-        lines.append(f"<rect class='{cls}' x='58' y='{44 + i * 12}' width='{w}' height='6' "
-                     f"rx='3'/>")
-    return _svg(
-        "<path class='ps' d='M50 12 H124 L150 38 V140 Q150 144 146 144 H54 "
-        "Q50 144 50 140 V16 Q50 12 54 12 Z'/>"
-        "<path class='ps' d='M124 12 V38 H150'/>" + "".join(lines), "doc", "44 6 112 144")
+    """A SCENE: a real page, on the ground colour's opposite, with ONE line readable.
+
+    The icon version was an outlined page with a coloured rule inside it, and a coloured rule
+    is not a sentence. Here the page is a bright surface against the feed's dark one, which is
+    the contrast jump that stops a thumb, and every line on it is redacted except the one that
+    matters - which is set in real type and can be read in the second the viewer has. Reading
+    one line of somebody's bad cold email is a reason to stay; looking at a rectangle is not.
+
+    `hot` is that line, `stamp` the mark at its foot, `n` how many redacted lines carry it.
+    """
+    n = o.get("n", 8)
+    at = o.get("at", 4)
+    rules = []
+    for i in range(n):
+        w = (92, 74, 88, 63, 84, 70, 90, 58)[i % 8]
+        rules.append(f"<i class='sc-r' style='width:{w}%'></i>")
+    rules.insert(at, f"<span class='sc-hotwrap'><mark class='sc-hot'>{o['hot']}</mark></span>")
+    stamp = (f"<div class='sc-stamp'>{o['stamp']}</div>" if o.get("stamp") else "")
+    return (f"<div class='sc sc-doc' data-ob='doc'><div class='sc-page'>"
+            f"<div class='sc-fold'></div>{''.join(rules)}{stamp}</div></div>")
 
 
 def thread(o):
@@ -299,6 +332,9 @@ BUILD = {"calendar": calendar, "inbox": inbox, "pipeline": pipeline, "doc": doc,
          "thread": thread, "files": files, "clockface": clockface, "card": card,
          "flow": flow, "terminal": terminal, "people": people, "chart": chart, "tag": tag}
 FORMS = tuple(BUILD)
+# Forms rebuilt as full-bleed HTML scenes. They own the whole stage and take no glass card.
+# The rest are still SVG diagrams and are next in line.
+SCENES = {"calendar", "doc"}
 
 
 def render(o: dict) -> str:
@@ -311,7 +347,13 @@ def panel(o: dict) -> str:
     `k` is what was counted and `v` is the count, both optional. They are a readout, not a
     caption: the slide's sentence lives outside the panel and this strip only says which
     units the drawing is in, in four words, so the shape never has to be explained.
+
+    A SCENE gets no panel. The glass card exists to give a thin line drawing an edge and a
+    surface; put it behind a wall of solid type and it only mutes it, and the readout strip
+    repeats a number the scene is already carrying at ten times the size.
     """
+    if o["form"] in SCENES:
+        return render(o)
     foot = ""
     if o.get("k") or o.get("v"):
         foot = (f"<div class='pcard-f'><span class='pcard-k'>{o.get('k', '')}</span>"
@@ -385,6 +427,50 @@ CSS = """
   text-overflow:ellipsis}
 .pcard-v{font-family:'Anton',sans-serif;font-size:44px;line-height:1;letter-spacing:-1px;
   color:var(--acc);flex-shrink:0}
+
+/* ---------------------------------------------------------------------- SCENES
+   Type and filled surface, edge to edge, no card. A line drawing needed a panel to have an
+   edge at all; a scene IS the edge. Both scenes below are built so their mass is the words
+   themselves, which is what the posts that travel in this lane are made of. */
+.sc{width:100%;height:100%}
+
+/* THE YEAR. Twelve periods, named, the spent ones solid, and one tile flagged. The flag is
+   the whole point: nine identical lit tiles are a texture, and a texture has no way in. */
+.sc-year{display:grid;grid-auto-rows:1fr;gap:18px}
+.sc-m{position:relative;border-radius:24px;display:flex;align-items:flex-end;
+  padding:24px 24px 20px;background:var(--glass2);
+  box-shadow:inset 0 0 0 2px var(--rim2)}
+.sc-m.on{background:var(--acc);
+  box-shadow:inset 0 -7px 0 rgba(0,0,0,.14),0 20px 38px -22px var(--shadow)}
+.sc-m:has(.sc-flag){box-shadow:inset 0 0 0 3px var(--acc)}
+.sc-m:has(.sc-flag) .sc-m-i{display:none}
+.sc-m-i{position:absolute;top:22px;left:26px;font-family:'DM Mono',monospace;font-weight:500;
+  font-size:21px;letter-spacing:.2em;color:var(--ink45)}
+.sc-m.on .sc-m-i{color:var(--bg);opacity:.55}
+.sc-m-l{font-family:'Anton',sans-serif;font-size:64px;line-height:.86;letter-spacing:-1.4px;
+  color:var(--ink45)}
+.sc-m.on .sc-m-l{color:var(--bg)}
+.sc-flag{position:absolute;top:22px;left:26px;right:26px;font-family:'DM Mono',monospace;
+  font-weight:500;font-size:18px;line-height:1.25;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--acc)}
+
+/* THE PAGE. A bright surface against a dark feed, every line redacted except the one worth
+   reading. The corner is really cut, not drawn: a clip path takes it out of the page and the
+   triangle under it is the fold. */
+.sc-doc{display:flex}
+.sc-page{position:relative;width:100%;height:100%;display:flex;flex-direction:column;
+  gap:38px;padding:76px 62px 56px;border-radius:12px;background:var(--ink);
+  clip-path:polygon(0 0,calc(100% - 104px) 0,100% 104px,100% 100%,0 100%);
+  box-shadow:0 34px 64px -26px var(--shadow)}
+.sc-fold{position:absolute;top:0;right:0;width:104px;height:104px;background:var(--bg);
+  opacity:.17;clip-path:polygon(0 0,100% 100%,0 100%)}
+.sc-r{display:block;height:18px;border-radius:9px;background:var(--bg);opacity:.13}
+.sc-hotwrap{display:block;margin:6px 0}
+.sc-hot{font-family:'DM Sans',sans-serif;font-weight:800;font-size:46px;line-height:1.42;
+  letter-spacing:-.8px;color:var(--bg);background:var(--acc);border-radius:7px;
+  padding:.1em .26em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.sc-stamp{margin-top:auto;font-family:'DM Mono',monospace;font-weight:500;font-size:23px;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--bg);opacity:.44}
 """
 
 if __name__ == "__main__":
