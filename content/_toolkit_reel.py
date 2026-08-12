@@ -72,27 +72,72 @@ DUR = 6.0
 # name, tool, outcome. The outcome is deliberately the quietest thing in the row: at 0.26s
 # apart the eye takes the name and the tool, and the outcome is what a rewatch is for -
 # and on this platform a rewatch is the top ranking signal.
+# mark, name, tool, chip, and the line that explains what the station is actually for.
+# Operator, 2026-08-12: "trebuie sa arate a infografic cu logo uri pe fiecare cu explicatii ca
+# sa tina audienta - e prea gol asa". He is applying his own standing rule, CLAUDE.md 27.9: the
+# dominant block is heavy and packed, and airy reads as skippable. The earlier cut stripped the
+# body copy on a reading speed argument, which was the wrong trade - density is what earns the
+# rewatch, and on this platform the rewatch is the ranking signal.
 ROWS = [
-    ("Ideate &amp; research", "ChatGPT",    "Ideate faster"),
-    ("Copywriting engine",    "Copy.ai",    "Create content"),
-    ("Visual design suite",   "Canva",      "Save time daily"),
-    ("Creative generation",   "Midjourney", "Grow your audience"),
-    ("Workflow management",   "Notion",     "Monetize your work"),
+    ("openai", "Ideate &amp; research", "ChatGPT", "Ideate faster",
+     "Turn a blank page into angles, outlines and the questions to ask."),
+    ("copyai", "Copywriting engine", "Copy.ai", "Create content",
+     "Drafts the first version, so you are editing instead of starting."),
+    ("canva", "Visual design suite", "Canva", "Save time daily",
+     "Templates and a brand kit, so a post takes minutes."),
+    ("midjourney", "Creative generation", "Midjourney", "Grow your audience",
+     "The images you cannot shoot, in a style you can keep repeating."),
+    ("notion", "Workflow management", "Notion", "Monetize your work",
+     "One place where the ideas, the drafts and the dates actually live."),
 ]
+
+
+# ------------------------------------------------------------------- the marks
+# DRAWN, NOT FETCHED. The operator asked for a logo on every row (2026-08-12), which is the
+# explicit permission CLAUDE.md 18 requires for third party marks in a commercial piece. The
+# accurate route was the Simple Icons package the reference-layouts notes already point at,
+# but the agent proxy refuses jsDelivr with a 403 on the CONNECT tunnel, and the proxy README
+# says to report a blocked host rather than route around it. So these are drawn from the
+# silhouettes: at 88px on a phone the outline is what identifies a mark, not its detail.
+# Drop the real SVGs into content/assets/icons/<slug>.svg and they swap straight in.
+MARKS = {
+    # a geometric knot: hexagon with an interior Y. The OpenAI mark is one continuous
+    # interlocking loop, which does not survive being drawn at this size anyway.
+    "openai": "<path class='ms' d='M50 8 L86 29 V71 L50 92 L14 71 V29 Z'/>"
+              "<path class='ma' d='M50 50 V16 M50 50 L79 67 M50 50 L21 67'/>",
+    # a bold C, open to the right, with the counter dot. Distinct from Canva's C in a ring.
+    "copyai": "<path class='ma2' d='M74 30 A26 26 0 1 0 74 70' />"
+              "<circle class='mf' cx='50' cy='50' r='7'/>",
+    # a ring with a C cut into it
+    "canva":  "<circle class='ms' cx='50' cy='50' r='40'/>"
+              "<path class='ma' d='M64 35 A19 19 0 1 0 64 65'/>",
+    # a schooner: two sails and a hull
+    "midjourney": "<path class='mf' d='M48 12 L48 58 L22 58 Z'/>"
+                  "<path class='ma' d='M56 26 L56 58 L80 58 Z'/>"
+                  "<path class='ms' d='M14 68 H88 L74 86 H28 Z'/>",
+    # rounded square with the N
+    "notion": "<rect class='ms' x='10' y='10' width='80' height='80' rx='16'/>"
+              "<path class='ma' d='M32 72 V30 L68 68 V30'/>",
+}
+
+
+def mark(slug: str) -> str:
+    return (f"<svg class='mk' viewBox='0 0 100 100' data-mk='{slug}'>{MARKS[slug]}</svg>")
 
 
 def rows_html() -> str:
     out = []
-    for i, (name, tool, res) in enumerate(ROWS, 1):
+    for i, (slug, name, tool, res, why) in enumerate(ROWS, 1):
         out.append(f"""    <div class="row r{i}">
-      <span class="node"></span>
       <span class="div"></span>
+      <span class="tile">{mark(slug)}</span>
       <span class="rl">
-        <span class="sys">System {i:02d}</span>
-        <span class="name">{name}</span>
-        <span class="tool">{tool}</span>
+        <span class="top"><span class="sys">System {i:02d}</span>
+          <span class="out">{res}</span></span>
+        <span class="ttl"><span class="name">{name}</span>
+          <span class="tool">{tool}</span></span>
+        <span class="why">{why}</span>
       </span>
-      <span class="out">{res}</span>
     </div>""")
     return "\n".join(out)
 
@@ -104,13 +149,15 @@ def station_css() -> str:
         t = HOLD + (i - 1) * STEP
         settle = 0.95 + (i - 1) * 0.20
         css.append(
-            f".r{i} .node{{animation:pop .42s var(--eo) both {settle:.2f}s,"
-            f"fill .40s var(--e) forwards {t:.2f}s}}\n"
+            f".r{i} .tile{{animation:pop .44s var(--eo) both {settle:.2f}s,"
+            f"lift .44s var(--e) forwards {t:.2f}s}}\n"
+            f".r{i} .mk{{animation:ink .46s var(--e) both {t + 0.04:.2f}s}}\n"
             f".r{i} .div{{animation:draw .55s var(--e) both {settle + 0.15:.2f}s}}\n"
             f".r{i} .sys{{animation:dim .50s var(--e) both {settle + 0.25:.2f}s}}\n"
             f".r{i} .name{{animation:rise .50s var(--eo) both {t:.2f}s}}\n"
             f".r{i} .tool{{animation:rise .50s var(--eo) both {t + 0.07:.2f}s}}\n"
-            f".r{i} .out{{animation:fade .50s var(--e) both {t + 0.13:.2f}s}}")
+            f".r{i} .why{{animation:rise .50s var(--eo) both {t + 0.13:.2f}s}}\n"
+            f".r{i} .out{{animation:fade .50s var(--e) both {t + 0.19:.2f}s}}")
     return "\n".join(css)
 
 
@@ -167,15 +214,17 @@ body{{background:#000;display:flex;justify-content:center}}
 .head{{flex-shrink:0}}
 .kick{{display:block;font-family:'DM Mono',monospace;font-weight:500;font-size:22px;
   letter-spacing:.30em;text-transform:uppercase;color:var(--acc);margin-bottom:20px}}
-h1{{font-family:'Anton',sans-serif;font-size:104px;line-height:.90;letter-spacing:-1.6px;
+h1{{font-family:'Anton',sans-serif;font-size:88px;line-height:.90;letter-spacing:-1.6px;
   text-transform:uppercase;color:var(--ink)}}
-.sub{{display:block;margin-top:18px;font-family:'DM Sans',sans-serif;font-weight:700;
-  font-size:31px;letter-spacing:-.2px;color:var(--ink45)}}
-.hr{{flex-shrink:0;height:2px;background:var(--ink);opacity:.16;margin:30px 0 0}}
+.sub{{display:block;margin-top:14px;font-family:'DM Sans',sans-serif;font-weight:700;
+  font-size:28px;letter-spacing:-.2px;color:var(--ink45)}}
+.hr{{flex-shrink:0;height:2px;background:var(--ink);opacity:.16;margin:24px 0 0}}
 
 /* THE SHEET IS PRESENT AND EMPTY FROM FRAME ONE. */
+/* 14px of inset because the tile's lift shadow reaches 12px sideways and the push in adds
+   another 4. The element that decorates is the one nobody measures, so it gets measured. */
 .list{{position:relative;flex:1;min-height:0;display:flex;flex-direction:column;
-  padding-left:76px}}
+  padding-left:14px}}
 /* THE HOLD MAY NOT BE A FROZEN FRAME (CLAUDE.md 30). Once the board completes at 4.04s the
    only thing still moving is the push in, and at 1.4 percent over six seconds that is about
    two pixels a second: the retention guard read the last stretch as dead, and it was right.
@@ -190,26 +239,40 @@ h1{{font-family:'Anton',sans-serif;font-size:104px;line-height:.90;letter-spacin
   background:linear-gradient(90deg,rgba(200,70,35,.13) 0%,rgba(200,70,35,.03) 68%,
     transparent 100%);opacity:0;pointer-events:none;
   animation:scan 1.86s var(--e) both 4.04s}}
-.spine{{position:absolute;left:20px;top:26px;bottom:26px;width:2px;background:var(--ink26);
+.spine{{position:absolute;left:53px;top:16px;bottom:16px;width:2px;background:var(--ink14);
   transform-origin:50% 0;animation:draw 1.00s var(--e) both .55s}}
-.row{{position:relative;flex:1;display:flex;align-items:center;justify-content:space-between;
-  gap:26px}}
-.node{{position:absolute;left:-66px;top:50%;width:22px;height:22px;margin-top:-11px;
-  border-radius:50%;background:var(--paper);
-  box-shadow:inset 0 0 0 2.5px var(--ink26)}}
-.div{{position:absolute;left:-44px;right:0;bottom:0;height:1px;background:var(--rule);
+/* THE ROW IS THE INFOGRAPHIC. Mark, label, name, product, one line of what it is for, and
+   the outcome as a chip. Packed rather than spread: CLAUDE.md 27.9, the dominant block is
+   heavy and every row carries real content, because an airy row is a row that gets skipped. */
+.row{{position:relative;flex:1;display:flex;align-items:center;gap:26px;min-height:0}}
+.div{{position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--rule);
   transform-origin:0 50%}}
 .row:last-child .div{{display:none}}
-.rl{{display:flex;flex-direction:column;gap:9px;min-width:0}}
-.sys{{font-family:'DM Mono',monospace;font-weight:500;font-size:20px;letter-spacing:.24em;
-  text-transform:uppercase;color:var(--ink26)}}
-.name{{font-family:'DM Sans',sans-serif;font-weight:900;font-size:45px;line-height:1;
+
+/* the logo slot. Present and empty through the hold, so the sheet reads as a form. */
+.tile{{position:relative;flex-shrink:0;width:108px;height:108px;border-radius:26px;
+  background:rgba(17,17,17,.035);box-shadow:inset 0 0 0 2px var(--ink14)}}
+.mk{{position:absolute;inset:23px;width:62px;height:62px;overflow:visible}}
+.mk .ms{{fill:none;stroke:var(--ink);stroke-width:6;stroke-linejoin:round;stroke-linecap:round}}
+.mk .ma{{fill:none;stroke:var(--acc);stroke-width:6.5;stroke-linejoin:round;
+  stroke-linecap:round}}
+.mk .ma2{{fill:none;stroke:var(--acc);stroke-width:11;stroke-linecap:round}}
+.mk .mf{{fill:var(--ink)}}
+
+.rl{{flex:1;min-width:0;display:flex;flex-direction:column;gap:9px}}
+.top{{display:flex;align-items:baseline;justify-content:space-between;gap:20px}}
+.sys{{font-family:'DM Mono',monospace;font-weight:500;font-size:19px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--ink26);white-space:nowrap}}
+.out{{flex-shrink:0;font-family:'DM Mono',monospace;font-weight:500;font-size:18px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--acc);white-space:nowrap;
+  padding:6px 14px;border-radius:999px;box-shadow:inset 0 0 0 1.5px rgba(200,70,35,.34)}}
+.ttl{{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}}
+.name{{font-family:'DM Sans',sans-serif;font-weight:900;font-size:41px;line-height:1;
   letter-spacing:-1px;color:var(--ink)}}
-.tool{{font-family:'DM Sans',sans-serif;font-weight:700;font-size:33px;line-height:1;
+.tool{{font-family:'DM Sans',sans-serif;font-weight:700;font-size:31px;line-height:1;
   letter-spacing:-.4px;color:var(--acc)}}
-.out{{flex-shrink:0;max-width:246px;text-align:right;font-family:'DM Mono',monospace;
-  font-weight:500;font-size:20px;line-height:1.42;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--ink45)}}
+.why{{font-family:'DM Sans',sans-serif;font-weight:500;font-size:24px;line-height:1.34;
+  letter-spacing:-.1px;color:var(--ink70)}}
 
 /* CLAUDE.md 11, as rewritten 2026-08-09: the wordmark identifies, a domain is a reach
    penalty every platform reads out of the image. The link lives in the caption. */
@@ -233,8 +296,10 @@ h1{{font-family:'Anton',sans-serif;font-size:104px;line-height:.90;letter-spacin
   to{{opacity:1;transform:translateY(0)}}}}
 /* the node does not re-enter on reveal, it FILLS: nothing is added, the existing ring
    becomes solid, which is accumulation rather than a second arrival */
-@keyframes fill{{from{{background:var(--paper);box-shadow:inset 0 0 0 2.5px var(--ink26)}}
-  to{{background:var(--acc);box-shadow:inset 0 0 0 2.5px var(--acc)}}}}
+@keyframes lift{{from{{background:rgba(17,17,17,.035);box-shadow:inset 0 0 0 2px var(--ink14)}}
+  to{{background:rgba(255,255,255,.62);
+    box-shadow:inset 0 0 0 2px rgba(200,70,35,.30),0 12px 26px -14px rgba(60,40,30,.34)}}}}
+@keyframes ink{{from{{opacity:0;transform:scale(.82)}}to{{opacity:1;transform:scale(1)}}}}
 /* the divider draws sideways, so give it its own axis rather than the spine's */
 .div{{animation-name:drawx}}
 @keyframes drawx{{from{{transform:scaleX(0)}}to{{transform:scaleX(1)}}}}
@@ -252,7 +317,6 @@ h1{{font-family:'Anton',sans-serif;font-size:104px;line-height:.90;letter-spacin
     </div>
     <div class="hr"></div>
     <div class="list">
-      <span class="spine"></span>
       <span class="scan"></span>
 {rows_html()}
     </div>

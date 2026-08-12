@@ -199,15 +199,17 @@ body{background:#000;display:flex;justify-content:center}
 .head{flex-shrink:0}
 .kick{display:block;font-family:'DM Mono',monospace;font-weight:500;font-size:22px;
   letter-spacing:.30em;text-transform:uppercase;color:var(--acc);margin-bottom:20px}
-h1{font-family:'Anton',sans-serif;font-size:104px;line-height:.90;letter-spacing:-1.6px;
+h1{font-family:'Anton',sans-serif;font-size:88px;line-height:.90;letter-spacing:-1.6px;
   text-transform:uppercase;color:var(--ink)}
-.sub{display:block;margin-top:18px;font-family:'DM Sans',sans-serif;font-weight:700;
-  font-size:31px;letter-spacing:-.2px;color:var(--ink45)}
-.hr{flex-shrink:0;height:2px;background:var(--ink);opacity:.16;margin:30px 0 0}
+.sub{display:block;margin-top:14px;font-family:'DM Sans',sans-serif;font-weight:700;
+  font-size:28px;letter-spacing:-.2px;color:var(--ink45)}
+.hr{flex-shrink:0;height:2px;background:var(--ink);opacity:.16;margin:24px 0 0}
 
 /* THE SHEET IS PRESENT AND EMPTY FROM FRAME ONE. */
+/* 14px of inset because the tile's lift shadow reaches 12px sideways and the push in adds
+   another 4. The element that decorates is the one nobody measures, so it gets measured. */
 .list{position:relative;flex:1;min-height:0;display:flex;flex-direction:column;
-  padding-left:76px}
+  padding-left:14px}
 /* THE HOLD MAY NOT BE A FROZEN FRAME (CLAUDE.md 30). Once the board completes at 4.04s the
    only thing still moving is the push in, and at 1.4 percent over six seconds that is about
    two pixels a second: the retention guard read the last stretch as dead, and it was right.
@@ -222,26 +224,40 @@ h1{font-family:'Anton',sans-serif;font-size:104px;line-height:.90;letter-spacing
   background:linear-gradient(90deg,rgba(200,70,35,.13) 0%,rgba(200,70,35,.03) 68%,
     transparent 100%);opacity:0;pointer-events:none;
   animation:scan 1.86s var(--e) both 4.04s}
-.spine{position:absolute;left:20px;top:26px;bottom:26px;width:2px;background:var(--ink26);
+.spine{position:absolute;left:53px;top:16px;bottom:16px;width:2px;background:var(--ink14);
   transform-origin:50% 0;animation:draw 1.00s var(--e) both .55s}
-.row{position:relative;flex:1;display:flex;align-items:center;justify-content:space-between;
-  gap:26px}
-.node{position:absolute;left:-66px;top:50%;width:22px;height:22px;margin-top:-11px;
-  border-radius:50%;background:var(--paper);
-  box-shadow:inset 0 0 0 2.5px var(--ink26)}
-.div{position:absolute;left:-44px;right:0;bottom:0;height:1px;background:var(--rule);
+/* THE ROW IS THE INFOGRAPHIC. Mark, label, name, product, one line of what it is for, and
+   the outcome as a chip. Packed rather than spread: CLAUDE.md 27.9, the dominant block is
+   heavy and every row carries real content, because an airy row is a row that gets skipped. */
+.row{position:relative;flex:1;display:flex;align-items:center;gap:26px;min-height:0}
+.div{position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--rule);
   transform-origin:0 50%}
 .row:last-child .div{display:none}
-.rl{display:flex;flex-direction:column;gap:9px;min-width:0}
-.sys{font-family:'DM Mono',monospace;font-weight:500;font-size:20px;letter-spacing:.24em;
-  text-transform:uppercase;color:var(--ink26)}
-.name{font-family:'DM Sans',sans-serif;font-weight:900;font-size:45px;line-height:1;
+
+/* the logo slot. Present and empty through the hold, so the sheet reads as a form. */
+.tile{position:relative;flex-shrink:0;width:108px;height:108px;border-radius:26px;
+  background:rgba(17,17,17,.035);box-shadow:inset 0 0 0 2px var(--ink14)}
+.mk{position:absolute;inset:23px;width:62px;height:62px;overflow:visible}
+.mk .ms{fill:none;stroke:var(--ink);stroke-width:6;stroke-linejoin:round;stroke-linecap:round}
+.mk .ma{fill:none;stroke:var(--acc);stroke-width:6.5;stroke-linejoin:round;
+  stroke-linecap:round}
+.mk .ma2{fill:none;stroke:var(--acc);stroke-width:11;stroke-linecap:round}
+.mk .mf{fill:var(--ink)}
+
+.rl{flex:1;min-width:0;display:flex;flex-direction:column;gap:9px}
+.top{display:flex;align-items:baseline;justify-content:space-between;gap:20px}
+.sys{font-family:'DM Mono',monospace;font-weight:500;font-size:19px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--ink26);white-space:nowrap}
+.out{flex-shrink:0;font-family:'DM Mono',monospace;font-weight:500;font-size:18px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--acc);white-space:nowrap;
+  padding:6px 14px;border-radius:999px;box-shadow:inset 0 0 0 1.5px rgba(200,70,35,.34)}
+.ttl{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+.name{font-family:'DM Sans',sans-serif;font-weight:900;font-size:41px;line-height:1;
   letter-spacing:-1px;color:var(--ink)}
-.tool{font-family:'DM Sans',sans-serif;font-weight:700;font-size:33px;line-height:1;
+.tool{font-family:'DM Sans',sans-serif;font-weight:700;font-size:31px;line-height:1;
   letter-spacing:-.4px;color:var(--acc)}
-.out{flex-shrink:0;max-width:246px;text-align:right;font-family:'DM Mono',monospace;
-  font-weight:500;font-size:20px;line-height:1.42;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--ink45)}
+.why{font-family:'DM Sans',sans-serif;font-weight:500;font-size:24px;line-height:1.34;
+  letter-spacing:-.1px;color:var(--ink70)}
 
 /* CLAUDE.md 11, as rewritten 2026-08-09: the wordmark identifies, a domain is a reach
    penalty every platform reads out of the image. The link lives in the caption. */
@@ -265,42 +281,54 @@ h1{font-family:'Anton',sans-serif;font-size:104px;line-height:.90;letter-spacing
   to{opacity:1;transform:translateY(0)}}
 /* the node does not re-enter on reveal, it FILLS: nothing is added, the existing ring
    becomes solid, which is accumulation rather than a second arrival */
-@keyframes fill{from{background:var(--paper);box-shadow:inset 0 0 0 2.5px var(--ink26)}
-  to{background:var(--acc);box-shadow:inset 0 0 0 2.5px var(--acc)}}
+@keyframes lift{from{background:rgba(17,17,17,.035);box-shadow:inset 0 0 0 2px var(--ink14)}
+  to{background:rgba(255,255,255,.62);
+    box-shadow:inset 0 0 0 2px rgba(200,70,35,.30),0 12px 26px -14px rgba(60,40,30,.34)}}
+@keyframes ink{from{opacity:0;transform:scale(.82)}to{opacity:1;transform:scale(1)}}
 /* the divider draws sideways, so give it its own axis rather than the spine's */
 .div{animation-name:drawx}
 @keyframes drawx{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 
-.r1 .node{animation:pop .42s var(--eo) both 0.95s,fill .40s var(--e) forwards 2.50s}
+.r1 .tile{animation:pop .44s var(--eo) both 0.95s,lift .44s var(--e) forwards 2.50s}
+.r1 .mk{animation:ink .46s var(--e) both 2.54s}
 .r1 .div{animation:draw .55s var(--e) both 1.10s}
 .r1 .sys{animation:dim .50s var(--e) both 1.20s}
 .r1 .name{animation:rise .50s var(--eo) both 2.50s}
 .r1 .tool{animation:rise .50s var(--eo) both 2.57s}
-.r1 .out{animation:fade .50s var(--e) both 2.63s}
-.r2 .node{animation:pop .42s var(--eo) both 1.15s,fill .40s var(--e) forwards 2.76s}
+.r1 .why{animation:rise .50s var(--eo) both 2.63s}
+.r1 .out{animation:fade .50s var(--e) both 2.69s}
+.r2 .tile{animation:pop .44s var(--eo) both 1.15s,lift .44s var(--e) forwards 2.76s}
+.r2 .mk{animation:ink .46s var(--e) both 2.80s}
 .r2 .div{animation:draw .55s var(--e) both 1.30s}
 .r2 .sys{animation:dim .50s var(--e) both 1.40s}
 .r2 .name{animation:rise .50s var(--eo) both 2.76s}
 .r2 .tool{animation:rise .50s var(--eo) both 2.83s}
-.r2 .out{animation:fade .50s var(--e) both 2.89s}
-.r3 .node{animation:pop .42s var(--eo) both 1.35s,fill .40s var(--e) forwards 3.02s}
+.r2 .why{animation:rise .50s var(--eo) both 2.89s}
+.r2 .out{animation:fade .50s var(--e) both 2.95s}
+.r3 .tile{animation:pop .44s var(--eo) both 1.35s,lift .44s var(--e) forwards 3.02s}
+.r3 .mk{animation:ink .46s var(--e) both 3.06s}
 .r3 .div{animation:draw .55s var(--e) both 1.50s}
 .r3 .sys{animation:dim .50s var(--e) both 1.60s}
 .r3 .name{animation:rise .50s var(--eo) both 3.02s}
 .r3 .tool{animation:rise .50s var(--eo) both 3.09s}
-.r3 .out{animation:fade .50s var(--e) both 3.15s}
-.r4 .node{animation:pop .42s var(--eo) both 1.55s,fill .40s var(--e) forwards 3.28s}
+.r3 .why{animation:rise .50s var(--eo) both 3.15s}
+.r3 .out{animation:fade .50s var(--e) both 3.21s}
+.r4 .tile{animation:pop .44s var(--eo) both 1.55s,lift .44s var(--e) forwards 3.28s}
+.r4 .mk{animation:ink .46s var(--e) both 3.32s}
 .r4 .div{animation:draw .55s var(--e) both 1.70s}
 .r4 .sys{animation:dim .50s var(--e) both 1.80s}
 .r4 .name{animation:rise .50s var(--eo) both 3.28s}
 .r4 .tool{animation:rise .50s var(--eo) both 3.35s}
-.r4 .out{animation:fade .50s var(--e) both 3.41s}
-.r5 .node{animation:pop .42s var(--eo) both 1.75s,fill .40s var(--e) forwards 3.54s}
+.r4 .why{animation:rise .50s var(--eo) both 3.41s}
+.r4 .out{animation:fade .50s var(--e) both 3.47s}
+.r5 .tile{animation:pop .44s var(--eo) both 1.75s,lift .44s var(--e) forwards 3.54s}
+.r5 .mk{animation:ink .46s var(--e) both 3.58s}
 .r5 .div{animation:draw .55s var(--e) both 1.90s}
 .r5 .sys{animation:dim .50s var(--e) both 2.00s}
 .r5 .name{animation:rise .50s var(--eo) both 3.54s}
 .r5 .tool{animation:rise .50s var(--eo) both 3.61s}
-.r5 .out{animation:fade .50s var(--e) both 3.67s}
+.r5 .why{animation:rise .50s var(--eo) both 3.67s}
+.r5 .out{animation:fade .50s var(--e) both 3.73s}
 </style></head>
 <body>
 <div id="film">
@@ -313,57 +341,61 @@ h1{font-family:'Anton',sans-serif;font-size:104px;line-height:.90;letter-spacing
     </div>
     <div class="hr"></div>
     <div class="list">
-      <span class="spine"></span>
       <span class="scan"></span>
     <div class="row r1">
-      <span class="node"></span>
       <span class="div"></span>
+      <span class="tile"><svg class='mk' viewBox='0 0 100 100' data-mk='openai'><path class='ms' d='M50 8 L86 29 V71 L50 92 L14 71 V29 Z'/><path class='ma' d='M50 50 V16 M50 50 L79 67 M50 50 L21 67'/></svg></span>
       <span class="rl">
-        <span class="sys">System 01</span>
-        <span class="name">Ideate &amp; research</span>
-        <span class="tool">ChatGPT</span>
+        <span class="top"><span class="sys">System 01</span>
+          <span class="out">Ideate faster</span></span>
+        <span class="ttl"><span class="name">Ideate &amp; research</span>
+          <span class="tool">ChatGPT</span></span>
+        <span class="why">Turn a blank page into angles, outlines and the questions to ask.</span>
       </span>
-      <span class="out">Ideate faster</span>
     </div>
     <div class="row r2">
-      <span class="node"></span>
       <span class="div"></span>
+      <span class="tile"><svg class='mk' viewBox='0 0 100 100' data-mk='copyai'><path class='ma2' d='M74 30 A26 26 0 1 0 74 70' /><circle class='mf' cx='50' cy='50' r='7'/></svg></span>
       <span class="rl">
-        <span class="sys">System 02</span>
-        <span class="name">Copywriting engine</span>
-        <span class="tool">Copy.ai</span>
+        <span class="top"><span class="sys">System 02</span>
+          <span class="out">Create content</span></span>
+        <span class="ttl"><span class="name">Copywriting engine</span>
+          <span class="tool">Copy.ai</span></span>
+        <span class="why">Drafts the first version, so you are editing instead of starting.</span>
       </span>
-      <span class="out">Create content</span>
     </div>
     <div class="row r3">
-      <span class="node"></span>
       <span class="div"></span>
+      <span class="tile"><svg class='mk' viewBox='0 0 100 100' data-mk='canva'><circle class='ms' cx='50' cy='50' r='40'/><path class='ma' d='M64 35 A19 19 0 1 0 64 65'/></svg></span>
       <span class="rl">
-        <span class="sys">System 03</span>
-        <span class="name">Visual design suite</span>
-        <span class="tool">Canva</span>
+        <span class="top"><span class="sys">System 03</span>
+          <span class="out">Save time daily</span></span>
+        <span class="ttl"><span class="name">Visual design suite</span>
+          <span class="tool">Canva</span></span>
+        <span class="why">Templates and a brand kit, so a post takes minutes.</span>
       </span>
-      <span class="out">Save time daily</span>
     </div>
     <div class="row r4">
-      <span class="node"></span>
       <span class="div"></span>
+      <span class="tile"><svg class='mk' viewBox='0 0 100 100' data-mk='midjourney'><path class='mf' d='M48 12 L48 58 L22 58 Z'/><path class='ma' d='M56 26 L56 58 L80 58 Z'/><path class='ms' d='M14 68 H88 L74 86 H28 Z'/></svg></span>
       <span class="rl">
-        <span class="sys">System 04</span>
-        <span class="name">Creative generation</span>
-        <span class="tool">Midjourney</span>
+        <span class="top"><span class="sys">System 04</span>
+          <span class="out">Grow your audience</span></span>
+        <span class="ttl"><span class="name">Creative generation</span>
+          <span class="tool">Midjourney</span></span>
+        <span class="why">The images you cannot shoot, in a style you can keep repeating.</span>
       </span>
-      <span class="out">Grow your audience</span>
     </div>
     <div class="row r5">
-      <span class="node"></span>
       <span class="div"></span>
+      <span class="tile"><svg class='mk' viewBox='0 0 100 100' data-mk='notion'><rect class='ms' x='10' y='10' width='80' height='80' rx='16'/><path class='ma' d='M32 72 V30 L68 68 V30'/></svg></span>
       <span class="rl">
-        <span class="sys">System 05</span>
-        <span class="name">Workflow management</span>
-        <span class="tool">Notion</span>
+        <span class="top"><span class="sys">System 05</span>
+          <span class="out">Monetize your work</span></span>
+        <span class="ttl"><span class="name">Workflow management</span>
+          <span class="tool">Notion</span></span>
+        <span class="why">One place where the ideas, the drafts and the dates actually live.</span>
       </span>
-      <span class="out">Monetize your work</span>
     </div>
     </div>
     <div class="foot">

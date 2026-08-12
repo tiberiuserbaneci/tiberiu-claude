@@ -36,12 +36,13 @@ Comment TOOLKIT and I will send you the five and what each one is actually for.
 ## ALT TEXT
 
 Warm paper background, dark editorial type. The title AI CREATOR TOOLKIT sits top left in heavy
-condensed capitals above the line Five systems. One stack. Under it a vertical spine runs down
-the page with five numbered stations on it, each marked with a book orange dot. The five read
-Ideate and research with ChatGPT, Copywriting engine with Copy.ai, Visual design suite with
-Canva, Creative generation with Midjourney, and Workflow management with Notion, each tool name
-set in book orange. A right hand column carries the outcome of each in small monospaced capitals:
-ideate faster, create content, save time daily, grow your audience, monetize your work. The
+condensed capitals above the line Five systems. One stack. Below it five numbered rows fill the
+page, divided by hairlines. Each row carries a rounded logo tile on the left, the label SYSTEM
+01 to 05, the name of the system with its product set beside it in book orange, one line
+explaining what the station is for, and an outlined chip on the right naming the outcome. The
+five read Ideate and research with ChatGPT for ideating faster, Copywriting engine with Copy.ai
+to create content, Visual design suite with Canva to save time daily, Creative generation with
+Midjourney to grow your audience, and Workflow management with Notion to monetize your work. The
 frame closes with the Ultron wordmark and logo at the foot.
 
 ---
@@ -58,6 +59,18 @@ different materials spliced together. Four decisions carry that, and they are th
    five SYSTEM numerals. The hold is a form waiting to be filled rather than a blank page, which
    is also what stops the first 2.5 seconds being 42 percent of the reel spent on nothing.
 4. Nothing is ever removed and nothing crossfades. Coverage only rises.
+
+The first cut of this stripped the body copy entirely on a reading speed argument: 200 words
+cannot be read at 0.7s a station, so out they went. The operator rejected it as too empty, and
+he was right on his own standing rule (CLAUDE.md 27.9). Density is not there to be read in one
+pass, it is there to earn the second one, and on this platform watch time including replays is
+the top ranking signal. So every row carries a mark, a name, a product, a line of what it is
+for and an outcome chip. One pass takes the names; the explanations are what the rewatch is for.
+
+**The logo marks are DRAWN, not the real files.** The accurate route is the Simple Icons package
+that analysis/reference-layouts.md already points at, but the agent proxy refuses jsDelivr with a
+403 on the CONNECT tunnel and the proxy README says to report a blocked host rather than route
+around it. Drop the five real SVGs into `content/assets/icons/` and they swap straight in.
 
 Rebuild with `python3 content/_toolkit_reel.py`, render with
 `python3 content/_film.py content/creator-toolkit-film-6s.html --no-audio`.
