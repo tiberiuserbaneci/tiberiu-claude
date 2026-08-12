@@ -474,8 +474,15 @@ Every vertical carousel slide and story uses these insets. Pre-flight: verify th
   as an in-image link.
 - NEVER a keyword strip in the footer
 - NEVER two rows
-- Brand text format: `<strong>ULTRON</strong> · AI OPERATOR FOR FOUNDERS · [CONTEXT]`
-  (the long form is for the 1450px posters; the glass decks carry the wordmark alone)
+- **THE FOOTER IS THE HANDLE, NOT THE COMPANY (operator, 2026-08-12 — binding, supersedes the
+  ULTRON wordmark that used to sit on this line).** "am omorat toate canalele asa - ultron e
+  anonim... e o carte pierzatoare." A wordmark only works when the audience already knows it.
+  Nobody knows Ultron, so putting it on the frame spends attention and buys nothing, and it
+  cost the channels. The footer now carries **`@tiberiu.ai`** alone, small mono, bottom left.
+  The mast carries a SERIES label, never a company: `RESEARCH STACK · 02`, `01 / AGENT ROUTING`.
+  Measured on the reference reels 2026-08-12: that is exactly their construction, handle plus
+  series number, and nothing else on the frame identifies anybody.
+- Ultron appears in the CAPTION, the FIRST COMMENT and the DM. Never in the picture. See 31.
 
 ---
 
@@ -704,7 +711,7 @@ a blank line between every paragraph (scannable, 360Brew style). Order:
 2. The shift — "Now I…" (1–2 sentences)
 3. Setup — one line ("Anything that will not finish in seconds becomes a background job: …")
 4. The dense mechanics — the single packed paragraph (the how)
-5. Product line — "This is X on the Ultron platform…" (1 line)
+5. Product line — one line, and it is the ONLY place Ultron is named (see 31). Never on the frame.
 6. CTA — "Comment KEYWORD and I will send you…" (1 line)
 7. Hashtags — the last line
 
@@ -928,14 +935,13 @@ OpenRouter middleware for per-user credit provisioning. BYOK removed from docume
 - Operator voice: "I sent", "I tested", "I killed", "I built", "I let Claude"
 - Open counter-intuitive statements ("This had nothing to do with X")
 - Self-citation of your own real results only
-- Tool names: **Claude, AI, Ultron - and nothing else** (operator, 2026-08-06, supersedes the
-  agent roster that used to sit on this line). CORTEX / SPECTER / STRIKER / PULSE / SENTINEL /
-  AMPLIFY / COUNSEL are internal vocabulary: they mean nothing to a founder scrolling, and a
-  name the audience has to decode is a name that costs a second of attention it never earns
-  back. Say what it does, not which agent does it. The films already had this right - every
-  beat in episodes 05 and 09 says "it", and the product line is "This is the Ultron platform,
-  one input and a team that runs behind it." That is the pattern. The roster stays in 1 as
-  product documentation and stays out of every material.
+- Tool names: **Claude and the other real AI products are the SUBJECT** (operator, 2026-08-12,
+  supersedes the "Claude, AI, Ultron and nothing else" rule that sat here). The material talks
+  about Claude and about whatever else is genuinely travelling in that lane, because that is
+  what the audience is there for. Ultron is not a subject and does not appear in the picture.
+  The agent roster - CORTEX / SPECTER / STRIKER / PULSE / SENTINEL / AMPLIFY / COUNSEL - stays
+  banned from every material: internal vocabulary the audience has to decode costs a second of
+  attention it never earns back. It stays in 1 as product documentation.
 - Brand terminology: "lead magnet", "workflow", "audit prompt", "founder GTM"
 - Concrete actions: "Drop [KEYWORD]", "Comment below", "DM me"
 - ICP filter language: "If you are a founder running GTM alone…"
@@ -1338,6 +1344,41 @@ element is built to fill it, never sized to its own taste and centred in the lef
 - **Content is real** - numbers/features pulled from the docs, never invented; links only to confirmed app.51ultron.com paths, first comment only.
 - **Portal** - after adding materials, rescan + commit the manifest; last-added is first in every category; private port, open in a real browser.
 - **Captions** - LinkedIn 5-block 400-470w + ALT 80-150w + first comment 40-80w; TikTok one-beat paragraphs + exactly 5 hashtags.
+
+---
+
+## 31. THE CHANNEL IS ANONYMOUS AND THE SUBJECT IS CLAUDE (operator, 2026-08-12 — binding, and it outranks every branding rule above it)
+
+> "nu mai vreau sa vorbim despre ultron. tu nu auzi ca am omorat audienta ce plm ... trebuie
+> sa vorbim de Claude sau de alte llm uri virale iar ultron in caption si dm"
+> and, the day before: "am omorat toate canalele asa - ultron e anonim... e o carte pierzatoare."
+
+This is the governing decision for every material from here. Where anything earlier in this
+file conflicts with it, this wins and the earlier line is stale (0.1).
+
+**THE SUBJECT IS CLAUDE AND THE OTHER REAL AI PRODUCTS.** Not Ultron, not what Ultron does,
+not a disguised version of what Ultron does. The audience follows the account to learn
+something about the tools they already use. A material whose subject is our product is an ad,
+and an ad from a brand nobody has heard of is the thing that killed the channels.
+
+**ULTRON LIVES IN THREE PLACES, ALL OF THEM OFF THE FRAME:** the caption's product line, the
+first comment, and the DM. That is one line out of five hundred pixels of picture, and it only
+gets read by somebody who already stayed.
+
+**THE FRAME CARRIES A HANDLE AND A SERIES LABEL.** `@tiberiu.ai` bottom left in small mono, a
+series label in the mast (`RESEARCH STACK · 02`). No wordmark, no logo, no domain, no company.
+
+**WHY THIS IS NOT A RETREAT.** Measured on five reference reels 2026-08-12 (`_reelscan.py`):
+they run ink 0.040 to 0.060 against our 0.078 to 0.097, so we were never behind on density -
+we were behind on motion (their 0.075 to 0.089 against our 0.048 to 0.057) and we were spending
+the frame on a name instead of on the subject. Their construction is exactly the one above:
+handle plus series number, subject is a Claude capability, artifact promised in the CTA.
+
+**AND THE SUBJECT IS RESEARCHED, NOT REMEMBERED.** Operator, same day: "cauta pe internet ce pui
+in material". Model names, prices, feature availability and anything a reader could check are
+verified against the live web before the material is built, not recalled. The 30-day freshness
+rule in 30 binds hardest here, because a stale model version in a material about models is the
+one mistake this lane punishes instantly.
 
 ---
 
