@@ -63,6 +63,7 @@ CROP45_TOP = (SAFE_T + (H - SAFE_B)) // 2 - 1350 // 2      # 4:5 centred on the 
 
 CM = _load("_claudemark")
 OB = _load("_objects")
+PC = _load("_picto")
 
 
 def logo_b64() -> str:
@@ -96,7 +97,7 @@ _VARIANT_CSS = {
 .safe{padding:300px 130px 330px 70px}
 .markrow{flex-shrink:0;display:flex;justify-content:center;padding-top:18px}
 .markrow svg{width:300px;height:300px}
-""" + OB.CSS,
+""" + OB.CSS + PC.CSS,
     # a carousel post has no platform UI over it, so the margins are even and the chrome stays
     "carousel": """
 .slide{width:1080px;height:1350px}
@@ -432,18 +433,28 @@ def d_reelx(spec, logo):
     words, and an object that carries the number so the sentence does not have to. Seven
     distinct forms per deck, checked, because the same shape seven times is one object with
     new words in it.
+
+    THE OBJECT IS A PICTOGRAM, NOT A CHART (operator, on the first object pass: "nu patrate
+    goale. alea sunt moarte din start"). A bar and a ring encode a quantity and nothing else,
+    so at one second the viewer has a shape and no subject. `_picto` draws the thing itself
+    with the number inside it, mounted on a glass panel that fills the stage. `_objects` is
+    still dispatched for any spec that declares an abstract form, so the older demo resolves,
+    but nothing new should reach for it.
     """
     rows = spec["reel"]
-    OB.check_run(spec["id"], [r["obj"]["form"] for r in rows])
+    run = [r["obj"]["form"] for r in rows]
+    (PC.check_run if all(f in PC.FORMS for f in run) else OB.check_run)(spec["id"], run)
     out = [_slide(spec, 1, f"""<div class="cv">
     <div class="cv-eye mono">{spec['eyebrow']}</div>
     <div class="cv-h disp">{spec['hook']}</div>
     {_ai(spec, logo)}
   </div>""", logo)]
     for k, r in enumerate(rows):
+        art = (PC.panel(r["obj"]) if r["obj"]["form"] in PC.FORMS
+               else OB.render(r["obj"]))
         out.append(_slide(spec, k + 2, f"""<div class="rx">
-      <div class="rx-h">{r['h']}</div>
-      <div class="rx-stage">{OB.render(r['obj'])}</div>
+      <div class="rx-h"><span>{r['h']}</span></div>
+      <div class="rx-stage">{art}</div>
       <div class="rx-l">{r['line']}</div>
     </div>""", logo))
     return out

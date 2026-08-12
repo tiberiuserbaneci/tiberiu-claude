@@ -171,13 +171,26 @@ def render(o: dict) -> str:
 CSS = """
 /* THE STAGE. Fixed, never eaten by the copy, per CLAUDE.md 30's working model. The object
    fills it - a small graphic centred in a big box is the thin element the operator rejects. */
+/* THE GEOMETRY IS DECLARED IN PIXELS, NOT LEFT TO THE COPY (CLAUDE.md 30's working model).
+   Sizing the three blocks to their own content moved the panel by up to 90px between
+   slides, because a two line hook and a three line hook hand the stage different room. On a
+   deck the reader paces that is invisible; at one second a slide it is the worst kind of
+   motion, since the eye spends its second re-finding the object instead of reading it. So
+   the hook reserves three lines and sits on its baseline, the line block reserves two, and
+   the stage is whatever is left - which is now the same number on every slide.
+       band 1290 = hook 250 + 28 + stage 884 + 28 + line 100 */
 .rx{flex:1;min-height:0;display:flex;flex-direction:column}
-.rx-h{flex-shrink:0;font-family:'Anton',sans-serif;text-transform:uppercase;
-  letter-spacing:-1.6px;line-height:.94;font-size:82px;color:var(--ink);margin:0 0 30px}
+.rx-h{flex-shrink:0;height:250px;display:flex;align-items:flex-end;margin:0 0 28px}
+/* The hook is ONE flex item, never its own words. Flexing the headline directly made every
+   `em` and every text node a flex item in a row: the line breaks stopped applying and the
+   words spread across the measure with gaps in them. The inner block keeps normal inline
+   layout inside a box that is only being used to sit the type on its baseline. */
+.rx-h>span{display:block;width:100%;font-family:'Anton',sans-serif;text-transform:uppercase;
+  letter-spacing:-1.6px;line-height:.94;font-size:82px;color:var(--ink)}
 .rx-h em{color:var(--acc);font-style:normal}
 .rx-stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
-.rx-l{flex-shrink:0;margin-top:30px;font-size:38px;font-weight:700;color:var(--ink);
-  line-height:1.26}
+.rx-l{flex-shrink:0;height:100px;margin-top:28px;font-size:38px;font-weight:700;
+  color:var(--ink);line-height:1.26}
 .rx-l em{color:var(--acc);font-style:normal}
 
 .ob{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;

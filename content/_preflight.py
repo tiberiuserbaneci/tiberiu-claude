@@ -75,6 +75,13 @@ def target_of(name):
     # so dims are checked on the canvas box (offsetHeight), not scrollHeight. No 300px inset.
     if "-45-" in n or "editorial45" in n: return (".slide", 1350, True)
     if n.startswith("paper-"): return (".slide", 1920, True)
+    # glass decks, built into content/build/ as <deck-id>-<variant>.html. The reel and the
+    # reelx cut are 9:16 for the footage the operator assembles over; the carousel is his
+    # 4:5 post. Without this they fell through to the LinkedIn poster default and every deck
+    # in the set was measured against 1450, so the check has been failing all 21 of them for
+    # being the wrong shape rather than for anything wrong with them.
+    if n.startswith("deck-"):
+        return (".slide", 1350 if n.endswith("-carousel") else 1920, True)
     if "carousel" in n: return ("slide", 1920, True)
     if any(k in n for k in ("tiktok","-ig-","story","highlight","instagram")): return (".slide", 1920, False)
     return ("#artifact", 1450, False)
@@ -183,9 +190,18 @@ def render_checks(path):
             els = pg.query_selector_all("#artifact") or pg.query_selector_all(".slide") or pg.query_selector_all(".frame")
         for i, el in enumerate(els, 1):
             tag = f"slide {i}" if (multi or len(els)>1) else "frame"
-            # 4:5 format: canvas box must be exact; visuals may bleed past it (clipped), so
-            # scrollHeight is the wrong measure there. Other formats keep zero-dead-space scrollHeight.
-            h = el.evaluate("e=>e.offsetHeight" if target == 1350 else "e=>e.scrollHeight")
+            # WHICH HEIGHT IS THE REAL ONE DEPENDS ON WHETHER THE CANVAS CLIPS.
+            # An element with `overflow:hidden` exports its own box, so scrollHeight there
+            # measures pixels no viewer will ever see. The glass decks paint a colour field
+            # at `inset:-14%` behind their panels - the thing that makes the glass read as
+            # glass - and it reported 2631 on a 1920 slide, which failed every deck in the
+            # set for a background doing exactly what it was built to do. A guard that cries
+            # wolf on correct work is a guard that gets ignored on the day it is right.
+            # Where nothing is clipped, scrollHeight still catches content pushing a canvas
+            # past its target, which is the dead-space check CLAUDE.md 9 asks for.
+            h = el.evaluate("""e=>{const cs=getComputedStyle(e);
+                return (cs.overflow==='hidden'||cs.overflowY==='hidden')
+                  ? e.offsetHeight : e.scrollHeight;}""")
             if h != target: fails.append(f"dims[{tag}]: height {h} != {target}")
             if target == 1920:
                 topgap = el.evaluate("""e=>{const r=e.getBoundingClientRect();

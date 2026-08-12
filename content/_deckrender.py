@@ -7,6 +7,7 @@ inside a reel he is going to cut over his own footage, or a Claude mark centred 
 of a carousel. That is invisible in a thumbnail and obvious in the feed.
 
   reel      1080x1920   no mast, no footer, no swipe chip. Claude mark on slide 1 only.
+  reelx     1080x1920   the same chrome rules, carrying pictograms instead of dense copy.
   carousel  1080x1350   mast and footer on every slide, swipe chip on slide 1, no mark.
 
 Also checked, per slide: nothing painted outside the safe box, and for `meter` the chart
@@ -18,7 +19,7 @@ Usage:  python3 content/_deckrender.py deck-j-first10 deck-k-launchweek
 import importlib.util, pathlib, sys
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
-SIZE = {"reel": (1080, 1920), "carousel": (1080, 1350)}
+SIZE = {"reel": (1080, 1920), "reelx": (1080, 1920), "carousel": (1080, 1350)}
 
 
 def _load(n):
@@ -31,6 +32,7 @@ BR = _load("_browser")
 # selector -> expected count per slide, by variant. None means "not checked".
 CHROME = {
     "reel":     {".mast": 0, ".foot": 0, ".aichip": 0},
+    "reelx":    {".mast": 0, ".foot": 0, ".aichip": 0},
     "carousel": {".mast": 1, ".foot": 1, ".markrow": 0},
 }
 
@@ -62,7 +64,7 @@ def render(deck_id: str, variants=("reel", "carousel")) -> list[str]:
                     if got != want:
                         bad.append(f"{deck_id} {variant} {i+1:02d}: {sel} x{got}, want {want}")
                 # the mark belongs on slide 1 of a reel and nowhere else
-                if variant == "reel":
+                if variant.startswith("reel"):
                     want = 1 if i == 0 else 0
                     got = s.locator(".markrow").count()
                     if got != want:
