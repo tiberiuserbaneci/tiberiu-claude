@@ -22,7 +22,8 @@ page stays the single source of truth and the renderer never needs editing per e
 Voiceover: set ELEVENLABS_API_KEY and ELEVEN_VOICE_ID in the environment. Without them
 the film still renders, silent, and the beat timings stay exactly as authored.
 """
-import argparse, base64, functools, json, os, pathlib, re, subprocess, sys, urllib.request, urllib.error
+import argparse, base64, functools, json, os, pathlib, re, subprocess, sys, tempfile
+import urllib.request, urllib.error
 
 # Renders take minutes and usually run detached, where stdout is a pipe and Python buffers
 # it into silence. Flush every line so progress is actually visible while it works.

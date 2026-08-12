@@ -118,7 +118,14 @@ def measure(html: pathlib.Path, to: float, step: float) -> dict:
                 seam = hk[-1][2] + float(meta.get("hook_hold", .15))
 
     if to <= 0:
-        to = (built[2] if built else meta.get("duration", 30)) + .4
+        # A NARRATED film is as long as its take plus a 0.7s tail, so sampling 0.4s past the
+        # last spoken word still lands inside the render and is worth checking - that tail is
+        # where a payoff flashes and vanishes. A SILENT film declares its own duration and the
+        # renderer emits exactly that many frames, so the same 0.4s reaches past the end of
+        # the mp4 and measures a page nobody will ever see. It reported a dead half second
+        # "from t=6.00" on a 6.00s film, which is a guard failing work for frames that do not
+        # exist, and that is how a guard gets ignored on the day it is right.
+        to = built[2] + .4 if built else meta.get("duration", 30)
 
     rows, prev = [], None
     with sync_playwright() as pw:

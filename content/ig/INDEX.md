@@ -26,6 +26,7 @@ Captions follow CLAUDE.md 15.6: one beat per paragraph, exactly five hashtags.
 
 | Folder | Post | Keyword | Note |
 |---|---|---|---|
+| `toolkit-6s` | AI CREATOR TOOLKIT | TOOLKIT | ready, 6s silent. Title holds 2.5s, then the sheet fills under it. Names five third party products by operator decision (CLAUDE.md 21 suspended for this one material) |
 | `film-15-pipeline` | FORTY ONE DEALS. NINE REAL. | PIPELINE | ready, first film on real geometry |
 | `film-12-contract` | FOURTEEN PAGES. THREE PROBLEMS. | CONTRACT | ready, run-board model |
 | `film-11-inbound` | THREE CAME IN. ONE WAS REAL. | INBOUND | ready, run-board model |
