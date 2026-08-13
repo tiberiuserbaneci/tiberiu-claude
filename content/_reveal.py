@@ -63,6 +63,17 @@ PAD = 0            # paper-coloured inset inside the picture, raise it if labels
 # never needed to be: they are both large enough to read as margin, which is the whole job.
 PIC_H = 1093                                 # the reference's, not a ratio of my own choosing
 
+# THE CARD IS 3:4 WITH THE HEADER INSIDE IT. Operator 2026-08-13: "da mi l in format 3:4 - nu
+# du backgroundul pana jos complet doar adauga cat iti mai trebuie pentru un 3:4 cu headerul
+# inclus. Pe zona care se adauga pune si un footer ca sa nu ramana goala."
+#
+# The arithmetic closes exactly, which is why this shape is the right one rather than a
+# compromise: 1080 wide at 3:4 is 1440 tall, and 187 of band plus 1093 of picture is 1280, so
+# the strip that makes it 3:4 is 160px - enough for a footer and not a pixel spare.
+CARD_H = CARD_W * 4 // 3                     # 1440
+FOOT_H = CARD_H - BAND_H - PIC_H             # 160
+FOOT_TOP = PIC_TOP + PIC_H                   # 1562
+
 
 def ground(picture: pathlib.Path) -> tuple[str, str]:
     """The picture's own background colour, and a hairline a few steps darker.
@@ -108,7 +119,7 @@ def hook_html(text: str, accent: str | None) -> str:
 
 
 def page(pic_uri: str, l1: str, l2: str, accent: str | None,
-         paper: str, hair: str) -> str:
+         paper: str, hair: str, avatar: str) -> str:
     BAND_TOP, PIC_TOP = globals()["BAND_TOP"], globals()["PIC_TOP"]
     fonts = load("_fonts").embedded_css()
     return f"""<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
@@ -137,6 +148,20 @@ body{{background:#000;display:flex;justify-content:center}}
 /* THE PICTURE, square, directly under the band. */
 .pic{{position:absolute;left:{SIDE}px;top:{PIC_TOP}px;width:{CARD_W}px;height:{PIC_H}px;
   overflow:hidden;background:{paper};padding:0 {PAD}px}}
+
+/* THE FOOTER, on the strip that makes the card 3:4. It is not decoration filling a gap: the
+   gap exists because the format asks for it, and an empty 160px of paper under a finished
+   picture reads as a crop that went wrong. */
+.foot{{position:absolute;left:{SIDE}px;top:{FOOT_TOP}px;width:{CARD_W}px;height:{FOOT_H}px;
+  background:{paper};display:flex;align-items:center;justify-content:center;gap:22px;
+  padding:0 40px}}
+.foot .av{{width:86px;height:86px;border-radius:50%;object-fit:cover;flex-shrink:0;
+  box-shadow:0 0 0 3px {paper},0 0 0 5px rgba(200,70,35,.34)}}
+.foot .av.ph{{background:rgba(25,23,19,.10)}}
+.foot .txt{{font-family:'DM Sans',sans-serif;font-weight:600;font-size:38px;line-height:1.2;
+  letter-spacing:-.6px;color:#161412}}
+/* the handle takes the hook's accent, operator: "tiberiu.ai in culoarea de la research" */
+.foot .txt em{{font-style:normal;font-weight:800;color:var(--acc)}}
 /* one hairline around the whole card, drawn over both halves so the seam cannot show */
 /* The rule under the band, and it is BLACK, because that is what the reference has. Measured
    on IMG_2465 at rows 313 to 316: 314 and 315 are pure 0,0,0 across the full width with a
@@ -148,7 +173,10 @@ body{{background:#000;display:flex;justify-content:center}}
   background:#000;pointer-events:none;z-index:3}}
 .pic img{{width:100%;height:100%;object-fit:cover;display:block}}
 /* the fade lives over the picture and NOWHERE else, because the band never dims in the model */
-.veil{{position:absolute;inset:0;background:#000;opacity:{ALPHA0};
+/* The veil covers the picture AND the footer, operator: "Follow pastreaza tonul de reveal al
+   backgroundului, adica apare progresiv". The band stays outside it, as in the model. */
+.veil{{position:absolute;left:0;right:0;top:{PIC_TOP}px;height:{PIC_H + FOOT_H}px;
+  background:#000;opacity:{ALPHA0};z-index:4;pointer-events:none;
   animation:up {RAMP}s linear forwards 0s}}
 @keyframes up{{from{{opacity:{ALPHA0}}}to{{opacity:0}}}}
 </style></head>
@@ -158,23 +186,36 @@ body{{background:#000;display:flex;justify-content:center}}
     <span class="l1">{hook_html(l1, accent)}</span>
     <span class="l2">{hook_html(l2, accent)}</span>
   </div>
-  <div class="pic"><img src="{pic_uri}" alt=""><div class="veil"></div></div>
+  <div class="pic"><img src="{pic_uri}" alt=""></div>
+  <div class="foot">{avatar}
+    <span class="txt">Follow <em>tiberiu.ai</em> for more<br>AI tools and productivity hacks</span>
+  </div>
+  <div class="veil"></div>
   <div class="edge"></div>
 </div>
 </body></html>
 """
 
 
+def data_uri(p: pathlib.Path) -> str:
+    ext = p.suffix.lstrip(".").lower().replace("jpg", "jpeg")
+    return f"data:image/{ext};base64," + base64.b64encode(p.read_bytes()).decode()
+
+
 def build(picture: pathlib.Path, l1: str, l2: str, accent: str | None,
-          slug: str) -> pathlib.Path:
-    ext = picture.suffix.lstrip(".").lower().replace("jpg", "jpeg")
-    uri = f"data:image/{ext};base64," + base64.b64encode(picture.read_bytes()).decode()
+          slug: str, avatar: pathlib.Path | None = None) -> pathlib.Path:
     if accent and accent.upper() not in (l1 + " " + l2).upper():
         sys.exit(f"accent word {accent!r} appears in neither hook line")
     paper, hair = ground(picture)
+    # The operator's portrait when there is one, and an honest empty disc when there is not,
+    # rather than a stand-in face. The slot is the same either way, so dropping the real file
+    # in changes one argument and nothing else.
+    av = (f'<img class="av" src="{data_uri(avatar)}" alt="">' if avatar
+          else '<span class="av ph"></span>')
     out = REPO / f"content/{slug}.html"
-    out.write_text(page(uri, l1, l2, accent, paper, hair))
-    print(f"  paper {paper}   hairline {hair}")
+    out.write_text(page(data_uri(picture), l1, l2, accent, paper, hair, av))
+    print(f"  paper {paper}   hairline {hair}   "
+          f"avatar {'embedded' if avatar else 'PLACEHOLDER, pass --avatar'}")
     return out
 
 
@@ -188,13 +229,17 @@ if __name__ == "__main__":
     ap.add_argument("--render", action="store_true")
     ap.add_argument("--band-top", type=int, default=None,
                     help="override the frozen band top, e.g. to balance the black margins")
+    ap.add_argument("--avatar", default=None, help="the operator's portrait for the footer")
     a = ap.parse_args()
     if a.band_top is not None:
         globals()["BAND_TOP"] = a.band_top
         globals()["PIC_TOP"] = a.band_top + BAND_H
-    html = build(pathlib.Path(a.picture), a.line1, a.line2, a.accent, a.out)
+    html = build(pathlib.Path(a.picture), a.line1, a.line2, a.accent, a.out,
+                 pathlib.Path(a.avatar) if a.avatar else None)
     print(f"built  {html.relative_to(REPO)}")
     print(f"  band {BAND_TOP}..{BAND_TOP + BAND_H}   picture {PIC_TOP}..{PIC_TOP + PIC_H}   "
+          f"footer {FOOT_TOP}..{FOOT_TOP + FOOT_H}")
+    print(f"  card {CARD_W}x{CARD_H} = {CARD_W / CARD_H:.4f} (3:4 = 0.7500)   "
           f"ramp {RAMP}s of {DUR}s")
     if a.render:
         subprocess.run([sys.executable, str(REPO / "content/_film.py"), str(html),
