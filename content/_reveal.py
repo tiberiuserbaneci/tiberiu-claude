@@ -74,6 +74,10 @@ CARD_H = CARD_W * 4 // 3                     # 1440
 FOOT_H = CARD_H - BAND_H - PIC_H             # 160
 FOOT_TOP = PIC_TOP + PIC_H                   # 1562
 
+# The operator's portrait, committed once and picked up by every material after it. He does not
+# have to pass it, and no material has to remember to. --avatar still overrides for a one-off.
+AVATAR = REPO / "content/assets/tiberiu.jpg"
+
 
 def ground(picture: pathlib.Path) -> tuple[str, str]:
     """The picture's own background colour, and a hairline a few steps darker.
@@ -153,13 +157,16 @@ body{{background:#000;display:flex;justify-content:center}}
    gap exists because the format asks for it, and an empty 160px of paper under a finished
    picture reads as a crop that went wrong. */
 .foot{{position:absolute;left:{SIDE}px;top:{FOOT_TOP}px;width:{CARD_W}px;height:{FOOT_H}px;
-  background:{paper};display:flex;align-items:center;justify-content:center;gap:22px;
-  padding:0 40px}}
-.foot .av{{width:86px;height:86px;border-radius:50%;object-fit:cover;flex-shrink:0;
+  background:{paper};display:flex;align-items:center;justify-content:center;gap:20px;
+  padding:0 30px}}
+.foot .av{{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;
   box-shadow:0 0 0 3px {paper},0 0 0 5px rgba(200,70,35,.34)}}
 .foot .av.ph{{background:rgba(25,23,19,.10)}}
-.foot .txt{{font-family:'DM Sans',sans-serif;font-weight:600;font-size:38px;line-height:1.2;
-  letter-spacing:-.6px;color:#161412}}
+/* ONE LINE. 57 characters across the 930px the avatar and the padding leave, which sets the
+   size rather than the other way round: at 38px it wrapped, and a footer that wraps in a 160px
+   strip stops being a footer and becomes a second paragraph. */
+.foot .txt{{font-family:'DM Sans',sans-serif;font-weight:600;font-size:30px;line-height:1.2;
+  letter-spacing:-.4px;color:#161412;white-space:nowrap}}
 /* the handle takes the hook's accent, operator: "tiberiu.ai in culoarea de la research" */
 .foot .txt em{{font-style:normal;font-weight:800;color:var(--acc)}}
 /* one hairline around the whole card, drawn over both halves so the seam cannot show */
@@ -188,7 +195,7 @@ body{{background:#000;display:flex;justify-content:center}}
   </div>
   <div class="pic"><img src="{pic_uri}" alt=""></div>
   <div class="foot">{avatar}
-    <span class="txt">Follow <em>tiberiu.ai</em> for more<br>AI tools and productivity hacks</span>
+    <span class="txt">Follow <em>tiberiu.ai</em> for more AI tools and productivity hacks</span>
   </div>
   <div class="veil"></div>
   <div class="edge"></div>
@@ -234,8 +241,8 @@ if __name__ == "__main__":
     if a.band_top is not None:
         globals()["BAND_TOP"] = a.band_top
         globals()["PIC_TOP"] = a.band_top + BAND_H
-    html = build(pathlib.Path(a.picture), a.line1, a.line2, a.accent, a.out,
-                 pathlib.Path(a.avatar) if a.avatar else None)
+    av = pathlib.Path(a.avatar) if a.avatar else (AVATAR if AVATAR.exists() else None)
+    html = build(pathlib.Path(a.picture), a.line1, a.line2, a.accent, a.out, av)
     print(f"built  {html.relative_to(REPO)}")
     print(f"  band {BAND_TOP}..{BAND_TOP + BAND_H}   picture {PIC_TOP}..{PIC_TOP + PIC_H}   "
           f"footer {FOOT_TOP}..{FOOT_TOP + FOOT_H}")
