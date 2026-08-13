@@ -34,11 +34,40 @@ import argparse, base64, importlib.util, pathlib, subprocess, sys
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
 
-# measured geometry at 1080x1920
+# measured geometry at 1080x1920. The vertical numbers are the operator's and are frozen.
 BAND_TOP, BAND_H = 282, 187
 PIC_TOP, PIC_H = 469, 1093
 RAMP, DUR = 4.20, 6.93
 ALPHA0 = 0.982
+# Horizontal insets, operator 2026-08-13: "tine libere zonele de safety stanga dreapta".
+# The model runs edge to edge; this does not. 130 on both sides rather than CLAUDE.md 9's
+# asymmetric 70/130 because the card reads as a card only if it is centred, and 130 is the
+# wider of the two insets, so a symmetric 130 clears both rails at once.
+SIDE = 130
+CARD_W = 1080 - 2 * SIDE                       # 820
+# so the picture is 820 x 1093, which is 3:4, and the image has to be generated at that
+# aspect rather than square or a quarter of it gets cropped away.
+
+
+def ground(picture: pathlib.Path) -> tuple[str, str]:
+    """The picture's own background colour, and a hairline a few steps darker.
+
+    Operator: "backgroundul pozei nu este alb la fel ca backgroundul hook ului ... aceeasi
+    nota de culoare". Rather than pick a cream by eye and have it drift the next time the
+    image model is asked for one, the band takes the colour straight off the picture: the
+    modal value of its border pixels, which is the paper it was drawn on.
+    """
+    from PIL import Image
+    from collections import Counter
+    # The MODE of the whole picture, not its edge. An infographic on paper is mostly paper, so
+    # the most common colour is the ground by a wide margin. Sampling the border instead picked
+    # up the model's own vignette and came out 25 levels darker than the paper it was meant to
+    # match, which is the whole defect this function exists to prevent.
+    im = Image.open(picture).convert("RGB").resize((160, 160))
+    r, g, b = Counter([(p[0] // 3 * 3, p[1] // 3 * 3, p[2] // 3 * 3)
+                       for p in im.getdata()]).most_common(1)[0][0]
+    line = tuple(max(0, c - 26) for c in (r, g, b))
+    return f"rgb({r},{g},{b})", f"rgb({line[0]},{line[1]},{line[2]})"
 
 
 def load(n):
@@ -63,7 +92,8 @@ def hook_html(text: str, accent: str | None) -> str:
     return " ".join(words)
 
 
-def page(pic_uri: str, l1: str, l2: str, accent: str | None) -> str:
+def page(pic_uri: str, l1: str, l2: str, accent: str | None,
+         paper: str, hair: str) -> str:
     fonts = load("_fonts").embedded_css()
     return f"""<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
 <title>reveal</title>
@@ -75,7 +105,10 @@ body{{background:#000;display:flex;justify-content:center}}
 #film{{position:relative;width:1080px;height:1920px;overflow:hidden;background:#000}}
 
 /* THE BAND. Position and size are the operator's, measured off his model and frozen. */
-.band{{position:absolute;left:0;right:0;top:{BAND_TOP}px;height:{BAND_H}px;background:#FFF;
+/* The band takes the picture's own paper colour, so the two read as one sheet. A hairline
+   rule under it separates the hook from the picture without moving or resizing the band. */
+.band{{position:absolute;left:{SIDE}px;width:{CARD_W}px;top:{BAND_TOP}px;height:{BAND_H}px;
+  background:{paper};border-bottom:2px solid {hair};
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
   padding-top:6px}}
 .l1{{font-family:'DM Sans',sans-serif;font-weight:700;font-size:57px;line-height:1.16;
@@ -86,7 +119,11 @@ body{{background:#000;display:flex;justify-content:center}}
 .band em{{font-style:normal;color:var(--acc)}}
 
 /* THE PICTURE, square, directly under the band. */
-.pic{{position:absolute;left:0;top:{PIC_TOP}px;width:1080px;height:{PIC_H}px;overflow:hidden}}
+.pic{{position:absolute;left:{SIDE}px;top:{PIC_TOP}px;width:{CARD_W}px;height:{PIC_H}px;
+  overflow:hidden}}
+/* one hairline around the whole card, drawn over both halves so the seam cannot show */
+.edge{{position:absolute;left:{SIDE}px;top:{BAND_TOP}px;width:{CARD_W}px;
+  height:{BAND_H + PIC_H}px;box-shadow:inset 0 0 0 2px {hair};pointer-events:none;z-index:3}}
 .pic img{{width:100%;height:100%;object-fit:cover;display:block}}
 /* the fade lives over the picture and NOWHERE else, because the band never dims in the model */
 .veil{{position:absolute;inset:0;background:#000;opacity:{ALPHA0};
@@ -100,6 +137,7 @@ body{{background:#000;display:flex;justify-content:center}}
     <span class="l2">{hook_html(l2, accent)}</span>
   </div>
   <div class="pic"><img src="{pic_uri}" alt=""><div class="veil"></div></div>
+  <div class="edge"></div>
 </div>
 </body></html>
 """
@@ -111,8 +149,10 @@ def build(picture: pathlib.Path, l1: str, l2: str, accent: str | None,
     uri = f"data:image/{ext};base64," + base64.b64encode(picture.read_bytes()).decode()
     if accent and accent.upper() not in (l1 + " " + l2).upper():
         sys.exit(f"accent word {accent!r} appears in neither hook line")
+    paper, hair = ground(picture)
     out = REPO / f"content/{slug}.html"
-    out.write_text(page(uri, l1, l2, accent))
+    out.write_text(page(uri, l1, l2, accent, paper, hair))
+    print(f"  paper {paper}   hairline {hair}")
     return out
 
 
