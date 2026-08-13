@@ -1382,4 +1382,115 @@ one mistake this lane punishes instantly.
 
 ---
 
+## 32. THE REVEAL FORMAT (operator, 2026-08-13 — binding; the house reel format)
+
+> The whole build, written down so the next one is an argument list and not a conversation.
+> Operator: "tine cont si salveaza tot ce am facut ca regula sa iti fie usor pentru urmatoarele".
+> Builder: `content/_reveal.py`. It owns every number below; none of them are typed twice.
+
+**THE SHAPE.** One static picture, one white band above it carrying the hook, one footer strip
+below it, and a black veil over the picture and the footer that lifts to nothing over 4.2s of a
+6.93s reel. The band never dims. Nothing moves, nothing cuts, nothing crossfades: coverage only
+rises, which is the same principle 30's retention guard is built on.
+
+```
+1080 x 1920 frame                     the card is FULL BLEED, no side bars ever
+  0    - 282   black margin above
+  282  - 469   BAND  187px   the hook, on the picture's own paper colour
+  469  + 3px   RULE          pure black, 3px. Measured off the reference, rows 314-315
+  469  - 1562  PICTURE 1093px   the generated image, square, full width
+  1562 - 1722  FOOTER  160px  avatar + one line
+  1722 - 1920  black margin below
+```
+Card 1080x1440 = **3:4 exactly**, header included. 187 + 1093 + 160 = 1440, which is why this
+shape is the right one and not a compromise. The black above (282) and below (198) were never
+equal in the reference either; both are large enough to read as margin, which is the whole job.
+
+**THE NUMBERS ARE THE REFERENCE'S, NOT MINE.** Band position, band height and picture height come
+off IMG_2465 frame by frame. I invented a 4:3 picture twice and defended it twice before measuring;
+the reference picture is 720x729, square. **Measure the reference, never estimate it** — this cost
+two rounds and it is the single most reliable lesson of the build.
+
+**THE PAPER IS TAKEN, NOT PICKED.** The band and the footer are painted with the MODE of the whole
+generated picture (resized 160x160, colours bucketed by 3). Sampling the border catches the image
+model's vignette and lands ~25 levels dark, which is exactly the "backgroundul pozei nu e la fel"
+rejection. Mode of the whole frame: under 2 levels off, every time, whatever the model returns.
+
+**THE HOOK.** Two lines, and **exactly one word may be coloured** (`--accent`). The build refuses
+to run if that word is in neither line. The model name goes IN the hook — "15 **ChatGPT** prompts"
+— because the model name is itself the magnet. Band position and size are frozen: they may not be
+changed to make a hook fit. A hook that does not fit is the wrong hook.
+
+**THE FOOTER, AND THE MISTAKE IT COST.** `Follow tiberiu.ai for more AI tools and productivity
+hacks`, one line, with the handle in the hook's accent colour and the operator's portrait in a
+disc before it. Two rules were paid for:
+- **The disc is set by the type, not by the strip.** 80px was half the 160px strip and 2.7x the
+  30px type, and read as a portrait with a caption beside it. **58px**, a shade under twice the
+  type, is a footer. Ring 2px paper + 2px accent; 1px disappears once a reel is scaled to a phone.
+- **CENTRE ON THE SAFE BOX, NEVER ON THE FRAME.** The card is full bleed, so the frame's rails are
+  the card's rails: pad **70 left, 130 right**, optical centre **510**. Centred on 540 the block
+  ran 114..966 and the last three letters of "hacks" sat under the like/share column, unseen, with
+  44px going spare on the left. This is now `padding:0 130px 0 70px` in the builder plus a
+  character-count guard (59 max at 30px), so it cannot recur. **Anything sitting on the card is
+  measured against 70/950, not against 0/1080.**
+
+**THE PICTURE COMES FROM BYTEPLUS, WITHOUT THE TITLE.** Extract the content from the operator's
+static material, prompt Seedream for the picture only, and add the band, the hook and the reveal
+here. The prompt bans **digits** (it numbered 07, 11, 13 twice and skipped 12 and 14) and bans
+invented or repeated headings (it added a 16th card that did not exist). Keep the prompt in the
+material's folder as `byteplus-prompt.md` so the next generation starts from what worked.
+
+**DELIVERABLES PER POST:** `reel.mp4`, `picture.jpg`, `byteplus-prompt.md`, `caption.md` (33).
+Scrub every render before delivery (28). Build:
+```bash
+python3 content/_reveal.py <picture.jpg> "line one" "line two" --accent WORD --out <slug> --render
+```
+
+---
+
+## 33. THE CAPTION MODEL (operator, 2026-08-13 — binding for reels; supersedes 15.6's structure for this lane)
+
+> "mai jos iti dau si un model de caption - pentru fiecare postare voi avea nevoie si de un caption."
+> **Every post ships with a caption. A material without one is not delivered.**
+
+**THE STRUCTURE, in order, one beat per paragraph, blank line between every one:**
+
+1. **CTA FIRST, on line one, with a down arrow.** `↓ Comment KEYWORD to get the full breakdown.`
+   This is the change that matters most: the ask opens the caption, before the reader has decided
+   anything. It is also repeated at the end.
+2. **The promise, one sentence.** "This is the exact X I would use if I wanted to [outcome]
+   without [cost]." First person, conditional, no hedging.
+3. **The pain, three or four short sentences.** Opens "Most people are still...". Present tense,
+   plural, concrete: clunky legacy software, 12 manual apps, tasks AI finishes in seconds.
+4. **The turn, two lines.** `Here is the reality` on its own line, then the reframe: "You don't
+   need more hours. You need modern tools."
+5. **THE LIST — one product per line, plain sentences, NO arrows and no bullets.**
+   `Claude handles your writing.` `Perplexity Comet does your research.` Product name first, verb,
+   object, full stop. Six to nine lines. This replaces 15.1's `→` block for reels: the arrows read
+   as a slide deck, the bare lines read as somebody telling you what they use.
+6. **The principle, one paragraph.** "That is the part most people miss." Name the mechanism, not
+   the products: manual middleman versus active co-pilot, executing versus organizing.
+7. **The artifact, one line.** "The complete breakdown and prompt templates are in the guide."
+8. **The CTA again, one line.** `Comment KEYWORD for the guide.`
+9. **Five hashtags, last line.**
+
+**LENGTH:** 200 to 260 words. The 400-470 of 15.1 is the LinkedIn long form and it does not apply
+to a reel.
+
+**HASHTAGS — the locked five of 15.6 are now a lane default, not a law.** The operator's model runs
+`#fyp #ai #automation #business #entrepreneur`, which is the tools/productivity lane and leads with
+the reach tag. `#claude #ai #founder #startup #buildinpublic` stays the founder-GTM lane. Five,
+always broad, always the last line, never in the body. Pick the set that matches the subject.
+
+**WHAT CARRIES OVER FROM 15 AND 21 UNCHANGED:** no em or en dashes, no ellipsis character, no
+curly apostrophes (the operator's pasted model has them because it was copied from a live post;
+ours are typed straight), no emoji, no markdown, no links in the body. The one new glyph is the
+`↓` opening the first line.
+
+**ULTRON:** per 31 it is not on the frame. In this structure it is the artifact line or the
+principle line, one sentence, never the subject. Naming third-party products is the point of the
+list, not an exception to be apologised for.
+
+---
+
 END OF CONFIG.

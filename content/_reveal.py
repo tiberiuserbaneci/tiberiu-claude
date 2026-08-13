@@ -30,7 +30,7 @@ the look the operator froze.
 Usage:
   python3 content/_reveal.py <picture.png> "line one" "line two" --accent WORD --out <slug>
 """
-import argparse, base64, importlib.util, pathlib, subprocess, sys
+import argparse, base64, importlib.util, pathlib, re, subprocess, sys
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
 
@@ -73,6 +73,19 @@ PIC_H = 1093                                 # the reference's, not a ratio of m
 CARD_H = CARD_W * 4 // 3                     # 1440
 FOOT_H = CARD_H - BAND_H - PIC_H             # 160
 FOOT_TOP = PIC_TOP + PIC_H                   # 1562
+
+# The vertical safe insets (CLAUDE.md 9). The card is full bleed, so the frame's rails are the
+# card's rails and every element on the strip is measured against these, not against 1080.
+SAFE_L, SAFE_R = 70, 130
+FOOT_ROOM = CARD_W - SAFE_L - SAFE_R          # 880, all the footer ever gets
+
+# The footer line, in one place so its length can be checked before it is drawn. Measured on the
+# rendered build: these 58 characters of DM Sans 600 at 30px with -.4px tracking come to 773px,
+# so a character averages 13.3px. The disc and its gap take 78, leaving 802px, which is 60
+# characters. The ceiling is 59 so the estimate has a character of slack and never has to be
+# exactly right to be safe. Longer than that and the line has to shrink, not spill.
+FOOT_LINE = 'Follow <em>tiberiu.ai</em> for more AI tools and productivity hacks'
+FOOT_MAX_CHARS = 59
 
 # The operator's portrait, committed once and picked up by every material after it. He does not
 # have to pass it, and no material has to remember to. --avatar still overrides for a one-off.
@@ -163,9 +176,14 @@ body{{background:#000;display:flex;justify-content:center}}
 /* THE FOOTER, on the strip that makes the card 3:4. It is not decoration filling a gap: the
    gap exists because the format asks for it, and an empty 160px of paper under a finished
    picture reads as a crop that went wrong. */
+/* CENTRED ON THE SAFE BOX, NOT ON THE FRAME. Measured on the 2026-08-13 build: the block ran
+   114..966 while the right rail starts at 950, so the last three letters of "hacks" sat under
+   the like/comment/share column and were never seen, with 44px going spare on the left. The
+   card is full bleed, so the frame's insets are the card's: pad 70 left and 130 right and the
+   optical centre lands at 510 where it belongs. Symmetric padding is the bug; this is the fix. */
 .foot{{position:absolute;left:{SIDE}px;top:{FOOT_TOP}px;width:{CARD_W}px;height:{FOOT_H}px;
   background:{paper};display:flex;align-items:center;justify-content:center;gap:20px;
-  padding:0 30px}}
+  padding:0 {SAFE_R}px 0 {SAFE_L}px}}
 /* THE DISC IS SET BY THE TYPE, NOT BY THE STRIP. Operator: "fa cercul mai mic in armonie cu
    restul footerului". At 80px it was half the height of the whole strip and 2.7x the type, so
    it read as a portrait with a caption beside it rather than as a footer. 58px is a shade
@@ -208,7 +226,7 @@ body{{background:#000;display:flex;justify-content:center}}
   </div>
   <div class="pic"><img src="{pic_uri}" alt=""></div>
   <div class="foot">{avatar}
-    <span class="txt">Follow <em>tiberiu.ai</em> for more AI tools and productivity hacks</span>
+    <span class="txt">{FOOT_LINE}</span>
   </div>
   <div class="veil"></div>
   <div class="edge"></div>
@@ -226,6 +244,10 @@ def build(picture: pathlib.Path, l1: str, l2: str, accent: str | None,
           slug: str, avatar: pathlib.Path | None = None) -> pathlib.Path:
     if accent and accent.upper() not in (l1 + " " + l2).upper():
         sys.exit(f"accent word {accent!r} appears in neither hook line")
+    plain = re.sub(r"<[^>]+>", "", FOOT_LINE)
+    if len(plain) > FOOT_MAX_CHARS:
+        sys.exit(f"footer line is {len(plain)} characters, {FOOT_MAX_CHARS} fit inside the "
+                 f"{FOOT_ROOM}px safe box. It would run under the right rail and lose its tail.")
     paper, hair = ground(picture)
     # The operator's portrait when there is one, and an honest empty disc when there is not,
     # rather than a stand-in face. The slot is the same either way, so dropping the real file

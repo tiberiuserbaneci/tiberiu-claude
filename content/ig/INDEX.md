@@ -26,6 +26,7 @@ Captions follow CLAUDE.md 15.6: one beat per paragraph, exactly five hashtags.
 
 | Folder | Post | Keyword | Note |
 |---|---|---|---|
+| `research-reveal` | 15 CHATGPT PROMPTS THAT REPLACE HOURS OF RESEARCH | RESEARCH | ready, 6.93s reveal. The house format, CLAUDE.md 32. Caption to the operator's model, CLAUDE.md 33. Guide not built yet, see the note in caption.md |
 | `toolkit-6s` | AI CREATOR TOOLKIT | TOOLKIT | ready, 6s silent. Title holds 2.5s, then the sheet fills under it. Names five third party products by operator decision (CLAUDE.md 21 suspended for this one material) |
 | `film-15-pipeline` | FORTY ONE DEALS. NINE REAL. | PIPELINE | ready, first film on real geometry |
 | `film-12-contract` | FOURTEEN PAGES. THREE PROBLEMS. | CONTRACT | ready, run-board model |
