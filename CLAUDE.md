@@ -1495,4 +1495,41 @@ list, not an exception to be apologised for.
 
 ---
 
+## 34. EVERY MATERIAL IS A TOOL, NOT AN AD (operator, 2026-08-13 — binding, and it outranks polish)
+
+> On a flawlessly executed ChatGPT hub that was pretty and empty: "de ce l as salva??? e frumos,
+> arata impecabil?? ce fac cu el?? de ce sa comentez sa primesc ce??? ... materialul este bine
+> executat dar nu aduce nici o valoare nimanui. e o reclama pura la chatgpt."
+
+This is the test every material passes before it is built, above every design rule in this file.
+A material that fails it is scrapped no matter how good it looks. Beautiful execution with no
+value is the most expensive kind of miss, because it looks finished.
+
+**THE FOUR QUESTIONS.** Before designing anything, answer all four in one sentence each. If any
+answer is weak, the concept is wrong and no amount of craft fixes it:
+1. **Why would they SAVE it?** Because they will use it again — a reusable tool, not a fact.
+2. **What do they DO with it?** A concrete action they take today (paste this prompt, run this).
+3. **Why COMMENT to get the DM, and get WHAT?** A specific, real deliverable they want.
+4. **Why is it USEFUL to them later?** It does a job they keep having.
+
+**THE FRAME CARRIES THE TOOL, NOT A PICTURE OF THE IDEA.** A hub of abstract concept words
+(SCOPE, GAPS, TRENDS) is decoration; it teaches nothing and gets scrolled. Put the working thing
+ON the frame: the real copy-paste prompt, the actual before/after, the exact steps with real
+values. The reader should be able to USE the material from the frame alone, and the DM extends it.
+
+**AN AD FOR A TOOL IS NOT A TOOL.** "ChatGPT is powerful" is an ad and the audience already knows
+it. "Here is the exact prompt that turns your niche into 30 days of posts" is a tool. The subject
+stays Claude and the other real models (31), but the material must hand the viewer a capability,
+not praise the model.
+
+**THE VALUE PLANE OF THE HOOK IS PLANE 2.** Operator: "pe planul 2 hook ul e extrem de slab." Line
+one stops the scroll; line two must promise the concrete outcome, not restate the topic. "Six
+jobs, one chat" says nothing; "30 days, one ChatGPT prompt" names what you get. If line two does
+not carry a payoff a person can picture, the hook is half-built.
+
+First tool built to this rule: `content/ig/content-engine` (`content/_contentengine.py`) — a real
+30-day content prompt on the frame, the month of output shown as proof, the full engine in the DM.
+
+---
+
 END OF CONFIG.
