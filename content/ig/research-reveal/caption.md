@@ -1,42 +1,41 @@
 # research-reveal  ·  keyword RESEARCH  ·  6.93s reveal reel
 
-Instagram reel, 1080x1920, 3:4 card, silent. Hook holds on the white band, the picture and the
-footer come up out of black over 4.2s. Built with `content/_reveal.py` (CLAUDE.md 32).
+Instagram reel, 1080x1920, 3:4 card, silent. Picture is an ARK-generated hub (warm off-white)
+with the real ChatGPT logo composited into the centre and six concept nodes around it. Built with
+`content/_seedream.py` + `content/_center_logo.py` + `content/_reveal.py` (32). Caption to the
+operator's model (33). Footer with no handle, keeps the follow line and the portrait.
 
-Caption written to CLAUDE.md 33, the operator's model: CTA on line one, the list in bare
-sentences, CTA again at the close, five broad tags on the last line.
+Hook: "ChatGPT is your research team. / Six jobs, one chat.", accent `ChatGPT`.
 
 ---
 
 ## CAPTION  (Instagram)
 
-↓ Comment RESEARCH to get all 15 prompts.
+↓ Comment RESEARCH and I will send you all 15 prompts.
 
-This is the exact prompt set I would use if I wanted to cut a week of desk research down to one
-afternoon.
+This is the exact way I would use ChatGPT to run a week of research in one afternoon, without
+opening forty tabs I never read.
 
-Most people are still researching like it is 2019. They open forty tabs and read four. They ask
-ChatGPT one vague question and take the first answer it gives. They call that research.
+Most people use ChatGPT for research like a search box. They ask one question, take the first
+answer, and call it done. They never scope it, never check a source, never look for the gap. They
+get a summary and mistake it for research.
 
 Here is the reality
-You do not need more reading time. You need better questions.
+ChatGPT is not the answer. It is the six people who go and find it.
 
-Research Plan turns a vague topic into a scoped question.
-Find Gaps shows you what nobody in the field has covered yet.
-Check Credibility scores a source before you quote it.
-Method Design picks how you will actually test the thing.
-Study Review pulls the argument out of a paper in one pass.
-Cross-Topic Links finds the connection two fields both missed.
-Trend Insights tells you what moved in the last ninety days.
-Quiz Generator proves whether you understood any of it.
+Scope turns a vague topic into a question you can defend.
+Gaps shows what the field has not covered yet.
+Sources scores what you are about to trust.
+Method decides how you would actually test it.
+Trends tells you what moved this quarter, not five years ago.
+Connect finds the link two fields both missed.
 
-That is the part most people miss. A vague prompt gets you a summary, and a summary is what you
-already had. A scoped prompt gets you a position you can defend. These are not shortcuts around
-the thinking. They are the order you do it in.
+That is the part most people miss. One prompt gets you a summary. Six jobs get you a position. The
+tool did not change, the way you brief it did.
 
-All 15, with the full text of each one, are in the guide.
+The 15 prompts behind these six jobs, ready to paste, are what I will send you.
 
-Comment RESEARCH for the guide.
+Comment RESEARCH for the prompts.
 
 #fyp #ai #automation #business #entrepreneur
 
@@ -44,29 +43,20 @@ Comment RESEARCH for the guide.
 
 ## ALT TEXT
 
-Warm cream infographic, square. A green circular emblem at the centre with fifteen thin spokes
-radiating out to fifteen numbered label cards in white, each carrying one short heading in dark
-grey, the numbers alternating terracotta, ochre and sage. The headings run Research Plan,
-Brainstorm Topics, Study Review, Question Builder, Research Timeline, Dataset Helper, Find Gaps,
-Method Design, Check Credibility, Trend Insights, Ethics Review, Abstract Summary, Hypothesis
-Ideas, Cross-Topic Links and Quiz Generator. Above the picture a white band reads 15 ChatGPT
-prompts that replace hours of research, with research in terracotta. The foot carries a small
-round portrait and the line Follow tiberiu.ai for more AI tools and productivity hacks.
+A warm off-white hub-and-spoke graphic. In the centre a white circle holds the ChatGPT logo. Six
+rounded cards ring it, each connected by a thin line, each with a minimal terracotta icon above
+one bold word: SCOPE with a compass, GAPS with a magnifier, SOURCES with a document, METHOD with a
+flow diagram, TRENDS with a rising chart, CONNECT with linked nodes. Above the picture a band reads
+ChatGPT is your research team, Six jobs, one chat, with ChatGPT in terracotta. The foot carries a
+small round portrait and Follow for more AI tools and productivity hacks.
 
 ---
 
-## BEFORE THIS POSTS
+## THE DM DELIVERABLE
 
-**The guide does not exist yet.** The caption promises all 15 prompts with their full text, and
-CLAUDE.md 5 and 15.3 both forbid pointing at a document that has not been built. Two ways to
-close it, operator's call:
+The caption promises all 15 prompts. That list is real: the fifteen research prompts grouped under
+the six jobs on the map (Scope, Gaps, Sources, Method, Trends, Connect), sent as plain text in the
+DM (keeps CLAUDE.md 5 and 15.3). Ready to paste as `dm-15.md` on the word.
 
-1. Build it. Fifteen prompts, one page each, REALNUMBERS palette, delivered on the DM. It is a
-   PDF and half a day.
-2. Change the ask to what already exists, and send the prompt list as plain text in the DM.
-
-Do not post the caption as written until one of those is true.
-
-**Word count 226**, inside the 200 to 260 of CLAUDE.md 33. Charscan clean: no em dash, no en
-dash, no ellipsis character, no curly apostrophe, no emoji. The only non-keyboard glyph is the
-opening arrow, which the model requires.
+Word count 215, inside 200 to 260 (CLAUDE.md 33). Charscan clean: no em or en dash, no ellipsis,
+no curly quote, no emoji. The one non-keyboard glyph is the opening arrow.
