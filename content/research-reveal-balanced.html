@@ -165,7 +165,7 @@ body{background:#000;display:flex;justify-content:center}
 /* THE BAND. Position and size are the operator's, measured off his model and frozen. */
 /* The band takes the picture's own paper colour, so the two read as one sheet. A hairline
    rule under it separates the hook from the picture without moving or resizing the band. */
-.band{position:absolute;left:0px;width:1080px;top:282px;height:187px;
+.band{position:absolute;left:0px;width:1080px;top:146px;height:187px;
   background:rgb(252,243,231);
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
   padding-top:6px}
@@ -177,13 +177,13 @@ body{background:#000;display:flex;justify-content:center}
 .band em{font-style:normal;color:var(--acc)}
 
 /* THE PICTURE, square, directly under the band. */
-.pic{position:absolute;left:0px;top:469px;width:1080px;height:1440px;
+.pic{position:absolute;left:0px;top:333px;width:1080px;height:1440px;
   overflow:hidden;background:rgb(252,243,231);padding:0 0px}
 /* one hairline around the whole card, drawn over both halves so the seam cannot show */
 /* the rule that separates the hook from the picture. No box around the card any more: at full
    bleed a frame would draw a line down the very edge of the reel, which is not a border, it is
    a defect. */
-.edge{position:absolute;left:0;right:0;top:467px;height:2px;
+.edge{position:absolute;left:0;right:0;top:331px;height:2px;
   background:rgb(226,217,205);pointer-events:none;z-index:3}
 .pic img{width:100%;height:100%;object-fit:cover;display:block}
 /* the fade lives over the picture and NOWHERE else, because the band never dims in the model */

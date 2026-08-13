@@ -37,13 +37,9 @@ REPO = pathlib.Path(__file__).resolve().parent.parent
 # measured geometry at 1080x1920. The vertical numbers are the operator's and are frozen.
 BAND_TOP, BAND_H = 282, 187
 PIC_TOP = 469
-# The picture runs to the bottom of the frame, not to its own 3:4 height. 1080 wide at 3:4 is
-# 1440 tall and ends at 1909, which left an 11px black sliver at the foot of the reel - the
-# same defect as the side bars, just smaller. Reaching 1920 costs 4px a side to `cover` and
-# leaves nothing black anywhere below the band.
-PIC_H = 1920 - PIC_TOP                       # 1451
 RAMP, DUR = 4.20, 6.93
 ALPHA0 = 0.982
+
 # EDGE TO EDGE HORIZONTALLY. Operator 2026-08-13, correcting my reading of the previous note:
 # "ai tras marginile din format nu din poza ... materialul tb sa mi intre perfect in chenarul
 # de reels. acum are margine neagra pe st si dr." Keeping the safe zones clear meant keeping
@@ -53,6 +49,15 @@ ALPHA0 = 0.982
 SIDE = 0
 CARD_W = 1080
 PAD = 0            # paper-coloured inset inside the picture, raise it if labels touch an edge
+
+# EXACTLY 3:4, AND THE BLACK BELOW IT STAYS. Operator 2026-08-13, after I stretched the picture
+# to the frame's bottom edge to kill an 11px sliver: "nici zona de jos nu o putem umple cu
+# culoare pentru ca la fel ne indica un material care nu mai e 3:4 acum are un alt format."
+# He is right, and it is the same reasoning that keeps colour off the top: paper above the hook
+# would read as a hook dropped into somebody else's material, and paper below the picture reads
+# as a picture that is no longer 3:4. The black margin is what declares the aspect, so the
+# height is the true 3:4 of the width and nothing is stretched to meet an edge.
+PIC_H = CARD_W * 4 // 3                      # 1440, and the black below it is the format
 
 
 def ground(picture: pathlib.Path) -> tuple[str, str]:
@@ -100,6 +105,7 @@ def hook_html(text: str, accent: str | None) -> str:
 
 def page(pic_uri: str, l1: str, l2: str, accent: str | None,
          paper: str, hair: str) -> str:
+    BAND_TOP, PIC_TOP = globals()["BAND_TOP"], globals()["PIC_TOP"]
     fonts = load("_fonts").embedded_css()
     return f"""<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
 <title>reveal</title>
@@ -173,7 +179,12 @@ if __name__ == "__main__":
     ap.add_argument("--accent", default=None, help="the ONE word to colour")
     ap.add_argument("--out", default="reveal")
     ap.add_argument("--render", action="store_true")
+    ap.add_argument("--band-top", type=int, default=None,
+                    help="override the frozen band top, e.g. to balance the black margins")
     a = ap.parse_args()
+    if a.band_top is not None:
+        globals()["BAND_TOP"] = a.band_top
+        globals()["PIC_TOP"] = a.band_top + BAND_H
     html = build(pathlib.Path(a.picture), a.line1, a.line2, a.accent, a.out)
     print(f"built  {html.relative_to(REPO)}")
     print(f"  band {BAND_TOP}..{BAND_TOP + BAND_H}   picture {PIC_TOP}..{PIC_TOP + PIC_H}   "
