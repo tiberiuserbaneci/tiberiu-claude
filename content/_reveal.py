@@ -36,17 +36,23 @@ REPO = pathlib.Path(__file__).resolve().parent.parent
 
 # measured geometry at 1080x1920. The vertical numbers are the operator's and are frozen.
 BAND_TOP, BAND_H = 282, 187
-PIC_TOP, PIC_H = 469, 1093
+PIC_TOP = 469
+# The picture runs to the bottom of the frame, not to its own 3:4 height. 1080 wide at 3:4 is
+# 1440 tall and ends at 1909, which left an 11px black sliver at the foot of the reel - the
+# same defect as the side bars, just smaller. Reaching 1920 costs 4px a side to `cover` and
+# leaves nothing black anywhere below the band.
+PIC_H = 1920 - PIC_TOP                       # 1451
 RAMP, DUR = 4.20, 6.93
 ALPHA0 = 0.982
-# Horizontal insets, operator 2026-08-13: "tine libere zonele de safety stanga dreapta".
-# The model runs edge to edge; this does not. 130 on both sides rather than CLAUDE.md 9's
-# asymmetric 70/130 because the card reads as a card only if it is centred, and 130 is the
-# wider of the two insets, so a symmetric 130 clears both rails at once.
-SIDE = 130
-CARD_W = 1080 - 2 * SIDE                       # 820
-# so the picture is 820 x 1093, which is 3:4, and the image has to be generated at that
-# aspect rather than square or a quarter of it gets cropped away.
+# EDGE TO EDGE HORIZONTALLY. Operator 2026-08-13, correcting my reading of the previous note:
+# "ai tras marginile din format nu din poza ... materialul tb sa mi intre perfect in chenarul
+# de reels. acum are margine neagra pe st si dr." Keeping the safe zones clear meant keeping
+# the picture's own CONTENT off its edges, not insetting the card and leaving black bars in
+# the reel frame. So the card fills the full 1080 and the only permitted breathing room is
+# PAD pixels of the picture's own paper colour inside the card, never black.
+SIDE = 0
+CARD_W = 1080
+PAD = 0            # paper-coloured inset inside the picture, raise it if labels touch an edge
 
 
 def ground(picture: pathlib.Path) -> tuple[str, str]:
@@ -108,7 +114,7 @@ body{{background:#000;display:flex;justify-content:center}}
 /* The band takes the picture's own paper colour, so the two read as one sheet. A hairline
    rule under it separates the hook from the picture without moving or resizing the band. */
 .band{{position:absolute;left:{SIDE}px;width:{CARD_W}px;top:{BAND_TOP}px;height:{BAND_H}px;
-  background:{paper};border-bottom:2px solid {hair};
+  background:{paper};
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
   padding-top:6px}}
 .l1{{font-family:'DM Sans',sans-serif;font-weight:700;font-size:57px;line-height:1.16;
@@ -120,10 +126,13 @@ body{{background:#000;display:flex;justify-content:center}}
 
 /* THE PICTURE, square, directly under the band. */
 .pic{{position:absolute;left:{SIDE}px;top:{PIC_TOP}px;width:{CARD_W}px;height:{PIC_H}px;
-  overflow:hidden}}
+  overflow:hidden;background:{paper};padding:0 {PAD}px}}
 /* one hairline around the whole card, drawn over both halves so the seam cannot show */
-.edge{{position:absolute;left:{SIDE}px;top:{BAND_TOP}px;width:{CARD_W}px;
-  height:{BAND_H + PIC_H}px;box-shadow:inset 0 0 0 2px {hair};pointer-events:none;z-index:3}}
+/* the rule that separates the hook from the picture. No box around the card any more: at full
+   bleed a frame would draw a line down the very edge of the reel, which is not a border, it is
+   a defect. */
+.edge{{position:absolute;left:0;right:0;top:{BAND_TOP + BAND_H - 2}px;height:2px;
+  background:{hair};pointer-events:none;z-index:3}}
 .pic img{{width:100%;height:100%;object-fit:cover;display:block}}
 /* the fade lives over the picture and NOWHERE else, because the band never dims in the model */
 .veil{{position:absolute;inset:0;background:#000;opacity:{ALPHA0};
