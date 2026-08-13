@@ -76,7 +76,14 @@ FOOT_TOP = PIC_TOP + PIC_H                   # 1562
 
 # The operator's portrait, committed once and picked up by every material after it. He does not
 # have to pass it, and no material has to remember to. --avatar still overrides for a one-off.
-AVATAR = REPO / "content/assets/tiberiu.jpg"
+# Two names, first one wins: the short documented drop, and the name his phone exported it under
+# on 2026-08-13. Renaming his commit would break the link he sent, so the resolver bends instead.
+AVATARS = [REPO / "content/assets/tiberiu.jpg",
+           REPO / "content/assets/tibi poza_profil_instagram_bw_square_1080.jpg"]
+
+
+def find_avatar() -> pathlib.Path | None:
+    return next((p for p in AVATARS if p.exists()), None)
 
 
 def ground(picture: pathlib.Path) -> tuple[str, str]:
@@ -159,8 +166,14 @@ body{{background:#000;display:flex;justify-content:center}}
 .foot{{position:absolute;left:{SIDE}px;top:{FOOT_TOP}px;width:{CARD_W}px;height:{FOOT_H}px;
   background:{paper};display:flex;align-items:center;justify-content:center;gap:20px;
   padding:0 30px}}
-.foot .av{{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;
-  box-shadow:0 0 0 3px {paper},0 0 0 5px rgba(200,70,35,.34)}}
+/* THE DISC IS SET BY THE TYPE, NOT BY THE STRIP. Operator: "fa cercul mai mic in armonie cu
+   restul footerului". At 80px it was half the height of the whole strip and 2.7x the type, so
+   it read as a portrait with a caption beside it rather than as a footer. 58px is a shade
+   under twice the 30px type and about 1.6x its line box, which is the proportion an avatar
+   sits at next to a name everywhere else. The ring comes down with it: 2px of paper and 2px of
+   accent, the accent held at 2 because 1 disappears once the reel is scaled to a phone. */
+.foot .av{{width:58px;height:58px;border-radius:50%;object-fit:cover;flex-shrink:0;
+  box-shadow:0 0 0 2px {paper},0 0 0 4px rgba(200,70,35,.34)}}
 .foot .av.ph{{background:rgba(25,23,19,.10)}}
 /* ONE LINE. 57 characters across the 930px the avatar and the padding leave, which sets the
    size rather than the other way round: at 38px it wrapped, and a footer that wraps in a 160px
@@ -241,7 +254,7 @@ if __name__ == "__main__":
     if a.band_top is not None:
         globals()["BAND_TOP"] = a.band_top
         globals()["PIC_TOP"] = a.band_top + BAND_H
-    av = pathlib.Path(a.avatar) if a.avatar else (AVATAR if AVATAR.exists() else None)
+    av = pathlib.Path(a.avatar) if a.avatar else find_avatar()
     html = build(pathlib.Path(a.picture), a.line1, a.line2, a.accent, a.out, av)
     print(f"built  {html.relative_to(REPO)}")
     print(f"  band {BAND_TOP}..{BAND_TOP + BAND_H}   picture {PIC_TOP}..{PIC_TOP + PIC_H}   "
