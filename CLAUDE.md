@@ -1421,9 +1421,11 @@ to run if that word is in neither line. The model name goes IN the hook — "15 
 — because the model name is itself the magnet. Band position and size are frozen: they may not be
 changed to make a hook fit. A hook that does not fit is the wrong hook.
 
-**THE FOOTER, AND THE MISTAKE IT COST.** `Follow tiberiu.ai for more AI tools and productivity
-hacks`, one line, with the handle in the hook's accent colour and the operator's portrait in a
-disc before it. Two rules were paid for:
+**THE FOOTER, AND THE MISTAKE IT COST.** `Follow for more AI tools and productivity hacks`, one
+line, with the operator's portrait in a disc before it. **The handle is OFF by default (operator
+2026-08-13):** this set posts on a second IG account whose handle is long, so the frame keeps the
+follow line and the photo but no handle. `_reveal.py --handle <name>` puts one back in the hook's
+accent colour for the first account. Two rules were paid for:
 - **The disc is set by the type, not by the strip.** 80px was half the 160px strip and 2.7x the
   30px type, and read as a portrait with a caption beside it. **58px**, a shade under twice the
   type, is a footer. Ring 2px paper + 2px accent; 1px disappears once a reel is scaled to a phone.

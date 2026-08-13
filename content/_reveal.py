@@ -80,12 +80,21 @@ SAFE_L, SAFE_R = 70, 130
 FOOT_ROOM = CARD_W - SAFE_L - SAFE_R          # 880, all the footer ever gets
 
 # The footer line, in one place so its length can be checked before it is drawn. Measured on the
-# rendered build: these 58 characters of DM Sans 600 at 30px with -.4px tracking come to 773px,
-# so a character averages 13.3px. The disc and its gap take 78, leaving 802px, which is 60
-# characters. The ceiling is 59 so the estimate has a character of slack and never has to be
-# exactly right to be safe. Longer than that and the line has to shrink, not spill.
-FOOT_LINE = 'Follow <em>tiberiu.ai</em> for more AI tools and productivity hacks'
+# rendered build: 58 characters of DM Sans 600 at 30px with -.4px tracking come to 773px, so a
+# character averages 13.3px. The disc and its gap take 78, leaving 802px, which is 60 characters.
+# The ceiling is 59 so the estimate has a character of slack and never has to be exactly right.
+#
+# The handle is OFF by default (operator 2026-08-13): this set posts on a second IG account whose
+# handle is long, so the frame carries "Follow ... for more" with no handle, keeping the avatar.
+# --handle <name> puts one back in the hook's accent colour for the first account.
+FOOT_LINE = 'Follow for more AI tools and productivity hacks'
 FOOT_MAX_CHARS = 59
+
+
+def foot_line(handle: str | None) -> str:
+    if handle:
+        return f'Follow <em>{handle}</em> for more AI tools and productivity hacks'
+    return 'Follow for more AI tools and productivity hacks'
 
 # The operator's portrait, committed once and picked up by every material after it. He does not
 # have to pass it, and no material has to remember to. --avatar still overrides for a one-off.
@@ -272,7 +281,10 @@ if __name__ == "__main__":
     ap.add_argument("--band-top", type=int, default=None,
                     help="override the frozen band top, e.g. to balance the black margins")
     ap.add_argument("--avatar", default=None, help="the operator's portrait for the footer")
+    ap.add_argument("--handle", default=None,
+                    help="put a handle back in the footer, coloured (default: no handle)")
     a = ap.parse_args()
+    globals()["FOOT_LINE"] = foot_line(a.handle)
     if a.band_top is not None:
         globals()["BAND_TOP"] = a.band_top
         globals()["PIC_TOP"] = a.band_top + BAND_H

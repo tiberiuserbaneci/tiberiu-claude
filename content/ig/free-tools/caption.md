@@ -57,7 +57,7 @@ DALL-E, Ideogram and Stable Diffusion. Coding shows GitHub Copilot, Replit and C
 Audio shows Suno, ElevenLabs and Udio. Research shows Perplexity, NotebookLM and Semantic Scholar.
 Design shows Canva, Figma and MS Designer. Above the picture a band reads Never pay for AI again,
 Every category, all free, with free in terracotta. The foot carries a small round portrait and
-Follow tiberiu.ai for more AI tools and productivity hacks.
+Follow for more AI tools and productivity hacks.
 
 ---
 
