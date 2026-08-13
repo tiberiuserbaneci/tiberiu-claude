@@ -42,13 +42,21 @@ def rasterize(svg_path: pathlib.Path, px: int, ink: str) -> Image.Image:
 
 
 def find_circle(base: Image.Image) -> tuple[int, int, int]:
+    """The empty centre disc, found by brightness inside a central window.
+
+    ARK's disc is a warm off-white (a centre pixel measured 248,245,238), not neutral, so a
+    "neutral white" test misses it; and once the hub grows a faint guide ring and tick marks a
+    density scan latches onto the wrong dense strip. The disc is simply the brightest large mass
+    in the middle of the frame, so mask bright pixels, ignore the outer third where the cards and
+    ring live, and take the bounding box of what is left.
+    """
     a = np.asarray(base.convert("RGB")).astype(int)
-    r, g, bl = a[:, :, 0], a[:, :, 1], a[:, :, 2]
-    mn = np.minimum(np.minimum(r, g), bl); mx = np.maximum(np.maximum(r, g), bl)
-    mask = (mn >= 250) & ((mx - mn) <= 6)                 # neutral white = the empty centre
-    col, rowc = mask.sum(0), mask.sum(1)
-    xs = np.where(col > col.max() * 0.35)[0]              # dense columns, not stray grain
-    ys = np.where(rowc > rowc.max() * 0.35)[0]
+    H, W, _ = a.shape
+    mn = np.minimum(np.minimum(a[:, :, 0], a[:, :, 1]), a[:, :, 2])
+    bright = mn >= 244
+    win = np.zeros((H, W), bool)
+    win[int(H * .27):int(H * .73), int(W * .27):int(W * .73)] = True
+    ys, xs = np.where(bright & win)
     x0, x1, y0, y1 = xs.min(), xs.max(), ys.min(), ys.max()
     return (x0 + x1) // 2, (y0 + y1) // 2, min(x1 - x0, y1 - y0)
 

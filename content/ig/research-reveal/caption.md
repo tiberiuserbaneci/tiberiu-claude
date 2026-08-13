@@ -43,12 +43,14 @@ Comment RESEARCH for the prompts.
 
 ## ALT TEXT
 
-A warm off-white hub-and-spoke graphic. In the centre a white circle holds the ChatGPT logo. Six
-rounded cards ring it, each connected by a thin line, each with a minimal terracotta icon above
-one bold word: SCOPE with a compass, GAPS with a magnifier, SOURCES with a document, METHOD with a
-flow diagram, TRENDS with a rising chart, CONNECT with linked nodes. Above the picture a band reads
-ChatGPT is your research team, Six jobs, one chat, with ChatGPT in terracotta. The foot carries a
-small round portrait and Follow for more AI tools and productivity hacks.
+A warm off-white hub-and-spoke system diagram. In the centre a white disc holds the ChatGPT logo.
+Six rounded cards ring it, joined to the centre by thin lines and to each other by curved arrows
+that form a clockwise loop, over a faint tick-marked guide ring. Each card has a minimal terracotta
+icon, one bold word and a short caption: SCOPE, topic to question. GAPS, what no one covered.
+SOURCES, trust then cite. METHOD, how to test it. TRENDS, what moved lately. CONNECT, links others
+missed. Above the picture a band reads ChatGPT is your research team, Six jobs, one chat, with
+ChatGPT in terracotta. The foot carries a small round portrait and Follow for more AI tools and
+productivity hacks.
 
 ---
 
