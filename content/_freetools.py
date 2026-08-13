@@ -20,25 +20,18 @@ OUT_PIC = REPO / "content/ig/free-tools/picture.png"
 
 # category -> (accent colour, [ (name, svg-file, recolor?) ]).  recolor=True paints the mark in
 # the accent (a monochrome brand mark); False keeps the svg's own brand colours.
+# Four categories only (operator 2026-08-13: dropped WRITING, CODING, RESEARCH), so the icons can
+# be big and the category labels visible - the seven-row version rendered both too small.
 CATS = [
-    ("WRITING", "#C0553A", [
-        ("ChatGPT", "openai.svg", True), ("Claude", "claude-color.svg", False),
-        ("Gemini", "gemini-color.svg", False)]),
     ("VIDEO", "#4C5FAF", [
         ("CapCut", "capcut.svg", True), ("Pika Labs", "pika.svg", True),
         ("Luma", "luma-color.svg", True)]),
     ("IMAGE", "#8A4E9C", [
         ("DALL-E", "dalle-color.svg", False), ("Ideogram", "ideogram.svg", True),
         ("Stable Diffusion", "stability-color.svg", False)]),
-    ("CODING", "#1F8A70", [
-        ("GitHub Copilot", "copilot-color.svg", False), ("Replit", "replit-color.svg", False),
-        ("Colab", "colab-color.svg", False)]),
     ("VOICE & AUDIO", "#B7791F", [
         ("Suno", "suno.svg", True), ("ElevenLabs", "elevenlabs.svg", True),
         ("Udio", "udio-color.svg", False)]),
-    ("RESEARCH", "#C0413F", [
-        ("Perplexity", "perplexity-color.svg", False), ("NotebookLM", "notebooklm.svg", True),
-        ("Semantic Scholar", "semanticscholar.svg", True)]),
     ("DESIGN", "#3E6D8E", [
         ("Canva", "canva-color.svg", False), ("Figma", "figma-color.svg", False),
         ("MS Designer", "microsoft-color.svg", False)]),
@@ -61,9 +54,9 @@ def tile(name, fname, recolor, accent):
 
 def row(label, accent, tools):
     tiles = "".join(tile(n, f, r, accent) for n, f, r in tools)
-    tint, hair = accent + "14", accent + "33"
-    return (f'<div class="cat" style="--acc:{accent};--tint:{tint};--hair:{hair}">'
-            f'<div class="lab"><span>{label}</span><i></i></div>'
+    tint = accent + "14"
+    return (f'<div class="cat" style="--acc:{accent};--tint:{tint}">'
+            f'<div class="lab">{label}</div>'
             f'<div class="row">{tiles}</div></div>')
 
 
@@ -73,20 +66,23 @@ def build_html():
 <link rel="stylesheet" href="assets/fonts.css">
 <style>
 *{{margin:0;padding:0;box-sizing:border-box}}
-.card{{width:1080px;height:1093px;background:#FFFFFF;padding:24px 34px 20px;
-  display:flex;flex-direction:column;font-family:'DM Sans',sans-serif}}
-.cat{{flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0}}
-.cat+.cat{{border-top:1px solid rgba(23,23,23,.06)}}
-.lab{{display:flex;align-items:center;gap:12px;margin-bottom:9px}}
-.lab span{{font-family:'DM Mono',monospace;font-size:12.5px;font-weight:500;
-  letter-spacing:.2em;color:var(--acc);text-transform:uppercase;white-space:nowrap}}
-.lab i{{flex:1;height:1px;background:var(--hair)}}
-.row{{display:flex;gap:20px}}
-.tile{{flex:1;display:flex;flex-direction:column;align-items:center;gap:9px;min-width:0}}
-.chip{{width:86px;height:86px;border-radius:22px;background:var(--tint);
-  border:1px solid var(--hair);display:flex;align-items:center;justify-content:center}}
-.chip svg{{width:50px;height:50px;display:block}}
-.nm{{font-size:19px;font-weight:600;color:#191919;text-align:center;line-height:1.12;
+.card{{width:1080px;height:1093px;background:#FFFFFF;padding:26px 30px;
+  display:flex;flex-direction:column;gap:18px;font-family:'DM Sans',sans-serif}}
+/* each category is its own tinted band, so the category is unmistakable and its colour reads */
+.cat{{flex:1;background:var(--tint);border-radius:26px;padding:18px 26px 22px;
+  display:flex;flex-direction:column;min-height:0}}
+/* the label is a solid colour pill, big, not a faint mono line that vanished on a phone */
+.lab{{align-self:flex-start;background:var(--acc);color:#fff;
+  font-family:'DM Sans',sans-serif;font-weight:800;font-size:17px;letter-spacing:.06em;
+  text-transform:uppercase;padding:7px 16px;border-radius:999px;margin-bottom:6px}}
+/* icons big and close together: centred, fixed tiles, a modest gap, not stretched edge to edge */
+.row{{flex:1;display:flex;justify-content:center;align-items:center;gap:44px;min-height:0}}
+.tile{{width:196px;display:flex;flex-direction:column;align-items:center;gap:12px}}
+.chip{{width:132px;height:132px;border-radius:30px;background:#fff;
+  border:1px solid rgba(23,23,23,.06);box-shadow:0 3px 14px rgba(23,23,23,.06);
+  display:flex;align-items:center;justify-content:center}}
+.chip svg{{width:80px;height:80px;display:block}}
+.nm{{font-size:23px;font-weight:700;color:#191919;text-align:center;line-height:1.1;
   letter-spacing:-.3px}}
 </style></head>
 <body><div class="card">{body}</div></body></html>"""
