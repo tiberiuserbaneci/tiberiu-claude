@@ -50,14 +50,18 @@ SIDE = 0
 CARD_W = 1080
 PAD = 0            # paper-coloured inset inside the picture, raise it if labels touch an edge
 
-# EXACTLY 3:4, AND THE BLACK BELOW IT STAYS. Operator 2026-08-13, after I stretched the picture
-# to the frame's bottom edge to kill an 11px sliver: "nici zona de jos nu o putem umple cu
-# culoare pentru ca la fel ne indica un material care nu mai e 3:4 acum are un alt format."
-# He is right, and it is the same reasoning that keeps colour off the top: paper above the hook
-# would read as a hook dropped into somebody else's material, and paper below the picture reads
-# as a picture that is no longer 3:4. The black margin is what declares the aspect, so the
-# height is the true 3:4 of the width and nothing is stretched to meet an edge.
-PIC_H = CARD_W * 4 // 3                      # 1440, and the black below it is the format
+# THE REFERENCE'S OWN HEIGHT. Operator 2026-08-13: "formatul de dimensiune trebuie sa fie
+# identic cu cel din referinta". His model's picture is 720 x 729, which is SQUARE, not 3:4 -
+# I introduced the 3:4 myself and then defended it. Measured back off IMG_2465 and restored:
+#
+#     black   0 - 281     282px      the margin above the hook
+#     band  282 - 468     187px
+#     pict  469 - 1561   1093px      1080 wide, so 0.988, square to a percent
+#     black 1562 - 1919   358px      the margin below, which is why his bottom reads similar
+#
+# The black above and below are 282 and 358 in his own build. They were never equal and they
+# never needed to be: they are both large enough to read as margin, which is the whole job.
+PIC_H = 1093                                 # the reference's, not a ratio of my own choosing
 
 
 def ground(picture: pathlib.Path) -> tuple[str, str]:
@@ -134,11 +138,14 @@ body{{background:#000;display:flex;justify-content:center}}
 .pic{{position:absolute;left:{SIDE}px;top:{PIC_TOP}px;width:{CARD_W}px;height:{PIC_H}px;
   overflow:hidden;background:{paper};padding:0 {PAD}px}}
 /* one hairline around the whole card, drawn over both halves so the seam cannot show */
-/* the rule that separates the hook from the picture. No box around the card any more: at full
-   bleed a frame would draw a line down the very edge of the reel, which is not a border, it is
-   a defect. */
-.edge{{position:absolute;left:0;right:0;top:{BAND_TOP + BAND_H - 2}px;height:2px;
-  background:{hair};pointer-events:none;z-index:3}}
+/* The rule under the band, and it is BLACK, because that is what the reference has. Measured
+   on IMG_2465 at rows 313 to 316: 314 and 315 are pure 0,0,0 across the full width with a
+   half step of antialiasing either side. My first attempt drew it in the paper colour a few
+   steps down, which is a tint, not a rule, and disappeared at viewing size. Two pixels at 720
+   is three at 1080. No box around the card: at full bleed that would draw a line down the very
+   edge of the reel, which is not a border, it is a defect. */
+.edge{{position:absolute;left:0;right:0;top:{BAND_TOP + BAND_H}px;height:3px;
+  background:#000;pointer-events:none;z-index:3}}
 .pic img{{width:100%;height:100%;object-fit:cover;display:block}}
 /* the fade lives over the picture and NOWHERE else, because the band never dims in the model */
 .veil{{position:absolute;inset:0;background:#000;opacity:{ALPHA0};
