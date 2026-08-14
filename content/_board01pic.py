@@ -34,24 +34,57 @@ SAFE_L, SAFE_R = 70, 950
 MID = 510
 COL_W = 400
 
-# (the job a founder has, the capability that decides it)
+# EVERY ROW CARRIES A DRAWN GLYPH (operator: "am nevoie si de ceva vizual recognoscibil care sa
+# te faca sa salvezi"). Icons are what turn a list into a reference card: the eye finds the row
+# it needs without reading the others, which is the behaviour a saved cheatsheet gets used for.
+# They are drawn here as plain stroked paths, not imported from anywhere.
+ICONS = {
+    "image":  '<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.6"/>'
+              '<path d="M20.5 16.5L15 11l-6 6"/>',
+    "mic":    '<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/>'
+              '<path d="M12 18v3"/>',
+    "globe":  '<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/>'
+              '<path d="M12 3c2.6 3 2.6 15 0 18c-2.6-3-2.6-15 0-18z"/>',
+    "cursor": '<path d="M5 3l13.5 7.8-5.8 1.4L9.6 18z"/>',
+    "bot":    '<rect x="4" y="7" width="16" height="12" rx="3"/><circle cx="9.5" cy="13" r="1.1"/>'
+              '<circle cx="14.5" cy="13" r="1.1"/><path d="M12 3.5V7"/>',
+    "brief":  '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/>'
+              '<path d="M14 3v5h5"/><path d="M8.5 13h7M8.5 17h4.5"/>',
+    "table":  '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9.5h18M9.5 9.5V20"/>',
+    "stack":  '<rect x="7" y="2.5" width="13" height="16" rx="2"/>'
+              '<path d="M3.5 6.5V19a2.5 2.5 0 0 0 2.5 2.5h10.5"/><path d="M10.5 7h6M10.5 11h6"/>',
+    "window": '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/>'
+              '<circle cx="6.4" cy="6.5" r=".9"/><path d="M7 13.5h7M7 16.5h4"/>',
+    "cube":   '<path d="M12 2.5l8.5 4.8v9.4L12 21.5l-8.5-4.8V7.3z"/>'
+              '<path d="M12 12l8.5-4.7M12 12v9.5M12 12L3.5 7.3"/>',
+    "pen":    '<path d="M12.5 20.5H21"/>'
+              '<path d="M16.6 3.4a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/>',
+    "lock":   '<path d="M3 7.5a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>'
+              '<circle cx="12" cy="14" r="1.9"/><path d="M12 15.9v2.1"/>',
+    "check":  '<path d="M9.5 6H20M9.5 12H20M9.5 18H20"/>'
+              '<path d="M3 6l1.6 1.6L7.6 4.6M3 12l1.6 1.6L7.6 10.6M3 18l1.6 1.6L7.6 16.6"/>',
+    "shield": '<path d="M12 21.5s7.5-3.8 7.5-9.5V5.2L12 2.5 4.5 5.2v6.8c0 5.7 7.5 9.5 7.5 9.5z"/>'
+              '<path d="M8.8 12l2.2 2.2 4.2-4.2"/>',
+}
+
+# (the job a founder has, the capability that decides it, the glyph)
 LEFT = [
-    ("An image for the ad", "Claude generates none"),
-    ("Hands-free thinking", "voice mode, while you drive"),
-    ("What changed this week", "live web, with sources"),
-    ("Click through a site for you", "computer use"),
-    ("A reusable team assistant", "a custom GPT"),
-    ("A multi-source brief", "deep research"),
-    ("A photo turned into data", "vision, then a table"),
+    ("An image for the ad", "Claude generates none", "image"),
+    ("Hands-free thinking", "voice mode, while you drive", "mic"),
+    ("What changed this week", "live web, with sources", "globe"),
+    ("Click through a site for you", "computer use", "cursor"),
+    ("A reusable team assistant", "a custom GPT", "bot"),
+    ("A multi-source brief", "deep research", "brief"),
+    ("A photo turned into data", "vision, then a table", "table"),
 ]
 RIGHT = [
-    ("A 300-page doc in one go", "200K context, no chunking"),
-    ("A working page in the chat", "Artifacts"),
-    ("Your product, actually built", "Claude Code"),
-    ("Copy nobody clocks as AI", "the writing model"),
-    ("One private space per client", "Projects"),
-    ("A 20-step brief, followed", "instruction following"),
-    ("A check you can trust", "fewer hallucinations"),
+    ("A 300-page doc in one go", "200K context, no chunking", "stack"),
+    ("A working page in the chat", "Artifacts", "window"),
+    ("Your product, actually built", "Claude Code", "cube"),
+    ("Copy nobody clocks as AI", "the writing model", "pen"),
+    ("One private space per client", "Projects", "lock"),
+    ("A 20-step brief, followed", "instruction following", "check"),
+    ("A check you can trust", "fewer hallucinations", "shield"),
 ]
 
 RULE = ("If the output is a picture or a click, send it left. "
@@ -60,9 +93,10 @@ RULE = ("If the output is a picture or a click, send it left. "
 
 def rows(items, side):
     out = []
-    for i, (job, why) in enumerate(items, 1):
+    for job, why, key in items:
         out.append(
-            f'<div class="row"><span class="n {side}">{i:02d}</span>'
+            f'<div class="row"><span class="ic {side}">'
+            f'<svg viewBox="0 0 24 24">{ICONS[key]}</svg></span>'
             f'<span class="tx"><span class="job">{job}</span>'
             f'<span class="why">{why}</span></span></div>')
     return "".join(out)
@@ -86,9 +120,17 @@ def html():
 .col.r .cap{{color:var(--book)}}
 /* the rows carry the whole picture: numerals for rhythm, hairlines for structure */
 .row{{flex:1;display:flex;align-items:center;gap:15px;border-top:1px solid var(--hair)}}
-.n{{font-family:'DM Mono',monospace;font-size:20px;font-weight:500;letter-spacing:.02em;
-  flex-shrink:0;width:32px}}
-.n.l{{color:#C9C6C0}} .n.r{{color:var(--book)}}
+.ic{{flex-shrink:0;width:38px;height:38px;display:flex;align-items:center;justify-content:center}}
+.ic svg{{width:34px;height:34px;fill:none;stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round}}
+.ic.l svg{{stroke:#2B2B29}} .ic.r svg{{stroke:var(--book)}}
+/* THE VS, on the rule, between the two columns. It sits in the gutter (470..550) so it never
+   touches a row, and its own white ground breaks the hairline instead of crossing it. */
+.vs{{position:absolute;left:{MID}px;top:455px;transform:translate(-50%,-50%);
+  width:66px;height:66px;border-radius:50%;background:#FFFFFF;
+  border:2px solid var(--ink);display:flex;align-items:center;justify-content:center;
+  font-family:'DM Mono',monospace;font-size:21px;font-weight:500;letter-spacing:.04em;
+  color:var(--ink)}}
 .tx{{display:flex;flex-direction:column;gap:3px;min-width:0}}
 .job{{font-size:26px;font-weight:800;letter-spacing:-.6px;color:var(--ink);line-height:1.1}}
 .why{{font-size:17px;font-weight:500;color:var(--muted);line-height:1.15;letter-spacing:-.1px}}
@@ -104,6 +146,7 @@ def html():
 </style></head>
 <body><div id="art">
   <div class="rule"></div>
+  <div class="vs">VS</div>
   <div class="col l"><div class="cap">Send it here</div>{rows(LEFT,'l')}</div>
   <div class="col r"><div class="cap">Send it here</div>{rows(RIGHT,'r')}</div>
   <div class="take"><span class="kb">The rule</span>
