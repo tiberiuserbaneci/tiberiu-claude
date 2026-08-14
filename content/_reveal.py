@@ -74,6 +74,26 @@ CARD_H = CARD_W * 4 // 3                     # 1440
 FOOT_H = CARD_H - BAND_H - PIC_H             # 160
 FOOT_TOP = PIC_TOP + PIC_H                   # 1562
 
+
+def set_geometry(pic_h: int, foot_h: int) -> None:
+    """Re-derive the card from a different picture and footer height.
+
+    Operator 2026-08-14: "designul tb sa fie 1080x1080px tu adaugi restul pentru format 3:4" and
+    "footerul e prea mare". The card stays 3:4 and the black margin above stays where the
+    reference put it, so the band simply takes whatever the other two leave: at 1080 of picture
+    and 108 of footer that is 252, which is also the room the split title needs. The arithmetic
+    is done here rather than in three places that can disagree.
+    """
+    g = globals()
+    g["PIC_H"], g["FOOT_H"] = pic_h, foot_h
+    g["BAND_H"] = CARD_H - pic_h - foot_h
+    g["PIC_TOP"] = BAND_TOP + g["BAND_H"]
+    g["FOOT_TOP"] = g["PIC_TOP"] + pic_h
+    g["AV_PX"] = round(foot_h * 0.41)
+    g["TXT_PX"] = round(foot_h * 0.232)
+    if g["BAND_H"] < 120:
+        sys.exit(f"band would be {g['BAND_H']}px, too short to carry a hook")
+
 # The vertical safe insets (CLAUDE.md 9). The card is full bleed, so the frame's rails are the
 # card's rails and every element on the strip is measured against these, not against 1080.
 SAFE_L, SAFE_R = 70, 130
@@ -89,6 +109,11 @@ FOOT_ROOM = CARD_W - SAFE_L - SAFE_R          # 880, all the footer ever gets
 # --handle <name> puts one back in the hook's accent colour for the first account.
 FOOT_LINE = 'Follow for more AI tools and productivity hacks'
 FOOT_MAX_CHARS = 59
+
+# The disc and the type are set by the strip, not typed twice. These are the measured defaults
+# for a 160px strip; set_geometry re-derives them for any other, so "footerul e prea mare" is
+# fixed by changing one number instead of three.
+AV_PX, TXT_PX = 58, 30
 
 
 def foot_line(handle: str | None) -> str:
@@ -151,6 +176,30 @@ def hook_html(text: str, accent: str | None) -> str:
     return " ".join(words)
 
 
+# The split band's two columns, in card space. Defaults match a picture whose own columns are
+# centred inside the safe box (70..950), which is where _board01pic.py puts them.
+VS: tuple[str, str] | None = None
+VS_CENTRES = (270, 750)
+VS_MID = 510
+
+
+def band_html(l1: str, l2: str, accent: str | None) -> str:
+    """One band. Two rows either way; the split only changes what sits on row two."""
+    if not VS:
+        return (f'<div class="band">\n    <span class="l1">{hook_html(l1, accent)}</span>'
+                f'\n    <span class="l2">{hook_html(l2, accent)}</span>\n  </div>')
+    left, right = VS
+    cl, cr = VS_CENTRES
+    acc_l = " acc" if accent and accent.upper() == left.upper() else ""
+    acc_r = " acc" if accent and accent.upper() == right.upper() else ""
+    return (f'<div class="band vs">\n    <span class="vs-pre">{l1}</span>'
+            f'\n    <div class="vs-row">'
+            f'<span class="vs-rule" style="left:{VS_MID}px"></span>'
+            f'<span class="vs-nm{acc_l}" style="left:{cl}px">{left}</span>'
+            f'<span class="vs-nm{acc_r}" style="left:{cr}px">{right}</span>'
+            f'</div>\n  </div>')
+
+
 def page(pic_uri: str, l1: str, l2: str, accent: str | None,
          paper: str, hair: str, avatar: str) -> str:
     BAND_TOP, PIC_TOP = globals()["BAND_TOP"], globals()["PIC_TOP"]
@@ -178,6 +227,26 @@ body{{background:#000;display:flex;justify-content:center}}
 /* the one liberty the operator left open */
 .band em{{font-style:normal;color:var(--acc)}}
 
+/* THE SPLIT BAND. Operator 2026-08-14: "banda unica alba dar separi modelele din banda -
+   folosesti doar doua randuri ca si pana acum" and "titul tb sa fie fiecare model in dreptul
+   lui". So it stays ONE band of TWO rows: the shared prefix runs centred on row one, and row two
+   carries the two model names, each centred over its own column in the picture below, with the
+   picture's own centre rule continuing up through the band so the split is one line, not two
+   boxes. No second band, no per-half background: the paper is unbroken. */
+.band.vs{{gap:0;padding-top:0;justify-content:center}}
+.vs-pre{{font-family:'DM Sans',sans-serif;font-weight:400;font-size:46px;line-height:1.1;
+  letter-spacing:-.9px;color:#0B0B0B;white-space:nowrap;margin-bottom:10px;
+  transform:translateX(-{CARD_W // 2 - VS_MID}px)}}
+.vs-row{{position:relative;width:{CARD_W}px;height:82px}}
+.vs-nm{{position:absolute;top:0;transform:translateX(-50%);
+  font-family:'DM Sans',sans-serif;font-weight:800;font-size:70px;line-height:1.14;
+  letter-spacing:-1.6px;color:#0B0B0B;white-space:nowrap}}
+.vs-nm.acc{{color:var(--acc)}}
+/* the rule is the picture's, carried up so the two halves read as one split sheet. It starts
+   BELOW the prefix: run through it and the shared line reads as struck out. */
+.vs-rule{{position:absolute;top:-8px;height:{BAND_H - 97}px;width:1px;
+  background:rgba(17,17,17,.13)}}
+
 /* THE PICTURE, square, directly under the band. */
 .pic{{position:absolute;left:{SIDE}px;top:{PIC_TOP}px;width:{CARD_W}px;height:{PIC_H}px;
   overflow:hidden;background:{paper};padding:0 {PAD}px}}
@@ -199,13 +268,13 @@ body{{background:#000;display:flex;justify-content:center}}
    under twice the 30px type and about 1.6x its line box, which is the proportion an avatar
    sits at next to a name everywhere else. The ring comes down with it: 2px of paper and 2px of
    accent, the accent held at 2 because 1 disappears once the reel is scaled to a phone. */
-.foot .av{{width:58px;height:58px;border-radius:50%;object-fit:cover;flex-shrink:0;
+.foot .av{{width:{AV_PX}px;height:{AV_PX}px;border-radius:50%;object-fit:cover;flex-shrink:0;
   box-shadow:0 0 0 2px {paper},0 0 0 4px rgba(200,70,35,.34)}}
 .foot .av.ph{{background:rgba(25,23,19,.10)}}
 /* ONE LINE. 57 characters across the 930px the avatar and the padding leave, which sets the
    size rather than the other way round: at 38px it wrapped, and a footer that wraps in a 160px
    strip stops being a footer and becomes a second paragraph. */
-.foot .txt{{font-family:'DM Sans',sans-serif;font-weight:600;font-size:30px;line-height:1.2;
+.foot .txt{{font-family:'DM Sans',sans-serif;font-weight:600;font-size:{TXT_PX}px;line-height:1.2;
   letter-spacing:-.4px;color:#161412;white-space:nowrap}}
 /* the handle takes the hook's accent, operator: "tiberiu.ai in culoarea de la research" */
 .foot .txt em{{font-style:normal;font-weight:800;color:var(--acc)}}
@@ -229,10 +298,7 @@ body{{background:#000;display:flex;justify-content:center}}
 </style></head>
 <body>
 <div id="film">
-  <div class="band">
-    <span class="l1">{hook_html(l1, accent)}</span>
-    <span class="l2">{hook_html(l2, accent)}</span>
-  </div>
+  {band_html(l1, l2, accent)}
   <div class="pic"><img src="{pic_uri}" alt=""></div>
   <div class="foot">{avatar}
     <span class="txt">{FOOT_LINE}</span>
@@ -251,7 +317,7 @@ def data_uri(p: pathlib.Path) -> str:
 
 def build(picture: pathlib.Path, l1: str, l2: str, accent: str | None,
           slug: str, avatar: pathlib.Path | None = None) -> pathlib.Path:
-    if accent and accent.upper() not in (l1 + " " + l2).upper():
+    if accent and accent.upper() not in (l1 + " " + l2 + " " + " ".join(VS or ())).upper():
         sys.exit(f"accent word {accent!r} appears in neither hook line")
     plain = re.sub(r"<[^>]+>", "", FOOT_LINE)
     if len(plain) > FOOT_MAX_CHARS:
@@ -274,7 +340,7 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("picture")
     ap.add_argument("line1")
-    ap.add_argument("line2")
+    ap.add_argument("line2", nargs="?", default="")
     ap.add_argument("--accent", default=None, help="the ONE word to colour")
     ap.add_argument("--out", default="reveal")
     ap.add_argument("--render", action="store_true")
@@ -283,8 +349,19 @@ if __name__ == "__main__":
     ap.add_argument("--avatar", default=None, help="the operator's portrait for the footer")
     ap.add_argument("--handle", default=None,
                     help="put a handle back in the footer, coloured (default: no handle)")
+    ap.add_argument("--pic-h", type=int, default=None, help="picture height, e.g. 1080")
+    ap.add_argument("--foot-h", type=int, default=None, help="footer strip height, e.g. 108")
+    ap.add_argument("--vs", nargs=2, metavar=("LEFT", "RIGHT"), default=None,
+                    help="split the band: line1 is the shared prefix, these two sit on row two")
+    ap.add_argument("--vs-centres", default=None, help="e.g. 270,750")
     a = ap.parse_args()
     globals()["FOOT_LINE"] = foot_line(a.handle)
+    if a.pic_h or a.foot_h:
+        set_geometry(a.pic_h or PIC_H, a.foot_h or FOOT_H)
+    if a.vs:
+        globals()["VS"] = tuple(a.vs)
+        if a.vs_centres:
+            globals()["VS_CENTRES"] = tuple(int(v) for v in a.vs_centres.split(","))
     if a.band_top is not None:
         globals()["BAND_TOP"] = a.band_top
         globals()["PIC_TOP"] = a.band_top + BAND_H
