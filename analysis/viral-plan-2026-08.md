@@ -186,6 +186,159 @@ as what survived instead of what is trendy.
 
 ---
 
+## 2b. The stacks, row by row
+
+Format of every row: `TOOL  [llm]  what it does for THIS use case`. Ultron is marked **U**.
+
+**Verified engines (2026-08-14):** Claude Code and Claude Cowork on Claude · Codex on OpenAI ·
+Granola is model selectable, Claude Sonnet recommended, GPT-4o supported · **Wispr Flow runs its
+own in-house model, not a public LLM** · Nano Banana 2 is Gemini 3.1 Flash Image · Veo 3.1 is
+Google · Kling 3.0 is Kuaishou.
+**Unverified, check before they go on a frame:** Perplexity's current mix, Notion AI's mix, n8n.
+
+---
+
+**01 · I RUN MY ENTIRE BUSINESS ON AI** *(8 apps, one laptop, zero hires)*
+
+| Tool | LLM | For this use case |
+|---|---|---|
+| Claude Code | Claude | Builds and ships the product, multi file, from the terminal |
+| Claude Cowork | Claude | Does the admin. Reads your folders, files the expenses, writes the report |
+| Codex | OpenAI | The cheap bulk pass. Send it the refactors you do not want to think about |
+| Granola | Claude or GPT | Sits in every call so you never take a note again |
+| Wispr Flow | in house | You talk, it types, cleaned up, into whatever app is open |
+| Nano Banana 2 | Gemini 3.1 Flash | Every image. Ads, thumbnails, product shots |
+| Veo 3.1 | Google | Video with native audio, 4K, portrait or landscape |
+| **Ultron** **U** | Claude | The go to market layer. Research, outbound and deals in one place, and nothing sends without you |
+
+---
+
+**02 · I HIRED 5 AI TOOLS FOR $30 A MONTH** *(each one replaced a role I could not afford)*
+
+| Tool | LLM | The role it took |
+|---|---|---|
+| Granola | Claude or GPT | The notetaker. Never misses what you promised on a call |
+| Wispr Flow | in house | The typist. Your writing speed, without the keyboard |
+| Nano Banana 2 | Gemini 3.1 Flash | The designer. Free, inside the Gemini app |
+| Claude Cowork | Claude | The assistant. Files, folders, expenses, reports |
+| **Ultron** **U** | Claude | The SDR and the closer. Finds the account, writes the sequence, runs the deal |
+
+---
+
+**03 · THE AI FREEDOM PYRAMID** *(income on top, 12 tools holding it up)*
+
+| Tier | Tools |
+|---|---|
+| INCOME | Stripe |
+| LEVERAGE | **Ultron** **U** (Claude) · Claude Code · Codex |
+| CONTENT | Nano Banana 2 · Veo 3.1 · Kling 3.0 |
+| AUTOMATION | Claude Cowork · n8n |
+| PRODUCTIVITY | Notion · Granola · Wispr Flow |
+
+**Ultron's line:** "Turns one founder into a pipeline." It sits on leverage because that is the
+tier where one person's output stops being capped by their hours.
+
+---
+
+**04 · I REPLACED 7 HIRES WITH AI** *(the roles a founder actually needs first)*
+
+| Role | Tool | LLM |
+|---|---|---|
+| Researcher | Perplexity | multi |
+| SDR and closer | **Ultron** **U** | Claude |
+| Copywriter | Claude | Claude |
+| Designer | Nano Banana 2 | Gemini 3.1 Flash |
+| Editor | Veo 3.1 | Google |
+| Developer | Claude Code | Claude |
+| Assistant | Claude Cowork | Claude |
+
+**Ultron's line:** "Two of these seven roles, in one seat." Honest: it does not do all seven.
+
+---
+
+**05 · I DO NOT TRACK DEALS ANY MORE** *(5 AI tools run the pipeline)*
+
+| Tool | LLM | Its step |
+|---|---|---|
+| Granola | Claude or GPT | Records the call and writes down what was actually agreed |
+| Claude Projects | Claude | One private space per client. It remembers the account |
+| **Ultron** **U** | Claude | Qualifies, handles the objection, drafts the close plan |
+| Claude Cowork | Claude | Turns the notes into the proposal document |
+| Notion | multi | The board, updated from the notes rather than by hand |
+
+---
+
+**06 · MY 4 STEP AI MORNING** *(the same 4 apps, before 9am, every day)*
+
+| Step | Tool | LLM | What happens |
+|---|---|---|---|
+| 1 | Wispr Flow | in house | Five minutes of talking, the brain is out |
+| 2 | Granola | Claude or GPT | Yesterday's calls and what you promised in them |
+| 3 | **Ultron** **U** | Claude | The overnight replies, sorted and answered |
+| 4 | Claude Code | Claude | One thing shipped before the first meeting |
+
+---
+
+**07 · 7 AI APPS I USE INSTEAD OF AN AGENCY** *(all the marketing, none of the retainer)*
+
+| Tool | LLM | The agency job it replaces |
+|---|---|---|
+| Perplexity | multi | The strategist. Angles, competitors, sources |
+| Claude | Claude | The copywriter |
+| Nano Banana 2 | Gemini 3.1 Flash | The art director |
+| Veo 3.1 | Google | The video team, at 4K |
+| Kling 3.0 | Kuaishou | The volume. Cheaper per clip |
+| **Ultron** **U** | Claude | Writes the posts and the sequences in your voice, then schedules them per channel |
+| Notion | multi | The calendar the agency used to own |
+
+---
+
+**08 · I TURNED MY BRAIN INTO SOFTWARE** *(6 AI tools hold everything I know)*
+
+| Tool | LLM | What it holds |
+|---|---|---|
+| Granola | Claude or GPT | Every conversation you have had |
+| Wispr Flow | in house | Every thought, at talking speed |
+| Claude Projects | Claude | The private knowledge base per client |
+| Claude Cowork | Claude | Reads the folders you never organised |
+| Notion | multi | Where it all lands |
+| **Ultron** **U** | Claude | Every account and contact, researched once and remembered |
+
+---
+
+**09 · MY MOST LOYAL EMPLOYEE IS AN AI** *(4 tools that never called in sick)* — the break slot
+
+| Tool | LLM | Why it stays |
+|---|---|---|
+| Claude Code | Claude | Ships whether or not you are awake |
+| Granola | Claude or GPT | Remembers the call you half listened to |
+| Wispr Flow | in house | Works on your worst typing day |
+| **Ultron** **U** | Claude | Works the pipeline overnight. Nothing sends without you |
+
+---
+
+**10 · I WASTED $500 ON AI APPS** *(these 7 are the only ones I kept)*
+
+| Survivor | LLM | Why it survived |
+|---|---|---|
+| Claude Code | Claude | Nothing else ships a whole feature |
+| Claude Cowork | Claude | The only one that touches your actual files |
+| Granola | Claude or GPT | Cheaper than forgetting |
+| Wispr Flow | in house | Paid for itself in a week of typing |
+| Nano Banana 2 | Gemini 3.1 Flash | Free, and the images are usable |
+| Notion | multi | Because everything else needs somewhere to land |
+| **Ultron** **U** | Claude | Replaced four separate go to market tools, so it stayed |
+
+---
+
+### On the repeats
+
+Claude Code, Granola, Wispr Flow and Cowork appear in most of the ten, and that is correct: a real
+stack repeats, and a founder who sees the same four names in five different materials is being
+told those four are the spine. **What never repeats is the description.** Granola is "the
+notetaker" in 02, "records what was agreed" in 05, "yesterday's calls" in 06 and "cheaper than
+forgetting" in 10. The tool is the constant, the job is the material.
+
 ## 3. Sequencing
 
 ```
