@@ -1361,9 +1361,21 @@ not a disguised version of what Ultron does. The audience follows the account to
 something about the tools they already use. A material whose subject is our product is an ad,
 and an ad from a brand nobody has heard of is the thing that killed the channels.
 
-**ULTRON LIVES IN THREE PLACES, ALL OF THEM OFF THE FRAME:** the caption's product line, the
-first comment, and the DM. That is one line out of five hundred pixels of picture, and it only
-gets read by somebody who already stayed.
+**ULTRON IS A ROW IN THE STACK, ON THE FRAME (operator, 2026-08-14 — supersedes the off-frame
+rule that stood here).** "Ultron este adaugat in fiecare material ca si stack care contine un set
+de icons vizibile, numele toolului, llm ului si o scurta descriere in unul doua randuri pentru use
+case ul respectiv ... ultron face parte din toate materialele cu use case specific."
+
+The earlier rule sent Ultron off the frame entirely because an unknown wordmark stamped on a
+picture spends attention and buys nothing. That reasoning held for a *logo*. It does not hold for
+a *stack row*: beside Claude Code, Granola and Notion, each with the LLM under it named, Ultron is
+not a brand asking to be recognised, it is one entry in a list the reader came for, and it earns
+its line by doing a job the other rows do not. Every material carries it, with a description
+written for that material's use case, never a generic boilerplate line.
+
+What does NOT change: the agent roster (CORTEX / SPECTER / STRIKER / PULSE / SENTINEL / AMPLIFY /
+COUNSEL) stays banned from every frame per §21. Ultron's row says what it does in plain founder
+language. And the caption, first comment and DM still carry it too.
 
 **THE FRAME CARRIES A HANDLE AND A SERIES LABEL.** `@tiberiu.ai` bottom left in small mono, a
 series label in the mast (`RESEARCH STACK · 02`). No wordmark, no logo, no domain, no company.

@@ -1,237 +1,229 @@
-# Ten materials, August 2026
+# Ten stack materials, August 2026
 
-Planning only, nothing built. Written against the operator's hook archive (`Hooks Overlay`, 61
-hooks) and a fact check of the Meta AI trend list. Format is the house reveal (CLAUDE.md 32);
-every material must pass the tool test (CLAUDE.md 34) before it is built.
-
----
-
-## 0. The fact check, first
-
-The operator's Meta AI list was presented as "confirmed, no hallucinations". Roughly half of it
-is stale or wrong. Verified against the live web on 2026-08-14:
-
-| Claim | Verified |
-|---|---|
-| Nano Banana 2 launched August, 13M users in 4 days | **Launched 26 Feb 2026**, default image model in Gemini since. Six months old. |
-| Sora 2 is a top video tool | **OpenAI shut down the Sora web and app on 26 Apr 2026.** API runs to September. Naming it as a live tool is a credibility kill. |
-| Kling 2.6 | Current is **Kling 3.0 / 3.0 Pro**, the value leader. |
-| GPT-5.6 Sol / Terra / Luna, "last month" | Real. Limited preview 26 Jun, **GA 9 Jul 2026**. Sol is the top tier, Luna the cheap one. **GPT-5.6-Cyber shipped 10 Aug**, four days old, that is the genuinely fresh item. |
-| Veo 3 / 3.1 | **Veo 3.1** is the top Western option; **Seedance 2.0** leads Artificial Analysis. |
-| Claude Cowork in the Dan Martell stack | Real and the strongest unused angle: **on mobile and web since 7 Jul 2026**, and Anthropic's own usage data shows **most Cowork users are not coding**. |
-
-**Not verified, do not put on a frame until checked:** LongCat, GLM 5.5, MiniMax H3, Sakana Fugu,
-Grok 4.6, Kimi K3, DeepSeek V4 Pro, Apex.host, Higgsfield, and every price in the list. The
-30-day freshness rule (CLAUDE.md 30) binds on facts inside the copy, and a wrong model version in
-a material about models is the one mistake this lane punishes instantly.
-
-**Also dropped: the four posts Meta AI suggested.** "GPT-5.6 was blocked by the US government"
-and "LongCat on Chinese chips" turn the profile into a news channel, which CLAUDE.md 30 bans by
-name. News may appear as a peg inside one line, never as the subject.
+Planning only, nothing built. Revised 2026-08-14 to the operator's brief: **all ten are tool
+stacks**, every hook is lifted from his own archive and only adapted, and **Ultron is a row in
+every single one**. No news, no material built for its own sake.
 
 ---
 
-## 1. What the hook archive says
+## 0. The brief, as given
 
-61 hooks, one format, and it is not the format we have been writing:
+> "toate materialele cele zece sunt tool stack, trebuie sa respecte hook ul cu un mic twist (ex se
+> adauga AI, se muta pe business, se adapteaza la 2026 semantics), Ultron este adaugat in fiecare
+> material ca si stack care contine un set de icons vizibile, numele toolului, llm ului si o
+> scurta descriere in unul doua randuri pentru use case ul respectiv ... nu mai construim
+> materiale de amorul artei, nu ne intereseaza stiri, doar business as usual - revezi hook urile
+> si nu iesi din narativa acestora doar adapteaza"
+
+Four consequences, and they rewrite the previous draft rather than adjust it:
+
+1. **One format, ten use cases.** Every material is a stack. What changes between them is the JOB
+   the stack does, never the shape. That is also what the archive does across 61 hooks.
+2. **The row is the unit.** Each row carries four things: a drawn icon, the tool name, **the LLM
+   underneath it**, and one or two lines of what it does *for this use case*.
+3. **Ultron is in all ten**, with a description rewritten per material. Never the same sentence
+   twice, never generic.
+4. **Three from the previous draft are cut**: the routing map, the tool graveyard and the model
+   tier ladder. None is a stack, and the graveyard was news wearing a costume.
+
+**CLAUDE.md 31 has been updated** to match, because it said the opposite (Ultron off the frame
+entirely) and a stale rule left standing is the thing that makes the next material wrong.
+
+### The LLM column is the real find
+
+Naming the model under each tool is the most saveable thing in the set, because almost nobody
+knows it and it changes what you buy. It also makes Ultron's row read as a spec line rather than
+an advert: **Ultron runs on Claude**, stated the same way Granola's or Codex's engine is stated.
+
+**Verify per tool at build time.** Confirmed so far: Claude Code and Claude Cowork on Claude;
+Codex on OpenAI; Nano Banana 2 is Gemini 3.1 Flash Image; Veo 3.1 is Google. Granola, Wispr Flow,
+Notion AI and the rest are unverified and must be checked before they go on a frame.
+
+---
+
+## 1. The hook rule
+
+Measured on the 61 overlays, not estimated: **31 open with "I"**, **42 carry a digit**, **32 name
+a tool count**. The format is fixed:
 
 ```
-LINE 1   THE CLAIM, ALL CAPS, first person, a number in it
+LINE 1   THE CLAIM, ALL CAPS, first person, usually a number
 LINE 2   (the payoff, lower case, in brackets)
 ```
 
-Examples straight from the archive: `I RUN MY ENTIRE BUSINESS / (with these 4 apps)`,
-`I HIRED 5 TOOLS FOR $30/MONTH / (they replaced $10K in payroll)`.
+The twist allowed, per the brief: add AI, move it onto the business, update the semantics to 2026.
+Nothing else. The narrative stays theirs.
 
-Counted across the 61, not estimated: **31 open with "I"**, **42 carry a digit**, **32 name a
-tool count** ("5 APPS", "8 TOOLS", "6 SYSTEMS"). The subhook is almost always the count, the
-price, or what it replaced. The lane is one story told sixty ways:
-*a solo operator runs a company with a handful of apps.* That is our ICP exactly (CLAUDE.md 1,
-founder or CEO at 2 to 50 people), which is why these went viral for them and will for us.
-
-Note this **supersedes CLAUDE.md 14** for this set ("do not start with I", "no statistics in the
-hook"). The archive is measured evidence and 26 already reversed that rule once; this confirms it.
+This supersedes CLAUDE.md 14 for this set ("do not start with I", "no statistics in the hook"),
+the same way §26 already reversed it once on measured evidence.
 
 ---
 
 ## 2. The ten
 
-Tool counts are deliberately spread (1, 3, 4, 5, 6, 7, 8) so the set never reads as one template.
-Themes alternate per the deck guard (CLAUDE.md 30), and slot 9 is the mandated break.
+Tool counts spread 4 to 12 so the set never reads as one template. Each entry names the archive
+hook it comes from, verbatim, so the adaptation can be checked against the original.
 
 ---
 
-### 01 THE FULL STACK  ·  8 tools  ·  keyword STACK
-> **I RUN MY ENTIRE BUSINESS**
-> **(on 8 apps and one laptop)**
+### 01 THE WHOLE COMPANY · 8 tools · keyword STACK
+*Archive: `I RUN MY ENTIRE BUSINESS (with these 4 apps)`*
+> **I RUN MY ENTIRE BUSINESS ON AI**
+> **(8 apps, one laptop, zero hires)**
 
-- **Stack, by job:** build → Claude Code · ops and admin → Claude Cowork · cheap bulk coding →
-  Codex · meeting notes → Granola · dictation → Wispr Flow · images → Nano Banana 2 ·
-  video → Veo 3.1 · docs and CRM → Notion
-- **Use case:** the flagship. A founder who does GTM, delivery and admin alone.
-- **On the frame:** the job in the left column, the tool, and the monthly price, with a real
-  total at the foot. A price is what makes it a shopping list instead of a mood board.
-- **Why it saves:** it is a buy list with a number on it, and it is reusable when they add a role.
-- **DM:** the same stack as a one-page table plus the swap list for each job.
-- **Blocked on:** the operator's real monthly spend. Every figure must be his (CLAUDE.md 21).
+**Use case:** the flagship. A founder doing GTM, delivery and admin alone.
+**Stack:** build → Claude Code · admin and ops → Claude Cowork · bulk coding → Codex · meetings →
+Granola · dictation → Wispr Flow · images → Nano Banana 2 · video → Veo 3.1 · **Ultron / Claude**
+**Ultron's line:** "The go to market layer. Research, outbound and deals in one place, with your
+approval before anything sends."
+**DM:** the stack as a one page table with prices and a swap for each row.
 
 ---
 
-### 02 THE CANCELLATION  ·  7 pairs  ·  keyword SWAP
-> **I CANCELLED $400 OF AI TOOLS**
-> **(and replaced every one for free)**
-
-- **Stack:** seven paid → free pairs, each with what you actually give up. This is theme 2 from
-  the operator's own list ("if you can't afford it, use this").
-- **Use case:** the pre-revenue founder and the one cutting burn. Widest possible audience.
-- **On the frame:** two columns, paid left with its price, free right, and one line naming the
-  real trade, because a swap list that pretends the free one is identical gets called out in the
-  comments and deserves to be.
-- **Why it saves:** it is money today, and they revisit it at every renewal.
-- **DM:** all 15 pairs plus the three that are genuinely not worth swapping.
-- **Blocked on:** current free tiers, all of which change monthly. Verify at build time.
-
----
-
-### 03 THE ROUTING MAP  ·  2 models  ·  keyword ROUTE
-> **I STOPPED ASKING CHATGPT EVERYTHING**
-> **(14 jobs, one rule, zero guessing)**
-
-- **Built already**, as `content/ig/chatgpt-vs-claude`. Only the hook needs recutting into the
-  archive format; the picture and the rule stand.
-- **Why it saves:** the rule at the foot is memorable and applies to every future task.
-- **DM:** the 30-job version.
-
----
-
-### 04 THE GRAVEYARD  ·  3 tools  ·  keyword DEAD
-> **I DELETED 3 AI TOOLS THIS MONTH**
-> **(one of them shut down and nobody told you)**
-
-- **The peg:** OpenAI shut the Sora app on 26 Apr 2026. Most creators still list it in their
-  stack. That is a genuinely useful, checkable fact and it is not news reporting, it is a
-  subscription audit.
-- **Use case:** anyone paying for a stack they assembled six months ago.
-- **On the frame:** three dead or downgraded tools, what replaced each, and the date it changed.
-- **Why it saves:** it stops a wasted renewal, and the format repeats quarterly.
-- **DM:** the full audit checklist, the ten questions to ask of every subscription.
-
----
-
-### 05 THE CALL CHAIN  ·  4 tools  ·  keyword CALL
-> **I HAVE NOT TAKEN A NOTE IN A SALES CALL SINCE MARCH**
-> **(4 apps send the proposal before I stand up)**
-
-- **Stack:** Granola on the call → Claude Project holding the account → proposal drafted →
-  follow-up scheduled. A chain, not a list.
-- **Use case:** the consulting and services founder, which is dead centre of our ICP
-  (IT services, software, consulting, US and UK).
-- **On the frame:** the four steps as a pipeline with what passes between them, and the elapsed
-  time named as the FOUNDER's, never the machine's (CLAUDE.md 30).
-- **Why it saves:** it is a workflow they can rebuild the same afternoon.
-- **DM:** the Claude Project instructions and the proposal prompt, verbatim.
-
----
-
-### 06 THE FREEDOM PYRAMID  ·  5 layers, 12 tools  ·  keyword PYRAMID
-> **THE FREEDOM PYRAMID**
-> **(income at the top, 12 tools holding it up)**
-
-- Operator's theme 8, and the archive has **four** variants of this hook, so it is proven in
-  their lane.
-- **Layers:** income → leverage → content → automation → productivity, with the tools sitting on
-  each tier and the count rising as you go down.
-- **Use case:** the aspirational one. It is a worldview, which is what gets reposted.
-- **Why it saves:** it is a framework, and frameworks get screenshot into other people's decks.
-- **DM:** the pyramid as a fillable template with the tool slots empty.
-
----
-
-### 07 THE $30 TEAM  ·  5 tools  ·  keyword TEAM
-> **I HIRED 5 TOOLS FOR $30 A MONTH**
+### 02 THE PAYROLL SWAP · 5 tools · keyword TEAM
+*Archive: `I HIRED 5 TOOLS FOR $30/MONTH (they replaced $10K in payroll)`*
+> **I HIRED 5 AI TOOLS FOR $30 A MONTH**
 > **(each one replaced a role I could not afford)**
 
-- Straight out of the archive, which used `(they replaced $10K in payroll)`.
-- **Stack:** five tools mapped to five job titles, not five features. The title is the hook.
-- **Use case:** the founder who cannot hire yet. Highest emotional pull in the set.
-- **On the frame:** role, tool, price, and the honest line on what the tool does NOT do, because
-  a five-app company that claims to need no people is the kind of post that gets ratioed.
-- **Blocked on:** the payroll figure must be the operator's own or it comes out.
+**Use case:** the founder who cannot hire yet. Highest emotional pull in the set.
+**Stack:** five tools mapped to five job titles, not five features.
+**Ultron's line:** "The SDR and the closer. Finds the account, writes the sequence, runs the deal."
+**Frame must also carry** what each tool does NOT replace, or the post gets ratioed.
+**Blocked on:** the payroll figure must be the operator's own (CLAUDE.md 21).
 
 ---
 
-### 08 THE TIER RULE  ·  3 model tiers  ·  keyword TIER
-> **I WAS BURNING CREDITS ON THE WRONG MODEL**
-> **(one rule per job, cheap to deep)**
+### 03 THE PYRAMID · 12 tools, 5 tiers · keyword PYRAMID
+*Archive: `THE FREEDOM PYRAMID` (four variants in the archive, so it is proven in their lane)*
+> **THE AI FREEDOM PYRAMID**
+> **(income on top, 12 tools holding it up)**
 
-- **The subject:** GPT-5.6 ships as Luna, Terra and Sol, cheap to frontier, and Claude and
-  Gemini have the same shape. Almost nobody routes deliberately; they run everything on the top
-  tier and pay for it.
-- **Use case:** anyone with a credit bill, which by now is most of the audience.
-- **On the frame:** a three-row ladder, the job class per tier, and the rule for moving up.
-- **Why it saves:** it is money every single day, not once.
-- **DM:** the routing table across all three providers.
+**Use case:** the worldview post. Frameworks get screenshot into other people's decks.
+**Tiers:** income → leverage → content → automation → productivity, tool count rising downward.
+**Ultron's line:** sits on **leverage**. "Turns one founder into a pipeline."
+**DM:** the pyramid as a fillable template with the slots empty.
 
 ---
 
-### 09 THE BREAK  ·  1 tool  ·  keyword FLOW
-> **I FIRED MY KEYBOARD**
-> **(and my output went up)**
+### 04 THE ORG CHART · 7 tools · keyword HIRES
+*Archive: `I REPLACED 7 EMPLOYEES`*
+> **I REPLACED 7 HIRES WITH AI**
+> **(the roles a founder actually needs first)**
 
-- The mandated break slot (CLAUDE.md 30): a single idea, one tool, a simple graphic piece that
-  interrupts the series so the eye cannot settle.
-- **Subject:** dictation. Wispr Flow is the archive's own repeated favourite.
-- **Why it saves:** it is one behaviour change with a low barrier, the most actionable in the set.
-- **Blocked on:** confirm Wispr Flow is still current and priced as claimed.
+**Use case:** the strongest fit in the set, because seven founder roles is exactly the shape of
+what Ultron does. Roles named in plain language: researcher, outbound, deals, content, publishing,
+code, contracts.
+**Ultron's line:** "Four of these seven roles, in one place, on Claude."
+**Note:** the agent names stay off the frame (CLAUDE.md 21). Roles, not codenames.
 
 ---
 
-### 10 THE POSTMORTEM  ·  6 tools  ·  keyword BROKE
-> **I GAVE 6 APPS MY CEO JOB**
-> **(two of them failed and I kept them anyway)**
+### 05 THE PIPELINE · 5 tools · keyword DEALS
+*Archive: `I DONT TRACK DEALS ANYMORE`*
+> **I DO NOT TRACK DEALS ANY MORE**
+> **(5 AI tools run the pipeline for me)**
 
-- **Use case:** the honest debrief. The whole set is a founder saying his stack works; this one
-  says where it does not, which is what stops it reading as an advert.
-- **On the frame:** the six, with the two failures marked and the reason each was kept.
-- **Why it saves and comments:** disagreement. This is the comment engine of the set, and comments
-  are metric 3 (CLAUDE.md 26).
-- **Blocked on:** the operator's real failures. This one cannot be invented at all.
+**Use case:** the consulting and services founder, dead centre of our ICP.
+**Stack:** the chain from call to proposal to follow up, Granola and a Claude Project in it.
+**Ultron's line:** "Qualifies the deal, handles the objection, drafts the close plan."
+**DM:** the Project instructions and the proposal prompt, verbatim.
+
+---
+
+### 06 THE MORNING · 4 tools · keyword DAILY
+*Archive: `MY 4STEP DAILY SYSTEM`*
+> **MY 4 STEP AI MORNING**
+> **(the same 4 apps, before 9am, every day)**
+
+**Use case:** the routine post. Lowest barrier in the set, highest chance of being copied today.
+**Stack:** four steps in order, each with its tool, as a sequence rather than a list.
+**Ultron's line:** "Step 3. The overnight replies, sorted and answered before coffee."
+
+---
+
+### 07 INSTEAD OF AN AGENCY · 7 tools · keyword AGENCY
+*Archive: `7 APPS I USE INSTEAD OF`*
+> **7 AI APPS I USE INSTEAD OF AN AGENCY**
+> **(all the marketing, none of the retainer)**
+
+**Use case:** marketing done solo. Broadest reach of the set.
+**Stack:** research, copy, image, video, scheduling, analytics, plus **Ultron**.
+**Ultron's line:** "Writes the posts and the sequences in your voice, then schedules them per
+channel."
+
+---
+
+### 08 THE SECOND BRAIN · 6 tools · keyword BRAIN
+*Archive: `I TURNED MY BRAIN INTO A SOFTWARE`*
+> **I TURNED MY BRAIN INTO SOFTWARE**
+> **(6 AI tools hold everything I know)**
+
+**Use case:** knowledge and memory. The most aspirational framing in the archive.
+**Ultron's line:** "Every account and every contact, researched once and remembered."
+
+---
+
+### 09 THE LOYAL ONE · 4 tools · keyword LOYAL
+*Archive: `MY MOST LOYAL EMPLOYEE`*
+> **MY MOST LOYAL EMPLOYEE IS AN AI**
+> **(4 tools that never called in sick)**
+
+**Use case:** the small core you would keep if you lost everything else. This is the break slot
+(CLAUDE.md 30): four rows, simplest layout in the set, interrupts the run.
+**Ultron's line:** "Works the pipeline overnight. Nothing sends without you."
+
+---
+
+### 10 THE SURVIVORS · 7 tools · keyword KEPT
+*Archive: `I WASTED 500 ON APPS`*
+> **I WASTED $500 ON AI APPS**
+> **(these 7 are the only ones I kept)**
+
+**Use case:** closes the set with the buy list, earned rather than asserted, because it is framed
+as what survived instead of what is trendy.
+**Ultron's line:** "Replaced four separate go to market tools, so it stayed."
+**Blocked on:** the $500 must be his real number, and which tools he actually dropped.
 
 ---
 
 ## 3. Sequencing
 
-Run in this order so no two neighbours share a shape, per the deck guard:
-
 ```
-01 STACK      the flagship, sets the lane
-04 DEAD       audit, opposite energy to a buy list
-06 PYRAMID    framework, aspirational
-09 FLOW       the break, single idea
-02 SWAP       money, two columns
-05 CALL       workflow, a chain
-08 TIER       money again but a ladder, not a table
-03 ROUTE      the routing map, already built
-07 TEAM       roles, emotional
-10 BROKE      the postmortem, closes the set honestly
+01 STACK    the flagship, sets the format
+05 DEALS    a chain, not a list
+03 PYRAMID  a shape, not a table
+09 LOYAL    the break, only 4 rows
+07 AGENCY   widest reach
+02 TEAM     roles and money
+06 DAILY    a sequence
+08 BRAIN    aspirational
+04 HIRES    the org chart, densest
+10 KEPT     the buy list, closes it
 ```
 
-Two money posts (02, 08) are separated by a workflow. The two list-shaped ones (01, 07) sit at
-opposite ends. 09 breaks the run early, as required.
+No two neighbours share a shape. The break falls fourth. The two money posts (02, 10) sit apart.
 
-## 4. What every one of them ships
+## 4. The row spec, identical in all ten
 
-Per material: `reel.mp4`, `picture.png`, `caption.md` (CLAUDE.md 33, 200 to 260 words, CTA first
-with the down arrow), and the DM artifact actually built, not promised. A material without its
-DM deliverable is an advert for a thing that does not exist.
+```
+[icon]  TOOL NAME          [llm chip]
+        one or two lines of what it does for THIS use case
+```
 
-## 5. Open questions for the operator
+Drawn icons only, no imported artwork (operator, 2026-08-13). Left rail at 70, right at 950. Up
+to 8 rows fits 1080x1080 comfortably; the 12 tool pyramid needs its own tiered layout.
 
-1. **His real numbers.** Materials 01, 02, 07 and 10 carry spend, prices and failures. CLAUDE.md
-   21 bans invented figures, so these need his actual stack, monthly total, and the two tools
-   that let him down. Without them, those four ship with the numbers removed, which weakens them.
-2. **Where Ultron sits.** CLAUDE.md 31 keeps it off the frame entirely, in caption and DM only.
-   He asked earlier for it slotted into a category on the frame in this series. Those conflict.
-3. **Which hook surface.** The archive is a set of transparent overlays for filmed footage. Do
-   these hooks go into the reveal's white band, as the built material does, or is he moving to
-   filmed openers with the overlay dropped on top?
+## 5. Ships with every material
+
+`reel.mp4`, `picture.png`, `caption.md` (CLAUDE.md 33), and the DM artifact actually built.
+
+## 6. Still open
+
+1. **His real numbers** for 02 and 10, and which tools he actually dropped.
+2. **The LLM under each non Anthropic tool**, verified at build time.
+3. **Which hook surface**: the reveal's white band, or filmed footage with the overlay on top.
+
+## 7. Outside the set
+
+`content/ig/chatgpt-vs-claude` is already built and is not a stack, so it falls outside this
+brief. It can ship as a standalone or be reworked into the format later.
