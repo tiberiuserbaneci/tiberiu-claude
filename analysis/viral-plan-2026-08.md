@@ -43,8 +43,9 @@ LINE 2   (the payoff, lower case, in brackets)
 Examples straight from the archive: `I RUN MY ENTIRE BUSINESS / (with these 4 apps)`,
 `I HIRED 5 TOOLS FOR $30/MONTH / (they replaced $10K in payroll)`.
 
-Counted across the 61: **44 lead with "I"**, **38 carry a tool count**, and the subhook is almost
-always either the count, the price, or what it replaced. The lane is one story told sixty ways:
+Counted across the 61, not estimated: **31 open with "I"**, **42 carry a digit**, **32 name a
+tool count** ("5 APPS", "8 TOOLS", "6 SYSTEMS"). The subhook is almost always the count, the
+price, or what it replaced. The lane is one story told sixty ways:
 *a solo operator runs a company with a handful of apps.* That is our ICP exactly (CLAUDE.md 1,
 founder or CEO at 2 to 50 people), which is why these went viral for them and will for us.
 
