@@ -306,7 +306,7 @@ tier where one person's output stops being capped by their hours.
 
 ---
 
-**09 · MY MOST LOYAL EMPLOYEE IS AN AI** *(4 tools that never called in sick)* — the break slot
+**09 · MY MOST LOYAL EMPLOYEE IS AN AI** *(4 tools that never called in sick)*, the break slot
 
 | Tool | LLM | Why it stays |
 |---|---|---|
