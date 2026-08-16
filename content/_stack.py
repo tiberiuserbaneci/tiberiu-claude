@@ -75,11 +75,25 @@ def ultron_mark() -> str:
 
 
 # ---------------------------------------------------------------- the ten specs
+# EVERY HOOK IS THE OPERATOR'S OWN. Operator, 2026-08-14: "ti am dat o lista de 50+ hook uri
+# construieste pe alea". I had been writing hooks while sitting on an archive of 61 that had
+# already gone viral, which is the whole mistake. These are lifted from it, by position:
+#   01 <- 61 "THIS IS HOW 8 TOOLS RUN (my life and business)"
+#   02 <- 33 "I HIRED 5 TOOLS FOR $30/MONTH (they replaced $10K in payroll)"
+#   03 <- 53 "THE FREEDOM PYRAMID:"   (the archive leaves the bracket empty; the reframe is mine)
+#   04 <- 35 "I REPLACED 7 EMPLOYEES (with icons)"    <- and the material IS icons
+#   05 <- 20 "I DON'T TRACK DEALS ANYMORE (this app does it for me)"
+#   06 <- 48 "MY 4-STEP DAILY SYSTEM (for peace and profit)"
+#   07 <- 11 "7 APPS I USE INSTEAD OF MOTIVATION"     <- retargeted to the agency
+#   08 <- 43 "I TURNED MY BRAIN INTO A SOFTWARE (6 tools now think for me)"
+#   09 <- 51 "MY MOST LOYAL EMPLOYEE" + the bracket from 32 "(they never ask for a raise)"
+#   10 <- 47 "I WISH I FOUND THESE 7 APPS (before burning out)"
+# The only liberties: adding AI, moving a count to match the stack, and one bracket for 03.
 # rows: (tool, engine, what it does FOR THIS use case). The last row is always Ultron.
 SPECS = {
 "01": dict(
   slug="whole-company",
-  l1="I RUN MY ENTIRE BUSINESS ON AI", l2="(8 apps, one laptop, zero hires)",
+  l1="THIS IS HOW 8 AI TOOLS RUN", l2="(my life and business)",
   rows=[("ChatGPT","GPT-5.6","The everyday brain. Everything not worth a specialist"),
         ("Claude Code","Claude","Ships the product itself, multi file, from the terminal"),
         ("Granola","Claude or GPT","Sits in every call so you never take a note"),
@@ -90,7 +104,7 @@ SPECS = {
         ("Ultron","Claude","Research, outbound and deals in one place. Nothing sends without you")]),
 "02": dict(
   slug="thirty-dollar-team",
-  l1="I HIRED 5 AI TOOLS FOR $30 A MONTH", l2="(each one replaced a role I could not afford)",
+  l1="I HIRED 5 AI TOOLS FOR $30/MONTH", l2="(they replaced $10K in payroll)",
   rows=[("Perplexity","multi","The researcher. Cites sources so you can check it"),
         ("Ideogram","in house","The designer. The one that gets text right in an image"),
         ("Fathom","multi","The notetaker, on a free tier"),
@@ -98,7 +112,7 @@ SPECS = {
         ("Ultron","Claude","The SDR and the closer. Finds the account, runs the deal")]),
 "04": dict(
   slug="seven-hires",
-  l1="I REPLACED 7 HIRES WITH AI", l2="(the roles a founder actually needs first)",
+  l1="I REPLACED 7 EMPLOYEES", l2="(with icons)",
   rows=[("Elicit","multi","The researcher. Reads the papers you never will"),
         ("Claude","Claude","The copywriter. Nobody clocks it as AI"),
         ("Recraft","in house","The designer. Brand assets that stay on brand"),
@@ -108,7 +122,7 @@ SPECS = {
         ("Ultron","Claude","The SDR and the closer. Two of these seven, in one seat")]),
 "05": dict(
   slug="pipeline",
-  l1="I DO NOT TRACK DEALS ANY MORE", l2="(5 AI tools run the pipeline for me)",
+  l1="I DON'T TRACK DEALS ANYMORE", l2="(5 apps do it for me)",
   rows=[("Fireflies","multi","Records the call and writes what was actually agreed"),
         ("Apollo","in house","Finds who is worth talking to"),
         ("Instantly","in house","Sends it and keeps the inbox warm"),
@@ -116,14 +130,14 @@ SPECS = {
         ("Ultron","Claude","Qualifies, handles the objection, drafts the close plan")]),
 "06": dict(
   slug="morning",
-  l1="MY 4 STEP AI MORNING", l2="(the same 4 apps, before 9am, every day)",
+  l1="MY 4-STEP DAILY AI SYSTEM", l2="(for peace and profit)",
   rows=[("Superwhisper","local","Five minutes of talking and the brain is out"),
         ("NotebookLM","Gemini","Yesterday's material as a briefing you can question"),
         ("Ultron","Claude","The overnight replies, sorted and answered"),
         ("Codex","OpenAI","One thing shipped before the first meeting")]),
 "07": dict(
   slug="instead-of-an-agency",
-  l1="7 AI APPS I USE INSTEAD OF AN AGENCY", l2="(all the marketing, none of the retainer)",
+  l1="7 AI APPS I USE INSTEAD OF AN AGENCY", l2="(same work, none of the retainer)",
   rows=[("Gemini","Gemini 3.6","The strategist. Angles, competitors, positioning"),
         ("Gamma","multi","The deck, in a minute"),
         ("Canva","multi","The static assets"),
@@ -133,7 +147,7 @@ SPECS = {
         ("Ultron","Claude","Writes the posts and the sequences in your voice")]),
 "08": dict(
   slug="second-brain",
-  l1="I TURNED MY BRAIN INTO SOFTWARE", l2="(6 AI tools hold everything I know)",
+  l1="I TURNED MY BRAIN INTO A SOFTWARE", l2="(6 tools now think for me)",
   rows=[("Mem","multi","Everything you capture, sorted without you"),
         ("Readwise","multi","Everything you read, resurfaced later"),
         ("Limitless","in house","Everything you said, all day"),
@@ -142,14 +156,14 @@ SPECS = {
         ("Ultron","Claude","Every account and contact, researched once and remembered")]),
 "09": dict(
   slug="most-loyal",
-  l1="MY MOST LOYAL EMPLOYEE IS AN AI", l2="(4 tools that never called in sick)",
+  l1="MY MOST LOYAL EMPLOYEE IS AN AI", l2="(they never ask for a raise)",
   rows=[("Zapier","multi","The plumbing. Boring, and it never once broke"),
         ("Cal.com","none","Books the meeting while you sleep"),
         ("Intercom Fin","multi","Answers support at 3am, in your tone"),
         ("Ultron","Claude","Works the pipeline overnight. Nothing sends without you")]),
 "10": dict(
   slug="survivors",
-  l1="I WASTED $500 ON AI APPS", l2="(these 7 are the only ones I kept)",
+  l1="I WISH I FOUND THESE 7 AI APPS", l2="(before burning out)",
   rows=[("Claude Cowork","Claude","The only one that touches your actual files"),
         ("Framer","multi","The site, live the same afternoon"),
         ("Pika","in house","The only video I actually shipped"),
@@ -159,7 +173,7 @@ SPECS = {
         ("Ultron","Claude","Replaced four separate go to market tools, so it stayed")]),
 "03": dict(
   slug="freedom-pyramid",
-  l1="THE AI FREEDOM PYRAMID", l2="(income on top, 12 tools holding it up)",
+  l1="THE AI FREEDOM PYRAMID", l2="(most founders build it upside down)",
   tiers=[("INCOME", [("Stripe","")]),
          ("LEVERAGE", [("Ultron","Claude"),("Lovable",""),("Clay","")]),
          ("CONTENT", [("Midjourney",""),("Kling 3.0",""),("ElevenLabs","")]),
