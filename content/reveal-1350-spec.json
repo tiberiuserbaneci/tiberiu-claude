@@ -1,0 +1,12 @@
+{
+  "canvas": {"width": 1080, "height": 1350, "aspect": "4:5"},
+  "video": {"duration_s": 7.0, "fps": 30, "frames": 210, "audio": false, "loop": true},
+  "regions": {
+    "header": {"x": 72, "y": 72, "w": 936, "h": 246, "animation": "static"},
+    "separator": {"x": 72, "y": 318, "w": 936, "h": 3, "animation": "static"},
+    "body": {"x": 72, "y": 321, "w": 936, "h": 837, "animation": "reveal_0_to_3s"},
+    "footer": {"x": 72, "y": 1158, "w": 936, "h": 120, "animation": "reveal_0_to_3s"}
+  },
+  "reveal": {"start_s": 0.0, "end_s": 3.0, "direction": "top_to_bottom", "mode": "accumulative", "header_excluded": true},
+  "hold": {"start_s": 3.0, "end_s": 7.0, "motion": "ambient_only"}
+}

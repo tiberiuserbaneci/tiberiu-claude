@@ -1,0 +1,29 @@
+{
+  "source": "reveal_1350.mp4",
+  "verified": {
+    "width": 1080,
+    "height": 1350,
+    "duration_s": 7.0,
+    "fps": 30.0,
+    "frames": 210,
+    "audio_stream": false
+  },
+  "checks": {
+    "canvas_1080x1350": true,
+    "duration_7s": true,
+    "fps_30": true,
+    "audio_absent": true,
+    "reveal_window_0_to_3s": true,
+    "header_static": true,
+    "body_footer_reveal": true
+  },
+  "frames_reviewed": [
+    "0.0s",
+    "1.0s",
+    "3.0s",
+    "5.0s",
+    "6.9s"
+  ],
+  "observation": "OCR and frame review show a persistent hook/header, body grid revealed by about 3s, and a footer/CTA held through the final frame.",
+  "all_pass": true
+}
