@@ -115,6 +115,81 @@ the account's committed core rather than a function of this post.
 
 ---
 
+## 03 · 10 APPS I USED TO BUILD MY 6-FIGURE STARTUP (you can start with the same ten today)
+
+Reel, 7s, static card, 10 rows. Posted **Sun 16 Aug, 3:08pm**. CTA: "Comment TOOLS and I'll send
+you the direct link to my workflows". **STILL IN TRIAL and the newest of the three**, so its rates
+are early-life and will most likely settle downward as reach widens. IG trials are served to non
+followers only, so this audience is cold by construction.
+
+| Raw | | Computed on reach (1,357) | |
+|---|---|---|---|
+| Views | 1,975 | Views / reach | 1.46 |
+| Reach | 1,357 | Saves / reach | **4.72%** |
+| Interactions | 108 | Likes / reach | 1.70% |
+| Saves | 64 | **Shares / reach** | **1.25%** |
+| Likes | 23 | Comments / reach | 0.15% |
+| Shares | 17 | Follows / reach | 0.22% |
+| Comments | 2 | Saves / interactions | 59.3% |
+| Follows | 3 | Saves : likes | **2.78 : 1** |
+| Hook rate | 42.3% | Avg watch time | 0:05 of 0:07 |
+| Hold rate | 28.8% | | |
+
+---
+
+## What the three together establish
+
+### Hook rate, ranked
+
+| Hook | Hook rate |
+|---|---|
+| 6 APPS TO RUN YOUR LIFE (like a real CEO) | **52.5%** |
+| 10 APPS I USED TO BUILD MY 6-FIGURE STARTUP (you can start with the same ten today) | 42.3% |
+| 7 AI TOOLS TO SUPERCHARGE YOUR BUSINESS (the third pays for the rest) | 40.6% |
+
+Identity plus a subject everyone has wins the cold open. A generic business verb loses it.
+
+### THE FINDING THAT MATTERS MOST: EACH HOOK TYPE BUYS A DIFFERENT MECHANIC
+
+**Shares are where 03 separates: 1.25% of reach against 0.51% and 0.53%.** Two and a half times the
+other two, and shares are the highest quality distribution on the platform because a share puts the
+post inside somebody's DMs. `I USED TO BUILD MY 6-FIGURE STARTUP (you can start with the same ten
+today)` is proof plus permission, and that is the shape a person forwards to a partner or a friend:
+"look, we could do this". The other two hooks are things you keep for yourself.
+
+So the levers are not one ladder, they are three doors:
+
+| Hook shape | What it buys |
+|---|---|
+| identity + your life | the widest cold reach (best hook rate) |
+| proof + permission | shares, so person to person distribution |
+| generic business verb | nothing extra |
+
+**03 also inverts the like profile: fewer likes (23 v 32 v 32) with the most saves and shares.**
+Saves to likes 2.78 : 1, the highest of the three. This is a utility and aspiration post, not a
+likeable one, and on this account that trade is clearly worth taking.
+
+**COMMENTS: 2, 1, 2. Third confirmation, so this is no longer a hypothesis.** Three different
+keyword CTAs (CEO, TOOLS, TOOLS) and three different promises (direct links, the full 7-tool pyramid
+stack, the direct link to my workflows) all landed on the same floor. The complete card leaves
+nothing to ask for. **Withholding is the only untested fix.**
+
+**FOLLOWS: 3, 3, 3.** Exactly three, three times. The follow decision is untouched by hook shape,
+reach, saves or shares. Whatever drives a follow on this account, none of these posts contain it.
+
+**HOLD drifts down as rows go up: 31.3 (6 rows), 30.8 (7 rows), 28.8 (10 rows)**, and average watch
+fell from 6s to 5s between 02 and 03. Weak signal at three points, but it is the direction you would
+expect: ten rows cannot be read inside a 7s loop, so some viewers stop trying. Worth watching rather
+than acting on yet.
+
+### Open question that affects all comparisons
+
+**Were 01 and 02 also trials, or did they publish straight to followers?** 03 is a trial, so its
+audience is entirely cold. If the other two were served partly to followers, then the save and share
+rates are not measured on the same kind of audience, and the ranking above is softer than it looks.
+
+---
+
 ## Template for the next entry
 
 Send: views, reach, interactions, likes, comments, shares, saves, follows, hook rate, hold rate,
