@@ -236,6 +236,73 @@ Both are real, and (b) is a reason not to over-invest in comments yet.
 3. **Use proof-plus-permission hooks for shares.** 1.25% on 03 is the only lever that compounds by
    itself: a share lands in somebody's DMs and buys reach that costs nothing.
 
+
+---
+
+## THE THREE LOSERS, and what they overturn
+
+Account context (operator, 2026-08-16): **~4 months old, ~100 posts, 205 followers.** Sequence of
+the seven discussed: **median, weak, weak, GOOD, GOOD, GOOD, weak.** All videos 7s. Loser reach
+~200 views each, so rates below are on an approximate 200 and should be read as ballpark.
+
+| | Saves | Shares | Comments | Likes | Hook | Hold | Avg watch |
+|---|---|---|---|---|---|---|---|
+| L1 · 4 APPS WORTH INVESTING IN | 5 = 2.5% | 2 = 1.0% | 2 = **1.0%** | 6 | **53.0%** | 15.6% | 0:08 (loops) |
+| L2 · 4 AI APPS THAT RUN MY BUSINESS FOR ME | 8 = **4.0%** | 6 = **3.0%** | 0 | 1 | 39.0% | 9.8% | 0:04 |
+| L3 · 6 TOOLS THAT REPLACED 6 EMPLOYEES (trial) | 5 = 2.5% | 4 = 2.0% | 0 | 1 | 38.2% | **33.3%** | 0:04 |
+| *winners, for comparison* | *3.5 to 4.7%* | *0.5 to 1.25%* | *0.08 to 0.15%* | *23 to 32* | *40.6 to 52.5%* | *28.8 to 31.3%* | *5 to 6s* |
+
+### 1. Account maturation is ruled out
+
+The three winners sit in the middle of the sequence with weak posts before and after, on a four
+month old account with a hundred posts behind it. The alternative explanation I raised is dead.
+
+### 2. My bracket theory is NOT supported, and I am retracting it
+
+**L2 has no bracket, is about MY business, and earned 4.0% saves and 3.0% shares** on its small
+reach: per-viewer rates better than all three winners. The people who saw it responded very well.
+There were only 200 of them.
+
+So the losers did not fail because the copy failed to earn a save. **They failed because they were
+never shown.** Why they were not shown is not readable from the copy, and I presented a copy-based
+explanation as if it were established. It was not.
+
+### 3. Hook rate is confirmed irrelevant to outcome
+
+53.0% was the highest hook rate of all seven posts and it belongs to a loser. Closed.
+
+### 4. NEW AND ACTIONABLE: a vague hook buys comments
+
+**L1 took 2 comments from ~200 people, so about 1.0%, against 0.08 to 0.15% on the winners: seven
+to twelve times the rate.** It is the only one of the seven that pulled comments at a usable level.
+
+The reason is in the title: `4 APPS WORTH INVESTING IN` **does not say which apps**. Nothing is
+promised, so the viewer asks. This confirms from a second direction what the winners' dead CTAs
+implied, and now it is measured rather than assumed:
+
+**Vagueness buys comments. Specificity buys saves. One hook cannot have both.**
+
+That is a choice per post, not a problem to fix. If a post is meant to feed the DM funnel, withhold
+the list in the hook. If it is meant to be saved, name everything.
+
+### 5. What still cannot be explained, stated plainly
+
+The three winners were **consecutive**. In a sequence of seven with three successes, three landing
+adjacent happens by chance 5 times in 35, about 14%. Suggestive, nowhere near proof. But if
+momentum is real, then some part of what I analysed as hook properties is position in the sequence,
+and **seven posts cannot separate the two.**
+
+Hold rate is the best remaining candidate for the distribution gate: winners cluster tightly at
+28.8 to 31.3% against 9.8 and 15.6% on two losers. **L3 breaks it at 33.3%**, higher than every
+winner, so it is not a rule.
+
+### 6. The decision this leads to
+
+If distribution is substantially lottery and momentum, **it is not the controllable lever.** What is
+controllable is what happens when a post does get distribution, and there the account loses 76 of
+the 79 people who valued it enough to save. **Follows remains the only fully controllable problem**,
+and the three fixes above it stand.
+
 ---
 
 ## Template for the next entry
