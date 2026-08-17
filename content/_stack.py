@@ -171,6 +171,41 @@ SPECS = {
         ("Manus","multi","The agent that finished instead of describing"),
         ("Ramp","none","The spend you can finally see"),
         ("Ultron","Claude","Replaced four separate go to market tools, so it stayed")]),
+# ============ THE THREE TRIAL VARIANTS (2026-08-16) ============
+# Designed as an experiment, not as three nice posts: each changes ONE variable and has ONE
+# target metric, everything else held constant, all three in trial so the audience is cold and
+# comparable. Baselines from analysis/ig-reel-metrics.md across seven measured posts.
+"A": dict(
+  slug="test-a-follows",
+  mast='THE FOUNDER STACK <b>01 / 20</b>',
+  foot='Follow <em>@tiberiu.ai</em> for a new stack every Tuesday',
+  l1="6 SYSTEMS EVERY FOUNDER SHOULD HAVE", l2="(this is where a job becomes a business)",
+  rows=[("Fireflies","multi","Every call recorded and written up without you"),
+        ("Attio","multi","The pipeline that updates itself"),
+        ("Reclaim","in house","Your calendar defends itself"),
+        ("Gumloop","multi","The daily jobs run whether you remember or not"),
+        ("Notion","multi","One place everything lands"),
+        ("Ultron","Claude","Research, outbound and deals in one seat. You approve, it sends")]),
+"B": dict(
+  slug="test-b-comments",
+  l1="3 AI TOOLS I WOULD NEVER TELL", l2="(a competitor about)",
+  rows=[("Perplexity","multi","The obvious one. Research with sources you can check"),
+        ("Ultron","Claude","Outbound and deals in one seat, and it waits for your yes"),
+        ("???","multi","Turns one call into the proposal, before you stand up"),
+        ("???","in house","Writes a week of posts in your voice in one sitting"),
+        ("???","multi","Finds the accounts your competitors have not called yet")]),
+"C": dict(
+  slug="test-c-shares",
+  l1="8 APPS I USED TO GROW WITHOUT HIRING", l2="(you can start with the same eight today)",
+  foot='Send this to whoever you were about to hire',
+  rows=[("Apollo","in house","Finds who is worth talking to"),
+        ("Instantly","in house","Sends it and keeps the inbox warm"),
+        ("Gamma","multi","The deck, in a minute"),
+        ("Framer","multi","The site, live the same afternoon"),
+        ("Krea","multi","Images fast enough to iterate on a call"),
+        ("Mem","multi","Everything you capture, sorted without you"),
+        ("Cal.com","none","Books the meeting while you sleep"),
+        ("Ultron","Claude","The SDR and the closer you did not hire")]),
 "03": dict(
   slug="freedom-pyramid",
   l1="THE AI FREEDOM PYRAMID", l2="(most founders build it upside down)",
@@ -183,7 +218,19 @@ SPECS = {
 
 
 def row_html(tool, engine, desc):
+    """One row. A tool named '???' renders LOCKED: the job is shown, the name is not.
+
+    Variant B tests whether withholding on the FRAME moves comments. The one measured thing that
+    ever pulled comments on this account was a vague hook ('4 APPS WORTH INVESTING IN', 1.0% of
+    reach against 0.08 to 0.15% on the winners), so here the vagueness is in the card itself and
+    the keyword unlocks something the frame genuinely does not contain.
+    """
     is_u = tool == "Ultron"
+    if tool == "???":
+        return ('<div class="row lock"><span class="tile lk">?</span>'
+                '<span class="tx"><span class="top"><span class="nm bar"></span>'
+                f'<span class="chip">{engine}</span></span>'
+                f'<span class="ds">{desc}</span></span></div>')
     tile = ultron_mark() if is_u else mark(tool)
     return (f'<div class="row{" ult" if is_u else ""}">{tile}'
             f'<span class="tx"><span class="top"><span class="nm">{tool}</span>'
@@ -222,7 +269,8 @@ def page(spec):
   font-family:'DM Sans',sans-serif}}
 /* THE HOOK. The only large thing in the frame, in the archive's own format:
    caps claim, then the payoff in brackets, lower case. */
-.band{{position:absolute;left:0;top:0;width:{W}px;height:{BAND_H}px;
+.band{{position:absolute;left:0;top:{44 if spec.get("mast") else 0}px;width:{W}px;
+  height:{BAND_H - (44 if spec.get("mast") else 0)}px;
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;
   padding:0 {PAD}px}}
 .h1{{font-size:{52 if len(spec['l1']) < 30 else 44}px;font-weight:800;letter-spacing:-1.2px;
@@ -281,12 +329,28 @@ def page(spec):
 .av{{width:46px;height:46px;border-radius:50%;object-fit:cover;
   box-shadow:0 0 0 2px #fff,0 0 0 4px rgba(200,70,35,.34)}}
 .foot .txt{{font-size:25px;font-weight:600;letter-spacing:-.4px;color:#161412;white-space:nowrap}}
+.foot .txt em{{font-style:normal;font-weight:800;color:var(--book)}}
+/* VARIANT A: the series strip. A save is terminal unless the frame says more exist, and follows
+   have been flat at exactly 3 across every post measured. This is the cheapest thing that can
+   turn "I have the card" into "there are nineteen more". */
+.mast{{position:absolute;left:0;top:0;width:{W}px;height:44px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'DM Mono',monospace;font-size:15px;font-weight:500;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--muted)}}
+.mast b{{color:var(--book);font-weight:500;margin-left:.5em}}
+/* VARIANT B: a locked row. The job is legible, the name is not. */
+.tile.lk{{background:rgba(200,70,35,.07);border-color:rgba(200,70,35,.28);
+  color:var(--book);font-family:'DM Sans',sans-serif;font-weight:800}}
+.nm.bar{{display:inline-block;width:190px;height:26px;border-radius:7px;
+  background:repeating-linear-gradient(115deg,#E6E3DE 0 9px,#F2F0EC 9px 18px)}}
+.row.lock .ds{{color:#8C877E}}
 </style></head>
 <body><div id="art">
+  {f'<div class="mast">{spec["mast"]}</div>' if spec.get("mast") else ''}
   <div class="band"><span class="h1">{spec['l1']}</span><span class="h2">{spec['l2']}</span></div>
   <div class="edge"></div>
   <div class="body">{body}</div>
-  <div class="foot">{avatar()}<span class="txt">Follow for more AI tools and productivity hacks</span></div>
+  <div class="foot">{avatar()}<span class="txt">{spec.get("foot", "Follow for more AI tools and productivity hacks")}</span></div>
 </div></body></html>"""
 
 

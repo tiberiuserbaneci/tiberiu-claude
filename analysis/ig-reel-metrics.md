@@ -310,3 +310,53 @@ and the three fixes above it stand.
 Send: views, reach, interactions, likes, comments, shares, saves, follows, hook rate, hold rate,
 length, post time, and the caption's CTA. The two numbers that decide most are **saves / reach**
 and **comments / reach**, because they separate "useful" from "converting".
+
+---
+
+## THE TRIAL EXPERIMENT, posted 2026-08-17
+
+Three variants, designed as an experiment rather than three posts. Each changes **one** variable and
+has **one** target metric. Everything else is held constant: 1080x1350 card, 7s, the proven layout,
+Ultron as a row, all three in trial so the audience is cold and comparable.
+
+| | A · test-a-follows | B · test-b-comments | C · test-c-shares |
+|---|---|---|---|
+| Target metric | **follows / reach** | **comments / reach** | **shares / reach** |
+| Baseline | 0.15 to 0.22% | 0.08 to 0.15% | 1.25% |
+| Success | > 0.5% | > 1.0% | > 2.0% |
+| Variable changed | series number in the mast + a footer that names what is next | three rows LOCKED on the frame | a forward CTA instead of a comment CTA |
+| Hook shape | identity | vague (the 53% shape) | proof + permission |
+| Hook | 6 SYSTEMS EVERY FOUNDER SHOULD HAVE (this is where a job becomes a business) | 3 AI TOOLS I WOULD NEVER TELL (a competitor about) | 8 APPS I USED TO GROW WITHOUT HIRING (you can start with the same eight today) |
+| Rows | 6 named | 2 named + 3 locked | 8 named |
+| Caption CTA | "Follow for Tuesday's stack", no keyword | "Comment SECRET and I will send all three names" | "Send this to whoever you were about to hire" |
+
+### Why each
+
+**A.** Follows have been exactly 3 on every post measured, and it is the only fully controllable
+problem: each follower raises the floor of the next post. The two cheapest things that could move it
+are a series number, which turns a save from "I have the card" into "there are nineteen more", and a
+footer that names what is coming instead of the formula "Follow for more AI tools and productivity
+hacks".
+
+**B.** The only measured thing that ever pulled comments here was vagueness: `4 APPS WORTH INVESTING
+IN` took ~1.0% of reach against 0.08 to 0.15% on the winners, because it does not say which apps. So
+this puts the vagueness in the CARD, not only the hook: three rows show the job and withhold the
+name, and the keyword unlocks something the frame genuinely does not contain. **Saves are expected to
+fall.** That is the price of the test, not a defect.
+
+**C.** Shares are the only lever that compounds by itself, since a share lands in somebody's DMs and
+buys reach for nothing. Proof plus permission produced 1.25% once, and one data point is not a
+finding. This repeats the shape and swaps the comment CTA for a forward CTA.
+
+### How to read it tomorrow
+
+Each variant is judged **only on its own target metric**. Cross-comparisons are not valid: B is
+built to lose saves, and C is built to ignore comments.
+
+- **If A moves follows above 0.5%,** the series number and the named promise go into all ten
+  materials permanently.
+- **If B moves comments above 1.0%,** withholding is confirmed and every post gets a choice made
+  deliberately: vague and withheld for DM capture, or complete and specific for saves.
+- **If C beats 1.25% shares,** proof plus permission becomes the default hook shape for reach.
+- **If none moves,** then the account's ceiling is distribution rather than copy, which is what the
+  seven-post record already hints at, and the next test has to be volume and timing instead of words.
