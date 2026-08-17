@@ -171,33 +171,38 @@ SPECS = {
         ("Manus","multi","The agent that finished instead of describing"),
         ("Ramp","none","The spend you can finally see"),
         ("Ultron","Claude","Replaced four separate go to market tools, so it stayed")]),
-# ============ THE THREE TRIAL VARIANTS (2026-08-16) ============
-# Designed as an experiment, not as three nice posts: each changes ONE variable and has ONE
-# target metric, everything else held constant, all three in trial so the audience is cold and
-# comparable. Baselines from analysis/ig-reel-metrics.md across seven measured posts.
+# ============ THE THREE TRIAL VARIANTS (2026-08-16, v2) ============
+# Operator: "ascunde ultron de pe toate si pune in loc de follow comment CTA pentru reveal ultron".
+# So all three now replicate ONE mechanic instead of testing three: Ultron is off the frame and is
+# what the keyword unlocks. That trades three n=1 tests for one hypothesis measured three times,
+# which is the better bet. The mast series number stays on all three because it is free, and the
+# hooks stay different so we still learn which hook shape carries a reveal post best.
 "A": dict(
-  slug="test-a-follows",
+  slug="test-a-systems",
   mast='THE FOUNDER STACK <b>01 / 20</b>',
-  foot='Follow <em>@tiberiu.ai</em> for a new stack every Tuesday',
+  foot='Comment SYSTEMS for the one I did not name',
   l1="6 SYSTEMS EVERY FOUNDER SHOULD HAVE", l2="(this is where a job becomes a business)",
   rows=[("Fireflies","multi","Every call recorded and written up without you"),
         ("Attio","multi","The pipeline that updates itself"),
         ("Reclaim","in house","Your calendar defends itself"),
         ("Gumloop","multi","The daily jobs run whether you remember or not"),
         ("Notion","multi","One place everything lands"),
-        ("Ultron","Claude","Research, outbound and deals in one seat. You approve, it sends")]),
+        ("LOCKED","Claude","Does four of the five above, in one seat. I am not naming it here")]),
 "B": dict(
-  slug="test-b-comments",
+  slug="test-b-secret",
+  mast='THE FOUNDER STACK <b>02 / 20</b>',
+  foot='Comment SECRET and I will name all three',
   l1="3 AI TOOLS I WOULD NEVER TELL", l2="(a competitor about)",
   rows=[("Perplexity","multi","The obvious one. Research with sources you can check"),
-        ("Ultron","Claude","Outbound and deals in one seat, and it waits for your yes"),
-        ("???","multi","Turns one call into the proposal, before you stand up"),
-        ("???","in house","Writes a week of posts in your voice in one sitting"),
-        ("???","multi","Finds the accounts your competitors have not called yet")]),
+        ("Canva","multi","The other obvious one. Everything visual, fast"),
+        ("???","multi","Turns one call into the proposal before you stand up"),
+        ("???","in house","Finds the accounts your competitors have not called yet"),
+        ("LOCKED","Claude","Runs the two above overnight and waits for your yes")]),
 "C": dict(
-  slug="test-c-shares",
+  slug="test-c-grow",
+  mast='THE FOUNDER STACK <b>03 / 20</b>',
+  foot='Comment EIGHT for the eighth one',
   l1="8 APPS I USED TO GROW WITHOUT HIRING", l2="(you can start with the same eight today)",
-  foot='Send this to whoever you were about to hire',
   rows=[("Apollo","in house","Finds who is worth talking to"),
         ("Instantly","in house","Sends it and keeps the inbox warm"),
         ("Gamma","multi","The deck, in a minute"),
@@ -205,7 +210,7 @@ SPECS = {
         ("Krea","multi","Images fast enough to iterate on a call"),
         ("Mem","multi","Everything you capture, sorted without you"),
         ("Cal.com","none","Books the meeting while you sleep"),
-        ("Ultron","Claude","The SDR and the closer you did not hire")]),
+        ("LOCKED","Claude","The eighth is the SDR I never hired. Ask me for it")]),
 "03": dict(
   slug="freedom-pyramid",
   l1="THE AI FREEDOM PYRAMID", l2="(most founders build it upside down)",
@@ -231,6 +236,16 @@ def row_html(tool, engine, desc):
                 '<span class="tx"><span class="top"><span class="nm bar"></span>'
                 f'<span class="chip">{engine}</span></span>'
                 f'<span class="ds">{desc}</span></span></div>')
+    if tool == "LOCKED":
+        # THE REVEAL ROW (operator, 2026-08-16): "ascunde ultron de pe toate si pune in loc de
+        # follow comment CTA pentru reveal ultron". Ultron leaves the frame and becomes the thing
+        # the keyword unlocks. An unknown brand standing beside known tools asks to be recognised
+        # and buys nothing; the one you refuse to name is the most interesting row on the card.
+        # It is described by what it DOES, so it reads as the row that makes the rest look manual.
+        return ('<div class="row reveal"><span class="tile lk">?</span>'
+                '<span class="tx"><span class="top"><span class="nm bar wide"></span>'
+                f'<span class="chip hot">{engine}</span></span>'
+                f'<span class="ds hot">{desc}</span></span></div>')
     tile = ultron_mark() if is_u else mark(tool)
     return (f'<div class="row{" ult" if is_u else ""}">{tile}'
             f'<span class="tx"><span class="top"><span class="nm">{tool}</span>'
@@ -344,6 +359,13 @@ def page(spec):
 .nm.bar{{display:inline-block;width:190px;height:26px;border-radius:7px;
   background:repeating-linear-gradient(115deg,#E6E3DE 0 9px,#F2F0EC 9px 18px)}}
 .row.lock .ds{{color:#8C877E}}
+/* the reveal row is the card's centre of gravity, not a gap in it */
+.row.reveal{{background:rgba(200,70,35,.06);border:1px solid rgba(200,70,35,.32);
+  border-radius:14px;padding:0 14px;margin-top:6px}}
+.nm.bar.wide{{width:250px;background:repeating-linear-gradient(115deg,
+  rgba(200,70,35,.20) 0 9px,rgba(200,70,35,.09) 9px 18px)}}
+.chip.hot{{color:var(--book);background:rgba(200,70,35,.10)}}
+.ds.hot{{color:#7A5245;font-weight:600}}
 </style></head>
 <body><div id="art">
   {f'<div class="mast">{spec["mast"]}</div>' if spec.get("mast") else ''}

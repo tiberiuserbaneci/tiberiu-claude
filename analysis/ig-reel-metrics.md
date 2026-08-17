@@ -313,50 +313,50 @@ and **comments / reach**, because they separate "useful" from "converting".
 
 ---
 
-## THE TRIAL EXPERIMENT, posted 2026-08-17
+## THE TRIAL EXPERIMENT, v2 (operator's revision)
 
-Three variants, designed as an experiment rather than three posts. Each changes **one** variable and
-has **one** target metric. Everything else is held constant: 1080x1350 card, 7s, the proven layout,
-Ultron as a row, all three in trial so the audience is cold and comparable.
+Operator: **"ascunde ultron de pe toate si pune in loc de follow comment CTA pentru reveal ultron."**
 
-| | A · test-a-follows | B · test-b-comments | C · test-c-shares |
+This is a better mechanic than the one I designed, and it fixes the thing every dead CTA had in
+common. An unknown brand standing beside known tools asks to be recognised and buys nothing. The
+tool you refuse to name is the most interesting row on the card, and the keyword now unlocks
+something the frame genuinely does not contain. Ultron also gets introduced in a DM, one to one,
+with context, instead of as a logo on a picture.
+
+**The trade, stated plainly:** with the same CTA on all three, these stop being three separate tests
+and become **one hypothesis measured three times.** The isolated follows test is gone. That is worth
+it: three posts on one strong hypothesis beat three posts each carrying n=1. The mast series number
+stays on all three because it costs nothing, and the hooks stay different so we still learn which
+hook shape carries a reveal post best.
+
+| | A · systems | B · secret | C · grow |
 |---|---|---|---|
-| Target metric | **follows / reach** | **comments / reach** | **shares / reach** |
-| Baseline | 0.15 to 0.22% | 0.08 to 0.15% | 1.25% |
-| Success | > 0.5% | > 1.0% | > 2.0% |
-| Variable changed | series number in the mast + a footer that names what is next | three rows LOCKED on the frame | a forward CTA instead of a comment CTA |
-| Hook shape | identity | vague (the 53% shape) | proof + permission |
 | Hook | 6 SYSTEMS EVERY FOUNDER SHOULD HAVE (this is where a job becomes a business) | 3 AI TOOLS I WOULD NEVER TELL (a competitor about) | 8 APPS I USED TO GROW WITHOUT HIRING (you can start with the same eight today) |
-| Rows | 6 named | 2 named + 3 locked | 8 named |
-| Caption CTA | "Follow for Tuesday's stack", no keyword | "Comment SECRET and I will send all three names" | "Send this to whoever you were about to hire" |
+| Hook shape | identity | vague | proof + permission |
+| Named rows | 5 | 2 + 2 unnamed | 7 |
+| Reveal row | "Does four of the five above, in one seat" | "Runs the two above overnight and waits for your yes" | "The eighth is the SDR I never hired" |
+| Keyword | SYSTEMS | SECRET | EIGHT |
+| Mast | 01 / 20 | 02 / 20 | 03 / 20 |
 
-### Why each
+**Ultron is nowhere on any of the three frames.** The reveal row carries only what it DOES and a
+`Claude` engine chip, which is a true clue rather than a tease.
 
-**A.** Follows have been exactly 3 on every post measured, and it is the only fully controllable
-problem: each follower raises the floor of the next post. The two cheapest things that could move it
-are a series number, which turns a save from "I have the card" into "there are nineteen more", and a
-footer that names what is coming instead of the formula "Follow for more AI tools and productivity
-hacks".
+### The pre-registered read
 
-**B.** The only measured thing that ever pulled comments here was vagueness: `4 APPS WORTH INVESTING
-IN` took ~1.0% of reach against 0.08 to 0.15% on the winners, because it does not say which apps. So
-this puts the vagueness in the CARD, not only the hook: three rows show the job and withhold the
-name, and the keyword unlocks something the frame genuinely does not contain. **Saves are expected to
-fall.** That is the price of the test, not a defect.
+Primary metric across all three: **comments / reach.** Baseline 0.08 to 0.15% on the four complete
+cards, and ~1.0% on the one vague hook that withheld its list.
 
-**C.** Shares are the only lever that compounds by itself, since a share lands in somebody's DMs and
-buys reach for nothing. Proof plus permission produced 1.25% once, and one data point is not a
-finding. This repeats the shape and swaps the comment CTA for a forward CTA.
+- **If the three average above 1.0%,** withholding is confirmed as the DM mechanic and Ultron stays
+  off the frame permanently. CLAUDE.md 31 gets rewritten a third time, and only then.
+- **If comments move but saves collapse below ~2%,** the mechanic works and the cost is real, so it
+  becomes a per-post choice rather than the default: withhold for DM capture, name everything for
+  saves.
+- **If comments do not move even with the name withheld on the frame,** then comment CTAs do not work
+  at 205 followers regardless of construction, and we stop spending posts on them.
+- **Secondary, watch anyway:** follows, because the mast number is on all three and has never been
+  tested; and shares on C, since proof plus permission produced 1.25% once.
 
-### How to read it tomorrow
-
-Each variant is judged **only on its own target metric**. Cross-comparisons are not valid: B is
-built to lose saves, and C is built to ignore comments.
-
-- **If A moves follows above 0.5%,** the series number and the named promise go into all ten
-  materials permanently.
-- **If B moves comments above 1.0%,** withholding is confirmed and every post gets a choice made
-  deliberately: vague and withheld for DM capture, or complete and specific for saves.
-- **If C beats 1.25% shares,** proof plus permission becomes the default hook shape for reach.
-- **If none moves,** then the account's ceiling is distribution rather than copy, which is what the
-  seven-post record already hints at, and the next test has to be volume and timing instead of words.
+**One instruction that affects whether any of this is readable:** post the three close together,
+ideally the same day at similar hours. The seven-post record suggests position in the sequence may
+matter as much as the words, and spreading them over three days makes the variable inseparable from
+the day.
