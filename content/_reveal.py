@@ -16,11 +16,11 @@ liberty is colouring one word of the hook.
 THE TRANSITION, measured rather than described:
   the picture's mean luminance runs 4.1 -> 232.4, which is a multiplier of 0.018 -> 0.999
   it is LINEAR: a straight-line fit over the ramp leaves a 1.8 grey level residual out of 232
-  the ramp ends at exactly 4.20s, and the frame then holds unchanged to 6.93s
+  the ramp ends at exactly 3.00s, and the frame then holds unchanged to 7.00s
   THE BAND NEVER CHANGES: 232.4 at t=0, 232.5 at t=6.9. The hook is at full strength in frame
   one and is never part of the fade. Anything that dims the hook is not this format.
 
-So the fade is a black sheet over the PICTURE ONLY, opacity 0.982 to 0, linear, 4.20s.
+So the reveal is a black sheet over the BODY and FOOTER, opacity 0.982 to 0, linear, 3.00s; the HEADER stays fixed.
 
 THE HOOK, read off the band crop: two centred lines in a neutral grotesque, line one heavy
 with a capitalised phrase inside it, line two regular. The model runs 16 and 21 characters, so
@@ -34,10 +34,10 @@ import argparse, base64, importlib.util, pathlib, re, subprocess, sys
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
 
-# measured geometry at 1080x1920. The vertical numbers are the operator's and are frozen.
-BAND_TOP, BAND_H = 282, 187
-PIC_TOP = 469
-RAMP, DUR = 4.20, 6.93
+# measured geometry for the 1080x1350 infographic card. Header is fixed at the top; body and footer reveal below it.
+BAND_TOP, BAND_H = 0, 187
+PIC_TOP = BAND_TOP + BAND_H
+RAMP, DUR = 3.00, 7.00
 ALPHA0 = 0.982
 
 # EDGE TO EDGE HORIZONTALLY. Operator 2026-08-13, correcting my reading of the previous note:
@@ -63,16 +63,12 @@ PAD = 0            # paper-coloured inset inside the picture, raise it if labels
 # never needed to be: they are both large enough to read as margin, which is the whole job.
 PIC_H = 1093                                 # the reference's, not a ratio of my own choosing
 
-# THE CARD IS 3:4 WITH THE HEADER INSIDE IT. Operator 2026-08-13: "da mi l in format 3:4 - nu
-# du backgroundul pana jos complet doar adauga cat iti mai trebuie pentru un 3:4 cu headerul
-# inclus. Pe zona care se adauga pune si un footer ca sa nu ramana goala."
-#
-# The arithmetic closes exactly, which is why this shape is the right one rather than a
-# compromise: 1080 wide at 3:4 is 1440 tall, and 187 of band plus 1093 of picture is 1280, so
-# the strip that makes it 3:4 is 160px - enough for a footer and not a pixel spare.
-CARD_H = CARD_W * 4 // 3                     # 1440
-FOOT_H = CARD_H - BAND_H - PIC_H             # 160
-FOOT_TOP = PIC_TOP + PIC_H                   # 1562
+# THE OUTPUT CARD IS THE REQUESTED 1080x1350 INFOGRAPHIC. Header, body and footer occupy
+# the full frame with no black rails: 187px header, 1003px body, 160px footer.
+CARD_H = 1350
+PIC_H = CARD_H - BAND_H - 160                # 1003px body
+FOOT_H = CARD_H - BAND_H - PIC_H             # 160px footer
+FOOT_TOP = PIC_TOP + PIC_H                   # 1190
 
 
 def set_geometry(pic_h: int, foot_h: int) -> None:
@@ -207,11 +203,11 @@ def page(pic_uri: str, l1: str, l2: str, accent: str | None,
     return f"""<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
 <title>reveal</title>
 <style>{fonts}
-/* FILM-META {{"duration":{DUR},"w":1080,"h":1920,"fps":30,"beats":[]}} */
+/* FILM-META {{"duration":{DUR},"w":1080,"h":1350,"fps":30,"beats":[{{"from":0,"to":3,"name":"reveal"}}]}} */
 :root{{--acc:#C84623}}
 *{{box-sizing:border-box;margin:0;padding:0}}
 body{{background:#000;display:flex;justify-content:center}}
-#film{{position:relative;width:1080px;height:1920px;overflow:hidden;background:#000}}
+#film{{position:relative;width:1080px;height:1350px;overflow:hidden;background:#000}}
 
 /* THE BAND. Position and size are the operator's, measured off his model and frozen. */
 /* The band takes the picture's own paper colour, so the two read as one sheet. A hairline
@@ -370,8 +366,9 @@ if __name__ == "__main__":
     print(f"built  {html.relative_to(REPO)}")
     print(f"  band {BAND_TOP}..{BAND_TOP + BAND_H}   picture {PIC_TOP}..{PIC_TOP + PIC_H}   "
           f"footer {FOOT_TOP}..{FOOT_TOP + FOOT_H}")
-    print(f"  card {CARD_W}x{CARD_H} = {CARD_W / CARD_H:.4f} (3:4 = 0.7500)   "
-          f"ramp {RAMP}s of {DUR}s")
+    print(f"  card {CARD_W}x{CARD_H} = 1080x1350   "
+          f"header {BAND_TOP}..{BAND_TOP + BAND_H}   body {PIC_TOP}..{PIC_TOP + PIC_H}   "
+          f"footer {FOOT_TOP}..{FOOT_TOP + FOOT_H}   reveal {RAMP}s of {DUR}s")
     if a.render:
         subprocess.run([sys.executable, str(REPO / "content/_film.py"), str(html),
                         "--no-audio"], check=True)
