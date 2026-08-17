@@ -5,7 +5,7 @@ is repeated inside every prompt on purpose, so they never have to be sent togeth
 
 ---
 
-## PROMPT A — keyword SYSTEMS
+## PROMPT A, keyword SYSTEMS
 
 ```
 Build a 7 second Instagram reel, 1080x1920, from a static card. No voiceover, no music needed.
@@ -71,17 +71,27 @@ Deliver: reel.mp4 (1080x1920, 30fps, 7.0s, silent) and card.png (1080x1350).
 ```
 Comment SYSTEMS and I will tell you the one I did not name.
 
-Five of these six are named on the card. The sixth is the one that does most of the work.
+Five of these six are on the card. The sixth is the one doing most of the work, and I left it blank
+on purpose.
 
-Most founders buy tools. Very few build systems. The difference is whether the work still happens
-on the days you do not show up.
+Most founders buy tools. Very few build systems. The difference is not the software, it is whether
+the work still happens on the days you do not show up. For two years everything in my business went
+through me, which meant every delay was me and every dropped follow up was me. I did not need
+motivation. I needed the work to survive a bad week.
 
-Every call written up without me. The pipeline updating itself. My calendar saying no on my behalf.
-The daily jobs running whether I remember them or not. All of it landing in one place.
+Fireflies writes up every call so I stop taking notes I never read.
+Attio keeps the pipeline current without me touching it.
+Reclaim says no to meetings on my behalf.
+Gumloop runs the daily jobs whether I remember them or not.
+Notion is the one place all of it lands.
 
-And then the one I did not name, which quietly does four of those five in a single seat.
+And then the sixth, which quietly does four of those five in a single seat.
 
-That is the whole reason I stopped trying to hire.
+That is the part most people miss. Six separate tools is still six logins and six things to
+remember. The moment one of them does the work of four, you stop being the integration layer, and
+that is when a job starts behaving like a business.
+
+The sixth is the whole reason I stopped trying to hire.
 
 Comment SYSTEMS and it is yours.
 
@@ -90,7 +100,7 @@ Comment SYSTEMS and it is yours.
 
 ---
 
-## PROMPT B — keyword SECRET
+## PROMPT B, keyword SECRET
 
 ```
 Build a 7 second Instagram reel, 1080x1920, from a static card. No voiceover, no music needed.
@@ -145,15 +155,27 @@ Deliver: reel.mp4 (1080x1920, 30fps, 7.0s, silent) and card.png (1080x1350).
 ```
 Comment SECRET and I will name all three.
 
-Two of the five on this card are obvious. I left three of them blank on purpose.
+Two of the five on this card are obvious. Three of them I left blank, and not because they are
+clever.
 
-Not because they are clever. Because they are the reason I quote faster than firms with ten people,
-and I would rather my competitors kept doing it by hand.
+Most people in my line of work still do this by hand. They finish a call, promise a proposal by
+Friday, and write it on Sunday night. They build a list by opening twenty tabs. They follow up when
+they remember, which is to say sometimes. I did all three of those things for two years and I
+thought the problem was discipline.
 
-One turns a call into the proposal before I stand up. One finds the accounts nobody has called yet.
-And the third runs both of those overnight and waits for me to say yes before anything sends.
+Here is the reality
+It was never discipline. It was that nothing happened unless I was the one doing it.
 
-That last one is the only reason the first two are worth having.
+Perplexity does the research and shows me the sources so I can check it.
+Canva does everything visual, faster than briefing anyone.
+The third turns one call into the proposal before I stand up.
+The fourth finds the accounts my competitors have not called yet.
+And the fifth runs both of those overnight and waits for me to say yes before anything sends.
+
+That last one is the only reason the first four are worth having. Tools that produce material still
+leave the sending to you, and the sending is the part that actually loses deals.
+
+I would rather my competitors kept doing this manually. But you are not my competitor.
 
 Comment SECRET and you get all three names.
 
@@ -162,7 +184,7 @@ Comment SECRET and you get all three names.
 
 ---
 
-## PROMPT C — keyword EIGHT
+## PROMPT C, keyword EIGHT
 
 ```
 Build a 7 second Instagram reel, 1080x1920, from a static card. No voiceover, no music needed.
@@ -230,6 +252,10 @@ Cal.com books the meeting while I sleep.
 
 The eighth one does the part I was going to hire for, and it waits for me to approve before
 anything leaves.
+
+That is the part most people miss. You do not need somebody to do the work, you need the work to
+happen without you deciding to start it. A hire gives you capacity and a salary. This gave me
+capacity and left the money in the business.
 
 Comment EIGHT and I will tell you what it is.
 
