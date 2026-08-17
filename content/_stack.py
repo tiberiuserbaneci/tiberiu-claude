@@ -53,7 +53,11 @@ def mark(name: str) -> str:
     if slug and (IC / f"{slug}.svg").exists():
         s = (IC / f"{slug}.svg").read_text()
         s = re.sub(r"<title>.*?</title>", "", s, flags=re.S)
-        s = re.sub(r'\s(width|height)="[^"]*"', "", s)
+        # ROOT TAG ONLY. Stripping width/height everywhere also empties a clipPath's <rect>, and
+        # the whole graphic then clips away: Canva rendered as a blank tile until this was found.
+        m = re.match(r"\s*<svg[^>]*>", s)
+        if m:
+            s = re.sub(r'\s(width|height)="[^"]*"', "", m.group(0)) + s[m.end():]
         return f'<span class="tile"><span class="lg">{s}</span></span>'
     initial = re.sub(r"[^A-Za-z]", "", name)[:1].upper() or "?"
     return f'<span class="tile mono">{initial}</span>'
