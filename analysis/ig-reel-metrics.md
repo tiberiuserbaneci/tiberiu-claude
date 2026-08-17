@@ -182,11 +182,59 @@ fell from 6s to 5s between 02 and 03. Weak signal at three points, but it is the
 expect: ten rows cannot be read inside a 7s loop, so some viewers stop trying. Worth watching rather
 than acting on yet.
 
-### Open question that affects all comparisons
+### The trial caveat, answered and withdrawn
 
-**Were 01 and 02 also trials, or did they publish straight to followers?** 03 is a trial, so its
-audience is entirely cold. If the other two were served partly to followers, then the save and share
-rates are not measured on the same kind of audience, and the ranking above is softer than it looks.
+Operator, 2026-08-16: only 03 was a trial, and **the account has 205 followers**, with the trial
+demographics resembling his own audience.
+
+That makes the caveat far smaller than I claimed. Reach is 1,978 / 1,331 / 1,357 against 205
+followers, so **even if every follower saw every post they are at most 10.4%, 15.4% and 0% of
+reach**. All three posts were measured on a predominantly cold audience. The ranking stands and the
+warning is withdrawn.
+
+---
+
+## THE STRATEGIC READ, once follower count is known
+
+**Reach is 6.5x to 9.7x the follower count.** 1,978 against 205 is 9.7x. The algorithm is pushing
+these hard and the format works on strangers. Distribution is not the problem.
+
+| Measure | Value | Reading |
+|---|---|---|
+| Reach / followers | 6.5x to 9.7x | the format earns cold distribution |
+| Saves / followers | 79 / 205 = **38%** | the content is objectively strong |
+| Likes / followers | ~15%, 15%, 11% | a healthy committed core |
+| **Follows / cold reach** | **3 / ~1,800 = 0.17%** | **this is the bottleneck** |
+| Growth rate | 3 per post | **68 posts to reach 410 followers** |
+
+**There is a distribution machine and no conversion machine.** On 01, seventy nine people valued the
+card enough to save it and three followed. Seventy six took the value and left. The save is a
+terminal action: they have the card, they no longer need the account. Nothing on the frame says
+another nineteen of these exist.
+
+### This corrects the priority I gave after 01 and 02
+
+I said the first fix was comments, via withholding a row. With 205 followers that is the second
+problem. A keyword CTA asks a stranger to expose themselves publicly for an account they do not
+know, so at a ~90% cold audience comments are structurally hard no matter how much is withheld.
+Two mechanisms were confounded and I named only one:
+
+- (a) the complete card leaves nothing to ask for
+- (b) a cold viewer with no relationship rarely comments at all
+
+Both are real, and (b) is a reason not to over-invest in comments yet.
+
+**Follows is the bottleneck, because every follower gained raises the floor of the next post.**
+
+### The three fixes, in impact order
+
+1. **Number the series on the frame.** `STACK 03 / 20` in the mast turns a save into "nineteen more
+   exist". Right now every post looks like a standalone object.
+2. **Name what is next in the footer.** "Follow for more AI tools and productivity hacks" is a
+   formula, not a promise. "Follow, a new stack every Tuesday" is checkable and gives a reason to
+   subscribe rather than save and leave.
+3. **Use proof-plus-permission hooks for shares.** 1.25% on 03 is the only lever that compounds by
+   itself: a share lands in somebody's DMs and buys reach that costs nothing.
 
 ---
 
