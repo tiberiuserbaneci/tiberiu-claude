@@ -1,114 +1,197 @@
 [Attached image: image.png]
-The image is a clean infographic on a light beige/cream background. It shows a large circular arrangement of 10 labeled business ideas around a central laptop illustration.
+The image is a clean, minimalist UI mockup showing a 2-column grid of 10 rounded rectangular cards on a light cream/off-white background. Each card has a thin pale border, a subtle shadow, and a small purple accent line along the top edge on some cards. The overall style is modern, airy, and business/strategy themed.
 
 ## Overall layout
-- The composition is centered vertically and horizontally.
-- In the middle is a stylized laptop with a dark screen.
-- Surrounding the laptop is a large dotted circular ring, with the numbered items placed around the circle at roughly clock positions.
-- Each item has:
-  - a small purple-outlined icon inside a rounded square,
-  - a two-digit number,
-  - a bold uppercase label split across multiple lines.
-- The bottom half of the image has more empty space than the top half.
-- There are no people, no photograph-like objects, and no chart axes or plotted data.
-
-## Central object
-### Laptop graphic
-- A gray laptop is centered.
-- The screen is a dark navy-blue rectangle.
-- On the screen, the text **“AI”** appears in large light purple letters.
-- A small white sparkle/star appears near the upper-right area of the laptop screen.
-- The laptop base is gray with a darker outline.
-
-## Circular diagram / labels
-There is a large dotted circle around the laptop, with faint inner circular guide lines. The items are arranged clockwise starting near the top:
-
-### 01
-- Text: **BORING TOOL EMPIRE**
-- Located near the top center.
-- Number **01** is shown to the left of the label.
-- Small icon: a purple outlined square with a tool-like symbol inside.
-
-### 02
-- Text: **LOCAL DIRECTORY FACTORY**
-- Located in the upper-right quadrant.
-- Number **02** appears beside it.
-- Small icon: a purple outlined square with a small symbol inside.
-
-### 03
-- Text: **TOO-EXPENSIVE SAAS HUNTER**
-- Located on the right side.
-- The label is split across lines and hyphenated at the end of the first line as **TOO-** and continues **EXPENSIVE SAAS HUNTER**.
-- Number **03** appears next to it.
-- Small icon: a purple outlined square with a dollar sign **$** inside.
-
-### 04
-- Text: **DIGITAL PRODUCT FACTORY**
-- Located in the lower-right quadrant.
-- Number **04** is shown near it.
-- Small icon: a purple outlined square with a simple square/box-like symbol.
-
-### 05
-- Text: **AFFILIATE SEO EMPIRE**
-- Located near the bottom center-right.
-- Number **05** appears beside it.
-- Small icon: a purple outlined square with an upward-right arrow/diagonal arrow symbol.
-
-### 06
-- Text: **AI WORKFLOW FACTORY**
-- Located at the bottom center.
-- Number **06** appears next to it.
-- Small icon: a purple outlined square with a gear-like or workflow/automation symbol.
-
-### 07
-- Text: **GAME FACTORY**
-- Located in the lower-left quadrant.
-- Number **07** appears beside it.
-- Small icon: a purple outlined square with a circular target-like symbol.
-
-### 08
-- Text: **COLD EMAIL LEAD MACHINE**
-- Located on the left side, slightly below center.
-- Number **08** appears beside it.
-- Small icon: a purple outlined square with an envelope/mail-like symbol.
-
-### 09
-- Text: **DATA PRODUCT FACTORY**
-- Located on the left side, slightly above the horizontal midline.
-- Number **09** appears beside it.
-- Small icon: a purple outlined square with a document/page-like symbol.
-
-### 10
-- Text: **STARTUP OPPORTUNITY FINDER**
-- Located in the upper-left quadrant.
-- Number **10** appears beside it.
-- Small icon: a purple outlined square with a rocket icon.
+- Canvas: landscape orientation.
+- Background: very light warm cream.
+- Content: 10 cards arranged in **2 columns and 5 rows**.
+- Left column cards are numbered **01, 03, 05, 07, 09**.
+- Right column cards are numbered **02, 04, 06, 08, 10**.
+- Each card contains:
+  - A small square icon in the upper-left.
+  - A large bold title.
+  - A smaller descriptive subtitle.
+  - A small number near the upper-right corner.
+- Some cards have a **thin purple line across the top edge**, acting like a highlight or active state indicator.
 
 ## Colors and styling
-- Background: very light cream/beige.
-- Main text: dark gray-blue / navy, uppercase, bold, sans-serif.
-- Numbers: muted purple.
-- Icons: purple outlines with simple line symbols.
-- Dotted circle: light gray.
-- Laptop outline: gray with darker border.
-- Screen: dark navy.
-- “AI” text: light purple.
+- Card background: off-white / very light beige.
+- Card borders: light gray-beige.
+- Accent color: purple / lavender.
+- Main titles: dark navy or charcoal.
+- Descriptions: muted gray.
+- Number labels: purple.
+- Icons: purple outlines, with one icon including a small orange/red rocket detail on the last card.
 
-## Visible text transcribed verbatim
-The visible text in the image is:
+## Visible text, transcribed verbatim
 
-- **01 BORING TOOL EMPIRE**
-- **02 LOCAL DIRECTORY FACTORY**
-- **03 TOO-EXPENSIVE SAAS HUNTER**
-- **04 DIGITAL PRODUCT FACTORY**
-- **05 AFFILIATE SEO EMPIRE**
-- **06 AI WORKFLOW FACTORY**
-- **07 GAME FACTORY**
-- **08 COLD EMAIL LEAD MACHINE**
-- **09 DATA PRODUCT FACTORY**
-- **10 STARTUP OPPORTUNITY FINDER**
-- **AI**
+### Card 01
+Top right number:
+- `01`
 
-## Other notable details
-- The diagram is purely illustrative; there are no numerical scales, legends, axes, or data values.
-- The arrangement suggests categories organized around a central AI-themed laptop, but there is no
+Title:
+- `BORING TOOL EMPIRE`
+
+Description:
+- `Build one narrow utility for a painful workflow.`
+
+Icon:
+- Small square icon with crossed tool symbols.
+
+---
+
+### Card 02
+Top right number:
+- `02`
+
+Title:
+- `LOCAL DIRECTORY FACTORY`
+
+Description:
+- `Package useful local data into searchable listings.`
+
+Icon:
+- Small square icon with a sparkle/diamond-like symbol.
+
+---
+
+### Card 03
+Top right number:
+- `03`
+
+Title:
+- `TOO-EXPENSIVE SAAS HUNTER`
+
+Description:
+- `Replace bloated software with a focused alternative.`
+
+Icon:
+- Small square icon with a dollar sign.
+
+---
+
+### Card 04
+Top right number:
+- `04`
+
+Title:
+- `DIGITAL PRODUCT FACTORY`
+
+Description:
+- `Turn expertise into repeatable templates and tools.`
+
+Icon:
+- Small square icon with a simple geometric square/box symbol.
+
+---
+
+### Card 05
+Top right number:
+- `05`
+
+Title:
+- `AFFILIATE SEO EMPIRE`
+
+Description:
+- `Publish useful pages with purchase intent built in.`
+
+Icon:
+- Small square icon with an up-right arrow.
+
+---
+
+### Card 06
+Top right number:
+- `06`
+
+Title:
+- `AI WORKFLOW FACTORY`
+
+Description:
+- `Automate a repeatable operation for a specific niche.`
+
+Icon:
+- Small square icon with a gear/cog.
+
+---
+
+### Card 07
+Top right number:
+- `07`
+
+Title:
+- `GAME FACTORY`
+
+Description:
+- `Ship small, replayable products for defined audiences.`
+
+Icon:
+- Small square icon with a circular/target-like symbol.
+
+---
+
+### Card 08
+Top right number:
+- `08`
+
+Title:
+- `COLD EMAIL LEAD MACHINE`
+
+Description:
+- `Find, qualify and route prospects into a clear offer.`
+
+Icon:
+- Small square icon resembling an envelope/message.
+
+---
+
+### Card 09
+Top right number:
+- `09`
+
+Title:
+- `DATA PRODUCT FACTORY`
+
+Description:
+- `Make difficult data simple enough to buy and use.`
+
+Icon:
+- Small square icon with a document/table-like symbol.
+
+---
+
+### Card 10
+Top right number:
+- `10`
+
+Title:
+- `STARTUP OPPORTUNITY FINDER`
+
+Description:
+- `Spot recurring pain before it becomes an obvious market.`
+
+Icon:
+- Small square icon with a rocket.
+
+## Important visual notes
+- No people are shown.
+- No charts, axes, graphs, or code blocks are present.
+- No menus, navigation bars, buttons, or form fields are visible beyond the cards themselves.
+- The image appears to be a concept board or list of business ideas/templates, with each card representing a different “factory,” “empire,” “hunter,” or “finder” model.
+- Typography is consistent across all cards:
+  - Titles are uppercase, bold, and large.
+  - Descriptions are smaller and lighter.
+  - Numbers are small and aligned near the top-right.
+- The cards are evenly spaced with consistent padding and alignment.
+
+## Card placement summary
+Left column, top to bottom:
+1. BORING TOOL EMPIRE
+2. TOO-EXPENSIVE SAAS HUNTER
+3. AFFILIATE SEO EMPIRE
+4. GAME FACTORY
+5. DATA PRODUCT FACTORY
+
+Right column, top to bottom:
+1. LOCAL DIRECTORY FACTORY
+2. DIGITAL PRODUCT FACTORY
