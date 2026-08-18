@@ -1,0 +1,70 @@
+{
+  "provider": "Hunter Company Logo API",
+  "endpoint": "https://logos.hunter.io/{domain}",
+  "authentication": "not required",
+  "results": [
+    {
+      "domain": "openai.com",
+      "logo_url": "https://logos.hunter.io/openai.com",
+      "status": 200,
+      "content_type": "image/webp",
+      "bytes": "2244"
+    },
+    {
+      "domain": "anthropic.com",
+      "logo_url": "https://logos.hunter.io/anthropic.com",
+      "status": 200,
+      "content_type": "image/webp",
+      "bytes": "1812"
+    },
+    {
+      "domain": "gemini.google.com",
+      "logo_url": "https://logos.hunter.io/gemini.google.com",
+      "status": 200,
+      "content_type": "image/webp",
+      "bytes": "402"
+    },
+    {
+      "domain": "microsoft.com",
+      "logo_url": "https://logos.hunter.io/microsoft.com",
+      "status": 200,
+      "content_type": "image/png",
+      "bytes": "305"
+    },
+    {
+      "domain": "perplexity.ai",
+      "logo_url": "https://logos.hunter.io/perplexity.ai",
+      "status": 200,
+      "content_type": "image/png",
+      "bytes": null
+    },
+    {
+      "domain": "midjourney.com",
+      "logo_url": "https://logos.hunter.io/midjourney.com",
+      "status": 200,
+      "content_type": "image/avif",
+      "bytes": null
+    },
+    {
+      "domain": "runwayml.com",
+      "logo_url": "https://logos.hunter.io/runwayml.com",
+      "status": 200,
+      "content_type": "image/webp",
+      "bytes": "866"
+    },
+    {
+      "domain": "elevenlabs.io",
+      "logo_url": "https://logos.hunter.io/elevenlabs.io",
+      "status": 200,
+      "content_type": "image/webp",
+      "bytes": "342"
+    },
+    {
+      "domain": "cursor.com",
+      "logo_url": "https://logos.hunter.io/cursor.com",
+      "status": 200,
+      "content_type": "image/avif",
+      "bytes": null
+    }
+  ]
+}
