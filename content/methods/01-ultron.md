@@ -45,3 +45,7 @@ Pipeline-ul Ultron pentru materiale IG Reel 1080x1350. Este un compositor reveal
 ## Diferența față de referințe
 
 Ultron este metoda operațională locală. Antigravity rămâne referința pentru sourcing, curățare și compoziție Pillow. Claude rămâne referința pentru SPECS, layouts, preflight, scrub și livrare editorială. Acestea sunt păstrate separat și nu se execută implicit în metoda Ultron.
+
+## Starea bibliotecii offline, verificată la 18 august 2026
+
+Setul complet Claude nu este prezent în acest checkout. Lipsesc `content/assets/logos/mono/`, `ai/`, `color/`, `png/`, `logos.json` și `content/_logos.py`. Sunt disponibile 42 de fișiere în `content/assets/icons/`, inclusiv `gemini-color.svg` și `perplexity-color.svg`. Ultron folosește aceste asseturi locale când există și nu consideră instalată biblioteca completă până când directoarele și indexul sunt prezente.

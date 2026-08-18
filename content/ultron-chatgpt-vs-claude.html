@@ -237,6 +237,11 @@ body{background:#000;display:flex;justify-content:center}
 .edge{position:absolute;left:0;right:0;top:187px;height:3px;
   background:#000;pointer-events:none;z-index:3}
 .pic img{width:100%;height:100%;object-fit:cover;display:block}
+/* The reference uses an open-bottom callout frame: rounded top corners and side rails, but no
+   lower horizontal rule. The footer continues directly from the body instead of being trapped
+   inside a closed box. */
+.pic::after{content:"";position:absolute;inset:0;border:3px solid #111;border-bottom:0;
+  border-radius:28px 28px 0 0;pointer-events:none;z-index:2}
 /* the fade lives over the picture and NOWHERE else, because the band never dims in the model */
 /* The veil covers the picture AND the footer, operator: "Follow pastreaza tonul de reveal al
    backgroundului, adica apare progresiv". The band stays outside it, as in the model. */
