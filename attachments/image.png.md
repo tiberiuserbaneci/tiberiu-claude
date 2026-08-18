@@ -1,95 +1,114 @@
 [Attached image: image.png]
-The image is a square promotional infographic about AI business models on a light off-white/cream background. The composition is split into a left text/process column and a right circular diagram around a laptop illustration.
+The image is a clean infographic on a light beige/cream background. It shows a large circular arrangement of 10 labeled business ideas around a central laptop illustration.
 
 ## Overall layout
-- Large headline at the top, spanning most of the width.
-- Left side: a vertical 4-step process with icons and arrows.
-- Center-right: a laptop with “AI” on the screen, surrounded by a dashed circular path with 10 labeled business model ideas, each represented by a small icon in a rounded square.
-- The design uses purple, blue, green, black, and gray accents.
-- A thin vertical divider line separates the left process column from the right diagram.
+- The composition is centered vertically and horizontally.
+- In the middle is a stylized laptop with a dark screen.
+- Surrounding the laptop is a large dotted circular ring, with the numbered items placed around the circle at roughly clock positions.
+- Each item has:
+  - a small purple-outlined icon inside a rounded square,
+  - a two-digit number,
+  - a bold uppercase label split across multiple lines.
+- The bottom half of the image has more empty space than the top half.
+- There are no people, no photograph-like objects, and no chart axes or plotted data.
 
-## Visible text, transcribed verbatim
+## Central object
+### Laptop graphic
+- A gray laptop is centered.
+- The screen is a dark navy-blue rectangle.
+- On the screen, the text **“AI”** appears in large light purple letters.
+- A small white sparkle/star appears near the upper-right area of the laptop screen.
+- The laptop base is gray with a darker outline.
 
-### Top headline
-- **“10 AI BUSINESS MODELS”**
-- **“THAT MAKE REAL MONEY”**
+## Circular diagram / labels
+There is a large dotted circle around the laptop, with faint inner circular guide lines. The items are arranged clockwise starting near the top:
 
-The word **“MAKE REAL MONEY”** is placed inside a purple rectangular highlight with white text.  
-The number **“10”** is large and purple.  
-The rest of the headline is in dark navy/black uppercase.
+### 01
+- Text: **BORING TOOL EMPIRE**
+- Located near the top center.
+- Number **01** is shown to the left of the label.
+- Small icon: a purple outlined square with a tool-like symbol inside.
 
-### Subheadline on left
-- **“Use AI to build once.”**
-- **“Let it generate income.”**
+### 02
+- Text: **LOCAL DIRECTORY FACTORY**
+- Located in the upper-right quadrant.
+- Number **02** appears beside it.
+- Small icon: a purple outlined square with a small symbol inside.
 
-The words **“build once.”** are purple.  
-The words **“generate income.”** are green.
+### 03
+- Text: **TOO-EXPENSIVE SAAS HUNTER**
+- Located on the right side.
+- The label is split across lines and hyphenated at the end of the first line as **TOO-** and continues **EXPENSIVE SAAS HUNTER**.
+- Number **03** appears next to it.
+- Small icon: a purple outlined square with a dollar sign **$** inside.
 
-### Left-side process steps
-1. **“AI researches the market”**
-2. **“AI builds the first version”**
-3. **“You make the key decisions”**
-4. **“The system keeps generating revenue”**
+### 04
+- Text: **DIGITAL PRODUCT FACTORY**
+- Located in the lower-right quadrant.
+- Number **04** is shown near it.
+- Small icon: a purple outlined square with a simple square/box-like symbol.
 
-Each step has an icon to its left and a downward arrow between steps.
+### 05
+- Text: **AFFILIATE SEO EMPIRE**
+- Located near the bottom center-right.
+- Number **05** appears beside it.
+- Small icon: a purple outlined square with an upward-right arrow/diagonal arrow symbol.
 
-### Right-side circular business model labels
-These are arranged around a dashed circle around the laptop, numbered 1 through 10:
+### 06
+- Text: **AI WORKFLOW FACTORY**
+- Located at the bottom center.
+- Number **06** appears next to it.
+- Small icon: a purple outlined square with a gear-like or workflow/automation symbol.
 
-1. **“1. BORING TOOL EMPIRE”**
-2. **“2. LOCAL DIRECTORY FACTORY”**
-3. **“3. TOO EXPENSIVE SAAS HUNTER”**
-4. **“4. DIGITAL PRODUCT FACTORY”**
-5. **“5. AFFILIATE SEO EMPIRE”**
-6. **“6.”** is not visible as a label in the image; the numbering jumps from 5 to 7 on the lower side.  
-7. **“7. HYPERSCAL GAME FACTORY”**
-8. **“8. COLD EMAIL LEAD MACHINE”**
-9. **“9. DATA PRODUCT FACTORY”**
-10. **“10. STARTUP OPPORTUNITY FINDER”**
+### 07
+- Text: **GAME FACTORY**
+- Located in the lower-left quadrant.
+- Number **07** appears beside it.
+- Small icon: a purple outlined square with a circular target-like symbol.
 
-## Visual elements and icons
+### 08
+- Text: **COLD EMAIL LEAD MACHINE**
+- Located on the left side, slightly below center.
+- Number **08** appears beside it.
+- Small icon: a purple outlined square with an envelope/mail-like symbol.
 
-### Left process column icons
-From top to bottom:
-- A magnifying glass icon inside a pale purple circular background.
-- A code icon `</>` inside a pale purple circular background.
-- A person/user silhouette icon inside a pale purple circular background.
-- An upward-trending chart/graph icon inside a pale green circular background.
+### 09
+- Text: **DATA PRODUCT FACTORY**
+- Located on the left side, slightly above the horizontal midline.
+- Number **09** appears beside it.
+- Small icon: a purple outlined square with a document/page-like symbol.
 
-Downward arrows appear between the icons/steps.
+### 10
+- Text: **STARTUP OPPORTUNITY FINDER**
+- Located in the upper-left quadrant.
+- Number **10** appears beside it.
+- Small icon: a purple outlined square with a rocket icon.
 
-### Divider
-- A thin vertical gray line runs from near the middle height downward, separating left and right sections.
+## Colors and styling
+- Background: very light cream/beige.
+- Main text: dark gray-blue / navy, uppercase, bold, sans-serif.
+- Numbers: muted purple.
+- Icons: purple outlines with simple line symbols.
+- Dotted circle: light gray.
+- Laptop outline: gray with darker border.
+- Screen: dark navy.
+- “AI” text: light purple.
 
-### Right-side central object
-- A stylized laptop sits in the center-right.
-- The laptop screen shows:
-  - Large purple text: **“AI”**
-  - A small purple sparkle/star near the top right of the “I”
-- The laptop is drawn in dark gray/black outlines with a silver-gray keyboard and body.
+## Visible text transcribed verbatim
+The visible text in the image is:
 
-### Circular diagram around the laptop
-- A dashed gray circle surrounds the laptop.
-- Along this circle are 10 small rounded-square tiles, each with an icon and corresponding label:
-  - **1. BORING TOOL EMPIRE**: crossed tools icon, dark gray.
-  - **2. LOCAL DIRECTORY FACTORY**: map pin icon, green.
-  - **3. TOO EXPENSIVE SAAS HUNTER**: dollar sign icon inside a circle, purple/blue.
-  - **4. DIGITAL PRODUCT FACTORY**: shopping cart icon, green.
-  - **5. AFFILIATE SEO EMPIRE**: chain link icon, blue/purple.
-  - **7. HYPERSCAL GAME FACTORY**: game controller icon, purple.
-  - **8. COLD EMAIL LEAD MACHINE**: envelope icon, purple/blue.
-  - **9. DATA PRODUCT FACTORY**: database cylinder icon, green.
-  - **10. STARTUP OPPORTUNITY FINDER**: rocket icon, green.
+- **01 BORING TOOL EMPIRE**
+- **02 LOCAL DIRECTORY FACTORY**
+- **03 TOO-EXPENSIVE SAAS HUNTER**
+- **04 DIGITAL PRODUCT FACTORY**
+- **05 AFFILIATE SEO EMPIRE**
+- **06 AI WORKFLOW FACTORY**
+- **07 GAME FACTORY**
+- **08 COLD EMAIL LEAD MACHINE**
+- **09 DATA PRODUCT FACTORY**
+- **10 STARTUP OPPORTUNITY FINDER**
+- **AI**
 
-## Colors
-- Background: off-white / very light cream.
-- Headline:
-  - “10” in purple gradient or solid purple.
-  - Main headline in dark navy/black.
-  - “MAKE REAL MONEY” in white on a purple highlight box.
-- Left subheadline:
-  - “build once” in purple.
-  - “generate income” in green.
-- Left icons: mostly pale purple circles and one pale green circle.
-- Right diagram icons: mixed green, purple, and blue.
-- Laptop: dark outline, silver keyboard, white screen,
+## Other notable details
+- The diagram is purely illustrative; there are no numerical scales, legends, axes, or data values.
+- The arrangement suggests categories organized around a central AI-themed laptop, but there is no
