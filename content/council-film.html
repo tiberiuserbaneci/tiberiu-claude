@@ -3,12 +3,12 @@
 <style>
 /* FILM-META {"duration":36,"w":1080,"h":1920,"fps":30,"beats":[
 {"t":0.0,"vo":"Claude told me my pricing page was strong. It was not."},
-{"t":4.0,"vo":"It agrees with almost anything you bring it. That is what it was trained to do."},
+{"t":4.0,"vo":"It agrees with almost anything you bring it. That is what it was trained for."},
 {"t":9.5,"vo":"The fix is not a better prompt. It is refusing to let it answer in one voice."},
-{"t":15.4,"vo":"I make it sit three seats. A contrarian hunting the fatal flaw. A realist who counts only what the numbers support. An outsider with no context and no bias."},
+{"t":15.4,"vo":"Three seats. A contrarian hunting the fatal flaw. A realist who counts only what the numbers support. An outsider with no bias."},
 {"t":25.4,"vo":"They argue first, and I never see that part."},
-{"t":28.5,"vo":"A chair reads the argument and writes one answer, carrying the objection it survived."},
-{"t":29.0,"vo":"I run it before pricing, before a hire, and on anything I catch myself explaining instead of testing."},
+{"t":28.5,"vo":"A chair writes one answer, carrying the objection it survived."},
+{"t":29.0,"vo":"I run it before pricing, before a hire, and on anything I explain instead of test."},
 {"t":34.0,"vo":"It killed my pricing plan in four lines. Comment COUNCIL for the exact prompt."}]} */
 @import url('assets/fonts.css');
 :root{
@@ -59,14 +59,14 @@ body{background:#000;display:flex;justify-content:center;font-family:'DM Sans',s
 @keyframes scin{from{opacity:0;transform:translateY(26px) scale(.985)}
                 to{opacity:1;transform:none}}
 @keyframes scout{to{opacity:0;transform:translateY(-20px) scale(.99)}}
-.s1{animation:scin .50s var(--eIn) both var(--b1), scout .38s var(--eOut) forwards calc(var(--b2) - .16s)}
-.s2{animation:scin .46s var(--eIn) both var(--b2), scout .38s var(--eOut) forwards calc(var(--b3) - .16s)}
-.s3{animation:scin .46s var(--eIn) both var(--b3), scout .38s var(--eOut) forwards calc(var(--b4) - .16s)}
-.s4{animation:scin .46s var(--eIn) both var(--b4), scout .38s var(--eOut) forwards calc(var(--b5) - .16s)}
-.s5{animation:scin .46s var(--eIn) both var(--b5), scout .38s var(--eOut) forwards calc(var(--b6) - .16s)}
-.s6{animation:scin .46s var(--eIn) both var(--b6), scout .38s var(--eOut) forwards calc(var(--b7) - .16s)}
-.s7{animation:scin .46s var(--eIn) both var(--b7), scout .38s var(--eOut) forwards calc(var(--b8) - .16s)}
-.s8{animation:scin .52s var(--eIn) both var(--b8)}
+.s1{animation:scin .50s var(--eIn) both var(--b1), scout .26s var(--eOut) forwards calc(var(--b2) - .26s)}
+.s2{animation:scin .34s var(--eIn) both calc(var(--b2) - .30s), scout .26s var(--eOut) forwards calc(var(--b3) - .26s)}
+.s3{animation:scin .34s var(--eIn) both calc(var(--b3) - .30s), scout .26s var(--eOut) forwards calc(var(--b4) - .26s)}
+.s4{animation:scin .34s var(--eIn) both calc(var(--b4) - .30s), scout .26s var(--eOut) forwards calc(var(--b5) - .26s)}
+.s5{animation:scin .34s var(--eIn) both calc(var(--b5) - .30s), scout .26s var(--eOut) forwards calc(var(--b6) - .26s)}
+.s6{animation:scin .34s var(--eIn) both calc(var(--b6) - .30s), scout .26s var(--eOut) forwards calc(var(--b7) - .26s)}
+.s7{animation:scin .34s var(--eIn) both calc(var(--b7) - .30s), scout .26s var(--eOut) forwards calc(var(--b8) - .26s)}
+.s8{animation:scin .40s var(--eIn) both calc(var(--b8) - .30s)}
 
 /* ---------- shared type ---------- */
 .kick{font-family:'DM Mono',monospace;font-size:26px;font-weight:500;letter-spacing:.22em;
@@ -139,12 +139,14 @@ body{background:#000;display:flex;justify-content:center;font-family:'DM Sans',s
 .reb:nth-child(2){animation:rin .26s var(--eIn) both calc(var(--b5) + .72s)}
 .reb:nth-child(3){animation:rin .26s var(--eIn) both calc(var(--b5) + 1.14s)}
 .reb:nth-child(4){animation:rin .26s var(--eIn) both calc(var(--b5) + 1.56s)}
-.veilsc{position:absolute;inset:-20px;background:var(--paper);border-radius:14px;opacity:0;
-  display:flex;align-items:center;justify-content:center;
-  font-family:'DM Mono',monospace;font-size:34px;letter-spacing:.22em;color:var(--mute);
-  text-transform:uppercase;
-  animation:hide .55s var(--e) both calc(var(--b5) + 2.15s)}
-@keyframes hide{from{opacity:0}to{opacity:.955}}
+.veilsc{position:absolute;inset:-20px;border-radius:14px;opacity:0;
+  display:flex;align-items:center;justify-content:center;text-align:center;padding:0 20px;
+  font-family:'Anton',sans-serif;font-size:106px;line-height:.96;letter-spacing:-1px;
+  color:var(--book);text-transform:uppercase;
+  background:linear-gradient(rgba(245,236,227,.80),rgba(245,236,227,.80));
+  text-shadow:0 6px 26px rgba(245,236,227,.9);
+  animation:hide .50s var(--e) both calc(var(--b5) + 2.15s)}
+@keyframes hide{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:none}}
 
 /* ---------- 6 the one answer ---------- */
 .ans{background:var(--card);border:1px solid var(--hair);border-radius:18px;overflow:hidden;
