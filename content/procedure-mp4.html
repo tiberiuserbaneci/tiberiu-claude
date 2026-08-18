@@ -1,0 +1,608 @@
+<title>Reel Production Line</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&family=DM+Mono:wght@400;500&display=swap">
+
+<style>
+/* Dark Ultron is the house system (CLAUDE.md 7), so the page is dark first and the
+   light palette is the swap, not the base. Every colour is a token; nothing is
+   declared only inside a media query. */
+:root{
+  --ground:#191919; --surface:#222221; --surface-2:#2A2A28;
+  --ink:#FAFAF7; --ink-70:rgba(250,250,247,.72); --ink-46:rgba(250,250,247,.46);
+  --rule:rgba(250,250,247,.11); --rule-2:rgba(250,250,247,.06);
+  --book:#CC785C; --book-strong:#E08D6F; --kraft:#D4A27F;
+  --ok:#8FB48A; --warn:#D4A27F;
+  --plate:#F7F6F3; --plate-ink:#1A1A18; --plate-rule:rgba(26,26,24,.14);
+  --code-bg:#131312; --code-ink:#E8E6E0;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --ground:#FAF9F6; --surface:#FFFFFF; --surface-2:#F2F0EB;
+    --ink:#1A1A18; --ink-70:rgba(26,26,24,.74); --ink-46:rgba(26,26,24,.50);
+    --rule:rgba(26,26,24,.13); --rule-2:rgba(26,26,24,.07);
+    --book:#B4552F; --book-strong:#973F1D; --kraft:#9C7048;
+    --ok:#4A7A43; --warn:#8A5A22;
+    --plate:#FFFFFF; --plate-ink:#1A1A18; --plate-rule:rgba(26,26,24,.14);
+    --code-bg:#1B1B1A; --code-ink:#E8E6E0;
+  }
+}
+:root[data-theme="light"]{
+  --ground:#FAF9F6; --surface:#FFFFFF; --surface-2:#F2F0EB;
+  --ink:#1A1A18; --ink-70:rgba(26,26,24,.74); --ink-46:rgba(26,26,24,.50);
+  --rule:rgba(26,26,24,.13); --rule-2:rgba(26,26,24,.07);
+  --book:#B4552F; --book-strong:#973F1D; --kraft:#9C7048;
+  --ok:#4A7A43; --warn:#8A5A22;
+  --plate:#FFFFFF; --plate-ink:#1A1A18; --plate-rule:rgba(26,26,24,.14);
+  --code-bg:#1B1B1A; --code-ink:#E8E6E0;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:'DM Sans',system-ui,sans-serif; font-size:17px; line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:900px; margin:0 auto; padding:64px 28px 120px}
+
+/* ---- masthead ---- */
+.mast{border-bottom:1px solid var(--rule); padding-bottom:30px; margin-bottom:44px}
+.eyebrow{
+  font-family:'DM Mono',ui-monospace,monospace; font-size:11.5px; font-weight:500;
+  letter-spacing:.20em; text-transform:uppercase; color:var(--ink-46);
+  display:flex; gap:10px; flex-wrap:wrap; align-items:baseline;
+}
+.eyebrow b{color:var(--book); font-weight:500}
+h1{
+  font-size:clamp(38px,6.2vw,58px); font-weight:900; letter-spacing:-1.6px;
+  line-height:1.03; margin:16px 0 14px; text-wrap:balance;
+}
+.standfirst{font-size:19.5px; color:var(--ink-70); max-width:64ch; margin:0}
+
+/* ---- contents ---- */
+.toc{
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:1px;
+  background:var(--rule-2); border:1px solid var(--rule); border-radius:10px;
+  overflow:hidden; margin:0 0 62px;
+}
+.toc a{
+  background:var(--surface); padding:13px 15px; text-decoration:none; color:var(--ink);
+  display:flex; gap:11px; align-items:baseline; font-size:14.5px;
+}
+.toc a:hover{background:var(--surface-2)}
+.toc a:focus-visible{outline:2px solid var(--book); outline-offset:-2px}
+.toc .n{
+  font-family:'DM Mono',ui-monospace,monospace; font-size:12px; color:var(--book);
+  font-weight:500; flex-shrink:0;
+}
+
+/* ---- steps ---- */
+section{margin:0 0 60px; scroll-margin-top:24px}
+.step-head{display:flex; gap:16px; align-items:baseline; margin-bottom:6px}
+.step-n{
+  font-family:'DM Mono',ui-monospace,monospace; font-size:13px; font-weight:500;
+  letter-spacing:.14em; color:var(--book); flex-shrink:0; padding-top:6px;
+}
+h2{font-size:29px; font-weight:800; letter-spacing:-.7px; margin:0; line-height:1.18; text-wrap:balance}
+h3{font-size:19px; font-weight:800; letter-spacing:-.3px; margin:34px 0 10px}
+.lede{color:var(--ink-70); margin:0 0 20px 46px; max-width:66ch}
+section > p, section > ul, section > ol{margin-left:46px; max-width:70ch}
+@media (max-width:640px){
+  .lede, section > p, section > ul, section > ol{margin-left:0}
+  .step-head{gap:11px}
+}
+p{margin:0 0 15px}
+ul,ol{padding-left:20px; margin:0 0 16px}
+li{margin:0 0 7px}
+strong{font-weight:700}
+a{color:var(--book); text-decoration-thickness:1px; text-underline-offset:2px}
+
+/* ---- code ---- */
+pre{
+  background:var(--code-bg); color:var(--code-ink); border:1px solid var(--rule);
+  border-radius:9px; padding:17px 19px; overflow-x:auto; margin:0 0 20px;
+  font-family:'DM Mono',ui-monospace,monospace; font-size:13.5px; line-height:1.66;
+}
+pre b{color:var(--book-strong); font-weight:500}
+pre i{color:#8A8A80; font-style:normal}
+code{
+  font-family:'DM Mono',ui-monospace,monospace; font-size:.88em;
+  background:var(--surface-2); padding:1.5px 5px; border-radius:4px;
+}
+pre code{background:none; padding:0; font-size:inherit}
+
+/* ---- tables ---- */
+.tw{overflow-x:auto; margin:0 0 22px; border:1px solid var(--rule); border-radius:9px}
+table{border-collapse:collapse; width:100%; font-size:14.5px; min-width:520px}
+th{
+  text-align:left; font-family:'DM Mono',ui-monospace,monospace; font-size:11px;
+  font-weight:500; letter-spacing:.15em; text-transform:uppercase; color:var(--ink-46);
+  padding:11px 15px; border-bottom:1px solid var(--rule); background:var(--surface);
+}
+td{padding:11px 15px; border-bottom:1px solid var(--rule-2); vertical-align:top}
+tr:last-child td{border-bottom:none}
+td.num{font-variant-numeric:tabular-nums; text-align:right; white-space:nowrap}
+td code{font-size:13px}
+
+/* ---- callout ---- */
+.note{
+  border-left:2px solid var(--book); background:var(--surface);
+  padding:15px 19px; border-radius:0 8px 8px 0; margin:0 0 22px;
+}
+.note p:last-child{margin-bottom:0}
+.note .t{
+  font-family:'DM Mono',ui-monospace,monospace; font-size:11px; font-weight:500;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--book); margin-bottom:6px;
+}
+
+/* ---- the frame diagram: real proportions, not a sketch ---- */
+.frame-fig{display:flex; gap:26px; align-items:flex-start; flex-wrap:wrap; margin:0 0 24px}
+.frame{
+  position:relative; width:236px; aspect-ratio:1080/1350; flex-shrink:0;
+  background:#f6f8fc; border:1px solid var(--rule); border-radius:4px; overflow:hidden;
+  font-family:'DM Mono',ui-monospace,monospace;
+}
+.f-band{
+  position:absolute; left:0; top:0; width:100%; height:13.33%;
+  background:linear-gradient(to bottom,#1c1c1c,#2b2b2b);
+  display:flex; align-items:center; justify-content:center;
+  color:#fff; font-size:8px; letter-spacing:.14em;
+}
+.f-edge{position:absolute; left:0; top:13.33%; width:100%; height:.22%; background:#111}
+.f-pic{
+  position:absolute; left:0; top:13.55%; width:100%; bottom:0;
+  display:flex; align-items:center; justify-content:center;
+  color:#334155; font-size:8px; letter-spacing:.14em;
+}
+.f-pill{
+  position:absolute; left:50%; transform:translateX(-50%); top:87.4%;
+  background:rgba(255,255,255,.92); border:1px solid #fff; border-radius:99px;
+  box-shadow:0 3px 9px rgba(15,23,42,.16); padding:4px 13px;
+  color:#0F172A; font-size:7.5px; white-space:nowrap;
+}
+.f-pill em{color:#EA580C; font-style:normal; font-weight:500}
+.frame-key{font-size:14px; color:var(--ink-70); min-width:250px; flex:1}
+.frame-key dl{display:grid; grid-template-columns:auto 1fr; gap:6px 16px; margin:0}
+.frame-key dt{
+  font-family:'DM Mono',ui-monospace,monospace; font-size:12px; color:var(--book);
+  font-variant-numeric:tabular-nums; white-space:nowrap;
+}
+.frame-key dd{margin:0}
+
+/* ---- the veil ramp: the one thing that moves in a 7 second reel ---- */
+.ramp{margin:0 0 22px}
+.ramp-bar{
+  height:44px; border:1px solid var(--rule); border-radius:6px; overflow:hidden;
+  background:linear-gradient(to right,#000 0%,#000 1%,rgba(0,0,0,0) 60%,rgba(0,0,0,0) 100%),
+             repeating-linear-gradient(to right,var(--surface-2) 0 1px,var(--surface) 1px 14.28%);
+}
+.ramp-ticks{
+  display:flex; justify-content:space-between; margin-top:6px;
+  font-family:'DM Mono',ui-monospace,monospace; font-size:11px; color:var(--ink-46);
+  font-variant-numeric:tabular-nums;
+}
+.ramp-ticks b{color:var(--book); font-weight:500}
+
+/* ---- mermaid on a plate, so it reads in either theme ---- */
+.plate{
+  background:var(--plate); border:1px solid var(--plate-rule); border-radius:10px;
+  padding:22px 18px; margin:0 0 24px; overflow-x:auto;
+}
+.plate pre.mermaid{background:none; border:none; padding:0; color:var(--plate-ink)}
+
+hr{border:none; border-top:1px solid var(--rule); margin:56px 0}
+footer{
+  border-top:1px solid var(--rule); padding-top:22px; margin-top:70px;
+  font-family:'DM Mono',ui-monospace,monospace; font-size:12px;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--ink-46);
+  display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
+}
+@media (prefers-reduced-motion:reduce){*{animation:none !important; transition:none !important}}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="eyebrow"><span>Ultron content</span><span>·</span><b>linia de productie</b><span>·</span><span>18 aug 2026</span></div>
+  <h1>De la brief la MP4</h1>
+  <p class="standfirst">Fiecare pas prin care trece un reel IG, de la instructiunea ta pina la fisierul livrat. Toate scripturile sunt in repo, toate cifrele de mai jos sunt masurate azi pe materialul 03 Icon Wall, nu estimate.</p>
+</header>
+
+<nav class="toc">
+  <a href="#s0"><span class="n">00</span> Brieful</a>
+  <a href="#s1"><span class="n">01</span> Marcile</a>
+  <a href="#s2"><span class="n">02</span> Forma</a>
+  <a href="#s3"><span class="n">03</span> Continutul</a>
+  <a href="#s4"><span class="n">04</span> Materialul HTML</a>
+  <a href="#s5"><span class="n">05</span> Iteratia pe un frame</a>
+  <a href="#s6"><span class="n">06</span> Garda</a>
+  <a href="#s7"><span class="n">07</span> Randarea MP4</a>
+  <a href="#s8"><span class="n">08</span> Scrub</a>
+  <a href="#s9"><span class="n">09</span> Captionul</a>
+  <a href="#s10"><span class="n">10</span> Livrarea</a>
+  <a href="#ref"><span class="n">++</span> Scripturi si timpi</a>
+</nav>
+
+<div class="plate">
+<pre class="mermaid">
+flowchart TD
+    A["00 BRIEF<br/>layout, tool-uri, hook, keyword"] --> C
+    B["01 MARCILE<br/>_logos.py, o singura data"] -.-> C
+    C["02 + 03 FORMA SI CONTINUTUL<br/>_layouts.py + SPECS"] --> D
+    D["04 MATERIALUL<br/>_reveal9.py, iese HTML"] --> E
+    E["05 UN FRAME<br/>_film.py --still"] --> F
+    F{"corect?"}
+    F -- "nu" --> C
+    F -- "da" --> G["06 GARDA<br/>_preflight.py"]
+    G --> H["07 RANDAREA<br/>_film.py, 210 frames"]
+    H --> I["08 SCRUB<br/>_scrub.py"]
+    I --> J["09 CAPTION<br/>structura 33"]
+    J --> K["10 COMMIT SI LIVRARE"]
+</pre>
+</div>
+
+<p><strong>Diferenta de structura fata de un flux cu poza coapta:</strong> nu exista pas de constructie a imaginii. Poza nu e un JPEG lipit intr-un HTML, poza <em>este</em> HTML. Un singur motor de layout aseaza si banda si continutul, deci tipografia e aceeasi peste tot, iar orice element se schimba fara sa reconstruiesti nimic.</p>
+
+<hr>
+
+<section id="s0">
+  <div class="step-head"><span class="step-n">00</span><h2>Brieful</h2></div>
+  <p class="lede">Cinci lucruri. Daca lipseste unul, il propun eu si il marchez ca propunere.</p>
+
+  <div class="tw"><table>
+    <thead><tr><th>Cimp</th><th>Exemplu, materialul 03</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Forma</strong></td><td>icon wall 3x3, din catalogul de noua</td></tr>
+      <tr><td><strong>Tool-urile</strong></td><td>Grok, DeepSeek, Mistral, Qwen, Llama, Kimi, Manus, Copilot, Cohere</td></tr>
+      <tr><td><strong>Hook L1 / L2</strong></td><td>THE 9 AI MODELS / I ACTUALLY OPEN</td></tr>
+      <tr><td><strong>Sub-hook</strong></td><td>(everything else I could delete today)</td></tr>
+      <tr><td><strong>Keyword CTA</strong></td><td>MODELS</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="note">
+    <div class="t">Regula de repetitie</div>
+    <p>Fiecare tool apare o singura data in tot setul. Singurul care se repeta e cel ascuns. Claude, ChatGPT si Gemini stau la minimum trei postari distanta unul de altul. Un stack repetat e ce face un set skippable, iar audienta de IG il simte inainte sa citeasca hook-ul.</p>
+  </div>
+</section>
+
+<section id="s1">
+  <div class="step-head"><span class="step-n">01</span><h2>Marcile</h2></div>
+  <p class="lede">O singura data pentru toate materialele, nu per material. Cine ruleaza asta a doua oara a inteles gresit pasul.</p>
+
+<pre><b>python3</b> content/_logos.py --install      <i># biblioteca + setul de lucru</i>
+<b>python3</b> content/_logos.py --find granola  <i># cauta in patru surse</i>
+<b>python3</b> content/_logos.py --png 1024      <i># export raster pentru editor video</i></pre>
+
+  <p>Marcile sunt <strong>vectori</strong>, nu imagini de rezolutie mare. Un SVG la 60px in tile si la 900px in film e acelasi fisier si iese la fel de curat. De aceea nu se foloseste niciun serviciu de favicon: <code>sz=256</code> e o cerere, nu o garantie, si intoarce 256px pentru Notion, 225 pentru DeepSeek si 32 pentru Attio.</p>
+
+  <div class="tw"><table>
+    <thead><tr><th>Sursa</th><th>Ce da</th><th class="num">Marci</th><th>Licenta</th></tr></thead>
+    <tbody>
+      <tr><td>Simple Icons</td><td>monocrom, un path, plus hex-ul oficial</td><td class="num">3453</td><td>CC0</td></tr>
+      <tr><td>Lobe icons</td><td>modele AI, color si mono</td><td class="num">903</td><td>MIT</td></tr>
+      <tr><td>gilbarbara/logos</td><td>artwork color oficial</td><td class="num">1411</td><td>CC0</td></tr>
+      <tr><td>dashboard-icons</td><td>marci de aplicatii, color</td><td class="num">2254</td><td>MIT</td></tr>
+    </tbody>
+  </table></div>
+
+  <p>Totul ajunge in <code>content/assets/logos/</code> (biblioteca offline) si <code>content/assets/icons/</code> (setul de lucru pe care il citesc scripturile de material). Zero retea la randare, zero fisiere in <code>/tmp</code>, zero prag de alb pentru transparenta.</p>
+
+  <p><code>logos.json</code> tine si doua masuratori facute pe pixelii randati, pe care un material trebuie sa le citeasca: <strong>lum</strong>, cit de inchisa e marca, pentru ca 41 din ele sunt artwork negru care dispare pe slate; si <strong>ink_aspect</strong>, daca desenul e o banda si nu un patrat, pentru ca un wordmark de 4.8:1 pus intr-un tile de 84px are 17px inaltime.</p>
+
+  <div class="note">
+    <div class="t">Ce nu are marca</div>
+    <p>41 de tool-uri, aproape toate startup-uri AI noi: Granola, Attio, Clay, Gamma, Lindy, Superwhisper, Otter, Motion si restul. Alea ies ca tile cu monograma pina imi dai fisierul. Nu se deseneaza aproximari: o marca desenata de mina intr-un infografic exact despre acel produs e primul lucru pe care il vede cineva care il foloseste.</p>
+  </div>
+</section>
+
+<section id="s2">
+  <div class="step-head"><span class="step-n">02</span><h2>Forma</h2></div>
+  <p class="lede">Care din cele noua layout-uri. Forma nu e decor, ea decide cit text incape si cit de recognoscibil e fiecare logo.</p>
+
+  <p>Toate noua sunt in <code>content/_layouts.py</code>, cite o functie fiecare, si sunt <strong>importate</strong> in materialul final, nu copiate. Repar un layout o data si se repara in toate materialele care il folosesc.</p>
+
+  <div class="tw"><table>
+    <thead><tr><th>Cheie</th><th>Forma</th><th>Bun la</th><th>Supravietuieste la thumbnail</th></tr></thead>
+    <tbody>
+      <tr><td><code>list</code></td><td>lista verticala</td><td>logo, nume, o linie fiecare</td><td>nu</td></tr>
+      <tr><td><code>grid</code></td><td>doua coloane</td><td>aceleasi cuvinte, jumatate din latime</td><td>nu</td></tr>
+      <tr><td><code>wall</code></td><td>zid de iconite 3x3</td><td>doar nume, logo mare</td><td><strong>da</strong></td></tr>
+      <tr><td><code>rank</code></td><td>clasament numerotat</td><td>ordine, cind ordinea e mesajul</td><td>nu</td></tr>
+      <tr><td><code>bento</code></td><td>o celula erou plus restul</td><td>cind unul conteaza mai mult</td><td>partial</td></tr>
+      <tr><td><code>radial</code></td><td>inel in jurul unui centru</td><td>exact 8, cercul se imparte egal</td><td>partial</td></tr>
+      <tr><td><code>receipt</code></td><td>bon cu total</td><td>preturi, cind cifra e argumentul</td><td>nu</td></tr>
+      <tr><td><code>phone</code></td><td>ecran de telefon</td><td>recunoastere instantanee</td><td><strong>da</strong></td></tr>
+      <tr><td><code>pipe</code></td><td>lant cu sageti</td><td>ordinea de lucru, cine preda cui</td><td>nu</td></tr>
+    </tbody>
+  </table></div>
+
+  <p>Doar <code>wall</code> si <code>phone</code> se citesc la marimea de thumbnail din feed, adica inainte ca cineva sa decida daca se opreste. Sunt si aproape acelasi obiect, deci nu se posteaza la mai putin de trei materiale distanta.</p>
+</section>
+
+<section id="s3">
+  <div class="step-head"><span class="step-n">03</span><h2>Continutul</h2></div>
+  <p class="lede">Un singur loc: dictionarul <code>SPECS</code> de la inceputul lui <code>content/_reveal9.py</code>. Hook, sub-hook, keyword si lista de tool-uri, toate intr-o singura intrare.</p>
+
+<pre>"wall": {
+    "l1": <b>"THE 9 AI MODELS"</b>, "l2": <b>"I ACTUALLY OPEN"</b>,
+    "sub": <b>"(everything else I could delete today)"</b>, "kw": <b>"MODELS"</b>,
+    "tools": [
+        ("Grok",     "fast takes",      "Reads the room in real time",           "$0"),
+        ("DeepSeek", "cheap reasoning", "Costs almost nothing to think out loud", "$0"),
+        <i>...</i>
+        ("LOCKED",   "the tenth",       "Picks which of these nine gets the job", "$19"),
+    ]},</pre>
+
+  <p>Fiecare rind e <code>(nume, job, o linie, pret)</code>. Layout-ul foloseste cite din ele ii trebuie: <code>wall</code> ia doar numele, <code>list</code> ia si descrierea, <code>receipt</code> ia si pretul si calculeaza totalul.</p>
+
+  <p>Rindul <code>LOCKED</code> e Ultron ascuns. Iese ca <code>?????</code> in terracotta si se deschide prin keyword-ul din pill. Descrierea lui se scrie pentru use case-ul acelui material, niciodata o linie generica refolosita.</p>
+
+  <div class="note">
+    <div class="t">Preturi</div>
+    <p>Orice cifra care apare pe cadru se verifica pe site-ul produsului inainte de postare. Bonul din <code>receipt</code> isi calculeaza totalul din rindurile lui, deci un pret gresit strica si totalul. Cifrele inventate sunt interzise (CLAUDE.md 21) si un bon gresit e exact genul de detaliu pe care cineva il verifica.</p>
+  </div>
+</section>
+
+<section id="s4">
+  <div class="step-head"><span class="step-n">04</span><h2>Materialul HTML</h2></div>
+  <p class="lede">Forma plus continutul, puse in cadrul 4:5. Iese un singur fisier HTML, complet, care se deschide in orice browser.</p>
+
+<pre><b>python3</b> content/_reveal9.py                <i># toate noua</i>
+<b>python3</b> content/_reveal9.py wall phone     <i># doar astea doua</i>
+<b>python3</b> content/_reveal9.py wall --shots   <i># plus un still</i>
+<b>python3</b> content/_reveal9.py --follow       <i># footer follow in loc de comment CTA</i></pre>
+
+  <h3>Geometria cadrului</h3>
+  <div class="frame-fig">
+    <div class="frame" role="img" aria-label="Cadru 1080 pe 1350: banda de 180px sus, muchie de 3px, poza de 1170px, pill de CTA la 1180px">
+      <div class="f-band">BANDA · HOOK</div>
+      <div class="f-edge"></div>
+      <div class="f-pic">POZA · LAYOUT</div>
+      <div class="f-pill">Comment <em>MODELS</em> for the full stack</div>
+    </div>
+    <div class="frame-key">
+      <dl>
+        <dt>0 - 180</dt><dd><strong>Banda.</strong> Gradient <code>#1c1c1c</code> spre <code>#2b2b2b</code>. Hook 42px/800 pe doua linii, sub-hook 29px/700. Nu se stinge niciodata.</dd>
+        <dt>180 + 3</dt><dd><strong>Muchia.</strong> <code>#111</code>, plina.</dd>
+        <dt>183 - 1350</dt><dd><strong>Poza.</strong> 1170 inaltime, fundal <code>#f6f8fc</code>. Aici traieste layout-ul.</dd>
+        <dt>1180</dt><dd><strong>Pill-ul de CTA.</strong> Sticla alba, 27px/700, keyword in <code>#EA580C</code>. Pluteste peste poza.</dd>
+        <dt>veil</dt><dd><strong>Valul.</strong> Negru peste poza, doar peste poza.</dd>
+      </dl>
+    </div>
+  </div>
+
+  <p>Cifrele sunt cele din referinta ta, masurate, nu re-derivate. Continutul layout-ului primeste 920px inaltime: 1170 minus 56 sus si minus 194 jos, unde 194 e distanta de garda fata de pill.</p>
+
+  <h3>Singurul lucru care se misca</h3>
+  <div class="ramp">
+    <div class="ramp-bar" role="img" aria-label="Valul negru scade de la opacitate 0.982 la zero in 4.2 secunde, apoi cadrul sta neschimbat pina la 7 secunde"></div>
+    <div class="ramp-ticks">
+      <span>0.0s <b>opacity .982</b></span>
+      <span>4.2s <b>opacity 0</b></span>
+      <span>7.0s</span>
+    </div>
+  </div>
+  <p>Nimic nu se taie, nimic nu face crossfade. Acoperirea doar creste, ceea ce e chiar principiul pe care sta garda de retentie. Banda ramine la putere plina din frame-ul unu, deci hook-ul e citibil inainte ca poza sa existe.</p>
+
+  <h3>Ce verifica scriptul singur, inainte sa scrie fisierul</h3>
+  <ul>
+    <li><strong>Latimea liniilor din banda.</strong> Sunt <code>white-space:nowrap</code>, deci un hook prea lung ar fi taiat in tacere. Pragul e 1000px din 1080.</li>
+    <li><strong>Coliziunea cu pill-ul.</strong> Daca vreun element din layout coboara sub 1172, materialul pica.</li>
+  </ul>
+
+  <p>Fonturile sunt <strong>incorporate</strong> in fiecare HTML din <code>content/assets/fonts.css</code>, ca woff2 in base64. Fara asta, un <code>@import</code> catre Google nu se incarca la randare, pentru ca randerul nu are retea, si iti iese alt font decit vezi in browser.</p>
+</section>
+
+<section id="s5">
+  <div class="step-head"><span class="step-n">05</span><h2>Iteratia pe un frame</h2></div>
+  <p class="lede">Aici se face toata munca de corectat. Un frame se randeaza in trei secunde, filmul intreg in treizeci.</p>
+
+<pre><b>python3</b> content/_film.py content/ig/reveal9/03-wall.html <b>--still 6.0</b></pre>
+
+  <p>Scrie un singur PNG de la secunda 6, cind valul e deja complet transparent, si iese. Se schimba un cuvint sau un logo, se ruleaza din nou, se compara. Filmul complet se randeaza o singura data, la final, cind nu mai e nimic de schimbat.</p>
+</section>
+
+<section id="s6">
+  <div class="step-head"><span class="step-n">06</span><h2>Garda</h2></div>
+  <p class="lede">Regulile nu stau in proza, stau in cod. <code>_preflight.py</code> e legat ca Stop hook, deci blocheaza tura daca un material pica.</p>
+
+<pre><b>python3</b> content/_preflight.py content/ig/reveal9/03-wall.html</pre>
+
+  <div class="tw"><table>
+    <thead><tr><th>Verificare</th><th>Ce pica</th></tr></thead>
+    <tbody>
+      <tr><td>Dimensiuni</td><td>orice abatere de la formatul declarat</td></tr>
+      <tr><td>Charscan</td><td>em dash, en dash, caracterul de puncte de suspensie, ghilimele curbe</td></tr>
+      <tr><td>Paleta</td><td>hex interzis: neon portocaliu, verde, rosu saturat, piersica, mov, albastru</td></tr>
+      <tr><td>Zona sigura</td><td>pe format vertical, continut peste linia de 300px</td></tr>
+      <tr><td>Repetitie</td><td>layout identic cu materialul anterior de pe acelasi canal</td></tr>
+      <tr><td>Banda moarta</td><td>orice gol vertical peste 120px</td></tr>
+      <tr><td>Fonturi</td><td>raporteaza familiile incarcate, nu blocheaza</td></tr>
+    </tbody>
+  </table></div>
+
+  <p>Raportul de fonturi numara familiile <em>incarcate</em>, nu cele folosite. Un material construit cu <code>fonts.css</code> intreg raporteaza sase familii si foloseste una singura. E semnal, nu eroare.</p>
+</section>
+
+<section id="s7">
+  <div class="step-head"><span class="step-n">07</span><h2>Randarea MP4</h2></div>
+  <p class="lede">Motorul. <code>content/_film.py</code>. Nu inregistreaza ecranul.</p>
+
+<pre><b>python3</b> content/_film.py content/ig/reveal9/03-wall.html --no-audio</pre>
+
+  <p>Inregistrarea de ecran pierde frame-uri si da alt rezultat la fiecare rulare. Aici ceasul CSS e oprit si mutat manual, frame cu frame:</p>
+
+<pre>document.getAnimations().forEach(a => { a.pause(); a.currentTime = t_ms })</pre>
+
+  <div class="plate">
+<pre class="mermaid">
+sequenceDiagram
+    participant PY as _film.py
+    participant PW as Chromium headless
+    participant FF as ffmpeg
+
+    PY->>PY: citeste FILM-META din CSS
+    Note over PY: duration 7.0, fps 30<br/>deci 210 frames
+    PY->>FF: Popen(ffmpeg, stdin=PIPE)
+    PY->>PW: launch, viewport 1080x1350, scale 1
+    PW-->>PY: document.fonts.ready
+
+    loop 210 frames
+        PY->>PW: pause() + currentTime = i/30 * 1000
+        PW-->>PY: screenshot JPEG q95
+        PY->>FF: stdin.write(bytes)
+    end
+
+    PY->>FF: stdin.close()
+    FF-->>PY: h264 1080x1350, exit 0
+    PY->>PY: cheama _scrub.py
+</pre>
+  </div>
+
+  <h3>Blocul FILM-META</h3>
+  <p>O linie de comentariu in CSS, care e contractul dintre pagina si render. Pagina ramine singura sursa de adevar si randerul nu se editeaza per material.</p>
+
+<pre>/* FILM-META {"duration":7.0,"w":1080,"h":1350,"fps":30,"beats":[]} */</pre>
+
+  <h3>De ce iese identic de fiecare data</h3>
+  <ul>
+    <li><code>--force-color-profile=srgb</code>, ca sa nu depinda de monitor</li>
+    <li><code>--disable-lcd-text</code> si <code>--font-render-hinting=none</code>, ca sa nu depinda de setarile de font ale sistemului</li>
+    <li><code>device_scale_factor=1</code>, corespondenta 1 la 1 intre pixelul din pagina si pixelul din film</li>
+    <li>fiecare frame e la momentul matematic exact, nu la cit a apucat masina sa randeze</li>
+  </ul>
+
+  <h3>Encoding</h3>
+  <p>ffmpeg ruleaza in paralel cu bucla si primeste imaginile prin stdin, deci nu se scriu 210 fisiere temporare pe disc.</p>
+
+<pre>ffmpeg -y -f image2pipe -framerate 30 -i - \
+  -c:v libx264 -preset slow -crf 18 \
+  -pix_fmt yuv420p -movflags +faststart  out.mp4</pre>
+
+  <h3>Flag-uri care conteaza</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Flag</th><th>Ce face</th><th>Cind</th></tr></thead>
+    <tbody>
+      <tr><td><code>--still 6.0</code></td><td>un singur PNG de la secunda aia, apoi iese</td><td>la fiecare iteratie</td></tr>
+      <tr><td><code>--no-audio</code></td><td>film mut, fara voice over</td><td>implicit pentru reels de stack</td></tr>
+      <tr><td><code>--png</code></td><td>frame-uri intermediare fara pierderi</td><td>master, de 8 ori mai lent</td></tr>
+      <tr><td><code>--to 2.0</code></td><td>opreste randarea devreme</td><td>sonda de timp pe un film lung</td></tr>
+      <tr><td><code>--out</code></td><td>alta destinatie decit linga HTML</td><td>rar</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="note">
+    <div class="t">De ce nu se coace poza intr-un JPEG</div>
+    <p>Masurat azi pe zona de poza a materialului 03, 1080x1170, culoare plata si linii de 1px: JPEG q98 iese 113 KB, PNG iese 65 KB. PNG e cu 43 la suta mai mic <em>si</em> exact. JPEG-ul muta 2.6 la suta din pixeli cu peste doua niveluri, cel mai rau cu 90 din 255, adica ringing in jurul fiecarei borduri si al fiecarei litere, pe care h264 il recomprima apoi.</p>
+    <p>Al doilea motiv e tipografia: un compositor de imagini nu are motor de layout, deci nu are kerning, ligaturi sau letter-spacing, iar textul se centreaza cu masuratori facute de mina. Aici Chromium aseaza si banda si continutul, cu aceleasi reguli.</p>
+  </div>
+</section>
+
+<section id="s8">
+  <div class="step-head"><span class="step-n">08</span><h2>Scrub</h2></div>
+  <p class="lede">Niciun fisier nu pleaca proaspat randat. Algoritmul penalizeaza continutul care se citeste ca generat de unealta.</p>
+
+<pre><b>python3</b> content/_scrub.py content/ig/reveal9/03-wall.mp4</pre>
+
+  <p>Sterge orice bloc de text, timp, software sau sursa si stampileaza autor <strong>Tibi Serbaneci</strong>, software <strong>Ultron Content Studio</strong>. <code>_film.py</code> il cheama singur la final, deci pasul asta e automat pentru filme; ramine de rulat manual doar pe PNG-uri scoase separat.</p>
+
+  <div class="note">
+    <div class="t">Eticheta de pe Mac</div>
+    <p>Eticheta "Where from" nu e in fisier, e un atribut pus de browser la descarcare si nu se poate scoate din repo. Ia fisierul din git, nu din chat, si nu exista deloc. Daca l-ai descarcat deja: <code>xattr -c fisier.mp4</code>.</p>
+  </div>
+</section>
+
+<section id="s9">
+  <div class="step-head"><span class="step-n">09</span><h2>Captionul</h2></div>
+  <p class="lede">Fara caption materialul nu e livrat. Structura din CLAUDE.md 33, in ordinea asta, un beat pe paragraf, rind gol intre ele.</p>
+
+  <ol>
+    <li><strong>CTA pe prima linie</strong>, cu sageata in jos. <code>↓ Comment MODELS to get the full breakdown.</code></li>
+    <li><strong>Promisiunea</strong>, o propozitie, persoana intii, conditional.</li>
+    <li><strong>Durerea</strong>, trei sau patru propozitii scurte, prezent, concret.</li>
+    <li><strong>Intoarcerea</strong>, doua rinduri. <code>Here is the reality</code> pe rind propriu, apoi reframe-ul.</li>
+    <li><strong>Lista</strong>, un produs pe rind, propozitii simple, fara sageti si fara buline.</li>
+    <li><strong>Principiul</strong>, un paragraf. Mecanismul, nu produsele.</li>
+    <li><strong>Artefactul</strong>, un rind. Aici apare Ultron, o singura data.</li>
+    <li><strong>CTA din nou</strong>, un rind.</li>
+    <li><strong>Cinci hashtag-uri</strong>, ultima linie.</li>
+  </ol>
+
+  <p>200 pina la 260 de cuvinte. Fara em dash, fara caracterul de puncte de suspensie, fara apostrof curb, <strong>fara emoji</strong>, fara markdown, fara linkuri in corp. Singurul glif nou e sageata care deschide prima linie.</p>
+
+  <p>Cele cinci hashtag-uri, alese dupa subiect: <code>#claude #ai #founder #startup #buildinpublic</code> pentru lane-ul de founder GTM, <code>#fyp #ai #automation #business #entrepreneur</code> pentru lane-ul de tools si productivitate.</p>
+</section>
+
+<section id="s10">
+  <div class="step-head"><span class="step-n">10</span><h2>Livrarea</h2></div>
+  <p class="lede">Tot lantul, o comanda. Apoi commit, apoi fisierele iti ajung in chat.</p>
+
+<pre><i># build + randare, un material</i>
+<b>python3</b> content/_reveal9.py wall && \
+<b>python3</b> content/_film.py content/ig/reveal9/03-wall.html --no-audio
+
+<i># toate noua</i>
+<b>python3</b> content/_reveal9.py && \
+<b>for</b> f in content/ig/reveal9/*.html; <b>do</b> python3 content/_film.py "$f" --no-audio; <b>done</b></pre>
+
+  <p>Ce ramine pe disc dupa un material:</p>
+
+<pre>content/ig/reveal9/
+├── 03-wall.html        <i>materialul, HTML complet, fonturi incorporate</i>
+├── 03-wall.png         <i>still-ul de verificare</i>
+├── 03-wall-t6s.png     <i>frame-ul de la secunda 6</i>
+├── 03-wall.mp4         <i>1080x1350, h264, 7.00s, 30fps, curatat</i>
+└── caption.md          <i>captionul</i></pre>
+</section>
+
+<hr>
+
+<section id="ref">
+  <div class="step-head"><span class="step-n">++</span><h2>Scripturi si timpi</h2></div>
+  <p class="lede">Toate pe branch-ul <code>claude/analyze-connected-repo-rfx1r6</code>, in <code>content/</code>.</p>
+
+  <div class="tw"><table>
+    <thead><tr><th>Pas</th><th>Script</th><th>Ce face</th></tr></thead>
+    <tbody>
+      <tr><td class="num">01</td><td><code>content/_logos.py</code></td><td>instaleaza biblioteca de marci si rezolva setul de lucru</td></tr>
+      <tr><td class="num">02</td><td><code>content/_layouts.py</code></td><td>cele noua forme, o singura definitie fiecare</td></tr>
+      <tr><td class="num">03 04</td><td><code>content/_reveal9.py</code></td><td>continutul plus cadrul 4:5, scrie HTML-ul</td></tr>
+      <tr><td class="num">05 07</td><td><code>content/_film.py</code></td><td>HTML in MP4, ceas inghetat plus ffmpeg</td></tr>
+      <tr><td class="num">06</td><td><code>content/_preflight.py</code></td><td>garda de dimensiuni, caractere, paleta, repetitie</td></tr>
+      <tr><td class="num">08</td><td><code>content/_scrub.py</code></td><td>curata metadata, stampileaza autorul</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Timpi masurati</h3>
+  <p>Materialul 03, un singur material, pe masina asta.</p>
+
+  <div class="tw"><table>
+    <thead><tr><th>Pas</th><th>Comanda</th><th class="num">Timp</th></tr></thead>
+    <tbody>
+      <tr><td>Build HTML</td><td><code>_reveal9.py wall</code></td><td class="num">12.9s</td></tr>
+      <tr><td>Un frame</td><td><code>_film.py --still 6.0</code></td><td class="num">3.0s</td></tr>
+      <tr><td>Randare completa</td><td><code>_film.py --no-audio</code></td><td class="num">31.3s</td></tr>
+      <tr><td>Scrub</td><td><code>_scrub.py</code></td><td class="num">0.1s</td></tr>
+      <tr><td><strong>Total</strong></td><td></td><td class="num"><strong>47.2s</strong></td></tr>
+    </tbody>
+  </table></div>
+
+  <p>Randarea e 210 frame-uri la aproximativ 125ms fiecare. Build-ul de 12.9s include o pornire de Chromium pentru verificarile din pasul 04; daca dai mai multe layout-uri intr-o singura comanda, browserul porneste o singura data pentru toate.</p>
+
+  <h3>Iesirea in terminal</h3>
+<pre>FILM   03-wall.html  1080x1350  7.0s
+  chrome /opt/pw-browsers/chromium-1194/chrome-linux/chrome
+  frames 210 @ 30fps  (1 animations on the master clock)
+           60/210  t= 2.00s  113ms/frame  eta 17s
+          120/210  t= 4.00s  136ms/frame  eta 12s
+          180/210  t= 6.00s  125ms/frame  eta 4s
+  OK     03-wall.mp4  0.4 MB  SILENT</pre>
+
+  <p>Verificat cu ffmpeg pe fisierul iesit: <code>1080x1350 [DAR 4:5], 30 fps, 7.00s, h264 High, yuv420p</code>.</p>
+</section>
+
+<footer>
+  <span>Ultron content · linia de productie</span>
+  <span>NexityNetwork/tiberiu-claude</span>
+</footer>
+
+</div>
