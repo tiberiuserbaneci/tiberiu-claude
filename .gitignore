@@ -10,3 +10,6 @@ content/portal/manifest.json.tmp
 # re-rendering does not re-spend API credits. It embeds the same audio as base64, so the
 # committed artifact is <film>-vo.mp3 and this stays out of the repo.
 content/*-vo.align.json
+
+# brand mark source cache, rebuildable with content/_logos.py --sync
+.logocache/

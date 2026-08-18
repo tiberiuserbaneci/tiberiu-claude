@@ -1,0 +1,1834 @@
+{
+ "built": "content/_logos.py",
+ "sources": {
+  "si": "simple-icons, CC0, monochrome single path plus official brand hex",
+  "lobe": "@lobehub/icons-static-svg, MIT, AI model marks",
+  "gil": "gilbarbara/logos, CC0, official full colour artwork",
+  "dash": "homarr-labs/dashboard-icons, MIT, app marks"
+ },
+ "note": "Files are freely licensed. Trademarks are not: a third party mark in a commercial piece needs the operator's approval per CLAUDE.md 18.",
+ "tools": {
+  "Claude": {
+   "slug": "claude",
+   "hex": "D97757",
+   "mono": "claude.svg",
+   "color": "claude-color.svg",
+   "source": [
+    "si:claude.svg",
+    "lobe:claude-color.svg"
+   ],
+   "lum": 0.542,
+   "dark": false,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "claude-1024.png"
+  },
+  "Claude Code": {
+   "slug": "claude",
+   "hex": "D97757",
+   "mono": "claude.svg",
+   "color": "claude-color.svg",
+   "source": [
+    "si:claude.svg",
+    "lobe:claude-color.svg"
+   ],
+   "lum": 0.542,
+   "dark": false,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "claude-1024.png"
+  },
+  "Claude Cowork": {
+   "slug": "claude",
+   "hex": "D97757",
+   "mono": "claude.svg",
+   "color": "claude-color.svg",
+   "source": [
+    "si:claude.svg",
+    "lobe:claude-color.svg"
+   ],
+   "lum": 0.542,
+   "dark": false,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "claude-1024.png"
+  },
+  "ChatGPT": {
+   "slug": "openai",
+   "hex": null,
+   "mono": null,
+   "color": "openai-color.svg",
+   "source": [
+    "gil:openai-icon.svg"
+   ],
+   "lum": 0.0,
+   "dark": true,
+   "ink_aspect": 0.99,
+   "wide_ink": false,
+   "png": "openai-1024.png"
+  },
+  "Codex": {
+   "slug": "openai",
+   "hex": null,
+   "mono": null,
+   "color": "openai-color.svg",
+   "source": [
+    "gil:openai-icon.svg"
+   ],
+   "lum": 0.0,
+   "dark": true,
+   "ink_aspect": 0.99,
+   "wide_ink": false,
+   "png": "openai-1024.png"
+  },
+  "Gemini": {
+   "slug": "gemini",
+   "hex": null,
+   "mono": null,
+   "color": "gemini-color.svg",
+   "source": [
+    "lobe:gemini-color.svg"
+   ],
+   "lum": 0.52,
+   "dark": false,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "gemini-1024.png"
+  },
+  "Nano Banana 2": {
+   "slug": "gemini",
+   "hex": null,
+   "mono": null,
+   "color": "gemini-color.svg",
+   "source": [
+    "lobe:gemini-color.svg"
+   ],
+   "lum": 0.52,
+   "dark": false,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "gemini-1024.png"
+  },
+  "NotebookLM": {
+   "slug": "notebooklm",
+   "hex": "000000",
+   "mono": "notebooklm.svg",
+   "color": "notebooklm-color.svg",
+   "source": [
+    "si:notebooklm.svg",
+    "dash:notebook-lm.svg"
+   ],
+   "lum": 0.0,
+   "dark": true,
+   "ink_aspect": 1.36,
+   "wide_ink": false,
+   "png": "notebooklm-1024.png"
+  },
+  "Veo 3.1": {
+   "slug": "google",
+   "hex": "4285F4",
+   "mono": "google.svg",
+   "color": "google-color.svg",
+   "source": [
+    "si:google.svg",
+    "lobe:google-color.svg"
+   ],
+   "lum": 0.513,
+   "dark": false,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "google-1024.png"
+  },
+  "DeepSeek": {
+   "slug": "deepseek",
+   "hex": "5786FE",
+   "mono": "deepseek.svg",
+   "color": "deepseek-color.svg",
+   "source": [
+    "si:deepseek.svg",
+    "lobe:deepseek-color.svg"
+   ],
+   "lum": 0.438,
+   "dark": false,
+   "ink_aspect": 1.36,
+   "wide_ink": false,
+   "png": "deepseek-1024.png"
+  },
+  "Grok": {
+   "slug": "grok",
+   "hex": null,
+   "mono": null,
+   "color": "grok-color.svg",
+   "source": [
+    "gil:grok-icon.svg"
+   ],
+   "lum": 0.0,
+   "dark": true,
+   "ink_aspect": 1.04,
+   "wide_ink": false,
+   "png": "grok-1024.png"
+  },
+  "Mistral": {
+   "slug": "mistral",
+   "hex": null,
+   "mono": null,
+   "color": "mistral-color.svg",
+   "source": [
+    "lobe:mistral-color.svg"
+   ],
+   "lum": 0.499,
+   "dark": false,
+   "ink_aspect": 1.4,
+   "wide_ink": false,
+   "png": "mistral-1024.png"
+  },
+  "Qwen": {
+   "slug": "qwen",
+   "hex": "6950EF",
+   "mono": "qwen.svg",
+   "color": "qwen-color.svg",
+   "source": [
+    "si:qwen.svg",
+    "lobe:qwen-color.svg"
+   ],
+   "lum": 0.377,
+   "dark": false,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "qwen-1024.png"
+  },
+  "Llama": {
+   "slug": "ollama",
+   "hex": "000000",
+   "mono": "ollama.svg",
+   "color": "ollama-color.svg",
+   "source": [
+    "si:ollama.svg",
+    "dash:ollama.svg"
+   ],
+   "lum": 0.0,
+   "dark": true,
+   "ink_aspect": 0.76,
+   "wide_ink": false,
+   "png": "ollama-1024.png"
+  },
+  "Perplexity": {
+   "slug": "perplexity",
+   "hex": "1FB8CD",
+   "mono": "perplexity.svg",
+   "color": "perplexity-color.svg",
+   "source": [
+    "si:perplexity.svg",
+    "lobe:perplexity-color.svg"
+   ],
+   "lum": 0.608,
+   "dark": false,
+   "ink_aspect": 0.88,
+   "wide_ink": false,
+   "png": "perplexity-1024.png"
+  },
+  "Copilot": {
+   "slug": "githubcopilot",
+   "hex": "000000",
+   "mono": "githubcopilot.svg",
+   "color": "githubcopilot-color.svg",
+   "source": [
+    "si:githubcopilot.svg",
+    "gil:github-copilot.svg"
+   ],
+   "lum": 0.0,
+   "dark": true,
+   "ink_aspect": 1.23,
+   "wide_ink": false,
+   "png": "githubcopilot-1024.png"
+  },
+  "Manus": {
+   "slug": "manus",
+   "hex": null,
+   "mono": null,
+   "color": "manus-color.svg",
+   "source": [
+    "lobe:manus.svg"
+   ],
+   "lum": 0.0,
+   "dark": true,
+   "ink_aspect": 0.78,
+   "wide_ink": false,
+   "png": "manus-1024.png"
+  },
+  "Kimi": {
+   "slug": "kimi",
+   "hex": "000000",
+   "mono": "kimi.svg",
+   "color": "kimi-color.svg",
+   "source": [
+    "si:kimi.svg",
+    "lobe:kimi-color.svg"
+   ],
+   "lum": 0.952,
+   "dark": false,
+   "ink_aspect": 1.04,
+   "wide_ink": false,
+   "png": "kimi-1024.png"
+  },
+  "Cohere": {
+   "slug": "cohere",
+   "hex": null,
+   "mono": null,
+   "color": "cohere-color.svg",
+   "source": [
+    "lobe:cohere-color.svg"
+   ],
+   "lum": 0.442,
+   "dark": false,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "cohere-1024.png"
+  },
+  "Cursor": {
+   "slug": "cursor",
+   "hex": "000000",
+   "mono": "cursor.svg",
+   "color": "cursor-color.svg",
+   "source": [
+    "si:cursor.svg",
+    "lobe:cursor.svg"
+   ],
+   "lum": 0.0,
+   "dark": true,
+   "ink_aspect": 0.88,
+   "wide_ink": false,
+   "png": "cursor-1024.png"
+  },
+  "Windsurf": {
+   "slug": "windsurf",
+   "hex": "0B100F",
+   "mono": "windsurf.svg",
+   "color": "windsurf-color.svg",
+   "source": [
+    "si:windsurf.svg",
+    "lobe:windsurf.svg"
+   ],
+   "lum": 0.0,
+   "dark": true,
+   "ink_aspect": 1.71,
+   "wide_ink": false,
+   "png": "windsurf-1024.png"
+  },
+  "Replit": {
+   "slug": "replit",
+   "hex": "F26207",
+   "mono": "replit.svg",
+   "color": "replit-color.svg",
+   "source": [
+    "si:replit.svg",
+    "lobe:replit-color.svg"
+   ],
+   "lum": 0.448,
+   "dark": false,
+   "ink_aspect": 0.85,
+   "wide_ink": false,
+   "png": "replit-1024.png"
+  },
+  "Lovable": {
+   "slug": "lovable",
+   "hex": null,
+   "mono": null,
+   "color": "lovable-color.svg",
+   "source": [
+    "lobe:lovable-color.svg"
+   ],
+   "lum": 0.494,
+   "dark": false,
+   "ink_aspect": 0.98,
+   "wide_ink": false,
+   "png": "lovable-1024.png"
+  },
+  "v0": {
+   "slug": "v0",
+   "hex": "000000",
+   "mono": "v0.svg",
+   "color": "v0-color.svg",
+   "source": [
+    "si:v0.svg",
+    "lobe:v0.svg"
+   ],
+   "lum": 0.0,
+   "dark": true,
+   "ink_aspect": 2.0,
+   "wide_ink": false,
+   "png": "v0-1024.png"
+  },
+  "Vercel": {
+   "slug": "vercel",
+   "hex": "000000",
+   "mono": "vercel.svg",
+   "color": "vercel-color.svg",
+   "source": [
+    "si:vercel.svg",
+    "gil:vercel-icon.svg"
+   ],
+   "lum": 0.0,
+   "dark": true,
+   "ink_aspect": 1.15,
+   "wide_ink": false,
+   "png": "vercel-1024.png"
+  },
+  "Supabase": {
+   "slug": "supabase",
+   "hex": "3FCF8E",
+   "mono": "supabase.svg",
+   "color": "supabase-color.svg",
+   "source": [
+    "si:supabase.svg",
+    "gil:supabase-icon.svg"
+   ],
+   "lum": 0.618,
+   "dark": false,
+   "ink_aspect": 0.97,
+   "wide_ink": false,
+   "png": "supabase-1024.png"
+  },
+  "Railway": {
+   "slug": "railway",
+   "hex": "0B0D0E",
+   "mono": "railway.svg",
+   "color": "railway-color.svg",
+   "source": [
+    "si:railway.svg",
+    "lobe:railway.svg"
+   ],
+   "lum": 0.0,
+   "dark": true,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "railway-1024.png"
+  },
+  "GitHub": {
+   "slug": "github",
+   "hex": "181717",
+   "mono": "github.svg",
+   "color": "github-color.svg",
+   "source": [
+    "si:github.svg",
+    "gil:github-icon.svg"
+   ],
+   "lum": 0.086,
+   "dark": true,
+   "ink_aspect": 1.02,
+   "wide_ink": false,
+   "png": "github-1024.png"
+  },
+  "Zed": {
+   "slug": "zedindustries",
+   "hex": "084CCF",
+   "mono": "zedindustries.svg",
+   "color": null,
+   "source": [
+    "si:zedindustries.svg"
+   ],
+   "lum": 0.28,
+   "dark": true,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "zedindustries-1024.png",
+   "png_white": "zedindustries-1024-w.png"
+  },
+  "VS Code": {
+   "slug": "vscode",
+   "hex": null,
+   "mono": null,
+   "color": "vscode-color.svg",
+   "source": [
+    "dash:vscode.svg"
+   ],
+   "lum": 0.473,
+   "dark": false,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "vscode-1024.png"
+  },
+  "Warp": {
+   "slug": "warp",
+   "hex": "01A4FF",
+   "mono": "warp.svg",
+   "color": null,
+   "source": [
+    "si:warp.svg"
+   ],
+   "lum": 0.534,
+   "dark": false,
+   "ink_aspect": 1.29,
+   "wide_ink": false,
+   "png": "warp-1024.png",
+   "png_white": "warp-1024-w.png"
+  },
+  "Raycast": {
+   "slug": "raycast",
+   "hex": "FF6363",
+   "mono": "raycast.svg",
+   "color": null,
+   "source": [
+    "si:raycast.svg"
+   ],
+   "lum": 0.52,
+   "dark": false,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "raycast-1024.png",
+   "png_white": "raycast-1024-w.png"
+  },
+  "Postman": {
+   "slug": "postman",
+   "hex": "FF6C37",
+   "mono": "postman.svg",
+   "color": "postman-color.svg",
+   "source": [
+    "si:postman.svg",
+    "gil:postman-icon.svg"
+   ],
+   "lum": 0.575,
+   "dark": false,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "postman-1024.png"
+  },
+  "Figma": {
+   "slug": "figma",
+   "hex": "F24E1E",
+   "mono": "figma.svg",
+   "color": "figma-color.svg",
+   "source": [
+    "si:figma.svg",
+    "lobe:figma-color.svg"
+   ],
+   "lum": 0.508,
+   "dark": false,
+   "ink_aspect": 0.67,
+   "wide_ink": false,
+   "png": "figma-1024.png"
+  },
+  "Framer": {
+   "slug": "framer",
+   "hex": "0055FF",
+   "mono": "framer.svg",
+   "color": "framer-color.svg",
+   "source": [
+    "si:framer.svg",
+    "gil:framer.svg"
+   ],
+   "lum": 0.0,
+   "dark": true,
+   "ink_aspect": 0.67,
+   "wide_ink": false,
+   "png": "framer-1024.png"
+  },
+  "Webflow": {
+   "slug": "webflow",
+   "hex": "146EF5",
+   "mono": "webflow.svg",
+   "color": null,
+   "source": [
+    "si:webflow.svg",
+    "gil:webflow.svg"
+   ],
+   "wordmark": "webflow-wordmark.svg",
+   "lum": 0.395,
+   "dark": false,
+   "ink_aspect": 1.6,
+   "wide_ink": false,
+   "png": "webflow-1024.png",
+   "png_white": "webflow-1024-w.png"
+  },
+  "Miro": {
+   "slug": "miro",
+   "hex": "050038",
+   "mono": "miro.svg",
+   "color": "miro-color.svg",
+   "source": [
+    "si:miro.svg",
+    "gil:miro-icon.svg"
+   ],
+   "lum": 0.63,
+   "dark": false,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "miro-1024.png"
+  },
+  "Excalidraw": {
+   "slug": "excalidraw",
+   "hex": "6965DB",
+   "mono": "excalidraw.svg",
+   "color": "excalidraw-color.svg",
+   "source": [
+    "si:excalidraw.svg",
+    "dash:excalidraw.svg"
+   ],
+   "lum": 0.434,
+   "dark": false,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "excalidraw-1024.png"
+  },
+  "Midjourney": {
+   "slug": "midjourney",
+   "hex": null,
+   "mono": null,
+   "color": "midjourney-color.svg",
+   "source": [
+    "gil:midjourney.svg"
+   ],
+   "lum": 0.131,
+   "dark": true,
+   "ink_aspect": 1.2,
+   "wide_ink": false,
+   "png": "midjourney-1024.png"
+  },
+  "Ideogram": {
+   "slug": "ideogram",
+   "hex": null,
+   "mono": null,
+   "color": "ideogram-color.svg",
+   "source": [
+    "lobe:ideogram.svg"
+   ],
+   "lum": 0.0,
+   "dark": true,
+   "ink_aspect": 1.01,
+   "wide_ink": false,
+   "png": "ideogram-1024.png"
+  },
+  "Recraft": {
+   "slug": "recraft",
+   "hex": null,
+   "mono": null,
+   "color": "recraft-color.svg",
+   "source": [
+    "lobe:recraft.svg"
+   ],
+   "lum": 0.0,
+   "dark": true,
+   "ink_aspect": 0.98,
+   "wide_ink": false,
+   "png": "recraft-1024.png"
+  },
+  "Krea": {
+   "slug": "krea",
+   "hex": null,
+   "mono": null,
+   "color": "krea-color.svg",
+   "source": [
+    "lobe:krea.svg"
+   ],
+   "lum": 0.0,
+   "dark": true,
+   "ink_aspect": 0.67,
+   "wide_ink": false,
+   "png": "krea-1024.png"
+  },
+  "Flux": {
+   "slug": "flux",
+   "hex": "5468FF",
+   "mono": "flux.svg",
+   "color": "flux-color.svg",
+   "source": [
+    "si:flux.svg",
+    "lobe:flux.svg"
+   ],
+   "lum": 0.0,
+   "dark": true,
+   "ink_aspect": 1.32,
+   "wide_ink": false,
+   "png": "flux-1024.png"
+  },
+  "Runway": {
+   "slug": "runway",
+   "hex": null,
+   "mono": null,
+   "color": "runway-color.svg",
+   "source": [
+    "lobe:runway.svg"
+   ],
+   "lum": 0.0,
+   "dark": true,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "runway-1024.png"
+  },
+  "Luma": {
+   "slug": "luma",
+   "hex": null,
+   "mono": null,
+   "color": "luma-color.svg",
+   "source": [
+    "lobe:luma-color.svg"
+   ],
+   "lum": 0.534,
+   "dark": false,
+   "ink_aspect": 0.87,
+   "wide_ink": false,
+   "png": "luma-1024.png"
+  },
+  "Pika": {
+   "slug": "pika",
+   "hex": null,
+   "mono": null,
+   "color": "pika-color.svg",
+   "source": [
+    "lobe:pika.svg"
+   ],
+   "lum": 0.0,
+   "dark": true,
+   "ink_aspect": 1.42,
+   "wide_ink": false,
+   "png": "pika-1024.png"
+  },
+  "Kling": {
+   "slug": "kling",
+   "hex": null,
+   "mono": null,
+   "color": "kling-color.svg",
+   "source": [
+    "lobe:kling-color.svg"
+   ],
+   "lum": 0.652,
+   "dark": false,
+   "ink_aspect": 1.05,
+   "wide_ink": false,
+   "png": "kling-1024.png"
+  },
+  "Sora": {
+   "slug": "sora",
+   "hex": null,
+   "mono": null,
+   "color": "sora-color.svg",
+   "source": [
+    "lobe:sora-color.svg"
+   ],
+   "lum": 0.461,
+   "dark": false,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "sora-1024.png"
+  },
+  "CapCut": {
+   "slug": "capcut",
+   "hex": null,
+   "mono": null,
+   "color": "capcut-color.svg",
+   "source": [
+    "dash:cap-cut.svg"
+   ],
+   "lum": 0.0,
+   "dark": true,
+   "ink_aspect": 1.27,
+   "wide_ink": false,
+   "png": "capcut-1024.png"
+  },
+  "ElevenLabs": {
+   "slug": "elevenlabs",
+   "hex": "000000",
+   "mono": "elevenlabs.svg",
+   "color": null,
+   "source": [
+    "si:elevenlabs.svg"
+   ],
+   "lum": 0.0,
+   "dark": true,
+   "ink_aspect": 0.62,
+   "wide_ink": false,
+   "png": "elevenlabs-1024.png",
+   "png_white": "elevenlabs-1024-w.png"
+  },
+  "Suno": {
+   "slug": "suno",
+   "hex": "000000",
+   "mono": "suno.svg",
+   "color": "suno-color.svg",
+   "source": [
+    "si:suno.svg",
+    "lobe:suno.svg"
+   ],
+   "lum": 0.0,
+   "dark": true,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "suno-1024.png"
+  },
+  "Descript": {
+   "slug": "descript",
+   "hex": null,
+   "mono": null,
+   "color": "descript-color.svg",
+   "source": [
+    "gil:descript-icon.svg"
+   ],
+   "lum": 0.348,
+   "dark": false,
+   "ink_aspect": 0.85,
+   "wide_ink": false,
+   "png": "descript-1024.png"
+  },
+  "Canva": {
+   "slug": "canva",
+   "hex": null,
+   "mono": null,
+   "color": "canva-color.svg",
+   "source": [
+    "local:canva-color.svg"
+   ],
+   "lum": 0.532,
+   "dark": false,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "canva-1024.png"
+  },
+  "Notion": {
+   "slug": "notion",
+   "hex": "000000",
+   "mono": "notion.svg",
+   "color": "notion-color.svg",
+   "source": [
+    "si:notion.svg",
+    "gil:notion-icon.svg"
+   ],
+   "lum": 0.444,
+   "dark": false,
+   "ink_aspect": 0.96,
+   "wide_ink": false,
+   "png": "notion-1024.png"
+  },
+  "Obsidian": {
+   "slug": "obsidian",
+   "hex": "7C3AED",
+   "mono": "obsidian.svg",
+   "color": "obsidian-color.svg",
+   "source": [
+    "si:obsidian.svg",
+    "lobe:obsidian-color.svg"
+   ],
+   "lum": 0.603,
+   "dark": false,
+   "ink_aspect": 0.78,
+   "wide_ink": false,
+   "png": "obsidian-1024.png"
+  },
+  "Linear": {
+   "slug": "linear",
+   "hex": "5E6AD2",
+   "mono": "linear.svg",
+   "color": "linear-color.svg",
+   "source": [
+    "si:linear.svg",
+    "gil:linear-icon.svg"
+   ],
+   "lum": 0.137,
+   "dark": true,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "linear-1024.png"
+  },
+  "Todoist": {
+   "slug": "todoist",
+   "hex": "E44332",
+   "mono": "todoist.svg",
+   "color": "todoist-color.svg",
+   "source": [
+    "si:todoist.svg",
+    "gil:todoist-icon.svg"
+   ],
+   "lum": 0.482,
+   "dark": false,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "todoist-1024.png"
+  },
+  "Asana": {
+   "slug": "asana",
+   "hex": "F06A6A",
+   "mono": "asana.svg",
+   "color": "asana-color.svg",
+   "source": [
+    "si:asana.svg",
+    "gil:asana-icon.svg"
+   ],
+   "lum": 0.529,
+   "dark": false,
+   "ink_aspect": 1.08,
+   "wide_ink": false,
+   "png": "asana-1024.png"
+  },
+  "Trello": {
+   "slug": "trello",
+   "hex": "0052CC",
+   "mono": "trello.svg",
+   "color": "trello-color.svg",
+   "source": [
+    "si:trello.svg",
+    "gil:trello.svg"
+   ],
+   "lum": 0.619,
+   "dark": false,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "trello-1024.png"
+  },
+  "ClickUp": {
+   "slug": "clickup",
+   "hex": "7B68EE",
+   "mono": "clickup.svg",
+   "color": "clickup-color.svg",
+   "source": [
+    "si:clickup.svg",
+    "dash:clickup.svg"
+   ],
+   "lum": 0.523,
+   "dark": false,
+   "ink_aspect": 0.83,
+   "wide_ink": false,
+   "png": "clickup-1024.png"
+  },
+  "Airtable": {
+   "slug": "airtable",
+   "hex": "18BFFF",
+   "mono": "airtable.svg",
+   "color": "airtable-color.svg",
+   "source": [
+    "si:airtable.svg",
+    "gil:airtable.svg"
+   ],
+   "lum": 0.602,
+   "dark": false,
+   "ink_aspect": 1.19,
+   "wide_ink": false,
+   "png": "airtable-1024.png"
+  },
+  "Loom": {
+   "slug": "loom",
+   "hex": "625DF5",
+   "mono": "loom.svg",
+   "color": "loom-color.svg",
+   "source": [
+    "si:loom.svg",
+    "gil:loom-icon.svg"
+   ],
+   "lum": 0.414,
+   "dark": false,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "loom-1024.png"
+  },
+  "Zoom": {
+   "slug": "zoom",
+   "hex": "0B5CFF",
+   "mono": "zoom.svg",
+   "color": "zoom-color.svg",
+   "source": [
+    "si:zoom.svg",
+    "gil:zoom-icon.svg"
+   ],
+   "lum": 0.496,
+   "dark": false,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "zoom-1024.png"
+  },
+  "Slack": {
+   "slug": "slack",
+   "hex": null,
+   "mono": null,
+   "color": "slack-color.svg",
+   "source": [
+    "gil:slack-icon.svg"
+   ],
+   "lum": 0.566,
+   "dark": false,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "slack-1024.png"
+  },
+  "Substack": {
+   "slug": "substack",
+   "hex": "FF6719",
+   "mono": "substack.svg",
+   "color": null,
+   "source": [
+    "si:substack.svg"
+   ],
+   "lum": 0.509,
+   "dark": false,
+   "ink_aspect": 0.88,
+   "wide_ink": false,
+   "png": "substack-1024.png",
+   "png_white": "substack-1024-w.png"
+  },
+  "Typeform": {
+   "slug": "typeform",
+   "hex": "262627",
+   "mono": "typeform.svg",
+   "color": "typeform-color.svg",
+   "source": [
+    "si:typeform.svg",
+    "gil:typeform-icon.svg"
+   ],
+   "lum": 0.149,
+   "dark": true,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "typeform-1024.png"
+  },
+  "Calendly": {
+   "slug": "calendly",
+   "hex": "006BFF",
+   "mono": "calendly.svg",
+   "color": null,
+   "source": [
+    "si:calendly.svg"
+   ],
+   "lum": 0.374,
+   "dark": false,
+   "ink_aspect": 0.98,
+   "wide_ink": false,
+   "png": "calendly-1024.png",
+   "png_white": "calendly-1024-w.png"
+  },
+  "Cal.com": {
+   "slug": "caldotcom",
+   "hex": "292929",
+   "mono": "caldotcom.svg",
+   "color": null,
+   "source": [
+    "si:caldotcom.svg"
+   ],
+   "lum": 0.162,
+   "dark": true,
+   "ink_aspect": 4.77,
+   "wide_ink": true,
+   "png": "caldotcom-1024.png",
+   "png_white": "caldotcom-1024-w.png"
+  },
+  "Stripe": {
+   "slug": "stripe",
+   "hex": "635BFF",
+   "mono": "stripe.svg",
+   "color": null,
+   "source": [
+    "si:stripe.svg",
+    "gil:stripe.svg"
+   ],
+   "wordmark": "stripe-wordmark.svg",
+   "lum": 0.411,
+   "dark": false,
+   "ink_aspect": 0.71,
+   "wide_ink": false,
+   "png": "stripe-1024.png",
+   "png_white": "stripe-1024-w.png"
+  },
+  "Ramp": {
+   "slug": "ramp",
+   "hex": null,
+   "mono": null,
+   "color": "ramp-color.svg",
+   "source": [
+    "dash:ramp.svg"
+   ],
+   "lum": 0.0,
+   "dark": true,
+   "ink_aspect": 1.18,
+   "wide_ink": false,
+   "png": "ramp-1024.png"
+  },
+  "Brex": {
+   "slug": "brex",
+   "hex": "212121",
+   "mono": "brex.svg",
+   "color": null,
+   "source": [
+    "si:brex.svg"
+   ],
+   "lum": 0.13,
+   "dark": true,
+   "ink_aspect": 1.24,
+   "wide_ink": false,
+   "png": "brex-1024.png",
+   "png_white": "brex-1024-w.png"
+  },
+  "QuickBooks": {
+   "slug": "quickbooks",
+   "hex": "2CA01C",
+   "mono": "quickbooks.svg",
+   "color": null,
+   "source": [
+    "si:quickbooks.svg"
+   ],
+   "lum": 0.495,
+   "dark": false,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "quickbooks-1024.png",
+   "png_white": "quickbooks-1024-w.png"
+  },
+  "Xero": {
+   "slug": "xero",
+   "hex": "13B5EA",
+   "mono": "xero.svg",
+   "color": "xero-color.svg",
+   "source": [
+    "si:xero.svg",
+    "gil:xero.svg"
+   ],
+   "lum": 0.662,
+   "dark": false,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "xero-1024.png"
+  },
+  "Gusto": {
+   "slug": "gusto",
+   "hex": "F45D48",
+   "mono": "gusto.svg",
+   "color": null,
+   "source": [
+    "si:gusto.svg",
+    "gil:gusto.svg"
+   ],
+   "wordmark": "gusto-wordmark.svg",
+   "lum": 0.489,
+   "dark": false,
+   "ink_aspect": 2.63,
+   "wide_ink": true,
+   "png": "gusto-1024.png",
+   "png_white": "gusto-1024-w.png"
+  },
+  "Twilio": {
+   "slug": "twilio",
+   "hex": null,
+   "mono": null,
+   "color": "twilio-color.svg",
+   "source": [
+    "gil:twilio-icon.svg"
+   ],
+   "lum": 0.351,
+   "dark": false,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "twilio-1024.png"
+  },
+  "Resend": {
+   "slug": "resend",
+   "hex": "000000",
+   "mono": "resend.svg",
+   "color": "resend-color.svg",
+   "source": [
+    "si:resend.svg",
+    "gil:resend-icon.svg"
+   ],
+   "lum": 0.0,
+   "dark": true,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "resend-1024.png"
+  },
+  "HubSpot": {
+   "slug": "hubspot",
+   "hex": "FF7A59",
+   "mono": "hubspot.svg",
+   "color": null,
+   "source": [
+    "si:hubspot.svg",
+    "gil:hubspot.svg"
+   ],
+   "wordmark": "hubspot-wordmark.svg",
+   "lum": 0.582,
+   "dark": false,
+   "ink_aspect": 0.96,
+   "wide_ink": false,
+   "png": "hubspot-1024.png",
+   "png_white": "hubspot-1024-w.png"
+  },
+  "Pipedrive": {
+   "slug": "pipedrive",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [
+    "gil:pipedrive.svg"
+   ],
+   "wordmark": "pipedrive-wordmark.svg"
+  },
+  "Salesforce": {
+   "slug": "salesforce",
+   "hex": null,
+   "mono": null,
+   "color": "salesforce-color.svg",
+   "source": [
+    "gil:salesforce.svg"
+   ],
+   "lum": 0.55,
+   "dark": false,
+   "ink_aspect": 1.43,
+   "wide_ink": false,
+   "png": "salesforce-1024.png"
+  },
+  "Intercom": {
+   "slug": "intercom",
+   "hex": "6AFDEF",
+   "mono": "intercom.svg",
+   "color": "intercom-color.svg",
+   "source": [
+    "si:intercom.svg",
+    "gil:intercom-icon.svg"
+   ],
+   "lum": 0.0,
+   "dark": true,
+   "ink_aspect": 0.97,
+   "wide_ink": false,
+   "png": "intercom-1024.png"
+  },
+  "Intercom Fin": {
+   "slug": "intercom",
+   "hex": "6AFDEF",
+   "mono": "intercom.svg",
+   "color": "intercom-color.svg",
+   "source": [
+    "si:intercom.svg",
+    "gil:intercom-icon.svg"
+   ],
+   "lum": 0.0,
+   "dark": true,
+   "ink_aspect": 0.97,
+   "wide_ink": false,
+   "png": "intercom-1024.png"
+  },
+  "Zapier": {
+   "slug": "zapier",
+   "hex": "FF4F00",
+   "mono": "zapier.svg",
+   "color": null,
+   "source": [
+    "si:zapier.svg",
+    "gil:zapier.svg"
+   ],
+   "wordmark": "zapier-wordmark.svg",
+   "lum": 0.435,
+   "dark": false,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "zapier-1024.png",
+   "png_white": "zapier-1024-w.png"
+  },
+  "Make": {
+   "slug": "make",
+   "hex": "6D00CC",
+   "mono": "make.svg",
+   "color": "make-color.svg",
+   "source": [
+    "si:make.svg",
+    "lobe:make-color.svg"
+   ],
+   "lum": 0.262,
+   "dark": true,
+   "ink_aspect": 1.41,
+   "wide_ink": false,
+   "png": "make-1024.png"
+  },
+  "Fathom Analytics": {
+   "slug": "fathom",
+   "hex": "9187FF",
+   "mono": "fathom.svg",
+   "color": null,
+   "source": [
+    "si:fathom.svg"
+   ],
+   "lum": 0.573,
+   "dark": false,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "fathom-1024.png",
+   "png_white": "fathom-1024-w.png"
+  },
+  "PostHog": {
+   "slug": "posthog",
+   "hex": "000000",
+   "mono": "posthog.svg",
+   "color": "posthog-color.svg",
+   "source": [
+    "si:posthog.svg",
+    "gil:posthog-icon.svg"
+   ],
+   "lum": 0.4,
+   "dark": false,
+   "ink_aspect": 1.8,
+   "wide_ink": false,
+   "png": "posthog-1024.png"
+  },
+  "Mixpanel": {
+   "slug": "mixpanel",
+   "hex": "7856FF",
+   "mono": "mixpanel.svg",
+   "color": null,
+   "source": [
+    "si:mixpanel.svg",
+    "gil:mixpanel.svg"
+   ],
+   "wordmark": "mixpanel-wordmark.svg",
+   "lum": 0.415,
+   "dark": false,
+   "ink_aspect": 1.05,
+   "wide_ink": false,
+   "png": "mixpanel-1024.png",
+   "png_white": "mixpanel-1024-w.png"
+  },
+  "Amplitude": {
+   "slug": "amplitude",
+   "hex": null,
+   "mono": null,
+   "color": "amplitude-color.svg",
+   "source": [
+    "gil:amplitude-icon.svg"
+   ],
+   "lum": 0.075,
+   "dark": true,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "amplitude-1024.png"
+  },
+  "Sentry": {
+   "slug": "sentry",
+   "hex": "362D59",
+   "mono": "sentry.svg",
+   "color": "sentry-color.svg",
+   "source": [
+    "si:sentry.svg",
+    "gil:sentry-icon.svg"
+   ],
+   "lum": 0.197,
+   "dark": true,
+   "ink_aspect": 1.13,
+   "wide_ink": false,
+   "png": "sentry-1024.png"
+  },
+  "Datadog": {
+   "slug": "datadog",
+   "hex": "632CA6",
+   "mono": "datadog.svg",
+   "color": "datadog-color.svg",
+   "source": [
+    "si:datadog.svg",
+    "gil:datadog-icon.svg"
+   ],
+   "lum": 0.254,
+   "dark": true,
+   "ink_aspect": 0.93,
+   "wide_ink": false,
+   "png": "datadog-1024.png"
+  },
+  "Plausible": {
+   "slug": "plausible",
+   "hex": null,
+   "mono": null,
+   "color": "plausible-color.svg",
+   "source": [
+    "dash:plausible.svg"
+   ],
+   "lum": 0.423,
+   "dark": false,
+   "ink_aspect": 0.76,
+   "wide_ink": false,
+   "png": "plausible-1024.png"
+  },
+  "LinkedIn": {
+   "slug": "linkedin",
+   "hex": null,
+   "mono": null,
+   "color": "linkedin-color.svg",
+   "source": [
+    "gil:linkedin-icon.svg"
+   ],
+   "lum": 0.35,
+   "dark": false,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "linkedin-1024.png"
+  },
+  "Instagram": {
+   "slug": "instagram",
+   "hex": "FF0069",
+   "mono": "instagram.svg",
+   "color": "instagram-color.svg",
+   "source": [
+    "si:instagram.svg",
+    "gil:instagram-icon.svg"
+   ],
+   "lum": 0.038,
+   "dark": true,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "instagram-1024.png"
+  },
+  "TikTok": {
+   "slug": "tiktok",
+   "hex": "000000",
+   "mono": "tiktok.svg",
+   "color": "tiktok-color.svg",
+   "source": [
+    "si:tiktok.svg",
+    "gil:tiktok-icon.svg"
+   ],
+   "lum": 0.217,
+   "dark": true,
+   "ink_aspect": 0.89,
+   "wide_ink": false,
+   "png": "tiktok-1024.png"
+  },
+  "YouTube": {
+   "slug": "youtube",
+   "hex": "FF0000",
+   "mono": "youtube.svg",
+   "color": "youtube-color.svg",
+   "source": [
+    "si:youtube.svg",
+    "gil:youtube-icon.svg"
+   ],
+   "lum": 0.258,
+   "dark": true,
+   "ink_aspect": 1.43,
+   "wide_ink": false,
+   "png": "youtube-1024.png"
+  },
+  "X": {
+   "slug": "x",
+   "hex": "000000",
+   "mono": "x.svg",
+   "color": "x-color.svg",
+   "source": [
+    "si:x.svg",
+    "gil:x.svg"
+   ],
+   "lum": 0.0,
+   "dark": true,
+   "ink_aspect": 0.98,
+   "wide_ink": false,
+   "png": "x-1024.png"
+  },
+  "Reddit": {
+   "slug": "reddit",
+   "hex": "FF4500",
+   "mono": "reddit.svg",
+   "color": "reddit-color.svg",
+   "source": [
+    "si:reddit.svg",
+    "gil:reddit-icon.svg"
+   ],
+   "lum": 0.551,
+   "dark": false,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "reddit-1024.png"
+  },
+  "Discord": {
+   "slug": "discord",
+   "hex": "5865F2",
+   "mono": "discord.svg",
+   "color": "discord-color.svg",
+   "source": [
+    "si:discord.svg",
+    "gil:discord-icon.svg"
+   ],
+   "lum": 0.426,
+   "dark": false,
+   "ink_aspect": 1.29,
+   "wide_ink": false,
+   "png": "discord-1024.png"
+  },
+  "Telegram": {
+   "slug": "telegram",
+   "hex": "26A5E4",
+   "mono": "telegram.svg",
+   "color": "telegram-color.svg",
+   "source": [
+    "si:telegram.svg",
+    "gil:telegram.svg"
+   ],
+   "lum": 0.62,
+   "dark": false,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "telegram-1024.png"
+  },
+  "WhatsApp": {
+   "slug": "whatsapp",
+   "hex": "25D366",
+   "mono": "whatsapp.svg",
+   "color": "whatsapp-color.svg",
+   "source": [
+    "si:whatsapp.svg",
+    "gil:whatsapp-icon.svg"
+   ],
+   "lum": 0.781,
+   "dark": false,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "whatsapp-1024.png"
+  },
+  "Gmail": {
+   "slug": "gmail",
+   "hex": "EA4335",
+   "mono": "gmail.svg",
+   "color": "gmail-color.svg",
+   "source": [
+    "si:gmail.svg",
+    "dash:gmail.svg"
+   ],
+   "lum": 0.476,
+   "dark": false,
+   "ink_aspect": 1.33,
+   "wide_ink": false,
+   "png": "gmail-1024.png"
+  },
+  "Outlook": {
+   "slug": "microsoftoutlook",
+   "hex": null,
+   "mono": null,
+   "color": "microsoftoutlook-color.svg",
+   "source": [
+    "dash:microsoft-outlook.svg"
+   ],
+   "lum": 0.484,
+   "dark": false,
+   "ink_aspect": 1.07,
+   "wide_ink": false,
+   "png": "microsoftoutlook-1024.png"
+  },
+  "Attio": {
+   "slug": "attio",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Beehiiv": {
+   "slug": "beehiiv",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Bolt": {
+   "slug": "bolt",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Clay": {
+   "slug": "clay",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Deel": {
+   "slug": "deel",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Dropcontact": {
+   "slug": "dropcontact",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Elicit": {
+   "slug": "elicit",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "FigJam": {
+   "slug": "figjam",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Fireflies": {
+   "slug": "fireflies",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Gamma": {
+   "slug": "gamma",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Granola": {
+   "slug": "granola",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Gumloop": {
+   "slug": "gumloop",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Height": {
+   "slug": "height",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Heygen": {
+   "slug": "heygen",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Higgsfield": {
+   "slug": "higgsfield",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Hunter": {
+   "slug": "hunter",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Instantly": {
+   "slug": "instantly",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Lemlist": {
+   "slug": "lemlist",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Limitless": {
+   "slug": "limitless",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Lindy": {
+   "slug": "lindy",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Mem": {
+   "slug": "mem",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Mercury": {
+   "slug": "mercury",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Metricool": {
+   "slug": "metricool",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Motion": {
+   "slug": "motion",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Otter": {
+   "slug": "otter",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Outreach": {
+   "slug": "outreach",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Readwise": {
+   "slug": "readwise",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Reclaim": {
+   "slug": "reclaim",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Rippling": {
+   "slug": "rippling",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Salesloft": {
+   "slug": "salesloft",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Shortwave": {
+   "slug": "shortwave",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Smartlead": {
+   "slug": "smartlead",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Superhuman": {
+   "slug": "superhuman",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Superwhisper": {
+   "slug": "superwhisper",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Synthesia": {
+   "slug": "synthesia",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Tana": {
+   "slug": "tana",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Whimsical": {
+   "slug": "whimsical",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Wispr Flow": {
+   "slug": "wisprflow",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Apollo": {
+   "slug": "apollo",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source"
+  },
+  "Fathom": {
+   "slug": "fathom",
+   "hex": null,
+   "mono": null,
+   "color": null,
+   "source": [],
+   "note": "no vector mark in any source",
+   "lum": 0.573,
+   "dark": false,
+   "ink_aspect": 1.0,
+   "wide_ink": false,
+   "png": "fathom-1024.png",
+   "png_white": "fathom-1024-w.png"
+  }
+ },
+ "raster": {
+  "size": 1024,
+  "dir": "content/assets/logos/png"
+ }
+}
