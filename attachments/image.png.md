@@ -1,99 +1,122 @@
 [Attached image: image.png]
-The image is a square infographic with a light cream/off-white background and a large headline at the top. It uses dark navy, purple, and green accents, with a clean modern design. There are no photographs of real people; all figures are simple icon-style UI illustrations.
+The image is a square social-media-style infographic with a black header, a light cream main background, and a dark faded gradient at the bottom.
 
 ## Overall layout
-- Top section: large title text spanning nearly the full width.
-- Left middle/lower section: a vertical four-step process with icons and arrows.
-- Right middle/lower section: a circular diagram of 10 AI business models around a laptop illustration in the center.
-- A thin vertical divider line separates the left process column from the right circular diagram.
+- The design is split into two main vertical sections:
+  - **Left column:** a simple 4-step flow with icons and arrows.
+  - **Right section:** a circular “business model” diagram with a laptop in the center and 10 labeled items arranged around a dashed circle.
+- There is a thin vertical divider line roughly near the center of the image, separating the left and right halves.
+- The top header area is black with large white title text.
+- The bottom has a dark gradient overlay that partially obscures a footer line of text.
+
+---
 
 ## Visible text, transcribed verbatim
 
-### Main title at top
-- `10 AI BUSINESS MODELS`
-- `THAT MAKE REAL MONEY`
+### Header
+- **10 AI BUSINESS**
+- **MODELS** *(that make real money in 2026)*
 
-The words `MAKE REAL MONEY` are in a purple rectangular highlight bar with white text.  
-`10` is in purple. The rest of `AI BUSINESS MODELS` and `THAT` are in dark navy/black.
+Below that, left-aligned in the black header:
+- **Use AI to build once.**
+- **Let it generate income**  
+  (This second line is partially cut off by the light background/section edge, but the visible text reads exactly this.)
 
-### Subtitle/tagline under the title, left side
-- `Use AI to build once.`
-- `Let it generate income.`
+### Left column
+The left column contains four steps with circular icons and downward arrows between them:
 
-The word `build` appears in purple.
-The word `generate` appears in green.
-The rest is in dark text.
+1. **AI researches the market**
+2. **AI builds the first version**
+3. **You make the key decisions**
+4. **The system keeps generating revenue**
 
-### Left column process text
-Next to icons and arrows, from top to bottom:
-- `AI researches the market`
-- `AI builds the first version`
-- `You make the key decisions`
-- `The system keeps generating revenue`
+### Right diagram labels
+Around the dashed circle, the numbered labels read:
 
-### Circular diagram labels around the laptop
-These labels are arranged around a dashed circle. Numbering is included:
-- `1. BORING TOOL EMPIRE`
-- `2. LOCAL DIRECTORY FACTORY`
-- `3. TOO EXPENSIVE SAAS HUNTER`
-- `4. DIGITAL PRODUCT FACTORY`
-- `5. AFFILIATE SEO EMPIRE`
-- `7. HYPERSCALABLE GAME FACTORY`
-- `8. COLD EMAIL LEAD MACHINE`
-- `9. DATA PRODUCT FACTORY`
-- `10. STARTUP OPPORTUNITY FINDER`
+1. **1. BORING TOOL EMPIRE**
+2. **2. LOCAL DIRECTORY FACTORY**
+3. **3. TOO EX... SAAS HUN...**  
+   - This text is partially cut off at the right edge. The visible parts show:
+   - **3. TOO EX**
+   - **SAAS HUN...**
+   - The full intended phrase is not completely visible.
+4. **4. DIGITAL PRODUCT FACTORY**
+5. **5. AFFILIATE SEO EMPIRE**
+6. **6.** *(No readable label visible at the bottom-right in the provided image; the number is not clearly shown in the crop.)*
+7. **7. HYPERSCALABLE GAME FACTORY**
+8. **8. COLD EMAIL LEAD MACHINE**
+9. **9. DATA PRODUCT FACTORY**
+10. **10. STARTUP OPPORTUNITY FINDER**
 
-Notably, item `6` is not visible in the provided diagram.
+### Footer
+At the very bottom, partly obscured by the dark gradient:
+- **↓ CommentREAL for the full breakdown**
 
-### Text inside the central laptop screen
-- `AI`
+The text appears to have **“Comment”** followed immediately by **“REAL”** with no visible space, then **“for the full breakdown”**.
 
-There is also a small sparkle/star symbol near the AI text on the screen.
+---
 
-## Visual structure and elements
+## Left column details
+The left side presents a step-by-step process with four pale circular icons aligned vertically. Each step is connected by a downward arrow.
 
-### Left process column
-A vertical sequence of four round icons with arrows between them:
-1. Top icon: magnifying glass/search icon inside a pale purple circle.
-2. Second icon: code brackets `</>` inside a pale purple circle.
-3. Third icon: a user/person silhouette inside a pale purple circle.
-4. Fourth icon: an upward-trending line/graph arrow inside a pale green circle.
+### Step 1
+- Circle icon: pale lavender circle with a small magnifying glass symbol inside.
+- Text: **AI researches the market**
 
-Each icon is followed by its corresponding text. Downward arrows between steps are black.
+### Step 2
+- Circle icon: pale lavender circle, mostly empty/faint.
+- Text: **AI builds the first version**
 
-### Divider
-- A thin vertical dark gray/black line runs from near the middle of the image downward, separating the left text column from the right diagram.
+### Step 3
+- Circle icon: pale lavender circle with a small dot in the center.
+- Text: **You make the key decisions**
 
-### Central right diagram
-- The centerpiece is a laptop shown front-facing and slightly angled, sitting in the center.
-- The laptop is gray/silver with a dark screen bezel and keyboard.
-- The screen shows `AI` in purple with a small star/sparkle mark.
-- Around the laptop is a dashed circular path, indicating a cycle or ecosystem.
+### Step 4
+- Circle icon: pale mint/green circle with an upward-right arrow icon inside.
+- Text: **The system keeps generating revenue**
 
-### Icons around the circular diagram
-Each numbered item has a small rounded square icon with a thin border and a light background:
-- `1. BORING TOOL EMPIRE`: crossed tools icon (wrench/screwdriver-like) in dark line art.
-- `2. LOCAL DIRECTORY FACTORY`: green location pin icon.
-- `3. TOO EXPENSIVE SAAS HUNTER`: dollar sign in a circle, purple/blue.
-- `4. DIGITAL PRODUCT FACTORY`: green shopping cart icon.
-- `5. AFFILIATE SEO EMPIRE`: chain link icon in purple.
-- `7. HYPERSCALABLE GAME FACTORY`: game controller icon in purple.
-- `8. COLD EMAIL LEAD MACHINE`: envelope/mail icon in purple.
-- `9. DATA PRODUCT FACTORY`: stacked database cylinder icon in green.
-- `10. STARTUP OPPORTUNITY FINDER`: rocket icon in green.
+---
 
-The icons are placed evenly around the dashed circular line, with labels outside or near them.
+## Right diagram details
+The right half contains a large dashed circle, light gray in color, enclosing the central illustration and some labels.
 
-## Colors
-- Background: warm light cream/off-white.
-- Main headline: dark navy/black with purple emphasis on `10` and `MAKE REAL MONEY`.
-- Accent colors:
-  - Purple/violet for highlight bars, icons, and the `AI` laptop screen text.
-  - Green for the “generate” word, some icons, and the final step icon.
-  - Dark gray/navy for most body text and outlines.
-- The dashed circle is gray.
-- The laptop is mostly gray with dark outline and keyboard details.
+### Center object
+- A stylized laptop is centered slightly right of the vertical divider.
+- The laptop has:
+  - A gray body and base
+  - A dark navy screen
+  - Purple text **“AI”** on the screen
+  - A small white sparkle/star icon near the word AI
+- The laptop is drawn in a flat vector style.
 
-## Other visible design details
-- The overall style is a flat, polished social-media infographic.
-- Typography is bold
+### Circular arrangement
+- The dashed circle surrounds the laptop, with labels positioned around the perimeter.
+- Each numbered label has a small rounded-square icon in purple outline beside it.
+- The labels are dark navy text with purple accents.
+- The labels are distributed clockwise around the circle.
+
+---
+
+## Colors and style
+- **Header background:** solid black.
+- **Main background:** off-white / cream.
+- **Text in header:** white.
+- **Main labels:** dark navy / near-black.
+- **Icons and numbering accents:** purple/lavender.
+- **Step 4 icon:** mint green.
+- **Dashed circle:** light gray.
+- **Laptop screen:** dark navy with purple “AI” text.
+- **Footer overlay:** dark gray to black gradient.
+
+The design uses a clean, minimal vector illustration style with high contrast and lots of whitespace.
+
+---
+
+## Objects and visual elements present
+- Large title text
+- Subtitle text
+- Left-side process flow with 4 icons
+- Downward arrow separators
+- Thin vertical divider line
+- Central laptop illustration
+- Dashed circular
