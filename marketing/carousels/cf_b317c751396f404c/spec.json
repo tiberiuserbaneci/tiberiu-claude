@@ -1,0 +1,130 @@
+{
+  "id": "cf_b317c751396f404c",
+  "brand": "ULTRON",
+  "brief": "Create an 8-slide educational carousel for founder-led B2B SaaS teams showing a practical daily GTM operating system. Adapt the attached dark cheat-sheet poster into a premium editorial system, not a copy: black charcoal background, orange and warm cream typography, thin cream/orange outlines, rounded rectangular panels, terminal/editorial type feel, subtle grain, compact labels, strong hierarchy, and a 2-column card grid where useful. Keep every slide readable on mobile. Cover must show exactly: ULTRON and 51ultron.com. Do not mention or display any other company names. Do not include pricing or dollar amounts anywhere, especially not on the final slide. Final slide must be a comment CTA asking viewers to comment with the GTM task that consumes the most founder time. Use this slide plan: 1) Cover: Founder GTM Cheat Sheet, subtitle: the essential daily workflows for keeping pipeline moving without adding headcount. 2) The operating loop: Signal -> Decide -> Draft -> Ship -> Learn, with one-line explanations. 3) Morning scan: pipeline movement, new prospects, replies, churn signals, content opportunities. 4) Research workflow: identify a narrow account pattern, capture trigger, write one relevant angle, queue the next action. 5) Outreach workflow: context first, one problem, one proof point, one low-friction question, follow-up only when there is a reason. 6) Content workflow: one customer pain becomes a LinkedIn post, X thread, email, and short carousel. 7) Founder control panel: what to review daily, weekly, and monthly, with clear do-not-track noise. 8) Comment CTA: ask viewers to comment the GTM task that steals the most time, with ULTRON and 51ultron.com present but no sales pitch. Tone is direct, practical, systems-minded, and specific to solo founders and small B2B teams.",
+  "theme": "second-brain",
+  "slides": [
+    {
+      "layoutId": "cover-second-brain",
+      "slots": {
+        "tabLabel": "GTM",
+        "eyebrow": "DAILY SYSTEM",
+        "titleLine1": "Founder GTM",
+        "titleAccent": "Cheat Sheet",
+        "subtitle": "The essential daily workflows for keeping pipeline moving without adding headcount.",
+        "item1": "Signal to action",
+        "item2": "Ship every day",
+        "coverNote": "Built for solo founders and small B2B teams."
+      }
+    },
+    {
+      "layoutId": "body-second-brain",
+      "slots": {
+        "tabLabel": "LOOP",
+        "sectionLabel": "WORKFLOW",
+        "titleLine1": "The operating",
+        "titleAccent": "loop",
+        "body": "Treat GTM like a repeatable sequence, not a mood. Each step creates the input for the next one.",
+        "p1Title": "Signal",
+        "p1Body": "Notice what changed in the market, the pipeline, or the inbox.",
+        "p2Title": "Decide",
+        "p2Body": "Choose the one move that deserves attention now.",
+        "p3Title": "Draft Ship Learn",
+        "p3Body": "Create the asset, send it, then refine the next pass."
+      }
+    },
+    {
+      "layoutId": "body-second-brain",
+      "slots": {
+        "tabLabel": "SCAN",
+        "sectionLabel": "MORNING",
+        "titleLine1": "Start with the",
+        "titleAccent": "morning scan",
+        "body": "Spend a few minutes on live signals before you write or send anything. This keeps the day tied to reality.",
+        "p1Title": "Pipeline movement",
+        "p1Body": "Check stalled deals, fresh meetings, and anything advancing.",
+        "p2Title": "New prospects",
+        "p2Body": "Look for fit, timing, and a clear reason to reach out.",
+        "p3Title": "Replies and churn",
+        "p3Body": "Prioritize responses, cancellations, and renewal risk first."
+      }
+    },
+    {
+      "layoutId": "body-second-brain",
+      "slots": {
+        "tabLabel": "RESEARCH",
+        "sectionLabel": "ACCOUNT",
+        "titleLine1": "Research a",
+        "titleAccent": "narrow pattern",
+        "body": "Do not research broadly. Pick one account pattern, one trigger, and one angle that makes the next message feel obvious.",
+        "p1Title": "Capture the trigger",
+        "p1Body": "Write down what changed and why it matters now.",
+        "p2Title": "Write one angle",
+        "p2Body": "Connect the trigger to a concrete problem you solve.",
+        "p3Title": "Queue next action",
+        "p3Body": "End with the exact follow-up you will send next."
+      }
+    },
+    {
+      "layoutId": "body-second-brain",
+      "slots": {
+        "tabLabel": "OUTREACH",
+        "sectionLabel": "MESSAGE",
+        "titleLine1": "Write outreach",
+        "titleAccent": "that earns replies",
+        "body": "Lead with context, not a pitch. Keep it specific enough that the recipient knows why you wrote.",
+        "p1Title": "One problem",
+        "p1Body": "Name the pain in plain language.",
+        "p2Title": "One proof point",
+        "p2Body": "Use a single relevant example or result.",
+        "p3Title": "Low friction question",
+        "p3Body": "Ask something easy to answer, then follow up only with a reason."
+      }
+    },
+    {
+      "layoutId": "body-second-brain",
+      "slots": {
+        "tabLabel": "CONTENT",
+        "sectionLabel": "REPACKAGE",
+        "titleLine1": "Turn one pain",
+        "titleAccent": "into content",
+        "body": "One customer pain can power multiple formats. Reuse the same insight instead of starting over each time.",
+        "p1Title": "LinkedIn post",
+        "p1Body": "State the pain, the mistake, and the better move.",
+        "p2Title": "X thread",
+        "p2Body": "Break the problem into short, fast points.",
+        "p3Title": "Email and carousel",
+        "p3Body": "Reuse the same core message in a tighter format."
+      }
+    },
+    {
+      "layoutId": "body-second-brain",
+      "slots": {
+        "tabLabel": "CONTROL",
+        "sectionLabel": "REVIEW",
+        "titleLine1": "Use a founder",
+        "titleAccent": "control panel",
+        "body": "Review the few signals that change decisions. Ignore activity theater and keep the dashboard clean.",
+        "p1Title": "Daily",
+        "p1Body": "Check pipeline, replies, and active priorities.",
+        "p2Title": "Weekly",
+        "p2Body": "Review wins, stalls, patterns, and next actions.",
+        "p3Title": "Monthly",
+        "p3Body": "Watch trends, not vanity noise or scattered activity."
+      }
+    },
+    {
+      "layoutId": "cta-second-brain",
+      "slots": {
+        "tabLabel": "COMMENT",
+        "eyebrow": "YOUR TURN",
+        "titleLine1": "Comment the GTM",
+        "titleAccent": "task that steals time",
+        "body": "Tell us which GTM task eats the most founder time in your week. Keep it specific and practical.",
+        "closingLine": "The best systems start with the work you repeat most.",
+        "buttonLabel": "Comment below",
+        "signoff": "ULTRON 51ultron.com"
+      }
+    }
+  ]
+}

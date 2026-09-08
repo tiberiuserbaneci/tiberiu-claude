@@ -1,0 +1,78 @@
+{
+  "id": "cf_b317c751396f404c",
+  "kind": "carousel",
+  "title": "Founder GTM Cheat Sheet",
+  "hook": "",
+  "caption": "",
+  "format_id": null,
+  "format_version": null,
+  "slide_count": 8,
+  "aspect_ratio": "4:5",
+  "width": 1080,
+  "height": 1350,
+  "slides": [
+    {
+      "index": 0,
+      "type": "family",
+      "html_preview_url": "https://rvugghuawrgdigabochq.supabase.co/storage/v1/object/public/chat-attachments/359dd20b-cb7b-47c3-9d9e-ec707bb58667/carousels/cf_b317c751396f404c/slide-0.png",
+      "png_url": "https://rvugghuawrgdigabochq.supabase.co/storage/v1/object/public/chat-attachments/359dd20b-cb7b-47c3-9d9e-ec707bb58667/carousels/cf_b317c751396f404c/slide-0.png",
+      "excerpt": ""
+    },
+    {
+      "index": 1,
+      "type": "family",
+      "html_preview_url": "https://rvugghuawrgdigabochq.supabase.co/storage/v1/object/public/chat-attachments/359dd20b-cb7b-47c3-9d9e-ec707bb58667/carousels/cf_b317c751396f404c/slide-1.png",
+      "png_url": "https://rvugghuawrgdigabochq.supabase.co/storage/v1/object/public/chat-attachments/359dd20b-cb7b-47c3-9d9e-ec707bb58667/carousels/cf_b317c751396f404c/slide-1.png",
+      "excerpt": ""
+    },
+    {
+      "index": 2,
+      "type": "family",
+      "html_preview_url": "https://rvugghuawrgdigabochq.supabase.co/storage/v1/object/public/chat-attachments/359dd20b-cb7b-47c3-9d9e-ec707bb58667/carousels/cf_b317c751396f404c/slide-2.png",
+      "png_url": "https://rvugghuawrgdigabochq.supabase.co/storage/v1/object/public/chat-attachments/359dd20b-cb7b-47c3-9d9e-ec707bb58667/carousels/cf_b317c751396f404c/slide-2.png",
+      "excerpt": ""
+    },
+    {
+      "index": 3,
+      "type": "family",
+      "html_preview_url": "https://rvugghuawrgdigabochq.supabase.co/storage/v1/object/public/chat-attachments/359dd20b-cb7b-47c3-9d9e-ec707bb58667/carousels/cf_b317c751396f404c/slide-3.png",
+      "png_url": "https://rvugghuawrgdigabochq.supabase.co/storage/v1/object/public/chat-attachments/359dd20b-cb7b-47c3-9d9e-ec707bb58667/carousels/cf_b317c751396f404c/slide-3.png",
+      "excerpt": ""
+    },
+    {
+      "index": 4,
+      "type": "family",
+      "html_preview_url": "https://rvugghuawrgdigabochq.supabase.co/storage/v1/object/public/chat-attachments/359dd20b-cb7b-47c3-9d9e-ec707bb58667/carousels/cf_b317c751396f404c/slide-4.png",
+      "png_url": "https://rvugghuawrgdigabochq.supabase.co/storage/v1/object/public/chat-attachments/359dd20b-cb7b-47c3-9d9e-ec707bb58667/carousels/cf_b317c751396f404c/slide-4.png",
+      "excerpt": ""
+    },
+    {
+      "index": 5,
+      "type": "family",
+      "html_preview_url": "https://rvugghuawrgdigabochq.supabase.co/storage/v1/object/public/chat-attachments/359dd20b-cb7b-47c3-9d9e-ec707bb58667/carousels/cf_b317c751396f404c/slide-5.png",
+      "png_url": "https://rvugghuawrgdigabochq.supabase.co/storage/v1/object/public/chat-attachments/359dd20b-cb7b-47c3-9d9e-ec707bb58667/carousels/cf_b317c751396f404c/slide-5.png",
+      "excerpt": ""
+    },
+    {
+      "index": 6,
+      "type": "family",
+      "html_preview_url": "https://rvugghuawrgdigabochq.supabase.co/storage/v1/object/public/chat-attachments/359dd20b-cb7b-47c3-9d9e-ec707bb58667/carousels/cf_b317c751396f404c/slide-6.png",
+      "png_url": "https://rvugghuawrgdigabochq.supabase.co/storage/v1/object/public/chat-attachments/359dd20b-cb7b-47c3-9d9e-ec707bb58667/carousels/cf_b317c751396f404c/slide-6.png",
+      "excerpt": ""
+    },
+    {
+      "index": 7,
+      "type": "family",
+      "html_preview_url": "https://rvugghuawrgdigabochq.supabase.co/storage/v1/object/public/chat-attachments/359dd20b-cb7b-47c3-9d9e-ec707bb58667/carousels/cf_b317c751396f404c/slide-7.png",
+      "png_url": "https://rvugghuawrgdigabochq.supabase.co/storage/v1/object/public/chat-attachments/359dd20b-cb7b-47c3-9d9e-ec707bb58667/carousels/cf_b317c751396f404c/slide-7.png",
+      "excerpt": ""
+    }
+  ],
+  "thumbnail_url": "https://rvugghuawrgdigabochq.supabase.co/storage/v1/object/public/chat-attachments/359dd20b-cb7b-47c3-9d9e-ec707bb58667/carousels/cf_b317c751396f404c/slide-0.png",
+  "preview_url": "https://rvugghuawrgdigabochq.supabase.co/storage/v1/object/public/chat-attachments/359dd20b-cb7b-47c3-9d9e-ec707bb58667/carousels/cf_b317c751396f404c/slide-0.png",
+  "r2_prefix": "carousels/cf_b317c751396f404c",
+  "created_at": 1788841264277,
+  "studio": null,
+  "family": "second-brain",
+  "familyReason": "This is a systems-minded educational carousel with no required figures, logos, or screenshots, and the brief’s daily/weekly/monthly control-panel structure fits the family’s filed systems-and-notes format better than any lower-capacity prose option."
+}
